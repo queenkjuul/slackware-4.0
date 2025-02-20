@@ -1,0 +1,11 @@
+drwxr-xr-x root/root         0 1998-03-29 03:43 ./
+drwxr-xr-x root/root         0 1996-06-10 15:31 usr/
+drwxr-xr-x root/root         0 1996-06-10 15:30 usr/X11R6/
+drwxr-xr-x root/bin          0 1996-06-10 15:31 usr/X11R6/bin/
+-rwxr-xr-x root/bin     575768 1998-03-29 03:39 usr/X11R6/bin/arena
+drwxr-xr-x root/root         0 1996-06-10 15:31 usr/doc/
+drwxr-xr-x root/root         0 1998-03-29 03:40 usr/doc/arena/
+-rw-r--r-- root/root      1790 1995-12-21 08:58 usr/doc/arena/README
+-rw-r--r-- root/root      1838 1995-12-21 08:54 usr/doc/arena/COPYRIGHT
+-rw-r--r-- root/root      1834 1995-11-24 10:51 usr/doc/arena/COPYRIGHT-library
+-rw-r--r-- root/root       494 1995-11-24 10:51 usr/doc/arena/CERN

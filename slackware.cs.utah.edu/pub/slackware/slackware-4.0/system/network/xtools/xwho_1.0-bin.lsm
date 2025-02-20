@@ -1,0 +1,18 @@
+Begin3
+Title:          XWho - a system for visualisation of the logins in networks
+Version:        1.0
+Entered-date:   Sep 9 1994
+Description:    XWho is a client-server-application for providing users and
+		administrators with a view of the logins in a LAN.
+		XWho is an extension of the functionality of well-known
+		utilities for viewing utmp-data, as who(1), finger(1) and
+		rwho(1).
+Keywords:       X, window, X11, utmp, networking
+Author:         leliveld@informatik.tu-muenchen.de (A. Michael Leliveld)
+Maintained-by:  leliveld@informatik.tu-muenchen.de (A. Michael Leliveld)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xapps/networked
+		65k xwho_1.0-bin.tgz
+Original-site:  ftp.leo.org /pub/comp/X11/contrib/clients/xwho/
+		285k xwho-1.0.tar.gz
+Copying-policy: GPL
+End

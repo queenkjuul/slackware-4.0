@@ -1,0 +1,21 @@
+Begin3
+Title:          cbmfs, Commodore 1581/1541 filesystem driver
+Version:        0.3 (beta)
+Entered-date:   10MAY98
+Description:    Commodore 1581 & 1541 read-only filesystem driver, installed as
+                a kernel module.  Allows mounting Commodore 1581 disks in a
+                standard 3.5" floppy drive and 1541 disk images copied to any
+                floppy disk.  PETSCII to ASCII conversion can be automatically
+                performed.  Partitions on 1581 disks are accessed as
+                subdirectories.
+Keywords:       Commodore cbm c64 c128 1581 1541 floppy disk filesystem fs
+                cbmfs module driver mount emulator
+Author:         dan@fch.wimsey.bc.ca (Dan Fandrich)
+Primary-site:   http://www.npsnet.com/danf/software/pub/
+                44kB cbmfs-0.3.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/filesystems/
+Platforms:      Linux 2.0
+                Linux 1.3
+                Linux 1.1.83, >=1.2.6 (with included patches)
+Copying-policy: GPL
+End

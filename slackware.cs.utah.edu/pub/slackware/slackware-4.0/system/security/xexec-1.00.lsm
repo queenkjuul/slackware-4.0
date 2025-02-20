@@ -1,0 +1,12 @@
+Begin3
+Title:          Xexec
+Version:        1.00
+Entered-date:   22JUN97
+Description:    Daemon and client for executing things between trusted systems
+Keywords:       Xexec,X11
+Author:         Adam Ierymenko (api@one.net)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11
+Alternate-site: None
+Platforms:      Unix(any)
+Copying-policy: Freely redistributable
+End

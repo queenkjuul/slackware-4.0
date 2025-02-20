@@ -1,0 +1,22 @@
+Begin2
+Title        = dda - An analyzer for diald
+Version      = 0.1
+Desc1        = dda is an analyzer for the accounting logs of diald that keeps
+Desc2        = track of the last 12 months.
+Author       = Thomas Bullinger
+AuthorEmail  = mrbulli@btoy1.rochester.ny.us
+Maintainer   = Thomas Bullinger
+MaintEmail   = mrbulli@btoy1.rochester.ny.us
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming
+File1        = dda.tar.gz
+FileSize1    = 9MB
+Required1    = diald must be installed and configured for the accounting
+Required2    = logs.
+CopyPolicy1  = Freely redistributable as long as notices left intact.
+Keywords     = diald analyzer
+Comment1     = The package comes as a packed source with man page.
+Entered      = 02MAY95
+EnteredBy    = Thomas Bullinger
+CheckedEmail = mrbulli@btoy1.rochester.ny.us
+End

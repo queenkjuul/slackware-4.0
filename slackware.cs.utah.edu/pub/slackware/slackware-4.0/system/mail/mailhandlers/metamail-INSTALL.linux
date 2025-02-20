@@ -1,0 +1,34 @@
+Linux metamail installation
+---------------------------
+
+1. Type "mkdir metamail" in your home (or other) directory.
+
+2. Type "cd metamail".
+
+3. Type "gzip -dc metamail-linux.tar.z | tar xvf -". This will extract the
+   Linux metamail binaries, man and other files.
+
+4. Type "cd bin".
+
+5. Type these instructions:
+
+   for a in *;do
+   install -c $a /usr/bin (use /usr/local/bin or other dir. if you wish)
+   done
+
+   This will install the binary files in your executable directory.
+
+6. Type "cd ../man" for going the the man files directory.
+
+7. Type this:
+
+   for a in *;do
+   install -c -m 444 $a /usr/man/man1 (or /usr/local/man/man1, etc.)
+   done
+
+   This will install the man files in your man direcotry,
+
+8. Type "cd ..".
+
+9. Type "install -c -m 644 mailcap /etc". You can install the mailcap file
+   in /usr/etc or /usr/local/etc, if you wish.

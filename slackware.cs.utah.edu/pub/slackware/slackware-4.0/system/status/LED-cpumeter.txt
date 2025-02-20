@@ -1,0 +1,21 @@
+meter - an LED cpu metering application for Linux machines
+Written by Richard Laxton ( u2105546@cumulus.csd.unsw.oz.au )
+
+This program uses the hardware described in the included file "led-stat.txt"
+to create a CPU meter that displays on eight LEDs connected to your parallel
+port. The code to gather cpu statistics was modified from code written by Mike
+Romberg as part of Xosview. Here is the copyright included from that code.
+
+//
+//  Copyright (c) 1994 by Mike Romberg (  romberg@md.fsl.noaa.gov )
+//
+//  This file may be distributed under terms of the GPL
+//
+
+To compile just run "make". A precompiled version is already included.
+Note that the resulting code will only work if "make" is run as root. This
+is because the code makes use of direct I/O calls that must be executed as
+root. Once compiled, the program "meter" is set up as a setuid program so
+can be run by anyone and work.
+
+Happy Hacking.

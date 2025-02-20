@@ -1,0 +1,171 @@
+ReadMe(FHist)					    ReadMe(FHist)
+
+NAME
+       fhist - file history and	comparison tools
+       Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997,
+       1998 Peter Miller; All rights reserved.
+
+       Portions	of this	program	are
+       Copyright (C) 1990 David	I. Bell.
+
+       The fhist package is distributed	under the terms	of the
+       GNU General Public License, see the LICENSE section,
+       below, for more information.
+
+DESCRIPTION
+       The FHist program contains 3 utilities, a file history
+       tool ``fhist'', a file comparison tool ``fcomp'', and a
+       file merging tool ``fmerge'.  All three are bundled
+       together, because they all use the same minimal-difference
+       algorithm.
+
+       fhist
+	       Keeps track of versions of a file.  See fhist(1)
+	       for more	information.
+
+       fcomp
+	       Compares	two versions of	a file.	 See fcomp(1) for
+	       more information.
+
+       fmerge
+	       Merges together edits from two descendants of a
+	       file.  See fmerge(1) for	more information.
+
+       The history tool	presented here,	fhist, is a minimal
+       history tool.  It provides no locking or	branching.  This
+       can be useful in	contexts where the configuration
+       management or change control be being provided by some
+       other tool.
+
+REFERENCES
+       This program is based on	the algorithm in
+	      An O(ND) Difference Algorithm and	Its Variations,
+	      Eugene W.	Myers, TR 85-6,	10-April-1985, Department
+	      of Computer Science, The University of Arizona,
+	      Tuscon, Arizona 85721.
+       See also:
+	      A	File Comparison	Program, Webb Miller and Eugene
+	      W. Myers,	Software Practice and Experience, Volume
+	      15, No. 11, November 1985.
+
+Reference Manual	      FHist				1
+
+ReadMe(FHist)					    ReadMe(FHist)
+
+BUILDING
+       For complete instructions for host to build these
+       programs, see the BUILDING file included	in this
+       distribution.
+
+ARCHIVE	SITE
+       The latest version of fhist is available	on the Web from:
+	  URL:	  http://www.canb.auug.org.au/~millerp/
+	  File:	  fhist.html	     # The FHist page.
+	  File:	  fhist-1.4.README   # Description, from the tar file
+	  File:	  fhist-1.4.lsm	     # Description, in LSM format
+	  File:	  fhist-1.4.spec     # RedHat package spec
+	  File:	  fhist-1.4.tar.Z    # The complete source.
+       FHist is	also carried by	sunsite.unc.edu	in its Linux
+       archives.  You will be able to find FHist on any	of its
+       mirrors.
+	  URL:	  ftp://sunsite.unc.edu/pub/Linux/devel/vc/
+	  File:	  fhist-1.4.README   # Description, from the tar file
+	  File:	  fhist-1.4.lsm	     # Description, in LSM format
+	  File:	  fhist-1.4.spec     # RedHat package spec
+	  File:	  fhist-1.4.tar.Z    # The complete source.
+       This site is extensively	mirrored around	the world, so
+       look for	a copy near you	(you will get much better
+       response).
+
+COPYRIGHT
+	version	1.4.D002
+       Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997,
+       1998 Peter Miller; All rights reserved.
+
+       This program is derived from a work
+       Copyright (C) 1990 David	I. Bell.
+
+       This program is free software; you can redistribute it
+       and/or modify it	under the terms	of the GNU General Public
+       License as published by the Free	Software Foundation;
+       either version 2	of the License,	or (at your option) any
+       later version.
+
+       This program is distributed in the hope that it will be
+       useful, but WITHOUT ANY WARRANTY; without even the implied
+       warranty	of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+       PURPOSE.	 See the GNU General Public License for	more
+       details.
+
+       You should have received	a copy of the GNU General Public
+       License along with this program;	if not,	write to the Free
+       Software	Foundation, Inc., 59 Temple Place, Suite 330,
+       Boston, MA 02111, USA.
+
+Reference Manual	      FHist				2
+
+ReadMe(FHist)					    ReadMe(FHist)
+
+AUTHORS
+       Peter Miller	    Web:   http://www.canb.auug.org.au/~millerp
+       /\/\*		 E-Mail:   millerp@canb.auug.org.au
+
+       David I.	Bell	    Web:   uhttp://www.canb.auug.org.au/~dbell
+		       Internet:   dbell@canb.auug.org.au
+
+Reference Manual	      FHist				3
+
+ReadMe(FHist)					    ReadMe(FHist)
+
+RELEASE	NOTES
+       For excruciating	detail,	and also acknowledgements of
+       those who generously sent me feedback, please see the
+       etc/CHANGES.1.4 file included in	this distribution.
+
+       A number	of features and	bug fixes have been added to
+       fhist with this release.	 A few of them are detailed here:
+
+   Version 1.4
+       * The install and build procedures have been made more
+       robust, and they	take note of more of the information
+       provided	by GNU Autoconf.
+
+       * The error messages have been internationalized, so it is
+       now possible to obtain error messages in	your native
+       language.  (If you would	like to	contribute with	error
+       message translations, please contact the	author.)
+
+       * An LSM	description has	been added, along with a HTML
+       page to present it all nicely at	the archive site.
+
+       * A RedHat Package Manager spec file has	been added, so
+       that a RedHat package can be created.  The spec file is in
+       the standard distribution.
+
+   Version 1.3
+       This version was	not distributed	 at all.
+
+   Version 1.2
+       This version was	not distributed	very widely.
+
+       * The non-standard isblank function is no longer	used, it
+       cause too many portability problems.
+
+       * The use of pathconf is	not more robust	for more
+       operating systems.
+
+   Version 1.1
+       * The fhist package now uses a shell script called
+       configure to configure itself.  This script is generated
+       using the GNU Autoconf utility.	This should make fhist
+       significantly easier to configure, and significantly more
+       portable.
+
+       * A bug has been	fixed in the conflict reporting	of the
+       fmerge program.	It now correctly opens the conflicts
+       file.
+
+       * The fhist program now uses pathconf(2)	to determine file
+       name length limits.
+
+Reference Manual	      FHist				4

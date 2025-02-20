@@ -1,0 +1,22 @@
+Begin3
+Title:          xagent
+Version:        0.7.5
+                Just a snapshot of the latest goodies.
+Entered-date:   19OCT97
+Description:    An off line NNTP news reader for Linux, uses xforms.086.
+                Graphical user interface, save phone cost by reading news
+                off line, does not do a LIST every time you connect to a
+                news server, automatic get news in threads, etc..
+                To unpack:
+                tar -zxvf xagent-0.7.5.tgz
+                cd xagent-0.7.5
+                Follow instructions in README.FIRST
+Keywords:       news, news reader, off line, NNTP, threads, linux, X.
+Author:         pante@pi.net (Jan Mourer alias panteltje)
+Maintained-by:  pante@pi.net
+                This is a pre release, working on it.
+Primary-site:   sunsite.unc.edu/pub/Linux/system/news/readers/xagent-0.7.4.tgz
+Alternate-site: einstein.phys.uwm.edu/pub/xforms/Contrib/xagent-0.7.4.tgz
+Platforms:	LINUX
+Copying-policy: GPL
+End

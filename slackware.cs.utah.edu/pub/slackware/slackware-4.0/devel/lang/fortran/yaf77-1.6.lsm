@@ -1,0 +1,20 @@
+Begin3
+Title:          Yaf77
+Version:        1.6
+Entered-date:   16MAR98
+Description:    Yaf77 stands for `Yet another f77-like driver' for f2c.
+                It consists of modified version of original f77 script
+                which comes with f2c package and F77ext library which
+                adds few widely used intrinsics not found in the f2c
+                libs.
+Keywords:       Fortran, F77 extensions, f2c
+Author:         fnevgeny@plasma-gate.weizmann.ac.il (Evgeny Stambulchik)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/lang/fortran
+		9655   yaf77-1.6.tgz
+Alternate-site: plasma-gate.weizmann.ac.il:/pub/software/linux/fortran
+		9655   yaf77-1.6.tgz
+Original-site:  
+Platforms:      Tested on Linux and HP; should work on any Un*x
+Copying-policy: Freeware 
+End

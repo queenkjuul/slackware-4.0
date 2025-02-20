@@ -1,0 +1,31 @@
+XWho - a system for visualisation of the logins in networks
+
+XWho is a client-server-application for providing users and administrators
+with a view of the logins in a LAN. XWho is an extension of the 
+functionality of well-known utilities for viewing utmp-data, as who(1),
+finger(1) and rwho(1).
+
+Some features of XWho are:
+        o an updating view of a net domain
+        o configurable layout of the user interface
+        o differentiation between local and remote login
+        o nicknames for users and special colors for groups
+        o the layout shows the local position of hosts (depending on the
+          position of your host)
+        o a bar of buttons for each host with configurable remote commands
+        o a menu for changing of layouts
+
+I have built and tested XWho on:
+        HP 9000/750  HP-UX 9.1    X11R5 [cc/gcc]
+        SGI          IRIX 5.2     X11R5 [cc]
+        Sun SPARC    SunOS 4.1.1  X11R5 [gcc]
+        DEC          ULTRIX 4.1   X11R5 [cc]
+        PC 486       Linux 1.0.9  XFree86 2.1.1 [gcc]
+
+More information:
+        http://wwwschlichter.informatik.tu-muenchen.de/~leliveld/xwho/
+
+___________________________________________________________________________
+Email: A.Michael.Leliveld@Informatik.TU-Muenchen.De
+IRC: TheDave
+WWW: http://wwwschlichter.informatik.tu-muenchen.de/~leliveld/

@@ -1,0 +1,51 @@
+Begin3
+Title:          ups
+Version:        3.33
+Entered-date:   30SEP98
+Description:    Ups is a source level debugger for C, C++ and Fortan.
+		It runs in a window with two major regions: one showing the
+		current state of the target program data and the other showing
+		the currently executing source code.  A key feature of ups is
+		that the variables display is persistent: when you add a variable
+		to the display it stays there as you step through the code.  The
+		current stack trace (which function called which) is always 
+		visible. Ups includes a C interpreter which allows you to add 
+		fragments of code simply by editing them into the source window 
+		(the source file itself is not modified).  This lets you add 
+		debugging printf calls without recompiling, relinking (or even 
+		restarting) the target program.  You can also add conditional 
+		breakpoints in a natural way at the appropriate place in the 
+		source window. Some things you can do with ups:
+		   + Add variables to the display by simply clicking on them
+		     in the source window.
+		   + Expand (recursively) structures and unions to show their
+		     members.	
+		   + Assign to variables by editing the displayed value.
+		   + Add breakpoints by pointing with the mouse at the line
+		     where you want execution to stop.	
+		   + Add interpreted code at any breakpoint, including code that
+		     calls compiled functions and assigns to variables.
+
+		URL: http://www.concerto.demon.co.uk/UPS/
+
+Keywords:       ups debugger C C++ Fortan
+Author:         M.T.Russell@ukc.ac.uk (Mark Russell)
+		rod@San-Jose.tt.slb.com (Rod Armstrong)
+		russ@amc.com (Russ Browne)
+		ian@concerto.demon.co.uk (Ian Edwards)
+Maintained-by:  rod@San-Jose.tt.slb.com (Rod Armstrong)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/debuggers/
+		1024kB ups-3.33.tar.gz  (Source)
+		521kB ups-3.33-linux-2.0.31.gz (Red Hat 5.0 Binary)
+		7kB   ups-3.33.README
+		2kB   ups-3.33.lsm
+Alternate-site: ftp://unix.hensa.ac.uk/pub/misc/unix/ups/
+Original-site:  
+Platforms:      Sun SPARC (SunOS or Solaris) Intel 386, 586 (Linux 2.0.31, 
+		FreeBSD 2.2.2), C/C++ compiler 
+Copying-policy: Feel free to copy bits of ups for your own use (caveat: you 
+		must contact Mark Russell first if you want to incorporate 
+		the code into a commercial product).
+		You must preserve the copyright notices.
+End
+

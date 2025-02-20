@@ -1,0 +1,19 @@
+Begin3
+Title:          xhtalk
+Version:        2.9p1 (X11R6)
+Entered-date:   29-AUG-1995
+Description:    Nice X prog that shows a dynamic 'menu' of users logged in
+		at systems you specify in file ~/.xhtalk (& idle times).
+		Click on one and start a talk (or userdefined) session.
+		Patched by the maintainer. Read README.linux.
+		Source and an X11R6 binary are included.
+Keywords:       xhtalk, talk, finger monitor, X11
+Author:         kdh@ira.uka.de (Klaus Hartenstein)
+Maintained-by:  ah@doc.ic.ac.uk (Angelo Haritsis)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xutils/status
+		47k xhtalk-2.9p1-linux.tgz
+Original-site:  X11-contrib-R5
+Platforms:      Linux and X11R6: Xlib/Xt/Xw 6.0+, libc4.6.27+ Xpm 4.6+
+		Or compile it yourself (needs bsd-lex, bison, above libs)
+Copying-policy: Leave copyright notice intact.
+End

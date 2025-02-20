@@ -1,0 +1,19 @@
+Begin3
+Title:          Tcl
+Version:        7.6b1
+Entered-date:   04SEP96
+Description:    Tool Command Language -- a popular, embeddable
+                scripting language. This is a BETA release.
+                See also : http://www.smli.com/research/tcl
+                Binary provided by Jeremie Petit (petit@eurecom.fr) and
+                coming with no warranty.
+Keywords:       Tcl, Tk, scripting, language
+Author:         john.ousterhout@eng.sun.com (John Ousterhout and many others)
+Primary-site:   ftp.smli.com /pub/tcl
+                905722 tcl7.6b1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/tcl
+                462715 tcl7.6b1.ELF.tgz
+                905722 tcl7.6b1.src.tgz
+Platforms:      Nothing special
+Copying-policy: Copyrighted but freely distributable
+End

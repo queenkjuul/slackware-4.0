@@ -1,0 +1,20 @@
+Begin3
+Title:          gpppkill
+Version:        0.9.14
+Entered-date:   11-Mar-1999
+Description:    gpppkill is a Linux/X11 program that finishes the ppp link if
+                it not receive a minimal amount of bytes during certain time.
+                It draw a dynamic bar plot according to the amount of bytes 
+                received and sended.
+                It is writing in C++ and using the GTK+ Toolkit.
+Keywords:       gpppkill gtk pppkill ppp pppd load
+Author:         oliver@pla.net.py (Oliver Schulze L.)
+Maintained-by:  oliver@pla.net.py (Oliver Schulze L.)
+Primary-site:   metalab.unc.edu /pub/Linux/system/network/serial/ppp
+                55017 gpppkill-0.9.14.tar.gz
+Alternate-site: metalab.unc.edu /pub/Linux/system/network/serial
+Original-site:  http://www.pla.net.py /home/oliver/gpppkill
+                55017 gpppkill-0.9.14.tar.gz
+Platforms:      Linux, X11R6, gtk+ 1.2.0
+Copying-policy: GPL
+End

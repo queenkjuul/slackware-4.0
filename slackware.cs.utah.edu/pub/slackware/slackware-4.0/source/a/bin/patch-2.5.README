@@ -1,0 +1,24 @@
+
+Pat's $0.02 for patch-2.3:
+
+This version of patch has MAJOR, MAJOR problems, and as a result I don't
+intend to upgrade to v2.3.  (For example, if you've got a chunk of text 
+containing more than one patch, it'll apply the first hunk and then exit!
+That breaks a very large percentage of patches out there!)
+
+...hopefully the next version will work better. :^)
+
+Pat's $0.02 for patch-2.5:
+
+...doesn't seem to.  The first test I made using a patch from the net had
+patch-2.5 asking me what file I was trying to patch.  patch-2.1b works fine
+in the same situation, happily patching with no questions asked.
+
+Anyway, I've removed patch-2.3.tar.gz from this directory and added
+patch-2.5.tar.gz (for those who must shoot themselves in the foot, IMHO).
+
+Slackware will continue to use patch-2.1b for the forseeable future, unless
+the patch maintainer decides to come up with some new incompatible patch format
+to force the new version into use.  I sure hope that doesn't happen, at least 
+not without fixing the problems handling older patches.
+

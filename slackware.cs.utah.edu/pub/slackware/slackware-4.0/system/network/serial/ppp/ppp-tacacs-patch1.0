@@ -1,0 +1,787 @@
+
+ppp-tacacs v1.0 Sunday, 1998/03/01
+Patch against ppp-2.2.0g adding tacacs authentication support.
+By Alex Manousakis, <alx@beryl.kapatel.gr>
+based on tacacs client for linux by Apostolos Dimitromanolakis.
+Useful for server side; client pppd must supply username/password
+via pap/chap (Windblows dialup-networking compatible), server pppd
+logs user in your tacacs server.
+
+Server pppd option added: tacacs <tacacs_server_address>
+You also have to create a file /etc/ppp/ttys looking something like:
+/dev/ttyS1
+/dev/ttyS2
+/dev/ttyS3
+
+It must contain all the devices your pppd for tacacs listens to.
+
+At last, you can integrate linux/mgetty with proprietary access servers!
+Tested on linux-2.0.33 with mgetty and xtacacsd (Vikas) on a linux-2.0.32.
+Distribute/modify freely, but mention contributors.
+Use at your own risk.
+----------------------- Cut here -----------------------------
+
+--- pppd/pppd.h	Sun Mar  1 17:57:02 1998
+***************
+*** 85,90 ****
+--- 85,92 ----
+  extern int	disable_defaultip; /* Don't use hostname for default IP adrs */
+  extern char	*ipparam;	/* Extra parameter for ip up/down scripts */
+  extern int	cryptpap;	/* Others' PAP passwords are encrypted */
++ extern int	tacacs;		/* Use tacacs authentication */
++ extern char	tacacsaddr[];	/* IP address of tacacs server */
+  
+  /*
+   * Values for phase.
+--- pppd/options.c	Sun Mar  1 17:57:02 1998
+***************
+*** 99,104 ****
+--- 99,106 ----
+  int	disable_defaultip = 0;	/* Don't use hostname for default IP adrs */
+  char	*ipparam = NULL;	/* Extra parameter for ip up/down scripts */
+  int	cryptpap;		/* Passwords in pap-secrets are encrypted */
++ int	tacacs = 0;		/* tacacs support */
++ char	tacacsaddr[MAXNAMELEN];	/* tacacs server address */
+  
+  #ifdef _linux_
+  int idle_time_limit = 0;
+***************
+*** 180,185 ****
+--- 182,188 ----
+  static int setnopred1comp __P((void));
+  static int setipparam __P((char **));
+  static int setpapcrypt __P((void));
++ static int settacacs __P((char **));
+  
+  #ifdef IPX_CHANGE
+  static int setipproto __P((void));
+***************
+*** 290,295 ****
+--- 293,299 ----
+      {"-pred1comp", 0, setnopred1comp},	/* don't allow Predictor-1 */
+      {"ipparam", 1, setipparam},		/* set ip script parameter */
+      {"papcrypt", 0, setpapcrypt},	/* PAP passwords encrypted */
++     {"tacacs", 1, settacacs},		/* tacacs server */
+  
+  #ifdef IPX_CHANGE
+      {"ipx-network",          1, setipxnetwork}, /* IPX network number */
+***************
+*** 2037,2039 ****
+--- 2041,2056 ----
+      return (1);
+    }
+  #endif /* USE_MS_DNS */
++ 
++ /* settacacs - set the tacacs server */
++ static int
++ settacacs(argv)
++     char **argv;
++ {
++     strncpy(tacacsaddr, argv[0], MAXNAMELEN);
++     tacacsaddr[MAXNAMELEN-1] = 0;
++     tacacs=1;
++     return 1;
++ }
++ /* tacacs modification ends */
++ 
+--- pppd/auth.c	Sun Mar  1 23:09:31 1998
+***************
+*** 101,106 ****
+--- 101,107 ----
+  
+  static void network_phase __P((int));
+  static int  login __P((char *, char *, char **, int *));
++ static int  tacacslogin __P((char *, char *));
+  static void logout __P((void));
+  static int  null_login __P((int));
+  static int  get_upap_passwd __P((void));
+***************
+*** 336,342 ****
+       */
+      if (ao->neg_upap && passwd[0] == 0 && !get_upap_passwd())
+  	ao->neg_upap = 0;
+!     if (wo->neg_upap && !uselogin && !have_upap_secret())
+  	wo->neg_upap = 0;
+      if (ao->neg_chap && !have_chap_secret(our_name, remote_name))
+  	ao->neg_chap = 0;
+--- 337,343 ----
+       */
+      if (ao->neg_upap && passwd[0] == 0 && !get_upap_passwd())
+  	ao->neg_upap = 0;
+!     if (wo->neg_upap && !uselogin && !tacacs && !have_upap_secret())
+  	wo->neg_upap = 0;
+      if (ao->neg_chap && !have_chap_secret(our_name, remote_name))
+  	ao->neg_chap = 0;
+***************
+*** 397,403 ****
+      ret = UPAP_AUTHACK;
+      f = fopen(filename, "r");
+      if (f == NULL) {
+! 	if (!uselogin) {
+  	    syslog(LOG_ERR, "Can't open PAP password file %s: %m", filename);
+  	    ret = UPAP_AUTHNAK;
+  	}
+--- 398,404 ----
+      ret = UPAP_AUTHACK;
+      f = fopen(filename, "r");
+      if (f == NULL) {
+! 	if (!uselogin && !tacacs) {
+  	    syslog(LOG_ERR, "Can't open PAP password file %s: %m", filename);
+  	    ret = UPAP_AUTHNAK;
+  	}
+***************
+*** 412,417 ****
+--- 413,425 ----
+  	fclose(f);
+      }
+  
++     if (tacacs && ret == UPAP_AUTHACK) {
++ 	ret = tacacslogin(user, passwd);
++ 	if (ret == UPAP_AUTHNAK) {
++ 	    syslog(LOG_WARNING, "PAP tacacs login failure for %s", user);
++ 	}
++     }
++ 
+      if (uselogin && ret == UPAP_AUTHACK) {
+  	ret = login(user, passwd, msg, msglen);
+  	if (ret == UPAP_AUTHNAK) {
+***************
+*** 509,514 ****
+--- 517,549 ----
+  	return 0;
+  }
+  #endif
++ 
++ /* 	Modification for tacacs	*/
++ static int
++ tacacslogin(user, passwd)
++     char *user;
++     char *passwd;
++ {
++     int r, tries;
++     if(!tac_init(tacacsaddr,ttyname(0))) {
++		tacacs=0;
++		return (UPAP_AUTHNAK);
++     }
++     else {
++ 	for(tries=0;tries<3;tries++) {
++ 		r = tac_login(user,passwd);		
++ 		if(r==0) {
++ 			tac_logout(user);
++ 			tac_slipon(user);
++ 			syslog(LOG_INFO, "User %s logged in tacacs server %s", user, tacacsaddr);
++ 			return (UPAP_AUTHACK);
++ 			}
++ 	}
++   	syslog(LOG_INFO, "User %s failed to log in tacacs server %s", user, tacacsaddr);
++     	return (UPAP_AUTHNAK);
++     }
++ }
++ 	/*	End tacacs	*/
+  
+  /*
+   * login - Check the user name and password against the system
+--- pppd/main.c	Sun Mar  1 18:21:38 1998
+***************
+*** 566,571 ****
+--- 566,575 ----
+  die(status)
+      int status;
+  {
++ 	if(tacacs) {
++ 		if(tac_init(tacacsaddr, devnam))
++ 				tac_slipoff("(null)");
++ 	}
+      cleanup(0, NULL);
+      syslog(LOG_INFO, "Exit.");
+      exit(status);
+--- pppd/Makefile.linux	Fri Apr 12 15:27:12 1996
+***************
+*** 9,15 ****
+  	   ipxcp.h
+  MANPAGES = pppd.8
+  PPPDOBJS = main.o magic.o fsm.o lcp.o ipcp.o upap.o chap.o md5.o ccp.o \
+! 	   auth.o options.o sys-linux.o
+  
+  all: pppd
+  
+--- 9,15 ----
+  	   ipxcp.h
+  MANPAGES = pppd.8
+  PPPDOBJS = main.o magic.o fsm.o lcp.o ipcp.o upap.o chap.o md5.o ccp.o \
+! 	   auth.o options.o sys-linux.o tacacs.o
+  
+  all: pppd
+  
+--- pppd/Makefile.bsd	Thu Apr 27 02:19:50 1995
+***************
+*** 5,11 ****
+  
+  PROG=	pppd
+  SRCS=	main.c magic.c fsm.c lcp.c ipcp.c upap.c chap.c md5.c ccp.c \
+! 	auth.c options.c sys-bsd.c
+  MAN8=	pppd.0
+  # The next line is for NetBSD-current systems.
+  MAN=	pppd.cat8
+--- 5,11 ----
+  
+  PROG=	pppd
+  SRCS=	main.c magic.c fsm.c lcp.c ipcp.c upap.c chap.c md5.c ccp.c \
+! 	auth.c options.c sys-bsd.c tacacs.c
+  MAN8=	pppd.0
+  # The next line is for NetBSD-current systems.
+  MAN=	pppd.cat8
+--- pppd/Makefile.ultrix	Fri Apr 28 06:33:21 1995
+***************
+*** 7,18 ****
+  MANDIR = /usr/local/man
+  
+  PPPDSRCS = main.c magic.c fsm.c lcp.c ipcp.c upap.c chap.c md5.c ccp.c \
+! 	auth.c options.c sys-bsd.c sys-str.c sys-ultrix.c sys-linux.c
+  HEADERS = callout.h pathnames.h patchlevel.h chap.h md5.h
+  MANPAGES = pppd.8
+  
+  PPPDOBJS = main.o magic.o fsm.o lcp.o ipcp.o upap.o chap.o md5.o ccp.o \
+! 	auth.o options.o sys-ultrix.o
+  
+  # CC = gcc
+  DEBUG_FLAGS =
+--- 7,18 ----
+  MANDIR = /usr/local/man
+  
+  PPPDSRCS = main.c magic.c fsm.c lcp.c ipcp.c upap.c chap.c md5.c ccp.c \
+! 	auth.c options.c sys-bsd.c sys-str.c sys-ultrix.c sys-linux.c tacacs.c
+  HEADERS = callout.h pathnames.h patchlevel.h chap.h md5.h
+  MANPAGES = pppd.8
+  
+  PPPDOBJS = main.o magic.o fsm.o lcp.o ipcp.o upap.o chap.o md5.o ccp.o \
+! 	auth.o options.o sys-ultrix.o tacacs.o
+  
+  # CC = gcc
+  DEBUG_FLAGS =
+--- pppd/tacacs.c	Mon Mar  2 02:28:12 1998
+***************
+*** 0 ****
+--- 1,233 ----
++ #include <stdio.h>
++ #include <stdlib.h>
++ #include <sys/types.h>
++ #include <unistd.h>
++ #include <getopt.h>
++ #include <netinet/in.h>
++ #include <arpa/inet.h>
++ #include <netdb.h>
++ #include <syslog.h>
++ 
++ #include "tac.h"
++ 
++ 
++ #define inaddr(a) (struct sockaddr *)&a,sizeof(a)
++ 
++ struct sockaddr_in gethost(char *name)
++ {
++   struct sockaddr_in hs;
++ 
++   struct hostent *h;
++   h = gethostbyname(name);
++   if(h_errno) return;	
++   bzero((caddr_t)&hs, sizeof(hs));
++ 
++   hs.sin_family = AF_INET;
++ 
++   bcopy(h->h_addr,&hs.sin_addr.s_addr,sizeof(hs.sin_addr));
++ 
++   hs.sin_port = htons(49);
++ 
++   return hs;
++ }
++ 
++ struct sockaddr_in server;
++ 
++ int s,port;
++ 
++ int tty_to_line(char *tt)
++ {
++ 	FILE *tacacsttys;
++ 	char ttys[22];
++ 	int i=0;
++ 	if(tacacsttys=fopen("/etc/ppp/ttys","r")) {
++ 		fscanf(tacacsttys,"%s", ttys);
++ 		do {
++ 			++i;
++ 			if (strcmp(ttys,tt)==0) {
++ 				syslog(LOG_INFO, "tty %s is sli%d for tacacs", tt, i);
++ 				fclose(tacacsttys);
++ 				return i;
++ 			}
++ 			fscanf(tacacsttys,"%s", ttys);
++ 		} while (!feof(tacacsttys));
++ 		fclose(tacacsttys);
++ 		syslog(LOG_WARNING, "Failed to find %s for tacacs in /etc/ppp/ttys", tt);
++ 		return 998;
++ 	}
++ 	syslog(LOG_WARNING, "Could not open /etc/ppp/ttys required by tacacs");
++ 	return 999;
++ }
++ 
++ int tac_init(char tac_serv[],char control_tty[])
++ {
++ 		server = gethost(tac_serv);
++ 		if(h_errno) {
++ 			syslog(LOG_WARNING, "Could not resolve %s", tac_serv);
++ 			return 0;
++ 		}
++     
++ 		s = socket(AF_INET, SOCK_DGRAM, 0);
++     
++ 		port = tty_to_line(control_tty);
++ 		return port;
++ 				
++ 		// printf("got port: %i\n",port);
++ }
++ 
++ void tac_close()
++ {
++ 		close (s);
++ }
++   
++ int
++ tac_login(char user[],char pass[])
++ {
++     xtacacstype x;
++     char buf[512];
++     int j;
++     
++     bzero(&x,sizeof(x));
++ 
++     x.version = XTA_VERSION | XTA_MINOR_VERSION;
++     x.type = XTA_LOGIN;
++     x.trans = 1001;
++     x.namelen = strlen(user);
++     x.pwlen = strlen(pass);
++     x.response = 0;
++     x.reason = 0;
++     x.lport = port;
++ 
++     xdump_pkt(&x);
++     hton_fixup(&x);
++ 
++     bcopy(&x,buf,sizeof(x));
++     bcopy(user,buf+XTACACSSIZE,strlen(user));
++     bcopy(pass,buf+XTACACSSIZE+strlen(user),strlen(pass));
++ 
++     sendto(s, buf,sizeof(x)+strlen(user)+strlen(pass),0,inaddr(server));
++ 
++     j = recv(s,&x,sizeof(x),0);
++ 
++     ntoh_fixup(&x);
++ 
++     xdump_pkt(&x);
++ 
++     // if(x.type == XTA_ANSWER) printf("got answer\n");
++     if(x.response == XTA_A_ACCEPTED) return 0; else
++ 
++ 		return x.reason+1;
++ }
++ 
++ int
++ tac_logout(char user[])
++ {
++     xtacacstype x;
++     char buf[512];
++     int j;
++     
++     bzero(&x,sizeof(x));
++ 
++     x.version = XTA_VERSION | XTA_MINOR_VERSION;
++     x.type = XTA_LOGOUT;
++     x.trans = 1001;
++     x.namelen = strlen(user);
++     x.pwlen = 0;
++     x.response = 0;
++     x.reason = XTA_R_QUIT;
++     x.lport = port;
++ 
++     xdump_pkt(&x);
++     hton_fixup(&x);
++ 
++     bcopy(&x,buf,sizeof(x));
++     bcopy(user,buf+XTACACSSIZE,strlen(user));
++ 
++     sendto(s, buf,sizeof(x)+strlen(user),0,inaddr(server));
++ 
++     j = recv(s,&x,sizeof(x),0);
++ 
++     ntoh_fixup(&x);
++ 
++     xdump_pkt(&x);
++ 
++     // if(x.type == XTA_ANSWER) printf("got answer\n");
++     if(x.response == XTA_A_ACCEPTED) return 0; else
++ 	return x.reason+1;
++ }
++ 
++ int
++ tac_slipon(char user[])
++ {
++     xtacacstype x;
++     char buf[512];
++     int j;
++     
++     bzero(&x,sizeof(x));
++ 
++     x.version = XTA_VERSION | XTA_MINOR_VERSION;
++     x.type = XTA_SLIPON;
++     x.trans = 1001;
++     x.namelen = strlen(user);
++     x.pwlen = 0;
++     x.response = 0;
++     x.reason = 0;
++     x.lport = port;
++ 
++     xdump_pkt(&x);
++     hton_fixup(&x);
++ 
++     bcopy(&x,buf,sizeof(x));
++     bcopy(user,buf+XTACACSSIZE,strlen(user));
++ 
++     sendto(s, buf,sizeof(x)+strlen(user),0,inaddr(server));
++ 
++     j = recv(s,&x,sizeof(x),0);
++ 
++     ntoh_fixup(&x);
++ 
++     xdump_pkt(&x);
++ 
++     // if(x.type == XTA_ANSWER) printf("got answer\n");
++     if(x.response == XTA_A_ACCEPTED) return 0; else
++ 	return x.reason+1;
++ }
++ 
++ 
++ int
++ tac_slipoff(char user[])
++ {
++     xtacacstype x;
++     char buf[512];
++     int j;
++     
++     bzero(&x,sizeof(x));
++ 
++     x.version = XTA_VERSION | XTA_MINOR_VERSION;
++     x.type = XTA_SLIPOFF;
++     x.trans = 1001;
++     x.namelen = strlen(user);
++     x.pwlen = 0;
++     x.response = 0;
++     x.reason = XTA_R_DROP;
++     x.lport = port;
++ 
++     xdump_pkt(&x);
++     hton_fixup(&x);
++ 
++     bcopy(&x,buf,sizeof(x));
++     bcopy(user,buf+XTACACSSIZE,strlen(user));
++ 
++     sendto(s, buf,sizeof(x)+strlen(user),0,inaddr(server));
++ 
++     j = recv(s,&x,sizeof(x),0);
++ 
++     ntoh_fixup(&x);
++ 
++     xdump_pkt(&x);
++ 
++     // if(x.type == XTA_ANSWER) printf("got answer\n");
++     if(x.response == XTA_A_ACCEPTED) return 0; else
++ 	return x.reason+1;
++ }
++ 
+--- pppd/tac.h	Sun Mar  1 19:23:22 1998
+***************
+*** 0 ****
+--- 1,285 ----
++ 
++ 
++ /*
++  * tac_packet.h - TAC access protocol support
++  *
++  */
++ 
++ #define uchar unsigned char
++ #ifdef __alpha
++ #define ulong unsigned int
++ #else
++ #define ulong unsigned long
++ #endif
++ 
++ #define	TA_VERSION		0
++ #define XTA_VERSION		0x80
++ #define XTA_MINOR_VERSION       0x01	/* This is the largest minor version
++ 					 * that we will support.  We support
++ 					 * all smaller minor versions
++ 					 */
++ #define XTA_MAJOR_VERSION_MASK  0xf0
++ #define XTA_MINOR_VERSION_MASK  0x0f
++ 
++ /*
++  * global flags in tacacs_extended
++  */
++ #define TACACS_EXTEND		0x01	/* extended tacacs is enabled */
++ #define TACACS_ASKCONNECT	0x02	/* ask about connection */
++ #define TACACS_NOTECONNECT	0x04	/* notifiy about connections */
++ #define TACACS_ASKSLIP		0x08	/* ask about SLIP command */
++ #define TACACS_NOTESLIP		0x10	/* notify about SLIP command */
++ #define TACACS_ASKENA		0x20	/* ask about "enable" */
++ #define TACACS_NOTEENA		0x40	/* notify about enable */
++ #define TACACS_NOTELOGOUT	0x80	/* notify about logout/disconnect */
++ 
++ /*
++  * Operations
++  */
++ 
++ #define	TA_QUERY		1
++ #define	TA_ANSWER		2
++ #define	TA_CHANGE		3
++ #define	TA_FOLLOW		4
++ 
++ /*
++  * ANSWER responses
++  */
++ 
++ #define	TA_A_ACCEPTED	1
++ #define	TA_A_REJECTED	2
++ 
++ /*
++  * Reasons included in ANSWER
++  */
++ 
++ #define TA_A_NONE	0
++ #define	TA_A_EXPIRING	1
++ #define	TA_A_PASSWORD	2
++ #define	TA_A_DENIED	3
++ #define	TA_A_NOROUTE	8	/* Dialup routing not allowed */
++ #define	TA_A_LOGINREQ	9       /* Login required for requested action */
++ 
++ /*
++  * TACACS packet structure and sizes
++  */
++ 
++ typedef struct tacacstype_ {
++     uchar version;
++     uchar type;
++     ushort trans;
++     uchar namelen;
++     uchar pwlen;
++ } tacacstype;
++ 
++ #define	TACACS_SIZE	6
++ 
++ /*
++  * eXtended TACACS
++  * Try to keep longwords longword aligned.
++  */
++ typedef struct xtacacstype_ {
++     uchar version;		/* version of protocol */
++     uchar type;			/* Type of query/response */
++     ushort trans;		/* transaction ID */
++     /*---------------*/
++     uchar namelen;		/* length of name */
++     uchar pwlen;		/* length of password */
++     uchar response;		/* response code */
++     uchar reason;		/* reason for response */
++     /*---------------*/
++     ulong uuid;			/* user id code assigned. */
++     /*---------------*/
++     ulong dhost;		/* destination host */
++     /*---------------*/
++     ushort dport;		/* destination port */
++     ushort lport;		/* local line number */
++     /*---------------*/
++     ulong flags;		/* misc flags */
++     /*---------------*/
++     ushort accesslist;		/* access list for user */
++ 				/* user name */
++ 				/* password */
++ } xtacacstype;
++ 
++ #define XTACACSSIZE 26
++ /*
++  * "types"
++  */
++ 
++ #define	XTA_LOGIN	1
++ #define	XTA_ANSWER	2
++ #define	XTA_CHANGE	3
++ #define	XTA_FOLLOW	4
++ #define XTA_CONNECT	5
++ #define XTA_ENABLE	6
++ #define XTA_LOGOUT	7
++ #define XTA_RELOAD	8
++ #define XTA_SLIPON	9
++ #define XTA_SLIPOFF	10
++ #define XTA_SLIPADDR	11
++ #define XTA_ARAP_AUTH	12
++ #define XTA_CHAP_AUTH	13
++ /*
++  * ANSWER responses
++  */
++ 
++ #define	XTA_A_ACCEPTED	1
++ #define	XTA_A_REJECTED	2
++ 
++ /*
++  * reasons for rejection of request
++  */
++ 
++ #define XTA_A_NONE	0
++ #define	XTA_A_EXPIRING	1
++ #define	XTA_A_PASSWORD	2
++ #define	XTA_A_DENIED	3
++ #define	XTA_A_NOROUTE	8	/* Dialup routing not permitted */
++ #define	XTA_A_LOGINREQ	9       /* Login required for requested action */
++ 
++ /*
++  * The following are reasons for "logout" and "slipoff" xtacacs messages
++  */
++ #define XTA_R_QUIT	4	/* user quit normally */
++ #define XTA_R_IDLE	5	/* idle timeout */
++ #define XTA_R_DROP	6	/* carrier dropped */
++ #define XTA_R_BAD	7	/* too many bad passwords */
++ 
++ /*
++  * flags used in response packets
++  * NOTE: these codes currently ignored by cisco routers and terminal servers
++  */
++ #define XTA_F_NOENABLE	   1	/* user may not enable */
++ #define XTA_F_NOENAPASS	   2	/* user may enable without password */
++ #define XTA_F_NOSLIP	   4	/* user may not run SLIP */
++ #define XTA_F_SLIPPASS	   8	/* user needs ok to run SLIP */
++ #define XTA_F_CONNPASS	0x10	/* user needs ok to make connections */
++ #define XTA_F_ACCESS	0x20	/* use the provided access list number */
++ 
++ /*
++  * flags used in request packets
++  */
++ #define XTA_F_ROUTING	0x40	/* user wants to do dialup routing */
++ 
++ /*
++  * Positional markers for the supplementary data file
++  * Entries in this file should be of the form
++  *	username:position_1_value:position_2_value:position_3_value:
++  * A colon (`:') is the only recognized separator.
++  */
++ #define XTA_SUP_IPACLIN		1
++ #define XTA_SUP_IPACLOUT	2
++ #define XTA_SUP_ARAP_SEC	3
++ #define XTA_SUP_CHAP_SEC	4
++ 
++ /*
++  * ARAP specific info
++  */
++ #define ARAP_CHAL_SIZE		8
++ #define ARAP_RESP_SIZE		8
++ 
++ /*
++  * CHAP specific info
++  */
++ #define MD5_LEN			16
++ 
++ 
++ /*
++  * Slip acl structure for return data from SLIPON request.
++  */
++ struct xta_slip_acl {
++ #ifdef __alpha		/* 64 bit machine */
++     int		in;
++     int		out;
++ #else
++     long        in;
++     long        out;
++ #endif	/* __alpha */
++ };
++ 
++ /* end tac_packet.h */
++ 
++ /* tacacs.h */
++ __inline__ unsigned long int __ntohl(unsigned long int x);
++ __inline__ unsigned short int __ntohs(unsigned short int x);
++ int ntoh_fixup(xtacacstype *bp);
++ int hton_fixup(xtacacstype *bp);
++ int xdump_pkt(xtacacstype *tp);
++ struct sockaddr_in gethost(char *name);
++ int tty_to_line(char *tt);
++ int tac_init(char tac_serv[], char control_tty[]);
++ void tac_close(void);
++ int tac_login(char user[], char pass[]);
++ int tac_logout(char user[]);
++ int tac_slipon(char user[]);
++ int tac_slipoff(char user[]);
++ int t_main(int argc, char *argv[]);
++ void tac_startppp(char user[]);
++ /* end tacacs.h */
++ 
++ /* help.h */
++ ntoh_fixup(bp)
++      xtacacstype *bp;
++ {
++     bp->trans = ntohs(bp->trans);
++     if (bp->version == TA_VERSION)	/* old packet type */
++       return ;
++ 
++     bp->uuid  = ntohl(bp->uuid);
++ /*    bp->dhost = ntohl(bp->dhost);	 Do we need this ? */
++     bp->dport = ntohs(bp->dport);
++     bp->lport = ntohs(bp->lport);
++     bp->flags = ntohl(bp->flags);
++     bp->accesslist = ntohs(bp->accesslist);
++ }
++ 
++ hton_fixup(bp)
++      xtacacstype *bp;
++ {
++     bp->trans = htons(bp->trans);
++     if (bp->version == TA_VERSION)	/* old packet type */
++       return ;
++ 
++     bp->uuid  = htonl(bp->uuid);
++ /*    bp->dhost = htonl(bp->dhost);	 do we need this ? */
++     bp->dport = htons(bp->dport);
++     bp->lport = htons(bp->lport);
++     bp->flags = htonl(bp->flags);
++     bp->accesslist = htons(bp->accesslist);
++ }
++ 
++ xdump_pkt(tp)
++      xtacacstype *tp;
++ {
++     struct in_addr dhost_inaddr;        /* tmp struct for inet_ntoa */
++     dhost_inaddr.s_addr = tp->dhost;
++ 
++ 		return;
++     fprintf(stderr, "XTacacs packet Dump:\n");
++     fprintf(stderr, "\tversion: %d\n",tp->version);
++     fprintf(stderr, "\ttype: %d\n",tp->type);
++     fprintf(stderr, "\ttrans: %d\n",tp->trans);
++     fprintf(stderr, "\tnamelen: %d\n",tp->namelen);
++     fprintf(stderr, "\tpwlen: %d\n",tp->pwlen);
++     fprintf(stderr, "\tresponse: %d\n",tp->response);
++     fprintf(stderr, "\treason: %d\n",tp->reason);
++ #ifdef __alpha
++     fprintf(stderr, "\tuuid: %u\n",tp->uuid);
++ #else
++     fprintf(stderr, "\tuuid: %lu\n",tp->uuid);
++ #endif
++     fprintf(stderr, "\tdhost: [%s]\n",(char *)inet_ntoa(dhost_inaddr));
++     fprintf(stderr, "\tdport: %d\n",tp->dport);
++ }
++ 
++ /* End help.h */
++ 
++ 
++ /* prompt.h */
++ void sendmes(char prompt[]);
++ void notify(char reason[]);
++ void getresponse(char prompt[], char *buf, int len, int echo);
++ int p_main(void);
++ /* end prompt.h */
++ 

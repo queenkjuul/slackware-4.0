@@ -1,0 +1,26 @@
+Begin3
+Title:		Purdue Compiler Construction Toolset (PCCTS)
+Version:        1.33
+Entered-date:   07JAN96
+Description:    PCCTS is a set of public domain software tools designed to
+		facilitate  the  implementation  of  compilers  and  other
+		translation systems.  The two main tools in the package are
+		ANTLR (Another Tool for Language Recognition) and DLG
+		(DFA-based Lexical analyser Generator).  These two tools are
+		used by specifying a language grammar in a notation similar
+		to (but more powerful than) the notations used by YACC and
+		LEX.  Either C or C++ interfaces to user code are provided.
+		PCCTS also contains code to support the automatic generation
+		of abstract syntax trees.
+Keywords:       grammar compiler-compiler c++
+Author:         parrt@parr-research.com
+Maintained-by:  t.littlefair@cowan.edu.au
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/C
+		pccts-1.33-linux 
+Alternate-site: 
+Original-site:  ftp.parr-research.com /pub/pccts/1.33
+		pccts.tar
+Platforms:      
+Copying-policy: no major restrictions - see  the file copying.txt within the
+		distribution for further details
+End

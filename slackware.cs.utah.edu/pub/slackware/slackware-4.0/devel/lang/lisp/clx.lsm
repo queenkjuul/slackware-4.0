@@ -1,0 +1,15 @@
+Begin3
+Title:          CLX
+Version:        X11R5, sept92f, ported for CLISP and GCL, 1994-08-22
+Entered-date:   28OCT94
+Description:    Common Lisp to X11 interface
+Keywords:       common lisp, x11, clisp, gcl, clx
+Author:         X Consortium
+Maintained-by:  Bruno Haible <haible@ma2s2.mathematik.uni-karlsruhe.de>
+Primary-site:   ma2s2.mathematik.uni-karlsruhe.de:
+		/pub/lisp/clisp/packages/clx.sept92f.clisp+gcl.tar.z
+Alternate-site: sunsite.unc.edu:/pub/Linux/devel/lisp/clx.tar.z
+Original-site:  parcftp.xerox.com:/pub/pcl/clx.tar.Z
+Platform:       Unix
+Copying-policy: X Consortium
+End

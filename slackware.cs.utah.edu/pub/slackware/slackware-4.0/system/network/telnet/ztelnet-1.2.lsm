@@ -1,0 +1,23 @@
+Begin3
+Title:          ztelnet
+Version:        1.2
+Entered-date:   11NOV98
+Description:    This is a version of 'telnet' with builtin zmodem 
+                download-upload capability.
+		It also has a pipe | command, you can use an
+		external zmodem protocol etc. instead of the
+		builtin one.
+		It also has SSL support if compiled with libssl &
+		libcrypto.
+		It has a configure script, it should compile on a
+		libc6 system.
+		Compiled static elf no ssl, and source.
+Keywords:       ztelnet.README
+Author:         Kent Robotti <krobotti@erols.com>
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/network/telnet
+                453Kb ztelnet-1.2.src.elf.tar.gz   
+Alternate-site: 
+Platforms:      Linux for compiled elf version.
+Copying-policy: GPL
+End
+

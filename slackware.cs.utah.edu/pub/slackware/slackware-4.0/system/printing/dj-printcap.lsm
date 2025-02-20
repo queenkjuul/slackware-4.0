@@ -1,0 +1,21 @@
+Begin3
+Title:          Install-Jet 
+Version:        0.01 
+Entered-date:   December 2, 1996 
+Description:  	Install-Jet will install all the files and scripts you will
+		need to print textfiles and Postscript files on a HP Deskjet
+		using the lpr command.
+		Install-Jet has only been tested with a HP Deskjet 520 but 
+		it should work with all Deskjet printers. I originally put
+		the package together to help my fellow students print 
+		Postscript files but am now releasing it to the public. 
+Keywords:      	printcap, lpd, ghostview, deskjet, postscript 
+Author:        	tburgess@uoguelph.ca (Todd Burgess) 
+Maintained-by:  tburgess@uoguelph.ca (Todd Burgess) 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Printing
+			1 kb dj-printcap.tar.gz
+Original-site: 	http://eddie.cis.uoguelph.ca/~tburgess/dj-printcap.tar.gz 
+			1 kb dj-printcap.tar.gz
+Platform:    	Linux   
+Copying-policy: Distribute Freely 
+End

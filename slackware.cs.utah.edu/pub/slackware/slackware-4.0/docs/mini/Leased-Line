@@ -1,0 +1,277 @@
+
+                            LEASED LINE MINI HOWTO
+                                       
+   Rob van der Putten, rob@sput.dsl.nl
+   v1.2, 3 March 1998
+   
+What is a leased line
+
+   Any fixed, that is permanent, point to point data communications link,
+   which is leased from a telco or similar organisation.
+   The leased line involves cables, such as twisted pair, coax or FDDI,
+   and may involve all sorts of other hardware such as (pupin) coils,
+   transformers, amplifiers and regenerators.
+   
+   This document deals with:
+          Configuring your modem and pppd to use a 2 wire twisted pair
+          leased line.
+          
+   This document does _NOT_ deal with:
+          SLIP, getting or installing pppd, synchronous data
+          communication, baseband modems.
+          
+Assumptions
+
+   You should already have a working pppd on your system.
+   You also need Minicom or a similar program to configure your modems.
+   
+Modem
+
+   A leased line is not connected to a telephone exchange and does not
+   provide DC power, dial tone, busy tone or ring signal. This means that
+   your modems are on their own and have to be able to deal with this
+   situation.
+   
+   You should have 2 identical _external_ modems supporting both leased
+   line and dumb mode. Make sure your modems can actually do this! Also
+   make sure your modem is properly documented.
+   You also need:
+     * 2 fully wired shielded RS232 cables. The shield should be
+       connected to the connector shell (not pin 1) at both ends (not at
+       one end).
+     * A RS232 test plug may be handy for test purposes.
+     * 2 RJ11 cords, one for each end of the leased line.
+     * A basic understanding of 'AT' commands.
+       
+  Modem Configuration
+  
+   Configure your modem at the highest possible speed; 57600 bps for 14k4
+   and 115200 bps for 28k8 or faster modems. Once the modem is in dumb
+   mode it will use the speed at witch it was configured.
+   Configure both your modem software (Minicom) and your modem to use the
+   following settings:
+     * Fixed baud rate (no auto baud)
+     * Hardware bidirectional RTS-CTS flow control (no x-on/x-off)
+     * 8 Bits, no parity, 1 stopbit
+     * The modem should produce the _TRUE_ DCD status (&C1)
+     * The modem should _NOT_ ignore the DCD status (&D2 or &D3)
+       
+   Check this with AT&V or AT&Ix (consult your modem documentation)
+   
+   Find out how to put your modem into dumb mode and, more importantly,
+   how to get it out of dumb mode; The modem can only be reconfigured
+   when it is not in dumb mode.
+   
+   Now configure your modem as follows;
+     * Reset on DTR toggle (&D3, this is sometimes a S register)
+     * Leased line mode (&L1 or &L2, consult your modem documentation)
+     * The remote modem auto answer (S0=1), the local originate (S0=0)
+     * Disable result codes (Q1, sometimes the dumb does this for you)
+     * Dumb mode (\D1 or %D1, this is sometimes a jumper)
+       In dumb mode the modem will ignore all AT commands (sometimes you
+       need to disable the ESC char as well).
+       
+   Write the configuration to non-volatile memory (&W).
+   
+  Test
+  
+   Now connect the modems to 2 computers using the RS232 cables and
+   connect the modems to each other using a RJ11 lead. Use a modem
+   program such as Minicom (Linux), procom or telix (DOS) on both
+   computers to test the modems.
+   You should be able to type text from one computer to the other and
+   vice versa. If one of the screens produces garbage check your com port
+   speed and other settings.
+   Now disconnect and reconnect the RJ11 cord. Wait for the connection to
+   reestablish itself. Disconnect and reconnect the RS232 cables, switch
+   the modems on and off, stop and restart minicom.
+   The modems should always reconnect at the highest possible speed (some
+   modems have speed indicator leds).
+   Check whether the modems actually ignores the ESC (+++) character. If
+   necessary disable the ESC character.
+   
+   If all of this works you may want to reconfigure your modems;
+   Switch off the sound at the remote modem (M0) and put the local modem
+   at low volume (L1).
+   
+  Examples
+  
+    Hi-Tech
+    
+   Originate (local):
+          ATL1&C1&D3&L2%D1&W&W1
+          
+   Answer (remote):
+          ATM0&C1&D3&L2%D1S0=1&W&W1
+          
+    Tron DF
+    
+   The ESC char should be disabled by setting S2 > 127;
+   
+   Originate:
+          ATL1&L1Q1&C1&D3S2=171\D1&W
+          
+   Answer:
+          ATM0&L2Q1&C1&D3S0=1S2=171\D1&W
+          
+PPPD
+
+   You need a pppd (Point to Point Protocol Daemon) and a reasonable
+   knowledge of how it works. Consult the relevant RFC's or the Linux PPP
+   HOWTO if necessary.
+   Since you are not going to use a login procedure, you don't use
+   (m)getty and you do not need a (fake) user associated with the pppd
+   controlling your link. You are not going to dial so you don't need any
+   chat scripts either.
+   In fact, the modem circuit and configuration you have just build, are
+   rather like a null modem cable. This means you have to configure your
+   pppd the same way as you would with a null modem cable.
+   
+   For a reliable link, your setup should meet the following criteria;
+     * Shortly after booting your system, pppd should raise the DTR
+       signal in your RS232 port, wait for DCD to go up, and negotiate
+       the link.
+     * If the remote system is down, pppd should wait until it is up
+       again.
+     * If the link is up and then goes down, pppd should reset the modem
+       (it does this by dropping and then raising DTR), and then try to
+       reconnect
+     * If the quality of the link deteriorates too much, pppd should
+       reset the modem and then reestablish the link.
+     * If the process controlling the link, that is the pppd, dies, a
+       watchdog should restart the pppd.
+       
+  Configuration
+  
+   Suppose the modem is connected to COM2, the local IP address is
+   'Loc_Ip' and the remote IP address is 'Rem_Ip'. We want to use 576 as
+   our MTU.
+   The /etc/ppp/options.ttyS1 would now be:
+
+crtscts
+mru 576
+mtu 576
+passive
+Loc_Ip:Rem_Ip
+-chap
+modem
+-pap
+persist
+
+   So, if the local system is 192.168.1.1 and the remote system is
+   10.1.1.1, then /etc/options.ttyS1 on the local system would be:
+
+crtscts
+mru 576
+mtu 576
+passive
+192.168.1.1:10.1.1.1
+-chap
+modem
+-pap
+persist
+
+   The options.ttyS1 on the remote system would be:
+
+crtscts
+mru 576
+mtu 576
+passive
+10.1.1.1:192.168.1.1
+-chap
+modem
+-pap
+persist
+
+   The passive option limits the number of (re)connection attempts.
+   The persist option will keep pppd alive in case of a disconnect or
+   when it can't connect in the first place.
+   If you telnet a lot while doing filetransfers (FTP or webbrowsing) at
+   the same time, you might want to use a smaller MTU and MRU such as
+   296. This will make the remote system more responsive.
+   If you don't care much about telnetting during FTP, you could set the
+   MTU and MRU to 1500.
+   
+  Scripts
+  
+   >From the script which configures your networkcard
+   (/etc/init.d/network on Debian systems) the script
+   /usr/local/sbin/test-Rem_Host-ppp is called (substitute 'Rem_Host'
+   with the remote hosts name). This script checks whether the remote
+   interface exists and will try to start the pppd if it doesn't. It
+   starts with a sleep, making sure the boot process configures the COM
+   ports first.
+
+#!/bin/bash
+/usr/bin/sleep 30
+
+while true
+do
+     if ! ( /sbin/ifconfig | grep Rem_Ip > /dev/null )
+     then
+          # PPP gone
+               logger "Rem_Host PPP gone ; restarted"
+               /usr/local/sbin/PRem_Host.sh &
+     fi
+     sleep 300
+done
+
+   You could of course, remove the 'sleep 300' and the do-done loop and
+   start the whole thing from cron instead.
+   Some people run pppd from /etc/inittab, but I never tested this.
+   
+   The default route can be set with the defaultroute option or with a
+   /etc/ppp/ip-up script;
+
+#!/bin/bash
+case $2 in
+     /dev/ttyS1)
+          /sbin/route add -net 0.0.0.0 gw Rem_Ip netmask 0.0.0.0
+          ;;
+esac
+
+   Ip-up can also be used to sync your clock using netdate.
+   
+   Of course the route set in ip-up is not necessarily the default route.
+   Your ip-up sets the route to the remote network while the ip-up script
+   on the remote system sets the route to your network. If your network
+   is 192.168.1.0 and your ppp interface 192.168.1.1, the ip-up script on
+   the remote machine looks like this;
+
+#!/bin/bash
+case $2 in
+   /dev/ttyS1)
+      /sbin/route add -net 192.168.1.0 gw 192.168.1.1 netmask 255.255.255.0
+      ;;
+esac
+
+   The 'case $2' and '/dev/ttyS1)' bits are there in case you use more
+   than one ppp link. Ip-up will run each time a link comes up, but only
+   the part between '/dev/ttySx)' and ';;' will be executed, setting the
+   right route for the right ttyS.
+   You can find more about routing in the NET-3-HOWTO section on routing
+   
+   Though the persist option should make this superfluous, the pppd can
+   also be restarted using ip-down;
+
+#!/bin/bash
+case $s in
+     /dev/ttyS1)
+          /usr/bin/sleep 30
+          /usr/local/sbin/PRem_Host.sh &
+          ;;
+esac
+
+   The pppd is started using the /usr/local/sbin/PRem_Host.sh script
+
+#!/bin/bash
+( /usr/sbin/pppd /dev/ttyS1 115200 crtscts Loc_Ip:Rem_Ip persist ) &
+
+   I suppose some of the command line options make some of the options
+   statements superfluous. Well, better safe then sorry.
+   
+  Test
+  
+   Test the whole thing just like the modem test.
+   If it works, get on your bike and bring the remote modem to the remote
+   side of your link.

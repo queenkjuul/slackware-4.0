@@ -1,0 +1,16 @@
+Begin3
+Title:          Dial-Up_Utils
+Version:        2.27
+Entered-date:   10DEC96
+Description:    Various utility programs to facilitate the administration
+                of a Linux box hosting a modem pool (i.e. an ISP or BBS).
+Keywords:       dial-up modem serial ISP BBS administration
+Author:         adam@broadwaynet.com (Adam McKee)
+Maintained-by:  adam@broadwaynet.com (Adam McKee) 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Serial
+                664 Dial-Up_Utils_2.27.lsm
+                34kB Dial-Up_Utils_2.27.tar.gz
+                67kB Dial-Up_Utils_2.27-bin.tar.gz
+                75kB Dial-Up_Utils-2.27-1.i386.rpm
+Copying-policy: GPL
+End

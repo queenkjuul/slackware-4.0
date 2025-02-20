@@ -1,0 +1,15 @@
+Begin3
+Title:          bootpart
+Version:        2.20
+Entered-date:   15 aug. 1998
+Description:    This tools allow you to add a Linux partition (with Lilo)
+                on the Windows NT Boot loader menu
+                (like you can add Linux partition on OS/2 Multi boot menu)                
+Keywords:       winnt nt lilo boot
+Author:         info@winimage.com (Gilles Vollant)
+Maintained-by:  info@winimage.com (Gilles Vollant)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Linux-boot
+                bootpa22.zip 25 525
+Alternate-site: http://www.winimage.com/bootpart.htm
+Copying-policy: Freeware
+End

@@ -1,0 +1,20 @@
+Begin3
+Title:		Network Element talk
+Version:        1.01
+Entered-date:   01/30/1999
+Description:    A small utility that allows admins to execute chat and shell 
+		scripts to network elements. Use mostly for accessing routers
+		to set them up or obtasin information from their CLI (command 
+		line interface) whenever the use of SNMP/CMIP or other 
+		management protocols is more of an overhead than what is needed.
+Keywords:       Network netalk chat
+Author:         devmorfo@algo.com.gr (Dimitris Evmorfopoulos)
+Maintained-by:  devmorfo@algo.com.gr (Dimitris Evmorfopoulos) 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network
+		8844 netalk-1.01.tar.gz
+Alternate-site: ftpeng.cisco.com /pub/incoming
+		8844 netalk-1.01.tar.gz
+Original-site:  sunsite.unc.edu /pub/Linux/system/network
+Platforms:      Linux Solaris gcc
+Copying-policy: GPL
+End

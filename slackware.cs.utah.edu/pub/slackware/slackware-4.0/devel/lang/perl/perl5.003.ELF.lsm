@@ -1,0 +1,12 @@
+Begin3
+Title:             Perl          
+Version:           5.003
+Entered-date:      27JUN96       
+Description:       Programing Language, This version fixes that security bug.
+Keywords:          README-FIRST (make test, passed %100) 
+Maintained-by:
+Primary-site:      ftp.funet.fi /pub/languages/perl/CPAN/src
+Original-site:
+Platforms:         linux-elf system. (precompiled-elf, no source.)
+Copying-policy:    Artistic License
+End

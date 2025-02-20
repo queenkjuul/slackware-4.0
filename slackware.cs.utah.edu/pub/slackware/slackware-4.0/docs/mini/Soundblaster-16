@@ -1,0 +1,127 @@
+Linux Soundblaster 16 PnP Mini-Howto
+by Eric Z. Ayers <Eric.Ayers@compgen.com>
+v1.0, 14 January 1997
+
+To my delight, my wife gave me a shiny new soundcard for my birthday.  
+Unfortunately, it was a Soundblaster 16 PnP which refused to work under 
+Linux.  In fact, my 3com 3c509 would not work under Linux either.
+
+I finally got my hardware working, with the Linux sound driver that comes
+with the kernel and the isapnp package from 
+ftp://ftp.redhat.com/pub/utils/isapnptools-1.8.tgz 
+
+It turns out that there were 2 major obstacles I faced to get the soundcard 
+to work.  The first obstacle was that I didn't know the IRQ's and IO ports 
+to talk to the sound card.  That is solved with the isapnptools package.  The 
+second problem was with the 3c509 ethernet card. It seemed that no matter
+how I changed the settings on the card, the Linux kernel would not recognize 
+the ethernet  card.  It turns out that there is a device on the sound card 
+which is in conflict with the 3c509 probing code. 
+
+
+1) Install the isapnp package.  Edit /etc/isapnp.conf so that the IRQ and IO 
+   ports the sound cards use don't conflict with any of your other devices.
+
+2) Build the linux kernel.  Build the sound support as a Module at the IRQ, 
+   IO and DMA adresses configured in isapnp.conf.  Also build your 3c509 
+   driver as a module.  (Don't forget to run make modules and 
+   make modules_install after compiling and installing your kernel)
+
+3) Modify the boots scripts on your system.
+
+I am running a Slackware installation and kernel revision 2.0.23.  Before
+the network is configured, I run the isapnp program (in /etc/rc.d/rc.M right 
+after the hostname is set:
+
+
+# EZA
+# Setup plug and play devices
+/sbin/isapnp /etc/isapnp.conf
+
+
+Then, the first thing in /etc/rc.d/rc.inet1 I load the network driver
+
+
+# EZA
+# Load networking card module
+/sbin/insmod 3c509
+
+I just ignore the warning at boot time that run-time probing for the 
+ethernet card won't work because it has never failed for me. Finally,
+in /etc/rc.d/rc.local I insert the sound driver module: 
+
+
+/sbin/insmod sound
+
+
+More information about Linux plug and play is available from:
+http://www.redhat.com/linux-info/pnp/
+I'm now happly surfing the net using the Real-Audio player and listening 
+to CDs on my cdrom drive! 
+
+Eric Ayers
+eric.ayers@compgen.com
+
+---------------------------------------------------------------------------
+Here's a copy of my isapnp.conf file with most of the comments removed.
+
+# Trying port address 0203
+# Board 1 has serial identifier 67 00 00 40 17 2b 00 8c 0e
+
+# (DEBUG)
+(READPORT 0x0203)
+(ISOLATE)
+(IDENTIFY *)
+
+# Card 1: (serial identifier 67 00 00 40 17 2b 00 8c 0e)
+# CTL002b Serial No 16407 [checksum 67]
+# Version 1.0, Vendor version 2.0
+# ANSI string -->Creative SB16 PnP<--
+#
+# Logical device id CTL0031
+#
+# Edit the entries below to uncomment out the configuration required.
+# Note that only the first value of any range is given, this may be changed if required
+# Don't forget to uncomment the activate (ACT Y) when happy
+
+(CONFIGURE CTL002b/16407 (LD 0
+#     ANSI string -->Audio<--
+
+# Multiple choice time, choose one only !
+
+#     Start dependent functions: priority preferred
+#       IRQ 5.
+#             High true, edge sensitive interrupt (by default)
+(INT 0 (IRQ 5 (MODE +E)))
+(DMA 0 (CHANNEL 1))
+(DMA 1 (CHANNEL 5))
+(IO 0 (BASE 0x0220))
+(IO 1 (BASE 0x0330))
+(IO 2 (BASE 0x0388))
+(ACT Y)
+))
+
+(CONFIGURE CTL002b/16407 (LD 1
+(INT 0 (IRQ 11 (MODE +E)))
+(IO 0 (BASE 0x01e8))
+(IO 1 (BASE 0x03ee))
+ (ACT Y)
+))
+
+
+(CONFIGURE CTL002b/16407 (LD 2
+#     ANSI string -->StereoEnhance<--
+#     Logical device decodes 16 bit IO address lines
+#         Minimum IO base address 0x0100
+#         Maximum IO base address 0x0138
+#         IO base alignment 8 bytes
+#         Number of IO addresses required: 1
+#(IO 0 (BASE 0x0100))
+#(ACT Y)
+))
+
+
+(CONFIGURE CTL002b/16407 (LD 3
+(IO 0 (BASE 0x0200))
+(ACT Y)))
+

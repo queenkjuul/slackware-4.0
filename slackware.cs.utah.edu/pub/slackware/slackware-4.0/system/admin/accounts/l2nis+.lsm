@@ -1,0 +1,15 @@
+Title: 		l2nis+
+Version:	0.1
+Entered-date:   8-may-1995
+Description:    Client binaries for NIS+ with level 2 (secure RPC)
+		authentication.  Includes libc, login, xdm, keyserv,
+		keyenvoy, keylogin, chkey, amd.  Tested with Solaris 5.3
+		Suns as the nis+ server[s].  Installation instructions are
+		only included in the patch archive.
+Keywords:       secure_rpc, nis+, keyserv
+Author:         misc.
+Maintained-by:  dark@mama.indstate.edu (Thomas J. Moore)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+		19.5k	l2nis+-0.1.patch.tar.gz
+		1893k	l2nis+-0.1.binary.tar.gz
+Copying-policy:	patch: freely distributable; binary: same as libc-linux

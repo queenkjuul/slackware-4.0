@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/source/ap/ghostscr</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/source/ap/ghostscr</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/source/ap/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="_gs_x11.tar.gz">_gs_x11.tar.gz</a></td><td align="right">1995-05-02 01:18  </td><td align="right">190 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10-gdevl256.diff.gz">ghostscript-5.10-gdevl256.diff.gz</a></td><td align="right">1998-05-27 16:44  </td><td align="right">229 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10-nox11.diff.gz">ghostscript-5.10-nox11.diff.gz</a></td><td align="right">1999-03-31 22:50  </td><td align="right">272 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10-makefile.diff.gz">ghostscript-5.10-makefile.diff.gz</a></td><td align="right">1999-03-31 19:28  </td><td align="right">371 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="hp8xxs13.devs.mak.diff.gz">hp8xxs13.devs.mak.diff.gz</a></td><td align="right">1999-03-31 18:58  </td><td align="right">538 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="_ghostscr.tar.gz">_ghostscr.tar.gz</a></td><td align="right">1999-03-31 19:53  </td><td align="right">592 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="devices.gz">devices.gz</a></td><td align="right">1999-03-31 22:54  </td><td align="right">654 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10-makefile-devs.diff.gz">ghostscript-5.10-makefile-devs.diff.gz</a></td><td align="right">1999-03-31 22:47  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild">SlackBuild</a></td><td align="right">1999-03-31 23:00  </td><td align="right">5.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="hp850-readme.1.3.html">hp850-readme.1.3.html</a></td><td align="right">1999-03-31 03:45  </td><td align="right">6.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="hp8xxs13-slack.tgz">hp8xxs13-slack.tgz</a></td><td align="right">1998-10-26 05:20  </td><td align="right"> 32K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="hp8xxs13.zip">hp8xxs13.zip</a></td><td align="right">1998-10-26 04:44  </td><td align="right"> 48K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10libpng.tar.gz">ghostscript-5.10libpng.tar.gz</a></td><td align="right">1998-12-20 04:57  </td><td align="right">149K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10zlib.tar.gz">ghostscript-5.10zlib.tar.gz</a></td><td align="right">1998-12-20 04:57  </td><td align="right">165K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10jpeg.tar.gz">ghostscript-5.10jpeg.tar.gz</a></td><td align="right">1998-12-20 04:57  </td><td align="right">526K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="jpegsrc.v6a.tar.gz">jpegsrc.v6a.tar.gz</a></td><td align="right">1996-02-15 03:25  </td><td align="right">526K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ghostscript-5.10.tar.gz">ghostscript-5.10.tar.gz</a></td><td align="right">1998-12-20 04:57  </td><td align="right">2.5M</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

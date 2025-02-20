@@ -1,0 +1,15 @@
+Begin3
+Title:		ginetd-config
+Version:	0.99.2
+Entered-date:	19-01-1999
+Description:	A Inetd services editor (/etc/inetd.conf).
+Keywords:	inetd inetd.conf gtk gnome control-center
+Author: 	kain@linuxbox.com (Bruno Clermont)
+Maintained-by:	kain@linuxbox.com (Bruno Clermont)
+Primary-site:	http://kain.linuxbox.com/
+Alternate-site:	
+Original-site:	
+Platforms:	Linux, a C compiler, GTK, optionnaly Gnome control-center,
+		/etc/[inetd.conf,services,rpc,protocols,users,groups]
+Copying-policy:	GPL
+End

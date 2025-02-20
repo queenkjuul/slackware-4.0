@@ -1,0 +1,1092 @@
+===============================================================================
+======                                                             ============
+======  XFree86 3.1 and WD90C24 Notebook Video Chipset mini-HOWTO  ============
+======                                                             ============
+===============================================================================
+
+
+        author: Darin Ernst (dernst@pppl.gov, darin@castle.net)     
+
+                      version: 0.96  8/10/95
+                      first version: 1/95
+
+
+
+  For more info and updates, see the WEB site 
+                      http://www.castle.net/~darin
+
+Applicability: 
+
+  This version of the HOWTO applies to XFree86 3.1.2  and earlier. 
+  New versions will be available for new versions of XFree86 
+  when necessary.  
+
+Acknowledgement:
+
+  Thanks to all those who have emailed me and posted messages on 
+  this topic! It is now possible run X-Windows on notebook computers 
+  and take full advantage of the hardware (at least at 8 bits 
+  per pixel). 
+
+Purpose: 
+
+  This document gives instructions for configuring XFree86 
+  on notebooks with the WD90C24 family chipsets.  It also describes 
+  known bugs and workarounds if available.  The content comes 
+  from communication with other users and my participation in the 
+  development of the new WD90C24 driver.
+
+Special Note:  
+
+  A driver developed specifically for the WD90C24 is available for 
+  the first time in XFree86 release 3.1.2 (released around July 31).
+  The sections of this  HOWTO are labelled according to whether or 
+  not they apply to:
+
+      (OLD) 3.1.1 and earlier; and  
+      (NEW) 3.1.2 and later.  
+
+  Most of the FAQ on workarounds for old problems is now obsolete, 
+  but instructions are provided for taking advantage of new features in 
+  XFree86 3.1.2 in the (NEW) sections.
+
+
+Copyright D. Ernst, 1995:                                      
+
+   Permission to redistribute this file *UNCHANGED* is granted for 
+   non-commercial use only. No permission is granted for the use of this 
+   file in sales promotions or for purposes of profit. In addition, any 
+   translations, derivative, or aggregate works that make use of information 
+   in this file must contain this copyright notice and be accompanied by this 
+   file unchanged.
+ 
+   All translations, derivative works, or aggregate works incorporating this 
+   document must be covered under this copyright notice. That is, you may not 
+   produce a derivative work from this document and impose additional 
+   restrictions on its distribution. Exceptions to these rules may be granted 
+   under certain circumstances only by written permission of the author.
+
+   If this copyright notice is not included with translations, derivative works,
+   or aggregate works, then no permission to use information in this file is 
+   granted for any purpose. Permission is granted for the redistribution of 
+   this file in whole and complete distributions of the Linux operating system 
+   provided it remains unchanged.  Commercial entities wishing to redistribute
+   this file or the information contained in it for any other purpose must 
+   obtain the written permission of its author.  Any translations, derivative
+   works, or aggregate works must be submitted to the author for approval.
+
+   All derivative works must also contain the words: "Information provided 
+   by the "X-Notebook mini-HOWTO", copyright D. Ernst, 1995.            
+
+
+Frequently asked questions:
+
+1) Does XFree86 have a driver for the WD90C24[A,A2] available?
+
+   Yes, but only in release 3.1.2 and later. Prior to this, we used
+   the driver for the wd90c31 chip to fake it, with a lot of problems
+   that are described below.
+
+   The long-awaited support for the WD90C24 has been added to the pvga1 driver
+   in the XF86_SVGA server by Brad Bosch, during July, 1995.  Extensive testing
+   during the developement and suggestions were provided by D. Ernst. The 
+   new server has  full support, including programmable clocks, and solves 
+   most, if not all of the problems mentioned here for the old server.
+  
+   The new server was released around July 31, 1995 in version 3.1.2 of of 
+   XFree86.  It is  capable of 1152x900 interlaced as well as 1024x768 
+   non-interlaced VESA at 72Hz refresh, automatically utilizing the 
+   full 1MB of VRAM.  It also provides users with the ability to program
+   the dotclocks. The new driver does not support 16bpp, however, which
+   is possible at low resolutions. Someone is working on this.
+
+   The following is an excerpt from the file /usr/lib/X11/doc/README.WstDig 
+   that describes the new driver (sections written by B. Bosch and D. Ernst):
+
+  New WD90C24 features
+
+  These next three sections apply only if you have a WD90C24, WD90C24a,
+  or WD90C24a2 and don't specify some other chipset in your XF86Config
+  file.  The SVGA pvga1 driver now recognizes the wd90c24 family as
+  different from the WD90C30 and seems to resolve most of the problems
+  people encountered when these chips were treated as WD90C3X.  The new
+  code has the following features:
+
+     o  Locks the shadow registers at appropriate times; This should
+        prevent scrambled displays after exiting X with dual scan
+        screens when simultaneous or LCD display mode is selected.  The
+        code does depend somewhat on the behavior of the BIOS regarding
+        when it locks the shadow registers, etc.
+
+     o  Allows (forces) the use of a full 1 Meg VRAM for dual scan
+        systems when the server is started while external CRT only
+        display is in operation.  This allows 1024x768x8 resolution.
+
+     o  If the XF86Config file specifies a virtual screen size which
+        requires more than 512 K VRAM when the server is started on a
+        Dual Scan LCD, the driver will force the virtual size to
+        640x480.  This eliminates the need to edit the XF86Config file
+        when you switch from 1024x resolution on the CRT, to or from the
+        LCD screen.  If no virtual size is specified, the result will be
+        800x600 virtual in LCD modes and 1024x768 in CRT only mode (so
+        you have a choice).
+
+     o  Note that on dual scan systems, you must still exit X, switch
+        displays, and restart X to change to/from CRT only with 1 Meg
+        videoram.  This is because once the server starts, you can't
+        change the virtual screen size.  There is no way around this
+        with the current server and the WD90C24 with dual scan displays.
+        The WD90C24 requires half the videoram be used for a ``Frame
+        buffer'' when the dual scan LCD is in use.
+
+     o  The new server uses the accelerated features of the WD90C24a.
+        It is not clear from the data book if the WD90C24 also supports
+        ALL the required features.  Several people have stated that the
+        WD90C24 is not accelerated, but the differences section of the
+        WD90c24a data book implies that they ARE all three accelerated.
+        The differences documented with regard to acceleration are with
+        the type of line drawing the hardware does; Only the newer chips
+        support the type of line drawing that MS windows wants.  This
+        may be what has caused the confusion since the accelerated
+        windows drivers may only support the WD90c24a chips.  If this
+        turns out to be a problem with the WD90C24, acceleration can be
+        disabled by adding the line:
+              Option "noaccel"
+         to the Device section of the XF86Config file.
+
+     o  Although the new server does not support programmable clocks in
+        the same way as some of the other servers, 8 of the 17 clocks
+        may be set to (almost) any value via the Clocks line. It also
+        supports options for adjusting the VRAM clock.
+
+
+
+2)(OLD) How can I use the XF86_SVGA server under XFree 86 3.1.1 and earlier?
+
+   Most of us fake it by selecting the WD90C31 (or 30) accelerated chipset
+   using the XF86_SVGA server.  X -probeonly detects the WD90C24, but
+   this is not implemented with accelerated features in XFree86 3.1.1. and 
+   earlier.  The WD90C24A and A2 are sort of compatible with the WD90C31.  
+
+  (NEW & OLD)
+  
+   Most notebooks of 1994 use the WD90C24A2 with 1mb of video ram on the 
+   local bus, and are capable of 1024x768x256 colors at 60Hz refresh 
+   under Windows 3.1. Some implementations are capable of 65k colors at 
+   640x480 using the Western Digital windows driver wd2464_h.drv provided 
+   on an OEM disk.  I maintain a list of notebooks and their video
+   chipsets on the WEB page above.
+
+   Other very common chipsets not covered here are the Cirrus Logic 6440,
+   which is now fully supported by XFree86 3.1.1, and the 
+   Chips and Technologies 65545, which appears in most Pentium 
+   notebooks, especially those using the PCI bus.   This chip  is 
+   partially supported with non-accelerated drivers (for the 65540).
+   There are mixed reports on the net about the extent of this support. 
+   Many of the problems reported seem to be similar to those discussed
+   here.  The CLGD7542 that is now appearing (i.e. TI5000M) seems to be 
+   compatible with the CLGD6235. 
+
+3)(OLD) Why do I only see 512k of VRAM?
+
+   A problem persists with the implementations of dual scan displays, 
+   as well as with simultaneous display. Despite the fact that Windows 3.1 
+   is able to use the full 1mb of video RAM to display externally 
+   at 1024x768x256 colors, XF86_SVGA cannot, since it cannot use more 
+   than 512k of the available 1024k.  The best one can do on an external
+   monitor with the current XF86_SVGA server is 800x600x256. 
+   However, workarounds exist for certain notebooks, such as the Twinhead 5 
+   series and IBM Thinkpads.
+
+   The problem is that 512k is what 'X -probeonly' detects. If you try 
+   to hand-enter 1024k, you will get duplicate images on the upper and 
+   lower halves of the screen.  Others have reported that the Western 
+   Digital databook seems to confirm that half the memory (one 
+   256kx16bit bank) is reserved for a "frame buffer"  when a 16 bit 
+   dual-panel color STN display is used OR when simultaneous display mode 
+   is selected. 
+
+   Comparisons on active and passive versions of the AST Ascentia 
+   made by swapping hard drives (ewagner@imssys.imssys.com Evan Wagner) 
+   confirm that the 512k problem does not occur on the active 
+   matrix implementation. 
+
+   I  observed that other things change (such as dotclocks) when
+   the external display is selected alone, as opposed to simultaneous
+   or internal display on my Twinhead 5100S (dual scan, A2 chip).
+
+   The Twinhead 5100 (aka Twinhead Slimnote 5, HP Omnibook 4000C, 
+   Sharp PC-8700/8900, Altima Virage II) is capable of using the full 
+   1mb of memory after one runs a DOS program called "CHGVRAM.EXE", which 
+   is available from the Twinhead BBS.  This program was written by 
+   Ferdy Kuo of Twinhead Corp., and is copyrighted. The code is only 
+   available from the Twinhead BBS as an executable, and makes 
+   many BIOS calls that are specific to the Twinhead Slimnote 5 series
+   machine.  Please call Twinhead if you don't have the BBS number.
+   This program will only work with the Twinhead family of machines.
+
+   To use this program for Linux/X, boot DOS.  Then hit alt-F5 until 
+   the display is set to external-only.  Then run CHGVRAM.EXE, which 
+   will display a message something like "Video RAM changed to 1 MB".  
+   Next, boot linux using the Linux Loader, lodlin15, which comes
+   in the /root directory of Slackware 2.1.0.  The command is
+   simply "c:\> linux".  Linux will then boot normally.  Then
+   use "startx" to start X-Windows.  The full 1mb of video RAM
+   will be used by XFree86.  I stick this all into a batch file
+   called "linux.bat".
+
+   Possible idea (haven't tried this yet):  Run CHGVRAM.EXE from 
+   a dosemu session within linux.
+
+   **** Fixes for the IBM Thinkpad 
+                        (this is does not work on other notebooks ) ****
+
+   Michael Steiner has written a c program that runs under Linux and 
+   allows one to set the video RAM of the WD90C24 family to either
+   512k or 1024k.  
+
+   /* T P D U A L S C A N . C
+
+    Author: Michael Steiner
+            <steiner@acm.org> <sti@zurich.ibm.com>
+            http://www.zurich.ibm.com/pub/sti/www/info.html
+
+   This program allows you to set videoram for dualscan equipped thinkpads
+   (at least for the 750Cs but probably also for others) to allow running
+   XFree86 without patching it. (normally you got all twice if the upper 512K
+   of videoram are not disabled)
+   */
+
+   Michael also makes available (on his web page) a patched XF86_SVGA
+   server.
+
+4)(OLD) How can I make my LCD screen sync correctly on starting/exiting X?
+
+   There is a bug that results in scrambled virtual consoles upon
+   exiting X.  The cure for this is to reset the video modes in some way.
+   Many notebooks have a hot-key for lcd, crt, or simultaneous display.
+   Cycling this hot-key restores the virtual consoles.  For others,
+   close and open the cover, or suspend/resume.  This problem does
+   not occur when using the external display.
+
+5)(OLD) How can I fix the weird patches-of-black problem?
+
+   There is a problem using white window backgrounds.  When windows
+   are scrolled with white bg, the scrolled part goes into reverse
+   video.  The cure for this is not to use white backgrounds.  Off-whites
+   are fine.  This can be set as a default for all users in 
+   /var/X11R6/lib/xinit/.Xresources with the following line (i.e., for xterm):
+
+   XTerm*Background:               snow  
+
+6)(NEW & OLD) Should I configure X on the internal or external monitor first?
+ 
+   The dotclocks are different as detected by X-probeonly when the
+   lcd is selected versus when the crt is selected as the display.  I 
+   suggest using an external monitor while configuring X so that
+   all the necessary dotclocks appear. If you can't find an external
+   monitor, don't worry.  Just pretend you have one by selecting 
+   external-only display.  Otherwise, you will get 17 basically identical 
+   clocks that are useful only for 640x480.  Do this with the 
+   monitor turned off to avoid damage.
+
+7)(NEW & OLD) My screen looks ok except for these funny little patterns... 
+
+   The lcd display looks different depending on whether or not
+   simultaneous display is turned on (waves, flicker, dim, patterns). The
+   fix is to fiddle with the modeline.  The XF86Config below works
+   correctly. Note the first clock is used for the LCD.
+
+8) How do I set up XF86Config (see examples at end of this file)?
+    
+  (NEW version)
+    aa) read /usr/lib/X11/doc/README.Config, VideoModes.doc (optional)
+    a)  Select XF86_SVGA server with WD90C24 chipset.
+    b)  Select "generic monitor" with the 25 Mhz dotclock and the 
+        standard 640x480 VESA modeline.  Begin with a video 
+        bandwidth around 30 Mhz.
+    c)  X -probeonly >& /tmp/x.out with external monitor selected, but
+        turned off.
+    d)  Edit XF86Config and paste in the 17 dotclocks found in /tmp/x.out
+        put one of the 25-28 Mhz dotclocks in place of the first
+        number in the VESA 640x480 modeline.  This should work 
+        for the LCD display to give 640x480x256. Now select the LCD
+        display (using a hot-key).  If you have an 800x600 LCD
+        display, the clock that is probably need is likely to be
+        the first clock with a value around 36.  Try the 
+        800x600@56Hz NI VESA modeline first.
+    e)  Go to step (c).  Repeat, this time pasting in the HorizSync
+        frequency or the VertRefresh frequency.  Go to step
+        (c) again and repeat until both of these and the bandwidth
+        are filled in.
+    f)  Now the LCD display should work.  
+    g)  To configure the external monitor, decide which dotclocks
+        you want by first picking the resolution and looking over
+        the standard VESA modelines.  The new server allows you
+        to program certain dotclocks, so this gives you almost
+        infinite flexibility in setting up modelines.
+
+        The new server recognizes that you have 1024k of VRAM
+        when you are using either an active matrix LCD or
+        the external monitor.  If you are using simultaneous display
+        or a dual-scan LCD alone, then only 512k of VRAM can
+        be used.  This is inherent in the hardware design.
+        
+  From /usr/lib/X11/doc/README.WstDig sections by B. Bosch and D. Ernst:
+
+  Special considerations
+
+  All of the Western Digital chipsets after the PVGA1 support the
+  ability to use the memory-refresh clock as an alternate dot-clock for
+  video timing.  Hence for all of these chipsets, the server will detect
+  one more clocks than ``normal''.  What this means is that if you have
+  an old `Clocks' line in your XF86Config file, you should comment it
+  out, and rerun the server with the `-probeonly' option to find all of
+  the clock values.  All but the last should be the same as what you had
+  before; the last will be new.
+
+  The server will detect 17 clocks for the WD90C24, WD90C30 and WD90C31
+  chipsets.  If you have one of these chipsets, you should let the
+  server re-probe the clocks and update your XF86Config.
+
+  There is an `Option' flag available for the XF86Config file that is
+  specific to the Western Digital chipsets (except the WD90C24).  This
+  option is "swap_hibit".  
+
+
+  WD90C24 clocks
+
+  Here are some more details on the adjustable clocks:
+
+  The VRAM clock (Mclk) is adjusted by adding ONE of the following
+  option lines to the Device section of the XF86Config:
+
+          Option      "slow_dram"     # Set Mclk to 47.429 MHz
+          Option      "med_dram"      # Set Mclk to 49.219 MHz
+          Option      "fast_dram"     # Set Mclk to 55.035 MHz
+
+
+
+  The default is to leave Mclk as the BIOS sets it.  This is 44.297 on
+  many systems.  Some systems may not work properly with any of these
+  options.  If you experience ``bit errors'' on your display, reduce the
+  Mclk speed, or don't use any of these options.  The Mclk is not reset
+  on server exit.
+
+  The data book says that the maximum pixel clock is 1.6 times Mclk so
+  you may want to experiment with higher Mclk rates if you have a fast
+  monitor.  It also says a 44.297MHz Mclk and 65MHz pixel clock is the
+  fastest the WD90C24A2 is designed to go.  However, some success has
+  been reported with faster clocks.  Don't expect all the clocks the
+  chip can provide to work properly.
+
+  The second and fourth group of 4 clocks are adjustable.  That is,
+  clocks 5, 6, 7, 8 and 13, 14, 15, 16 (counting from 1).  These clocks
+  are set by the Clocks line.  Be sure to adjust the 17th (last) clock
+  to match your Mclk.  Here is a sample set of clocks lines with some
+  clocks defined which are not directly provided by the chip.  The NON-
+  programmable clocks (1-4 and 9-12) MUST be set as indicated here.
+
+     Clocks     25.175 28.322 65     36     # These are *not* programmable
+     Clocks     29.979 77.408 62.195 59.957 # these are programmable
+     Clocks     31.5   35.501 75.166 50.114 # these are *not* programmable
+     Clocks     39.822 72.038 44.744 80.092 # these are programmable
+     Clocks     44.297                      # Change this if you change
+                                            #   Mclk above.
+
+
+  You can program the clocks in increments of .447443 MHz.  The server
+  will warn you and adjust to the nearest increment if you specify a
+  clock which does not fit this formula.  Clocks 1-4 and 9-12 (the fixed
+  clocks) are not constrained to this multiple, but instead are used to
+  provide standard clocks which are not a multiple by .447443 MHz.
+
+  If you probe for clocks (for example to find your Mclk), do it in CRT
+  only mode and then add clocks lines in your XF86Config file.  Clocks
+  will not probe correctly in LCD mode on most systems.
+
+  The BIOS on some systems may not allow switching from CRT to LCD
+  unless the correct clock and/or mode is used.  Try the following mode
+  line for 640x480 LCD displays.
+ 
+  ModeLine "640x480"  25.175   640 664 760 800 480 491 493 525 #CRT/LCD
+
+  The following modelines have been tested with the above Clocks lines
+  on some systems, and are provided here as examples. Some testers have
+  experienced minor problems (snow) with the fixed 65 and 75.166 MHz dot
+  clocks.  The modelines below have been reported to circumvent these
+  problems.  This is has fixed in post-3.1.2 versions of the pvga1
+  driver.  
+  
+  Do not assume your monitor will not be damaged by any of these.
+
+   # VESA 800x600@72Hz Non-Interlaced mode
+     Mode  "800x600.50"  
+       DotClock 50  
+       HTimings 800  856  976 1040 
+       VTimings 600 637 643 666  
+       Flags    +hsync +vsync
+     EndMode
+
+   # 1024x768  Interlaced mode
+     Mode  "1024x768i" 
+       DotClock 45  
+       HTimings 1024 1048 1208 
+       VTimings 1264 768 776 784 817 
+       Flags    +hsync +vsync Interlace
+     EndMode
+
+   # 1024x768@60Hz Non-interlaced Mode
+   # One of the dram options may be necessary
+     Mode  "1024x768.65" 
+       DotClock  65  
+       HTimings  1024 1032 1176 
+       VTimings  1344 768 771 777 806 
+       Flags     -hsync -vsync
+     EndMode
+
+   # 1024x768@60Hz Non-Interlaced mode (non-standard dot-clock)
+   # Seems to work without dram options
+     Mode  "1024x768.62" 
+       DotClock 62  
+       HTimings 1024 1064 1240 1280
+       VTimings  768 774 776 808
+     EndMode
+
+   # 1024x768@70Hz Non-Interlaced mode (non-standard dot-clock)
+   # May need fast_dram option
+     Mode  "1024x768.72" 
+       DotClock 72  
+       HTimings  1024 1056 1192 1280 
+       VTimings  768 770 776 806 
+       Flags     -hsync -vsync
+     EndMode
+
+   end /usr/lib/X11/README.WstDig
+
+   The following mode works well (provided by Nick Sayer):
+
+     Mode "1152x900i"  
+       DotClock 65 
+       HTimings 1152 1200 1296 1496  
+       VTimings 900 905 916 950 
+       Flags    Interlace
+     EndMode
+
+
+    h)  When programming the clocks: If you experience snow with a 
+        particular modeline, try decreasing the clock by a small
+        amount, leaving the other settings unchanged.  Certain
+        clocks, such as the fixed 65 and 75 MHz clocks, sometimes
+        give snow due to a minor bug in the new server.  The fix
+        for this is to duplicate the problematic fixed clock
+        with a nearby programmable one.  This problem has been
+        fixed and will not be propagated to future releases
+        of XFree86.
+
+
+    i)  Send me info on new things you find and post it to newsgroups
+        so I can develop this mini-HOWTO further.
+
+
+  (OLD version)
+
+    If you are using the XF86Config below, you should comment out
+    the sections for 3.1.2 and later as described in the file.
+    Then follow these instructions to reprobe the clocks.
+
+    aa) read /usr/lib/X11/doc/README.Config, VideoModes.doc (optional)
+    a)  Select XF86_SVGA server with WD90C31 chipset.
+    b)  Select "generic monitor" with the 25 Mhz dotclock and the 
+        standard 640x480 VESA modeline.  Begin with a video 
+        bandwidth around 30 Mhz.
+    c)  X -probeonly >& /tmp/x.out with external monitor selected, but
+        turned off.
+    d)  Edit XF86Config and paste in the 17 dotclocks found in /tmp/x.out
+        put one of the 25-28 Mhz dotclocks in place of the first
+        number in the VESA 640x480 modeline.  This should work 
+        for the LCD display to give 640x480x256. Now select the lcd
+        display.
+    e)  Go to step (c).  Repeat, this time pasting in the HorizSync
+        frequency or the VertRefresh frequency.  Go to step
+        (c) again and repeat until both of these and the bandwidth
+        are filled in.
+    f)  Now the lcd display should work.  
+    g)  To configure the external monitor, start with the standard
+        VESA modelines that match the dotclocks you have.  I got
+        four basic dotclocks with a lot of nearby duplicates:
+
+        28.32 => 640x480 @63 Hz NI VESA
+        36.00 => 800x600 @56 Hz NI VESA
+        44.26 => 1024x768i @43.5 Hz Interlaced 
+        64.97 => 1024x768 @60 Hz NI VESA
+
+	Of course, one cannot achieve the 1024 modes because without a 
+        workaround, as one can only use 512k of video ram of the available 
+        1024k VRAM as discussed above.  
+
+        I think it is possible to get an 800x600 mode with very high
+        refresh rate.  This depends on your monitor.
+ 
+        With the  pre-Bosch version of the server, it is not possible to 
+        achieve better than 60Hz refresh rate at 1024x768 NI.  As the flicker 
+        is noticeable, the 1024x768i (interlaced) mode often looks nicer than 
+        the NI mode.
+
+    h)  Send me info on new things you find and post it to newsgroups
+        so I can develop this mini-HOWTO.      
+
+
+9) How do I get more info? 
+
+   Useful web sites and addresses
+
+	This mini-HOWTO (latest version) and other links on 
+        the WD90C24 family:
+
+            http://www.castle.net/~darin
+
+	Western Digital Web Site - for phone number for databooks
+            http://www.wdc.com/
+
+	IBM Thinkpad video patches 
+            http://www.zurich.ibm.com/pub/sti/www/info.html   
+            (seem to have disappeared - but I have some
+             where this HOWTO is stored)
+	
+	Twinhead Computer Corp. 1-800-995-8946
+            to ask for BBS # (if you have a Twinhead, Sharp, Altima, HP)
+
+
+As a shortcut to configuration, look into the program vgaset.  This allows 
+you to optimize the timings for each monitor interactively and dynamically 
+within X.
+
+
+Darin Ernst
+darin@castle.net
+dernst@pppl.gov
+
+
+#===========================================================================
+#/usr/lib/X11/XF86Config for XFree86 3.1.2 and later (NEW)
+#===========================================================================
+#
+# Copyright (c) 1994 by The XFree86 Project, Inc.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+# THE XFREE86 PROJECT BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+# OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+# 
+# Except as contained in this notice, the name of the XFree86 Project shall
+# not be used in advertising or otherwise to promote the sale, use or other
+# dealings in this Software without prior written authorization from the
+# XFree86 Project.
+#
+#
+########################################################################
+#### This XF86Config is for XFree86 3.1.2 and later.  To use it     ####
+#### with a previous version of XFree86, follow the instructions    ####
+#### that appear within the comments.  Do not expect it to work     ####
+#### as is with older version of XFree86.                           ####
+####                                                                ####
+####           --- This is version 0.9, August 11, 1995 ----        ####
+####                                                                ####
+#### This release provides full support for the WD90C24[A,A2]       ####
+#### driving 8-bit dual scan LCD screens and/or external monitors.  ####
+#### Updated versions of this file may be found on the              ####
+#### home page                                                      ####
+####    http://www.castle.net/~darin                                ####
+#### In addition, see the                                           ####
+####  "Linux, X, and the WD90C24A2 Chipset mini-HOWTO"              ####
+####   (aka "X-Notebook mini_HOWTO")                                ####
+####                                                                ####
+#### The settings in this file were chosen for use with a dual scan ####
+#### LCD display.  The external monitor was a multisync one with    ####
+#### a bandwidth of 100 MHz.                                        ####
+####                                                                ####
+#### The settings for the LCD screen in this file                   ####
+#### should be fairly universal and should work with most           ####
+#### notebook computers using the WD90C24 family chipsets.          ####
+####                                                                ####
+#### For more information, see the file                             #### 
+####            /usr/lib/X11/doc/README.WstDig                      ####
+#### in the XFree86 3.1.2 and later releases.                       ####
+####                                                                ####
+#### Copyright D. Ernst, 1995:                                      ####
+####  Permission to redistribute this file *UNCHANGED* is granted   ####
+####  for non-commercial use only.  No permission is granted for    ####
+####  the use of this file in sales promotions or for purposes of   ####
+####  profit. In addition, any other files that make use of         ####
+####  information in this file must contain this and the above      ####
+####  copyright notice and be accompanied by this file unchanged.   ####
+####  All translations, derivative works, or aggregate works        ####
+####  incorporating this document must be covered under this        ####
+####  copyright notice. That is, you may not produce a derivative   ####
+####  work from this document and impose additional restrictions on ####
+####  its distribution.  Exceptions to these rules may be granted   ####
+####  under certain circumstances only by written permission of the #### 
+####  author.                                                       #### 
+####                                                                #### 
+####  If this copyright notice is not included with translations,   ####
+####  derivative work, or aggregate works, then no permission to use#### 
+####  information in this file is granted for any purpose.          ####
+####  Permission is granted for the redistribution of this file in  ####
+####  complete distributions of the Linux operating system provided ####
+####  it remains unchanged.  Commercial entities wishing to         ####
+####  redistribute this file or the information contained in it     ####
+####  must obtain the prior written permission of its author unless ####
+####  the file remains unchanged and is distributed as part of a    ####     
+####  complete Linux distribution. Derivative works or translations ####
+####  must be submitted to the author for approval.                 ####
+####                                                                ####
+####  All derivative works or translations  must also contain the   ####
+####  words: "Information provided in whole or in part by the       ####
+####  "X-Notebook mini-HOWTO", copyright D. Ernst, 1995.            ####
+####                                                                ####
+####                                                                ####
+#### WARNING: Do not assume these settings fall within your         ####
+#### external monitor's bandwidth.  Some monitors, esp. fixed       ####
+#### freq. ones, may be damaged by these settings. We cannot be     ####
+#### held responsible for any damages whatsoever that may occur     ####
+#### directly or indirectly from the use of this information.       ####
+#### In addition, caution is prudent when using high dotclock       ####
+#### frequencies and fast vram clocks.  No guarantees are made      ####
+#### or implied.  It is possible to exceed the design specifications####
+#### of the video subsystem or displays by using these settings.    ####
+####                                                                #### 
+########################################################################   
+#
+# **********************************************************************
+# Refer to the XF86Config(4/5) man page for details about the format of 
+# this file. This man page is installed as /usr/X11R6/man/man5/XF86Config.5x 
+# **********************************************************************
+
+# **********************************************************************
+# Files section.  This allows default font and rgb paths to be set
+# **********************************************************************
+
+
+Section "Files"
+
+    RgbPath	"/usr/X11R6/lib/X11/rgb"
+
+# Multiple FontPath entries are allowed (which are concatenated together),
+# as well as specifying multiple comma-separated entries in one FontPath
+# command (or a combination of both methods)
+
+    FontPath	"/usr/X11R6/lib/X11/fonts/misc/"
+    FontPath	"/usr/X11R6/lib/X11/fonts/75dpi/"
+    FontPath	"/usr/X11R6/lib/X11/fonts/Speedo/"
+    FontPath	"/usr/X11R6/lib/X11/fonts/Type1/"
+    FontPath	"/usr/X11R6/lib/X11/fonts/100dpi/"
+
+EndSection
+
+# **********************************************************************
+# Server flags section.
+# **********************************************************************
+
+Section "ServerFlags"
+
+# Uncomment this to cause a core dump at the spot where a signal is 
+# received.  This may leave the console in an unusable state, but may
+# provide a better stack trace in the core dump to aid in debugging
+
+#    NoTrapSignals
+
+# Uncomment this to disable the <Crtl><Alt><BS> server abort sequence
+
+#    DontZap
+
+EndSection
+
+# **********************************************************************
+# Input devices
+# **********************************************************************
+
+# **********************************************************************
+# Keyboard section
+# **********************************************************************
+
+Section "Keyboard"
+
+    Protocol	"Standard"
+
+# when using XQUEUE, comment out the above line, and uncomment the
+# following line
+
+#    Protocol	"Xqueue"
+
+    AutoRepeat	500 5
+    ServerNumLock
+
+# Specifiy which keyboard LEDs can be user-controlled (eg, with xset(1))
+#    Xleds      1 2 3
+
+# To set the LeftAlt to Meta, RightAlt key to ModeShift, 
+# RightCtl key to Compose, and ScrollLock key to ModeLock:
+
+#    LeftAlt     Meta
+#    RightAlt    ModeShift
+#    RightCtl    Compose
+#    ScrollLock  ModeLock
+
+EndSection
+
+
+# **********************************************************************
+# Pointer section
+# **********************************************************************
+
+Section "Pointer"
+
+    Protocol	"PS/2"
+    Device	"/dev/mouse"
+
+# When using XQUEUE, comment out the above two lines, and uncomment
+# the following line.
+
+#    Protocol	"Xqueue"
+
+# Baudrate and SampleRate are only for some Logitech mice
+
+#    BaudRate	9600
+#    SampleRate	150
+
+# Emulate3Buttons is an option for 2-button Microsoft mice
+
+    Emulate3Buttons
+
+# ChordMiddle is an option for some 3-button Logitech mice
+
+#    ChordMiddle
+
+EndSection
+
+
+# **********************************************************************
+# Monitor section
+# **********************************************************************
+
+# Any number of monitor sections may be present
+
+Section "Monitor" # first section for LCD alone
+                  # (not used; here FYI)
+
+    Identifier	"LCD Screen"
+    VendorName	"Sharp"
+    ModelName	"Unknown"
+
+    Bandwidth	40  #  changed from 29
+    HorizSync   35.36  # X -probeonly says  
+    VertRefresh 67.36  # X -probeonly says
+
+#    ModeLine "640x480" 25.175 640 664 760 800 480 491 493 525
+
+    Mode "640x480"
+        DotClock	25.175 # The dual scan LCD uses the first clock
+        HTimings	640 664 760 800
+        VTimings	480 491 493 525
+    EndMode
+
+EndSection # monitor 1
+
+Section "Monitor"  # 2nd monitor section for both LCD/CRT
+
+    Identifier	"CRT&LCD"
+    VendorName	"MAG"
+    ModelName	"DX17F"
+    Bandwidth	75            # changed; 100 from DX17F manual
+    HorizSync	30-64         # multisync; also from DX17F manual
+    VertRefresh	50-100        # multisync; also from DX17F manual
+
+
+# Modelines =========================================================
+# This constitutes a fairly complete set of Modelines that are as 
+# close to VESA as possible.
+#
+# A generic VGA 640x480 mode (hsync = 31.5kHz, refresh = 60Hz) 
+# use for CRT/LCD simultultaneous display
+   Mode "640x480" 
+    DotClock   25.175   
+    HTimings   640 664 760 800     
+    VTimings   480 491 493 525 
+   EndMode 
+
+# A generic VGA 640x480 mode (hsync = 31.5kHz, refresh = 60Hz) 
+# use for LCD alone, but above mode works fine
+   Mode "640x480.28"  
+    DotClock    28.32    
+    HTimings    640 680 720 864     
+    VTimings    480 488 491 521
+   EndMode
+
+# VESA 800x600@56Hz Non-Interlaced mode 
+# noticeable flicker; use mode below for best 800x600
+   Mode "800x600.36"    
+    DotClock     36       
+    HTimings     800 824 896 1024    
+    VTimings     600 601 603 625   
+   EndMode
+
+# VESA 800x600@72Hz Non-Interlaced mode 
+# no flicker
+   Mode "800x600.50"     
+    DotClock     50       
+    HTimings     800 856 976 1040    
+    VTimings     600 637 643 666  
+    Flags        +hsync +vsync
+   EndMode
+
+# 1024x768  Interlaced mode             
+# no flicker and clear but interlaced character shows
+   Mode  "1024x768i"       
+    DotClock     45       
+    HTimings     1024 1048 1208 1264 
+    VTimings     768 776 784 817  
+    Flags        +hsync +vsync Interlace
+   EndMode 
+
+# 1024x768@60Hz Non-interlaced Mode  
+# has snow problem with default MClk (use mode below)
+   Mode "1024x768.65"    
+    DotClock     65.1     
+    HTimings     1024 1032 1176 1344    
+    VTimings     768  771  777  806 
+    Flags        -hsync -vsync
+   EndMode 
+
+# 1024x768@60Hz Non-Interlaced mode (non-standard dot-clock) 
+# minimum refresh rate for VESA: noticeable flicker
+   Mode "1024x768.62"    
+    DotClock     62     
+    HTimings     1024 1064 1240 1280   
+    VTimings     768  774  776  808
+   EndMode
+ 
+   Mode "1024x768.60"    
+    DotClock     60     
+    HTimings     1024 1064 1240 1280   
+    VTimings     768  774  776  808
+   EndMode 
+  
+#   To use the modes below, you need to uncomment the "fast_dram" option
+#   in the devices section to increase the memory clock (MClk).
+#   With any of the slower vram clocks, you may see a wavy
+#   picture with some noise.  Note these modes are beyond the design
+#   limits of the WD90C24A2, with the exception of the 1152x900i Modeline.
+
+# VESA 1024x768@70Hz Non-Interlaced mode 
+# sort of works, but has snow problem
+   Mode  "1024x768.75"    
+     DotClock     75     
+     HTimings     1024 1048 1184 1328   
+     VTimngs      768  771  777  806 
+     Flags        -hsync -vsync
+   EndMode
+
+# 1024x768@70Hz Non-Interlaced mode (non-standard dot-clock) 
+# looks great (slight focus problem?): at last, a useable 1024NI mode.
+   Mode "1024x768.72"    
+     DotClock     72     
+     HTimings     1024 1056 1192 1280   
+     VTimings     768  770  776 806   
+     Flags        -hsync -vsync
+   EndMode
+
+# 1024x768@76Hz Non-Interlaced mode (doesn't sync; not expected to)
+   Mode "1024x768.85"    
+     DotClock     85     
+     HTimings     1024 1032 1152 1360    
+     VTimings     768  784  787  823 
+     Flags        +hsync -vsync
+   EndMode
+
+# from Nick Sayer (same as Sun screens) 
+# nice
+   Mode "1152x900i"    
+     DotClock     65 
+     HTimings     1152 1200 1296 1496  
+     VTimings     900 905 916 950 
+     Flags        Interlace
+   EndMode
+
+#   ModeLine "1152x900.77"  77 1152 1200 1296 1496  900 905 916 950
+#   ModeLine "1152x900.75"  75 1152 1200 1296 1496  900 905 916 950
+
+#  bad flicker
+   Mode "1152x900.72"  
+     DotClock     72 
+     HTimings     1152 1200 1296 1496  
+     VTimings     900 905 916 950
+   EndMode
+
+
+EndSection # monitor 2
+
+# **********************************************************************
+# Graphics device section
+# **********************************************************************
+
+# Any number of graphics device sections may be present
+
+Section "Device"
+    # SVGA WD90c24a2 in Twinhead Slimnote with simultaneous display
+    Identifier	"WD90C24A2"
+    VendorName	"Western Digital"
+    BoardName	"RocketChip"
+#    Chipset     "wd90c31" # comment out for use with XFree86 3.1.2 or later
+                           # uncomment for use with XFree86 3.1.1 or before
+
+#### begin first config with lcd only display (unused) 
+##    VideoRam     512
+##    Clocks      28.29  28.32  28.30  28.29  28.30  28.32  28.29  28.30      
+##    Clocks      28.30  28.31  28.29  28.30  28.30  28.31  28.30  28.30
+##    Clocks      49.79
+#### end first config with lcd only display
+
+#### begin second config with crt/lcd display: orig. XF86_SVGA (pre-3.1.2)
+##     VideoRam     1024 # leave commented out
+##        Clocks  25.15  28.32  64.97  35.96  25.15  28.30  64.92  36.00 
+##        Clocks  25.15  28.30  64.92  35.96  25.17  28.41  64.97  35.96 
+##        Clocks  44.26
+#### end second config with crt/lcd display
+
+### begin third config with crt/lcd: new XF86_SVGA (3.1.2 or later)
+#
+# Brad Bosch's server allows one to *program* the dotclocks.  This 
+# makes it possible to achieve much better refresh rates and resolutions 
+# that were previously not possible. See README.WstDig for more details.
+#
+# (instructions here are Brad's, for his modified pvga1 driver)
+#
+# The VRAM clock (Mclk) is adjusted by adding ONE of the 
+# following option lines:
+# 
+# Option      "slow_dram" # Set Mclk to 47.429 MHz
+  Option      "med_dram"  # Set Mclk to 49.219 MHz
+# Option      "fast_dram" # Set Mclk to 55.035 MHz
+#
+# The default is to leave Mclk as the BIOS sets it.  This is 44.297 on
+# our (Twinhead) systems.  There is also a faster clock than 55 MHz, 
+# but it caused display bit errors on my system.  I was surprised the 
+# 55 MHz clock worked.
+#
+# To use dotclocks above 60, it appears necessary to use the "fast_dram"
+# option.  This makes 1024x768NI@72Hz possible.  The 85 MHz clock
+# still does not appear to work. It is beyond the design limits of 
+# the WD90C24 series.  The databook states that the 65 MHz clock
+# MClk values of 44.297 are the maximum the WD90C24A2 is designed for. 
+# In addition to possible risks to the hardware, memory errors sometimes
+# occur when using fast_dram.  If you see corrupted pixels, try a slower
+# setting.
+#
+# The second and fourth group of 4 clocks are now adjustable.  That is,
+# clocks 5,6,7,8 and 13,14,15,16 (counting from 1).  These clocks are
+# set by the Clocks line.  Be sure to adjust the 17th (last) clock if
+# you change Mclk via above.  Here is a sample clocks line with more
+# unique clocks defined.  The NON-programable clocks (1-4 and 9-12) MUST
+# be set as indicated here.
+#
+# These clocks chosen for 800x600NI@72Hz and 1024x768NI modelines 
+# and circumvent "snow" problems (Darin):
+#
+  Clocks 25.175 28.322 65     36     # These clocks are *not* programmable
+  Clocks 29.979 77.408 62.195 59.957 # these are programmable
+  Clocks 31.5   35.501 75.166 50.114 # these are *not* programmable
+  Clocks 39.822 72.038 44.744 65.1   # these are programmable
+  Clocks 49.219                      # Change this if you change Mclk 
+                                     #   above.
+#
+# You can program the clocks in increments of .447443 MHz.  It will warn 
+# you and adjust to the nearest increment if you use a clock which does not 
+# fit this formula.  Clocks 1-4 and 9-12 (fixed clocks) are not constrained 
+# to this multiple, which is why I didn't make them programable (so they 
+# could be the exact standard clocks).
+#
+### end third config
+
+EndSection
+
+
+# **********************************************************************
+# Screen sections
+# **********************************************************************
+
+# The colour SVGA server
+
+# Use ctrl_alt_kp(+) and ctrl_alt_kp(-) to flip through these modes
+# without restarting X. 
+
+Section "Screen"
+
+    Driver	"svga"
+    Device	"WD90C24A2"
+#    Monitor	"LCD Screen"
+    Monitor     "CRT&LCD"
+    Subsection "Display"
+        Depth	    8
+#
+# Modes must be one line: format below is for documentation only
+#
+#   Modes     "640x480"     # works: Use for LCD/CRT
+#   Modes     "640x480.28"  # works: Use for LCD only (not needed)
+#   Modes     "800x600.36"  # works but flicker
+#   Modes     "800x600.50"  # works well - no flicker
+#   Modes     "1024x768i"   # works well - clear focus - no flicker
+#   Modes     "1024x768.65" # snow problem
+#   Modes     "1024x768.62" # works but flicker
+#   Modes     "1024x768.60" # works but flicker
+#   Modes     "1024x768.72" # wavy unless use "fast_dram" but then works
+#   Modes     "1024x768.75" # wavy unless use "fast_dram" but then works
+#   Modes     "1024x768.85" # doesn't sync; polarities don't help
+#   Modes     "1152x900i"   # very nice
+#   Modes     "1152x900.77" # 54 Hz - flicker 
+
+
+# Following line is valid "Modes" line:
+
+    Modes "640x480" "800x600.36" "1024x768i" 
+       # "800x600.50" "1024x768.60" "1024x768.72" "1152x900i" "1152x900.72"
+       # commented out to avoid monitor "toast"
+
+        ViewPort    0 0
+#        Virtual     1024 768    # Virtual for CRT only use
+				 # comment out if you want 800x600 virtual
+				 # on LCD.  uncomment if you want 640x480 LCD.
+    EndSubsection
+
+EndSection
+
+######   end XF86Config for 3.1.2  ############################################
+
+
+
+#          ****************** end of mini-HOWTO **********************
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+( cd usr/share/sounds ; rm -rf login.wav )
+( cd usr/share/sounds ; ln -sf startup3.wav login.wav )
+( cd usr/share/sounds ; rm -rf logout.wav )
+( cd usr/share/sounds ; ln -sf shutdown1.wav logout.wav )

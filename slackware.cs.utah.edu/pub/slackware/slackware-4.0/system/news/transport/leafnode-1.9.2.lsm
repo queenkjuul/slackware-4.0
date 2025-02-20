@@ -1,0 +1,20 @@
+Begin3
+Title:          leafnode
+Version:        1.9.2
+Entered-date:   03MAR99
+Description:    News server package for small sites.
+		This version fixes a dumb compilation bug in leafnode-1.9.1.
+		Features include: easy to install and maintain; only read
+		groups are downloaded; separate download of headers and
+		bodies possible; filtering of headers for regular expressions
+Keywords:       newsserver, offline, small sites, netnews
+Author:         krasel@wpxx02.toxi.uni-wuerzburg.de (Cornelius Krasel)
+		jam@pobox.com (Kazushi Marukawa)
+Maintained-by:  krasel@wpxx02.toxi.uni-wuerzburg.de (Cornelius Krasel)
+Primary-site:   ftp://wpxx02.toxi.uni-wuerzburg.de/pub/
+		101kB leafnode-1.9.2.tar.gz
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/news/transport/
+		101kB leafnode-1.9.2.tar.gz
+Platforms:      Linux, NetBSD, FreeBSD, IRIX, possibly other Unixes as well
+Copying-policy: MIT
+End

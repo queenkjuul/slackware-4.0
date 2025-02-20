@@ -1,0 +1,17 @@
+Begin3
+Title:                  slirp.telnetd
+Version:                1.0b
+Entered-date:           31 Aug 98
+Description:            Slirp is a TCP/IP emulator which turns an ordinary
+                        shell account into a (C)SLIP/PPP account.  These are 
+                        the slirp.telnetd and slirp.ftpd optional extras
+                        that were previously packaged with slirp.
+Keywords:               slirp ip emulator
+Author:                 Danny Gasparovski
+Maintained-by:
+Primary-site:           ftp://blitzen.canberra.edu.au/pub/slirp
+Alternate-site:         ftp://www.ibc.wustl.edu/pub/slirp_bin
+Original-site: 
+Platforms:    
+Copying-policy:         Copyrighted but open
+End

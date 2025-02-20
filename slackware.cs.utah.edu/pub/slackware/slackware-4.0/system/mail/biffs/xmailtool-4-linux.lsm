@@ -1,0 +1,26 @@
+Title:          xmailtool
+Version:        ??
+Desc1:          this is an X tool for composing & reading received mail.
+Desc2:          it's made with the standard widgets.  no extra .a's or .so's
+Desc3:					required.
+Author:        	Bob Kierski
+AuthorEmail:		bobo@pecan.cray.com	
+Maintainer:			probably the author.
+Site1:					sunsite.unc.edu
+Path1:         	/pub/Linux/X11/xapps 
+File1:          xmailtool-4-linux.tgz
+FileSize1:			28300K
+Required1:    	just about any PC 'cept for an MCA machine. :), Linux.
+Required2:      compiled with at _least_ libc.so.4.5.15, i believe. 
+CopyPolicy1:    go ahead.	 
+Keywords:				X11 XMail xmailtool xmail	mail 
+Comment1:				someone asked for a copy of this that compiled, so here it is.
+Comment2:       it uses the "generic" unix mail, and smail (or sendmail, i 
+Comment3:				believe. i think it only just passes the stuff to your mail
+Comment4:				program & does whatever with it.
+Comment5:				i'm using libc/m.so.4.5.21, & i think it's broken now for some
+Comment6:				reason.  it worked fine before.
+Entered:        24FEB94
+EnteredBy:			jonM<><
+CheckedEmail:		jmadison@etsun.tech.iupui.edu
+End

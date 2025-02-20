@@ -1,0 +1,29 @@
+
+From time to time (at least once a month) I get mail from someone who's
+trying to install Slackware, but is getting errors like "Disk series A
+not found" right when the installation phase begins.  This is almost always
+a downloading error, and is caused by missing index files.  These files
+(which have names like diska1, diska2, etc) are needed for "setup" to
+recognize a directory full of packages as being a Slackware software set.
+
+In fact, there should be one of these in *this directory* with the name diska1.
+If it (or any of the other index files in the other software directories) are
+missing, you can expect to run into some problems.
+
+From the reports I've received, this problem is most commonly caused by 
+downloading the files with DOS-based web browsers (some of which can corrupt
+binary files in other ways as well) or by using a wildcard of *.* when 
+downloading.  In the DOS world, *.* is often used to specify "all files", but
+in the UNIX world * is the proper wildcard to use to match everything.
+
+This file can also be caused by bad CD-ROM mastering software.  Apparently
+burning a Slackware disc under Windows can cause the 'diska1' files to appear
+to Linux as 'diska1.' instead.  This extra trailing period also messes things
+up.  Using iso9660 instead of Joliet may help make an installable CD-ROM, but
+this will cut off some long filenames.  The way to make a correct CD-ROM image
+is to master it under Linux using mkisofs and Rockridge extensions.
+
+Hope this well-placed mini-FAQ helps some people. :^)
+
+-- Pat
+

@@ -1,0 +1,11 @@
+# Build/install Tcl the way Slackware's binary package is made:
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/tcl8.0.5.tar.gz
+cd tcl8.0.5
+cd unix
+./configure --prefix=/usr --enable-shared
+make install
+make clean
+./configure --prefix=/usr
+make install

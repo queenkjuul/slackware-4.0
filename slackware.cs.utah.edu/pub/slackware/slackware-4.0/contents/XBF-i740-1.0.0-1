@@ -1,0 +1,9 @@
+drwxr-xr-x root/root         0 1999-03-25 01:17 ./
+drwxr-xr-x root/root         0 1999-03-25 01:16 usr/
+drwxr-xr-x root/root         0 1999-03-25 01:16 usr/X11R6/
+drwxr-xr-x root/bin          0 1999-03-25 01:16 usr/X11R6/bin/
+-rwxr-xr-x root/root   2123288 1998-12-19 20:45 usr/X11R6/bin/XBF_i740
+drwxr-xr-x root/root         0 1999-03-25 01:16 usr/doc/
+drwxr-xr-x root/root         0 1998-12-19 20:45 usr/doc/XBF-i740-libc5-1.0.0/
+-rw-r--r-- root/root      4044 1998-12-19 20:45 usr/doc/XBF-i740-libc5-1.0.0/LICENSE.XBF
+-rw-r--r-- root/root      2392 1998-12-19 20:45 usr/doc/XBF-i740-libc5-1.0.0/README

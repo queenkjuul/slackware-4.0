@@ -1,0 +1,21 @@
+Begin3
+Title:          Yard-prefabs - prefabricated disk contents for yard
+Version:        1
+Entered-date:   Thu Jul 18 1996
+Description:    Yard-prefabs is a set of prefabricated specification
+	files for rescue disks.  When used with Yard, these files will
+	reproduce, more or less, the standard rescue disks for popular
+	distributions.  These files can be used as starting points for
+	customized rescue disks for specific distributions.  Currently
+	only the Slackware distribution has been done; Redhat and
+	Debian should follow.  
+	Required: Yard 1.5 or later
+Keywords:       rescue, ramdisk, bootdisk, recovery
+Author:         fawcett@nynexst.com (Tom Fawcett)
+Maintained-by:  fawcett@nynexst.com (Tom Fawcett)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Recovery
+Alternate-site: 
+Original-site:  
+Platform:       Perl 5
+Copying-policy: Same as Perl (GPL or Artistic)
+End

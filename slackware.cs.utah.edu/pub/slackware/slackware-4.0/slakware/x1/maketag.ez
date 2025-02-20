@@ -1,0 +1,115 @@
+#!/bin/sh
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+add() {
+  for package in $* ; do
+    echo "$package: ADD" >> $TMP/SeTnewtag
+  done
+}
+skip() {
+  for package in $* ; do
+    echo "$package: SKP" >> $TMP/SeTnewtag
+  done
+}
+#item   ####description                                      ###on off ###
+cat /dev/null > $TMP/SeTnewtag
+dialog --title "SELECTING X SERVER FROM SERIES X (XFree86 3.3.3.1)" \
+       --checklist "Please select the X server you wish to install \
+from series X. \
+In most cases, you'll only want to \
+install the X server needed for your video card, but if you plan to \
+export your /usr partition via NFS, you may need other servers as well. \
+Press ENTER when you are \
+done." 22 70 11 \
+"x3dl" "X server for cards using 3DLabs chips" "off" \
+"x8514" "X server for cards using IBM8514 chips" "off" \
+"xagx" "X server for cards using AGX chips" "off" \
+"xfb" "X server for /dev/fb0 frame buffer device" "off" \
+"xi128" "X server for the #9 Imagine 128" "off" \
+"xma8" "X server for cards using Mach8 chips" "off" \
+"xma32" "X server for cards using Mach32 chips" "off" \
+"xma64" "X server for cards using Mach64 chips" "off" \
+"xmono" "A Monochrome X server" "off" \
+"xp9k" "X server for cards using P9000 chips" "off" \
+"xs3" "X server for cards using S3 chips" "off" \
+"xs3v" "X server for S3 ViRGE chips (obsolete, use SVGA)" "off" \
+"xsvga" "X server for SuperVGA cards" "on" \
+"xvg16" "A 16-color generic X server" "off" \
+"xw32" "X server for cards using the ET4000/W32 chipset" "off" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ > $TMP/SeTnewtag
+ for pkg in \
+   x3dl x8514 xagx xfb xi128 xma8 xma32 xma64 \
+   xmono xp9k xs3 xs3v xsvga xvg16 xw32 \
+ fvwm2 fvwmicns lesstif ltstatic oldlibs5 oldlibs6 xbin \
+   xcfg xdoc xf100 xfcyr xfnon xfnts xfscl xfsrv xhtml \
+   xjdoc xjset xlib xman xnest xprog xprt xps xset xvfb \
+   xaw3d xlock xpm ; do
+  echo "$pkg: SKP" >> $TMP/SeTnewtag
+ done
+ exit
+fi
+cat /dev/null > $TMP/SeTnewtag
+for PACKAGE in x3dl x8514 xagx xfb xi128 xma8 xma32 xma64 \
+ xmono xp9k xs3 xs3v xsvga xvg16 xw32 ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+dialog --title "SELECTING PACKAGES FROM SERIES X (XFree86 3.3.3.1)" \
+       --checklist "Please select the packages you wish to install \
+from series X. \
+Recommended packages have already been selected, and required \
+packages (fvwm2 xpm xcfg xbin xlib xfnts xprog) \
+will be installed automatically. \
+Press ENTER when you are \
+done." 21 70 12 \
+"fvwmicns" "Color icons from xpm3icons.tar.Z" "on" \
+"lesstif" "A Motif-1.2 clone" "on" \
+"ltstatic" "Static libraries for LessTif" "off" \
+"oldlibs5" "XFree86 2.1.1 shared libraries" "on" \
+"oldlibs6" "XFree86 3.1.1 shared libraries" "on" \
+"xdoc" "Documentation for XFree86 3.3.3.1" "on" \
+"xjdoc" "Japanese X documentation" "off" \
+"xjset" "Japanese X setup tool" "off" \
+"xhtml" "HTML format docs for XFree86 3.3.3.1" "off" \
+"xps" "PostScript format docs for XFree86 3.3.3.1" "off" \
+"xset" "TCL/dialog X setup tool" "off" \
+"xman" "Man pages for XFree86 3.3.3.1" "on" \
+"xf100" "100 dpi fonts" "off" \
+"xfnon" "Big fonts" "off" \
+"xfcyr" "Cyrillic fonts" "off" \
+"xfscl" "Scalable Speedo/Type1 fonts" "on" \
+"xfsrv" "X font server" "off" \
+"xnest" "Experimental nested X server" "off" \
+"xvfb" "Virtual framebuffer X server" "off" \
+"xprt" "Print-only X server" "off" \
+"xaw3d" "A 3-D replacement for libXaw" "on" \
+"xlock" "A screensaver/locker for X" "on" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ exit
+fi
+
+# Add reasonable default packages:
+add fvwm2 xpm xcfg xbin xlib xfnts xprog
+
+for PACKAGE in fvwmicns lesstif ltstatic oldlibs5 oldlibs6 \
+ xdoc \
+ xf100 xfcyr xfnon xfscl xfsrv xhtml \
+ xjdoc xman xnest xprt xps xset xvfb \
+ xjset xaw3d xlock ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+rm -f $TMP/SeTpkgs

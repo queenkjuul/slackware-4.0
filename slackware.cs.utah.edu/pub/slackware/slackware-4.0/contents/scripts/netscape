@@ -1,0 +1,8 @@
+( cd usr/bin ; rm -rf vreg )
+( cd usr/bin ; ln -sf /usr/lib/netscape/vreg vreg )
+( cd usr/bin ; rm -rf netscape )
+( cd usr/bin ; ln -sf /usr/lib/netscape/netscape netscape )
+( cd usr/lib/netscape/lib ; rm -rf libjsd.so )
+( cd usr/lib/netscape/lib ; ln -sf ../libjsd.so libjsd.so )
+( cd usr/lib/netscape ; rm -rf README.NOW )
+( cd usr/lib/netscape ; ln -sf SUPPORT README.NOW )

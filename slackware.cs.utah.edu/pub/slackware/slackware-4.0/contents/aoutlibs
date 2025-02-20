@@ -1,0 +1,13 @@
+drwxr-xr-x root/root         0 1998-03-22 18:50 ./
+drwxr-xr-x root/root         0 1998-03-22 18:50 usr/
+drwxr-xr-x root/root         0 1995-12-02 18:37 usr/ix86-linuxaout/
+drwxr-xr-x root/root         0 1998-03-22 18:50 usr/ix86-linuxaout/lib/
+-rw-r--r-- root/root       579 1995-10-15 20:15 usr/ix86-linuxaout/lib/crt0.o
+-rwxr-xr-x root/root    180224 1995-12-05 19:24 usr/ix86-linuxaout/lib/libvga.so.1.2.9
+-rwxr-xr-x root/root     65536 1995-04-29 08:49 usr/ix86-linuxaout/lib/libdb.so.1.85.1
+drwxr-xr-x root/root         0 1998-03-22 18:50 lib/
+-rwxr-xr-x root/root     49152 1994-12-13 15:39 lib/libcurses.so.0.1.2
+-rwxr-xr-x bin/bin      110592 1996-06-04 16:20 lib/libm.so.4.6.27
+-rwxr-xr-x root/root    634880 1996-06-04 16:20 lib/libc.so.4.7.6
+drwxr-xr-x root/root         0 1998-03-22 18:50 install/
+-rw-r--r-- root/root       441 1998-03-22 18:50 install/doinst.sh

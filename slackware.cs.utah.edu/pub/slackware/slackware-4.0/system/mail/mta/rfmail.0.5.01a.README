@@ -1,0 +1,115 @@
+From mdw@TC.Cornell.EDU Fri Apr 16 11:12:49 1993
+Date: Fri, 16 Apr 1993 18:33:12 +0300
+From: mdw@TC.Cornell.EDU
+Reply to: Louis Lagendijk <etmelag@crosby.ericsson.se>
+To: linux-activists@joker.cs.hut.fi
+Subject: Rfmail released
+
+
+Newsgroups: comp.os.linux.announce
+From: etmelag@crosby.ericsson.se (Louis Lagendijk)
+Subject: Rfmail released
+Keywords: Rfmail, mail, news
+
+I have released my (working) version of Rfmail 0.5. I have ported it to 
+Linux and hacked it quite a bit so it will work with the Binkley port already 
+available for Linux.
+
+Rfmail is a fidonet to news/mail converter so it allows you to run your 
+fidomail stuff under Linux. Rfmail also includes an own mailer, but I never 
+tested it as I need an EMSI capable mailer. 
+
+ This rfmail version:
+ - Runs under Linux
+ - creates binkley style flow files
+ - can autoamitically pack/unpack mail with ANY packer
+ - handles multi-address setups quite nicely
+ - creates and receives type 2+ packets.`
+
+I have rfmail uploaded as rfmail.0.5.01a.tar.z to halcyon.com and to tsx-11.
+After uploading I found that the sun happily (without error message) damaged 
+the original tar, so gzip could not unpack it. I have it uploaded again with 
+the name rfmail.0.5.01a.tar.z.again, but it should be stored under the other 
+name. I could not reach sunsite, so I have not stored it there.
+
+Here is a part of the README on the patches I made: 
+
+Rfmail 0.5.0.1 adapted for use with the BinkleyTerm mailer
+===========================================================
+
+This version of Rfmail has been adapted to create Binkley Term
+style mail packets and flowfiles, improved packer hadling 4-d 
+support and multi-address support. 
+These patches are only tested on my own system (Linux 0.99), and
+even there they have only been briefly tested. So if this causes
+you to loose a lot of mail. 
+If you decide to use this version of Rfmail you do that on your
+own risk, so if you loose all your mail, I will not be responsible.
+
+Binkley support
+---------------
+
+In the configuration header file (conf.h) there is now a 
+#define for Binkley. The Configure script knows about this
+define too. Defining BINKLEY will cause Rfmail to create flow 
+files and mail files for Binkley, so there is no more need
+for fiddling with batch files. 
+Rfmail does not yet know about Binkley style lock files. I am
+not sure what I should implement: Binkley style lock files
+(.BSY) or whether I should  change Binkley to use Unix style
+lock files. I will probably use the Unix style.
+
+Packer support
+--------------
+
+I have Rfmail also extended with support for multiple packers,
+so that you can receive and send mail packed with any packer.
+I have this working for ARC and LHarc right now (one of my
+bosses sends me my mail packed with zip, but gets Lharc, the
+other sends mail packed with old Lharc and gets mail packed with
+arc (yes, I know, I should clean this mess up).
+The idea for the packer handling comes from Squish that has a
+separate configuration file for the handling of packing of mail.
+Be sure to add mail to the archive when you call fpack again 
+before mail is actually sent. 
+See also the packer statement in rfmail.cf as well as the key
+statement.
+
+Multi address support
+---------------------
+
+Rfmail now allows for using different aliases for sending mail and
+sending of echomail. People having addresses in alternets will like
+this. I also needed this as I am a multipoint: I have two normal 
+fidonet point addresses. This option may appear to be a bit tricky:
+for echomail you specify the alias in the newsgroup definition 
+(#<address>). The alias used for mail as well as the alias used in the
+packets is specified in the key statement.
+See the key statement in rfmail.cf.
+
+
+4-d support
+-----------
+Rfmail now can send 4-d packets. FTS-001 packets are still the default,
+but you can specify the packettype for different nodes or even 
+networks in (again) the key statement in rfmail.cf. 
+Packets according to FSC-0045 can be sent but not yet received, so this
+is kind of a joke. FSC-0045 has not been tested at all yet (Rfmail is
+actually not domain aware anyhow).  
+
+Fido-style adresses
+-------------------
+Rfmail has been changed so that adresses in the style:
+foo_bar@1.2.3.4 can be interpreted in the internet way, so the address
+would map to: foo bar at 4:3/2.1 or in the fidonet order, so that the 
+address would map to: foo bar at 1:2/3.4. 
+
+As said before, the patches are not extensively tested, so please do send
+comments/bug reports etc. 
+
+Louis Lagendijk
+louis@nextjk.wlink.nl or
+2:281/202.5 or
+2:285/311.58
+
+

@@ -1,0 +1,14 @@
+Begin3
+Title:		cfdisk
+Version:	0.8g
+Entered-date:	970429
+Description:	A curses version of fdisk
+Keywords:	fdisk partitions MBR
+Author: 	Kevin E. Martin
+Maintained-by:	aeb@cwi.nl (Andries E. Brouwer)
+Primary-site:	ftp.win.tue.nl /pub/linux/util
+		23kB cfdisk-0.8g.tar.gz
+		1kB  cfdisk-0.8g.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Install
+Copying-policy:	GPL
+End

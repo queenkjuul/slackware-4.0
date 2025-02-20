@@ -1,0 +1,398 @@
+
+  JAZ-drive mini-HOWTO
+  Bob Willmot, bwillmot@cnct.com
+  v1.6, 04 June 1997
+
+	
+  This HOWTO covers the configuration and use of the Iomega Jaz drive
+  under Linux and software tools available for the drive.
+
+  1.  Introduction
+
+  The Iomega Jaz drive is a removable media disk drive whose disks
+  have a capacity of 1021 megabytes. It is currently available in internal
+  and external SCSI configurations.  Iomega plans to release an internal 
+  IDE version.
+
+  This document describes how to use the Jaz drive with Linux.  Since
+  this is a SCSI device, it is important for you to read the Drew Eckhardt's
+  SCSI HOWTO as well.  
+  http://sunsite.unc.edu/pub/Linux/docs/HOWTO/SCSI-HOWTO
+
+  I'd like to thank the following people for their contributions and info
+  they've provived.
+
+	* Grant Gunther, grant@torque.net
+	* Tom Poindexter, tpoindex@nyx.net
+	* Todd Woods, woods@cs.uiowa.edu
+	* Richard B. Melrose, rbm@math.mit.edu
+	* Phil Howard, phil@charon.milepost.com
+        * Rick Niess, rniess@ocean.st.usm.edu
+
+  If you have any comments/suggestions/corrections please send them to:
+  Bob Willmot, bwillmot@cnct.com
+
+
+  2.  The Jaz disks
+
+  The Jaz disks (cartridges) resemble a stack of three 3.5" floppy disks
+  that hold 1GB of data.  
+
+  The drive has a motorized mechanism that can eject the disk via
+  a pushbutton on the from of the drive or through software (see 
+  below on info about the jaztools Linux software)
+
+
+  2.1.  The Jaz Jet host adapter
+
+  Iomega markets a SCSI host adapter under the name Jaz Jet.  
+
+  Aparently there are currently two versions of this controller available,
+  based on two difference SCSI chipsets.
+
+  One is based on the Adaptec 7800 family of adapters, and is compatible
+  with the 2930/2940 host adapters. Linux 2.0 supports this adapter with 
+  the aic7xxx driver. (this driver was introduced in the 1.3.? version of 
+  the kernel).
+
+  The other adapter is based on the Advanced Systems chipset.  At boot time
+  the board gives a message like
+	Jaz Jet PCI SCSI adapter Copyright Advanced Systems 1996	
+  Compile the kernel with the CONFIG_SCSI_ADVANSYS variable set. 
+
+
+  3.  Configuring a kernel for the Jaz drive
+
+  To use the Jaz drive with Linux, you must have a kernel configured
+  for you SCSI adapter.
+
+  Info on building the kernel can be found in the /usr/src/linux/README
+  file, or in /usr/src/linux/Documentation/ directory for the 2.x kernels.
+
+  Also check out Brian Ward's Kernel-HOWTO
+  http://sunsite.unc.edu/pub/Linux/docs/HOWTO/Kernel-HOWTO
+  
+
+  4.  Identifying the drive at boot time
+
+  When your system boots it should display information about your adapter,
+  and any disks that arre attaced to the drive.
+
+  Boot messages will vary depending on your SCSI adapter and are logged
+  to the /var/log/messages (or /var/adm/messages) file.  You can also
+  'replay' these messages from the command prompt with the dmesg command.
+
+  Here's the kernel booting output from a 2.0.10 kernel with an 
+  Adaptec 2940 controller:
+
+    aic7xxx: BurstLen = 8 DWDs, Latency Timer = 64 PCLKS
+    aic7xxx: AHA-2940 Ultra Rev B.
+    aic7xxx: devconfig = 0x580.
+    aic7xxx: Reading SEEPROM...done.
+    aic7xxx: Extended translation enabled.
+    aic7xxx: Using 16 SCB's after checking for SCB memory.
+    AHA-2940 Ultra (PCI-bus):
+        irq 11
+        bus release time 40 bclks
+        data fifo threshold 100%
+        SCSI CHANNEL A:
+            scsi id 7
+            scsi selection timeout 256 ms
+            scsi bus reset at power-on enabled
+            scsi bus parity enabled
+            scsi bus termination (low byte) enabled
+    aic7xxx: Downloading sequencer code...done.
+    aic7xxx: Resetting the SCSI bus...done.
+    scsi0 : Adaptec AHA274x/284x/294x (EISA/VLB/PCI-Fast SCSI) 3.2/3.1/3.0
+    scsi : 1 host.
+    aic7xxx: Scanning channel A for devices.
+    aic7xxx: Target 4, channel A, now synchronous at 10.0MHz, offset(0xf).
+      Vendor: iomega    Model: jaz 1GB           Rev: G.60
+      Type:   Direct-Access                      ANSI SCSI revision: 02
+    Detected scsi removable disk sda at scsi0, channel 0, id 4, lun 0
+    scsi : detected 1 SCSI disk total.
+    SCSI device sda: hdwr sector= 512 bytes. Sectors= 2091050 [1021 MB] [1.0 GB]
+    sda: Write Protect is off
+
+
+  In the above log note the raw scsi device name (sda,sdb, etc).  
+  You'll need to use this to access the disk later.
+
+  If these lines do not appear, then something is misconfigured in your
+  hardware or in the kernel.
+
+  If the scsi0: line does not appear, then you have not configured your
+  host adapter and its driver correctly.  Some drivers will give you a
+  hint about what is wrong.   If your drive is not detected, you
+  probably have a cable problem.  If a drive name is not assigned, you
+  probably forgot to include SCSI disk support when you built the
+  kernel.
+
+  Check the README files in drivers/scsi and the SCSI HOWTO for other
+  debugging hints.
+
+  4.2.  Fdisk, mke2fs, mount, etc.
+
+  Once you know the drive name for your Jaz drive, you are set.  You can
+  manipulate the drive with the normal Linux disk management commands,
+  fdisk, mke2fs, mount etc.  
+
+  Refer to the manual pages for these programs.
+
+
+  4.2.1.  An existing DOS formatted disk
+
+  Disks factory formatted from Iomega are partitioned with a single 
+  partition (for some unknown reason they use the 4th partition).
+
+  You can mount this disk (assuming your jaz disk is the raw SCSI device
+  sda) with the commands 
+
+       mkdir /jaz
+       mount -t msdos /dev/sda4 /jaz
+
+  Or if you are using the 2.0 kernels and have compiled the kernel with
+  support for the Win95 VFAT support you can mount it with
+
+       mkdir /jaz
+       mount -t vfat /dev/sda4 /jaz
+
+  (this will allow you to read/write long filenames)
+
+  Files from the disk will appear in /jaz. While the disk is
+  mounted, you will not be able to eject it.
+
+  To unmount the drive you can issue the command:
+
+       umount /dev/sda4
+
+  Once you've made the /jaz mount point - you don't need to do it again,
+  (also make sure your not in the /jaz dir when you try to umount the 
+  drive)
+
+
+  4.2.2.  Re-format as a native Linux disk
+
+  If you want to erase a Jaz disk and make a Linux native file system on
+  it.  you should use fdisk on the entire disk:
+
+       fdisk /dev/sda
+
+  and delete any existing partitions (with the d command).  Then create
+  a new partition with the n command, make it primary partition number
+  1, use w to write the partition table to disk, and quit with q.
+
+  Format the partition
+
+       mke2fs /dev/sda1
+
+  (The 1 is the number that you gave this partition in fdisk).  Now you
+  can mount the disk:
+
+       mount -t ext2 /dev/sda1 /jaz
+
+  (re-using that mount point we created before).
+
+  4.2.3.  The Jaz Tools disk
+
+  There is some extra work to be done if you want to use the disk that
+  comes with the Jaz drive.  As shipped, the software controlled write
+  protection is enabled.  
+
+  There are two options here: you can unlock the disk under DOS or
+  Windows with the "reclaime.exe" program (or by installing the tools
+  from the setup program) or you can unlock the disk with my jaztools
+  program (see section 5) with the command 
+
+	jaztool /dev/sda rw
+
+  (adjust the /dev/sda to your appropriate SCSI device) and when prompted
+  for the password enter
+
+	APlaceForYourStuff
+
+  5.  jaztools
+
+  A native Linux program to support some of Iomega's special features 
+  (including software controlled ejection and write protection)
+  is available at 
+	
+	http://www.cnct.com/~bwillmot/jaztool/
+
+  There should be a new version of jaztool available shortly that will
+  contain a GUI interface and support drive scanning and automated
+  mounting and unmounting of disks.
+
+
+  6.  Frequently asked questions
+
+
+  6.1.  I can only mount the Jaz tools disk read-only
+
+  The tools disk is shipped in a special password-protected read-only 
+  mode.  To unlock the disk run the "reclaim.exe" program under 
+  DOS or Windows or use the native linix jaztools program (see section 5) 
+  with the command 
+
+	jaztool /dev/sda rw
+
+  (adjust the /dev/sda to your appropriate SCSI device) and when prompted
+  for the password enter
+
+	APlaceForYourStuff
+  
+
+  6.2.  The Jaz locks my system after it spins down ?
+
+  I have a feeling that this may be related to the Jaz firmware.  Anyone
+  who has this problem, let me know what Revision your drive is.  To determine
+  Jaz rev check the output of the /etc/dmesg program for some lines like:
+
+    scsi0: Target 4, channel A, now synchronous at 10.0MHz, offset 15.
+      Vendor: iomega    Model: jaz 1GB           Rev: G.60
+      Type:   Direct-Access                      ANSI SCSI revision: 02
+    
+  This apparently happens only under one specific circumstance that the 
+  average Linux user is unlikely to encounter.  When the Jaz drive has a 
+  partition/filesystem mounted, the drive spins down with the filesystem 
+  still mounted, and an attempt is made while the drive is still idle to 
+  read from the block device.  It appers that Linux attempts to read the MBR
+  again to restablish the partitions, but somehow this fails _sometimes_ and
+  leaves the device in an apparently busy state.  Both the kernel read for 
+  the MBR and the process device read will fail and this failure may be due 
+  to a lockout or busy status.   In this state it thinks it is still reading 
+  even though no I/O is pending or operating.  I've had this happen mostly when
+  block device reading the MBR itself
+
+  6.3.  Can I boot from the Jaz drive ?
+
+  The Jaz drive can select any SCSI target ID from 0-6.
+
+  If the Jaz drive co-exists with other SCSI harddrives, most BIOSes will
+  want to boot the lowest SCSI id that is a disk.  Some detected and skip
+  removeable devices like the Jaz.
+
+  If the Jaz drive co-exists with IDE harddrives, nearly every BIOS will
+  want to boot the first IDE harddrive.  Some BIOSes will allow removing
+  the first IDE device from the configuration and will assign the first
+  SCSI device as the boot device (Bios 0x80).  Others may require removing
+  all IDE devices from configuration.  Still others may require detaching
+  the IDE drives physically or disabling the IDE interface.
+
+  6.4.  Why does Iomega use partition number 4 ?
+
+  Partition 4 is the default partition used by Macintosh.  
+
+  On a Mac, the first partition is reserved for boot info, the second for
+  system info, the third is the resource fork, and the fourth is the data
+  fork.
+
+  Anyway, PCs and most other systems can deal with having to work on the 
+  4th partition whereas the Mac can't deal with anything else.  Iomega 
+  sends all their preformatted media with partition 4 used so that both 
+  PC's and Macs can read them and everyone avoids a big compatibility
+  headache. (PCs with mac-disk-reading software usually expect the data
+  to be on partition 4)
+
+  6.5.  How can I have the disk mounted at boot time ?
+
+  All you need to do is to add a line to your /etc/fstab file.  For
+  instance, if you will always have a DOS disk in the drive when you
+  boot, you could put
+
+       /dev/sda4   /jaz  msdos  defaults  0 0
+
+  in the fstab.  Depending on your distribution, the initialization
+  scripts might try to run fsck on partitions listed in your fstab.  Be
+  aware that this could cause problems if you forget to put the disk in
+  the drive when you boot, or have the wrong disk there.
+
+  To eliminate these problems you can add a separate mount command in 
+  /etc/rc.d/rc.local to mount the Jaz drive.  This will avoid problems 
+  with the standard "mount -a" that takes place when there is no cartridge 
+  in the drive.
+
+  6.6.  What happens if there is no disk inserted when I boot ?
+
+  The kernel will try to read the partition table, but the operation
+  will (eventually) time out.
+
+  When you change disks, it is a good idea always to use fsck to
+  check the partition structure on the new disk.
+
+  The BIOS on some SCSI host adapters will attempt to read the partition
+  table on your disk during the system boot.  If you cannot disable this
+  check, you may be forced always to boot with a disk in the drive.
+
+  6.7.  How can I make my Jaz cartridge self-bootable (assuming my BIOS 
+  is set up to allow it?)
+
+  The Jaz drive/cartridge makes an excellent ERD (Emergency Repair Disk).
+  It's also fun to be able to just pop in some new Linux system or to try
+  Linux on someone else's Jaz-equipped machine.
+
+  You could just follow the install procedure for your favorite distribution
+  with the Jaz drive being the only drive on the system.
+
+  However if you want to do an "install" from your running system, you can
+  often succeed in "building" a self-bootable system on a Jaz cartridge.
+
+  Step 1 - partition the drive and make the filesystems.  You probably
+  need to have a swap partition, too, but if you have lots of RAM then maybe
+  not.  Mount the new root as /jaz and any additional partitions within that
+  directory as appropriate.
+
+  Step 2 - copy all the files into place.  Be sure all the /dev files
+  are copied.  Be sure all permissions, ownership and groupids are retained.
+
+  Step 3 - modify the files on the Jaz cartridge to suit the circumstances
+  of booting from it.  In particular be sure to change /jaz/etc/fstab to mount
+  the Jaz cartridge partition(s) as appropriate.  Also change /jaz/etc/lilo.conf
+  to match as well.
+
+  Step 4  - there are two alternatives:
+
+    A: make a kernel image floppy and use "rdev" to make it mount the Jaz
+    cartridge as root.  Boot from the floppy when ready the first time
+    then run lilo to make the Jaz MBR bootable.
+
+    B: you can run lilo from your non-Jaz root running system to install the
+    bootable MBR on the Jaz cartridge.  Add these lines (change "1" to your
+    root partition number and "sda" to your Jaz device name as appropriate)
+    to your /jaz/etc/lilo.conf file before the first system definition:
+
+       drive = /dev/sda1
+       bios = 0x80
+
+  When you are all ready to install the Jaz MBR, you run lilo with the
+  -r option to make it operate within the /jaz tree as if it is /.  The
+  command looks like:
+
+     lilo -r /jaz
+
+  Normally lilo searches for what the bios device number of the boot
+  device will be at boot time.  This needs to be overridden since the
+  Jaz drive is not currently the bootable one.  The 2 added lines do
+  this.
+
+  There will be a number of error messages output by lilo and the kernel.
+  Lilo is warning you there may be problems which will not be in this
+  case.  The kernel reports problems related to /dev/hdc which are due
+  to probes for devices that lilo is doing trying to discover some things.
+  Lilo tries to make a device node for the old major/minor code for "hdc"
+  and the kernel is recognizing the attempt as an error.  These messages
+  can be ignored.  Watch the Jaz drive light to see it being written to.
+
+  At this point your Jaz drive should be bootable.
+  
+
+  7.  Getting more current information
+
+  The most up-to-date version of this mini-HOWTO can be found at:
+
+       http://www.cnct.com/~bwillmot/jaztool/
+
+  Iomega's web pages are at
+
+       http://www.iomega.com/
+

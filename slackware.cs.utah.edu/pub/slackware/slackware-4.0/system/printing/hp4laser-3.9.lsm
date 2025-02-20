@@ -1,0 +1,36 @@
+Begin3
+Title:          hp4laser
+Version:	3.9
+Entered-date:	13APR99
+Description:    hp4laser is a shell script print filter for "lpr", "LPRng",
+		and is also a System V "lp" spooler model.  It automatically
+		handles switching between Postscript, PCL and HP-GL modes as
+		needed by the input files.  It also supports most options
+		of the HP LaserJet IV printers (and probably works with
+		later HP printer as well).  With this package installed,
+		the user can specify options like "manualfeed", copies,
+		page ranges to print, etc. from the "lp" or "lpr"
+		command line.  The filter also displays the name of the
+		user printing the current job on the printers display.
+
+		This filter runs with all the popular Unix printer spoolers,
+		making it ideal for a shop where there is a mix of Unixen.
+
+		URLs:
+		ftp://ftp.dgii.com/pub/rick/hp4laser-3.9.tar.gz
+		ftp://sunsite.unc.edu/pub/Linux/system/printing/hp4laser-3.9.tar.gz
+
+Keywords:       lpd lp lpr printing printer LPRng model filter laserjet
+Author:         rick@dgii.com (Rick Richardson)
+Maintained-by:  rick@dgii.com (Rick Richardson)
+Primary-site:   ftp.dgii.com /pub/rick/hp4laser/
+		12kB hp4laser-3.9.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/printing
+Original-site:  
+Platforms:      Unix or Linux.  The system V lp spooler or the LPRng
+		spooler are recommended.  If the laserjet does not
+		have the Adobe Postscript SIMM installed, then
+		ghostscript will be needed if Postscript files are
+		to be printed.
+Copying-policy: BSD
+End

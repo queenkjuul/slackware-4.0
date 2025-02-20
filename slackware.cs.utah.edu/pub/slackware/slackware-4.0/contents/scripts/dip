@@ -1,0 +1,4 @@
+( cd sbin ; rm -rf dip )
+( cd sbin ; ln -sf dip-3.3.7o dip )
+( cd sbin ; rm -rf diplogin )
+( cd sbin ; ln -sf dip-3.3.7o diplogin )

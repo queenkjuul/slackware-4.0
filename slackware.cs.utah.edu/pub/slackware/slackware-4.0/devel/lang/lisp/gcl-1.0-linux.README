@@ -1,0 +1,97 @@
+Installing the gcl-1.0 binaries on Linux
+========================================
+
+1. Get gcl-1.0-linux-bin.tar.gz .
+2. Unpack:
+      su
+      (cd / ; tar xvfz -) < gcl-1.0-linux-bin.tar.gz
+
+
+Installing gcl-1.0 on Linux from source
+=======================================
+
+1. Get gcl-1.0.tar.gz and gcl-1.0-linux.tar.gz .
+2. Unpack the sources:
+      tar xvfz gcl-1.0.tar.gz
+3. Unpack and apply the Linux patches:
+      tar xvfz gcl-1.0-linux.tar.gz
+      patch -p0 < gcl-1.0-diffs
+4. Build GCL, as described in the README:
+      cd gcl-1.0
+      add-defs 386-linux
+      make
+5. Install:
+      su
+      make install
+
+
+Known bugs
+==========
+
+1.
+
+(FORMAT NIL "~5,3F" (QUOTE A))
+results in an error instead of returning "A"
+
+2.
+
+(format nil "~9,2,1E" 3.14159E8)
+returns "  3.14L+8" instead of "  3.14E+8"
+(The exponent marker should be the same as when PRIN1 is called!)
+
+3.
+
+(FORMAT NIL "~1{~:}" "-~s-" (QUOTE (1 2)) 3)
+results in an error instead of returning "-1-"
+
+4.
+
+Why can't I close two-way streams?
+
+>(close (make-two-way-stream (make-string-input-stream "blabla")
+                             *standard-output*))
+
+Error: Cannot close the standard input.
+Fast links are on: do (use-fast-links nil) for debugging
+Error signalled by CLOSE.
+
+5.
+
+(read-char-no-hang (make-string-input-stream "") nil "eof")
+returns NIL instead of "eof"
+
+6.
+
+(copy-alist '(a b))
+results in an error instead of returning the equivalent of (copy-list '(a b))
+
+7.
+
+(setf (subseq "aaaxxxccc" 3 6) "bbb")
+returns "aaabbbccc" instead of "bbb"
+
+8.
+
+(format (make-array 10 :element-type 'string-char :fill-pointer 0) "XXX")
+returns "XXX" instead of NIL
+
+9.
+
+(string 32)
+returns " " instead of signalling an error.
+
+10.
+
+(subtypep '(integer 1 (5)) '(mod 5))
+returns the values NIL; T which is definitely wrong.
+
+11.
+
+(LOG 3 0)
+returns 0 instead of signalling an error.
+
+12.
+
+(find-package "system")
+returns #<"SYSTEM" package> instead of NIL
+

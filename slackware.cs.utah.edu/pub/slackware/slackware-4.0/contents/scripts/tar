@@ -1,0 +1,3 @@
+( cd etc ; rm -rf rmt )
+( cd etc ; ln -sf /sbin/rmt rmt )
+mv bin/tar-incoming bin/tar

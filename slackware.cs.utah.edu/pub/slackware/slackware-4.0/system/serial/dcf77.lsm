@@ -1,0 +1,15 @@
+Begin3
+Title:		dcf77 decoder for receiver on gameport
+Version:	1.1.2
+Entered-date:	99/04/12
+Description:	decoder for dcf77 receiver attached to the gameport this 
+		version contains a y2k fix because the dcf77 signal is in 
+		the XX-format, we wrap for received dates before 1.1.99.
+Keywords:	dcf77, time, y2k, gameport, receiver, decoder
+Author:		althaus@genetik.uni-koeln.de (Hans-Helmar Althaus)
+Maintained-by:	althaus@genetik.uni-koeln.de (Hans-Helmar Althaus)
+Primary-site:	ftp://ftp.genetik.uni-koeln.de/pub/dcf77/dcf77-1.1.2.tgz
+Alternate-site: ftp://agp17.ep3.ruhr-uni-bochum.de/pub/dcf77/dcf77-1.1.2.tgz
+Platforms:	Requires Linux 2.0.0 or above
+Copying-policy:	GPL
+End

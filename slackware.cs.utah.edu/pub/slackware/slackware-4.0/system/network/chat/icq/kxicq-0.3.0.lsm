@@ -1,0 +1,14 @@
+Begin3
+Title:          KXicq 
+Version:        0.3.0
+Entered-date:	02-06-1999   
+Description:    KXicq, the KDE ICQ client.
+Keywords:       KDE, X11, Qt, ICQ
+Author:         Herwin Jan Steehouwer <steehouwer@kde.org> 
+Maintained-by:  Herwin Jan Steehouwer <steehouwer@kde.org> 
+Primary-site:   http://www.caiw.nl/~herwinjs/kxicq	        
+Home-page:      http://www.caiw.nl/~herwinjs
+Original-site:  http://www.caiw.nl/~herwinjs
+Platform:       Linux and other Unices, needs Qt and the KDE libs
+Copying-policy: GNU Public License
+End

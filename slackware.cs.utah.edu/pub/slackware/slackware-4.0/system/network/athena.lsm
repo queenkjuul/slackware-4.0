@@ -1,0 +1,21 @@
+Begin2
+Title        = Linux/Athena
+Desc1        = Linux port of MIT's Project Athena software.
+Desc2        = Includes code for Hesiod, Kerberos, and Zephyr.
+Author       = Jon Green
+AuthorEmail  = jcgreen@iastate.edu
+Site1        = sunsite.unc.edu
+Path1        = pub/Linux/Incoming
+File1        = athena.tar.gz
+FileSize1    = 503089
+Required1    = Nothing special. Compiled on 486DX/33, 0.99.14, gcc2.5.8
+CopyPolicy1  = MIT sort-of-GNU-like
+Keywords     = hesiod kerberos zephyr athena
+Comment1     = Replaces the MIT-supplied Imakefiles with pmakefiles.
+Comment2     = Pmake is included with the package
+Comment2     = DES code included may not be exported from the United States
+Entered      = 17JAN94
+EnteredBy    = Jon Green
+CheckedEmail = jcgreen@iastate.edu
+End
+

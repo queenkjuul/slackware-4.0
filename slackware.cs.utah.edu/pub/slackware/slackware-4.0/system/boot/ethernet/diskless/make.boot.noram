@@ -1,0 +1,4 @@
+dd if=/vmlinuz of=/dev/fd0
+/sbin/vidmode /dev/fd0 0
+/sbin/ramsize /dev/fd0 0
+/sbin/rdev /dev/fd0 /vmlinuz

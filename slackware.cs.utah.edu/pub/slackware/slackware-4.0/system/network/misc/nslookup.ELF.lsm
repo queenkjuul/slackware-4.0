@@ -1,0 +1,17 @@
+Begin3
+Title:          nslookup
+Version:        From bind-4.9.5-T4B. "Sep-96"
+Entered-date:   30SEP96
+Description:    Nslookup is a program to query internet domain
+                name servers.
+                Another program called host used to query 
+                internet domain servers is also included.
+Keywords:      
+Author:        
+Primary-site:   ftp.cert.dfn.de /pub/tools/net/bind/testing
+                bind-4.9.5-T4B.tar.gz
+Alternate-site:
+Platforms:      Linux elf system.
+Copying-policy: 
+End
+

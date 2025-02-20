@@ -1,0 +1,15 @@
+Begin3
+Title:         writemail
+Version:       0.1 
+Entered-date:  03FEB99
+Description:   The write(1) command hacked so it will mail a user if they have messages disabled 
+		instead of just exiting.
+Keywords:      write, mail, talk
+Author:        lucipher@eta.org 
+Maintained-by: lucipher@eta.org 
+Primary-site:  eta.org /pub/writemail 
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/chat
+Original-site:  
+Platforms:      
+Copying-policy: BSD
+End

@@ -1,0 +1,298 @@
+CONTENTS: apsfilt ash bc cdutils diff enscript ghostscr groff gsfonts ispell jed joe jove jpeg6 manpages mc md mt_st quota sc seejpeg sox sudo texinfo vim workbone zsh       
+apsfilt:  apsfilter-5.0.1.
+apsfilt:
+apsfilt:  Apsfilter is a printer input filter.  With apsfilter installed and
+apsfilt:  configured, you can print many different file types (like ASCII,
+apsfilt:  PostScript, and DVI, as well as compressed versions of all of these)
+apsfilt:  directly with 'lpr', and apsfilter will automatically handle the
+apsfilt:  conversion process on the fly.
+apsfilt:
+apsfilt:  To configure apsfilter, run the SETUP program in /usr/lib/apsfilter.
+apsfilt:
+apsfilt:
+ash:      Kenneth Almquist's ash shell.
+ash:
+ash:      A lightweight (62K) Bourne compatible shell.  Great for machines with
+ash:      low memory, but does not provide all the extras of shells like bash,
+ash:      tcsh, and zsh.  Runs most shell scripts compatible with the Bourne
+ash:      shell.  Note that under Linux, most scripts seem to use at least some
+ash:      bash-specific syntax.  The Slackware setup scripts are a notable
+ash:      exception, since ash is the shell used on the install disks.  NetBSD
+ash:      uses ash as its /bin/sh.
+ash:
+ash:
+bc:       GNU bc 1.04 - An arbitrary precision calculator language.
+bc:
+bc:       bc is a language that supports arbitrary precision numbers with 
+bc:       interactive execution of statements.  There are some similarities in
+bc:       the syntax to the C programming language.
+bc:
+bc:
+bc:
+bc:
+bc:
+bc:
+cdutils:  Tools for mastering and writing compact discs.
+cdutils:
+cdutils:  Contains these utilities:
+cdutils:
+cdutils:  cdwrite  -- burn discs in some CD-R drives from Philips/IMS/Kodak,
+cdutils:              Yamaha, and HP.
+cdutils:  cdrecord -- burn discs in most ATAPI and SCSI CD-R drives.
+cdutils:  mkisofs  -- create ISO9660 filesystem images.
+cdutils:  mkhybrid -- create hybrid ISO9660/HFS/Joliet CD-ROM images.
+cdutils:
+cdutils:
+diff:     GNU diffutils-2.7
+diff:
+diff:     The GNU diff utilities - finds differences between files. (to make
+diff:     source code patches, for instance)
+diff:
+diff:
+diff:
+diff:
+diff:
+diff:
+diff:
+enscript: GNU enscript 1.6.1
+enscript:
+enscript: Enscript converts text files to PostScript and spools the generated
+enscript: output to a printer or saves it to a file.  If no input files are
+enscript: given, enscript processes standard input.  Enscript can be extended to
+enscript: handle different output media and it has many options for customizing
+enscript: printouts.  
+enscript:
+enscript:
+enscript:
+enscript:
+ghostscr: Ghostscript version 5.10
+ghostscr:
+ghostscr: Preview, print and process PostScript documents on both PostScript and
+ghostscr: non-PostScript devices.  If you need X11 support, you should also 
+ghostscr: install the package 'gs_x11' found on the XAP series.  It contains a 
+ghostscr: /usr/bin/gs with support for X11.
+ghostscr:
+ghostscr:
+ghostscr:
+ghostscr:
+ghostscr:
+groff:    GNU troff 1.11 document formatting system.
+groff:
+groff:    The groff package provides versions of troff, nroff, eqn, tbl, and 
+groff:    other Unix text-formatting utilities.  Groff is used to 'compile' man
+groff:    pages stored in groff/nroff format into a form which can be printed or
+groff:    displayed on the screen.  These man pages are stored in compressed
+groff:    form in the /usr/man/man? directories.
+groff:
+groff:
+groff:
+groff:
+gsfonts:  Fonts for the Ghostscript interpreter/previewer.
+gsfonts:
+gsfonts:  These fonts come from ghostscript-fonts-other-5.10.tar.gz and
+gsfonts:  ghostscript-fonts-std-5.10.tar.gz.
+gsfonts:
+gsfonts:
+gsfonts:
+gsfonts:
+gsfonts:
+gsfonts:
+gsfonts:
+ispell:   ispell-3.1.20
+ispell:
+ispell:   Ispell is a fast screen-oriented spelling checker that shows you your
+ispell:   errors in the context of the original file, and suggests possible 
+ispell:   corrections when it can figure them out.  Compared to UNIX spell, it
+ispell:   is faster and much easier to use.  Ispell can also handle languages
+ispell:   other than English.  Ispell has a long history, and many people have
+ispell:   contributed to the current version -- some of the major contributors
+ispell:   include R. E. Gorin, Pace Willisson, Walt Buehring, and Geoff 
+ispell:   Kuenning. 
+ispell:
+jed:      John E. Davis's JED 0.97-14 editor.
+jed:
+jed:      JED is an extremely powerful but small emacs programmer's editor that
+jed:      is extensible in a C-like macro language and is able to perform color
+jed:      syntax highlighting.  Among the many features:
+jed:      Emacs, wordstar, EDT emulation;
+jed:      C, Fortran, TeX, text editing modes;  Full undo;
+jed:      GNU Emacs compatible info reader, and lots more.
+jed:
+jed:      8 bit clean, so you can even edit binary files!  
+jed:
+joe:      Joe text editor v2.8
+joe:
+joe:      Joseph H. Allen's easy to use text editor, similar to WordStar[tm].
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+joe:
+jove:     Jonathan's Own Version of Emacs (4.14.10) 
+jove:
+jove:     A mostly Emacs compatible text editor, with man pages and the 
+jove:     'teachjove' tutorial program.  If you'd rather have the real thing, 
+jove:     the actual Emacs editor/environment is available in series 'E'.
+jove:
+jove:
+jove:
+jove:
+jove:
+jove:
+jpeg6:    Independent JPEG Group's JPEG software version 6b
+jpeg6:
+jpeg6:    Software to implement JPEG image compression and decompression.  JPEG
+jpeg6:    (pronounced 'jay-peg') is a standardized compression method for 
+jpeg6:    full-color and gray-scale images.  JPEG is intended for compressing
+jpeg6:    'real-world' scenes; cartoons and other non-realistic images are not
+jpeg6:    its strong suit.  JPEG is lossy, however, on typical images of 
+jpeg6:    real-world scenes, very good compression levels can be obtained with
+jpeg6:    no visible change, and amazingly high compression levels are possible
+jpeg6:    if you can tolerate a low-quality image.
+jpeg6:
+manpages: Man-pages 1.23
+manpages:
+manpages: Man pages are online documentation for Linux.  This package includes
+manpages: many section 1, 2, 3, 4, 5, 7, and 8 man pages for Linux.
+manpages:
+manpages: The man-pages distribution is maintained by Andries E. Brouwer with
+manpages: the help of more writers, editors, and other contributors than we
+manpages: can name here.  (See the list in /usr/man/man-pages-1.23.Announce)
+manpages:
+manpages:
+manpages:
+mc:       Midnight Commander version 4.1.35
+mc:
+mc:       The Midnight Commander is a Norton Commander clone, a program that
+mc:       manipulates and manages files and directories.  Useful, fast, and has
+mc:       color displays on the Linux console.  Mouse support is provided
+mc:       through the gpm mouse server.
+mc:
+mc:       mc was written by Miguel de Icaza and Mauricio Plaza.
+mc:
+mc:
+mc:
+md:       md-0.35 (multiple device utilities)
+md:
+md:       These utilities, in conjunction with the MD kernel driver, are used to
+md:       group several block devices as a single drive, whatever the interface
+md:       type.  Support for linear concatenation of devices, as well as RAID-0
+md:       (disk striping).
+md:
+md:
+md:
+md:
+md:
+mt_st:    mt-st-0.4 - controls magnetic tape drive operation
+mt_st:
+mt_st:    This mt originates from BSD NET-2.  Some Linux SCSI tape-specific
+mt_st:    ioctls have been added to the original source and the man page has
+mt_st:    been updated.  Although this mt program is tailored for SCSI tape, it
+mt_st:    can also be used with the QIC-02 driver and hopefully with other Linux
+mt_st:    tape drivers using the same ioctls (some of the commands may not work
+mt_st:    with all drivers).
+mt_st:
+mt_st:
+mt_st:
+quota:    Linux disk quota utilities (1.70)
+quota:
+quota:    An implementation of the diskquota system for the Linux operating
+quota:    system -- keeps those greedy users from gobbling up 100% of the hard
+quota:    drive space.  Should work for all filesystems because of integration 
+quota:    into the VFS layer of the operating system.  This system is a heavily
+quota:    modified version of the Melbourne quota system by Robert Elz, which
+quota:    uses both user and group quota files.  Edvard Tuinder <ed@ow.org> and
+quota:    Marco van Wieringen <mvw@planets.ow.org> are responsible for the 
+quota:    additional code and porting effort to make quotas work on Linux.
+quota:
+sc:       The 'sc' spreadsheet. (v. 6.21)
+sc:
+sc:       This is a simple spreadsheet program.
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+sc:
+seejpeg:  seejpeg-1.6.1
+seejpeg:
+seejpeg:  Seejpeg is an image viewer which uses SVGAlib.  In spite of the name,
+seejpeg:  it understands the JPEG, GIF, PPM, BMP and TARGA formats.  One nice
+seejpeg:  feature of seejpeg is that it automatically decides on the best video
+seejpeg:  mode to use based on the image being displayed and the video card
+seejpeg:  being used.  
+seejpeg:
+seejpeg:  Evan Harris is the author of seejpeg.
+seejpeg:
+seejpeg:
+sox:      sox-11gamma-cb3
+sox:
+sox:      Sox is a universal sound converter, player, and recorder.  It can
+sox:      play, record, and convert between several sound file formats such as
+sox:      .au, .snd, .voc and .wav.
+sox:
+sox:
+sox:
+sox:
+sox:
+sox:
+sudo:     sudo-1.5.4
+sudo:
+sudo:     'sudo' is a command that allows users to execute some commands as 
+sudo:     root.  The /etc/sudoers file (edited with 'visudo') specifies which
+sudo:     users have access to sudo and which commands they can run.  'sudo' 
+sudo:     logs all its activities to /var/log/ so the system administrator
+sudo:     can keep an eye on things.
+sudo:
+sudo:
+sudo:
+sudo:
+texinfo:  GNU texinfo-3.12
+texinfo:
+texinfo:  'Texinfo' is a documentation system that uses a single source file to
+texinfo:  produce both on-line information and printed output.  Using Texinfo,
+texinfo:  you can create a printed document with the normal features of a book,
+texinfo:  including chapters, sections, cross references, and indices.  From the
+texinfo:  same Texinfo source file, you can create a menu-driven, on-line Info
+texinfo:  file with nodes, menus, cross references, and indices.
+texinfo:
+texinfo:  This package is needed to read the documentation files in /usr/info.
+texinfo:
+vim:      Version 5.1 of Vim: Vi IMproved
+vim:
+vim:      Vim is an almost compatible version of the UNIX editor vi.  Only the
+vim:      'Q' command is missing (you don't need it).  Many new features have
+vim:      been added: multi level undo, command line history, filename 
+vim:      completion, block operations, etc.
+vim:
+vim:
+vim:
+vim:
+vim:
+workbone: Workbone 2.31
+workbone:
+workbone: Text-based audio CD player.
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+workbone:
+zsh:      zsh version 3.0.3
+zsh:
+zsh:      Zsh is a UNIX command interpreter (shell) which of the standard shells
+zsh:      most resembles the Korn shell (ksh), although it is not completely
+zsh:      compatible.  It includes enhancements of many types, notably in the
+zsh:      command-line editor, options for customizing its behavior, filename
+zsh:      globbing, features to make C-shell (csh) users feel more at home and
+zsh:      extra features drawn from tcsh (another 'custom' shell).  Zsh was 
+zsh:      written by Paul Falstad.
+zsh:
+zsh:

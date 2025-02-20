@@ -1,0 +1,16 @@
+Begin3
+Title:          kcmbind
+Version:        0.5.0
+Entered-date:   14MAR99
+Home-page:      http://www.100webstreet.com/kcmbind/
+Description:    Kcmbind is a front-end to configure bind.
+Keywords:       kde kcmbind bind dns network X11 Qt KDE
+Author:         backstrom@kde.org (Karl Backström)
+Maintained-by:  backstrom@kde.org (Karl Backström) 
+Primary-site:   ftp://www.100webstreet.com /pub/kde/kcmbind
+		120kB kcmbind-0.5.0.tgz
+		588   kcmbind-0.5.0.lsm
+Alternate-site: ftp.kde.org /pub/kde/unstable/apps/network/
+Platforms:       unix (only tested on linux)
+Copying-policy: GPL
+End

@@ -1,0 +1,20 @@
+Begin3  
+Title:          genpower  
+Version:        1.0.1  
+Entered-date:   16JUL95  
+Description:    Highly configurable UPS monitoring software with support  
+                for: automated shutdown, low battery detection, inverter 
+                shutdown, and more.  This package replaces my unipower 
+                package. 
+Keywords:       UPS, shutdown, powerd, battery, unipower 
+Author:         webster@kaiwan.com (Tom Webster)  
+Maintained-by:    
+Primary-site:   sunsite.unc.edu /pub/Linux/system/UPS 
+                43kb unipower-1.0.0.tgz  
+                 1kb unipower-1.0.0.lsm  
+Alternate-site:  
+Original-site:  
+Platforms:      Linux system with UPSs supporting RS232 monitoring,  
+                SysVInit package installed.  
+Copying-policy: GPL 
+End 

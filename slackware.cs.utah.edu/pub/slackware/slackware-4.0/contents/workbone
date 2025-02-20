@@ -1,0 +1,10 @@
+drwxr-xr-x root/root         0 1998-04-09 19:35 ./
+drwxr-xr-x root/root         0 1998-04-09 19:35 usr/
+drwxr-xr-x root/root         0 1998-04-09 19:35 usr/bin/
+-rwxr-xr-x root/bin      17224 1998-04-09 19:35 usr/bin/workbone
+drwxr-xr-x root/root         0 1998-04-09 19:35 usr/doc/
+drwxr-xr-x root/root         0 1998-04-09 19:35 usr/doc/WorkBone-2.31/
+-rw-r--r-- root/bin       2197 1998-04-09 19:35 usr/doc/WorkBone-2.31/README
+drwxr-xr-x root/root         0 1998-04-09 19:35 usr/man/
+drwxr-xr-x root/root         0 1998-04-09 19:35 usr/man/man1/
+-rw-r--r-- root/root      2237 1998-04-09 19:35 usr/man/man1/workbone.1.gz

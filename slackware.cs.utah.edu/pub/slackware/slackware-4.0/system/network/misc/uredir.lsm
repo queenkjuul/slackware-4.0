@@ -1,0 +1,14 @@
+Begin3
+Title:		uredir
+Version:	1.0
+Entered-date:	28MAY98
+Description:	uredir is a UDP redirector.  It redirects UDP
+	packets coming in on a port to another port on another machine.
+Keywords:	UDP, redirect, network, packet, forward
+Author: 	mrn@shaw.wave.ca (id est)
+Primary-site: sunsite.unc.edu /pub/Linux/system/network/misc
+	14400 uredir-1.0.tar.gz
+	414 uredir-1.0.lsm
+Platforms:	Linux
+Copying-policy:	free
+End

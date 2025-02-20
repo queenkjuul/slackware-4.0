@@ -1,0 +1,15 @@
+
+Begin3
+Title: getdate
+Version: V1.1        
+Entered-date: July 27, 1998  
+Description: set date and time via time port 13.   
+Keywords: clock, time, rdate, system_time
+Author: Larry W. Cashdollar        
+Maintained-by: lwc@nmi.net   
+Primary-site: sunsite.unc.edu: /pub/Incoming   
+Alternate-site: vapid.nmi.net: http://vapid.nmi.net/
+Original-site: vapid.nmi.net: http://vapid.nmi.net/
+Platform: Linux       
+Copying-policy: May be freely modified, distributed, copied. 
+End

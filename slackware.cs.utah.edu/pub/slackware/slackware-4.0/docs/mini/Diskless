@@ -1,0 +1,528 @@
+  Diskless Linux Mini Howto
+  by Robert Nemkin buci@math.klte.hu
+  v0.0.3, 12 September 1996
+
+  This document describes how to set up a diskless Linux box and copy­
+  righted by Robert Nemkin. Copyright policy is GPL.  I whish to thank
+  to Bela Kis <bkis@cartan.math.klte.hu> for translating this document
+  to English.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Changes
+
+  2. How to set up a diskless Linux box
+
+  3. Related documents
+
+  4. Hardware
+
+  5. Fundamental ideas
+
+     5.1 Setting up the PC
+     5.2 Setting up a bootpd on the server
+     5.3 Configure the bootpd on the server.
+     5.4 Understanding tftp
+     5.5 Setting up a minimal Linux configuration on the remote server.
+     5.6 Configuring the tftp server
+     5.7 Final work
+
+  6. Memory and diskspace requirements; speed
+
+  7. Possible errors
+
+  8. Errors and possible further expansions of this document
+
+
+
+  ______________________________________________________________________
+
+  1.  Changes
+
+
+  ·  v0.0.3 12 Sep 1996: Some minor error fixes
+
+
+  2.  How to set up a diskless Linux box
+
+  This document is about setting up a diskless Linux box. Sometimes it
+  might be necessary to run Linux on PC's which have neither hard disks
+  nor floppy drives. If a network, another Unix system with bootp, tftp,
+  an NFS server, and an eprom burner is available then it is possible to
+  set up and operate Linux without hard/floppy disks.
+
+
+  3.  Related documents
+
+
+  ·  NFS-root Mini Howto
+
+  ·  Linux NET-2/3-HOWTO by Terry Dawson, 94004531@postoffice.csu.edu.au
+
+  ·  /usr/src/linux/README about configuring and compiling new kernels
+
+
+  4.  Hardware
+
+  Whatever is described here was checked on the following configuration
+
+  ·  Sun-OS 4.1.3 as boot server
+
+  ·  Slackware 2.3 + Linux 1.2.8 + wd 8013 ethercard.
+
+  ·  Working Ethernet lan
+
+
+  5.  Fundamental ideas
+
+  The fundamental idea is as follows: the PC will get its IP address
+  from the boot server via the bootp protocol, using 0.0.0.0 as the
+  initial IP address and its kernel via the tftp protocol.  (-- Booting
+  across segments (via router) not a simple question, so either put both
+  the server and the diskless boxes on the same lan segment or configure
+  an UDP helper address in your router to the address of the server.
+  Refer to your router product manual for further info.--)
+
+  For this follow the steps below.
+
+
+  5.1.  Setting up the PC
+
+  Get the nfsboot package (the package is available from your favourite
+  linux mirror site in the /pub/Linux/system/Linux-boot directory). It
+  contains a booteprom image for the wd8013 card which can be directly
+  burned in.
+
+  There are alternative ways to prepare the PC:
+
+  ·  if your machine is not quite diskless, then you may use the little
+     DOS program, or
+
+  ·  the binary floppy image contained in the same package.  If you
+     choose the latter option you must write the image onto a floppy by
+     the dd command.
+
+  These images contain a bootp and tftp client.  You need to prepare a
+  linux kernel too, which contains the nfs-root option.
+
+  ·  If you are using the latest stable kernel, linux-1.2.13, then you
+     need to patch the kernel with the patchfile included in the nfsboot
+     package  (-- Refer to patch(1)--)
+
+  ·  If you try to use the latest, but unstable kernel from the
+     linux-1.3.x series, then you have to configure in the nfs-root
+     option.
+
+     You may or may not configure block device (floppy or hard disk)
+     support, but you must configure tcp/ip support, wd ethernet card
+     support, nfs filesystem support. Then recompile the kernel as
+     usual.
+
+
+
+  5.2.  Setting up a bootpd on the server
+
+  It can be found in package bootpd-2.4.tar.gz (which can be found on
+  your favourite linux mirror site in the
+  /pub/Linux/system/Network/boot.net directory). Get the package,
+  compile and install it. If your other Unix box happens to be a
+  Slackware Linux then you may skip this step for the standard
+  distributions contain a bootpd. The daemon can be run either directly
+  by issuing command
+
+
+       ______________________________________________________________________
+               bootpd -s
+       ______________________________________________________________________
+
+
+
+
+  or by using inetd. In this case you need to edit:
+
+  ·  /etc/inetd.conf to remove the hashmark from the start of these
+     lines:
+
+
+
+       ______________________________________________________________________
+       # tftp   dgram   udp     wait    root    /usr/sbin/in.tftpd     tftpd /export
+       # bootps dgram   udp     wait    root    /usr/sbin/in.bootpd    bootpd
+       ______________________________________________________________________
+
+
+
+
+
+  ·  insert or uncomment the following two lines in /etc/services:
+
+
+
+       ______________________________________________________________________
+       bootps          67/tcp          # BOOTP server
+       tftp            69/udp          # TFTP server
+       ______________________________________________________________________
+
+
+
+
+
+  ·  restart inetd by
+
+
+
+       ______________________________________________________________________
+               kill -HUP <process id of inetd>.
+       ______________________________________________________________________
+
+
+
+
+
+  5.3.  Configure the bootpd on the server.
+
+  First of all, bootpd have a config file called bootptab which usually
+  resides in /etc. You must modify it by inserting the IP addresses of
+  your gateway, dns server, and the ethernet address(es) of your
+  diskless machine(s).  An example /etc/bootptab:
+
+
+
+
+
+
+
+
+
+  ______________________________________________________________________
+
+  global.prof:\
+          :sm=255.255.255.0:\
+          :ds=192.168.1.5:\
+          :gw=192.168.1.19:\
+          :ht=ethernet:\
+          :bf=linux:
+  machine1:hd=/export/root/machine1:tc=global.prof:ha=0000c0863d7a:ip=192.168.1.140:
+  machine2:hd=/export/root/machine2:tc=global.prof:ha=0800110244e1:ip=192.168.1.141:
+  machine3:hd=/export/root/machine3:tc=global.prof:ha=0800110244de:ip=192.168.1.142:
+  ______________________________________________________________________
+
+
+
+
+  global.prof is a general template for host entries, where
+
+  ·  sm field contains the subnet mask
+
+  ·  ds field contains the address of the Domain Name Server
+
+  ·  gw field contains the default gateway address
+
+  ·  ht field contains the lan media hardware type
+
+  ·  bf field contains the name of the boot file
+
+  After this, every machine must have a line:
+
+  ·  the first field contains the host name,
+
+  ·  hd field contains the directory of the bootfile,
+
+  ·  the global template can be included with the tc field,
+
+  ·  ha field contains the hardvare address of the ethernet card,
+
+  ·  ip field contains the assigned ip address.
+
+
+
+  5.4.  Understanding tftp
+
+  TFTP (Trivial File Transfer Protocol) is a file transfer protocol,
+  such as ftp, but it's much simpler to help coding it in EPROMs. TFTP
+  can be used in two ways:
+
+  ·  simple tftp: means that the client can acces to your whole file
+     system. It's simpler but it's a big security hole (anyone can get
+     your password file via tftp).
+
+  ·  secure tftp: the tftp server uses a chroot.2 system call to change
+     it's own root directory. Anything outside the new root directory
+     will be completelly inaccessible. Because of the chroot dir becomes
+     the new root dir, the hd filed in the bootptab must reflect the new
+     situation. For example: when using insecure tftp, the hd field
+     contains the full path to the boot directory:
+     /export/root/machine1.  When using secure tftp whith /export as
+     root dir, then /export becomes / and the hd field must be
+     /root/machine1.
+
+     Almost every Unix implementation contains tfpt server, probably you
+     don't need to install your own one.
+
+
+  5.5.  server.  Setting up a minimal Linux configuration on the remote
+
+  This may contain packages a, ap, n, and x of the Slackware
+  distribution. To install more is OK; however the above packages
+  suffice for the purposes of a diskless X terminal. For the
+  installation you need a working Linux system. Find some disk space on
+  the remote machine and export it read-write. Mount the exported
+  directory onto somewhere (e.g. /mnt) on the file system of the Linux
+  box. Start Linux setup and change the root option in the setup from /
+  to /mnt. Then setup the above packages as usual. If you want to run no
+  more than one diskless Linux then no changes are needed. On the other
+  hand, if you plan to use more than one diskless machine then the above
+  setup will not work because some files and directories must be private
+  to the machines. The problem can be bypassed by moving the /usr (it
+  contains no private data) and then create a separate subdir for each
+  diskless machine. For example, if /export/linux/machine1 were mounted
+  to /mnt then the directory structure after the initial setup will look
+  like
+
+
+       ______________________________________________________________________
+       /export/linux/machine1/bin
+       /export/linux/machine1/sbin
+       /export/linux/machine1/lib
+       /export/linux/machine1/etc
+       /export/linux/machine1/var
+       /export/linux/machine1/usr
+       ______________________________________________________________________
+
+
+
+
+  After the changes you will have
+
+
+       ______________________________________________________________________
+       /export/linux/machine1/bin
+       /export/linux/machine1/sbin
+       /export/linux/machine1/lib
+       /export/linux/machine1/etc
+       /export/linux/machine1/var
+       /export/linux/usr
+       ______________________________________________________________________
+
+
+
+
+  Now create the subdirectories for the other machines. Assume for now
+  that your diskless machines are called machine1, machine2, machine3,
+  etc.; then you may use the following bash script to setup the other
+  directories
+
+
+       ______________________________________________________________________
+
+               cd /export/linux
+               for x in machine2 machine3 ; do
+                       mkdir $x; cd $x
+                       (cd ../machine1; tar cf - *) | tar xvf -
+               done
+       ______________________________________________________________________
+
+
+
+
+
+  Then do the following export:
+
+  ·  /export/linux/usr                       readonly for everyone.
+
+  ·  /export/liunx/machine1          only to machine1 with rw,root
+     rights.
+
+  ·  /export/liunx/machine2          only to machine2 with rw,root
+     rights.
+
+  ·  /export/liunx/machine3          only to machine3 with rw,root
+     rights.
+
+     as follows (-- the format of this example follows the SunOs 4.1.3
+     exports file syntax--) :
+
+
+       ______________________________________________________________________
+
+       # This file is /etc/export
+       # for remote linux X terminals by Buci
+       # this line is only once
+       /export/root/usr             -access=linuxnet
+       # these lines once for every host
+       /export/root/machine1       rw=machine1,root=machine1
+       /export/root/machine2       rw=machine2,root=machine2
+       /export/root/machine3       rw=machine3,root=machine3
+       ______________________________________________________________________
+
+
+
+
+  Don't forget to run exportfs -a.
+
+
+  5.6.  Configuring the tftp server
+
+
+  Now it is time to configure the tftp server. If you do not need secure
+  tftp then everything is quite simple for your clients can be booted
+  from the /export directory.
+
+  If a secure tftp is used then you can either make a full /export/linux
+  directory structure under /tftpboot (with a single real kernel and
+  symbolic links for the other machines), or let the /export directory
+  be the boot directory of the secure tftpd. Or, if you have a separate
+  tftpboot directory then, similarly, you need only the original
+  directory structure with a single kernel and symbolic links for the
+  others. You can achieve this setup by typing the following:
+
+
+       ______________________________________________________________________
+             mkdir -p /tftpboot/export/linux/machine1
+             cd /tftpboot/export/linux/machine1
+             cp /export/linux/machine1/<name of the kernel> .
+       ______________________________________________________________________
+
+
+
+
+  Then type the following:
+
+
+
+
+
+  ______________________________________________________________________
+        mkdir -p /tftpboot/export/linux/machine2
+        cd ../machine2
+        ln -s ../machine2/<name of the kernel>
+  ______________________________________________________________________
+
+
+
+
+
+  5.7.  Final work
+
+
+  Finally, you must insert
+
+
+       ______________________________________________________________________
+          /sbin/mount nfs_server:/export/linux/usr /usr
+       ______________________________________________________________________
+
+
+
+
+  as the first line of
+
+
+
+       ______________________________________________________________________
+          /export/linux/<machinex>/etc/rc.d/rc.S
+       ______________________________________________________________________
+
+
+
+
+  where <machinex> stands for machine1, machine2, etc.
+
+
+  6.  Memory and diskspace requirements; speed
+
+  . I tested this for only Slackware 2.3; for other
+  distributions/versions the following numbers may vary.
+
+  ·  Diskspace: 28MB + 6.5MB/machine
+
+  ·  RAM: I am using X on 8 MB. For only 4MB swap is needed, I guess,
+     which can be created -- separately for each machine -- in /tmp. Do
+     not forget to run mkswap.
+
+  ·  Speed: I had no problems on a 486 DX2/66 with 8 Megs.
+
+
+  7.  Possible errors
+
+
+
+  ·  I found a strange error: in the /dev subdirectory SunOS corrupted
+     the device entries so I needed to rerun MAKEDEV by mounting the
+     subdirectory onto a disk based Linux box.  (The reason was the
+     differences between the linux nfs and the SunOs nfs: both use 32
+     bit for the Major and Minor device number, but linux uses 16 bit
+     wide fields for both, SunOs uses 14 bit wide field for Major and 18
+     bit wide filed for Minor device number.)
+
+  ·  When the diskless linux gets booted, there is only one route
+     included in the routing table to the tftp server, so you need to
+     set up correct routing tables. You have two choices here:
+  ·  configure every rc.S for every machine by hand
+
+  ·  use a bootp client package and write a generalized setup script
+
+
+  8.  Errors and possible further expansions of this document
+
+
+  ·  Correct citation of related documents.
+
+  ·  SunOs is BSD based. Need to include SVR4 (e.g. Solaris) based
+     server configuration.
+
+  ·  Although Linux is quite similar to SunOs as bootp/tftp server, a
+     linux based server example might be usefull.
+
+  ·  Update this document to the current etherboot package.
+
+  ·  Show the differences between the nfs root patched kernel version
+     1.2.13 and the newest 1.3.x kernel, which contains the nfs-root
+     patch.
+
+  ·  Need to try other ethercards than wd8013
+
+  ·  Include configuration information for bootpc, a bootp client for
+     linux to set up the correct rooting tables.
+
+  ·  Typos and other errors: please, report to buci@math.klte.hu Thank
+     you.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

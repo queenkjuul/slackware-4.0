@@ -1,0 +1,306 @@
+  Mail2News Mini-Howto
+  Robert Hart, InterWeft IT Consultants Melbourne, Australia
+  iweft@ipax.com.au
+  v1.0, 4 November 1996
+
+  This document describes how to set up your news server and the
+  mail2news.pl software to link mailing lists to local news groups.
+
+  1.  Copyright and such
+
+  The copyright of this document is retained by the author. Permission
+  is granted to distribute the document by electronic means and on CDs
+  provided that it is kept entirely in its original format. Permission
+  is also granted to print a copy of this document for personal use.
+
+  The republishing of this document in part or in whole without the
+  permission of the copyright holder by any means other than as noted
+  above is prohibited.
+
+  This document is directly supported by InterWeft IT Consultants
+  (Melbourne, Australia).
+
+  The latest version of this document is available at the InterWeft WWW
+  site at InterWeft IT Consultants <http://203.29.72.65/>.
+
+  2.  Introduction
+
+  Most Internet sites are always seeking ways to improve the usage of
+  the limited bandwidth awailable across their link to the Internet.
+
+  Should more than one user subscribe to the same mailing list, there is
+  going to be traffic duplication. If there are a number of such
+  duplications - or the traffic on the lists is high, the consumption of
+  bandwidth increases.
+
+  By subscribing the site to a list (if this is allowed by the list
+  owner) and 'gating' the email traffic to the local news server, it is
+  possible to make mailing lists accessible to all site users, or, using
+  the security features of 'innd', to limit the access to certain users.
+
+  Such a site subscription (particularly if there are a number of high
+  traffic lists) can make worthwhile savings in bandwidth usage.
+
+  Reading list traffic in news reader also offers users the advantages
+  of threading (which is not available in many mail user agents) and
+  keeps their mail 'inbox' free for possibly more urgent, personal
+  email.
+
+  This mini-HOWTO describes setting up the 'mail2news.pl' script to
+  accomplish this.
+
+  2.1.  Finding mail2news.pl
+
+  The author has been unable to find mail2news.pl on CPAN (the
+  Comprehensive Perl Archive Network) - but it may just have been
+  overlooked. It is however on sunsite.unc.edu - somewhere - and also on
+  ftp.redhat.com.
+
+  As this Perl script is not lengthy, it is appended to this howto.
+
+  3.  Overview of the system
+
+  It is probably easiest to understand how this system works by tracking
+  a message from the mailing list to the newsgroup and then a message
+  posted to the local newsgroup (gated to the mailing list) and see how
+  they are handled.
+
+  3.1.  Mail from the mailing list
+
+  Mail from the mailing list is sent to all subscribed mail addresses. A
+  special mail alias is subscribed to the mailing list in question and
+  so all traffic to and from the list is sent by the list server to this
+  address.
+
+  When mail from the mailing list arrives at the local machine, the mail
+  alias pipes the incoming message to mail2news.pl. The mail alias also
+  specifies the destination (local) newsgroup.
+
+  The mail2news.pl script processes the message, applying news headers
+  and then uses rnews or inews to post the message to the newsgroup.
+
+  3.2.  Messages posted to the local newsgroup
+
+  The local newsgroup is set up as a moderated group, as this allows us
+  to take advantage of the email capabilities of innd. Any messages
+  posted to a moderated group are not immediately submitted to the
+  group. Instead, messages are emailed to the moderator of the group.
+
+  By declaring the moderator of the local newsgroup to be mailing list
+  address, all locally posted messages to the newsgroup are
+  automatically mailed out to the mailing list by innd and only appear
+  once they have been received back through mail2news.pl which adds the
+  necessary 'approved' line to the messages and are thus acceptable to
+  innd for posting to the newsgroup.
+
+  4.  Setting up mail2news
+
+  Put the mail2news.pl script in a suitable location. I favour
+  /usr/local/scripts, but the location is up to you.
+
+  You will need to edit script as follows:-
+
+  �  At the top of the script, make sure you are pointing at the local
+     Perl binary
+
+     ___________________________________________________________________
+     #!/usr/bin/perl
+     # point at the correct location of perl
+     ___________________________________________________________________
+
+  �  I had problems with the three following lines. Commenting them out
+     does not cause a problem.
+
+     ___________________________________________________________________
+     ( $version  ) = $] =~ /(\d+\.\d+).*\nPatch level/;
+     die "$program: requires at least version 3 of perl\n"
+             if $version < 3;
+     ___________________________________________________________________
+
+  �  Edit the following lines to point at the posting program (I use
+     rnews) and you news host:-
+
+     ___________________________________________________________________
+     # $inews = "/usr/bin/inews";
+     # $iopts = "-h -o \"mail2news gateway\"";
+     $inews = "/usr/bin/rnews";
+     $iopts = "";
+     $postinghost = "your.news.server";   # points at your news server
+     ___________________________________________________________________
+
+  �  Make sure that the script is exectuable (mode 755).
+
+  5.  Establishing the mail aliases
+
+  Edit /etc/aliases to create entries for the mailing list(s) you wish
+  to pipe into news. Each entry should be of the form:-
+
+  ______________________________________________________________________
+  <subscribed email address to list>: \
+          "| /usr/local/scripts/mail2news.pl <local news group name>"
+  <code>
+
+  <p>
+  So for example if the email address to which email from the list is to
+  be sent (the subscribed mail address) is <tt/site_list/ and the local
+  newsgroup to which mail is to be posted is <tt/local.site.group/, the
+  alias would be
+
+  <code>
+  # The site subscription address for blah-blah@some.mailing.list
+  site_list: "| /usr/local/scripts/mail2news.pl local.site.group"
+  ______________________________________________________________________
+
+  Make an entry for each mailing list that is to be gated to oyur local
+  news server and and then run newaliases.
+
+  6.  Setting up the news groups and news server (innd)
+
+  Using ctlinnd, create the newsgroups on your news server. Remember,
+  these are to be local news groups, so start them with a distinctive
+  name so you can filter them out from your news distributions (in your
+  newsfeeds file).
+
+  You also need to tell innd that the group is moderated (by using
+  ctlinnd). Remember, innd is very sensitive to file ownership and
+  permissions, so you need to interct at this level with innd as the
+  news user. Indicating a moderated group is done by specifying m to the
+  newgroup command.
+
+  ______________________________________________________________________
+          ctlinnd newgroup <newgroup name> m <newsadmin>
+  ______________________________________________________________________
+
+  The m tells innd that the group is moderated.
+
+  Edit your newsfeeds file to make sure that these local groups are not
+  distributed (unless you specificaly wish this to occur).
+
+  For example, if your mailing list is called local.site.group, then you
+  would probably want to add !local* to the second field of your up (and
+  possibly your down) stream news sites in your newsfeeds file.
+
+  Now, in order to ensure that user messages are sent to the list
+  automatically by innd, edit /etc/news/moderators to include a line
+  declaring the mailing list email address as the moderator.
+
+  ______________________________________________________________________
+  some.site.list:list@mail.list.site
+  ______________________________________________________________________
+
+  7.  Subscribing the mail2 news alias to the mailing list
+
+  You now need to subscribe the mail alias to the mailing list. Check
+  with the mailing list information as to how to subscribe. Some mailing
+  lists allow you to subscribe an email address that is different from
+  the address from which the subscription comes (they check back to the
+  address to be subscribed for confirmation before actually subscribing
+  that address).
+
+  Other mailing lists do not permit this. So you may need to 'forge' a
+  subscription request. There are many ways of doing this. One of the
+  easiest is to use Netscape mail set up (temporarily) with the address
+  to which the mailing list is to send the mail.
+
+  After subscribing, you should see a 'welcome' message of some kind
+  from the list server in the news group - in which case all is well and
+  you can now test the other direction by posting a news message to your
+  new list.
+
+  The message should *NOT* appear in the newsgroup at once. It should
+  get sent out by mail and then received back and posted to the news
+  group.
+
+  If this works, you have succeed in getting the list gated to news.
+
+  8.  If it doesn't work...
+
+  If things don't work, you need to track through the path the messages
+  are taking to see exactly where things are breaking down. Useful tools
+  here are the mail and news logs.
+
+  Robert Hart
+  Melbourne, Victoria, Australia October 1996
+
+  9.  The mail2news.pl script
+
+  ______________________________________________________________________
+  #!/usr/bin/perl
+
+  ($program = $0) =~ s%.*/%%;
+
+  #( $version  ) = $] =~ /(\d+\.\d+).*\nPatch level/;
+  #die "$program: requires at least version 3 of perl\n"
+  #        if $version < 3;
+
+  # $inews = "/usr/bin/inews";
+  # $iopts = "-h -o \"mail2news gateway\"";
+  $inews = "/usr/bin/rnews";
+  $iopts = "";
+  $postinghost = "your.news.server";
+
+  if ($#ARGV < 0) {
+      # $newsgroup = "test";
+      # we'll expect the newsgroup line in the body
+  } elsif ($#ARGV == 0) {
+      $newsgroup = $ARGV[0];
+  } else {
+      die "usage: $program [newsgroup]\n";
+  }
+
+  # in case inews dumps core or something crazy
+  $SIG{'PIPE'} = "plumber";
+  sub plumber { die "$program: \"$inews\" died prematurely!\n"; }
+
+  open (INEWS, "| $inews $iopts") ||
+      die "$program: can't run $inews\n";
+
+  # header munging loop
+  while (<STDIN>) {
+     last if /^$/;
+
+     # transform real from: line back to icky style
+     s/^From:\s+(.*) <(.*)>/From: $2 ($1)/;
+
+     s/Message-Id/Message-ID/;
+
+     # transform from_ line to path header; also works locally
+     s/^From\s+(\S+)@(\S+).*/Path: $2!$1/
+       || s/^From\s+(\S+)[^@]*$/Path: $1\n/;
+
+     print INEWS
+  #       if /^(Date|From|Subject|Path|Newsgroups|Organization|Message-ID):/i;
+     if /^(Date|From|Subject|Path|Newsgroups|Message-ID):/i;
+     $saw_subject |= ( $+ eq 'Subject' );
+
+     $saw_msgid |= ( $+ eq 'Message-ID' );
+
+  #   $saw_newsgroup |= ( $+ eq 'Newsgroups' );
+  }
+
+  warn "$program: didn't expect newsgroup in both headers and ARGV\n"
+      if $newsgroup && $saw_newsgroup;
+
+  die "$program: didn't get newsgroup from either headers or ARGV\n"
+      unless $newsgroup || $saw_newsgroup;
+
+  $approved = $newsgroup;
+  $approved =~ s/\./'-'/eg;
+
+  ($sec,$min,$hour,$mday,$mon,$year)=localtime(time);
+  $madeupid = "\<$year$mon$mday.$hour$min$sec.$$\@kepler.hedland.edu.au\>";
+
+  printf INEWS "Newsgroups: %s\n", $newsgroup if $newsgroup;
+  printf INEWS "Approved: %s\@kepler.hedland.edu.au\n", $approved;
+  print  INEWS "Subject: Untitled\n" unless $saw_subject;
+  printf INEWS "Message-ID: %s\n", $madeupid unless $saw_msgid;
+  printf INEWS "NNTP-Posting-Host: %s\n", $postinghost;
+  print  INEWS "Organisation: (mail2news gateway)\n";
+  print  INEWS "\n";
+
+  print INEWS while <STDIN>;   # gobble rest of message
+
+  close INEWS;
+  exit $?;
+  ______________________________________________________________________
+

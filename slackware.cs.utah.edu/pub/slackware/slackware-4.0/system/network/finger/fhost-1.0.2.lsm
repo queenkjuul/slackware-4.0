@@ -1,0 +1,26 @@
+Begin3
+Title:          FHOST (finger a remote host)
+Version:        1.0.2
+Entered-date:   January 15, 1997
+Description:    Fhost and fhostd are a client-server set of programs which
+		are called by tcp wrappers. Fhost and fhostd can be
+		used to booby-trap the finger daemon without the risk of
+		starting a finger war with the remote host because he has
+		booby-trapped his finger daemon as well. This version
+		fixes more buffer overfill problems which were present
+		in version 1.0.1 and relaxes the copying policy from the
+		GNU GENERAL PUBLIC LICENSE to the GNU LIBRARY GENERAL
+		PUBLIC LICENSE.
+Keywords:       fhost, finger, tcpd, tcp wrappers, security, linux
+Author:         wea@llnl.gov (Ed Alley)
+Maintained-by:  wea@llnl.gov (Ed Alley)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/finger
+		17.7kB fhost_1.0.2.tgz
+                0.90kB fhost_1.0.2.lsm
+Alternate-site:
+Original-site:	jordan.llnl.gov /pub/linux/security
+		17.7kB fhost_1.0.2.tgz
+		0.90kB   fhost_1.0.2.lsm
+Platform:       GCC
+Copying-policy: GNU LIBRARY GENERAL PUBLIC LICENSE		
+End

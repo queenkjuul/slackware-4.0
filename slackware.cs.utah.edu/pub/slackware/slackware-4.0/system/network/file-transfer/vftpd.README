@@ -1,0 +1,81 @@
+COPYRIGHT POLICY
+----------------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to Free Software Foundation, Inc.
+675 Mass Ave, Cambridge, MA 02139, USA.
+
+Copyright (C) 1998 Luc Deschenaux <lcd@gkb.com>
+
+
+ABOUT VFTPD
+-----------
+vftpd means virtual ftp server daemon. It's an inetd service for Linux that
+allow you to create virtual ftp accounts.
+
+vftpd acts like a transparent proxy server. You connect your ftp client on the
+vftpd using a local account you created with command vftpdusers, and the vftpd
+connects you to the remote ftp server, using the remote account details you
+specified in the local account.
+
+Then the commands the ftp client sends to the vftpd are filtered and forwarded
+to the remote ftp server. This way you can specify another root directory, add
+file access restrictions to avoid deleters, add a ratio, set a maximum number
+of simultaneous users, ..
+
+You can also specify a cache directory. If the file is already in the cache,
+it will be transmitted from here instead of the remote ftp server. The cache
+may become corrupted because only the name and the size of the file are
+actually used to tell if the cached file should be ignored, replaced,
+transmitted and/or completed.
+                                         
+vftpd is still an alpha release but I'm working on it everyday and I test it
+while I work on it. So it's already well tested even if some major parts are
+still missing (eg: logging, global preferences dialog, autoban, MacOS & Windows
+support, etc..). I'll release the source code when done. Now it just works fine
+as a daemon on my 2.0.35 kernel and I test it with my local wu.ftpd server. 
+ 
+
+USING VFTPD                           
+-----------
+
+You'll need Tcl/Tk 8.0 (I'm using 8.0.2)
+
+1. Run ./install
+
+/etc/vftpd.users
+/usr/local/sbin/vftpd
+/usr/local/sbin/vftpdusers
+/usr/local/sbin/vftpd_eduser
+/usr/local/sbin/vftpd_users
+/usr/local/sbin/vftpd_init
+
+
+2. Setup accounts with command vftpdusers or edit /etc/vftpd_users.tcl
+   manually (eg: if you don't know how to install Tk:).. 
+   tip: to create an account from an existing one, edit it and change the 
+   username. 
+
+
+3. Add one or more line like those ones in /etc/inetd.conf (one per ip/port used) :
+
+   ftp      stream  tcp     nowait  root    /usr/sbin/tcpd  vftpd -i host1.domain.com -p 21
+   8888     stream  tcp     nowait  root    /usr/sbin/tcpd  vftpd -i host2.domain.com -p 8888
+
+
+4. Restart inetd :  killall -HUP inetd
+
+
+I worked 20 days on it for nothing, I'm licensing it for nothing...
+But if you think my work is worth more than nothing you could become
+a registered $pon$or sending first a mail to lcd@gkb.com.
+
+                                                        
+DISCLAIMER
+----------
+Use it at your own risk. You're sole responsible for anything that could
+happend before, while, after or without using this program.
+

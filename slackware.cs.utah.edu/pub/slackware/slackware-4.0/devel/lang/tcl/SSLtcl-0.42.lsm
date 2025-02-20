@@ -1,0 +1,20 @@
+Begin3
+Title:          SSLtcl
+Version:        0.42
+Entered-date:   19 Jan 1998
+Description:    SSLtcl is a loadable module for tcl/tk that implements
+		a socket command which may use SSL (Secure Socket Layer), that
+		is authenticate and cryptate communication. SSLtcl has to be
+		linked against SSleay, and does not in it self contain any
+		crypografic software. 
+Keywords:       tcl SSL SSLeay 
+Author:         (peter.antman@abc.se) Peter Antman
+Maintained-by:  (peter.antman@abc.se) Peter Antman
+Primary-site:   ftp.mc.hik.se/pub/users/mia95anp/ssl
+		www.abc.se/~m9339/prog/ssl
+Alternate-site: 
+Original-site: 
+Platforms:     Linux
+Required:	tcl8.0, SSLeay-0.6.6 or SSLeay-0.8.1
+Copying-policy: (c) Peter Antman, GPL licencing.
+End

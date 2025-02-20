@@ -1,0 +1,8 @@
+drwxr-xr-x root/root         0 1996-06-04 15:01 ./
+drwxr-xr-x root/root         0 1993-09-27 13:01 usr/
+drwxr-xr-x root/root         0 1993-09-27 13:01 usr/openwin/
+drwxr-xr-x root/root         0 1996-06-04 15:00 usr/openwin/lib/
+-rwxr-xr-x root/root     45121 1996-06-04 15:00 usr/openwin/lib/libolgx.so.3.2.2
+-rwxr-xr-x root/root   1192606 1996-06-04 15:00 usr/openwin/lib/libxview.so.3.2.2
+drwxr-xr-x root/root         0 1996-04-28 01:28 install/
+-rw-r--r-- root/root       426 1996-06-04 14:59 install/doinst.sh

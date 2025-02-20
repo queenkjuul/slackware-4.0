@@ -1,0 +1,15 @@
+Begin3
+Title:          pppmon
+Version:        0.2
+Entered-date:   961121
+Description:    Monitor the bandwidth used by a PPP link in a small X window
+Keywords:       PPP
+Author:         calle@kash.se (Calle Karlsson)
+Maintained-by:  calle@kash.se (Calle Karlsson)
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Network/serial/ppp
+		pppmon-0.2.tgz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: Public domain
+End

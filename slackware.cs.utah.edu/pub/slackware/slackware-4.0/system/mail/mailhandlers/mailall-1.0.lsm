@@ -1,0 +1,16 @@
+Begin3
+Title:          Mailall 
+Version:        1.0
+Entered-date:   11Aug97
+
+Description:    Mails all users on a local system
+Keywords:       mail accounts users mass 
+Author:         3xthrt@pronet.net (3xT)
+Maintained-by:  3xthrt@pronet.net (3xT)
+
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/mailhandlers
+                2Kb mailall-1.0.tgz 
+Alternate-site: ftp.pronet.net /pub/3xT/mailall 
+
+Copying-policy: GPL
+End

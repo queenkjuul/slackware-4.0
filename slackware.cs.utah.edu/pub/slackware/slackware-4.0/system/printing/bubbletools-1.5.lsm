@@ -1,0 +1,19 @@
+Begin3
+Title:          BubbleTools
+Version:        V1.5
+Entered-date:   29. May 1996
+Description:    Filter program for conversion of G3-Fax, PBM and PPM-Color
+                files into printable data for Canon Bubble Jet and Epson
+                360dpi printers.
+Keywords:       fax pbm ppm pgm pnm printer filter graphics
+Author:         wosch@rbg.informatik.th-darmstadt.de (Olav Wölfelschneider)
+Maintained-by:  wosch@rbg.informatik.th-darmstadt.de (Olav Wölfelschneider)
+Primary-site:   http://www.rbg.informatik.th-darmstadt.de/~wosch/pub/bubbletools
+                18kB  bubbletools-1.5.tar.gz
+                0.5kB Changelog.html
+                1.3kB ANNOUNCE.html
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Printing
+                18kB  bubbletools-1.5.tar.gz
+Platform:       Compatible printer
+Copying-policy: GPL
+End

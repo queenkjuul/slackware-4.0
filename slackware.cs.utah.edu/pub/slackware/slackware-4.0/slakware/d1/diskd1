@@ -1,0 +1,320 @@
+CONTENTS: autoconf automake libtool binutils bison byacc egcs egcs_g77 egcsobjc flex gcc gcl gdb gettext gmake libc libcinfo linuxinc lthreads m4 ncurses p2c perl pmake python rcs strace svgalib terminfo       
+binutils: GNU binutils 2.9.1.0.19a
+binutils:
+binutils: Includes these development tools:
+binutils:  
+binutils: addr2line ar as as86 c++filt gasp gprof ld ld86 nm objcopy objdump
+binutils: ranlib size strings-GNU strip
+binutils:
+binutils: These utilities are REQUIRED to compile C, C++, Objective-C, Fortran,
+binutils: and many other programming languages.
+binutils:
+binutils:
+bison:    GNU bison parser generator version 1.25.
+bison:
+bison:    Bison is a parser generator in the style of yacc(1).  It should be
+bison:    upwardly compatible with input files designed for yacc.
+bison:
+bison:
+bison:
+bison:
+bison:
+bison:
+bison:
+byacc:    Berkeley Yacc
+byacc:
+byacc:    Berkeley Yacc is an LALR(1) parser generator.  Berkeley Yacc
+byacc:    has been made as compatible as possible with AT&T Yacc.  Berkeley
+byacc:    Yacc can accept any input specification that conforms to the AT&T
+byacc:    Yacc documentation.  Specifications that take advantage of 
+byacc:    undocumented features of AT&T Yacc will probably be rejected.
+byacc:    If you skip this package and install GNU bison, a /usr/bin/yacc
+byacc:    shell script will be created which will allow you to use bison
+byacc:    instead. (It contains 'bison -y $*')
+byacc:    
+egcs:     The GNU C and C++ compilers (egcs-1.1.2).
+egcs:
+egcs:     This package contains the GNU C and C++ compilers and libstdc++ from
+egcs:     egcs-1.1.2.  To compile, you'll also need (at least) these packages:
+egcs:     binutils.tgz, gmake.tgz, libc.tgz, and linuxinc.tgz.  These compilers
+egcs:     contain many fixes and enhancements by the egcs team.  For more
+egcs:     information, see the egcs home page: 
+egcs:         http://egcs.cygnus.com/
+egcs:
+egcs:     egcs is pronounced "eggs", the c is silent.
+egcs:
+egcs_g77: GNU Fortran-77 compiler from the egcs-1.1.2 release.
+egcs_g77:
+egcs_g77: This package contains the GNU Fortran-77 compiler from egcs.  To use
+egcs_g77: this compiler, you'll also need to install the egcs.tgz C/C++ compiler
+egcs_g77: package, binutils.tgz, gmake.tgz, libc.tgz, and linuxinc.tgz.
+egcs_g77:
+egcs_g77:
+egcs_g77:
+egcs_g77:
+egcs_g77:
+egcs_g77:
+egcsobjc: GNU Objective-C compiler from the egcs-1.1.2 release.
+egcsobjc:
+egcsobjc: This package contains the GNU Objective-C compiler from the egcs
+egcsobjc: release.  To use this compiler, you'll also need to install the
+egcsobjc: egcs.tgz C/C++ compiler package, binutils.tgz, gmake.tgz, libc.tgz,
+egcsobjc: and linuxinc.tgz.
+egcsobjc:
+egcsobjc: For more information on egcs, see http://egcs.cygnus.com/
+egcsobjc:
+egcsobjc:
+egcsobjc:
+flex:     flex - fast lexical analyzer generator version 2.5.4a
+flex:
+flex:     flex is a tool for generating scanners:  programs which recognize
+flex:     lexical patterns in text.  
+flex:
+flex:
+flex:
+flex:
+flex:
+flex:
+flex:
+gettext:  GNU gettext-0.10.35
+gettext:
+gettext:  The GNU gettext package is useful for authors and maintainers of
+gettext:  internationalized software, or for anyone compiling programs that
+gettext:  use it.  GNU gettext provides the needed tools and library functions
+gettext:  for the handling of messages in different languages.  Some other GNU
+gettext:  packages use the gettext program (included in this package) to
+gettext:  internationalize the messages given by shell scripts.
+gettext:
+gettext:
+gettext:
+gcc:      The GNU C compiler and support files (v. 2.7.2.3)
+gcc:
+gcc:      This C compiler is provided for kernel compiling and as a general
+gcc:      alternative to the egcs-1.1.2 compiler.
+gcc:
+gcc:
+gcc:
+gcc:
+gcc:
+gcc:
+gcc:
+gcl:      GNU Common LISP 2.2.2
+gcl:
+gcl:      The GNU Common LISP system.  The GCL system contains C and Lisp source
+gcl:      files to build a Common Lisp system.  The original KCL system was
+gcl:      written by Taiichi Yuasa and Masami Hagiya in 1984.  The AKCL system
+gcl:      work was begun in 1987 by William Schelter and continued through 1994.
+gcl:      In 1994 AKCL was released as GCL (GNU Common Lisp) under the GNU
+gcl:      Public Library License.  
+gcl:
+gcl:      A number of people have contributed ports and pieces.
+gcl:
+gdb:      The GNU debugger. (v. 4.18)
+gdb:
+gdb:      You can use GDB to debug programs written in C, C++, and Modula-2. 
+gdb:      GDB now includes support for GNU Fortran 77.
+gdb:
+gdb:
+gdb:
+gdb:
+gdb:
+gdb:
+gdb:
+gmake:    GNU make utility 3.76.1.
+gmake:
+gmake:    This is the GNU implementation of make, which was written by Richard
+gmake:    Stallman and Roland McGrath.  The purpose of the make utility is to
+gmake:    determine automatically which pieces of a large program need to be 
+gmake:    recompiled, and issue the commands to recompile them.  
+gmake:
+gmake:    This is needed to compile just about any major C program, including
+gmake:    the Linux kernel.
+gmake:
+gmake:
+libc:     Development libraries for the C compiler.
+libc:
+libc:     These libraries are needed to compile C code in the ELF format.    
+libc:
+libc:     Includes the 5.4.46 Linux C libraries, libcurses 1.0.0, 
+libc:     GNU libgdbm 1.7.3, libtermcap 2.0.8, and BSD db 1.85.4.
+libc:
+libc:
+libc:
+libc:
+libc:
+libcinfo: C library documentation
+libcinfo:
+libcinfo: Info files for the GNU C library and GDBM library.
+libcinfo:
+libcinfo:
+libcinfo:
+libcinfo:
+libcinfo:
+libcinfo:
+libcinfo:
+libcinfo:
+linuxinc: Linux 2.2.6 kernel include files
+linuxinc:
+linuxinc: These are the include files from the 2.2.6 Linux kernel.  You'll 
+linuxinc: need these to compile most system software for Linux.
+linuxinc:
+linuxinc:
+linuxinc:
+linuxinc:
+linuxinc:
+linuxinc:
+linuxinc:
+m4:       GNU m4 1.4
+m4:
+m4:       This is release 1.4 of GNU m4, a program which copies its input to the
+m4:       output, expanding macros as it goes.  m4 has built-in functions for
+m4:       including named files, running Unix commands, doing integer 
+m4:       arithmetic, manipulating text in various ways, recursion, etc...  
+m4:       Macros can also be user-defined, and can take any number of arguments.
+m4:       GNU 'm4' has been originally written by Rene Seindal, from Denmark.
+m4:
+m4:
+m4:
+ncurses:  A curses-compatible screen management library with color. (v. 1.9.9g)
+ncurses:
+ncurses:  Documentation and sample programs are included.
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+ncurses:
+p2c:      A Pascal to C translator. (v. 1.19)
+p2c:
+p2c:
+p2c:
+p2c:
+p2c:
+p2c:
+p2c:
+p2c:
+p2c:
+p2c:
+perl:     Larry Wall's interpreted systems language. (v. 5.005_03)
+perl:
+perl:     ELF dynamic loading is supported in this version.
+perl:
+perl:
+perl:
+perl:
+perl:
+perl:
+perl:
+perl:
+pmake:    BSD 4.4 make. 
+pmake:
+pmake:    This may be required if you're going to port software with Makefiles
+pmake:    designed for BSD.  The binary is installed as /usr/bin/pmake.
+pmake:
+pmake:
+pmake:
+pmake:
+pmake:
+pmake:
+pmake:
+python:   python-1.5.1.
+python:
+python:   Python is an interpreted, interactive, object-oriented programming
+python:   language that combines remarkable power with very clear syntax.  
+python:   Python's basic power can be extended with your own modules written in
+python:   C or C++.  Python is also adaptable as an extension language for
+python:   existing applications. 
+python:
+python:
+python:
+python:
+rcs:      GNU revision control system.  (v. 5.7)
+rcs:
+rcs:      RCS, the Revision Control System, manages multiple revisions of files.
+rcs:
+rcs:      RCS can store, retrieve, log, identify, and merge revisions.  It is
+rcs:      useful for files that are revised frequently, e.g. programs,
+rcs:      documentation, graphics, and papers.
+rcs:
+rcs:
+rcs:
+rcs:
+strace:   strace-3.1.0.1 - traces system calls and signals.
+strace:
+strace:   Strace allows you to trace the execution of a command.  It runs the
+strace:   specified command until it exits, intercepting signals and system
+strace:   calls and dumping the information to the standard output.
+strace:
+strace:
+strace:
+strace:
+strace:
+strace:
+svgalib:  Svgalib Super-VGA Graphics Library 1.3.1
+svgalib: 
+svgalib:  A video hardware graphics library, based on VGAlib 1.2.  Supports most
+svgalib:  video graphics adaptors, at least in VGA modes.  Contains additional
+svgalib:  support for higher resolution modes with cards based on ALI2301, ARK
+svgalib:  Logic ARK1000PV/2000PV, ATI SVGA, ATI Mach32, ATI Mach64, Chips and
+svgalib:  Technologies, Cirrus Logic GD542x/3x, Genoa GVGA6400, Hercules
+svgalib:  Stingray 64/Video, Oak Technologies OTI-037/67/77/87, S3, Trident TVGA
+svgalib:  8900C/9000/9440, Tseng ET4000/ET4000W32, and some other chipsets.
+svgalib: 
+svgalib: 
+terminfo: Complete /usr/share/terminfo database.
+terminfo:
+terminfo: This is the the master terminfo database maintained by Eric Raymond.
+terminfo: This database is the official descendant of the 4.4BSD termcap file,
+terminfo: and includes information about virtually every terminal known.  The
+terminfo: ncurses libraries use this database to adjust screen output for the
+terminfo: terminal type in use.  Unless you're allowing logins from terminal
+terminfo: types other than the Linux console, xterms, or vt100 terminals, you
+terminfo: probably won't need this database - a minimal /usr/share/terminfo with
+terminfo: support for those types is included in the ncurses package.
+terminfo:
+autoconf: GNU autoconf 2.13
+autoconf:
+autoconf: Autoconf is an extensible package of m4 macros that produce shell
+autoconf: scripts to automatically configure software source code packages.
+autoconf: These scripts can adapt the packages to many kinds of UNIX-like
+autoconf: systems without manual user intervention.  Autoconf creates a
+autoconf: configuration script for a package from a template file that lists the
+autoconf: operating system features that the package can use, in the form of m4
+autoconf: macro calls.
+autoconf: You must install the "m4" package to be able to use autoconf.
+autoconf:
+automake: GNU automake 1.4
+automake:
+automake: This is Automake, a Makefile generator.  It was inspired by the 4.4BSD
+automake: make and include files, but aims to be portable and to conform to the
+automake: GNU standards for Makefile variables and targets.
+automake: Automake is a Perl script.  The input files are called Makefile.am.
+automake: The output files are called Makefile.in; they are intended for use
+automake: with Autoconf.  Automake requires certain things to be done in your
+automake: configure.in.
+automake: You must install the "m4" and "perl" packages to be able to use
+automake: automake.
+libtool:  GNU libtool 1.2
+libtool:
+libtool:  This is GNU Libtool, a generic library support script. Libtool hides
+libtool:  the complexity of using shared libraries behind a consistent, portable
+libtool:  interface.  To use libtool, add the new generic library building
+libtool:  commands to your Makefile, Makefile.in, or Makefile.am.  See the
+libtool:  documentation for details.
+libtool:
+libtool:  You must install the "m4" package to be able to use libtool.
+libtool:
+libtool:
+lthreads: LinuxThreads 0.7.1
+lthreads:
+lthreads: Implementation of POSIX 1003.1c-compliant threads library for Linux
+lthreads: by Xavier Leroy.
+lthreads:
+lthreads: LinuxThreads provides kernel-level threads: each thread is a separate
+lthreads: Unix process, sharing its address space with the other threads through
+lthreads: the new system call clone(). Scheduling between threads is handled by
+lthreads: the kernel scheduler, just like scheduling between Unix processes.
+lthreads:
+lthreads:

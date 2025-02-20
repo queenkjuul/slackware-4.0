@@ -1,0 +1,23 @@
+CONTENTS: scsimods tcsh       
+scsimods: Linux SCSI, RAID, and CD-ROM kernel modules for Linux 2.2.6.
+scsimods:
+scsimods: A kernel module is a piece of object code that can be dynamically
+scsimods: loaded into the Linux kernel to provide new kernel functions.  These
+scsimods: modules support SCSI interface cards, RAID (both IDE and SCSI), and
+scsimods: non-SCSI CD-ROM drives (like the kind that attach to sound cards).
+scsimods:
+scsimods:
+scsimods:
+scsimods:
+scsimods:
+tcsh:     tcsh 6.07
+tcsh:
+tcsh:     tcsh is an enhanced but completely compatible version of the Berkeley
+tcsh:     UNIX C shell, csh(1). It is a command language interpreter usable both
+tcsh:     as an interactive login shell and a shell script command processor. It
+tcsh:     includes a command-line editor, programmable word completion, spelling
+tcsh:     correction, a history mechanism, job control, and a C-like syntax.
+tcsh:
+tcsh:
+tcsh:
+tcsh:

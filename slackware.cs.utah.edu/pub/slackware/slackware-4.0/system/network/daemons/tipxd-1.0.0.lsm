@@ -1,0 +1,16 @@
+Begin3
+Title:		tipxd
+Version:	1.0.0
+Entered-date:	14JAN99
+Description:	Linux IPX Tunneling Daemon
+Keywords:	Linux IPX Tunneling Daemon
+Author: 	thomash@qualcomm.com (Tom Hendrick)
+Maintained-by:	thomash@qualcomm.com (Tom Hendrick)
+Primary-site:	www.norritt.org /pub/tipxd
+		67400	tipxd-1.0.0.tar.gz
+		473	tipxd-1.0.0.lsm
+Alternate-site: metalab.unc.edu /pub/Linux/system/network/daemons
+		67400	tipxd-1.0.0.tar.gz
+		473	tipxd-1.0.0.lsm
+Copying-policy:	Artistic License
+End

@@ -1,0 +1,13 @@
+Begin3
+Title:		br_map
+Version:	26FEB99
+Entered-date:	26FEB99
+Description:	Keymap definition file for brazilian ABNT-2 keyboards
+Keywords:	loadkeys keyboard keymap
+Author:		true_mind@hotmail.com (Paulo Oliveira Filho)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/keyboards
+                2KB   br_map.tgz
+                382   br_map.lsm
+Platforms:	Linux
+Copying-policy: GPL
+End

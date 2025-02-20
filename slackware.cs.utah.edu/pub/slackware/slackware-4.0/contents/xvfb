@@ -1,0 +1,5 @@
+drwxr-xr-x root/root         0 1999-03-14 18:07 ./
+drwxr-xr-x root/root         0 1998-11-28 21:10 usr/
+drwxr-xr-x root/root         0 1998-11-28 21:11 usr/X11R6/
+drwxr-xr-x root/bin          0 1998-11-28 21:11 usr/X11R6/bin/
+-rwxr-xr-x root/bin    2945310 1998-12-30 07:20 usr/X11R6/bin/Xvfb

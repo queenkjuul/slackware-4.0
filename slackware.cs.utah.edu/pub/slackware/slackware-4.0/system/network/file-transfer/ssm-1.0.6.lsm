@@ -1,0 +1,39 @@
+Begin3
+
+Title:		ssm
+
+Version:	1.0.6
+
+Entered-date:	1-16-98
+
+Description:	ssm (Secure Shell Mirror) is a secure shell script
+		written in Perl5 that mirrors the contents of a local
+		host to a remote host. It is intended to provide a
+		recursive transferr or 'put' of files, links, and
+		directories from a local host to a remote host over
+		the secure channel. It is useful for 'ordinary' users
+		without root privilege or where 'rdist' is not available.
+
+Keywords:	secure shell mirror, rdist
+
+Author:		Michael A. Robinton <michael@bzs.org>
+
+Maintained-by:	Michael A. Robinton <michael@bzs.org>
+
+Primary-site:	sunsite.unc.edu/pub/Linux/system/network/file-transfer/
+		9300	ssm-1.0.5.tar.gz
+		1007	ssm.lsm
+
+Keywords:       secure shell mirror, rdist
+
+Author:         Michael A. Robinton <michael@bzs.org>
+
+Maintained-by:  Michael A. Robinton <michael@bzs.org>
+
+Primary-site:   sunsite.unc.edu/pub/Linux/system/network/file-transfer/
+
+Alternate-site: ftp.bizsystems.com/pub/secure/
+
+Copying-policy:	GPL
+
+End

@@ -1,0 +1,82 @@
+
+From the lsm:
+
+Script language interpreter to automate modem operations such as logging in
+to Internet service providers, BBS's, other systems, etc...  Is a better
+alternative to 'chat'.  Can call pppd, cu, seyon, kermit, sz, rz, etc...
+Has simple BASIC-like syntax, multi-response waitfor, flow control, in-line
+text capture, multi-process control, and lots more.  Replaces dcon0.9* .
+Has much more functionality than dcon0.96.  Comes with script examples to
+easily setup PPP with ISP.
+
+Writing dcon scripts does not require a PHD in Rocket Sciences.  Here's
+a short sample:
+
+#!/usr/local/bin/dcon
+#simplestppp.scr
+let $u="joeuser"
+set echo off
+print "Password :"
+input $p
+set echo on
+open com "/dev/cua1"
+set com 38400n81
+set senddelay 0.05
+:dial
+send "ATX4DT555-1212^m"
+waitfor 60 "connect","busy","no carrier","voice","no dialtone"
+if % = -1 goto timeout
+if % = 0 goto connected
+if % = 1 goto dial
+if % = 2 print "Arrgh! Somebody answered!" goto error
+if % = 3 print "Can't get dial-tone." goto error
+:connected
+let $s1=$mid($time(),11,8)
+get 5 " ^m" $c
+if val($c) < 26400 print "Could not connect at high speed" goto error
+...
+
+
+Bug fixes and improvements:
+
+-- History from included dcon.doc
+
+Wed Jan  1 15:32:04 EST 1997
+   - Made it case independent.
+   - Happy new year!
+   - Indexed labels, major speed improvement.
+
+Mon Dec 30 21:10:46 EST 1996 not distributed
+   - Fixed select() on comfd so that `pppd connect 'dcon script'` works again.
+
+
+Mon Dec 23 16:10:24 EST 1996 not distributed
+ 22 hour session!
+   - Added $right(), $left(), $dirname(), $basename(), $hex(), $hexu(), $oct(),
+     $script(), $tolower(), $toupper(), and verbose() functions.
+   - Added abort, flash, and dump commands.
+   - Fixed #!/usr/local/bin/dcon support.
+   - Fixed re-entrant getstring() bug.
+   - Normalized gettoken() and getstring()
+   - Used getopt() instead of if...else if...else if...
+   - Added 0xffff (hex), 07777 (octal), 0%1111 (binary) notations.
+   - Added [$]a0-z9 variable ranges and managed (Woohee!) to keep it
+     compatible with old syntax.
+   - Only allocate strings as needed.
+   - Much better error reporting and exit code handling.
+   - Created makescript.
+   - Added automatic xterm call in ppp-ex.scr when in X.
+   - Doc: Contents, syntax, error reporting, added new functions, etc...
+
+Wed Dec 11 18:30:42 EST 1996
+   - Changed my E-mail address in doc.
+   - Added a fix to dogoto() so that the label gets printed in log
+     (less confusing to see if a goto or gosub in test executed or not.)
+   - Had lasagna for supper.
+
+Sometime a while ago before I moved (August 1996, I think)
+   - Ansified code and Makefile, contributed by John Gotts.
+     (You guys out there are such purists!  :)
+
+
+Address your questions or comments to Daniel.Chouinard@pwc.utc.com

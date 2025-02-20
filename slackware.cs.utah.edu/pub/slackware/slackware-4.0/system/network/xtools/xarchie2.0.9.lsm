@@ -1,0 +1,32 @@
+Title:          	Xarchie 
+Version:        	2.0.9 
+Desc1:	         	This is just an updated linux-compiled version of xarchie
+Desc2:	         	2.0.9, the latest version, i think (although it was done
+Desc3:						in about October. omes w/a binary & full source & docs.
+Author:65        	looks like	George Ferguson	
+AuthorEmail:     	ferguson@cs.rochester.edu
+Maintainer:     	for this particular linux "port", me...jon Madison 
+MaintEmail:    		jmadison@etsun.tech.iupui.edu 
+Site1:       			sunsite.unc.edu 
+Path1:       			pub/Linux/X11/xapps/networked 
+File1:	          xarchie2.0.9+source.tgz 
+FileSize1:				361552	bytes
+Required1:   			X11R5, Linux...i compiled w/gcc 2.5.8 & libc4.5.19
+Required2:				PC 386/486/Pentium or something of that sort.
+CopyPolicy1:			I didn't see one, & I've seen just about EVERY machine
+CopyPolicy2:			with Gopher, so i'm sure it's okay to have this. :)
+CopyPolicy3:			some of it's BSD stuff, some of it's by the author,
+CopyPolicy4:			but the README tells the story well enough.
+Keywords:      		archie xarchie	X11	xarchie2.0.9	xarchie-2.0.9	
+Comment1:					looks the same as 1.2, BUT this one comes with an	
+Comment2:					app-defaults file (the other one on sunsite doesn't have it)
+Comment3:					so for those like me who are kind of in a hurry, you can	
+Comment4:					change it on your own to make it more readable, more 	
+Comment5:					aesthetically pleasing, etc. :)	it didn't take much to
+Comment6:					recompile, but i did have a little problem w/  the
+Comment7:					regex stuff.  the "magic" fix is in there (nothing really)
+Entered:         	06FEB94
+EnteredBy:      jonM<>< 
+CheckedEmail:    jmadison@etsun.tech.iupui.edu 
+End
+

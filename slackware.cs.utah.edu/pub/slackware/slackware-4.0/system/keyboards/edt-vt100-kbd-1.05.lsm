@@ -1,0 +1,21 @@
+Begin3
+Title:          edt-vt100-kbd
+Version:        1.05
+Entered-date:   16JAN96
+Description:    edt-vt100-kbd are two shell scripts to use Emacs in
+		VAX-VMS-EDT mode under X and Linux.
+		The first script maps your keyboard to VT100 mode under Linux.
+		The second one is a template to setup net transparent
+		usage of Emacs in EDT mode under X, which can be used
+		without a network, too.
+Keywords:       EDT VAX VMS keypad VT100 X
+Author:         kschneid@biologie.uni-erlangen.de (Kurt Schneider)
+Maintained-by:  kschneid@biologie.uni-erlangen.de (Kurt Schneider)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Keyboards
+		73834 edt-vt100-kbd-1.05.tar.gz
+		795   edt-vt100-kbd-1.05.lsm
+Alternate-site: none
+Original-site:  none
+Platform:       X, Linux, GNU Emacs
+Copying-policy: GPL
+End

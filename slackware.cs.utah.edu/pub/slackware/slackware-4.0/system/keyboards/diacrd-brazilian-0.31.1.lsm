@@ -1,0 +1,20 @@
+Begin3
+Title:		diacrd-brazilian
+Version:	0.31.1
+Entered-date:	21March98
+Description:	transforms dead keys (diacritical) of US/PO/ABNT2
+                keyboard for X11 work like keyboards in Window$ 
+		(kernel patch + daemon "diacrd")
+Keywords:	keyboard, international, diacritical, dead keys,
+                portuguese, ABNT
+Author: 	equeiroz@eecs.ukans.edu (Enéas Queiroz)
+Modified-by:	allgood@conection.com.br (Claudemir Todo Bom)
+Maintained-by:	andrewbalsa@usa.net (André Balsa)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Keyboards
+		30kB diacrd-brazilian-0.31.1.tar.gz
+		718 diacrd-brazilian-0.31.1.lsm
+Alternate-site: 
+Original-site:	
+Platforms:	Linux, X11R6, XFree86 3.2 & 3.3
+Copying-policy:	GNU/GPL
+End

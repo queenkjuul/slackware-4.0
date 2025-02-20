@@ -1,0 +1,27 @@
+This directory contains the XFree86 3.3.3 source.  The components are as
+follows:
+
+The full core source is split into three parts:
+
+X333src-1.tar.bz2      The essential parts of the source
+
+The other two archives are not included here, since they are fully
+included in Slackware's X series:
+X333src-2.tar.bz2      Fonts and documentation source
+X333src-3.tar.bz2      Hard-copy documentation
+
+The following contains some non-core clients, and is optional:
+
+X333contrib.tar.bz2    Supported parts of the contrib distribution
+
+For most purposes, X333src-1.tgz can be used alone providing the
+building of fonts is disabled by setting 'BuildFonts' to NO in
+xc/config/cf/host.def.
+
+The source for the extract utility can be found in utils-1.0.0.tar.bz2
+
+These patch files bring this source up to version XFree86-3.3.3.1:
+
+3.3.3-3.3.3.1.diff.gz
+doctools-1.0-1.0.1.diff.gz
+

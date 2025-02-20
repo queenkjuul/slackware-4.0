@@ -1,0 +1,20 @@
+Begin3
+Title:		pop-perl5
+Version:	1.3
+Entered-date:	1999.04.24
+Description:	A simple perl script to retrieve mail from a pop server, 
+		downloading mail to the local mailfile in /usr/spool/mail
+		or by an alternate local agent like procmail or another
+		local file. Requires perl 5
+Keywords:	mail, pop, slip, ppp, term, perl5
+Author:		wmperry@indiana.edu (William M. Perry)
+		bill@goshawk.lanl.gov (Bill Reynolds)
+		sjm@halcyon.com (Steve McCarthy)
+		sven@ping.de (Sven Neuhaus)
+		flynn@engsoc.queensu.ca (Kevin Everets)
+Maintained-by:	flynn@engsoc.queensu.ca (Kevin Everets)
+Primary-site:	metalab.unc.edu /pub/Linux/system/mail/pop
+		17kB pop-perl5-1.3.tar.gz
+Platforms:	perl5
+Copying-policy:
+End

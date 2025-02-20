@@ -1,0 +1,14 @@
+Begin3
+Title:          tixlpq
+Version:        0.3.2
+Entered-date:   JUN97
+Description:    tixlpq is a simple (but very nice) frontend for lpq and lpc.
+Keywords:       X, lpc, lpq, xlpq, printer
+Author:         ingo.voss@t-online.de
+Maintained-by:  ingo.voss@t-online.de
+Primary-site:   No one yet..
+Alternate-site: sunsite.unc.edu/pub/Linux/Incoming
+Original-site:  ...
+Platforms:      Linux with X-Windows and Tcl/Tk with Tix 4.1,
+Copying-policy: GPL
+End

@@ -1,0 +1,7 @@
+( cd usr/sbin ; rm -rf pppd )
+( cd usr/sbin ; ln -sf pppd-2.3 pppd )
+if [ ! -r etc/ppp/options ]; then
+  mv etc/ppp/options.dist etc/ppp/options
+fi
+( cd usr/man/man8 ; rm -rf pppd.8.gz )
+( cd usr/man/man8 ; ln -sf pppd.2.3.8.gz pppd.8.gz )

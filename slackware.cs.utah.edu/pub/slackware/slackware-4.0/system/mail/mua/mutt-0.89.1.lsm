@@ -1,0 +1,17 @@
+Begin3
+Title:          mutt
+Version:        0.89.1
+Entered-date:   31JAN98
+Description:    Mutt is a mail client-reader, it can read, send, &
+                respond to email, like pine, elm, etc.
+                It also has pop3, mailcap, and color support.
+		Compiled elf, no source.
+Keywords:       mail, reader, POP3, MIME...
+Author:         robotti@pop.erols.com (Kent Robotti)
+Primary-site:   http://www.cs.hmc.edu/~me/mutt     <-Mutt home page.)
+                ftp://ftp.cs.hmc.edu/pub/me/mutt   <-Latest Source.)
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/mail/mua
+Platforms:      Linux libc5 elf system.
+Copying-policy: GPL
+End
+

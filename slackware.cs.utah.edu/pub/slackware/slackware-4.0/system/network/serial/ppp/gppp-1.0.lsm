@@ -1,0 +1,16 @@
+Begin3
+Title:		gppp
+Version:	1.0
+Entered-date:	13MAY98
+Description:	GPPP is a ppp setup program with a similar user interface to
+		that of windows' Internet Wizard. 
+Keywords:	ppp pppd chat setup isp dialup gtk
+Author:		htn3463@grace.isc.rit.edu (ndb)
+Maintained-by:
+Primary-site:	ftp://sunsite.unc.edu/pub/Linux/system/network/serial/ppp
+		gppp.tar.gz 170434 Bytes
+Alternate-site: http://freespace.virgin.net/linux.users/Software
+Platforms:	Linux, X11R6
+Copying-policy: Freeware
+End
+

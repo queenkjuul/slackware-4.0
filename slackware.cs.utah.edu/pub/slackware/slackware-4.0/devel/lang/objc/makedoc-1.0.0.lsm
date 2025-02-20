@@ -1,0 +1,14 @@
+
+Begin3
+Title: makedoc
+Version: 1.0.0        
+Entered-date: 01OCT98  
+Description: (old package for) latex documentation generator for objective c
+Keywords: objc, Objective-C
+Author: Greg Franks      
+Maintained-by: stes@can.nl (David Stes) 
+Primary-site: http://sunsite.unc.edu/pub/Linux/devel/lang/objc/
+Platforms: requires Objective-C compiler
+Copying-policy: GPL 
+End
+

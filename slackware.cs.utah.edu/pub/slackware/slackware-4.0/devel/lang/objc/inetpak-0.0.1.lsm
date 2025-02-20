@@ -1,0 +1,14 @@
+
+Begin3
+Title: Inetpak
+Version: 0.0.1        
+Entered-date: 03AUG98  
+Description: Objective C library, abstract Webserver class + supporting objects.
+Keywords: Objective C, objc, socket, network, web server
+Author: stes@can.nl (David Stes)      
+Maintained-by: stes@can.nl (David Stes) 
+Primary-site: http://sunsite.unc.edu/pub/Linux/devel/lang/objc/   
+Platforms: Linux and other Unix, install Objective-C compiler first
+Copying-policy: LGPL 
+End
+

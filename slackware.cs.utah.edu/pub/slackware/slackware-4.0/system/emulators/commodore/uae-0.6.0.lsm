@@ -1,0 +1,16 @@
+Begin3
+Title:          UAE - The Un*x Amiga Emulator
+Version:        0.6.0
+Entered-date:   17JUN1996
+Description:    Mostly complete software emulation of the hardware of an 
+                Amiga 500.
+Keywords:       Amiga UAE emulator emulation 68000 m68k
+Author:         crux@pool.informatik.rwth-aachen.de (Bernd Schmidt)
+Primary-site:   sunsite.unc.edu /pub/Linux/systems/Emulators
+		210kb uae-0.6.0.tar.gz
+Platform:       Needs an image of the Amiga Kickstart ROM, not included for 
+                copyright reasons.
+                Needs X11 or SVGAlib. Versions for Mac, DOS, BeBox, NeXT and
+		the Amiga itself are also available.
+Copying-policy: Copyrighted but freely distributable
+End

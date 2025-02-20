@@ -1,0 +1,35 @@
+Begin2
+Title        = tcsh -- a csh replacement
+Version      = 6.06.00
+Desc1        = Latest version of tcsh
+Desc2        = Binary only
+Desc3        = compiled with -m486 -O2
+Desc4        = read README.linux
+Desc5        =
+Author       = Christos Zoulas
+AuthorEmail  = christos@ee.cornell.edu
+Maintainer   =
+MaintEmail   =
+Site1        = tesla.ee.cornell.edu
+Path1        = /pub/tcsh
+File1        =
+FileSize1    =
+Required1    = libc.so.5.2.18
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  =
+CopyPolicy2  =
+Keywords     = tcsh
+Comment1     = Compiled cleanly out of box
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = July 7, 1996
+EnteredBy    = Jeremy Chadwick
+CheckedEmail = yoshi@crystalis.com
+End
+

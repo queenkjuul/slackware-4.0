@@ -1,0 +1,16 @@
+tar xzvf ImageMagick-4.2.2.tar.gz
+cd ImageMagick-4.2.2
+./configure --prefix=/usr/X11R6 \
+            --includedir=/usr/X11R6/include/X11 \
+            --enable-16bit-pixel \
+            --with-x \
+            --with-frozenpaths=no \
+            --enable-shared \
+            --enable-lzw \
+            --with-perl
+make CFLAGS=-O2
+# make CFLAGS=-O2 install, then mv Magick-config into /usr/doc/ImageMagick-4.2.2,
+# since it's mostly useless.  Doesn't need to be right in the bin dir, in any
+# event.
+# cp -a www/* /usr/doc/ImageMagick-4.2.2
+# cp -a *.txt /usr/doc/ImageMagick-4.2.2

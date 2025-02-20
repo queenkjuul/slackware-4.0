@@ -1,0 +1,17 @@
+Begin3
+Title:          TkSmb
+Version:        0.8.0
+Entered-date:   25DEC98
+Description:    It is Tk frontend for smbclient. It makes simple work with samb
+a. Allow user to browse samba host and workgroups, mount shares.
+Keywords:       TkSmb smbclient samba browser shell Tk
+Author:         ivan@rt.mipt.ru (Ivan Volosuk)
+Maintained-by:  ivan@rt.mipt.ru (Ivan Volosuk)
+Primary-site:   http://www.rt.mipt.ru /frtk/ivan/TkSmb
+                600 Arc/TkSmb.lsm
+		18K Arc/TkSmb-0.8.0.tar.gz
+Alternate-site: 
+Original-site:  http://www.rt.mipt.ru /frtk/ivan/TkSmb
+Platforms:      Linux
+Copying-policy: GPL
+End

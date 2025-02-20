@@ -1,0 +1,25 @@
+Begin3
+Title:		ifmail - FTN package for UN*X - `` TX '' diffs
+Version:	2.14-tx8.10
+Entered-date:	30NOV98
+Description:	FidoNet(r) transport and gateway for UN*X platform.
+		Delivers Fidonet mail packets over telephone lines
+		and TCP/IP connections; converts Fidonet net- and
+		echomail to RFC-822/RFC-1036 compliant mail and news
+		and vice versa.  In cooperation with MTA and netnews
+		packages allows to run a FidoNet node (or point) on
+		a UN*X machine.
+		Official homepage: http://www.average.org/ifmail/
+		The "TX" versions have some improvements over 2.14, like
+		charset support, MIME quoted printable support, better MSGID
+		management, References handling, and some PGP recognition.
+		The diff against plain 2.14 adds those functionalities.
+Keywords:	fidonet,netmail,echomail,mail,news,gateway,MIME,charset,PGP
+Author:		crosser@average.org (Eugene Crosser)
+Maintained-by:	(for the TX ver) Pablo Saratxaga <srtxg@chanae.alphanet.ch>
+Primary-site:	ftp.z2.fidonet.org /pub/linux/Fido/
+		290Kb ifmail-2.14_to_2.14-tx8.10.tgz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/fido
+Platform:	Linux, *BSD, SunOS, SCO, ISC, some others
+Copying-policy:	Free
+End

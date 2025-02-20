@@ -1,0 +1,16 @@
+Begin3
+Title:                updateNFScache
+Version:              1.1
+Entered-date:         19980108
+Description:          keeps in local(-disk) directories most-frequently (better say: recently, in this version) used files from remote dirs (bin, lib, man)
+Keywords:             nfs cache find xargs
+Author:               mmaruska@tin.it     (M Maru¹ka)
+Maintained-by:        mmaruska@tin.it     (M Maru¹ka)
+Primary-site:         sunsite.unc.edu /pub/Linux/system/network/distrib/
+                      updateNFScache-1.0.lsm
+                      updateNFScache-1.0.tgz
+Alternate-site:
+Original-site:  
+Platforms:            UNIX. Tested on Linux
+Copying-policy:       PD
+End

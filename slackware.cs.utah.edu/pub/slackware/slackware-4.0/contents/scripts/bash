@@ -1,0 +1,4 @@
+if [ -r bin/bash ]; then
+  mv bin/bash tmp
+fi
+mv bin/bash.new bin/bash

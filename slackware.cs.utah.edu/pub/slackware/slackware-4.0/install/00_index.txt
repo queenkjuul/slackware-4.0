@@ -1,0 +1,5 @@
+
+fips-20/  This directory contains binaries and documentation for the FIPS
+          utility, which allows you to non-destructively shrink the size of
+          an MS-DOS partition in order to make room for Linux.
+

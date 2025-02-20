@@ -1,0 +1,14 @@
+Begin3
+Title: gcc-2.7.2p.bin.gz
+Version: 2.7.2p
+Entered-date: 1/31/96
+Description: GNU GCC v2.7.2 binaries with Intel Pentium patches applied
+Keywords: pentium 586 gcc      
+Author: jfch@jfch.vc.cvut.cz        
+Maintained-by:
+Primary-site: sunsite.unc.edu/pub/Linux/Incoming  
+Alternate-site: 
+Original-site: ftp.cvut.cz/pub/local/linux/gcc-p5 
+Platform:       
+Copying-policy: GPL
+End

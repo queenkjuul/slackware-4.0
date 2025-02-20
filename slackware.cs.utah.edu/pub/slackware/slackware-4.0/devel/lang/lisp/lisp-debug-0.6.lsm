@@ -1,0 +1,16 @@
+Begin3
+Title:		Lisp Debug
+Version:	0.5
+Entered-Date:	27DEC97
+Description:	Source Level Debugger,stepper profiler for LISP (CMUCL or GCL).
+Keywords:	debugger, stepper , profiler , LISP.
+Author:		mmeertens@akam.be,mmertens@akam.be (Marc Mertens).
+Maintained-by:	mmeertens@akam.be,mmertens@akam.be (Marc Mertens).
+Primary-site:	sunsite.unc.edu /pub/Linux/devel/lang/lisp
+Alternate-site:
+Original-site:  mmeertens@akam.be,mmertens@akam.be
+Platforms:	GCL2.2 or CMUCL 18b needed , TCL 7.6 and TK 4.2 used to develop , but it should work 
+		with higher and lower versions	
+Copying-policy:	GPL
+End
+

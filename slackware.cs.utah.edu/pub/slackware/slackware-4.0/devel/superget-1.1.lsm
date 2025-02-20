@@ -1,0 +1,28 @@
+Begin3
+Title:  supergetopt command-line and general-purpose parser
+Version:  1.1      
+Entered-date: 04FEB99  
+Description:   The supergetopt library makes it very easy to
+	handle all kinds of command-line arguments in a printf()
+	sort of way. All styles of command-line args are supported
+	and all arguments are checked for type validity.
+		
+	Example: Add this line to your main program: 
+		supergetopt( argc, argv, "AnyStyleFlag:%d%f%s", yourFunction, NULL);	
+		and write the yourFunction( int *i, float *f, char *s )
+		function and you're done.
+		
+	If you have been searching for an easy-to-use, flexible,
+	portable command-line and general-use parser, this is it!
+ 
+Keywords:   command, line, parser, argc, argv, argument     
+Author:     apr@planet.net (A.P. Russo)    
+Maintained-by:  apr@planet.net (A.P. Russo)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel
+                20.8 K /pub/Linux/devel/superget-1.1.tgz
+Alternate-site: 
+Original-site:  sunsite.unc.edu
+Platforms:      Linux, SunOS, BSD, UNIX, Windows
+Copying-policy: LGPL
+End
+

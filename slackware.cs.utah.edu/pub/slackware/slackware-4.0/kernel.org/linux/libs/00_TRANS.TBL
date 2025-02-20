@@ -1,0 +1,4 @@
+F 00_INDEX.TXT                      	00_index.txt
+L GLIBC                             	glibc	../../software/libs/glibc
+D PAM                               	pam
+D SECURITY                          	security

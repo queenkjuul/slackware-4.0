@@ -1,0 +1,1414 @@
+  java-linux@java.blackdown.org FAQ
+  by Stephen Wynne
+  September 12, 1998
+
+  This document attempts to answer the most commonly-asked questions on
+  the java-linux@java.blackdown.org mailing list. Its focus is the
+  Blackdown JDK. More information on running Java on Linux is available
+  at http://www.blackdown.org/java-linux.html.
+  ______________________________________________________________________
+
+  Table of Contents:
+
+  1.      Introduction to the Blackdown JDK and Mailing List User Guide
+
+  1.1.    What is the Blackdown JDK?
+
+  1.2.    Suggestions for List Participants
+
+  1.3.    How can I get subscribed? Unsubscribed?
+
+  1.4.    Where Can I Find Archived Postings from this List?
+
+  2.      Could You Give Me An Overview of Running Java on Linux?
+
+  2.1.    What is the Currently-supported Version of the Blackdown JDK?
+
+  2.2.    What System Configuration do I Need to Run the JDK?
+
+  2.3.    OK, Which Version of the JDK Should I Download?
+
+  2.3.1.  JDK 1.02
+
+  2.3.2.  JDK 1.1
+
+  2.4.    What Are These Files?
+
+  2.5.    What Other JDK Ports are Available for Linux?
+
+  2.6.    There's a pure Java Package I Want to Run. Can I?
+
+  2.7.    When is the JDK 1.2 Going to be Released for Linux?
+
+  2.8.    Can I Take a Look at the JDK 1.2 Now Anyway?
+
+  2.9.    Is Javasoft Going to Support Java on Linux?
+
+  2.10.   What are Green Threads?
+
+  2.11.   Is There a Native Threads Port of the Blackdown JDK?
+
+  2.12.   Does Javasoft's Activator JVM work on Linux with Netscape?
+
+  2.13.   Is there a JIT (Just in Time Compiler) for the Blackdown JDK?
+
+  2.14.   What Other Java Resources are Available at Blackdown?
+
+  2.15.   Other Sources of Information about Java on Linux
+
+  3.      Blackdown JDK Installation Questions
+
+  3.1.    Where to obtain JDK 1.02 and 1.1?
+
+  3.2.    How Do I Install the JDK?
+
+  4.      Troubleshooting the Blackdown JDK on Linux
+
+  4.1.    Typical Questions to Ask Yourself When Debugging Problems
+
+  4.2.    Where Can I Report Bugs?
+
+  4.2.1.  What Should I Report?
+
+  4.3.    Are There Any Debugging Techniques I Can Try Myself?
+
+  4.4.    That Didn't Help. What Else Can I Do?
+
+  5.      Details on Running The Blackdown JDK
+
+  5.1.    I'm on <your favorite Linux distribution here> What Do I Need?
+
+  5.1.1.  The glibc versus libc5 Problem
+
+  5.1.2.  RedHat Installation Tips
+
+  5.1.2.1.        RedHat RPM Availability
+
+  5.1.2.2.        RedHat/RPM Environment Variable Issues
+
+  5.1.3.  Debian
+
+  5.1.4.  Slackware
+
+  5.1.5.  Other Linux Distributions
+
+  5.2.    Is There Anything Different About Native Interfaces on Linux?
+
+  5.2.1.  Compiling Library Code for JNI
+
+  5.3.    Is There a Problem with Green Threads and the JVM Invocation
+  API?
+
+  5.3.1.  Green Threads and Wrapped System Services
+
+  5.3.2.  Hacking Around the System Service Wrappers
+
+  5.4.    Kaffe and the Blackdown JDK 1.1 are Installed. Neither Work!
+
+  5.5.    I Have the Blackdown JDK 1.1.x and RMI is Giving Me Fits!
+
+  5.6.    Help, I've Upgraded to ld.so-1.9.9 and Now the JDK Coredumps!
+
+  5.7.    What's Wrong with Thread Priorities and the Console?
+
+  5.8.    Help, Java Said it Ran out of Memory!
+
+  5.9.    How Do I Add Swap Space?
+
+  5.10.   Can I Display and Input Kanji with the Blackdown JDK?
+
+  5.10.1. Library Issues
+
+  5.10.1.1.       Libc5 Systems
+
+  5.10.1.2.       Libc6 (glibc) Systems
+
+  5.10.2. Entering Two Byte Kanji with XIM
+
+  6.      Questions about Non-i386 Blackdown JDK Ports
+
+  6.1.    What's the Status of the SPARC Port?
+
+  6.2.    Is there an Alpha Port?
+
+  6.3.    Is there a PowerPC Port?
+
+  7.      General Questions about Java
+
+  7.1.    Where Can I Learn More about Java?
+
+  8.      General Questions about Linux
+
+  8.1.    Where Can I Find Linux FAQs, Mailing Lists, and Documentation?
+
+  8.2.    What is glibc, and Why Does it Matter?
+
+  9.      Compiling the Blackdown JDK from Source
+
+  9.1.    Can I Build Java Myself?
+
+  9.2.    Could You Give Me a Pointer to Sun's Licensing Agreement?
+
+  9.3.    How do I Build the JDK Now that I Have the Source?
+
+  9.4.    What about Motif? Don't I Need That?
+
+  9.5.    When I Build and Install, I Get Unsatisfied Link Errors at
+  Runtime!
+
+  9.6.    Can I Try Builds of the Latest JDK Port in Development?
+
+  10.     About the People Behind the Blackdown JDK
+
+  10.1.   Who Ported the Blackdown JDK?
+
+  10.2.   Who is Steve Byrne?
+
+  10.3.   Who is Karl Asha?
+
+  11.     Information on the Java-Linux FAQ Itself
+
+  11.1.   Who Maintains the FAQ?
+
+  11.2.   Where Can I Get a Copy of the FAQ?
+
+  11.3.   Please Help the FAQ Maintainer!
+
+  11.4.   Are there Any Plans for Automating the FAQ?
+
+  11.5.   Caveat Emptor
+
+  11.6.   Terms of Use
+
+  11.7.   Acknowledgements
+  ______________________________________________________________________
+
+  $Id: FAQ-java-linux.sgml,v 1.106 1998/09/12 20:24:00 stevemw Exp stevemw $
+
+  1.  Introduction to the Blackdown JDK and Mailing List User Guide
+
+  1.1.  What is the Blackdown JDK?
+
+  The Blackdown JDK is one of the ports of Sun's Java Developer's
+  Toolkit to Linux. The JDK includes the basic tools needed for
+  developing and running Java applications, including (among other
+  things) the following:
+
+  o  A Java Virtual Machine, or JVM. The virtual machine interprets and
+     executes Java byte codes (a more condensed, intermediate form for
+     Java instructions) inside a software-only machine. In other words,
+     the JVM emulates a hardware platform, including registers, program
+     counter, and so forth.
+
+  o  A Java compiler, which takes a text file containing Java syntax and
+     transforms it into Java byte codes.
+
+  o  An appletviewer for executing Java applet code.
+
+  o  A Java debugger.
+
+  o  Example Java programs.
+
+  o  The Java 1.1 class library, including platform-independent library
+     source.
+
+  o  A tool for creating and managing Java security keys.
+
+  o  A remote method stub and skeleton generator.
+
+  o  A registry server for remote method invocations.
+
+  o  C and C++ headers for extending the JVM with interfaces to native
+     code.
+
+  o  Native libraries for the platform-dependent portions of the JVM,
+     including AWT layer above Motif and X11.
+
+  o  Native libraries for embedding a JVM in other native applications.
+
+     There are static and dynamic versions of the core Java binaries, as
+     well as versions compiled with and without debugging symbols.
+     Documentation for the JDK APIs is available separately from
+     Javasoft at http://www.javasoft.com/docs/.
+
+  For information on the Blackdown JDK porting project itself, including
+  who the major contributors have been, please see section ``Who Ported
+  the Blackdown JDK?'' .
+
+  1.2.  Suggestions for List Participants
+
+  o  Please read http://www.place.org/~stevemw/java/FAQ/README.linux
+     (also found in the Blackdown JDK distribution).
+
+  o  Choose a descriptive Subject: line for your mail.
+
+  o  When reporting problems, please follow the guidelines in section
+     ``What Should I Report?''.
+
+  o  Posts with lines wrapped at 75-80 characters are easier to read!
+
+  o  Spamming the list or using members' E-mail addresses for commercial
+     purposes is forbidden.
+
+  o  Some list users may ignore messages created in HTML or that include
+     proprietary attachments.
+
+  o  Do not followup improper postings to the entire list; copy only the
+     sender and karl@blackdown.org, the list administrator.
+
+  o  Please avoid inflammatory language.
+
+  1.3.  How can I get subscribed? Unsubscribed?
+
+  Please don't send E-mail directly to the list requesting these status
+  changes! Visit http://www.blackdown.org/java-linux.html and follow the
+  links to instructions or use the links provided in the next paragraph.
+
+  The following URL would work in Netscape Mail to subscribe you: java-
+  linux-request@java.blackdown.org?subject=subscribe
+
+  And this should unsubscribe: java-linux-
+  request@java.blackdown.org?subject=unsubscribe
+
+  1.4.  Where Can I Find Archived Postings from this List?
+
+  Karl Asha has arranged for the list to be archived here:
+  http://www.mail-archive.com/java-linux@java.blackdown.org/.
+
+  2.  Could You Give Me An Overview of Running Java on Linux?
+
+  Running Java on Linux is about what you'd expect. You should be able
+  to run most "pure Java" applications on the Linux JDK or JRE. It does
+  take a little longer to get the latest JDK on a target that Javasoft
+  doesn't officially support. Also, the JVM currently only uses green
+  threads. See section ``What are Green Threads?''.
+
+  2.1.
+
+  What is the Currently-supported Version of the Blackdown JDK?
+
+  At the time of this writing, the latest supported Blackdown JDK
+  version is 1.1.6v2. Please see section ``Where to obtain JDK 1.02 and
+  1.1?''  for places to download. To determine your version, use this
+  command:
+
+  ______________________________________________________________________
+  $ java -version
+  ______________________________________________________________________
+
+  2.2.  What System Configuration do I Need to Run the JDK?
+
+  This is only a basic summary. The Alpha, SPARC, and PPC platforms may
+  have different requirements, for example.
+
+  1. A supported platform running regular, 32-bit Linux is required. See
+     section ``OK, Which Version of the JDK Should I Download?'' for
+     details.
+
+  2. You need at a minimum, 20MB of free virtual memory to run the JDK.
+     See section ``How Do I Add Swap Space?'' for more information.
+
+  3. Including HTML documentation and i18n.jar, JDK 1.1.6 i386 glibc
+     version takes 34MB of free space. You can make it smaller by
+     removing these and the demos.
+
+  4. To run AWT, you'll need X11 up and running.
+
+  5. Sound cards are supported but not required.
+
+  2.3.  OK, Which Version of the JDK Should I Download?
+
+  This section closely matches the organization of the Blackdown
+  distribution mirror hierarchy. This part of the FAQ is rather thin on
+  details at the moment, but it should help you to see which archive to
+  retrieve. You may also be interested in reading section ``What System
+  Configuration do I Need to Run the JDK?'' above.  After reading this,
+  if you're still wondering which individual archive to download, please
+  see ``What Are These Files?'' below.
+
+  2.3.1.  JDK 1.02
+
+  The Blackdown version of the JDK is only supported on Intel. If you
+  know of other Linux platforms to which the JDK has been ported, please
+  tell the FAQ maintainer. Look for the mirror closest to you by
+  following instructions in section ``Where to obtain JDK 1.02 and
+  1.1?''.
+
+  2.3.2.  JDK 1.1
+
+  o  Alpha
+      ................................ alpha/
+
+  o  Intel x86
+      ................................ i386/
+
+  o  SPARC
+      ................................ sparclinux/
+
+  o  PowerPC
+      ................................ mklinux/
+
+  o  Patches to Javasoft Source, etc...
+      ................................ common/
+
+     You may wish to read section ``What is glibc, and Why Does it
+     Matter?''  to help you understand which Intel JDK to download.  To
+     just run the JDK, you don't need anything out of common/.  Those
+     diff(1) files are for people who want to request free access to the
+     SPARC/x86 Solaris and i386 Win32 sources from Sun and help with the
+     port. See section ``Compiling the Blackdown JDK from Source'' for
+     more information.
+
+  2.4.  What Are These Files?
+
+  By now, many readers are still wondering what each archive in the
+  mirror directories is. Below is a representation of what your favorite
+  web browser would have displayed if you were visiting a Blackdown JDK
+  mirror recently.
+
+  ______________________________________________________________________
+  Current directory is /pub/java/JDK-1.1.6/i386/glibc/v2
+
+  Up to higher level directory
+    i18n1.1.6-v2-glibc.tar.gz  2485 Kb    Fri Jun 19 21:56:00 1998...
+    jdk1.1.6-v2-glibc.tar.gz  11734 Kb    Fri Jun 19 21:56:00 1998...
+    jre1.1.6-v2-glibc.tar.gz   6089 Kb    Fri Jun 19 21:56:00 1998...
+    rt1.1.6-v2-glibc.tar.gz    3603 Kb    Fri Jun 19 21:56:00 1998...
+  ______________________________________________________________________
+
+  At this point, you've already decided that your system is based on
+  glibc (perhaps by reading ``What is glibc, and Why Does it Matter?'').
+  Now you'd like to know what these four files do for you, and which
+  ones you should download.
+  1. jdk. The JDK contains everything you need to run Java, compile
+     Java, and debug java. It doesn't contain the international
+     character converters (see i18n).
+
+  2. jre. The JRE is the Java runtime environment, including the
+     international character converters.
+
+  3. rt. The Java RT is the minimal configuration you can have to run
+     Java. It doesn't contain any internationalization support.
+
+  4. i18n. This contains font mappings and a JAR file containing the
+     international character converters, and really doesn't need to be
+     split off by library type, but is anyway.
+
+  2.5.  What Other JDK Ports are Available for Linux?
+
+  Please see section ``Questions about Non-i386 Blackdown JDK Ports''
+  for more information.  http://www.blackdown.org/java-linux/ports.html.
+
+  2.6.  There's a pure Java Package I Want to Run. Can I?
+
+  Most likely. For example, I've tested Javasoft's JFC SwingSet (see
+  http://java.sun.com/products/jfc/) with a static Motif build and a
+  Lesstif build with good results.
+
+  This typically involves downloading the package and untarring or
+  unzipping it. Sometimes the vendor won't provide an installation
+  procedure that works well on Linux, and so you have to adjust a script
+  or do it by hand.
+
+  2.7.  When is the JDK 1.2 Going to be Released for Linux?
+
+  According to Steve Byrne on Monday, May 26th 1998:
+
+       JavaSoft is trying very hard to get a license set up with an
+       external person to coordinate the 1.2 Linux porting effort.
+       The plan is not to have to wait until 1.2 ships, but to get
+       things underway much sooner (1.2 is huge, and involves lots
+       more machine specific components, and will take a while to
+       port).
+
+  2.8.  Can I Take a Look at the JDK 1.2 Now Anyway?
+
+  Yes, just run unzip on the Solaris shell script archive; it'll unpack
+  it for you. You can then unpack the src.zip archive. Also, you can
+  already get the documentation from Javasoft from
+  http://www.javasoft.com/docs/index.html.
+
+  2.9.  Is Javasoft Going to Support Java on Linux?
+
+  We don't know yet. At the time of this writing, bug 4097810 was at the
+  top of the JDC Bug Parade. You can read about it at:
+  http://developer.java.sun.com/developer/bugParade/bugs/4097810.html.
+
+  There are a number of complex issues involved with this request,
+  including the wide variety of Linux distributions, target
+  architectures (beyond Intel where Javasoft already supports Solaris
+  x86), the huge number of announced APIs with required native support,
+  and so forth.
+
+  2.10.  What are Green Threads?
+
+  Green threads use some magic with jmp_bufs, stack pointers, the
+  program counter, and some other hocus pocus to schedule different
+  instruction streams. This gives the practical effect of multi-
+  threading with some caveats about signals and how they're handled
+  across longjmp()s. See the discussion of native threads in section
+  ``Is There a Native Threads Port of the Blackdown JDK?''.
+
+  Jon Waette <hplus@zilker.net>, has a brief synopsis of green threads
+  at http://www.zilker.net/~hplus/jvm.html. He states:
+
+       Sun's Java VM as running on Solaris [without the native
+       threads package] used a user-level thread package named
+       Green Threads.  This is strictly a collaborative threading
+       package; the JVM is one system process and only executes one
+       Java code stream at a time.
+
+       This is convenient for implementors, because special
+       operations that required nobody else to touch sensitive data
+       are intrinsically protected. As long as you don't relinquish
+       the CPU (and block signals) you're in no danger.
+
+       If you do a [System.in.readLine()], the JVM will sit in the
+       blocking input call until input is available; nothing else
+       will happen in your program.
+
+  If anyone has a clearer explanation of this than the FAQ maintainer's,
+  please contribute.
+
+  2.11.  Is There a Native Threads Port of the Blackdown JDK?
+
+  Not at this time. Karl Asha has this to say:
+
+       Native threading in the jdk is partially a dream. There's a
+       lot of problems with linux's pthreads implementation for
+       starters, and second it'll take a reasonable effort to get
+       them into the jdk itself.
+
+  2.12.  Does Javasoft's Activator JVM work on Linux with Netscape?
+
+  Take a look at http://www.blackdown.org/activator/.
+
+  2.13.  Is there a JIT (Just in Time Compiler) for the Blackdown JDK?
+
+  There are several. Please take a look at
+  http://www.blackdown.org/java-linux/javatools.html for pointers.
+
+  Alexander Davydenko <alex@Javad.Ru> posted an updated configure script
+  to install TYA that this author hasn't tested. You can read his post
+  at http://www.mail-archive.com/java-
+  linux@java.blackdown.org/msg00126.html
+
+  2.14.  What Other Java Resources are Available at Blackdown?
+
+  Karl Asha's Blackdown server, http://www.blackdown.org/java-
+  linux.html, has a number of resources. Among other things, Karl
+  provides the following pointers:
+
+  o  Recent news about running Java on Linux:
+     http://www.blackdown.org/java-linux/info.html
+
+  o  Javasoft-supplied products: http://www.blackdown.org/java-
+     linux/products.html
+  o  The Blackdown port of the Java Activator Plugin for Netscape:
+     http://www.blackdown.org/activator/
+
+  o  Java Tools: http://www.blackdown.org/java-linux/javatools.html
+
+  o  Information about Third-party Java products running on Linux:
+     http://www.blackdown.org/java-linux/otherproducts.html
+
+  2.15.  Other Sources of Information about Java on Linux
+
+  o  Luiz Otavio Lautenschlaeger Zorzella has a general "Java on Linux
+     FAQ" at http://nr.conexware.com/~zorzella/wine/FAQ2.htm
+
+  o  Paul Cho has an up-to-date Linux/Java page worth reading often:
+     http://www.w3com.com/paulcho/javalinux/
+
+  o  Professor Sergey Nitikin's Linux/Java News:
+     http://www.public.asu.edu/~nikitin/JavaOnline/
+
+  3.  Blackdown JDK Installation Questions
+
+  3.1.  Where to obtain JDK 1.02 and 1.1?
+
+  Please visit http://www.blackdown.org/java-linux/mirrors.html and
+  select the site nearest you. Both Randy Chapman's JDK 1.02 and Steve
+  Byrne's JDK 1.1.x are found on participating mirror sites. Check
+  section ``What is the Currently-supported Version of the Blackdown
+  JDK?''  for the currently supported version the Blackdown JDK.
+
+  3.2.  How Do I Install the JDK?
+
+  1. Download the tar(1) archive for your platform as directed by the
+     mirror list mentioned in section ``Where to obtain JDK 1.02 and
+     1.1?''.
+
+  2. Move to an appropriate directory and for example, unpack the tar(1)
+     archive as follows:
+
+     ___________________________________________________________________
+     $ cd /usr/local
+     $ tar zxvf /tmp/jdk1.1.6.tar.gz
+     ___________________________________________________________________
+
+  3. Make sure your DISPLAY environment variable is set, put the
+     resulting directory into your execution path, and try something:
+
+     ___________________________________________________________________
+     $ export DISPLAY=:0
+     $ export PATH=/usr/local/jdk1.1.6/bin:$PATH
+     $ appletviewer \
+         /usr/local/jdk1.1.6/demo/awt-1.1/lightweight/OpenlookButtons/example.html
+     ___________________________________________________________________
+
+  Note that the above examples assumed you were using the Bash shell,
+  such as /bin/bash. Also note that if you already have a CLASSPATH set,
+  you'll probably want to append .:/usr/local/jdk1.1.6/lib/classes.zip:
+  to that environment variable.  This ensures that you have the current
+  working-directory in your class search path, and makes things much
+  easier for you as you test your code.
+
+  Of course you may want to add these environment commands to your
+  shell's startup script, such as $HOME/.bashrc.
+
+  Some people may wish to set JAVA_HOME themselves. That way, you can
+  change all commands following setting that to use it instead, such as
+
+  ______________________________________________________________________
+  $ export JAVA_HOME=/usr/local/jdk1.1.6
+  $ export PATH=$JAVA_HOME/bin:$PATH
+  $ export CLASSPATH=.:$JAVA_HOME/lib/classes.zip
+  ______________________________________________________________________
+
+  4.  Troubleshooting the Blackdown JDK on Linux
+
+  4.1.  Typical Questions to Ask Yourself When Debugging Problems
+
+  o  Does your system hardware and software satisfy the minimum
+     requirements? See section ``What System Configuration do I Need to
+     Run the JDK?''.
+
+  o  Are you running the current version?  You can find that information
+     in section ``What is the Currently-supported Version of the
+     Blackdown JDK?''.
+
+  o  Have you checked to see if your libc, glibc, and X11 libraries
+     could be the problem? See section ``Details on Running The
+     Blackdown JDK''.  If you learn something we can add to there,
+     please post them!
+
+  o  Environment Variables.
+
+     Here are the top candidates for problems:
+
+  o  CLASSPATH
+     Should either be unset or start with .:$JAVA_HOME/lib/classes.zip.
+
+  o  PATH
+     Should include $JAVA_HOME/bin -- ahead of /usr/bin where Kaffe
+     often lives, please!
+
+  o  JAVA_HOME
+     This should be set to your top-level JDK directory.
+
+  o  JDK_HOME
+     Although the JDK doesn't need this, it ought to be set to your top-
+     level JDK directory (if at all). HotJava uses this environment
+     variable, as do other packages other than the JDK.
+
+  o  Are all the required X11 fonts installed?
+     This is a subtle area of concern. People have experienced crashes
+     from not having 75dpi fonts installed.
+
+  o  Are your font and localization properties correct?
+     Another area that is difficult to troubleshoot. I hope to add more
+     information here soon!
+
+  4.2.  Where Can I Report Bugs?
+
+  Karl Asha has setup a Jitterbug problem-report form at
+  http://www.blackdown.org/cgi-bin/jdk. Please report problems by
+  filling this in as best you can. There are some guidelines for this in
+  section ``What Should I Report?''.
+
+  Before submitting a bug, you may be able to help by visiting
+  Javasoft's Bug Parade at
+  http://developer.java.sun.com/developer/bugParade/bugs/ and checking
+  for related problems. If you mention a bug from a JDC bug ID in your
+  problem report, it can help Blackdown JDK developers.  At this time,
+  you will have to join the JDC in order to search this database.
+
+  As usual, feel free to open a discussion about your problems on the
+  java-linux@java.blackdown.org mailing list.
+
+  4.2.1.
+
+  What Should I Report?
+
+  Although it may not seem so, solving Linux JDK problems can sometimes
+  be difficult because of the large variation of systems that are in
+  use. Please do your best when reporting a bug to tell us all about
+  your system, the code you're running, and anything else that can help.
+  Here's a checklist of items to mention.
+
+  1. A careful synopsis of the problem.
+
+  2. Which JDK you're using. Type java -version to see.
+
+  3. Your Linux distribution (i.e. RedHat) and its version.
+
+  4. The LibC version you're using. Type ldconfig -D 2>&1 | grep libc |
+     tail -1 to see.
+
+  5. The loader you're running. Type ldconfig -D 2>&1 | grep ld | tail
+     -1 to see.
+
+  6. XFree86 Version. Type xdpyinfo | grep 'release number' to see.
+
+  7. The version of the Linux kernel you're running. Type uname -r to
+     see.
+
+  8. JDC BugID if you've found one.
+
+  9. A URL where with some related Java code or binary data.
+
+  10.
+     Your assessment of the problem's priority.
+
+  4.3.  Are There Any Debugging Techniques I Can Try Myself?
+
+  Try running the JDK java, appletviewer, and javac wrapper scripts like
+  this:
+
+  ______________________________________________________________________
+  $ sh -x $JAVA_HOME/bin/java -verbose -verbosegc -cs -verify ...
+  ______________________________________________________________________
+
+  or this:
+
+  ______________________________________________________________________
+  $ strace -f -s 256 $JAVA_HOME/bin/java ...
+  ______________________________________________________________________
+
+  That last command will be very noisy, but you may be surprised what
+  you learn from reading it.
+
+  4.4.
+
+  That Didn't Help. What Else Can I Do?
+
+  We've created a troubleshooting information collection script that you
+  can download from http://www.place.org/~stevemw/java/FAQ/java-linux-
+  info.sh and follow the instructions at the top of it. Mail its output
+  to stevemw@place.org.
+
+  5.
+
+  Details on Running The Blackdown JDK
+
+  5.1.  I'm on <your favorite Linux distribution here> What Do I Need?
+
+  5.1.1.  The glibc versus libc5 Problem
+
+  The latest versions of the Blackdown JDK have their own built-in
+  loader (libdl.so) and libc.so, which will hopefully make them more
+  robust in most cases. Older versions of the JDK 1.1.5 (especially) are
+  much more sensitive. Take a look in $JAVA_HOME/i386/green_threads/ to
+  see these files.  (You may remove them if you feel they are a source
+  of trouble to you.)  Karl Asha maintains a list of JDK-related library
+  issues at: http://www.blackdown.org/java-linux/docs/libraries.html.
+  In short, you need glibc-2.0.7 and glibc-devel-2.0.7 or higher on a
+  glibc-based system such as RedHat 5.0 or Debian 2.0.  There are RPMs
+  for these on RedHat Intel systems at
+  ftp://ftp.redhat.com/pub/redhat/current/updates/i386.
+
+  For a libc5 system, you need libc.so.5.44 or greater, along with a
+  recent libdl.so. You can find these at
+  ftp://tsx-11.mit.edu/pub/linux/packages/GCC.
+
+  For an in-depth discussion of this issue, see section ``What is glibc,
+  and Why Does it Matter?''.
+
+  5.1.2.  RedHat Installation Tips
+
+  Download the glibc and ld updates described under
+  http://www.redhat.com/support/docs/errata.html.
+
+  5.1.2.1.  RedHat RPM Availability
+
+  According to Sorin Lingureanu <sorin@tuiasi.ro>, JDK RPMs are to be
+  found in ftp://ftp.redhat.com/pub/contrib.  Levente Farkas has more
+  information about running the Blackdown JDK on RedHat here:
+  http://anna.inf.u-szeged.hu/java/java-rpm.html.
+
+  5.1.2.2.  RedHat/RPM Environment Variable Issues
+
+  In addition to the general problems described in section ``Environment
+  Variables'', make sure that you don't have conflicting JDK_HOME,
+  JAVA_HOME, and CLASSPATH environment variables set from scripts
+  sourced from /etc/profile.d/ at login. This can especially be a
+  problem when trying multiple versions of the JDK in succession.
+
+  5.1.3.  Debian
+
+  Paul Reavis <preavis@partnersoft.com> has an excellent page with
+  details at http://www.partnersoft.com/~reavis/java/Debian-JDK.html.
+
+  5.1.4.  Slackware
+
+  In JDK versions 1.1.5 through 1.1.6v2 we've seen a problem with
+  libc.so and libdl.so shipped with the JDK in
+  $JAVA_HOME/lib/i386/green_threads conflicting with the system. Try
+  removing these and then running Java.
+
+  Please help by posting your experiences with the Blackdown JDK on
+  Slackware.
+
+  5.1.5.  Other Linux Distributions
+
+  Check with http://nr.conexware.com/~zorzella/wine/FAQ2.htm to see if
+  Luiz Otavio Lautenschlaeger Zorzella has additional information that
+  applies to your platform.
+
+  You're welcome to contribute what you know to the FAQ.
+
+  5.2.  Is There Anything Different About Native Interfaces on Linux?
+
+  Not really. The compilation flags may need to be different from what
+  Javasoft recommends in the Solaris-oriented documentation. Also, there
+  is a known problem with all green threads implementations and the JVM
+  Invocation API, discussed in section ``Is There a Problem with Green
+  Threads and the JVM Invocation API?''.
+
+  There have been reports of problems with C++ IOStreams using
+  libstdc++-2.7.x. Note that g++-2.8.1 and libstdc++-2.8.1 have been
+  tested, and seem to work fine for several users on RedHat 5.0.
+
+  5.2.1.  Compiling Library Code for JNI
+
+  Ed Roskos <roskos@bellatlantic.net> gives us these instructions for C
+  JNI:
+
+       I've written a few shared libraries for use under both Linux
+       and Solaris, and since a few people are curious about this,
+       here goes:
+
+       1. Make sure you have run javah. Plenty of documentation on
+          this exists.
+
+       2. You must first compile your C source files to object
+          files, which end in ".o". Example:
+           gcc -fPIC -c -I<java-header-path> file1.c -o file1.o
+          You must replace <java-header-path> with the path to the
+          include files for java-linux.
+
+       3. Create your library. This is not the same as creating an
+          executable.  Under Linux, use:
+          ld -shared file1.o -o libMyLib.so
+          If you have more than file1.o, just list them after
+          file1.o.
+
+       You can then, from Java, load your library as
+       System.loadLibrary("MyLib");
+
+       Hope this helps.
+
+       Ed Roskos roskos@bellatlantic.net
+
+  And  Duncan Roe <dunc@dimstar.cvsi.com> points us to the Texinfo docu-
+  mentation for GNU C, and argues that -fPIC only makes a difference on
+  the m68k, m88k and the Sparc.  Evidently -fpic works in some cases
+  (ELF?) on x86.
+
+  5.3.  Is There a Problem with Green Threads and the JVM Invocation
+  API?
+
+  Yes, there's a known problem with Javasoft's user-level threads
+  package (called green threads) and the Invocation API because of the
+  way it wraps system calls. See section ``What are Green Threads?'' for
+  more information on green threads.
+
+  5.3.1.  Green Threads and Wrapped System Services
+
+  Uncle George, Juergen Kreileder, and Bernd Kreimeier have encountered
+  this problem, and through their discussion of it we have this list of
+  references to consult for more information:
+
+  o  JDC Bug Parade bug ID at
+     http://developer.java.sun.com/developer/bugParade/bugs/4040743.html
+
+  o  The Java Tutorial under "Invoking the Java Virtual Machine" at
+     http://java.sun.com/docs/books/tutorial/native1.1/implementing/
+
+  o  Rob Gordon's excellent Essential JNI published in 1998 by Prentice
+     Hall PTR, ISBN 0-13-679895-0
+
+     Gordon suggests in Essential JNI on page 260 that:
+
+       When building a Java-enabled application on Solaris and
+       linking against the green threads version of libjava.so, you
+       must defer system calls until after the call to JNI_Create-
+       JavaVM. This is because the user-level threads package in
+       libjava.so (green threads) defines its own system calls . .
+       .
+
+  And the JDK 1.1 Tutorial suggests that, "The first step toward getting
+  this to work is always to link libjava.so into the executable *first*,
+  even before libc.so . . ."
+
+  5.3.2.  Hacking Around the System Service Wrappers
+
+  On June 21, 1998 Uncle George posted these paraphrased comments:
+
+       Actually, library calls are overridden, not system-calls. If
+       you are savvy enough, you can call the system service your-
+       self, and forget the library interface (i.e. instead of
+       using select, try __select). But in doing so, the green
+       threading . . . can be compromised, i.e. other threads won't
+       be runnable until that service completes.
+
+       The malloc()/free() bogus pointer messages are problems in
+       trying to free a pointer twice, of which some "MALLOC"
+       packages get terminally upset with . . .
+
+  You may also be interested in the discussion of native threads in
+  section ``Is There a Native Threads Port of the Blackdown JDK?''.
+
+  5.4.  Kaffe and the Blackdown JDK 1.1 are Installed. Neither Work!
+
+  After running
+
+  javac HelloWorld.java
+
+  and seeing this message:
+
+  Failed to open object 'HelloWorld/java'
+
+  Other people have reported error messages such as these:
+
+  $ javac
+  Failed to locate native library in path:
+          /usr/lib
+  Aborting.
+
+  Daniele Lugli <danlugli@tin.it> reports:
+
+   ...The javac which was giving the problem was /usr/bin/javac,
+  that is the kaffe javac. Now that I moved $JAVA_HOME/bin
+  ahead in my $PATH, both javac and java work, and I see a
+  wonderful "Hello, World!".
+
+  In other words, always check for conflicting environment variable
+  problems.  For details on how to do this, see section ``Environment
+  Variables''.
+
+  A very common cause for problems with Kaffe is having /usr/bin in your
+  path ahead of $JAVA_HOME/bin.
+
+  5.5.  I Have the Blackdown JDK 1.1.x and RMI is Giving Me Fits!
+
+  Rich McClellan <richmc@entropy.ucsc.edu> reports that running the
+  Blackdown JDK 1.1.5v7libc works better than the glibc version, and
+  forwards this advice from Alexander V. Konstantinou
+  <akonstan@cs.columbia.edu>:
+
+  The problem is related to naming in /etc/hosts. This is a
+  known Java problem in picking up the right name for the
+  interface. Change the localhost name to your real machine
+  name. This may cause problems with talk though ...
+
+  5.6.  Help, I've Upgraded to ld.so-1.9.9 and Now the JDK Coredumps!
+
+  Slackware users have found that removing the libdl.so.*  and libc.so.*
+  files from $JAVA_HOME/lib/i386/green_threads takes care of this
+  problem. We don't know what causes it yet, though.
+
+  5.7.  What's Wrong with Thread Priorities and the Console?
+
+  You may be asking yourself this question if you share access to
+  System.out or System.in among several threads.  Jason Gilbert
+  <jason@scott.net> has a reply to this question:
+
+  Bernd Kreimeier wrote:
+  >
+  > Is there a problem with several threads using System.out
+  > at the same time? A JDK problem? Or a Linux JDK problem?
+
+  I believe it's a green threads JDK problem.
+
+  jason
+
+  --
+  Jason Gilbert | http://www.scott.net/~jason/
+                | http://www.homewood.net
+
+  For a discussion of green threads, read section ``What are Green
+  Threads?''.
+
+  5.8.  Help, Java Said it Ran out of Memory!
+
+  You have two strong candidates as causes for this problem.
+
+  1. Your program needs more than the default that the JVM allows.
+     Memory limits can be set like this: java -ms16m -mx64m ....  From
+     the JDK documentation:
+
+     -ms<number>       set the initial Java heap size
+     -mx<number>       set the maximum Java heap size
+
+  2. You actually don't have enough virtual memory (the total of
+     physical RAM and swap space) available. The free command can help
+     you there. See the manual page for free(1). For the current minimum
+     system requirements, see the discussion of them in section ``What
+     System Configuration do I Need to Run the JDK?''.
+
+  5.9.  How Do I Add Swap Space?
+
+  See the manual pages for swapon(8) and mkswap(8).
+
+  5.10.  Can I Display and Input Kanji with the Blackdown JDK?
+
+  In addition to the information found here, you will certainly
+  appreciate Dan Kegel's page, Fonts and Internationalization in Java
+  found at http://www.alumni.caltech.edu/~dank/javafont.htm.  You are
+  encouraged to visit Javasoft's 1.1 discussion of this topic at
+  http://www.javasoft.com/products/jdk/1.1/docs/guide/intl/fontprop.html,
+  as well.
+
+  Please be aware that these FAQ entries are extremely sketchy at the
+  moment. If you have additional information about making CJK (Chinese,
+  Japanese, and Korean) code work well with Java on Linux, please tell
+  the FAQ maintainer.
+
+  5.10.1.  Library Issues
+
+  The following entries also relate more to situations that arise when
+  you must settle on one set of libraries or the other, and you end up
+  without being able to run some application or another because of
+  unresolved symbols. Keep in mind that with their own builtin loader
+  and libc, recent versions of the JDK shouldn't cause you to change
+  your libraries at all.
+
+  5.10.1.1.  Libc5 Systems
+
+  Nozomi Matsumura <nmatsumu@can.bekkoame.ne.jp> has a suggestion that
+  at least applied to earlier, libc5 versions of the JDK, and may still
+  work. It involves making use of multi-byte character support provided
+  in builds of libX11.so with the Xsetlocale(3) call.
+
+  Matsumura-san points us at this fix provided by Hiroshi Hisamatsu
+  <hisama2@asahi.email.ne.jp>, which is a small, shared library
+  (liblocale.so) to explicitly specify the Kanji locale. It is available
+  from http://www.asahi-net.or.jp/~nf6h-hsmt/jdk1.1.1-locale.tar.gz.
+
+  More detail on this is available in Japanese at http://www.asahi-
+  net.or.jp/~nf6h-hsmt/java.html. The fix also involves adding the
+  following lines to your .java_wrapper file in $JAVA_HOME/bin:
+
+  ______________________________________________________________________
+  LD_PRELOAD="$JAVA_HOME/lib/${ARCH}/${THREADS_TYPE}/liblocale.so"
+  export LD_PRELOAD
+  ______________________________________________________________________
+
+  Matsumura-san also mentions changing the locale specified by your
+  environment variable LANG to ja, and says that ja_JP.{EUC,ujis} did
+  not work.
+
+  5.10.1.2.  Libc6 (glibc) Systems
+
+  In addition to the properties hacks mentioned above (see section
+  ``Libc5 Systems''), the inverse of what liblocale.so does is probably
+  possible on glibc-based systems, if there's a problem (with some other
+  application) at all. You may be able to simulate Xsetlocale(3) by
+  wrapping setlocale(3) with it. For example, libc5 versions of XFree86
+  (see http://www.xfree86.org) handle locale with the Xsetlocale(3)
+  call, but that changes under glibc to plain setlocale(3).  See the
+  setlocale(3) manual page for more information.
+
+  5.10.2.  Entering Two Byte Kanji with XIM
+
+  On July 14th, 1998, Nozomi Matsumura <nmatsumu@can.bekkoame.ne.jp>
+  also submitted this information acquired from Minori Takagaki
+  <lennen@st.rim.or.jp>, who was able to input and display Kanji using
+  TextComponent.
+
+  Takagaki was able to input directly using kinput2(XIM) or by cut&paste
+  in Java applications and in appletviewer.
+
+  Takagaki's environment is:
+
+  o  Slackware-3.4 + PJE-0.1(*1)
+
+  o  Kernel: 2.0.34
+
+  o  libc: 5.4.38
+
+  o  jdk1.1.6-v1-libc5
+
+     Takagaki said to use Japanese characters, you need to setup as
+     described here:
+
+  1. Install Red Hat Motif 2.1 and X-TT(*2)
+
+  2. Modify font.properties.ja (to use X-TT fonts)
+
+  3. Get liblocale.so (see the discussion of this above in ``Libc5
+     Systems'')
+
+  4. modify .java_wrapper
+
+     ___________________________________________________________________
+     export LD_PRELOAD=liblocale.so
+     export LANG=ja
+     export DYN_JAVA=1 # to use libXm.so.2 from RH Motif2.1
+     ___________________________________________________________________
+
+  5. If using appletviewer, modify
+     $JAVA_HOME/bin/i686/green_threads/appletviewer to use the
+     dynamically linked java binary.
+
+     X-TT is free a X font server for using Japanese TrueType Fonts.
+     See http://www.ryukyu.ad.jp/~shin/linux/x-tt/.
+
+  But some probelms occur:
+
+  1. The getText() function is O.K. but setText() is not.
+
+  2. Mouse drag selection is not well. Strings with Japanese charcters
+     using TextField/TextArea are not selected correctly.
+
+  3. When a cursor moves in TextField, Japanese characters are often
+     modified randomly.
+
+  4. When Japanese charcters are input in TextAreas, display timing is
+     very strange. But getText() works correctly. Example: to input
+     'NIHONNGO abcdef' when keying 'ab', 'NI' shows; when keying 'cd',
+     'HONN' shows, etc. . .
+
+  6.  Questions about Non-i386 Blackdown JDK Ports
+
+  This section attempts to provide some additional information about
+  non-Intel versions of the Blackdown JDK. At this time, Karl Asha has a
+  more complete catalog of the different platforms available at
+  http://www.blackdown.org/java-linux/ports.html.  Help determining
+  which JDK to download is available in section ``OK, Which Version of
+  the JDK Should I Download?''.
+
+  6.1.  What's the Status of the SPARC Port?
+
+  On June 16, 1998 Johan Vos <johan@sesuadra.org> provided this summary
+  of the current SPARC effort, which is based at
+  http://sesuadra.org/~jdk/:
+
+       Starting from JDK 1.1.5, the Intel and SPARC ports are based
+       on the same code. The SPARC-specific issues are separated
+       from the other linux-specific issues. Improvements and bug-
+       fixes in the general source code can be implemented without
+       having to re-implement the SPARC-specific code.  As a conse-
+       quence, most problems and updates on the Intel-JDK also
+       occur on the SPARC-JDK. I try to synchronize as much as pos-
+       sible with Steve's ports -- although licensing problems
+       caused the JDK 1.1.6v1 release for SPARC to be a few days
+       after the Intel-release.
+
+       For the differences between static and dynamic linked
+       versions -- of the Motif library --, the same remarks as for
+       the Intel-release hold.
+
+       Up to now, there is no port for glibc-systems -- since I
+       don't have a glibc-system. Most likely, this porting will be
+       done in the near future.
+
+  6.2.  Is there an Alpha Port?
+
+  Yes. Please see http://www.blackdown.org/java-linux/ports.html for
+  more information.
+
+  6.3.  Is there a PowerPC Port?
+
+  Yes. Please see http://www.blackdown.org/java-linux/ports.html for
+  more information.
+
+  7.  General Questions about Java
+
+  7.1.  Where Can I Learn More about Java?
+
+  Here are a nuber of excellent starting points.
+
+  o  Elliotte Rusty Harold's comp.lang.java FAQ:
+     http://sunsite.unc.edu/javafaq/javafaq.html
+
+  o  The Java networking FAQ:
+     http://www.io.com/~maus/JavaNetworkingFAQ.html
+
+  o  Peter van der Linden's Java Programmer's FAQ:
+     http://www.best.com/~pvdl/javafaq.html
+
+  o  Javasoft's Developer Connection FAQ:
+     http://developer.javasoft.com/developer/techDocs/faqs.html
+
+  8.  General Questions about Linux
+
+  8.1.  Where Can I Find Linux FAQs, Mailing Lists, and Documentation?
+
+  Here's a list of good places to start:
+
+  o  The Linuxdoc project: http://sunsite.unc.edu/LDP/.
+
+  o  The main Linux website: http://www.linux.org/.
+
+  o  Linux kernels and libraries: http://www.kernel.org/.
+
+  8.2.  What is glibc, and Why Does it Matter?
+
+  I'll explain what libc and glibc are in a bit, but first, let me say
+  that the current Blackdown Linux JDK tries to avoid library
+  incompatibilities by providing a dedicated dynamic loader and its own
+  libc.so. And (I think) even before this change, the problem of "which
+  of libc5 or glibc is needed" was theoretically only experienced on
+  systems such as RedHat 5.0 and Debian 2.0 that had so rapidly moved to
+  glibc. Other library conflicts are always bound to happen because of
+  the variety of Linux versions and configurations there are.
+
+  The UNIX "libc" is the core set of functions to which most utility and
+  application code links. You can see references to libc in the intro(3)
+  manual page. For your information, functions described in section two
+  (see intro(2)) of the manual are all inside the kernel, whereas
+  section three describes those which may be standard, but are stored in
+  separate libraries. To view these pages, make sure your core manual
+  pages are installed, and type man 3 intro, for example.
+
+  In order to save disk space and memory, modern operating systems like
+  Linux have taken to using "shared" libraries that don't move their
+  contents into code which links to them during the build process.
+  Although there is a /usr/lib/libc.a, most production code is linked to
+  /usr/lib/libc.so, which is typically a link-editor script for
+  selecting the actual libc.so (shared object) archive.
+
+  In short, lots of programs on your system share code out of one or
+  more files as they execute. To see what shared code an executable
+  needs, there is an optional Linux utility named ldd(1). If it's on
+  your system, you can type ldd PROGRAM to see its shared libraries.
+
+  Here's an example:
+
+  ______________________________________________________________________
+  $ ldd /bin/ls
+          libc.so.6 => /lib/libc.so.6 (0x40003000)
+          /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x00000000)
+  ______________________________________________________________________
+
+  The older (and still most common) Linux libc was known as "libc5." The
+  GNU/Linux development community sought to improve on it by adding
+  thread-safety where possible, 64-bit support, better POSIX and XPG4.2
+  compliance, superior organization of the library sources, and multi-
+  byte character locale support. These and other changes will bring even
+  more robustness and quality to the Linux development environment.
+  Although the changes are inconvenient to us sometimes, the end result
+  should be worth it.
+
+  The new library is now called "glibc" because it's a library common
+  across Linux and HURD, and enjoys a broad base of GNU developer
+  contributions. (I don't know how much of the earlier Linux libc
+  software was derived from GNU libc, which has been around for quite a
+  while on its own, I think.)
+
+  For more information on GNU libc, see
+  http://www.imaxx.net/~thrytis/glibc/.  Since C is central to the
+  history and development of UNIX and Linux, you might enjoy the links
+  found on http://www.dundee.ac.uk/~bmsimpso/work/C-Programming/ as
+  well.
+
+  9.  Compiling the Blackdown JDK from Source
+
+  9.1.  Can I Build Java Myself?
+
+  Building the JDK on Linux with patches supplied by Steve Byrne is
+  fairly straightforward. See http://www.blackdown.org/~sbb for the
+  diffs and some additional details.
+
+  I encourage you to read README.linux.src from the patched source
+  distribution if you plan to undertake this project. You will need to
+  sign a license agreement with Javasoft in order to download the
+  sources.
+
+  See section ``Could You Give Me a Pointer to Sun's Licensing
+  Agreement?''  below for details.
+
+  9.2.
+
+  Could You Give Me a Pointer to Sun's Licensing Agreement?
+
+  In order to obtain the JDK sources, first you must read, sign, and FAX
+  in an agreement with Sun. The agreement can be found at
+  http://www.javasoft.com/nav/business/source_form.html.
+
+  9.3.  How do I Build the JDK Now that I Have the Source?
+
+  Please read the
+  http://www.place.org/~stevemw/java/FAQ/README.linux.src file.
+
+  9.4.  What about Motif? Don't I Need That?
+
+  You can build the JDK against Lesstif, the Hungry Programmers' GNU
+  copylefted implementation of the Motif API. For more information,
+  visit their website at http://www.lesstif.org.  Make sure you get the
+  "current" distribution. They are very responsive to accurate bug and
+  problem reports.
+
+  On the other hand, a number of Motif developer library vendors exist
+  for Linux systems. I recommend you read the Motif comp.windows.x.motif
+  news group FAQ. You can find it here:
+  http://www.rahul.net/kenton/faqs/mfaq_index.html.
+
+  9.5.  When I Build and Install, I Get Unsatisfied Link Errors at Run-
+  time!
+
+  Make sure you're building all the targets Steve Byrne suggests in
+  http://www.place.org/~stevemw/java/FAQ/README.linux.src.  Here's an
+  example:
+
+  ______________________________________________________________________
+  make DESTDIR="$ALT_JAVAHOME/jdk116v2b" RELEASE="MY-JDK1.1.6-V2B" \
+          appletviewer jre_only 2>&1 | tee MakeOut-V2B1-BUILD-01
+  ______________________________________________________________________
+
+  In this example, I have ALT_JAVAHOME set to the javasrc/build, just
+  above the genunix/ target directory. You should be able to set ALTMO-
+  TIF_DIR to where you've installed Lesstif.
+
+  Note: you ought to have ALT_BOOTDIR set to a running JDK 1.1, and I
+  build with CLASSPATH and JAVA_HOME unset.
+
+  9.6.  Can I Try Builds of the Latest JDK Port in Development?
+
+  Please stay tuned to the mailing list for announcements.
+
+  10.  About the People Behind the Blackdown JDK
+
+  10.1.
+
+  Who Ported the Blackdown JDK?
+
+  Randy Chapman <chapman@wilbursoft.com> did the original port of the
+  Solaris JDK 1.0 to Linux on the i386.
+
+  Steve Byrne has done much of the work on the Intel port of 1.1.
+
+  Quoting Steve Byrne from
+  http://www.place.org/~stevemw/java/FAQ/README.linux
+
+       Special thanks to Johan Vos (Sparc Linux port), Chris Sea-
+       wood (GLIBC), Karl Asha (who gave us blackdown, thanks
+       Karl!) Kevin Buettner, Scott Hutinger, Kevin Hendricks,
+       Brian Keller, Philippe Laliberte and the rest of the PowerPC
+       porting team -- these guys really fixed a *lot* of generic
+       JDK bugs -- the 1.1.5 port is *much* better as a result of
+       their hard work. Dan Powell and Rich Cannings have been very
+       gracious to take over the administrative duties and to pro-
+       vide a site (and domain name) dedicated to java-linux --
+       thanks!
+
+  And again:
+
+       Neal Sanche fixed the thread creep bug.  Thanks, Neal!
+
+  Please pass on historical information to the FAQ maintainer.
+
+  10.2.  Who is Steve Byrne?
+
+  Steve has some auto-biographical information on his web page at
+  http://java.sun.com/people/sbb/index.html.
+  10.3.  Who is Karl Asha?
+
+  Karl has this response:
+
+       Not too much to say...some time back in 1995 I wanted so
+       much to have java on a linux box so I started harassing peo-
+       ple I knew to work on it.  I put together the web site, the
+       mailing lists, etc, helped out a little here and there with
+       the port, and things just bloomed :)
+
+  11.  Information on the Java-Linux FAQ Itself
+
+  11.1.
+
+  Who Maintains the FAQ?
+
+  Stephen Wynne is the current FAQ maintainer. However, answers to
+  questions found in this document are from a variety of participants on
+  java-linux@java.blackdown.org.  If you have any comments,
+  clarifications, or corrections, please send them to Stephen Wynne
+  <stevemw@place.org>.  If you have something to add, please send E-mail
+  to the list itself.
+
+  11.2.  Where Can I Get a Copy of the FAQ?
+
+  Most-recent copies of this FAQ can currently be found at
+  http://www.place.org/~stevemw/java/FAQ/FAQ-java-linux.html.
+
+  Here's the text version of this document:
+  http://www.place.org/~stevemw/java/FAQ/FAQ-java-linux.txt.  The
+  PostScript "letter" version:
+  http://www.place.org/~stevemw/java/FAQ/FAQ-java-linux.ps.  The
+  PostScript "A4" version: http://www.place.org/~stevemw/java/FAQ/FAQ-
+  java-linux-a4.ps.  Full source for the original at
+  http://www.place.org/~stevemw/java/FAQ/.
+
+  The FAQ is regularly mirrored to http://www.blackdown.org/java-
+  linux/docs/faq/FAQ-java-linux.html.
+
+  11.3.
+
+  Please Help the FAQ Maintainer!
+
+  The FAQ maintainer is looking for the following information:
+
+  o  Slackware (and other Linux distribution) setup issues.
+
+  o  Any CJK setup tips and suggestions you may have.
+
+  o  Your experiences with the Java Webserver.
+
+  o  Tips and problems using your window manager with the Blackdown JDK.
+
+  o  <That burning question you just spent hours to answer yourself!>
+
+  11.4.  Are there Any Plans for Automating the FAQ?
+
+  At this point, the FAQ maintainer has considered FAQ-o-matic (found at
+  http://www.dartmouth.edu/cgi-bin/cgiwrap/jonh/faq.pl) and Wiki web
+  (found at http://c2.com/cgi/wiki).  Your comments and suggestions
+  would be appreciated.
+
+  11.5.  Caveat Emptor
+
+  This document may contain technical information that is incorrect,
+  out-dated, and may unintentionally misrepresent the opinions of java-
+  linux@java.blackdown.org participants.  Neither the FAQ maintainer nor
+  the members of the mailing list make any warranty with respect to its
+  usefulness or safety.
+
+  11.6.  Terms of Use
+
+  This document is copyright 1998 by Stephen M. Wynne. You may use,
+  disseminate, and reproduce it freely, provided you:
+
+  o  Do not omit or alter this copyright notice.
+
+  o  Do not omit or alter or omit the version number and date.
+
+  o  Do not omit or alter the document's pointer to the current WWW
+     version.
+
+  o  Clearly mark any condensed, altered or versions as such.
+
+     These restrictions are intended to protect potential readers from
+     stale versions.
+
+  11.7.  Acknowledgements
+
+  This FAQ's content and structure was inspired by several documents
+  produced by Eric S. Raymond. Eric also maintained an early HOWTO
+  regarding Java on Linux. It's archived at
+  http://sagan.earthspace.net/~esr/faqs/java.html.
+
+  The FAQ was produced directly from SGML with the SGML tools package
+  v0.99.0, using the LINUXDOC.DTD.
+

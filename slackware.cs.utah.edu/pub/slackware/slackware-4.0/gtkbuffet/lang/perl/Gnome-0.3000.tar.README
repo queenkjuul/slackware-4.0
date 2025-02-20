@@ -1,0 +1,33 @@
+
+This version, 0.3000, of Perl/Gnome is primarily for testing against gnome
+.30 and gtk+1.1.2: please don't rely on it. It should make a good example of
+things to come, but it's also buggy as all get out.
+
+To compile this, you'll first need to compile and install Perl/Gtk 0.4. (The
+integration technique between the Gtk and Gnome modules is "interesting",
+but can be simplified if you wish to play around with RTLD_GLOBAL.)
+
+Some of the bugs include a rather odd "limit" effect, where defining too
+many Gnome types causes some of them to break. (Try building Perl/Gnome
+--with all the options, and then trying all of the tests.) Also, efence
+chokes somewhere in the bowels of gnome_init, which might be another bug,
+or a symptom.
+
+If anyone feels up to debugging this mess, I'd appreciate it. (Figuring out
+exactly _how_ it can be debugged is part of the challenge...)
+
+Oh, and the DNS stuff doesn't seem to do anything. Dunno why.
+
+
+	The source files in this distribution are 
+	Copyright (C) 1997-1998, Kenneth Albanowski, and are licensed for
+	use under the same terms as Perl itself.
+
+Please bring information regarding bugs and other issues to
+<gtk-list@redhat.com> (before posting, you will need to subscribe to the
+list by sending 'subscribe' to gtk-list-request@redhat.com) or the author,
+at <kjahds@kjahds.com>. I cannot guarantee, at the moment, that any
+particular problem will be fixed.
+
+Good Luck,
+Ken

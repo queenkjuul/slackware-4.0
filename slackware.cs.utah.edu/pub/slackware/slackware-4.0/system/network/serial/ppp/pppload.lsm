@@ -1,0 +1,12 @@
+Begin3
+Title:          pppload
+Version:        1.0
+Entered-date:   05-Sep-1996
+Description:    Display PPP link troughput in an xload-style graph.
+Keywords:       ppp load monitor xload
+Author:         svyain@mail.tds.net (Sean Vyain)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu:/pub/Linux/
+Platforms:      Linux 2.0, Qt 0.99, X11R6
+Copying-policy: GPL
+End

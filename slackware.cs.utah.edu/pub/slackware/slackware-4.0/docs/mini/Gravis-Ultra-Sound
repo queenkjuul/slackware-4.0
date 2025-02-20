@@ -1,0 +1,190 @@
+THE GUS MINI HOWTO
+
+Version 0.2.2; 14/9/1997 (that's European date format ;-)
+
+(C)opyright 1997 Nicolai Langfeldt (janl@math.uio.no)
+
+This is a HOWTO on how to get Gravis Ultra Sound cards working under
+Linux.  Specifically I describe the the 'Perex Ultra' driver for
+Linux, it's a alternate sound driver for GUS cards, including GUS PnP.
+
+The regular sound driver in Linux can drive most GUS cards, but not
+GUS PnP, easily.  If you read the "Initializing PnP cards" and look at
+the referred configuration files you can probably work out to get the
+regular driver to work though, it's not, strictly speaking, magic.  An
+other alternative is 4Front's commercial driver, for which you can
+obtain a 5 day trial version.  See http://www.4Front-Tech.com/ (this
+is a much enhanced commercial version of the regular Linux sound
+driver).  Of all the three drivers 4Front's driver was easiest to get
+working on my machine.  It is my opinion that the Perex Ultra driver
+is the best free alternative.
+
+* Getting it
+
+First of all: you need root access to the machine you're installing
+on.  If you haven't got that you can forget installing sound drivers.
+
+Then you get the driver.  http://www.pf.jcu.cz/~perex/ultra/ lists a
+number of ftp sites.  The home site is
+ftp://romeo.pf.jcu.cz/pub/perex/ultra/.  In the directory final you
+find the final, working, versions of the driver.  At this time
+(6/9/97) the latest is 2.71b.  Fetch the driver version you want.
+
+* Problems?
+
+If, you like me, get problems getting any sound out of the card at all
+you must debug.  To help with this the distribution contains a FAQ
+(the file is called FAQ ;-)
+
+* Installing
+
+I will assume directory and filenames are according to the 2.71b
+version.  Unpack it (tar xvzf ultra-2.71b.tgz).  It unpacks into a new
+directory, ultra-2.71b, cd there.
+
+First you have to configure the package.  Simply type './configure'.
+It will figure out what kind of CPU you have, and how many.  Please
+note that a ultra driver compiled for SMP (multi-CPU) machines will
+not work on single CPU machines, and vice versa.
+
+To compile go 'make compile'.  It will print some CPU and architecture
+info, install paths and ask you to press return.  If you're unhappy
+with something it printed press ^C and edit the Makefile to match your
+tastes.  Otherwise press return (enter).  If you change the paths, be
+aware that some programs, like ultramidi expect the midi config files
+to be in /usr/local/etc no matter where the top Makefile has them
+placed.  At the next prompt (GUSCFG_MAJOR question) press return
+again.  At the next prompt (GUSCFG_ALL) decide if you want a driver
+that can handle all GUS cards or not.  One for all cards will be
+slightly larger.  If you answer 'n' you now get to select what card(s)
+to support, select the card(s) you want.  Press return on all the
+prompts thereafter.  The driver should now compile.
+
+If there are any compilation errors fix them, and report them to Perex
+(email: perex@pf.jcu.cz).  You can ignore all/any warnings.
+
+Once it compiles ok do 'make install'.  This will install the driver,
+config files and the accompanying binaries in the directories shown
+when the compilation started.
+
+* Initializing PnP cards
+
+If you have a PnP card you _might_ need to do some more work.  I had
+to do what I describe in this section to get my card working.  Other
+people has told me they didn't have to, and indeed, it's supposed to
+work without doing this.  If after loading the driver and trying to
+play sounds (see the next section; "Getting it working") there is no
+sound and /dev/gusinfo is unreadable go back here.  If it works with
+no special initialization; cool.
+
+The PnP tools, and a sample configuration file is included in
+src/driver/isapnptools-1.7.  cd there.  If you don't have isapnptools
+already installed go 'make' to compile the software, and 'cp pnpdump
+isapnp /sbin' to install it.  A word of WARNING: Running pnpdump can
+cause your computer to lock up real hard, real fast.  The latest
+version of isapnptools can be found at
+ftp://ftp.demon.co.uk/pub/unix/linux/utils, it's currently at version
+1.10.
+
+The file gravis.conf is supplied as an example configuration file.
+You can almost certainly use that, with some small modifications.  You
+want to configure a card called GRV0001.  But the supplied file
+initializes
+
+  GRV0001/1
+
+Which probably don't match your hardware.  Run 
+
+  pnpdump >mygravis.conf
+
+The file mygravis.conf will now contain information on all your
+ISA-PnP cards.  Look in the file and find the CONFIGURE lines with the
+GRV0001 numbers.  On my machine it's:
+
+  GRV0001/7332
+
+So in my case, I just substitute all instances of GRV0001/1 with
+GRV0001/7332.  Put the new file at the end of /etc/isapnp.conf.  Run
+'isapnp /etc/isapnp.conf'.  There won't be any error messages, trust
+me >:-).  At this point the card is initialized to the listed
+interrupts, DMAs and other things.
+
+* Getting it working
+
+First run /usr/local/bin/gusdevs.  This will make the special files in
+/dev that the gus driver needs.  If the file
+/usr/local/etc/gus-midi-gf1.defs isn't there copy it from
+src/driver/daemon/gus-midi-gf1.defs in the distribution.
+
+Now we'll see if the driver is working.  First connect headphones or
+loudspeakers to your card.  Then run 'insgus', it loads the driver.
+It should not print any messages, if it does something is wrong.  To
+test the driver play some sound.  A very rough test is to copy your
+kernel to the sound system.  Try this:
+
+  cat /boot/vmlinuz >/dev/audio
+
+(this assumes that /boot/vmlinuz is the name of your kernel).  This
+should make some noise.  You can adjust the cards volume with the
+gusmix or xgusmix program.  The Main/Master and PCM volumes needs to
+be up.  If gusmix/xgusmix won't run the driver isn't working at all.
+If it dosn't make any sound the driver is not working right.
+
+Another diagnostic is to run 'cat /dev/gusinfo'.  If you get a 'no
+such device' message things are _not_ working.  This 'file' should
+also show the correct amount of memory on your board.
+
+* Making it work permanently.
+
+Once the driver is working we can modify boot scripts and config files
+so that we don't have to think about it anymore.
+
+There are two ways to load the driver, with modprobe/kerneld, or by
+running the insgus program.  
+
+To use the insgus program just put a insgus command in your boot
+scripts.  On a RedHat system /etc/rc.d/rc.local is a good place.  If
+you have some other system please e-mail me, telling me where to put
+the command.  Make sure /usr/local/bin is in your path, or write the
+command completely out: /usr/local/bin/insgus.
+
+If you have a PnP card you need to run the isapnp command each time
+the machine boots: 'isapnp /etc/isapnp.conf'.  Again: On a RedHat
+system /etc/rc.d/rc.local is a good place.  Run it _before_ running
+insgus though!!!
+
+My favorite is using kerneld.  You need to edit your /etc/conf.modules
+file.  In the apps-setup directory of the ultra distribution there is
+a file called conf.modules:
+
+----
+#
+# Configuration for GUS driver from The Ultra Sound Project...
+#
+
+path=/usr/local/etc
+alias char-major-14 gus
+install gus /usr/local/etc/insgus -Kn
+remove gus /usr/local/etc/insgus -Kk
+----
+
+Insert it at the end of your /etc/conf.modules file (if you haven't
+got one check if you have modules.conf instead, if not, just make
+conf.modules).  There is a slight typo in the file (in version 2.71b,
+shown above), the path to the insgus program is actually
+/usr/local/bin/insgus, so fix that.  Once that is in place the driver
+should auto load whenever a sound device is opened for use (when you
+try to play a sound or run a mixer program) and after being unused a
+while the module will be automatically removed.  More on all this in
+the kerneld mini howto.
+
+* Finished?
+
+That's it.  Follow the links on Perex' Ultra page to find more
+information about sound playing and such under Linux.
+
+Oh, and, the ultramod and ultramidi programs seem to require that you
+have RAM on your sound-card.  I don't have any RAM, so I use mikmod,
+available on sunsite.unc.edu to play mod files.  I haven't gotten
+around to midi yet.
+

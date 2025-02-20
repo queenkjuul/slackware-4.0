@@ -1,0 +1,24 @@
+Begin3
+Title:          NodeWatch
+Version:        1.6
+Entered-date:   Wed Sep 23 20:21:50 PDT 1998
+Description:    NodeWatch is an open source TCP/IP network monitoring tool
+                written in Perl for UNIX.  It will watch, i.e. poll, a set
+                of network nodes and react to node connectivity changes by
+                making entries to the syslog or executing user defined
+                commands.  NodeWatch was written from the perspective of a
+                network manager; it only keeps track of the node's ability
+                to respond to ICMP echo request datagrams with ICMP echo
+                reply datagrams.
+Keywords:       ping ICMP echo network monitoring daemon
+Author:         pryan@fhcrc.org (Patrick Ryan)
+Maintained-by:  pryan@fhcrc.org (Patrick Ryan)
+Primary-site:   junebug.fhcrc.org /pub/nodewatch/
+                40 KB nodewatch-1.6.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/admin/
+                40 KB nodewatch-1.6.tar.gz
+Original-site:  junebug.fhcrc.org /pub/nodewatch/
+                40 KB nodewatch-1.6.tar.gz
+Platforms:      Linux 2.0, Solaris 2.6, but other UNIX platforms should work.
+Copying-policy: GPL
+End

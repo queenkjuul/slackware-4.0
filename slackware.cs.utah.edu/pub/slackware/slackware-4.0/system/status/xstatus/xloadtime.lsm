@@ -1,0 +1,20 @@
+Begin3
+Title:          XLoadtime
+Version:        2.0
+Entered-date:	02MAR99
+Description:  	XLoadtime is an enhanced version of XLoad.  Its main feature is
+		that the current time (12 or 24 hour format) is displayed in
+		the load graph instead of the machine name.  It also features
+		optional CPU usage bars on the left, one per CPU.  It uses
+		the Linux proc filesystem to get the load information and the
+		CPU usage.
+Keywords:       load xload cpu usage
+Author:         darren@xarius.demon.co.uk (Darren J Moffat) 
+		xyzzy@speakeasy.org (Trent Piepho)
+Maintained-by:  xyzzy@speakeasy.org (Trent Piepho)
+Primary-site:   ftp.u.washington.edu /public/xyzzy
+		4 xloadtime-2.0.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/X11/xapps
+Platforms:	X11
+Copying-policy: GPL
+End

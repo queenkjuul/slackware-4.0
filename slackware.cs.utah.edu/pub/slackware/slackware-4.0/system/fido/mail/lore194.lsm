@@ -1,0 +1,20 @@
+Begin3
+Title:          Linux Omen Reader (LORE)
+Version:        1.94
+Entered-date:   25FEB96
+Description:    OFF-Line reader for OMEN -format
+Keywords:       OFF-Line OMEN BBS
+Author:         Ville Hallivuori
+                vph@clinet.fi
+Maintained-by:  Ville Hallivuori
+                vph@clinet.fi
+Primary-site:   ftp.funet.fi /pub/Linux/util/bbs/
+                0.7 kB lore192.lsm
+                52 kB  lore192.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/BBS/mail/
+                0.7 kB lore194.lsm
+                52 kB  lore194.tar.gz
+Platforms:      g++, ncurses -libary, ANSI/vt100 compatible terminal
+		Tested on Linux, but should work on other *NIXes too.
+Copying-policy: GPL
+End

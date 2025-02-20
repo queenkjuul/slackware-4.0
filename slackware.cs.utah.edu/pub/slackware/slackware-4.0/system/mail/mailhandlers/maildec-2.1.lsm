@@ -1,0 +1,16 @@
+Begin3:
+Title: 		Mail decoder
+Version:	2.1
+Entered-date:   16Feb97
+Description:    Mail decoder for Base64, UU/XX, BinHex encoded files.
+		It accepts as input a mail-box-file with headers and body
+		text: it will find and decode inside files automatically.
+		It also handles forwarded mail decoding.
+		English documentation and documentazione italiana.
+Keywords:       maildec, metamail, uudecode
+Author:         Simone Chemelli <genius@dei.unipd.it>
+Maintained-by:  Simone Chemelli <genius@dei.unipd.it>
+Primary-site:   ftp.dei.unipd.it /pub/pluto/progs
+		15k	maildec-2.1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Mail/mailhandlers
+Copying-policy:	Freely Distributable

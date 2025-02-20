@@ -1,0 +1,16 @@
+Begin3
+Title:          SLIPup
+Version:        0.10
+Entered-date:   25-Jan-1995
+Description:    Simple shell scripts that will establish and maintain a
+                DIP-based (C)SLIP session.
+Keywords:       SLIP, DIP
+Author:         dminor@siriuscc.com (David E. Minor)
+Maintained-by:  dminor@siriuscc.com (David E. Minor)
+Primary-site:   ftp.siriuscc.com /pub/Linux/Siriuscc/network/slip/SLIPup
+                10k SLIPup-0.10.tar.gz
+Alternate-site: sunsite.unc.edu
+Original-site:  ftp.siriuscc.com
+Platform:       Linux
+Copying-policy: GPL
+End

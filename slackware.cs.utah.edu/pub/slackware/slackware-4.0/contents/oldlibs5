@@ -1,0 +1,9 @@
+drwxr-xr-x root/root         0 1998-03-27 13:27 ./
+drwxr-xr-x root/root         0 1998-03-23 15:50 usr/
+drwxr-xr-x root/root         0 1994-03-16 00:22 usr/ix86-linuxaout/
+drwxr-xr-x root/root         0 1998-03-27 13:27 usr/ix86-linuxaout/lib/
+-r-xr-xr-x root/root    320516 1998-03-23 15:50 usr/ix86-linuxaout/lib/libX11.so.3.1.0
+-r-xr-xr-x root/root    189444 1998-03-23 15:50 usr/ix86-linuxaout/lib/libXaw.so.3.1.0
+-r-xr-xr-x root/root    291844 1998-03-23 15:50 usr/ix86-linuxaout/lib/libXt.so.3.1.0
+drwxr-xr-x root/root         0 1998-03-27 13:27 install/
+-rw-r--r-- root/root       351 1998-03-27 13:27 install/doinst.sh

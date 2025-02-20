@@ -1,0 +1,16 @@
+Begin3
+Title: System Recovery
+Version: 1.01
+Entered-date: 14JUN98
+Description: This is a simple program that can be used to set a database
+             of important system files, and then compare them to see if
+             any were changed with trojans binaries.
+Keywords: system recovery
+Author: Patrick Lambert <drow@wildstar.net>
+Maintained-by: Patrick Lambert <drow@wildstar.net>
+Primary-site: http://devplanet.fastethernet.net/files.html
+Alternate-site: http://mirrors.darkelf.net
+Original-site:
+Platforms: Linux
+Copying-policy: GPL
+End

@@ -1,0 +1,24 @@
+Begin2
+Title        = Gobview
+Version      = 1.0
+Desc1        = Gobview is a tool to post-process the dump-file generated
+Desc2        = by gobbler (=network monitor) on a unix computer.
+Desc3        = Gobbler is included in this package. To install gunzip and
+Desc4        = untar the file gobview.tar.z and read the README file.
+Author       = Redproc (= Jacco in real life :)
+AuthorEmail  = root@warns.et.tudelft.nl
+Maintainer   = Redproc (= Jacco in real life :)
+MaintEmail   = root@warns.et.tudelft.nl
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming, later hopefully in /pub/Linux/utils/net
+File1        = gobview_1.0.tar.z
+FileSize1    = 84591
+Required1    = Any unix-system for gobview.
+Required2    = A PC with ethernet card for gobbler.
+CopyPolicy1  = Gobview may be freely distibuted and modified.
+Keywords     = linux, net, gobbler, gobview, network-monitor
+RelFiles1    = gobbler
+Entered      = 14SEP93
+EnteredBy    = Redproc (= Jacco in real life :)
+CheckedEmail = root@warns.et.tudelft.nl
+End

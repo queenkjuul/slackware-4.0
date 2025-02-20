@@ -1,0 +1,63 @@
+Thu Sep 28 22:53:02 PDT 2000
+wuftpd.tgz:  Upgraded to wu-ftpd-2.6.1.  (* Security fix *)
+   This fixes a possible format string hole reported on BugTraq.
+----------------------------
+Sat Nov 27 22:59:32 CST 1999
+(These packages should work on any libc5-based Slackware system)
+bind.tgz:  (urgency: high)  (* SECURITY FIX *)
+   Upgraded to bind-8.2.2-P5.  This fixes a vulnerability in the processing of
+   NXT records that can be used in a DoS attack or (theoretically) be exploited
+   to gain access to the server.  It is suggested that everyone running bind
+   upgrade to this package as soon as possible.
+nfs-server.tgz:  (urgency: high)  (* SECURITY FIX *)
+   Upgraded to nfs-server-2.2beta47, to fix a security problem found in
+   nfs-server-2.2beta46 and earlier.  By using a long pathname on a directory
+   NFS mounted read-write, it may be possible for an attacker to execute
+   arbitrary code on the server.  It is recommended that everyone running an
+   NFS server upgrade to this package immediately.
+pine.tgz  (urgency: high): This updates Pine to version 4.21.  Pine versions
+   earlier than 4.0 have a Y2K bug where the date sorting will not work
+   properly when the new century begins.
+imapd.tgz  (urgency: low):  This updates imapd to the version from Pine 4.21.
+sysklogd.tgz (urgency: high):  It's possible to hang a machine and cause a
+   denial of service by opening many connections to the syslogd shipped with
+   Slackware 4.0 and earlier.  This package upgrades to sysklogd-1.3-33,
+   which fixes the problem.
+wuftpd.tgz:  (urgency:  low)
+   Relinked against -lshadow, enabling MD5 shadow password support.
+----------------------------
+Sat Aug 28 20:18:45 CDT 1999
+This directory below contains only the fixed versions of libtermcap
+and xterm.  Installing these two packages is also a complete fix for
+the libtermcap buffer overflow problem.
+
+In addition, these two upgrades are suitable for use on Slackware 3.5,
+3.6, 3.9, or 4.0.
+----------------------------
+Sun Aug 29 19:36:08 CDT 1999
+
+Added wuftpd (wu-ftpd-2.5.0) patched against buffer overflows reported
+on BugTraq.  This package in suitable for use on Slackware 3.5, 3.6, 3.9,
+or 4.0.
+
+Sat Aug 28 20:18:45 CDT 1999
+This directory below contains only the fixed versions of libtermcap
+and xterm.  Installing these two packages is also a complete fix for
+the libtermcap buffer overflow problem.
+
+In addition, these two upgrades are suitable for use on Slackware 3.5,
+3.6, 3.9, or 4.0.
+----------------------------
+Sun Aug 29 19:36:08 CDT 1999
+
+Added wuftpd (wu-ftpd-2.5.0) patched against buffer overflows reported
+on BugTraq.  This package in suitable for use on Slackware 3.5, 3.6, 3.9,
+or 4.0.
+
+----------------------------
+Sat Oct 23 17:38:23 PDT 1999
+
+Added wuftpd (wu-ftpd-2.6.0) patched against vulnerabilities mentioned in
+the recent CERT advisory CA-99-13.  This package in suitable for use on 
+Slackware 3.5, 3.6, 3.9, or 4.0.
+

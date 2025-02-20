@@ -1,0 +1,22 @@
+Begin3
+Title:		telprox-plus
+Version:	0.7
+Entered-date:	07JAN98
+Description:	Telnet Proxy Server
+                An enhanced version of telprox V0.2 that
+                has an easier to use configuration file is
+		suitable for multihomed servers. With IP
+		authentication.
+Keywords:	Telnet, Proxy, Networking, Daemons
+Author:		skip@taygeta.com (Skip Carter)
+Maintained-by:	skip@taygeta.com (Skip Carter)
+Primary-site:	ftp.taygeta.com /pub/Linux/system/network/daemons/
+		12729	telprox-plus.0.7.tar.gz
+		730	telprox-plus.0.7.lsm
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/network/daemons/
+		12729	telprox-plus.0.7.tar.gz
+		730	telprox-plus.0.7.lsm
+Original-site:
+Platforms:	Linux, probably most Unix
+Copying-policy:	GPL
+End

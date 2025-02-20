@@ -1,0 +1,20 @@
+Begin3
+Title:          HFM - Hamster Font Manager
+Version:        1.01
+Entered-date:   Nov 12, 1998
+Description:    Graphical frontend that delivers PostScript fonts management
+                for Un*x systems.  HFM offers you the ability to organize
+                your typefaces from a central place.  It's extendable design
+                currently supports X-Window, Ghostscript and TeX and allows
+                upcoming plugins to support other applications and fonttypes
+                as well.
+Keywords:       Fonts, Fontmanager, Admin, Tool, Utility, X11, X-Window,
+                Ghostscript, TeX, Postscript, Type1, HFM, Hamster
+Author:         sopraf@dublin.informatik.uni-stuttgart.de (Hamster Project Team)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/admin/frontends
+                232kB hamster-1.01.tar.gz
+                232kB /pub/Linux/X11/fonts/hamster-1.01.tar.gz
+Platforms:      Linux, FreeBSD, SunOS and possibly other Unices
+                X11, Tcl/Tk with Tix
+Copying-policy: GPL
+End

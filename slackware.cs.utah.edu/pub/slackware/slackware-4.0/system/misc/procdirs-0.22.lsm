@@ -1,0 +1,19 @@
+Begin3
+Title:          procdirs
+Version:        0.22
+Entered-date:   2-Nov-97
+Description:    A small script that raids the /proc dir and finds all current
+		working directories (cwds) of current processes.  The output
+		is a list of PIDs and their cwds piped to a pager (like 'less'
+		or 'more') or also saved to a file.  Useful to find out where
+		processes are running.
+Keywords:       proc, directories, processes
+Author:         ranu@engr.ColoState.EDU (Emarit Ranu)
+Maintained-by:  ranu@engr.ColoState.EDU (Emarit Ranu)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/misc/
+			1kB procdirs.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux with /proc directory.  Requires awk.
+Copying-policy: Freeware but original author prefers to maintain it.
+End

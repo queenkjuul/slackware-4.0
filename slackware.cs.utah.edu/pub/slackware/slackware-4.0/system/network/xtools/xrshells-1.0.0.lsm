@@ -1,0 +1,16 @@
+Begin3
+Title:		xrshells
+Version:	1.0.0
+Entered-date:	29Oct98
+Description:	A controller of multiple remote shells
+Keywords:	Remote shells
+Author:		Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Maintained-by:	Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/xtools
+		1 kB xrshells-1.0.0.lsm
+		9 kB xrshells-1.0.0.tar.gz
+Alternate-site:
+Original-site:
+Platforms:	Any Unix flavor running expect and X
+Copying-policy:	GPL
+End

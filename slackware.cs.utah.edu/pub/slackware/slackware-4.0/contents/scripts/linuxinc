@@ -1,0 +1,4 @@
+( cd usr/src/linux-2.2.6/include ; rm -rf asm )
+( cd usr/src/linux-2.2.6/include ; ln -sf asm-i386 asm )
+( cd usr/src ; rm -rf linux )
+( cd usr/src ; ln -sf linux-2.2.6 linux )

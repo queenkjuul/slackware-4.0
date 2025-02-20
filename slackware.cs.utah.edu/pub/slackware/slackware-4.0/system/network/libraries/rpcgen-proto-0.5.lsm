@@ -1,0 +1,17 @@
+Begin3
+Title:          rpcgen-proto
+Version:        0.5
+Entered-date:   03JAN95
+Description:    This is the source to a modified rpcgen that generates
+                ANSI style prototypes for the files it creates.  I made
+                these changes because I quickly got tired of the
+                warnings |gcc -Wall -ansi -pedantic| kept issuing.  :)
+                This is the old rpcgen - not the TIRPC rpcgen.
+Keywords:       rpcgen RPC RPCSRC-4.0
+Author:         davek@melita.com (Dave Kennedy)
+Maintained-by:  davek@melita.com (Dave Kennedy)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/rpc
+                17k rpcgen-proto-0.5.tar.gz
+                737 rpcgen-proto-0.5.lsm
+Copying-policy: Original Sun copyright
+End

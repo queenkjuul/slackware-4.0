@@ -1,0 +1,20 @@
+Begin3
+Title:		xringd
+Version:	1.10
+Entered-date:	28MAR96
+Description:	The Linux Extended Ring Daemon.
+		It matches "sequences" of a phonerings/timedelay confguration
+		with rings and time delays coming from a modem. A fully matched
+		sequence will execute a specified command.
+		Thus, commands can be run while your modem stays on-hook.
+		Does not affect getty's or other progs using the same port.
+		Source and an aout bin are included.
+Keywords:	xringd, serial, uart, ring daemon, callback
+Author:		ah@doc.ic.ac.uk (Angelo Haritsis)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/daemons
+		23k xringd-1.10.tgz
+Alternate-site: dolphin.doc.ic.ac.uk /pub/Linux/xringd
+		23k xringd-1.10.tgz
+Platforms:	Linux 1.3.48+, RI serial cable line connected, 16xx0 uart
+Copying-policy: GPL
+End

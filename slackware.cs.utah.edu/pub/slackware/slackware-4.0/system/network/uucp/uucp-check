@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Checker for Taylor UUCP to see if there are files
+# to send. The variabele "NODE" is the subdirectory
+# where your outgoing mail for this node is stored.
+# You can set your news or root crontab so that it 
+# will call this script at the times you want.
+# This is free software...... :-) Have fun with it!
+#
+#   
+NODE=/var/spool/uucp/xs4all
+#
+if [ `ls $NODE | wc -w` -gt 0 ]; then
+#	. /usr/lib/uucp/uucico -s xs4all &
+	echo "Test completed"
+else
+	echo "nothing to send now"
+fi

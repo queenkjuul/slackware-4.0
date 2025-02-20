@@ -1,0 +1,4 @@
+( cd usr/doc/ghostscript ; rm -rf doc )
+( cd usr/doc/ghostscript ; ln -sf ../../share/ghostscript/doc doc )
+( cd usr/doc/ghostscript ; rm -rf examples )
+( cd usr/doc/ghostscript ; ln -sf ../../share/ghostscript/examples examples )

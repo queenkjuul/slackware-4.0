@@ -1,0 +1,29 @@
+ 1.44 MB LINUX BOOTDISKS
+
+ To install Linux, you'll need a bootdisk and a rootdisk.  The bootdisk
+ has to contain drivers that support your hardware, so you'll have to select
+ the most appropriate disk for your system.  NOTE: it's best to use the
+ disk with the least drivers possible to save memory.
+
+README.TXT      This file contains information about the drivers in the
+                various bootdisks, and instructions for using a bootdisk to
+                start a system that isn't booting properly.
+
+README.SCSI     Information about using a SCSI controller with Slackware.
+
+WHICH.ONE       A chart to help you select which bootdisk to use.
+
+ide-bat/        If your system does not have a SCSI controller, you'll want
+                to use one of the IDE Slackware bootdisks.  To create one of
+                these, select this option to switch into the ide-bat directory
+                and choose a disk from the list.
+
+scsi-bat/       If your system has a SCSI controller, you'll need to use one
+                of the SCSI Slackware bootdisks.  To create one of these, use
+                this option to switch into the scsi-bat directory and then
+                choose a disk from the list.
+
+  NOTE: The RAWRITE utility used to create the boot and root floppies may not
+        work under Windows95 and 98, so if you're running Windows you should
+        restart your machine in MS-DOS mode before creating the disks.
+

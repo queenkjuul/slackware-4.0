@@ -1,0 +1,12 @@
+CONTENTS: scsi       
+scsi:     Linux kernel version 2.2.6, with SCSI support.
+scsi:
+scsi:     A Linux kernel for computers with SCSI and/or IDE.  You MUST install a
+scsi:     kernel image in order for your system to boot. This kernel supports
+scsi:     IDE and SCSI hard drives and CD-ROM drives.  Other drivers (such as
+scsi:     for CD-ROM drives on proprietary interfaces, or ethernet cards) may
+scsi:     be loaded as modules.  See /etc/rc.d/rc.modules for examples.
+scsi:
+scsi:
+scsi:
+scsi:

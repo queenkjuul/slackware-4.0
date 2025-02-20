@@ -1,0 +1,1056 @@
+  Building and Installing Software Packages for Linux
+  Mendel Leo Cooper <mailto:thegrendel@theriver.com>
+  http://personal.riverusers.com/~thegrendel/
+  v1.62, 19 August 1998
+
+  This is a comprehensive guide to building and installing"generic" UNIX
+  software distributions under Linux. Additionally, there is some cover­
+  age of packages targeted specifically for Linux.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+  2. Unpacking the Files
+
+  3. Using Make
+
+  4. Prepackaged Binaries
+
+  5. Termcap and Terminfo Issues
+
+  6. Backward Compatibility With a.out Binaries
+
+     6.1 An Example
+
+  7. Troubleshooting
+
+     7.1 Link Errors
+     7.2 Other Problems
+     7.3 Tweaking and fine tuning
+     7.4 Where to go for more help
+
+  8. Final Steps
+
+  9. First Example: Xscrabble
+
+  10. Second Example: Xloadimage
+
+  11. Third Example: Fortune
+
+  12. Where to Find Source Archives
+
+  13. Final Words
+
+  14. References and Further Reading
+
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  Many software packages for the various flavors of UNIX, including
+  Linux, are distributed as compressed archives of source files.  The
+  same package may be "built" to run on different target machines, and
+  this saves the author of the software from having to produce multiple
+  distributions. A single distribution of a software package may thus
+  end up running, in various incarnations, on an Intel box, a DEC Alpha,
+  a RISC workstation, or even a mainframe.  Unfortunately, this puts the
+  responsibility of actually "building" and installing the software on
+  the end user, the de facto "system administrator", the fellow sitting
+  at the keyboard --  you.  Take heart, though, the process is not
+  nearly as terrifying or mysterious as it seems, as this guide will
+  demonstrate.
+  2.  Unpacking the Files
+
+  You have downloaded or otherwise acquired a software package.  Most
+  likely it is archived (tarred) and compressed (gzipped), in .tar.gz or
+  .tgz form (familiarly known as a 'tar ball'). First copy it to a
+  working directory. Then untar and gunzip it. The appropriate command
+  for this is tar xzvf filename, where filename is the name of the
+  software file, of course.  The de-archiving process will usually
+  install the appropriate files in subdirectories it will create.  Note
+  that if the package name has a .Z suffix, then the above procedure
+  will serve just as well, though running uncompress, followed by a tar
+  xvf also works.
+
+  This method of unpacking 'tar balls' is equivalent to either of the
+  following:
+
+  ·  gzip -cd filename | tar xvf -
+
+  ·  gunzip -c filename | tar xvf -
+
+  Source files in the new bzip2 (.bz2) format can be unarchived by a
+  bzip2 -cd filename | tar xvf -, or, more simply by a tar xyvf
+  filename, assuming that gzip has been appropriately patched (refer to
+  the Bzip2 HOWTO <ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO/mini/Bzip>
+  for details).
+
+  [Many thanks to R. Brock Lynn for corrections and updates on the above
+  information.]
+
+
+
+  Sometimes the archived file must be untarred and installed from the
+  user's home directory, or perhaps in a certain other directory, as
+  specified in the package's config info.  Should you get an error
+  message attempting to untar it, this may be the reason. Read the
+  package docs, especially the README and/or Install files, if present,
+  and edit the config files and/or Makefiles as necessary, consistent
+  with the installation instructions. Note that you would not ordinarily
+  alter the Imake file, since this could have unforseen consequences.
+  Some software packages permit automating this process by running make
+  install to emplace the binaries in the appropriate system areas.
+
+  Occasionally, you may need to update or incorporate bug fixes into the
+  unarchived source files using a patch or diff file that lists the
+  changes.  The doc files and/or README file will inform you should this
+  be the case. The normal syntax for invoking Larry Wall's powerful
+  patch utility is patch < patchfile.
+
+  You may now proceed to the build stage of the process.
+
+
+
+
+
+  3.  Using Make
+
+  The Makefile is the key to the build process. In its simplest form, a
+  Makefile is a script for compiling or building the "binaries", the
+  executable portions of a package. The Makefile can also provide a
+  means of updating a software package without having to recompile every
+  single source file in it, but that is a different story (or a
+  different article).
+
+  At some point, the Makefile launches cc or gcc. This is actually a
+  preprocessor, a C (or C++) compiler, and a linker, invoked in that
+  order.  This process converts the source into the binaries, the actual
+  executables.
+
+  Invoking make usually involves just typing make. This generally builds
+  all the necessary executable files for the package in question.
+  However, make can also do other tasks, such as installing the files in
+  their proper directories (make install) and removing stale object
+  files (make clean).  Running make -n permits previewing the build
+  process, as it prints out all the commands that would be triggered by
+  a make, without actually executing them.
+
+
+  Only the simplest software uses a generic Makefile. More complex
+  installations require tailoring the Makefile according to the location
+  of libraries, include files, and resources on your particular machine.
+  This is especially the case when the build needs the X11 libraries to
+  install. Imake and xmkmf accomplish this task.
+
+  An Imakefile is, to quote the man page, a "template" Makefile. The
+  imake utility constructs a Makefile appropriate for your system from
+  the Imakefile. In almost all cases, however, you would run xmkmf, a
+  shell script that invokes imake, a front end for it.  Check the README
+  or INSTALL file included in the software archive for specific
+  instructions.  Read the imake and xmkmf man pages for a more detailed
+  analysis of the procedure..
+
+  Be aware that xmkmf and make may need to be invoked as root,
+  especially when doing a make install to move the binaries over to the
+  /usr/bin or /usr/local/bin directories.  Using make as an ordinary
+  user without root privileges will likely result in write access denied
+  error messages because you lack write permission to system
+  directories. Check also that the binaries created have the proper
+  execute permissions for you and any other appropriate users.
+
+  Invoking xmkmf uses the Imake file to build a new Makefile appropriate
+  for your system. You would normally invoke xmkmf with the -a argument,
+  to automatically do a make Makefiles, make includes, and make depend.
+  This sets the variables and defines the library locations for the
+  compiler and linker.  Sometimes, there will be no Imake file, instead
+  there will be an INSTALL or configure script that will accomplish this
+  purpose. Note that if you run configure, it should be invoked as
+  ./configure to ensure that the correct configure script in the current
+  directory is called. In most cases, the README file included with the
+  distribution will explain the install procedure.
+
+  It is usually a good idea to visually inspect the Makefile that xmkmf
+  or one of the install scripts builds. The Makefile will normally be
+  correct for your system, but you may occasionally be required to
+  "tweak" it or correct errors manually.
+
+
+  Your general installation procedure will therefore be:
+
+  ·  Read the README file and other applicable docs.
+
+  ·  Run xmkmf -a, or the INSTALL or configure script.
+
+  ·  Check the Makefile.
+
+  ·  If necessary, run make clean, make Makefiles, make includes, and
+     make depend.
+
+  ·  Run make.
+
+  ·  Check file permissions.
+
+
+  ·  If necessary, run make install.
+
+
+
+  4.  Prepackaged Binaries
+
+
+
+  Manually building and installing packages from source is apparently so
+  daunting a task for some Linux users that they have embraced the
+  popular rpm and deb package formats. While it may be the case that an
+  rpm install normally runs as smoothly and as fast as a software
+  install in a certain other notorious operating system, some thought
+  should certainly be given to the disadvantages of self-installing,
+  prepackaged binaries.
+
+  First, be aware that software packages are normally released first as
+  later. So, if you wish to keep up with all the 'bleeding edge'
+  software, you might not wish to wait for an rpm or deb to appear. Some
+  less popular packages may never be rpm'ed.
+
+  Installing an rpm package is not necessarily a no-brainer.  If there
+  is a dependency conflict, an rpm install will fail. Likewise, should
+  the rpm require a different version of libraries than the ones present
+  on your system, the install may not work, even if you create symbolic
+  links to the missing libraries from the ones in place.  You must
+  install rpm's and deb's as root, in order to have the necessary write
+  permissions, and this opens a potentially serious security hole, as
+  you may inadvertently clobber system binaries and libraries, or even
+  install a Trojan horse that might wreak havoc upon your system.
+
+  It is important to obtain rpm and deb packages from a "trusted
+  source". In any case, you should run a 'signature check' on the
+  package, rpm --checksig packagename.rpm, before installing.  Running
+  an rpm --verify packagename.rpm is likewise highly recommended. For
+  the truly paranoid (and, in this case there is much to be said for
+  paranoia), there are the unrpm and rpmunpack utilities available from
+  the Sunsite utils/package directory
+  <ftp://sunsite.unc.edu/pub/Linux/utils/package> for unpacking and
+  checking the individual components of the packages.
+
+  The martian
+  <http://www.people.cornell.edu/pages/rc42/program/martian.html> and
+  alien <http://kitenet.net/programs/alien/> programs allow conversion
+  between the rpm, deb, and tar.gz package format. This makes these
+  packages accessible to all Linux distributions.
+
+  In their most simple form, the commands rpm -i packagename.rpm and
+  dpkg --install packagename.deb automatically unpack and install the
+  software.  Exercise caution, though, since using these commands
+  blindly may be dangerous to your system's health!
+
+  Note that the above warnings also apply, though to a lesser extent, to
+  Slackware's pkgtool installation utility. All "automatic" software
+  installations require caution.
+
+  Carefully read the man pages for the rpm and dpkg commands, and refer
+  to the RPM HOWTO <ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO/RPM-
+  HOWTO>, TFUG's Quick Guide to Red Hat's Package Manager
+  <http://www.tfug.org/helpdesk/linux/rpm.html>, and The Debian Package
+  Management Tools <http://www.debian.org/doc/FAQ/debian-faq-7.html> for
+  more detailed information.
+
+
+
+
+  5.  Termcap and Terminfo Issues
+
+
+
+  According to its man page, "terminfo is a data base describing
+  terminals, used by screen-oriented programs...".  It defines a generic
+  set of control sequences (escape codes) used to display text on
+  terminals, and makes possible support for different terminal hardware
+  without the need for special drivers.  The terminfo database has
+  largely supplanted the older termcap one. This is usually of no
+  concern for program installation except when dealing with a package
+  that requires termcap.
+
+  Most Linux distributions now use terminfo, but still retain the older
+  termcap libraries for compatibility with legacy applications.
+  Sometimes there is a special compatibility package that needs to be
+  installed to facilitate use of termcap linked binaries.  Very
+  occasionally, an #define termcap statement might need to be commented
+  out of a source file.  Check the appropriate docs for your particular
+  distribution for information on this.
+
+
+
+
+  6.  Backward Compatibility With a.out Binaries
+
+
+  In a very few cases, it is necessary to use a.out binaries, either
+  because the source code is not available or because it is not possible
+  to build new ELF binaries from the source for some reason.
+
+  As it happens, ELF installations almost always have a complete set of
+  a.out libraries in the /usr/i486-linuxaout/lib directory.
+  Theoretically, a.out binaries should be able to find these libraries
+  at runtime, but this may not always be the case.
+
+  Note that the kernel should have a.out support built into it, either
+  directly or as a loadable module. It may be necessary to rebuild the
+  kernel to enable this. Moreover, some Linux distributions require
+  installation of a special compatibility package, such as Debian's
+  xcompat for executing a.out X applications.
+
+
+  6.1.  An Example
+
+
+  Jerry Smith wrote a very handy rolodex program some years back. It
+  uses the Motif libraries, but fortunately is available as a statically
+  linked binary in a.out format. Unfortunately, the source refuses to
+  rebuild using the lesstif libraries. Even more unfortunately, the
+  a.out binary bombs on an ELF system with the following error message.
+
+
+       xrolodex: can't load library '//lib/libX11.so.3'
+               No such library
+
+
+
+
+  As it happens, there is such a library, in /usr/i486-linuxaout/lib,
+  but xrolodex is unable to locate it at run time. The simple solution
+  is to provide a symbolic link in the /lib directory:
+
+  ln -s /usr/i486-linuxaout/lib/X11.so.3.1.0 libX11.so.3
+
+
+  It turns out to be necessary to provide similar links for the
+  libXt.so.3 and libc.so.4 libraries. This needs to be done as root, of
+  course. Note that you should make absolutely certain you will not
+  overwrite or cause version number conflicts with pre-existing
+  libraries.  Fortunately, the new ELF libraries have higher version
+  numbers than the older a.out ones, to anticipate and forestall just
+  such problems.
+
+  After creating the three links, xrolodex runs fine.
+
+  The xrolodex program may be obtained from Spectro
+  <http://www.spectro.com/xrolodex.html>.
+
+
+
+
+  7.  Troubleshooting
+
+
+  If xmkmf and/or make succeeded without errors, you may proceed to the
+  ``next section''.  However, in "real life", few things work right the
+  first time.  This is when your resourcefulness is put to the test.
+
+
+  7.1.  Link Errors
+
+
+  ·  Suppose make fails with a Link error: -lX11: No such file or
+     directory, even after xmkmf has been invoked. This may mean that
+     the Imake file was not set up properly. Check the first part of the
+     Makefile for lines such as:
+
+
+
+       LIB=            -L/usr/X11/lib
+       INCLUDE=        -I/usr/X11/include/X11
+       LIBS=           -lX11 -lc -lm
+
+
+
+
+
+  The -L and -I switches tell the compiler and linker where to look for
+  the library and include files, respectively. In this example, the X11
+  libraries should be in the /usr/X11/lib directory, and the X11 include
+  files should be in the /usr/X11/include/X11 directory. If this is
+  incorrect for your machine, make the necessary changes to the Makefile
+  and try the make again.
+
+
+  ·  Undefined references to math library functions, such as the
+     following:
+
+
+                /tmp/cca011551.o(.text+0x11): undefined reference to `cos'
+
+
+
+
+  The fix for this is to explicitly link in the math library, by adding
+  an -lm to the LIB or LIBS flags in the Makefile (see previous exam­
+  ple).
+
+
+  ·  In a very few cases, running ldconfig as root may be the solution:
+
+     # /etc/ldconfig -n /lib will update the shared library symbolic
+     links. This should not be necessary under normal circumstances.
+
+
+  ·  Yet another thing to try if xmkmf fails is the following script:
+
+
+                make -DUseInstalled -I/usr/X386/lib/X11/config
+
+
+
+
+
+
+
+
+  ·  Sometimes the source needs the older release X11R5 libraries to
+     build.  If you have the R5 libs in /usr/X11R6/lib (you were given
+     the option of having them when first installing Linux), then you
+     need only ensure that you have the links that the software needs to
+     build.  The R5 libs are named libX11.so.3.1.0, libXaw.so.3.1.0, and
+     libXt.so.3.1.0. You generally need links, such as libX11.so.3 ->
+     libX11.so.3.1.0. Possibly the software will also need a link of the
+     form libX11.so -> libX11.so.3.1.0.  Of course, to create a
+     "missing" link, use the command ln -s libX11.so.3.1.0 libX11.so, as
+     root.
+
+
+
+  ·  Some packages will require you to install updated versions of one
+     or more libraries. For example, the StarOffice suite from
+     StarDivision GmbH is notorious for needing a libc version 5.4.4 or
+     greater.  As root, you would need to copy one or more libraries to
+     the appropriate directories, remove the old libraries, then reset
+     the symbolic links.
+
+     Caution: Exercise extreme care in this, as you can render your
+     system nonfunctional if you screw up.
+
+     You can usually find updated libraries at Sunsite
+     <ftp://sunsite.unc.edu/pub/Linux>.
+
+
+  7.2.  Other Problems
+
+
+
+  ·  An installed Perl or shell script gives you a No such file or
+     directory error message. In this case, check the file permissions
+     to make sure the file is executable and check the file header to
+     ascertain whether the shell or program invoked by the script is in
+     the place specified.  For example, the scrip may begin with:
+
+
+       #!/usr/local/bin/perl
+
+
+
+
+  If Perl is in fact installed in your /usr/bin directory instead of the
+  /usr/local/bin one, then the script will not run.  There are two meth­
+  ods of correcting this. The script file header may be changed to
+  #!/usr/bin/perl, or a symbolic link to the correct directory may be
+  added, ln -s /usr/bin/perl /usr/local/bin/perl.
+
+
+  ·  Some X11 software requires the Motif libraries to build.  The
+     standard Linux distributions do not have the Motif libraries
+     installed, and at present Motif costs an extra $100-$200 (though
+     the freeware Lesstif <http://www.lesstif.org/> also works in many
+     cases). If you need Motif to build a certain package, but lack the
+     Motif libraries, it may be possible to obtain statically linked
+     binaries. Static linking incorporates the library routines in the
+     binaries themselves.  This results in much larger binary files, but
+     the code will run on systems lacking the libraries.
+
+
+
+  ·  Running a configure script creates a strange Makefile, one
+     seemingly unrelated to the package you are attempting to build.
+     This means the wrong configure ran, one found somewhere else in
+     your path. Always invoke configure as ./configure to prevent this.
+
+
+
+  ·  Linux distributions are in the process of changing over to the
+     newer libc 6 (glibc 2) from libc 5. Precompiled binaries that
+     worked with the older library may bomb if you have upgraded your
+     library. The solution is to either recompile the applications from
+     the source or to obtain newer precompiled binaries.  If you are in
+     the process of upgrading your system to libc 6 and are experiencing
+     problems, refer to Eric Green's Glibc 2 HOWTO.
+
+
+  ·  Sometimes it is necessary to remove the -ansi option from the
+     compile flags in the Makefile. This enables gcc's extra, non-ANSI
+     features, and allows building packages that require these
+     extensions. (Thanks to Sebastien Blondeel for pointing this out.)
+
+
+  ·  Some programs require having setuid root, in order to run with root
+     privileges. The command to implement this is chmod u+s filename, as
+     root (note that the program must already be owned by root). This
+     has the effect of setting the setuid bit in the file permissions.
+     This issue comes up when the program accesses the system hardware,
+     such as a modem or CD ROM drive, or when the SVGA libs are invoked
+     from console mode, as in one particularly notorious emulation
+     package. If a program works when run by root, but gives access
+     denied error messages to an ordinary user, suspect this as the
+     cause.
+
+
+
+     Warning: A program with setuid as root may pose a security risk to
+     your system. The program runs with root privileges and thus has the
+     potential for doing significant damage. Make certain that you know
+     what the program does, by looking at the source if possible, before
+     setting the setuid bit.
+
+
+
+
+  7.3.  Tweaking and fine tuning
+
+
+  You may wish to examine the Makefile to make certain that the best
+  compilation options for your system are invoked. For example, setting
+  the -O2 flag chooses the highest level of optimization and the -fomit-
+  frame-pointer flag results in a smaller binary (though debugging will
+  then be disabled). Do not play around with this unless you know what
+  you are doing, and in any case, not until after a trial build works.
+
+  7.4.  Where to go for more help
+
+
+  In my experience, perhaps 25% of applications build "right out of the
+  box". Another 50% or so can be "persuaded" to build with an effort
+  ranging from trivial to herculean. That still means a significant
+  number of packages will not build no matter what. Even then, the Intel
+  ELF and/or a.out binaries for these might possibly be found at Sunsite
+  <ftp://sunsite.unc.edu> or the TSX-11 archive <ftp://tsx-11.mit.edu>.
+  Red Hat <http://redhat.com> and Debian <http://www.debian.org> have
+  extensive archives of prepackaged binaries of most of the popular
+  Linux software.  Perhaps the author of the software can supply the
+  binaries compiled for your particular flavor of machine.
+
+
+  Note that if you obtain precompiled binaries, you will need to check
+  for compatibility with your system:
+
+  ·  The binaries must run on your hardware (i.e., Intel x86).
+
+  ·  The binaries must be compatible with your kernel (i.e., a.out or
+     ELF).
+
+  ·  Your libraries must be up to date.
+
+  ·  Your system must have the appropriate installation utility (rpm or
+     deb).
+
+  If all else fails, you may find help in the appropriate newsgroups,
+  such as comp.os.linux.x or comp.os.linux.development.
+
+  If nothing at all works, at least you gave it your best effort, and
+  you learned a lot.
+
+
+
+
+
+
+
+  8.  Final Steps
+
+  Read the software package documentation to determine whether certain
+  environmental variables need setting (in .bashrc or .cshrc) and if the
+  .Xdefaults and .Xresources files need customizing.
+
+  There may be an applications default file, usually named Xfoo.ad in
+  the original Xfoo distribution. If so, edit the Xfoo.ad file to
+  customize it for your machine, then rename (mv) it Xfoo and install it
+  in the /usr/lib/X11/app-defaults directory, as root.  Failure to do
+  this may cause the software to behave strangely or even refuse to run.
+
+  Most software packages come with one or more preformatted man pages.
+  As root, copy the Xfoo.man file to the appropriate /usr/man,
+  /usr/local/man, or /usr/X11R6/man directory (man1 - man9), and rename
+  it accordingly.  For example, if Xfoo.man ends up in /usr/man/man4, it
+  should be renamed Xfoo.4 (mv Xfoo.man Xfoo.4).  By convention, user
+  commands go in man1, games in man6, and administration packages in
+  man8 (see the man docs for more details).  Of course, you may deviate
+  from this on your own system, if you like.
+
+  Some packages will not install the binaries in the appropriate system
+  directories, that is, they are missing the install option in the
+  Makefile. Should this be the case, you can install the binaries
+  manually by copying the binaries to the appropriate system directory,
+  /usr/local/bin or /usr/X11R6/bin, as root, of course.
+  Note that some or all of the above procedures should, in most cases,
+  be handled automatically by a make install, and possibly a make
+  install.man or make install_man. If so, the README or INSTALL doc file
+  will specify this.
+
+
+
+  9.  First Example: Xscrabble
+
+  Matt Chapman's Xscrabble seemed like a program that would be
+  interesting to have, since I happen to be an avid ScrabbleTM player. I
+  downloaded it, uncompressed it,  and built it following the procedure
+  in the README file:
+
+
+            xmkmf
+            make Makefiles
+            make includes
+            make
+
+
+
+
+  Of course it did not work...
+
+
+
+       gcc -o xscrab -O2 -O -L/usr/X11R6/lib
+       init.o xinit.o misc.o moves.o cmove.o main.o xutils.o mess.o popup.o
+       widgets.o display.o user.o CircPerc.o
+       -lXaw -lXmu -lXExExt -lXext -lX11 -lXt -lSM -lICE -lXExExt -lXext -lX11
+       -lXpm -L../Xc -lXc
+
+       BarGraf.o(.text+0xe7): undefined reference to `XtAddConverter'
+       BarGraf.o(.text+0x29a): undefined reference to `XSetClipMask'
+       BarGraf.o(.text+0x2ff): undefined reference to `XSetClipRectangles'
+       BarGraf.o(.text+0x375): undefined reference to `XDrawString'
+       BarGraf.o(.text+0x3e7): undefined reference to `XDrawLine'
+       etc.
+       etc.
+       etc...
+
+
+
+
+  I enquired about this in the comp.os.linux.x newsgroup, and someone
+  kindly pointed out that apparently the Xt, Xaw, Xmu, and X11 libs were
+  not being found at the link stage. Hmmm...
+
+  There were two main Makefiles, and the one in the src directory caught
+  my interest. One line in the Makefile defined LOCAL_LIBS as:
+  LOCAL_LIBS = $(XAWLIB) $(XMULIB) $(XTOOLLIB) $(XLIB) Here were
+  references to the libs not being found by the linker.
+
+  Looking for the next reference to LOCAL_LIBS, I saw on line 495 of
+  that Makefile:
+
+
+             $(CCLINK) -o $@ $(LDOPTIONS) $(OBJS) $(LOCAL_LIBS) $(LDLIBS)
+       $(EXTRA_LOAD_FLAGS)
+
+
+
+
+  Now what were these LDLIBS?
+
+        LDLIBS = $(LDPOSTLIB) $(THREADS_LIBS) $(SYS_LIBRARIES)
+  $(EXTRA_LIBRARIES)
+
+
+
+
+  The SYS_LIBRARIES were:
+
+
+        SYS_LIBRARIES = -lXpm -L../Xc -lXc
+
+
+
+
+  Yes! Here were the missing libraries.
+
+  Possibly the linker needed to see the LDLIBS before the LOCAL_LIBS...
+  So, the first thing to try was to modify the Makefile by transposing
+  the $(LOCAL_LIBS) and $(LDLIBS) on line 495, so it would now read:
+
+
+               $(CCLINK) -o $@ $(LDOPTIONS) $(OBJS) $(LDLIBS) $(LOCAL_LIBS)
+       $(EXTRA_LOAD_FLAGS)                          ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+  I tried running make again with the above change, and lo and behold,
+  it worked this time. Of course,  Xscrabble still needed some fine
+  tuning and twiddling, such as renaming the dictionary and commenting
+  out some assert statements in one of the source files, but since then
+  it has provided me with many hours of pleasure.
+
+
+
+  [Note that a newer version of Xscrabble is now available in rpm
+  format, and this installs without problems.]
+
+
+
+
+  You may e-mail Matt Chapman <mailto:matt@belgarath.demon.co.uk>, and
+  download Xscrabble from his home page
+  <http://www.belgarath.demon.co.uk/programs/index.html>.
+
+
+
+
+
+
+              Scrabble is a registered trademark of the Milton Bradley Co., Inc.
+
+
+
+
+
+
+
+
+  10.  Second Example: Xloadimage
+
+  This example poses an easier problem. The xloadimage program seemed a
+  useful addition to my set of graphic tools.  I copied the xloadi41.gz
+  file directly from the source directory on the CD included with the
+  excellent ``X User Tools'' book, by Mui and Quercia. As expected, tar
+  xzvf unarchives the files.  The make, however, produces a nasty-
+  looking error and terminates.
+
+
+
+       gcc -c -O -fstrength-reduce -finline-functions -fforce-mem
+       -fforce-addr -DSYSV  -I/usr/X11R6/include
+       -DSYSPATHFILE=\"/usr/lib/X11/Xloadimage\" mcidas.c
+
+       In file included from /usr/include/stdlib.h:32,
+                        from image.h:23,
+                        from xloadimage.h:15,
+                        from mcidas.c:7:
+       /usr/lib/gcc-lib/i486-linux/2.6.3/include/stddef.h:215:
+       conflicting types for `wchar_t'
+       /usr/X11R6/include/X11/Xlib.h:74: previous declaration of
+       `wchar_t'
+       make[1]: *** [mcidas.o] Error 1
+       make[1]: Leaving directory
+       `/home/thegrendel/tst/xloadimage.4.1'
+       make: *** [default] Error 2
+
+
+
+
+  The error message contains the essential clue.
+
+  Looking at the file image.h, line 23...
+
+
+              #include <stdlib.h>
+
+
+
+
+  Aha, somewhere in the source for xloadimage, wchar_t has been
+  redefined from what was specified in the standard include file,
+  stdlib.h. Let us first try commenting out line 23 in image.h, as
+  perhaps the stdlib.h include is not, after all, necessary.
+
+  At this point, the build proceeds without any fatal errors. The
+  xloadimage package functions correctly now.
+
+
+
+
+
+
+  11.  Third Example: Fortune
+
+  This final example requires some knowledge of C programming. The
+  majority of UNIX/Linux software is written in C, and learning at least
+  a little bit of C would certainly be an asset for anyone serious about
+  software installation.
+
+  The notorious fortune program displays up a humorous saying, a
+  "fortune cookie", every time Linux boots up. Unfortunately (pun
+  intended), attempting to build fortune on a Red Hat distribution with
+  a 2.0.30 kernel generates fatal errors.
+
+
+
+
+
+
+
+
+  ~/fortune# make all
+
+
+  gcc -O2 -Wall -fomit-frame-pointer -pipe   -c fortune.c -o
+  fortune.o
+  fortune.c: In function `add_dir':
+  fortune.c:551: structure has no member named `d_namlen'
+  fortune.c:553: structure has no member named `d_namlen'
+  make[1]: *** [fortune.o] Error 1
+  make[1]: Leaving directory `/home/thegrendel/for/fortune/fortune'
+  make: *** [fortune-bin] Error 2
+
+
+
+
+
+
+
+  Looking at fortune.c, the pertinent lines are these.
+
+
+
+          if (dirent->d_namlen == 0)
+                   continue;
+               name = copy(dirent->d_name, dirent->d_namlen);
+
+
+
+
+  We need to find the structure dirent, but it is not declared in the
+  fortune.c file, nor does a grep dirent show it in any of the other
+  source files. However, at the top of fortune.c, there is the following
+  line.
+
+
+
+       #include <dirent.h>
+
+
+
+
+  This appears to be a system library include file, therefore, the
+  logical place to look for dirent.h is in /usr/include.  Indeed, there
+  does exist a dirent.h file in /usr/include, but that file does not
+  contain the declaration of the dirent structure.  There is, however, a
+  reference to another dirent.h file.
+
+
+
+       #include <linux/dirent.h>
+
+
+
+
+
+  At last, going to /usr/include/linux/dirent.h, we find the structure
+  declaration we need.
+
+
+
+
+
+
+
+
+
+  struct dirent {
+          long            d_ino;
+          __kernel_off_t  d_off;
+          unsigned short  d_reclen;
+          char            d_name[256]; /* We must not include
+  limits.h! */
+  };
+
+
+
+
+  Sure enough, the structure declaration contains no d_namelen, but
+  there are a couple of "candidates" for its equivalent. The most likely
+  of these is d_reclen, since this structure member probably represents
+  the length of something and it is a short integer.  The other
+  possibility, d_ino, could be an inode number, judging by its name and
+  type. As a matter of fact, we are probably dealing with a "directory
+  entry" structure, and these elements represent attributes of a file,
+  its name, inode, and length (in blocks).  This would seem to validate
+  our guess.
+
+  Let us edit the file fortune.c, and change the two d_namelen
+  references in lines 551 and 553 to d_reclen.  Try a make all again.
+  Success. It builds without errors. We can now get our "cheap thrills"
+  from fortune.
+
+
+  12.  Where to Find Source Archives
+
+  Now that you are eager to use your newly acquired knowledge to add
+  utilities and other goodies to your system, you may find them online
+  at the Linux Applications and Utilities Page
+  <http://www.redhat.com/linux-info/linux-app-list/linapps.html>, or on
+  one of the very reasonably priced CD ROM archives by Red Hat
+  <http://www.redhat.com/>, InfoMagic <mailto:orders@infomagic.com>,
+  Linux Systems Labs <http://www.lsl.com>, Cheap Bytes
+  <http://www.cheapbytes.com>, and others.
+
+  A comprehensive repository of source code is the comp sources UNIX
+  archive <ftp://ftp.vix.com/pub/usenet/comp.sources.unix/>.
+
+  Much UNIX source code is posted on the alt.sources newsgroup. If you
+  are looking for particular source code packages, you may post on the
+  related alt.sources.wanted newsgroup.  Another good place to check is
+  the comp.os.linux.announce newsgroup.  To get on the Unix sources
+  <mailto:unix-sources@pa.dec.com> mailing list, send a subscribe
+  message there.
+
+  Archives for the alt.sources newsgroup are at the following ftp sites:
+
+
+  ·  ftp.sterling.com/usenet/alt.sources/
+     <ftp://ftp.sterling.com/usenet/alt.sources/>
+
+  ·  wuarchive.wustl.edu/usenet/alt.sources/articles
+     <ftp://wuarchive.wustl.edu/usenet/alt.sources/articles>
+
+  ·  src.doc.ic.ac.uk/usenet/alt.sources/articles
+     <ftp://src.doc.ic.ac.uk/usenet/alt.sources/articles>
+
+
+
+
+
+
+
+  13.  Final Words
+
+  To sum up, persistence makes all the difference  (and a high
+  frustration threshold certainly helps). As in all endeavors, learning
+  from mistakes is critically important.  Each misstep, every failure
+  contributes to the body of knowledge that will lead to mastery of the
+  art of building software.
+
+
+
+  14.  References and Further Reading
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  BORLAND C++ TOOLS AND UTILITIES GUIDE, Borland International, 1992,
+  pp. 9-42.
+  [One of the manuals distributed with Borland C++, ver. 3.1. Gives
+  a fairly good intro to make syntax and concepts, using Borland's
+  crippled implementation for DOS.]
+
+  DuBois, Paul: SOFTWARE PORTABILITY WITH IMAKE, O'Reilly and Associates,
+  1996, ISBN 1-56592-226-3.
+  [This is reputed to be the definitive imake reference, though I did not
+  have it available when writing this article.]
+
+  Frisch, Aeleen: ESSENTIAL SYSTEM ADMINISTRATION, O'Reilly and
+  Associates, 1995, ISBN 1-56592-127-5.
+  [This otherwise excellent sys admin handbook has only sketchy coverage
+  of software building.]
+
+  Lehey, Greg: PORTING UNIX SOFTWARE, O'Reilly and Associates, 1995, ISBN
+  1-56592-126-7.
+
+  Mui, Linda and Valerie Quercia: X USER TOOLS, O'Reilly and Associates,
+  1994, ISBN 1-56592-019-8, pp. 734-760.
+
+  Oram, Andrew and Steve Talbott: MANAGING PROJECTS WITH MAKE, O'Reilly
+  and Associates, 1991, ISBN 0-937175-90-0.
+
+  Peek, Jerry and Tim O'Reilly and Mike Loukides: UNIX POWER TOOLS,
+  O'Reilly and Associates / Random House, 1997, ISBN 1-56592-260-3.
+  [A wonderful source of ideas, and tons of utilities you may end up
+  building from the source code, using the methods discussed in
+  this article.]
+
+  Stallman, Richard M. and Roland McGrath: GNU MAKE, Free Software
+  Foundation, 1995, ISBN 1-882114-78-7.
+  [Required reading.]
+
+  Welsh, Matt and Lar Kaufman: RUNNING LINUX, O'Reilly and Associates,
+  1996, ISBN 1-56592-151-8.
+  [Still the best overall Linux reference, though lacking in depth
+  in some areas.]
+
+
+
+  The BZIP2 HOWTO, by David Fetter.
+
+  The Glibc2 HOWTO, by Eric Green
+
+  The LINUX ELF HOWTO, by Daniel Barlow.
+
+  The RPM HOWTO, by Donnie Barnes.
+
+  [These HOWTOs are available in HTML format from the LDP site,
+  http://sunsite.unc.edu/LDP/linux.html.]
+
+
+
+  The man pages for dpkg, gcc, gzip, imake, ldconfig, make, patch, rpm, tar,
+  termcap, terminfo, and xmkmf.
+
+
+
+
+
+
+
+
+

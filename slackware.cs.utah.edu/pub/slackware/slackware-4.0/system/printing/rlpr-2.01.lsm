@@ -1,0 +1,19 @@
+Begin3
+Title:          rlpr
+Version:        2.01
+Entered-date:   03MAY99
+Description:    send print jobs to lpd servers anywhere on a network.
+                does not require lpd server to be listed in client's
+                /etc/printcap useful for printing from machines one
+                does not have root on to a machine one does...
+                (i.e. one's home linux box!)
+Keywords:       rlpr, printing, remote printing, printing tools, lpr, spooling
+Author:         meem@gnu.org (meem)
+Maintained-by:  meem@gnu.org (meem)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/printing
+		151K rlpr-2.01.tar.gz
+Alternate-site: sherilyn.ne.mediaone.net
+Original-site:  
+Platforms:      linux, hpux, irix, solaris, aix, freebsd, ... 
+Copying-policy: GPL 
+End

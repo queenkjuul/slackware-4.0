@@ -1,0 +1,385 @@
+LANGUAGE = "French", "Fran‡ais"
+
+"00_index.txt"
+"00_index.fre"
+
+"dirs.txt"
+"dirs.fre"
+
+"00global.txt"
+"00global.fre"
+
+"Press the ENTER key to return to File Index Menu.\n"
+"Faites ENTER pour retourner au menu d'index des fichiers.\n"
+
+"Press ENTER to continue, or ESC to abort...."
+"Faites ENTER pour continuer, ou ESC pour annuler...."
+
+"Press any key to return to file index..."
+"Faites une touche pour retourner … l'index des fichiers..."
+
+"Press any key to continue..."
+"Faites une touche pour continuer..."
+
+"Please insert %s disc #%d.\n\n"
+"Ins‚rez le disque %s #%d.\n\n"
+
+"Please wait while files are being uncompressed...\n"
+"Veuillez attendre quelques instants pour la d‚compression des fichiers...\n"
+
+"Please run this program through File Manager in Windows.\n"
+"Vous devez utiliser ce programme avec le File Manager de Windows.\n"
+
+"Loading config file...\n"
+"Chargement du fichier de configuration...\n"
+
+"Locating %s....\n"
+"Recherche de %s....\n"
+
+"Select Language...\n\n"
+"Quelle langue d‚sirez-vous...\n\n"
+
+"Checking cursor position..."
+"V‚rification de la position du curseur..."
+
+"File %s is a windows program.\n"
+"Le fichier %s est un programme Windows.\n"
+
+"Language is not changed.\n"
+"La langue n'a pas ‚t‚ chang‚e.\n"
+
+"Language changed.\n"
+"La langue a ‚t‚ chang‚e.\n"
+
+"Copying file....\n"
+"Copie des fichiers....\n"
+
+"Exiting program....."
+"Sortie du programme....."
+
+"choice: "
+"choix: "
+
+"Abort..."
+"Annuler..."
+
+"%s Bytes"
+"%s Octets"
+
+"Directory"
+"R‚pertoire"
+
+"Filename"
+"Fichier"
+
+"File Size"
+"Taille"
+
+"Date"
+"Date"
+
+"Description"
+"Description"
+
+"Percent: "
+"Pourcentage: "
+
+"Word #: "
+"Mot #: "
+
+"Line #: "
+"Ligne #: "
+
+"Source:"
+"Provenance:"
+
+"Destination:"
+"Destination:"
+
+"Current Directory:"
+"R‚pertoire courant:"
+
+"Avail Diskspace"
+"Espace disque"
+
+"Processing... %d%"
+"En traitement... %d%"
+
+"Jump to [P]ercent, [W]ord, [L]ine? "
+"Saut vers [P] Pourcentage, [W] Mot, [L] Ligne? "
+
+"Cursor at %d%%, %ld/%ld char, %ld/%ld word, %ld/%ld line"
+"Curseur … %d%%, %ld/%ld carac., %ld/%ld mot, %ld/%ld ligne"
+
+"Executable program."
+"Programme ex‚cutable."
+
+"Executable batch file."
+"Fichier BATCH ex‚cutable."
+
+"Probable text file. (Doc?)"
+"Prob. un fichier de texte."
+
+"Probable documentation file."
+"Prob. un fichier de doc."
+
+"Description file."
+"Fichier de description."
+
+"You're about to delete the directory:\n"
+"Vous allez effacer le r‚pertoire:\n"
+
+"All files and sub directories will be erased.\n"
+"Tous les fichiers et les sous-r‚pertoires seront effac‚s.\n"
+
+"Are you sure you want to do this (Y/N)? "
+"Confirmez cette op‚ration:  (Y) pour OUI, (N) pour NON ? "
+
+"Removing dir %s\n"
+"Effacement du r‚pertoire: %s\n"
+
+"Removing file %s\n"
+"Effacement du fichier: %s\n"
+
+"Removing directory %s\\%s\n"
+"Effacement du r‚pertoire %s\\%s\n"
+
+"Removing directory %s%s\n"
+"Effacement du r‚pertoire %s%s\n"
+
+"Directory %s has been removed.\n"
+"Le r‚pertoire %s a ‚t‚ effac‚.\n"
+
+"Can't find file %s\n"
+"Le fichier %s est introuvable\n"
+
+"Can't find %s disc #%d.\n"
+"Le disque %s #%d est introuvable.\n"
+
+"Can't create file %s.\n"
+"Impossible de cr‚er le fichier %s.\n"
+
+"Cannot chdir to the directory %s.\n"
+"Impossible de changer de r‚pertoire vers %s.\n"
+
+"Cannot create the directory %s.\n"
+"Impossible de cr‚er le r‚pertoire %s.\n"
+
+"Cannot execute program %s.\n"
+"Impossible d'ex‚cuter le fichier %s.\n"
+
+"Invalid pathname %s\n\n"
+"Sentier invalide %s\n\n"
+
+"%s is not a valid pathname.\n"
+"%s n'est pas un nom de sentier valide.\n"
+
+"'%c' is not a valid drive.\n"
+"'%c' n'est pas un nom de lecteur valide.\n"
+
+"Drive %c: doesnt exist.\n"
+"Le lecteur %c: n'existe pas.\n"
+
+"View File:\n\n"
+"Voir le fichier:\n\n"
+
+"File Index Menu:\n\n"
+"Menu des index de fichiers:\n\n"
+
+"Unzip: Destination Query"
+"Unzip: Requˆte de destination"
+
+"Unzip: Uncompressing File"
+"Unzip: D‚compression du fichier"
+
+"Unzip Menu: Directory Browswer.\n\n"
+"Menu Unzip: Inspecteur de r‚pertoire.\n\n"
+
+"Unzip Menu: Directory name edit.\n\n"
+"Menu Unzip: Edition de nom de r‚pertoire.\n\n"
+
+"Copy: Destination Query"
+"Copier: Requˆte de destination"
+
+"Copy: Copying File"
+"Copier: Copie du fichier"
+
+"Copy Menu: Directory name edit.\n\n"
+"Menu de copier: Edition de nom de r‚pertoire.\n\n"
+
+"Contents of zipped file %s:\n"
+"Contenu du fichier zipper %s:\n"
+
+"View, Version %3.2f\n"
+"View, Version %3.2f\n"
+
+"Up Arrow    - Prev line.\n"
+"FlŠche vers le haut - Ligne pr‚c‚dente.\n"
+
+"Down Arrow  - Next line.\n"
+"FlŠche vers le bas  - Ligne suivante.\n"
+
+"PgUp        - Prev Page.\n"
+"PgUp        - Page pr‚c‚dente.\n"
+
+"PgDn        - Next Page.\n"
+"PgDn        - Page suivante.\n"
+
+"Home        - Jump to beginning of list.\n"
+"Home        - Saut au d‚but de la liste.\n"
+
+"End         - Jump to end of list.\n"
+"End         - Saut … la fin de la liste.\n"
+
+"Home        - Jump to beginning of file.\n"
+"Home        - Saut au d‚but du fichier.\n"
+
+"End         - Jump to end of file.\n"
+"End         - Saut … la fin du fichier.\n"
+
+"Left Arrow  - Move cursor left one character.\n"
+"FlŠche gauche    - D‚placement d'un caractŠre vers la gauche.\n"
+
+"Right Arrow - Move cursor right one character.\n"
+"FlŠche droite    - D‚placement d'un caractŠre vers la droite.\n"
+
+"Up Arrow    - Suggest the last directory used for unzip.\n"
+"FlŠche en haut   - SuggŠre le dernier r‚pertoire pour UNZIP.\n"
+
+"Down Arrow  - Suggest other destination directories.\n"
+"FlŠche en bas    - SuggŠre un autre r‚pertoire pour la destination.\n"
+
+"Home        - Jump to beginning of line.\n"
+"Home        - Saut au d‚but de la ligne.\n"
+
+"End         - Jump to end of line.\n"
+"End         - Saut … la fin de la ligne.\n"
+
+"Up Arrow    - Prev file.\n"
+"FlŠche en haut   - Fichier pr‚c‚dent.\n"
+
+"Down Arrow  - Next file.\n"
+"FlŠche en bas    - Fichier suivant.\n"
+
+"PgUp        - Prev Page.\n"
+"PgUp        - Page pr‚c‚dente.\n"
+
+"PgDn        - Next Page.\n"
+"PgDn        - Page suivante.\n"
+
+"Home        - Jump to beginning of file list.\n"
+"Home        - Saut au d‚but de la liste des fichiers.\n"
+
+"End         - Jump to end of file list.\n"
+"End         - Saut … la fin de la liste des fichiers fenˆtre.\n"
+
+"S, F10      - Search for a pattern.\n"
+"S, F10      - Recherche d'une s‚quence.\n"
+
+"R, F9       - Reverse search for a pattern.\n"
+"R, F9       - Recherche renvers‚e d'une s‚quence.\n"
+
+"ESC         - Abort back to previous menu.\n"
+"ESC         - Annuler et retour au menu pr‚c‚dent.\n"
+
+"ESC         - Abort back to the file index menu.\n"
+"ESC         - Annuler et retour au menu des index de fichier.\n"
+
+"ESC         - Abort back to dir edit window.\n"
+"ESC         - Annuler et retour au menu d'‚dition des r‚pertoires.\n"
+
+"Alt-X       - Exit the view program.\n"
+"Alt-X       - Sortir du programme de visualisation.\n"
+
+"Enter       - Begin copy the selected file.\n"
+"Enter       - D‚buter la copie des fichiers s‚lectionn‚s.\n"
+
+"Enter       - Begin uncompress the selected file.\n"
+"Enter       - D‚buter la d‚compression des fichiers s‚lectionn‚s.\n"
+
+"Enter       - Enter directory, or change drive.\n"
+"Enter       - Choix de r‚pertoire ou changement de lecteur.\n"
+
+"Enter       - Select file, or enter directory.\n"
+"Enter       - Choisir un fichier ou un r‚pertoire.\n"
+
+"Enter       - View a text file, or executes a program.\n"
+"Enter       - Voir un fichier de texte ou ex‚cuter un programme.\n"
+
+"TAB         - Switch to directory browser window.\n"
+"TAB         - Aller vers l'inspecteur de r‚pertoire.\n"
+
+"TAB         - Yank current directory to edit window.\n"
+"TAB         - Amener le r‚pertoire courant vers la fenˆtre d'‚dition.\n"
+
+"C           - Copy file.\n"
+"C           - Copie de fichier.\n"
+
+"V           - View file headers inside a zipped file.\n"
+"V           - Voir les entˆtes de fichier de l'int‚rieur du fichier zipp‚.\n"
+
+"F5          - Select a new language.\n"
+"F5          - Choisir une nouvelle langue.\n"
+
+"F6          - Toggle between English and the selected language.\n"
+"F6          - Aller et venir de l'anglais … la langue choisie.\n"
+
+"Alt-J       - Jump to another place in file.\n"
+"Alt-J       - Sauter … un autre endroit dans le fichier.\n"
+
+"Alt-P       - Show the cursorbar's position in file.\n"
+"Alt-P       - Montrer la position du curseur dans le fichier.\n"
+
+"Alt-G       - Toggle between directory and global indexing methods.\n"
+"Alt-G       - Aller et venir entre le r‚pertoire et l'index global.\n"
+
+"Alt-R       - Remove the current directory.\n"
+"Alt-R       - Enlever le r‚pertoire courant.\n"
+
+"***** Searching *****"
+"***Recherche en court***"
+
+"********** Please Wait **********"
+"********** Un instant **********"
+
+"********** Pattern Not Found **********"
+"********** S‚quence introuvable **********"
+
+"Search: "
+"Rechrch:"
+
+"R Srch: "
+"Rech.Ar:"
+
+"<Esc>-Abort Search"
+"<Esc>-Annuler la rech"
+
+"<S>-Srch  <R>-Rev Srch"
+"<S>-Rechr <R>-Rech arr."
+
+" <S>-Srch  <R>-Rev Srch  <Esc>-Prev Mode  <Alt-X>-Exit  <?>-"
+" <S>-Rechr <R>-Rech arr. <Esc>-Mode pr‚c <Alt-X>-Sortir <?>-"
+
+"Help"
+"Aide"
+
+" <7>/<8>-Bits Mask   <Alt-J>-Jump   <Alt-P>-Show Cursor Position"
+" <7>/<8>-Masque de bits   <Alt-J>-Saut  <Alt-P>-Voir la position"
+
+" <Enter>-Select/Begin To Uncompress File     <TAB>-Switch Window"
+" <Enter>-Choisir/D‚compress du fichier  <TAB>-Changer de fenˆtre"
+
+" <Enter>-Selec./Begin To Copy File           <TAB>-Switch Window"
+" <Enter>-Choisir/Copier le fichier      <TAB>-Changer de fenˆtre"
+
+" <Enter>-Select <F5>/<F6>-Lang Selct <C>-Copy <Alt-G>-Swtch Indx"
+" <Enter>-Choisir <F5>/<F6>-Langue  <C>-Copie <Alt-G>-Choix Index"
+
+" <Enter>-Select  <F7>-Word Lookup  <C>-Copy  <Alt-G>-Swtch Index";
+" <Enter>-Choisir <F7>-Mot Recherche<C>-Copie <Alt-G>-Choix Index"
+
+" <Enter>-View File/Exec Program <Alt-R>-Remove Current Directory"
+" <Enter>-Voir fichier/Ex‚c. prog. <Alt-R>-Enlever r‚per. courant"
+
+" <F10>-Find Next Occur.    <F9>-Find Prev Occur.    <Esc>-Abort Search"
+" <F10>-Trouver suivant    <F9>-Trouver pr‚c‚dent   <Esc>-Annuler recherche"

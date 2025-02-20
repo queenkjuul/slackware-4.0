@@ -1,0 +1,30 @@
+# Guide to building binutils-2.9.1.0.19a for Slackware
+
+tar xzvf binutils-2.9.1.0.19a.tar.gz
+cd binutils-2.9.1.0.19a
+
+# Build Linux ELF format binutils:
+./configure --prefix=/usr --enable-shared i386-pc-linux-gnulibc1
+make CFLAGS=-O2 LDFLAGS=-s
+
+# Build Linux a.out format binutils:
+#./configure --prefix=/usr --enable-shared i386-pc-linux-gnuaout
+#make CFLAGS=-O2 LDFLAGS=-s
+
+# Build i386 COFF format binutils:
+#./configure --prefix=/usr --enable-shared i386-pc-linux-gnucoff
+#make CFLAGS=-O2 LDFLAGS=-s
+
+# OK, now follow the general structure of the binutils.tgz package (which
+# follows H.J. Lu's original binary package structure).  The idea is to
+# put things into (for example) /usr/ix86-linux/ instead of in the default
+# i386-pc-linux-gnulibc1.  To account for this, the ldscripts need to be
+# patched with the new path.  There are a few other rearrangements -- refer
+# to the existing binutils.tgz as a guide for things like the symlinks under
+# /usr/ix86-linux/bin/.
+
+# As an obvious reference to how the binutils package was compiled, we'll
+# make symlinks in usr:  i386-pc-linux-gnulibc1, i386-pc-linux-gnuaout,
+# and i386-pc-linux-gnucoff.  With the path changed in the ldscripts these
+# links are not strictly required, however.
+

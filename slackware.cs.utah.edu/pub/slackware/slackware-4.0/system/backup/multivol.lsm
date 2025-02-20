@@ -1,0 +1,17 @@
+Begin3
+Title:         multivol 
+Version:       2.1 
+Entered-date:  Tue Apr 27 19:37:55 MET DST 1999
+Description:   multivol, used with tar, cpio, or any program generating bytes,
+               will save the data on multiple volumes, supporting, if needed,
+               an autochanger through scripts. Examples are for example given
+               with DILOG autochangers through the ``plt'' utility.
+Keywords:      backup, restore, autochanger
+Author:        Marc SCHAEFER <schaefer@alphanet.ch> 
+Maintained-by: Marc SCHAEFER <schaefer@alphanet.ch>
+Primary-site:  somewhere on sunsite 
+Alternate-site: 
+Original-site:  
+Platforms:     Linux (and others, presumably).
+Copying-policy: GPL
+End

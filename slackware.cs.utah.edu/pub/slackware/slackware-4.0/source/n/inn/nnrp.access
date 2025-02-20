@@ -1,0 +1,4 @@
+# Default to no access
+*:: -no- : -no- :!*
+# Allow access from localhost
+localhost:Read Post:::*

@@ -1,0 +1,22 @@
+Begin3
+Title:		NewstoHOWTO
+Version:	2.0
+Entered-date:	04APR96
+Description:	A skript to eliminate the headers from HOWTOs posted
+		automatically by the Linux HOWTO coordinator to the Net News
+		(Normally to comp.os.linux.answers). By this writing the
+		Linux HOWTO coordinator is Greg Hankins
+		<gregh@sunsite.unc.edu>. 
+		The HOWTO's names are automatically gessed from within the
+		News files and different parts of the same HOWTO that reside
+		in different files will be put together in one HOWTO in
+		their correct order.
+		You can give a directory to put the processed HOWTOs in.
+		By default the HOWTOs will be compressed.
+Keywords:	News, HOWTO, comp.os.linux.answers, NewstoHOWTO
+Author:		Haykel@cs.tu-berlin.de (Haykel Ben Jemia)
+Primary-site:	sunsite.unc.edu /pub/Linux/Incoming
+		NewstoHOWTO-2.0.tar.gz
+Platforms:	BASH
+Copying-policy:	free ;)
+End

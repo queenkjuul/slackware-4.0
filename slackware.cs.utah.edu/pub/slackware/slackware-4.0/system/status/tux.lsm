@@ -1,0 +1,15 @@
+Begin3
+Title:          tux.tar.gz
+Version:        1.0
+Entered-date:   11jul97
+Description:    A perl script to give a system reliability statistic
+Keywords:       penguin uptime perl
+Author:         stjeanp@pdq.net (Patrick St. Jean)
+Maintained-by:  stjeanp@pdq.net (Patrick St. Jean)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status
+		1.5 kb tux.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, perl 5.004 (5.003 should also work)
+Copying-policy: GPL
+End

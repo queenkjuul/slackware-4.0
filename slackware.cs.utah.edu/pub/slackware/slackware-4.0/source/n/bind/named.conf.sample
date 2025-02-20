@@ -1,0 +1,40 @@
+/*
+ * A simple BIND 8 configuration
+ */
+
+options {
+        directory "/var/named";
+};
+
+logging {
+        category lame-servers { null; };
+        category cname { null; };
+};
+
+
+zone "foo.org" in {
+        type master;
+        file "foo.hosts";
+};
+
+zone "0.168.192.in-addr.arpa" in {
+        type master;
+        file "foo.rev";
+};
+
+zone "bar.org" in {
+        type slave;
+        file "bar.hosts";
+        masters { 192.168.1.1; };
+};
+
+zone "." in {
+        type hint;
+        file "root.cache";
+};
+
+zone "0.0.127.in-addr.arpa" in {
+        type master;
+        file "named.local";
+};
+

@@ -1,0 +1,14 @@
+Begin3
+Title:          tape-scripts
+Version:        1.00
+Entered-date:   15FEB98
+Description:    Simple scripts for tape archive management
+Keywords:       tape scripts
+Author:         amckee@poboxes.com (Adam McKee)
+Maintained-by:  amckee@poboxes.com (Adam McKee) 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/backup
+                486 tape-scripts-1.00.lsm
+                7kB tape-scripts-1.00-1.src.rpm
+                8kB tape-scripts-1.00-1.i386.rpm
+Copying-policy: GPL
+End

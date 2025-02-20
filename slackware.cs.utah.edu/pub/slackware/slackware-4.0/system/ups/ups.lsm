@@ -1,0 +1,13 @@
+Begin3
+Title:          upsd
+Version:        1
+Entered-date:   1996-05-15
+Description:    Program to interact with battery backups (Powerbox UPS)
+Keywords:       ups, battery, backup, power
+Author:         Tom Bjorkholm (tomb@mydata.se)
+Maintained-by:  Tom Bjorkholm (tomb@mydata.se)
+Primary-site:   tsx-11.mit.edu /pub/linux/sources/sbin (now: /incoming)
+                56k ups.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/power (now: /uploads )
+Copying-policy: GPL
+End

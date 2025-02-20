@@ -1,0 +1,27 @@
+Begin3
+Title:          diald-top
+Version:        2.0
+Entered-date:   28SEP97
+Description:    Maintains a 'top'-like listing of all packets and their time to
+		live for use with diald (tested with version 0.16).  Requires
+		ncurses, flex, bison to compile, and uses named pipes for 
+		communication.
+		Since v1.1:  Incorporated patches contributed by:
+			Steffen Ullrich <ccrlphr@xensei.com>
+		Added capability to run as a client on a remote networked
+		  machine.
+		Added a network server that runs on the machine running diald.
+		Now uses non-blocking I/O on the monitor FIFO, and uses select
+		  rather than timeouts to choose between the keyboard and the
+		  FIFO as input streams.
+		Fixed the help screen to fit on normal sized screens as the
+		  development was done with a 50 line screen.
+		Fixed the nasty segfault bug in v1.1.
+Keywords:       diald statistics
+Author:         gjhurlbu@beirdo.ott.uplink.on.ca (Gavin J. Hurlbut)
+Maintained-by:  author
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+		101kB	diald-top-2.0.tar.gz
+		1kB	diald-top-2.0.lsm
+Copying-policy: GPL but with a twist...  I want email if you hack on it :)
+End

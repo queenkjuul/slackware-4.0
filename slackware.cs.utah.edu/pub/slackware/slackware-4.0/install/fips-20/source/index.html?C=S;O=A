@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/install/fips-20/source</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/install/fips-20/source</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/install/fips-20/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="version.h">version.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right"> 27 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="getopt.h">getopt.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">383 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="host_os.h">host_os.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">729 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="types.h">types.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="input.h">input.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="fips15.DSW">fips15.DSW</a></td><td align="right">1998-02-06 23:50  </td><td align="right">1.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="global.h">global.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="fat.h">fat.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="host_os.cpp">host_os.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="save.cpp">save.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="primpart.h">primpart.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">2.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="fips15.mak">fips15.mak</a></td><td align="right">1998-02-06 23:49  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="fipsspec.h">fipsspec.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="cmdl_arg.cpp">cmdl_arg.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="getopt.c">getopt.c</a></td><td align="right">1997-12-22 13:25  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="calculat.cpp">calculat.cpp</a></td><td align="right">1997-12-23 01:38  </td><td align="right">3.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="main.cpp">main.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">3.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="hdstruct.cpp">hdstruct.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">4.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="disk_io.h">disk_io.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">4.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="hdstruct.h">hdstruct.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">4.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="input.cpp">input.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">5.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="logdr_st.cpp">logdr_st.cpp</a></td><td align="right">1998-02-06 23:06  </td><td align="right">6.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="disk_io.cpp">disk_io.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">6.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="fat.cpp">fat.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">6.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="global.cpp">global.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right">6.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="logdr_st.h">logdr_st.h</a></td><td align="right">1997-12-22 13:25  </td><td align="right">7.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="fipsspec.cpp">fipsspec.cpp</a></td><td align="right">1998-02-06 23:39  </td><td align="right">9.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="check.cpp">check.cpp</a></td><td align="right">1997-12-22 13:25  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="fips15.ide">fips15.ide</a></td><td align="right">1998-02-06 23:50  </td><td align="right"> 43K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

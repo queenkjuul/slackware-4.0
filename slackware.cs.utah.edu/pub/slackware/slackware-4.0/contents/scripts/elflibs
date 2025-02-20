@@ -1,0 +1,46 @@
+#!/bin/sh
+cd lib
+for lib in *.newlib ; do # if this file is already in /lib, we won't replace it
+  if [ ! -r `basename $lib .newlib` ]; then
+    mv $lib `basename $lib .newlib`
+  else
+    rm $lib
+  fi
+done
+if [ -x /sbin/ldconfig ]; then # update library links
+  /sbin/ldconfig .
+else # no ldconfig, we must be running safely from the bootdisk.
+  rm -f libc.so.5
+  ln -sf libc.so.5.4.46 libc.so.5
+  rm -f libm.so.5
+  ln -sf libm.so.5.0.9 libm.so.5
+  rm -f libcurses.so.1
+  ln -sf libcurses.so.1.0.0 libcurses.so.1
+  rm -f libtermcap.so.2
+  ln -sf libtermcap.so.2.0.8 libtermcap.so.2
+  rm -f libgdbm.so.1
+  ln -sf libgdbm.so.1.7.3 libgdbm.so.1
+fi
+cd ..
+( cd usr/lib ; rm -rf libstdc++.so.2.8 )
+( cd usr/lib ; ln -sf libstdc++.so.2.8.0 libstdc++.so.2.8 )
+( cd usr/lib ; rm -rf libdb.so.1 )
+( cd usr/lib ; ln -sf libdb.so.1.85.4 libdb.so.1 )
+( cd usr/lib ; rm -rf libstdc++.so.2.9 )
+( cd usr/lib ; ln -sf libstdc++.so.2.9.0 libstdc++.so.2.9 )
+( cd usr/lib ; rm -rf libg++.so.27 )
+( cd usr/lib ; ln -sf libg++.so.27.1.4 libg++.so.27 )
+( cd usr/lib ; rm -rf libstdc++.so.27 )
+( cd usr/lib ; ln -sf libstdc++.so.27.1.4 libstdc++.so.27 )
+( cd lib ; rm -rf libncurses.so.3.4 )
+( cd lib ; ln -sf libncurses.so.1.9.9g libncurses.so.3.4 )
+( cd lib ; rm -rf libncurses.so.3.0 )
+( cd lib ; ln -sf libncurses.so.1.9.9g libncurses.so.3.0 )
+( cd lib ; rm -rf libvga.so.1 )
+( cd lib ; ln -sf libvga.so.1.3.1 libvga.so.1 )
+( cd lib ; rm -rf libvgagl.so.1 )
+( cd lib ; ln -sf libvgagl.so.1.3.1 libvgagl.so.1 )
+( cd usr/lib ; rm -rf libz.so.1 )
+( cd usr/lib ; ln -sf libz.so.1.1.3 libz.so.1 )
+( cd usr/lib ; rm -rf libintl.so.1 )
+( cd usr/lib ; ln -sf libintl.so.1.0.0 libintl.so.1 )

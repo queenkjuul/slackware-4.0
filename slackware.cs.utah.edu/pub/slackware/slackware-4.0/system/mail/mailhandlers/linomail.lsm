@@ -1,0 +1,13 @@
+Begin3
+Title: linomail
+Version: 0.1
+Entered-date: 05 May 1998
+Description: A set of patches to sendmail, pine and procmail
+   configuration files to enable offline mailing under Linux.
+Keywords: offline mail linux linomail
+Author: kandr@giasmd01.vsnl.net.in (Ranganathan)
+Maintained-by: kandr@giasmd01.vsnl.net.in (Ranganathan)
+Primary-site: sunsite.unc.edu /pub/Linux/mail/mailhandlers
+Alternate-site: http://kandr.home.ml.org/linomail-0.1.tgz
+Copying-policy: GPL
+End

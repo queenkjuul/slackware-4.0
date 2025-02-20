@@ -1,0 +1,4 @@
+( cd usr/lib ; rm -rf libl.a )
+( cd usr/lib ; ln -sf libfl.a libl.a )
+( cd usr/bin ; rm -rf flex++ )
+( cd usr/bin ; ln -sf flex flex++ )

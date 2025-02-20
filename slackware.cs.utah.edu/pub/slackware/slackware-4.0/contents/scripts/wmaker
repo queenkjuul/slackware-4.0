@@ -1,0 +1,8 @@
+( cd usr/X11R6/lib ; rm -rf libwraster.so )
+( cd usr/X11R6/lib ; ln -sf libwraster.so.1.1.0 libwraster.so )
+( cd usr/X11R6/lib ; rm -rf libwraster.so.1 )
+( cd usr/X11R6/lib ; ln -sf libwraster.so.1.1.0 libwraster.so.1 )
+( cd usr/lib ; rm -rf libPropList.so )
+( cd usr/lib ; ln -sf libPropList.so.0.1.1 libPropList.so )
+( cd usr/lib ; rm -rf libPropList.so.0 )
+( cd usr/lib ; ln -sf libPropList.so.0.1.1 libPropList.so.0 )

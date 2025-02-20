@@ -1,0 +1,17 @@
+Begin3
+Title:		strace system call tracer
+Version:	STRACE-3.1
+Entered-date:	31MAY96
+Description:	strace is a program that traces and decodes system calls
+		on SunOS, Linux (i386/m68k/alpha), SysVr4, Solaris2, and Irix5
+		platforms.
+Keywords:	tool debug syscall trace decode sunos linux svr4 solaris irix
+Author:		pk@cs.few.eur.nl (Paul Kranenburg), branko@hactic.nl (Branko
+		Lankester), jrs@world.std.com (J. Richard Sladkey)
+Maintained-by:	jrs@world.std.com (J. Richard Sladkey)
+Primary-site:	ftp.std.com /pub/jrs
+		173k strace-3.1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/strace
+		173k strace-3.1.tar.gz
+Copying-policy:	BSD
+End

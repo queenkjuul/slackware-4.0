@@ -1,0 +1,23 @@
+Begin3
+Title:		Universal NFS Server for Linux
+Version:	2.2beta23
+Entered-date:	26SEP96
+Description:	This package contains the NFS server implementation,
+		consisting of nfsd, mountd, ugidd, rquotad, and showmount.
+Keywords:	networking NFS RPC
+Author:		shand@cad.jmrc.eecs.unsw.oz (Mark Shand)
+		becker@cesdis.gsfc.nasa.gov (Donald Becker)
+		jrs@world.std.com (Rick Sladkey)
+		obz@raster.Kodak.COM (Orest Zborowski)
+		waltje@uwalt.nl.mugnet.org (Fred N. van Kempen)
+		okir@monad.swb.de (Olaf Kirch)
+Maintained-by:	okir@monad.swb.de (Olaf Kirch)
+Primary-site:	ftp.mathematik.th-darmstadt.de /pub/linux/okir/dontuse
+		154kB nfs-server-2.2beta23.tar.gz
+Alternate-site:	linux.nrao.edu /pub/people/linux/okir/dontuse
+		154kB nfs-server-2.2beta23.tar.gz
+Platform:	requires libwrap.a from tcp_wrappers-6.x or higher to run
+		ugidd `safely.'
+Copying-policy:	Mixed (BSD-style with GPL portions)
+End
+

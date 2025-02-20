@@ -1,0 +1,16 @@
+Begin3
+Title:           tn3270 
+Version:         1.0
+Entered-date:    21SEP97 
+Description:     Tn3270 telnet client for connecting to IBM servers.
+                 Requires 'libcurses' which is included, in case you
+		 don't already have it.
+		 This is not the X windows version of tn3270. 
+Keywords:          
+Author:          robotti@pop.erols.com (Kent Robotti) 
+Maintained-by:   
+Primary-site:    
+Alternate-site:  ftp://sunsite.unc.edu/pub/Linux/system/network/?
+Platforms:       Linux elf system, with libc.so.5 & libtermcap.so.2. 
+Copying-policy:  Freeware 
+End

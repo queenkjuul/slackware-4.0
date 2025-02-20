@@ -1,0 +1,15 @@
+
+Begin3
+Title:          kbindconfig
+Version:        0.0.1pre1
+Entered-date:   2. Dez 97
+Description:    Graphical BIND configurator
+Keywords:       DNS BIND admin config Linux X11 Qt KDE
+Author:         Michael Glauche (glauche@isa.rwth-aachen.de)
+Maintained-by:  Michael Glauche (glauche@isa.rwth-aachen.de)
+Primary-site:   ftp://ftp.kde.org/pub/kde
+Alternate-site: 
+Original-site:  
+Platform:       Linux, FreeBSD, IRIX and possibly other Unices
+Copying-policy: GPL
+End

@@ -1,0 +1,6 @@
+( cd usr/lib/ispell ; rm -rf american.hash )
+( cd usr/lib/ispell ; ln -sf americanmed+.hash american.hash )
+( cd usr/lib/ispell ; rm -rf english.hash )
+( cd usr/lib/ispell ; ln -sf americanmed+.hash english.hash )
+( cd usr/bin ; rm -rf spell )
+( cd usr/bin ; ln -sf ispell spell )

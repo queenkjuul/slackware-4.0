@@ -1,0 +1,18 @@
+Begin3
+Title:		imapperl - an IMAP2bis mail library for Perl
+Version:	0.6
+Entered-date:	Feb 3, 1996
+Description:	imapperl contains a Perl library of routines for
+			dealing with IMAP2bis mail agents. Included is a sample
+			popclient-like application. I use this myself regularly to 
+			retrieve mail from my account.
+Keywords:	network mail deliver perl
+Author:		R.Kooijman@pi.net (Richard Kooijman)
+Maintained-by:	R.Kooijman@pi.net (Richard Kooijman)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Mail
+		6kb imapperl-0.6.tar.gz
+		1kb imapperl.lsm
+Alternate-site:	dnpap.et.tudelft.nl /pub/Private/Richard/IMAP
+Copying-policy:	Public Domain
+End
+

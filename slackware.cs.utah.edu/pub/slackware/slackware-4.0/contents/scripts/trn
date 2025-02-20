@@ -1,0 +1,2 @@
+( cd usr/bin ; rm -rf rn )
+( cd usr/bin ; ln -sf  trn rn )

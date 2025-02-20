@@ -1,0 +1,4 @@
+( cd usr/share/texmf/doc/help/faq/uktug-faq ; rm -rf index.html )
+( cd usr/share/texmf/doc/help/faq/uktug-faq ; ln -sf texfaq_toc.html index.html )
+( cd usr/share/texmf/doc ; rm -rf index.html )
+( cd usr/share/texmf/doc ; ln -sf newhelpindex.html index.html )

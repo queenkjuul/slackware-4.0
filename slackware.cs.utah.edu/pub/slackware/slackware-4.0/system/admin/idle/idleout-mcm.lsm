@@ -1,0 +1,14 @@
+Begin2
+Title        = Autologout
+Version      = 1.01a
+Desc1        = Automatically logs out idle users after a set period of
+Desc2        = inactivity.  Users may now be excluded from being logged out
+Desc3        = via a datafile.
+Author       = David Dickson, modified by Michael Mitchell.
+File1        = idleout-mcm.tar.gz
+FileSize1    = ~3K
+CopyPolicy1  = GNU Copyleft and BSD copyright for the ported BSD commands
+Keywords     = AUTOLOGOUT 
+Entered      = 15OCT94
+End
+

@@ -1,0 +1,404 @@
+  Pilot HOWTO
+  by David H. Silber pilot@orbits.com
+  v0.5, 17 August 1997
+
+  This HOWTO document explains how to use your Pilot with a linux sys­
+  tem.  Although HOWTO documents are targeted towards use with the linux
+  operating system, this one is not dependent on the version of unix
+  used.
+
+  1.  Introduction
+
+  The Pilot comes with software to synchronize its memory with data on a
+  Microsoft Windows system.  There is optional software you can buy to
+  synchronize with an Apple Macintosh.  The linux/unix community has
+  been ignored by the manufacturers of the Pilot.  Fortunately, a suite
+  of free software has been developed to fill this need.  This document
+  describes this software, where to get it, and how to install and use
+  it.
+
+  1.1.  This Document
+
+  The latest version of this document can be read at
+  http://www.orbits.com/Pilot/Pilot-HOWTO.html, and is part of the Linux
+  Documentation Project (LDP).  See http://sunsite.unc.edu/LDP/ for
+  further information about the LDP and other HOWTO documents.
+
+  Future versions will cover more unix tools for writing application
+  programs to run on the Pilot and conduits to transfer data between the
+  unix system and the Pilot.
+
+  If you find anything in this document which needs to be corrected or
+  better explained, please send me e-mail at the address above and
+  specify which version of this document you are referring to.
+
+  This document is Copyright © 1997 by David H. Silber.  It is released
+  under the copyright terms in the LDP HOWTO-INDEX document.
+
+  1.2.  Mailing List
+
+  The pilot-unix mailing list is maintained by Matthew Cravit
+  <mailto:pilot-unix-owner@lists.best.com>.  Its mandate is:
+
+       The pilot-unix mailing list is for discussion and idea-sharing for those
+       interested in using the US Robotics Pilot PDAs with UNIX systems. This
+       includes people who are interested in helping to develop tools to allow the
+       Pilot to operate with UNIX, and possibly to develop an SDK for the Pilot
+       for Unix.
+
+  For more information, including how to subscribe to the list, send
+  mail containing the word ``INFO'' to pilot-unix-
+  request@lists.best.com.  The subject line does not matter.
+
+  1.3.  Mailing List Archives
+
+  An archive of the pilot-unix mailing list can be found at
+  http:///www.acm.rpi.edu/~albert/pilot/.  It is maintained by Chris
+  Stevens <mailto:albert@acm.rpi.edu>.
+
+  1.4.  FTP Site
+
+  An FTP site containing an archive of Pilot tools for use on unix
+  systems is located at ftp://ryeham.ee.ryerson.ca/pub/PalmOS/.  It is
+  maintained by Jeff Dionne <mailto:jeff@ryeham.ee.ryerson.ca>.
+
+  2.  General Information
+
+  2.1.  What is a Pilot?
+
+  The Pilot is a small pen-based Personal Digital Assistant (PDA).  It
+  is made by U. S. Robotics, now part of 3Com.
+
+  For those of you unfamiliar with the term, a Personal Digital
+  Assistant is one of those small electronic devices which typically
+  contain various types of personal information, such as addresses and
+  telephone numbers, a calendar, checkbook registry, lists of reminders
+  and/or memos and is designed to be conveniently carried so as to be
+  handy when the information is needed.
+
+  The more adaptable PDAs, such as the Pilot, allow for the data stored
+  on the PDA to be backed up to another computer and for data and new
+  programs to be loaded onto the PDA from another computer.
+
+  2.2.  Different types of Pilots
+
+  There are four versions of the Pilot.  The earlier two, the 1000 and
+  the 5000 have 128k and 512k of RAM, respectively.
+
+  The more recent two, the PalmPilot Personal and the PalmPilot
+  Professional have 512k and 1 Meg of RAM, respectively.  They also have
+  a backlighting feature for the LCD panel and version 2.0 of the
+  operating system.  The Professional also comes with a TCP/IP stack and
+  a few extra programs built-in.
+
+  It is possible to upgrade any Pilot by swapping out the memory card,
+  which includes both RAM & ROM.  Of course, this doesn't get you
+  backlighting for the older pilots.
+
+  2.3.  Hardware Installation
+
+  Pilots come with a ``cradle'' for exchanging data with the desktop
+  computer.  This device is actually a serial cable with a custom holder
+  for the Pilot end and a `HotSync' button.  Plug your cradle into a
+  spare serial port on your computer.  When you run each of the stand-
+  alone programs, you will need to place your Pilot in the cradle and
+  push the `HotSync' button so the Pilot knows that it has to
+  communicate.  If the Pilot happens to be off when the button is
+  pushed, it will turn itself on.
+
+  For convenience, create a device, /dev/pilot which will be an
+  alternate name for the serial port to which your Pilot cradle is
+  connected.  As the root user, enter the following at the shell prompt:
+
+       ln /dev/cua0 /dev/pilot
+
+  Replace cua0 with the name of the port to which you connected your
+  Pilot's cradle.
+
+  3.  Sharing Pilot Data with your Linux System
+
+  3.1.  The pilot-link software
+
+  The pilot-link suite of software tools allows you to download programs
+  onto your Pilot, and transfer data for the Pilot's various built-in
+  programs between the linux system and the Pilot.  While these programs
+  are not quite as seamless as the desktop software that comes with the
+  Pilot, they do allow you to copy your data in both directions.  In
+  general, each separate program in the pilot-link suite manages one
+  type of data.  The PilotManager software is built on top of pilot-link
+  and provides a more integrated solution, which typically includes full
+  synchronization of the various types of data.
+
+  3.1.1.  Installing the pilot-link software
+
+  The prepackaged versions will inevitably lag slightly behind the
+  master distribution, but will be easier to install and not require
+  configuration.  The master distribution might be a better choice in
+  those rare occasions when you have been waiting for a particular
+  feature or bug fix.
+
+  You can get the Debian Linux port of pilot-link version 0.7.2 from
+  ftp://ftp.debian.org/pub/debian/hamm/hamm/binary-i386/otherosfs/pilot-
+  link_0.7.2-1.deb.  Install this file in the normal manner and skip to
+  Using the pilot-link software.
+
+  You can get the RedHat Linux port of pilot-link version 0.7.6 from
+  ftp://ftp.redhat.com/pub/contrib/i386/pilot-link-0.7.6-2.i386.rpm.
+  Install this file in the normal manner and skip to Using the pilot-
+  link software.
+
+  For other versions of linux or unix, download the version 0.8.2 of
+  pilot-link from ftp://ryeham.ee.ryerson.ca/pub/PalmOS/pilot-
+  link.0.8.2.tar.gz.  The version number is likely to change, but new
+  versions should end up in the same location with a similar name.
+
+  Once you have the software distribution, unpack it with:
+
+       tar -xvzf pilot-link.0.8.2.tar.gz
+
+  This will create a directory (pilot-link.0.8.2) containing the source.
+
+  Run ./configure.  This will search through your system for information
+  needed to compile the software.  configure will set things up to be
+  installed in /usr/local by default.  If you want to change it, run
+  ./configure --prefix=DIR, where DIR is replaced with the name of the
+  directory to which the software will be installed.
+
+  Run make.  This will compile the software.  The software will not be
+  installed until later, so that you have a chance to try it out first.
+  (If you are replacing an older version with a newer release, you may
+  wish to check and make sure that no functionality that you need has
+  been broken.  Generally, this is not a problem.)
+
+  As the root user, run make install.  This will copy the software into
+  directories under /usr/local (or wherever you specified with the
+  --prefix option).  If you can not log in as root, you can install the
+  software to some directory where you have write access.
+
+  Don't forget to add any new directories of executables to your search
+  path.
+
+  3.1.2.  Using the pilot-link software
+
+  Most of the programs in the pilot-link suite are conduits, that is
+  they transfer data into or out of your Pilot.
+
+  Each time you use of one of these programs, press the HotSync button
+  on your Pilot's cradle.  This will initiate the Pilot side of the data
+  transfer.  Note that not all of these programs prompt you to press the
+  `HotSync' button, so you may have to remember to do it yourself.
+
+  For more details, and other options to these programs, view the
+  corresponding manual page.  For the pilot-xfer program, for example,
+  type man pilot-xfer at your unix shell prompt.
+
+  If you are going to use PilotManager, you may not need to bother
+  learning to use these (more primitive) tools.
+
+  3.1.2.1.  pilot-xfer
+
+  Possibly the most useful program in the pilot-link suite, pilot-xfer
+  allows you to install programs on your Pilot, make a backup, and
+  restore that backup.
+
+  To install a program:
+
+       pilot-xfer /dev/pilot -i program.prc
+
+  To backup your Pilot:
+
+       pilot-xfer /dev/pilot -b backup-directory
+
+  This will copy all of the databases on your Pilot, (including pro­
+  grams?)  to a directory called ``backup-directory'', creating it if it
+  does not already exist.
+
+  To restore data to Pilot:
+
+       pilot-xfer /dev/pilot -r backup-directory
+
+  Generally, you will only need to do this if your Pilot loses power or
+  if you have to do a hard reset.
+
+  To list the programs on your Pilot:
+
+       pilot-xfer /dev/pilot -l
+
+  3.1.2.2.  install-memo
+
+  Install a linux file onto the Pilot as a memo.
+
+  To install a memo into your (already existing) project category:
+
+       install-memo /dev/pilot -c project project.memo
+
+  The name of the file will be inserted into the memo as its first line
+  and will appear in the directory of memos on your Pilot.
+
+  3.1.2.3.  memos
+
+  This program grabs each memo from the Pilot and prints it out in
+  standard mailbox format.
+
+  To view your memos:
+
+       memos /dev/pilot
+
+  3.1.2.4.  pilot-addresses
+
+  pilot-addresses Transfer the address database to or from the Pilot.
+
+  To write your address data to a linux file from your Pilot:
+
+       pilot-addresses /dev/pilot -w storage.file
+
+  To read your address data from a linux file onto your Pilot:
+
+  pilot-addresses /dev/pilot -r storage.file
+
+  3.2.  MakeDoc
+
+  One short-coming of the Pilot's built-in memo program is that it does
+  not deal well with large documents.  To compensate for this, Rick Bram
+  <mailto:rbram@concentric.net> wrote Doc, a document reader for the
+  Pilot.  (See http://www.concentric.net/~rbram/doc.shtml).  Documents
+  can be converted to the Doc format with MakeDoc, by Pat Beirne
+  <mailto:pat.beirne@sympatico.ca>.
+
+  3.2.1.  Installing MakeDoc
+
+  MakeDoc can be downloaded from
+  http://www.concentric.net/~rbram/makedoc7.cpp.  Compile it with your
+  C++ compiler and install the resulting executable as ``makedoc'' in a
+  directory in your search path.  There seems to be a small bug in
+  makedoc (version 0.7a) in that it does not output a newline as the
+  last character displayed to the user.  This does not seem to affect
+  the resulting document file, but it is annoying.
+
+  There is a new version out, but it requires Java.  Take a look at Pat
+  Beirne's MakeDoc web page at
+  http://cpu563.adsl.sympatico.ca/MakeDocJ.htm.
+
+  3.2.2.  Using MakeDoc
+
+  Use MakeDoc as follows:
+
+       makedoc data.txt data.prc "Data to display with Doc"
+
+  This will create a file data.prc, which can be installed on your Pilot
+  with pilot-xfer.  The text "Data to display with Doc" will be dis­
+  played in the directory of documents that Doc manages.
+
+  The syntax for MakeDoc is as follows:
+
+       makedoc [-n] [-b] <text-file> <prc-file> <story-name>
+       or
+       makedoc -d [-b] <prc-file> <text-file>
+
+     <text-file>
+        The file that you wish to convert.
+
+     <prc-file>
+        The name of the resulting file.  (End the name with ``.prc''.)
+
+     <story-name>
+        The name you want displayed in the Doc or Jdoc directory of
+        documents.
+
+  There are also options to decode the resulting .prc file and manage
+  various compression options.
+
+  3.3.  PilotManager
+
+  PilotManager is a generalized tool which allows multiple databases to
+  be synchronized in a single HotSync session.
+
+  I have not been able to build and install PilotManager in time to
+  write about it for this version of the Pilot-HOWTO.
+
+  A few links that might be helpful:
+
+  ·  The PilotManager package:
+     http://playground.sun.com/~bharat/pilotmgr.html
+     <http://playground.sun.com/~bharat/pilotmgr.html>
+
+  ·  A patch:
+     ftp://ftp.orbits.com/pub/Pilot/pilotmgr,v1.009-BETA-3.patch
+     <ftp://ftp.orbits.com/pub/Pilot/pilotmgr,v1.009-BETA-3.patch>
+
+     This patch for PilotManager is only intended for use with
+     PilotManager version 1.009 Beta 3 when used with pilot-link version
+     0.8.0.  Install the PilotManager source and apply the patch with
+     the commands:
+
+       tar -xvzf pilotmgr,v1.009-BETA-3.dev.tar.gz
+       cd pilotmgr,v1.009-BETA-3
+       patch -p1 < ../pilotmgr,v1.009-BETA-3.patch
+
+  I hope to be able to install this software soon and report about it in
+  a future version of this document.
+
+  4.  Tools for Developing Pilot Software
+
+  4.1.  prc-tools
+
+  The prc-tools package is a complete development environment built from
+  the FSF GNU utilities, compiler and debugger with the addition of a
+  few special tools.
+
+  There is not much in the way of documentation, but you might want to
+  look at the Pilot Software Development web page at
+  http://www.massena.com/darrin/pilot/.
+
+  4.1.1.  Installing prc-tools
+
+  Download the most recent version of prc-tools from
+  ftp://ryeham.ee.ryerson.ca/pub/PalmOS.  The GNU tools can be retrieved
+  from ftp://prep.ai.mit.edu/pub/gnu.  Get binutils-2.7.tar.gz,
+  gcc-2.7.2.2.tar.gz and gdb-4.16.tar.gz.  The version numbers specified
+  for the GNU tools are correct as of prc-tools release 0.5.0.  Later
+  releases of prc-tools may require newer versions of the GNU tools.
+
+  Put all of the distribution packages in one directory.  Unpack only
+  the prc-tools distribution.  The prc-tools Makefile will take care of
+  the other packages.  By default, prc-tools will be installed in
+  /usr/local/gnu.  If you want them installed somewhere else, you need
+  to change the value of INSTALLDIR in Makefile.  The steps are:
+
+       tar -xvzf prc-tools.0.5.0.tar.gz
+       cd prc-tools-0.5.0
+       (Edit Makefile, if necessary.)
+       make doeverything
+
+  4.1.2.  Using prc-tools
+
+  One good reference for general use of prc-tools is the example
+  directory, particularly the Makefile.  Documentation for PilRC is
+  provided in the file pilrc1.5/doc/pilrc.htm included as part of prc-
+  tool version 0.5.0.
+
+  E.  People
+
+  Kenneth Albanowski <mailto:kjahds@kjahds.com> Maintains the pilot-link
+  suite of tools.
+
+  Donnie Barnes <mailto:djb@redhat.com> Packaged pilot-link suite as Red
+  Hat RPM files.
+
+  Rick Bram <mailto:rbram@concentric.net> Author of Doc.
+
+  Matthew Cravit <mailto:pilot-unix-owner@lists.best.com> List owner for
+  the pilot-unix mailing list.
+
+  Jeff Dionne <mailto:jeff@ryeham.ee.ryerson.ca> Original author of the
+  pilot-link suite of tools.  Manages the FTP area for the UNIX
+  PalmOS/Pilot development project.
+
+  Mark W. Eichin <mailto:eichen@kitten.gen.ma.us> Ported pilot-link
+  suite to Debian Linux.
+
+  David H. Silber <mailto:pilot@orbits.com> Author of this document.
+
+  Chris Stevens <mailto:albert@acm.rpi.edu> Maintains the pilot-unix
+  mailing list archives.
+

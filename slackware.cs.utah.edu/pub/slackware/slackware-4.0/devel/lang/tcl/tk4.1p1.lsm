@@ -1,0 +1,19 @@
+Begin3
+Title:          Tk
+Version:        4.1p1
+Entered-date:   20AUG96
+Description:    An X11 toolkit based on Tcl which provides a Motif-like
+                look and feel.
+                See also : http://www.smli.com/research/tcl
+                Binary provided by Jeremie Petit (petit@eurecom.fr) and
+                coming with no warranty.
+Keywords:       Tk, Tcl, toolkit, motif
+Author:         john.ousterhout@eng.sun.com (John Ousterhout and many others)
+Primary-site:   ftp.smli.com /pub/tcl
+                1626000 tk4.1p1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/tcl
+                 695536 tk4.1p1.ELF.tgz
+                1626000 tk4.1p1.src.tgz
+Platforms:      X11 Linux
+Copying-policy: Copyrighted but freely distributable
+End

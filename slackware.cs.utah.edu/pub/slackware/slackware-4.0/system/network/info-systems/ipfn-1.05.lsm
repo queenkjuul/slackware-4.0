@@ -1,0 +1,17 @@
+Begin3
+Title:          ipfn
+Version:        1.05
+Entered-date:   10JUN97
+Description:    Many ISPs use dynamic IP allocation.  One drawback of dynamic
+                IP allocation is that users cannot simply advertise a hostname
+                or IP for their machines.  This is a simple client/server
+                application that alleviates that problem.
+Keywords:       dynamic slip ppp networking
+Author:         amckee@poboxes.com (Adam McKee)
+Maintained-by:  amckee@poboxes.com (Adam McKee) 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/info-systems
+                710 ipfn-1.05.lsm
+                7kB ipfn-1.05.tar.gz
+                9kB ipfn-1.05-1.i386.rpm
+Copying-policy: GPL
+End

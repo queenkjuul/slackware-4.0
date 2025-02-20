@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/docs/linux-2.2.6/filesystems</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/docs/linux-2.2.6/filesystems</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/docs/linux-2.2.6/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="sysv-fs.txt">sysv-fs.txt</a></td><td align="right">1997-12-16 17:43  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="smbfs.txt">smbfs.txt</a></td><td align="right">1998-01-21 18:09  </td><td align="right">2.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ntfs.txt">ntfs.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="coda.txt">coda.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right"> 49K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="hpfs.txt">hpfs.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="isofs.txt">isofs.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">1.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="romfs.txt">romfs.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">8.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="vfat.txt">vfat.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="vfs.txt">vfs.txt</a></td><td align="right">1998-06-27 07:11  </td><td align="right"> 18K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ncpfs.txt">ncpfs.txt</a></td><td align="right">1998-07-08 17:33  </td><td align="right">634 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="umsdos.txt">umsdos.txt</a></td><td align="right">1998-09-02 23:12  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="fat_cvf.txt">fat_cvf.txt</a></td><td align="right">1999-02-28 17:47  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="affs.txt">affs.txt</a></td><td align="right">1999-03-21 15:11  </td><td align="right">8.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00-INDEX">00-INDEX</a></td><td align="right">1999-04-12 16:53  </td><td align="right">969 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ufs.txt">ufs.txt</a></td><td align="right">1999-04-16 15:20  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-13 23:01  </td><td align="right">145 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">750 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

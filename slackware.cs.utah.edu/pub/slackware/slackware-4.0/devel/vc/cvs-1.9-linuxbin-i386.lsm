@@ -1,0 +1,24 @@
+
+Begin3
+Title:          cvs-1.9-linuxbin-i386.tgz
+Version:        1.9
+Entered-date:   04Jul1997
+Description:    GNU Concurrent Version System binaries for an i386
+                running Linux 2.x, set up as a contributed Slackware
+		package.  Installs into /usr, not /usr/local.
+Keywords:       rcs cvs Concurrent Version System version control
+Author:         berliner@sun.com (Brian Berliner)
+		polk@bsdi.com (Jeff Polk)
+		zoo@armadillo.com (David D. `Zoo' Zuhn)
+		dgg@odi.com (David G. Grubbs)
+		rich@cygnus.com (K. Richard Pixley)
+		roland@wrs.com (Roland Pesch)
+		paul@hal.com (Paul Sander)
+		info@cygnus.com (Jim Kingdon and others at Cygnus Support)
+Maintained-by:  dhg@goodco.com (David H. Goodlette)
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/distributions/slackware/source/contrib/cvs/cvs-1.9-linuxbin-i386.tgz
+Alternate-site: 
+Original-site:  ftp://prep.ai.mit.edu/pub/gnu/cvs-1.9.tar.gz
+Platforms:      Linux 1.2 and up (compiled on kernel 2.0.29 with gcc 2.7.2)
+Copying-policy: GNU
+End

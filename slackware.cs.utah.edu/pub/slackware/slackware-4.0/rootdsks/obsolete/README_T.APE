@@ -1,0 +1,49 @@
+TAPE INSTALLATION ROOTDISK
+
+Here it is - a version of the install disk designed for installing Slackware
+from tape. I've tested on my Colorado Jumbo 250, but it should work for most
+floppy tape and SCSI tape drives. There's no reason it can't work for QIC-02
+as well, but I haven't compiled a QIC-02 capable bootkernel (yet).
+
+Any of the bootkernel disks will work for floppy tape support. If you're
+installing from a SCSI drive, make sure you use a bootkernel with SCSI support.
+
+The tape must be written in GNU tar format (or a compatible block size with some
+other 'tar' - anyone know what that would be?).  Write all of the directories
+and files in the slakware/ directory onto the tape.
+
+This is the command that would write out the tape:
+
+cd slakware
+tar cv */*
+
+You may also need to specify the tape device:
+
+tar cvf /dev/nst0 */*
+
+The files and directories should be tarred onto the tape.  You'll see the 
+directories and filenames listed as they are written to the tape:
+
+a1/aaa_base.tgz
+a1/aoutlibs.tgz
+a1/bash.tgz
+a1/cpio.tgz
+a1/devs.tgz
+a1/diska1
+a1/etc.tgz
+a1/grep.tgz
+a1/maketag
+a1/maketag.ez
+a1/tagfile
+a1/tagfile.org
+a1/tagfile.pat
+a2/bin.tgz
+a2/diska2
+[ ... and so on ]
+
+Good luck, folks! This is pretty experimental still, so let me know how it
+works for you and if you have any suggestions for improvements.
+
+---
+Patrick Volkerding
+volkerdi@ftp.cdrom.com

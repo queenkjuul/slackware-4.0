@@ -1,0 +1,21 @@
+Begin3
+Title:          RADIUSclient
+Version:        0.2.7
+Entered-date:   16SEP96
+Description:	This program allows you to make RADIUS authentication and
+		accouting requests and react to the information the RADIUS
+		server provides. Also includes patches to pppd.
+Keywords:       authentication, accounting, RADIUS, Portmaster, terminal
+		server, ppp
+Author:         lf@elemental.net (Lars Fenneberg)
+Maintained-by:  lf@elemental.net (Lars Fenneberg)
+Primary-site:   ftp.cityline.net /pub/radiusclient
+		110kb radiusclient-0.2.7.tar.gz
+Alternate-site::   mips.jura2.uni-hamburg.de /pub/radiusclient
+		110kb radiusclient-0.2.7.tar.gz
+Alternate-site::   sunsite.unc.edu /pub
+		110kb radiusclient-0.2.7.tar.gz
+Platforms:      Linux, not tested on other systems (some success with FreeBSD)
+Copying-policy: Freely usable and distributable, see file COPYRIGHT
+		for exact terms. Postcardware.
+End

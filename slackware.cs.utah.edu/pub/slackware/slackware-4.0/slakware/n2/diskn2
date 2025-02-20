@@ -1,0 +1,45 @@
+CONTENTS: bind elm netpipes rdist       
+bind:     BIND-8.1.2-REL.
+bind:
+bind:     The named daemon and support utilities such as dig, dnsquery, host,
+bind:     nslookup, nsquery, and nstest.  Documentation on setting up a name
+bind:     server can be found in /usr/doc/bind-8.1.2-REL/.
+bind:
+bind:
+bind:
+bind:
+bind:
+bind:
+elm:      Menu-driven user mail program. (v. 2.4pl25)
+elm:
+elm:      Elm is an interactive screen-oriented mailer program originally
+elm:      written by Dave Taylor, and continued by the Elm Development Group. 
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+elm:
+netpipes: netpipes 4.2
+netpipes:
+netpipes: Robert Forsman's netpipes package makes TCP/IP streams usable in shell
+netpipes: scripts.  It can also simplify client/server code by allowing the 
+netpipes: programmer to skip all the tedious programming bits related to sockets
+netpipes: and concentrate on writing a filter/service.  Here's an example of
+netpipes: what you can do with 'faucet' and 'hose', two netpipes commands:
+netpipes: 
+netpipes: server$ faucet 3000 -out tar cf - .
+netpipes: client$ hose server 3000 -in tar xvf -
+netpipes:
+rdist:    rdist-6.1.3.
+rdist:
+rdist:    Rdist is a remote file distribution program.  It is used to maintain
+rdist:    identical copies of files over multiple network hosts.  It preserves
+rdist:    the owner, group, mode, and mtime of files if possible and can update
+rdist:    programs that are executing.
+rdist:
+rdist:
+rdist:
+rdist:
+rdist:

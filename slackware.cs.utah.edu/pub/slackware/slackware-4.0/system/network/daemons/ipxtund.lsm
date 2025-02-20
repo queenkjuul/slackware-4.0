@@ -1,0 +1,20 @@
+Begin3
+Title:          ipxtund
+Version:        1.3.0
+Entered-date:   27/09/98
+Description:    ipxtund connect IPX based LANs over TCP/IP. Especially, this
+                allows several parties at different LANs to play IPX based
+                games as sharing one LAN, if their LANs are connected to a
+                TCP/IP WAN like Internet.
+                Requirements: one UNIX (Linux or *BSD) box at each LAN.
+                The library "zlib" is needed to install ipxtund.
+Keywords:       IPX router
+Author:         eilts@tor.muc.de (Hinrich Eilts)
+Maintained-by:  eilts@tor.muc.de (Hinrich Eilts)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/daemons
+                45 kB ipxtund-1.3.0.tgz
+Alternate-site: -
+Original-site:  -
+Platform:       
+Copying-policy: GPL
+End

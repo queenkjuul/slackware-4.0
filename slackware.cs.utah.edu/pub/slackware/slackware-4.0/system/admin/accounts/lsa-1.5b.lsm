@@ -1,0 +1,15 @@
+Begin3
+Title:		LSA - Linux System Administrator
+Version:	1.5
+Entered-date:	5-31-1997
+Description:	A user and group administration tool for linux.
+Keywords:	Linux, Administration, Groups
+Author: 	leftie@ibm.net (Rob Broadhead)
+Maintained-by:	leftie@ibm.net (Rob Broadhead)
+Primary-site:	sunsite.unc.edu /pub/Linux/docs
+				6kB lsa-1.5.TAR.gz
+Alternate-site: 
+Original-site:	
+Platforms:	Perl 5.001 or greater
+Copying-policy:	Freeware
+End

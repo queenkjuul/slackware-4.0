@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf mcedit )
+( cd usr/bin ; ln -sf mc mcedit )
+( cd usr/doc/mc-4.1.35 ; rm -rf FAQ )
+( cd usr/doc/mc-4.1.35 ; ln -sf /usr/lib/mc/FAQ FAQ )

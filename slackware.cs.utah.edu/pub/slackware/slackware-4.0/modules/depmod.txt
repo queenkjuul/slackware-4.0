@@ -1,0 +1,396 @@
+
+
+
+DEPMOD(1)              Linux Module Support             DEPMOD(1)
+
+
+NNAAMMEE
+       depmod, modprobe - handle loadable modules automatically
+
+SSYYNNOOPPSSIISS
+       ddeeppmmoodd [ -a ]
+       ddeeppmmoodd [ -a version ]
+       ddeeppmmoodd module1.o module2.o ...
+
+       mmooddpprroobbee module.o [symbol=value ...]
+       mmooddpprroobbee -t tag pattern
+       mmooddpprroobbee -a -t tag pattern
+       mmooddpprroobbee -l [ -t tag ] pattern
+       mmooddpprroobbee -r module
+       mmooddpprroobbee -c
+
+DDEESSCCRRIIPPTTIIOONN
+       These  utilities are intended to make a Linux modular ker-
+       nel manageable for all users, administrators and distribu-
+       tion maintainers.
+
+       DDeeppmmoodd creates a "Makefile"-like dependency file, based on
+       the symbols it finds in the set of  modules  mentioned  on
+       the command line (or in a default place).  This dependency
+       file can later be used by mmooddpprroobbee to  automatically  load
+       the relevant module(s).
+
+       MMooddpprroobbee is used to load a set of modules, either a single
+       module, a stack of dependant modules, or all modules  that
+       are marked with a specified tag.
+
+       MMooddpprroobbee  will  automatically load all base modules needed
+       in a module stack, as described  by  the  dependency  file
+       modules.dep.   If  the  loading  of  one  of these modules
+       fails, the whole current stack of modules will be unloaded
+       (by rmmod) automatically.
+
+       MMooddpprroobbee  has  two  ways  of loading modules. One way (the
+       probe mode) will try to  load  a  module  out  of  a  list
+       (defined  by  ppaatttteerrnn  ).  It stops loading as soon as one
+       module load successfully.  This can be  used  to  autoload
+       one  ethernet driver out of a list for example.  The other
+       way, is to load all modules from a list.  This can be used
+       to load some modules at boot time.
+
+       With  the  option --rr,, modprobe will automatically unload a
+       stack of modules, similar to the way rrmmmmoodd --rr does.
+
+       Option -l combined with option -t list all available  mod-
+       ules  of  a certain type.  An enhanced mmoouunntt command could
+       use the command
+
+            modprobe -l -t fs
+
+       to get the list of all file system drivers  available  and
+
+
+
+Linux                     March 17, 1996                        1
+
+
+
+
+
+DEPMOD(1)              Linux Module Support             DEPMOD(1)
+
+
+       on  request  load  the  proper one.  So, the mount command
+       could become more generic as well...  (The  kerneld  solve
+       this without changing the mount utility)
+
+       Option -c will print all configuration (default + configu-
+       ration file).
+
+       The  normal  use  of  ddeeppmmoodd  is  to  include   the   line
+       "/sbin/depmod  -a" in one of the rc-files in /etc/rc.d, so
+       that the correct module  dependencies  will  be  available
+       immediately after booting the system.
+       Note  that  it  is  also possible to create the dependency
+       file immediately after compiling a new kernel.  If you  do
+       "depmod  -a  1.3.99"  when you have compiled kernel 1.3.99
+       and its modules the first time, while still  running  e.g.
+       1.3.98, the file will be created in the correct place.
+       Note  however that the dependencies on the kernel will not
+       be guaranteed to be correct in this case!
+
+       Option --dd put depmod in debug mode. It outputs all command
+       it  is  issuing.   Option --ee output the list of unresolved
+       symbol for each module, Normally depmod  only  output  the
+       list  of unloadable modules.  Option --vv output the list of
+       all processed modules.  Modules may be located at  differ-
+       ent place in the filesystem, but there will always be some
+       need to override this, especially for  module  developers.
+       We  expect  some official standard will emerge, defined by
+       the FSSTND.  Until that time you might as  well  use  this
+       suggested directory structure.
+
+CCOONNFFIIGGUURRAATTIIOONN
+       The  behaviour  of  ddeeppmmoodd and mmooddpprroobbee can be adjusted by
+       the (optional) configuration file //eettcc//ccoonnff..mmoodduulleess
+
+       The configuration file consists of a set of lines.
+       All empty lines, and all text on a line after a '#',  will
+       be ignored.
+       Lines may be continued by ending the line with a '\'.
+       The  remaining lines should all conform to one of the fol-
+       lowing formats:
+
+         keep
+         parameter=value
+         options module symbol=value ...
+         alias module real_name
+         pre-install module command ...
+         install module command ...
+         post-install module command ...
+         pre-remove module command ...
+         remove module command ...
+         post-remove module command ...
+
+       All values in the "parameter" lines will be processed by a
+       shell, which means that "shell tricks" like wild-cards and
+
+
+
+Linux                     March 17, 1996                        2
+
+
+
+
+
+DEPMOD(1)              Linux Module Support             DEPMOD(1)
+
+
+       commands enclosed in back-quotes can be used:
+
+         path[misc]=/lib/modules/1.1.5?
+         path[net]=/lib/modules/`uname -r`
+
+       Parameters may be repeated multiple times.
+
+       These are the legal parameters:
+
+       keep   If this word is found on a line  bbeeffoorree  any  lines
+              that contain the ppaatthh descriptions, the default set
+              of paths will be saved, and thus added to.   Other-
+              wise  the  normal behaviour is that the default set
+              will be rreeppllaacceedd by the set of paths in the config-
+              uration file.
+
+       depfile=DEPFILE_PATH
+              This  is  the path to the dependency file that will
+              be created by ddeeppmmoodd and used by mmooddpprroobbee..
+
+       path=SOME_PATH
+              The ppaatthh parameter specifies a directory to  search
+              for the modules.
+
+       path[tag]=SOME_PATH
+              The path parameter can carry an optional tag.  This
+              tells us a little more about  the  purpose  of  the
+              modules in this directory and allows some automated
+              operations by mmooddpprroobbee..  The tag is appended to the
+              "path"  keyword enclose in square brackets.  If the
+              tag is missing, the tag "misc" is assumed.
+              One very useful tag is bboooott,, which can be  used  to
+              mark  all  modules  that  should be loaded at boot-
+              time.
+
+       If the configuration file '/etc/conf.modules' is  missing,
+       or  if  any  parameter  is  not  overridden, the following
+       defaults are assumed:
+
+         depfile=/lib/modules/`uname -r`/modules.dep
+         path[boot]=/lib/modules
+
+         path[fs]=/lib/modules/`uname -r`
+         path[misc]=/lib/modules/`uname -r`
+         path[net]=/lib/modules/`uname -r`
+         path[scsi]=/lib/modules/`uname -r`
+         path[cdrom]=/lib/modules/`uname -r`
+         path[ipv4]=/lib/modules/`uname -r`
+         path[ipv6]=/lib/modules/`uname -r`
+         path[sound]=/lib/modules/`uname -r`
+
+         path[fs]=/lib/modules/default
+         path[misc]=/lib/modules/default
+         path[net]=/lib/modules/default
+
+
+
+Linux                     March 17, 1996                        3
+
+
+
+
+
+DEPMOD(1)              Linux Module Support             DEPMOD(1)
+
+
+         path[scsi]=/lib/modules/default
+         path[cdrom]=/lib/modules/default
+         path[ipv4]=/lib/modules/default
+         path[ipv6]=/lib/modules/default
+         path[sound]=/lib/modules/default
+
+         path[fs]=/lib/modules
+         path[misc]=/lib/modules
+         path[net]=/lib/modules
+         path[scsi]=/lib/modules
+         path[cdrom]=/lib/modules
+         path[ipv4]=/lib/modules
+         path[ipv6]=/lib/modules
+         path[sound]=/lib/modules
+
+       All "option" lines specify the default  options  that  are
+       needed for a module, as in:
+
+         modprobe de620 bnc=1
+
+       These  options  will be overridden by any options given on
+       the mmooddpprroobbee command line.
+       It is possible to have an "option" line for aliased module
+       names as well as for the non-aliased name.  This is useful
+       for e.g. the dummy module:
+
+         alias dummy0 dummy
+         options dummy0 -o dummy0
+
+
+       The "alias" lines can be used to give alias names to  mod-
+       ules.  A line in /etc/conf.modules that looks like this:
+
+         alias iso9660 isofs
+
+       makes it possible to write mmooddpprroobbee iissoo99666600 although there
+       is no such module available.
+       Note that the line:
+
+         alias some_module off
+
+       will make modprobe ignore requests to  load  that  module.
+       This is usually used in conjunction with kkeerrnneelldd..
+
+       Commands
+              The configuration lines
+                pre-install module command ...
+                install module command ...
+                post-install module command ...
+                pre-remove module command ...
+                remove module command ...
+                post-remove module command ...
+              can  be  used when one wants some specific commands
+              to  be  executed  when  a  module  is  inserted  or
+
+
+
+Linux                     March 17, 1996                        4
+
+
+
+
+
+DEPMOD(1)              Linux Module Support             DEPMOD(1)
+
+
+              removed.   All  text  after the module name will be
+              interpreted as the command text.
+              Note that the pre- and  post-remove  commands  will
+              nnoott  be  executed  if  a module is "autocleaned" by
+              kerneld!  Look for the up-coming support  for  per-
+              sistent module storage instead.
+
+SSTTRRAATTEEGGYY
+       The idea is that mmooddpprroobbee will look first at the directory
+       containing modules compiled for the current release of the
+       kernel.   If  the module is not found there, mmooddpprroobbee will
+       look in the directory containing  modules  for  a  default
+       release.
+
+       When  you install a new linux, the modules should be moved
+       to a directory related to the release (and version) of the
+       kernel  you  are installing.  Then you should do a symlink
+       from this directory to the "default" directory.
+
+       Each time you compile a new kernel, the command mmaakkee  mmoodd--
+       uulleess__iinnssttaallll will create a new directory, but won't change
+       the default.
+
+       When you get a module unrelated to the kernel distribution
+       you  should  place  it  in  one of the version-independent
+       directories under /lib/modules.
+
+       This is the default strategy, which can be  overridden  in
+       /etc/conf.modules.
+
+EEXXAAMMPPLLEESS
+       modprobe -t net
+              Load  one  of  the  modules  that are stored in the
+              directory tagged  "net".   Each  module  are  tried
+              until one succeed (default: /lib/modules/net).
+
+       modprobe -a -t boot
+              All modules that are stored in the directory tagged
+              "boot" will be loaded (default: /lib/modules/boot).
+
+       modprobe slip.o
+              This  will  attempt to load the module slhc.o if it
+              was not previously loaded, since  the  slip  module
+              needs  the  functionality in the slhc module.  This
+              dependency will be  described  in  the  file  "mod-
+              ules.dep" that was created automatically by ddeeppmmoodd
+
+       modprobe -r slip.o
+              will  unload  slip.o.  It  will  also unload slhc.o
+              automatically, unless it is used by some other mod-
+              ule as well (like e.g. ppp.o).
+
+FFIILLEESS
+       /etc/conf.modules, (and /etc/modules.conf)
+
+
+
+Linux                     March 17, 1996                        5
+
+
+
+
+
+DEPMOD(1)              Linux Module Support             DEPMOD(1)
+
+
+       /lib/modules/*/modules.dep,
+       /lib/modules/*
+
+SSEEEE AALLSSOO
+       lsmod(1), kerneld(8), ksyms(1), modules(2),
+
+RREEQQUUIIEERREEDD UUTTIILLIITTIIEESS
+       insmod(1), nm(1) rmmod(1),
+
+NNOOTTEESS
+       The  pattern supplied to modprobe will often be escaped to
+       ensure that it is evaluated in the proper context
+
+
+AAUUTTHHOORR
+       Jacques Gelinas (jack@solucorp.qc.ca)
+       Bjorn Ekwall (bj0rn@blox.se)
+
+BBUUGGSS
+       Naah...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Linux                     March 17, 1996                        6
+
+

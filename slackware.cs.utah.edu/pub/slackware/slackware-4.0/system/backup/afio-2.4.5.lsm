@@ -1,0 +1,18 @@
+Begin3
+Title: AFIO
+Version: 2.4.5
+Entered-date: 28SEP98
+Description: Archiver & backup program w/ builtin compression
+    Afio makes cpio-format archives.  Afio can make compressed archives
+    that are much safer than compressed tar or cpio archives.  Afio is
+    best used as an `archive engine' in a backup script.
+Author:  ..!{ihnp4,sun}!laidbak!mdb (Mark Brukhartz) et al.
+Maintained-by: koen@win.tue.nl (Koen Holtman)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/backup
+                74k afio-2.4.5.tgz
+Alternate-site: ftp.win.tue.nl /pub/linux/tbackup
+                74k afio-2.4.5.tgz
+Platforms: gcc, gzip
+Copying-policy: Freeware. (c) 1985 Lachman Associates, Inc.
+Keywords: backup archive compression gzip afio cpio fault tolerant
+End

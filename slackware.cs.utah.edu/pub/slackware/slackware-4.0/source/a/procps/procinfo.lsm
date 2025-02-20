@@ -1,0 +1,15 @@
+Begin3
+Title:		procinfo
+Version:	16
+Entered-date:	31DEC98
+Description:	A utility to prettyprint /proc/*
+Keywords:	procinfo, system info
+Author:		svm@kozmix.ow.nl (Sander van Malssen)
+Maintained-by:	svm@kozmix.ow.nl (Sander van Malssen)
+Primary-site:	ftp.cistron.nl /pub/people/svm
+		21k procinfo-14.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/status/ps
+Alternate-site:	tsx-11.mit.edu /pub/linux/sources/usr.bin
+Platforms:	Linux 1.0.x - 2.1.x
+Copying-policy:	GNU Public License
+End

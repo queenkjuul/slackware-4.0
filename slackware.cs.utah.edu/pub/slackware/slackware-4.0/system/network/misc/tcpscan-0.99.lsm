@@ -1,0 +1,14 @@
+Begin1
+Title:          tcpscan 
+Version:        0.99
+Entered-date:   8/3/97
+Description:    TCP port scanner
+Keywords:       TCP port scanner Linux Unix
+Author:         Alexey Semenov
+Autor email:    alexey_semenov@hotmail.com
+                swaj@roo.unixnet.org
+Primary-site:   http://www.toptown.com/dorms/swaj/tcpscan-0.99.tar.gz
+Alternate-site: http://roo.unixnet.org/~swaj/tcpscan-0.99.tar.gz 
+Platform:       Linux, but sources are included ;)
+Copying-policy: GPL
+End

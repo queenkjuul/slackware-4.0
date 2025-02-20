@@ -1,0 +1,20 @@
+Begin3
+Title:          ntape - an archive management system for SCSI tapes
+Version:        0.20
+Entered-date:   July 27, 1995
+Description:    A ncurses based utility to manage archives on SCSI tapes.
+		ntape makes it easier to archive files and directories on
+		tape with some additional information. All the data is stored
+		in a simple database. This makes it easy to extract a certain
+                archive from tape (or only parts of it).
+Keywords:       scsi tape archive backup ncurses
+Author:         hanisch@cip.informatik.uni-wuerzburg.de (Matthias Hanisch)
+Maintained-by:  hanisch@cip.informatik.uni-wuerzburg.de (Matthias Hanisch)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Backup
+                60kB ntape-0.20.tar.gz
+                1kB  ntape.lsm
+Alternate-site: 
+Original-site:  
+Platform:       Linux 1.2.0, ncurses 1.8.1+
+Copying-policy: GPL
+End

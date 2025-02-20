@@ -1,0 +1,21 @@
+Begin3
+Title:          des/undes - Tripple DES file encryption software.
+Version:        1.1.0
+Entered-date:   03SEP98
+Description:    * des can be used to encrypt files with a password using
+		  tripple des.
+		* undes can be used to decrypt them. It does a password
+		  check.
+		Use this software e.g. to encrypt your gzipped tar archives.
+		!! This version 1.1.0 obsoletes all versions 1.0.X !!
+Keywords:       encryption, archiving, utilities
+Author:         hnmdijkema@freemail.nl (H.N.M. Dijkema)
+Maintained-by:  hnmdijkema@freemail.nl (H.N.M. Dijkema)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/backup
+		260kB des-1.0.0.tar.gz
+		716 des.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      (probably all) UNIX platforms, MSDOS
+Copying-policy: GPL
+End

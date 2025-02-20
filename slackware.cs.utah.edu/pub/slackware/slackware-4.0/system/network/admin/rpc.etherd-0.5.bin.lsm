@@ -1,0 +1,19 @@
+
+Begin3
+Title:		rpc.etherd
+Version:	0.5
+Entered-date:	12JUL95
+Description:	rpc.etherd is a value added replacement for the SunOS
+		program rpc.etherd, which runs on DEC Ultrix, Linux  and
+		BSD-ish systems with Berkeley Packet Filter (e.g.
+		FreeBSD 2.x)
+Keywords:	ethernet statistics gathering
+Author: 	gcardwel@uci.edu (Guy Cardwell)
+		petri@ibr.cs.tu-bs.de (Stefan Petri)
+Maintained-by:	petri@ibr.cs.tu-bs.de (Stefan Petri)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/admin
+		7 kB rpc.etherd-0.5.bin.tar.gz
+Original-site:	ftp.ibr.cs.tu-bs.de /pub/local
+		13 kB rpc.etherd-0.5.tar.gz
+Copying-policy:	BSD
+End

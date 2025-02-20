@@ -1,0 +1,14 @@
+
+Begin3
+Title: Producer         
+Version: 1.0.0       
+Entered-date: 02JUL98  
+Description: Convert Smalltalk-80 towards Objective-C (original)
+Keywords: objc, Objective C, st80, Smalltalk      
+Author: Brad Cox (bcox@gmu.edu), Kurt Schmucker      
+Maintained-by: stes@can.nl (David Stes) 
+Primary-site: http://sunsite.unc.edu/pub/Linux/devel/lang/objc/   
+Platforms: requires version 3.x Stepstone Objective-C compiler
+Copying-policy: FRS
+End
+

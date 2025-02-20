@@ -1,0 +1,20 @@
+Begin3
+Title: 		xfsm - X File System Monitor
+Version: 	1.97
+Entered-date: 	07MAY1998
+Description: 	xfsm is a tool running under MIT's X11 designed to make 
+		monitoring your file systems' status easy by displaying a
+		simple bar graph for each file system greater than size 0. 
+		It updates the file systems' statistics at regular, user
+		definable intervals and supplies detailed information for 
+		each file system.
+Keywords: 	xfsm, file system, monitor, status, admin
+Author: 	Robert_Gasch@peoplesoft.com (Robert Gasch)
+Maintained-by: 	Robert_Gasch@peoplesoft.com (Robert Gasch)
+Primary-site:	ftp.x.org /pub/contrib
+		51 KB xfsm-1.97.tgz
+Alternate-site:	sunsite.unc.edu /pub/Linux/X11/xutils/status
+Original-site:	
+Platforms:
+Copying-policy:	GPL
+End

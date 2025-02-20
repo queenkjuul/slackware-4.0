@@ -1,0 +1,16 @@
+Begin3
+Title:          Linux -> MS-DOS GCC cross-compiler
+Version:        2.7.2
+Entered-date:   25APR96
+Description:    GCC compiler configured with MS-DOS as target.
+		Combined with a cross-binutils (binutils-2.6.go32.tar.gz)
+		and an MS-DOS C-library (djdev200.go32.tar.gz), it allows
+		development of MS-DOS executables with Linux.
+		The compiler-toolchain is compatible with djgpp V2.0
+		Requires libc-5.2.18 and ld.so.1.7.14.
+Keywords:       gcc msdos djgpp crosscompiler
+Maintained-by:  j.j.vanderheijden@student.utwente.nl (J.J. van der Heijden)
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/msdos
+		1769280 gcc-2.7.2.go32.tar.gz
+Copying-policy: GPL
+End

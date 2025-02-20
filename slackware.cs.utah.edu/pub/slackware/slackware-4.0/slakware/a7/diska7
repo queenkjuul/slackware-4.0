@@ -1,0 +1,34 @@
+CONTENTS: glibc2 ldso less       
+glibc2:   glibc-2.0.7pre6 internationalization files
+glibc2:
+glibc2:   International support files for glibc -- installed in usr/share/i18n.
+glibc2:
+glibc2:
+glibc2:
+glibc2:
+glibc2:
+glibc2:
+glibc2:
+glibc2:
+ldso:     ld.so 1.9.9, the dynamic linker/loader.
+ldso:
+ldso:     ld.so completes the final process of linking all necessary references
+ldso:     to sharable objects and unreferenced symbols in an impure executable,
+ldso:     (usually a dynamically linked executable), to produce a runnable file.
+ldso:     Nearly all Linux binaries are 'incomplete' and require further linking
+ldso:     at run time. ld.so's job is thus to complete the linking process 
+ldso:     started at compilation. ld.so was written by David Engel, 
+ldso:     Eric Youngdale, Peter MacDonald, Hongjiu Lu, Linus Torvalds,
+ldso:     Lars Wirzenius and Mitch D'Souza.
+ldso:
+less:     less-332
+less:
+less:     Less is a paginator similar to more (1), but which allows backward
+less:     movement in the file as well as forward movement. Also, less does not
+less:     have to read the entire input file before starting, so with large
+less:     input files it starts up faster than text editors like vi (1). 
+less:
+less:     Less was written by Mark Nudelman.
+less:
+less:
+less:

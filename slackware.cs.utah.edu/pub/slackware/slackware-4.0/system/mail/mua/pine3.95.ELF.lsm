@@ -1,0 +1,14 @@
+Begin3
+Title:		pine
+Version:	3.95
+Entered-date:	09AUG96
+Description:	Mail Client-Reader...Contents...Pine, Pico = editor,
+                Pilot = file manager. (Precompiled-elf, no source.)
+                Does'nt include servers, imapd, pop2d & pop3d.               
+Keywords:	
+Author:		
+Primary-site:	ftp.cac.washington.edu /pine <-Latest Source.)
+Alternate-site: ftp.sunsite.unc.edu /pub/Linux/system/Mail/readers
+Platforms:	Linux-elf system.
+Copying-policy:	
+End

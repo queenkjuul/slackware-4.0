@@ -1,0 +1,21 @@
+Begin3
+Title:		usvd
+Version:	2.0.0
+Entered-date:	1AUG97
+Description:	usvd is a daemon that monitors the state of an uninterrupted
+                power supply and reacts upon state changes (line fail,
+                line back, battery low situations). You can write your
+                own scripts that are called in these cases. It does *not*
+                require SYSVINIT.
+Keywords:	uninterrupted power supply
+Author: 	gockel@sent13.uni-duisburg.de (Frank Gockel)
+Maintained-by:	gockel@sent13.uni-duisburg.de (Frank Gockel)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/ups
+                11 kB usvd-2.0.0.tgz
+Alternate-site: fb9nt.uni-duisburg.de /pub/linux/usvd
+                11 kB usvd-2.0.0.tgz
+Original-site:
+Platforms:	Linux 2.0.x (should run with all Linux versions and
+                even some other Un*xes)
+Copying-policy:	GPL
+End

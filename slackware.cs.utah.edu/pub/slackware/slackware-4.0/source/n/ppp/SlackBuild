@@ -1,0 +1,102 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-ppp
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_ppp.tar.gz
+
+echo "+============+"
+echo "| ppp-2.2.0f |"
+echo "+============+"
+cd $TMP
+tar xzvf $CWD/ppp-2.2.0f.tar.gz
+cd ppp-2.2.0f
+zcat $CWD/ppp_2.2.0f-23.diff.gz | patch -p1
+( cd pppd ; zcat $CWD/ppp_2.2.0f-slack1.diff.gz | patch )
+./configure
+cat debian/options > $PKG/etc/ppp/options.dist
+cd pppd
+make HAS_SHADOW=1 HAS_PWAUTH=1
+strip pppd
+cat pppd > $PKG/usr/sbin/pppd-2.2
+cat pppd.8 | gzip -9c > $PKG/usr/man/man8/pppd-2.2.8.gz
+# This only works when compiled against Linux 2.0.x, so we insert
+# a correctly compiled binary:
+( cd $PKG ; tar xzvf $CWD/pppd-2.2.bin.tar.gz )
+
+echo "+===========+"
+echo "| ppp-2.3.7 |"
+echo "+===========+"
+cd $TMP
+tar xzvf $CWD/ppp-2.3.7.tar.gz
+cd ppp-2.3.7
+# Add callback support:
+zcat $CWD/ppp-cbcp.diff.gz | patch
+mkdir -p $PKG/usr/doc/ppp-2.3.7
+cp -a FAQ README* SETUP scripts $PKG/usr/doc/ppp-2.3.7
+chown -R root.root $PKG/usr/doc/ppp-2.3.7
+( cd linux ; ./kinstall.sh )
+./configure
+# I don't think 2.3.7 has any support for MD5 shadow passwords, so use the
+# older version if you need that.  The primary benefit of pppd-2.3 is support
+# for demand dialing.
+make HAS_SHADOW=1
+cd pppd
+strip pppd
+cat pppd > $PKG/usr/sbin/pppd-2.3
+cat pppd.8 | gzip -9c > $PKG/usr/man/man8/pppd.2.3.8.gz
+cd ../chat
+strip chat
+cat chat > $PKG/usr/sbin/chat
+cat chat.8 | gzip -9c > $PKG/usr/man/man8/chat.8.gz
+cd ../pppstats
+strip pppstats
+cat pppstats > $PKG/usr/sbin/pppstats
+cat pppstats.8 | gzip -9c > $PKG/usr/man/man8/pppstats.8.gz
+
+echo "+===============+"
+echo "| pppsetup-1.98 |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/pppsetup-1.98.tar.gz
+cd pppsetup-1.98
+zcat $CWD/pppsetup-1.98.slack.diff.gz | patch
+chown root.bin ppp-off pppsetup
+chmod 755 ppp-off pppsetup
+cp -a ppp-off pppsetup $PKG/usr/sbin
+mkdir $PKG/usr/doc/pppsetup
+cp -a README.pppsetup ppp-compile.txt pppsetup-1.98.README pppsetup-1.98.lsm $PKG/usr/doc/pppsetup
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/ppp.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/ppp-2.2.0f
+  rm -rf $TMP/ppp-2.3.7
+  rm -rf $TMP/pppsetup-1.98
+  rm -rf $PKG
+fi

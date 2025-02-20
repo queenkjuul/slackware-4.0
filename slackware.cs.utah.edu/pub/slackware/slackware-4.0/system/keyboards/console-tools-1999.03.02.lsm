@@ -1,0 +1,16 @@
+Begin3
+Title:          Keyboard and console utilities for Linux.
+Version:        1999.03.02
+Entered-date:   02MAR99
+Description:    Programs for keyboard / console fonts /
+                virtual terminals manipulation.
+                It is derived from kbd-0.97.tar.gz, with
+                many bug-fixes and enhancements.
+Keywords:       keyboard map mapping console font charset unicode
+Author:         several
+Platforms:      Linux
+Maintained-by:  Yann Dirson <dirson@debian.org>
+Primary-site:   metalab.unc.edu /pub/Linux/system/keyboards
+		962K console-tools-1999.03.02.tar.gz
+Copying-policy: GPL
+End

@@ -1,0 +1,14 @@
+Begin3
+Title:          KModem
+Version:        1.1
+Entered-date:   12th June 1998
+Description:    Displays Modem Status over an Internet connection
+		using Pointo-to-Point Protocol
+
+Keywords:       modem status ppp
+Author:         ptaylor@mail.telepac.pt (Paulo Taylor)
+Maintained-by:  ptaylor@mail.telepac.pt (Paulo taylor) 
+Primary-site:   ftp.kde.org
+platform:	unix -> only tested on Linux
+Copying-policy: GPL
+End

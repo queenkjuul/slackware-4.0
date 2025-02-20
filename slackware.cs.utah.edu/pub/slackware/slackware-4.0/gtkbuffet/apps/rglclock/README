@@ -1,0 +1,12 @@
+This directory contains rglclock.  It is being developed inactively,
+and should be considered as beta-quality software.
+
+Version 1.1.x is the most stable (but maybe old) release.  Newer
+snapshots may be available in the snapshat subdirectory.
+
+Building rglclock from the source code requires a recent C++ compiler,
+GTK 1.0, and Mesa or OpenGL libraries.
+
+For more information about rglclock, see
+<URL:http://www.hypercore.co.jp/rglclock/en.html>.
+

@@ -1,0 +1,45 @@
+# Create the Slackware gnuplot package in ./tmp
+# run with:
+#   sh COMPILE
+
+CWD=`pwd`
+
+# Start with gd, which we need to link against:
+
+tar xzvf gd1.3.tar.gz
+cd gd1.3
+make
+mkdir lib
+cp libgd.a lib
+mkdir include
+cp *.h include
+cd ..
+
+# Now we build gnuplot:
+
+tar xzvf gnuplot-3.7.tar.gz
+cd gnuplot-3.7
+./configure --prefix=/usr --with-png --with-gd=$CWD/gd1.3
+make CFLAGS=-O2 TERMLIBS="/usr/lib/libvga.a /usr/lib/libpng.a /usr/lib/libz.a $CWD/gd1.3/libgd.a"
+strip gnuplot gnuplot_x11
+mkdir -p ../tmp/usr/bin
+chgrp bin ../tmp/usr/bin
+cat gnuplot > ../tmp/usr/bin/gnuplot
+chmod 755 ../tmp/usr/bin/gnuplot
+chown root.bin ../tmp/usr/bin/gnuplot
+cat gnuplot_x11 > ../tmp/usr/bin/gnuplot_x11
+chmod 755 ../tmp/usr/bin/gnuplot_x11
+chown root.bin ../tmp/usr/bin/gnuplot_x11
+mkdir -p ../tmp/usr/man/man1
+cat docs/gnuplot.1 | gzip -9c > ../tmp/usr/man/man1/gnuplot.1.gz
+mkdir -p ../tmp/usr/share
+cat docs/gnuplot.gih > ../tmp/usr/share/gnuplot.gih
+mkdir -p ../tmp/usr/doc/gnuplot-3.7
+cp -a 0* ChangeLog CodeStyle Copyright INSTALL.gnu NEWS PGPKEYS TODO \
+  ../tmp/usr/doc/gnuplot-3.7
+cp -a demo ../tmp/usr/doc/gnuplot-3.7
+chown -R root.root ../tmp/usr/doc/gnuplot-3.7/*
+chmod -R 644 ../tmp/usr/doc/gnuplot-3.7/*
+chmod 755 ../tmp/usr/doc/gnuplot-3.7/demo
+( cd docs ; make gnuplot.html )
+cat docs/gnuplot.html > ../tmp/usr/doc/gnuplot-3.7/gnuplot.html

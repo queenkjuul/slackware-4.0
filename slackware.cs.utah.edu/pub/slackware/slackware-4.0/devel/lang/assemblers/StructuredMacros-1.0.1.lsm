@@ -1,0 +1,30 @@
+Begin3
+Title:		Structured Macros for 8051 assemblers.
+Version:	1.0.1
+Entered-date:	August 26, 1998
+Description:	This is a preprocessor for adding structured programming 
+		macros in an assembler program.
+		Implements higher level languages constructs like:
+			do / while
+			while / while_end
+			if / then / elseif /else
+			switch / case / default
+			and others.
+		It can be used with any 8051 assembler that can use labels with more 
+		than 8 characters. May be adapted for other processors.
+		Written in GNU awk from scratch. It can be easily ported to
+		other versions of awk (DOS, etc.)
+		A sample result is included.
+
+Keywords:	macro structured 8051 assembler preprocessor awk
+Author: 	jpelletier@ieee.org (Jacques Pelletier)
+Maintained-by:	jpelletier@ieee.org (Jacques Pelletier)
+Primary-site:	sunsite.unc.edu /pub/Linux/devel/misc
+		20 kB StructuredMacros-1.0.1.tgz
+		1 kB StructuredMacros.lsm
+Alternate-site:
+Original-site:	
+Platforms:	Any platform that uses GNU awk.
+Copying-policy:	GPL.
+End
+

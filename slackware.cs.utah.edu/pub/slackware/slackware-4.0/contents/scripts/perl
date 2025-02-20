@@ -1,0 +1,6 @@
+( cd usr/bin ; rm -rf pstruct )
+( cd usr/bin ; ln -sf c2ph pstruct )
+( cd usr/bin ; rm -rf perl )
+( cd usr/bin ; ln -sf perl5.00503 perl )
+( cd usr/bin ; rm -rf suidperl )
+( cd usr/bin ; ln -sf suidperl5.00503 suidperl )

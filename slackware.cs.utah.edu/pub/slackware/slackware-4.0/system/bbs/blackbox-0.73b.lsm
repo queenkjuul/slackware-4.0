@@ -1,0 +1,17 @@
+Begin3
+Title:          Black Box BBS
+Version:        0.73 Beta
+Entered-date:   12OCT97
+Description:    Black Box BBS is a Bulletin Board System designed from
+                scratch for Linux. It has ANSI colour, file transfers,
+                sysop-to-user chatting, BBS<->BBS email, BBS<->net email, 
+	        guest users, NNTP (a bit), Unix doors (sometimes), 
+                incoming Fidonet recognition (hopefully), caller ID, 
+                and programmable menus.
+Keywords:       BBS flexible customisable beta untested weird
+Author:         Walter Heukels <wmh@xs4all.nl>
+Primary-site:   http://www.xs4all.nl/~wmh/
+		85k blackbox-0.73b.tar.gz
+Copying-policy: Unmodified copies are okay, may move to GPL later, after 
+		much needed cleaning up.
+End

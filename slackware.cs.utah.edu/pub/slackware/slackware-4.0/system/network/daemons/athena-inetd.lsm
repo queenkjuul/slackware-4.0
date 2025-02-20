@@ -1,0 +1,22 @@
+Begin2
+Title        =athena-inetd.  inetd with switched services
+Version      =5.30+ 
+Desc1        =This is a modification of inetd 5.30 to accomodate Athena-
+Desc2        =style switchable services.  A column added to inetd.conf
+Desc3        =shows each service as on or off or switched.  Switched
+Desc4        =services can be turned on and off by the non-privileged
+Desc5        =user by means of a program which sends signals to inetd.
+Author       =BSD inetd 5.30, work by Jonathan Kamens, ported by Jim Haynes
+AuthorEmail  =haynes@cats.ucsc.edu
+Site1        =sunsite.unc.edu
+File1        =athena-inetd-5.30.tar.gz
+Site2        =tsx-11.mit.edu
+File2        =athena-inetd-5.30.tar.gz
+Required1    =
+CopyPolicy1  =BSD copyright
+Keywords     =inetd, Athena
+Comment1     =Athena workstations normally don't permit remote logins,
+Comment2     =telnet connections, etc.  but the user may want to switch
+Comment3     =these services on and back off again
+EnteredBy    =haynes@cats.ucsc.edu
+End

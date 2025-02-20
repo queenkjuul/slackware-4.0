@@ -1,0 +1,26 @@
+Begin
+35:PkgName    =selectv1.tar.gz
+35:Title      =selectnews news resource editor
+25:Version    =1.0
+65:Desc1      =Allows users to easily subscribe/unsubscribe USENET newsgroups
+65:Desc2      =for the first time by editing the .newsrc file.
+65:Desc3      =
+65:Author     =Eugene Kim, eekim@husc.harvard.edu
+65:MaintBy    =Eugene Kim, eekim@husc.harvard.edu
+65:MaintAt1   =next1.harvard.edu
+65:PathFile1  =/pub/Misc
+65:MaintAt2   =sunsite.unc.edu
+65:PathFile2  =/pub/Linux/system/Mail
+65:Required1  =either curses or ncurses library
+65:Required2  =
+65:Required3  =
+65:CopyPolicy =HCS General Distribution License
+65:Keywords   =news newsgroups USENET
+15:ApproxSize =11398 bytes
+65:Last3Rel   =0.5a 0.7a
+65:Comment1   =Fixes bugs from previous version.  Improved many
+65:Comment2   =features, including .newsrc validation and
+65:Comment3   =cursor movement.  Easy to use!
+30:CheckedBy  =Eugene Kim, eekim@husc.harvard.edu
+ 8:Date       =04SEP93
+End

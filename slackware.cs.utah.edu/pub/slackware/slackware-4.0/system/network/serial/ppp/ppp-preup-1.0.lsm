@@ -1,0 +1,24 @@
+Begin3
+Title:		PPP daemon "/etc/ppp/ip-preup" patch for pppd 2.2.0f
+Version:	1.0
+Entered-date:	March 16, 1997
+Description:	ppp-preup is a patch for pppd 2.2.0f that allows for a
+		script to be executed immediately before a route to the
+		ppp device is added. The primary application of this
+		functionality would be the use of a dummy device to
+		simulate network connectivity for a part-time ppp 
+		connection. In such a case, in a certain window of time
+		between the ppp command being started and the route being
+		added, the network address would be inaccessable. This
+		patch reduces that time to a fraction of a second. Really
+		very simple. Comes with instructions.
+Keywords:	pppd, dummy, ip-up, ip-down, patch
+Author:		toby@eskimo.com (Toby Reed)
+Maintained-by:	toby@eskimo.com (Toby Reed)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/serial/ppp
+			2 kb ppp-preup-1.0.tar.gz
+Original-site:  ftp.porknet.ml.org /pub/linux/patches
+			2 kb ppp-preup-1.0.tar.gz
+Platform:       Linux
+Copying-policy: GNU
+End

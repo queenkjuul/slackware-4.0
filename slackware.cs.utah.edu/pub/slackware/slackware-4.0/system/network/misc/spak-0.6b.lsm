@@ -1,0 +1,24 @@
+Begin3
+Title:		spak
+Version:	0.6b
+Entered-date:	02MAR98
+Description:	SPAK (Send PAcKet) is a set of tools for generating
+		arbitrary packets and sending them to a socket.  All
+		fields of an IP, TCP, UDP, or ARP header may be set using
+		arguments to the various programs.  The programs may
+		be "piped" togeather to create, for example, a TCP packet
+		encapsulated within an IP packet.  This release includes
+		makeip, maketcp, makeudp, makearp, makeeth, sendpacket,
+                and sendeth.
+Keywords:	packet network IP TCP UDP ARP ethernet
+Author:		Karyl F. Stein <steinkf@cs.purdue.edu>
+Maintained-by:	Karyl F. Stein <steinkf@cs.purdue.edu>
+Primary-site:	http://www.xenos.net/~xenon/software/spak
+		36646 spak-0.6b.tar.gz
+                65149 spak-0.6b.tar.Z
+		923   spak-0.6b.lsm
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/network/misc/
+Original-site:
+Platforms:	Linux, Solaris
+Copying-policy:	GPL
+End

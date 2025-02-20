@@ -1,0 +1,29 @@
+Begin3
+Title:        lpr2
+Version:      1.2l
+Entered-date: 09AUG98
+Description:  duplex/page selection printing utility
+                 LPR2 is a simple shell script containing its own extensive
+              documentation as comments. It allows selection of *any* set
+              of pages in *any* postscript document without *any* loss in
+              quality, which no other known utility does, (but it sends the
+              whole stuff to the device printer, which is slow and inefficient
+              as compared to other utilities *when by chance they do work*).
+                 Intended and used mostly to print duplex (recto/verso)
+              documents on simplex printers. Do use it: duplex documents
+              are only half as heavy, bulky, paper-costly and
+              forest-destroying as simplex ones. Contribute saving the world.
+Keywords:     printing, Postscript, select, page, duplex, recto, verso,
+              double-sided, paper, both, sides, sheet, save the world
+Author:               fare@tunes.org (Fare')
+Maintained-by:        fare@tunes.org (Fare')
+Primary-site: http://www.tunes.org/~fare/files/
+              14109   lpr2.gz
+              1539    lpr2.lsm
+Alternate-site:       sunsite.unc.edu /pub/Linux/system/printing
+              14109   lpr2-1.2l.gz
+              1539    lpr2-1.2l.lsm
+Platforms:    Any postscript device (typically ghostscript or a printer);
+	      a decent /bin/sh or better (e.g. bash) for scripting.
+Copying-policy:       GPL+Restrictions(SmileWare+CharityWare)
+End

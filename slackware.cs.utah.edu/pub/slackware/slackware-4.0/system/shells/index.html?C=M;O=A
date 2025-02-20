@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/shells</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/shells</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="csh526a.tar.Z">csh526a.tar.Z</a></td><td align="right">1993-01-07 08:00  </td><td align="right">267K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sash.tar.z">sash.tar.z</a></td><td align="right">1993-04-14 07:00  </td><td align="right"> 24K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ash-linux-0.2.tar.gz">ash-linux-0.2.tar.gz</a></td><td align="right">1993-10-09 07:00  </td><td align="right">105K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="csh526.patch">csh526.patch</a></td><td align="right">1993-11-11 08:00  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="smash.README">smash.README</a></td><td align="right">1994-03-28 08:00  </td><td align="right">477 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smash.tar.gz">smash.tar.gz</a></td><td align="right">1994-04-28 07:00  </td><td align="right"> 18K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cmenu-0.4.lsm">cmenu-0.4.lsm</a></td><td align="right">1994-11-21 08:00  </td><td align="right">444 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cmenu-0.4.tar.gz">cmenu-0.4.tar.gz</a></td><td align="right">1994-11-21 08:00  </td><td align="right">4.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bash-1.14.4.tgz">bash-1.14.4.tgz</a></td><td align="right">1995-05-06 07:00  </td><td align="right">1.5M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="guest-0.2.lsm">guest-0.2.lsm</a></td><td align="right">1995-05-09 07:00  </td><td align="right">424 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="guest-0.2.tar.gz">guest-0.2.tar.gz</a></td><td align="right">1995-05-09 07:00  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bash-1.14.4.bin.ELF.lsm">bash-1.14.4.bin.ELF.lsm</a></td><td align="right">1995-05-28 07:00  </td><td align="right">527 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bash-1.14.4.bin.ELF.tar.gz">bash-1.14.4.bin.ELF.tar.gz</a></td><td align="right">1995-05-28 07:00  </td><td align="right">177K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bash-1.14.5.tar.gz">bash-1.14.5.tar.gz</a></td><td align="right">1995-08-19 07:00  </td><td align="right">1.4M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="scsh-0.4.2.lsm">scsh-0.4.2.lsm</a></td><td align="right">1996-04-24 07:00  </td><td align="right">757 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="scsh-0.4.2.tgz">scsh-0.4.2.tgz</a></td><td align="right">1996-04-24 07:00  </td><td align="right">1.3M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="flin-0.5.1.tar.gz">flin-0.5.1.tar.gz</a></td><td align="right">1996-05-12 07:00  </td><td align="right"> 42K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="flin.lsm">flin.lsm</a></td><td align="right">1996-05-12 07:00  </td><td align="right">524 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tcsh-6.06-bin-ELF.lsm">tcsh-6.06-bin-ELF.lsm</a></td><td align="right">1996-07-08 07:00  </td><td align="right">771 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcsh-6.06-bin-ELF.tar.gz">tcsh-6.06-bin-ELF.tar.gz</a></td><td align="right">1996-07-08 07:00  </td><td align="right">113K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="zsh-3.0.0.ELF.tgz">zsh-3.0.0.ELF.tgz</a></td><td align="right">1996-08-22 07:00  </td><td align="right">307K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="zsh-3.0.0.doc.tgz">zsh-3.0.0.doc.tgz</a></td><td align="right">1996-08-22 07:00  </td><td align="right">714K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="zsh-3.0.0.lsm">zsh-3.0.0.lsm</a></td><td align="right">1996-08-22 07:00  </td><td align="right">967 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="zsh-3.0.0.src.tgz">zsh-3.0.0.src.tgz</a></td><td align="right">1996-08-22 07:00  </td><td align="right">614K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pdksh-5.2.8.lsm">pdksh-5.2.8.lsm</a></td><td align="right">1996-08-25 23:26  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pdksh-5.2.8.man.cat.gz">pdksh-5.2.8.man.cat.gz</a></td><td align="right">1996-08-25 23:27  </td><td align="right"> 46K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pdksh-5.2.8.tar.gz">pdksh-5.2.8.tar.gz</a></td><td align="right">1996-08-25 23:28  </td><td align="right">425K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lsh-0.61.lsm">lsh-0.61.lsm</a></td><td align="right">1996-10-24 03:52  </td><td align="right">519 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lsh-0.61.tgz">lsh-0.61.tgz</a></td><td align="right">1996-10-24 03:53  </td><td align="right"> 77K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mc-3.2.11.tar.gz">mc-3.2.11.tar.gz</a></td><td align="right">1996-12-06 03:52  </td><td align="right">839K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pash22.lsm">pash22.lsm</a></td><td align="right">1996-12-13 16:25  </td><td align="right">464 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pash22.tgz">pash22.tgz</a></td><td align="right">1996-12-13 16:25  </td><td align="right">269K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="insanity.tar.gz">insanity.tar.gz</a></td><td align="right">1997-02-22 09:43  </td><td align="right">6.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="insanity.lsm">insanity.lsm</a></td><td align="right">1997-02-22 09:44  </td><td align="right">970 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="meny-v0.1.tar.gz">meny-v0.1.tar.gz</a></td><td align="right">1997-05-14 14:50  </td><td align="right">9.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="meny-v0.1.lsm">meny-v0.1.lsm</a></td><td align="right">1997-05-14 14:51  </td><td align="right">515 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="choice.lsm">choice.lsm</a></td><td align="right">1997-06-17 05:44  </td><td align="right">506 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="choice.tar.gz">choice.tar.gz</a></td><td align="right">1997-06-17 05:44  </td><td align="right">3.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rc-1.5-bin.lsm">rc-1.5-bin.lsm</a></td><td align="right">1997-07-27 04:16  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rc-1.5-bin.tar.gz">rc-1.5-bin.tar.gz</a></td><td align="right">1997-07-27 04:18  </td><td align="right">198K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kiss-0.21.lsm">kiss-0.21.lsm</a></td><td align="right">1997-10-25 01:50  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="webble-1.0.tgz">webble-1.0.tgz</a></td><td align="right">1998-04-07 17:30  </td><td align="right">127K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="webble.lsm">webble.lsm</a></td><td align="right">1998-04-07 17:30  </td><td align="right">843 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kiss-0.21.tar.gz">kiss-0.21.tar.gz</a></td><td align="right">1998-09-25 18:04  </td><td align="right"> 56K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="kiss.README">kiss.README</a></td><td align="right">1998-09-25 18:05  </td><td align="right">2.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kiss.lsm">kiss.lsm</a></td><td align="right">1998-09-25 18:05  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="TkSmb-0.8.0.tar.gz">TkSmb-0.8.0.tar.gz</a></td><td align="right">1998-12-25 10:44  </td><td align="right"> 21K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="TkSmb.lsm">TkSmb.lsm</a></td><td align="right">1998-12-25 10:45  </td><td align="right">605 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="interpcom-1.2.1.lsm">interpcom-1.2.1.lsm</a></td><td align="right">1999-02-03 21:36  </td><td align="right">756 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="interpcom-1.2.1.tar.gz">interpcom-1.2.1.tar.gz</a></td><td align="right">1999-02-03 21:54  </td><td align="right">604K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:56  </td><td align="right"> 81 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="fosh.lsm">fosh.lsm</a></td><td align="right">1999-03-05 01:12  </td><td align="right">381 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="fosh-1.1.tar.gz">fosh-1.1.tar.gz</a></td><td align="right">1999-03-06 01:21  </td><td align="right"> 28K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="survey-0.5.lsm">survey-0.5.lsm</a></td><td align="right">1999-04-07 04:02  </td><td align="right">866 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="survey-0.5.tar.gz">survey-0.5.tar.gz</a></td><td align="right">1999-04-07 04:03  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">895 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">8.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">3.0K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

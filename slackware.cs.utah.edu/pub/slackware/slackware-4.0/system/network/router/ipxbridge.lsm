@@ -1,0 +1,40 @@
+
+Begin3
+Title:          ipxbridge.tar.gz
+Version:        0.2
+Entered-date:   23OCT94
+Description:    This is  attempt to provide IPX connectivity
+                across Linux router. Currently this has only a single
+                bridge program -- very very inefficient. (Doesn't do
+                intelligent bridging also!) We go on from here to 
+                eventually support full fledged bridging and/or routing
+                along with IP routing. (Please see accompanying readme
+                for more details). This should become alternative
+                to PCrouter.
+                Eventually, we should be able to get linux specialised
+                for routing all types of protocols!
+
+		THIS RELEASE: 
+		1. It is intermediatory release which provides 'a.h' file 
+		   that was missing in earlier release.
+                2. Alternatively, it provides much cleaned up code 
+		   in directory 0.1.1, which, though tested only
+		   locally, should work without problems. Try this ...
+                3. I have also included 0.2, the intelligent bridging code.
+		   There are some unresolved bugs which will require you 
+		   to kill and restart it once a while. We are working on it. 
+		   Let us know if you get this working flawlessly (I
+		   mean for days together ...)
+                
+
+Keywords:       IPX route bridge network PCrouter
+Author:         amitay@aero.iitb.ernet.in , vinod@cse.iitb.ernet.in 
+		(contact vinod@cse.iitb.ernet.in) 
+Maintained-by:  authors
+Primary-site:   sunsite.unc.edu:/pub/Linux/Systems/Network/router
+Platform:       Linux
+Copying-policy: GPL
+End
+
+ 
+

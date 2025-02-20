@@ -1,0 +1,28 @@
+Begin3
+Title:		pavuk
+Version:	0.9pl12
+Entered-date:	May 5 1999
+Description:	HTTP , HTTPS (SSL) , FTP , Gopher mirroring and maintaining
+		recursive downloading of web documents,
+		syhchronization of local copies with remote originals,
+		partial reget via FTP and HTTP (1.1<),
+	 	with X-window interface (with own widget lib or with GTK),
+		shows documment tree,
+		allows autentification via HTTP , HTTPS.
+		supports "at" scheduling ,
+		proxy servers support ,
+		NLS support via gettext ,
+		asynchronous DNS name resolving with X-interface ,
+		cookies support
+Keywords:	ftp , http , https , ssl , gopher , mirroring , synchronization , 
+		widget set
+Author:		ondrej@idata.sk (Ondrejicka Stefan)
+Primary-site:	ftp.idata.sk /pub/unix/www/
+		457kb pavuk-0.9pl12.tgz
+Alternate-site:	sunsite.unc.edu /pub/Linux/apps/www/mirroring/
+		457kb pavuk-0.9pl12.tgz
+Platforms:	Linux , OSF/1 , many unix's (I hope) , GNU-win32-cli , X11 ,
+		GTK 
+Copying-policy:	GPL
+End
+

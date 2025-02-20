@@ -1,0 +1,13 @@
+Begin3
+Title:          cdwrite
+Version:        2.0
+Entered-date:   20NOV95
+Description:	Records data or audio CD's on SCSI CD-R writers.
+Keywords:       cdwrite cdr cdrom cd audio
+Author:         Adam Richter <adam@yggdrasil.com>
+Maintained-by:  H. Peter Anvin <hpa@storm.net>
+Primary-site:   sunsite.unc.edu /pub/Linux/utils/disk-management
+		29529 cdwrite-2.0.tar.gz
+Platform:       Philips, IMS, Kodak, Yamaha, HP or compatible CD-writer.
+Copying-policy: GPL
+End

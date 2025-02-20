@@ -1,0 +1,16 @@
+Begin3
+Title:		pppsvr
+Version:	0.2
+Entered-date:	22nd November 1998
+Description:	Remote PPP server
+Keywords:	KDE, ppp
+Author:		<mark@grawlfang.demon.co.uk> (Mark Redding)
+Maintained-by:	<mark@grawlfang.demon.co.uk> (Mark Redding)
+Primary-site:	www.grawlfang.demon.co.uk/KDE/
+File1:		pppsvr-0.2.tgz
+Home-page:	http://www.grawlfang.demon.co.uk/
+Alternate-site:
+Original-site:	http://www.grawlfang.demon.co.uk/
+Platform:	Unix (only tested on Linux) , Kde & Qt libs
+Copying-policy:	GPL
+End

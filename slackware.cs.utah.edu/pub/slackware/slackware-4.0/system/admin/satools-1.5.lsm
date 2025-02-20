@@ -1,0 +1,22 @@
+Begin3
+Title:          satools
+Version:        1.5
+Entered-date:   20APR99
+Description:    A set of tools to help system administrators to
+		control and administrate large networks of UNIX machines.
+		It is specially useful if most, but not quite all,
+		machines are configured equally.
+		It allows the administrator to have control of all
+		system files on all hosts on one central point.
+		It is also an automatic machines inventory tool and
+		database which can store both manual- and automatic data.
+Keywords:       system administration tool, sadist, host database
+Author:         lasse@cecilia-data.se (Lars Berntzon)
+Maintained-by:  lasse@cecilia-data.se (Lars Berntzon)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+                137 kB satools-1.2.tgz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, SunOS, Solaris
+Copying-policy: GPL with minor modifications
+End

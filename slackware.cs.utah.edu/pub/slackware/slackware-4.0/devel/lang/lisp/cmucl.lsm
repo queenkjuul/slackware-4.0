@@ -1,0 +1,29 @@
+Begin3
+Title:          CMU-lisp for linux
+Version:        180397
+Entered-date:18MAR97
+Description:    A port of CMU-lisp to Linux 2.0. CMU lisp has 
+                very powerfull compiler "python". You'll find use
+                for the HyperSpec, available from Harlequin.
+Keywords:       Lisp,CMU,functional languager,programming
+Author:         pw@snoopy.mv.com (Paul F. Werkowski)
+Maintained-by:  s950045@uia.ac.be (Peter Van Eynde)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/Lisp
+		128Kb   CMUCL-bins.tar.gz
+		1048Kb  CMUCL-clio.tar.gz
+		168Kb   CMUCL-clm.tar.gz
+		552Kb   CMUCL-clue.tar.gz
+		1072Kb  CMUCL-clx.tar.gz
+		864Kb   CMUCL-docs.tar.gz
+		1192Kb  CMUCL-hemlock.tar.gz
+		96Kb    CMUCL-lisp-tk.tar.gz
+		3304Kb  CMUCL-naked.tar.gz
+		4008Kb  CMUCL-pcl.tar.gz
+		568Kb   CMUCL-pictures.tar.gz
+		7296Kb  CMUCL-source.tar.gz
+Alternate-site: http://www.cons.org
+Original-site:  http://www.mv.com/users/pw/lisp
+                -----------------
+Platforms:      UNIX,X11,x86
+Copying-policy:	Public domain
+End

@@ -1,0 +1,13 @@
+Begin3
+Title:          capONnetatlk.tgz
+Version:        0.0.1
+Entered-date:   30SEP96
+Description:    Patch to make CAP60.pl197 run on top of netatalk
+Keywords:       CAP60 netatalk AppleTalk Mac
+Author:         chrisb@ganzfix.duew.eunet.de
+Maintained-by:  chrisb@ganzfix.duew.eunet.de
+Primary-site:   sunsite.unc.edu /incoming
+                16 kB capONnetatlk.tgz
+Platforms:      Linux, netatalk, cap60
+Copying-policy: GPL
+End

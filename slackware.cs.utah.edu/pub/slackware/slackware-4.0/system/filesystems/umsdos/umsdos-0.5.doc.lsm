@@ -1,0 +1,14 @@
+begin3
+Title:             Technical specification of the Umsdos file system
+Version:           0.5
+Entered-date:      16OCT94
+Description:       Specification and detail notes of the Umsdos
+                   file system. 
+Keywords           UMSDOS MSDOS file system 0.5 FAT driver documentation
+Author:            jacques@solucorp.qc.ca (Jacques Gelinas)
+Maintained-by:     jacques@solucorp.qc.ca (Jacques Gelinas)
+Primary-site:      sunsite.unc.edu:/pub/Linux/system/Filesystems/umsdos
+                   18910 umsdos-0.5.doc.txt.gz
+                   21530 umsdos-0.5.doc.html.tar.gz
+Copying-policy:    Kernel stuff: GNU public license
+end

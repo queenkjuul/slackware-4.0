@@ -1,0 +1,17 @@
+this requires a copy of "wish".  I'd reccommend having one on your
+system anyway if you don't have it (tcl/tk), cause it's one little
+funky development/application thingy.
+
+oh, it also require's Koen's tbackup program, as this is nothing more than
+a front end to that program.  should be at sunsite.unc.edu.  get
+/pub/Linux/INDEX.whole for details.
+
+this hardly works.  i'd like to know what i need, and where i should stop
+before i go too far, though.  please letta me know.  man, even send
+some fixes & improvements if you're so bold (or you care. :)
+
+absolutely NO error checking (except in tk) is implemented, so if you choose
+"run tbackup", or "DO IT!" and tbackup pops back down after popping up,
+it's because you made a mistake somewhere in your selection. 
+
+jonboy@neuromancer.ucr.edu

@@ -1,0 +1,24 @@
+
+These are compilers for the obsolete Linux a.out binary format.
+
+A bit of history... a.out used to be the main Linux binary format, but was
+phased out in favor of ELF (which is better for a lot of reasons) in late 1995.
+There are still a few a.out binaries floating around on the net, and for now
+Slackware retains a set of a.out shared libaries in the A series for backward
+compatability with these binaries, as well as two sets of a.out X shared
+libraries (oldlibs5.tgz and oldlibs6.tgz) in Slackware's X series.  But, as of
+Slackware 3.5 the compilers for this format are being officially depricated and
+will probably not be maintained much after this.  In fact, if you've got a
+special need for a.out you might want to let me know, because it's possible
+these may eventually disappear altogether unless someone tells me they still
+require support for a.out.  (maybe there are some old commerical a.out libraries
+still in use that were never released in ELF format?  ...I'm not aware of any,
+though)
+                
+To make a.out binaries, install these packages with 'installpkg', and then use
+'gccaout' as your compiler.  For most non-Linux-historians, installing these
+packages is probably a waste of drive space.
+
+ -- Pat <volkerdi@slackware.com>
+         Feast of Fools, April 1, 1998
+

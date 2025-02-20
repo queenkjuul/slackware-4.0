@@ -1,0 +1,11 @@
+Begin3
+Title:          User-shutdown
+Version:        1.1
+Description:    Allows selected users, controlled by a file in /etc, to
+	 	shut down the system (without need for verification of
+		identity, etc, or other complexities required by 'sudo')
+Keywords:       User, shutdown, reboot, halt, admin tool
+Author:         jules@earthcorp.com (Julian Hall)
+Maintained-by:  jules@earthcorp.com (Julian Hall)
+Copying-policy: Public domain
+End

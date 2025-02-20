@@ -1,0 +1,9 @@
+3 Apr 93: Recompiled everything with -static, because Scott Musman
+  pointed out that si::faslink did not work with a different version
+  of shared libraries. faslink now supplies -static to the linker.
+5 Apr 93: added collectfn to the binary distribution (in /usr/local/akcl/cmpnew)
+  because pcl requires it.
+10 Apr 93: Recompiled with libc-4.3.3
+26 Apr 93: added support for (listen) , after a suggestion
+  by Scott Musman. CLX now works !
+ 

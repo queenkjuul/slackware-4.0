@@ -1,0 +1,990 @@
+  The Linux Distribution HOWTO
+  Eric S. Raymond <esr@thyrsus.com>
+  v6.2, 10 September 1998
+
+  This document is intended to help new users choose a Linux distribu­
+  tion, and to help experienced users track the state of the Linux mar­
+  ket.  It does not aim to be a complete list of Linux distributions for
+  all platforms, but instead focuses on leading English-language Intel
+  distributions available on CD-ROM and accessible to Linux novices.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+     1.1 New versions of this document
+     1.2 Recent Changes
+     1.3 Overview of the Linux Market
+     1.4 Editorial Recommendations
+
+  2. American Linux Distributions
+
+     2.1 Caldera OpenLinux
+     2.2 Debian Linux Distribution
+     2.3 Linux Pro
+     2.4 Red Hat Linux
+     2.5 Trans-Ameritech Linuxware
+     2.6 Slackware
+     2.7 S.u.S.E.
+
+  3. Submissions To This Document
+
+     3.1 Types of Submissions
+     3.2 How to submit
+     3.3 Submission Guidelines
+
+  4. Administrivia
+
+     4.1 Terms of Use
+     4.2 Acknowledgements
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  There is no single distribution of the Linux software. Instead, there
+  are many such distributions, available both via anonymous FTP and by
+  mail order on CD-ROM.
+
+  The purpose of this document is to provide short summaries of the
+  English-language Linux distributions, and to provide pointers for the
+  reader to find more information.  A German Distributions HOWTO was
+  formerly maintained by Marco Budde but seems to have disappeared.  We
+  are not aware of any distributions in languages other than English and
+  German.
+
+  The information presented here is not complete; there are other Linux
+  distributions than are listed here. If you are associated with a
+  distribution we don't list, please see ``Submissions To This
+  Document'' near the end of this document for information on making a
+  submission.  It's easy and should take less then five minutes.
+
+  For a more complete list of distributions (albeit with sparser
+  information on each) see the Linux HQ Distributions List
+  <http://www.linuxhq.com/dist-index.html>.
+
+  Disclaimer: We make absolutely no guarantee as to the correctness of
+  the information, prices, and ordering details given in this document.
+  Check the last-modified field of each to get an idea of its currency,
+  then go to the vendor's web page for up-to-date information.
+  Furthermore, unless otherwise stated the Linux software comes with
+  ABSOLUTELY NO WARRANTY.
+
+  Your editor tries to stick to facts in most of this HOWTO, but he has
+  some opinions on the state of the Linux market.  If you care what they
+  are, you can read them under ``Editorial Recommendations''.
+
+  Disclosure: I (esr) have no financial connection to any Linux vendor,
+  nor have I accepted any renumeration or perquisites from any vendor
+  other than free product for review (and one T-shirt from Red Hat).
+
+
+  1.1.  New versions of this document
+
+  This document will be posted monthly to the newsgroups
+  comp.os.linux.answers . The document is archived on a number of Linux
+  FTP sites, including sunsite.unc.edu in pub/Linux/docs/HOWTO.
+
+  You can also view the latest version of this HOWTO on the World Wide
+  Web via the URL  <http://sunsite.unc.edu/mdw/HOWTO/Distribution-
+  HOWTO.html>.
+
+  Feel free to mail any questions or comments about this HOWTO to Eric
+  S. Raymond, esr@snark.thyrsus.com.  Please do not send me general
+  Linux questions or requests for help in choosing a distribution unless
+  you're willing to hire me at normal consulting rates; I don't have
+  time to deal with them, and I try to put everything I know about
+  choosing a distribution in this document.
+
+
+  1.2.  Recent Changes
+
+  Yggdrasil Plug-And-Play and Craftworks Linux seem no longer to be
+  available for sale, and have been dropped.  DOSLINUX has also been
+  dropped due to its specialist nature.
+
+
+  1.3.  Overview of the Linux Market
+
+  In the beginning (say, 1993), a Linux distribution was something you
+  downloaded off the Internet onto floppies.  Installation was a
+  laborious process and repeated frustrations due to bad media were
+  common.
+
+  Then came cheap CD-ROM drives and the CD-ROM, a medium ideally suited
+  for shipping large volumes of operating-system software cheaply.
+  There's a whole mini-industry now built around commercial CD-ROM
+  Linuxes, and (because the vendors have actual cash flow to fund
+  support and marketing) they increasingly dominate the Linux world.
+  Debian is now the only significant non-commercial release, and even it
+  seems to be propagated largely by shovelware CD-ROMs.
+
+  Most of the CD-ROM distributions (including Slackware, Yggdrasil and
+  Red Hat) are still available for FTP from the home sites of their
+  developers.  But if you have a CD-ROM drive and a few dollars, you
+  will have many more distributions and more support options to choose
+  from (and you'll usually get some useful paper documentation).  For
+  more on the details of installation, see the Linux Installation HOWTO,
+  <http://sunsite.unc.edu/mdw/HOWTO/Installation-HOWTO.html>.
+
+  Prices for CD-ROM distributions of Intel Linuxes start at $20 and top
+  out at a whole $50 (and the extra few dollars can buy real value).
+  Many vendors sell subscription deals that will lower your cost-per-CD
+  for regular updates over the subscription period.
+
+  Price correlates with features and quality pretty well (as one would
+  expect in a very competitive market).  Your editor recommends paying
+  the few extra dollars for a top-drawer original CD-ROM distribution;
+  this will pay off in fewer installation and administration hassles
+  down the road.
+
+  Making good choices is much simpler than it used to be.  In 1995-96
+  the Linux market underwent a serious shakeout, with a very few
+  commercial distributions emerging as leaders while weaker ones
+  disappeared or stagnated.  The toll among general-purpose non-
+  commercial distributions has been even fiercer; essentially, only
+  Debian survives in this role.
+
+  As a result, the three-tier structure of primary distribution
+  builders, value-added repackagers, and bottom-feeding CD shovellers
+  that used to define the market has nearly collapsed.  To be
+  competitive in 1997, a Linux outfit (whether commercial or
+  noncommercial) has to offer reasonable support and behave like a
+  primary distribution builder, whether it's really one or not. So as
+  long as you look for a recent freeze date, it is pretty hard to get
+  stuck with a dud distribution these days.
+
+
+  1.4.  Editorial Recommendations
+
+  Last section, the facts.  In this section, my opinions (for whatever
+  they're worth -- and remember the caveat about free advice).  There is
+  no substitute for doing your own evaluation based on experience and
+  the data in this guide, and these are intended more to illuminate my
+  possible biases than as a guide to what you should do.
+
+  From the beginnings of the Linux CD-ROM industry in 1993 to Fall 1995,
+  Yggdrasil was the king of the hill -- it essentially founded the CD-
+  ROM market and then set the standard for everybody else.  I used
+  Yggdrasil, and I recommended it over commercial System V versions for
+  its superior documentation, large collection of applications, and
+  enlightened policy of sending free releases to freeware authors and
+  dedicating part of the price of each CD-ROM to financially supporting
+  free software.  But Yggdrasil hasn't issued a new release since 1995
+  and they've been left behind by the market.
+
+  I now run Red Hat Linux and am quite satisfied with it.  Red Hat's RPM
+  technology currently gives it, IMO, a technical edge over any other
+  vendor.  They've made most of the right moves at the right times and I
+  consider them the current market leader.
+
+  If you're ideologically wedded to using a non-commercial distribution,
+  Debian seems to me to be the clear choice, the only one left with a
+  serious support team behind it.
+
+  These opinions should certainly not be interpreted as an unconditional
+  endorsement; different Linux distributions are optimized for different
+  needs, and yours may well be best served by some other distribution
+  (especially if, unlike me, you're mainly a DOS user and are looking
+  for a distribution tuned for dual-boot systems and being launched from
+  DOS).
+
+  Furthermore, industry standing is volatile.  By the time you read
+  this, Red Hat or Debian may well have fallen off their games and been
+  displaced by hungrier newcomers.
+
+  2.  American Linux Distributions
+
+  All these distributions are available on CD-ROM (some of the non-
+  commercial ones only show up on network-archive snapshots).  Most of
+  these are available for free over the network (but the commercial ones
+  won't support you if you buy this way).  They are custom-assembled,
+  rather than just being re-packagings of a pre-existing network
+  release.
+
+  They are listed in alphabetical order.
+
+
+  2.1.  Caldera OpenLinux
+
+
+     Distributor:
+        Caldera, Inc.
+        633 South 550 East
+        Provo, Utah 84606
+
+        Net: info@caldera.com
+        WWW:  <http://www.caldera.com>
+        FTP:  <ftp://ftp.caldera.com>
+        Vox: (801)-377-7678
+        Fax: (801)-377-8752
+
+
+     Provider's Description:
+        Caldera is shipping OpenLinux 1.2 in a three-tiered family of
+        products: OpenLinux Lite, OpenLinux Base, and OpenLinux
+        Standard.
+
+        OpenLinux Lite is a freely available evaluation of the OpenLinux
+        product (it includes a 90-day evalutation of the Caldera
+        integrated Desttop--the full licensed version of the desktop is
+        included in the Base and Standard products). OpenLinxu Lite can
+        be downloaded from Caldera's ftp site, or obtainded on CD for
+        the cost of shipping. It is also designed for use by book and
+        software publishers to provide a commercially stable Linux
+        offering with their books and software products.
+
+        OpenLinux Base contains everything that is in Lite plus it is a
+        complete, easy-to-install Linux operating system, with
+        integrated Desktop, Internet client and server components, and
+        Intranet connectivity. OpenLinux Base includes Netscape
+        Navigator and full documentation.
+
+        OpenLinux Standard includes what is in Base plus more high-end,
+        name brand, commercial software components (such as Netscape
+        FastTrack Web Server, Netscape Navigator Gold Web browser and
+        authoring tools, ADABAS D database, StarOffice productivity
+        suite, Caldera OpenDOS, and NetWare client and administration
+        tools).
+
+        All three tiers of the OpenLinux 1.2 release are currently
+        available.
+
+        With Caldera OpenLinux, you can see a whole world of powerful
+        new computing, even the power of a UNIX workstation on your PC!
+        By using a Linux kernel, OpenLinux gives you speed and stability
+        that compare to systems costing thousands of dollars. Open Linux
+        also gives you:
+
+     ·  Real multi-tasking runs many text or graphical applications at
+        once; no application can cause another to crash, unlike less
+        robust systems.
+     ·  The Linux 2.0 kernel gives super-fast TCP/IP access to the
+        Internet, plus loadable device drivers, for the most efficient
+        use of your system resources.
+
+     ·  Easy-to-follow, quick installation with menu-based choices and
+        auto-detection of your hardware make installation a snap on most
+        systems. The Getting Started Guide (included) provides a step-
+        by-step illustrated procedure, with troubleshooting tips.
+
+        No other Linux system includes a complete, integrated desktop
+        interface with configuration tools and graphical editor. Its
+        powerful drag-and-drop capabilities come pre-configured with
+        thousands of icons and application settings. The Desktop
+        provides a convenient place where you can store your favorite
+        programs and data files for instant access. The Desktop gives
+        you:
+
+
+     ·  Drag-and-drop launching of programs with data files.
+
+     ·  An integrated graphical text editor.
+
+     ·  Easy access to an array of powerful system configuration tools.
+
+     ·  A configurable icon bar, custom layouts, and preference
+        settings.
+
+     ·  Powerful file management using drag-and-drop or graphical
+        dialogs.
+
+
+     Ordering:
+        By email with PGP key, by phone, by fax, or by conventional
+        mail.  Full ordering details are at
+        <http://www.caldera.com/mpro/orinfo/orderinfo.html>.
+
+
+     Support:
+        Caldera is one of the only Linux distributers to offer E-mail
+        and telephone support. OpenLinux Base (E-mail only) and Standard
+        (Telephone and E-mail) users are fully supported (Standard users
+        receive 5 free incident calls during the first 30 days). There
+        is no technical support for the Lite product.
+
+        OpenLinux Base and Standard ship with full licensed versions of
+        the Caldera Desktop, which do not expire. OpenLinux Lite ships
+        with a 90-day evaluation version of the Desktop.
+
+
+     Last Freeze Date:
+        May 1998 (?)
+
+
+     Entry last modified:
+        13 August 1998
+
+
+  2.2.  Debian Linux Distribution
+
+
+     Distributor:
+        Software in the Public Interest, Inc.  PO Box 1326
+        Boston, Ma. 02117 USA
+
+        Net: info@debian.org
+        WWW:  <http://www.debian.org>
+        FTP:  <ftp://ftp.debian.org/debian>
+
+
+     Provider's Description:
+        Debian Linux is the result of a volunteer effort to create a
+        high-quality non-commercial Linux distribution.  Debian Linux
+        2.0 is a complete and fully-functional Unix-compatible operating
+        system for the personal computer.  The system uses ELF
+        executables and libc6 (unlikeprevious Debian versions, which
+        used libc5).  At present, Debian Linux is available for the IBM
+        PC architecture (386/486/Pentium) and m68k, with versions for
+        Sparc and Alpha promised for 2.1.  ARM, PPC, and UltraSparc
+        ports are underway.
+
+        Debian Linux is an easy-to-upgrade distribution that mostly
+        consists of freely redistributable software from a number of
+        different sources and systems.  Support for shadow passwords is
+        available, although it should be considered experimental in the
+        1.1 release.  Non-free packages may also obtained, making Debian
+        a well-rounded system.
+
+        The benefits of Debian Linux are its upgradability, well-defined
+        dependencies between packages, and its open development.  It is
+        the only distribution of Linux that is being developed co-
+        operatively by many individuals through the Internet, in the
+        same spirit as Linux and other open-source operating systems.
+        More than 400 package maintainers are working on over 1500
+        packages and improving Debian Linux.  A sophisticated bug
+        tracking system allows users to easily report bugs and security
+        concerns which are quickly dealt with by the Debian community.
+        A new release of the package will soon occur on well-known ftp
+        archives.
+
+        Debian Linux is a very dynamic distribution.  Snap-shot releases
+        are made about every three months, the ftp archives are updated
+        daily.
+
+        For more information about Debian Linux, please refer to the
+        files at  <ftp://ftp.debian.org/debian/doc/> or visit our World
+        Wide Web page at  <http://www.debian.org/>.
+
+        If you're interested in joining this project you are invited to
+        subscribe to either debian-user@lists.debian.org or debian-
+        devel@lists.debian.org by sending a mail to debian-user-
+        request@lists.debian.org (or debian-devel-request respectively)
+        with the word "help" in the subject line.
+
+
+     Internet Access:
+        Debian Linux is available via anonymous FTP from
+        <ftp://ftp.debian.org/debian/> and on a mirror near to you.
+
+
+     Last Freeze Date:
+        24 July 1998 (2.0)
+
+
+     Entry last modified:
+        13 Aug 1998
+
+
+  2.3.  Linux Pro
+
+
+     Distributor:
+        WorkGroup Solutions, Inc.
+        P.O. Box 460190
+        Aurora, CO 80046-0190
+
+        Vox: (303)-699-7470
+        Fax: (303)-699-2793
+        Net: info@wgs.com (orders)
+        FTP:  <ftp://ftp.wgs.com/pub2/wgs>
+
+
+     Provider's Description:
+        The charter of the WGS Linux Pro CD is different from all other
+        distributions currently on the market.  We are actively pursuing
+        penetration into the commercial marketplace for Linux.
+        Everything we do is aimed at increasing the size of the Linux
+        community, and helping Linux to become THE one true operating
+        system, not just an operating system.
+
+        WGS Linux Pro consists of our Main "Stable" Linux CD, for which
+        we select what we consider to be the best Linux distribution
+        available.  Then we make bug fixes & minor enhancements.  This
+        CD often contains software older than the latest, under the
+        theory that "the latest is not always the greatest".  Together
+        with this approach we provide technical support as well as
+        support agreements.  For this reason WGS Linux Pro is considered
+        a primary Linux distribution.  Optionally, and in addition to
+        our primary CD, we supply supplemental CDs containing all the
+        latest Linux software (including current archives of the tsx-11,
+        sunsite, and Red Hat sites).  Virtually anything you will get
+        with anyone's Linux product can be found on these supplemental
+        CDs.  We continually add more to these supplemental CDs as
+        software becomes available.  Even with all this, pricing on our
+        product line is very favorable when correctly compared to other
+        Linux distributions.  Also optional (included with Linux Pro+)
+        is a professionally produced and printed manual containing the
+        Linux documentation project and more!
+
+        Current version is 4.0a; kernel is 1.2.13 with installable 2.0.x
+        on the CD.
+
+
+     Internet Access:
+        Look in  <http://www.wgs.com> for a list of WGS products, and
+        latest information on the CD-ROM.
+
+
+     Ordering:
+        WGS Linux Pro is available on CD from dealers and distributors
+        worldwide, and soon from our FTP site.
+
+        You may call, fax, email, or mail us, to purchase, or request
+        additional information.  We will be happy to respond to any
+        question you have.  We accept American Express, Visa, Discover,
+        and MasterCard, or purchase orders with approval of credit.
+
+
+     Miscellaneous:
+        Complete information is available on our FTP site.
+
+        WGS publishes a free E-Mail newsletter on Linux and FlagShip to
+        which you may subscribe by just emailing us your request.
+
+        In addition we carry Motif, FlagShip, A line of books, and other
+        products to make your experience with Linux more complete and
+        fulfilling.  Check us out!
+
+
+     Last Freeze Date:
+        1 October 1996.
+
+
+     Entry last modified:
+        13 March 1997
+
+
+     Editor's comment:
+        They describe their current distribution as "Red Hat 3.03 plus".
+
+
+  2.4.  Red Hat Linux
+
+
+     Distributor:
+        Red Hat Software
+        3201 Yorktown Rd, Suite 123 DeKalb Center
+        Durham, NC 27713
+
+        Vox: (800) 546-7274 or (919) 572-6500
+        Fax: (919) 572-6726
+        Net: redhat@redhat.com
+        WWW:  <http://www.redhat.com>
+        FTP:  <ftp://ftp.redhat.com>
+
+
+     Provider's Description:
+        Red Hat 5.1 is based on the 2.0.34 kernel and is available for
+        Intel, Sparc and Alpha platforms.
+
+        Four installation innovations make Red Hat the easiest Linux to
+        install ever.  Our graphical installation mode brings you
+        straight up into X for most of the installation.  Our boot disk
+        creation script eases selection of the proper boot disk, and it
+        saves your existing network configuration information and
+        XF86Config so you don't have to configure TCP/IP or X!  Our FTP
+        install allows you to install simply by downloading 3 floppy
+        disk images -- the rest is done automatically!  And finally, the
+        installation includes seamless support for PCMCIA devices --
+        install Red Hat on your laptop as easily as on your desktop
+        machine!
+
+        After installing Red Hat Linux once, you will never need to
+        reinstall Linux again!  The new RPM packaging system is
+        sophisticated enough to allow upgrading to new Red Hat releases
+        without reinstalling your system - no partitioning, no backing
+        up all your files, no headaches.
+
+
+     Ordering:
+        Available directly from Red Hat Software and most distributors
+        of Linux related products.  Please contact Red Hat Software for
+        ordering details (on-line ordering is available through Red
+        Hat's Web).  Suggested retail price is for the Intel version is
+        $49.95, for the Sparc and Alpha versions $99.95.
+
+
+     Last Freeze Date:
+        5 May 1998
+
+
+     Entry last modified:
+        1 Jun 1998.
+
+
+     Editor's Comments:
+        The big selling point of this distribution is RPM, the Red Hat
+        Package Manager.  This piece of software is a remarkable
+        advance; it allows you to cleanly install and de-install
+        applications and operating-system components, including the
+        kernel and OS base itself.  Red Hat has issued this under GPL,
+        which is a good thing for other distributors; it is the
+        considered opinion of this editor that those who do not adopt it
+        will shortly have their lunches eaten by those who do.
+
+
+  2.5.  Trans-Ameritech Linuxware
+
+
+     Distributor:
+        Trans-Ameritech
+        2342A Walsh Avenue
+        Santa Clara, CA 95051
+
+        Net: info@trans-am.com
+        WWW: http://www.trans-am.com
+        Vox: (408)-727-3883
+        Fax: (408)-727-3882
+        BBS: (408)-980-9840
+
+
+     Provider's Description:
+        Trans-Ameritech has published 10 releases of Linux by early
+        1997.  Traditionally, Trans-Ameritech has set new standards for
+        combining ease of use and straightforward installation, even for
+        a first-time user, with its line of LinuxWare CD-ROMs.  This is
+        a flexible, easy-to-install operating system geared toward those
+        interested in learning Unix as well as technical people,
+        students and home PC users.
+
+
+     ·  New Linux users will appreciate a Windows-based set up program
+        from the CD.
+
+     ·  To minimize the possibility of hardware conflicts many extra
+        kernels are provided for different configurations. They are
+        usable for installation and normal operation.
+
+     ·  Many on-line documents are provided for quick reference,
+        including the Linux Documentation Project files in source, dvi
+        and ps formats.
+
+        Many applications are included:
+
+
+     ·  MS-Windows based X configuration program
+
+     ·  C/C++,Pascal and Ada compilers as well as converters fron
+        Fortran
+
+     ·  TCP/IP networking, UUCP,SLIP,CSLIP,PPP
+
+     ·  Internet access with binaries and sources for FTP,Telnet,News
+        and E-mail
+
+     ·  Multiple terminals and X-Windows environment
+
+     ·  Gnu and international versions of the ispell spell-cheker
+
+     ·  The communications apps:term,minicom,Seyon (X-Windows based)
+
+     ·  Editors:elvis(vi clone),joe,jove,Emacs
+
+     ·  PostScript clone ghostscript
+
+     ·  Object oriented GNU Smalltalk and the Smalltalk interface to X
+
+     ·  TCL/Tk (Powerful scripting language with Motif-like X interface)
+
+     ·  Programs for electrical engineers and ham enthusiasts
+
+     ·  Interviews libraries,include files and doc Word-processor and
+        idraw drawing program
+
+     ·  Typesetting:TeX,LaTeX,xdvi,dvips,Metafont,groff
+
+     ·  Andrew multimedia word prodessor with hyperlinks
+
+     ·  FAX send and receive on either class 1 or class 2 fax modems
+
+     ·  DOOM for game enthusiasts
+
+        All the sources are available on the CD-ROM. The often needed
+        sources are uncompressed and can be used directly from the CD-
+        ROM.
+
+        An uncompressed Linux filesystem is available for references and
+        disk space conversaion. You can run programs directly from the
+        CD-ROM! There is a large info directory for on-line reference
+        and many manpages.
+
+        For hacker's reference, uncompressed FreeBSD and netBSD sources
+        are provided.
+
+        Our distribution is targeted for Windows and DOS users who want
+        an easy migration path upwards, rather than for UNIX experts.
+
+
+     Ordering:
+        Email orders are taken at order@trans-am.com
+
+        The price for our current release of LinuxWare 2.5 is $19.95
+
+        The price for a package order: LinuxWare 2.5,Supplement 5 and
+        Supplement 4 (Ultimate LinuxWare Bundle) in one shipment is $30
+
+        If you order with a credit card (VISA, MC, AmEx, Discovery),
+        please, indicate the card number, expiration date and your
+        mailing address.
+
+        Shipping and handling in US: single CD-ROM or Ultimate LinuxWare
+        Bundle is $5(first class US mail).
+
+        Overseas shipping is $8 for single CD-ROM , $12 for the bundle.
+
+        COD is available in the US only for $4.50.  California
+        residents, please add 7.75% sales tax.
+
+        Annual subscription (4 releases) is available for $80 plus S&H
+        (note: there are 4 shipments in a subscription).  Example:
+        subscription in US is:$80+$5x4=$100.  Subscription in
+        Europe/Japan etc. $80 + $8x4 = $112.
+
+
+     Miscellaneous:
+        If you have any further questions,please contact us through E-
+        mail: info@trans-am.com or order@trans-am.com.
+     Last Freeze Date:
+        January 1997 (Supplement 5)
+
+
+     Entry last modified:
+        13 August 1998
+
+
+  2.6.  Slackware
+
+
+     Distributor:
+        Walnut Creek CDROM
+        4041 Pike Lane, Suite D
+        Concord, CA  94520
+
+        Net: info@cdrom.com (information), order@cdrom.com (orders),
+        support@cdrom.com (support).
+
+
+     Provider's Description:
+        Ftp.cdrom.com is the home of Slackware Linux.  We are the
+        publishers of the Official Slackware Linux CDROM.  Our
+        distribution is a 4-disc set with the current version being
+        Slackware 96.  The current disc is based on the 2.0.34 kernel.
+
+        Slackware Linux is a full featured distribution of the Linux
+        operating system designed for 386/486 computers with a 3.5"
+        floppy and CD-ROM drive.
+
+
+     Internet Access:
+        WWW:  <http://www.cdrom.com/titles/os/slack96.htm>
+        FTP:  <ftp:ftp.cdrom.com/pub/linux/slackware>
+
+
+     Ordering:
+        The cost of the CD-ROM set from Walnut Creek is $39.95.
+
+
+     Last Freeze Date:
+        July 1998 (3.5)
+
+
+     Entry last modified:
+        13 August 1998.
+
+
+  2.7.  S.u.S.E.
+
+
+     Distributor:
+        S.u.S.E., Inc.
+        458 Santa Clara Ave
+        Oakland CA 94610 USA
+
+        Net: info@suse.com
+        WWW:  <http://www.suse.com>
+        FTP:  <ftp://ftp.suse.com>
+        Vox: +1-510-835-7873 Fax: +1-510-835-7875 fax
+
+
+     Provider's Description:
+        S.u.S.E. Linux offers users of all levels, from novice to
+        expert, quick and easy entry into world of Linux and Unix.
+        Resources such as a menu-driven installation from CD-ROM, a
+        modular boot diskette, 400-page reference book and S.u.S.E.'s
+        own system administration tool, YaST allow one to quickly get
+        Linux installed and running, and to keep it running smoothly.
+
+        Furthermore, S.u.S.E. offers a series of supported X servers,
+        which support the newest graphics cards. These servers are
+        created in cooperation with the XFree86 (tm) development team.
+        See the following URL for more details:
+        <http://www.suse.de/XSuSE>.
+
+        New in S.u.S.E. Linux 5.3:
+
+
+     ·  Kernel 2.0.35
+
+     ·  KDE 1.0
+
+     ·  GIMP 1.0
+
+     ·  SaX (SuSE advanced XF86 configuration tool)
+
+        Quick overview of other features:
+
+
+     ·  The Linux OS, over 875 software packages, including complete
+        sources and live file system on 4 CD-ROMs
+
+     ·  400 page reference book
+
+     ·  Packages in RPM format; TGZ packages installable
+
+     ·  System V compatible boot concept, compliance with file system
+        standard
+
+     ·  Installation and administration utility 'YaST' configures
+        network, ISDN, e-mail, printer, X Window System
+
+     ·  S.u.S.E. X servers which support new graphics cards
+
+     ·  Administration of file systems, users, groups
+
+     ·  Automatic configuration of several window managers
+
+     ·  Online help system and documentation
+
+     ·  Demo mode, either directly from CD-ROM, or on DOS partition
+
+
+     Ordering:
+        You can download from  <ftp://ftp.suse.com/pub/SuSE-Linux>.  For
+        the CD-ROM with support, order vphone, secure WWW order form,
+        fax, or post.  Price is $49.95, or $34.95 per edition by
+        subscription. Use order code LSUE520 for the English version,
+        LSUD520.
+
+        Aklso available: OSF Motif 2.1 for $129.95 (price for update to
+        be determined; order code: LMEA210
+
+
+     Support:
+        60 days of free installation support are included with each
+        purchase of S.u.S.E. Linux. See the web page for contact info
+        and conditions.
+
+
+
+     Last Freeze Date:
+        Unknown.
+
+
+     Entry last modified:
+        13 Aug 1998 (5.3)
+
+
+  3.  Submissions To This Document
+
+  I encourage anyone and everyone who maintains a Linux distribution or
+  mail order service, to submit information on their service to this
+  HOWTO. It's easy and fun, and it's free advertising. This document is
+  posted to many places and is archived (see the next section).
+
+
+  3.1.  Types of Submissions
+
+  We are interested in submissions for:
+
+
+  ·  Complete distributions of Linux software, available either via
+     anonymous FTP, UUCP, or mail order. By `complete distribution' we
+     mean any set of software which can be used to build a complete
+     Linux system from scratch.
+
+  ·  Layered products or individual software packages available only via
+     mail order. If your software package is available via anonymous
+     FTP, chances are people can find it. Software products only
+     available via mail-order include commercial things such as Motif,
+     and any other commercial software ported to Linux.
+
+  ·  Any other Linux-specific goods available via mail order, such as
+     Linux-specific books and documentation, T-shirts, and assorted
+     paraphrenalia.   Note: our interest in the latter categories is
+     marginal -- this is a Linux Distributions HOWTO, not a catalogue of
+     cutesy Linux junk.  Whatever you're selling will have to be (a)
+     very useful, (b) very original, or (c) very funny, to get listed
+     here.
+
+  If the number of submissions for services and layered products is
+  large, I'll create a separate HOWTO for these items.
+
+
+  3.2.  How to submit
+
+  To submit an entry to this HOWTO, please send mail to
+  esr@snark.thyrsus.com with the following information. This format is
+  not machine-parsable; any of the fields may be any length that you
+  wish, but I'd like to keep each entry down to, say, 50 lines.
+
+
+     Name:
+        Name of service or distribution
+
+
+     Distributor:
+        Name of company, person, etc. who distributes/maintains the
+        service or distribution.  Should include mail, email, phone
+        contact information, and (if possible) a WWW reference.
+
+
+     Provider's Description:
+        Description of the distribution or service that you provide. If
+        this is a software distribution, please include information such
+        as what software is included, versions, general overview of
+        installation, requirements, and so on.
+
+
+     Internet Access:
+        Where your service or distribution is available over the
+        Internet; typically a WWW or FTP address.
+
+
+     Ordering:
+        How to order your distribution or service, if applicable.
+        Include prices, shipping information, methods of payment, etc.
+
+
+     Support:
+        Information on support terms and support contracts.
+
+
+     Miscellaneous:
+        Anything else that you find relevant.
+
+
+     Last Freeze Date:
+        Last freeze date of the current version(s).  Also, your
+        estimated update frequency.
+
+
+  3.3.  Submission Guidelines
+
+  Please keep your entry as short as possible. If you need to include
+  extensive information, please make a reference to where one can FTP or
+  mail to get more information on your distribution; these entries are
+  only meant to be pointers to where one can find information on your
+  service or distribution.
+
+  If you provide more than one service or distribution, please use
+  separate entries for each.
+
+  I may edit your entries for conciseness and brevity, if I find any
+  irrelevant information, or if the entry is overly verbose.  Otherwise
+  the content should remain the same.
+
+  When making submissions to the Distribution-HOWTO, you grant implicit
+  permission for me to use the entries in other materials, such as books
+  from the LDP, and other online documents. For example, information
+  from the Distribution-HOWTO may be included in a published Linux book.
+  If you do not want me to include your entry in materials other than
+  the Distribution-HOWTO, please say so.
+
+
+  4.  Administrivia
+
+
+  4.1.  Terms of Use
+
+  This document is copyright 1997 by Eric S. Raymond. You may use,
+  disseminate, and reproduce it freely, provided you:
+
+
+  ·  Do not omit or alter this copyright notice.
+
+  ·  Do not omit or alter or omit the version number and date.
+
+  ·  Do not omit or alter the document's pointer to the current WWW
+     version.
+
+
+  ·  Clearly mark any consdensed, altered or versions as such.
+
+  These restrictions are intended to protect potential readers from
+  stale or mangled versions.  If you think you have a good case for an
+  exception, ask me.
+
+
+  4.2.  Acknowledgements
+
+  This document was originated by Bill Riemers.  Matt Welsh maintained
+  the second version.  Erik Troan then maintained the document to
+  release 3.0.
+
+  In January 1995, Eric Raymond, while unaware of the existence of this
+  document, began to develop a similar FAQ in the format of his now-
+  discontinued "PC-clone UNIX Software Buyer's Guide", which had covered
+  mainly System V UNIXes and BSD/OS.
+
+  In March 1995, Eric approached Erik about cooperating on a merged
+  version.  In early April 1995, Erik went to work for Red Hat Software,
+  and (wishing to avoid a conflict of interest) handed the document to
+  Eric.  Eric merged in a lot of new information and added several new
+  fields to the distribution entries.
+
+  Accordingly, this document has been a sort of serial collaboration.
+  The editorial `we' generally tags observations by all the maintainers;
+  `I' is Eric (the current one) speaking.
+
+  We are delighted to acknowledge the contributions of all the Linux
+  users and Internet hackers who have contributed information and
+  feedback.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

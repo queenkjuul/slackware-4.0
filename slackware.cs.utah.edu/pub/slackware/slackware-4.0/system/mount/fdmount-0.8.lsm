@@ -1,0 +1,32 @@
+Begin2
+Title        = fdmount
+Version      = 0.8
+Desc1        = mount floppies, auto-detect filesystem type & format
+Desc2        = allow users to mount floppies
+Author       = Rainer Zimmermann
+AuthorEmail  = zimmerm@mathematik.uni-marburg.de
+Maintainer   = 
+MaintEmail   = 
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Misc ?
+File1        = fdmount-0.8.tar.gz
+FileSize1    = 11K
+Site2        = 
+Path2        = 
+File2        = 
+FileSize2    = 
+Required1    = fdpatches or kernel >= 1.2.n where n<=11
+CopyPolicy1  = GPL
+CopyPolicy2  =
+Keywords     = floppy, mount, fdpatches
+Comment1     = May become part of fdutils by Alain.Knaff@imag.fr ?
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      =
+EnteredBy    =
+CheckedEmail =
+End

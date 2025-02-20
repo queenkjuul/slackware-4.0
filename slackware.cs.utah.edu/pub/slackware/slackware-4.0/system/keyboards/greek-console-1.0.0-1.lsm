@@ -1,0 +1,20 @@
+Begin3
+Title:		greek-console
+Version:		1.0.0
+Entered-date:	October 13, 1997
+Description:	greek-console is a collection of fonts and keytables that make
+			Linux i386 PC consoles capable of reading and writing text in
+			Greek.  Both the codepages 737 (MS-DOS 437-G) and 928 are
+			supported.
+Keywords:		Greek, console, greek language, i18n, codepage, i386
+Author:		Georgios E. Keramidas <keramida@ceid.upatras.gr>
+Maintained-by:	Author
+Primary-site:   	ftp://sunsite.unc.edu/pub/Linux/Incoming/
+			greek-console-1.0.0-1.i386.rpm
+Alternate-site:	ftp://argeas.argos.hol.gr/pub/unix/linux/GREEK/
+			greek-console-1.0.0-1.i386.rpm
+Original-site:	http://students.ceid.upatras.gr/~keramida/linux/greek/
+			greek-console-1.0.0-1.i386.rpm
+Platform:		Linux, Intel PC, with Red-Hat Package Manager (rpm)
+Copying-policy: 	GNU GPL 2.0 (or later)
+End

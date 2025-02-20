@@ -1,0 +1,17 @@
+Title:	gnos
+Version: 1.10
+Entered-date: 112417071994
+Description: simple mailer, messages in either English and Russian
+Description: you may easily translate to to your favorite language
+Description: you can easily install it as a shell for a dialup user
+Description: it supports Uploads/Downloads with Z/Y/X modem (via
+Description: /usr/bin/rx, /usr/bin/sz, ascii is builtin of cource ;-)
+Description: newsreader coming rsn
+Keywords: internationalization, mailer, linux
+Author: agl@mac.glas.apc.org (Anthony Graph +7 095 9214897)
+Maintained-by: agl@glas2.glas.apc.org
+Primary-site: ftp://sunsite.unc.edu:/pub/Linux/system/Mail/readers 260 K
+Maintained-at: ftp://sunsite.unc.edu:/pub/Linux/system/Mail/readers
+Platforms: whatever-linux,i386-isc,spark-sunos (c++ required)
+Copying-Policy: GNU GPL v2.0+
+

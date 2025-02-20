@@ -1,0 +1,279 @@
+The Linux Netatalk-HOWTO
+Anders Brownworth, <anders@thehamptons.com>
+Version 2.0.0, October 7, 1998
+http://thehamptons.com/anders/netatalk/
+
+     Netatalk is a package that lets a Unix machine supply
+     Appletalk print and file services on a LAN. The package supports
+     AppleShare IP and classic Appletalk protocols. With netatalk,
+     Macintosh computers can mount Unix volumes and print to Unix print
+     spools as if they were standard Appletalk network devices.
+     
+     This document is intended as a guide to help the Linux system
+     administrator set up and administrate netatalk. Linux is a freely
+     distributable POSIX compliant U*ix for 386, 486, Pentium,
+     PowerMacintosh, Sun and DEC Alpha hardware as well as several other
+     experimental platforms. (SGI, etc.)
+     
+     For those of you who are impatient, there is the Linux
+     Netatalk-HOWTO: Guide for the Impatient.
+     [http://thehamptons.com/ander/netatalk/impatient.html]
+     
+     Netatalk is brought to you by our friends at The Research Systems
+     Unix Group at The University of Michigan. [netatalk@umich.edu]
+     
+     The origional netatalk homepage is available at:
+     [http://www.umich.edu/~rsug/netatalk/]
+     
+     Another place to look for netatalk info is Bill McGonigle's
+     Faq-O-Matic at:
+     [http://threepio.hitchcock.org/cgi-bin/faq/netatalk/faq.pl]
+     
+     AppleShare IP support (AFP/TCP) as well as the latest bug fixes and
+     enhancements are included with Adrian Sun's version of netatalk
+     called netatalk+asun. This HOWTO covers Adrian's version of
+     netatalk as it is the most up to date. The "old version" of this
+     HOWTO can be found at:
+     [http://thehamptons.com/anders/netatalk/old/]
+     
+     Netatalk+asun lets a Macintosh see a Linux box. To do the reverse
+     (have the Linux box see the Mac) you need to install the afpfs
+     module from:
+     [http://www.odyssey.co.il/~heksterb/Software/afpfs/]
+     
+     Comments and corrections are very welcome. Someone had sent me a
+     diff of my pages correcting my horrible spelling, and I proceeded
+     to blow away my mailbox by mistake so I lost it. Anyone wanting to
+     help out with that would be greatly appreciated.
+     
+     If you have problems with netatalk, usually a good place to post
+     them is to the linux-atalk listserv. Subscribe to it by sending
+     mail to listserv@netspace.org with no subject and a body which
+     reads SUBSCRIBE LINUX-ATALK (Your Full Name). To unsubscribe, send
+     mail to the same place with the message text UNSUBSCRIBE
+     LINUX-ATALK. Posts to the listserv should be sent to
+     linux-atalk@netspace.org.
+     
+       ______________________________________________________________
+                                      
+                             What you will need:
+     * A computer running Linux with a 2.0.* or newer kernel (with
+       source) and compilers.
+     * A copy of the latest netatalk+asun source from
+       [ftp://ftp.u.washington.edu/public/asun/]
+          + RedHat makes an RPM of netatalk+asun at
+            [ftp://ftp.redhat.com/pub/contrib/i386/netatalk-1.4b2+asun2.1.*.i386.rpm]
+          + Debian makes binaries available at
+            [http://cgi.debian.org/www-master/debian.org/Packages/stable/net/netatalk.html]
+          + Origional netatalk code (without TCP/IP support) can be found
+            at [ftp://terminator.rs.itd.umich.edu/unix/netatalk/]
+     * LAN with a Mac (don't really need this but then, what's the
+       point?)
+       ______________________________________________________________
+                                      
+Decompress and untar the source code with the following commands:
+     
+     elmer:~/src> gzip netatalk-1.4b2+asun2.0a18.2.tar.gz
+     elmer:~/src> tar -xvf netatalk-1.4b2+asun2.0a18.2.tar
+     
+     or if you downloaded the rpm version:
+     
+     eyore:~/src> rpm -i netatalk-1.4b2+asun2.1.0-5.i386.rpm
+     
+Edit the Makefile in the root of the source tree:
+     
+     Set the destination directory:
+     
+     DESTDIR=/usr/local/atalk, which is the default is probably OK for
+     most installations.
+     
+Edit the etc/afpd/Makefile if you need shadow password support.
+     
+     Most major Linux distributions such as RedHat use shadow password
+     suites. If you don't know if you have shadow passwords, look at
+     your password file. If you have an "x" where the encrypted password
+     should be, you have shadow passwords and you need to define shadow
+     passwords in your Makefile. ( Sample line from a shadow password
+     file: root:x:0:0::/root:/bin/tcsh )
+     
+     Add -DSHADOWPW to the etc/afpd/Makefile like so:
+     CFLAGS= ${DEFS} ${AFSDEFS} ${KRBDEFS} ${DESDEFS} ${OPTOPTS} ${INCPATH} \
+             ${PAMDEFS} -DAPPLCNAME -DCRLF -DSHADOWPW # -DDOWNCASE
+
+Install a DES library if you don't already have one.
+     
+     Get a copy of libdes from
+     [ftp://ftp.psy.uq.oz.au/pub/Crypto/DES/libdes.tar.gz].
+     
+     Untar it somewhere and do a make.
+     
+     To optionally install libdes on your system (which isn't a half bad
+     idea) type make install.
+     
+     You will need the file des.h which should be there if the make was
+     successfull.
+     
+     Copy des.h to your netatalk include directory: cp des.h
+     /path/netatalk/include/.
+     
+Install TCP Wrappers if it's not already installed.
+     
+     To compile, netatalk needs tcpd.h so if you don't already have it,
+     download the TCP Wrappers package from
+     [ftp://ftp.cert.org/pub/tools/tcp_wrappers/].
+     
+     Type cp tcpd.h /path/netatalk/include/ to copy tcpd.h to your
+     netatalk source include directory.
+     
+     You probably have tcpd on your system. In the rare case that you
+     don't, you'll want to compile it now by typing make
+     REAL_DAEMON_DIR=/usr/sbin linux and instal it. Look at the included
+     README file for installation instructions.
+     
+Compile netatalk
+     
+     The all important step: in your netatalk source directory, type
+     make.
+     
+     Make sure everything compiles up without an error. You may see some
+     warnings which are safe to ignore, but if you see the compiler exit
+     with some sort of error, try and see if you can figure out why it
+     is dying. Remember, the compiler is going to look in your include
+     directory for tcpd.h and des.h so make sure they are there.
+     
+     If you are really having trouble with the compile, try the tips
+     page. If you are really having trouble, you could download a
+     pre-compiled version of netatalk from the download page.
+     
+     [http://thehamptons.com/anders/netatalk/download.html]
+     
+Install netatalk
+     
+     Type make install in the source directory and netatalk will be
+     installed where you stated in the Makefile. (default is
+     /usr/local/atalk)
+     
+Edit /etc/services
+     
+     Add the following lines to your /etc/services file:
+     
+     rtmp            1/ddp           # Routing Table Maintenance Protocol
+     nbp             2/ddp           # Name Binding Protocol
+     echo            4/ddp           # AppleTalk Echo Protocol
+     zip             6/ddp           # Zone Information Protocol
+
+     afpovertcp      548/tcp         # AFP over TCP
+     afpovertcp      548/udp
+
+Copy atalkd.conf
+     
+     Type cp conf/atalkd.conf /usr/local/atalk/etc/. The simplest config
+     file for atalkd (like the one you just copied) is one with no
+     commands in it.
+     
+     atalkd is the "classic Appletalk" kernel interface. It will serve
+     as the link between the kernel appletalk module and the rest of the
+     classic Appletalk functions of netatalk. It will even take care of
+     Appletalk routing between multiple network cards.
+     
+Copy afpd.conf file
+     
+     Type cp conf/afpd.conf /usr/local/atalk/etc. This file sets Classic
+     Appletalk and Appleshare IP server options. Leaving it alone is the
+     easiest thing to do, however the default does not enable
+     AppleshareIP and there are quite a few configurable options in this
+     file so there is a section specific to it at:
+     
+     [http://thehamptons.com/anders/netatalk/afpd.conf.html]
+     
+Copy and edit AppleVolumes.*
+     
+     Type cp conf/AppleVolumes.default /usr/local/atalk/etc and cp
+     conf/AppleVolumes.default /usr/local/atalk/etc. The
+     AppleVolumes.default file is a listing of volume to path mappings,
+     so adding the lines:
+     
+     ~       Home
+     /music "Some Tunes"
+
+     will cause three volumes to show up, one called Home which is the
+     user's home directory and one called Some Tunes that is the
+     directory /music. The AppleVolumes.system file is a listing of "dot
+     extensions" to type / creator mappings. A Mac file has two parts, a
+     data fork and a resource fork. Unix files are only one long list of
+     bits. Therefore, if you have the file test.txt created in Unix,
+     looking at it on the Mac will reveal an "Unknown Document" icon
+     unless there is an entry in the AppleVolumes.system file like so:
+     
+     .txt    TEXT    MSWD
+
+     which will make it show up as a Microsoft Word document and will
+     launch Word when double-clicked. The default list of type / creator
+     mappings in the AppleVolumes.system file is probably adequate
+     unless youare planning on making many files in Unix and using them
+     on Macs. One possible reason to use a large type / creator map is
+     if you plan to export the same directory to Windows clients via
+     Samba.
+     
+Compile Appletalk in your kernel
+     
+     There are two kinds of Appletalk servers you can run, and both can
+     run at the same time. Classic Appletalk needs to run atalkd and
+     afpd while Appletalk over TCP/IP only requires that afpd be
+     running. Atalkd requires that Appletalk and TCP/IP support be
+     compiled into your kernel while Appletalk IP only requires TCP/IP
+     support. Many mainstream Linux distributions contain a kernel with
+     Appletalk already compiled in and everyone probably has TCP/IP. You
+     can check to see if your kernel supports Appletalk by typeing:
+     
+     dmesg | grep Apple
+
+     If you see anything pop up such as Appletalk 0.17 for Linux
+     NET3.035 you have Classic Appletalk compiled into your kernel. If
+     not you could check to see if you have Appletalk inserted into the
+     kernel via a module by typeing:
+     
+     cat /proc/modules
+
+     and seeing if Appletalk shows up there. If neither of these
+     statements show Appletalk, then you have to compile Appletalk into
+     the kernel and reboot, or compile Appletalk as a module and insmod
+     appletalk.o. If you need help compiling Appletalk into the kernel,
+     take a look at the Kernel-HOWTO. (usually included in major
+     distributions in the docs directory /usr/doc)
+     
+Start the server
+     
+     Now comes the moment of truth. Try to test a startup of the
+     netatalk server by running one of the rc.atalk scripts in the root
+     of the netatalk source tree. Type ./rc.atalk.sysv start and give it
+     a few seconds. This will start up a Classic Apletalk fileserver and
+     Appletalk IP if you have any TCP options set in the afpd.conf file.
+     Atalkd will take the longest to start as it checks out the network
+     before registering itself.
+     
+     Alternatively you could just run an Appletalk over TCP/IP server by
+     having a TCP server configured in the afpd.conf file and launching
+     afpd by hand:
+     
+     /usr/local/atalk/etc/afpd -F /usr/local/atalk/etc/afpd.conf
+
+     If everything seems to have started up without complaning, go to a
+     Mac and open the chooser. (under the Apple menu on the left hand
+     side) Click on AppleShare and see if your netatalk server shows up.
+     (for AppleshareIP you have to click the AppleshareIP button and
+     type your machine IP or name in.
+     
+     With some luck you will be presented with a password prompt. You
+     can only log into the server with a non root account that has a
+     valid shell and a password of 8 or less characters. Guest access is
+     also permitted unless denied in afpd.conf. If you can't log in as
+     anyone but guest you probably don't have shadow password support
+     compiled into your netatalk executables. If you are able to login,
+     you will get a list of volumes which you can select and mount.
+     
+Enjoy!
+       ______________________________________________________________
+                                      
+        Origional document: [http://thehamptons.com/anders/netatalk/]
+

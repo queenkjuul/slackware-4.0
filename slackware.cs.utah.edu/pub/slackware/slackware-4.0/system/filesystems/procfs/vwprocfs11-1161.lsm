@@ -1,0 +1,32 @@
+Title        = vwprocfs
+Version      = 1.1
+Desc1        = Kernel patches: Modified /proc filesystem. Allows using 
+Desc2        = /proc both as part of kernel and standalone runtime-insertable
+Desc3        = module. Contains 32-bit PID support in /proc/*/vwp/*
+Desc4        = as of course COPYPID in clone syscall. /proc/mtab for
+Desc5        = raw mount information. Patches for kmem-ps.
+Author       = Davor Jadrijevic
+AuthorEmail  = davj@ds5000.irb.hr
+Maintainer   = Davor Jadrijevic
+MaintEmail   = davj@ds5000.irb.hr
+Site1        = avalon.irb.hr
+Path1        = /incoming/linux/vwp
+Site2        = sunsite.unc.edu
+Path2        = /pub/Linux/system/Filesystems/procfs
+File1        = vwpprocfs11-1161.tgz
+FileSize1    = 32K
+Required1    = linux-1.1.61+
+CopyPolicy1  = Freely distributable
+Keywords     = proc, filesystem, module, viper, pid
+Comment1     = small modifications of /proc filesystem; 1. working example
+Comment2     = kernel module, 2. No need for reboot = easy /proc development
+Comment3     = 3. /proc/mtab reliable raw list of mounts, 4. 32-bit PID
+Comment4     = support: /proc and kmem-ps know how to list kernel threads.
+Comment5     = 5. new COPYPID option for clone generates 32-bit PID entries
+RelFiles1    =
+Entered      = 05NOV94
+EnteredBy    = Davor Jadrijevic
+CheckedEmail = 
+End
+
+ 

@@ -1,0 +1,17 @@
+Begin3
+Title:          dialtty
+Version:        1.25
+Entered-date:   2/16/1998
+Description:    dialin daemon for handling modem connections
+Keywords:       dialtty dialin modem agetty getty ppp dip slip cslip diplogin
+Author:         J.C.A.Gremmen@silicon.tue.nl (J.C.A. Gremmen)
+Maintained-by:  J.C.A.Gremmen@silicon.tue.nl (J.C.A. Gremmen)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+		25 kB dialtty-1.25.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/incoming
+		25 kB dialtty-1.25.tar.gz
+Original-site:  
+Platforms:      Linux, requires Hayes(tm) compatible modem, dip and/or pppd.
+Copying-policy: BSD
+End
+

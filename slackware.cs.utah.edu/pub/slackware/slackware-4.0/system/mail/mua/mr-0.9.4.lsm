@@ -1,0 +1,21 @@
+Begin3
+Title:		Mail Reader
+Version:	0.9.4
+Entered-date:	September 14, 1998
+Description:	mr is a colorful mailreader, it supports MIME, threading,
+		templates (improved signatures and message banners),
+		character translation tables, lastread pointers, it has 
+		menus, on-line help, built in editor, and so on. I
+		developed it, basing on a well known DOS FidoNet Editor -
+		GoldED. (so the key layout is similar - and unfortunately
+		for now unredefineable). mr can run on poor terminals, 
+		like VT100, etc.
+Keywords:	MUA mailreader mail user agent color MIME thread
+Author:		pborys@p-soft.silesia.linux.org.pl (Przemek Borys)
+Maintained-by:	pborys@p-soft.silesia.linux.org.pl (Przemek Borys)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/mail/mua
+		76228  mr-0.9.4.tar.gz
+Original-site:	http://rhea.ids.pl/~pborys/software/linux/
+Platforms:	XSI compatible curses (originally developed with ncurses)
+Copying-policy:	GPL
+End

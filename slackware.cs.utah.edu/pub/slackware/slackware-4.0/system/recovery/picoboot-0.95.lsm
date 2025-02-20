@@ -1,0 +1,18 @@
+Begin3
+Title:   	PicoBoot boot/rescue disk + utilities
+Version:        0.95
+Entered-date:   January 17, 1997
+Description:    A boot/rescue disk containing the Pico text edit, GNU bash,
+		color-ls, ext2 defrag, b[un]zip2, and many other goodies.
+		Intended for new users, as well as users who don't
+		particularly like vi, especially under the stress of a 
+		system crash.
+Keywords:       boot rescue disk pico kernel
+Author:         alle1624@oak.hawk.plattsburgh.edu (Chris Allegretta)
+Maintained-by:  alle1624@oak.hawk.plattsburgh.edu (Chris Allegretta)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/recovery
+		1719264 picoboot-0.95.tar.gz
+		781 picoboot-0.95.lsm
+Platforms:      x86 system with 8MB RAM & floppy drive.
+Copying-policy: GPL & Pine License (U. of Washington)
+End

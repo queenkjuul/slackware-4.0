@@ -1,0 +1,17 @@
+Begin3
+Title:          Runpipe daemon and client
+Version:        1.2
+Entered-date:   March 10, 1997
+Description:    A package which monitors named pipes and runs a process on
+		the other end of the pipe when a read or write access is
+		made to the pipe.
+Keywords:       FIFO pipe plan
+Author:		neufeld@physics.utoronto.ca (Christopher Neufeld)
+Maintained-by:  neufeld@physics.utoronto.ca (Christopher Neufeld)
+Primary-site:   caliban.physics.utoronto.ca /pub/linux
+		17 kB runpipe-1.2.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/daemons
+Original-site:  
+Platform:       
+Copying-policy: GPL
+End

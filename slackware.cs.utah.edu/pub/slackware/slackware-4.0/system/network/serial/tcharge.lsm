@@ -1,0 +1,21 @@
+Begin3
+Title:          tcharge
+Version:        1.3
+Entered-date:   11MAY98
+Description:    Tcharge is a X-program to watch the time a telephone
+                connection is up and the money to pay for it. It works
+                both for 'per unit billing' and for 'per unit
+                billing'. Support for the following countries:
+                Germany, France, Japan, Portugal, Slovenia, Hungary,
+                Belgium, Swiss, Italy, Netherlands, South Africa,
+                Spain, Denmark and the UK. Support for ISDN.
+Keywords:       modem ppp isdn dialup slip clock charge phone
+Author:         boercher@physik.uni-bremen.de (Volker B"orchers)
+Maintained-by:  boercher@physik.uni-bremen.de (Volker B"orchers)
+Primary-site:   hix.physik.uni-bremen.de /pub/Linux/tcharge
+                992 tcharge.lsm
+                89KB tcharge-1.3.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/serial/
+Platforms:      libX11, perl(recommended)
+Copying-policy: GPL
+End

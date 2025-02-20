@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/source</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/source</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="a/">a/</a></td><td align="right">1999-04-14 23:01  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="ap/">ap/</a></td><td align="right">1999-03-31 03:06  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="contrib/">contrib/</a></td><td align="right">1999-05-08 02:28  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="d/">d/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="e/">e/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="extra-stuff/">extra-stuff/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="f/">f/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="install/">install/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="kernel-source/">kernel-source/</a></td><td align="right">1999-03-19 18:51  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="n/">n/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="rootdisks/">rootdisks/</a></td><td align="right">1998-04-09 15:31  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="t/">t/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="tcl/">tcl/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="x/">x/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="xap/">xap/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="xv/">xv/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="y/">y/</a></td><td align="right">2006-10-05 19:57  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild">SlackBuild</a></td><td align="right">1999-02-24 05:48  </td><td align="right">318 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">461 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-03-26 00:16  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="CHECKSUMS">CHECKSUMS</a></td><td align="right">1999-05-10 13:16  </td><td align="right"> 52K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="CHECKSUMS.md5">CHECKSUMS.md5</a></td><td align="right">1999-05-10 13:17  </td><td align="right"> 71K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="MANIFEST.gz">MANIFEST.gz</a></td><td align="right">1999-05-10 13:16  </td><td align="right">1.4M</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

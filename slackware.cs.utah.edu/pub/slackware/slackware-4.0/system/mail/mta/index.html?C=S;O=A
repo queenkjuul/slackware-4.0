@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/mail/mta</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/mail/mta</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/mail/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:55  </td><td align="right"> 73 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ssmtp-2.32.lsm">ssmtp-2.32.lsm</a></td><td align="right">1999-03-11 21:41  </td><td align="right">370 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="smrsh-linux.lsm">smrsh-linux.lsm</a></td><td align="right">1995-02-09 08:00  </td><td align="right">389 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sendmail-8.8.5.ELF.lsm">sendmail-8.8.5.ELF.lsm</a></td><td align="right">1997-02-04 00:02  </td><td align="right">417 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bsmtp.lsm">bsmtp.lsm</a></td><td align="right">1998-02-02 06:03  </td><td align="right">431 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="send.lsm">send.lsm</a></td><td align="right">1994-03-27 08:00  </td><td align="right">482 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="smail-3.1.29.README">smail-3.1.29.README</a></td><td align="right">1995-02-19 08:00  </td><td align="right">527 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-smail-cfg.lsm">linux-smail-cfg.lsm</a></td><td align="right">1995-10-25 07:00  </td><td align="right">557 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">589 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="blackmail-0.29.lsm">blackmail-0.29.lsm</a></td><td align="right">1998-10-13 05:23  </td><td align="right">789 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mmdf-IIb-4.3.lsm">mmdf-IIb-4.3.lsm</a></td><td align="right">1994-06-07 07:00  </td><td align="right">931 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="deliver.README">deliver.README</a></td><td align="right">1992-12-08 08:00  </td><td align="right">2.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smail-3.1.29.1-esmtp.1-2.diff.gz">smail-3.1.29.1-esmtp.1-2.diff.gz</a></td><td align="right">1995-02-19 08:00  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="rfmail.0.5.01a.README">rfmail.0.5.01a.README</a></td><td align="right">1993-04-21 07:00  </td><td align="right">4.5K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smrsh-linux.tgz">smrsh-linux.tgz</a></td><td align="right">1995-02-09 08:00  </td><td align="right">4.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">4.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="smail.ANNOUNCE">smail.ANNOUNCE</a></td><td align="right">1995-02-19 08:00  </td><td align="right">5.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="linux-smail-cfg.tar.gz">linux-smail-cfg.tar.gz</a></td><td align="right">1995-10-25 07:00  </td><td align="right">6.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smail-3.1.29.1-esmtp.diff-v1.gz">smail-3.1.29.1-esmtp.diff-v1.gz</a></td><td align="right">1995-02-19 08:00  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smail-3.1.29.1-esmtp.diff-v2.gz">smail-3.1.29.1-esmtp.diff-v2.gz</a></td><td align="right">1995-02-19 08:00  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bsmtp-1.00.tar.bz2">bsmtp-1.00.tar.bz2</a></td><td align="right">1998-02-02 06:03  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bsmtp-1.00.tar.gz">bsmtp-1.00.tar.gz</a></td><td align="right">1998-02-02 06:03  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ssmtp-2.32.tar.gz">ssmtp-2.32.tar.gz</a></td><td align="right">1999-03-11 21:41  </td><td align="right"> 30K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="blackmail-0.29.tar.gz">blackmail-0.29.tar.gz</a></td><td align="right">1998-10-13 05:23  </td><td align="right"> 48K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="deliver.TZ">deliver.TZ</a></td><td align="right">1992-12-08 08:00  </td><td align="right">102K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smail-psdocs-3.1.29.tar.gz">smail-psdocs-3.1.29.tar.gz</a></td><td align="right">1995-02-19 08:00  </td><td align="right">211K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smail-linuxbin-3.1.29.1.tar.gz">smail-linuxbin-3.1.29.1.tar.gz</a></td><td align="right">1994-12-14 08:00  </td><td align="right">229K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sendmail-8.8.5.ELF.tgz">sendmail-8.8.5.ELF.tgz</a></td><td align="right">1997-02-04 00:05  </td><td align="right">487K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="smail-3.1.29.1.tar.gz">smail-3.1.29.1.tar.gz</a></td><td align="right">1995-02-19 08:00  </td><td align="right">652K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mmdf-IIb-4.3.tar.gz">mmdf-IIb-4.3.tar.gz</a></td><td align="right">1994-06-07 07:00  </td><td align="right">1.0M</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

@@ -1,0 +1,24 @@
+Begin3
+Title:          VICE, The Versatile Commodore Emulator
+Version:        0.15.0
+Entered-date:   01SEP98
+Description:    Commodore 64/128/VIC20/PET Emulators for the X Window System.
+                Each provides emulation of the hardware as well as
+                some peripherals.  A machine language monitor is
+                built-in for easy manipulation of programs.
+Keywords:       Commodore CBM C64 C128 PET VIC20 emulation emulator 6502 6510
+Author:         ettore@comm2000.it (Ettore Perazzoli)
+                tvr@cs.hut.fi (Teemu Rantanen)
+                a.fachat@physik.tu-chemnitz.de (André Fachat)
+                sladic@eecg.toronto.edu (Daniel Sladic)
+                boose@linux.rz.fh-hannover.de (Andreas Boose)
+                jopi@stekt.oulu.fi (Jouko Valta)
+                sonninen@lut.fi (Jarkko Sonninen)
+Maintained-by:  ettore@comm2000.it (Ettore Perazzoli)
+Primary-site:   ftp.funet.fi:/pub/cbm/crossplatform/emulators/VICE
+                1253652 vice-0.15.0.tar.gz
+Alternate-site: sunsite.unc.edu:/pub/Linux/system/emulators/commodore
+                1253652 vice-0.15.0.tar.gz
+Platforms:      X11
+Copying-policy: GPL
+End

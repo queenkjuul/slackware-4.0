@@ -1,0 +1,2 @@
+( cd usr/bin ; rm -rf mimencode )
+( cd usr/bin ; ln -sf mmencode mimencode )

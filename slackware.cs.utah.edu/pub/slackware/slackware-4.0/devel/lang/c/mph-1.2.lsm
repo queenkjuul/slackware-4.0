@@ -1,0 +1,17 @@
+Begin3
+Title:          mph - a minimal perfect hash function generator
+Version:        1.2
+Entered-date:   08MAY98
+Description:    mph is an order preserving minimal perfect hash function
+                generator for string keys
+Keywords:       perfect hash function
+Author:         taj@intergate.bc.ca (Taj Khattra)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/c
+                        22762   mph-1.2.tar.gz
+                        586     mph-1.2.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      ANSI C, Unix
+Copying-policy: almost public domain
+End

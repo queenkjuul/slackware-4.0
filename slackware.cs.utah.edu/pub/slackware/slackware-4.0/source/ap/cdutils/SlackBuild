@@ -1,0 +1,111 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-cdutils
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_cdutils.tar.gz
+
+echo "+================+"
+echo "| mkisofs-1.11.2 |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/mkisofs-1.11.2.tar.gz
+cd mkisofs-1.11.2
+configure --prefix=/usr
+make
+strip mkisofs
+cat mkisofs > $PKG/usr/bin/mkisofs
+mkdir -p $PKG/usr/doc/mkisofs-1.11.2
+cp -a COPYING ChangeLog README README.eltorito README.session \
+  TODO $PKG/usr/doc/mkisofs-1.11.2
+chown root.root $PKG/usr/doc/mkisofs-1.11.2/*
+chmod 644 $PKG/usr/doc/mkisofs-1.11.2/*
+mkdir -p $PKG/usr/man/man8
+cat mkisofs.8 | gzip -9c > $PKG/usr/man/man8/mkisofs.8.gz
+
+echo "+=================+"
+echo "| mkhybrid-1.11.1 |"
+echo "+=================+"
+cd $TMP
+tar xzvf $CWD/mkhybrid-1.11.1.tar.gz
+cd mkhybrid-1.11.1
+configure --prefix=/usr
+make
+strip mkhybrid
+cat mkhybrid > $PKG/usr/bin/mkhybrid
+mkdir -p $PKG/usr/doc/mkhybrid-1.11.1
+cp -a COPYING ChangeLog ChangeLog.mkhybrid README* TODO \
+  $PKG/usr/doc/mkhybrid-1.11.1
+chown root.root $PKG/usr/doc/mkhybrid-1.11.1/*
+chmod 644 $PKG/usr/doc/mkhybrid-1.11.1/*
+cat mkhybrid.8 | gzip -9c > $PKG/usr/man/man8/mkhybrid.8.gz
+
+echo "+=============+"
+echo "| cdwrite-2.0 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/cdwrite-2.0.tar.gz
+cd cdwrite-2.0
+zcat $CWD/cdwrite-2.0.diff.gz | patch
+make clean
+make
+strip cdwrite
+cat cdwrite > $PKG/usr/bin/cdwrite
+mkdir -p $PKG/usr/man/man1
+cat cdwrite.1 | gzip -9c > $PKG/usr/man/man1/cdwrite.1.gz
+
+echo "+================+"
+echo "| cdrecord-1.6.1 |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/cdrecord-1.6.1.tar.gz
+cd cdrecord-1.6.1
+./Gmake clean
+./Gmake
+strip cdrecord/OBJ/i586-linux-cc/cdrecord
+cat cdrecord/OBJ/i586-linux-cc/cdrecord > $PKG/usr/bin/cdrecord
+chown root.bin $PKG/usr/bin/cdrecord
+chmod 755 $PKG/usr/bin/cdrecord
+cat cdrecord/cdrecord.1 | gzip -9c > $PKG/usr/man/man1/cdrecord.1.gz
+mkdir $PKG/usr/doc/cdrecord-1.6.1
+cp -a AN-1.6.1 COPYING ChangeLog README* $PKG/usr/doc/cdrecord-1.6.1
+chown root.root $PKG/usr/doc/cdrecord-1.6.1/*
+chmod 644 $PKG/usr/doc/cdrecord-1.6.1/*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/cdutils.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/cdwrite-2.0
+  rm -rf $TMP/mkisofs-1.11.2
+  rm -rf $TMP/mkhybrid-1.11.1
+  rm -rf $TMP/cdrecord-1.6.1
+  rm -rf $PKG
+fi

@@ -1,0 +1,16 @@
+Begin3
+Title:          sii_printpbm
+Version:        1.1
+Entered-date:   20NOV98
+Description:    This program allows you to print PBM files to the SII SLP1100
+	        label from a UNIX box.  This printer is also sold as
+                the EZ30 Smart Label Printer.   
+Keywords:       SII SLP1100 label printer Seiko
+Author:         eric@ale.org (Eric Z. Ayers)
+Maintained-by:  eric@ale.org (Eric Z. Ayers)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/printing
+Alternate-site: 
+Original-site:  
+Platforms:      Any UNIX
+Copying-policy: GPL
+End

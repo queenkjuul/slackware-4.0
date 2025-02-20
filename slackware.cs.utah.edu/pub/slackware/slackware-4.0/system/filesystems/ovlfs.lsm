@@ -1,0 +1,20 @@
+Begin3
+Title:		Overlay Filesystem
+Version:	1.0 beta
+Entered-date:	Wed Mar 11 21:41:20 EST 1998
+Description:	Allow one filesystem's contents to be overlayed with another
+		so that changes to the original filesystem may be seen without
+		modifying the original filesystem itself.  For example, changes
+		to a CD-ROM could made through the use of the overlay
+		filesystem.
+Keywords:	linux kernel filesystem pseudo overlay
+Author: 	artnaseef@worldnet.att.net
+Maintained-by:	artnaseef@worldnet.att.net
+Primary-site:	http://home.att.net/~artnaseef
+		101kb ovlfs1.0.src.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/filesystems
+		101kb ovlfs1.0.src.tgz
+Original-site:  none
+Platforms:	Linux, (known to work on kernel version 2.0.30)
+Copying-policy: GPL
+End

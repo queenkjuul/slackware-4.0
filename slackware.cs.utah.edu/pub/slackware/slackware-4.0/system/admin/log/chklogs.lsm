@@ -1,0 +1,39 @@
+Begin3
+Title:          chklogs:  Check System Logs
+Version:        2.0-2
+Entered-date:   14OCT97
+Description:    A Perl script (can be cron'ed) for maintenance of system
+		logs. It checks your list of system logs against maximum
+	 	allowed sizes specified by you. If a log has grown past its
+		limit it can truncate them to zero size , archive them or
+		alternatively execute a program of your choice (plug-out).
+		Either of these actions can be specified per log. When
+		archiving shuffling is performed (remove oldest archive)
+		when the maximum nr. of archives has been reached. This
+		maximum nr. is also specified on a per log basis. Report
+		can be produced on stdout or sent by mail to admin user.
+		It can also just check without taking any further action
+		besides reporting.
+		Additionally it supports age-based thresholds instead of
+		size. Supports global and local repositories, syslog control,
+		logical groups and other features. Graphical User Interface
+		distributed separately (xchklogs).
+		Home page:  
+		    http://www.iaehv.nl/users/grimaldo/chklogs.html
+		    http://www.iaehv.nl/users/grimaldo/info/
+Keywords:       System logs, monitor, archive, maintain, shuffle, truncate, exec
+Author:         grimaldo@panama.iaehv.nl  (Didimo Emilio Grimaldo Tunon)
+Maintained-by:  grimaldo@panama.iaehv.nl  (Didimo Emilio Grimaldo Tunon)
+Primary-site:   ftp.iaehv.nl:/pub/users/grimaldo/
+		    58.5K  chklogs-2.0-*.tar.gz  (* is build level)
+		    1724   chklogs.lsm
+Alternate-site:  sunsite.unc.edu: /pub/Linux/system/admin/log/
+		    58.5K  chklogs-2.0-*.tar.gz
+		    1724   chklogs.lsm
+
+		 ftp.funet.fi: /pub/Linux/tools/
+		    58.5K  chklogs-2.0-*.tar.gz	
+		    1724   chklogs.lsm
+Original-site:   panama.IAEhv.nl
+Copying-policy: Freely distributable, CharityWare
+End

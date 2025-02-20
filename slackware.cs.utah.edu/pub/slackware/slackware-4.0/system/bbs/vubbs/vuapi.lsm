@@ -1,0 +1,18 @@
+Begin3
+Title:		VU API Link Kit
+Version:	Beta-2
+Entered-date:	01MAY95
+Description:	API link libraries and include files for use in developing
+		new VU BBS applications.  The VU API link kit includes
+		the user interface as well as supporting services for
+		accessing mail spools, building setup and admin modules,
+		managing .index files, etc.
+Keywords:	BBS, VU
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	sunsite.unc.edu /pub/Linux/systems/BBS/vubbs
+		vuapi-b2.tar.gz
+Platforms:	Late Linux 1.1.x and above.  Uses later console driver
+                escape sequences for 8 bit transparency modes.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

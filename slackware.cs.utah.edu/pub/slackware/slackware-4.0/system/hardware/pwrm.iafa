@@ -1,0 +1,12 @@
+Title:          pwrm
+Version:        1.0
+Description:    Laptop power management for Linux (for machines with
+                Western Digital chipsets only).
+Author:         Hansruedi Heeb - heeb@iis.ethz.ch
+Maintained-by:  same
+Maintained-at:  sunsite.unc.edu.
+                tsx-11.mit.edu
+Platforms:      Only laptops with Western Digital 7600 chipsets
+                Installation check is provided if you do not know your chipset
+Copying-Policy: Freely Redistributable
+Keywords:       Linux, laptop, power management, WD7600, Western Digital

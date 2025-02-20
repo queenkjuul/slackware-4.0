@@ -1,0 +1,15 @@
+Begin3
+Title:          zmac
+Version:        1.1
+Entered-date:   03JAN99
+Description:	Zmac is a Z80 macro cross-assembler. It has all the
+		features you'd expect, and probably a few you
+		wouldn't.
+Keywords:       Zilog Z80 assembler cross-assembler
+Author:         bn@email_address_unknown (Bruce Norskog)
+Maintained-by:  rus@forfree.at (Russell Marks)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/assemblers
+		24681	zmac-1.1.tar.gz
+Platforms:      Anything with an ANSI C compiler and bison/yacc, probably
+Copying-policy: Public domain
+End

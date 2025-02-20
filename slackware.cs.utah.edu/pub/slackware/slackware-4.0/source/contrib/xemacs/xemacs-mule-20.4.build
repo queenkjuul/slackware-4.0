@@ -1,0 +1,10 @@
+tar xzvf xemacs-20.4.tar.gz
+tar xzvf xemacs-20.4-mule.tar.gz
+cd xemacs-20.4
+cp -a BUGS CHANGES-beta COPYING ChangeLog GETTING.GNU.SOFTWARE \
+  INSTALL PROBLEMS README mule-doc $PKG/usr/doc/xemacs-20.4
+chown -R root.root $PKG/usr/doc/xemacs-20.4
+./configure --prefix=/usr/X11R6 --with-mule i386-slackware-linux
+make CFLAGS=-O2 LDFLAGS=-s
+make CFLAGS=-O2 LDFLAGS=-s install
+make CFLAGS=-O2 LDFLAGS=-s gzip-el

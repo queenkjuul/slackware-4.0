@@ -1,0 +1,17 @@
+Begin3
+Title: tkmon 
+Version: 1.0.0
+Entered-date: 12 JULY 1997
+Description: Views your Linux system resources in Xwindows
+Keywords: X11 Tcl/Tk Linux
+Author: tmp <njvdboom@caiw.nl> (Arend van der Boom)
+Maintained-by:
+Primary-site: sunsite.unc.edu /pub/Linux
+	      9922 tkmon-1.0.0.tar.gz	
+	      351 tkmon.lsm
+Alternate-site:
+Original-site:
+Platforms: Tcl7.5 Tk4.1 Xwindows
+Copying-policy: Copyleft
+End
+

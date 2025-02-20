@@ -1,0 +1,24 @@
+Begin3
+Title:          Sample metered config for diald (demand dialing daemon)
+Version:        0.2
+Entered-date:   07JAN98
+Description:    Configuration files which configure diald to
+                automatically start and stop the ppp0 interface.
+                These files assume you are using a metered phone
+                service, a charge for each unit of time during which
+                there is a phone connection.
+Keywords:       demand dial, ppp, configuration, diald, networking
+Author:         kop@meme.com (Karl O. Pinc)
+Maintained-by:  kop@meme.com (Karl O. Pinc)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+                11766 diald-config-metered-0.2.tar.gz
+                13910 diald-config-metered-0.2-2.noarch.rpm
+                14418 diald-config-metered-0.2-2.src.rpm
+                 1063 diald-config-metered-0.2.lsm
+Alternate-site: 
+Original-site:  ftp.meme.com /pub/software/diald-config
+Platforms:      
+Copying-policy: GPL
+End
+
+MD5 checksum 33f91c2cd086ec26c65d70f1ca6736b6 diald-config-metered-0.2.tar.gz

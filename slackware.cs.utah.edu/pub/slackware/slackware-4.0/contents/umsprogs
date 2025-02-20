@@ -1,0 +1,9 @@
+drwxr-xr-x root/root         0 1995-12-11 09:31 ./
+drwxr-xr-x root/root         0 1995-08-06 18:18 usr/
+drwxr-xr-x root/root         0 1995-08-06 18:18 usr/man/
+drwxr-xr-x root/root         0 1997-05-23 01:09 usr/man/man8/
+-rw-r--r-- root/root      1706 1997-05-23 01:09 usr/man/man8/umssync.8.gz
+drwxr-xr-x root/bin          0 1995-12-11 09:28 sbin/
+-rwxr-xr-x root/bin      17612 1997-05-23 01:09 sbin/umssync
+drwxr-xr-x root/root         0 1995-12-11 09:28 install/
+-rw-r--r-- root/root       134 1995-12-11 09:28 install/doinst.sh

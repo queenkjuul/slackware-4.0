@@ -1,0 +1,48 @@
+ _____________________________________________
+|         Gnome 1.0 for Slackware 4.0         |\
+|             http://www.gnome.org            | |
+|           http://www.slackware.com          | |
+|                                             | |
+|           Created By: Brian M Dial          | |
+|          brian@rasputin.linuxos.net         | |
+|_____________________________________________| |
+ \_____________________________________________\|
+
+This is the second release of gnome packages for 
+Slackware Linux 4.0.  These packages were built
+on the beta2 release with NLS support (which 
+differs from the previous release).  You should
+have the following packages installed from the 
+Slackware cdrom disk sets.
+
+d1/gettext.tgz (shared libintl for NLS)
+xap1/gimp.tgz (glib/gtk 1.2.2)
+xap1/libgr.tgz (necessary graphics libs)
+
+Use pkgtool or installpkg to install these packages,
+and add the following to your xinitrc
+
+exec /usr/bin/gnome-session
+
+These packages were built with egcs-1.1.2.
+The libraries contained in these packages were 
+stripped of debugging symbols to decrease size. The
+binaries were stripped of all symbols for the 
+same reason.  These packages are still larger 
+than the RPM version because they contain everything
+and are not broken up into smaller packages (base, devel,
+etc..)
+
+Many thanks go to:
+
+Patrick J. Volkerding for creating one of the best
+distributions of Linux out there.
+
+Miguel de Icaza and the entire Gnome team for the 
+great software they've brought to linux.
+
+All the people who've submitted reports about how
+these packages work for them.  I still appreciate
+any comments especially from those who have gotten
+them to work on older versions (3.6).
+

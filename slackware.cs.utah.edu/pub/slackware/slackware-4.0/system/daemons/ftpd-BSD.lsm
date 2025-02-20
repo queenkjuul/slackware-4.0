@@ -1,0 +1,17 @@
+Begin3
+Title:		ftpd-BSD
+Version:	0.1.0
+Entered-date:	09APR99
+Description:	A Linux port of the OpenBSD ftp server
+Keywords:	ftp, server, OpenBSD, port
+Author:		openbsd@openbsd.org (OpenBSD distribution)
+Maintained-by:	david.madore@ens.fr (David Madore)
+Primary-site:	sunsite.unc.edu /pub/Linux/systems/daemons
+		50k	ftpd-BSD-0.1.0.tar.gz
+Alternate-site:	quatramaran.ens.fr /pub/madore/ftpd-BSD
+Alternate-site:	http://www.eleves.ens.fr:8080/home/madore/programs/ftpd-BSD-0.1.0.tar.gz
+Original-site:	openbsd.sunsite.ualberta.ca /pub/OpenBSD/src/libexec
+		ftpd/
+Platforms:
+Copying-policy:	BSD
+End

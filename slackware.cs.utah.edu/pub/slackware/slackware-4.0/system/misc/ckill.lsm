@@ -1,0 +1,15 @@
+Begin3
+Title: ckill    
+Version: 1.6    
+Entered-date: 30APR95
+Description: Improved version of Unix kill. Conditionally kills/lists processes
+	     that satisfy the specified conditions. 
+Keywords: kill, ps, ckill
+Author: tranquil@cli.di.unipi.it (Nico Tranquilli)
+Maintained-by: tranquil@cli.di.unipi.it (Nico Tranquilli)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Misc
+              525   ckill.lsm
+              5575  ckill1.6.tar.gz
+Platforms: SunOS4, Solaris, Linux, HP-UX, XENIX, NeXTSTEP
+Copying-policy: GNU
+End

@@ -1,0 +1,31 @@
+Begin3
+Title:          ARCnet drivers for Linux
+Version:        2.00 Upgrade
+Entered-date:   06SEP95
+
+Description:    The source code file to upgrade Linux 1.2.13 (which includes
+                ARCnet 1.02) to 2.00 Multiprotocol ARCnet. 
+                Currently the original "standard" RFC1201 protocol is
+                supported, as well as the nonstandard one used by WfWg and
+                Lan Man.  RFC1051 (ie. NetBSD) support is coming soon.
+                
+                The Linux 1.2.x series kernels will NOT ever contain direct
+		support for multiprotocol ARCnet.  This upgrade will remain
+		available for it, however, as an add-on package.
+                
+                This version (or newer) of multiprotocol ARCnet should be
+                part of the latest 1.3.x-series kernel.
+
+Keywords:       arcether, arcnet, net, network, tcpip, rfc1201, rfc1051
+Author:         Avery Pennarun <apenwarr@foxnet.net>
+Maintained-by:  Avery Pennarun <apenwarr@foxnet.net>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/drivers
+		53k arcnet-2.00.tar.gz
+Alternate-site:	tsx-11.mit.edu	/pub/linux/ALPHA/netdrivers
+		53k arcnet-2.00.tar.gz
+Platforms:      ARCnet cards (two or more) :)
+		Linux 1.2.x (1.2.13 or greater recommended)
+		Linux 1.3.x is now supported.
+		Net-Tools (ifconfig etc) 1.2.0 or greater
+Copying-policy: GPL
+End

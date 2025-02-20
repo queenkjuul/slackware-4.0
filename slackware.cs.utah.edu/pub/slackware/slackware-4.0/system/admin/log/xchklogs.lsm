@@ -1,0 +1,26 @@
+Begin3
+Title:          Xchklogs:  Chklogs Graphical User Interface
+Version:        1.1
+Entered-date:   12JAN97
+Description:    A Tcl/Tk based Graphical User Interface for the ChkLogs
+		package. It allows the user to do various operations
+		with the ChkLogs package by commanding it from the user
+		interface. Most of the operations are supported. This
+		is *not* a replacement for ChkLogs, just the GUI.
+		URL:  http://www.iaehv.nl/users/grimaldo/chklogs.html
+Keywords:       System logs, monitor, user interface 
+Author:         grimaldo@panama.iaehv.nl  (Didimo Emilio Grimaldo Tunon)
+Maintained-by:  grimaldo@panama.iaehv.nl  (Didimo Emilio Grimaldo Tunon)
+Primary-site:   ftp.iaehv.nl:/pub/users/grimaldo/
+		    15.5K  xchklogs-1.1-*.tar.gz  (* is build level)
+		    1.1K   xchklogs.lsm
+Alternate-site:  sunsite.unc.edu: /pub/Linux/system/Admin/
+		    15.5K  chklogs-1.1-1.tar.gz
+		    1.1K   chklogs.lsm
+
+		 ftp.funet.fi: /pub/Linux/tools/
+		    15.5K  chklogs-1.1-1.tar.gz	
+		    1.1K   chklogs.lsm
+Original-site:   panama.IAEhv.nl
+Copying-policy: Freely distributable, CharityWare, PostcardWare
+End

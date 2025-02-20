@@ -1,0 +1,4 @@
+( cd usr/lib/uucp ; rm -rf hdb_config )
+( cd usr/lib/uucp ; ln -sf  /var/lib/uucp/hdb_config hdb_config )
+( cd usr/lib/uucp ; rm -rf taylor_config )
+( cd usr/lib/uucp ; ln -sf  /var/lib/uucp/taylor_config taylor_config )

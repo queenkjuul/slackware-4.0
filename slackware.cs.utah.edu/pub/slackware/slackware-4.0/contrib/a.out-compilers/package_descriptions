@@ -1,0 +1,54 @@
+aoutools: aoutools 2.17
+aoutools:
+aoutools: Eric Youngdale's collection of tools that are used to generate DLL
+aoutools: jumptable libraries.
+aoutools:
+aoutools:
+aoutools:
+aoutools:
+aoutools:
+aoutools:
+aoutools:
+gccaout:
+gccaout:  Compiled with 486 optimizations, but works fine with 386.
+gccaout:
+gccaout:
+gccaout:
+gccaout:
+gccaout:
+gccaout:
+gccaout:
+gccaout:
+gxxaout:  The GNU C++ compiler and support files for the a.out format.
+gxxaout:
+gxxaout:  Compiled with 486 optimizations, but works fine with 386.
+gxxaout:
+gxxaout:  NOTE: Be sure to install the gccaout package, too.
+gxxaout:
+gxxaout:
+gxxaout:
+gxxaout:
+gxxaout:
+gxxaout:
+libaout:  Libraries for the old a.out binary format. (libc-4.7.6)
+libaout:
+libaout:  These libraries are needed if you plan to compile programs in the
+libaout:  a.out binary format.
+libaout:
+libaout:
+libaout:
+libaout:
+libaout:
+libaout:
+libaout:
+objcaout: The GNU Objective-C compiler and support files for the a.out format.
+objcaout:
+objcaout: Compiled with 486 optimizations, but works fine with 386.
+objcaout:
+objcaout: NOTE: Be sure to install the gccaout.tgz package, too.
+objcaout:
+objcaout:
+objcaout:
+objcaout:
+objcaout:
+objcaout:

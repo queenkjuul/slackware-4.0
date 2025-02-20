@@ -1,0 +1,7 @@
+if [ -x /mnt/usr/X11R6/bin/mkfontdir ]; then
+ ( cd usr/X11R6/lib/fonts/misc ; /mnt/usr/X11R6/bin/mkfontdir . )
+elif [ -x /cdrom/usr/X11R6/bin/mkfontdir ]; then
+ ( cd usr/X11R6/lib/fonts/misc ; /cdrom/usr/X11R6/bin/mkfontdir . )
+elif [ -x /mnt/linux/usr/X11R6/bin/mkfontdir ]; then
+ ( cd usr/X11R6/lib/fonts/misc ; /mnt/linux/usr/X11R6/bin/mkfontdir . )
+fi

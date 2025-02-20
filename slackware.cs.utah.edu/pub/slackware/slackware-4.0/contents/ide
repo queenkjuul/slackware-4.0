@@ -1,0 +1,7 @@
+drwxr-xr-x root/root         0 1999-04-27 21:32 ./
+drwxr-xr-x root/root         0 1995-08-23 14:00 install/
+-rw-r--r-- root/root        65 1995-08-23 14:00 install/doinst.sh
+-rw-r--r-- root/root    691612 1999-04-27 21:32 vmlinuz
+drwxr-xr-x root/root         0 1999-03-22 22:51 boot/
+-rw-r--r-- root/root     16705 1999-04-27 21:31 boot/config
+-rw-r--r-- root/root    234094 1999-04-27 21:31 boot/System.map

@@ -1,0 +1,18 @@
+Begin3
+Title:		SimpleMake
+Version: 	1.94
+Entered-date: 	1999-04-29
+Description:	Generates makefiles for c/c++/yacc and lex sources.
+		Possible targets are (shared) libraries and executables.
+		Only the targets and the sources need be given.
+		make makefile does the rest.
+Keywords:	makefile devel c/c++/yacc/lex
+Author: 	hnmdijkema@softhome.net (Hans Dijkema)
+Maintained-by:	hnmdijkema@softhome.net (Hans Dijkema)
+Primary-site:	sunsite.unc.edu /pub/Linux/devel/make
+		19.7k SimpleMake-1.94.tar.gz
+		600 SimpleMake-1.94.lsm
+Alternate-site: 
+Platforms:	Linux HP-UX (and others)
+Copying-policy: GPL
+End

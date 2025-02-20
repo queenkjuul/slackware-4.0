@@ -1,0 +1,22 @@
+Begin3
+Title:		QCrack
+Version:	1.02
+Entered-date:	15JAN1997
+Description:	This is a unix password cracking program.  Practical use of
+		this program will require a good deal of disk space.  Expect
+		to use up at least 100MB to be useful.  Essentially, this
+		program builds a large, static hash table for each 
+		"dictionary word".  This is then saved off to disk.  Once
+		a hash table has been built, passwd files can quickly be
+		checked by first performing a lookup (and then a real
+		crypt() (3) call for verification).  This greatly speeds up
+		future cracks.
+Keywords:	crack, security, administration, passwd
+Author:		tck@zorro.ucsd.edu
+Maintained-by:	tck@zorro.ucsd.edu
+Primary-site:	ftp.infospace.com /pub/qcrack
+                54184 qcrack-1.02.tar.gz
+Original-site:  ftp.infospace.com /pub/qcrack
+Platform:	Linux X11
+Copying-policy:	free
+End

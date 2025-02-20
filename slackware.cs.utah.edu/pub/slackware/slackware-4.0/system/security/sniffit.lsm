@@ -1,0 +1,16 @@
+Begin3
+Title:		SniffIt
+Version:	0.3.5
+Entered-date:	15MAR99
+Description:	Linux network sniffing tool
+Keywords:	sniffit sniffer network ethernet
+Author: 	coder@reptile.rug.ac.be (Brecht Claerhout)
+Maintained-by:	dmarion@debian.org (Damjan Marion)
+Primary-site:	sunsite.unc.edu /incoming/Linux
+		197k sniffit-0.3.5.tar.gz
+		467  sniffit.lsm
+Alternate-site:
+Original-site:	http://reptile.rug.ac.be/~coder/sniffit/sniffit.html
+Platforms:	Linux
+Copying-policy:	unknown
+End

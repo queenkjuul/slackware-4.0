@@ -1,0 +1,18 @@
+Begin3
+Title:          mpr - a poor man's memory profiler for Unix programs
+Version:        1.9
+Entered-date:   12APR99
+Description:    mpr can be used to find malloc/realloc memory leaks and
+                memory allocation statistics and patterns - it does not
+                find memory corruption errors
+Keywords:       memory leak, memory profile, malloc
+Author:         taj@intergate.bc.ca (Taj Khattra)
+Maintained-by:  
+Primary-site:   metalab.unc.edu /pub/Linux/devel/lang/c
+                        95905   mpr-1.9.tar.gz
+                        698     mpr-1.9.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      x86-linux, x86-sco, vax-ultrix
+Copying-policy: almost public domain
+End

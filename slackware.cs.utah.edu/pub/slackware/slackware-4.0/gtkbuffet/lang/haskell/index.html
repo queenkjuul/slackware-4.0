@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <title>A GTK+ Binding for Haskell</title>
+  </head>
+
+  <body BGCOLOR="FFFFFF">
+    <h1>A GTK+ Binding for Haskell</h1>
+    <p>
+      <a href="http://www.gtk.org/">GTK+</a> (The GIMP Toolkit) is an <a
+	href="http://opensource.org/">open source</a> GUI toolkit originally
+      developed for the <a href="http://www.gimp.org/">GIMP</a> 
+      (<a href="http://www.gnu.org/">GNU</a> Image
+	Manipulation Program). However, it is used in a range of other
+      projects by now, most notably the <a
+      href="http://www.gnome.org/">GNOME</a> (GNU Network Object Model
+      Environment) and the <a
+	href="http://www.mozilla.org/">Mozilla</a> project (Netscape's open
+	source
+      browser).  GTK+ is portable as it does not rely on X window's Xt
+      library, but instead accesses the underlying window system via a thin
+      API, called GDK.  Furthermore, it uses a consequent object-oriented
+      design and realizes callback functionality via a flexible and powerful
+      signal mechanism (not identical with, but oriented by *nix signals).
+      GTK+ object-oriented features are realized in plain C; and it has been
+      designed with an eye on making it not too difficult to interface from
+      high-level languages.  Therefore, it is a very interesting choice for a
+      GUI toolkit for <a href="http://haskell.org/">Haskell.</a>
+    <p>
+      The lattest news:
+    <ul>
+      <li>Experimental support for GtkGLArea.
+      <li>The binding know works with GTK+ 1.2 (current stable series of GTK+).
+    </ul>
+    <p>
+      Currently, the GTK+ binding is available for the Glasgow Haskell
+      Compiler only.  If you want to have it for another Haskell system, try
+      to get <a
+      href="http://www.dcs.gla.ac.uk/fp/software/hdirect/ffi-a4.ps.gz">Glasgow's
+      New Foreign Function Interface (FFI)</a> implemented in that system.  I
+      think, the FFI is a good design and Haskell bitterly needs a protable,
+      widely supported foreign function call mechanism.
+
+    <h2>Current Status</h2>
+    <p>
+      The GTK+ Binding for Haskell is currently in an <em>alpha</em> release
+      state.  In other words, the basic functionality (including GTK+'s object
+      system and the signal mechanism) is implemented and basic widgets (like
+      windows and and buttons) are available.  However, more sophisticated
+      widgets are missing and the code is only lightly tested.  The following
+      widgets (plus some basic widgets) are implemented: horizontal and
+      vertical boxes, plain buttons, check buttons, toggle buttons, radio
+      buttons, range widgets (scales and scollbars), text entries, labels,
+      file selectors, separators, and windows.
+    <p>
+      The implemented functionality should already be sufficient for simple
+      dialogs.  You may want to have a look at the <a
+      href="fsel.gif">screenshot</a> and <a href="FileSel.hs">code</a> of one
+      of the small examples that I used to test the binding.
+
+    <h2>Releases</h2>
+    <p>
+      <dl>
+      <dt>
+	<a href="http://greyarea.is.tsukuba.ac.jp/~chak/haskell/gtk/gtk+hs-0.3.2.tar.gz"
+	  ><code>gtk+hs-0.3.2.tar.gz</code></a></dt>
+      <dd>
+        Works with GTK+ 1.2 and has experimental support for GtkGLArea. To use
+        it, you need <a
+	href="http://research.microsoft.com/users/t-simonm/ghc/download_ghc_402.html">GHC
+	4.02</a>; if you are using Linux, you can install the <a
+	href="ftp://greyarea.is.tsukuba.ac.jp/pub/jibunmaki/">RPM for GHC
+	4.02.</a>
+      <dt>
+	<a href="http://greyarea.is.tsukuba.ac.jp/~chak/haskell/gtk/gtk+hs-0.3.1.tar.gz"
+	  ><code>gtk+hs-0.3.1.tar.gz</code></a></dt>
+      <dd>
+        Works with GTK+ 1.2. To use it, you need <a
+	href="http://research.microsoft.com/users/t-simonm/ghc/download_ghc_402.html">GHC
+	4.02</a>; if you are using Linux, you can install the <a
+	href="ftp://greyarea.is.tsukuba.ac.jp/pub/jibunmaki/">RPM for GHC
+	4.02.</a>
+      <dt>
+	<a href="http://greyarea.is.tsukuba.ac.jp/~chak/haskell/gtk/gtk+hs-0.3.0.tar.gz"
+	  ><code>gtk+hs-0.3.0.tar.gz</code></a></dt>
+      <dd>
+        This is the last alpha release based on GTK+ 1.0; furthermore,
+	some  bugs fixed and the system is restructured to reflect
+	the decomposition into 
+	GLib, GDK, and GTK+. To use it, you need <a
+	href="http://research.microsoft.com/users/t-simonm/ghc/download_ghc_402.html">GHC
+	4.02</a>; if you are using Linux, you can install the <a
+	href="ftp://greyarea.is.tsukuba.ac.jp/pub/jibunmaki/">RPM for GHC
+	4.02.</a>
+      <dt>
+	<a href="http://greyarea.is.tsukuba.ac.jp/~chak/haskell/gtk/gtk+hs-0.2.1.tar.gz"
+	  ><code>gtk+hs-0.2.1.tar.gz</code></a></dt>
+      <dd>
+	Second alpha release (includes class hierarchy, signals, and basic
+	widgets).  To use it, you need <a
+	href="http://www.dcs.gla.ac.uk/fp/software/ghc/download.html#4.01">GHC
+	4.01</a> <strong>with</strong> Sven Panne's <a
+	href="ghc-4.01-callback.patch">callback patch</a>;  if you are using
+	Linux, you can install the
+	<a href="ftp://greyarea.is.tsukuba.ac.jp/pub/jibunmaki/">RPM for GHC
+	4.01 including the patch.</a>  (The forthcoming GHC 4.02 should also
+	be ok.) 
+      <dt>
+	<a href="http://greyarea.is.tsukuba.ac.jp/~chak/haskell/gtk/gtk+hs-0.1.0.tar.gz"
+	  ><code>gtk+hs-0.1.0.tar.gz</code></a></dt>
+      <dd>
+	First alpha release (includes class hierarchy, signals, and basic
+	widgets).  Requirements are like for the above.
+      </dd>
+      </dl>
+    <p>
+      The files are also available per <a
+      href="ftp://greyarea.is.tsukuba.ac.jp/pub/haskell/gtk/">ftp.</a> 
+    
+
+    <h2>Future Development</h2>
+
+    The groundwork is laid; next, I plan to add some of the more complex
+    widgets (probably, the text widget, scrolled windows, and some basic GDK
+    functionality).
+    The code is released under the <a
+	href="http://org.gnu.de/copyleft/lgpl.html">GNU Library General Public
+	Lisence.</a> This basically means that you can do whatever you want
+	with it, as long as you share any improvements to the library with the
+	rest of us.  I welcome everybody to contribute bindings for widgets
+	and functions that are not supported yet; I only ask any contributors
+	that they code in accordance with the style and design of the existing
+	modules.  <em>I will soon add a simple design specification, which
+	outlines the basic structure of the binding.</em>
+
+    <P><IMG SRC="../../images/line.owl.gif"><BR>
+    This page is part of <A HREF="http://www.score.is.tsukuba.ac.jp/~chak/">Manuel Chakravarty's</A>
+    WWW-stuff.<p>
+
+      <small>
+<!-- Created: Thu Jan 21 13:19:21 JST 1999 -->
+<!-- hhmts start -->
+Last modified: Fri Apr 23 00:15:40 JST 1999
+<!-- hhmts end -->
+      </small>
+  </body>
+</html>

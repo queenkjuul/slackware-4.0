@@ -1,0 +1,19 @@
+Begin3
+Title:          identd-masquerade
+Version:        1.0.1
+Entered-date:   December 21, 1996
+Description:    identd-masquerade is an identification daemon program
+                for people running linux w/ ip-masquerade feature.
+                it runs also on machine w/out this feature.
+                it has been tested only in network all running linux.
+                the original version from Pauline Middelink is also
+                included
+Keywords:       identd, masquerade, linux
+Author:         widiyanto-andiman@dialup.fh-aachen.de (widi)
+Maintained-by:  widiyanto-andiman@dialup.fh-aachen.de (widi)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/daemon/identd-masuerade
+      	15100 kb identd-masquerade.tgz
+Alternate-site: 
+Platform:       linux
+Copying-policy: GNU Copyleft
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:		UserScripts
+Version:	15NOV98
+Entered-date:	15NOV98
+Description:	Scripts to create/modify/delete more than one user from a 
+		"database" file which contains username, login shell,
+		unencrypted password, home dir
+Keywords:	users, shadow, create users, linux
+Author: 	chr.ordig@gmx.net (Christian Ordig)
+Maintained-by:	chr.ordig@gmx.net (Christian Ordig)
+Primary-site:	http://members.xoom.com/chrordig /Linux/Download
+		4kB UserScripts.tar.gz
+Platforms:	Requires shadow passwords and Linux (perhaps simply Unix) with
+		a bash compatible shell, a C++ compiler and crypt()
+Copying-policy:	GPL
+End

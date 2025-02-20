@@ -1,0 +1,23 @@
+Begin3
+Title:          watchlogd
+Version:        0.91a-5
+Entered-date:   980623
+Description:    watchlogd is a daemon that rotates backlogs daily, weekly,
+                monthly or when a maximum file size is  reached.  It  will
+	        wake up once or more a day and check if any logs need pro-
+		cessing. Old logs can be saved for a number  of  rotations
+		and optionally compressed. The oldest  log that is removed
+                from the rotational sequence can  also  be emailed  before
+                deletion.  A  test  mode can be enabled to debug and trace
+	        operational  scenarios  without  actually  processing  log
+		files.  For  singular  processing  chores,  the non-daemon
+		variant watchlog can be run.
+Keywords:       log rotation daemon system utility		
+Author:         mike knerr <mk@eonova.com>
+Maintained-by:  mike knerr <mk@eonova.com>
+Primary-site:   ftp.eonova.com /pub/linux/prog/watchlogd
+                34kB watchlogd-0.91a-5.tar.gz
+		1kB  watchlogd-0.91a-5.lsm
+Alternate-site: ftp.metrotron.com /pub/packages/watchlogd
+Copying-policy: GPL
+End

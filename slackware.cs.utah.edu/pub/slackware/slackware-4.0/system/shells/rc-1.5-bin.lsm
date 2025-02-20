@@ -1,0 +1,22 @@
+Begin3
+Title:          rc shell
+Version:        1.5 beta
+Entered-date:   July 23, 1997
+Description:	rc is a shell designed by Tom Duff of Bell Labs to replace the
+Description:	venerable Bourne sh in Plan 9.  The design of rc is extremely
+Description:	clean, in that precisely those features of Bourne's sh that have
+Description:	caused problems over the years (the slightly awkward flow control
+Description:	syntax, the Byzantine quoting rules, the failure to export all
+Description:	variables into the environment) were reworked, and the temptation
+Description:	to add superfluous features was strongly resisted.  This is Byron
+Description:	Rakitzis's version of rc that is portable between many versions of
+Description:	UNIX and is largely compatible with Duff's design.
+Keywords:       rc, plan9, plan 9, shell 
+Author:         (Byron Rakitzis)
+Maintained-by:  (nas170@mail.usask.ca) Neil Schemenauer
+Primary-site:	sunsite.unc.edu:/pub/Linux/system/shells/rc-1.5-bin.tar.gz
+Alternate-site: 
+Original-site:  viz.tamu.edu:/pub/rc
+Platforms:      ANSI C, most Unix systems
+Copying-policy: Freely Redistributable
+End

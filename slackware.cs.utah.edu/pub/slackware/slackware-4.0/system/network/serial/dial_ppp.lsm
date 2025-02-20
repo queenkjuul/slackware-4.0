@@ -1,0 +1,17 @@
+begin3
+Title:             dial_ppp 
+Version:           0.0.1
+Entered-date:      01JUL96
+Description:       An sweet and simple utility to call pppd
+                   Allows selected users to bring the link up/down
+                   Uses SUID binary to get root permissions safely.
+                   Simple enough to understand, and customise
+                   Works with your existing ppp configuration
+                   tar -C / -zxf dial_ppp.tgz # installs as /etc/ppp/src/.
+Keywords           admin ppp dip pppd slip suid 
+Author:            gps@trix.dircon.co.uk (Graham Swallow)
+Maintained-by:     gps@trix.dircon.co.uk (Graham Swallow)
+Primary-site:      http://sunsite.unc.edu:/pub/Linux/system/Network/serial
+                   313 bytes in 10k dial_ppp-0.0.1.tgz
+Copying-policy:    Free (except ./contrib/.)
+end

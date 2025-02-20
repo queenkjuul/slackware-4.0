@@ -1,0 +1,15 @@
+Begin3
+Title:          tkcdlayout
+Version:        0.4
+Entered-date:   05SEP98
+Description:    A creator of CD jewel case inserts using LaTeX.
+Keywords:       tk tix xcdroast CD jewel case insert layout latex NewCdLayout.pl
+Author:	        faure@kde.org (David Faure)
+Maintained-by:  faure@kde.org (David Faure)
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/printing/tkcdlayout-0.4.tar.gz
+Alternate-site: http://www.insa-lyon.fr/People/AEDI/dfaure/tkcdlayout.html 
+Original-site:  ftp://sabpc.resi.insa-lyon.fr/pub/my_contrib_dir/tkcdlayout-0.4.tar.gz
+Platforms:      Tested on x86/Linux. Should run everywhere where perl and LaTeX run. Needs tixwish for the GUI.
+Comment:        Both french URLs : only from Oct-1998 to Jun-1999
+Copying-policy: GPL
+End

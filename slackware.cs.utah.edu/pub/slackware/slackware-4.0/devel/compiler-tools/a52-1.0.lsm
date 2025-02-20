@@ -1,0 +1,19 @@
+Begin3
+Title:          a52
+Version:        1.0
+Entered-date:   07JUL98
+Description:    Assembler for 8052 / 8752 / 8052AH series micro computers.
+                Can generate code in MCS BASIC data statements, for
+                easy upload and execution on a 8052AH.
+                To install;
+	        Copy a52-0.1.tgz to your home directory
+                tar -zxvf a52-1.0.tgz <ENTER>
+                cd a52-1.0 <ENTER>
+                Follow instructions in RELEASE_NOTES
+Keywords:       assembler embedded hex 8052 8052AH 8752
+Author:         jan@panteltje.demon.nl
+Maintained-by:  jan@panteltje.demon.nl
+Primary-site:   http://www.panteltje.demon.nl/newsflex/
+Platforms:	LINUX
+Copying-policy: GPL
+End

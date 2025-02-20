@@ -1,0 +1,211 @@
+This is a list of sites known to mirror the Slackware Linux release:
+----------------------------------
+Argentina:
+ftp://ftp.satlink.com/pub/mirrors/linux/slackware
+Mirrored nightly.
+This site is primarily for access by Argentinian users.
+----------------------------------
+Australia:
+This site runs a daily mirror:
+http://mirror.aarnet.edu.au/slackware
+ftp://mirror.aarnet.edu.au/pub/linux/slackware
++++++
+This site also runs a daily mirror:
+ftp://ftp.monash.edu.au/pub/linux/distributions/slackware
++++++
+This site runs a full daily Slackware mirror:
+ftp://ftp.sage-au.org.au/pub/Linux/distributions/slackware
+----------------------------------
+Austria:
+Univ. of Technology Vienna:
+ ftp://gd.tuwien.ac.at/opsys/linux/slackware/
+http://gd.tuwien.ac.at/opsys/linux/slackware/
+Updated daily at around 5 GMT.
+----------------------------------
+Belgium:
+ftp.interpac.be:    /pub/unix/linux/slackware
+Mirrored at 15:00 local time
+----------------------------------
+Brazil:
+cce.ufpr.br:/pub/linux/slackware-3.2 (updated weekly)
+farofa.ime.usp.br: /pub/linux/slackware
+ftp.pop-mg.rnp.br:/pub/mirror/ftp.cdrom.com/linux/slackware-3.2/  (bi-weekly)
+----------------------------------
+Canada:
+pcdepot.uwaterloo.ca:   /linux/slackware
+This site seems to only work within the .uwaterloo.ca domain.
+----------------------------------
+Chile:
+ftp.ing.puc.cl:/pub/linux/slackware
+This site is primarily for access by Chilean RDC sites
+ftp.dcc.uchile.cl:/linux/slackware
+ftp.inf.utfsm.cl:/pub/Linux/Slackware
+These sites are primarily for access by Chilean REUNA sites
+----------------------------------
+China:
+ftp://csun01.ihep.ac.cn/pub/linux/slackware/
+This mirror is updated daily at 0:00am CST (GMT+0800). It can also
+be accessed at http://csun01.ihep.ac.cn/pub/linux/slackware/
+and it is NFS exported as csun01.ihep.ac.cn:/export/linux/slackware
+This site is primarily for access by Chinese sites.
+----------------------------------
+Czech Republic:
+vcdec.cvut.cz: /pub/linux/local
+ftp.vslib.cz /pub/unix/linux/slackware-3.3/ (mirrored every Wednesday and
+                                             Saturday at 1:00 our local time)
+----------------------------------
+Finland:
+ftp.funet.fi: /pub/Linux/images/slackware
+----------------------------------
+France:
+ftp.ibp.fr in directory /pub/linux/distributions/slackware
+ftp.irisa.fr in directory /pub/mirrors/linux (weekly mirror)
+----------------------------------
+Germany:
+ftp://sunsite.informatik.rwth-aachen.de/pub/Linux/slackware/
++++++
+ftp.uni-trier.de: /pub/unix/systems/linux/slackware
++++++
+ftp.informatik.uni-bonn.de: /pub/unix/linux/slackware.
+NOTE: this archive was not very current the last time I looked.
+----------------------------------
+Hong Kong:
+ftp.cs.cuhk.hk: /pub/linux/slackware
+----------------------------------
+Hungary:
+ftp.kfki.hu: /pub/linux/distributions/slackware
+This mirror is updated daily at about 3:00 MET (2:00 GMT).
+----------------------------------
+Israel:
+Tel Aviv university
+ftp.tau.ac.il: /pub/OS/Slackware
+----------------------------------
+Italy:
+ftp://ftp.dei.unipd.it/pub/linux/distributions/slackware
+ftp://ftp.unina.it/pub/linux/distributions (mirrors of Slackware 3.0 and newer)
+----------------------------------
+Japan:
+ftp://SunSITE.sut.ac.jp/pub/archives/linux/slackware/
+http://SunSITE.sut.ac.jp/pub/archives/linux/slackware/
++++++
+ftp://ftp.rarf.riken.go.jp/pub/Linux/distributions
+http://www.rarf.riken.go.jp/archives/Linux/distributions/slackware/
++++++
+ftp.cs.titech.ac.jp: /pub/os/linux/slackware
++++++
+http://mirror.nucba.ac.jp/mirror/slackware
+ftp://mirror.nucba.ac.jp/mirror/slackware
+----------------------------------
+Korea:
+Name: KREONet, Taejon, Korea
+URL: ftp://ftp.kreonet.re.kr/pub/Linux/slackware/
++++++
+Name: Inet, Inc. Seoul, Korea.
+URL: ftp://ftp.nuri.net/pub/Linux/distributions/slackware/
+daily mirror at 20:00 KST (GMT+0900)
+----------------------------------
+Mexico:
+ftp.nuclecu.unam.mx: /linux/slackware
+Mirrored at at 3am (Mexico City time)
+----------------------------------
+The Netherlands:
+ftp.leidenuniv.nl /pub/linux/slackware.  We mirror nightly.
+For local/leiden/netherlands/europe users we also
+offer an export of the disk through nfs.
++++++
+This site should be used by those served by NLnet:
+ftp.nl.net: /pub/os/Linux/distr/Slackware
++++++
+ftp://ftp.nluug.nl/site/ftp.cdrom.com/pub/linux/slackware/
+----------------------------------
+New Zealand:
+Manawatu Internet Services Ltd:
+ftp://ftp.manawatu.gen.nz/pub/linux/slackware/
+
+This site is primarily for access by NZ Linuxers.
+Australians in particular should note that the USA is closer network-wise.
+----------------------------------
+Norway:
+ftp.nvg.unit.no: /pub/linux/slackware
+----------------------------------
+ftp://ftp.rm4.polsl.katowice.pl/pub/mirror/slackware/
+ftp://hermes.polsl.katowice.pl/pub/mirror/slackware/
+----------------------------------
+Portugal:
+ftp.di.fc.ul.pt:  /pub/Linux/Slackware
+ftp.ncc.up.pt:   /pub/Linux/slackware
+----------------------------------
+Romania:
+ftp://ftp.romus.ro/pub/Linux/Distributions/
+ftp://ftp.lbi.ro/pub/Linux/Slackware/
+ftp://ftp.sorostm.ro/pub/slackware-3.2
+ftp://sunsite.pub.ro/pub/Linux/distributions/slackware/
+----------------------------------
+South Africa:
+Archives-R-Us: ftp.sun.ac.za: /pub/linux/distributions/Slackware
+This mirror is updated daily at 0:00 GMT.
+----------------------------------
+Spain:
+University of Seville, Spain
+Dept of Computer Sciences
+http://www.cs.us.es/archive/linux.html (including sunsite, ldp/www, redhat,
+mklinux, the European coverage of www.linuxppc.org and more)
+The URL for Slackware is ftp://ftp.cs.us.es/pub/Linux/slackware-mirror/
+Our archive is available via ftp, http, fsp and nfs (Slackware remotely
+installable upon request, just following our simple instructions at
+http://www.cs.us.es/archive/nfs.html)
++++++
+ftp.rediris.es: /mirror/linux/distributions/slackware
+   (RedIRIS is the academic and research Spanish network)
+luna.gui.uva.es:  /pub/linux.new/slackware
+ftp.uniovi.es:/pub/slackware
++++++
+ftp://ftp.etse.urv.es/mirror/linux/slackware
+Escola Tecnica Superior d'Enginyeria (ETSE)
+Universitat Rovira i Virgili (URV)
+----------------------------------
+Sweden:
+ftp://ftp.stacken.kth.se/pub/Linux/slackware
+It is also available trough AFS at
+/afs/stacken.kth.se/ftp/pub/Linux/slackware
++++++
+ftp.sunet.se:/pub/Linux/distributions/slackware
+----------------------------------
+Switzerland:
+http://sunsite.cnlab-switch.ch:/mirror/slackware
+----------------------------------
+Taiwan:
+NCTUCCCA.edu.tw:/Operating-Systems/Linux/Slackware
+----------------------------------
+Thailand:
+ftp://ftp.loxinfo.co.th/linux/slackware
+ftp://ftp.coe.psu.ac.th/pub/linux/Slackware3.6/
+----------------------------------
+UK/European Users:
+The Slackware distribution is mirrored nightly at:
+src.doc.ic.ac.uk in directory /packages/linux/slackware-mirror
+----------------------------------
+USA:
+ftp.cdrom.com: /pub/linux/slackware is the home site. Also:
+uiarchive.cso.uiuc.edu: /pub/systems/linux/distributions/slackware.
+ftp.cps.cmich.edu: /pub/linux/packages/slackware
+sunsite.unc.edu: /pub/Linux/distributions/slackware. mirrored nightly.
+ftp2.netis.com: /pub/linux/slackware
+ftp.nlife.com: /pub/linux/slackware/
+ftp://ftp.rge.com/pub/systems/linux/slackware/ is a nightly-updated,
+full mirror of ftp://ftp.cdrom.com/pub/linux/slackware/
+ftp.cs.umn.edu (160.94.277.144) mirrors nightly in /pub/Linux/slackware.
+ftp.linux.locus.halcyon.com/pub/linux/slackware: Updated daily at 08:30 Pacific.
+ftp.halcyon.com mirrors the distribution at 400 PST daily.
+ftp.thedalles.net: /pub/linux/slackware
+ftp.thepayne.com: /pub/unix/slackware-3.6 daily mirror @ 01:00 Pacific.
+ftp://ftp.cs.unm.edu/dist/mirrors/slackware-3.6 updated daily around 1:00am MDT.
+ftp.cs.columbia.edu: /archives/linux/Slackware mirrors the distribution
+daily (in the early morning). (they also have slackware_source)
+ftp.ccs.neu.edu: /pub/os/linux/slackware. Updated: Nightly
+----------------------------------
+Venezuela:
+http://www.linux.org.ve/pub/slackware/
+ftp://ftp.linux.org.ve/pub/slackware/
+nfs://ftp.linux.org.ve/home/ftp/pub/slackware/slakware
+This site is updated daily at 0:00am VET (GMT-0400)

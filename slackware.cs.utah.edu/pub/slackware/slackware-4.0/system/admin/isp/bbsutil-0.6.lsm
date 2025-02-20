@@ -1,0 +1,17 @@
+Begin3
+Title:		BBSutil
+Version:        0.6
+Entered-date:   08Apr97
+Description:	Custom ACUA package for use with ISPutil/WWWutil
+		ACUA v1.14 compiled to reside in /var/lib/BBSutil
+Keywords:       ISP, Service Provider, Admin, User, User Admin, ACUA
+Author:         amckee@sk.sympatico.ca (Adam McKee)
+Maintained-by:  isputil@knotwork.com (ISPutil mailing list)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+		90K bbsutil-0.6.tgz
+		/pub/Linux/system/Admin/bbsutil-0.6.tgz
+Alternate-site: 
+Original-site:  people.kayhay.com/pub/linux/distrib/kip?/bbsutil.tgz
+		90K bbsutil.tgz
+Copying-policy: GPL
+End

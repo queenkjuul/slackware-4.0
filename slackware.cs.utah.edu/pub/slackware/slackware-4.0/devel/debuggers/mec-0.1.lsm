@@ -1,0 +1,26 @@
+Begin2
+Title        = Mec
+Version      = 0.1
+Desc1        = Trace and replay executables.
+Desc2        = Run a program and trace execution into a trace file.
+Desc3        = Can replay entire execution on same or different machine.
+Author       = Michael Elizabeth Chastain
+AuthorEmail  = mec@duracef.shout.net
+Maintainer   = Michael Elizabeth Chastain
+MaintEmail   = mec@duracef.shout.net
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming
+File1        = mec-0.1.tar.gz
+FileSize1    =
+Required1    = Linux 1.3.27, g++ 2.6.3
+CopyPolicy1  = Gnu Public License
+Keywords     = trace replay debugger
+Comment1     = Version 0.1 is incomplete and is just for proof-of-concept.
+RelFiles1    = C++ source, makefile.
+RelFiles2    =
+RelFiles3    =
+Entered      = 22SEP1995
+EnteredBy    = mec@duracef.shout.net
+CheckedEmail = mec@duracef.shout.net
+End
+

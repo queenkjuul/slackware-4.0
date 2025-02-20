@@ -1,0 +1,15 @@
+Begin3
+Title:		efinger
+Version:	0.7
+Entered-date:	29FEB98
+Description:	Another finger daemon for unix capable of
+		fine-tuning your output.
+Keywords:	finger,finger daemon,linux
+Author: 	garabik@fmph.uniba.sk (Radovan Garabik)
+Maintained-by:	garabik@fmph.uniba.sk (Radovan Garabik)
+Primary-site:   sunsite.unc.edu 
+Alternate-site: 
+Original-site:	http://melkor.dnp.fmph.uniba.sk/~garabik/efinger.html
+Platforms:	Linux
+Copying-policy:	GPL
+End

@@ -1,0 +1,12 @@
+Title:          in.xtacacsd - EXTENDED TAC Access Control server 
+Version:        June 1994
+Entered-date:   12/08/94
+Description:    authentication server for cisco Systems routers/servers, etc..
+Keywords:       tacacs xtacacs tacacsd xtacacsd cisco
+Author:         Greg Satz (and George Shearer :-)
+Maintained-by: 	george@lame.org
+Primary-site:   sunsite.unc.edu
+Alternate-site:
+Original-site:  ftp.cisco.com
+Platform:       linux libc 4.6.20
+Copying-policy: Copyright (c) 1989-1993 by cisco Systems, Inc. (but freely distributable)

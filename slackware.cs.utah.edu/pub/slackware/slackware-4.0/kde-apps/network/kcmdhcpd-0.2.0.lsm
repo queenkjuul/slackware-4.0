@@ -1,0 +1,16 @@
+Begin3
+Title:          kcmdhcpd
+Version:        0.2.0
+Entered-date:   07FEB99
+Home-page:      http://www.100webstreet.com/kcmbind/dhcp.html
+Description:    A configure program for the ISC DHCP-Server for the KDE-project.
+Keywords:       kde kcmdhcpd dhcp network X11 Qt KDE
+Author:         backstrom@kde.org (Karl Backström)
+Maintained-by:  backstrom@kde.org (Karl Backström) 
+Primary-site:   ftp://www.100webstreet.com /pub/kde/kcmbind
+		91kB kcmdhcpd-0.2.0.tgz
+		618  kcmdhcpd-0.2.0.lsm
+Alternate-site: ftp.kde.org /pub/kde/unstable/apps/network/
+Platforms:       unix (only tested on linux)
+Copying-policy: GPL
+End

@@ -1,0 +1,30 @@
+Begin3
+Title: libg++.2.7.0.aout.tar.gz
+Version: GCC2.7.0
+Entered-date:  12/24/95
+Description: The g++ library and include files for gcc2.7.0.1 aout.
+This distribution goes along with the aout version of gcc2.7.0.1.
+
+This is part of the complete a.out distribution
+of major compilers.  It includes:
+gcc version 2.7.0.1	gcc-2.7.0.1.aout.bin.tar.gz
+g++ libs for 2.7.0	libg++-2.7.0.aout.tar.gz
+g77 version 0.5.17	g77-0.5.17.aout.bin.tar.gz
+ada95 (gnat) 2.06	ada95-2.06.aout.bin.tar.gz
+All of these compilers are built around gcc-2.7.0.
+The libg++ distribution has some bug fixes but the
+STL portion is still fairly buggy.
+This is the FINAL a.out distribution I will do, 
+as new features in just about every compiler rely 
+on changes that are only included in the ELF libc 
+libraries.
+
+Keywords: gcc2.7.0 g++ aout
+Author: GNU
+Maintained-by: dgriffin@suntan.eng.usf.edu
+Primary-site: sunsite.unc.edu
+Alternate-site: 
+Original-site:  
+Platform: Linux 1.2.X or 1.3.X
+Copying-policy: whatever the original distribution is.
+End

@@ -1,0 +1,4 @@
+( cd usr/lib ; rm -rf elm.rc )
+( cd usr/lib ; ln -sf  /var/lib/elm/elm.rc elm.rc )
+( cd usr/lib ; rm -rf elm.rc )
+( cd usr/lib ; ln -sf  /var/lib/elm/elm.rc elm.rc )

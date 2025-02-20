@@ -1,0 +1,16 @@
+Begin3
+Title:            kam
+Version:          0.4
+Entered-date:     03AUG98
+Description:      Frontend for vbox, an ISDN voice mail package for Linux
+Keywords:         KDE, Qt, vbox, voice, answering, machine, i4l
+Authors:          sven.schmidt@cern.ch (Sven Schmidt)
+Maintained-by:    sven.schmidt@cern.ch (Sven Schmidt)
+Primary-site:     130kB  ftp://ftp.kde.org/pub/kde/stable/apps/utils/kam-0.4.tar.gz
+Home-Page:        http://leonardo.physik.uni-mainz.de/~sas/kam/
+Alternate-site:
+Original-site:	  http://leonardo.physik.uni-mainz.de/~sas/kam/kam-0.4.tar.gz
+Platform:         Linux, needs Qt by Troll Tech Inc., i4l, and vbox >= 1.1
+Copying-policy:   GPL
+End
+

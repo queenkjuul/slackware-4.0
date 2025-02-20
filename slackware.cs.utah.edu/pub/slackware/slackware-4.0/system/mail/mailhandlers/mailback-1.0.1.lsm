@@ -1,0 +1,15 @@
+Begin3
+Title:          mailback
+Version:        1.0.1
+Entered-date:   14DEC98
+Description:    An automatic e-mail response system with built in support for unique
+		alias based messages and exception lists. This version requires
+		sendmail, but future versions will not require the use of the local
+		MTA. It requires perl5.004 or later.
+Keywords:       email, auto, response, reply, message, mail
+Author:         derek@usfca.edu (Derek Vadala)
+Maintained-by:  derek@usfca.edu (Derek Vadala)
+Primary-site:   http://www.cynicism.com/~derek/mailback 
+		4kB mailback-1.0.1.tgz
+Copying-policy: GPL
+End

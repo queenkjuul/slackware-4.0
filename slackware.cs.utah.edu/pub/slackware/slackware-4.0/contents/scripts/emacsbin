@@ -1,0 +1,8 @@
+( cd usr/share/emacs/20.3/etc ; rm -rf DOC )
+( cd usr/share/emacs/20.3/etc ; ln -sf DOC-20.3.1 DOC )
+( cd usr/share/emacs/20.3 ; rm -rf site-lisp )
+( cd usr/share/emacs/20.3 ; ln -sf ../site-lisp site-lisp )
+( cd usr/bin ; rm -rf emacs )
+( cd usr/bin ; ln -sf emacs-20.3-with-x11 emacs )
+( cd usr/lib ; rm -rf emacs )
+( cd usr/lib ; ln -sf /usr/share/emacs emacs )

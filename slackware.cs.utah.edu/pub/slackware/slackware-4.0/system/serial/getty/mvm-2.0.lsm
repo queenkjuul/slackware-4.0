@@ -1,0 +1,18 @@
+Begin3
+Title:         mvm 
+Version:       2.0
+Entered-date:   12/03/1999
+Description:   mvm is the ``minimal voicemail system'', implementing
+               multiple voicemailboxes, mail notification/forwarding,
+               menu editing, multiple languages, fax forwarding,
+               levelling with passwords and WWW gateway on top of
+               vgetty supported voice modems.
+Keywords:      voicemail,vgetty
+Author:        schaefer@alphanet.ch
+Maintained-by:  schaefer@alphanet.ch
+Primary-site:   somewhere on sunsite
+Alternate-site: 
+Original-site:  
+Platforms:      UNIX system with bash, and the utilities you can expect
+Copying-policy: GPL
+End

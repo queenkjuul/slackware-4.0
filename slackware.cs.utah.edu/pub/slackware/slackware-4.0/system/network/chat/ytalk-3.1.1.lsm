@@ -1,0 +1,16 @@
+Begin3
+Title:          YTalk
+Version:        3.1.1
+Entered-date:   10MAY99
+Description:    Multi-user replacement for UNIX talk
+Keywords:       chat, talk, X11, curses
+Author:         yenne@austin.eds.com (Britt Yenne)
+Maintained-by:  roger.espel.llima@pobox.com (Roger Espel Llima)
+Primary-site:   http://www.eleves.ens.fr:8080/home/espel/ytalk/
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network/chat
+		ftp.funet.fi /pub/unix/networking
+			83k ytalk-3.1.tar.gz
+Original-site:  unknown
+Platforms:	Unix, Linux, X11 optional
+Copying-policy:	MIT
+End

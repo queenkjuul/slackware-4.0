@@ -1,0 +1,21 @@
+
+Begin3
+Title:         ATP QWK
+Version:       1.50
+Entered-date:  07JAN97   
+Description:   ATP is a reader for BBS QWK format mail and news packets.
+               Download a compressed news/mail packet from a BBS and use 
+               ATP to uncompress, extract, read, and reply to messages.
+Keywords:      QWK BBS mail news
+Author:        thomas.mcwilliams@f615.n109.z1.fidonet.org
+Maintained-by:
+Primary-site:  sunsite.unc.edu /pub/Linux/system/BBS/mail
+               128k atp-1.50-bin.tar.gz
+	       255k atp-1.50-src.tar.gz
+	       661  atp-1.50-lsm
+Alternate-site: 
+Original-site: 
+Platforms: Linux, SunOS, POSIX, OS/2, MSDOS
+Copying-policy: GPL
+End
+

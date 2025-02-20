@@ -1,0 +1,15 @@
+Begin3
+Title:          LinWare Patch
+Version:        0.95 beta
+Entered-date:   Nov 7, 1995
+Description:    Patch to make LinWare work with Linux 1.3.55
+Keywords:       fileserver IPX NCP Novell NetWare Linux patch
+Author:         Rawlin Blake <blake@nevada.edu>
+Maintained-by:  Not
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/daemons
+		5 k lwared-0.95.ipx.patch.tar.gz
+Original-site:  klokan.sh.cvut.cz /pub/linux
+		5 k lwared-0.95.ipx.patch.tar.gz
+Platform:       Linux 1.3.55
+Copying-policy: GPL
+End

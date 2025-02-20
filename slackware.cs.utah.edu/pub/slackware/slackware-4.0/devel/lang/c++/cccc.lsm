@@ -1,0 +1,18 @@
+
+Begin3
+Title:          CCCC C and C++ Code Counter
+Version:        2.1.1
+Entered-date:   12 August 1997
+Description:    Source code metric analyser for C, C++, Java and Ada
+		Presents a report in HTML with figures for
+		Lines of Code, McCabes Complexity, Ratio of Comments
+		to Lines of Code and McCabe, module Fan-In and Fan-Out
+Keywords:       Metrics C++ Java Ada McCabe Henry/Kafura 
+Author:         Tim Littlefair t.littlefair@cowan.edu.au
+Maintained-by:  author
+Primary-site:   http://www.fste.cowan.edu.au/~tlittlef
+Alternate-site: ftp://sunsite.unc.edu.au /pub/linux/devel/lang/c++
+Original-site:  
+Platforms:      Linux, Posix, Win32
+Copying-policy: Freeware
+End

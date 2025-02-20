@@ -1,0 +1,23 @@
+Begin3
+Title:          Patch for Mxgdb Beta version 1.2
+Version:        Patch Level 1 for Linux/Motif
+Entered-date:   31 May 1995	version 1
+Description:    Patch for mxgdb-1.2.tar.gz
+		Mxgdb is a Motif based frontend for
+		the gnu debugger gdb. It contains a fancy
+		help function and buttons for most
+		commandline functions of gdb.
+		Original Author: jtsillas@proteon.com (Jim)
+Keywords:       Motif, debugger
+Author:         stock@cpt7.stm.tudelft.nl (Robert Stockmann)
+Maintained-by:  stock@cpt7.stm.tudelft.nl (Robert Stockmann)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/debuggers
+		825	mxgdb-1.2-patch.lsm
+		2128	mxgdb-1.2-patch
+		86419	mxgdb-1.2.tar.gz
+Alternate-site: 
+Original-site:  ftp.sunet.se /pub/X11/R5contrib
+		86419	mxgdb-1.2.tar.gz
+Platform:       Linux (kernel above 1.1.53)
+Copying-policy: GPL
+End

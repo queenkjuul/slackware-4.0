@@ -1,0 +1,1183 @@
+Gui Developement Tools for Linux
+================================
+
+Introduction (English)
+----------------------
+In  the  first  days, Linux was said to be a hacker envirement  in
+both  sense. With the further developement its reputation changed.
+Today Linux gets known as a developement plattform including the X
+window  system and the several GNU utilities. Following  the  fact
+that GNU C and C++ are pseudo standard serveral developement tools
+has been built to support a quicker and easier X programming.
+This  GUI-Developement-HOWTO should help the programmer,  beginner
+or   experienced,  to  choose  the  tool,  which  fits  most   his
+requirements.
+I  take  no  responsibility for mistakes in prices or  copyrights.
+Please read the including copyright license!
+If  you know further Gui Developement Tools please send me a short
+notice.
+
+Yours Philip Markwalder
+pgmarkwa@stud.ee.ethz.ch
+
+PS:  All descriptions sent in german, I translate to english,  but
+"Nobody's perfect!".
+
+Einfuehrung (Deutsch)
+---------------------
+In den ersten Tagen, hatte Linux den Ruf einer Hackerumgebung. Mit
+den  Monaten  der Entwicklung aenderte sich dieser  schlechte  Ruf.
+Heute   wird   Linux  mit  dem  X  Window  System   zusammen   als
+Entwicklungsystem   gepriesen,  auf  dem  viele  Entwicklungstools
+erhaeltlich sind. Neben den zahlreichen GNU Utilities, die sich  in
+den  letzten  Jahren, vor allem in der From  des  GNU  C  und  C++
+Compilers,   zu  einer  Art  pseudo  Standard  entwickelt   haben,
+entstanden mehr oder weniger bekannte Entwicklungsoberflaechen.
+Das  GUI-Developement-HOWTO  soll dem  angehenden,  wie  auch  dem
+erfahrenen   Programmierer   die  Auswahl   fuer   eine   geeignete
+Entwicklungsoberflaeche erleichtern.
+Ich  uebernehme  keine  Verantwortung fuer etwelche  Fehler  in  den
+Punkten   Copyright  und  Preise.  Lies  die  oftmals  beiliegende
+Copyright Lizenz!
+Fuer  weitere Informationen ueber bestehende Eintraege oder auch ueber
+neue Tools bin ich allen dankbar.
+
+
+Mit freundlichen Gruessen Philip Markwalder
+pgmarkwa@stud.ee.ethz.ch
+
+PS:  Alle  deutschen Beschreibungen werden von mir  ins  Englische
+uebersetzt, aber ... .
+
+Copyright
+---------
+This dokument is covered by the only limitation not to sell this HOWTO, 
+unless it's on a CD Rom distribution at a price less than $100.-.  
+Otherwise please contact me, we talk about ...
+ 
+Contents
+--------    
+1. Software
+2. Books
+
+
+1. Software
+----------- 
+Name:
+Version:
+Copyright:
+Commercial:
+Price:
+System:
+Where to find:
+Description:
+__________________________________________________________________
+           
+Name:      	Gina++
+Version:    	?
+Copyright: 	?
+Commercial:	NO
+Price:     	FREE
+System:    	Linux
+Where to find: 	ftp.gmd.de :/gmd/ginaplus
+Description:   	?
+__________________________________________________________________
+
+Name:      	wxCLIPS
+Version:   	?
+Copyright:	?
+Commercial:	NO
+Price:     	FREE
+System:    	To compile wxCLIPS you need:
+           
+           	- CLIPS or Fuzzy CLIPS 6.0 sources
+           	- wxCLIPS sources
+           	- wxWindows sources (/pub/packages/wxwin)
+           	- UNIX or Windows compiler
+           	- Motif, XView or Windows
+Where to find: 	ftp.aiai.ed.ac.uk
+Description:    wxCLIPS  is both a simple GUI front-end for  CLIPS
+           	for Windows and X, and also a tool for writing GUIs  in
+          	CLIPS using a set of new CLIPS functions.
+
+           	You  can also use part of wxCLIPS as a library to  link
+           	in  to  a  C++ application that uses the wxWindows  GUI
+           	toolkit, giving an emebedded interpreted language  with
+           	GUI-construction facilities.
+__________________________________________________________________
+
+Name:      	xtent
+Version:   	3.2
+Copyright: 	copyright by AT&T
+Commercial:	NO
+Price:     	FREE
+System:    	XFree 2.1, kernel 1.*
+Where to find: 	sunsite.unc.edu :/pub/Linux/devel/xtent3.2.tgz
+Description:    xtent  is a simple function oriented language  for
+           	creating X Toolkit (Xt) based applications.  The syntax
+           	of the language is based on the X resource file syntax.
+           	The  resulting  language  is a macro  interpreter  that
+           	looks  like  C/C++  mixed  with  a  simple  lisp.   The
+           	language may be used as a standalone interpreter or  as
+           	an embedded language with C.
+__________________________________________________________________
+
+Name:      	InterViews
+Version:   	3.1
+Copyright:	?
+Commercial:	NO
+Price:     	FREE
+System:    	Linux
+Where to find: 	sunsite.unc.edu :pub/Linux/X11/devel/
+Description:
+__________________________________________________________________
+
+Name:      	Fresco
+Version:   	0.7
+Copyright:	?
+Commercial:	NO
+Price:     	FREE
+System:    	Linux
+Where to find: 	ftp.faslab.com /pub/Fresco
+Description:   	Nachfolger von Interviews
+__________________________________________________________________
+
+Name:      	xwpe
+Version:   	1.4.2
+Copyright: 	?
+Commercial:	NO
+Price:     	FREE
+System:    	Linux
+Where to find: 	mcsun.eu.net :/os/linux/mirrors/sunsite/sunsite.unc-
+           	mirror/Incoming/elf
+           	sunsite.unc.edu :/pub/Linux/Incoming
+Description:
+__________________________________________________________________
+
+Name:      	D-Isam
+Version:   	?
+Copyright: 	?
+Commercial:	YES
+Price:     	895.- US$ (Free Demo availible)
+System:    	Linux
+Where to find: 	?
+Description:   	?
+
+__________________________________________________________________
+
+Name:      	Motif
+Version:   	2.0
+Copyright: 	OSF(?)
+Commercial:	YES
+Price:     	99.- - 150.- US$
+System:    	Linux
+Where to find:
+Description:   	Sicher die bekannteste C und C++ Library. OSF (Open
+           	Software  Foudaction) wollte mit dieser  Library  einen
+          	Standard  fuer  die  Software  Entwicklung  unter   Unix
+          	setzten,  was ihr zu einem gewissen Grad auch  gelungen
+           	ist.  Im  Paket  wird  neben  Library,  Beispielen  und
+           	Handbuechern  (meistens in Postscript  Files)  auch  ein
+           	neuer Oberflaechenmanager mitgeliefert.
+__________________________________________________________________
+
+Name:      	XAD
+Version:   	?
+Copyright: 	?
+Commercial:	YES
+Price:     	160.- US$ (Lite)
+           	650.-
+System:    	Linux
+           	BSD/386
+           	SCO ODT 3.0
+	
+           	System requirements:
+           	X11R5
+           	Motif 1.2
+           	SVGA 256 colors
+           	10 MB hard disk
+           	8MB+ Ram.
+	
+Where to find:
+Description:    Xad  is a new and full featured Motif Applications
+           	development tool producing portable Motif applications.
+           	For  more  complete information on this major  package,
+           	please contact us.
+__________________________________________________________________
+
+Name:      	wxWindows
+Version:   	1.66
+Copyright: 	J.Smart@ed.ac.uk (Julian Smart, AIAI)
+Commercial:	NO
+Price:     	FREE
+System:    	Linux
+Where to find:  skye.aiai.ed.ac.uk /pub/wxwin/1.60  (192.41.104.6)
+                                2.8 MB wx160.tgz
+                                171 Kb patch16ˆ6.zip
+                                788 Kb hlpdocs.zip
+                Alternate-site: sunsite.unc.edu /pub/Linux/X11/devel
+                                2.8 MB wx160.tgz
+                                3.4 Kb wx160.make.env
+Description:    wxWindows  is  a  toolkit  for  developing  multi-
+          	platform, graphical applications from the same body  of
+           	C++  code.  Whole  source  is included.  Help  docs  is
+           	separate. Compiles under normal Linux environment  with
+           	slight   modifications  to  make.env   and   the   file
+           	$(WXWINDIR)/src/base/wbˆps.cc
+
+Note:      	Mailing  list:wxwin-users@aiai.ed.ac.uk  (wxwin   users
+           	mailing list)
+__________________________________________________________________
+
+Name:      	VXP
+Version:   	?
+Copyright: 	?
+Commercial:	NO
+Price:     	FREE
+System:    	Linux
+Where to find: 	ftphost.waikato.ac.nz :/pub/vxp
+           	ftp.cc.gatech.edu :/ac86/linux/devel/c
+           	sunsite.unc.edu :/pub/Linux/devel/c
+Description:    Dieses  auf  der der Motif Library aufbauende,  in
+           	meinen  Augen sehr professionelle Entwicklungstool  ist
+           	frei  verfuegbar, muss aber vom Ursprungsserver  mittels
+           	FTP   heruntergeladen  werden,  da  keine  kommerzielle
+           	Verteilung    per   License   erlaubt    ist.    Dieses
+           	Entwicklungstool gibt C Code heraus.
+           	This tool is based on the Motif Libaray and generates C
+           	Code. It's source code isn't availible at the time.
+__________________________________________________________________
+
+Name:      	ET++/MET++
+Version:   	3.0 alpha et++,
+Copyright: 	?
+Commercial:	NO
+Price:     	FREE
+System:    	Linux
+Where to find: 	claude.ifi.unizh.ch :/pub/projects/met++
+               	ftp.imag.fr :/archive/langages/C++/ET++
+Description:    
+__________________________________________________________________
+   
+Name:      	Xforms / Forms Library
+Version:   	0.61
+Copywright:     Copyright (c) 1995 by T.C. Zhao and Mark  Overmars
+           	ALL RIGHTS RESERVED.
+           	Permission  to use, copy, and distribute this  software
+           	in its entirety for  non-commercial purposes and without fee, 
+		is hereby granted, provide that  the  above  copyright notice 
+		and this  permission notice appear in all copies and their 
+		documentation.
+           	This software is provided "as is" without expressed  or
+           	implied warranty of any kind.
+           	You  may not "bundle" and distribute this software with
+           	systems and/or other  distribution media without prior 
+		consent of  the authors.
+
+Commercial:	No,   but  a  license  is  required  if  you   use   it
+           	commercially
+Price:     	FREE
+System:   	Linux
+Where to find: 	ftp.cs.ruu.nl :/pub/XFORMS
+               	bloch.phys.uwn.edu
+
+Description:    GUI  toolkit library and interface builder  for  X
+          	windows, needs only
+          	xlib to work, includes 3d objects similar to Motif.
+           	It should work under X11 R4, R5 & R6.
+           	Xforms is comprised of a C library and GUI builder.
+           	It  is  extensible, scrolling canvas object still needs
+           	to be implemented.
+           	Distributions available for:
+           	Linux (X11R5 and X11R6)
+           	SunOS and Solaris
+           	SGI (Irix 4.x, 5.2 and 6.0)
+           	Dec-Alpha/OSF1
+           	HP-UX
+           	IBM-RS6000/AIX
+           	FreeBSD
+           	DecStation/Ultrix
+           	Cray Unicos (C90 & YMP)
+           	Convex (C2 & C3)
+           	NetBSD/i386 1.0
+	
+           	Xforms is comprised of a C library and GUI builder.
+           	It  is  extensible, scrolling canvas object still needs
+           	to be implemented.
+__________________________________________________________________
+     
+Name:      	MetaCard
+Version:   	1.4
+Copywright:	1994 MetaCard Corporation
+Commercial:	yes
+Price:     	$195 on Linux, $495 for all others
+Where to find:  ftp.metacard.com:/MetaCard,
+                http://www.metacard.com/
+Description:    MetaCard   is   a  hypermedia/Rapid   Application
+           	Development environment for X11/Unix  workstations that is 
+		similar to  Apple/Claris Corp.'s HyperCard. It  goes  beyond
+		HyperCard  by  including support for color controls and images,
+  		pulldown  and  popup   menus, scrollbars and dialog boxes. 
+		MetaCard's  entire  interface is built in MetaCard, so end users
+ 		can  edit any menu or dialog to make it look and behave
+           	any way they want.
+
+           	MetaCard's powerful, customizable editor and  a  simple
+           	scripting language   make  it  the  easiest  way  to  build   
+		GUI applications, Computer Based Training (CBT)  packages, 
+		multimedia presentations, and hypermedia  documents.  Stacks 
+		developed with  MetaCard are can be run on  any supported 
+		platform (14 for release 1.4) and can be distributed with  
+		the  MetaCard  engine without licensing  fees  or royalties.
+
+           	Key features:
+               		Easy to learn object-oriented scripting language
+               		Easy to use direct-manipulation interface
+               		Motif   interface  allows  users  to  build   Motif
+               		compliant applications.
+               		Full  24  bit  color support for image editing  and
+               		controls Object oriented (vector) graphics support is  
+			built in Text  fields  support searching, sorting,  
+			multiple font  sizes and colors, hypertext links,  and  
+			cut-copy-paste Run  any  Unix  program from  within  
+			MetaCard  and collect its output for display.
+               		Call  'C' functions via an external procedure  call
+               		mechanism.
+	                Import HyperCard 1.2 through 2.2 stacks
+        	        Built-in audio and video playback capability
+__________________________________________________________________
+        
+Name:      	winterp
+Version:   	1.0
+Copyright: 	Permission to use, copy, modify, distribute,  and  sell
+           	provided
+Commercial:	NO
+Price:     	FREE
+System:    	Linux, X11R5, Motif >= 1.1.*
+Where to find: 	sunsite.unc.edu : /pub/Linux/X11/devel/
+               	nic.funet.fi   :/pub/OS/Linux
+Description:    An  object-oriented rapid prototyping, development
+           	and delivery environment for building applications with
+           	Motif/Xtango
+__________________________________________________________________
+
+Name:      	CooL SPE
+Version: 	2.1
+Commercial: 	NO
+Price:     	FREE
+System:    	Linux, Solaris, Sinix. Requires Motif
+Copyright:  	GPL
+Where to find:
+Description:    An  OO  4GL  environment for writing Client/Server
+           	Motif apps
+__________________________________________________________________
+
+
+Name :     	SmallTalk/X
+Commercial:	YES (look at the Copyright)
+Price:     	NO (Linux)
+System     	Linux
+Copyright: 	The   program  may  not  be  used  for  any  commercial
+           	purposes;  neither the program in whole or  parts,  nor
+           	applications,  programs or functions  created  with  or
+           	derived  from this program may be sold or otherwise  be
+           	made available to any third party or person for profit.
+           	You  may  not use this program or parts or applications
+           	created with this program for in-house production,   or
+           	other    work,   which   is   related   to   any    non
+           	educationalactivity.
+           	
+           	You may copy and redistribute this package, or make  it
+           	otherwise   available  to  other   educational   users,
+           	provided   that   each   copy   represents   an   exact
+           	reproduction of the original and includes any copyright
+           	notice  and  license  information,  appearing  on   the
+           	original.
+           	You  may  NOT charge or otherwise ask for any donations
+           	for this distribution, except for the cost of the media
+           	itself.
+           	The  program and all copies of the program (but not the
+           	media  on  which the copies are encoded) shall  be  and
+           	remain the property of the licensor.
+           
+Description:
+__________________________________________________________________
+
+Name :     	ObjectProDSP
+Version:   	0.1
+Copyright: 	GPL
+System:    	Linux
+Price:     	FREE
+Commercial:	NO
+Where to find: 	tsx-11.mit.edu
+           	1.57     MB    /pub/linux/binaries/usr.bin.X11/opd-0.1-
+           	src.tar.gz
+           	2.25     MB     /pub/linux/sources/usr.bin.X11/opd-0.1-
+           	binary.tar.gz
+           	1.08     MB    /pub/linux/docs/opd-0.1-doc.tar     (All
+           	doumentation and LSM file)
+           	5.8  KB   /pub/linux/docs/opd-0.1-announce.gz  (Package
+           	description)
+           	SunSITE.unc.edu /pub/Linux/devel/opd-0.1
+           	1.57 MB opd-0.1-src.tar.gz (Source code)
+           	2.25 MB opd-0.1-bin.tar.gz (Linux binaries)
+           	527  KB ovrˆfront.ps.gz (Overview and tutorial,  16  MB
+           	uncompressed)
+           	53 KB ovrˆapp.ps.gz (Overview appendixes)
+Description:    X-windows, object oriented tool for Digital Signal
+           	Processing   design  development  and   implementation;
+           	generic  framework for building interactive  scientific
+           	and engineering applications
+__________________________________________________________________
+           
+Name:      	Motifiation
+Version:   	1.2b (Version 2.0 in work)
+Copyright: 	???
+Commercial:	YES
+Price:     	DM 7700 .-  per machine
+           	DM 2990.-  for non commercial users
+System:    	Linux
+Where to find:  http://www.uni-paderborn.de/fachbereich/AG/szwillus/motifation
+		/index.html
+Description:    Motifation      ist      ein      interaktives
+           	Entwicklungswerkzeug f’r den C-Programmierer, der unter
+           	OSF/Motif   seine   graphische  Benutzungsschnittstelle
+           	entwerfen und Kontrolle }ber den kompletten C-Quellcode
+           	haben   will.  Der  Entwurf  vollzieht  sich  in  einem
+           	hochgradig  interaktiven Arbeitsprozež, an dessen  Ende
+           	die  automatische  Generierung aller Quellcodes  steht.
+           	Neben dem C-Quellcode wird auf Wunsch ein Makefile, ein
+           	Imakefile  und  eine  Klassendatei generiert.  Aus  dem
+           	generierten Quellen kann somit unmittelbar ein fertiges
+           	Programm erzeugt werden.
+           	Motifiation is an interaktive Developement Toll  for  C
+           	programmers who develops his GUI with OSF/Motif and who
+           	likes  to  control  the  complette  source  code.   The
+           	developing takes place in a highly interaktive  process
+           	which  ends  in the generating of source code.  If  you
+           	wish  you're able have built the makefile and imakefile
+           	and  a  class  file. So you can straight  compile  your
+           	program.
+
+
+Books
+=======
+
+
+Software Portability with imake
+
+By Paul DuBois
+1st Edition July 1993
+390 pages, ISBN: 1-56592-055-4
+
+imake  is  a  utility that works with make to enable  code  to  be
+compiled  and  installed on different UNIX machines.  imake  makes
+possible the wide portability of the X Window System code  and  is
+widely considered an X tool, but it's also useful for any software
+project that needs to be ported to many UNIX systems.
+
+This  Nutshell Handbook(R)--the only book available  on  imake  is
+ideal  for  X and UNIX programmers who want their software  to  be
+portable. The book is divided into two sections. The first section
+is  a general explanation of imake, X configuration files, and how
+to  write and debug an Imakefile. The second section describes how
+to  write  configuration files, and presents a configuration  file
+architecture  that  allows  development  of  coexisting  sets   of
+configuration  files. Several sample sets of  configuration  files
+are described and are available free over the Net.
+
+Programmer's Supplement for R5 of the X Window System
+
+By David Flanagan
+1st Edition November 1991
+390 pages, ISBN: 0-937175-86-2
+
+This  book is for programmers who are familiar with Release  4  of
+the  X  Window System and want to know how to use the new features
+of Release 5. It is intended as an update for owners of Volumes 1,
+2, 4, and 5 of the O'Reilly and Associates X Window System Series,
+and  provides complete tutorial and reference information  on  all
+new Xlib and Xt toolkit functions.
+
+Together  with  Volume 2 and Volume 5, owners of the  Programmer's
+Supplement  for  Release 5 have a complete set of reference  pages
+for the current X Consortium standards for Xlib and Xt.
+
+The X Window System in a Nutshell
+
+Edited by Ellie Cutler, Daniel Gilly & Tim O'Reilly
+2nd Edition April 1992
+424 pages, ISBN: 1-56592-017-1
+
+Indispensable  companion  to  the X  Window  System  Series.  Once
+programmers have mastered the concepts behind X and learned how to
+program  in  Xlib  and  Xt there is still a  mass  of  details  to
+remember.  The  X  Window  System in a Nutshell  fills  this  gap.
+Experienced  X  programmers  can use  this  single-volume  desktop
+companion  for  most common questions, keeping the full  X  Window
+System  series of manuals for detailed reference. X in a  Nutshell
+contains  essential  information in a boiled-down  quick-reference
+format that makes it easy to find the answers needed most often.
+
+This book has been updated to cover R5 but is still useful for R4.
+The   descriptions  of  the  functions  have  been  expanded   and
+clarified,  with  improved cross-referencing to important  related
+functions.  Includes material on Xcms and the internationalization
+features of R5.
+
+
+Volume 0: X Protocol Reference Manual
+
+Edited by Adrian Nye
+3rd Edition February 1992
+516 pages, ISBN: 1-56592-008-2
+
+This manual describes the X Network Protocol, which underlies  all
+software  for  Version 11 of the X Window System. It provides  not
+only  a  practical demonstration of what is involved in  a  client
+session,  but  also an extensive set of reference pages  for  each
+protocol  request and event which include the encoding of requests
+and  replies.  The  X Protocol Reference Manual includes  protocol
+clarifications  of  X11  Release 5, as well  as  the  most  recent
+version of the ICCCM and the Logical Font Conventions Manual.  For
+use with any release of X.
+
+
+Volume 1: Xlib Programming Manual
+
+By Adrian Nye
+3rd Edition July 1992
+824 pages, ISBN: 1-56592-002-3
+
+Updated to cover X11 Release 5, the Xlib Programming Manual  is  a
+complete  programming guide to the X library  (Xlib),  the  lowest
+level of programming interface to X. In addition to explaining how
+to  handle  the  concepts  involved in Xlib  programming--such  as
+events,  graphics,  and  window  management--this  guide  presents
+examples of both simple and complete client applications. Includes
+introductions  to internationalization, device-independent  color,
+font service, and scalable fonts.
+
+This manual is a companion to Volume 2, Xlib Reference Manual.
+
+
+Volume 2: Xlib Reference Manual
+
+By Adrian Nye
+3rd Edition June 1992
+1138 pages, ISBN: 1-56592-006-6
+
+Volume  2,  Xlib  Reference  Manual, is  a  complete  programmer's
+reference for Xlib, updated for X11 Release 4 and Release 5.
+
+Contents Include:
+- Reference pages for Xlib functions.
+- Reference pages for event types.
+- Permuted index to Xlib functions.
+- Description  of  macros  and reference pages for their  function
+           versions.
+- Listing of the server-side color database.
+- Alphabetical index and description of structures.
+- Alphabetical index and description of defined symbols.
+- KeySyms and their meaning.
+- Illustration of the standard cursor font.
+- Function group index to the right routine for a particular task.
+- Reference  pages  for  Xlib-related Xmu functions (miscellaneous
+           utilities).
+- 4 single-page reference aids for the GC and window attributes.
+- Index.
+
+New features in the third edition include:
+- Over 100 new  manpages covering Xcms, internationalization,  and
+           the function versions of macros.
+- Updating to the R5 spec.
+- New "Returns" sections on all the functions which return values,
+           making this information easier to find.
+
+
+Volume 3: X Window System User's Guide
+Standard Edition
+
+By Valerie Quercia & Tim O'Reilly
+4th Edition May 1993
+836 pages, ISBN: 1-56592-014-7
+
+The  X  Window System User's Guide orients the new user to  window
+system  concepts and provides detailed tutorials for  many  client
+programs,  including  the  xterm  terminal  emulator  and   window
+managers. Building on this basic knowledge, later chapters explain
+how   to   customize   the  X  environment  and   provide   sample
+configurations.
+
+This popular manual is available in two editions, one for users of
+the MIT software, and one for users of Motif. The Standard Edition
+manager  uses  the twm manager in most examples and illustrations.
+Revised for X11 Release 5.
+
+Volume 3M: X Window System User's Guide
+Motif Edition
+
+By Valerie Quercia & Tim O'Reilly
+2nd Edition January 1993
+956 pages, ISBN: 1-56592-015-5
+
+The  X  Window System User's Guide, Motif Edition orients the  new
+user to window system concepts and provides detailed tutorials for
+many  client  programs, including the xterm terminal emulator  and
+the  window  manager.  Building on  this  basic  knowledge,  later
+chapters  explain how to customize the X environment  and  provide
+sample  configurations. This alternative  edition  of  the  User's
+Guide  highlights the Motif window manager, for users of the Motif
+graphical user interface. Revised for Motif 1.2 and X11 Release 5.
+
+Volume 4: X Toolkit Intrinsics Programming Manual
+Standard Edition
+
+By Adrian Nye & Tim O'Reilly
+3rd Edition April 1993
+567 pages, ISBN: 1-56592-003-1
+
+A complete guide to programming with the X Toolkit Intrinsics, the
+library of C language routines that facilitate the design of  user
+interfaces,  with  reusable components called widgets.  This  book
+provides concepts and examples that show how to use the various  X
+Toolkit  routines.  The first few chapters are  devoted  to  using
+widgets; the remainder of the book covers the more complex task of
+writing new widgets.
+
+Volume  4  is  available  in two editions. The  Standard  Edition,
+updated  for  R5, uses Athena widgets to demonstrate  how  to  use
+existing  widgets,  but  still provides  a  good  introduction  to
+programming with any widget set based on Xt.
+
+
+Volume 4M: X Toolkit Intrinsics Programming Manual
+Motif Edition
+
+By Adrian Nye & Tim O'Reilly
+2nd Edition August 1992
+674 pages, ISBN: 1-56592-013-9
+
+A complete guide to programming with the X Toolkit Intrinsics, the
+library of C language routines that facilitate the design of  user
+interfaces,  with  reusable components called widgets.  This  book
+provides concepts and examples that show how to use the various  X
+Toolkit  routines.  The first few chapters are  devoted  to  using
+widgets; the remainder of the book covers the more complex task of
+writing new widgets.
+
+Volume 4 is available in two editions. The Motif Edition uses  the
+Motif  1.2  widget set in examples, and has been updated  for  X11
+Release 5.
+
+
+Volume 5: X Toolkit Intrinsics Reference Manual
+
+Edited by David Flanagan
+3rd Edition April 1992
+916 pages, ISBN: 1-56592-007-4
+
+The   X   Toolkit  Intrinsics  Reference  Manual  is  a   complete
+programmer's reference for the X Toolkit. This volume is based  on
+Xt  documentation  from the X Consortium and has  been  re-edited,
+reorganized, and expanded for X11 Release 5. It provides reference
+pages  for each of the Xt functions, as well as the widget classes
+defined by Xt and the Athena widgets, and many useful appendices.
+
+This manual  is  a companion to Volume 4, the X Toolkit Intrinsics
+           Programming Manual.
+
+Volume 6A: Motif Programming Manual
+
+By Dan Heller & Paula Ferguson
+2nd Edition February 1994
+1016 pages, ISBN: 1-56592-016-3
+
+The  Motif  Programming Manual is a source for complete, accurate,
+and insightful guidance on Motif application programming. There is
+no  other book that covers the ground as thoroughly or as well  as
+this one.
+
+The  Motif  Programming Manual describes how to write applications
+using  the Motif toolkit from the Open Software Foundation  (OSF).
+The book goes into detail on every Motif widget class, with useful
+examples  that  will help programmers to develop their  own  code.
+Anyone  doing Motif programming who doesn't want to have to figure
+it out on their own needs this book.
+
+In  addition  to information on Motif, the book is  full  of  tips
+about programming in general, and about user interface design.  It
+includes  a  tutorial on UIL; coverage of drag-and-drop,  tear-off
+menus,  and  internationalization  as  implemented  in  the  Motif
+widgets such as Text and TextField; plus the entire book has  been
+checked  for accuracy with Motif 1.2 (while remaining usable  with
+Motif 1.1). Complements Volume 6B, Motif Reference Manual.
+
+
+Volume 6B: Motif Reference Manual
+
+By Paula Ferguson & David Brennan
+1st Edition June 1993
+920 pages, ISBN: 1-56592-038-4
+
+The  Motif  Reference Manual is a complete programmer's  reference
+for  the  Motif  toolkit from the Open Software Foundation  (OSF).
+Motif  has become the standard user interface for X Window  System
+applications, and the Motif toolkit makes it easy for  programmers
+to build applications that conform with the Motif "look and feel."
+
+This  book  provides reference pages for the Motif  functions  and
+macros,  the  Motif and Xt widget classes, the Mrm functions,  the
+Motif clients, and the UIL file format, data types, and functions.
+The  reference  material has been expanded from the appendices  of
+the  first edition of Volume 6 and covers Motif 1.2. This book  is
+designed  to  be  used  with Volume 6A, Motif Programming  Manual,
+which  describes how to build applications using the Motif toolkit
+and provides a complete tutorial with programming examples.
+
+
+Volume 7A: XView Programming Manual
+
+By Dan Heller
+Updated by Thomas Van Raalte
+3rd Edition September 1991 (latest update August 1993)
+770 pages, ISBN: 0-937175-87-0
+
+The  XView  Programming Manual has been revised and  expanded  for
+Version  3  of XView, the poor-man's object-oriented  toolkit  for
+building  OPEN  LOOK  applications  for  X.  Describing  both  the
+concepts  and  the  technical approaches behind XView,  the  XView
+Programming  Manual is perfect for the beginner  breaking  into  X
+programming.
+
+The  Attribute  Summary from the previous  edition  of  the  XView
+Programming  Manual has been expanded and is now  published  as  a
+companion   volume,  the  XView  Reference  Manual.  It   contains
+alphabetical listings of XView attributes, functions, and  macros,
+as  well  as  other  reference  information  essential  for  XView
+programmers.
+
+
+Volume 7B: XView Reference Manual
+
+Edited by Thomas Van Raalte
+1st Edition September 1991 (latest update August 1993)
+311 pages, ISBN: 0-937175-88-9
+
+The  XView  Reference Manual has been expanded from the  Attribute
+Summary  of  the previous edition of the XView Programming  Manual
+and  is  now  published as a companion volume. The  XView  toolkit
+provides  extensive attribute-value pair combinations, convenience
+routines  and object class hierarchies that are too voluminous  to
+memorize without the aid of this comprehensive reference guide. It
+contains alphabetical listings of XView attributes, functions, and
+macros, as well as other reference information essential for XView
+programmers.  A  must-have  companion for  the  XView  Programming
+Manual.
+
+
+Volume 8: X Window System Administrator's Guide
+
+By Linda Mui & Eric Pearce
+1st Edition October 1992
+CD-ROM Released May 1993
+
+Without CD-ROM:
+372 pages, ISBN: 0-937175-83-8
+
+With CD-ROM:
+388 pages, ISBN: 1-56592-052-X
+
+As  X  moves out of the hacker's domain and into the "real world,"
+users  can't be expected to master all the ins and outs of setting
+up  and administering their own X software. That will increasingly
+become  the  domain of system administrators. Even for experienced
+system administrators X raises many issues, both because of subtle
+changes  in  the standard UNIX way of doing things and  because  X
+blurs  the boundaries between different platforms. Under X,  users
+can run applications across the network, on systems with different
+resources  (including  fonts, colors, and screen  size.)  Many  of
+these issues are poorly understood, and the technology for dealing
+with them is in rapid flux.
+
+This  book  is  the first and only book devoted to the  issues  of
+system administration for X and X-based networks, written not just
+for  UNIX system administrators but for anyone faced with the  job
+of  administering  X  (including those running  X  on  stand-alone
+workstations).  The  X  Window  System  Administrator's  Guide  is
+available either alone or packaged with the XCD. The CD provides X
+source code and binaries to complement the book's instructions for
+installing  the  software. It contains over 600 megabytes  of  X11
+source  code and binaries stored in ISO9660 and RockRidge formats.
+This will allow several types of UNIX workstations to mount the CD-
+ROM  as  a filesystem, browse through the source code and  install
+pre-built software.
+
+PEXlib Programming Manual
+
+By Tom Gaskins
+1st Edition December 1992
+1154 pages, ISBN: 1-56592-028-7
+
+The PEXlib Programming Manual is the definitive programmer's guide
+to PEXlib, covering both PEX versions 5.0 and 5.1. Containing over
+200  illustrations and 19 color plates, it combines a thorough and
+gentle  tutorial approach with valuable reference features.  Along
+the   way,  it  presents  the  reader  with  numerous  programming
+examples, as well as a library of helpful utility routines--all of
+which  are  available online. You do not need any  prior  graphics
+programming experience to read this manual.
+
+Written  by Tom Gaskins--the widely recognized authority who  also
+authored  the  O'Reilly and Associates PHIGS Programming  Manual--
+thisbook  is  the only programming guide to PEXlib you  will  ever
+need.
+
+
+PEXlib Reference Manual
+
+Edited by Steve Talbott
+1st Edition December 1992
+577 pages, ISBN: 1-56592-029-5
+
+The   PEXlib  Reference  Manual  is  the  definitive  programmer's
+reference  resource for PEXlib, containing complete  and  succinct
+reference  pages for all the callable routines in  PEXlib  version
+5.1.  The  content  of  the PEXlib Reference Manual  stands,  with
+relatively few changes, as it was created by the X Consortium.
+
+The  PEXlib Reference Manual is a companion volume to the O'Reilly
+and Associates PEXlib Programming Manual, written by Tom Gaskins.
+
+
+PHIGS Programming Manual
+
+By Tom Gaskins
+1st Edition February 1992
+
+Softcover:
+968 pages, ISBN: 0-937175-85-4
+
+Hardcover:
+968 pages, ISBN: 0-937175-92-7
+
+A  complete  and  authoritative guide  to  PHIGS  and  PHIGS  PLUS
+programming, this book documents the PHIGS and PHIGS PLUS graphics
+standards  and provides full guidance regarding the use  of  PHIGS
+within the X environment. The discussions of PHIGS and PHIGS  PLUS
+are  fully  integrated in this text, which takes as  its  starting
+point  the  PEX  Sample Implementation (or PEX-SI)---the  publicly
+available  and  most widely established base for commercial  PHIGS
+products.  In addition, the PHIGS Programming Manual explains,  at
+both  elementary and advanced levels, how to integrate your  PHIGS
+applications  with  standard  X  (Xlib)  functions.  Besides  Xlib
+itself, there are detailed examples and explanations based on  the
+Motif, OLIT, and XView toolkits.
+
+Whether you are starting out in 3D graphics programming or  are  a
+seasoned  veteran looking for an authoritative  work  on  a  fast-
+rising  3D  graphics standard, this book will serve your  purposes
+well.
+
+PHIGS Reference Manual
+
+Edited by Linda Kosko
+1st Edition October 1992
+1116 pages, ISBN: 0-937175-91-9
+
+The  PHIGS  Reference  Manual  is the  definitive  and  exhaustive
+reference   documentation  for  the  PHIGS  graphical  programming
+language.  It  contains  complete  reference  pages  for  all  the
+language  functions,  along with additional  reference  materials.
+Both  PHIGS and PHIGS PLUS are included, and the documentation  is
+faithful to the internationl standards. Therefore, this book  also
+serves as documentation for the many commercial products based  on
+the standards.
+
+Together with the PHIGS Programming Manual, this book is the  most
+complete and accessible documentation currently available for  the
+PHIGS and PHIGS PLUS standards.
+
+
+The X Resource: Issue 0
+
+Edited by Adrian Nye
+Fall 1991
+253 pages, ISBN: 0-937175-79-X
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles  and documentation not available elsewhere. The  articles
+for Issue 0 include:
+
+- Default Colormap Manipulation, by Bruce Cameron, Dr. R.A.  Robb,
+           and J.J. Camp.
+- Prescient  Agents:  A Radar O'Reilley for your Desktop, by Scott
+           McGregor.
+- Engineering Insights from an Interactive Imaging Application, by
+           Antony A. Courtney.
+- AND: C++ with  Motif, xterm Tips and Tricks, Xcms, UIMS Systems,
+           Internationalization, editres, and more.
+
+
+The X Resource: Issue 1
+Proceedings of the 6th Annual X Technical Conference
+
+Edited by Adrian Nye
+Winter 1992
+240 pages, ISBN: 0-937175-96-X
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. Issue 1,  January  1992,  is  the
+Annual Proceedings of the X Technical Conference at MIT.
+
+The X Conference  proceedings are published exclusively in  The  X
+           Resource.
+
+
+The X Resource: Issue 2
+
+Edited by Adrian Nye
+Spring 1993
+190 pages, ISBN: 0-937175-97-8
+
+The X Resource  includes  in-depth articles and documentation  not
+           available elsewhere. Articles for Issue 2 include:
+
+- NASA's TAE   PLUS:   a  GUI  Development  Tool  and  Application
+           Environment, by Marti Szczur.
+- Designing for Usability, by Scott McGregor.
+- Designing  Reusable  Widget Classes with C++ and  OSF/Motif,  by
+           Andreas Baecker.
+- Visualizing X, by David Lemke and David Rosenthal.
+
+Documentation on the Widget Creation Library is also included.
+
+
+The X Resource: Issue 3
+
+Edited by Adrian Nye
+Summer 1992
+220 pages, ISBN: 0-937175-98-6
+
+A quarterly  working  journal  for  X  programmers  that  provides
+           practical,
+timely information. The X Resource includes in-depth articles and
+documentation  not  available elsewhere. The articles in  Issue  3
+           include:
+
+- Multi-user Application Software Using Xt, by Oliver Jones.
+- Using the  New  Font  Capabilities  of  HP-donated  Font  Server
+           Enhancements, by Axel Deininger and Nathan Meyers.
+- Improving  X  Application Performance, by Chris D. Peterson  and
+           Sharon E. Chang.
+- The Nonrectangular Window Shape Extension, by Paula M. Ferguson.
+- AND: GUI testing,  server  instrumentation  and  tracing,   font
+           server administration, a RichText widget, and more.
+
+
+The X Resource: Issue 4
+
+Edited by Adrian Nye
+Fall 1992
+276 pages, ISBN: 0-937175-99-4
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles  and documentation not available elsewhere. The  articles
+for Issue 4 include:
+
+- From The X  Consortium:  The  MIT X Software Distribution  After
+           Release 5, by Stephen Gildea, MIT X Consortium.
+- RPC Programming in X Applications, by John Bloomer.
+- The xgen Application, by Kurt Buehler.
+- The Hdial Widget.
+- The Cmap Widget.
+
+
+The X Resource: Issue 5
+Proceedings of the 7th Annual X Technical Conference
+
+Edited by Adrian Nye
+Winter 1993
+272 pages, ISBN: 1-56592-020-1
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles  and documentation not available elsewhere. The  articles
+for  Issue  5,  taken from the 7th Annual X Technical  Conference,
+include:
+- "Multi-threaded Xlib" by Stephen Gildea
+- "Supporting  Mobile, Pen-based Computing with X" by James  Kempf
+           and Alan Wilson
+- "Making the   X   Window   System  Accessible  to  People   With
+           Disabilities" by Will D. Walker and Mark E. Novak.
+
+The X Resource: Issue 6
+
+Edited by Adrian Nye
+Spring 1993
+234 pages, ISBN: 1-56592-021-X
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles  and documentation not available elsewhere. The  articles
+for Issue 6 include:
+- "Writing Motif   Widgets:  A  Pragmatic  Approach"  by  Alastair
+           Gourlay
+- "Interprocess Communication in Xt Programs" by David Shaffer
+- "Resolving Xt Resource Collisions" by Al Tabayoyon.
+
+
+The X Resource: Issue 7
+
+Edited by Adrian Nye
+Summer 1993
+150 pages, ISBN: 1-56592-022-8
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles  and documentation not available elsewhere. The  articles
+for Issue 7 include:
+- "A Tale of  Two Toolkits: Xt vs. InterViews" by Imran Bashir and
+           David Sternlicht
+- "Managing X in a Large Distributed Environment" by George Ross
+- "Buddy, Can You Spare an RPC" by Robert Scheifler
+- "X Application Debugging" by Adrian Nye.
+
+
+The X Resource: Issue 8
+
+Edited by Adrian Nye
+Fall 1993
+176 pages, ISBN: 1-56592-023-6
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles  and documentation not available elsewhere. The  articles
+for Issue 8 include:
+- "Xm++: Another Way to Program the X Toolkit" by Bernhard Strassl
+- "Current Efforts in Client/Server Audio" by George Neville-Neil
+- "xtent 3.0:  Improvements on Programming with Resources" by Doug
+           Blewett and Meg Kilduff
+- "The Multi-Buffering Extension: A Tutorial and Reference" by Tom
+           Gaskins.
+
+
+The X Resource: Issue 9
+Proceedings of the 8th Annual X Technical Conference
+
+Edited by Adrian Nye
+Winter 1994
+256 pages, ISBN: 1-56592-066-X
+
+A quarterly  working  journal  for  X  programmers  that  provides
+           practical,
+timely information. The X Resource includes in-depth articles
+and documentation not available elsewhere. Articles for Issue 9,
+taken from the 8th Annual X Technical Conference, include:
+
+- "Zero-Defect  Widgets:  A  Formal Approach to  Testing  Xt-based
+           Toolkits"
+- "Traitifying Motif"
+- "Extending Xt to Support CORBA-based Embedding"
+- "Xvan: A True Multiple Screen X Server"
+- "Design and Implementation of LBX: An Experiment Based Standard"
+- "Overview of the X Keyboard Extension"
+- "Inter-Client Communication in X11R6 and Beyond"
+- "XSMP: The New Session Management Protocol"
+- "X11 in Virtual Environments: Combining Computer Interaction"
+- "New X Font Technology for X11R6"
+- "Extending X for Recording"
+- "Kerberos Authentication of X Connections"
+
+
+The X Resource: Issue 10
+
+Edited by Adrian Nye
+Spring 1994
+212 pages, ISBN: 1-56592-067-8
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles  and documentation not available elsewhere. Articles  for
+Issue 10 include:
+- "What's New in R6"
+- "The One Minute Manager: Custom Motif Layout Widgets Made Easy"
+- "The Motif  2.0  Uniform  Transfer  Model:  Unifying  Selection,
+           Clipboard, and Drag and Drop"
+- "Implementing Cut and Paste in the X Environment"
+
+Plus: The CDE Printing Server, Automatic Motif Popup Menus, TkMan,
+           the xmove pseudoserver, and more....
+
+
+The X Resource: Special Issue D
+
+Edited by Adrian Nye
+Winter 1994
+370 pages, ISBN: 1-56592-071-6
+
+A  quarterly  working  journal  for X  programmers  that  provides
+practical,  timely  information. The X Resource includes  in-depth
+articles and documentation not available elsewhere. Special  Issue
+D consists of 8 proposed X Consortium standards for public review.
+The articles are:
+- "X Toolkit Intrinsics (Xt)"
+- "Inter-Client Exchange (ICE) Protocol and Library"
+- "X Session Management Protocol (XSMP) and Library"
+- "Inter-Client Communication Conventions Manual (ICCCM)"
+- "X Logical Font Description Conventions (XLFD)"
+- "Input Method (IM) Protocol"
+- "X Synchronization Extension"
+- "Thai and Korean Keysyms"
+
+Motif Tools: Streamlined GUI Design and Programming with the Xmt
+Library
+By David Flanagan
+1024 pages, ISBN: 1-56592-044-9,
+
+New from O'Reilly,  Motif  Tools  and the Xmt programming  library
+           that
+accompanies it on CD-ROM offer resources to help Motif programmers
+dramatically  speed  up application development with the X Toolkit
+           and
+Motif.
+
+Here's what author David Flanagan has to say about why he was
+inspired to write the book and the Xmt library:
+"The  need for a convenience toolkit is something that not  enough
+programmers and managers realize--Motif is too often viewed  as  a
+complete  GUI  development package, when in fact it  was  designed
+only  to  provide a standard base level of functionality. This  is
+where  the  Xmt library comes in; it provides many of the  widgets
+and  functions  that  are  implemented  over  and  over  again  by
+developers.  My  aim  was  to  put  programmer  ease-of-use  first
+(something the designers of Motif obviously did not do) and create
+a library that really simplifies GUI development."
+
+The  Xmt  library  contains  eight custom  widgets  and  over  260
+convenien  ceroutines  that  handle many  tricky  aspects  of  GUI
+programming. The Layout widget, for example, is a flexible manager
+widget  that makes the confusing and awkward Motif Form  widget  a
+thing  of the past. And a single Menu widget will create an entire
+pulldown menu system for an application by reading a special  menu
+description from a resource file or from C code. Other features of
+the  library  simplify  the use of Motif XmStrings,  automate  the
+transfer  of  data  between the fields of  an  application's  data
+structures  and  the  widgets of its dialog  boxes,  and  make  it
+possible  to  automatically create a widget  hierarchy  completely
+described in a resource file.
+
+Motif  Tools  is a comprehensive programmer's guide and  reference
+manual  for  the  Xmt library.  It guides the reader  through  the
+development  of  a  complete application: from  first  conception,
+through  design  and  implementation,  and  on  to  the  finishing
+stylistic  touches--the  myriad  little  details  that  make   the
+difference  between an application that looks sharp and  one  that
+just looks ordinary, between one that is a pleasure to use and one
+that  is  just usable. Scattered throughout the book and collected
+on  the  CD  are programming tips and tidbits submitted  by  Motif
+programmers  from  around the world. The book includes  a  single-
+programmer  license to use the Xmt library source code. Additional
+licenses may be purchased at a nominal cost.

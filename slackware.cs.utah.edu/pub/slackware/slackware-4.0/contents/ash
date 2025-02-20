@@ -1,0 +1,12 @@
+drwxr-xr-x root/root         0 1995-08-06 21:50 ./
+drwxr-xr-x root/root         0 1995-08-06 21:50 usr/
+drwxr-xr-x root/root         0 1994-05-07 15:37 usr/doc/
+drwxr-xr-x root/root         0 1994-05-07 15:37 usr/doc/ash/
+-rw-r--r-- root/root     16862 1994-05-07 15:36 usr/doc/ash/TOUR
+drwxr-xr-x root/root         0 1995-08-06 21:50 usr/man/
+drwxr-xr-x root/root         0 1998-10-19 22:42 usr/man/man1/
+-rw-r--r-- root/root     12926 1998-10-19 22:42 usr/man/man1/ash.1.gz
+drwxr-xr-x root/root         0 1994-05-07 15:37 install/
+-rwxr-xr-x root/root       109 1994-05-07 15:38 install/doinst.sh
+drwxr-xr-x root/bin          0 1994-05-07 15:37 bin/
+-rwxr-xr-x root/bin      61560 1998-10-19 22:42 bin/ash

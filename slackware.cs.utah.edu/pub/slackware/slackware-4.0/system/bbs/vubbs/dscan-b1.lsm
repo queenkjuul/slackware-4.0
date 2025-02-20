@@ -1,0 +1,17 @@
+Begin3
+Title:		dscan
+Version:	Beta-1
+Entered-date:	04APR95
+Description:	File transfer services and browsing menu for VU BBS and
+                supporting user setup module.  All programs conform to VU
+		interface standards.  Allows management of multiple public
+		and private download areas.
+Keywords:	BBS, VU, dscan, ftp, download
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	sunsite.unc.edu /pub/Linux/systems/BBS/vubbs
+		dscan-b1.tar.gz
+Platforms:	Late Linux 1.1.x and above.  Uses later console driver
+                escape sequences for 8 bit transparency modes.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

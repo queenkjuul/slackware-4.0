@@ -1,0 +1,28 @@
+Title:          Morris the cat
+Version:        v0.03
+Entered-date:   January 7th, 1997
+Description:    Morris is a cross between unix's cat and more commands.  It
+		is a "finicky" cat.  Morris takes standard input and writes
+		it to standard output, putting a small pause inbetween lines.
+		Morrise can optionally output one bit at a time, with the same
+		pause between bits, and an optional carriage return after each
+		bit. This time period is defaulted to 1 second, but can be 
+		changed to any amount in seconds, including decimal amounts.  
+		This is very useful when used in conjunction with ircii's /exec
+		command so that the output of a program may be written to
+		a discussion slowly, so that your post does not turn into a
+		flood.
+Keywords:       text, utility, perl, linux, unix, pause, cat, more, e-mailware,
+		bit, bitwise, irc, ircii, /exec, finicky
+Author:         ep@eden.rutgers.edu (EpStEiN productions)
+Maintained-by:  ep@eden.rutgers.edu (Brian Epstein)
+Primary-site:   sunsite.unc.edu /pub/Linux/Incoming
+			3.0 kb morris-v0.03.tar.gz
+			  1 kb morris-v0.03.lsm
+Alternate-site: 
+Original-site:  sunsite.unc.edu /pub/Linux/Incoming
+			3.0 kb morris-v0.03.tar.gz
+			  1 kb morris-v0.03.lsm
+Platform:       designed on Linux, with PERL5. 
+Copying-policy: e-mailware.  Please e-mail me with BUGS/improvements.
+		ep@eden.rutgers.edu

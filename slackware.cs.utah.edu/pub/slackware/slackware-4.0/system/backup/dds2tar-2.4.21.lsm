@@ -1,0 +1,26 @@
+Begin3
+Title:         Tool to maintain tar tape archives and control compression.
+Version:       2.4.21
+Description:   Once you have recorded the record number of each file of
+               a tar scsi-tape archive, you are able to find and extract these
+               files very fast. If you have a DAT drive, you can extract every
+               small file from a 2GB tape within 40 seconds.
+               tar2tar is included to change the pathnames inside a tar-archive.
+Author:        weule@acm.org (J"org Weule)
+Maintained-by: weule@acm.org
+Primary-Site:  ftp.uni-duesseldorf.de:/pub/unix/apollo
+                         65066 dds2tar-2.4.21.tar.gz
+Alternate-Site:sunsite.unc.edu:/pub/linux/system/backup
+                         65066 dds2tar-2.4.21.tar.gz
+Platforms:     Linux and HP (because of the TELL and SEEK command)
+               HP is not well supported.
+               SCSI-Tape drive
+Copying-Policy:GPL
+Keywords:      tape archives  , tar
+Comment:       The software is only convenient, if your tape supports a fast
+               positioning command.
+               Added code (mt-dds) to change the compression mode of HP-DAT.
+               tar2tar will work on every computer with ANSI-C.
+               A patch to GNU-tar is included to add the option --record-file.
+End
+

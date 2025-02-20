@@ -1,0 +1,156 @@
+What is Diskless LINUX (DL-Linux)?
+----------------------------------
+
+Diskless Linux allows to have a Linux workstation on PCs without a hard
+disk, provided that you have a "Linux server" which is a NFS server.
+The Linux server exports the /home, /usr, /var, /sbin, and /bin
+directories; you can choose to export /lib from the Linux server, but
+this slows considerably the system.
+
+What do you need?
+-----------------
+
+You need a BOOT disk and a ROOT disk. The BOOT disk is made with
+these instructions:
+
+dd if=/vmlinuz of=/dev/fd0
+/sbin/vidmode /dev/fd0 0
+/sbin/ramsize /dev/fd0 1440
+/sbin/rdev /dev/fd0 /vmlinuz
+
+I assume that the working kernel is named "vmlinuz". You can change
+the video mode to whatever you want; 0 means the 80x50 mode, which I
+prefer. You can also set the ramsize to 0 if you want to have
+more free RAM; this slows things, but if you want to have more memory
+for Xwindows, you can do that; remember that diskless workstations
+can't use a swapfile and that a RAM disk uses part yof your RAM.
+
+The ROOT disk has an ext2 filesystem with the basic things needed to
+load a Linux session and to mount the remote filesystems described 
+above. A sample ROOT disk is included in the distribution. The base
+of it is a root disk made by the SAR package, but it has been 
+pretty heavily modified. Some of the differences are:
+
+- Some additional programs included.
+- The /etc/inittab and the "rc" (system initialization) programs were
+  heavily modified. The /etc/inittab file is similar to the Slackware
+  distribution. The rc.S file calls the rc.bootp script for getting
+  the station's IP address and network configuration.
+- The BOOTP program, bootpc and the rc.bootp script was made by
+  Charles Hawkins (ceh@eng.cam.ac.uk) and modified by Jon Peatfield
+  (J.S.Peatfield@amtp.cam.ac.uk) from from the U. of Cambridge, UK.
+  I made some further modifications to the script.
+
+Installation
+------------
+
+1. Make a boot disk with or without RAMDISK. If your Linux station has
+   a hard disk, it's better to make a boot disk with RAMDISK, because
+   you can make a 8-16 MB swap partition. If your station is diskless,
+   it depends on how much RAM do you have. If you have only 4 MB, make
+   a boot disk without RAMDISK. If you have 8 MB, and want to load
+   Xwindows, use make also a boot disk without RAMDISK. For more than
+   8 MB or 8 MB without Xwindows, you can choose to make a boot disk
+   with RAMDISK.
+
+   I have two scripts, "make.boot.ram" and "make.boot.noram" for doing
+   a boot disk.
+
+2. Download a root disk. Then get a formatted diskette and type:
+
+   dd if=<boot image> of=/dev/fd0
+
+   <boot image> can be "root.swapfile" for stations with a hard disk
+   (usually DOS machines with a Linux swap partition), or 
+   "root.no.swapfile", usually for diskless stations; you can't make
+    a remote swapfile.....
+
+3. If you need and to, make a swap partition or swap file. You will
+   need some 8-16 MB of free disk.
+   
+4. Now modify your 
+
+   mount /dev/fd0 /mnt
+
+   After this, examine the mounted filesystems and modify whatever you
+   need, among them:
+
+   /etc/fstab      	-   for mounting the right filesystems from the
+                      	    Linux server and perhaps mounting other
+			    filesystems from anywhere else
+   /etc/rc.d/rc.bootp	-   for the BOOTP configuration 
+   /etc/rc.d/rc.S	-   you can modify it for setting up directly
+			    your IP address without invoking rc.bootp
+   /etc/passwd and	-   you can, for example make these links to
+   /etc/group		    a directory where you have a copy of the
+			    server original files
+
+   After modifying the root disk to your liking, type:
+
+   umount /mnt
+
+5. Check that the Linux server has the correct configuration for
+   mounting the Linux filesystems:
+
+-  Check that the /etc/exports exports the /home, /var, /sbin, 
+   /bin, /tmp and /usr filesystems. You can choose to export /lib,
+   also. WARNING: restrict the access of these filesystems to the
+   stations authorized to use Diskless Linux.
+
+-  Check that the /etc/rc.d/rc.inetd2 activates the rpc.portmap, 
+   rpc.mountd and rpc.nfsd daemons. If not, uncomment the respective
+   parts of the rc.inet2 script.
+
+6. Have your BOOTP server adequately configurated.
+
+7. Go to a station, insert a boot disk and type CTRL-ALT-DEL. When
+   inserting a root disk or ramdisk is asked, insert your root
+   disk. After some seconds, the login prompt should appear. Login
+   as "root" and check that all is right.
+
+
+Some possible scenarios
+-----------------------
+
+1. A diskless station with 4 MB RAM
+   --------------------------------
+
+Use only a boot floppy WITHOUT a RAMDISK and a swapless root disk.
+The first is needed because you can give away any single byte of RAM,
+and the second because there is no such thing as a remote swap area....
+
+2. A diskless station with 8 MB RAM
+   --------------------------------
+
+You can use a boot floppy with or without a RAMDISK. It depends on
+using or not Xwindows. If you wish to work with Xwindows, use a 
+boot disk without a RAMDISK. Otherwise, you won't have enough
+RAM for running X. Use a swapless root disk.
+
+3. A diskless station with 12-16 MB RAM
+   ------------------------------------
+
+I think you can use confidently a boot floppy WITH a RAMDISK unless
+you want to run lots of X applications or memory-consuming programs.
+Use always a swapless root disk.
+
+4. A DOS station with any RAM and a 8+ MB swap partition or file
+   ---------------------------------------------------------------
+
+Use a boot floppy with RAMDISK and a root disk with a swapfile. Here
+you can run any application depending on how much physical and
+virtual (swap) RAM do you have. This is, of course, the best scenario.
+
+To do
+-----
+
+Probably this same work on a little (about 5 MB) hard disk Linux partition.
+Also, improvements on this work.
+
+
+Comments
+--------
+
+Mail any comment, suggestion, etc. to Mario A. Guerra
+(mguerra@cariari.ucr.ac.cr). I work at the University of Costa Rica.
+

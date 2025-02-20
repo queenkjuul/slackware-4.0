@@ -1,0 +1,17 @@
+Begin3
+Title:          changemac
+Version:	version 1.0
+Entered-date:   20FEB98
+Description:    change your mac address on Linux Box
+		It could work on other U*ix machines with 
+		change of ioctl call.
+Keywords:       MAC ethernet address network card
+Author:         azdaja@galeb.etf.bg.ac.yu Milos Prodanovic
+Maintained-by:  azdaja@galeb.etf.bg.ac.yu Milos Prodanovic ( AWL )
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/admin
+		changemac.gz
+Alternate-site:
+Original-site:  galeb.etf.bg.ac.yu ~azdaja/changemac.html
+Platforms:      Linux with ethernet network card.
+Copying-policy: GPL
+End

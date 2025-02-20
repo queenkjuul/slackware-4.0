@@ -1,0 +1,16 @@
+Begin3
+Title:          STk
+Version:        3.99.4
+Entered-date:   02feb99
+Description:    A R4RS Scheme interpreter with  Tk toolkit access.
+		The package also provides an Object Oriented  
+		Extension (STklos)
+Keywords:       Scheme R4RS Tk Tcl CLOS X11 OO
+Author:         eg@unice.fr (Erick Gallesio)
+Maintained-by:  eg@unice.fr (Erick Gallesio)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lisp
+		3.5 MB STk-3.99.4.tar.gz
+Original-site:  kaolin.unice.fr /pub
+		3.5 MB STk-3.99.4.tar.gz
+Copying-policy: Copyrighted but freely redistributable
+End

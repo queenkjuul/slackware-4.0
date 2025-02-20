@@ -1,0 +1,64 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-xv
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_xv.tar.gz
+
+# Function to handle manpage source:
+man2gz () { # $1 is source page name, $2 is target name for preformatted
+            # output (full path && name) and $3 is the same, but for the
+            # source.
+  mkdir -p `dirname $2`
+  groff -Tascii -mandoc $1 | gzip -9c > $2
+  if [ ! "$3" = "" ]; then
+    mkdir -p `dirname $3`
+    cat $1 > $3 
+  fi 
+}
+
+echo "+=========+"
+echo "| xv-3.10 |"
+echo "+=========+"
+cd $TMP
+tar xzvf $CWD/xv-3.10.tar.gz
+cd xv-3.10
+cat $CWD/xv-3.10a.patch | patch -p0
+cat $CWD/xv-3.10a.diff | patch -p0
+#cat $CWD/xv-3.10a.JPEG-patch | patch -p0
+#cat $CWD/xv-3.10a.TIFF-patch | patch -p0
+make
+strip bggen vdcomp xcmap xv xvpictoppm
+cat bggen > $PKG/usr/X11R6/bin/bggen
+cat vdcomp > $PKG/usr/X11R6/bin/vdcomp
+cat xcmap > $PKG/usr/X11R6/bin/xcmap
+cat xv > $PKG/usr/X11R6/bin/xv
+cat xvpictoppm > $PKG/usr/X11R6/bin/xvpictoppm
+for page in docs/xv.man docs/bggen.man docs/xcmap.man docs/xvp2p.man ; do
+  cat $page | gzip -9c > $PKG/usr/X11R6/man/man1/`basename $page .man`.1.gz
+done
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/xv.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/xv-3.10
+  rm -rf $PKG
+fi

@@ -1,0 +1,38 @@
+Begin2
+Title        = Minix disk editor/viewer + fsck improvements.
+Version      = 2.0.1
+Desc1        = This allows you to view the Minix fs (a la Norton disk edit), it
+Desc2        = currently is read only, but you can use it to dump an erased
+Desc3        = file to another partition with a little bit of work.
+Desc4        = Includes: LaTeX Introduction to the Minix fs.  fsck enhancements.
+Desc5        = search features.
+Author       = Scott D. Heavner
+AuthorEmail  = sdh@po.cwru.edu
+Maintainer   = author
+MaintEmail   =
+Site1        = sunsite
+Path1        =
+File1        = fsck-lde-2.0.1.tgz
+FileSize1    = 93185
+Site2        = tsx-11
+Path2        =
+File2        = fsck-lde-2.0.1.tgz 
+FileSize2    = 93185
+Site3        = nic.funet.fi
+Path3        =
+File3        = fsck-lde-2.0.1.tgz 
+FileSize3    = 93185
+Required1    = ncurses-*7* (8 doesn't work, maybe 8.1)
+CopyPolicy1  = Gnu
+Keywords     = unerase recover edit Minix 
+Comment1     = Still needs a lot of work and a lot of it could be automated to make
+Comment2     = most file recovery easy if detected at an early stage.
+Comment3     = Included binary and source.
+Comment4     = Also includes improved fsck and mkfs for Minix fs.
+RelFiles1    = filemode.c (Gnu) -- parses file mode flag to make dwrxwrxwrx stuff.
+RelFiles2    = bpe (on tsx-11 somewhere) -- not included -- will write to the disk
+Entered      = 14NOV93 
+EnteredBy    = author
+CheckedEmail =
+End
+

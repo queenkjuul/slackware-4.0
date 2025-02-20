@@ -1,0 +1,16 @@
+Begin3
+Title:          rdist
+Version:        6.1.0
+Entered-date:   1995-05-05
+Description:    remote file distribution client program
+Keywords:       remote file distribution
+Author:         mcooper@usc.edu (Michael Cooper)
+Maintained-by:  Thomas Koenig (Thomas.Koenig@ciw.uni-karlsruhe.de)
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Network/file-transfer
+			rdist-6.1.0-linux.tar.gz 112146
+				MD5-Checksum: 43a972b50da0dab708ea656fc862045a
+			rdist-6.1.0-linux.lsm 566
+Original-site:  usc.edu:/pub/rdist
+			rdist-6.1.0.tar.gz 111400
+Copying-policy: BSD
+End

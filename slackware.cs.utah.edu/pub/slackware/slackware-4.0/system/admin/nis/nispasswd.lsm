@@ -1,0 +1,14 @@
+Begin3
+Title:          nispasswd
+Version:        1.0
+Entered-date:   13Apr97
+Description:    This packages are needed to change your NIS+ password from
+		a linux box.
+Keywords:       NIS+, passwd, nispasswd, password
+Author:         kukuk@uni-paderborn.de (Thorsten Kukuk)
+Primary-site:   sunsite.unc.edu /pub/Linux
+Alternate-site: http://www-vt.uni-paderborn.de/~kukuk/linux/nisplus.html
+		14526 nispasswd-1.0.tar.gz
+Platforms:	Linux libc 5 with NYS
+Copying-policy: GPL
+End

@@ -1,0 +1,1330 @@
+diff --unified --recursive --new-file ircii-2.8.2.old/Makefile.in ircii-2.8.2/Makefile.in
+--- ircii-2.8.2.old/Makefile.in	Wed Jan  4 22:40:23 1995
++++ ircii-2.8.2/Makefile.in	Wed Aug 14 14:38:12 1996
+@@ -27,7 +27,7 @@
+ 
+ # Where the ircII binary will be installed.
+ # 'make install' will compile and install the program
+-INSTALL_IRC = $(bindir)/irc
++INSTALL_IRC = $(bindir)/colirc
+ 
+ # Where the ircII library will be.  Generally this is the place that
+ # you put the scripts, help pages and translation tables.  It is
+@@ -181,7 +181,7 @@
+ installbin: installirc installserv installflush installwserv
+ 
+ installirc: irc installdirs
+-	$(INSTALL) source/irc $(INSTALL_IRC)-$(VERSION)
++	$(INSTALL) source/colirc $(INSTALL_IRC)-$(VERSION)
+ 	@if test -f $(INSTALL_IRC).old; then $(RM) $(INSTALL_IRC).old; fi
+ 	@if test -f $(INSTALL_IRC); then $(MV) $(INSTALL_IRC) $(INSTALL_IRC).old; fi
+ 	$(RM) $(INSTALL_IRC)
+diff --unified --recursive --new-file ircii-2.8.2.old/README.colirc ircii-2.8.2/README.colirc
+--- ircii-2.8.2.old/README.colirc	Wed Dec 31 16:00:00 1969
++++ ircii-2.8.2/README.colirc	Thu Aug 15 05:09:59 1996
+@@ -0,0 +1,68 @@
++colirc patch 0.3 <ircii 2.8.2>
++bitching and whatnot goes to clue@oz.net <MadHacker on LinuxNet>
++if you didn't get a reply from my old email address it's because i lost my inet
++access almost immediately after releasing colirc 0.2...this address should be 
++fairly stable...
++
++i added some alias commands to make color scripts, and wrote a script <madirc>
++the script is in the script dir of course...look at the script for more colirc
++script coding exaples
++
++$colorize(string)
++	returns a printable string(with echo)
++	to stick colors in a string you use ` for an escape char and 0-7 for
++	colors, b for bright(to print bright you must put the bright after the
++	color)
++	example: echo $colorize(`6test)
++	this would print the word test in color 6(cyan)
++	
++$colorof(nick)
++	this returns the color(in `#`b format, see $colorize()) of the nick
++	passed to it
++	example: echo $colorize($colorof(nick)nick)
++	this would print nick in whatever color nick is
++
++you can now also use usecolor instead of rcolor, which was a poor name for the
++function to begin with
++
++the next patch will be against epic most likely, it has alot of cool scripting
++functions, so expect to see madirc getting better :)
++
++X: if you're going to run this under X, use ansi_xterm damnit. standard xterm
++and rxvt use 8 colors and bold them to make them bright. this really sucks.
++i don't want any more complaints that bright black is still black under X. if
++you can't use ansi_xterm for some reason, do usecolor -bblack.
++
++-------------------
++colirc patch 0.21 <ircii 2.8.2> (distributed on irc only)
++0.2 patch only compiled on linux, forgot to make distclean before making the
++patch :/
++
++-------------------
++colirc patch 0.2 <ircii 2.8.2>
++
++/color to change color of nicks
++/set colorline on to turn on full line color <default off>
++/rcolor to set colors picked to colorize nicks
++
++_USAGE_
++
++colors: black red green brown blue purple cyan white none
++for bright colors prefix b to the color <bred for bright red, etc>
++
++/color nick color
++/rcolor +color or -color <-all and +all can be used>
++/rcolor can accept multiple args </rcolor -all +red +green +blue>
++
++notes...
++
++if a nick does not have a color set to it<with /color> then it will have the
++color that hasn't been used in the longest time assigned to it. the colors 
++assigned can be picked with /rcolor. default is all colors except black.
++
++if you have colorline set on, the whole line said by a person will be the
++color of thier nick.
++
++you can change the color of channels if you are in multiple channels at
++once. </set #channel green>
++
+diff --unified --recursive --new-file ircii-2.8.2.old/include/color.h ircii-2.8.2/include/color.h
+--- ircii-2.8.2.old/include/color.h	Wed Dec 31 16:00:00 1969
++++ ircii-2.8.2/include/color.h	Wed Aug 14 14:38:12 1996
+@@ -0,0 +1,32 @@
++#ifndef _COLOR_H_
++#define _COLOR_H_
++/* define colors as control chars */
++#define BLACK           '\027'
++#define RED             BLACK+1
++#define GREEN           BLACK+2
++#define BROWN           BLACK+3
++#define BLUE            BLACK+4
++#define PURPLE          BLACK+5
++#define CYAN            BLACK+6
++#define WHITE           BLACK+7
++#define BRIGHT          '\025'
++
++#define SAY_COLOR BLUE
++
++#ifndef TRUE
++#define TRUE 1
++#endif
++
++typedef struct _name_color  
++{
++        char *name;
++        char colorstr[5];
++        struct _name_color *next;
++} name_color;
++
++extern  void    colorcmd _((char *, char *, char *));
++extern  void    rcolorcmd _((char *, char *, char *));
++char *color_of();
++name_color *find_nc_name();
++char *tolower_str();
++#endif /* _COLOR_H_ */
+diff --unified --recursive --new-file ircii-2.8.2.old/include/config.h ircii-2.8.2/include/config.h
+--- ircii-2.8.2.old/include/config.h	Fri Jan 20 17:36:03 1995
++++ ircii-2.8.2/include/config.h	Wed Aug 14 14:38:12 1996
+@@ -23,7 +23,7 @@
+  * to your nearest servers.  However if you use a seperate 'ircII.servers'
+  * file and the ircII can find it, this setting is overridden.
+  */
+-#define DEFAULT_SERVER	    "irc"
++#define DEFAULT_SERVER	    "linux.mit.edu"
+ 
+ /*
+  * Uncomment the following if the gecos field of your /etc/passwd has other
+@@ -152,6 +152,7 @@
+ #define DEFAULT_CLOCK_24HOUR 1
+ #define DEFAULT_CLOCK_ALARM NULL
+ #define DEFAULT_CMDCHARS "/"
++#define DEFAULT_COLORLINE 0
+ #define DEFAULT_COMMAND_MODE 0
+ #define DEFAULT_CONTINUED_LINE "  "
+ #define DEFAULT_DCC_BLOCK_SIZE 512
+diff --unified --recursive --new-file ircii-2.8.2.old/include/config.h.dist ircii-2.8.2/include/config.h.dist
+--- ircii-2.8.2.old/include/config.h.dist	Mon Oct 17 04:58:26 1994
++++ ircii-2.8.2/include/config.h.dist	Wed Aug 14 14:38:12 1996
+@@ -23,7 +23,7 @@
+  * to your nearest servers.  However if you use a seperate 'ircII.servers'
+  * file and the ircII can find it, this setting is overridden.
+  */
+-#define DEFAULT_SERVER	    "change.this.to.a.server"
++#define DEFAULT_SERVER	    "irc"
+ 
+ /*
+  * Uncomment the following if the gecos field of your /etc/passwd has other
+@@ -153,6 +153,7 @@
+ #define DEFAULT_CLOCK_24HOUR 1
+ #define DEFAULT_CLOCK_ALARM NULL
+ #define DEFAULT_CMDCHARS "/"
++#define DEFAULT_COLORLINE 0
+ #define DEFAULT_COMMAND_MODE 0
+ #define DEFAULT_CONTINUED_LINE "+"
+ #define DEFAULT_DCC_BLOCK_SIZE 512
+diff --unified --recursive --new-file ircii-2.8.2.old/include/irc.h ircii-2.8.2/include/irc.h
+--- ircii-2.8.2.old/include/irc.h	Mon Jan  2 05:31:40 1995
++++ ircii-2.8.2/include/irc.h	Wed Aug 14 14:38:12 1996
+@@ -12,7 +12,7 @@
+ #ifndef __irc_h
+ #define __irc_h
+ 
+-#define IRCII_COMMENT   "this is a bug free client.  honest"
++#define IRCII_COMMENT   "colirc"
+ 
+ #define IRCRC_NAME "/.ircrc"
+ 
+diff --unified --recursive --new-file ircii-2.8.2.old/include/vars.h.proto ircii-2.8.2/include/vars.h.proto
+--- ircii-2.8.2.old/include/vars.h.proto	Fri Jan  6 07:23:36 1995
++++ ircii-2.8.2/include/vars.h.proto	Wed Aug 14 14:38:12 1996
+@@ -50,6 +50,7 @@
+ #define CLOCK_24HOUR_VAR $
+ #define CLOCK_ALARM_VAR $
+ #define CMDCHARS_VAR $
++#define COLORLINE_VAR $
+ #define COMMAND_MODE_VAR $
+ #define CONTINUED_LINE_VAR $
+ #define DCC_BLOCK_SIZE_VAR $
+diff --unified --recursive --new-file ircii-2.8.2.old/script/madirc ircii-2.8.2/script/madirc
+--- ircii-2.8.2.old/script/madirc	Wed Dec 31 16:00:00 1969
++++ ircii-2.8.2/script/madirc	Thu Aug 15 05:25:39 1996
+@@ -0,0 +1,207 @@
++eval echo $colorize(`0`b//`6Mad's colirc Script`0`b//)
++
++# stuff
++usecolor -bblack -bwhite -blue -bgreen -brown -white
++umode +is
++
++# general sets
++set novice off
++set help_path .irchelp
++set history 30
++set lastlog 1000
++set lastlog_level all dcc
++set -input_prompt
++set indent on
++set flood_warning off
++set client_information MadIRC 1.0
++# signoff msg if you don't provide one
++@ signmsg = [brainless logoff]
++# set to 0 if you don't want to autoget dccs
++@ autoget = 1
++
++# aliases
++alias l leave *
++alias op mode * +o $0
++alias deop mode * -o $0
++alias k kick * $0 $1-
++alias ban mode * +b $0
++alias unban mode * -b $0
++alias j if ([#]==[$[1]0]) {//join $0-} {//join #$0-}
++alias m msg
++alias sc names *
++alias r load .script
++alias sc names *
++alias listb mode * +b
++alias lj leave $C;timer 3 join $C
++alias nick quote nick
++alias quit signoff $0-
++
++# people stuff
++alias friend @friends = [$friends $0]
++alias enemy @enemies = [$enemies $0]
++alias aop @aops = [$aops $0]
++
++# make a file called .folx and stick your friends/enemies/aops in it, then
++# uncomment the following line...here's a sample of what's in it
++# load .folx
++friend madhacker
++enemy billgates
++aop *!*@clue.oz.net
++
++# key bindings
++bind meta1-[ meta2
++bind meta1-O meta2
++bind meta2-A backward_history
++bind meta2-B forward_history
++bind meta2-C forward_character
++bind meta2-D backward_character
++bind ^B self_insert
++bind ^_ self_insert
++bind ^V self_insert
++bind ^X switch_channels
++bind ^I parse_command ^getmsg 1 $msglist 
++
++# status bar
++set clock on
++set clock_24hour off
++set status_clock %T
++set status_format [%T] %@%N%#%C%+ %>%U
++
++# cool shit
++# auto rejoin
++on ^kick "*" {
++	echo $colorize(`4*** `6`b$0 `6has been kicked off $2 by `b$1`6 \(`b$3-`6\))
++	if ([$0] == [$N]) {
++		wait -CMD # 
++		join $2
++	}
++}
++on ^send_msg * {
++	echo $colorize(`b//`2`b$0`7`b//`7 $1-)
++	^addmsg $0 $msglist
++}
++on ^msg * {
++	echo $colorize(`b\\\\$0\\\\`7 $1-)
++	^addmsg $0 $msglist
++}
++on ^send_action * echo $colorize(* `2`b$N`7 $1-)
++on ^send_public * echo $colorize(`b<`2`b$N`7`b>`7 $1-)
++on ^mode * echo $colorize(`4*** `6mode "`b$2-`6" on $1 by `b$0)
++on ^leave * echo $colorize(`4*** `6`b$0 `6left $1)
++on ^signoff * echo $colorize(`4*** `6signoff: `b$0 `6\(`b$1-`6\))
++on ^nickname * echo $colorize(`4*** `6`b$0`6 is now `b$1)
++on ^topic * echo $colorize(`4*** `6topic "`b$2-`6" on $1 by `b$0)
++# topic
++on ^332 * echo $colorize(`4*** `6topic for $1 "`b$2-`6")
++on ^333 * echo $colorize(`4*** `6topic by `b$2`6\($stime($3)\)) 
++on ^join * echo $colorize(`4*** `6`b$0 `6joined $1)
++# who
++on ^raw_irc "% 352 *" echo $colorize(`4*** `6`b$4: `6$7@$5 \($10-\))
++on ^signoff * echo $colorize(`4*** `6signoff: `b$0`6\(`b$1-`6\))
++on ^server_notice *
++
++# color follow nick
++on #^nickname 100 * {
++	@ color1 = colorof($0)
++	@ color2 = mid(1 1 $color1)
++	@ color3 = [$color2$mid(3 1 $color1)
++	color $1 $color3
++}
++
++# names
++on ^353 * {
++	@printme = [`6`b$2`6:]
++	@folx = [$3-]
++	@count = 0
++	while (count < #folx)
++	{
++		@name = word($count $folx)
++		
++		@is = is_friend($name)
++# friend	
++		if (is == 1)
++			{@printme = [$printme `6`b$name]}
++# enemy			
++		{if (is == 2)
++			{@printme = [$printme `1$name]}
++# normal			
++		{if (is == 0)
++			{@printme = [$printme `6$name]}
++		}
++		}
++		@count = count + 1
++	}
++	echo $colorize($printme)
++}
++
++# auto op
++on #^join 100 * {
++	if (ischanop($N $1))
++		{if (rmatch($0!$userhost() $aops)) {timer 1 mode $1 +o $0}}
++}
++
++# returns 0 if normal, 1 if friend, 2 if enemy
++alias is_friend {
++	@friend_name = strip(@ $0)
++	@friend_name = strip(+ $friend_name)
++	if (match($friend_name $friends))
++		{@function_return = 1}
++	{if (match($friend_name $enemies))
++		{@function_return = 2}
++		{@function_return = 0}
++	}
++}
++
++# lag-o-meter
++on ^raw_irc "%.% PONG *" {
++	if ([$0]==[$S]) {
++		^assign lagtime ${time()-mid(1 999 $3)}
++		if (lagtime==0) {^set status_user no Lag }
++		{^set status_user  Lag $lagtime }
++	}
++}
++on -timer  * {
++	^set STATUS_USER  Lag ?
++	quote PING $time() $S
++}
++
++alias bk userhost $0 -cmd mode * -o+b $$0 *!*@$$4;timer 1 k $0 $1-
++
++alias signoff {
++	if ([$0]) {
++		echo $colorize(`4*** `6Signoff: `b$N`6 \(`b$0-`6\))
++		//signoff $0-
++	}
++	{
++		echo $colorize(`4*** `6Signoff: `b$N`6 \(`b$signmsg`6\))
++		//signoff $signmsg
++	}
++}
++
++# DCC
++on ^ctcp "* * DCC SEND *" { 
++	if (autoget) {
++		echo $colorize(`0`b[`4`bDCC`0`b] `6auto getting `b$4 `6from `b$0)
++		dcc get $0 $4
++	}
++}
++
++#------------------------------------------------------------------------------
++# shit stolen from phoenix, rewrite
++
++# for tab msg shit
++alias getmsg {
++@ msgcnt = msgcnt + [$0]
++if (#msglist < msgcnt) {@ msgcnt = 1}
++if (msgcnt <= 0) {@ msgcnt =  #msglist}
++@ junk = K ## [m]
++//type ^U$junk $^^{[$($msgcnt)]} 
++}
++
++alias addmsg {
++@ matched = rmatch($0 $^\1-)
++if (matched) {@ msglist = [$(0-${matched-1}) $(${matched+1}-)]}
++{@ msglist = [$(0-${msgmax-1})]}
++@ msgcnt = 0
++^assign -matched
++}
+diff --unified --recursive --new-file ircii-2.8.2.old/source/Makefile.in ircii-2.8.2/source/Makefile.in
+--- ircii-2.8.2.old/source/Makefile.in	Thu Dec 29 03:02:44 1994
++++ ircii-2.8.2/source/Makefile.in	Wed Aug 14 14:38:13 1996
+@@ -15,14 +15,14 @@
+ LN	= @LN@
+ RM	= @RM@
+ 
+-OBJECTS = alias.o crypt.o ctcp.o dcc.o debug.o edit.o exec.o flood.o\
++OBJECTS = alias.o color.o crypt.o ctcp.o dcc.o debug.o edit.o exec.o flood.o\
+ 	funny.o help.o history.o hold.o hook.o if.o ignore.o input.o\
+ 	irc.o ircaux.o ircsig.o keys.o lastlog.o list.o log.o mail.o\
+ 	menu.o names.o newio.o notice.o notify.o numbers.o output.o\
+ 	parse.o queue.o reg.o scandir.o screen.o server.o stack.o\
+ 	status.o term.o translat.o vars.o whois.o window.o $(PP_OBJS)
+ 
+-SOURCES = alias.c crypt.c ctcp.c dcc.c debug.o edit.c exec.c flood.c\
++SOURCES = alias.c color.c crypt.c ctcp.c dcc.c debug.o edit.c exec.c flood.c\
+ 	funny.c help.c history.c hold.c hook.c if.c ignore.c input.c\
+ 	irc.c ircaux.c ircsig.c keys.c lastlog.c list.c log.c mail.c\
+ 	menu.c names.c newio.c notice.c notify.c numbers.c output.c\
+@@ -42,7 +42,7 @@
+ default:
+ 	(cd ..;make)
+ 
+-all: irc
++all: colirc
+ 
+ # got I hate typos.
+ clena: clean
+@@ -50,12 +50,12 @@
+ .c.o:
+ 	$(CC) $(CFLAGS) $(DEFS) $(PP_DEFS) $(INCLUDES) -c $<
+ 
+-irc: $(OBJECTS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) -o irc $(OBJECTS) $(LIBS)
++colirc: $(OBJECTS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) -o colirc $(OBJECTS) $(LIBS)
+ clean::
+-	$(RM) irc $(OBJECTS)
++	$(RM) colirc $(OBJECTS)
+ 
+-install: irc
++install: colirc
+ 	cd ..; $(MAKE) install
+ 
+ # .o files needing special compilation flags
+@@ -141,6 +141,8 @@
+   ../include/history.h ../include/vars.h ../include/ircaux.h ../include/server.h \
+   ../include/screen.h ../include/window.h ../include/hold.h ../include/lastlog.h \
+   ../include/menu.h ../include/input.h ../include/names.h ../include/output.h 
++color.o: color.c ../include/irc.h ../include/color.h ../include/vars.h \
++  ../include/output.h
+ crypt.o: crypt.c ../include/irc.h ../include/defs.h ../include/config.h ../include/irc_std.h \
+   ../include/debug.h ../include/crypt.h ../include/vars.h ../include/ircaux.h \
+   ../include/list.h ../include/ctcp.h ../include/output.h 
+@@ -164,7 +166,8 @@
+   ../include/keys.h ../include/names.h ../include/alias.h ../include/history.h \
+   ../include/funny.h ../include/ctcp.h ../include/dcc.h ../include/translat.h \
+   ../include/output.h ../include/exec.h ../include/notify.h ../include/numbers.h \
+-  ../include/status.h ../include/if.h ../include/help.h ../include/stack.h ../include/queue.h 
++  ../include/status.h ../include/if.h ../include/help.h ../include/stack.h \
++  ../include/queue.h ../include/color.h
+ exec.o: exec.c ../include/irc.h ../include/defs.h ../include/config.h ../include/irc_std.h \
+   ../include/debug.h ../include/exec.h ../include/vars.h ../include/ircaux.h ../include/edit.h \
+   ../include/window.h ../include/hold.h ../include/lastlog.h ../include/menu.h \
+@@ -267,13 +270,14 @@
+   ../include/debug.h ../include/output.h ../include/vars.h ../include/input.h \
+   ../include/term.h ../include/lastlog.h ../include/window.h ../include/hold.h \
+   ../include/edit.h ../include/menu.h ../include/screen.h ../include/hook.h ../include/ctcp.h \
+-  ../include/log.h 
++  ../include/log.h ../include/color.h
+ parse.o: parse.c ../include/irc.h ../include/defs.h ../include/config.h ../include/irc_std.h \
+   ../include/debug.h ../include/server.h ../include/names.h ../include/window.h \
+   ../include/hold.h ../include/lastlog.h ../include/edit.h ../include/menu.h ../include/vars.h \
+   ../include/ctcp.h ../include/hook.h ../include/ignore.h ../include/whois.h ../include/ircaux.h \
+   ../include/funny.h ../include/crypt.h ../include/term.h ../include/flood.h ../include/screen.h \
+-  ../include/output.h ../include/numbers.h ../include/parse.h ../include/notify.h 
++  ../include/output.h ../include/numbers.h ../include/parse.h ../include/notify.h \
++  ../include/color.h
+ queue.o: queue.c ../include/irc.h ../include/defs.h ../include/config.h ../include/irc_std.h \
+   ../include/debug.h ../include/alias.h ../include/ircaux.h ../include/output.h \
+   ../include/edit.h ../include/if.h ../include/queue.h 
+@@ -285,7 +289,7 @@
+   ../include/lastlog.h ../include/edit.h ../include/menu.h ../include/output.h \
+   ../include/vars.h ../include/server.h ../include/list.h ../include/term.h ../include/names.h \
+   ../include/ircaux.h ../include/input.h ../include/log.h ../include/hook.h ../include/dcc.h \
+-  ../include/translat.h ../include/exec.h 
++  ../include/translat.h ../include/exec.h ../include/color.h
+ server.o: server.c ../include/irc.h ../include/defs.h ../include/config.h ../include/irc_std.h \
+   ../include/debug.h ../include/server.h ../include/ircaux.h ../include/whois.h \
+   ../include/lastlog.h ../include/exec.h ../include/window.h ../include/hold.h \
+@@ -299,7 +303,7 @@
+   ../include/vars.h ../include/hook.h ../include/input.h ../include/edit.h ../include/window.h \
+   ../include/hold.h ../include/lastlog.h ../include/menu.h ../include/screen.h \
+   ../include/mail.h ../include/output.h ../include/names.h ../include/ircaux.h \
+-  ../include/translat.h 
++  ../include/translat.h ../include/color.h
+ term.o: term.c ../include/irc.h ../include/defs.h ../include/config.h ../include/irc_std.h \
+   ../include/debug.h ../include/term.h ../include/translat.h ../include/window.h \
+   ../include/hold.h ../include/lastlog.h ../include/edit.h ../include/menu.h ../include/screen.h 
+diff --unified --recursive --new-file ircii-2.8.2.old/source/alias.c ircii-2.8.2/source/alias.c
+--- ircii-2.8.2.old/source/alias.c	Sun Jan  1 23:31:45 1995
++++ ircii-2.8.2/source/alias.c	Wed Aug 14 15:40:13 1996
+@@ -28,6 +28,7 @@
+ #include "server.h"
+ #include "output.h"
+ #include "names.h"
++#include "color.h"
+ 
+ extern	char	*dcc_raw_listen();
+ extern	char	*dcc_raw_connect();
+@@ -150,6 +151,8 @@
+ 	char	*function_ppid _((char *));
+ 	char	*function_chanusers _((char *));
+ 	char	*function_strftime _((char *));
++        char    *function_colorize _((char *));
++        char    *function_colorof _((char *));
+ 
+ typedef struct
+ {
+@@ -192,6 +195,8 @@
+ 	{ "PPID",		function_ppid },
+ 	{ "CHANUSERS",		function_chanusers },
+ 	{ "STRFTIME",		function_strftime },
++	{ "COLORIZE",		function_colorize },
++	{ "COLOROF",		function_colorof },
+ 	{ (char *) 0,		NULL }
+ };
+ 
+@@ -2900,4 +2905,66 @@
+ 	{
+ 		return (char *) 0;
+ 	}
++}
++
++/* this takes a string with color escapes and returns a tring with the color 
++ * control chars imbedded into it
++ * escapes are ` followed by color number or b for bright
++ * to make bright colors you must print the color THEN the bright
++ */
++
++char    *
++function_colorize(input)
++        char    *input;
++{
++	/* malloc +3 for ending white/space/0 */
++	char *result = (char *)malloc(strlen(input)+3);
++/*	char *result = (char *)malloc(1024); */
++	char *next;
++	char *in_string = input;
++	char tmp[10];
++	
++	result[0] = 0;
++	while (next = strchr(in_string, '`'))
++	{
++		strncat(result, in_string, strlen(in_string)-strlen(next));
++		next++;
++		if ((next[0] >= '0') && (next[0] <= '7'))
++		{
++			tmp[0] = next[0] - '0' + BLACK;
++			tmp[1] = 0;
++			strcat(result, tmp);
++		}
++		if ((next[0] == 'B') || (next[0] == 'b'))
++		{
++			tmp[0] = BRIGHT;
++			tmp[1] = 0;
++			strcat(result, tmp);
++		}
++		next++;
++		in_string = next;
++	}
++	strcat(result, in_string);
++	tmp[0] = WHITE;
++	tmp[1] = ' ';
++	tmp[2] = 0;
++	strcat(result, tmp);
++	return result;	
++}
++
++char    *
++function_colorof(input)
++        char    *input;
++{
++	char *temp;
++	char *returnme;
++	int i=0;
++	
++	temp = color_of(input);
++	returnme = (char *)new_malloc(5);
++	returnme[i++] = '`';
++	returnme[i++] = temp[0] - BLACK + '0';
++	if (temp[1]) { returnme[i++] = '`'; returnme[i++] = 'b'; }
++	returnme[i++] = 0;
++	return returnme;
+ }
+diff --unified --recursive --new-file ircii-2.8.2.old/source/color.c ircii-2.8.2/source/color.c
+--- ircii-2.8.2.old/source/color.c	Wed Dec 31 16:00:00 1969
++++ ircii-2.8.2/source/color.c	Thu Aug 15 05:27:09 1996
+@@ -0,0 +1,368 @@
++/* a color irc hack similar to circ, with some more features...
++ * since the source for circ was not found, this is completely from scratch
++ * bugs, ideas, and whatnot can be sent to escrafrd@oz.net <MadHacker on LinuxNet>
++ */
++
++#include "irc.h"
++#include "output.h"
++#include "vars.h"
++#include "color.h"
++#include "ircaux.h"
++
++char rcolors[16]={0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1};
++struct  {
++	char name[50];
++	unsigned int age;
++} color_age[16];
++
++char colorstring[5];
++name_color *nc_start = NULL;
++name_color *nc_last = NULL;
++
++void
++rcolorcmd(command, args, subargs)
++        char    *command,
++                *args,
++                *subargs;
++{
++        char *arg;
++        char colorstr[5];
++        int x;
++	int bright;
++	int char_;
++	char brightstr[]="bright ";
++	char *selectstr[2]= {"deselected", "selected"};
++	char rcolors_str[17];
++
++        while ((arg = next_arg(args, &args)) != NULL)
++	{
++		bright=0;
++		char_=1;
++		brightstr[0] = 'b';
++	        if (arg[0] != '-' && arg[0] != '+')
++		{
++                        say("%s is a bad argument for /rcolor", arg);
++                        continue;
++		}
++                if (!strcmp(arg, "-all"))
++		{
++                	for (x = 0; x < 16; x++)
++                                rcolors[x] = 0;
++			say("all colors deselected");
++		}
++                else if (!strcmp(arg, "+all"))
++		{
++                        for (x = 0; x < 16; x++)
++                                rcolors[x] = 1;
++			say("all colors selected");
++		}
++                else
++		{
++/*                        color_to_i(arg+1, colorstr);*/
++			x = 0;
++			do  {
++			
++				switch (tolower(arg[char_]))
++				{
++				 	case 'b':
++						if (!strcmp(arg+char_, "black"))
++						{	
++							x = BLACK;
++						}
++						else if (!strcmp(arg+char_, "blue"))
++						{				
++							x = BLUE;
++						}
++						else if (!strcmp(arg+char_, "brown"))
++						{
++							x = BROWN;
++						}
++						else
++						{
++						    bright = TRUE;
++						    char_++; 
++						}
++						break;
++				 	case 'c':
++						x = CYAN;
++						break;
++				 	case 'g':
++						x = GREEN;
++						break;
++					case 'r':
++						x = RED;
++						break;
++					case 'p':
++						x = PURPLE;
++						break;
++					case 'w':
++						x = WHITE;
++						break;
++					case '0':
++					case '1':
++					case '2':
++					case '3':
++					case '4':
++					case '5':
++					case '6':
++					case '7':
++						x = arg[char_] + BLACK - '0';
++						if (arg[char_] == 'b' || arg[char_] == 'B') bright = TRUE;
++					        break;
++					default:
++						say("%s is not a color, type /color to get a list of colors", arg+1);
++					       	return;
++				}
++			} while (bright && x == 0);
++                        
++			if (x == 0) return;
++                        x -= BLACK;
++                        if (bright) {x += 8;} 
++			else brightstr[0] = '\0';
++                        rcolors[x] = 0;
++                        if (arg[0] == '+') rcolors[x] = 1;
++			say("%s%s %s", brightstr, arg+char_, selectstr[rcolors[x]]);
++		}
++
++	}
++
++}
++
++char *
++tolower_str(string)
++        char *string;
++{
++        char *lower_str;
++        int x;
++
++        lower_str = (char *)new_malloc(strlen(string)+1);
++        for (x = 0; x <= strlen(string); x++)
++                lower_str[x] = tolower(string[x]);
++        lower_str[x] = '\0';
++        return lower_str;
++}
++ 
++void
++colorcmd(command, args, subargs)
++        char    *command,
++                *args,
++		*subargs;
++{
++	char *name, *color;
++	char colorstr[5];
++	name_color *nc;
++	int bright;
++	char brightstr[]="bright ";
++        char *lower_name;
++	int x;
++	
++	
++	if (((name = next_arg(args, &args)) != NULL) &&
++	    ((color = next_arg(args, &args)) != NULL))
++	{
++		colorstr[0] = -1;
++		bright = 0;
++		do  {
++			
++		switch (tolower(color[0]))
++		{
++		 	case 'b':
++				if (!strcmp(color, "black"))
++				{	
++					colorstr[0] = BLACK;
++				}
++				else if (!strcmp(color, "blue"))
++				{				
++					colorstr[0] = BLUE;
++				}
++				else if (!strcmp(color, "brown"))
++				{
++					colorstr[0] = BROWN;
++				}
++				else
++				{
++				    bright = TRUE;
++				    color++; 
++				}
++				break;
++		 	case 'c':
++				colorstr[0] = CYAN;
++				break;
++		 	case 'g':
++				colorstr[0] = GREEN;
++				break;
++			case 'r':
++				colorstr[0] = RED;
++				break;
++			case 'p':
++				colorstr[0] = PURPLE;
++				break;
++			case 'w':
++				colorstr[0] = WHITE;
++				break;
++			case 'n':
++				colorstr[0] = (char)NULL;
++				break;
++		 	case '0':
++			case '1':
++			case '2':
++			case '3':
++			case '4':
++			case '5':
++			case '6':
++			case '7':
++				colorstr[0] = color[0] + BLACK - '0';
++				if (color[1] == 'b' || color[1] == 'B') bright = TRUE;
++				break;
++		 	default:
++				say("%s is not a color, type /color to get a list of colors", color);
++			       	return;
++		}
++		} while (bright && colorstr[0] == -1);
++		colorstr[1] = '\0';
++		if (bright)
++		{
++			colorstr[1] = BRIGHT;
++			colorstr[2] = '\0';
++		}
++		if (nc = find_nc_name(name))
++		{
++			strcpy(nc->colorstr, colorstr);
++		}
++		else 
++		{
++			nc = (name_color *) new_malloc(sizeof(name_color));
++			nc->name = (char *) new_malloc(strlen(name)+1);
++		        lower_name = (char *) new_malloc(strlen(name)+1);
++		        for (x = 0; x <= strlen(name); x++)
++		                lower_name[x] = tolower(name[x]);
++			strcpy(nc->name, lower_name);
++			new_free(&lower_name);
++			strcpy(nc->colorstr, colorstr);
++			if (nc_start == NULL) 
++			{
++				nc_start = nc;
++				nc_last = nc;
++				nc->next = NULL;
++			}
++			else 
++			{				
++				nc_last->next = nc;
++				nc_last = nc;
++				nc->next = NULL;
++			}
++		}
++		if (bright) 
++		{
++			strcpy(brightstr, "bright ");
++		}
++		else brightstr[0] = '\0';
++		say("%s is now %s%s", nc->name, brightstr, color);
++	}
++        else
++	{
++		say("Usage: /COLOR name color");
++		say("colors: black red green brown blue purple cyan white none");
++		say("for bright colors prefix b to the color <bred for bright red, etc>");
++	}
++}
++
++char *
++color_of(name)
++	char *name;
++{
++	int i=0;
++	name_color *nc;
++	int x,y,z;
++	int a=0;
++
++	for (x = 0; x < 16; x++)
++		/* 1000 is arbitrary to keep it from rolling over */
++		if (color_age[x].age < 1000) color_age[x].age++;
++	if (nc = find_nc_name(name))
++	{
++		if (*nc->colorstr) 
++		{
++			x = nc->colorstr[0]-BLACK;
++			color_age[x].name[0]='\0';
++			color_age[x].age=0;
++			return nc->colorstr;
++		}
++	}
++	for (x = 0; x < 16; x++)
++		if (rcolors[x] == 1)
++			if (!strcmp(color_age[x].name, name))
++				a = x;
++			
++	{
++                /* find oldest color */
++		for (x = 0, y = 0, z = -1; x < 16; x++)
++		{
++			if (rcolors[x] == 1) 
++				if (color_age[x].age > y)
++				{
++					y = color_age[x].age;
++					z = x;
++				}
++		}
++		if (z == -1) 
++		{
++			colorstring[0] = WHITE;
++			colorstring[1] = '\0';
++			return colorstring;
++		}
++		if (a) z = a;
++		strcpy(color_age[z].name, name);
++		color_age[z].age = 0;
++		
++/*		for (x = 0, y = 0; x < 16; x++)
++                        if (rcolors[x] == 1) y++;
++                if (y == 0)
++		{
++                        colorstring[0] = WHITE;
++                        colorstring[1] = '\0';
++                        return colorstring;
++		}
++                i = (name[0]+name[1]) % y;
++                i++;
++                for (x = 0, y = 0; y < i; x++)
++	                if (rcolors[x] == 1) y++;
++ */ 
++		i = 0;
++                if (z < 8)
++		{
++                        colorstring[i++] = z + BLACK;
++		}
++                else
++		{
++                        colorstring[i++] = (z - 8) + BLACK;
++                        colorstring[i++] = BRIGHT;
++		}
++		colorstring[i] = '\0';
++                return colorstring;
++	}
++}
++
++name_color *
++find_nc_name(name)
++	char *name;
++{
++	name_color *nc;
++	char *lower_name;
++	int x;
++	
++	lower_name = (char *) new_malloc(strlen(name)+1);
++	for (x = 0; x <= strlen(name); x++) 
++		lower_name[x] = tolower(name[x]);
++	for (nc = nc_start; nc != NULL; nc = nc->next)
++	{
++		if (!strcmp(nc->name, lower_name))
++		{
++			new_free(&lower_name);
++			return nc;
++		}
++	}
++	new_free(&lower_name);
++	return NULL;
++}
++	
+diff --unified --recursive --new-file ircii-2.8.2.old/source/ctcp.c ircii-2.8.2/source/ctcp.c
+--- ircii-2.8.2.old/source/ctcp.c	Fri Jan  6 07:16:34 1995
++++ ircii-2.8.2/source/ctcp.c	Wed Aug 14 14:38:13 1996
+@@ -34,6 +34,7 @@
+ #include "dcc.h"
+ #include "names.h"
+ #include "parse.h"
++#include "color.h"
+ 
+ #define	CTCP_SHUTUP	0
+ #define	CTCP_VERBOSE	1
+@@ -318,9 +319,9 @@
+ 		the_version = un.release;
+ 		the_unix = un.sysname;
+ 	}
+-	send_ctcp_reply(from, ctcp->name, "ircII %s %s %s :%s", irc_version, the_unix, the_version,
++	send_ctcp_reply(from, ctcp->name, "colirc %s %s %s :%s", irc_version, the_unix, the_version,
+ #else
+-	send_ctcp_reply(from, ctcp->name, "ircII %s *IX :%s", irc_version,
++	send_ctcp_reply(from, ctcp->name, "colirc %s *IX :%s", irc_version,
+ #endif
+ 		(tmp = get_string_var(CLIENTINFO_VAR)) ?  tmp : IRCII_COMMENT);
+ 	return NULL;
+@@ -669,20 +670,24 @@
+ 		*to,
+ 		*cmd;
+ {
++	char cline[3];
++	
+ 	if (cmd && *cmd)
+ 	{
+ 		int old;
+ 
+ 		old = set_lastlog_msg_level(LOG_ACTION);
++		cline[0] = WHITE; cline[1] = '\0';
++		if (get_int_var(COLORLINE_VAR)) strcpy(cline, color_of(from));
+ 		if (is_channel(to))
+ 		{
+ 			message_from(to, LOG_ACTION);
+ 			if (do_hook(ACTION_LIST, "%s %s %s", from, to, cmd))
+ 			{
+ 				if (is_current_channel(to, 0))
+-					put_it("* %s %s", from, cmd);
++					put_it("* %s%s %s%s%c ", color_of(from), from, cline, cmd, WHITE);
+ 				else
+-					put_it("* %s:%s %s", from, to, cmd);
++					put_it("* %s%s%c:%s%s %s%s%c ", color_of(from), from, WHITE, color_of(to), to, cline, cmd, WHITE);
+ 			}
+ 		}
+ 		else
+diff --unified --recursive --new-file ircii-2.8.2.old/source/edit.c ircii-2.8.2/source/edit.c
+--- ircii-2.8.2.old/source/edit.c	Mon Apr  3 07:48:21 1995
++++ ircii-2.8.2/source/edit.c	Wed Aug 14 14:38:14 1996
+@@ -52,6 +52,7 @@
+ #include "help.h"
+ #include "stack.h"
+ #include "queue.h"
++#include "color.h"
+ 
+ /*
+  * current_exec_timer - used to make sure we don't remove a timer
+@@ -207,6 +208,8 @@
+ 	{ "CD",		NULL,		cd,			0 },
+ 	{ "CHANNEL",	"JOIN",		e_channel,		0 },
+ 	{ "CLEAR",	NULL,		clear,			0 },
++	{ "COLOR",	NULL,		colorcmd,		0 },
++	{ "COLOUR",	NULL,		colorcmd,		0 },
+ 	{ "COMMENT",	NULL,		comment,		0 },
+ 	{ "CONNECT",	"CONNECT",	send_comm,		0 },
+ 	{ "CTCC",	NULL,		dcc,			0 },
+@@ -269,6 +272,8 @@
+ 	{ "QUIT",	"QUIT",		e_quit,			NONOVICEABBREV},
+ 	{ "QUOTE",	NULL,		quote,			0 },
+ 	{ "RBIND",	0,		rbindcmd,		0 },
++	{ "RCOLOR",	NULL,		rcolorcmd,		0 },
++	{ "RCOLOUR",	NULL,		rcolorcmd,		0 },
+ 	{ "REDIRECT",	NULL,		redirect,		0 },
+ 	{ "REHASH",	"REHASH",	send_comm,		0 },
+ 	{ "REQUEST",	NULL,		ctcp,			0 },
+@@ -290,6 +295,7 @@
+ 	{ "TOPIC",	"TOPIC",	send_topic,		0 },
+ 	{ "TRACE",	"TRACE",	send_comm,		0 },
+ 	{ "TYPE",	NULL,		type,			0 },
++	{ "USECOLOR",	NULL,	       	rcolorcmd,		0 },
+ 	{ "USERHOST",	NULL,		userhost,		0 },
+ 	{ "USERS",	"USERS",	send_comm,		0 },
+ 	{ "VERSION",	"VERSION",	version,		0 },
+@@ -1009,7 +1015,7 @@
+ 		send_to_server("%s %s", command, host);
+ 	else
+ 	{ 
+-		say("Client: ircII %s (internal version %s)", irc_version, internal_version);
++		say("Client: colirc %s (internal version %s)", irc_version, internal_version);
+ 		send_to_server("%s", command);
+ 	}
+ }
+diff --unified --recursive --new-file ircii-2.8.2.old/source/irc.c ircii-2.8.2/source/irc.c
+--- ircii-2.8.2.old/source/irc.c	Thu Apr  6 20:37:24 1995
++++ ircii-2.8.2/source/irc.c	Wed Aug 14 18:33:57 1996
+@@ -10,7 +10,7 @@
+ static	char	rcsid[] = "@(#)$Id: irc.c,v 1.84 1995/04/05 14:46:56 mrg Exp $";
+ #endif
+ 
+-#define IRCII_VERSION	"2.8.2"
++#define IRCII_VERSION	"0.3"
+ 
+ /*
+  * INTERNAL_VERSION is the number that the special alias $V returns.
+@@ -19,7 +19,7 @@
+  * Its format is actually YYYYMMDD, for the _release_ date of the
+  * client..
+  */
+-#define INTERNAL_VERSION	"19950405"
++#define INTERNAL_VERSION  "19960804"
+ 
+ #include "irc.h"
+ 
+@@ -298,7 +298,7 @@
+ static	void
+ show_version()
+ {
+-	printf("ircII version %s (%s)\n\r", irc_version, internal_version);
++	printf("colirc version %s (%s)\n\r", irc_version, internal_version);
+ 	exit (0);
+ }
+ 
+diff --unified --recursive --new-file ircii-2.8.2.old/source/names.c ircii-2.8.2/source/names.c
+--- ircii-2.8.2.old/source/names.c	Thu Apr  6 20:37:25 1995
++++ ircii-2.8.2/source/names.c	Wed Aug 14 14:38:14 1996
+@@ -24,6 +24,7 @@
+ #include "lastlog.h"
+ #include "list.h"
+ #include "output.h"
++#include "color.h"
+ 
+ static	char	mode_str[] = "iklmnpst";
+ 
+@@ -552,6 +553,7 @@
+ {
+ 	ChannelList *chan;
+ 	NickList *tmp;
++	name_color *nc;
+ 
+ 	for (chan = channel_list; chan; chan = chan->next)
+ 	{
+@@ -561,6 +563,11 @@
+ 			{
+ 				new_free(&tmp->nick);
+ 				malloc_strcpy(&tmp->nick, new_nick);
++				if (nc = find_nc_name(old_nick))
++				{
++					new_free(&nc->name);
++					nc->name = tolower_str(new_nick);
++				}
+ 			}
+ 		}
+ 	}
+diff --unified --recursive --new-file ircii-2.8.2.old/source/output.c ircii-2.8.2/source/output.c
+--- ircii-2.8.2.old/source/output.c	Fri Jan  6 07:16:56 1995
++++ ircii-2.8.2/source/output.c	Wed Aug 14 14:38:14 1996
+@@ -27,6 +27,7 @@
+ #include "hook.h"
+ #include "ctcp.h"
+ #include "log.h"
++#include "color.h"
+ 
+ 	int	in_help = 0;
+ 
+@@ -159,14 +160,16 @@
+ #endif
+ 	if (window_display)
+ 	{
+-		putbuf[0] = putbuf[1] = putbuf[2] = '*';
+-		putbuf[3] = ' ';
++		putbuf[0] = SAY_COLOR;
++		putbuf[1] = putbuf[2] = putbuf[3] = '*';
++		putbuf[4] = ' ';
++		putbuf[5] = WHITE;
+ #ifdef USE_STDARG_H
+ 		va_start(vl, format);
+-		vsprintf(&putbuf[4], format, vl);
++		vsprintf(&putbuf[6], format, vl);
+ 		va_end(vl);
+ #else
+-		sprintf(&putbuf[4], format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
++		sprintf(&putbuf[6], format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+ #endif
+ 		add_to_log(irclog_fp, putbuf);
+ 		add_to_screen(putbuf);
+diff --unified --recursive --new-file ircii-2.8.2.old/source/parse.c ircii-2.8.2/source/parse.c
+--- ircii-2.8.2.old/source/parse.c	Sun Jan 15 22:22:55 1995
++++ ircii-2.8.2/source/parse.c	Wed Aug 14 14:38:14 1996
+@@ -35,6 +35,7 @@
+ #include "numbers.h"
+ #include "parse.h"
+ #include "notify.h"
++#include "color.h"
+ 
+ #define STRING_CHANNEL '+'
+ #define MULTI_CHANNEL '#'
+@@ -437,12 +438,16 @@
+ 		*to;
+ 	char	*high;
+ 	int	no_flood;
++	char	bwhite[]= {WHITE, BRIGHT, '\0'};
++	char	cline[3];
+ 
+ if (!from)
+ 		return;
+ 	PasteArgs(Args, 1);
+ 	to = Args[0];
+ 	ptr = Args[1];
++	cline[0] = WHITE; cline[1] = '\0';
++	if (get_int_var(COLORLINE_VAR)) strcpy(cline, color_of(from));
+ 	if (!to || !ptr)
+ 		return;
+ 	if (is_channel(to))
+@@ -549,15 +554,14 @@
+ 			doing_privmsg = 1;
+ 			if (no_flood && do_hook(list_type, "%s %s %s", from, 
+ 			    to, ptr))
+-				put_it("%s<%s>%s %s", high, from, high, ptr);
++				put_it("%s<%s%s%s> %s%s%c ", bwhite, color_of(from), from, bwhite, cline, ptr, WHITE);
+ 			doing_privmsg = 0;
+ 			break;
+ 		case PUBLIC_OTHER_LIST:
+ 			doing_privmsg = 1;
+ 			if (no_flood && do_hook(list_type, "%s %s %s", from,
+ 			    to, ptr))
+-				put_it("%s<%s:%s>%s %s", high, from, to, high,
+-					ptr);
++				put_it("%s<%s%s%s:%s%s%s> %s%s%c ", bwhite, color_of(from), from, bwhite, color_of(to), to, bwhite, cline, ptr, WHITE);
+ 			doing_privmsg = 0;
+ 			break;
+ 		}
+diff --unified --recursive --new-file ircii-2.8.2.old/source/screen.c ircii-2.8.2/source/screen.c
+--- ircii-2.8.2.old/source/screen.c	Mon Apr  3 07:48:28 1995
++++ ircii-2.8.2/source/screen.c	Wed Aug 14 14:38:15 1996
+@@ -35,6 +35,7 @@
+ #include "dcc.h"
+ #include "translat.h"
+ #include "exec.h"
++#include "color.h"
+ 
+ 	Window	*to_window;
+ 	Screen	*current_screen;
+@@ -440,7 +441,17 @@
+ 	{
+ 		switch (*ptr)
+ 		{
++		case BLACK:
++		case BLUE:
++		case GREEN:
++		case CYAN:
++		case RED:
++		case PURPLE:
++		case BROWN:
++		case WHITE:
++		case BRIGHT:
+ 		case REV_TOG:
++			
+ 		case UND_TOG:
+ 		case BOLD_TOG:
+ 		case ALL_OFF:
+@@ -510,6 +521,16 @@
+ 				bold = display_bold(TOGGLE);
+ 				bold = 1 - bold;
+ 			}
++                        if (*ptr >= BLACK && *ptr <= WHITE)
++                        {
++                                fflush(current_screen->fpout);
++                                fprintf(current_screen->fpout, "\e[0;3%dm", *ptr - BLACK);
++                        }
++                        if (*ptr == BRIGHT)
++                        {
++                                fflush(current_screen->fpout);
++                                fprintf(current_screen->fpout, "\e[1m");
++                        }
+ 			str = ++ptr;
+ 			break;
+ 		case '\007':
+@@ -1146,6 +1167,16 @@
+ 				buffer[pos++] = *ptr;
+ 				col++;
+ 				break;
++			case BLACK:
++			case BLUE:
++			case GREEN:
++			case CYAN:
++			case RED:
++			case PURPLE:
++			case BROWN:
++			case WHITE:
++			case BRIGHT:
++				
+ 			case UND_TOG:
+ 			case ALL_OFF:
+ 			case REV_TOG:
+diff --unified --recursive --new-file ircii-2.8.2.old/source/status.c ircii-2.8.2/source/status.c
+--- ircii-2.8.2.old/source/status.c	Mon Apr  3 07:48:30 1995
++++ ircii-2.8.2/source/status.c	Wed Aug 14 14:38:15 1996
+@@ -28,6 +28,7 @@
+ #include "names.h"
+ #include "ircaux.h"
+ #include "translat.h"
++#include "color.h"
+ 
+ extern	time_t	time();
+ 
+@@ -603,7 +604,8 @@
+ 			{
+ 				RJustifyPos = i;
+ 			}
+-			else if (buffer[i] != REV_TOG && buffer[i] != UND_TOG && buffer[i] != ALL_OFF && buffer[i] != BOLD_TOG)
++			else if (buffer[i] != REV_TOG && buffer[i] != UND_TOG && buffer[i] != ALL_OFF && buffer[i] != BOLD_TOG
++				 && (buffer[i] < BLACK || buffer[i] > WHITE) && buffer[i] != BRIGHT)
+ 			{
+ 				if (RealPosition == CO)
+ 				{
+@@ -662,7 +664,8 @@
+ 			{
+ 				if (buffer[i] != window->status_line[i])
+ 					break;
+-				if (buffer[i] != REV_TOG && buffer[i] != UND_TOG && buffer[i] != ALL_OFF && buffer[i] != BOLD_TOG)
++				if (buffer[i] != REV_TOG && buffer[i] != UND_TOG && buffer[i] != ALL_OFF && buffer[i] != BOLD_TOG
++				    && (buffer[i] < BLACK || buffer[i] > WHITE) && buffer[i] != BRIGHT)
+ 					RealPosition++;
+ 			}
+ 		}
+@@ -1209,6 +1212,16 @@
+ 		{
+ 			switch(*s)
+ 			{
++			case BLACK:
++			case BLUE:
++			case GREEN:
++			case CYAN:
++			case RED:
++			case PURPLE:
++			case BROWN:
++			case WHITE:
++			case BRIGHT:
++				
+ 			case UND_TOG:
+ 			case ALL_OFF:
+ 			case REV_TOG:
+diff --unified --recursive --new-file ircii-2.8.2.old/source/vars.c ircii-2.8.2/source/vars.c
+--- ircii-2.8.2.old/source/vars.c	Wed Jan  4 22:39:56 1995
++++ ircii-2.8.2/source/vars.c	Wed Aug 14 14:38:14 1996
+@@ -89,7 +89,8 @@
+ 	{ "CLOCK_24HOUR",		BOOL_TYPE_VAR,	DEFAULT_CLOCK_24HOUR, NULL, reset_clock, 0, 0 },
+ 	{ "CLOCK_ALARM",		STR_TYPE_VAR,	0, NULL, set_alarm, 0, 0 },
+ 	{ "CMDCHARS",			STR_TYPE_VAR,	0, NULL, NULL, 0, 0 },
+-	{ "COMMAND_MODE",		BOOL_TYPE_VAR,	DEFAULT_COMMAND_MODE, NULL, NULL, 0, 0 },
++	{ "COLORLINE",                  BOOL_TYPE_VAR,  DEFAULT_COLORLINE, NULL, NULL, 0, 0 },
++       	{ "COMMAND_MODE",		BOOL_TYPE_VAR,	DEFAULT_COMMAND_MODE, NULL, NULL, 0, 0 },
+ 	{ "CONTINUED_LINE",		STR_TYPE_VAR,	0, NULL, set_continued_line, 0, 0 },
+ 	{ "DCC_BLOCK_SIZE",		INT_TYPE_VAR,	DEFAULT_DCC_BLOCK_SIZE, NULL, NULL, 0, 0 },
+ 	{ "DEBUG",			INT_TYPE_VAR,	0, NULL, NULL, 0, 0 },

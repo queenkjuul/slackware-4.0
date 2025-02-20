@@ -1,0 +1,604 @@
+Read Me(Cook)					    Read Me(Cook)
+
+NAME
+       cook - a	file construction tool
+
+DESCRIPTION
+       Put simply, the cook program is yet another make-oid.
+
+       The cook	program	is a tool for constructing files, and
+       maintaining referential integrity between files.	 It is
+       given a set of files to create, and recipes of how to
+       create and maintain them.  In any non-trivial program
+       there will be prerequisites to performing the actions
+       necessary to creating any file, such as include files.
+       The cook	program	provides a mechanism to	define these.
+
+       When a program is being developed or maintained,	the
+       programmer will typically change	one file of several which
+       comprise	the program.  The cook program examines	the last-
+       modified	times of the files to see when the prerequisites
+       of a file have changed, implying	that the file needs to be
+       recreated as it is logically out	of date.
+
+       The cook	program	also provides a	facility for implicit
+       recipes,	allowing users to specify how to form a	file with
+       a given suffix from a file with a different suffix.  For
+       example,	to create filename.o from filename.c
+
+       * Cook has a simple but powerful	string-based description
+	 language with many built-in functions.	 This allows
+	 sophisticated filename	specification and manipulation
+	 without loss of readability or	performance.
+
+       * Cook is able to use fingerprints to supplement	file
+	 modification times.  This allows build	optimization
+	 without contorted rules.
+
+       * Cook is able to build your project with multiple
+	 parallel threads, with	support	for rules which	must be
+	 single	threaded.  It is possible to distribute	parallel
+	 builds	over your LAN, allowing	you to turn your network
+	 into a	virtual	parallel build engine.
+
+       * Cook can be configured	with an	explicit list of primary
+	 source	files.	This allow the dependency graph	to be
+	 constructed faster by not going down dead ends, and also
+	 allows	better error messages when the graph can't be
+	 constructed.  This requires an	accurate source	file
+	 manifest.
+
+Reference Manual	       Cook				1
+
+Read Me(Cook)					    Read Me(Cook)
+
+ARCHIVE	SITE
+       The latest version of cook is available on the Web from:
+	   URL:	   http://www.canb.auug.org.au/~millerp/
+	   File:   cook-2.8.README     # the README from the tar file
+	   File:   cook-2.8.lsm	       # LSM format description
+	   File:   cook-2.8.spec       # RedHat	package	specification
+	   File:   cook-2.8.rm.ps.gz   # PostScript of the Reference Manual
+	   File:   cook-2.8.ug.ps.gz   # PostScript of the User	Guide
+	   File:   cook-2.8.tar.gz     # the complete source
+
+       This Web	page also contains a few other pieces of software
+       written by me.  Please have a look if you are interested.
+
+       Cook is also carried by sunsite.unc.edu in its Linux
+       archives.  You will be able to find Cook	on any of its
+       mirrors.
+	   URL:	   ftp://sunsite.unc.edu/pub/Linux/devel/make/
+	   File:   cook-2.8.README     # the README from the tar file
+	   File:   cook-2.8.lsm	       # LSM format description
+	   File:   cook-2.8.spec       # RedHat	package	specification
+	   File:   cook-2.8.rm.ps.gz   # PostScript of the Reference Manual
+	   File:   cook-2.8.ug.ps.gz   # PostScript of the User	Guide
+	   File:   cook-2.8.tar.gz     # the complete source
+       This site is extensively	mirrored around	the world, so
+       look for	a copy near you	(you will get much better
+       response).
+
+MAILING	LIST
+       A mailing list has been created so that users of	cook may
+       exchange	ideas about how	to use the cook	program.
+       Discussion may include, but is not limited to: bugs,
+       enhancements, and applications.	The list is not
+       moderated.
+
+       The address of the mailing list is
+	      cook-users@canb.auug.org.au
+       Please DO NOT send subscribe requests to	this address.
+
+       To subscribe to this mailing list, send an email	message
+       to majordomo@canb.auug.org.au with a message body
+       containing the single line
+	      subscribe	cook-users
+       If you have an email address which is not readily derived
+       from your mail headers (majordomo is only a Perl	program,
+       after all) you will need	to use a message of the	form:
+	      subscribe	cook-users address
+       where address is	the email address to which you want
+       messages	sent.
+
+       The software which handles this mailing list CANNOT send
+       you a copy of the cook program.
+
+Reference Manual	       Cook				2
+
+Read Me(Cook)					    Read Me(Cook)
+
+BUILDING COOK
+       Full instructions for building the cook program may be
+       found in	the BUILDING file included in this distribution.
+
+COPYRIGHT
+       cook version 2.8
+       Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1994,
+       1995, 1996, 1997, 1998, 1999 Peter Miller; All rights
+       reserved.
+
+       This program is free software; you can redistribute it
+       and/or modify it	under the terms	of the GNU General Public
+       License as published by the Free	Software Foundation;
+       either version 2	of the License,	or (at your option) any
+       later version.
+
+       This program is distributed in the hope that it will be
+       useful, but WITHOUT ANY WARRANTY; without even the implied
+       warranty	of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+       PURPOSE.	 See the GNU General Public License for	more
+       details.
+
+       You should have received	a copy of the GNU General Public
+       License along with this program;	if not,	write to the Free
+       Software	Foundation, Inc., 59 Temple Place, Suite 330,
+       Boston, MA 02111, USA.
+
+       It should be in the LICENSE file	included with this
+       distribution.
+
+AUTHOR
+       Peter Miller   E-Mail:	millerp@canb.auug.org.au
+       /\/\*	      WWW:	http://www.canb.auug.org.au/~millerp/
+
+Reference Manual	       Cook				3
+
+Read Me(Cook)					    Read Me(Cook)
+
+NEW IN THIS RELEASE
+       A number	of features have been added to cook with this
+       release.	 The following list is only a summary; for
+       excruciating detail, and	also acknowlegements of	those who
+       generously sent me feedback, please see the etc/CHANGES.*
+       files included in this distribution.
+
+   Version 2.8
+       * The remote host-binding code has been improved	to cope
+       with staggeringly long commands (which tended to	make
+       rsh(1) barf), and also wierd and	wonderfull $SHELL
+       settings.
+
+       * The #include directive	now accepts more than one file,
+       to be more symmetric with the #include-cooked directive.
+
+       * A bug has been	fixed where cooktime gave an incorrect
+       error message if	setting	the file's utimes failed.
+
+       * The configure script has been improved	for use	on non-
+       UNIX systems.
+
+       * There is a new	builtin	[cook] function, a natural
+       companion for the [cando] and [uptodate]	functions.  See
+       the Cook	User Guide for more information.
+
+   Version 2.7
+       * There is a new	cook_bom(1) command (Bill Of Materials).
+       This may	be used	to efficiently scan a directory	tree for
+       files, so that ingredients lists	may be produced
+       automatically.  See cook_bom(1) for more	information.
+
+       * There is a new	assign-append statement, so you	can now
+       use += to append	to the value of	a variable.  See the User
+       Guide for more information.
+
+       * There is a new	gate-first recipe flag,	which causes the
+       recipe gate to be evaluated before the ingredients are
+       derived,	rather than after.
+
+       * The c_incl(1) command has a new --interior-files option,
+       so you can tell it about	include	files that don't exist
+       yet.  This is helpful when they are generated, i.e. they
+       are interior files of the dependency graph, hence the
+       option name.
+
+       * There is a new	[interior-files] function, which returns
+       the files interior to the dependency graph (constructed by
+       a recipe), and a	complementatry [leaf-files] function,
+       which returns the leaf files of the dependency graph (not
+       constructed by any recipe).
+
+       * There is a new	``no-include-cooked-warning'' flag, if
+       you want	to suppress the	warnings about derived file
+
+Reference Manual	       Cook				4
+
+Read Me(Cook)					    Read Me(Cook)
+
+       dependencies in include-cooked files.
+
+       * There is a new	relative_dirname built-in function,
+       similar to the existing dirname function, but it	returns
+       ``.'' for files with no directory part, rather than the
+       absolute	path of	the current directory.
+
+   Version 2.6
+       * Cook has been ported to Windows-NT using CygWin32.  See
+       the BUILDING file for details.
+
+       * There are two new functions (dos-path and un-dos-path)
+       for use when invoking non-CygWin32 WindowsNT programs.
+       See the Cook User Guide for more	information.
+
+       * Fingerprints now work meaningfully with directories.
+
+       * A bug has been	fixed in the pattern matching code.  It
+       would sometimes cause core dumps.
+
+       * A bug involving fingerprints in combination with the
+       search_list has been fixed.  Cook would occasionally
+       conclude	that a shallow target was up-to-date when a
+       shallow ingredient was edited to	be the same as a deeper
+       ingredient.
+
+       * A bug has been	fixed in cooktime.  It would use an
+       inappropriate timezone offset on	some systems.
+
+   Release 2.5
+       * A problem which caused	some tests to fail on Solaris'
+       tmpfs now has a work-around.
+
+       * The ``setenv''	statement has finally been documented.
+       It's been in the	code tfor years, but I could never figure
+       out why folks weren't using it!
+
+       * A number of build problems on various systems have been
+       fixed.
+
+   Release 2.4
+
+Reference Manual	       Cook				5
+
+Read Me(Cook)					    Read Me(Cook)
+
+       * There is a new	form of	dependencies.  Known as	cascaded
+       dependencies, they allow	the user to associate additional
+       dependencies with an ingredient.	 For example, a	C source
+       file can	be associated with cascaded include dependencies.
+       This means that all files which depend on the C source
+       file, also depend on the	included files.	 The Cook
+       Reference Manual	has been updated to include this new
+       functionality.
+
+       * There is a new	section	of the Cook Reference Manual
+       giving suggestions and a	template for building large
+       projects.
+
+       * There is a new	[expr] function, to calculate simple
+       arithmetic expressions.	See the	User Guide for more
+       information.
+
+       * There is a new	c_incl -no-recursion option, to	prevent
+       scanning	nested includes.  This is of most use when
+       combined	with the new cascade dependencies.
+
+       * There is a new	[exists-symlink] function, which may be
+       used to test for	the existence of symlinks.  The	[exists]
+       function	follows	symbolic links,	and is not useful when
+       manipulating the	links themselves.
+
+   Release 2.3
+       * There are 6 new special variables: graph_leaf_file,
+       graph_leaf_pattern, graph_interior_file,
+       graph_interior_pattern, graph_exterior_file and
+       graph_exterior_pattern.	These variables	may be used to
+       define the leaves of the	derivation graph (the accept
+       forms), and non-leave of	the graph (the reject forms).
+       This can	make the graph derivation faster, and greatly
+       improves	some error messages.  This functionality is of
+       most use	when you have an exact source file manifest, e.g.
+       from a software configuration management	system.	 See the
+       User Guide for more information.
+
+       * The %0	pattern	element	has been extended to permit the
+       matching	of absolute paths.
+
+   Release 2.2.2
+       * There is a new	statement type,	allowing functions to be
+       invoked as subroutines in any place where a command may be
+       invoked.	 See the User Guide for	more information.
+
+       * A number of problems with installing Cook have	been
+       fixed.  This includes changing -mgm to -mm for the
+       documnetation formatting, and missing include dependencies
+       and missing rules for installing	the man	pages.
+
+       * There is a new	``print'' builtin function.  When
+       combined	with the new function call statement, this
+
+Reference Manual	       Cook				6
+
+Read Me(Cook)					    Read Me(Cook)
+
+       provides	a way of printing information without invoking
+       ``echo''.  See the User Guide for more information.
+
+       * Cook now defaults the language	to ``en'' internally if
+       neoither	the LANG nor LANGUAGE environment variable was
+       set.  This gives	better error messages.
+
+   Release 2.2.1
+       * A bug was fixed where a recipe	would fail to trigger if
+       some, but not all, of its targets were not present, but
+       the existing targets were up-to-date.  This bug was
+       introduced in the inference engine re-write.
+
+   Release 2.2
+       * The c_incl utility has	had two	new languages added.  It
+       now understands M4, and also has	an ``optimistic''
+       language	which can scan many assemblers and even	some
+       high-level languages.  See c_incl(1) for	more information.
+
+       * The c_incl utility also has a new --no-absolute-path
+       option, to supress scanning and reporting of such files.
+       See c_incl(1) for more information.
+
+       * There is a new	warning	added for dependencies on derived
+       ingredients when	this information resides solely	in
+       derived cookbooks included using	the #include-cooked
+       facility.  This assists in detecting problems which may
+       preclude	a successful ``clean'' build.
+
+       * This release adds a number of cookbook	functions to the
+       distrubuted cookbooks.  These may be used by adding a
+	   #include "functions"
+       line to your cookbook.  See the Cook User Guide for more
+       information.
+
+       * This release fixes a bug where	the graph walking phase
+       ignored interrupts until	something went wrong.
+
+       * This release fixes a bug where	make2cook did not
+       correctly translate ``%'' into sematicly	equivalent Cook
+       constructs.
+
+   Release 2.1
+
+Reference Manual	       Cook				7
+
+Read Me(Cook)					    Read Me(Cook)
+
+       * It is possible	to specify that	a command is to	be
+       executed	on a specific machine or machines.  This can be
+       useful for restrictively	licensed third party software
+       tools.
+
+       * The parallel functionality has	been extended to
+       implement a virtual parallel machine on a LAN.
+
+       * Fingerprinting	has been enhanced to be	more informative,
+       and to adjust file modification times so	that subsequest
+       fingerprint-less	runs will not find too much to do.
+
+       * The #line directive is	now available, for better
+       diagnostics of generated	cookbooks.  The	__FILE__ and
+       __LINE__	variable are also available.
+
+       * There is now a	thread-id variable, to obtain a	thread-
+       unique value for	use in generating temporary file names or
+       variable	names, etc, which are unique to	a thread.
+
+       * Added the wordlist function and the command-line-goals
+       variable	for compatibility with GNU Make.  Updated
+       make2cook to understand them.
+
+   Release 2.0.1
+       * An install problem in the generated Makefile, to do with
+       the the manuals,	has been fixed.
+
+   Release 2.0
+       Development of this release was generously supported by
+       Endocardial Solutions, Inc.
+
+       * Parallel execution is now supported.  If you have a
+       multi-processor machine,	you can	specify	the number of
+       parallel	processing threads with	the -PARallel command
+       line option, or via the [parallel_jobs] variable.  By
+       using the [os node] function, the [parallel_jobs] variable
+       can be set appropriately	for the	host machine
+       automatically by	the cookbook.  There is	a new single-
+       thread keyword to support single	threading recipes which
+       cannot be paralleized.
+
+       * The dependency	graph is now constructed differently.
+       This gives exactly the same results, but	the order of
+       evaluation of recipes is	a little more random.  This
+       different graph construction is able to give better error
+       messages, better	-Reason	information, and allows	the
+       introduction of parallel	recipe evaluation if you have a
+       multi-processor computer.
+
+       * Recipes which use c_incl(1) to	calculate their
+       dependencies in the ingredients section will need a small
+       modification - they will	need to	use the	--Absent-Program-
+       Ignore option.  See the User Guide for more information.
+
+Reference Manual	       Cook				8
+
+Read Me(Cook)					    Read Me(Cook)
+
+       * You can now print pair-wise file dependencies by using
+       the -PAirs option.
+
+       * You can now print a shell script which	approximates the
+       actions cook would take when building the targets by using
+       the -SCript option.
+
+       * There is a new	``shallow'' recipe flag, allowing you to
+       specify that the	targets	of a recipe are	required to be in
+       the top-level directory,	not further down the search_list
+       path.
+
+       * You may now define user-written functions in the
+       cookbook	to supplement the built-in functions.  Your
+       functions will be called	in the same manner as built-in
+       functions.  There are new function and return keywords to
+       support definition of functions.
+
+       * The progress indicators produced by the -STar option now
+       have more detail: + means that the cook book is being
+       read, * means that the graph is being constructed, and #
+       means that the graph is being walked.
+
+   Release 1.11
+       * Fixed a bug in	the pattern matching which caused %0
+       (when not at the	start of the pattern) to fail to match
+       the empty string.
+
+       * The install locations have been changed slightly to
+       conform better to the GNU filesystem standards, and to
+       take advantage of the additional	install	location options
+       of the configure	scripts	generated by GNU Autoconf.
+
+   Release 1.10
+       * Error messages	have been internationalized.  It is now
+       possible	to get error messages in your native language, if
+       it is supported.
+
+       * The cook command now accepts a	-no-include-cooked
+       option, to disable any cooking of the #include-cooked
+       files.
+
+       * The cook -TRace option	has been renamed -Reason.  This
+       is thought to more accurately reflect what it does.
+
+       * The cook -Reason output has been changed to cite
+       cookbook	file names and line numbers, in	order to be more
+       useful.	In addition, more reason messages carry	location
+       information.
+
+Reference Manual	       Cook				9
+
+Read Me(Cook)					    Read Me(Cook)
+
+   Release 1.9
+       * There are new ``f77'' and ``g77'' cookbooks, to allow
+       Fortran sources,	in addition to C sources.
+
+       * There is a new	[options] function, which expands to the
+       current settings	of the command line options.  This is
+       useful for recursive cook directory structures.	See the
+       Reference Manual	for more information.
+
+       * There is a new	``recursive'' cookbook,	to assist in
+       constructing recursive cook structures.
+
+       * The find_libs program now understands about shared
+       libraries.
+
+       * A bug which made the builtin [glob] function far to
+       generous	has been corrected.
+
+       * A bug which caused some expression evaluation errors to
+       be ignored has been corrected.
+
+       * The ``set update'' flag has been re-named the ``set
+       time-adjust'' flag, to more closely describe what it does.
+       The old name will continue to work indefinitely.
+
+       * There is a new	``set time-adjust-back'' flag, which sets
+       recipe target times to be exactly one (1) second	younger
+       than the	youngest ingredient.  This is usually an
+       adjustment into the recent past.
+
+   Release 1.8
+       * The fingerprint code has been improved	to work	better
+       with the	search_list functionality.
+
+       * The diagnostics have been improved when cook ``don't
+       know how''.  A list of attempted	ingredients is included
+       in the error message.
+
+       * There is a new	mkdir recipe flag.  This creates recipe
+       target directories before the recipe body is run.  See the
+       Reference Manual	for more information.
+
+       * There is a new	unlink recipe flag.  This unlinks recipe
+       targets before the recipe body is run.  See the Reference
+       Manual for more information.
+
+       * There is a new	recurse	recipe flag.  This overrides the
+       infinite	loop recipe heuristic, allowing	recipes	to recuse
+       upon themselves if one of their ingredients matches one of
+       their targets.  See the Reference Manual	for more
+       information.
+
+Reference Manual	       Cook			       10
+
+Read Me(Cook)					    Read Me(Cook)
+
+   Release 1.7
+       * The AIX code to handle	archive	files has been fixed.
+
+       * The fingerprint code now works	on 64-bit systems.
+
+   Release 1.6
+       * Fixed a bug in	the leading-dot	removal	code, and added
+       an option to make it user-settable.  Fixed a bug	in the
+       search_path depth code.
+
+   Release 1.5
+       * The c_incl program now	correctly prints the names of
+       absent include files, causing them to be	cooked correctly
+       in a greater number of cases.
+
+       * Recipes with no ingredients are now only applied if the
+       target is absent.  To still use the previous behaviour,
+       use the "set force" clause on the recipe.
+
+       * It is now possible to supplement the last-modified time
+       with a fingerprint, so cook does	even fewer unnecesary
+       recompilations than before.  Put	the statement
+	      set fingerprint;
+       somewhere near the top of your Howto.cook file for this to
+       be the default for your project.
+
+       * There is a new	form of	include	directive:
+	      #include-cooked filename...
+       When files are included in this way, cook will check to
+       make sure they are up-to-date.  If not, they will be
+       cooked, and then	cook will start	again and re-read the
+       cookbook.  This is most often used for maintaining
+       include-dependency files.
+
+       * Cook now configured using a program called configure,
+       distributed with	the package.  The configure program is
+       generated by GNU	Autoconf.  See the BUILDING file for more
+       details.
+
+       * The semantics of search_list have been	improved.  It is
+       now guaranteed that when	ingredients change they	result in
+       targets earlier in the search_list being	updated.
+
+       * There is now a	make2cook translator, to translate
+       Makefile	files into Howto.cook files.  Most of the GNU
+       Make extensions are understood.	There is no exact
+       semantic	mapping	between	make and cook, so manual editing
+       is sometimes required.  See make2cook(1)	for more
+       information.
+
+       * Cook now understands archive member references, in the
+       same format as used by make, et al.  Archive member
+       references benefit from stat caching and	fingerprinting,
+       just as normal files do.
+
+Reference Manual	       Cook			       11
+
+Read Me(Cook)					    Read Me(Cook)
+
+   Release 1.4
+       * The cook program is now known to work on more systems.
+       Most changes were aimed at improving portability, or
+       avoiding	problems specific to some systems.
+
+       * The GNU long option name convention is	now understood.
+       Option names for	cook were always long, so this mostly
+       consists	of ignoring the	extra leading '-'.  The
+       "--foo=bar" convention is also understood for options with
+       arguments.
+
+       * Tests which fail now tell you what it was they	were
+       testing for.  This will give the	user some idea of what is
+       happening.
+
+Reference Manual	       Cook			       12

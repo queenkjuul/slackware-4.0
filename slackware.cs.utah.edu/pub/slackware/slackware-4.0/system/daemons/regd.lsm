@@ -1,0 +1,16 @@
+Begin3
+Title:          regd
+Version:        0.0.1
+Entered-date:   960903
+Description:    Registration daemon.  Listens for requests on a tcp socket.  
+                Sort of like the Windoze 95 registry.  
+Keywords:       daemon registry 
+Author:         Joshua Rowe  jrow@wpi.edu
+Maintained-by:  Joshua Rowe
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Daemons
+                23KB pstream-0.0.1.tgz
+Alternate-site: 
+Original-site:  
+Platform:       Linux g++
+Copying-policy: GPL
+End

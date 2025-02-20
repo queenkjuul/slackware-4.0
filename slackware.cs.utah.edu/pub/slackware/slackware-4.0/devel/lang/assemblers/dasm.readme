@@ -1,0 +1,10 @@
+Dasm is a rich macro assembler for the 6502, 68705, 6803/HD6303 and
+the 68HC11.  I've been using it to great success for about three
+years.  It was written by Matt Dillon for the Amiga; I've ported it to
+both MSDOS and Linux.  Here's my Linux port.
+
+For now, this software should be considered beta, although I've used
+it to rebuild my two major commercial products without error.
+
+Jay Carlson
+nop@theory.cs.mankato.msus.edu

@@ -1,0 +1,48 @@
+Begin3
+Title:		argtable
+Version:	1.1
+Entered-date:	20JAN99
+Description:	Argtable is a freely available programmer's library for
+                parsing the command line arguments of any C or C++ program.
+                Having only seven functions and a simple set of rules,
+                argtable is capable of handling most aspects of command
+                line parsing and error reporting with a minimum of fuss.
+                It supports both tagged and untagged arguments, and tags
+                can be styled in any fashion desired including the popular
+                styles such as "title:myname", "-title myname", and
+                "title=myname". You can even make up your own custom tag
+                styles. It also supports optional arguments with default
+                values that can be used in their place. Lastly, it can
+                automatically generate not only error messages, but plain
+                text descriptions of usage syntax as well as glossary
+                descriptions of individual arguments. These make it very
+                easy to implement useful and exacting error responses
+                and help text for your program's users.
+                Best of all, argtable is quick and easy to learn.
+                                
+Keywords:	command line argument parameter argv argc parse
+Author: 	Stewart.Heitmann@tip.csiro.au (Stewart Heitmann)
+Maintained-by:	Stewart.Heitmann@tip.csiro.au (Stewart Heitmann)
+Primary-site:	sunsite.unc.edu /pub/Linux/devel
+                95kB /pub/Linux/devel/argtable-1.1.tar.gz
+Alternate-site: 
+Original-site:	
+Platforms:	Argtable has been successfully compiled on IRIX, IRIX64,
+                SunOS, DEC, and Linux systems. Although any system with
+                a standard ansi C compiler should be ok. 
+Copying-policy:	LGPL
+End
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-vim
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_vim.tar.gz
+
+echo "+=========+"
+echo "| vim-5.1 |"
+echo "+=========+"
+cd $TMP
+tar xzvf $CWD/vim-5.1.tar.gz
+( cd /usr/share && rm -rf vim )
+cd vim-5.1
+configure --prefix=/usr --disable-gui --disable-x
+make CFLAGS=-O2 LDFLAGS=-s install
+( cd $PKG/usr/share ; cp -a /usr/share/vim . )
+cd src
+( cd xxd ; make ; strip xxd )
+cat vim > $PKG/usr/bin/vim
+cat ctags/ctags > $PKG/usr/bin/ctags
+cat xxd/xxd > $PKG/usr/bin/xxd
+cat /usr/man/man1/vim.1 | gzip -9c > $PKG/usr/man/man1/vim.1.gz
+cat /usr/man/man1/xxd.1 | gzip -9c > $PKG/usr/man/man1/xxd.1.gz
+cp -a ../README $PKG/usr/doc/vim
+chmod 644 $PKG/usr/doc/vim/*
+chown root.root $PKG/usr/doc/vim/*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/vim.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/vim-5.1
+  rm -rf $PKG
+fi

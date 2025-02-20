@@ -1,0 +1,17 @@
+Begin3
+Title:		bugsx
+Version:	1.03
+Entered-date:	20SEP1997
+Description:	jlmem stands for Java Linux MEmory Monitor and runs under Java 
+		on LINUX machines. It's a tool designed designed to make 
+		monitoring your memory usage easy by displaying a simple bar 
+		graph for both real and virtual memory. 
+Keywords:	java, File System, Monitor, Status, Admin
+Author:         Robert_Gasch@peoplesoft.com (Robert Gasch)
+Maintained-by:  Robert_Gasch@peoplesoft.com (Robert Gasch)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xutils/status
+                18 KB jlmem-1.03.tgz
+Original-site:
+Platforms:	Linux
+Copying-policy: GPL
+End

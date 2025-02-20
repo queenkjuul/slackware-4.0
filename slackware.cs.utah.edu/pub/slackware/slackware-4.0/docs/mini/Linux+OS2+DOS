@@ -1,0 +1,316 @@
+Linux + OS/2 (+ DOS) mini-HOWTO, version 0.2. May 20, 1996.
+by Hamish Moffatt, moffatt@yallara.cs.rmit.edu.au.
+Please send all corrections, suggestions, etc to this address.
+
+Thanks go to Matthieu Willm <mwillm@vnet.ibm.com> for his post
+on this subject in comp.os.linux.setup, which prompted me to
+write this mini-HOWTO.
+
+Table of Contents
+0.  Legal things
+1.  Introduction
+2.  Before you read this document
+3.  The actual installation
+3.1   Some background
+3.2   Install Linux
+3.3   Install LILO
+3.4   Add Linux to OS/2's Boot Manager menu
+3.5   If you get LILO rather than OS/2 Boot Manager when you reboot
+3.6   Advanced options
+4.  If you've already installed Linux, but not OS/2 ...
+4.1   Installing OS/2
+4.2   Troubleshooting
+5.  If you've already installed both Linux and OS/2 ...
+5.1   If you can boot OS/2 but not Linux
+5.2   If you can boot Linux but not OS/2
+6.  Getting LILO to boot OS/2 ...
+7.  The end.
+
+0. Legal things
+
+The instructions in this HOWTO will change the boot loader on your
+computer. During the course of these instructions some mistakes
+may make your system unable to boot either Linux or OS/2 or DOS,
+or perhaps none of the above. Make sure you have your Linux boot
+and root disks, your OS/2 Installation and Disk 1 diskettes,
+and your DOS Setup disks if relevant handy before you begin.
+The writer takes no responsibility for any damage incurred during
+the process of these instructions; there is no warranty, guarantee
+etc whatsoever.
+
+1. Introduction
+
+When I first got interested in Linux, in about August 95, I was told
+that while it should be possible to have OS/2 Boot Manager and Linux
+coexist, it "just didn't work." When I actually got around to installing
+OS/2 and Linux together on a new PC, it turned out that it works perfectly
+and isn't actually too hard. This mini-HOWTO should help you get these
+two working together.
+
+Note: in this document, I will describe how to have OS/2 Boot Manager
+boot Linux (via LILO). There is a short section later on on having
+LILO (Linux's loader and boot manager) boot OS/2.
+
+2. Before you read this document
+
+In this mini-HOWTO I assume you have already installed OS/2 (and also
+DOS if you wish) on your system. If you've already installed Linux
+but not OS/2, or both OS/2 and Linux, see section 4 or 5 respectively.
+
+Note that you need to have OS/2 Boot Manager installed. If you have OS/2
+and DOS on the same partition (and you switch between them with BOOT /DOS
+and BOOT /OS2), then you're using Dual Boot, not Boot Manager. You need
+to read the LILO documentation or mini-HOWTO on booting another (non-Linux)
+operating system. This HOWTO is for Boot Manager only.
+
+3. The actual installation
+3.1 Some background
+
+So, you have OS/2 and maybe DOS already installed. (In this HOWTO my
+examples will have DOS also installed). Your partition table might
+look something like this;
+
+   Device Boot  Begin   Start     End  Blocks   Id  System
+/dev/hda1           1       1     254  512032+   6  DOS 16-bit >=32M
+/dev/hda2         256     256     786 1070496    5  Extended
+/dev/hda3   *     255     255     255    2016    a  OS/2 Boot Manager
+/dev/hda5   *     256     256     509  512032+   7  OS/2 HPFS
+/dev/hda6   *     510     510     763  512032+  83  Linux native
+/dev/hda7   *     764     764     786   46336+  82  Linux swap
+
+Here hda1 contains DOS, hda3 is Boot Manager, hda5 is the OS/2 (boot)
+partition, and hda6 is the Linux (boot) partition. If your OS/2 partition
+is FAT rather than HPFS, that's fine -- these instructions apply just
+the same. Also, while OS/2 Boot Manager must be on /dev/hda somewhere,
+OS/2 and Linux could be on /dev/hdb, hdc, or hdd, etc. (OS/2 BootMan has
+no problems booting OS/2 from a second disk, so it should have no problems
+booting Linux from a second disk. I haven't been able to get DOS to boot
+from a second disk, though.)
+
+3.2 Install Linux
+
+At this point, you should install Linux. You are best to create your
+DOS and OS/2 (and extended, if necessary) partitions using OS/2's FDISK,
+then creating your Linux partitions with Linux's fdisk. Some people have
+reported that sometimes OS/2 thinks the partition table is corrupt and
+won't let you add Linux to the Boot Manager menu later, so you might have
+to try creating ALL your partitions with OS/2's FDISK, and using Linux's
+fdisk later to change the partitions to the right types. See the fdisk
+documentaton for further information on changing partition types.
+(Thanks to bubeck@informatik.uni-tuebingen.de (Till Bubeck).)
+
+Your distribution's installation program should ask you about installing
+LILO; Slackware's does. You do want LILO installed (OS/2 Boot Manager cannot
+boot Linux directly, since it's doesn't understand Linux's file system format.
+Also, adding LILO gives you a chance to choose between different versions
+of Linux, add boot parameters so Linux can find all your hardware, etc.)
+
+3.3 Install LILO
+
+Slackware will ask you WHERE you want to install LILO; the SuperBlock
+(partition table, master boot record etc), the Linux partition's boot
+sector, etc. The boot manager that lives in the SuperBlock is your master
+boot manager - you want this to be OS/2's Boot Manager, so you need to install
+LILO (Linux's boot manager) in the boot sector of your Linux partition.
+In the partition table example above, this would be on /dev/hda6.
+(NOT /dev/hda, which would be the master boot record, where OS/2 BootMan
+lives.)
+
+Finish your Linux installation. If the installation hasn't run it for you,
+run /sbin/lilo. You MAY need to create your own /etc/lilo.conf, which is
+the LILO configuration file; it tells LILO where it can find the Linux
+kernel (the operating system itself) on your hard drive, etc. A very
+simple one might be
+
+  boot = /dev/hda6
+  delay = 50
+  vga = normal
+  ramdisk = 0
+
+  image = /vmlinuz
+    root = /dev/hda6
+    label = linux
+    read-only
+
+boot specifies the partition where LILO will install itself; this should be
+/dev/hdax, not /dev/hda (or hdb, as appropriate).
+
+3.4 Add Linux to OS/2's Boot Manager menu
+
+Now you have Linux installed and ready to go, but after you reboot, you won't
+be able to boot it. All that's left now is to tell OS/2 Boot Manager about it.
+Reboot, and select OS/2 from the Boot Manager menu. (If you get a "LILO"
+prompt instead of Boot Manager, read section 3.5 below).
+
+Boot up OS/2, and run FDISK. Move to your Linux partition (listed as
+"Type 83" -- OS/2 doesn't seem to know Linux's partition types). Press Enter,
+and from the menu select "Add to Boot Manager menu." Enter an appropriate
+name (eg Linux), then press F3, save and exit. 
+
+When you reboot, your OS/2 Boot Manager menu should include Linux. When you
+select it, you should see "LILO " for about five seconds, then Linux should
+boot. If it does, you're all finished. Enjoy!
+
+3.5 If you get LILO rather than OS/2 Boot Manager when you reboot
+
+If when you reboot, you get "LILO ", rather than OS/2 Boot Manager, then
+you've installed LILO in the superblock (/dev/hda), rather than on a
+partition (/dev/hda6 or whatever). To fix this isn't too hard, luckily.
+Boot up your OS/2 Installation floppy, and exit to the command prompt.
+Run FDISK, then save and exit. Boot Manager should be back when you reboot.
+However, now you can't boot Linux again. Get out your Linux boot and root
+disks, and mount your Linux partition. You can either boot completely from
+diskettes, then type
+
+  mount /dev/hda6 /mnt
+
+once you can log in, or (depending on your distribution), you can mount
+your hard drive instead of the root floppy. On Slackware, you can do this
+by typing
+
+  mount root=/dev/hda6
+
+at the LILO prompt you get as soon as you've booted the boot disk.
+
+Now, edit your LILO config (either /mnt/etc/lilo.conf or /etc/lilo.conf,
+depending on which of the above methods you used), and change the
+"boot = " line to say /dev/hda6 (or whatever) instead of /dev/hda.
+Then run
+
+  /mnt/sbin/lilo -C /mnt/etc/lilo.conf
+
+or
+
+  /sbin/lilo
+
+depending on which method you used before. Reboot again, and OS/2 Boot
+Manager should be back. See section 3.4 on adding Linux to the OS/2
+Boot Manager menu.
+
+3.6 Advanced options
+
+If you want to save a few seconds during booting, you can get "delay = 0"
+instead of 50 in your /etc/lilo.conf. Using the delay gives you a chance
+to boot another operating system, but you're using OS/2 Boot Manager for that,
+so you may not need it. (However, LILO also gives you the chance to boot
+different Linux kernel versions, and you may want that).
+
+Actually, if you press shift immediately after you select Linux from the
+Boot Manager menu, you get the "LILO: " prompt anyway. LILO loads very
+quickly though, so this can be harder than it sounds.
+
+
+4. If you've already installed Linux, but not OS/2 ...
+4.1 Installing OS/2
+
+You have Linux installed, and when you boot your PC you get the LILO
+prompt. You want to install OS/2. This might actually be easier than installing
+OS/2 before Linux, actually.
+
+Boot Linux, and edit your /etc/lilo.conf file. Change the "boot = " line to
+the name of your linux partition, eg /dev/hda6, instead of the name of
+your boot drive, eg /dev/hda. Then run /sbin/lilo to install LILO again.
+This will install LILO in the boot sector of your Linux partition, so that
+OS/2 can boot it later.
+
+Now, install OS/2. When you create your OS/2 partitions in OS/2's FDISK,
+*do* install Boot Manager, and make sure you add your OS/2 (and DOS)
+partition to it. Also, add your Linux ("Type 83" in OS/2 FDISK) partition
+to the menu too. (Press Enter on the Linux partition, and select
+"Add to Boot Manager menu", and enter a suitable description). You should
+now be all set to boot Linux and OS/2 from the Boot Manager menu.
+
+4.2 Troubleshooting
+
+If, when you select Linux from the Boot Manager menu, you get Missing
+Operating System, Non-system disk or disk error, etc, then you didn't
+get LILO installed properly in your Linux partition's boot sector.
+Use your Linux boot (and maybe also root) disk to edit your lilo.conf
+file again as in section 4.1, and make sure you run /sbin/lilo.
+(Section 3.5 gives some information on how you can boot Linux from
+floppies and get access to your Linux partition on hard drive).
+
+If you get LILO when you reboot, instead of OS/2 Boot Manager, then
+BootMan wasn't installed properly. Boot the OS/2 Installation disks
+again, quit to the command prompt (F3), and run FDISK. Make sure
+Boot Manager is installed, and that the BootMan partition is marked
+Bootable.
+
+5. You've already installed both OS/2 and Linux ...
+
+Both LILO (Linux's boot manager and loader) and OS/2 BootMan like to
+be the master boot manager on your system. If you've already installed
+both of these using default options, then you probably can't boot
+one of these two at the moment (the one you installed first won't
+be bootable).
+
+OS/2 BootMan HAS to be the master boot manager, but LILO can be moved
+so it only boots Linux. 
+
+5.1 If you can boot OS/2 but not Linux
+
+You need to boot Linux (using your boot and root floppies if need be;
+see section 3.5 on how to get to your Linux hard disk partition from
+the boot/root disks).
+
+Edit your /etc/lilo.conf and change "boot = " to the name of your Linux
+partition (eg /dev/hda6) rather than your boot drive (eg /dev/hda).
+Run /sbin/lilo. (Section 3.5 gives more details about getting to
+these files).
+
+Now, boot OS/2 and run FDISK. Select your Linux partition ("Type 83"),
+and select "Add to Boot Manager menu" from the pop-up menu. You should
+now be all set.
+
+If you reboot and Linux still isn't listed, check that you added it
+properly in the last step. If Linux is listed but you get missing system
+or non-system disk errors when you select it, you might not have
+got LILO installed correctly in the first part of 5.1.
+
+5.2 If you can boot Linux but not OS/2
+
+See the instructions in 5.1. To boot Linux, just boot from your hard
+drive as normal; to boot OS/2, use the Installation diskette, and
+exit to the command prompt (F3) to run FDISK.
+
+
+6. Getting LILO to boot OS/2 ...
+
+Theoretically, LILO could boot OS/2; that is, at the LILO prompt you
+could hit Shift and enter OS2 or whatever. I have tried this, and it
+didn't work. However, my OS/2 is on /dev/hdb6, which may complicate
+things.
+
+In /etc/lilo.conf, you need to add
+
+  other = /dev/hda5
+    label = os2
+
+(if your OS/2 partition is /dev/hda5). You should also add
+
+    table = /dev/hda
+
+(or hdb) so that Linux can check for the partition, but I got
+missing partition errors when running /sbin/lilo.
+
+If your OS/2 is on your second hard drive, you also need to add
+
+    loader = /boot/os2_d.b
+
+else /sbin/lilo won't run successfully (it requires a special loader
+to boot OS/2 from a second hard drive, and os2_d.b is it).
+
+If you've been able to get this working, please let me know.
+
+
+7. The end.
+
+Please send your comments, suggestions, questions (as a last resort, please)
+to me at
+
+  moffatt@yallara.cs.rmit.edu.au
+
+The latest version of this mini-HOWTO should be at
+
+  http://yallara.cs.rmit.edu.au/~moffatt/linux-os2/
+

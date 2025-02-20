@@ -1,0 +1,151 @@
+
+                  THE LISC ONLINE LINUX SUPPORT MINI HOW-TO
+                  -----------------------------------------
+
+                 Or, "Friendly Help With Linux Questions" :)
+
+
+
+This updated Mini-How-To briefly describes LISC, the Linux Internet Support
+Cooperative.  We've changed our location yet again.  We are currently
+available on our own little IRC network, currently comprising just one
+server.  The server hostname is ``irc.linpeople.org''.  This will probably
+be our final change for the forseeable future, at least until we replace IRC
+with some other, more flexible conversation protocol.
+
+Future editions will be posted on comp.os.linux.answers and in all of the
+usual ftp locations.  For additional information, check with me via email,
+``lilo <TaRDiS@Mail.UTexas.EDU>''.  But the best way to locate me is to find
+me online.  ;)
+
+
+
+1.    What is LISC?
+
+LISC, the Linux Internet Support Cooperative, is an informal group which
+provides friendly online support and problem assistance, for new and
+experienced Linux users, using Internet Relay Chat (IRC).  We can be found
+on the #LinPeople IRC channel, on server ``irc.linpeople.org''.
+
+
+1.1.  Who runs LISC?
+
+To the extent that anyone "runs" LISC, I guess that's me, lilo.  :)  I
+coordinate the automation which maintains the #LinPeople channel's
+facilities and irc.linpeople.org's server facilities.  Those facilities are
+provided through the gracious assistance of several Internet system
+administrators.
+
+
+1.2.  Why LISC and #LinPeople?
+
+LISC was started over a year ago, to fill a need which seems to go unmet
+on the existing Linux IRC networks and channels.  It seems that channel
+operators are often more interested in using their KICK and BAN privileges
+than actually helping people (particularly newbies) with their Linux
+problems.
+
+#LinPeople is a relaxed environment where newbies, experienced users and
+developers can all discuss topics relating to Linux.  We rarely have or need
+human channel operators, and we will help whenever we can with your Linux
+problems.
+
+Many users, particularly those new to Unix-like systems, seem to respond
+best to patient, interactive support.  So, while we consider it part of our
+job to point out available documentation, such phrases as "Read the F***ing
+Manual!" are not in our vocabulary. :)
+
+
+1.3.    Do you need volunteers?
+
+We welcome volunteers.  Since we're open 24 hours a day, 7 days a week,
+including holidays, any time you are willing to contribute will be greatly
+appreciated.  And, you'll have the satisfaction of knowing that you are
+helping to expand the Linux user base, by reducing the frustration level of
+people who are learning to use the system.  :)
+
+Anyone who is interested in helping users with Linux-related problems, and
+feels competent to do so, is welcome to try their hand, whenever they are
+available.  We're not setting up fixed support schedules.  We ask only that
+you treat our users with respect, and try not to respond to questions from
+newbies if you're not in a patient mood.  :)
+
+
+1.4.  Is LISC affiliated with LinuxNet?
+
+No, we're not.  We are presently found exclusively on our own IRC server
+net, a modified form of the Undernet/DALnet code.  This code has been
+developed over the course of a few years and seems pretty reliable.  It
+contains several features which contribute to the reliable maintenance of
+our channel.  LinuxNet does not run servers with those features.
+
+
+2.    How do I access #LinPeople?
+
+To access #LinPeople, we recommend you use ircII.  There are other IRC
+client programs available for WINDOWS, X, VMS and the various Internet-
+connected systems, too diverse to describe in detail here, but ircII is the
+canonical IRC client program.
+
+For information on using ircII, check the /help command which comes with
+ircII, as well as the documentation which comes with the client source code
+on cs-ftp.bu.edu:/irc/clients.  Once you get onto our server, someone on
+#LinPeople should be able to help answer your questions.  The next section
+briefly describes how to start up ircII.
+
+If you wish to install ircII on your own system, we recommend obtaining
+version 2.6, along with its help files, from cs-ftp.bu.edu:/irc/clients.  Do
+not fail to run the configuration script provided in the base source
+directory, before attempting to 'make' the program.  It will save you lots
+of grief.  :)
+
+In addition, a series of script hacks to take advantage of certain server
+features, such as longer nicknames, are available.  Check http://www.dal.net
+for more details.
+
+
+2.1.   Can you quickly describe how to start up ircII?
+
+On most Unix_type systems, you'll use the command name 'ircII' or 'irc'. The
+format is:
+
+               <irc-command> <irc-nickname> irc.linpeople.org
+
+For example, the following command might be used to enter an IRC session
+using IRC nickname 'BigFred', on a system where the IRC command is 'ircII':
+
+                  ircII BigFred irc.linpeople.org
+
+We hope to see you soon, on #LinPeople!  :)
+
+
+2.2.   When is #LinPeople available?
+
+#LinPeople is open 24 hours, 7 days a week, including most holidays.  We
+aren't staffed as well as we'd like at certain time periods (see
+"Volunteers," above), but we'll try to help any time you have a question or
+a problem.
+
+
+2.3.   How do I ask questions?
+
+When you enter the channel, first check to see if a conversation is going
+on.  If so, describe your problem briefly and wait for a response.  Be
+patient.  If you're a newbie, be aware that some answers will be long, and
+listen patiently.  Ask questions about things you don't understand.  :)
+
+If no one is talking when you enter the channel, jump right in.  But,
+remember that even if there are people on the channel, they may not be awake
+or at their terminals.  People often idle on IRC channels, so that people
+can read their '/away' messages, or to await messages from specific users. 
+If you don't get an immediate response, wait a few minutes and try again.
+
+And, remember we're all volunteers; we have jobs and schoolwork when we're
+not answering questions.  Don't beep--that disrupts the work environment and
+people tend to be a little sensitive about it. When someone comes back from
+idling, they'll usually send a public message to let you know.
+
+We hope to see you soon, on #LinPeople! :)
+ 
+(2.01 Tue May 7 17:41:58 UTC 1996)
+

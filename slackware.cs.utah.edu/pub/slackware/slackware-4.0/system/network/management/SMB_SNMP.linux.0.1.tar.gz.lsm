@@ -1,0 +1,18 @@
+Begin3
+Title:          SMB_SNMP
+Version:        0.1
+Entered-date:   5may98
+Description:    SMB_SNMP is an extension to the popular Samba
+		[http://samba.anu.edu.au/] system. It basically
+		allows people to see SNMP agents as shared Windows
+		resources. 
+Keywords:       SNMP Samba
+Author:         deri@unipi.it, l.deri@tecsiel.it, deri@iam.unibe.ch (Luca Deri)
+Maintained-by:  deri@unipi.it, l.deri@tecsiel.it, deri@iam.unibe.ch (Luca Deri)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/management
+		SMB_SNMP.linux.0.1.tar.gz
+Original-site:  http://jake.unipi.it/~deri/SMB_SNMP/
+Platforms:	Any platform supported by Samba. A SNMP districution (UCD-SNMP or
+   		CMU-SNMP is needed).
+Copying-policy: GPL
+End

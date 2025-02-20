@@ -1,0 +1,27 @@
+Begin3
+Title:		tcpdump - a network monitoring tool
+Version:	richard-1.7
+Entered-date:	Feb 24, 1996
+Description:	tcpdump is a network monitoring tool that can read
+	packets from several types of interfaces. Those packets can
+	be stored to files in a special tcpdump or snoop (as found
+	on Solaris) format or they can be decoded directly on screen.
+	This release adds the snoop support and some bug fixes on
+	top of tcpdump version 3.0.3 for Linux and the general
+	release tcpdump 3.0.2. 
+	The original distribution was made by the Network Research Group 
+	of the Lawrence Berkeley Laboratory. The Linux port was done by 
+	Adam Caldwell.
+Keywords:	network monitor protocol decode
+Author:		van@ee.lbl.gov (Van Jacobson)
+		mccanne@ee.lbl.gov (Steve McCanne)
+		leres@ee.lbl.gov (Craig Leres)
+Maintained-by:	R.Kooijman@pi.net (Richard Kooijman)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/management
+		205kb tcpdump-richard-1.7.tar.gz
+		1kb tcpdump-richard-1.7.lsm
+Alternate-site:	dnpap.et.tudelft.nl /pub/Private/Richard/Tcpdump
+Original-site: ftp.ee.lbl.gov /
+		200kb tcpdump-3.0.3.tar.Z
+Copying-policy:	Public Domain
+End

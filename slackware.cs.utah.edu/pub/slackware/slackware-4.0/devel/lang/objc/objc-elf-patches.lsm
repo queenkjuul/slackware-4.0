@@ -1,0 +1,29 @@
+
+Begin3
+
+Title:         objc-elf-patches         
+
+Version:       0.1 
+
+Entered-date:  30. 10. 1995 
+
+Description:   objc-shared-patches contains a complete source of GNU
+	       Objective-C runtime and a diff file for libobjects-0.1.14,
+	       both patched to generate a shared Linux ELF library. 
+
+Keywords:      Objective-C, GCC, ELF, shared 
+
+Author:        kybic@earn.cvut.cz (Jan Kybic)
+
+Maintained-by: kybic@earn.cvut.cz (Jan Kybic) 
+
+Primary-site:  sunsite.unc.edu /pub/Linux/devel/
+	       43kB objc-shared-patches.tgz	     
+
+Alternate-site: http://cs.felk.cvut.cz/~xkybic/software.html 
+Original-site:  
+
+Platform:      Linux, GCC, Objective-C, ELF 
+
+Copying-policy: GPL 
+End

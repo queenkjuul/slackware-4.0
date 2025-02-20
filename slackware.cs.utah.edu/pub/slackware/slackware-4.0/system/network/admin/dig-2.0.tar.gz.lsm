@@ -1,0 +1,48 @@
+-------------------------------- cut here ------------------------------------
+Begin2
+Title        = dig (domain internet groper)
+Version      = 2.0
+Desc1        = command line tool to interface to the domain
+Desc2        = name server. It is a simple replacement for the
+Desc3        = nslookup tool.
+Desc4        =
+Desc5        =
+Author       = Steve Hotz    and  Paul Mockapetris
+AuthorEmail  = hotz@isi.edu  and  pvm@isi.edu
+Maintainer   =
+MaintEmail   =
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Network/admin
+File1        = dig.2.0.tar.gz
+FileSize1    = 61741
+Site2        = tsx-11.mit.edu
+Path2        =
+File2        = dig.2.0.tar.gz
+FileSize2    = 61741
+Site3        = ftp.funet.fi
+Path3        =
+File3        = dig.2.0.tar.gz
+FileSize3    = 61741
+Site4        =
+Path4        =
+File4        =
+FileSize4    =
+Required1    = libc.so.4
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  = public domain
+CopyPolicy2  =
+Keywords     = DIG, NSLOOKUP, NAMED, ADMIN
+Comment1     = This package contains origial source, dig
+Comment2     = executable, Linux patch file, and documentation 
+Comment3     = (man page, README, and Linux README)
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = 17MAR94
+EnteredBy    = Al Longyear
+CheckedEmail = longyear@netcom.com
+End
+

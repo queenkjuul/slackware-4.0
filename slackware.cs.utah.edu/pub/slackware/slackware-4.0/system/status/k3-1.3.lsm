@@ -1,0 +1,12 @@
+Begin3
+Title:          k3
+Version:        1.3
+Entered-date:   23NOV96
+Description:    k3 is rather like `free', but includes a simple bar
+		chart of the free memory too.
+Keywords:       proc meminfo memory ram swap
+Author:         rjm@no_email_address (Russell Marks)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Status
+		2001	k3-1.3.tar.gz
+Copying-policy: public domain
+End

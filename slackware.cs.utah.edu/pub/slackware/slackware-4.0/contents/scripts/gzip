@@ -1,0 +1,8 @@
+( cd usr/bin ; rm -rf gunzip )
+( cd usr/bin ; ln -sf  /bin/gzip gunzip )
+( cd usr/bin ; rm -rf zcat )
+( cd usr/bin ; ln -sf  /bin/gzip zcat )
+( cd bin ; rm -rf gunzip )
+( cd bin ; ln -sf  gzip gunzip )
+( cd bin ; rm -rf zcat )
+( cd bin ; ln -sf  gzip zcat )

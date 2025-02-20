@@ -1,0 +1,73 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-elm
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_elm.tar.gz
+
+echo "+========+"
+echo "| elm2.4 |"
+echo "+========+"
+cd $TMP
+mkdir elm2.4
+cd elm2.4
+tar xzvf $CWD/elm2.4.tar.gz
+zcat $CWD/elm2.4.diff.gz | patch -p1
+mkdir bin
+make
+cd bin
+cat answer > $PKG/usr/bin/answer
+cat checkalias > $PKG/usr/bin/checkalias
+cat elm > $PKG/usr/bin/elm
+cat elmalias > $PKG/usr/bin/elmalias
+cat fastmail > $PKG/usr/bin/fastmail
+cat filter > $PKG/usr/bin/filter
+cat frm > $PKG/usr/bin/frm
+cat listalias > $PKG/usr/bin/listalias
+cat messages > $PKG/usr/bin/messages
+cat newalias > $PKG/usr/bin/newalias
+cat newmail > $PKG/usr/bin/newmail
+cat printmail > $PKG/usr/bin/printmail
+cat prlong > $PKG/var/lib/elm/prlong
+cat readmsg > $PKG/usr/bin/readmsg
+cd ../doc
+for file in answer.1 chkalias.1 elm.1 elmalias.1 fastmail.1 filter.1 frm.1 \
+listalias.1 messages.1 newalias.1 newmail.1 printmail.1 readmsg.1 \
+wnewmail.1 ; do
+  cat $file | gzip -9c > $PKG/usr/man/man1/$file.gz 
+done
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/elm.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/elm2.4
+  rm -rf $PKG
+fi

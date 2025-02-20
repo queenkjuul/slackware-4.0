@@ -1,0 +1,15 @@
+Begin3
+Title:          vold - volume daemon
+Version:        1.1 (beta)
+Entered-date:   26DEC97
+Description:    Daemon to mount removable media, such as cdroms
+Keywords:       cdrom mount automatic volume
+Author:         David A. van Leeuwen <david@ElseWare.cistron.nl>
+Maintained-by:  David A. van Leeuwen <david@ElseWare.cistron.nl>
+Primary-site:   ftp.debian.org /pub/debian/unstable/source/misc/
+Alternate-site: sunsite.unc.edu /pub/Linux/utils/disk-management/
+		11 kB vold-1.1.orig.tar.gz
+Original-site:  
+Platforms:       i386/Linux
+Copying-policy: GPL
+End

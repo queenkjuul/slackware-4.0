@@ -1,0 +1,19 @@
+Begin3
+Title: mgetty+sendfax
+Version: 1.0.0
+Entered-date: 97Mar27
+Description: Fax package for Linux and other Unix variants + class 2
+             faxmodems. Consists of modified getty program (mgetty) with
+	     fax receive functions, enhanced logging, automatic PPP
+	     detection and other goodies, and sendfax program to send
+	     G3 files to fax machines
+Keywords: fax mgetty sendfax AutoPPP modem class2
+Author: gert@greenie.muc.de (Gert Doering)
+Maintained-by: gert@greenie.muc.de (Gert Doering)
+Primary-site: sunsite.unc.edu /pub/Linux/system/serial
+              601kB mgetty+sendfax-1.0.0.tar.gz
+Alternate-site: tsx-11.mit.edu /pub/linux/sources/sbin
+Original-site: ftp.leo.org /pub/comp/networking/communication/modem/mgetty/
+Platforms: class 2 or class 2.0 faxmodem
+Copying-policy: free for everything except bundling with modem sales
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:		GetFtp
+Version:	1.0
+Entered-date:	04APR97
+Description:	Ftp tree downloading program.
+Keywords:	FTP download tree.
+Author:		arnal@limsi.fr, arnal@ie2.u-psud.fr (Laurent ARNAL)
+Maintained-by:	arnal@limsi.fr, arnal@ie2.u-psud.fr (Laurent ARNAL)
+Primary-site:	sunsite.unc.edu /Pub/Linux/Incoming
+		19k FtpGet-1.0.tar.gz
+		20k FtpGet-bin-1.0.tar.gz
+Alternate-site:
+Original-site:
+Platforms:	Requires an Unix system, with tcpip connection. 
+Copying-policy:	GPL
+End

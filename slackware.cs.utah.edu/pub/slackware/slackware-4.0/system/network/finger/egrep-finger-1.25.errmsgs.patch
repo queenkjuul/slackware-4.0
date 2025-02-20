@@ -1,0 +1,406 @@
+
+This patch cleans up some of the error messages returned by
+egrep-finger and the egrep-finger daemon.  It makes the errors
+returned more useful and explanatory and also more
+aesthetically pleasing. ;)
+
+	-Andrew
+
+--- efinger.c.orig	Mon Apr 12 01:26:29 1999
++++ efinger.c	Wed Apr 21 10:54:52 1999
+@@ -87,7 +87,7 @@
+ 	if ((error_code = (regcomp (&regex_comp, full_regexp_entry,
+ 				REG_EXTENDED | REG_NEWLINE)))) {
+ 	    regerror(error_code, &regex_comp,
+-			"Cannot compile pattern buffer", 32);
++			"Can't compile pattern buffer", 32);
+ 	    exit(1);
+ 	}
+ 
+
+Take out the ()'s for function names to make things 'look'
+a little better.
+
+--- efingerd.c.orig	Mon Apr 12 01:26:29 1999
++++ efingerd.c	Wed Apr 21 10:46:52 1999
+@@ -52,7 +52,7 @@
+ 
+   /* make stderr the same as stdout */
+   if (dup2 (1, 2) == -1) {
+-	perror("dup2()");
++	perror("dup2");
+ 	exit(1);
+   }
+ 
+@@ -60,20 +60,20 @@
+   (void) fflush (stdin);
+ 
+   if ((bytec = read (STDIN_FILENO, buf, BUFLEN)) == -1) {
+-        perror("read()");
++        perror("read");
+         exit(1);
+   }
+   buf[bytec-1] = '\0';
+   if (!strncasecmp (buf, "ARE*YOU*EFINGER?", 16)) {
+         if ((write (STDOUT_FILENO, "YES*I*AM*EFINGER.\n", 18)) == -1) {
+-            perror("write()");
++            perror("write");
+             exit(1);
+         }
+ 
+ 	/* Read another line, then send everything
+ 	   to efinger at once                      */
+         if ((bytec = read (STDIN_FILENO, buf, BUFLEN)) == -1) {
+-                perror("read()");
++                perror("read");
+                 exit(1);
+         }
+ 	buf[bytec-1] = '\0';
+
+
+--- main.c.orig	Mon Apr 12 01:56:37 1999
++++ main.c	Wed Apr 21 10:50:44 1999
+@@ -146,7 +146,7 @@
+ 
+   if ((sigaction (SIGTERM, &s_act, NULL)) ||
+ 			(sigaction (SIGINT, &s_act, NULL))) {
+-	perror ("sigaction()");
++	perror ("sigaction");
+ 	exit(1);
+   }
+ 
+@@ -157,7 +157,7 @@
+ 
+   if (((getuid() == 0) || (geteuid() == 0)) &&
+ 		(setreuid (0, NOBODY_UID) < 0)) {
+-	perror ("setreuid()");
++	perror ("setreuid");
+ 	exit(1);
+   }
+ 
+@@ -284,7 +284,7 @@
+ 	    break;
+ 	  case 9:  /* make stderr the same as stdout */
+   	    if (dup2 (1, 2) == -1) {
+-        	perror("dup2()");
++        	perror("dup2");
+         	exit(1);
+   	    }
+ 	    daemon_mode = 1;
+@@ -374,14 +374,14 @@
+   /* Get name of this host. */
+   localhost = (char *) malloc (MAXLOCALHOSTLEN);
+   if (gethostname (localhost, MAXLOCALHOSTLEN)) {
+-	perror("gethostname()");
++	perror("gethostname");
+ 	exit(1);
+   }
+ 
+ #ifdef __CONSTRUCT_FQDN
+   localdomain = (char *) malloc (MAXDOMAINNAMELEN);
+   if (getdomainname (localdomain, MAXDOMAINNAMELEN)) {
+-	perror("getdomainname()");
++	perror("getdomainname");
+ 	exit(1);
+   }
+   localfqdn = (char *) malloc (MAXFQDNLEN);
+@@ -423,7 +423,7 @@
+ 	    check = printutmp(FALSE, pflag);
+ 	}
+ 	if (check == -1) {
+-	  perror("printutmp()");
++	  fprintf(stderr, "printutmp: can't perform user listing\n");
+ 	  exit(1);
+ 	}
+    }
+@@ -435,7 +435,7 @@
+ 						(strlen (argv[count]) > 0)) {
+ 	if ((strncpy((char *) username, argv[count],
+ 			 MAXUSERSTRLEN-1)) == NULL) {
+-	  perror("strncpy()");
++	  perror("strncpy");
+ 	  exit(1);
+ 	}
+         /* Poke a NULL in, ending the username part */
+@@ -449,7 +449,7 @@
+ 
+ 	if ((strncpy((char *) hostname, argv[count], 
+ 				MAXHOSTNAMELEN)) == NULL) {
+-          	perror("strncpy()");
++          	perror("strncpy");
+           	exit(1);
+         }
+ 	if ((strchr ((char *) hostname, '@')) != NULL) {
+
+
+--- readconf.c.orig	Mon Apr 12 01:26:29 1999
++++ readconf.c	Wed Apr 21 10:52:16 1999
+@@ -49,7 +49,7 @@
+ #else
+   if ((conf = fopen (conf_file, "r")) == NULL) {
+ #endif
+-	perror("fopen()");
++	perror("fopen");
+ 	exit(1);
+   }
+ 
+@@ -111,7 +111,7 @@
+ #else
+   if ((conf = fopen (conf_file, "r")) == NULL) {
+ #endif
+-	perror("fopen()");
++	perror("fopen");
+ 	exit(1);
+   }
+ 
+@@ -190,8 +190,8 @@
+      the user's .efingerrc file.                */
+   if ((getuid() == 0) && (geteuid() == NOBODY_UID) &&
+   				(setreuid (NOBODY_UID, 0))) {
+-        /* Swap real/effective UIDs */
+-  	perror("setreuid()");
++    /* Swap real/effective UIDs */
++  	perror("setreuid");
+   	exit(1);
+   }
+ 
+@@ -237,7 +237,7 @@
+   /* Change back to nobody if we are root (euid == 0). */
+   if ((getuid() == NOBODY_UID) || (geteuid() == 0)) {
+   	if (setreuid(0, NOBODY_UID) < 0) {
+-  	    perror("setreuid()");
++  	    perror("setreuid");
+   	    exit(1);
+         }
+   }
+@@ -263,7 +263,7 @@
+ #else
+   if ((deny = fopen (deny_file, "r")) == NULL) {
+ #endif
+-        perror("fopen()");
++        perror("fopen");
+         return -1;
+   }
+ 
+
+Make the error for connect more informative....
+
+--- remote.c.orig	Mon Apr 12 01:26:29 1999
++++ remote.c	Wed Apr 21 11:11:53 1999
+@@ -55,7 +55,7 @@
+ struct hostent *server = NULL;
+ struct sockaddr_in server_sin = { 0 };
+ char senddat[MAXUSERSTRLEN+12];
+-char buff[MAXDATA];
++char buff[MAXDATA], conn_err[64];
+ char *usrnam_sav, *usrnam_tmp;
+ int finger_port;
+ 
+@@ -68,8 +68,13 @@
+   finger_port = FINGER_PORT;
+ #endif
+ 
+-	/* Init the buffer to '\0's */
+-	memset (senddat, 0, MAXUSERSTRLEN+12);
++	/* Init the buffers to '\0's */
++	memset (senddat,  0, MAXUSERSTRLEN+12);
++	memset (conn_err, 0, 64);
++
++	/* Error string for connect() containing the
++	   name of the host we are trying to connect to. */
++	snprintf(conn_err, 64, "Can't connect to %s", entry_hostname);
+ 
+ 	if (efinger_lookup (entry_username, entry_hostname, extra)) {
+ 		exit(0);
+@@ -99,7 +104,7 @@
+           csocket = 0;
+           csocket = socket (AF_INET, SOCK_STREAM, 0);
+           if (csocket == -1) {
+-            perror("socket()");
++            perror("Can't create socket");
+             return -1;
+           }
+           server = gethostbyname ((char *) entry_hostname);
+@@ -117,7 +122,7 @@
+ 
+           check = connect(csocket, &server_sin, sizeof(struct sockaddr_in));
+           if (check == -1) {
+-            perror("connect()");
++            perror(conn_err);
+             return -1;
+           }
+ 	  if (print_banner) {
+@@ -166,14 +171,14 @@
+ 
+           check = write (csocket, (char *) senddat, sizeof(senddat));
+           if (check == -1) {
+-            perror("write()");
++            perror("write");
+             return -1;
+           }
+ 
+           check = read (csocket, buff, MAXDATA);
+           do {
+             if (check == -1) {
+-                perror("read()");
++                perror("read");
+                 return -1;
+             } else {
+                 buff[check-1] = '\0';
+@@ -188,7 +193,7 @@
+                         (check > 0));
+ 
+           if (check == -1) {
+-                perror("read()");
++                perror("read");
+                 return -1;
+           }
+ 
+@@ -208,7 +213,7 @@
+ struct hostent *server = NULL;
+ struct sockaddr_in server_sin = { 0 };
+ char senddat[MAXUSERSTRLEN+12];
+-char buff[MAXDATA];
++char buff[MAXDATA], conn_err[64];
+ int finger_port;
+ 
+ #ifdef __LOOKUP_PORT
+@@ -220,10 +225,15 @@
+   finger_port = FINGER_PORT;
+ #endif
+ 
++	/* Error string for connect() containing the
++	   name of the host we are trying to connect to. */
++	memset (conn_err, 0, 64);
++	snprintf(conn_err, 64, "Can't connect to %s", host);
++
+           csocket = 0;
+           csocket = socket (AF_INET, SOCK_STREAM, 0);
+           if (csocket == -1) {
+-            perror("socket()");
++            perror("Can't create socket");
+             exit(1);
+           }
+           server = gethostbyname ((char *) host);
+@@ -242,17 +252,17 @@
+ 
+           check = connect(csocket, &server_sin, sizeof(struct sockaddr_in));
+           if (check == -1) {
+-            perror("connect()");
++            perror(conn_err);
+             exit(1);
+           }
+ 	  check = write (csocket, (char *) "ARE*YOU*EFINGER?\n", 17);
+           if (check == -1) {
+-            perror("write()");
++            perror("write");
+             exit(1);
+           } 
+ 	  check = read (csocket, buff, MAXDATA);
+           if (check == -1) {
+-            perror("read()");
++            perror("read");
+             exit(1);
+           }
+ 
+@@ -273,7 +283,7 @@
+ 		snprintf(senddat, MAXUSERSTRLEN+12, "%s %s\n", regexp, extra);
+ 		check = write (csocket, senddat, strlen(senddat));
+ 		if (check == -1) {
+-            	   perror("write()");
++            	   perror("write");
+             	   exit(1);
+           	}
+ 
+@@ -281,7 +291,7 @@
+           check = read (csocket, buff, MAXDATA);
+           do {
+             if (check == -1) {
+-                perror("read()");
++                perror("read");
+                 exit(1);
+             } else {
+                 buff[check-1] = '\0';
+
+
+Make reporting of failed stat's more informative.
+
+--- user.c.orig	Mon Apr 12 01:26:29 1999
++++ user.c	Wed Apr 21 10:54:18 1999
+@@ -305,7 +305,7 @@
+             snprintf(tty_line, UT_LINESIZE, "/dev/%s", current->ut_line);
+ 
+             if (stat ((const char *) tty_line, &tty_info)) {
+-                perror("stat()");
++                perror("Can't stat tty");
+                 exit(1);
+             }
+ 
+@@ -395,7 +395,7 @@
+ 	  if ((getuid() == 0) && (geteuid() == NOBODY_UID) &&
+ 				(setreuid (NOBODY_UID, 0))) {
+ 				/* Swap real/effective UIDs */
+-		  perror("setreuid()");	
++		  perror("setreuid");	
+ 		  exit(1);
+ 	  }
+ 
+@@ -417,13 +417,13 @@
+ 		  fflush(stdout);
+          	  if (write(STDOUT_FILENO, buf, length) != length)
+         	  {
+-          	     perror("write()");
++          	     perror("write");
+           	     return -1;
+         	  }
+ 
+         	  if (length < 0)
+         	  {
+-          	     perror("read()");
++          	     perror("read");
+           	     return -1;
+         	  }
+          	}
+@@ -448,13 +448,13 @@
+ 		  fflush(stdout);
+          	  if (write(STDOUT_FILENO, buf, length) != length)
+         	  {
+-          	     perror("write()");
++          	     perror("write");
+           	     return -1;
+         	  }
+ 
+         	  if (length < 0)
+         	  {
+-          	      perror("read()");
++          	      perror("read");
+           	      return -1;
+         	  }
+          	}
+@@ -465,7 +465,7 @@
+ 	  /* Change back to nobody if we are root (euid=0). */
+ 	  if ((getuid() == NOBODY_UID) || (geteuid() == 0)) {
+ 		if (setreuid(0, NOBODY_UID) < 0) {
+-		   perror("setreuid()");
++		   perror("setreuid");
+ 		   exit(1);
+ 		}
+ 	  }
+@@ -572,7 +572,7 @@
+ 	    	   using getpwnam.                                   */
+ 		strncpy(tmp_name, current->ut_user, UT_NAMESIZE);
+ 	    	if ((pwent = getpwnam(tmp_name)) == NULL) {
+-			perror("getpwnam()");
++			perror("getpwnam");
+ 			exit(1);
+ 	    	}
+ 	    	fullname = strdup(pwent->pw_gecos);
+@@ -593,7 +593,7 @@
+ 	    snprintf(tty_line, UT_LINESIZE, "/dev/%s", current->ut_line);
+ 
+ 	    if (stat ((const char *) tty_line, &tty_info)) {
+-		perror("stat()");
++		perror("Can't stat tty");
+ 		exit(1);
+ 	    }
+ 

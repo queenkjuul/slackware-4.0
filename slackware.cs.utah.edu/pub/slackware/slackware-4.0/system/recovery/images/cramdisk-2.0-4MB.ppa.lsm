@@ -1,0 +1,25 @@
+Begin3
+Title:          
+Title:		cramdisk-2.0-4MB.ppa.tgz - bootable compressed ramdisk 
+Version:	2.0
+Entered-date:	19OCT96
+Description:	cramdisk-2.0-4MB contains bootable floppy image that fits 
+		on a single 1.44 MB floppy. The kernel (2.0.23) includes 
+		math emulation and [in cramdisk.net] networking 
+		(PPP and dialin script, NE2000, 3C509), or 
+		[in cramdisk.ppa] support for the parallel port ZIP drive.
+		These floppy images will boot on a 386 with 4MB RAM.  
+		MSDOS support is included so you can download from the net 
+		to a DOS partition. For networking, the IP addresses and/or 
+		ppp dialin sequence need to be set. A method for modifying 
+		the floppy image is included.  
+Keywords:	kernel, ramdisk, networking, compress, rescue, bootdisk, ZIP
+Author:		rob@retina.anatomy.upenn.edu 
+Maintained-by:  
+Primary-site:	sunsite.unc.edu /pub/Linux/kernel/images/
+		1275640 cramdisk-2.0-4MB.ppa.tgz
+Alternate-site:	retina.anatomy.upenn.edu /pub/rob/
+Original-site:  
+Platforms:	386/486/pentium with at least 4 MB RAM, 1.44 MB floppy boot.
+Copying-policy: GPL
+End

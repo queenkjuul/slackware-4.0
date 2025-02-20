@@ -1,0 +1,16 @@
+Begin3
+Title:		p5profile
+Version:        0.3
+Entered-date:   03/09/97
+Description:    graphs pentium counter event data made available
+		by the CPU's Machine Specific Registers
+Keywords:       pentium MSR counter
+Author:         Stephan.Meyer@munich.netsurf.de (Stephan Meyer)
+Maintained-by:  Stephan.Meyer@munich.netsurf.de (Stephan Meyer)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xutils/system
+		19kB p5profile-0.3.tar.gz
+Alternate-site:
+Original-site:
+Platforms:      pentium, Qt GUI library, recent kernel
+Copying-policy: GPL
+End

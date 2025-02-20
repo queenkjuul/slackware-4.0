@@ -1,0 +1,6 @@
+tar xzvf gnuchess-4.0.pl79.tar.gz
+cd gnuchess-4.0.pl79
+zcat ../gnuchess-4.0.pl79.diff.gz | patch
+cd src
+./configure --prefix=/usr --libdir=/usr/lib/gnuchess
+make LIBDIR=/usr/lib/gnuchess

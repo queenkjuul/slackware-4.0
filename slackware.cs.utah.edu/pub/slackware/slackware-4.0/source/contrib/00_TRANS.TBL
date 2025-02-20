@@ -1,0 +1,24 @@
+D AFTERSTE                          	afterstep
+D AMP                               	amp
+D BASH-2.03                         	bash-2.03
+D BIND-4                            	bind-4
+D BLACKBOX                          	blackbox
+D CVS-1.10                          	cvs-1.10
+D DIALD-0_.5                        	diald-0.16.5
+D EMACSPEA.0                        	emacspeak-9.0
+D F2C                               	f2c
+D FVWM-1.23B                        	fvwm-1.23b
+L G77                               	g77	gcc-2.8.1
+D GCC-2_8.1                         	gcc-2.8.1
+L GLIBC-2_.7PR                      	glibc-2.0.7pre6	../a/glibc
+D ICEWM                             	icewm
+D IRC-4.4                           	irc-4.4
+D IRCD                              	ircd
+D NVI-1.79                          	nvi-1.79
+D PDKSH-5_.13                       	pdksh-5.2.13
+D QV-UTILS                          	qv-utils
+D READLINE.1                        	readline-2.1
+D WMAKER                            	wmaker
+D XCDROAST                          	xcdroast
+D XEMACS                            	xemacs
+D XGRABSC                           	xgrabsc

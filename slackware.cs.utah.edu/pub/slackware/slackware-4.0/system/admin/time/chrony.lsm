@@ -1,0 +1,31 @@
+Begin3
+Title:          chrony
+Version:        1.1
+Entered-date:   06MAY99
+Description:    A pair of programs for keeping computer clocks accurate.
+                chronyd is a background (daemon) program and chronyc is a
+                command-line interface to it.  Time reference sources for
+                chronyd can be RFC1305 NTP servers, human (via keyboard and
+                chronyc), and the computer's real-time clock at boot time
+                (Linux only).  chronyd can determine the rate at which the
+                computer gains or loses time and compensate for it whilst no
+                external reference is present.  chronyd's use of NTP servers
+                can be switched on and off (through chronyc) to support
+                computers with dial-up/intermittent access to the
+                Internet. chronyd can also act as an RFC1305-compatible NTP
+                server.
+Keywords:       time NTP RFC1305 RTC adjtime
+Author:         richard@curnow.demon.co.uk (Richard Curnow)
+Maintained-by:  richard@curnow.demon.co.uk (Richard Curnow)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/admin/time
+                260k chrony-1.1.tar.gz
+                2k chrony.lsm
+Platforms:      Linux 2.0/2.1/2.2 (i386)
+                Solaris 2.5, SunOS 4.1.4.
+                Reported to work on BSDI/386.
+Copying-policy: FRS
+                Copying, use and verbatim source redistribution unlimited.
+                Binary distribution must acknowledge software's origin.
+                Modifications must not be misrepresented as the original
+                software.
+End

@@ -1,0 +1,35 @@
+Begin2
+Title        =	UUCP Traffic Analyzer
+Version      =  3.13
+Desc1        =  This package analyzes your site UUCP traffic
+Desc2        =  by reading the /usr/spool/uucp/*/xferstats
+Desc3        =  depending on the UUCP you set up.
+Desc4        =
+Desc5        =
+Author       =  Emanuele Gaifax
+AuthorEmail  =	lele@nautilus.sublink.org
+Maintainer   =
+MaintEmail   =
+Site1        =	
+Path1        =
+File1        =	tua-3.13.tar.gz
+FileSize1    =	158633
+Required1    =	linux-0.99.pl13
+Required2    =	UUCP - HDB || Taylor
+Required3    =
+Required4    =	
+CopyPolicy1  =	GPL
+CopyPolicy2  =
+Keywords     =	tua
+Comment1     =	I forgot where I ftp'd this from
+Comment2     =	but it works great for me. I hope 
+Comment3     =	it helps other Linuxers too.
+Comment4     =	
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      =
+EnteredBy    =	reubenr@netcom.com
+CheckedEmail =
+End
+

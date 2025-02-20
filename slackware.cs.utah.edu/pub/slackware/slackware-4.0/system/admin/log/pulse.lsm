@@ -1,0 +1,19 @@
+Begin3
+Title:		pulse
+Version:	1.0
+Entered-date:	Wed Apr 21 01:49:32 PKT 1999
+Description:	pulse is a small program written out of necessity.  It
+		can output dots periodically.  The period of time
+		between two dots can be specified.  It can be used to
+		measure the number of time units between two events.
+Keywords:	Timer, Logging, Events, Pulse
+Author: 	sjaveed@bigfoot.com (Shahbaz Javeed)
+Maintained-by:	sjaveed@bigfoot.com (Shahbaz Javeed)
+Primary-site:	ftp://metalab.unc.edu/pub/Linux/utils
+		3734	pulse-1.0.tar.gz
+		607	pulse.lsm
+Alternate-site: 
+Original-site:	
+Platforms:	
+Copying-policy:	GPL
+End

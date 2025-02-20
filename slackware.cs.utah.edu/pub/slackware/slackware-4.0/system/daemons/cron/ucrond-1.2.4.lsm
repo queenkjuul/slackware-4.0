@@ -1,0 +1,15 @@
+Begin3
+Title:		ucrond
+Version:	1.2.4
+Entered-date:	18MAR99
+Description:	Cron daemon, mainly intended for systems that are frequently
+		down. Starts commands after reboot if necessary and allows
+		to specify commands relative to the system uptime. Uses 
+		common crontab formats.
+Keywords:	daemon cron
+Author: 	alinden@netcologne.de
+Maintained-by:	alinden@netcologne.de
+Primary-site:   sunsite.unc.edu /pub/Linux/system/daemons/cron
+		32770 ucrond-1.2.4.tar.gz
+Copying-policy:	GPL
+End

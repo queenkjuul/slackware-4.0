@@ -1,0 +1,15 @@
+Begin3
+Title:		Patch-non640k
+Version:	2.0.36
+Entered-date:	27 April 1999
+Description:	Short description of the package.
+Keywords:	640k 512k boot conventional base PXE UNDI
+Author:		mmogilvi@elbert.uccs.edu (Mathew M. Ogilvie)
+		davex.anderson@intel.com (Dave Anderson)
+Primary-site:	metalab.unc.edu /pub/Linux/system/boot
+		491  patch-non640k-2.0.36.lsm
+		12k  patch-non640k-2.0.36.gz
+		807  patch-non640k-2.0.36.README
+Platforms:	Linux 2.0.36 on i386
+Copying-policy:	GPL
+End

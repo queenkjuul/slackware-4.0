@@ -1,0 +1,16 @@
+Begin3
+Title: 		Popproxy          
+Version: 	1.3       
+Entered-date: 	8 April 1997   
+Description:  	A transparent pop proxy with support for long user names
+Keywords:  	mail, pop, proxy, firewall
+Author:    	nir@global.co.za (Nir Oren)     
+Maintained-by: 	nir@global.co.za (Nir Oren)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/pop
+		100 K popproxy-1.3.tgz
+Alternate-site: 
+Original-site:  sunsite.unc.edu /pub/Linux/system/mail/pop
+		100 K popproxy-1.3.tgz
+Platforms: 	Linux, Solaris
+Copying-policy: GPL
+End

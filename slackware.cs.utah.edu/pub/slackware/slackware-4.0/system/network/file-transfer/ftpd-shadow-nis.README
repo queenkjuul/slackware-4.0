@@ -1,0 +1,8 @@
+ftpd-shadow-nis.tgz means that it is a ftpd server patched to work with 
+SHADOW suite and NIS.
+
+Remark:   
+	if you have users with CSH default shell, don't forget to add:
+ 		1) a link  /bin/csh  to /bin/tcsh (if /bin/csh not included) 
+		2) a line  /bin/csh   in /etc/shells.
+	

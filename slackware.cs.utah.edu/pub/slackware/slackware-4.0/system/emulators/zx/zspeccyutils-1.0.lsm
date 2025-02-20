@@ -1,0 +1,16 @@
+Begin3
+Title:          zspeccyutils
+Version:        1.0
+Entered-date:   02APR99
+Description:    zspeccyutils is a collection of Sinclair ZX Spectrum
+		related utils, including programs to load/save from/to
+		a speccy via a soundcard (/dev/dsp) and to similarly
+		send .sna or .tzx files, and programs to convert
+		speccy screens to/from PPM format.
+Keywords:       Sinclair ZX Spectrum speccy utilities comms transfer
+		sound graphics convert PPM sna tzx Z80
+Author:         rus@forfree.at (Russell Marks)
+Primary-site:   metalab.unc.edu /pub/Linux/system/emulators/zx
+		77751	zspeccyutils-1.0.tar.gz
+Copying-policy: Public domain
+End

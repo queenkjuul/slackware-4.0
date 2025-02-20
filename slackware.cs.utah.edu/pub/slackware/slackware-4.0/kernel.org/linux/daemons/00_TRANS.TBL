@@ -1,0 +1,6 @@
+F 00_INDEX.TXT                      	00_index.txt
+D AUTOFS                            	autofs
+D NTP                               	ntp
+D RAID                              	raid
+L RPC.STA                           	rpc.statd	statd
+D STATD                             	statd

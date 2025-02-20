@@ -1,0 +1,21 @@
+Begin3
+Title:          Morecram
+Version:        1.0
+Entered-date:   08JAN98
+Description:    Cramdisks - util and ftp/nfs *server* in one.
+                These disks exploit 24 sectors per track.
+                The util disk has ppp-2.3.3 chroot vi fsck
+                telnet ncftp and more. The NFS disk has nfsd
+                and ftpd. CDROM is mounted and exported by nfs
+                automatically. The disks prompt you for IP
+                addresses on startup, and autodetect network
+                cards.
+Keywords:       cramdisk, nfsd, ftpd, util, boot, minix, recovery
+Author:         psheer@icon.co.za (Paul Sheer)
+Maintained-by:  psheer@icon.co.za (Paul Sheer)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/recovery/images
+                3500kB morecram-1.0.tar.gz
+                1kB morecram.lsm
+Platforms:      Linux supporting /dev/fd0H1920 and /dev/ram1
+Copying-policy: GPL
+End

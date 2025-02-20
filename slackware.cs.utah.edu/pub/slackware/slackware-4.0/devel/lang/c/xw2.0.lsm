@@ -1,0 +1,21 @@
+
+Begin3
+Title:		XbW. X without bells and whistles
+Version:	2.0 and higher
+Entered-date:	18.3.1995
+Description:	Create user interfaces out of standard C header files.
+		Change the automatically created user interface into
+		a real application interface.
+		Will be of use in quick-'n-dirty applications that need
+		lots of input/output parameters, many windows and 
+		no "bells and whistles". Designed for experimental
+		programs. Needs X11.
+Keywords:	User Interface X11  
+Author: 	maroske@134.34.193.150
+Maintained-by:	maroske@134.34.193.150
+Primary-site:	ftp 134.34.193.150, directory /pub/XbW, about 250kB
+Alternate-site: sunsite.unc.edu 
+Platforms:	Linux/X11
+Copying-policy:	GPL
+End
+

@@ -1,0 +1,29 @@
+Begin3
+Title:          Callback package for Linux
+Version:        4.xx 
+Entered-date:   xxSEP97
+Description:    This package allows callback for Linux systems which are
+                equipped with a modem. Prerequisite: mgetty
+                The package contains three programs:
+                cblogin, a login-program for dial-in connections,
+                cbmgetty, a pseudo-getty and cb, a callback control unit.
+Keywords:       callback dial-in dial-out modem
+Author:         frank@icce.rug.nl (Frank B. Brokken)
+Maintained-by:  frank@icce.rug.nl (Frank B. Brokken)
+Primary-site:   ftp.icce.rug.nl /pub/unix
+                1k      callback-X.YY.lsm
+                125k    callback-X.YY.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Serial
+                1k      callback-X.YY.lsm
+                125k    callback-X.YY.tar.gz
+Platforms:      icmake is used for the automated program construction
+Copying-policy: GPL
+End
+
+
+
+
+
+
+
+

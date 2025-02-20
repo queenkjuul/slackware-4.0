@@ -1,0 +1,58 @@
+Begin3
+Title:		MAT 
+Version:	0.18
+Entered-date:	Jan 23th, 1999
+Description:	MAT is a distributed monitoring and management tool
+                for Linux, SGI, SunOS, and Solaris machines.  The tool
+                provides an easy to use GUI interface from which the 
+                sysadmin, or designated user can administer many of
+                the common UNIX configuration files.  MAT can monitor
+		many system parameters, producing usage graphs, and 
+		triggering alarms.
+		The current release of the tool can add modify and delete:
+		    Users, Hosts, Groups, Mounts, Motd, DNS client config, 
+		    Services, Aliases, Cron jobs, Syslog config, NFS
+                    exports, DNS records, and NIS maps.
+                Monitoring functions allow you to inspect:
+                    Syslog files, Routing tables, disk space, exports
+                    and processes.
+                MATd is a GUI configurable system monitoring daemon.
+                It currently can monitor:
+                    Disk use, Network connectivity, CPU use, Run-queue,
+                    Logins, SMTP daemons, FTP servers and Required processes. 
+		On Linux machines it also produces graphs of memory and swap
+		use.  New to this release is the ability to discover all 
+		the parameters, memory, cpu, swap etc automatically.
+                MATd can also run user provided scripts if a
+		threshold is exceeded, notifing the administrator of
+		potential problems.    
+                A house-keeping task periodically trims MATd log files.
+		Some for the key features include:
+		  - Can control many hosts from a single console.
+		  - The ability to deligate responsibility to others.
+		  - Monitor several system parameters for trend analysis.
+	 	  - DNS, and NIS servers are easliy managed.
+		Developement of a tape tool is currently underway, as
+                well as enhancements to MATd to provide more monitored 
+		parameters.
+		New this release:
+			- Hooks to allow users to extend the program
+			- Automatic discovery of parameters it can monitor
+			- Bug fixes 
+			- A WWW site: http://www.ee.ryerson.ca/~sblack/mat
+Keywords:	Distributed Systems Management Monitoring Administration
+Author:		sblack@ee.ryerson.ca   Mark Black
+Maintained-by:  sblack@ee.ryerson.ca   Mark Black
+Primary-site:	sunsite.unc.edu /pub/Linux/Incoming/
+		sunsite.unc.edu /pub/Linux/system/admin/frontends
+		1727kB mat-0.18.tar.gz
+		2573  mat.lsm
+Alternate-site: 
+Original-site:
+Platforms:	Linux, SunOS, Solaris, IRIX with Tcl/TK
+Copying-policy:	Freeware/Shareware see the License file
+End
+
+
+
+

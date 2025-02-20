@@ -1,0 +1,19 @@
+Begin3
+Title:          PPP-Script
+Version:        1.0
+Entered-date:   24 Dec 1998
+Description:    PPP-Script is yet another script used for making dial-up
+                internetconnections. It features : 
+		- some kind of accesscontroll
+		- automation of services like mail exchange
+		- modulization, you can "easily" include new features
+Keywords:       internet, modem, ppp, PAP, script, sex, drugs, rocknroll
+Comment :       Well, it doesn't actually have much to do with sex, drugs
+                and rocknroll (yet ;) ), but I couldn't resist the temptation
+Author:         Patrick Ahlbrecht
+Maintained-by:  patrick@unix-ag.org
+Primary-site:   www.unix-ag.uni-siegen.de/~patrick
+		15k pppscript-1.0.tgz
+Platform:       Linux 2.0.x
+Copying-policy: GPL 2.0
+End

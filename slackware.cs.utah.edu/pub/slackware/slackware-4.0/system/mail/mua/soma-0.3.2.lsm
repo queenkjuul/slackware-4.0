@@ -1,0 +1,15 @@
+Begin3
+Title:          Soma - Stefan's own mail application
+Version:        0.3.2
+Entered-date:   24JUN96
+Description:    Soma is a mail-reader (mail user agent) for Linux and X11
+                based on the XView-Toolkit and providing an Open-Look GUI
+Keywords:       mail mail-reader xview linux x11 open-look
+Author:         Stefan Kuehnel <kuehnel@stud.uni-hannover.de>
+Maintained-by:  Stefan Kuehnel <kuehnel@stud.uni-hannover.de> 
+Primary-site:   http://www.stud.uni-hannover.de/~kuehnel/soma-0.3.2.tar.gz
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/X11/xapps/soma-0.3.2.tar.gz
+Original-site:  
+Platforms:      Linux 
+Copying-policy: mostly GPL
+End

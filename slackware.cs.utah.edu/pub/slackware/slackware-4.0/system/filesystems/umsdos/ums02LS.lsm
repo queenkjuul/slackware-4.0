@@ -1,0 +1,30 @@
+Begin2
+Title        = ums02ls.zip 
+Version      = 0.2 for Umsdos 0.2
+Desc1        = This is an LS like program that run under Msdos (the "OS")
+Desc2        =  to Display the content of Umsdos File Systeme under Msdos
+Desc3        =  in a way similar to an ls running under Linux.
+Desc4        = This program can really replace "dir" under Msdos.
+Desc5        = Distributed (source and binary) under zip info format.
+Author       = Glaude David [Glu]
+AuthorEmail  = dglaude@is1.ulb.ac.be
+Maintainer   = Glaude David [Glu]
+MaintEmail   = dglaude@is1.ulb.ac.be
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/ALPHA/umsdos/???
+File1        = ums02ls.zip
+FileSize1    = 60K
+Required1    = Umsdos 0.2 by Jacques Gelinas jacques@solucorp.qc.ca :-)
+Required2    = Linux 0.99pl15 (or 1) by Linus. 
+Required3    = Msdos (or compatible operating systeme) :-(
+CopyPolicy1  = GNU public license
+CopyPolicy2  = Since I use GNU lib and source.
+Keywords     = UMSDOS file system utilities for Msdos
+Comment1     = This is first release and not yet full featured 
+Comment2     = but better than nothing. niet waar ?
+RelFiles1    = ls.exe
+Entered      = 21FEB94
+EnteredBy    = Glaude David [Glu]
+CheckedEmail = dglaude@is1.ulb.ac.be
+End
+

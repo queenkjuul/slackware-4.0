@@ -1,0 +1,14 @@
+Begin3
+Title:          powercolor
+Version:        0.3
+Entered-date:   19APR98
+Description:    This program is a graphical frontend for setting some printing 
+                parameters for HP Deskjets (eg. HPDJ540, HPDJ670 HPDJ690C)
+Keywords:       Deskjet HPDJ540 HPDJ690C HPDJ670
+Author:         teddy@frankfurt.netsurf.de (Carsten Schwede)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/printing
+		13821 powercolor-0.3.tar.gz
+Platforms:      Linux, Tcl/Tk, Ghostscript 5.10 or higher, apsfilter, a HP Deskjet Printer
+Copying-policy: GPL
+End         
+

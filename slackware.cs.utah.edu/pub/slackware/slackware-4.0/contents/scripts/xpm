@@ -1,0 +1,4 @@
+( cd usr/X11R6/lib ; rm -rf libXpm.so )
+( cd usr/X11R6/lib ; ln -sf libXpm.so.4.11 libXpm.so )
+( cd usr/X11R6/lib ; rm -rf libXpm.so.4 )
+( cd usr/X11R6/lib ; ln -sf libXpm.so.4.11 libXpm.so.4 )

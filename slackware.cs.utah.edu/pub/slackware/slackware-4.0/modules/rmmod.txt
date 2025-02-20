@@ -1,0 +1,66 @@
+
+
+
+RMMOD(1)               Linux Module Support              RMMOD(1)
+
+
+NNAAMMEE
+       rmmod - unload loadable modules
+
+SSYYNNOOPPSSIISS
+       rrmmmmoodd [ -as ] module ...
+
+DDEESSCCRRIIPPTTIIOONN
+       RRmmmmoodd unloads loadable modules from the running kernel.
+
+       RRmmmmoodd  tries  to  unload a set of modules from the kernel,
+       with the restriction that they are not  in  use  and  that
+       they are not referred to by other modules.
+
+       If  more than one module is named on the command line, the
+       modules will be  removed  simultansously.   This  supports
+       unloading of stacked modules.
+
+   OOPPTTIIOONNSS
+       _-_a     Remove all unused modules.
+
+       _-_s     Output  everything to ssyysslloogg(3) instead of the ter-
+              minal.
+
+SSEEEE AALLSSOO
+       insmod(1), lsmod(1), ksyms(1), modules(2)
+
+HHIISSTTOORRYY
+       Module support was first concieved by Anonymous
+       Initial Linux version by Bas Laarhoven <bas@vimec.nl>
+       Version 0.99.14 by Jon Tombs <jon@gtex02.us.es>
+       Extended by Bjorn Ekwall <bj0rn@blox.se>
+       Updated for 2.1.17 by Richard Henderson <rth@tamu.edu>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Linux                      26 Dec 1996                          1
+
+

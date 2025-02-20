@@ -1,0 +1,10 @@
+D BLOCK                             	block
+D CDROM                             	cdrom
+D FS                                	fs
+D IPV4                              	ipv4
+D IPV6                              	ipv6
+D MISC                              	misc
+F MODULES.DEP                       	modules.dep
+D NET                               	net
+D SCSI                              	scsi
+D VIDEO                             	video

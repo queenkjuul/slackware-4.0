@@ -1,0 +1,17 @@
+Begin3
+Title:		rc.multihome
+Version:	22JAN96
+Entered-date:	22JAN96
+Description: 
+	Startup script to build a batch of dummy interfaces and routes.
+	Useful as a temporary way to do 'multihoming' (i.e., for web servers).
+Keywords:	multihome, route, dummy
+Author:		apharris@onShore.com (A. P. Harris)
+Maintained-by:
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/misc
+		763 rc.multihome.gz
+Alternate-site: ftp.onShore.com /pub/unix
+Original-site:
+Platforms:	linux 1.2.x, dummy.o module (not compiled in)
+Copying-policy: public domain
+End

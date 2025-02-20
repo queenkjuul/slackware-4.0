@@ -1,0 +1,23 @@
+Begin3
+Title:          WXftp - Linux GUI FTP client
+Version:        0.4.1
+Entered-date:   20DEC98
+Description:    FTP client with intuitive user interface (GTK+ and Motif), 
+		session manager, on-line help, progress bar, etc.
+Keywords:       ftp, client, networking, X11, GUI, Motif, GTK.
+Author:         alexy@edgarmail.com (Alexander Yukhimets)
+Maintained-by:  alexy@edgarmail.com (Alexander Yukhimets)
+Primary-site:   http://www.wxftp.seul.org
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/file-transfer/
+                390k wxftp-0.4.1.src.tar.gz
+                141k wxftp-0.4.1.libc5.dynamic.tar.gz
+		638k wxftp-0.4.1.libc5.static.tar.gz
+		81k  wxftp-0.4.1.libc5.gtk.tar.gz
+                139k wxftp-0.4.1.libc6.dynamic.tar.gz
+		662k wxftp-0.4.1.libc6.static.tar.gz
+		80k  wxftp-0.4.1.libc6.gtk.tar.gz
+Original-site:  
+Platforms:      Linux/i386 Linux/alpha Solaris2.5.1/sparc Solaris2.6/sparc 
+		IRIX6.4/SGI
+Copying-policy: Artistic license
+End

@@ -1,0 +1,23 @@
+Begin3
+Title:          ppp-multidial.sh
+Version:        1.0
+Entered-date:   18Oct97
+Description:    'ppp-multidial.sh' is a shell script to dial multiple
+			 phone numbers.  It will perform attack-dialing of all
+		      or only some of the phone numbers, or it'll just dial
+		      once.  There's an option to block call-waiting.
+			    The script handles all of the nitty-gritty of
+		      the chat program; all you need to is define a few
+		      variables in an .rc file.
+			    It does have some limitations; it expects only a
+			 username and password, nothing more, during the login
+		      process, for example.
+Keywords:       pppd dialin chat
+Author:         John.Weiss@colorado.edu (John Weiss)
+Maintained-by:  John.Weiss@colorado.edu (John Weiss)
+Primary-site:   sunsite.unc.edu
+Alternate-site: 
+Original-site:  
+Platforms:      Linux
+Copying-policy: Artistic License
+End

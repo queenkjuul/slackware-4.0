@@ -1,0 +1,15 @@
+Begin3
+Title:		kcmclock
+Version:	0.1
+Entered-date:	052598
+Description:	A kcontrol modules to change the Date & Time of your Linux Box 
+Keywords:	Time, KDE, X11, Qt, system
+Author:		Luca Montecchiani <m.luca@usa.net>
+Maintained-by:	Luca Montecchiani <m.luca@usa.net>
+Primary-site:	http://www.geocities.com/SiliconValley/Vista/2964/linux.html
+		70kB kcmclock01.tgz
+		30kB kcmclock01.rpm
+Alternate-site:	ftp.kde.org /pub/kde/Incoming
+Platforms:	Linux, needs Qt 1.33 and the KDE beta4
+Copying-policy:	GPL
+End

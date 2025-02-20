@@ -1,0 +1,14 @@
+Begin3
+Title: sbl 
+Version: 0.1
+Entered-date: July 17, 1997
+Description: a compact stack-based language with good string capabilities
+Keywords: stack, language, regex
+Author: Jonathan Westhues <offnet@golden.net>
+Maintained-by: Jonathan Westhues <offnet@golden.net>
+Primary-site: 
+Alternate-site: 
+Original-site:  
+Platforms: Linux, almost any platform with dl libraries
+Copying-policy: GPL
+End

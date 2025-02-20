@@ -1,0 +1,18 @@
+Begin3
+Title:           PPPKit 
+Version:         0.7
+Entered-date:    FEB98 
+Description:     PPPKit is a very easy to use program written in perl.  It
+                 asks the user simple questions and then creates the
+                 scripts.
+
+Keywords:        ppp pppd internet isp chat scripts   
+Author:          atomiK@undertow.csh.rit.edu (atomik)
+Maintained-by:   
+Primary-site:    http://undertow.csh.rit.edu/atomik
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/network/serial/ppp/
+                PPPKit-0.7.tar.gz
+Platforms:       Linux systems that have perl...just about all version
+                 should work just fine. 
+Copying-policy:  Freeware 
+End

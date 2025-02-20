@@ -1,0 +1,56 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-tin
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_tin.tar.gz
+
+echo "+===================+"
+echo "| tinpre-1.4-980226 |"
+echo "+===================+"
+cd $TMP
+tar xzvf $CWD/tinpre-1.4-980226.tar.gz
+cd tin-980226
+configure --prefix=/usr --with-metamail=/usr/bin/metamail \
+  --with-ispell=/usr/bin/ispell --with-ncurses --enable-color \
+  --with-defaults-dir=/etc/tin
+make clean
+make build
+strip src/tin
+cat src/tin > $PKG/usr/bin/tin
+cat doc/tin.1 | gzip -9c > $PKG/usr/man/man1/tin.1.gz
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/tin.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/tin-980226
+  rm -rf $PKG
+fi

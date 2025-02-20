@@ -1,0 +1,2 @@
+./configure --enable-shared --enable-static --disable-debug \
+  --enable-production --prefix=/usr/X11R6

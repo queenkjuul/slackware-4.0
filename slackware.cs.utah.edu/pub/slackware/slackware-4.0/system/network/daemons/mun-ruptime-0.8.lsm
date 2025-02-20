@@ -1,0 +1,15 @@
+Begin3
+Title: mun-ruptime          
+Version: 0.8       
+Entered-date: Fri September 1, 1995  
+Description: an ruptime daemon and client for linux   
+Keywords: ruptime, inetd, rup, in.rupd      
+Author: amigus@cs.mun.ca (Adam Migus)         
+Maintained-by: amigus@cs.mun.ca (Adam Migus) 
+Primary-site: sunsite.unc.edu /pub/Linux/system/Network/daemons 
+					9630 ruptime-0.8.tar.Z
+Alternate-site: ftp.cs.mun.ca (Not sure where Yet) 
+Original-site:  
+Platform:       
+Copying-policy: GPL 
+End

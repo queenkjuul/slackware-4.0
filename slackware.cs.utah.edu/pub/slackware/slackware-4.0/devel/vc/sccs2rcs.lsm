@@ -1,0 +1,16 @@
+Begin3
+Title:		sccs2rcs
+Version:	1.1
+Entered-date:	09OCT96
+Description:	Converts SCCS projects to RCS, preserving change histories
+		and delta comments.
+Keywords:	SCCS, RCS, version control, conversion
+Author: 	kenstir@viewlogic.com (Ken Cox)
+Maintained-by:	esr@snark.thyrsus.com (Eric S. Raymond)
+Primary-site:	locke.ccil.org /pub/esr
+		sccs2rcs-1.1
+Platforms:	Unix (requires csh).
+Copying-policy:	BSD-like
+End
+
+

@@ -1,0 +1,24 @@
+Begin3
+Title:          JanBot
+Version:        3.07d
+Entered-date:   January 1, 1999
+Description:    JanBot is a concurrent file server for use with the Internet
+                Relay Chat. The multiprocess robot engine with features like
+                HyperDCC, mIRC Resume support, TAR support, ratios etc.,  is
+                probably one of the most advanced  file bots available as of
+                today. In order to increase performance all useless features
+                like channel protection, clone mechanisms and so on has been
+                left out.
+Keywords:       file server, internet relay chat, robot, bot, freeware,
+                linux, hyperdcc, mirc resume
+Author:         janf@bits.no (Jan Fredrik Leversund)
+Maintained-by:  janf@bits.no (Jan Fredrik Leversund)
+Primary-site:   ftp.lhg.hib.no /pub/irc/janbot
+                         59 kb janbot-3.07d.tar.gz
+                          1 kb janbot-3.07d.lsm
+                         10 kb README
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/chat
+Original-site:
+Platform:       Linux, Solaris, BSDi, FreeBSD, NetBSD, etc.
+Copying-policy: Freeware
+End

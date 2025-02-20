@@ -1,0 +1,14 @@
+Begin3
+Title:          FSTOOL
+Version:        1.0
+Entered-date:   22FEB99
+Description:    A Tcl/Tk based file system mounter. Can use JSTOOLS by Jay Sekora but not essential.
+Keywords:       file system, mount, Tcl/Tk, X
+Author:         bhepple@bit.net.au (Bob Hepple)
+Maintained-by:  bhepple@bit.net.au (Bob Hepple)
+Primary-site:   sunsite.unc.edu /pub/Linux/apps/???
+		14kB fstool-1.0-1.tgz
+		469  fstool.lsm
+Platforms:	Linux (x86), most Unix, X
+Copying-policy: GPL
+End

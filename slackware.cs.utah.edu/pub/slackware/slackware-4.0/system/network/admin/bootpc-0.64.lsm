@@ -1,0 +1,15 @@
+Begin3
+Title:          Linux Bootp Client
+Version:        0.64
+Entered-date:   17DEC98
+Description:	This is a boot protocol client used to grab the machines
+		ip number, set up DNS nameservers and other useful
+		information. Now can ask for server to bradcast replies which
+		is useful for testing, and seems to be needed on Linux 2.1.x
+Keywords:       bootp bootpc client net util
+Author:         ceh@eng.cam.ac.uk (Charles Hawkins)
+Maintained-by:  J.S.Peatfield@damtp.cam.ac.uk (Jon Peatfield)
+Primary-site:   http://www.damtp.cam.ac.uk/linux/bootpc/bootpc-0.64.tar.gz
+Alternate-site: ftp://metalab.unc.edu/pub/Linux/system/Network/admin/bootpc-0.64.tar.gz
+Copying-policy: GPL
+End

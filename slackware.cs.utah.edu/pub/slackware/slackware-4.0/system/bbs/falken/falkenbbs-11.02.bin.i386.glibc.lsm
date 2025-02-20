@@ -1,0 +1,16 @@
+Begin3
+Title:          Falken BBS Software for Linux
+Version:        11.02
+Entered-date:   4/20/1999
+Description:    The utltimate BBS package for Linux - Doors, Messages, Files
+Keywords:       linux bbs software doors messages teleconference
+Author:         Chris Whitacre <cd@falkenbbs.com>
+Maintained-by:  Chris Whitacre <cd@falkenbbs.com>
+Primary-site:   ftp.falkenbbs.com /pub/FalkenBBS/linux
+                falkenbbs-11.02.bin.i386.glibc.tar.gz
+                falkenbbs-11.02.bin.i386.glibc.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/bbs/falken
+Original-site:  
+Platforms:      glibc
+Copying-policy: Shareware
+End

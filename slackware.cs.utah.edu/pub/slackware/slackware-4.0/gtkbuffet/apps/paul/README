@@ -1,0 +1,106 @@
+paul: README
+
+For some special purposes I wrote a kind of an image viewer named
+
+   paul = _P_rogram zur _A_uswertung und _U_mwandlung von _L_aserbildern
+
+(for non German speakers: Program to evaluate and convert laser images).
+The background is that I take some pictures of crystals using a
+highspeed filmcamera which works with laser light.
+
+PAUL IS ALPHA SOFTWARE!
+You should expect errors.
+
+The intention is to get a "digital" film.  Using a slide-scanner
+(Nikon LS-20) I scan the images by a program derived from SANE's
+xscanimage (I changed xscanimage to get PNG-images with special
+chunks I want to use in paul).
+
+Some special features I needed for my hobby of photographie were
+added which make paul interesting for common usage.  Especially
+HTML editors will find a usefull tool when trying to build
+click-able maps of images.
+
+So what is PAUL:
+Short:
+   Yet another image viewer.
+Longer:
+   - Special designed for *sequences* of images.
+   - Works best with gray-scaled images, but can handle any 24-Bit
+     images, off course
+     (Remark: Gray scaled images are *displayed* green! It has
+      technical reasons to use the other colors internally.  Don't
+      be afraid that your output will be green.  It's normal monochrom
+      image.)
+   - GTK userinterface (almost all features are available from command
+     line and there are some which are not implemented into the
+     GUI yet, but it is work in progress)
+   - several transformations can be done quiet in background
+     (may be any console), as `convert` from ImageMagick does
+   - Because of using Imlib it is *fast* and can handle any image
+     format.
+   - May be it's possible to do all the image processing stuff of
+     paul with GIMP.  But the special features are easier available
+     and designed for only this special purpose (may be I write
+     some parts of paul as plug-in for gimp).
+     The function to cut parts of an image is better, i.e. more minute
+     than this one of the gimp, because it is possible to posittion the
+     cutting box via entering pixel coordinates ... yet another
+     (not seen by me) philosophy of cutting an image.
+   - The feature to insert thumbnails into an image and output
+     a HTML file which uses the image as click-able map and installs
+     a link to a user supplied URL under the thumbnail is very
+     easy to use and I havn't seen such a beast anywhere else.
+     Hopefully it will be a useful tool for HTML editors.  This tool
+     is hidden in the menu "This Image/Insert" and requires to
+     select an operating widget.  For a detailed explanation please
+     read the file "clickable-map.howto" carefully.
+   - May be you can view your images using XV, but paul is free.
+     Paul is released under GPL.  I don't want to
+     compete with any other image viewer like xv or display, but
+     I don't use them since several month.
+   - Yet another userinterface:
+     Paul works with the following menu structure:
+         File: (what would you expect under this item :))
+         This Image: Operation to single image
+         Marked Images: Operation on all marked images
+         All Images: Operation on all loaded images
+         Parameters: Set global parameters for the tree operation types
+   - There is only a `not yet finished` documentation in German
+     language.
+     I'm sure that there will be no English documentation in the near future, 
+     because this program was designed for German native speakers at my 
+     working group and parts of this documentation will go into my theses.
+     If there will be a greater resonance I could think about English
+     documentation but not before October 1999.
+
+System requirements:
+- Unix (I've heard rumors about some other things simulating
+  operating systems starting with the letter `W'.  The libraries
+  mentioned seem to compile under those things in the development
+  versions.  So future versions of paul could run there, but I
+  will not support it.  If there is interest I would include
+  user-supplied patches of course.)
+- Gtk+ version 1.2 (at least 1.1.13)
+- GdkImlib greater or equal version 1.9.2 and the necessary graphics
+  libraries for GdkImlib which are libpng, libtif, libgif or libungif, libjpeg
+- FFTW
+  For those who don't want to install this (very good!) library
+  there are #defines which disable the FFT stuff if configure
+  cant find the library.
+- Gtk Databox from Roland Bock.  The source as well as Debian Packages
+  are available at
+    ftp://tower.physik.uni-halle.de/pub/debian-maintain/gtkdatabox  .
+- Gtk Imreg -- small library to deal with image regions written by me.
+  It was split from paul to give GTK programmers a chance to use the
+  image cut feature and image inserting feature from paul.  It is available
+  at
+    ftp://tower.physik.uni-halle.de/pub/debian-maintain/gtkimreg
+
+Source and Debian package location:
+
+  ftp://tower.physik.uni-halle.de/pub/debian-maintain/paul/
+
+Any comments, bug reports, bug fixes (prefered :) ) to
+  tille@physik.uni-halle.de
+

@@ -1,0 +1,14 @@
+Begin3
+Title:		TkBattery
+Version:	1.0
+Entered-date:	1.0, 6-7--98
+Description:	Tk-based low-profile effective warning APM battery monitor, low 		CPU and mem usage. Highly configurable.
+Keywords:	apm battery X tk
+Author:		fastjack@fastjack.turf.org (Chris Allen)
+		roli@freestone.ch (Roland Barmettler)
+Maintained-by:	fastjack@fastjack.turf.org (Chris Allen)
+Primary-site:	Primary-site: sunsite.unc.edu /pub/Linux/system/power
+                                      4Kb  /pub/Linux/system/tkbattery-1.0.tgz
+Platforms:	TCL/TK, APM support compiled into kernel
+Copying-policy: GPL
+End

@@ -1,0 +1,38 @@
+Begin3
+Title:          HostALC
+Version:        0.0.2
+Entered-date:   1MAR97
+Description:    An extremely rudimentary collection of source code
+                having to do with airlines communications protocols
+                and device drivers.   Currenly, this collection consists 
+                of only three items:
+                  -- sample C and Perl code that manipulates the 
+                     Northrop-Grumman W915 communications card.  
+                  -- pre-alpha, untested device driver for 
+                     Northrop-Grumman ACC286 coprocessor card.
+                     (no microcode)a
+                  -- spec providing overview technical info of 
+                     the ALC (P1024B) protocol.
+
+                This package doesn't *do* anything; it merely provides 
+                reference code and documentation that can provide
+                insight into the ALC protocols, character sets, etc.
+
+                ALC == Airline Link Control is also known as IPARS 
+                or P1024B in Europe (SITA). It is a very distant
+                relative of X.25, AX.25 and UTS (P1024C).  It runs in
+                the wires of virtually every travel agency and airport
+                in the United States and the World, and is the principle
+                means for attaching terminals to airline mainframes.
+
+Keywords:       ALC PARS IPARS P1024B airline communications
+Author:         multiple
+Maintained-by:  
+Primary-site:   sunsite.unc.edu/pub/Linux/apps/comm
+                hostalc-0.0.2.tar.gz      (38 KB)
+Alternate-site: 
+                
+Original-site:  
+Platform:       Unix, Linux
+Copying-policy: None
+End

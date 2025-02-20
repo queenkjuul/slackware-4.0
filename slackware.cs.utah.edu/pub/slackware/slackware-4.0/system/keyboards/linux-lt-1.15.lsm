@@ -1,0 +1,25 @@
+Begin3
+Title:		linux-lt
+Version:	1.15
+Entered-date:	05MAY99
+Description:	Scripts for handling console fonts.
+			Here is bash V2 script for merging several 256-512
+		character console fonts into one with Unicode map. Sample 512
+		character LatArCyrHeb-{08,14,16,16+,19}.psf fonts included.
+			Also:
+		Utilities to display 256-512 char. console fonts and to check
+		if VT is in Unicode mode.
+		Lithuanian keymaps, lat4 console fonts,
+		ISO 8859-4 locale for X and locale for libc6 in UTF-8.
+		Other stuff for installation of ISO 8859-4 locale.
+Keywords:	console fonts i18n ISO-10646 Lithuanian UCS Unicode UTF-8
+Author: 	rch@pub.osf.lt (Ricardas Cepas)
+Maintained-by:	rch@WriteMe.Com (Ricardas Cepas)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/keyboards/
+                144kB  linux-lt-1.15.tar.gz
+                1kB   linux-lt-1.15.lsm
+                0.2kB linux-lt-1.15.tar.gz.sig
+Copying-policy:	BSD style or GPL
+End
+
+

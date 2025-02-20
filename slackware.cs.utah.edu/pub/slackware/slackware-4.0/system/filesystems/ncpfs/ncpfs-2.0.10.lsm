@@ -1,0 +1,19 @@
+Begin3
+Title:          ncpfs
+Version:        2.0.10
+Entered-date:   23. February 1997
+Description:    With ncpfs you can mount volumes of your netware
+                server under Linux. You can also print to netware
+                print queues and spool netware print queues to the
+		Linux printing system. You need kernel 1.2.x or
+		1.3.71 and above. ncpfs does NOT work with any 1.3.x
+		kernel below 1.3.71.
+Keywords:       filesystem ncp novell netware printing
+Author:         lendecke@namu01.Num.Math.Uni-Goettingen.de (Volker Lendecke)
+Maintained-by:  lendecke@namu01.Num.Math.Uni-Goettingen.de (Volker Lendecke)
+Primary-site:   ftp.gwdg.de:/pub/linux/misc/ncpfs
+Alternate-site: sunsite.unc.edu:/pub/Linux/system/Filesystems/ncpfs
+                  ~158k ncpfs-2.0.10.tgz
+                   ~ 1k ncpfs-2.0.10.lsm
+Copying-policy: GPL
+End

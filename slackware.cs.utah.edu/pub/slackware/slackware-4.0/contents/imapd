@@ -1,0 +1,13 @@
+drwxr-xr-x root/root         0 1998-10-18 21:40 ./
+drwxr-xr-x root/root         0 1999-02-08 17:51 usr/
+drwxr-xr-x root/bin          0 1995-01-13 18:30 usr/sbin/
+-rwxr-xr-x root/bin     547824 1999-02-08 17:53 usr/sbin/imapd
+-rwxr-xr-x root/bin     512032 1999-02-08 17:53 usr/sbin/ipop3d
+drwxr-xr-x root/root         0 1998-10-18 21:23 usr/man/
+drwxr-xr-x root/root         0 1999-02-08 17:53 usr/man/man8/
+-rw-r--r-- root/root       447 1999-02-08 17:53 usr/man/man8/imapd.8c.gz
+-rw-r--r-- root/root       640 1999-02-08 17:53 usr/man/man8/ipopd.8c.gz
+drwxr-xr-x root/root         0 1999-02-08 17:51 usr/doc/
+drwxr-xr-x root/root         0 1999-02-08 17:51 usr/doc/pine4.10/
+-rw-r--r-- root/root      1390 1998-09-22 16:20 usr/doc/pine4.10/README
+-rw-r--r-- root/root      2866 1999-01-06 10:30 usr/doc/pine4.10/CPYRIGHT

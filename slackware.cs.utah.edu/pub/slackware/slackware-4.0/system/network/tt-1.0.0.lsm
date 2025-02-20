@@ -1,0 +1,16 @@
+Begin3
+Title:		xrshells
+Version:	1.0.0
+Entered-date:	20Jan99
+Description:	Dutch Teletekst browser
+Keywords:	Teletekst, web
+Author:		Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Maintained-by:	Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network
+		1 kB tt-1.0.0.lsm
+		9 kB tt-1.0.0.tar.gz
+Alternate-site:
+Original-site:
+Platforms:	Any Unix flavor running Perl 5
+Copying-policy:	GPL
+End

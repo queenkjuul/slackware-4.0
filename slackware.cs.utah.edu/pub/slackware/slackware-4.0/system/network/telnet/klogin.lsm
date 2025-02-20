@@ -1,0 +1,15 @@
+Begin3
+Title:          klogin
+Version:        0.1
+Entered-date:   10/28/97
+Home-page:      not available at the moment
+Description:    Tool for telnet, rlogin, ssh in K Desktop Environment
+Keywords:       telnet rlogin ssh X11 Qt
+Authors:        Alexander Budnik <budnik@linserv.jinr.ru>
+Maintained-by:
+Primary-site:   ftp://fiwi02.wiwi.uni-tuebingen.de/pub/kde/apps/
+Alternate-site:
+Original-site:
+Platform:       unix (only tested on linux)
+Copying-policy: GPL
+End

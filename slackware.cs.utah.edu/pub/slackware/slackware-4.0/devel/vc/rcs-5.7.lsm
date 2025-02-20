@@ -1,0 +1,20 @@
+Begin3
+Title:          rcs
+Version:        5.7
+Entered-date:   28MAR96
+Description:    RCS, the Revision Control System, manages multiple revisions
+                of files. RCS can store, retrieve, log, identify, and merge
+                revisions. It is useful for files that are revised frequently,
+                e.g. programs, documentation, graphics, and papers.
+Keywords:       rcs, cvs, version, revision
+Author:         (Walter F. Tichy and many others after)
+                (Paul Eggert is the copyright holder)
+Maintained-by:  rcs-bugs@cs.purdue.edu (RCS Team)
+Primary-site:   prep.ai.mit.edu /pub/gnu
+                282413 rcs-5.7.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/ver_con
+                282745 rcs-5.7.ELF.tgz
+                282413 rcs-5.7.src.tgz
+Platforms:      Unix
+Copying-policy: GPL
+End

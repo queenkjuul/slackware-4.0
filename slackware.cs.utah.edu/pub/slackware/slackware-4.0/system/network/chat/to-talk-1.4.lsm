@@ -1,0 +1,23 @@
+
+Begin3
+Title:		to-talk
+Version:	1.4
+Entered-date:	26MAY97
+Description:	An "old talk" client and server.
+		This is a hacked version of NetBSD's [n]talk & [n]talkd
+		The programs were modified to conform to the protocol used 
+		by the OLD (BSD4.2) talk server and clients i.e. those 
+		using port 517/udp (e.g. SunOS, Solaris, ...)
+Keywords:	to-talk talk ntalk otalk
+Author: 	omerzu@quantum.de (Thomas Omerzu)
+Primary-site:	ftp.quantum.de /linux/misc/net/to-talk
+		4 kB   to-talk-1.3-1.4.diff
+		5 kB   to-talk-1.4.README
+		21 kB  to-talk-1.4.src.tar.gz
+		487 kB to-talk-1.4.bin.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/network/chat
+Platforms:	precompiled binary linked statically for i386-ELF Linux
+Copying-policy:	BSD
+End
+
+

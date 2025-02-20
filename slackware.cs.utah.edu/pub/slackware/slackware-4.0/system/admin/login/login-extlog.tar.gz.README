@@ -1,0 +1,13 @@
+
+
+	This version of login.c is full copy of the login.c from
+	util-linux-1.10. The only difference is 6 new lines of code
+	that provide logging into syslog every attempted login to a system.
+	In order to enable this, compile login.c with -DLOGALL.
+	
+		Have fun <ayuriev@yoda.cis.temple.edu>
+
+P.S. The followins is the output of ls -l on my system.
+
+-rwxr-xr-x   1 alex     wheel       13316 Jan 23 22:40 login*
+-rw-r--r--   1 alex     wheel       23211 Jan 23 22:38 login.c

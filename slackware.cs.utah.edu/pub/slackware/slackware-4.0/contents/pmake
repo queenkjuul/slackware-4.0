@@ -1,0 +1,17 @@
+drwxr-xr-x root/root         0 1995-08-08 12:58 ./
+drwxr-xr-x root/root         0 1995-08-08 12:57 usr/
+drwxr-xr-x root/bin          0 1993-08-29 12:56 usr/bin/
+-rwxr-xr-x root/bin      77480 1998-10-10 23:06 usr/bin/pmake
+drwxr-xr-x root/root         0 1993-08-29 12:56 usr/share/
+drwxr-xr-x root/root         0 1993-08-29 12:57 usr/share/mk/
+-rw-r--r-- root/root       281 1993-08-29 12:57 usr/share/mk/Makefile
+-rw-r--r-- root/root      9406 1993-08-29 12:57 usr/share/mk/bsd.README
+-rw-r--r-- root/root       720 1993-08-29 12:57 usr/share/mk/bsd.doc.mk
+-rw-r--r-- root/root      3498 1993-08-29 12:57 usr/share/mk/bsd.lib.mk
+-rw-r--r-- root/root      1574 1993-08-29 12:57 usr/share/mk/bsd.man.mk
+-rw-r--r-- root/root      3736 1993-08-29 12:57 usr/share/mk/bsd.prog.mk
+-rw-r--r-- root/root      1091 1993-08-29 12:57 usr/share/mk/bsd.subdir.mk
+-rw-r--r-- root/root      1327 1993-08-29 12:57 usr/share/mk/sys.mk
+drwxr-xr-x root/root         0 1995-08-08 12:57 usr/man/
+drwxr-xr-x root/root         0 1998-10-10 23:06 usr/man/man1/
+-rw-r--r-- root/root      7632 1998-10-10 23:06 usr/man/man1/pmake.1.gz

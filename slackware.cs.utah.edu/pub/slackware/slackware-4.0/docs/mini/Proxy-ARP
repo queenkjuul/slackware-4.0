@@ -1,0 +1,319 @@
+               A small treatise on the use of ProxyARP
+                 by Al Longyear <longyear@netcom.com>
+                           December 5, 1994
+
+I. Introduction
+
+This document is written to help those who are considering using the
+proxy ARP (Address Resolution Protocol) logic within Linux in the aid
+of PPP and SLIP server devices. Proxy ARP is also called 'gracious
+ARP' in some sources of documentation. There have been numerous
+requests for the use of proxy ARP. When it is not able to be used,
+some people deem this as a flaw in the software and wonder why it is
+broken.
+
+I hope that with the aid of this document, people will understand
+more about proxy ARP as well as when it is and is not useful.
+
+The use of proxy ARP is useful when you have a server. It will allow
+the dynamic connection of remote systems without the need for the
+update of the routing tables on other system but the one associated
+as the 'server'.
+
+The term 'server' is somewhat of a misnomer. TCP/IP is a peer-to-peer
+networking environment. It does not have a client to server relation
+as other systems do in that resources are offered or 'shared' on
+servers while clients 'use' them. However, it is convenient to call the
+'system which answers the telephone' a server; while the 'system
+which dials the telephone to connect to the server' a client.
+
+Linux's networking software directly supports proxy ARP. There is
+no need for a special daemon process such as proxyarpd used in some
+systems.
+
+Both the PPP protocol support code, pppd, and at least one of the SLIP
+support code, dip-uri, will support proxy ARP. In addition, the
+networking program, arp, will manage and display the table.
+
+To understand how Proxy ARP works and when it may be used, you need to
+have a basic understanding of how networking is performed in general.
+The next three sections of this document will describe in the
+briefest of terms how TCP/IP networking is performed and how routing
+works.
+
+
+
+II. The Hardware side of Networking
+
+All networking using ethernet or token ring is performed using a MAC
+(Media Access Control) address. This is a hardware address associated
+with a specific controller. Each MAC address is unique. They are
+assigned by the manufacturer of the controller. While they may be
+overridden in software, this is not the general rule.
+
+IP addresses are translated to MAC addresses using a special table
+within the networking software called the `ARP cache'. When the
+networking software wishes to send an IP frame to the specified
+address, it will consult this cache to determine the MAC address. If
+the entry is not found in the cache, a special request is made of all
+systems attached to the network to resolve the IP address to a MAC
+address. This is called an ARP request.
+
+The response to the ARP request is a reply with the MAC address. This
+MAC address is then added to the cache so that the translation may be
+performed subsequently without the aid of ARP.
+
+It is this ARP request which is used by the proxy ARP logic to aid
+in the support of remote connections.
+
+There are rules by which the entries in the cache are removed. Those
+rules are not germane to this document and are best left to a
+technical description of ip networking.
+
+(While token ring is under development, and is available on a test
+basis, the common networking transport media for Linux is ethernet. I
+will use the term 'ethernet' from now on. Similar facilities are
+available for token ring, irrespective of token ring's source routing.)
+
+
+
+III. Reason for the use of Proxy ARP
+
+The purpose of proxy ARP is to allow the assignment of more than one
+IP address to a single network adapter.
+
+The manner in which it does this is to create an entry in the ARP
+cache of Linux which associates the additional IP address with the
+hardware address of the ethernet controller. This permits the Linux
+system to respond to an ARP request to translate an IP address to a
+hardware address.
+
+
+
+IV. TCP/IP Routing
+
+[A small preface is in order at this time. This describes the
+'spanning-tree' routing. It does not describe 'source-routing' of IP
+frames. The source routing performed by token ring is not IP source
+routing but is performed at the MAC layer. The use of IP source
+routing is discouraged. Token ring MAC source routing is a
+requirement of that transport.]
+
+To understand more about proxy ARP, you need to understand how IP
+frames are routed on the network. I do not plan to go into great
+detail. If you wish additional information, there are many books
+available which will offer more in-depth information. (If you don't
+wish the books, then look at the RFC documents.)
+
+IP frames are routed at each stage of their passage through the
+network. Each host, router, and gateway decides for itself and based
+upon its own copy of the routing tables where the specific IP frame is
+to be transmitted.
+
+The routing is performed using the term which I will call an
+'IP network'. Each network interface is assigned an unique IP network.
+Each is given an IP address. Each is given a netmask. The 'IP network'
+is simply the logical conjunction of the IP address with the netmask.
+For example, the IP address of 10.124.35.40 and the netmask of
+255.255.0.0 would have an 'IP network' of 10.124.0.0. While I am using
+byte netmasks, the same logic would apply to the non-byte boundary
+netmasks.
+
+Linux associates the netmask with the route entry. When you add a
+route into the system, you specify a IP address and the associated
+destination device. If you don't specify a netmask, the netmask is
+taken from the destination device's default netmask which is set when
+the device is configured with ifconfig.
+
+To better understand routing, consider the following configuration of
+a sample system.
+
+Destination     Netmask          Gateway       Flags    Device
+10.124.0.0      255.255.0.0      0.0.0.0       U        eth0
+10.125.0.0      255.255.0.0      0.0.0.0       U        eth1
+10.126.0.0      255.255.0.0      10.125.31.1   UG       eth1
+10.124.12.5     255.255.255.255  0.0.0.0       UH       ppp0
+0.0.0.0         0.0.0.0          10.124.25.1   U        eth0
+
+This is a system with three network devices. It has two ethernet
+controllers and one PPP device. IP frames may come into this system
+from any one of the three sources. In addition, frames are forwarded
+through this system to any one of the three destination devices.
+
+The default route is to the gateway device at 10.124.25.1 as
+demonstrated by the last entry. To reach that gateway, the frame is
+to be transmitted by the eth0 controller.
+
+There is one PPP device connected. Its IP address is 10.124.12.5.
+
+The eth0 device is on the IP network of 10.124.0.0 while the eth1
+device is on the IP network 10.125.0.0.
+
+In addition, there is a net route to the IP network 10.126.0.0
+available at the gateway associated with 10.125.31.1.
+
+To understand how routing is performed, consider an IP frame for the
+destination of 10.125.45.1.
+
+Linux will go through the route table and for each entry, take the
+netmask, perform a logical conjunction (and) with the netmask and
+then compare it to the entry's destination IP address. If the result
+matches, the frame is sent to the device indicated.
+
+The result is that the frame for the IP address of 10.125.45.1 will
+be sent to the eth1 device.
+
+Likewise a frame for the IP address of 10.124.12.5 will go to the
+ppp0 device while the IP address of 10.124.12.6 will go to the eth0
+device since the ppp0 device will only accept its one IP address of
+10.124.12.5.
+
+Frames for 10.126.31.4 are different. They have a 'gateway'
+associated with them. They are found in the similar manner. However,
+instead of just sending them to the eth1 device, they are sent to the
+one system which is associated with the IP address of 10.125.31.1. It
+is this IP address which is translated to a MAC address, rather than
+the destination address, 10.126.31.4.
+
+When they arrive at the 10.126.31.1 system, that system will forward
+them on to the final destination of 10.126.31.4 by using its routing
+table which may say to send it on its eth3 interface.
+
+There are many error conditions which are caught by this form of
+routing. I don't want to go into all of them, however, if for
+example, 10.126.31.1 did not have a path to reach the .4 address,
+then it would send back a ICMP (Internet Control Message Protocol)
+frame to the original sender that it does not have a 'route to the
+host' condition.
+
+
+
+V. Routing with Proxy ARP
+
+Finally, we are getting to the focus of this document now that all of
+the foundation has been described.
+
+Remember that Linux will put an entry into the ARP cache for the IP
+address and the associated hardware MAC address when it is to do proxy
+ARP. Remember that this cache is used to translate IP addresses to
+MAC addresses.
+
+When the remote connects at IP address 10.124.12.5, the Linux system
+will add this IP address and the MAC address associated with the eth0
+controller to the ARP cache.
+
+When it receives a request to translate the IP address 10.124.12.5 to
+a MAC address, it will send the entry from its tables to the
+requester. The result is that frames to this IP address will be sent
+to the server and the server may then forward them to the remote
+system.
+
+This is how proxy ARP works. The server is a proxy (an agent, an
+inter-lopper, a 'front' person, etc.) for the remote IP address. It is
+saying to the network that it can accept frames for the remote IP
+address and deliver them by responding to the ARP requests.
+
+So, for proxy ARP to work, the IP address of the remote (10.124.12.5
+in my example) needs to be on one of the IP networks for a network
+adapter.
+
+There are two reasons for this requirement.
+
+The first reason is that the MAC address of the controller is entered
+into the ARP cache to be associated with the IP address. A MAC
+address is required for the ARP assignment since the ARP cache is a
+translation from IP addresses to MAC addresses.
+
+The second reason is that all systems on the network do their own
+routing. They know that to send a IP frame to the remote's IP address
+that they must 'put it on the same wire' which is connected to the
+server's network adapter.
+
+
+
+VI. When Proxy ARP will not work
+
+Consider what would happen if the remote's IP address was 10.200.3.1
+rather than 10.124.12.5.
+
+1. The remote systems would not know where to send this address.
+
+They all know that to reach the IP network 10.124.0.0 that the frames
+should go on the cable attached to eth0. However, there is no IP
+network for 10.200.0.0. They would not know where to send frames to
+this destination.
+
+2. The server would not know what controller to use for the
+   appropriate MAC address when it made the ARP entry.
+
+This is the most common reason why proxy ARP will not work for people
+who wish to use it. They have a different IP network associated with
+the remote IP address than one of their own network interfaces.
+
+
+
+VII. Problems with Proxy ARP and what must be avoided
+
+1. Do not have more than one system respond to the proxy ARP entry for
+   a specific IP address. In the case of BSD, this will may mean that
+   since proxy ARP for a range of addresses, ensure that that the
+   address ranges do not conflict. For a network based upon BSD networking,
+   this means that you should dedicate the entire network to one server.
+
+Again, BSD systems will bitterly complain if it receives more than one
+reply for its ARP request.
+
+2. Do not attempt to perform Proxy ARP for an address which is already
+   present on the network.
+
+This is a slight variation of the above problem. If you attempt to
+perform proxy ARP for an IP address which is presently available on
+the network, then two replies will be generated. This may mean that
+you should not take IP addresses from one network and move them to a
+remote connection which may cause the server to attempt to perform
+Proxy ARP.
+
+
+
+VII. What to do if you can't use Proxy ARP but want the same
+functionality.
+
+There are several choices available if you are unable to use proxy
+ARP.
+
+The easiest is to subnet the remote IP addresses so that all of the
+remote addresses are on their own IP network. Then add a network route
+on each of the routers (those devices which are indicated by the
+'gateway' addresses of all of your hosts) so that the IP network is to
+be sent to the server to which the remote IP addresses connect.
+
+Alternately, you could use gated on the server and the routers.
+
+Alternately, you could put a host route if you don't wish to subnet
+the IP network. You would put entries in each of the routers for all
+of the remote IP addresses.
+
+You need to update only the gateways and routers. You do not need to
+change all of the hosts in your network. The default routes which the
+hosts use to send frames to routers will cause what is called a "ICMP
+re-direct" frame to be sent to the host making the request. This will
+automatically add a 'host' route to the appropriate server.
+
+
+
+VIII. Conclusion
+
+I hope that I have explained a little more about the proxy ARP and
+how it works. Fortunately, if you use pppd or dip-uri, you do not
+need to know how the mechanical steps in using it. It is
+automatically performed for you by these pieces of software.
+
+Proxy ARP is not for everyone. It is a workable solution in some
+cases. Hopefully, you can determine for yourself whether this will
+help you with your networking problems.
+
+Additional information may be found in the book 'TCP/IP Illustrated,
+volume 1' "The protocols" by W. Richard Stevens and published by
+Addison Wessley.
+
+Thank you.

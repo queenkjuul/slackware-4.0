@@ -1,0 +1,256 @@
+			gog&magog
+		Unix systems integrity monitor
+		       RELEASE 3
+
+0. Disclaimer
+
+This package is public domain. It is maintained by C.Parisel
+(cparisel@hotmail.com)
+Check out latest bug fixes and announcements on www.hec.ca/~cparis/gog
+Use and modify at your own risk. 
+Please notify me for bug reports and suggestions
+
+1. What is systems integrity?
+
+Systems integrity is a way to ensure core ressources are left unaltered
+on a given host. By 'core ressources' we mean the key componants of
+the operating system (such as configuration files, binaries, libraries, kernel)
+as well as third party tools which impact the host operation 
+(like home-made batch jobs for instance).
+If you notice any dubious file modification on a machine, you will have to 
+recover the original file from a tape or any sort of archive medium: 
+the monitor will not do that for you, nor will it prevent the
+hack from happening again.
+
+2. Yet another fancy tool... Do I really need it?
+
+There are two major reasons why you may consider monitoring system resources:
+ - dispatched administration: for historical or practical reasons, several 
+   users have root permission on one or many hosts
+ - opened environment: the network is directly connected to the 'outside'; 
+   incoming/outgoing messages don't go through a firewall.
+
+Both cases tend to disappear nowadays, so you see most of the time, 
+the answer is... no!
+Still academic organisations, places under pathological exposure or
+industries relying on system critical applications may fall into one of
+the above categories.
+
+  2.1 Dispatched administration
+
+  In environments that require multiple superusers, systems integrity is
+  a good way to chase up what has been done to the system, that is to 
+  detect major upgrades/improvements/hazards(!) along with their various
+  side-effects.
+  Monitoring prevents things from getting out of control up to the point
+  where the station becomes unmanageable.
+  Particularly messy/non-responsible superusers can be spotted and have
+  their permissions adequately undermined...
+
+  2.2 Opened environment
+
+  The worst damage a hacker can do to your system is not necessarily
+  caused by a high profile assault like deleting a root partition, corrupting
+  a whole database or injecting a nasty virus.
+  Such strikes have disastrous short-term consequences for sure,
+  but when you think about it today's cheap backup technology allows 
+  smooth and speedy recovery, even in the worst situations. 
+  Once the system is back to normal, you can bet the sysadmin will
+  get the hacker's message and do his best not to fall in the trap again.
+  As a result, the cracker has little chance to break in again 
+  at least by using the same technique.
+  So in the 'high profile' situation, the first blow is severe but, well,
+  there should be no second blow...
+  Now imagine the dodgy scenario where you have an unsollicited guest
+  wandering about your network: all the intruder does is look up some
+  repositories in search for value-added commercial information... It 
+  doesn't hurt. That is: it doesn't harm your system. But what 
+  about your company assets? 
+  You may never know there is someone around!
+  That's where systems integrity can play a major role: even the most
+  cautious alien cannot live on your servers without leaving
+  some kind of prints. I'm not talking about the accounting information
+  that one can smartly overwrite if one gets sufficient priviledges. I'm
+  talking about crucial steps the hacker has to do to remain on the system.
+  Among those steps, keeping a valid password is one of the most important.
+  If you ask users to change their passwords frequently, the intruder may
+  decide to add his own entry into the password table, or make some
+  scripts that can grant him special rights in the future, even if he loses
+  his current password. Whatever the trick, there are so many places 
+  a binary or a table can be altered, it's unlikely anybody will
+  ever spot the change. 
+  The whole purpose of systems monitoring is lifting the tedious task of
+  global checking off the shoulders of human beings. 
+
+3. How it works
+
+Systems monitoring may be broken into two separate tasks: 
+  - collecting information
+  - analysing information
+In the current implementation of gog&magog, each task is performed 
+via a dedicated program: the collecting phase is handled by "gog" (see 3.1),
+the analysis is performed by "magog" (see 3.2)
+
+  The programs have been designed with the major UNIX flavours in mind: 
+AIX, Solaris, SunOS, HP-UX and Linux. 
+gog has been successfully tested on AIX 4.2, HP-UX 10, Solaris 2.5.1 
+and Linux 2.0, so you shouldn't meet any major problem with the 
+installation and usage.
+magog has been tested on Linux only. Although magog is written in Bourne-Shell
+and should work great on standard platforms, some bits may not be
+fully portable: please report bugs (and fixes if possible :-) ) to the
+package maintainer and check the Home Page (see DISCLAIMER in the first 
+section) for hot information.
+
+  3.1 Collecting information
+
+  On each monitored host, a cron job calls /usr/local/bin/magog. 
+The script creates a file named /tmp/hostname.chk where 
+all relevant information about the host is stored. Here are the details: 
+    - complete pathname
+    - permissions
+    - owner name
+    - group name
+    - a fingerprint (relying on MD5 signature, CRC or a user-supplied utility)
+
+  A typical line taken out of a /tmp/hostname.chk file will look like:
+
+lrwxr--r--:root:sys:/etc/backup:ef52c310bb4e4ca5d03e63271bcde3b3            
+  ^          ^    ^   ^         ^                                 
+  |          |    |   |         |                                 
+  |          |    |   |         |                                 
+  |          |    |   |         |                                            
+  |          |    |   |         +----------------------- MD5 signature
+  |          |    |   +--------------------------------- name
+  |          |    +------------------------------------- group
+  |          +------------------------------------------ owner
+  +----------------------------------------------------- permissions
+
+  For directories, fingerprints don't make sense, so the format is:
+
+drwxr-xr-x:bin:bin:/etc/acct:
+
+  Sysadmins make their own list of files and stick it
+  to a configuration file that may be passed on to the gog command line:
+
+gog ./my_config.txt
+
+  The configuration file is a plain list of instructions. The
+  instructions have three parts:
+    -an operator
+    -a separator ":"
+    -a target (full file or directory pathname)
+  Supported operators are currently: include-directory, exclude-file 
+  and exclude-directory.  
+
+  Configuration file sample:  ("my_config.txt")
+ 
+exclude-directory:/usr/local/lib 
+include-directory:/usr
+exclude-file:/etc/utmp
+include-directory:/etc
+
+  The order you type the instructions doesn't matter: it is always interpreted
+  as "include first, then exclude".
+
+  3.2 Analysing the data
+
+  Data gathered on each individual host have to be transferred to the 
+  machine in charge of the processing: let's call it the CENTRAL HOST. 
+  The way data is retrieved from the central host doesn't depend on the
+  the network design: I mean that we don't assume here the servers use 
+  NFS, TFTP, RPC or similar optional services. The package
+  rests only on the least common protocol denominator: FTP!
+  On the central host, a profile must be set for each machine: it will contain
+  the "valid" image of the system for that particular host. 
+  Profiles are kept in /var/local/integrity/hostname.chk
+  they are generated by gog on the remote hosts at installation time,
+  but the sysadmin will have to copy them over by hand (i.e FTP or equiv)
+  to /var/local/integrity on the central host (or use the "configure" utility).
+  When the profiles are ready, the data analysis tool (magog) can be applied
+  to subsequent hostname.chk updates.
+  magog needs only be located on the central host, in /sbin. It has 
+  a simple command line:
+
+magog [-all|-ftp|chk] <servers list...>
+
+  <servers list...> is a list of hosts which profiles have been defined
+  on the central host (i.e they are stored in /var/local/integrity).
+  -ftp open an FTP session to every host in the list in order to get a
+    fresh copy of the /tmp/hostname.chk file
+    The copies are placed in /tmp, on the central host.
+  -chk compare the /tmp files to their original images in 
+    /var/local/integrity.
+  -all combine -ftp and -chk
+
+  Automated FTPs (options -ftp and -all) require a login name and password
+  to enable the FTP connection. If you provide a list of servers rather 
+  than a single server on the command line, the account is assumed
+  to be the same across all the machines. You are strongly advised to use
+  non-root accounts: as a general security rule, root users should not be
+  allowed to make direct remote connections (FTP, Telnet, ...) 
+
+4. GogView
+
+  GogView is the graphical interface introduced in Release 2. One can
+think of it as an extra layer between the end-user and magog. 
+Installing GogView is optional but we recommend you do so,
+because it is quite straightforward and helpful to manage all your hosts
+in a user-friendly fashion. 
+
+GogView is automatically set up for you if you run the configure tool
+that comes with the distribution. All you have to do is follow the 
+(few) instructions.
+The graphical control panels are written in HTML for best portability,
+so you will have to set up an HTTP server on the central host if you
+want to use GogView. 
+There are only two control panels, called conf-panel.html and select-panel.html
+
+  * Configuration panel
+    Use this screen to add/remove hosts from the hosts list that GogView
+    will manage for you.
+    Important notes: 
+      1) the hosts MUST have a valid profile in /var/local/integrity
+      2) /var/local/integrity/* must have read and execute permissions set
+
+    Simply adding a new host will not create a profile "out of the blue":
+    you still have to use gog to get a profile, and copy it across or let
+    "magog -ftp" copy the file for you.
+
+  * Selection panel
+    This screen displays the hosts list that you built with the previous
+    panel. If the list is not empty, enter your login name and password
+    in the text fields and click on "Get Map" to bring up a visual status
+    report for your hosts:
+    - a GREEN monitor means the host is OK
+    - a YELLOW monitor means there has been exactly one alteration since
+      the original profile was made: drill down the link to get the details
+    - a RED monitor means several changes have been made to your host:drill 
+      down the link for information 
+    - a BLACK monitor means the host is unreachable (it may be down, or you
+      have supplied a wrong login information)
+
+You have to be aware though, that GogView is less secure than the
+command-line basic mode. This is due to the fact that GogView
+handles operations through the HTTP user (usually 'nobody')
+rather than the root user.
+What's more, the password of the FTP account magog is using is recorded 
+in the HTTP log. 
+You can always run magog by hand rather than having GogView let the
+job, however it can be tedious if you have lots of machines to 
+monitor. 
+
+These warnings being said, here are a few tips to make GogView as
+secure as possible:
+ 1) Run GogView on a standalone machine that nobody can access except
+yourself. A Linux laptop is ideal.
+ 2) Tune your access.conf HTTP configuration file so that people can't
+use the server remotely.
+ 3) Bar all TCP/IP services
+ 4) Review the GogView, cgi-bin and /var/local/integrity files permissions.
+ 5) Do a chmod 700 on the HTTP log file
+
+5. Looks good! How do I install gogmagog on my network?
+
+  A configure script has been introduced in Release 2; it makes the package
+easy to customize. See INSTALL.txt for complete steps. 

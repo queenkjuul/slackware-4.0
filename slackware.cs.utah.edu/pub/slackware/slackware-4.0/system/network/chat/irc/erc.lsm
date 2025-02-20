@@ -1,0 +1,15 @@
+
+Begin3
+Title:		ERC - an Emacs IRC client
+Version:	1.1
+Entered-date:	June 06, 1998
+Description:	An IRC client for Emacs. Features faces, pals lists,
+		and other useful stuff.
+
+Keywords:	IRC, irc, emacs, Internet, chat
+Author: 	abel@bfr.co.il (Alexander L. Belikoff)
+Maintained-by:	abel@bfr.co.il (Alexander L. Belikoff)
+Primary-site:	ftp://sunsite.unc.edu/pub/Linux/system/network/chat/irc
+		19431
+Copying-policy:	GPL
+End

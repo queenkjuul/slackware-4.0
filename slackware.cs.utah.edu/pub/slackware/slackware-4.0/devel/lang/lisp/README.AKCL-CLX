@@ -1,0 +1,40 @@
+Scott Musman : May 1993
+
+	The tar'd & gzip'd files clx-p1.tar.z and clx-p2.tar.z contain
+both source and object files for CLX and PCL for AKCL under Linux. The
+object files are included for your convenience to save time and effort
+during the installation. 
+	You will need ~14Mb to install the included sources
+confortably. Unziped each tar file is just over 3Mb. Collectively they
+are close to 7Mb. After they have been loaded into AKCL the resultant
+saved-image is also about 7Mb (this implies something about how well
+CLX will run if you do not have much RAM). After you have created a
+saved image you can delete the sources, so it is possible to use less
+disk space by doing some file juggling.  
+
+	To install the CLX files follow the instructions given
+below: 
+
+	unzip the installation files by typing
+		gzip -dc clx-p1.tar.z > clx-p1.tar
+	for each file.
+
+	Untar the archives
+		tar xvf clx-p1.tar
+	it will create it's own subdirectory.
+
+	Then simply follow the directions specified in the README file
+found in the top CLX directory created by untarring the above
+archives. 
+
+	Should you ever have to recompile the source code you may
+simply make a copy of the load-clx.lsp file and replace the word
+"load" with "compile" for the commands "pcl::load-pcl" and "load-clx".
+Compilation will take quite some time, and the warnings generated during
+the compilation are "normal".
+
+	Please let me know if you have any troubles with the
+installation procedure or with CLX.
+
+		-- Scott
+		musman@ai.mitre.org

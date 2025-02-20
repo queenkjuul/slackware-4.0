@@ -1,0 +1,15 @@
+Begin3
+Title:          BSD lpr facility
+Version:        06/13/95
+Entered-date:   06/13/95
+Description:    Berkeley printer facility from Slackware with security
+		hole patched.
+Keywords:       lpd lp lpr printing printer
+Author:         BSD.
+Maintained-by:  volkerdi@ftp.cdrom.com
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Printer
+Alternate-site: 
+Original-site:  sunsite.unc.edu:/pub/Linux/distributions/slackware/a?
+Platform:       
+Copying-policy: BSD
+End

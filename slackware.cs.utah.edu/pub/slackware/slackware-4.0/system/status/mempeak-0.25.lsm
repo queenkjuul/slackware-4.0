@@ -1,0 +1,18 @@
+Begin3
+Title:          mempeak - display max and min memory usage
+Version:        0.25
+Entered-date:   04APR98
+Description:    mempeak displays information about maximum and
+		minimum amount of memory-usage. Additionaly, a
+                list of processes consuming most memory is displayed
+                and updated each second. This interval can be
+		modified.
+Keywords:       memory cached buffers swap
+Author:         thomas@darkstar.rhein-neckar.de (Thomas Kluge)
+Maintained-by:  thomas@darkstar.rhein-neckar.de (Thomas Kluge)
+Primary-site:   http://www.rhein-neckar.de/~darkstar/mempeak.html
+		20 kb mempeak-0.25.tar.gz
+                1 kb mempeak-0.25.lsm
+Platforms:      Linux
+Copying-policy: GPL
+End

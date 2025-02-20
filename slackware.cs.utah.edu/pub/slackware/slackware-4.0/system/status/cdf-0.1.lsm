@@ -1,0 +1,18 @@
+Begin3
+Title:			cdf
+Version:		0.1
+Entered-date:		Sun Sep 20 20:20:48 MET DST 1998
+Description:		Alternative to Linux "free" and "df".
+			Outputs colored text-bar-graphs of memory-
+			and disk-stats.
+Keywords:		Memory- and Disk-usage stats, color
+Author:			tompi@bigfoot.com <Thomas Haukland>	
+Maintained-by:		tompi@bigfoot.com <Thomas Haukland>
+Primary-site:		http://www.lstud.ii.uib.no/~s770/cdf
+			cdf-0.1.tar.gz
+			cdf-0.1.lsm	
+Alternate-site:
+Original-site:
+Platforms:		Linux, color-terminal(e.g. console, rxvt, etc.)
+Copying-policy:		GPL
+End

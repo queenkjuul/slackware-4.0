@@ -1,0 +1,35 @@
+Welcome to the GtkSheet ftp site
+The connection could be slow...
+
+The last version of GtkSheet compiles under gtk+-1.2.0
+GtkSheet-5.7 runs only under gtk+-1.0.x
+
+GtkSheet has moved to gtk+-1.2 and new features have been added.
+The new distribution includes a set of new widgets.
+
+GtkSheet is a matrix widget for Gtk+. It consist of an scrollable grid of
+cells where you can allocate text which can be edited interactivelly. It is
+also a container subclass so it allows you to display buttons, curves,
+pixmaps and any other widget in it. You can also set many attributes as:
+border, foreground and background color, text justification, etc. GtkSheet
+comes also with an extra set of useful widgets: GtkComboBox, GtkColorCombo,
+and GtkBorderCombo. A demo program shows all of them interacting in a 
+spreadsheet-like GUI.
+
+GtkSheet Xtra Widgets Set
+=========================
+GtkComboBox: 
+============
+Derived from Paolo Molaro's GtkCombo, it consists of a button, an arrow button,
+and a popup window with a frame, that can contain a widget which is displayed
+with the arrow. You can pack any widget in the frame (e.g. GtkCalendar).
+It has been thought to be a parent class for the following widgets: 
+
+GtkColorCombo:
+==============
+It's a GtkComboBox subclass with a pallette of colors diplayed in a table.
+
+GtkBorderCombo:
+==============
+It's a GtkComboBox subclass with a set of border patterns displayed in a table.
+

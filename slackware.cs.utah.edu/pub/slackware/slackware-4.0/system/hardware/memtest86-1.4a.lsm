@@ -1,0 +1,17 @@
+Begin3
+Title:          MemTest-86 - X86 memory test
+Version:        1.4a
+Entered-date:   17Jun98
+Description:    Memtest-86 is very thorough, stand alone memory test for
+		386,486,pentium systems.
+Keywords:       testing memory
+Author:         cbrady@cray.com (Chris Brady)
+Maintained-by:  cbrady@cray.com (Chris Brady)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/hardware
+		515	memtest86-1.4a.lsm
+		27403	memtest86-1.4a.tar.gz
+Alternate-site: N/A
+Original-site:  N/A
+Platform:       
+Copying-policy: GPL
+End

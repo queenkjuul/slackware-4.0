@@ -1,0 +1,23 @@
+CONTENTS: lx226 linuxinc       
+lx226:    Linux kernel source version 2.2.6.
+lx226:
+lx226:    Source code for Linus Torvalds' Linux kernel.
+lx226:
+lx226:    This is the complete and unmodified source code for the Linux kernel
+lx226:    version 2.2.6.
+lx226:
+lx226:
+lx226:
+lx226:
+lx226:
+linuxinc: Linux 2.2.6 kernel include files.
+linuxinc:
+linuxinc: These are the include files from the 2.2.6 Linux kernel.  You'll
+linuxinc: need these to compile most system (and other) software for Linux.
+linuxinc: These include files are also part of the Linux kernel source package,
+linuxinc: and this package is also included with the D (development) software
+linuxinc: series.  This redundancy is intentional, since the kernel sources
+linuxinc: use quite a bit of disk space, it's useful to be able to easily
+linuxinc: remove the Linux kernel sources without disturbing the kernel include
+linuxinc: files.
+linuxinc:

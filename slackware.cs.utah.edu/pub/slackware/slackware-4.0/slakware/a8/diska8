@@ -1,0 +1,34 @@
+CONTENTS: ibcs2 kbd lilo       
+ibcs2:    Intel Binary Compatibility Specification module
+ibcs2:
+ibcs2:    The iBCS module allows many binaries from other OS's to run on Linux:
+ibcs2:
+ibcs2:    i386 BSD (386BSD, FreeBSD, NetBSD, BSDI/386) - very alpha.
+ibcs2:    SVR4 (Interactive, Unixware, USL, Dell etc.)
+ibcs2:    SVR3 generic
+ibcs2:    SCO (SVR3 with extensions for symlinks and long filenames)
+ibcs2:    Wyse V/386 (SVR3 with extensions for symlinks)
+ibcs2:    Xenix V/386 (386 small model binaries only)
+ibcs2:
+kbd:      kbd 0.95
+kbd:
+kbd:      Load and save keyboard mappings. Needed if you are not using the US
+kbd:      keyboard map. This package also contains utilities to change your
+kbd:      console fonts - if you install it you'll get a menu later on that lets
+kbd:      you select from many different fonts. If you like one, you can make it
+kbd:      your default font. A new default font can be chosen at any time by
+kbd:      typing 'fontconfig'. This package includes fonts from the 
+kbd:      kbd_fonts.tar.gz package uploaded to SunSITE.
+kbd:
+kbd:
+lilo:     LILO 20
+lilo:
+lilo:     Generic Boot Loader for Linux ('LInux LOader') by Werner Almesberger.
+lilo:     LILO boots Linux from your hard drive. It can also boot other
+lilo:     operating systems such as MS-DOS and OS/2, and can even boot DOS from
+lilo:     the second hard drive. LILO comes with utilities and documentation
+lilo:     that make it easier to install, such as 'liloconfig' and 'QuickStart'.
+lilo:     NOTE: Installing boot loaders is inherently dangerous. Be sure to have
+lilo:     some means to boot your system from a different media if you install
+lilo:     LILO on your hard disk.
+lilo:

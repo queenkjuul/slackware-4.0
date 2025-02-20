@@ -1,0 +1,17 @@
+Begin3
+Title: Zipper!
+Version: 1.631
+Entered-date: 09/18/98
+Description: A new Linux X/TCL/Tk based IRC client.  Supports many
+	     functions including scripting, DCC Transfers and Chats, 
+	     Colors, sounds, and many others.
+Keywords: IRC X-windows Linux Zipper
+Author: wolfie@vnet.net (Ash Bowers)
+Maintained-by: wolfie@vnet.net (Ash Bowers)
+Primary-site: http://zipperirc.home.ml.org
+		  219Kb zipper-1.631.tar.gz
+Alternate-site: 
+Original-site: 
+Platforms: Linux with TCL/Tk 8.0 or better, or any similar Unix-like system.
+Copying-Policy: FRS  See README file for details
+End

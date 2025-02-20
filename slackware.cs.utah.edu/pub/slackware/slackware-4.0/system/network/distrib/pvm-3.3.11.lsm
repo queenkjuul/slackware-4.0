@@ -1,0 +1,15 @@
+Begin3
+Title:          PVM3 - Parallel Virtual Machine
+Version:        3.3.11
+Entered-date:   04JUL96
+Description:    parallel computation over networks, different archs
+                supported.
+Keywords:       parallel, distributed, message passing, pvm
+Author:         pvm@msr.EPM.ORNL.GOV (many authors)
+Primary-site:   netlib2.cs.utk.edu /pvm3
+                614916 pvm-3.3.11.src.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network/distrib
+                614916 pvm3.3.11.tar.gz
+Platforms:      Many platforms.
+Copying-policy: free
+End

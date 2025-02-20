@@ -1,0 +1,23 @@
+Begin3
+Title:          treeps
+Version:        1.1.0
+Entered-date:   Apr 29 1999
+Description:    X11/Motif based Process Monitor
+Keywords:       process monitor X11 motif ps color-coded kill signal
+Author:         gmd@slip.net (George MacDonald)
+Maintained-by:  gmd@slip.net (George MacDonald)
+Primary-site:   metalab.unc.edu /pub/Linux/system/status
+                       276kB treeps-1.1.0.tar.gz
+                      1074kB treeps-1.1.0-static.tar.gz
+                       655kB treeps-1.1.0-motif-static.tar.gz
+                       173kB treeps-1.1.0-dynamic.tar.gz
+                        861  treeps.lsm
+
+Alternate-site: 
+Original-site:  http://24.1.97.22/gmd/tps/treepsfm.html
+Platforms:      Linux - tested on RH 5.0, 5.1, 5.2
+			Motif(1.2+) or 
+			LessTif(0.88.1+)
+
+Copying-policy: Copyrighted, redistributable with some GPL like restrictions.
+End

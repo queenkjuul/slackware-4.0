@@ -1,0 +1,13 @@
+Begin3
+Title:          PPP Login Shell 
+Version:        1.0 
+Entered-date:   02/09/94 
+Description:    Login shell script for users that allows psudo-dynamic 
+		IP addressing for PPP.
+Keywords:       ppp, dynamic 
+Author:         djelder@basenet.net (Derek Elder)
+Maintained-by:  djelder@basenet.net (Derek Elder) 
+Primary-site:   sunsite.unc.edu 
+Original-site:  basenet.net /pub
+Copying-policy: GNU 
+End

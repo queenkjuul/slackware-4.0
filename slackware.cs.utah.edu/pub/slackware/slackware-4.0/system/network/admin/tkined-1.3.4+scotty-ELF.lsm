@@ -1,0 +1,19 @@
+
+Begin3
+Title:		tkined & scotty
+Version:	1.3.4
+Entered-date:   DEC19, 1995	
+Description:	tkined is a tk based network editor. scotty is an extended
+		tcl interpreter which can test various TCP/IP services
+		(including SNMPv1/SNMPv2). ntping is a ping program that
+		can send ICMP packets to a number of hosts in parallel.
+Keywords:	Network Management, SNMP, DNS, ICMP, TCL/TK
+Author: 	schoenw@ibr.cs.tu-bs.de (Juergen Schoenwaelder)
+		schoenfr@ibr.cs.tu-bs.de (Erik Schoenfelder)
+Maintained-by:	schoenw@ibr.cs.tu-bs.de (Juergen Schoenwaelder)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/admin
+Original-site:	ftp.ibr.cs.tu-bs.de /pub/local/tkined
+Platforms:	XFree86-3.1, tcl/tk shared libraries
+Copying-policy:	BSD
+Uploaded by:    djelder@accessus.net (Derek Elder)
+End

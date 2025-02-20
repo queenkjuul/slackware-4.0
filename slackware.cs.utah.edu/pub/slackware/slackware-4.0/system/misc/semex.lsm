@@ -1,0 +1,17 @@
+Begin3
+Title:		semex
+Version:	1.1
+Entered-date:	07OCT96
+Description:	Tester and exerciser for Unix System V semaphore functions.
+		Quite useful for getting hands-on knowledge of them, also
+		as part of a test frame for any semaphore-using program.
+Keywords:	semaphore, exerciser
+Author: 	esr@snark.thyrsus.com (Eric S. Raymond)
+Maintained-by:	esr@snark.thyrsus.com (Eric S. Raymond)
+Primary-site:	locke.ccil.org /pub/esr
+		5K semex-1.1.tar.gz
+Platforms:	UNIX
+Copying-policy:	BSD-like
+End
+
+

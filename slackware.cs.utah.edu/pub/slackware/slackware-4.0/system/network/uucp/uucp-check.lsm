@@ -1,0 +1,15 @@
+Begin3
+Title:          UUCP Checker for linux
+Version:        0.2
+Entered-date:   23 Oct 1996
+Description:    This is a small util for people who want uucico
+		to dial-out when there is outgoing mail in the 
+		outbound directory of the node they want to send the
+		mail to.
+Keywords:       UUCP,Check,NODE
+Author:         jko@harst2.xs4all.nl (J. van Koll)
+Alternate-site: 
+                -----------------
+Platforms:      UNIX
+Copying-policy:	Free
+End

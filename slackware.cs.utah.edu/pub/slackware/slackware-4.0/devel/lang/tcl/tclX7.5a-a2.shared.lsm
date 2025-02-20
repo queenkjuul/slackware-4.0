@@ -1,0 +1,21 @@
+Begin3
+Title:     tclX
+Version:        7.5a-a2
+Entered-date:   14.11.95
+Description:    This is my (mac@fabsoft.zarm.uni-bremen.de) 
+	shared elf compilation of tclX7.5a-a2.
+	it includes the tclX and tkX shared libraries, man pages,
+	the tclhelp tree and dynamically linked tcl and wishx.
+	you need my tcl7.5a2 and tcl4.1a2 shared libs to use it.
+	The tk.tlib file is built from a modified tk library that
+	includes my patch posted to comp.lang.tcl, to make keyboard
+	activation of menu entries work.
+Keywords:       tcl tclX wishx extended elf shared library
+Author:         tcl-project@NeoSoft.com
+Maintained-by:  
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/lang/tcl
+Alternate-site: 
+Original-site:  ftp.neosoft.com:/pub/tcl/distrib/tclX7.5a-a2.tar.gz
+Platform:       tcl7.5a2.shared.tgz tk4.1a2.shared.tgz
+Copying-policy: see file license.terms and README in archive
+End

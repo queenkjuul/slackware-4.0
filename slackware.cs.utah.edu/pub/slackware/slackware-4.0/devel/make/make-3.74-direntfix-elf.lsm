@@ -1,0 +1,17 @@
+Begin3
+Title:          make-3.74-direntfix-bin.elf.tar.gz
+Version:        Mon Dec 25 12:21:43 EST 1995
+Entered-date:   Mon Dec 25 12:21:43 EST 1995
+Description:    This is a binary of make compiled with the patch
+		so that make will not need the -f option
+		to find your makefiles
+Keywords:       make elf binary dirent
+Author:         
+Maintained-by:  kuzniar@cs.unca.edu (Eric John Kuzniar)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/make
+		100212 make-3.74-direntfix-bin.elf.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       elf support, libc > 5.09 
+Copying-policy: See file COPYING
+End

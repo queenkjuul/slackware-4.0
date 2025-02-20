@@ -1,0 +1,70 @@
+Here is UMSDOS beta 0.3. It took a long time. Mostly the time
+to track difficult bugs I could not reproduce. Thanks to the
+few testers who worked hard trying to reproduce them.
+
+Release 0.3 is fully compatible with 0.2.
+It contains important bug fixes. Those having problems with
+X in particular should be happy now :-)
+This is a source only release. A binary one will follow later.
+It patches agains linux kernel 1.1.12.
+
+Please, test it out. Time has come for Umsdos to get into
+the standard kernel distribution... Again, test it, send
+me reports, etc (positive or negative). If all goes well,
+I will email Linus about this.
+
+It is available from sunsite.unc.edu:/pub/Linux/BETA/umsdos
+
+Here is a small intro...
+
+UMSDOS is a filesystem for LINUX. It is a full feature
+unix-like filesystem running on top of a normal MsDOS FAT filesystem.
+
+It has been written by Jacques Gelinas jacques@solucorp.qc.ca
+
+Umsdos is a full-feature Unix like FS on top of a FAT MsDOS fs ?
+Full-feature ???
+
+    Long file name
+        -Case sensitive
+        -This.Is.An...Exemple
+        -220 char max.
+    Links (both hard and symbolics)
+        Now I know why they are called "hard" links :-)
+    Pipes and special device file.
+    Permissions, owner, group
+    Atime,Ctime and Mtime with full Unix semantics.
+
+    Powerful enough to be a root fs for Linux.
+    Yet CHKDSK won't see anything wrong with all this.
+
+    testers have installed any kind of standard stuff. To
+    name a few (Andrew, X, GCC, News).
+
+Is Umsdos useful ?
+
+    UMSDOS is perfect to test drive linux without trouble. No
+    reformat, no new partition.
+
+    It is also a good idea for those who need DOS and don't want
+    to split the disk in two "too small" parts. Perfect also
+    for those who need to share data with DOS on an ongoing basis.
+
+    It is also a good idea for those who already splits the disk and
+    need more space for Linux. It allows linux to slowly eat the
+    DOS partition. UMSDOS will be an important part of the
+    "LINUX invasion" :-)
+
+    Because reformatting is a major concern to many, especially when
+    you are unsure if you need linux, I believe Umsdos will be the
+    most used FS for linux (not the best though).
+
+
+    There are still missing pieces:
+
+        Some performance enhancement of UMSDOS directory
+            manipulation (A small directory cache).
+        Some performance enhancement of the Linux MSDOS drivers.
+            (not obvious but I have some idea...)
+
+

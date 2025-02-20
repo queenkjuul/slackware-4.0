@@ -1,0 +1,18 @@
+Begin3
+Title:          xhdbench
+Version:        0.5.3
+Entered-date:   23AUG98
+Description:    xhdbench is a qt-based X-program for testing the
+                output speed of several devices (hard discs, CD-ROM,
+                floppies...) and the interaction between them.
+Keywords:       benchmark device X
+Author:         fricke@uni-greifswald.de  (Jan Fricke)
+                lang@mueritz-comp.de      (Alexander Lang)
+Maintained-by:  fricke@uni-greifswald.de  (Jan Fricke)
+                lang@mueritz-comp.de      (Alexander Lang)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/benchmark
+                20k  xhdbench-0.5.3.src.tgz
+                592k xhdbench-0.5.3.bin.static.gz
+Platforms:      Linux
+Copying-policy: GPL
+End

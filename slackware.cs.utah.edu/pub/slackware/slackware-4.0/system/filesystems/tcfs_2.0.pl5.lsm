@@ -1,0 +1,25 @@
+Begin3
+Title:          TCFS (Transparent Cryptgraphic FileSystem)
+Version:        2.0pl5
+Entered-date:   110297
+Description:    A Network FileSystem with an encryption/decription system
+		(i.e. all data transferred from client to server and
+		viceversa are crypted). It is based on Sun NFS.
+Keywords:       NFS, TCFS, Secure, SNFS, Network, Cryptography, Crypt
+Author:         ermmau@mikonos.dia.unisa.it (Ermelindo Mauriello)
+		cattaneo@dia.unisa.it (Pippo Cattaneo)
+		giuper@dia.unisa.it (Giuseppe Persiano)
+		anidel@mikonos.dia.unisa.it (Aniello Del Sorbo)
+		angcel@mikonos.dia.unisa.it (Angelo Celentano)
+		andcoz@mikonos.dia.unisa.it (Andrea Cozzolino)
+		rafpis@mikonos.dia.unisa.it (Raffaele Pisapia)
+Maintained-by:  branco@mikonos.dia.unisa.it
+Primary-site:   mikonos.dia.unisa.it /pub/tcfs/sources/tcfs_2.0
+		352543 tcfs_2.0.pl5.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/Incoming
+		352543 tcfs_2.0.pl5.tgz
+Original-site:
+Platforms:      Linux
+Copying-policy: GPL
+End
+

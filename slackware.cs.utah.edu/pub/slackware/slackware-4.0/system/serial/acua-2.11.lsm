@@ -1,0 +1,15 @@
+Begin3
+Title:          ACUA
+Version:        2.11
+Entered-date:   15SEP98
+Description:    Access control and user administration for Linux.
+Keywords:       dial-up modem serial ISP BBS account administration
+Author:         amckee@iname.com (Adam McKee)
+Maintained-by:  amckee@iname.com (Adam McKee) 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/serial
+                538 acua-2.11.lsm
+                97kB acua-2.11.tar.gz
+                100kB acua-2.11-1.src.rpm
+                136kB acua-2.11-1.i386.rpm
+Copying-policy: GPL
+End

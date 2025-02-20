@@ -1,0 +1,19 @@
+Begin3
+Title:          Softdog
+Version:        1.2
+Entered-date:   May 11, 1998
+Description:    Software watchdog driver for use with linux kernels 1.3.51+
+		based on Alan Cox's demo driver but modified by Jamey Graham
+		and Christophe Dupre to run as a daemon so it can be 
+		started at bootup by init
+Keywords:       watchdog driver kernel
+Author:         Christophe Dupre (cdupre@risq.qc.ca)
+Primary-site:	ftp.risq.qc.ca /pub/users/cdupre/Linux
+			13 kb softdog-1.2.tgz
+			 1 kb softdog-1.2.lsm
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Daemons
+			13 kb softdog-1.2.tgz
+			 1 kb softdog-1.2.lsm
+Platform:       Linux post-1.3.51
+Copying-policy: GPL
+End

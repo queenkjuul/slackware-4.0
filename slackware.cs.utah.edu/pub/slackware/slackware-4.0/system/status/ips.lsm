@@ -1,0 +1,23 @@
+Begin3
+Title:          ips
+Version:        1.4
+Entered-date:   23 Dec 95
+Description:    Ips stands for "intelligent process status".  It is an
+		extremely configurable and efficient ps-like program.
+		The columns to be displayed and their order can be changed.
+		Selection and sorting of processes can use arbitrary
+		expressions based on the column values.  Macro definitions
+		in initialization files make it easy to specify useful
+		combinations of options.  Ips requires that the /proc
+		file system is available.
+Keywords:       proc ps
+Author:         dbell@auug.org.au (David I. Bell)
+Maintained-by:  dbell@auug.org.au (David I. Bell)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Status
+		62K ips-1.4.tgz
+		ips.lsm
+Alternate-site: 
+Original-site:  
+Platform:       Requires an ANSI compiler
+Copying-policy: Freely available as long as copyright notices are preserved.
+End

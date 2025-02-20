@@ -1,0 +1,51 @@
+<TITLE>What is Linux-PAM?</TITLE>
+<H3>Linux-PAM</H3>
+
+Linux-PAM is a free implementation of the following <a
+href="rfc86.0.txt.gz">DCE-RFC</a>
+from Sunsoft.
+
+<p>
+(From the FAQ)
+<br>
+Q1: What exactly is PAM?
+<br>
+A1: PAM = Pluggable Authentication Modules
+
+<p>
+Basically, it is a flexible mechanism for authenticating users.
+
+<p>
+Since the beginnings of UNIX, authenticating a user has been accomplished
+via the user entering a password and the system checking if the entered
+password corresponds to the encrypted official password that is stored
+in /etc/passwd . The idea being that the user *is* really that user if
+and only if they can correctly enter their secret password.
+
+<p>
+That was in the beginning. Since then, a number of new ways of
+authenticating users have become popular. Including more complicated
+replacements for the /etc/passwd file, and hardware devices Smart cards
+etc..
+
+<p>
+The problem is that each time a new authentication scheme is developed, it
+requires all the necessary programs (login, ftpd etc...) to be rewritten to
+support it.
+
+<p>
+PAM provides a way to develop programs that are independent of
+authentication scheme. These programs need "authentication modules" to be
+attatched to them at run-time in order to work. Which authentication module
+is to be attatched is dependent upon the local system setup and is at the
+discretion of the local system administrator.
+
+<hr>
+
+Back to <a href="index.html">Linux-PAM</a>
+
+<HR>
+
+Send comments etc to
+<a href="mailto:pam-list@redhat.com">The Linux-PAM mailing list</a>.
+Or to <a href="mailto:morgan@parc.power.net">me</a>. 

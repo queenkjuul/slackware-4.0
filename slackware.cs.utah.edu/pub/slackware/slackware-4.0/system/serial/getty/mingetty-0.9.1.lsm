@@ -1,0 +1,22 @@
+Begin3
+Title:         mingetty
+Version:       0.9.1
+Description:   Control of the tty at logintime.
+               This new version is able to configure an autologin
+               on some ttys. You will find that convenient, if you
+               are the only user of your system.
+Author:        Florian La Roche
+               florian@jurix.jura.uni-sb.de florian@suse.de
+               patched by J"org Weule (weule@acm.org)
+Maintained-by: florian@jurix.jura.uni-sb.de florian@suse.de
+               weule@acm.org
+Primary-Site:  sunsite.unc.edu:/pub/linux/system/serial/getty
+                         19206 mingetty-0.9.1.tar.gz
+Alternate-Site:ftp.uni-duesseldorf.de:/pub/unix/apollo
+                         19206 mingetty-0.9.1.tar.gz
+Platforms:     Linux 
+Copying-Policy:GPL
+Keywords:      getty login inittab
+Comment:       
+End
+

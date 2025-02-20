@@ -1,0 +1,13 @@
+Begin3
+Title:          BBLinux
+Version:        0.3
+Entered-date:   3 Nov 1995
+Description:    Collection of simple utilities and information to convert 
+		a Linux system into a BBS: sh/dialog based mainmenu, intro
+		on fidonet, HTML registration form, time management programs 
+Keywords:       bbs fidonet 
+Author:         andreas@karlsberg.usask.ca (Andreas Schiffler)
+Maintained-by:  andreas@karlsberg.usask.ca (Andreas Schiffler)
+Primary-site:   sunsite.unc.edu
+Copying-policy: GPL
+End

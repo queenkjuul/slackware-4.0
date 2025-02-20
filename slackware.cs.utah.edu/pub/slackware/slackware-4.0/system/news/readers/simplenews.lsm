@@ -1,0 +1,13 @@
+Begin3
+Title:          simplenews
+Version:        0.2
+Entered-date:   20MAY97
+Description:    non-threaded newsreader based on ncurses
+Keywords:       USENET NNTP news
+Author:         hbenson@polarnet.fnsb.ak.us (J. Howard Benson)
+Maintained-by:  hbenson@polarnet.fnsb.ak.us (J. Howard Benson)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/news/readers
+                30271 simplenews-0.2.tar.gz
+Alternate-site: http://www2.polarnet.com/~hbenson/simplenews-0.2.tar.gz
+Copying-policy: GPL
+End

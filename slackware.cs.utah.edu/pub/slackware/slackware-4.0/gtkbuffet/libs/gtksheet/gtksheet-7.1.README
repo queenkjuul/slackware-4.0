@@ -1,0 +1,116 @@
+GtkSheet is a matrix widget for Gtk+. It consist of an scrollable grid of
+cells where you can allocate text which can be edited interactivelly. It is
+also a container subclass so it allows you to display buttons, curves,
+pixmaps and any other widget in it. You can also set many attributes as:
+border, foreground and background color, text justification, etc. GtkSheet
+comes also with an extra set of useful widgets: GtkComboBox, GtkColorCombo,
+and GtkBorderCombo. A demo program shows all of them interacting in a
+spreadsheet-like GUI.
+
+This distribution includes the following set of widgets:
+
+    * GtkSheet
+    * GtkSheetEntry
+    * GtkComboBox
+    * GtkColorCombo
+    * GtkBorderCombo
+
+and a demo program showing their features acting interactivelly.
+
+Anonymous ftp:
+ 
+ftp://ripley.ifir.edu.ar/pub/gtk/gtksheet/gtksheet-7.x.tar.gz
+
+NEWS & CHANGES
+==============
+
+GtkSheet-7.1
+============
+
+Maily a bug fix release, and some new features:
+
+* About a dozen of "invisible" bugs fixed thanks to Quicklist team 
+(www.quicklist.com). Special thanks to Bob Lissner <lissnerr@ColdSprings.net>
+and Sam Philips <sam@usaworks.com>. GtkSheet is being used by Quicklist,
+and these guys made a lot of tests for it. 
+
+* Features added:
+
+ - gtk_sheet_set_column_titles_height(GtkSheet *sheet, gint height);
+
+ - gtk_sheet_set_row_titles_width(GtkSheet *sheet, gint width);
+
+ - gtk_sheet_column_set_justification(GtkSheet *sheet, gint column, 
+                                      gint justification);
+
+  If column->justification != GTK_JUSTIFY_FILL (default value) it 
+  will always win over individual cells' justifications.
+
+  - New flag: GTK_SHEET_AUTO_SCROLL. For default this flag is on. If
+  you turn it off, gtksheet won't scroll automatically to keep the 
+  active cell in the viewport. 
+
+
+GtkSheet-7.0
+============
+
+GtkSheet has moved to gtk+-1.2 and new features have been added.
+This version has been tested with gtk+-1.2.0
+
+* GtkSheet is a self scrolling widget a la GtkClist and GtkLayout. 
+You have to add it to a scrolled window to display it propertly.
+Shadow borders will be fixed with the patch added to gtkscrolledwindow.
+
+* Container features implemented. Adding widgets to the sheet is very easy
+with:
+
+gtk_sheet_put (GtkSheet *sheet, GtkWidget *child, gint x, gint y);
+
+* Move it with
+
+gtk_sheet_move_child (GtkSheet *sheet, GtkWidget *widget, gint x, gint y);
+
+* Remove it with
+
+gtk_container_remove(GTK_CONTAINER(sheet), GtkWidget *child);
+
+* Some signals have been renamed:
+
+  "activate_cell" -> "activate"
+  "deactivate_cell" -> "deactivate"
+ 
+* Rejection option for activation/deactivation of the active cell.
+
+* New signals:
+
+  "new_column_width"
+  "new_row_height"
+
+* new function 
+
+gtk_sheet_set_cell_text(GtkSheet *sheet, gint row, gint col, gchar *text);
+(you don't have to set the justification)
+
+* Some minor bugs fixed.
+
+
+** READ THE HEADERS FOR MORE INFORMATION **
+
+GtkSheet Xtra Widgets Set
+=========================
+
+GtkComboBox: 
+============
+Derived from Paolo Molaro's GtkCombo, it consists of a button, an arrow button,
+and a popup window with a frame, that can contain a widget which is displayed
+with the arrow. You can pack any widget in the frame (e.g. GtkCalendar).
+It has been thought to be a parent class for the following widgets: 
+
+GtkColorCombo:
+==============
+It's a GtkComboBox subclass with a pallette of colors diplayed in a table.
+
+GtkBorderCombo:
+==============
+It's a GtkComboBox subclass with a set of border patterns displayed in a table.
+

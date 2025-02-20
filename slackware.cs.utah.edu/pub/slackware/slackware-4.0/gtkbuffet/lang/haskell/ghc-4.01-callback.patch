@@ -1,0 +1,102 @@
+--- fptools/ghc/rts/Adjustor.c.orig	Mon Nov 23 21:11:18 1998
++++ fptools/ghc/rts/Adjustor.c	Mon Jan  4 20:19:00 1999
+@@ -56,14 +56,14 @@
+        (offset and machine code prefixed):
+ 
+      <0>:	58	          popl   %eax              # temp. remove ret addr..
+-     <1>:	68 63 fd fc fe fa pushl  0xfafefcfd  	   # constant is large enough to
++     <1>:	68 fd fc fe fa    pushl  0xfafefcfd  	   # constant is large enough to
+         			   	           	   # hold a StgStablePtr
+      <6>:	50	          pushl  %eax		   # put back ret. addr
+      <7>:	b8 fa ef ff 00	  movl   $0x00ffeffa, %eax # load up wptr
+      <c>: 	ff e0             jmp    %eax        	   # and jump to it.
+ 		# the callee cleans up the it will then clean up the stack
+     */
+-    sizeof_adjustor = 15*sizeof(char);
++    sizeof_adjustor = 14*sizeof(char);
+ 
+     if ((adjustor = stgMallocBytes(sizeof_adjustor,"createAdjustor")) == NULL) {
+         return NULL;
+@@ -92,46 +92,50 @@
+      the following assembly language snippet
+      (offset and machine code prefixed):
+ 
+-   <0>:	58	          popl   %eax              # temp. remove ret addr..
+-   <1>:	68 63 fd fc fe fa pushl  0xfafefcfd  	   # constant is large enough to
+-        			   	           # hold a StgStablePtr
+-   <6>:	50	          pushl  %eax		   # put back ret. addr
+-   <7>:	b8 fa ef ff 00	  movl   $0x00ffeffa, %eax # load up wptr
+-   <c>: ff d0             call   %eax        	   # and call it.
+-   <e>:	58	          popl   %eax		   # store away return address.
+-   <f>:	83 c4 04	  addl   $0x4,%esp	   # remove stable pointer
+-  <12>:	50	          pushl  %eax		   # put back return address.
+-  <13>:	c3	          ret			   # return to where you came from.
++
++   <0>: 58                popl   %eax              # get ret adr.
++   <1>: 68 fd fc fe fa    pushl  $0xfafefcfd       # push hptr
++   <6>: a3 21 00 00 00    movl   %eax, buff        # save ret adr.
++   <b>: b8 fa ef ff 00    movl   $0x00ffeffa, %eax # load up wptr
++  <10>: ff d0             call   *%eax             # and call it
++  <12>: 50                pushl  %eax              # save ret value
++  <13>: 83 c4 08          addl   $8, %esp          # remove ret value/hptr
++  <16>: a1 21 00 00 00    movl   buff, %eax        # get ret adr.
++  <1b>: 50                pushl  %eax              # save it on stack
++  <1c>: 8b 44 24 fc       movl   -4(%esp), %eax    # restore ret value
++  <20>: c3                ret                      # return to where you came from
++buff:
++  <21>: ?? ?? ?? ??
+ 
+   */
+-    sizeof_adjustor = 20*sizeof(char);
++    sizeof_adjustor = 37*sizeof(char);
+ 
+     if ((adjustor = stgMallocBytes(sizeof_adjustor,"createAdjustor")) == NULL) {
+         return NULL;
+     }
+ 
+     adj_code    = (unsigned char*)adjustor;
+-    adj_code[0] = (unsigned char)0x58;  /* popl %eax  */
+-    adj_code[1] = (unsigned char)0x68;  /* pushl hptr (which is a dword immediate ) */
+-
+-    adj = (StgStablePtr*)(adj_code+2);
+-    *((StgStablePtr*)adj) = (StgStablePtr)hptr;
+-
+-    i = 2 + sizeof(StgStablePtr);
+-    adj_code[i]   = (unsigned char)0x50; /* pushl %eax */
+-    adj_code[i+1] = (unsigned char)0xb8; /* movl  $wptr, %eax */
+-    adj = (char*)(adj_code+i+2);
+-    *((StgFunPtr*)adj) = (StgFunPtr)wptr;
+-
+-    i = i+2+sizeof(StgFunPtr);
+-    adj_code[i]   = (unsigned char)0xff;  /* call %eax */
+-    adj_code[i+1] = (unsigned char)0xd0;
+-    adj_code[i+2] = (unsigned char)0x58;  /* popl %eax */
+-    adj_code[i+3] = (unsigned char)0x83;  /* addl $0x4, %esp */
+-    adj_code[i+4] = (unsigned char)0xc4;
+-    adj_code[i+5] = (unsigned char)0x04;
+-    adj_code[i+6] = (unsigned char)0x50; /* pushl %eax */
+-    adj_code[i+7] = (unsigned char)0xc3; /* ret */
++    adj_code[0x00] = (unsigned char)0x58; /* popl %eax  */
++    adj_code[0x01] = (unsigned char)0x68; /* pushl $hptr */
++    *((StgStablePtr*)(adj_code+0x02)) = (StgStablePtr)hptr;
++    adj_code[0x06] = (unsigned char)0xa3; /* movl %eax, buff */
++    *((unsigned char**)(adj_code+0x07)) = adj_code+0x21;
++    adj_code[0x0b] = (unsigned char)0xb8; /* movl $wptr, %eax */
++    *((StgFunPtr*)(adj_code+0x0c)) = (StgFunPtr)wptr;
++    adj_code[0x10] = (unsigned char)0xff; /* call %eax */
++    adj_code[0x11] = (unsigned char)0xd0;
++    adj_code[0x12] = (unsigned char)0x50; /* pushl %eax */
++    adj_code[0x13] = (unsigned char)0x83; /* addl $8, %esp */
++    adj_code[0x14] = (unsigned char)0xc4;
++    adj_code[0x15] = (unsigned char)0x08;
++    adj_code[0x16] = (unsigned char)0xa1; /* movl buff, %eax */
++    *((unsigned char**)(adj_code+0x17)) = adj_code+0x21;
++    adj_code[0x1b] = (unsigned char)0x50; /* pushl %eax */
++    adj_code[0x1c] = (unsigned char)0x8b; /* movl -4(%esp), %eax */
++    adj_code[0x1d] = (unsigned char)0x44;
++    adj_code[0x1e] = (unsigned char)0x24;
++    adj_code[0x1f] = (unsigned char)0xfc;
++    adj_code[0x20] = (unsigned char)0xc3; /* ret */
+   }
+ 
+   /* Have fun! */

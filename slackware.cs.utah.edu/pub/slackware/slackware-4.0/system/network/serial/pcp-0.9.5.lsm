@@ -1,0 +1,15 @@
+Begin3
+Title: pcp         
+Version: 0.9.5       
+Entered-date: 09/09/98  
+Description: Frontend for pppd under X11 with OSF/Motif, source only  
+Keywords: pppd frontend dialup X11 OSF/Motif      
+Author: bakerman@hrz.uni-bielefeld.de (Bjoern Fischer)
+        AR.Richter@tu-bs.de (Armin Richter)
+Maintained-by: AR.Richter@tu-bs.de (Armin Richter) 
+Primary-site: sunsite.unc.edu /pub/Linux/network/misc
+Alternate-site: 
+Original-site:  
+Platforms: OSF/Motif 2.0, X11, Linux, gcc     
+Copying-policy: GPL
+End

@@ -1,0 +1,18 @@
+Begin3
+Title:          EULER for Linux
+Version:        1.10
+Entered-date:   December 18, 1996
+Description:    Euler is a numercial matrix language (like MatLab). It
+                features real, complex and interval arithmetic, a programming
+                language, an exact scalar product, and 2D and 3D graphics.
+                It comes with lots of problem solvers and a HTML documentation.
+                Also contains a demo show and many examples.
+Keywords:       numerical math, shareware.
+Author:         Rene Grothmann <grothm@ku-eichstaett.de>
+Maintained-by:  Rene Grothmann
+Primary-site:   ftp://am.ku-eichstaett.de
+Alternate-site: sunsite.unc.edu
+Original-site:  ftp://am.ku-eichstaett.de
+Platform:       Linux.
+Copying-policy: Freeware for educational use.
+End

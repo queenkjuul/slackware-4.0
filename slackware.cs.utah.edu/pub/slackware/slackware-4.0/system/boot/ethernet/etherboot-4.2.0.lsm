@@ -1,0 +1,28 @@
+Begin3
+Title:          etherboot          
+Version:        4.2.0
+Entered-date:   01MAY99
+Description:    Source for BOOT-Prom images; the code is based on the
+		FreeBSD network-bootloader and supports loading of Linux
+		or DOS.   WD/SMC, NE1000/NE2000 (ISA, PCI), 3c503,
+		3c507, 3c509, LANCE (NE2100, NI6510 and others, ISA,
+		PCI), Intel EtherExpressPro 100, SMC9000, EPIC100, Tulip,
+		3C905B, Realtek 8139 and S&K G16 are supported. There
+		is optional code for supporting NICs based on Crystal
+		Semiconductor's CS89x0 chipset. A reference implementation
+		of a compressor module is included.
+Keywords:       booting, boot-rom, diskless, bootp, DHCP, tftp, NFS
+Author:         gutschk@math.uni-muenster.de (Markus Gutschke)
+		ken.yap@acm.org (Ken Yap)
+Maintained-by:  ken.yap@acm.org (Ken Yap) (primary maintainer)
+		gutschk@math.uni-muenster.de (Markus Gutschke)
+Primary-site:   metalab.unc.edu /pub/Linux/system/boot/ethernet
+		711651 etherboot-4.2.0.tar.gz
+                1465 etherboot-4.2.0.lsm
+Alternate-site: http://www.slug.org.au/etherboot/
+Original-site:  
+Platforms:      An ELF-based GCC is required, EPROM burner recommended
+                (unless booting from DOS disk). If building the 16 bit
+		version, bcc from the ELKS project is required.
+Copying-policy: GPL (in general but parts are less restricted)
+End

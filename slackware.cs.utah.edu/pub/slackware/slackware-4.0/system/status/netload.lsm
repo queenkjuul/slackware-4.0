@@ -1,0 +1,21 @@
+Begin3
+Title:          NETLOAD 
+Version:        0.90 Beta 
+Entered-date:   December 1st 1996 
+Description:    NETLOAD is a program that displays the network load
+                plus other statistics data in a network device like
+                ethernet, ppp, etc...
+                It uses the ncurses library to display the data in
+                color, plus a "gauge" that shows the network load,
+                that changes colors depending on the load.
+		    
+Keywords:       network, ethernet, ppp, slip, Linux, freeware 
+
+Author:         lfalcon@csun.edu (Luis Falcon)
+Maintained-by:  lfalcon@csun.edu (Luis Falcon)
+Primary-site:   
+Alternate-site: 
+Original-site:  
+Platform:       Linux i486
+Copying-policy: Freeware 
+End

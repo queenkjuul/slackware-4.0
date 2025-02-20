@@ -1,0 +1,13 @@
+This patch allows the "ftpd-diku" ftp daemon to work with the shadow
+passwording system (I have version 3.22 I think).
+
+It exists because I prefer the "ftpd-diku" daemon over the "ftpd-560"
+daemon. (By the way, I couldn't get the 560 shadow password patch "net2pch"
+to work on my machine without getting errors whenever the ftpuser types the
+DIR command!)
+
+Feel free to mail me at the below address if you have problems.  I'm not an
+expert yet, but I will try to help!
+
+Chris Seatory
+enu236y@monu6.cc.monash.edu.au

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/modules/2.2.6/fs</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/modules/2.2.6/fs</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/modules/2.2.6/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="vfat.o">vfat.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="umsdos.o">umsdos.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 35K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ufs.o">ufs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 64K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sysv.o">sysv.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 33K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="smbfs.o">smbfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 37K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="romfs.o">romfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">6.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="qnx4.o">qnx4.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">8.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ntfs.o">ntfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 45K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_koi8-r.o">nls_koi8-r.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-15.o">nls_iso8859-15.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-9.o">nls_iso8859-9.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-8.o">nls_iso8859-8.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-7.o">nls_iso8859-7.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-6.o">nls_iso8859-6.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-5.o">nls_iso8859-5.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-4.o">nls_iso8859-4.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-3.o">nls_iso8859-3.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-2.o">nls_iso8859-2.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_iso8859-1.o">nls_iso8859-1.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp874.o">nls_cp874.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp869.o">nls_cp869.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp866.o">nls_cp866.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp865.o">nls_cp865.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp864.o">nls_cp864.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp863.o">nls_cp863.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp862.o">nls_cp862.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">5.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp861.o">nls_cp861.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp860.o">nls_cp860.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp857.o">nls_cp857.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp855.o">nls_cp855.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp852.o">nls_cp852.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp850.o">nls_cp850.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp775.o">nls_cp775.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp737.o">nls_cp737.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nls_cp437.o">nls_cp437.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nfsd.o">nfsd.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 55K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nfs.o">nfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 40K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ncpfs.o">ncpfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 34K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="msdos.o">msdos.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="minix.o">minix.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 32K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lockd.o">lockd.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 46K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="isofs.o">isofs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 24K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="hpfs.o">hpfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="hfs.o">hfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 78K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="fat.o">fat.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 36K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ext2.o">ext2.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 49K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="coda.o">coda.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 72K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="binfmt_misc.o">binfmt_misc.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">5.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="binfmt_java.o">binfmt_java.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">2.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="binfmt_elf.o">binfmt_elf.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="binfmt_aout.o">binfmt_aout.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">5.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="autofs.o">autofs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="affs.o">affs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 39K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="adfs.o">adfs.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">2.5K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

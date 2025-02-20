@@ -1,0 +1,13 @@
+Begin3
+Title:          xsysinfo
+Version:        1.6
+Entered-date:   14OKT97
+Description:    Displays CPU load average, CPU load, memory and swap sizes in
+                an X window
+Keywords:       system status
+Author:         herr@iti.informatik.th-darmstadt.de (Gabor Herr)
+Maintained-by:  ronald.wahl@informatik.tu-chemnitz.de (Ronald Wahl)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status/xstatus
+                27kB xsysinfo-1.6.tar.gz
+Copying-policy: BSD
+End

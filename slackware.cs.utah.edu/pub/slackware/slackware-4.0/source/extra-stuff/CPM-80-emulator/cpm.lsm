@@ -1,0 +1,19 @@
+Begin3
+Title:          CP/M-80 emulator
+Version:        0.2.1
+Entered-date:   04MAR98
+Description:    Emulator for a Zilog Z80 CPU and a lookalike to the
+		DR CP/M-80 operating system. Emulation on BDOS and
+                optionally BIOS level. Modified to compile on ELF systems.
+		Original author can no longer be reached by e-mail.
+Keywords:       cpm, CP/M, emulator, Z80, ELF
+Author:         mbi@mo.math.nat.tu-bs.de (Michael Bischoff)
+Maintained-by:  aoppelt@theorie3.physik.uni-erlangen.de (Achim Oppelt)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/emulators
+		101k cpm-0.2.1.tar.gz
+Alternate-site: 
+Original-site:  sunsite.unc.edu
+		100k cpm-0.2.tar.gz
+Platforms:      Linux/ELF
+Copying-policy: GPL
+End

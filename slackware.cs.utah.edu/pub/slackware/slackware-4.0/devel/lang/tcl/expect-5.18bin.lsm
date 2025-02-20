@@ -1,0 +1,21 @@
+Begin3
+Title:Expect 
+Version:5.18
+Entered-date:96/01/21
+Descriptions: Expect is a program that "talks" to other interactive
+	programs according to a script. You might use expect
+	to automate setting passwords, telneting to another host,
+	or FTPing data from other hosts.
+	includes expectk and is 
+Author:libes@nist.gov (Don Libes)
+Maintained-by:psilva@cmc.doe.ca (Peter Silva)
+Site1=sunsite.unc.edu
+Path1=pub/Linux/system/Shells
+File1=expect-5.18bin.tgz
+FileSize1=700KB
+CopyPolicy:Software is in the public domain.  NIST and Don Libes would
+	appreciate credit if this program or parts of it are used.
+Platform: Slackware 3.0 ELF linux 1.2.13, to go with TK in distribution
+	just use pkgtool to install, goes into /usr/bin
+End
+

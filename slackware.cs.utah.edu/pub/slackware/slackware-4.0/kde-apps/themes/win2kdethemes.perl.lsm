@@ -1,0 +1,13 @@
+Begin3
+Title:          win2kdethemes.perl
+Version:        0.0.1
+Entered-date:   06.09.98
+Description:    Perl script to convert Windows 95/98 themes to KDE format
+Home-page:      http://www.circle-path.org/garrett/tech/win2kdethemes.html
+Keywords:       KDE, Themes
+Author:         Bill Garrett <garrett@circle-path.org>
+Maintained-by:  Bill Garrett <garrett@circle-path.org>
+Primary-site:   http://www.circle-path.org/garrett/tech/win2kdethemes.perl
+Platform:       Linux, Perl 5
+Copying-policy: GPL
+End

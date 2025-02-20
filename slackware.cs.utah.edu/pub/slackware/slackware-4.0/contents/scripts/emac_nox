@@ -1,0 +1,4 @@
+( cd usr/share/emacs/20.3/etc ; rm -rf DOC )
+( cd usr/share/emacs/20.3/etc ; ln -sf DOC-20.3.1 DOC )
+( cd usr/bin ; rm -rf emacs )
+( cd usr/bin ; ln -sf emacs-20.3-no-x11 emacs )

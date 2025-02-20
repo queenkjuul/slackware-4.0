@@ -1,0 +1,16 @@
+Begin3
+Title:          fbbs.fingerd
+Version:        1.0
+Entered-date:   1/29/99 
+Description:    A Finger Daemon to show online users via a finger client
+Keywords:       finger daemon bbs falken
+Author:         Eric Kilfoil <eric@ipass.net>
+Maintained-by:  Eric Kilfoil <eric@ipass.net>
+Primary-site:   ftp.falkenbbs.com /pub/FalkenBBS/rds/fbbs.fingerd 
+                fbbs.fingerd-1.0.src.tar.gz
+                fbbs.fingerd-1.0.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/bbs/falken
+Original-site:  
+Platforms:      Falken BBS for Linux
+Copying-policy: GPL
+End

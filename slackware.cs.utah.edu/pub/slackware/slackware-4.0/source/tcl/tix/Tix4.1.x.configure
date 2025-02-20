@@ -1,0 +1,22 @@
+# Build/install Tix the way Slackware's binary package is made:
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/Tix4.1.0.006.tar.gz
+cd Tix4.1.0
+mkdir -p /usr/doc/Tix4.1.0
+cp -a README Version docs /usr/doc/Tix4.1.0
+chown -R root.root /usr/doc/Tix4.1.0
+cd unix
+./configure --prefix=/usr --enable-shared
+cd tk8.0
+./configure --prefix=/usr \
+            --with-tcl=../../../tcl8.0.5 \
+            --with-tk=../../../tk8.0.5
+make install
+make clean
+./configure --prefix=/usr --enable-shared \
+            --with-tcl=../../../tcl8.0.5 \
+            --with-tk=../../../tk8.0.5
+make install
+cd ..
+make install

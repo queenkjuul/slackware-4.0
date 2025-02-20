@@ -1,0 +1,4 @@
+#!/bin/sh
+rdev -R vmlinuz 0
+rdev -v vmlinuz -1
+rdev -r vmlinuz 0

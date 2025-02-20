@@ -1,0 +1,215 @@
+
+   
+   
+   Authored 11/95 by Jonathan Katz. Fixed/revised April 10, 1996, not to
+   mention slightly updated June 25, 1996 and "completed" October 26,
+   1996, all by Jonathan Katz, jkatz@in.net
+   
+   _1 Introduction_
+   
+   Many people have recently bought new machines, which (unfortunatly)
+   come pre-loaded with Windows 95. After exploring the Internet, many
+   users find the likes of Linux, and want to run a better OS at a much
+   better price. There are many different issues to address, because new
+   computers usually come with large EIDE hard drives, and Windows 95 has
+   extentions on the old FAT filesystem. Linux understands these issues
+   and can handle these challenges in hardware and software.
+   
+   _2 Let's get Ready to Rumble!_
+   
+   Linux and Windows 95 can get along quite well on the same hard disk.
+   You can also install Linux onto a separate hard disk on the same
+   machine. If you have the money to spare to get a second hard disk, go
+   ahead and do that. Although it is safe and reliable to run Windows 95
+   and Linux on the same hard disk, it is safer to have a second disk.
+   But, since I am a poor student, (and so are most of the people I know)
+   we are stuck with one large disk.
+   
+   I assume your hard disk looks like this:
+
+        +---------------------------------
+C:      |  800M or so, maybe bigger?
+        |
+        +---------------------------------
+
+   
+   
+   and Windows 95 and MS-Office and Qmodem Pro, and whatever DOS/Windows
+   software you have only takes up around 400M + Swap (this is a big,
+   sarcastic assumption)! I take it you don't want to lose all this
+   software you've spent a lot of time configuring and installing, so you
+   don't want to delete this partition and restart all over again.
+   
+   _3 Ok, I have this partition I want to spare!_
+   
+   Don't lose hope. There is a program called FIPS, which can
+   re-partition your Hard Disk without destroying data. HOWEVER, make
+   sure before you use it, you defrag your hard disk (with the optimum
+   defrag method). Use the defrag that came with Win95 and use it in the
+   GUI-- otherwise you will loose your long file names. After you are all
+   defraged, run FIPS and make your disk look something like the
+   following:
+   
+
+        +-------------------------------------
+C:      | This is your FAT/VFAT/Win95 partition
+ 450M   |
+        +------------------------------------
+???     | This is empty space that starts BELOW the 1024th
+        |       cylander
+        +------------------------------------
+
+   
+   
+   FIPS can be found at your favorite Linux FTP sites (sunsite.unc.edu,
+   tsx-11.mit.edu, ftp.redhat.com) usually in the /pub/utils/msdos
+   directory. If you have a CD for Linux, there is usually a \utils\msdos
+   or \utils directory that has FIPS in it as well.
+   
+   It is _VERY IMPORTANT_ that your Linux partition start before (below)
+   the 1024th cylander, otherwise you will be unable to boot it (and
+   that's not a good thing).
+   
+   What exactly is the 1024th cylander? That's where IDE ends and EIDE
+   begins-- that's the 528M "mark" on your hard disk. Start your Linux
+   partition at around 520M, so the entire kernel and other boot/loader
+   files will completely reside below that cylander.
+   
+   _4 What Next?_
+   
+   Go ahead and install Linux to that new free space. If you are
+   paranoid, when the Linux install proceedure goes to boot, you can boot
+   into Windows 95 and mak sure it still runs OK. PLEASE, PLEASE, PLEASE
+   listen to the advice given in the tail of section number three. You
+   will be unable to use Linux otherwise.
+   
+   When it comes to piecing out the disk, if you are like most people,
+   you'll make a 400M Linux partition (which is pretty comfortable) as
+   well as 30M of SWAP (which is more than enough).
+   
+   At this point, you should be able to install whatever distribution of
+   Linux you have without any troubles.
+   
+   _5 Using your new system!_
+   
+   Linux can mount, read, and write to Win95's VFAT partitions serveral
+   ways. You can use the stock msdos filesystem support that has been
+   included in all kernels greater than 1.0. However, using commands
+   like:
+
+litterbox~#: mount -t msdos /dev/hda1 /mnt
+
+   will only get you as far as filenames with the 8.3 standard. Yick! You
+   have Windows 95 so you can use those nifty long file names.
+   
+   Some Linux users still run kernels that are anchient (by Linux
+   standards). In other words, 1.2.xx kernels. Someone coded a module for
+   this series of kernels so a user can read files that do not conform to
+   the old 8.3 standard. FTP to
+   ftp://mm-ftp.cs.berkeley.edu/pub/multimedia/linux/xmsdos/ and pick up
+   a copy of README before doing anything.
+   
+   Finally, newer kernels (1.3.4x) as well as the long awaited 2.0
+   RELEASE have internal vfat support that you can compile in. These
+   kernels allow safe read/writes to your VFAT partitions.
+   
+   _NOTE:_ A word of caution!
+   
+   IF you are running a "newer" version of Windows 95-- i.e., possibly
+   one that ships on computers made after June 1996 as well as the P5-MMX
+   series please listen to the following.
+   
+   Check to see what version of Win95 you are really running. To do this,
+   open up a DOS box and type: "ver /r". Here's some sample output:
+   
+
+C:\> ver /r
+
+Mircosoft Windows 95 [4.00.1034]
+        (C) 1981-1996 Microsoft Corporation.
+
+   
+   
+   Note the minor revision number. If the number is GREATER than 950 you
+   may be running a version of the FAT partition type known as FAT32. If
+   that is the case, you can still use Linux and Win95, HOWEVER, there is
+   NO support to read/write a FAT32 partition. You are SOL if that is the
+   case.
+   
+   Just because you are running a newer version of Win95 doesn't mean
+   that you are running FAT32. Load up "fdisk" and use the "display
+   partition information" option to show indeed if you are using FAT32.
+   
+   _5.1 HELP!, I'm stuck with FAT32!_
+   
+   _5.1.2.1 I have this brand new box that I got from (unamed
+   chain/retail store)_
+   
+   If you are installing Linux onto a drive with FAT32 follow the steps
+   from above about installing Linux onto a Win95 system, but do NOT
+   install LILO. Instead, skip to section 5.1.3 entitled "linload, what's
+   that?" and read the step-by-step workaround for this unfortunate
+   situation.
+   
+   _5.1.2.2 I messed up-- big time!_
+   
+   This happened to me-- I was running a Win95 beta with FAT32 installed,
+   I upgrade Win95, and my system died. I didn't have a Win95 boot disk
+   for the version of Win95 I just upgraded to. Here's a little work
+   around.
+   
+   Find ANY MS boot disk made using DOS version 5.0 or greater. Under
+   Linux mount the Win95 Beta CD. Mount the floppy as well.
+   
+
+litterbox~# mount -t iso9660 /dev/cdrom /cdrom
+litterbox~# mount -t msdos /dev/fd0 /mnt
+
+   
+   
+   On the CD find the "beta stuff" directory. The MS people move this
+   location around... try /cdrom/admin/beta/floppy,
+   /cdrom/betaonly/floppy. cp the files io.sys, msdos.sys, and
+   command.com to the floppy. "sync" and unmount the disks you mounted.
+   Do a reboot and that boot disk *should* work.
+   
+   _5.1.3 Linload, What's That?_
+   
+   Linload is a DOS execuatble which loads a kernel image from a DOS HD
+   (or floppy) and then boots the rest of the Linux Operating System from
+   an appropriate root partition. If you're really a good hacker, you can
+   do a floppyless Linux install this way, but today we are going to do
+   more traditional uses. When booting into Windows 95 hit the F8 key
+   (when:
+
+Starting Windows 95...
+
+   is displayed) and select "Safe mode, command prompt only." Go to your
+   directory where you put your kernel and run
+
+C:\LINUX> linload.exe zimage root=/dev/hda2 ro"
+
+   from there. If you are any good with MS-DOS setups, you can code
+   multiple AUTOEXEC.BAT and CONFIG.SYS files, so that you have a menu
+   setup and can choose which OS to boot.
+   
+   _6 Problems?_
+   
+   In the reverse of the begining scenario (you have a working Linux box
+   and are forced by some power to install Windows 95) Windows 95 WILL
+   overwrite your MBR, and thus crush LILO. You have two options: use
+   loadlin.exe to load your kernel, and use that to run Linux, or boot
+   Linux using a floppy and/or loadlin, then re-install LILO.
+   
+   Best of luck with your new system!
+
+-Jon
+jkatz@mac.edu
++1 217 479-7309
+Box 4454 MacMurray College
+Jacksonville, Illinois 62650
+Personal: http://www.in.net/~jkatz
+Corinne:  http://corinne.mac.edu
+Resume:   http://www.in.net/~jkatz/resume.html
+Room-101: http://room-101.1984.org
+HOWTO:    http://www.in.net/~jkatz/win95/Linux-HOWTO.html

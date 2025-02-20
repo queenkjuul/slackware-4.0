@@ -1,0 +1,260 @@
+//
+// The Linux Comeau C++ 4.0 HOWTO
+// Mark Swanson <ag010@freenet.carleton.ca>
+// v0.3, May 16,1997
+//
+// The Comeau Computing site is:
+// http://www.comeaucomputing.com
+//
+
+
+This document covers how to set up Comeau C++ (herin 
+referenced as "como") under Linux. It gives an overview of compiling,
+linking, running and debugging programs under it. It explains how to
+install and use the latest HP STL (Standard Template Library) reference code
+as well as SGI's (more advanced) STL.
+
+This document is not a detailed feature comparison between g++ and como.
+Anyone who wishes to do this comparison for themselves can get a list
+of g++ bugs from ftp://ftp.cygnus.com/pub/g++/g++-bugs/README and compare
+them to the list of known bugs in como.
+(No one has had the time to create -except for what's mentioned in this FAQ -
+a bug list for como. The only problem with it that I know of is it doesn't
+have a 100% working iostreams library yet. )
+
+======================================================================
+======================================================================
+PART 0  DEPENDENCIES
+
+0.0  You might have to use GCC2.7.2.1 or greater.
+
+0.1  You SHOULD install libg++2.7.2.1 and use the como
+     iostream library libiostreamcomo.a(283K) to get iostreams working.
+
+     <TODO> Has como compiled/made available the more stable library yet?
+            Will it always be called libcomodios.a?
+
+	 The *catch* here is that if you wish to use the SGI or HP STL libraries
+	 you won't want to use the STL include files found in /usr/include/g++.
+     You can make sure you don't by doing the following:
+
+     cd /usr/include/g++
+	 mkdir gnustl
+     mv  algo.h algobase.h alloc.h bool.h bvector.h defalloc.h deque.h function.h heap.h iterator.h list.h map.h multimap.h multiset.h pair.h set.h stack.h tempbuf.h tree.h vector.h gnustl
+     
+
+     Please send me an email if you've got it working on something other
+     than the 2.7.2.1 release of g++.
+     
+0.2  I recommend installing libc5.4.23 or greater. I had trouble with earlier
+     versions of libc. Symptoms include running out of virtual memory when
+     compiling small programs. I suspect something in the include files
+     but since upgrading solved my problem I haven't really looked into it.
+     
+	 Again, keep me updated me on this.
+
+
+0.3  You can find the binary/source distributions of the above packages at:
+     ftp://ftp.tsx-11.mit.edu/pub/linux/packages/GCC
+
+
+0.4  Remember to follow the instructions on the Comeau Computing patch page:
+     http://www.comeaucomputing.com
+     You MUST do this before reading anything else in this document!
+
+
+=====================================================================
+PART I  MODIFICATIONS TO GCC INCLUDE FILES
+
+
+1.0  stdarg or vararg replacement code
+        Use the como supplied stdarg.h file. You should have already done
+        this. You were supposed to follow the instructions on the patch
+        page at step 0.5.
+
+1.1  /usr/include/errno.h line 34.
+        It's an extern "C" problem. Improperly defined in the header file.
+        We need to move the following lines:
+
+           #ifdef  __USE_BSD
+           extern int sys_nerr;
+           extern char *sys_errlist[];
+           #endif
+           #ifdef  __USE_GNU
+           extern int _sys_nerr;
+           extern char *_sys_errlist[];
+           #endif 
+
+        to just below the __BEGIN_DECLS line. If you don't do this, then these
+        definitions will have a different linkage specification than the
+        ones in /usr/include/stdio.h. This file is at fault.
+
+1.2	 /usr/lib/gcc-lib/iX86-linux/2.7.2.1/include/stddef.h ~line 305.
+        This section #defines NULL to a void * which is wrong. Change the
+		section:
+
+        /* A null pointer constant.  */
+
+        // Commented out for Como
+        //#if defined (_STDDEF_H) || defined (__need_NULL)
+        //#undef NULL		/* in case <stdio.h> has defined it. */
+        //#define NULL ((void *)0)
+        //#endif	/* NULL not defined and <stddef.h> or need NULL.  */
+        //#undef	__need_NULL
+       
+	    to look like:
+
+        // Added for como
+        #ifndef NULL
+            #ifdef __cplusplus
+                #define NULL 0
+            #else
+                #define NULL ((void *) 0)
+            #endif
+        #endif
+        // end of 'Added for como'
+
+1.3  /usr/lib/gcc-lib/i486-linux/2.7.2.1/include/syslimits.h 7
+     
+	    #include_next is a gcc'ism. Change this to a normal include.
+
+    /usr/lib/gcc-lib/i486-linux/2.7.2.1/include/limits.h 112
+        
+		Comment out this next line.
+
+        //#include_next <limits.h>  /* recurse down to the real one */
+
+		
+========================================================================
+PART II  STL ISSUES
+
+2.1  How to get HP's or SGI's latest STL code.
+
+     The instructions for getting HP's or SGI's STL code are given on
+     Comeau's WWW site.
+
+
+2.2  How to modify the HP STL to get rid of a small warning message.
+     (new operator and throw() exception specification)
+
+     In defalloc.h: 26
+        Comment it out. The specification is already in the new.h provided
+        by Comeau Computing.
+
+
+=====================================================================
+PART III  MICROSOFT FILE FORMAT COMPATABILITY
+
+3.0  Compiling files with MS-DOS line termination
+     Como has a version of their compiler available for Linux that handles
+     MS-DOS CRLF style line terminations. Comeau Computing has stated that
+     this will be a standard option in the free upgrades. Until then, I'm
+     sure they will make it available to those who ask.
+
+
+=====================================================================
+PART IV  WORKING AROUND GNU SPECIFIC COMPILER OPTIONS
+
+4.1  __attribute__
+
+     In assert.h you will more than likely run into this problem. The fix is
+     simply: delete the __attribute__((xxx)); line and place the ';' character
+     at the end of the line above it.
+
+4.2  Macros with (...) arguments
+
+     Take the following GNU macro:
+        #define TRACE(x...)
+     
+     The como preprocessor doesn't allow macros with ... arguments. Use 
+     functions instead.
+
+
+=======================================================================
+PART V  IOSTREAMS
+
+5.0  iostreams.h
+
+     Comeau Computing along with other individuals on the net (myself
+     included) are working on making gnu iostreams compile under como.
+     We need to get around some gnu specific vtable mangling problems.
+     A version of iostreams that works except for fstreams and streambuf
+     code is available from the Comeau web site.
+
+=======================================================================
+PART VI  DEBUGGING WITH GDB
+
+6.0  Using GDB with como
+     
+     This works to some extent but not fully. You can start debugging your
+     application, display variables etc., but in my static callback
+     functions gdb can only display some of the functions local variables...
+     incorrectly. This is a g++ name mangling problem. The GNU debugger
+     expects to be debugging code compiled with a GNU compiler which uses
+     a different name mangling scheme.
+
+6.1  Let me know if there is another debugger that would work better!
+     (And cc support@comeaucomputing.com as well.)
+
+6.2  One thing you can do is 'info local' at the point where you wish to
+	 view the contents of your variables. Take the following source code
+	 for example:
+
+     #include <stdio.h>
+     int main()
+     {
+         int a=0, b=1;
+         printf("a=%d, b=%d\n", a, b);
+         return 0;
+     }
+     
+	 After compiling with 'como -g test.cxx' we start gdb with 'gdb a.out'.
+	 
+	 (Next we break on the printf() line)
+	 (gdb) break 5
+
+	 (Now run the little program)
+	 (gdb) run
+
+     (gdb) info local
+     __1044_6_a = 0
+     __1044_11_b = 1
+
+	 *** You were expecting to see a = 0 not __1044_6_a = 0 ***
+	 * Don't Panic! * :-) instead of:
+
+	 (gdb) print a
+
+	 you have to:
+
+	 (gdb) print __1044_6_a
+
+	 This is a name mangling problem and there is no solution for it right
+	 now. I'm sure Comeau Computing will publish their name mangling rules;
+	 then you can write a patch for gdb. Let me know when you do:-)
+
+=======================================================================
+PART VII  MISCELLANEOUS ISSUES
+
+1.   Add -D NULL=0 in EDG_DEFAULT_DEFINES to /<YourComeauDir>/bin/como.
+
+     Since this is a C++ compiler it will complain if it thinks NULL is 
+     a (void *)0.
+
+2.  byteorder.h may sometimes be a problem.
+
+    A header file that is rarely used. -D__BYTEORDER_H will almost always
+    solve your problem.
+
+3.  stddef.h - where is it? -
+
+    /usr/lib/gcc-lib/i486-linux/2.7.2.1/include
+    
+	At the very least, it is included in line 30 of the SGI STL file deque.h.
+
+    You should make that part of your EDGE_DEFAULT_INCLUDE_DIRS. Unfortunately,
+    this makes two files in that directory get included sometimes:
+    limits.h and  syslimits.h. These will cause problems. See the solution
+	mentioned in 1.3.
+
+-----------------------

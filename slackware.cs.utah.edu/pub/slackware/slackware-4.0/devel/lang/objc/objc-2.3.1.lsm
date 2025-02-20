@@ -1,0 +1,16 @@
+
+Begin3
+Title: Portable Object Compiler          
+Version: 2.3.1
+Entered-date: 12MAY99  
+Description: Objective C compatible precompiler and class libraries   
+Keywords: objc, Objective C, class libraries, object-oriented language      
+Author: stes@can.nl (David Stes)      
+Maintained-by: stes@can.nl (David Stes) 
+Primary-site: http://sunsite.unc.edu/pub/Linux/devel/lang/objc/   
+Alternate-site: http://cage.rug.ac.be/~stes/compiler.html 
+Original-site: http://www.can.nl/~stes/compiler.html 
+Platforms: requires flex,byacc; objc-2.3.1-bootstrap MUST be installed first!
+Copying-policy: LGPL 
+End
+

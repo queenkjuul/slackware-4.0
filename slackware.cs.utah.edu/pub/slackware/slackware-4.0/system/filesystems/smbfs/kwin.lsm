@@ -1,0 +1,16 @@
+Begin3
+Title:            kwin
+Version:          0.2
+Entered-date:     03AUG98
+Description:      Frontend to mount smb filesystem
+Keywords:         KDE, Qt, samba, smbfs
+Authors:          ermmau@globenet.it (Ermelindo Mauriello)
+Maintained-by:    ermmau@globenet.it (Ermelindo Mauriello) 
+Primary-site:     320kB  ftp://ftp.kde.org/pub/kde/incoming
+Home-Page:        
+Alternate-site:   ftp://pegaso.globenet.it/pub/Linux/KDE
+Original-site:	  
+Platform:         Linux, needs Qt by Troll Tech Inc., i4l, and vbox >= 1.1
+Copying-policy:   GPL
+End
+

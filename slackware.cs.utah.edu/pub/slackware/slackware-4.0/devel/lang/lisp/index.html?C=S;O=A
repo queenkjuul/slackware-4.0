@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/devel/lang/lisp</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/devel/lang/lisp</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/devel/lang/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="glisp/">glisp/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:52  </td><td align="right"> 84 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gcl-1.0.bin.lsm">gcl-1.0.bin.lsm</a></td><td align="right">1994-09-21 07:00  </td><td align="right">383 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="akcl.CHANGELOG">akcl.CHANGELOG</a></td><td align="right">1993-04-26 07:00  </td><td align="right">445 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="blt1.7forStk2.1.6.lsm">blt1.7forStk2.1.6.lsm</a></td><td align="right">1995-03-10 08:00  </td><td align="right">522 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lispdebug-0.8.lsm">lispdebug-0.8.lsm</a></td><td align="right">1998-10-15 03:14  </td><td align="right">529 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="STk-3.99.4.tar.gz.lsm">STk-3.99.4.tar.gz.lsm</a></td><td align="right">1999-02-03 04:14  </td><td align="right">552 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lisp-debug-0.6.lsm">lisp-debug-0.6.lsm</a></td><td align="right">1997-12-31 01:12  </td><td align="right">591 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="clx.lsm">clx.lsm</a></td><td align="right">1997-07-12 21:03  </td><td align="right">593 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gcl-1.0.lsm">gcl-1.0.lsm</a></td><td align="right">1994-10-29 07:00  </td><td align="right">593 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bigloo.lsm">bigloo.lsm</a></td><td align="right">1999-02-12 21:35  </td><td align="right">775 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">799 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ilog-talk-3.2.lsm">ilog-talk-3.2.lsm</a></td><td align="right">1996-07-25 07:00  </td><td align="right">834 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="guile-iii.lsm">guile-iii.lsm</a></td><td align="right">1996-07-12 07:00  </td><td align="right">880 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="siod-3.2.lsm">siod-3.2.lsm</a></td><td align="right">1996-06-12 07:00  </td><td align="right">949 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="elk-3.0p2.lsm">elk-3.0p2.lsm</a></td><td align="right">1996-07-19 07:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cmucl.lsm">cmucl.lsm</a></td><td align="right">1997-03-20 15:27  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="clisp.lsm">clisp.lsm</a></td><td align="right">1997-12-08 19:03  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gcl-2.1-ELF-Linux.lsm">gcl-2.1-ELF-Linux.lsm</a></td><td align="right">1995-08-09 07:00  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="README.AKCL-CLX">README.AKCL-CLX</a></td><td align="right">1993-05-13 07:00  </td><td align="right">1.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="gcl-1.0-linux.README">gcl-1.0-linux.README</a></td><td align="right">1994-10-29 07:00  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">2.6K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gcl-1.0-linux.tar.gz">gcl-1.0-linux.tar.gz</a></td><td align="right">1994-10-29 07:00  </td><td align="right">3.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.0K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="akcl.README">akcl.README</a></td><td align="right">1993-05-03 07:00  </td><td align="right">4.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">8.1K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="gcl.README">gcl.README</a></td><td align="right">1994-10-29 07:00  </td><td align="right">9.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gcl-2.1-ELF-Linux.tar.gz">gcl-2.1-ELF-Linux.tar.gz</a></td><td align="right">1995-08-09 07:00  </td><td align="right"> 24K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="akcl-linux.tar.z">akcl-linux.tar.z</a></td><td align="right">1993-04-26 07:00  </td><td align="right"> 55K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="umb-scheme.linux.tar.gz">umb-scheme.linux.tar.gz</a></td><td align="right">1994-02-15 08:00  </td><td align="right"> 77K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="siod-3.2.tar.gz">siod-3.2.tar.gz</a></td><td align="right">1996-06-12 07:00  </td><td align="right">149K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lisp-debug-0.6.tar.gz">lisp-debug-0.6.tar.gz</a></td><td align="right">1997-12-31 01:12  </td><td align="right">220K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="clx.tar.z">clx.tar.z</a></td><td align="right">1994-10-29 07:00  </td><td align="right">280K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="guile-iii.ELF.tgz">guile-iii.ELF.tgz</a></td><td align="right">1996-07-12 07:00  </td><td align="right">403K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="blt1.7forStk2.1.6.tgz">blt1.7forStk2.1.6.tgz</a></td><td align="right">1995-03-10 08:00  </td><td align="right">522K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="akcl-1-615.tar.z">akcl-1-615.tar.z</a></td><td align="right">1993-03-25 08:00  </td><td align="right">560K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lispdebug-0.8.tgz">lispdebug-0.8.tgz</a></td><td align="right">1998-10-15 03:14  </td><td align="right">652K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gcl-1.0.bin.tgz">gcl-1.0.bin.tgz</a></td><td align="right">1994-09-21 07:00  </td><td align="right">692K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kcl.tar.z">kcl.tar.z</a></td><td align="right">1993-03-25 08:00  </td><td align="right">701K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="elk-3.0p2.tgz">elk-3.0p2.tgz</a></td><td align="right">1996-07-19 07:00  </td><td align="right">744K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gcl-1.0-linux-bin.tar.gz">gcl-1.0-linux-bin.tar.gz</a></td><td align="right">1994-10-29 07:00  </td><td align="right">754K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="guile-iii.src.tgz">guile-iii.src.tgz</a></td><td align="right">1996-07-12 07:00  </td><td align="right">806K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="akcl-bin.tar.z">akcl-bin.tar.z</a></td><td align="right">1993-05-03 07:00  </td><td align="right">862K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gcl-1.0.tar.gz">gcl-1.0.tar.gz</a></td><td align="right">1994-10-29 07:00  </td><td align="right">1.1M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ilog-talk-3.2.tar.gz">ilog-talk-3.2.tar.gz</a></td><td align="right">1996-07-31 07:00  </td><td align="right">3.4M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="STk-3.99.4.tar.gz">STk-3.99.4.tar.gz</a></td><td align="right">1999-02-03 04:17  </td><td align="right">3.5M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="clisp-linux-elf.tar.gz">clisp-linux-elf.tar.gz</a></td><td align="right">1997-12-08 19:31  </td><td align="right">4.0M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bigloo2.0a.tar.gz">bigloo2.0a.tar.gz</a></td><td align="right">1999-02-12 21:37  </td><td align="right">4.1M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="clisp-linux-aout.tar.gz">clisp-linux-aout.tar.gz</a></td><td align="right">1997-12-08 19:24  </td><td align="right">4.7M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="clisp-source.tar.gz">clisp-source.tar.gz</a></td><td align="right">1997-12-08 19:15  </td><td align="right">4.9M</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

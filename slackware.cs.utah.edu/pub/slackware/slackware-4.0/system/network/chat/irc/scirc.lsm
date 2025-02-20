@@ -1,0 +1,18 @@
+Begin3
+Title: Scirc
+Version: 0.40
+Entered-date: 20SEP98
+Description: Scirc - An IRC client in Guile Scheme
+Keywords: irc scheme guile
+Author: forcer@mindless.com (forcer)
+Maintained-by: forcer@mindless.com (forcer)
+Primary-site: endor.nu:/pub/irc/scirc
+	      30 k scirc-0.40.tar.gz
+Alternate-site:
+Original-site: http://webserver.de/forcer/code/scirc-0.40.tar.gz
+Platforms: Any Guile implementation and optionally a C compiler with
+	libtermcap
+Copying-policy: GPL
+End
+
+

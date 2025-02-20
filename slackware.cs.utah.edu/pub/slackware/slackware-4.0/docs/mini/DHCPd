@@ -1,0 +1,132 @@
+Linux DHCPD mini-HOWTO 
+by Paul Makeev <mac@RoSprint.net>
+v1.2, 24 June 1997
+
+
+1. Introduction
+
+   DHCP is Dynamic Host Configuration Protocol. It is used to control
+vital networking parameters of hosts (running clients) with the help
+of server (running, suprise!, server daemon). DHCP is backward compatible
+with BOOTP. For more information see RFC 2131 (old RFC 1531) and other.
+(See Internet Resources section at the end of the document).
+
+   This mini-HOWTO is about DHCP _SERVER_ daemon. There is DHCP _client_ daemon 
+for Linux, which is not described here. You can find _client_ package at:
+
+Primary-site:   ftp.kobe-u.ac.jp /pub/PC-UNIX/Linux/network/dhcp
+                32kB dhcpcd-0.65.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/daemons
+                32kB dhcpcd-0.65.tar.gz
+
+2. DHCPD server for Linux.
+
+   There is several DHCP servers available for U*X-like OSes, both commercial
+and free. I have success with Paul Vixie/ISC DHCPD. I used Beta-5.0.9, and now 
+use 5.0.14. These are both not Linux-specific versions, but they flawlessly 
+compile and work (not so flawlessly). You can get latest software at:
+
+http://www.isc.org/dhcp/dhcp-beta.html (It is not updated yet, however)
+
+or, the latest version for now:
+
+ftp://ftp.isc.org/isc/dhcp/DHCPD-BETA-5.16.tar.gz 
+
+ There is no distributions of DHCP on ftp.vix.com now. They are moved to
+ftp.isc.org.
+
+
+NB!!! READ CAREFULY the README file before compiling and installing. It contains
+Linux-specific info.
+
+3. Kernel configuration.
+
+   You should have MULTICAST enabled in kernel. Of course, TCP/IP
+networking should be enabled also :-)
+
+4. Configuration.
+
+
+   ifconfig -a should say smth like:
+
+eth0      Link encap:10Mbps Ethernet  HWaddr 00:C0:4F:D3:C4:62
+          inet addr:183.217.19.43  Bcast:183.217.19.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2875542 errors:0 dropped:0 overruns:0
+          TX packets:218647 errors:0 dropped:0 overruns:0
+          Interrupt:11 Base address:0x210 
+
+If there is no "MULTICAST" letters, you should reconfigure your kernel to
+add multicast support (and reboot, of course). You don't need to do 
+anything else to enable multicasting.
+
+   You should have "netstat -rn" saying:
+
+dhcps:~$ netstat -rn
+Kernel routing table
+Destination     Gateway         Genmask         Flags Metric Ref Use    Iface
+255.255.255.255 0.0.0.0         255.255.255.255 UH    0      0      101 eth0
+
+  i.e., you should have multicast routing to your ethernet interface.
+
+5. Problems with multicast.
+
+   If your "route add -host 255.255.255.255 eth0" command says smth like
+"255.255.255.255: Unknown host", try adding host with this address to
+/etc/hosts file, and issue "route add -host hostname eth0" instead. It should
+work. If not, get newer Networking utils and/or upgrade kernel version.
+
+6. DHCPD configuration.
+
+   Read the included docs. It's too complicated to discuss here.
+
+7. Can i run DHCPD on machine with two or more Ethercards?
+
+According to dhcpd mailing list, newest stable kernal, 2.0.31 could
+work with newest version of DHCPD (5.0.15) to support more than one
+interface. According to dhcp-server mailing list, Linux 2.0.31 have
+SO_BINDTODEVICE code, which makes it possible to distinguish raw interfaces,
+thus newer DHCPD could work on two interfaces in Linux. This feature,
+however, is _extremely BETA_. I didn't check it yet, but will do it 
+and place success information into next version of howto.
+
+PLEASE! Don't ask me where to get kernel 2.0.31. It is unofficial
+pre-patch at the time this document was created.
+
+8. Dynamic DNS.
+
+There is a proposed DNS and DHCP server integration mechanisms to
+enable dynamic DNS. You can read RFC 2136 and 2137. Several DHCP and
+DNS servers could have proprietary mechanisms to update DNS information.
+BIND v.8, which supports dynamic updates, is developed by ISC also,
+and i hope DHCPD and BIND would be integrated in short time.
+
+     BIND v.8 URL: http://www.isc.org/bind.html.
+
+I wrote a Python program, which automates adding host to DHCP and DNS
+tables. If you want more info on it, write me (mac@rosprint.net). It is
+not RFC-compliant, but does dirty work.
+   
+
+9. Internet Resources:
+
+http://www.isc.org/dhcp.html
+ISC DHCP home page. You can get a lot of information here.
+This is my favorite site.
+
+http://www.isc.org/bind.html
+BIND v.8 information.
+
+http://www-leland.stanford.edu/%7Ellurch/win95netbugs/faq-c.html
+A comprehensive list of setting for Windows-95.
+
+http://www.bucknell.edu/~droms/dhcp/index.html
+Very good FAQ on DHCP, a lot of links. By Ralph Droms.
+
+http://web.syr.edu/~jmwobus/comfaqs/dhcp.faq.html
+Good general DHCP FAQ. A lot of info, lists of resources. By John Wobus.
+
+Mailing lists:
+dhcp-server@fugue.com - list discussing ISC/Vixie DHCPD.
+dhcp-v4@bucknell.edu  - list discussing bucknell DHCPD
+

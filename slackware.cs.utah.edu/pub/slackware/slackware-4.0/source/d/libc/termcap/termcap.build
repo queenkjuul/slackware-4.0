@@ -1,0 +1,17 @@
+#!/bin/sh
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/termcap-compat_1.1.1.1.1.tar.gz
+cd termcap-compat-1.1.1.1.1
+make
+rm -f /usr/info/termcap*
+make install
+mkdir -p /usr/doc/termcap-2.0.8
+## We don't link with these anymore:
+#mv /usr/include/termcap.h /usr/doc/termcap-2.0.8
+#rm -f /usr/lib/libtermcap.a /usr/lib/libtermcap.so
+# Save docs:
+cp -a ChangeLog debian/changelog README /usr/doc/termcap-2.0.8
+chown root.root /usr/doc/termcap-2.0.8/*
+( cd /usr/info ; gzip -9 termcap.info* )
+cd /lib ; ldconfig .

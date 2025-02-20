@@ -1,0 +1,18 @@
+Begin3
+Title: admin.tar.gz
+Version: 1.1
+Entered-date: 05/20/1995   
+Description: Administrative Menu v1.2 - uses other good binaries (included).
+	     Good for new Linux sysadmins, makes understanding adding, deleting
+	     users and groups easier.  Good printer control menu with lots
+	     of features.  Makes use of dialog, texmgr, procinfo, git and 
+	     more.  Update from previous version 1.1.
+Keywords: admin        
+Author: Emmett Sauer   emmetts@squeaky.free.org
+Maintained-by: Emmett Sauer
+Primary-site: sunsite.unc.edu
+Alternate-site: 
+Original-site: sunsite.unc.edu 
+Platform: Linux      
+Copying-policy: Copyrighted Freeware
+End

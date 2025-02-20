@@ -1,0 +1,19 @@
+Begin3
+Title:		Kibble
+Version:	0.7.2
+Entered-date:	08MAR99
+Description:	Kibble is a GTK-based knowledge base program. It
+		is used to organize seemingly discursive thoughts into
+		a cohesive engine. Basically, it is used to keep track
+		of random ideas that may prove useful.
+Keywords:	GTK, productivity, thought, organizer, knowledge base,
+		kibble, reminder, database
+Author: 	kibble@wish.student.harvard.edu (Joseph Turian)
+Maintained-by:	kibble@wish.student.harvard.edu (Joseph Turian)
+Primary-site:	wish.student.harvard.edu /pub/kibble
+		53kB packages/kibble-0.7.2.tar.gz
+Alternate-site:	metalab.unc.edu /pub/Linux/apps/reminder/
+		53kB kibble-0.7.2.tar.gz
+Platforms:	Any Unix system with GTK 1.x.
+Copying-policy:	GPL
+End

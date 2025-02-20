@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/modules/2.2.6/ipv4</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/modules/2.2.6/ipv4</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/modules/2.2.6/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">664 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_cuseeme.o">ip_masq_cuseeme.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">2.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_vdolive.o">ip_masq_vdolive.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">2.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_quake.o">ip_masq_quake.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">2.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_irc.o">ip_masq_irc.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_ftp.o">ip_masq_ftp.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_autofw.o">ip_masq_autofw.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_portfw.o">ip_masq_portfw.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_user.o">ip_masq_user.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_raudio.o">ip_masq_raudio.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">4.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_masq_mfw.o">ip_masq_mfw.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">5.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rarp.o">rarp.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">5.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ipip.o">ipip.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">8.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ip_gre.o">ip_gre.o</a></td><td align="right">1999-04-29 05:08  </td><td align="right">9.5K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

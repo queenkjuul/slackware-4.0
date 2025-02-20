@@ -1,0 +1,14 @@
+
+Begin3
+Title: fab
+Version: 1.1.3
+Entered-date: 15NOV98  
+Description: literate programming tool for Objective-C, class documentation 
+Keywords: objc, Objective-C
+Author: stes@can.nl (David Stes)      
+Maintained-by: stes@can.nl (David Stes) 
+Primary-site: http://sunsite.unc.edu/pub/Linux/devel/lang/objc/
+Platforms: requires POC 1.10.1 or higher
+Copying-policy: GPL 
+End
+

@@ -1,0 +1,17 @@
+Begin3
+Title:          poppassd-src.tar.gz
+Version:        1.2
+Entered-date:   06MAY95
+Description:    Daemon to permit remote clients to change the password
+		for their accounts. Such a client is the eudora email
+		program for the Macintosh and Microsoft Windows operating
+		systems. This is source code only.
+		This version has been corrected for new strings in the
+		passwd program used in both shadow and non-shadow forms.
+Keywords:       passwd, pop, eudora, nupop
+Author:         j-norstad@nwu.edu (John Norstad)
+Maintained-by:  longyear@netcom.com (Al Longyear)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Mail/pop
+Original-site:  ftp.qualcomm.com
+Copying-policy: BSD
+End

@@ -1,0 +1,25 @@
+Begin3
+Title:		xppp
+Version:	1.1
+Entered-date:	15OCT97
+Description:	XPPP is an X Window- and Motif-based front-end for the chat
+		and pppd programs. XPPP centralizes the configuration of
+		different dial-out devices, login procedures, and phone
+		numbers. Knowledge of pppd options and chat scripts is
+		necessary.
+Keywords:	ppp gui
+Author: 	Peter Hofmann (peterh@prz.tu-berlin.de)		
+Maintained-by:	Peter Hofmann (peterh@prz.tu-berlin.de)	
+Primary-site:	ftp://sunsite.unc.edu/pub/Linux/???/
+			275750 xppp-dyn-motif-1.1.tar.gz
+			791925 xppp-static-motif-1.1.tar.gz
+			31132  xppp-src-1.1.tar.gz
+Alternate-site: ftp://ftp.prz.tu-berlin.de/pub/users/peterh/xppp/
+			276650 xppp-dyn-motif-1.1-1.i386.rpm
+			275750 xppp-dyn-motif-1.1.tar.gz
+			31132  xppp-src-1.1.tar.gz
+			791434 xppp-static-motif-1.1-1.i386.rpm
+			791925 xppp-static-motif-1.1.tar.gz
+		http://www.prz.tu-berlin.de/~peterh/xppp/
+Copying-policy:	GPL
+End

@@ -1,0 +1,17 @@
+Begin3
+Title:		From
+Version:	1.2.1
+Entered-date:	05JUL98
+Description:	A perl-version of from, a program that will list senders
+		and subject lines from a user's mailbox. In contrast to
+		older versions of from, this one understands MIME
+		quoted-printables.
+Keywords:	mail, from
+Author: 	sverrehu@online.no (Sverre H. Huseby)
+Primary-site:	http://home.sol.no/~sverrehu/pub-unix/
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/mail/misc
+		from-1.2.1.tar.gz
+Platforms:	Requires perl. Works with perl5, and probably perl4 too.
+Copying-policy:	Artistic License
+		http://sunsite.unc.edu/pub/Linux/LICENSES/artistic.license
+End

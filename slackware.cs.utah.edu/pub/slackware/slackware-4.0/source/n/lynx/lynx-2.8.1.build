@@ -1,0 +1,12 @@
+tar xzvf lynx-2.8.1.tar.gz
+cd lynx-2.8.1
+./configure --enable-default-colors --with-screen=ncurses \
+            --prefix=/usr --libdir=/usr/lib/lynx \
+            --enable-gzip-help --with-zlib
+#            --enable-persistent-cookies
+zcat ../lynx-2.8.1.diff.gz | patch
+make
+# make install
+# make install-help
+# make install-doc
+# Apply lynx.cfg patch in /usr/lib/lynx...

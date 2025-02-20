@@ -1,0 +1,18 @@
+Begin3
+Title:		rexec
+Version:	1.4  July 6, 1997
+Entered-date:	25NOV96
+Description:    rexec is a command which calls the rexec(3) subroutine
+                to act as a remote execution client.  It works much as
+                rsh, except authentication information is kept on the 
+                local machine.
+Keywords:       execcd exec rexec remote command execution
+Author:         sadd@msc.cornell.edu (Michael Sadd)
+Maintained-by:  sadd@msc.cornell.edu (Michael Sadd)
+Primary-site:   ftp.sunsite.unc.edu 
+                pub/systems/linux/sunsite/system/Network/misc/
+                9 Kb rexec.tgz
+Alternate-site: http://www.msc.cornell.edu/~sadd/rexec.html
+Platforms:      Linux, but portable to others using GNU gcc.
+Copying-policy:	Free
+End

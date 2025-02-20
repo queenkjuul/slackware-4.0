@@ -1,0 +1,16 @@
+Begin3
+Title:          Ring Daemon
+Version:        0.8
+Entered-date:   02FEB95
+Description:    Hangs on a modem, waiting for a specific RING sequence,
+Description:    then boots Dip, waits for dip to die, and recycles.
+Description:	Great for remotely getting to your PC through the Net.
+Keywords:       dip serial daemon 
+Author:         thekind@tezcat.com (Adam W. Dace)
+Maintained-by:  thekind@tezcat.com (Adam W. Dace)
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Network/serial
+Alternate-site: xochi.tezcat.com:/users/thekind/linux/ringd
+Original-site:  glide.tezcat.com:/pub/linux/ringd
+Platform:       Linux
+Copying-policy: FreeWare
+End

@@ -1,0 +1,16 @@
+X-GnuDIP2 Client v1.1
+
+X-GnuDIP2 is released under the GPL. Please see the file COPYING included in this distribution for more information.
+
+X-GnuDIP2 Client is a X client for the GnuDIP2 dynamic dns server package. The tool tips are pretty much self explanitory as what goes where. X-GnuDIP2 does NOT work with versions of GnuDIP under 2.0.1. Please send any bugs and comments to mike@innercite.com or wahle@innercite.com
+
+Please tell your ISP to install GnuDIP so everyone can enjoy in having their own static hostname.
+
+GnuDIP can be found at http://gnudip.cheapnet.net
+
+
+
+Thanks to all who have helped test GnuDIP and X-GnuDIP2 Client
+
+Mike Machado <mike@innercite.com>
+Ryan Wahle <wahle@innercite.com>

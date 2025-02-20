@@ -1,0 +1,12 @@
+Begin3
+Title:		Dial ISP
+Version:	1.0
+Entered-date:	10NOV97
+Description:	Connects you to the Internet with a PPP connection.
+                Includes a user friendly configuration script.
+Keywords:	slackware scripts ppp dialup connect red hat debian tgz
+Author:		mwhittle@bigfoot.com
+Primary-site:	sunsite.unc.edu /pub/Linux/utils/scripts
+		32	dial.isp.v1.tar.gz
+Copying-policy:	GPL
+End

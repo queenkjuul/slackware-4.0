@@ -1,0 +1,15 @@
+
+This is a port of xxgdb 1.08 for Linux.
+
+I did a lot of cleanup on the "calldbx.c" module to fix the annoying 
+"[tcsetpgrp failed in terminal_inferior: Not a typewriter]" bug.
+
+Quick Installation Notes:
+
+- Set BINDIR and LIBDIR in the Imakefile.
+- Set XFILESEARCHPATH in xdbx.c so that xxgdb can find its app-defaults file.
+- Create the Makefile with the "xmkmf" command.
+- make all install
+
+Have a nice day.
+-Sal Valente <svalente@mit.edu>

@@ -1,0 +1,12 @@
+CONTENTS: tcpip2       
+tcpip2:   Extra TCP/IP programs.
+tcpip2:
+tcpip2:   These are additional networking programs for Linux.
+tcpip2:
+tcpip2:   This package includes automount, bootp, dhcp, dhcpcd, fetchmail,
+tcpip2:   ipfwadm, ipchains, ipmasqadm, ncftp, netwatch, nntp, slattach,
+tcpip2:   sliplogin, telnetsnoopd, ttysnoop, yp-tools, ypbind, ypserv, and
+tcpip2:   ytalk.
+tcpip2:
+tcpip2:
+tcpip2:

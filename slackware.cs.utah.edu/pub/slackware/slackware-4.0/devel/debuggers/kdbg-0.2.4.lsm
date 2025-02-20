@@ -1,0 +1,17 @@
+Begin3
+Title:		KDbg
+Version:	0.2.4
+Entered-date:	1998-11-14
+Description:	KDbg is a graphical user interface to gdb, the GNU debugger.
+	It provides an intuitive interface for setting breakpoints, inspecting
+	variables, stepping through code.
+Keywords:	debugger gdb KDE kdbg
+Author:		Johannes.Sixt@telecom.at (Johannes Sixt)
+Maintained-by:	Johannes.Sixt@telecom.at (Johannes Sixt)
+Primary-site:	ftp://ftp.eudaptics.com/pub/people/jsixt/kdbg-0.2.4.tar.gz
+Alternate-site:	ftp://ftp.kde.org/pub/kde/unstable/apps/ide/kdbg-0.2.4.tar.gz
+Home-page:	http://members.telecom.at/~johsixt/kdbg.html
+Screenshot:	http://members.telecom.at/~johsixt/kdbg.gif
+Platforms:	X11, Qt, KDE, gdb 4.16
+Copying-policy: GPL
+End

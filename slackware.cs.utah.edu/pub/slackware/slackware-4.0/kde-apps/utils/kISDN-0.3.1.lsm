@@ -1,0 +1,16 @@
+Begin3
+Title:            kISDN
+Version:          0.3.1
+Entered-date:     25 Jan 1998
+Description:      ISDN monitor and i4l frontend
+Keywords:         KDE, Qt, ISDN, monitor, X11, i4l, frontend
+Authors:          <twesthei@phya1.physik.uni-bielefeld.de> (Thorsten Westheider)
+		  <carpdjih@sp.zrz.tu-berlin.de> (Carsten Pfeiffer)
+Maintained-by:    <twesthei@phya1.physik.uni-bielefeld.de> (Thorsten Westheider)
+Primary-site:     ftp://ftp.kde.org/pub/kde/unstable/apps/utils
+Home-Page:        http://www.physik.uni-bielefeld.de/twesthei~/kISDN.htm
+Alternate-site:
+Original-site:
+Platform:         Linux, needs Qt by Troll Tech Inc.
+Copying-policy:   GPL
+End

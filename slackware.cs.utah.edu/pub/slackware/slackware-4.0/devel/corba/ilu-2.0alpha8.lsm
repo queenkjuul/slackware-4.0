@@ -1,0 +1,25 @@
+Begin3
+Title:          ILU
+Version:        2.0alpha8
+Entered-date:   18JUL96
+Description:    (Inter-Language Unification)
+                The CORBA based implementation of XEROX.
+Keywords:       ilu, corba, distributed, server, client
+Author:         ilu-bugs.parc@xerox.com
+Primary-site:   ftp.parc.xerox.com /pub/ilu/2.0
+                2194158 ilu-2.0alpha8.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel
+                2194158 ilu-2.0alpha8.src.tgz
+Platforms:      Franz Allegro Common Lisp, version 4.1 or later
+                  for Common Lisp support.
+                A C compiler, and an ANSI C-compliant libc
+                  for ANSI C support.
+                A C++ compiler that conforms to version 2.0 of the C++
+                  specification for C++ support (g++ should work).
+                A Modula-3 system, release 2.08
+                  for modula-3 support.
+                The Python 1.1.1 (or later) release
+                  for Python support (ftp://ftp.cwi.nl/pub/python/).
+Copying-policy: ILU is Copyright (c) 1991-1995 Xerox Corporation.
+                Use, reproduction and distribution is permitted.
+End

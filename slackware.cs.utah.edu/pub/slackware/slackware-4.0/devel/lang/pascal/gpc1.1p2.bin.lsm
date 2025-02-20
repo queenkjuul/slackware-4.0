@@ -1,0 +1,13 @@
+Begin3
+Title:          GNU Pascal (binaries)
+Version:        1.1p2  (gcc-2.6.3)
+Entered-date:   22 APR 95
+Description:    A pascal front end to the GCC compiler engine.
+Keywords:       compiler pascal
+Author:         jtv@hut.fi (Jukka Virtanen)
+Maintained-by:  egustafs@cpe.valpo.edu (Eric Gustafson)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/pascal
+                890kb gpc1.1p2.bin.tar.gz
+Original-site:  kampi.hut.fi /jtv/gnu-pascal/gpc-1.1-2.6.3.tar.gz
+Copying-policy: GNU GPL and GNU Library GPL
+End

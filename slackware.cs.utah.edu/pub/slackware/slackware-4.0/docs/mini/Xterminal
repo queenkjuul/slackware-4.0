@@ -1,0 +1,636 @@
+The X Terminal HOWTO
+
+How to connect an X terminal to a Linux PC
+Version 1.0 BETA (July 1995)
+Scot W. Stevenson <scot@catzen.gun.de>
+
+
+    This document gives a brief introduction to how to connect an X terminal 
+    to a Linux PC. It assumes a basic knowledge of the X Window System, 
+    TCP/IP addressing, and ethernet cards. 
+
+
+1.0 Introduction
+
+    This is the first version of the document and should be considered BETA.
+    It is more of a been-there, done-that text than a comprehensive treatment.
+    Discussions of access control mechanisms (e.g. xaccess, xhost, 
+    MIT-COOKIEs), and the use of NFS, are not yet included.
+
+    Most X terminals now have a whole host of advanced features which allow
+    them to be more than mere X servers. For the most part, these features
+    will be ignored.
+
+
+1.1 Changes from previous versions
+
+    (There are no previous versions, so everything was changed)
+
+
+1.2 Disclaimers
+
+    Neither the author nor the distributors of this HOWTO are in any way
+    responsible for physical, financial, or moral damage incurred by 
+    following the suggestions in this text. In short: "Yea though I talk...." 
+           
+
+1.3 Copyright
+
+    The Linux Xterminal HOWTO is copyrighted (C) 1995 by Scot W. Stevenson. 
+    Linux HOWTO documents may be reproduced and distributed in whole or in
+    part, in any medium physical or electronic, as long as this copyright
+    notice is retained on all copies. Commercial redistribution is allowed
+    and encouraged. The author, however, would like to be notified of any 
+    such distributions.
+
+    All translations, derivative works, or aggregate works incorporating
+    any Linux HOWTO documents must be covered under this copyright notice.
+    In othe words, you may not produce a derivative work from a HOWTO and
+    impose additional restrictions on its distribution. Exceptions to these
+    rules may be granted under certain conditions.
+
+    In short, we wish to promote dissemination of this information through
+    as many channels as possible. However, we do wish to retain copyright
+    on the HOWTO documents, and would like to be notified of any plans to
+    redistribute the HOWTOs.
+
+    Should you have any questions, please contact Greg Hankins, the Linux 
+    HOWTO coordinator, at gregh@sunsite.unc.edu. You may finger his address
+    for phone number and additional contact information.  
+
+
+1.3 New Versions and Feedback
+
+    New versions of this document can be found on sunsite.unc.edu in 
+    the /pub/Linux/docs/HOWTO/ directory. If you do not have FTP 
+    access, you can try to get Linux Help Files via Bill Riemers. Send
+    email to bcr@physics.purdue.edu with a subject of "help" for more 
+    infomation and an index file.                         
+
+    Any additions to, corrections of, or comments about this document would
+    be most welcomed! Please send email to 
+
+    	         scot@catzen.gun.de (Scot W. Stevenson)
+
+    I would especially like to hear from you if you already have experience
+    with linking an X terminal to a Linux machine, even if is only something
+    like "worked on this machine with this terminal."
+
+    On the board for the next versions are access control mechanisms and
+    the use of NFS filesystems for booting.
+
+
+2.0 Background
+
+    This section provides some very basic information for those not familiar 
+    with the X Window System and its terminal-ology. If you have at least 
+    some experience with X and X terminals, you should be able to skip
+    this part with no ill effects.
+
+
+2.1 What is X?
+
+    The X Window System, or just X (never X Windows), is "a portable,
+    network-transparent window system" as the man page has it. It provides
+    a graphic environment that cuts across operating systems, vendors, and 
+    hardware types. When people talk about a window system in connection with
+    Unix, they almost always mean X.
+
+    The most important characteristic of X in our case is the strict
+    division between the programs that control the local hardware that the
+    user interfaces with (screen, keyboard, mouse, etc.), and those programs
+    the user actually wants to run (editor, spreadsheet, DOOM). This means 
+    that the interface software, which is called the X server, can be
+    on a one machine, while the actual programs, or X clients, can be on
+    one or even more than one machine at a totally different location.
+    Note that the terms "server" and "client" are used in the reverse sense
+    of what they usually are.
+
+    Linux comes with a collection of X servers from the XFree86 project,
+    that is, servers for SVGA Video cards, as well as a whole host of X 
+    clients such as xv, maze, and xterm. If you are new to X, you might 
+    want to get some hands-on experience with X on the Linux machine before
+    attempting to link up an X terminal.
+    
+    
+2.2 What is an X terminal?
+
+    An X terminal (referred to as XT from now on) is a specialized piece of
+    hard- and software which combine into an X server, that is, the part of 
+    X that manages in- and output to and from the user. In the most
+    primitive case, only the X server program and communcication software are
+    included. Even the window manager comes from the host computer, to which 
+    the XT is connected by ethernet (or in rare cases serial lines), using 
+    TCP/IP. 
+
+    The hardware of an XT will include at least a (large) screen, keyboard, 
+    mouse, some RAM, and jacks for ethernet cables. Most XTs do not have a 
+    hard disk, a floppy drive, or other such means of data transfer.
+    This means that the XT either has its operating system in ROM (rare),
+    or gets it from a host on the net that it is attached to. 
+
+    To get to its operating system from the Linux computer at boot time, 
+    the XT usually does something like this: It sends out a cry of help 
+    through the net with its ethernet number as a name tag. A "real" computer
+    on the net compares this number with a list of them, and if a match 
+    is found, sends the XT the IP number it has been assigned to (via the
+    bootpd daemon). This allows the XT to download its operating system and
+    other data it needs from the hard disk of the host computer (usually via 
+    tftp). This is the procedure explained here in detail.
+
+    An XT is therefore actually a full-fledged computer, with its own IP
+    number, RAM, program, and independent hardware, albeit more like
+    an idiot savant. It's great at what it does best, managing X graphics,
+    but not much good for anything else.
+
+    
+2.3 Advantages and Disadvantages
+
+    Ideally, an XT is silent, swift, and deadly. Usually without fan, floppy
+    or hard disk, they make no noise at all, and with a few meters of 
+    ethernet cable you can put your loudish computer in a different room and
+    have the silent XT on your desk. Since the XT is built for X and graphics,
+    it is faster than, say, an X server program unter MS Windows or DOS.
+    
+    With the server on one machine and the client on another, the processor
+    doesn't have to handle both at once. Though this might not be noticable
+    in terms of speed (since the data now has to be moved over the ethernet),
+    it will reduce the CPU load and save memory on the Linux machine that
+    would otherwise be swallowed by the X server.
+
+    On the flip side, you will need an ethernet card, which usually means
+    giving up a slot and an IRQ. Depending on the manufacturer, the software
+    for the XT can take up around 20 MBytes of hard disk space on your Linux 
+    machine. You can almost always delete a lot of unused stuff once you 
+    figure out what is really needed. Most XTs will require the host machine
+    to have the bootpd and tftpd daemons installed and running - both are
+    potential security holes. You will probably want to have a further daemon,
+    xdm, running in the background. And yes, that big XT screen will take up
+    a lot of desk space.
+
+
+2.4 What do I need?
+
+    Kind of you to ask! But more appropriately, what do you need? 
+
+    First of all, you need an XT. If you have lots of money, and we do mean
+    lots, you can go out and buy one. Jim Morton <jim@applix.com> posts
+    a list of XTs and their prices to comp.windows.x on a regular basis.
+    Or fortune might smile on you. Since old XTs can't be used with DOS,
+    MS Windows, or OS/2, some firms solve the problem of what to do with
+    their old ones by just throwing them out.
+
+    On the Linux computer side, you will need an ethernet card. Though it
+    is in theory possible to run an XT via serial line and SLIP, this is
+    not recommended unless you have masochistic tendencies. Check out the 
+    Ethernet-HOWTO maintained by Paul Gortmaker <Paul.Gortmaker@anu.edu.au>
+    on how to purchase and set up ethernet cards. SLIP und CSLIP are covered
+    in the same document, should you have no other choice. In this case, you 
+    might also want to look at the Serial-HOWTO by Greg Hankins 
+    <gregh@cc.gatech.edu> for information on how to get the best performance.
+
+    You will also need to have TCP/IP support compiled into the kernel,
+    as well as a IP number for at least your machine and the XT. The 
+    Net-2-HOWTO by Terry Dawson <terryd@extro.ucc.su.oz.au> covers this.
+
+    Finally, you will need to have X installed on you Linux machine. In
+    theory you should be able to have just the X clients and programs
+    like xdm installed, without the servers package. But it is probably
+    not worth the effort to untangle the various parts. The XFree86 HOWTO
+    by Helmut Geyer <Helmut.Geyer@iwr.uni-heidelberg.de> will tell you how
+    to get X up and working.
+
+
+3.0 Cables, Nets and Daemons
+
+    This section discusses the changes to hard- and software required to 
+    get the XT connected to the Linux machine. Some conventions are that 
+    the XT is called "whisper" (because it makes no sound), and the Linux
+    host machine "imlinux" (I am Linux). They are both part of the 
+    "frog" domain in Germany (".de"). Their IP numbers are
+
+          192.168.13.1   for  imlinux.frog.de (the Linux machine)
+          192.168.13.41  for  whisper.frog.de (the XT linked to it).
+
+    Note that these are standalone IP numbers for systems not connected to
+    the greater Internet, and that to my knowledge there is no frog domain
+    in Germany. We will assume that there are no other machines on the net, 
+    and that NFS is not installed. 
+
+    [Bummer. If someone has used NFS in connection with his or her XT, I'd 
+    love to hear from you.]
+
+
+3.1 Physical connection
+
+    This should be as easy as plugging cables into both machines. Please note 
+    that some XTs have two serial inputs that can only run at certain speeds 
+    if both are in use. Check your XT manual for details. You will need the 
+    ethernet number of the XT later on. It is displayed during boot of the 
+    XT, even if no connection is yet established.
+
+    As soon as you have the wires in place, you should be able to test the
+    ethernet link. After booting the XT, it should start off by complaining
+    that its calls for a bootpd and/or tftpd are not being answered, and
+    then start a boot operating system (usually part of the XT ROM). This 
+    should include a primitive ping command which will allow you to test
+    the ethernet from the XT to the Linux machine. Don't panic if it 
+    doesn't work the other way around yet. The XT probably needs its full
+    operating system to be able to respond.
+
+
+3.2 Configuring the Net
+
+    Your basic configuration needs should be covered by the Net2-HOWTO as
+    mentioned above. We'll assume here that you already have TCP/IP and 
+    such up and running. Since the XT is considered to be just another 
+    computer on the net, you will now have to make sure both Linux machine
+    and XT know each other's IP address and that of the net they are on.
+
+
+3.2.1 Configuring the Linux Machine
+
+    Information on the XT will have to be included in at least these files:
+
+    /etc/hosts    Add a line with the IP number of the XT, such as
+
+                  # /etc/hosts line for Linux machine. lprhost and loghost 
+                  #            are optional 
+                  192.168.13.1    imlinux imlinux.frog.de lprhost loghost
+                  # The new line for the XT is next
+                  192.168.13.41   whisper whisper.frog.de
+
+    /etc/ethers   This file provides a list of ethernet numbers and the
+                  corresponding host names. This does not seem to be needed
+                  in all distributions and setups, but in case it is, you
+                  will need to include the ethernet number of the 
+                  XT and its hostname. This would be something like
+                  
+                  04:03:e8:cc:0d:24	imlinux
+                  0f:03:11:31:45:f1     whisper 
+
+                  (Yes, the ethernet numbers are fakes)
+    
+    [You might have to change further files if you are running programs like
+    named, routed, or gated. As I am not, I would be grateful if someone 
+    could fill me in on which files, if any, must be modified.]
+
+    You will have to reboot your Linux machine to make sure all changes 
+    take effect.
+
+
+3.2.2 Configuring the X Terminal
+
+    Check your XT manual for which files will have to be edited. In my case,
+    there was a central configuration file which needed to have the 
+    following entries changed:
+
+        ip_host_table            192.168.13.1    imlinux
+        ip_host_table            192.168.13.1    imlinux.frog.de
+        ip_host_table            192.168.13.41   whisper
+        ip_host_table            192.168.13.41   whisper.frog.de
+
+        file_access_1            TFTP
+        file_host_name_1         imlinux.frog.de
+        file_path_1              /usr/local/xterm/liveshere
+
+        display_access_table     whisper
+        display_access_table     imlinux
+        enable_access_control    YES
+
+        xdmcp_server             imlinux
+        broadcast_address        192.168.13.255
+        default_telnet_host      imlinux
+
+    Note that the XT picks up its files via tftp from the directory
+    /usr/local/xterm/liveshere, and the terminal is able to do XDMCP 
+    (important for the configuration of xdm). 
+
+    There will also be other configurations files for things like fonts. You
+    should be able to use the fonts already installed with Linux. In my case, 
+    the file for the fonts (font.tbl) looks something like this
+
+        /usr/lib/X11/fonts/75dpi
+        /usr/lib/X11/fonts/100dpi
+        ...
+        /usr/local/xterm/misc
+        /usr/local/xterm/openlook
+
+    with a few more lines to the same effect. Later, when the XT boots off
+    the Linux machine, you should see a list of files it has successfully
+    loaded. 
+
+    Another thing you will probably want to have on your XT is "backing
+    store," which means that those window parts covered by other windows
+    are not stored in the Linux' RAM, but in that of the XT. Check your
+    XT manual for further details.
+
+
+3.3 bootpd
+
+    Bootpd is the daemon that hears the X terminal's cry for help
+    at boot time and responds by telling the XT who it is, and where 
+    it can find the software it wants to download. For some odd reason
+    bootpd is not included in some current distributions, notably 
+    Slackware 2.2.0.1. This means you will have to get it via FTP or
+    some other source. It should then be placed in /usr/sbin/ (not in 
+    /etc, as the man page would have it) as in.bootpd. Add or uncomment
+    the following line in /etc/inetd.conf:
+
+       bootps dgram udp wait root /usr/sbin/tcpd /usr/sbin/in.bootpd 
+
+    This will ensure that inetd can start bootpd if a boot request
+    is found. 
+
+    The configuration file for bootpd is /etc/bootpd. The syntax is 
+    explained in the man page. In our example, the /etc/bootpd file should
+    look something like this ("server" is now used in the classical sense
+    again):
+
+       # Sample /etc/bootpd file
+       # First, global entry for stuff every host uses
+       allhost:hd=/usr/local/xterm/liveshere:\ # Home directory XT software
+             :ds=192.168.13.1:\	               # Domain name server (imlinx)
+             :sm=255.255.255.0:\               # Subnet mask
+             :gw=192.168.13.1:\                # Gateways
+             :ts=192.168.13.1:\                # Time Servers
+             :lp=192.168.13.1:\                # lpr Servers
+             :to=-7200:                        # Time Offset in seconds
+       # Next, individual entries of every single host. Futher XTs would
+       # have their own entry
+       whisper:ht=ethernet:\         # Type of hardware link
+              :ha=0f03113145f1:\     # Ethernet number of X terminal
+              :ip=192.168.13.41:\    # IP number of X terminal (whisper)
+              :tc=allhost:\          # Template for standard options as above
+              :bf=xtermOS:           # Boot file name - the X terminal's OS
+
+    The name of the XT's operating system may not be included as part of the 
+    hd (home directory) entry. In our example, the file that the XT grabs
+    as its operating system is /usr/local/xterm/liveshere/xtermOS, but the
+    hd entry is /usr/local/xterm/liveshere. 
+
+    bootpd will write information to both /var/adm/syslog and 
+    /var/adm/messages, which should look something like this after a
+    successful boot:
+
+       Jul 17 05:19:42 imlinux in.bootpd[110]: connect from 0.0.0.0
+       Jul 17 05:19:42 imlinux bootpd[110]: reading "/etc/bootptab"
+       Jul 17 05:19:42 imlinux bootpd[110]: read 2 entries from "/etc/bootptab"
+       Jul 17 05:19:43 imlinux bootpd[110]: request from hardware address 
+       0F03113145F1 Type 1
+       Jul 17 05:19:43 imlinux bootpd[110]: found 192.168.13.41 whisper
+
+    After helping the XT to boot, bootpd will stick around for about 
+    15 minutes, then remove itself if there is no further work to do.
+
+
+3.4 tftpd
+
+    The Trivial File Transfer Program is used by the XT to load its 
+    operating system from a Linux hard disk. It should be included in 
+    every distribution and does not have a configuration file. You can 
+    test tftp by just typing "tftp" from a command shell.
+
+    As with bootpd, you will have to include or uncomment the following line
+    in /etc/inetd.conf:
+
+       tftp dgram udp wait root /usr/sbin/tcpd /usr/sbin/in.tftpd 
+
+    Note that tftp can only access files that have world read access set.
+    Note also that tftp is a potential security hole that you will have to
+    keep in mind, and that the version of tftp included in some Linux
+    packages does not include the -r (or -s) flags for more secure use.
+
+    tftp will also write to /var/adm/messages. If bootpd has successfully
+    done its stuff, the next lines should be something like
+
+       Jul 17 05:19:43 imlinux in.tftpd[111]: connect from whisper
+       Jul 17 05:19:58 imlinux in.tftpd[113]: connect from whisper
+       Jul 17 05:19:59 imlinux in.tftpd[115]: connect from whisper
+       Jul 17 05:20:00 imlinux in.tftpd[117]: connect from whisper
+       Jul 17 05:20:03 imlinux in.tftpd[125]: connect from whisper
+       Jul 17 05:20:05 imlinux in.tftpd[127]: connect from whisper
+
+    and so on for quite a while. These are the files that the XT is requesting
+    from its home directory on the Linux computer. You should see messages on
+    the XT's screen while this transfer takes place.
+
+
+3.5 Testing the link 
+
+    Once you have modified the files mentioned above, you should be able
+    to boot the XT. Depending on the manufacturer, more or less verbose
+    messages on the XT's screen will tell you what is happening. Look
+    carefully for messages about files that cannot be found.
+
+    If all is well, it should progress to the point where the XT can launch
+    its own version of X. This means a grey background and the X cursor.
+    If you already have xdm running on the Linux machine, it might even
+    put up the xdm login prompt, though things might go a little haywire 
+    since some definitions are not in place yet. Be prepared to kill xdm as 
+    root from the Linux machine as a last resort.
+
+    Most XTs have an inbuilt set of functions, like a telnet client, as
+    part of their boot operating system. You can test the link further by 
+    telneting into the Linux computer.
+
+    At this point, depending on how access is set up, you might also 
+    be able to start X programs on the XT by using the display option.
+    From the Linux computer, try something like
+
+                      xclock -display whisper:0 &
+
+    This should produce the xlock on the XT. You can even start a window
+    manager such as fvwm this way. 
+
+
+4.0 X on the run
+
+    This section deals with setting up xdm so that a login prompt is 
+    available on the XT, and will return when a user has logged out. The xdm
+    program is a display manager that is the (very) rough equivalent of the
+    login programs for normal terminals. It should be included in every 
+    Linux X package.
+
+
+4.1 xdm configuration
+
+    xdm's configuration files live in /usr/X11R6/lib/X11/xdm (/usr/X11R6 may 
+    be a link to /usr/X11). The main configuration file is xdm-config. You 
+    should find, among others, the following lines already in place:
+
+       DisplayManager._0.authorize:    true
+       DisplayManager._0.setup:        /usr/X11R6/lib/X11/xdm/Xsetup_0
+       DisplayManager._0.startup:      /usr/X11R6/lib/X11/xdm/GiveConsole
+       DisplayManager._0.reset:        /usr/X11R6/lib/X11/xdm/TakeConsole
+
+    These are the files that control the screen when X is run on the Linux
+    machine itself. For the XT, we add four lines of the same type:
+
+       DisplayManager.whisper_0.authorize:     true
+       DisplayManager.whisper_0.setup:   /usr/X11R6/lib/X11/xdm/Xsetup_whisper
+       DisplayManager.whisper_0.startup: /usr/X11R6/lib/X11/xdm/Xstartup
+       DisplayManager.whisper_0.reset:   /usr/X11R6/lib/X11/xdm/Xreset
+
+    Note that whisper_0 is the xdm notation for whisper:0, just as _0 is :0.
+    Note also that GiveConsole has been replaced by Xstartup, which in my
+    case is a dummy file, and TakeConsole by Xreset, is also a dummy file.
+    The original files both control the ownership of the console when X is
+    run on the Linux machine, and there is no reason to fool around with 
+    the Linux console just because the XT is running.
+
+    The setup files run programs before the login prompt is placed on the
+    screen. This is the place to, say, use xv or a similiar program to
+    have a picture in the background. You should be able to simply copy
+    the given Xsetup_0 file to Xsetup_whisper.
+    
+    [Since this question comes up again and again: One way of putting a 
+    picture in the root window is by placing the line
+    
+         nice xv -root -quit -rmode 5 <picture_file> &
+
+    or such in the setup file. picture_file will then be displayed in 
+    the root window under the xdm login prompt. Note that some XTs will
+    give an error message if the file is too large or too complex.]
+
+    Xaccess controls who can have access to the machine. You should be able
+    to leave the defaults as they are. Note hat Xaccess will let you greet
+    the user with a chooser, in case you have different machines on the net
+    that can service the XT.
+
+    Xresources controls the shape and size of the login prompt. You might
+    want to have different messages for the XT and Linux machine by
+    replacing the 
+
+       DisplayManager*resources:       /usr/X11R6/lib/X11/xdm/Xresources
+
+    with two lines such as
+
+       DisplayManager._0.resources:        /usr/X11R6/lib/X11/xdm/Xres_0
+       DisplayManager.whisper_0.resources: /usr/X11R6/lib/X11/xdm/Xres_wh_0
+
+    where Xres_wh_0 is the name of the whisper resource file. 
+
+    You should be able to leave the Xsession file unchanged, too.
+
+    Configuration of the Xservers file is slightly more tricky. Out of the
+    box, there is probably only one line uncommented (Slackware 2.2.0.1)
+
+                    :0 local /usr/X11R6/bin/X 
+
+    or something to that effect. This starts the Linux machine X server
+    when xdm is called. Commenting this line means that when xdm is called, 
+    there will be no X started on the Linux machine. This is what you need
+    to do if you only want to have xdm managing the XT, but not the local
+    Linux X server. In this case, X can still be started with startx at any 
+    time on the Linux machine with no ill effects found so far.
+
+    If your XT does not have XDMCP, you must also include a line for the
+    XT, such as 
+
+                         whisper:0 foreign
+
+    XDMCP is a standardized method that for example lets X terminals talk
+    to their hosts. If your terminal does have XDMCP, don't repeat do not
+    include that line here. This would make xdm think that there is an XT
+    out there that doesn't know XDMCP, while at the same time a terminal
+    with the same name is trying to get in, too. This can lead to all kinds
+    of ugly effects, such as two xdms fighting for control.
+
+    Note that you can use the xdm-config entries even if there is no line
+    in Xservers for the XT, that is, you can still customize the xdm
+    login prompt, etc, for a XT that uses XDMCP.
+
+    To make xdm start with every reboot, you can include a line such as
+
+        /usr/bin/X11/xdm
+
+    in /etc/rc.d/rc.local. Other people start xdm with the /etc/inittab
+    file. In any case, xdm should appear with the list of processes after
+    a reboot of the Linux machine.
+
+
+4.2 Access questions
+
+    [BummerRank1. This is important, and we're working on it.]
+
+    To see if a user can access the XT screen from the Linux machine,
+    log in as non-root on the Linux machine and try a command like
+
+           xsetroot -solid white -display whisper:0 &
+    or 
+           xterm -display whisper:0 &
+
+    Try this when somebody is logged in on the XT and when there is only the
+    xdm login to be seen. Depending on where you are, the ability to put 
+    stuff on the XT screen from the console might more of a feature than a 
+    bug. 
+
+
+
+5.0 Errors, Unknowns, and Thanks
+
+    
+5.1 Known problems
+   
+    These are problems which have turned up, as well as interesting features
+    that might be considered problems. If you have come up with any 
+    interesting features, or even solutions, please let me know.
+
+    talk  - The interactive chat will work if the user at the XT starts the
+            session with a user at the Linux machine, but fails the other
+            way around. I'm sure I read a fix for this once, but have 
+            forgotten it.
+
+    who   - A user logged in via the XT does not appear in the output of the
+            who command, even if it is sent from the XT itself. This is 
+            probably the reason why talk fails when initiated from the Linux
+            machine ("On an XT, nobody even knows you're a human").
+
+    xlock - Normal call of xlock will only produce a message to the effect
+            that the XT's screen can't be grabbed. The -remote option must
+            be included in the xlock call to allow terminal locking. Note
+            that some xlock modes are more resource hungry than others. 
+            Qix seems to be more suited for XTs than others - check out the
+            FAQ by Art Mulder (below) for more details.
+
+    xv    - Some XTs will not have enough video memory to be able to handle
+            large and/or complex colored background pictures. Try removing
+            any old pictures (with `xsetroot' or such) and refreshing the 
+            screen before you move xv's window into the root.
+
+
+5.2 Terminals tested
+
+    The procedures described in this text have so far only been seriously 
+    tested on a Tektronix XP23 in connection with a 386DX-33MHz, 16 MByte 
+    RAM running Linux 1.2.3 and the XFree86 Version 3.1.1 files from the
+    Slackware 2.2.0.1 distribution.
+
+
+5.3 Futher reading
+
+    More information on X can be found on the net as:
+
+    David B. Lewis <dbl@ics.com> posts the detailed and extensive 
+    Comp.windows.x Frequently Asked Questions (FAQ) to comp.windows.x, 
+    news.answers, and comp.answers on a regular basis. This document also
+    contains entries on where to get more information on X.
+
+    Steve Kotsopoulos <steve@ecf.toronto.edu> posts the X on Intel-based Unix 
+    Frequently Asked Questions (FAQ) list to the same groups.
+
+    Art Mulder <art@cs.ualberta.ca> maintains the Comp.windows.x: Getting 
+    more performance out of X FAQ, which is als posted regularly to these
+    groups. It includes tips very useful for Linux under X, too. 
+
+
+
+5.4 Thanks
+
+    First thanks, as always, go out to Linus B. Torvalds 
+    <torvalds@kruuna.helsinki.fi>. Futhermore to
+
+    Klaus ter Fehn <ktf@bc3.gun.de>, for making it possible and
+    Douglas K. Stevenson <duck@catzen.gun.de>, for making it passable.
+

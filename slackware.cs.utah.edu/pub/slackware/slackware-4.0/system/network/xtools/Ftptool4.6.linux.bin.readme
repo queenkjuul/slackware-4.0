@@ -1,0 +1,16 @@
+After a bunch of what I can only fairly describe as 'fidling', I finally got
+this to compile under Linux.  I ended up using the lex.c from version 4.5,
+an edited Makefile created from v4.3 (because I'm too Imake and flex
+challenged to fix them properly for Linux).
+
+This was compiled under kernel 2.0.18, GCC 2.7.2, and libc 5.2.18.
+It runs fine under XFree3.1.2G, and xview 3.2.2.
+
+The xview libraries I have claim to be xview3 compiant, but when I compiled
+Ftptool to use xview3, I ended up with a bunch of unresolved references, so
+I switched it to use xview2.
+
+Have fun.  Hope it works for you.  If not, you can email me
+(kfitzner@compusmart.ab.ca).  No guarantees I'll be able to help, but I'll
+try.
+ 

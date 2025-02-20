@@ -1,0 +1,14 @@
+Begin3
+Title:          InitFuncs
+Version:        v0.01
+Entered-date:   09FEB96
+Description:    Some nifty functions for init(8) scripts, 
+                employing dialog(1) functionality.
+Keywords:       init
+Author:         C.deGroot@inter.nl.net (Cees de Groot)
+Maintained-by:  C.deGroot@inter.nl.net (Cees de Groot)
+Primary-site:   sunsite.unc.edu pub/Linux/Incoming
+                4931 initfunc-0.01.tgz
+Platform:       Linux 1.3.x, SysV-init-2.57b+
+Copying-policy: GPL
+End

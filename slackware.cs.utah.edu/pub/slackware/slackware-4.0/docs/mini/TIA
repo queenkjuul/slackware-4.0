@@ -1,0 +1,329 @@
+Global Linux-TIA HOWTO
+
+version 2.0T (updated 12/16/95) by Irish
+
+This document will describe how to get your Linux box to connect to a
+generic site via TIA, The Internet Adaptor. I take no responsibility for
+your use of this information, but corrections are welcome. 
+
+I will not attempt to describe all that can be done over this connection
+once established, but I will refer you to other documents or sites that
+will contain the relevant information. 
+
+That done, let's do it!
+
+
+
+   1.0 What is TIA? 
+
+   The Intenet Adaptor was written by the fine folks at marketplace.com. It is
+   used to simulate a SLIP connection from a shell account. It costs $25 for a
+   single user license, site licenses are available. It works with any client
+   OS that uses standard TCP/IP and SLIP networking, and clients.
+
+   1.1 How does TIA work?
+
+   It is important to understand how TIA works in general, to be aware of its
+   limitations. First, you do not need to install TIA on your machine. It 
+   runs on your remote host only. What you need is the TCP/IP and SLIP 
+   protocols installed in your kernel (more on that in a bit), and some clients.
+
+   Here's what happens: you send network requests from your machine to your
+   remote host over the SLIP link. TIA grabs them and sends them out to the Net
+   at large. Then, incoming data is sent back from the Net to your account on 
+   the remote host, where TIA grabs it and sends it back over the SLIP link 
+   to your machine. So, to the Net it appears as if you are working out of 
+   your account on the remote host, but to you it looks like you are really 
+   connected right to the Net.
+
+   As you can see, this can confuse stuff that is incoming from the Net. For
+   example, talk doesn't work via TIA, because the incoming talk request 
+   tries to start the remote hosts talk daemon, not yours.
+
+   The other big difference between TIA and real SLIP is you are NOT assigned
+   your own IP address; remember, you are only converting a dialup account to a
+   SLIP connection.
+
+   1.2 What about Term?
+
+   What about it? My opinion; Using Term is like using a crank to start 
+   your car, a lot of work and completely unnessesary. Of course, if you 
+   don't have root access to your machine for one reason or another, and 
+   you can't persuade someone who does to install SLIP and dip, then you 
+   won't have much choice. If you really want to know more about Term, read 
+   the HOWTO on Sunsite. 
+
+   1.3 What about SLiRP?
+
+   This is new, and it's free because it's GPLed. TIA isn't free, but it's 
+   real cheap, real stable, and well supported and documented. Go ahead and 
+   try it if you wish. I have heard that the following information works for 
+   SLiRP with only minor modifications, but please don't mail me with 
+   questions because I really don't know anything about it. Don't get me 
+   wrong, obviously I have nothing against free software, but TIA is what 
+   I know and use. Besides, for me TIA is free, because the Admin here 
+   purchased a site license. Maybe you can convince yours, it's worth it, 
+   for you and them. 
+
+
+Enough already! How do I set it up?
+
+   2.0 Preparing your Linux machine
+
+   In a nutshell, here's what's required. I'll explain each of these in detail.
+
+      -> Compile your kernel to include SLIP and TCP/IP 
+      -> Edit some files in /etc 
+      -> Install and configure dip 
+   You will also need to get the TIA binary appropriate for your remote host 
+   and install it. All of the relevant info for this is available at TIAs home 
+   site. 
+
+   NOTENOTENOTE: TIA 2.0.5 is out now. It supports, among other things,
+   CSLIP and PPP. There are very few changes required to use CSLIP, and they
+   are noted below. A PPP HOWTO will be forthcoming soon, as well as
+   documentation on some new features. Watch this space!
+
+That's it! Let's get started.
+
+   2.1 Compiling your kernel
+
+   If you have never done this, you should. And you should read the FAQ 
+   first, but don't worry, it's easy. If you want, you can e-mail me and 
+   I'll help.
+
+   I'll assume that you have here, for the sake of brevity. When you 'make 
+   config', look for "Network Devices". Say 'y', of course, then say 'y' to 
+   SLIP and TCP/IP, (Tia 2.0.5 users: say 'y' to CSLIP instead/also) and 'n' 
+   to everything else, unless you have ethercards or need some other protocol 
+   for something else. If you don't do this, it won't work! Finish compiling 
+   and installing the new kernel, then,
+
+   2.2 Edit some files in /etc
+
+   These files will set up your routes to your remote host. /etc is the 
+   directory for system configurations. Replace everything in double quotes 
+   with the appropriate values, naturally (but don't include the quotes - 
+   they are there for reference). There are three files you need to edit, 
+   they are:
+
+      /etc/hosts: 
+
+      127.0.0.1       localhost
+      192.0.2.1       "your.hostname.domain"
+      "XXX.XXX.XX.XX" "remote.hostname.domain remote"  #<-- Note the abbreviation.
+              
+
+      /etc/host.conf: 
+
+      order hosts, bind
+      multi on
+              
+
+      /etc/resolv.conf: 
+
+      domain "yourdomainhere"         
+      nameserver "XXX.XXX.XX.XX"      #<- Usually the same as in /etc/hosts
+              
+
+      To use an NNTPserver, put this line in your /etc/profile:
+
+      export NNTPSERVER="remote.hosts.nntpservername"
+
+   2.3.1 Dip
+
+   Dip is what you will use to dial up the remote host, start TIA, and 
+   convert the line to SLIP. It comes in the "N" set of Slackware, along 
+   with a bunch of clients and utilities, some of which you may want to 
+   install also =). It is also available at Sunsite in an individual tar file.
+
+   Once you have it installed, you will need to have a dip script, Here's 
+   a sample, just plug in the appropriate stuff where the double quotes 
+   are (but don't include the quotes, they are there for reference).
+
+   ----------CUT HERE--------------------------------
+
+   main:
+     get $local "your.hostname.domain"
+     get $remote "remote.hostname.domain"
+     port cua"?"                   #<-- Your port here
+     speed 38400                   #<--You may be able to use 57400 in newer 
+     reset                         # kernels
+     init AT "string of commands"  #<--don't use spaces in your AT command string 
+     wait OK 5
+
+   # This will redial. If it doesn't work, play with the wait time (listen 
+   # to your modem). If it still doesn't work, mail me.
+   # See also; the note at the bottom of the script re: error codes.
+
+   dial:
+     dial "phonenumber"
+     print Dialing...
+     if $errlvl != 0 goto error
+     wait BUSY 20                  #<--You may need to change this wait time  
+     if $errlvl == 0 goto dial     #   to suit your modem
+
+   login:
+     print Connected and Logging in...
+     wait ==> 60                   #<-- This wait and send get me past my 
+     send 4\n                      #<-- hosts Annex. Change for your site!
+     wait ogin: 60
+     if $errlvl != 0 goto login_error1
+     send "LOGIN"\n
+     wait assword: 60
+     if $errlvl != 0 goto login_error2
+     send "PASSWORD"\n
+
+   loggedin:
+     wait "SYSTEM PROMPT" 60
+     if $errlvl != 0 goto shell_error
+     send tia\n
+     wait software. 60
+     if $errlvl != 0 goto tia_error
+     print Starting TIA...
+     get $mtu 296          #<--Tia recommends 1500, but this is faster 
+     default               #interactively. Ftp may be slower, so adjust to taste.
+
+   done:
+     print CONNECTED to $remote with address $rmtip
+     mode SLIP
+   # TIA 2.0.5 users: change the above line to 
+   # mode CSLIP
+     goto exit
+
+   error:
+     print Dialing Error
+
+   login_error1:
+     print No Login
+
+   login_error2:
+     print No Password prompt
+
+   shell_error:
+     print No shell prompt
+
+   tia_error:
+     There was a problem starting TIA
+
+   exit:
+     \r            #<--This will error out with the -v flag, but work when 
+                   #run normally (ends dip at a local prompt).
+
+   -------------CUT HERE-----------------------------
+
+   2.3.2 Dip notes
+
+   Newer versions of dip don't return modem status codes (BUSY, NO
+   CONNECT, etc.), they use numbers instead. Here's a table:
+
+      0 = OK 
+      1 = CONNECT 
+      2 = ERROR 
+      3 = BUSY 
+      4 = NO CARRIER
+
+   This would make your dial section look like this:
+
+   dial:
+     dial "phonenumber"
+     print Dialing...
+     if $errlvl != 0 goto error
+     wait 1 20     
+     if $errlvl != 1 goto dial
+
+   Thanks to Lee Olds (lee@eskimo.com) for that bit. 
+
+   \n = newline, \r = carriage return. You may require one or the other (or 
+   both) in the appropriate places. If the ones provided don't work, experiment.
+
+   After editing this file, rename it, say, remote.dip and put it in /root. 
+   Then, as root, run 'dip remote'. Use the -v flag the first time to debug 
+   it ('dip -v remote'), this will show you all the steps dip takes.
+
+   Dip will only run as root, but there is a way to make it run from a user 
+   account. For now, if you need this info, ask. I may include it in this 
+   file later if enough people want it.
+
+   If dip errors out right away, try removing the comments from the script.
+
+
+
+   3.0 Now what?
+
+   Hey, if all went well, you are now connected to the Net! Try a 'telnet 
+   remote' (remember that abbreviation in your hosts file?). You should get 
+   the remotes telnet login prompt. Go on, try it! You can now telnet/FTP/etc.
+   anywhere on the Net from your local machine. How? Your machine is using 
+   the remote as a nameserver to resolve addresses (resolv.conf). Experiment,
+   find out what works and what doesn't.
+
+   You will not be able to use services that are not provided already on your
+   remote host! For example, if your server doesn't allow telnets, chances 
+   are you can't do it either. Why? Because TIA is only re-directing what 
+   is already available.
+
+   3.1 News and Mail
+
+   I have found a News Reader that is fairly simple to install and use. It 
+   is a true NNTP newsreader, which means no local news transport is required 
+   to make it work (you don't have install Cnews or INN). It does require 
+   that you have access to an NNTPserver, naturally, but most ISPs have this.
+   If you are able to use MSWIN apps like WinVN with your provider, this will 
+   work too. It is text based, but has color and mouse support, and runs 
+   fine in an rxvt window.  SLRN is still beta, but I have been using it 
+   exclusively for a while now, without any problems. 
+
+   I am still looking for a good Mail Reader of the SMTP/POP3 variety, that 
+   will work no matter what state the local mail transport is in (from 
+   non-existent to fully functional). It doesn't have to be X based, but 
+   that would be a plus. If you have any suggestions, please send tham along 
+   to me. I am aware of things like popclient, but this seems a little 
+   clumsy to me, and I'd like to find a mail reader that at least handles 
+   the retreival chores.
+
+   3.2 Mosaic/Netscape
+
+   Obviously, you will need to have X running for this to work, but it's 
+   a simple matter of FTPing the binary, unpacking it, and installing it. 
+
+   3.3 Remote X
+
+   You can run remote X applications via TIA. The TIA-X HOWTO is 
+   available at the places listed below.
+
+
+   4.0 Misc.
+
+   If I've left anything out, or you still have questions, I read my mail 
+   daily. This information gets updated fairly regularly, so keep checking 
+   back every so often (I'll change the version numbers). Naturally, the 
+   more you contribute, the more info will be included here, so don't 
+   hesitate to tell me about whatever you have to offer.
+
+   If you would like some help, or are having trouble with your setup, I'll 
+   help but you must send me the following info: 
+   1. A copy of your three /etc files. 
+   2. A copy of your script output, run with the -v flag (please remove 
+   your password from this!)
+
+   Even if you don't have anything to contribute, but used this info
+   sucsessfully, PLEASE MAIL ME. I want to know how useful this really is.
+
+   4.1 References
+
+   Sunsite is the FTP site sunsite.unc.edu, a veritable plethora of everything
+   Linux, including almost every FAQ, HOWTO, and README written.
+
+   Marketplace.com is the home of TIA, the only place it is available.
+
+   The homesite of the newsreader SLRN is space.mit.edu, in /pub/davis
+
+   I am Irish, irish@eskimo.com, available for comment on Linux almost
+   everyday, when I'm not petting my cat or hugging my kid.
+
+   This HOWTO is available in the following places: 
+      http://www.eskimo.com/~irish 
+      ftp://ftp.eskimo.com/u/i/irish 
+      ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO/mini/TIA 
+

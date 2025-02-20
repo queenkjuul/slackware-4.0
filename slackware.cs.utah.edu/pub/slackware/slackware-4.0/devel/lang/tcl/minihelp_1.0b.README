@@ -1,0 +1,36 @@
+                       MINIHELP Version 1.0beta
+                       ------------------------
+
+           by Charlie Kempson (charlie@siren.demon.co.uk)
+
+Use of MiniHelp is simplicity itself.  Simply start the editor
+like this:  wish -f MiniHelp.tcl, then create your pages.  You
+will probably have to edit MiniHelp.tcl to give the location 
+of the RunTime component (it's in the first couple of lines
+of code in the file).
+
+One you have created your pages, ensure that your main Tk
+program sources the MiniHelp_Runtime.tcl file, then insert
+the command:
+
+MH_MiniHelp <PageReference>
+
+where <PageReference> is the name of the page as you created
+it using MiniHelp.
+
+The MiniHelp home is at:
+
+http://public.logica.com/~kempsonc/mh_index.htm
+
+Enjoy,
+
+Charlie
+
+--------------------------------------------------
+Charlie Kempson          charlie@siren.demon.co.uk
+Logica U.K. Ltd.         kempsonc@logica.com
+
+http://public.logica.com/~kempsonc
+
+
+

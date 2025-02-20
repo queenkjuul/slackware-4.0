@@ -1,0 +1,13 @@
+Begin3
+Title:          kcpumon
+Version:        0.2
+Entered-date:   12 March. 1998
+Description:    Percent CPU indicator for kpanel
+Keywords:       kde cpu monitor X11 Qt
+Author:         andrew@lago.com (Andrew Lagodzinski)
+Maintained-by:  andrew@lago.com (Andrew Lagodzinski)
+Primary-site:   ftp.kde.org /pub/kde/stable/Beta3/apps/utils
+Platforms:      unix (only tested on Linux)
+End
+						      
+		

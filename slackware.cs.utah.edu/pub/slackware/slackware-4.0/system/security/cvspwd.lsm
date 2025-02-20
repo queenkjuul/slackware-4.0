@@ -1,0 +1,16 @@
+Begin3
+Title: README for Cvspwd
+Version: 1.0
+Entered-date: Sun Apr 18 18:03:34 PDT 1999
+Description: README file for cvspwd including free license declaration   
+Keywords: cvspwd, cvs, password, version, control, system, encryption, pserver
+Author: little_buddha@bigfoot.com (Michael Tang Helmeste)
+Maintained-by: little_buddha@bigfoot.com (Michael Tang Helmeste)
+Primary-site: frogbox.dyndns.org /pub
+              cvspwd.lsm
+Alternate-site: frogbox.dyndns.org /pub
+Original-site: frogbox.dyndns.org /pub
+Platforms: Unix, C
+Copying-policy: GPL
+End
+

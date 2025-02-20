@@ -1,0 +1,15 @@
+Begin3
+Title:		strace system call tracer
+Version:	STRACE-3.1.0.1_glibc_linux22
+Entered-date:	21FEB99
+Description:	This archive contains only a fix of strace for Linux-2.2 and
+		GNU libc-2.1. You need original source to apply it.
+Keywords:	linux glibc
+Author:		utx@k332.feld.cvut.cz (Stanislav Brabec),
+		max@Linuz.sns.it (Massimiliano Ghilardi)
+Primary-site:	sunsite.unc.edu /pub/Linux/devel/strace
+		12k strace-3.1.0.1_glibc_linux22.tar.gz
+Alternate-site: 
+Platforms:	linux
+Copying-policy:	BSD
+End

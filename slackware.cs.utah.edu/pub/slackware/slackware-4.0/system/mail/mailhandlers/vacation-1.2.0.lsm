@@ -1,0 +1,20 @@
+Begin3
+Title:		Automatic mail answering program for Linux
+Version:	1.2.0
+Entered-Date:	Dec 21, 1998
+Description:	This is the port of the 386bsd vacation program to Linux. 
+		Vacation is the automatic mail answering program found
+		on many Unix systems.
+		This is a security fixed version. PLEASE DON'T USE vacation-1.0
+		ANY LONGER! 
+Keywords:       vacation, mail answering
+Author:		Eric Allman (?)
+Maintained-By:	Harald Milz (hm@seneca.muc.de)
+Primary-Site:   sunsite.unc.edu /pub/Linux/system/Mail/mailhandlers
+		48 KB vacation-1.2.0.tar.gz
+Original-Site:	agate.berkeley.edu (as of Nov 16, 1993)
+Platforms:	GCC 2.7.2, libc 5.4.38
+Copying-Policy:	Copyright (c) 1983, 1987 Regents of the University of California
+		changes relative to the original version: GPL
+End
+

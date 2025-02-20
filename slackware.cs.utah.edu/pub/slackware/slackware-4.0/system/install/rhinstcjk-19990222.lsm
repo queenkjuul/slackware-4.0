@@ -1,0 +1,14 @@
+Begin3
+Title:          RedHat Installation Disk for CJK
+Version:        19990222
+Entered-date:   1999-02-22
+Description:    the Korean added version of the install disk
+Keywords:       redhat installation korean cjk
+Author:         MIZI Research Inc. <info@mizi.co.kr>
+Maintained-by:  MIZI Research Inc. <info@mizi.co.kr>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/install
+                5 M rhinstcjk-19990222.tar.gz 
+                1k  rhinstcjk-19990222.lsm
+Platforms:      Linux 
+Copying-policy: GPL
+End

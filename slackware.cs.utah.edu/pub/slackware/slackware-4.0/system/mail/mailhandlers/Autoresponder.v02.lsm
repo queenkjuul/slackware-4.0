@@ -1,0 +1,17 @@
+Begin3
+Title:          Autoresponder
+Version:        0.02
+Entered-date:	27OCT97
+Description:    Email Autoresponder. Send Email to an alias defined
+		in Linux, and Autoresponder replies automatically by reading 
+		a user defined text file into the Email reply. handy for
+		anybody that would like	to automatically disseminate
+		information.
+Keywords:       Autoresponder, Email, Auto, Sendmail, Mail
+Author:         jhopke@ibm.net (John Hopke)
+Primary-site:   sunsite.unc.edu pub/Linux/system/mail/mailhandlers/
+		Autoresponder.v02.tgz
+Platforms:      Linux.  May work with other systems that use sendmail and
+		mail.
+Copying-policy: GPL
+End

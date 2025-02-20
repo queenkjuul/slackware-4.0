@@ -1,0 +1,25 @@
+	
+Begin3
+Title: Teaser and Firecat
+Version: 0.2.0
+Entered-date: 23DEC98
+Description: A copyleft replacement for the proprietary ICQ system.
+             Not just the client - a replacement of the whole system.
+	     It also has some new features such as email/url/ipaddr
+	     lookup and it removes some of the security flaws
+	     in the design of ICQ.  The homepage for the
+	     package is
+	     http://www.bowerbird.com.au/software/TeaserAndFirecat/
+Keywords: Instant messaging, GTK, ICQ, Java
+Author: mettw@bowerbird.com.au (Matthew Parry)         
+Maintained-by:   mettw@bowerbird.com.au (Matthew Parry) 
+Primary-site: www.bowerbird.com.au /software/TeaserAndFirecat/src
+              47kB teaserandfirecat-0.2.0.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/chat/icq 
+Original-site:  
+Platforms: Linux
+Copying-policy: GPL
+End
+
+
+

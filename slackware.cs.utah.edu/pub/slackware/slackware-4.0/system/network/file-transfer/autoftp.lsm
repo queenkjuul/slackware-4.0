@@ -1,0 +1,19 @@
+Begin3
+Title:		autoftp
+Version:	0.93
+Entered-date:	28OCT98
+Description:	bash shell script for FTP'ing a list of filenames.
+		FTP commands include list, size, get, reget, update (newer)
+		or put.  Relative pathnames of ftp files in list are preserved.
+		It can calculate the total size of all the files in the list.
+Keywords:       FTP ftp update
+Author:         rhawes@dma.org (Richard Hawes)
+Maintained-by:  rhawes@dma.org (Richard Hawes)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/file-transfer
+		11k autoftp-0.93.tgz
+Alternate-site:
+Original-site:  http://www.dma.org/~rhawes/programs/
+		autoftp.tgz
+Platforms:
+Copying-policy:	GPL
+End

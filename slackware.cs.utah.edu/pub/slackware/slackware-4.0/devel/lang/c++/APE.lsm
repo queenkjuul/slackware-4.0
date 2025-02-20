@@ -1,0 +1,19 @@
+Begin3
+Title:          APE
+Version:        0.2.1
+Entered-date:   990510
+Description:	APE is the "APE Portable Environment" and class libraries
+		for writing portable threaded servers in C++, under UNIX
+		(pthread) and Win32 API's.  APE provides portable class
+		abstraction for threads, and will grow to cover sockets,
+		serial I/O, file handling, etc.  The goal of APE is to
+		make writing threaded servers in C++ both practical and
+		convient, even for small and simple projects, and hence
+		simplicity and low runtime overhead are design goals.
+Keywords:       pthread c++ classes threads		
+Author:         David Sugar <dyfet@ostel.com>
+Maintained-by:  David Sugar <dyfet@ostel.com>
+Primary-Site	ftp.tycho.com /pub/ape
+		157kB APE-0.2.1.tar.gz
+Copying-policy: gpl
+End

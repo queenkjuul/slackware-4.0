@@ -1,0 +1,16 @@
+Cut this out, fill it in, send it to 'lsm@execpc.com' with the subject 'add'.
+
+Begin3
+Title:          tacacs patch for pppd 2.2.0g
+Version:        1.0
+Entered-date:   4 April 1999
+Description:    add tacacs authentication functionality to pppd pap/chap
+Keywords:       ppp tacacs pap
+Author:         Alex Manousakis, Apostolos Dimitromanolakis
+Maintained-by:  Alex Manousakis - no longer maintained
+Primary-site:   sunsite
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, other platforms supporting pppd-2.2.0g
+Copying-policy: gnu
+End

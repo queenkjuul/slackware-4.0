@@ -1,0 +1,22 @@
+Begin3
+Title:           adduser 
+Version:         1.1         
+Entered-date:    13NOV98 
+Description:     Adduser is a program for adding users to a system, it puts 
+                 the user in the /etc/passwd file, creates a home directory 
+		 for the user, copies the contents of /etc/skel to the users 
+		 home directory, creates a mail folder for the user in 
+		 /var/spool/mail.
+                 Also includes 'deluser' script for removing users.
+                 The reason for adduser noshadow 1.1 is it's hard to find a 
+		 noshadow adduser.
+                 Compiled Libc6 elf and source included.
+Keywords:        Noshadow adduser           
+Author:          krobotti@erols.com (Kent Robotti) 
+Maintained-by:   
+Primary-site:    http://sunsite.unc.edu/pub/Linux/system/admin/accounts
+                 ftp://sunsite.unc.edu/pub/Linux/system/admin/accounts
+Alternate-site:  
+Platforms:       Linux system. 
+Copying-policy:  GPL
+End

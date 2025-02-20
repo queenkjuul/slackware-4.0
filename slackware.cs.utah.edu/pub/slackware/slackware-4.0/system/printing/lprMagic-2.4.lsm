@@ -1,0 +1,52 @@
+Begin3
+Title:		lprMagic - lpr Universal Filter for Linux 
+Version:        2.4	
+Entered-date:	Jan99
+Description:	lprMagic is an lineprinter input filter 
+		for Unix Systems with Berkeley alike printing
+		system (configuration using /etc/printcap), entirely
+		and completely user configurable, via additional
+		file /etc/lprMagic.conf. lprMagic extend 
+		the meaning of the word "printing", using in a 
+		ingenious way the -C lpr string, allowing the "printing"
+		and the queueing of activity on /dev/lp, /dev/modem,
+		/dev/sequencer,/dev/dsp, 
+		tcp port (ftp,smtp,nntp,http,...) and so on.
+		
+		RedHat & Debian & Slackware Linux 2.0.32 	
+	
+		Examples:
+
+                lpr -C"sheet=8;pages=5-8" file.txt
+                # print pages 5-8 of file.txt, 8 sheet for page.
+
+		lpr -C"device=fax;from=ME,to=YOU;tel=xyz;at=11am" file
+		# send a fax to YOU at 11am, today.
+
+		lpr -#4 -C"at=25.12.1997" merry.wav
+		# play a song four times at Christmas' Day.
+
+		lpr -"device=g3;output:=|uuencode -|mail root" file.ps
+		# convert file.ps to g3 format and mail-it to root,
+		# uuencoded.
+	
+		Main features are:
+
+		1) AUTOMATIC FILE TYPE RECOGNITION for the
+	         filetypes ascii, html, postscript,dvi,rpm,
+		 Micro(soft) Wave, Midi, gif, jpg, bmp, G3, tiffg3,etc.
+		2) FILE CON2.3 CAPABILITY (via pipe/redirection) 
+		3) PRINTER & PAPER & RESOL. SELECTION AT RUN TIME 
+		4) DELAYED-PROCESSING (via at(1))
+		5) SAMBA & LPRng support
+
+Keywords:	linux lpr filter magic format conversion	
+Author: 	andreoli@pisoft.it (Michele Andreoli)
+Maintained-by:	andreoli@pisoft.it (Michele Andreoli)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Printing
+		101 lprMagic-2.4.tgz lprMagic-2.4.tgz	
+Alternate-site:	http://www4.pisoft.it/~andreoli/apps/lprMagic/	
+Platforms:	Linux,#>0 printer(s),gcc,gs(1),a2ps,mpage,psutils [efax,  
+Platforms:	Netcat,Sndkit,Net-PBM,mpage]  
+Copying-policy:	GPL
+End

@@ -1,0 +1,53 @@
+Atalkdump, an Appletalk dumper for Linux.
+ ver 0.01 pre-alpha
+-----------------------------------------
+
+This program is a quick hack for dumping Ethertalk frames to stdout.
+It parses all the different kinds of Ethertalk Phase 2 frames that pass by
+on your net. (that is "it should parse...").
+
+SOURCE CODE.
+
+ Not yet public. (Too messy at this stage...)
+
+
+INSTALLATION.
+
+ Just copy the program in some directory and try it out.
+
+
+HOW TO USE.
+
+ atalkdump -a : show Appletalk Address Resolution Protocol frames
+           -d : show Routing Table Maintenance Protocol response or data frames
+           -r : show Routing Table Maintenance Protocol request frames
+           -n : show Name Binding Protocol frames
+           -t : show Appletalk Transaction Protocol frames
+           -e : show Appletalk Echo Protocol frames
+           -z : show Zone Information Protocol frames
+           -s : show Appletalk Data Stream Protocol frames
+           -w : show all frames in raw format
+           -u : show unknown frames with 802.2 header
+           -h : show this message
+           no options : show all frames (not in raw format)
+
+ This program can only be run as root ( or setuid root).
+ For users of an NE2000 (clone) or WD (clone), a kernel patch
+ will be needed.
+
+ Since the drivers in 1.0.x and 1.1.x are different, we're not
+ going to give a patch. You will have to do it manually.
+ In the file linux/drivers/net/8390.c change
+
+ 	outb_p(E8390_RXCONFIG | 0x10, ioaddr + EN0_RXCR);
+			          ^^
+			the 10 to 18.
+ Otherwise you won't be able to see the multicast packets in
+ Promiscuous mode. This will probably be fixed in 1.1.20.
+ (don't forget to recompile the kernel :-)
+ Many many thanx to Alan Cox and Donald Becker for this.
+
+ Please send your suggestions, bug reports, nice pictures, flames etc.
+ to jeroenb@igwe.vub.ac.be or chrisg@igwe.vub.ac.be
+
+ Have fun.

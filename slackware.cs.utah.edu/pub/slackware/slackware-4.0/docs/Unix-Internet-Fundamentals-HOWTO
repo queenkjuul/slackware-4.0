@@ -1,0 +1,924 @@
+  The Unix and Internet Fundamentals HOWTO
+  by Eric S. Raymond
+  v1.1, 3 December 1998
+
+  This document describes the working basics of PC-class computers,
+  Unix-like operating systems, and the Internet in non-technical lan­
+  guage.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+     1.1 Purpose of this document
+     1.2 Related resources
+     1.3 New versions of this document
+     1.4 Feedback and corrections
+
+  2. Basic anatomy of your computer
+
+  3. What happens when you switch on a computer?
+
+  4. What happens when you run programs from the shell?
+
+  5. How do input devices and interrupts work?
+
+  6. How does my computer do several things at once?
+
+  7. How does my computer keep processes from stepping on each other?
+
+  8. How does my computer store things on disk?
+
+     8.1 Low-level disk and file system structure
+     8.2 File names and directories
+     8.3 Mount points
+     8.4 How a file gets looked up
+     8.5 How things can go wrong
+
+  9. How do computer languages work?
+
+     9.1 Compiled languages
+     9.2 Interpreted languages
+     9.3 P-code languages
+
+  10. How does the Internet work?
+
+     10.1 Names and locations
+     10.2 Packets and routers
+     10.3 TCP and IP
+     10.4 HTTP, an application protocol
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+
+
+  1.1.  Purpose of this document
+
+  This document is intended to help Linux and Internet users who are
+  learning by doing.  While this is a great way to acquire skills,
+  sometimes it leaves peculiar gaps in one's knowledge of the basics --
+  gaps which can make it hard to think creatively or troubleshoot
+  effectively, from lack of a clear mental model of what is really going
+  on.
+
+  I'll try to describe in clear, simple language how it all works.  The
+  presentation will be tuned for people using Unix or Linux on PC-class
+  hardware.  Nevertheless I'll usually refer simply to `Unix' here, as
+  most of what I will describe is constant across platforms and across
+  Unix variants.
+
+  I'm going to assume you're using an Intel PC.  The details differ
+  slightly if you're running an Alpha or PowerPC or some other Unix box,
+  but the basic concepts are the same.
+
+  I won't repeat things, so you'll have to pay attention, but that also
+  means you'll learn from every word you read.  It's a good idea to just
+  skim when you first read this; you should come back and reread it a
+  few times after you've digested what you have learned.
+
+  This is an evolving document.  I intend to keep adding sections in
+  response to user feedback, so you should come back and review it
+  periodically.
+
+
+  1.2.  Related resources
+
+  If you're reading this in order to learn how to hack, you should also
+  read the How To Become A Hacker FAQ
+  <http://www.tuxedo.org/~esr/faqs/hacker-howto.html>.  It has links to
+  some other useful resources.
+
+
+  1.3.  New versions of this document
+
+
+  New versions of the Unix and Internet Fundamentals HOWTO will be
+  periodically posted to comp.os.linux.help and and news.answers
+  <news:answers>.  They will also be uploaded to various Linux WWW and
+  FTP sites, including the LDP home page.
+
+  You can view the latest version of this on the World Wide Web via the
+  URL <http://sunsite.unc.edu/LDP/HOWTO/Fundamentals-HOWTO.html>.
+
+
+  1.4.  Feedback and corrections
+
+
+  If you have questions or comments about this document, please feel
+  free to mail Eric S. Raymond, at esr@thyrsus.com. I welcome any
+  suggestions or criticisms. I especially welcome hyperlinks to more
+  detailed explanations of individual concepts.  If you find a mistake
+  with this document, please let me know so I can correct it in the next
+  version. Thanks.
+
+
+  2.  Basic anatomy of your computer
+
+  Your computer has a processor chip inside it that does the actual
+  computing.  It has internal memory (what DOS/Windows people call
+  ``RAM'' and Unix people often call ``core'').  The processor and
+  memory live on the motherboard which is the heart of your computer.
+
+  Your computer has a screen and keyboard.  It has hard drives and
+  floppy disks.  The screen and your disks have controller cards that
+  plug into the motherboard and help the computer drive these outboard
+  devices.  (Your keyboard is too simple to need a separate card; the
+  controller is built into the keyboard chassis itself.)
+
+  We'll go into some of the details of how these devices work later.
+  For now, here are a few basic things to keep in mind about how they
+  work together:
+
+  All the inboard parts of your computer are connected by a bus.
+  Physically, the bus is what you plug your controller cards into (the
+  video card, the disk controller, a sound card if you have one).  The
+  bus is the data highway between your processor, your screen, your
+  disk, and everything else.
+
+  The processor, which makes everything else go, can't actually see any
+  of the other pieces directly; it has to talk to them over the bus.
+  The only other subsystem it has really fast, immediate access to is
+  memory (the core).  In order for programs to run, then, they have to
+  be in core.
+
+  When your computer reads a program or data off the disk, what actually
+  happens is that the processor uses the bus to send a disk read request
+  to your disk controller.  Some time later the disk controller uses the
+  bus to signal the computer that it has read the data and put it in a
+  certain location in core.  The processor can then use the bus to look
+  at that memory.
+
+  Your keyboard and screen also communicate with the processor via the
+  bus, but in simpler ways.  We'll discuss those later on.  For now, you
+  know enough to understand what happens when you turn on your computer.
+
+
+  3.  What happens when you switch on a computer?
+
+  A computer without a program running is just an inert hunk of
+  electronics.  The first thing a computer has to do when it is turned
+  on is start up a special program called an operating system.  The
+  operating system's job is to help other computer programs to work by
+  handling the messy details of controlling the computer's hardware.
+
+  The process of bringing up the operating system is called booting
+  (originally this was bootstrapping and alluded to the difficulty of
+  pulling yourself up ``by your bootstraps'').  Your computer knows how
+  to boot because instructions for booting are built into one of its
+  chips, the BIOS (or Basic Input/Output System) chip.
+
+  The BIOS chip tells it to look in a fixed place on the lowest-numbered
+  hard disk (the boot disk) for a special program called a boot loader
+  (under Linux the boot loader is called LILO).  The boot loader is
+  pulled into core and started.  The boot loader's job is to start the
+  real operating system.
+
+  The loader does this by looking for a kernel, loading it into core,
+  and starting it.  When you boot Linux and see "LILO" on the screen
+  followed by a bunch of dots, it is loading the kernel.  (Each dot
+  means it has loaded another disk block of kernel code.)
+
+  (You may wonder why the BIOS doesn't load the kernel directly -- why
+  the two-step process with the boot loader?  Well, the BIOS isn't very
+  smart.  In fact it's very stupid, and Linux doesn't use it at all
+  after boot time.  It was originally written for primitive 8-bit PCs
+  with tiny disks, and literally can't access enough of the disk to load
+  the kernel directly.  The boot loader step also lets you start one of
+  several operating systems off different places on your disk, in the
+  unlikely event that Unix isn't good enough for you.)
+
+  Once the kernel starts, it has to look around, find the rest of the
+  hardware, and get ready to run programs.  It does this by poking not
+  at ordinary memory locations but rather at I/O ports -- special bus
+  addresses that are likely to have device controller cards listening at
+  them for commands.  The kernel doesn't poke at random; it has a lot of
+  built-in knowledge about what it's likely to find where, and how
+  controllers will respond if they're present.  This process is called
+  autoprobing.
+
+  Most of the messages you see at boot time are the kernel autoprobing
+  your hardware through the I/O ports, figuring out what it has
+  available to it and adapting itself to your machine.  The Linux kernel
+  is extremely good at this, better than most other Unixes and much
+  better than DOS or Windows.  In fact, many Linux old-timers think the
+  cleverness of Linux's boot-time probes (which made it relatively easy
+  to install) was a major reason it broke out of the pack of free-Unix
+  experiments to attract a critical mass of users.
+
+  But getting the kernel fully loaded and running isn't the end of the
+  boot process; it's just the first stage (sometimes called run level
+  1).
+
+  The kernel's next step is to check to make sure your disks are OK.
+  Disk file systems are fragile things; if they've been damaged by a
+  hardware failure or a sudden power outage, there are good reasons to
+  take recovery steps before your Unix is all the way up.  We'll go into
+  some of this later on when we talk about ``how file systems can go
+  wrong''.
+
+  The kernel's next step is to start several daemons.  A daemon is a
+  program like a print spooler, a mail listener or a WWW server that
+  lurks in the background, waiting for things to do.  These special
+  programs often have to coordinate several requests that could
+  conflict.  They are daemons because it's often easier to write one
+  program that runs constantly and knows about all requests than it
+  would be to try to make sure that a flock of copies (each processing
+  one request and all running at the same time) don't step on each
+  other.  The particular collection of daemons your system starts may
+  vary, but will almost always include a print spooler (a gatekeeper
+  daemon for your printer).
+
+  Once all daemons are started, we're at run level 2.  The next step is
+  to prepare for users.  The kernel starts a copy of a program called
+  getty to watch your console (and maybe more copies to watch dial-in
+  serial ports).  This program is what issues the login prompt to your
+  console.  We're now at run level 3 and ready for you to log in and run
+  programs.
+
+  When you log in (give a name and password) you identify yourself to
+  getty and the computer.  It then runs a program called (naturally
+  enough) login, which does some housekeeping things and then starts up
+  a command interpreter, the shell.  (Yes, getty and login could be one
+  program.  They're separate for historical reasons not worth going into
+  here.)
+
+  In the next section, we'll talk about what happens when you run
+  programs from the shell.
+
+
+  4.  What happens when you run programs from the shell?
+
+  The normal shell gives you the '$' prompt that you see after logging
+  in (unless you've customized it to something else).  We won't talk
+  about shell syntax and the easy things you can see on the screen here;
+  instead we'll take a look behind the scenes at what's happening from
+  the computer's point of view.
+
+  After boot time and before you run a program, you can think of your
+  computer of containing a zoo of processes that are all waiting for
+  something to do.  They're all waiting on events. An event can be you
+  pressing a key or moving a mouse.  Or, if your machine is hooked to a
+  network, an event can be a data packet coming in over that network.
+
+  The kernel is one of these processes.  It's s special one, because it
+  controls when the other user processes can run, and it is normally the
+  only process with direct access to the machine's hardware.  In fact,
+  user processes have to make requests to the kernel when they want to
+  get keyboard input, write to your screen, read from or write to disk,
+  or do just about anything other than crunching bits in memory.  These
+  requests are known as system calls.
+
+  Normally all I/O goes through the kernel so it can schedule the
+  operations and prevent processes from stepping on each other.  A few
+  special user processes are allowed to slide around the kernel, usually
+  by being given direct access to I/O ports.  X servers (the programs
+  that handle other programs' requests to do screen graphics on most
+  Unix boxes) are the most common example of this.  But we haven't
+  gotten to an X server yet; you're looking at a shell prompt on a
+  character console.
+
+  The shell is just a user process, and not a particularly special one.
+  It waits on your keystrokes, listening (through the kernel) to the
+  keyboard I/O port.  As the kernel sees them, it echos them to your
+  screen then passes them to the shell.  When the kernel sees an `Enter'
+  it passes your line of text to the shell. The shell tries to interpret
+  those keystrokes as commands.
+
+  Let's say you type `ls' and Enter to invoke the Unix directory lister.
+  The shell applies its built-in rules to figure out that you want to
+  run the executable command in the file `/bin/ls'.  It makes a system
+  call asking the kernel to start /bin/ls as a new child process and
+  give it access to the screen and keyboard through the kernel.  Then
+  the shell goes to sleep, waiting for ls to finish.
+
+  When /bin/ls is done, it tells the kernel it's finished by issuing an
+  exit system call.  The kernel then wakes up the shell and tells it it
+  can continue running.  The shell issues another prompt and waits for
+  another line of input.
+
+  Other things may be going on while your `ls' is executing, however
+  (we'll have to suppose that you're listing a very long directory).
+  You might switch to another virtual console, log in there, and start a
+  game of Quake, for example.  Or, suppose you're hooked up to the
+  Internet.  Your machine might be sending or receiving mail while
+  /bin/ls runs.
+
+
+  5.  How do input devices and interrupts work?
+
+  Your keyboard is a very simple input device; simple because it
+  generates small amounts of data very slowly (by a computer's
+  standards).  When you press or release a key, that event is signalled
+  up the keyboard cable to raise a hardware interrupt.
+
+  It's the operating system's job to watch for such interrupts.  For
+  each possible kind of interrupt, there will be an interrupt handler, a
+  part of the operating system that stashes away any data associated
+  with them (like your keypress/keyrelease value) until it can be
+  processed.
+
+  What the interrupt handler for your keyboard actually does is post the
+  key value into a system area near the bottom of core.  There, it will
+  be available for inspection when the operating system passes control
+  to whichever program is currently supposed to be reading from the
+  keyboard.
+
+  More complex input devices like disk or network cards work in a
+  similar way.  Above, we referred to a disk controller using the bus to
+  signal that a disk request has been fulfilled.  What actually happens
+  is that the disk raises an interrupt.  The disk interrupt handler then
+  copies the retrieved data into memory, for later use by the program
+  that made the request.
+
+  Every kind of interrupts has an associated priority level.  Lower-
+  priority interrupts (like keyboard events) have to wait on higher-
+  priority interrupts (like clock ticks or disk events).  Unix is
+  designed to give high priority to the kinds of events that need to be
+  processed rapidly in order to keep the machine's response smooth.
+
+  In your OS's boot-time messages, you may see references to IRQ
+  numbers.  You may be aware that one of the common ways to misconfigure
+  hardware is to have two different devices try to use the same IRQ,
+  without understanding exactly why.
+
+  Here's the answer.  IRQ is short for "Interrupt Request".  The
+  operating system needs to know at startup time which numbered
+  interrupts each hardware device will use, so it can associate the
+  proper handlers with each one.  If two different devices try use the
+  same IRQ, interrupts will sometimes get dispatched to the wrong
+  handler.  This will usually at least lock up the device, and can
+  sometimes confuse the OS badly enough that it will flake out or crash.
+
+
+  6.  How does my computer do several things at once?
+
+  It doesn't, actually.  Computers can only do one task (or process) at
+  a time.  But a computer can change tasks very rapidly, and fool slow
+  human beings into thinking it's doing several things at once.  This is
+  called timesharing.
+
+  One of the kernel's jobs is to manage timesharing.  It has a part
+  called the scheduler which keeps information inside itself about all
+  the other (non-kernel) processes in your zoo.  Every 1/60th of a
+  second, a timer goes off in the kernel, generating a clock interrupt.
+  The scheduler stops whatever process is currently running, suspends it
+  in place, and hands control to another process.
+
+  1/60th of a second may not sound like a lot of time.  But on today's
+  microprocessors it's enough to run tens of thousands of machine
+  instructions, which can do a great deal of work.  So even if you have
+  many proceses, each one can accomplish quite a bit in each of its
+  timeslices.
+
+  In practice, a program may not get its entire timeslice. If an
+  interrupt comes in from an I/O device, the kernel effectively stops
+  the current task, runs the interrupt handler, and then returns to the
+  current task.  A storm of high-priority interrupts can squeeze out
+  normal processing; this misbehavior is called thrashing and is
+  fortunately very hard to induce under modern Unixes.
+
+  In fact, the speed of programs is only very seldom limited by the
+  amount of machine time they can get (there are a few exceptions to
+  this rule, such as sound or 3-D graphics generation).  Much more
+  often, delays are caused when the program has to wait on data from a
+  disk drive or network connection.
+
+  An operating system that can routinely support many simultaneous
+  processes is called "multitasking".  The Unix family of operating
+  systems was designed from the ground up for multitasking and is very
+  good at it -- much more effective than Windows or the Mac OS, which
+  have had multitasking bolted into it as an afterthought and do it
+  rather poorly.  Efficient, reliable multitasking is a large part of
+  what makes Linux superior for networking, communications, and Web
+  service.
+
+
+  7.  How does my computer keep processes from stepping on each other?
+
+  The kernel's scheduler takes care of dividing processes in time.  Your
+  operating system also has to divide them in space, so that processes
+  don't step on each others' working memory.  The things your operating
+  system does to solve this problem are called memory management.
+
+  Each process in your zoo needs its own area of core memory, as a place
+  to run its code from and keep variables and results in.  You can think
+  of this set as consisting of a read-only code segment (containing the
+  process's instructions) and a writeable data segment (containing all
+  the process's variable storage).  The data segment is truly unique to
+  each process, but if two processes are running the same code Unix
+  automatically arranges for them to share a single code segment as an
+  efficiency measure.
+
+  Efficiency is important, because core memory is expensive.  Sometimes
+  you don't have enough to hold the entirety of all the programs the
+  machine is running, especially if you are using a large program like
+  an X server.  To get around this, Unix uses a strategy called virtual
+  memory.  It doesn't try to hold all the code and data for a process in
+  core.  Instead, it keeps around only a relatively small working set;
+  the rest of the process's state is left in a special swap space area
+  on your hard disk.
+
+  As the process runs, Unix tries to anticipate how the working set will
+  change and have only the pieces that are needed in core.  Doing this
+  effectively is both complicated and tricky, so I won't try and
+  describe it all here -- but it depends on the fact that code and data
+  references tend to happen in clusters, with each new one likely to
+  refer to somewhere close to an old one.  So if Unix keeps around the
+  code or data most frequently (or most recently) used, you will usually
+  succeed in saving time.
+
+  Note that in the past, that "Sometimes" two paragraphs ago was "Almost
+  always," -- the size of core was typically small relative to the size
+  of running programs, so swapping was frequent.  Memory is far less
+  expensive nowadays and even low-end machines have quite a lot of it.
+  On modern single-user machines with 64MB of core and up, it's possible
+  to run X and a typical mix of jobs without ever swapping.
+
+  Even in this happy situation, the part of the operating system called
+  the memory manager still has important work to do.  It has to make
+  sure that programs can only alter their own data segments -- that is,
+  prevent erroneous or malicious code in one program from garbaging the
+  data in another.  To do this, it keeps a table of data and code
+  segments.  The table is updated whenever a process either requests
+  more memory or releases memory (the latter usually when it exits).
+
+  This table is used to pass commands to a specialized part of the
+  underlying hardware called an MMU or memory management unit.  Modern
+  processor chips have MMUs built right onto them.  The MMU has the
+  special ability to put fences around areas of memory, so an out-of-
+  bound reference will be refused and cause a special interrupt to be
+  raised.
+
+  If you ever see a Unix message that says "Segmentation fault", "core
+  dumped" or something similar, this is exactly what has happened; an
+  attempt by the running program to access memory outside its segment
+  has raised a fatal interrupt.  This indicates a bug in the program
+  code; the core dump it leaves behind is diagnostic information
+  intended to help a programmer track it down.
+  8.  How does my computer store things on disk?
+
+  When you look at a hard disk under Unix, you see a tree of named
+  directories and files.  Normally you won't need to look any deeper
+  than that, but it does become useful to know what's going on
+  underneath if you have a disk crash and need to try to salvage files.
+  Unfortunately, there's no good way to describe disk organization from
+  the file level downwards, so I'll have to describe it from the
+  hardware up.
+
+
+  8.1.  Low-level disk and file system structure
+
+  The surface area of your disk, where it stores data, is divided up
+  something like a dartboard -- into circular tracks which are then pie-
+  sliced into sectors.  Because tracks near the outer edge have more
+  area than those close to the spindle at the center of the disk, the
+  outer tracks have more sector slices in them than the inner ones.
+  Each sector (or disk block) has the same size, which under modern
+  Unixes is generally 1 binary K (1024 8-bit words).  Each disk block
+  has a unique address or disk block number.
+
+  Unix divides the disk into disk partitions.  Each partition is a
+  continuous span of blocks that's used separately from any other
+  partition, either as a file system or as swap space.  The lowest-
+  numbered partition is often treated specially, as a boot partition
+  where you can put a kernel to be booted.
+
+  Each partition is either swap space (used to implement ``virtual
+  memory'' or a file system used to hold files.  Swap-space partitions
+  are just treated as a linear sequence of blocks.  File systems, on the
+  other hand, need a way to map file names to sequences of disk blocks.
+  Because files grow, shrink, and change over time, a file's data blocks
+  will not be a linear sequence but may be scattered all over its
+  partition (from wherever the operating system can find a free block
+  when it needs one).
+
+
+  8.2.  File names and directories
+
+  Within each file system, the mapping from names to blocks is handled
+  through a structure called an i-node.  There's a pool of these things
+  near the ``bottom'' (lowest-numbered blocks) of each file system (the
+  very lowest ones are used for housekeeping and labeling purposes we
+  won't describe here).  Each i-node describes one file.  File data
+  blocks live above the inodes.
+
+  Every i-node contains a list of the disk block numbers in the file it
+  describes.  (Actually this is a half-truth, only correct for small
+  files, but the rest of the details aren't important here.)  Note that
+  the i-node does not contain the name of the file.
+
+  Names of files live in directory structures.  A directory structure
+  just maps names to i-node numbers.  This is why, in Unix, a file can
+  have multiple true names (or hard links); they're just multiple
+  directory entries that happen to point to the same inode.
+
+
+  8.3.  Mount points
+
+  In the simplest case, your entire Unix file system lives in just one
+  disk partition.  While you'll see this arrangement on some small
+  personal Unix systems, it's unusual.  More typical is for it to be
+  spread across several disk partitions, possibly on different physical
+  disks.   So, for example, your system may one small partition where
+  the kernel lives, a slightly larger one where OS utilities live, and a
+  much bigger one where user home directories live.
+
+  The only partition you'll have access to immediately after system boot
+  is your root partition, which is (almost always) the one you booted
+  from.  It holds the root directory of the file system, the top node
+  from which everything else hangs.
+
+  The other partitions in the system have to be attached to this root in
+  order for your entire, multiple-partition file system to be
+  accessible.  About midway through the boot process, your Unix will
+  make these non-root partitions accessible.  It will mount each one
+  onto a directory on the root partition.
+
+  For example, if you have a Unix directory called `/usr', it is
+  probably a mount point to a partition that contains many programs
+  installed with your Unix but not required during initial boot.
+
+
+  8.4.  How a file gets looked up
+
+  Now we can look at the file system from the top down.  When you open a
+  file (such as, say, /home/esr/WWW/ldp/fundamentals.sgml) here is what
+  happens:
+
+  Your kernel starts at the root of your Unix file system (in the root
+  partition).  It looks for a directory there called `home'.  Usually
+  `home' is a mount point to a large user partition elsewhere, so it
+  will go there.  In the top-level directory structure of that user
+  partition, it will look for a entry called `esr' and extract an inode
+  number.  It will go to that i-node, notice it is a directory
+  structure, and look up `WWW'.  Extracting that i-node, it will go to
+  the corresponding subdirectory and look up `ldp'.  That will take it
+  to yet another directory inode.  Opening that one, it will find an i-
+  node number for `fundamentals.sgml'.  That inode is not a directory,
+  but instead holds the list of disk blocks associated with the file.
+
+
+  8.5.  How things can go wrong
+
+  Earlier we hinted that file systems can be fragile things.  Now we
+  know that to get to file you have to hopscotch through what may be an
+  arbitrarily long chain of directory and i-node references.  Now
+  suppose your hard disk develops a bad spot?
+
+  If you're lucky, it will only trash some file data.  If you're
+  unlucky, it could corrupt a directory structure or i-node number and
+  leave an entire subtree of your system hanging in limbo -- or, worse,
+  result in a corrupted structure that points multiple ways at the same
+  disk block or inode.  Such corruption can be spread by normal file
+  operations, trashing data that was bot in the original bad spot.
+
+  Fortunately, this kind of contingency has become quite uncommon as
+  disk hardware has become more reliable.  Still, it means that your
+  Unix will want to integrity-check the file system periodically to make
+  sure nothing is amiss.  Modern Unixes do a fast integrity check on
+  each partition at boot time, just before mounting it.  Every few
+  reboots they'll do a much more thorough check that takes a few minutes
+  longer.
+
+  If all of this sounds like Unix is terribly complex and failure-prone,
+  it may be reassuring to know that these boot-time checks typically
+  catch and correct normal problems before they become really
+  disasterous.  Other operating systems don't have these facilities,
+  which speeds up booting a bit but can leave you much more seriously
+  screwed when attempting to recover by hand (and that's assuming you
+  have a copy of Norton Utilities or whatever in the first place...).
+  9.  How do computer languages work?
+
+  We've already discussed ``how programs are run''.  Every program
+  ultimately has to execute as a stream of bytes that are instructions
+  in your computer's machine language.  But human beings don't deal with
+  machine language very well; doing so has become a rare, black art even
+  among hackers.
+
+  Almost all Unix code except a small amount of direct hardware-
+  interface support in the kernel itself is nowadays written in a high-
+  level language.  (The `high-level' in this term is a historical relic
+  meant to distinguish these from `low-level' assembler languages, which
+  are basically thin wrappers around machine code.)
+
+  There are several different kinds of high-level languages.  In order
+  to talk about these, you'll find it useful to bear in mind that the
+  source code of a program (the human-created, editable version) has to
+  go through some kind of translation into machine code that the machine
+  can actually run.
+
+
+  9.1.  Compiled languages
+
+  The most conventional kind of language is a compiled language.
+  Compiled languages get translated into runnable files of binary
+  machine code by a special program called (logically enough) a
+  compiler.  Once the binary has been generated, you can run it directly
+  without looking at the source code again.  (Most software is delivered
+  as compiled binaries made from code you don't see.)
+
+  Compiled languages tend to give excellent performance and have the
+  most complete access to the OS, but also to be difficult to program
+  in.
+
+  C, the language in which Unix itself is written, is by far the most
+  important of these (with its variant C++).  FORTRAN is another
+  compiled language still used among engineers and scientists but years
+  older and much more primitive.  In the Unix world no other compiled
+  languages are in mainstream use.  Outide it, COBOL is very widely used
+  for financial and business software.
+
+  There used to be many other compiler languages, but most of them have
+  either gone extinct or are strictly research tools.  If you are a new
+  Unix developer using a compiled language, it is overwhelmingly likely
+  to be C or C++.
+
+
+  9.2.  Interpreted languages
+
+  An interpreted language depends on an interpreter program that reads
+  the source code and translates it on the fly into computations and
+  system calls.  The source has to be re-interpreted (and the
+  interpreter present) each time the code is executed.
+
+  Interpreted languages tend to be slower than compiled languages, and
+  often have limited access to the underlying operating system and
+  hardware.  On the other hand, they tend to be easier to program and
+  more forgiving of coding errors than compiled languages.
+
+  Many Unix utilities, including the shell and bc(1) and sed(1) and
+  awk(1), are effectively small interpreted languages.  BASICs are
+  usually interpreted.  So is Tcl.  Historically, the most important
+  interpretive language has been LISP (a major improvement over most of
+  its successors).  Today Perl is very widely used and steadily growing
+  more popular.
+
+  9.3.  P-code languages
+
+  Since 1990 a kind of hybrid language that uses both compilation and
+  interpretation has become increasingly important.  P-code languages
+  are like compiled languages in that the source is translated to a
+  compact binary form which is what you actually execute, but that form
+  is not machine code.  Instead it's pseudocode (or p-code), which is
+  usually a lot simpler but more powerful than a real machine language.
+  When you run the program, you interpret the p-code.
+
+  P-code can can run nearly as fast as a compiled binary (p-code
+  interpreters can be made quite simple, small and speedy).  But p-code
+  languages can keep the flexibility and power of a good interpreter.
+
+  Important p-code languages include Python and Java.
+
+
+  10.  How does the Internet work?
+
+  To help you understand how the Internet works, we'll look at the
+  things that happen when you do a typical Internet operation --
+  pointing a browser at the front page of this document at its home on
+  the Web at the Linux Documentation Project.  This document is
+
+
+  http://sunsite.unc.edu/LDP/HOWTO/Fundamentals.html
+
+
+
+  which means it lives in the file LDP/HOWTO/Fundamentals.html under the
+  World Wide Web export directory of the host sunsite.unc.edu.
+
+
+  10.1.  Names and locations
+
+
+  The first thing your browser has to do is to establish a network
+  connection to the machine where the document lives.  To do that, it
+  first has to find the network location of the host sunsite.unc.edu
+  (`host' is short for `host machine' or `network host'; sunsite.unc.edu
+  is a typical hostname).  The corresponding location is actually a
+  number called an IP address (we'll explain the `IP' part of this term
+  later).
+
+  To do this, your browser queries a program called a name server.  The
+  name server may live on your machine, but it's more likely to run on a
+  service machine that yours talks to.  When you sign up with an ISP,
+  part of your setup procedure will almost certainly involve telling
+  your Internet software the IP address of a nameserver on the ISP's
+  network.
+
+  The name servers on different machines talk to each other, exchanging
+  and keeping up to date all the information needed to resolve hostnames
+  (map them to IP addresses).  Your nameserver may query three or four
+  different sites across the network in the process of resolving
+  sunsite.unc.edu, but this usually happens very quickly (as in less
+  than a second).
+
+  The nameserver will tell your browser that Sunsite's IP address is
+  152.2.22.81; knowing this, your machine will be able to exchange bits
+  with sunsite directly.
+
+
+
+
+
+  10.2.  Packets and routers
+
+
+  What the browser wants to do is send a command to the Web server on
+  Sunsite that looks like this:
+
+
+  GET /LDP/HOWTO/Fundamentals.html HTTP/1.0
+
+
+
+  Here's how that happens.  The command is made into a packet, a block
+  of bits like a telegram that is wrapped with three important things;
+  the source address (the IP address of your machine), the destination
+  address (152.2.22.81), and a service number or port number (80, in
+  this case) that indicates that it's a World Wide Web request.
+
+  Your machine then ships the packet down the wire (modem connection to
+  your ISP, or local network) until it gets to a specialized machine
+  called a router.  The router has a map of the Internet in its memory
+  -- not always a complete one, but one that completely describes your
+  network neighborhood and knows how to get to the routers for other
+  neighborhoods on the Internet.
+
+  Your packet may pass through several routers on the way to its
+  destination.  Routers are smart.  They watch how long it takes for
+  other routers to acknowledge having received a packet.  They use that
+  information to direct traffic over fast links.  They use it to notice
+  when another routers (or a cable) have dropped off the network, and
+  compensate if possible by finding another route.
+
+  There's an urban legend that the Internet was designed to survive
+  nuclear war.  This is not true, but the Internet's design is extremely
+  good at getting reliable performance out of flaky hardware in am
+  uncertain world..  This is directly due to the fact that its
+  intelligence is distributed through thousands of routers rather than a
+  few massive switches (like the phone network).  This means that
+  failures tend to be well localized and the network can route around
+  them.
+
+  Once your packet gets to its destination machine, that machine uses
+  the service number to feed the packet to the web server.  The web
+  server can tell where to reply to by looking at the command packet's
+  source IP address. When the web server returns this document, it will
+  be broken up into a number of packets.  The size of the packets will
+  vary according to the transmission media in the network and the type
+  of service.
+
+
+  10.3.  TCP and IP
+
+  To understand how multiple-packet transmissions are handled, you need
+  to know that the Internet actually uses two protocols, stacked one on
+  top of the other.
+
+  The lower level, IP (Internet Protocol), knows how to get individual
+  packets from a source address to a destination address (this is why
+  these are called IP addresses).  However, IP is not reliable; if a
+  packet gets lost or dropped, the source and destination machines may
+  never know it.  In network jargon, IP is a connectionless protocol;
+  the sender just fires a packet at the receiver and doesn't expect an
+  acknowledgement.
+
+  IP is fast and cheap, though.  Sometimes fast, cheap and unreliable is
+  OK.  When you play networked Doom or Quake, each bullet is represented
+  by an IP packet.  If a few of those get lost, that's OK.
+  The upper level, TCP (Transmission Control Protocol), gives you
+  reliability.  When two machines negotiate a TCP connection (which they
+  do using IP), the receiver knows to send acknowledgements of the
+  packets it sees back to the sender.  If the sender doesn't see an
+  acknowledgement for a packet within some timeout period, it resends
+  that packet.  Furthermore, the sender gives each TCP packet has a
+  sequence number, which the receiver can use you reassemble packets in
+  case they show up out of order.  (This can happen if network links go
+  up or down during a connection.)
+
+  TCP/IP packets also contain a checksum to enable detection of data
+  corrupted by bad links.  So, from the point of view of anyone using
+  TCP/IP and nameservers, it looks like a reliable way to pass streams
+  of bytes between hostname/service-number pairs.  People who write
+  network protocols almost never have to think about all the
+  packetizing, packet reassembly, error checking, checksumming, and
+  retransmission that goes on below that level.
+
+
+  10.4.  HTTP, an application protocol
+
+  Now let's get back to our example.  Web browsers and servers speak an
+  application protocol that runs on top of TCP/IP, using it simply as a
+  way to pass strings of bytes back and forth.  This protocol is called
+  HTTP (Hyper-Text Transfer Protocol) and we've already seen one command
+  in it -- the GET shown above.
+
+  When the GET command goes to sunsite.unc.edu's webserver with service
+  number 80, it will dispatched to a server daemon listening on port 80.
+  Most Internet services are implemented by server daemons that do
+  nothing but wait on ports, watching for and executing incoming
+  commands.
+
+  If the design of the Internet has one overall rule, it's that all the
+  parts should be as simple and human-accessible as possible.  HTTP, and
+  its relatives (like the Simple Mail Transfer Protocol, SMTP, that is
+  used to move electronic mail between hosts) tend to use simple
+  printable-text commands that end with a carriage-return/line feed.
+
+  This is marginally inefficient; in some circumstances you could get
+  more speed by using a tightly-coded binary protocol.  But experience
+  has shown that the benefits of having commands be easy for human
+  beings to describe and understand outweigh any marginal gain in
+  efficiency that you might get at the cost of making things tricky and
+  opaque.
+
+  Therefore, what the server daemon ships back to you via TCP/IP is also
+  text.  The beginning of the response will look something like this (a
+  few headers have been suppressed):
+
+
+  HTTP/1.1 200 OK
+  Date: Sat, 10 Oct 1998 18:43:35 GMT
+  Server: Apache/1.2.6 Red Hat
+  Last-Modified: Thu, 27 Aug 1998 17:55:15 GMT
+  Content-Length: 2982
+  Content-Type: text/html
+
+
+
+  These headers will be followed by a blank line and the text of the web
+  page (after which the connection is dropped).  Your browser just
+  displays that page.  The headers tell it how (in particular, the
+  Content-Type header tells it the returned data is really HTML).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

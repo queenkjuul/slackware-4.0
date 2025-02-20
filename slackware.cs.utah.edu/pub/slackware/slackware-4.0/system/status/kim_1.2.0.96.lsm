@@ -1,0 +1,15 @@
+Begin3
+Title:		kim
+Version:	1.2.0.96
+Entered-date:	May 7 1999
+Description:	An interactive (ncurses) user friendly process manager for OS Linux
+Keywords:	process /proc kill tree signals procps
+Author: 	Karel Zak <zakkr@zf.jcu.cz>
+Maintained-by:	Karel Zak <zakkr@zf.jcu.cz>
+Primary-site:	ftp2.zf.jcu.cz /users/zakkr/kim/
+		106 Kb kim_1.2.0.96.orig.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/status
+
+Platforms:	Should work with most kernels. Requires /proc
+Copying-policy:	GPL
+End

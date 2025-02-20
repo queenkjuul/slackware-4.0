@@ -1,0 +1,31 @@
+Begin3
+Title:          Z81
+Version:        1.1
+Entered-date:   11MAR99
+Description:	Z81/Z81txt/xz81 are ZX81 (TS1000) and ZX80 emulators
+		for (respectively) svgalib, text mode, and X. They
+		load/save Xtender-format .P files, and support the
+		ZX81's pseudo-hi-res mode. A few ZX81-related utils,
+		GIFs of the keyboard layout, two PD tetris clones,
+		a PD minesweeper clone, and a pear tree are included.
+		(Just add partridge.)
+
+		Though I (rjm) wrote Z81 etc., I give Ian main author
+		credit as I used his Z80 emulation (from his excellent
+		`xz80' ZX Spectrum emulator), which is the most
+		difficult bit, not to mention being half the code. :-)
+		(Please don't contact Ian in relation to Z81; I just
+		used his code, he wasn't otherwise involved. The email
+		address below is given only for completeness, and
+		might be out of date.)
+
+Keywords:       Sinclair ZX80 ZX81 TS1000 emulator VGA text svgalib X
+Author:         imc@comlab.ox.ac.uk (Ian Collier)
+		rus@forfree.at (Russell Marks)
+Maintained-by:  rus@forfree.at (Russell Marks)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/emulators/zx
+		251866	z81-1.1.tar.gz
+Platforms:      Z81: VGA reqd, Z81txt: /dev/vcsa0 reqd,
+		xz81: any modern Unix box with X
+Copying-policy: GPL
+End

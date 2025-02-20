@@ -1,0 +1,26 @@
+# tagfile for the X applications series
+kde:      OPT
+qt_1_44:  OPT
+gimp:     OPT
+imagick:  OPT
+xpdf:     OPT
+freefont: OPT
+arena:    OPT
+netscape: REC
+fvwm95:   OPT
+gs_x11:   REC
+libgr:    REC
+seyon:    OPT
+xv:       REC
+gchess:   OPT
+tkdesk:   REC
+xfm:      OPT
+xfileman: OPT
+gv:       REC
+x3270:    OPT
+xgames:   OPT
+xspread:  OPT
+xxgdb:    OPT
+gnuplot:  OPT
+xpaint:   OPT
+xfract:   OPT

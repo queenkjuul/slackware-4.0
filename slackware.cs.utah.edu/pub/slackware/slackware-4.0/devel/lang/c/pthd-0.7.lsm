@@ -1,0 +1,37 @@
+Begin3
+Title:          Prerelease of PCthreads (tm) for Linux.
+Version:        Version 0.7 (Beta)
+Entered-date:   16AUG95
+Description:    PCthreads(tm) for Linux is a pre-release beta test
+                multithread library based on the POSIX .1c standard.
+                In addtition to POSIX threads, the PCthreads kit also
+                contains a DCE threads library, a port of the DCE
+                threads exception handling package, and a multithreaded,
+                recursive grep, "tgrep".
+Keywords:       Pthreads, multithreading, tgrep, Exceptions, DCE
+Author:         MPeterson@big.aa.net (Michael T. Peterson)
+Maintained-by:  
+Primary-site:   tsx-11.mit.edu /pub/linux/ALPHA
+                pthd-0.7/
+                7	pthd-0.7/man/man1
+                25	pthd-0.7/man/man3
+                33	pthd-0.7/man
+                79	pthd-0.7/lib
+                41	pthd-0.7/include/dce
+                52	pthd-0.7/include
+                8	pthd-0.7/src_mutex
+                14	pthd-0.7/src_thread
+                17	pthd-0.7/src_signals
+                1	pthd-0.7/bin
+                5	pthd-0.7/src_condv
+                7	pthd-0.7/src_tgrep/man
+                43	pthd-0.7/src_tgrep/src-main
+                32	pthd-0.7/src_tgrep/src-match
+                92	pthd-0.7/src_tgrep
+                305	pthd-0.7
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/c
+Original-site:  
+Platforms:      Linux/Intel platforms, Versions 1.2.8 1.2.11
+Copying-policy: FRS
+End
+

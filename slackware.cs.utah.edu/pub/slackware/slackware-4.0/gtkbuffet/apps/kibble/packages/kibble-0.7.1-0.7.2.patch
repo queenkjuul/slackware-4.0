@@ -1,0 +1,3094 @@
+diff -d -u -r kibble/ChangeLog kibble-0.7.2/ChangeLog
+--- kibble/ChangeLog	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/ChangeLog	Mon Mar  8 17:56:44 1999
+@@ -1,3 +1,43 @@
++Mon Mar  8 22:46:26 1999  joseph  <joseph@wish.student.harvard.edu>
++
++	* README, TODO, TODO_BEFORE_NEXT_RELEASE: Updated for version 0.7.2.
++
++	* main_window.c:
++	Snapping occurs in GTK 1.2.0. Removed AUTOMATIC policy from scollbar.
++
++Fri Feb  5 05:49:39 1999  joseph  <joseph@wish.student.harvard.edu>
++
++	* add_dialog.c, data_selectfile.c, delete_dialog.c, kb.c, main.c, main_window.c, view_dialog.c:
++	Compressed gtk_widget_show()'s to gtk_widget_show_all()'s
++
++	* main.c: Referenced the FAQ in the not-implemented message.
++
++	* add_dialog.c, view_dialog.c: text_set_line_wrap
++
++	* acconfig.h, configure.in, kb.c, main.c, main.h, main_menu.c:
++	Used glib equivalents of all external functions (except strlen).
++	Removed padding in show_message_box (no right padding??).
++
++Tue Dec 22 03:47:50 1998  joseph  <joseph@wish.student.harvard.edu>
++
++	* TODO, TODO_BEFORE_NEXT_RELEASE, main_menu.c:
++	item_factory used to create main menu.
++
++	* TODO_BEFORE_NEXT_RELEASE, add_dialog.c: Word wrap in add/view.
++
++	* TODO_BEFORE_NEXT_RELEASE: Initial revision
++
++	* FAQ, Makefile.am, NEWS, add_dialog.c, all.h, configure.in, data_selectfile.c, delete_dialog.c, kb.c, kb.h, main.c, main.h, main_menu.c, main_window.c, view_dialog.c:
++	Multiple simultaneous operations permitted. (Modal hack code removed.)
++
++Mon Dec 21 04:33:40 1998  joseph  <joseph@wish.student.harvard.edu>
++
++	* FAQ: Added a question about breaking Kibble.
++
++	* data_selectfile.h, delete_dialog.h, kb.h, main.h, main_menu.h, main_window.h, modal_hack.h, view_dialog.h, acconfig.h, add_dialog.c, add_dialog.h, data_selectfile.c, delete_dialog.c, kb.c, main.c, main_menu.c, main_window.c, modal_hack.c, view_dialog.c:
++	Linted all files (except view_dialog.[ch] because of lclint bugs).
++	Added debug_msg's
++
+ Mon Dec  7 17:25:57 1998  joseph  <joseph@wish.student.harvard.edu>
+ 
+ 	* kibble.lsm: Updated for 0.7.1.
+Only in kibble: FAQ
+diff -d -u -r kibble/Makefile.am kibble-0.7.2/Makefile.am
+--- kibble/Makefile.am	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/Makefile.am	Mon Mar  8 17:56:44 1999
+@@ -10,7 +10,6 @@
+ 	main.c \
+ 	main_menu.c \
+ 	main_window.c \
+-	modal_hack.c \
+ 	view_dialog.c
+ 
+ noinst_HEADERS = \
+@@ -22,5 +21,4 @@
+ 	main.h \
+ 	main_menu.h \
+ 	main_window.h \
+-	modal_hack.c \
+ 	view_dialog.h
+diff -d -u -r kibble/Makefile.in kibble-0.7.2/Makefile.in
+--- kibble/Makefile.in	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/Makefile.in	Mon Mar  8 17:56:44 1999
+@@ -62,6 +62,7 @@
+ GTK_CONFIG = @GTK_CONFIG@
+ GTK_LIBS = @GTK_LIBS@
+ LN_S = @LN_S@
++MAINT = @MAINT@
+ MAKEINFO = @MAKEINFO@
+ PACKAGE = @PACKAGE@
+ VERSION = @VERSION@
+@@ -76,7 +77,6 @@
+ 	main.c \
+ 	main_menu.c \
+ 	main_window.c \
+-	modal_hack.c \
+ 	view_dialog.c
+ 
+ noinst_HEADERS = \
+@@ -88,7 +88,6 @@
+ 	main.h \
+ 	main_menu.h \
+ 	main_window.h \
+-	modal_hack.c \
+ 	view_dialog.h
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+@@ -102,7 +101,7 @@
+ LDFLAGS = @LDFLAGS@
+ LIBS = @LIBS@
+ kibble_OBJECTS =  add_dialog.o data_selectfile.o delete_dialog.o kb.o \
+-main.o main_menu.o main_window.o modal_hack.o view_dialog.o
++main.o main_menu.o main_window.o view_dialog.o
+ kibble_LDADD = $(LDADD)
+ kibble_DEPENDENCIES = 
+ kibble_LDFLAGS = 
+@@ -122,7 +121,7 @@
+ GZIP = --best
+ DEP_FILES =  .deps/add_dialog.P .deps/data_selectfile.P \
+ .deps/delete_dialog.P .deps/kb.P .deps/main.P .deps/main_menu.P \
+-.deps/main_window.P .deps/modal_hack.P .deps/view_dialog.P
++.deps/main_window.P .deps/view_dialog.P
+ SOURCES = $(kibble_SOURCES)
+ OBJECTS = $(kibble_OBJECTS)
+ 
+@@ -130,19 +129,19 @@
+ 
+ .SUFFIXES:
+ .SUFFIXES: .S .c .o .s
+-$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4)
++$(srcdir)/Makefile.in: @MAINT@ Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4)
+ 	cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile
+ 
+ Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+ 	cd $(top_builddir) \
+ 	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+ 
+-$(ACLOCAL_M4):  configure.in 
++$(ACLOCAL_M4): @MAINT@ configure.in 
+ 	cd $(srcdir) && $(ACLOCAL)
+ 
+ config.status: $(srcdir)/configure
+ 	$(SHELL) ./config.status --recheck
+-$(srcdir)/configure: $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
++$(srcdir)/configure: @MAINT@$(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+ 	cd $(srcdir) && $(AUTOCONF)
+ 
+ config.h: stamp-h
+@@ -152,7 +151,7 @@
+ 	  && CONFIG_FILES= CONFIG_HEADERS=config.h \
+ 	     $(SHELL) ./config.status
+ 	@echo timestamp > stamp-h
+-$(srcdir)/config.h.in: $(srcdir)/stamp-h.in
++$(srcdir)/config.h.in: @MAINT@$(srcdir)/stamp-h.in
+ $(srcdir)/stamp-h.in: $(top_srcdir)/configure.in $(ACLOCAL_M4) acconfig.h
+ 	cd $(top_srcdir) && $(AUTOHEADER)
+ 	@echo timestamp > $(srcdir)/stamp-h.in
+diff -d -u -r kibble/NEWS kibble-0.7.2/NEWS
+--- kibble/NEWS	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/NEWS	Mon Mar  8 17:56:44 1999
+@@ -1,3 +1,6 @@
++New in 0.7.2:
++* Multiple simultaneous operations permitted. (Modal hack code removed.)
++
+ New in 0.7.1:
+ * Sources ~/.gtkrc
+ 
+diff -d -u -r kibble/README kibble-0.7.2/README
+--- kibble/README	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/README	Mon Mar  8 17:56:44 1999
+@@ -14,10 +14,10 @@
+ 
+ 	ftp://wish.student.harvard.edu/pub/kibble/
+ 
+-Read the FAQ for documentation. The latest version of the FAQ should be
+-on the web:
++Read the FAQ for documentation. The latest version of the FAQ is on
++the web:
+ 
+-	http://wish.student.harvard.edu/kibble/FAQ
++	http://wish.student.harvard.edu/kibble/faq/
+ 
+ Mail suggestions and bug reports to kibble@wish.student.harvard.edu.
+ 
+diff -d -u -r kibble/TODO kibble-0.7.2/TODO
+--- kibble/TODO	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/TODO	Mon Mar  8 17:56:44 1999
+@@ -1,9 +1,5 @@
+ Short term:
+ 
+-* Code linting/beautification.
+-
+-* Optional debugging messages.
+-
+ * Implement basic GUI functionality.
+ 
+ 	* Right clicking a tree entry should pop up a menu of the edit
+@@ -42,8 +38,6 @@
+ 
+ * Clean up the "view" dialog okay button code.
+ 
+-* Reference FAQ in help/proper help subsystem.
+-
+ * Filenames without directories should default to the working directory.
+ 
+ * Macros to handle tree_item creation.
+@@ -56,21 +50,32 @@
+ * Saving only when a change has been made (with a little indicator of
+ such fact in the status bar).
+ 
+-* Use item_factory for menu.
++* Quitting without saving.
++
++* User with multiple windows open should not be able to shoot himself
++in the foot if one operation clobbers another (volatile variables?).
++
++* Should use g_string, but it looks so hideous!
+ 
+ Mid term:
+ 
+-* GNOME support. This will be added once the RPM's are stable on my
+-  system. (Sorry, I am a college student, I do not have enough time to
+-  babysit CVS.)
++* Be a GNU kid
+ 
+-* GtkItemFactory for the menu.
++	* Better automake/autoconf'ing
++	
++	* mkdir doc, intl, po, src
++	
++	* i8n and l10n.
++
++* GNOME support.
++
++	* Conform to GNOME style: http://www.gnome.org/devel/sg/
+ 
+ * Undo support.
+ 
+ * Editing functions: Cut, copy, paste, move.
+ 
+-* Documentation. Explain where the name comes from.
++* Better documentation. Explain where the name comes from.
+ 
+ * Auto-saving every few minutes
+ 
+@@ -86,6 +91,8 @@
+ descriptions and brief descriptions of functionality.
+ 
+ * Initial window should resize to be larger if there is more data.
++
++* Verbose: Shows summary of data within tree
+ 
+ Long term:
+ 
+diff -d -u -r kibble/acconfig.h kibble-0.7.2/acconfig.h
+--- kibble/acconfig.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/acconfig.h	Mon Mar  8 17:56:44 1999
+@@ -15,12 +15,13 @@
+ 
+ 
+ #undef HAVE_GTK_SCROLLED_WINDOW_ADD_WITH_VIEWPORT
+-#undef HAVE_GETENV
+-#undef HAVE_STRCAT
+-#undef HAVE_STRNCPY
++#undef HAVE_STRLEN
+ 
+ #undef PACKAGE
+ #undef VERSION
++
++/* Debugging */
++#undef DEBUG
+ 
+ 
+ /* Leave that blank line there!!  Autoheader needs it.
+diff -d -u -r kibble/aclocal.m4 kibble-0.7.2/aclocal.m4
+--- kibble/aclocal.m4	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/aclocal.m4	Mon Mar  8 17:56:44 1999
+@@ -111,6 +111,29 @@
+ fi
+ AC_SUBST($1)])
+ 
++# Add --enable-maintainer-mode option to configure.
++# From Jim Meyering
++
++# serial 1
++
++AC_DEFUN(AM_MAINTAINER_MODE,
++[AC_MSG_CHECKING([whether to enable maintainer-specific portions of Makefiles])
++  dnl maintainer-mode is disabled by default
++  AC_ARG_ENABLE(maintainer-mode,
++[  --enable-maintainer-mode enable make rules and dependencies not useful
++                          (and sometimes confusing) to the casual installer],
++      USE_MAINTAINER_MODE=$enableval,
++      USE_MAINTAINER_MODE=no)
++  AC_MSG_RESULT($USE_MAINTAINER_MODE)
++  if test $USE_MAINTAINER_MODE = yes; then
++    MAINT=
++  else
++    MAINT='#M#'
++  fi
++  AC_SUBST(MAINT)dnl
++]
++)
++
+ # Like AC_CONFIG_HEADER, but automatically create stamp file.
+ 
+ AC_DEFUN(AM_CONFIG_HEADER,
+@@ -183,7 +206,7 @@
+       ac_save_CFLAGS="$CFLAGS"
+       ac_save_LIBS="$LIBS"
+       CFLAGS="$CFLAGS $GTK_CFLAGS"
+-      LIBS="$LIBS $GTK_LIBS"
++      LIBS="$GTK_LIBS $LIBS"
+ dnl
+ dnl Now check if the installed GTK is sufficiently new. (Also sanity
+ dnl checks the results of gtk-config to some extent
+diff -d -u -r kibble/add_dialog.c kibble-0.7.2/add_dialog.c
+--- kibble/add_dialog.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/add_dialog.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* add_dialog.c
+- * $Id: add_dialog.c,v 0.9 1998/12/05 02:53:40 joseph Exp $
++ * $Id: add_dialog.c,v 0.14 1999/02/05 05:49:39 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -22,173 +22,173 @@
+ 
+ #include "all.h"
+ 
+-/* This variable does not necessarily have to be global. */
+-GtkWidget *dialog_add;
+-
+-void on_button_add_okay_clicked (GtkButton *button, gpointer user_data)
++static void on_button_add_okay_clicked (GtkButton *button, gpointer user_data)
+ {
+ 	node *new_data;
++	GtkWidget *dialog_add;
++	GtkWidget *current_tree_item;
+ 	GtkWidget *subtree, *new_item;
+ 
++        debug_msg ("add okay button clicked\n");
++
++	dialog_add = user_data;
++	g_assert (GTK_IS_WINDOW (dialog_add) != 0);
++
++	current_tree_item = GTK_WIDGET (gtk_object_get_data (GTK_OBJECT
++				(dialog_add), "tree item"));
++	g_assert (current_tree_item != NULL);
++	if (GTK_IS_TREE_ITEM (current_tree_item) != 1) {
++		show_message_box ("Error!\n\n"
++				"Tree item no longer exists?\n"
++				"Aborting add operation\n");
++		gtk_object_destroy (GTK_OBJECT (dialog_add));
++		return;
++	}
++	
+ 	/* If no other subtree */
+ 	if(!(subtree = GTK_TREE_ITEM_SUBTREE(current_tree_item))){
++		debug_msg ("no subtree, creating new one\n");
+ 		subtree = gtk_tree_new();
+ 		gtk_tree_item_set_subtree (GTK_TREE_ITEM (current_tree_item),
+ 				subtree);
+ 		gtk_tree_item_expand (GTK_TREE_ITEM (current_tree_item));
+-		gtk_widget_show (subtree);
+ 	}
+ 
+ 	new_data = new_node();
+-	g_string_assign (new_data->name, TEXT_DATA ("name", dialog_add));
+-	g_string_assign (new_data->description, gtk_editable_get_chars
++	(void *) g_string_assign (new_data->name, TEXT_DATA ("name", dialog_add));
++	(void *) g_string_assign (new_data->description, gtk_editable_get_chars
+ 			(GTK_EDITABLE (DATA ("description", dialog_add)),
+-			 0, gtk_text_get_length (GTK_TEXT (DATA
++			 0, (gint)gtk_text_get_length (GTK_TEXT (DATA
+ 					 ("description", dialog_add)))));
+ 
+-	g_string_assign (new_data->filename, TEXT_DATA ("filename",
++	(void *) g_string_assign (new_data->filename, TEXT_DATA ("filename",
+ 				dialog_add));
+ 
+ 	new_item = gtk_tree_item_new_with_label (new_data->name->str);
+ 	gtk_object_set_data (GTK_OBJECT (new_item), "node", (gpointer)new_data);
+ 	gtk_tree_append (GTK_TREE(subtree), new_item);
+-	gtk_widget_show (new_item);
+-	gtk_signal_connect (GTK_OBJECT (new_item),
++	(void) gtk_signal_connect (GTK_OBJECT (new_item),
+ 			"button_press_event",
+ 			GTK_SIGNAL_FUNC (on_tree_item_click),
+ 			NULL);
+ 
+-	destroy_modal (GTK_OBJECT(dialog_add), NULL);
++	gtk_widget_show_all (current_tree_item);
++	gtk_object_destroy (GTK_OBJECT (dialog_add));
+ }
+ 
+-GtkWidget* create_dialog_add ()
++void create_dialog_add ()
+ {
++	GtkWidget *dialog_add;
+ 	GtkWidget *dialog_vbox;
+-	GtkWidget *vbox1;
++	GtkWidget *vbox;
+ 	GtkWidget *hbox;
+ 	GtkWidget *label;
+ 	GtkWidget *entry_name;
+ 	GtkWidget *text_description;
+ 	GtkWidget *frame;
+-	GtkWidget *vbox2;
+ 	GtkWidget *button_view;
+ 	GtkWidget *button_browse;
+ 	GtkWidget *dialog_action_area;
+ 	GtkWidget *button_okay;
+ 	GtkWidget *button_cancel;
+ 
++	debug_msg ("creating add dialog\n");
+ 	dialog_add = gtk_dialog_new ();
++	gtk_object_set_data (GTK_OBJECT (dialog_add), "tree item",
++			KB_ITEM_SELECTED);
++	debug_msg ("dialog_add = 0x%x\n" _ (gint)dialog_add);
+ 	gtk_window_set_title (GTK_WINDOW (dialog_add), "Add");
+ 	gtk_window_set_policy (GTK_WINDOW (dialog_add), TRUE, TRUE, FALSE);
+-	gtk_signal_connect_object (GTK_OBJECT (dialog_add), "delete_event",
+-			GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT (dialog_add));
+ 
+ 	dialog_vbox = GTK_DIALOG (dialog_add)->vbox;
+-	gtk_widget_show (dialog_vbox);
+ 
+-	vbox1 = gtk_vbox_new (FALSE, 0);
+-	gtk_widget_show (vbox1);
+-	gtk_box_pack_start (GTK_BOX (dialog_vbox), vbox1, TRUE, TRUE, 5);
+-	gtk_container_border_width (GTK_CONTAINER (vbox1), 10);
++	vbox = gtk_vbox_new (FALSE, 0);
++	gtk_box_pack_start (GTK_BOX (dialog_vbox), vbox, TRUE, TRUE, 5);
++	gtk_container_border_width (GTK_CONTAINER (vbox), 10);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 0);
+-	gtk_widget_show (hbox);
+-	gtk_box_pack_start (GTK_BOX (vbox1), hbox, TRUE, TRUE, 3);
++	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 3);
+ 
+ 	label = gtk_label_new ("Name:");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 3);
+ 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+ 
+ 	entry_name = gtk_entry_new_with_max_length (MAX_STR_LEN);
+ 	gtk_object_set_data (GTK_OBJECT (dialog_add), "name", entry_name);
+-	gtk_widget_show (entry_name);
+ 	gtk_box_pack_start (GTK_BOX (hbox), entry_name, TRUE, TRUE, 5);
+ 	GTK_WIDGET_SET_FLAGS (entry_name, GTK_CAN_DEFAULT);
+ 	gtk_widget_grab_default (entry_name);
+ 
+ 	label = gtk_label_new ("Description:");
+-	gtk_widget_show (label);
+-	gtk_box_pack_start (GTK_BOX (vbox1), label, TRUE, TRUE, 3);
++	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 3);
+ 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+ 
+ 	text_description = gtk_text_new (NULL, NULL);
+ 	gtk_object_set_data (GTK_OBJECT (dialog_add), "description", text_description);
+-	gtk_widget_show (text_description);
+-	gtk_box_pack_start (GTK_BOX (vbox1), text_description, TRUE, TRUE, 5);
++	gtk_box_pack_start (GTK_BOX (vbox), text_description, TRUE, TRUE, 5);
+ 	GTK_WIDGET_SET_FLAGS (text_description, GTK_CAN_DEFAULT);
+-	gtk_text_set_editable (GTK_TEXT(text_description), 1);
++	gtk_text_set_editable (GTK_TEXT (text_description), 1);
++	/* What is the difference? */
++	gtk_text_set_line_wrap (GTK_TEXT (text_description), 1);
++	gtk_text_set_word_wrap (GTK_TEXT (text_description), 1);
+ 
+ 	frame = gtk_frame_new (NULL);
+-	gtk_widget_show (frame);
+-	gtk_box_pack_start (GTK_BOX (vbox1), frame, TRUE, TRUE, 3);
++	gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 3);
+ 
+-	vbox2 = gtk_vbox_new (FALSE, 0);
+-	gtk_widget_show (vbox2);
+-	gtk_container_add (GTK_CONTAINER (frame), vbox2);
++	vbox = gtk_vbox_new (FALSE, 0);
++	gtk_container_add (GTK_CONTAINER (frame), vbox);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 5);
+-	gtk_widget_show (hbox);
+-	gtk_box_pack_start (GTK_BOX (vbox2), hbox, TRUE, TRUE, 0);
++	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+ 	gtk_container_border_width (GTK_CONTAINER (hbox), 5);
+ 
+ 	label = gtk_label_new ("Filename:");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+ 
+ 	entry_filename = gtk_entry_new_with_max_length (MAX_STR_LEN);
+ 	gtk_object_set_data (GTK_OBJECT (dialog_add), "filename",
+ 			entry_filename);
+-	gtk_widget_show (entry_filename);
+ 	gtk_box_pack_start (GTK_BOX (hbox), entry_filename, TRUE, TRUE, 0);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 5);
+-	gtk_widget_show (hbox);
+-	gtk_box_pack_start (GTK_BOX (vbox2), hbox, TRUE, TRUE, 0);
++	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+ 
+ 	button_view = gtk_button_new_with_label ("View");
+-	gtk_widget_show (button_view);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_view, TRUE, FALSE, 0);
+ 	GTK_WIDGET_SET_FLAGS (button_view, GTK_CAN_DEFAULT);
+-	gtk_signal_connect (GTK_OBJECT (button_view), "clicked",
+-			GTK_SIGNAL_FUNC (modal2_not_implemented),
++	(void) gtk_signal_connect (GTK_OBJECT (button_view), "clicked",
++			GTK_SIGNAL_FUNC (not_implemented),
+ 			NULL);
+ 
+ 	button_browse = gtk_button_new_with_label ("Browse");
+-	gtk_widget_show (button_browse);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_browse, TRUE, FALSE, 0);
+ 	GTK_WIDGET_SET_FLAGS (button_browse, GTK_CAN_DEFAULT);
+-	gtk_signal_connect (GTK_OBJECT (button_browse), "clicked",
++	(void) gtk_signal_connect (GTK_OBJECT (button_browse), "clicked",
+ 			GTK_SIGNAL_FUNC (on_button_browse_clicked),
+ 			NULL);
+ 
+ 	dialog_action_area = GTK_DIALOG (dialog_add)->action_area;
+-	gtk_widget_show (dialog_action_area);
+ 	gtk_container_border_width (GTK_CONTAINER (dialog_action_area), 10);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 0);
+-	gtk_widget_show (hbox);
+ 	gtk_box_pack_start (GTK_BOX (dialog_action_area), hbox, TRUE, TRUE, 0);
+ 
+ 	button_okay = gtk_button_new_with_label ("Okay");
+-	gtk_widget_show (button_okay);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_okay, TRUE, FALSE, 5);
+ 	GTK_WIDGET_SET_FLAGS (button_okay, GTK_CAN_DEFAULT);
+ 	gtk_widget_grab_focus (button_okay);
+ 	gtk_widget_grab_default (button_okay);
+-	gtk_signal_connect (GTK_OBJECT (button_okay), "clicked",
++	(void) gtk_signal_connect (GTK_OBJECT (button_okay), "clicked",
+ 			GTK_SIGNAL_FUNC (on_button_add_okay_clicked),
+-			NULL);
++			GTK_OBJECT (dialog_add));
+ 
+ 	button_cancel = gtk_button_new_with_label ("Cancel");
+-	gtk_widget_show (button_cancel);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_cancel, TRUE, FALSE, 5);
+ 	gtk_container_border_width (GTK_CONTAINER (button_cancel), 1);
+ 	GTK_WIDGET_SET_FLAGS (button_cancel, GTK_CAN_DEFAULT);
+-	gtk_signal_connect (GTK_OBJECT (button_cancel), "clicked",
+-			GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT(dialog_add));
+-
+-	return dialog_add;
++	(void) gtk_signal_connect_object (GTK_OBJECT (button_cancel),
++					  "clicked", GTK_SIGNAL_FUNC
++					  (gtk_object_destroy), GTK_OBJECT
++					  (dialog_add));
++	gtk_widget_show_all (dialog_add);
+ }
+diff -d -u -r kibble/add_dialog.h kibble-0.7.2/add_dialog.h
+--- kibble/add_dialog.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/add_dialog.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* add_dialog.h
+- * $Id: add_dialog.h,v 0.3 1998/11/18 00:37:17 joseph Exp $
++ * $Id: add_dialog.h,v 0.4 1998/12/21 04:21:36 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -20,6 +20,4 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-GtkWidget* create_dialog_add (void);
+-
+-void on_button_add_okay_clicked		(GtkButton *button, gpointer user_data);
++extern void create_dialog_add	(void);
+diff -d -u -r kibble/all.h kibble-0.7.2/all.h
+--- kibble/all.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/all.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* all.h
+- * $Id: all.h,v 0.7 1998/12/07 17:07:32 joseph Exp $
++ * $Id: all.h,v 0.8 1998/12/22 01:57:00 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -35,5 +35,4 @@
+ #include "main.h"
+ #include "main_menu.h"
+ #include "main_window.h"
+-#include "modal_hack.h"
+ #include "view_dialog.h"
+diff -d -u -r kibble/config.h kibble-0.7.2/config.h
+--- kibble/config.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/config.h	Mon Mar  8 17:56:45 1999
+@@ -5,16 +5,13 @@
+ #define STDC_HEADERS 1
+ 
+ #define PACKAGE "kibble"
+-#define VERSION "0.7.1"
++#define VERSION "0.7.2"
+ 
+-/* Define if you have the getenv function.  */
+-#define HAVE_GETENV 1
++/* Debugging */
++/* #undef DEBUG */
+ 
+ /* Define if you have the gtk_scrolled_window_add_with_viewport function.  */
+-/* #undef HAVE_GTK_SCROLLED_WINDOW_ADD_WITH_VIEWPORT */
+-
+-/* Define if you have the strcat function.  */
+-#define HAVE_STRCAT 1
++#define HAVE_GTK_SCROLLED_WINDOW_ADD_WITH_VIEWPORT 1
+ 
+-/* Define if you have the strncpy function.  */
+-#define HAVE_STRNCPY 1
++/* Define if you have the strlen function.  */
++#define HAVE_STRLEN 1
+diff -d -u -r kibble/config.h.in kibble-0.7.2/config.h.in
+--- kibble/config.h.in	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/config.h.in	Mon Mar  8 17:56:44 1999
+@@ -6,14 +6,11 @@
+ #undef PACKAGE
+ #undef VERSION
+ 
+-/* Define if you have the getenv function.  */
+-#undef HAVE_GETENV
++/* Debugging */
++#undef DEBUG
+ 
+ /* Define if you have the gtk_scrolled_window_add_with_viewport function.  */
+ #undef HAVE_GTK_SCROLLED_WINDOW_ADD_WITH_VIEWPORT
+ 
+-/* Define if you have the strcat function.  */
+-#undef HAVE_STRCAT
+-
+-/* Define if you have the strncpy function.  */
+-#undef HAVE_STRNCPY
++/* Define if you have the strlen function.  */
++#undef HAVE_STRLEN
+diff -d -u -r kibble/configure kibble-0.7.2/configure
+--- kibble/configure	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/configure	Mon Mar  8 17:56:44 1999
+@@ -1,7 +1,7 @@
+ #! /bin/sh
+ 
+ # Guess values for system-dependent variables and create Makefiles.
+-# Generated automatically using autoconf version 2.12 
++# Generated automatically using autoconf version 2.13 
+ # Copyright (C) 1992, 93, 94, 95, 96 Free Software Foundation, Inc.
+ #
+ # This configure script is free software; the Free Software Foundation
+@@ -12,6 +12,11 @@
+ ac_default_prefix=/usr/local
+ # Any additions from configure.in:
+ ac_help="$ac_help
++  --enable-maintainer-mode enable make rules and dependencies not useful
++                          (and sometimes confusing) to the casual installer"
++ac_help="$ac_help
++  --enable-debug          Enable debugging."
++ac_help="$ac_help
+   --with-gtk-prefix=PFX   Prefix where GTK is installed (optional)"
+ ac_help="$ac_help
+   --with-gtk-exec-prefix=PFX Exec prefix where GTK is installed (optional)"
+@@ -55,6 +60,7 @@
+ # Initialize some other variables.
+ subdirs=
+ MFLAGS= MAKEFLAGS=
++SHELL=${CONFIG_SHELL-/bin/sh}
+ # Maximum number of lines to put in a shell here document.
+ ac_max_here_lines=12
+ 
+@@ -338,7 +344,7 @@
+     verbose=yes ;;
+ 
+   -version | --version | --versio | --versi | --vers)
+-    echo "configure generated by autoconf version 2.12"
++    echo "configure generated by autoconf version 2.13"
+     exit 0 ;;
+ 
+   -with-* | --with-*)
+@@ -508,9 +514,11 @@
+ # CFLAGS is not in ac_cpp because -g, -O, etc. are not valid cpp options.
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='${CC-cc} -c $CFLAGS $CPPFLAGS conftest.$ac_ext 1>&5'
+-ac_link='${CC-cc} -o conftest $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS 1>&5'
++ac_link='${CC-cc} -o conftest${ac_exeext} $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS 1>&5'
+ cross_compiling=$ac_cv_prog_cc_cross
+ 
++ac_exeext=
++ac_objext=o
+ if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null; then
+   # Stardent Vistra SVR4 grep lacks -e, says ghazi@caip.rutgers.edu.
+   if (echo -n testing; echo 1,2,3) | sed s/-n/xn/ | grep xn >/dev/null; then
+@@ -552,28 +560,30 @@
+ # SunOS /usr/etc/install
+ # IRIX /sbin/install
+ # AIX /bin/install
++# AIX 4 /usr/bin/installbsd, which doesn't work without a -g flag
+ # AFS /usr/afsws/bin/install, which mishandles nonexistent args
+ # SVR4 /usr/ucb/install, which tries to use the nonexistent group "staff"
+ # ./install, which can be erroneously created by make from ./install.sh.
+ echo $ac_n "checking for a BSD compatible install""... $ac_c" 1>&6
+-echo "configure:560: checking for a BSD compatible install" >&5
++echo "configure:569: checking for a BSD compatible install" >&5
+ if test -z "$INSTALL"; then
+ if eval "test \"`echo '$''{'ac_cv_path_install'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+-    IFS="${IFS= 	}"; ac_save_IFS="$IFS"; IFS="${IFS}:"
++    IFS="${IFS= 	}"; ac_save_IFS="$IFS"; IFS=":"
+   for ac_dir in $PATH; do
+     # Account for people who put trailing slashes in PATH elements.
+     case "$ac_dir/" in
+     /|./|.//|/etc/*|/usr/sbin/*|/usr/etc/*|/sbin/*|/usr/afsws/bin/*|/usr/ucb/*) ;;
+     *)
+       # OSF1 and SCO ODT 3.0 have their own names for install.
+-      for ac_prog in ginstall installbsd scoinst install; do
++      # Don't use installbsd from OSF since it installs stuff as root
++      # by default.
++      for ac_prog in ginstall scoinst install; do
+         if test -f $ac_dir/$ac_prog; then
+ 	  if test $ac_prog = install &&
+             grep dspmsg $ac_dir/$ac_prog >/dev/null 2>&1; then
+ 	    # AIX install.  It has an incompatible calling convention.
+-	    # OSF/1 installbsd also uses dspmsg, but is usable.
+ 	    :
+ 	  else
+ 	    ac_cv_path_install="$ac_dir/$ac_prog -c"
+@@ -603,13 +613,15 @@
+ # It thinks the first close brace ends the variable substitution.
+ test -z "$INSTALL_PROGRAM" && INSTALL_PROGRAM='${INSTALL}'
+ 
++test -z "$INSTALL_SCRIPT" && INSTALL_SCRIPT='${INSTALL_PROGRAM}'
++
+ test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
+ 
+ 
+ test -z "$INSTALL_SCRIPT" && INSTALL_SCRIPT='${INSTALL_PROGRAM}'
+ 
+ echo $ac_n "checking whether build environment is sane""... $ac_c" 1>&6
+-echo "configure:613: checking whether build environment is sane" >&5
++echo "configure:625: checking whether build environment is sane" >&5
+ # Just in case
+ sleep 1
+ echo timestamp > conftestfile
+@@ -666,7 +678,7 @@
+ test "$program_transform_name" = "" && program_transform_name="s,x,x,"
+ 
+ echo $ac_n "checking whether ${MAKE-make} sets \${MAKE}""... $ac_c" 1>&6
+-echo "configure:670: checking whether ${MAKE-make} sets \${MAKE}" >&5
++echo "configure:682: checking whether ${MAKE-make} sets \${MAKE}" >&5
+ set dummy ${MAKE-make}; ac_make=`echo "$2" | sed 'y%./+-%__p_%'`
+ if eval "test \"`echo '$''{'ac_cv_prog_make_${ac_make}_set'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+@@ -695,7 +707,7 @@
+ 
+ PACKAGE=kibble
+ 
+-VERSION=0.7.1
++VERSION=0.7.2
+ 
+ if test "`cd $srcdir && pwd`" != "`pwd`" && test -f $srcdir/config.status; then
+   { echo "configure: error: source directory already configured; run "make distclean" there first" 1>&2; exit 1; }
+@@ -712,7 +724,7 @@
+ 
+ missing_dir=`cd $ac_aux_dir && pwd`
+ echo $ac_n "checking for working aclocal""... $ac_c" 1>&6
+-echo "configure:716: checking for working aclocal" >&5
++echo "configure:728: checking for working aclocal" >&5
+ # Run test in a subshell; some versions of sh will print an error if
+ # an executable is not found, even if stderr is redirected.
+ # Redirect stdin to placate older versions of autoconf.  Sigh.
+@@ -725,7 +737,7 @@
+ fi
+ 
+ echo $ac_n "checking for working autoconf""... $ac_c" 1>&6
+-echo "configure:729: checking for working autoconf" >&5
++echo "configure:741: checking for working autoconf" >&5
+ # Run test in a subshell; some versions of sh will print an error if
+ # an executable is not found, even if stderr is redirected.
+ # Redirect stdin to placate older versions of autoconf.  Sigh.
+@@ -738,7 +750,7 @@
+ fi
+ 
+ echo $ac_n "checking for working automake""... $ac_c" 1>&6
+-echo "configure:742: checking for working automake" >&5
++echo "configure:754: checking for working automake" >&5
+ # Run test in a subshell; some versions of sh will print an error if
+ # an executable is not found, even if stderr is redirected.
+ # Redirect stdin to placate older versions of autoconf.  Sigh.
+@@ -751,7 +763,7 @@
+ fi
+ 
+ echo $ac_n "checking for working autoheader""... $ac_c" 1>&6
+-echo "configure:755: checking for working autoheader" >&5
++echo "configure:767: checking for working autoheader" >&5
+ # Run test in a subshell; some versions of sh will print an error if
+ # an executable is not found, even if stderr is redirected.
+ # Redirect stdin to placate older versions of autoconf.  Sigh.
+@@ -764,7 +776,7 @@
+ fi
+ 
+ echo $ac_n "checking for working makeinfo""... $ac_c" 1>&6
+-echo "configure:768: checking for working makeinfo" >&5
++echo "configure:780: checking for working makeinfo" >&5
+ # Run test in a subshell; some versions of sh will print an error if
+ # an executable is not found, even if stderr is redirected.
+ # Redirect stdin to placate older versions of autoconf.  Sigh.
+@@ -778,6 +790,50 @@
+ 
+ 
+ 
++echo $ac_n "checking whether to enable maintainer-specific portions of Makefiles""... $ac_c" 1>&6
++echo "configure:795: checking whether to enable maintainer-specific portions of Makefiles" >&5
++    # Check whether --enable-maintainer-mode or --disable-maintainer-mode was given.
++if test "${enable_maintainer_mode+set}" = set; then
++  enableval="$enable_maintainer_mode"
++  USE_MAINTAINER_MODE=$enableval
++else
++  USE_MAINTAINER_MODE=no
++fi
++
++  echo "$ac_t""$USE_MAINTAINER_MODE" 1>&6
++  if test $USE_MAINTAINER_MODE = yes; then
++    MAINT=
++  else
++    MAINT='#M#'
++  fi
++  
++
++
++echo $ac_n "checking whether to enable debugging""... $ac_c" 1>&6
++echo "configure:814: checking whether to enable debugging" >&5
++debug_light_defined=no
++# Check whether --enable-debug or --disable-debug was given.
++if test "${enable_debug+set}" = set; then
++  enableval="$enable_debug"
++   case "$enableval" in
++  yes)
++    echo "$ac_t""yes" 1>&6
++    cat >> confdefs.h <<\EOF
++#define DEBUG 1
++EOF
++
++    debug_defined=yes
++    ;;
++  *)
++    echo "$ac_t""no" 1>&6
++    ;;
++  esac 
++else
++  echo "$ac_t""no" 1>&6
++
++fi
++
++
+ 
+ 
+ 
+@@ -785,15 +841,16 @@
+ # Extract the first word of "gcc", so it can be a program name with args.
+ set dummy gcc; ac_word=$2
+ echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+-echo "configure:789: checking for $ac_word" >&5
++echo "configure:845: checking for $ac_word" >&5
+ if eval "test \"`echo '$''{'ac_cv_prog_CC'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   if test -n "$CC"; then
+   ac_cv_prog_CC="$CC" # Let the user override the test.
+ else
+-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+-  for ac_dir in $PATH; do
++  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
++  ac_dummy="$PATH"
++  for ac_dir in $ac_dummy; do
+     test -z "$ac_dir" && ac_dir=.
+     if test -f $ac_dir/$ac_word; then
+       ac_cv_prog_CC="gcc"
+@@ -814,16 +871,17 @@
+   # Extract the first word of "cc", so it can be a program name with args.
+ set dummy cc; ac_word=$2
+ echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+-echo "configure:818: checking for $ac_word" >&5
++echo "configure:875: checking for $ac_word" >&5
+ if eval "test \"`echo '$''{'ac_cv_prog_CC'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   if test -n "$CC"; then
+   ac_cv_prog_CC="$CC" # Let the user override the test.
+ else
+-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
++  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+   ac_prog_rejected=no
+-  for ac_dir in $PATH; do
++  ac_dummy="$PATH"
++  for ac_dir in $ac_dummy; do
+     test -z "$ac_dir" && ac_dir=.
+     if test -f $ac_dir/$ac_word; then
+       if test "$ac_dir/$ac_word" = "/usr/ucb/cc"; then
+@@ -858,25 +916,61 @@
+   echo "$ac_t""no" 1>&6
+ fi
+ 
++  if test -z "$CC"; then
++    case "`uname -s`" in
++    *win32* | *WIN32*)
++      # Extract the first word of "cl", so it can be a program name with args.
++set dummy cl; ac_word=$2
++echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
++echo "configure:926: checking for $ac_word" >&5
++if eval "test \"`echo '$''{'ac_cv_prog_CC'+set}'`\" = set"; then
++  echo $ac_n "(cached) $ac_c" 1>&6
++else
++  if test -n "$CC"; then
++  ac_cv_prog_CC="$CC" # Let the user override the test.
++else
++  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
++  ac_dummy="$PATH"
++  for ac_dir in $ac_dummy; do
++    test -z "$ac_dir" && ac_dir=.
++    if test -f $ac_dir/$ac_word; then
++      ac_cv_prog_CC="cl"
++      break
++    fi
++  done
++  IFS="$ac_save_ifs"
++fi
++fi
++CC="$ac_cv_prog_CC"
++if test -n "$CC"; then
++  echo "$ac_t""$CC" 1>&6
++else
++  echo "$ac_t""no" 1>&6
++fi
++ ;;
++    esac
++  fi
+   test -z "$CC" && { echo "configure: error: no acceptable cc found in \$PATH" 1>&2; exit 1; }
+ fi
+ 
+ echo $ac_n "checking whether the C compiler ($CC $CFLAGS $LDFLAGS) works""... $ac_c" 1>&6
+-echo "configure:866: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) works" >&5
++echo "configure:958: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) works" >&5
+ 
+ ac_ext=c
+ # CFLAGS is not in ac_cpp because -g, -O, etc. are not valid cpp options.
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='${CC-cc} -c $CFLAGS $CPPFLAGS conftest.$ac_ext 1>&5'
+-ac_link='${CC-cc} -o conftest $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS 1>&5'
++ac_link='${CC-cc} -o conftest${ac_exeext} $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS 1>&5'
+ cross_compiling=$ac_cv_prog_cc_cross
+ 
+-cat > conftest.$ac_ext <<EOF
+-#line 876 "configure"
++cat > conftest.$ac_ext << EOF
++
++#line 969 "configure"
+ #include "confdefs.h"
++
+ main(){return(0);}
+ EOF
+-if { (eval echo configure:880: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
++if { (eval echo configure:974: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   ac_cv_prog_cc_works=yes
+   # If we can't run a trivial program, we are probably using a cross compiler.
+   if (./conftest; exit) 2>/dev/null; then
+@@ -890,18 +984,24 @@
+   ac_cv_prog_cc_works=no
+ fi
+ rm -fr conftest*
++ac_ext=c
++# CFLAGS is not in ac_cpp because -g, -O, etc. are not valid cpp options.
++ac_cpp='$CPP $CPPFLAGS'
++ac_compile='${CC-cc} -c $CFLAGS $CPPFLAGS conftest.$ac_ext 1>&5'
++ac_link='${CC-cc} -o conftest${ac_exeext} $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS 1>&5'
++cross_compiling=$ac_cv_prog_cc_cross
+ 
+ echo "$ac_t""$ac_cv_prog_cc_works" 1>&6
+ if test $ac_cv_prog_cc_works = no; then
+   { echo "configure: error: installation or configuration problem: C compiler cannot create executables." 1>&2; exit 1; }
+ fi
+ echo $ac_n "checking whether the C compiler ($CC $CFLAGS $LDFLAGS) is a cross-compiler""... $ac_c" 1>&6
+-echo "configure:900: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) is a cross-compiler" >&5
++echo "configure:1000: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) is a cross-compiler" >&5
+ echo "$ac_t""$ac_cv_prog_cc_cross" 1>&6
+ cross_compiling=$ac_cv_prog_cc_cross
+ 
+ echo $ac_n "checking whether we are using GNU C""... $ac_c" 1>&6
+-echo "configure:905: checking whether we are using GNU C" >&5
++echo "configure:1005: checking whether we are using GNU C" >&5
+ if eval "test \"`echo '$''{'ac_cv_prog_gcc'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+@@ -910,7 +1010,7 @@
+   yes;
+ #endif
+ EOF
+-if { ac_try='${CC-cc} -E conftest.c'; { (eval echo configure:914: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | egrep yes >/dev/null 2>&1; then
++if { ac_try='${CC-cc} -E conftest.c'; { (eval echo configure:1014: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | egrep yes >/dev/null 2>&1; then
+   ac_cv_prog_gcc=yes
+ else
+   ac_cv_prog_gcc=no
+@@ -921,11 +1021,15 @@
+ 
+ if test $ac_cv_prog_gcc = yes; then
+   GCC=yes
+-  ac_test_CFLAGS="${CFLAGS+set}"
+-  ac_save_CFLAGS="$CFLAGS"
+-  CFLAGS=
+-  echo $ac_n "checking whether ${CC-cc} accepts -g""... $ac_c" 1>&6
+-echo "configure:929: checking whether ${CC-cc} accepts -g" >&5
++else
++  GCC=
++fi
++
++ac_test_CFLAGS="${CFLAGS+set}"
++ac_save_CFLAGS="$CFLAGS"
++CFLAGS=
++echo $ac_n "checking whether ${CC-cc} accepts -g""... $ac_c" 1>&6
++echo "configure:1033: checking whether ${CC-cc} accepts -g" >&5
+ if eval "test \"`echo '$''{'ac_cv_prog_cc_g'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+@@ -940,16 +1044,20 @@
+ fi
+ 
+ echo "$ac_t""$ac_cv_prog_cc_g" 1>&6
+-  if test "$ac_test_CFLAGS" = set; then
+-    CFLAGS="$ac_save_CFLAGS"
+-  elif test $ac_cv_prog_cc_g = yes; then
++if test "$ac_test_CFLAGS" = set; then
++  CFLAGS="$ac_save_CFLAGS"
++elif test $ac_cv_prog_cc_g = yes; then
++  if test "$GCC" = yes; then
+     CFLAGS="-g -O2"
+   else
+-    CFLAGS="-O2"
++    CFLAGS="-g"
+   fi
+ else
+-  GCC=
+-  test "${CFLAGS+set}" = set || CFLAGS="-g"
++  if test "$GCC" = yes; then
++    CFLAGS="-O2"
++  else
++    CFLAGS=
++  fi
+ fi
+ 
+ # Find a good install program.  We prefer a C program (faster),
+@@ -959,28 +1067,30 @@
+ # SunOS /usr/etc/install
+ # IRIX /sbin/install
+ # AIX /bin/install
++# AIX 4 /usr/bin/installbsd, which doesn't work without a -g flag
+ # AFS /usr/afsws/bin/install, which mishandles nonexistent args
+ # SVR4 /usr/ucb/install, which tries to use the nonexistent group "staff"
+ # ./install, which can be erroneously created by make from ./install.sh.
+ echo $ac_n "checking for a BSD compatible install""... $ac_c" 1>&6
+-echo "configure:967: checking for a BSD compatible install" >&5
++echo "configure:1076: checking for a BSD compatible install" >&5
+ if test -z "$INSTALL"; then
+ if eval "test \"`echo '$''{'ac_cv_path_install'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+-    IFS="${IFS= 	}"; ac_save_IFS="$IFS"; IFS="${IFS}:"
++    IFS="${IFS= 	}"; ac_save_IFS="$IFS"; IFS=":"
+   for ac_dir in $PATH; do
+     # Account for people who put trailing slashes in PATH elements.
+     case "$ac_dir/" in
+     /|./|.//|/etc/*|/usr/sbin/*|/usr/etc/*|/sbin/*|/usr/afsws/bin/*|/usr/ucb/*) ;;
+     *)
+       # OSF1 and SCO ODT 3.0 have their own names for install.
+-      for ac_prog in ginstall installbsd scoinst install; do
++      # Don't use installbsd from OSF since it installs stuff as root
++      # by default.
++      for ac_prog in ginstall scoinst install; do
+         if test -f $ac_dir/$ac_prog; then
+ 	  if test $ac_prog = install &&
+             grep dspmsg $ac_dir/$ac_prog >/dev/null 2>&1; then
+ 	    # AIX install.  It has an incompatible calling convention.
+-	    # OSF/1 installbsd also uses dspmsg, but is usable.
+ 	    :
+ 	  else
+ 	    ac_cv_path_install="$ac_dir/$ac_prog -c"
+@@ -1010,10 +1120,12 @@
+ # It thinks the first close brace ends the variable substitution.
+ test -z "$INSTALL_PROGRAM" && INSTALL_PROGRAM='${INSTALL}'
+ 
++test -z "$INSTALL_SCRIPT" && INSTALL_SCRIPT='${INSTALL_PROGRAM}'
++
+ test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
+ 
+ echo $ac_n "checking whether ln -s works""... $ac_c" 1>&6
+-echo "configure:1017: checking whether ln -s works" >&5
++echo "configure:1129: checking whether ln -s works" >&5
+ if eval "test \"`echo '$''{'ac_cv_prog_LN_S'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+@@ -1075,7 +1187,7 @@
+   # Extract the first word of "gtk-config", so it can be a program name with args.
+ set dummy gtk-config; ac_word=$2
+ echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+-echo "configure:1079: checking for $ac_word" >&5
++echo "configure:1191: checking for $ac_word" >&5
+ if eval "test \"`echo '$''{'ac_cv_path_GTK_CONFIG'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+@@ -1083,9 +1195,13 @@
+   /*)
+   ac_cv_path_GTK_CONFIG="$GTK_CONFIG" # Let the user override the test with a path.
+   ;;
++  ?:/*)			 
++  ac_cv_path_GTK_CONFIG="$GTK_CONFIG" # Let the user override the test with a dos path.
++  ;;
+   *)
+-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+-  for ac_dir in $PATH; do
++  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
++  ac_dummy="$PATH"
++  for ac_dir in $ac_dummy; do 
+     test -z "$ac_dir" && ac_dir=.
+     if test -f $ac_dir/$ac_word; then
+       ac_cv_path_GTK_CONFIG="$ac_dir/$ac_word"
+@@ -1106,7 +1222,7 @@
+ 
+   min_gtk_version=1.0.0
+   echo $ac_n "checking for GTK - version >= $min_gtk_version""... $ac_c" 1>&6
+-echo "configure:1110: checking for GTK - version >= $min_gtk_version" >&5
++echo "configure:1226: checking for GTK - version >= $min_gtk_version" >&5
+   no_gtk=""
+   if test "$GTK_CONFIG" = "no" ; then
+     no_gtk=yes
+@@ -1123,13 +1239,13 @@
+       ac_save_CFLAGS="$CFLAGS"
+       ac_save_LIBS="$LIBS"
+       CFLAGS="$CFLAGS $GTK_CFLAGS"
+-      LIBS="$LIBS $GTK_LIBS"
++      LIBS="$GTK_LIBS $LIBS"
+       rm -f conf.gtktest
+       if test "$cross_compiling" = yes; then
+   echo $ac_n "cross compiling; assumed OK... $ac_c"
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1133 "configure"
++#line 1249 "configure"
+ #include "confdefs.h"
+ 
+ #include <gtk/gtk.h>
+@@ -1207,7 +1323,7 @@
+ }
+ 
+ EOF
+-if { (eval echo configure:1211: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest && (./conftest; exit) 2>/dev/null
++if { (eval echo configure:1327: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext} && (./conftest; exit) 2>/dev/null
+ then
+   :
+ else
+@@ -1241,7 +1357,7 @@
+           CFLAGS="$CFLAGS $GTK_CFLAGS"
+           LIBS="$LIBS $GTK_LIBS"
+           cat > conftest.$ac_ext <<EOF
+-#line 1245 "configure"
++#line 1361 "configure"
+ #include "confdefs.h"
+ 
+ #include <gtk/gtk.h>
+@@ -1251,7 +1367,7 @@
+  return ((gtk_major_version) || (gtk_minor_version) || (gtk_micro_version)); 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1255: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
++if { (eval echo configure:1371: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+    echo "*** The test program compiled, but did not run. This usually means"
+           echo "*** that the run-time linker is not finding GTK or finding the wrong"
+@@ -1297,7 +1413,7 @@
+ fi
+ 
+ echo $ac_n "checking how to run the C preprocessor""... $ac_c" 1>&6
+-echo "configure:1301: checking how to run the C preprocessor" >&5
++echo "configure:1417: checking how to run the C preprocessor" >&5
+ # On Suns, sometimes $CPP names a directory.
+ if test -n "$CPP" && test -d "$CPP"; then
+   CPP=
+@@ -1312,14 +1428,14 @@
+   # On the NeXT, cc -E runs the code through the compiler's parser,
+   # not just through cpp.
+   cat > conftest.$ac_ext <<EOF
+-#line 1316 "configure"
++#line 1432 "configure"
+ #include "confdefs.h"
+ #include <assert.h>
+ Syntax Error
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+-{ (eval echo configure:1322: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out`
++{ (eval echo configure:1438: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
+ if test -z "$ac_err"; then
+   :
+ else
+@@ -1329,14 +1445,31 @@
+   rm -rf conftest*
+   CPP="${CC-cc} -E -traditional-cpp"
+   cat > conftest.$ac_ext <<EOF
+-#line 1333 "configure"
++#line 1449 "configure"
+ #include "confdefs.h"
+ #include <assert.h>
+ Syntax Error
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+-{ (eval echo configure:1339: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out`
++{ (eval echo configure:1455: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
++if test -z "$ac_err"; then
++  :
++else
++  echo "$ac_err" >&5
++  echo "configure: failed program was:" >&5
++  cat conftest.$ac_ext >&5
++  rm -rf conftest*
++  CPP="${CC-cc} -nologo -E"
++  cat > conftest.$ac_ext <<EOF
++#line 1466 "configure"
++#include "confdefs.h"
++#include <assert.h>
++Syntax Error
++EOF
++ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
++{ (eval echo configure:1472: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
+ if test -z "$ac_err"; then
+   :
+ else
+@@ -1349,6 +1482,8 @@
+ rm -f conftest*
+ fi
+ rm -f conftest*
++fi
++rm -f conftest*
+   ac_cv_prog_CPP="$CPP"
+ fi
+   CPP="$ac_cv_prog_CPP"
+@@ -1358,12 +1493,12 @@
+ echo "$ac_t""$CPP" 1>&6
+ 
+ echo $ac_n "checking for ANSI C header files""... $ac_c" 1>&6
+-echo "configure:1362: checking for ANSI C header files" >&5
++echo "configure:1497: checking for ANSI C header files" >&5
+ if eval "test \"`echo '$''{'ac_cv_header_stdc'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1367 "configure"
++#line 1502 "configure"
+ #include "confdefs.h"
+ #include <stdlib.h>
+ #include <stdarg.h>
+@@ -1371,8 +1506,8 @@
+ #include <float.h>
+ EOF
+ ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
+-{ (eval echo configure:1375: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+-ac_err=`grep -v '^ *+' conftest.out`
++{ (eval echo configure:1510: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
++ac_err=`grep -v '^ *+' conftest.out | grep -v "^conftest.${ac_ext}\$"`
+ if test -z "$ac_err"; then
+   rm -rf conftest*
+   ac_cv_header_stdc=yes
+@@ -1388,7 +1523,7 @@
+ if test $ac_cv_header_stdc = yes; then
+   # SunOS 4.x string.h does not declare mem*, contrary to ANSI.
+ cat > conftest.$ac_ext <<EOF
+-#line 1392 "configure"
++#line 1527 "configure"
+ #include "confdefs.h"
+ #include <string.h>
+ EOF
+@@ -1406,7 +1541,7 @@
+ if test $ac_cv_header_stdc = yes; then
+   # ISC 2.0.2 stdlib.h does not declare free, contrary to ANSI.
+ cat > conftest.$ac_ext <<EOF
+-#line 1410 "configure"
++#line 1545 "configure"
+ #include "confdefs.h"
+ #include <stdlib.h>
+ EOF
+@@ -1427,7 +1562,7 @@
+   :
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1431 "configure"
++#line 1566 "configure"
+ #include "confdefs.h"
+ #include <ctype.h>
+ #define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+@@ -1438,7 +1573,7 @@
+ exit (0); }
+ 
+ EOF
+-if { (eval echo configure:1442: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest && (./conftest; exit) 2>/dev/null
++if { (eval echo configure:1577: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext} && (./conftest; exit) 2>/dev/null
+ then
+   :
+ else
+@@ -1462,130 +1597,15 @@
+ fi
+ 
+ 
+-# For CVS GTK+ code
+-for ac_func in gtk_scrolled_window_add_with_viewport
+-do
+-echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:1470: checking for $ac_func" >&5
+-if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+-  echo $ac_n "(cached) $ac_c" 1>&6
+-else
+-  cat > conftest.$ac_ext <<EOF
+-#line 1475 "configure"
+-#include "confdefs.h"
+-/* System header to define __stub macros and hopefully few prototypes,
+-    which can conflict with char $ac_func(); below.  */
+-#include <assert.h>
+-/* Override any gcc2 internal prototype to avoid an error.  */
+-/* We use char because int might match the return type of a gcc2
+-    builtin and then its argument prototype would still apply.  */
+-char $ac_func();
+-
+-int main() {
+-
+-/* The GNU C library defines this for functions which it implements
+-    to always fail with ENOSYS.  Some functions are actually named
+-    something starting with __ and the normal name is an alias.  */
+-#if defined (__stub_$ac_func) || defined (__stub___$ac_func)
+-choke me
+-#else
+-$ac_func();
+-#endif
+-
+-; return 0; }
+-EOF
+-if { (eval echo configure:1498: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+-  rm -rf conftest*
+-  eval "ac_cv_func_$ac_func=yes"
+-else
+-  echo "configure: failed program was:" >&5
+-  cat conftest.$ac_ext >&5
+-  rm -rf conftest*
+-  eval "ac_cv_func_$ac_func=no"
+-fi
+-rm -f conftest*
+-fi
+-
+-if eval "test \"`echo '$ac_cv_func_'$ac_func`\" = yes"; then
+-  echo "$ac_t""yes" 1>&6
+-    ac_tr_func=HAVE_`echo $ac_func | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`
+-  cat >> confdefs.h <<EOF
+-#define $ac_tr_func 1
+-EOF
+- 
+-else
+-  echo "$ac_t""no" 1>&6
+-fi
+-done
+-
+-
+-for ac_func in getenv
+-do
+-echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:1526: checking for $ac_func" >&5
+-if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+-  echo $ac_n "(cached) $ac_c" 1>&6
+-else
+-  cat > conftest.$ac_ext <<EOF
+-#line 1531 "configure"
+-#include "confdefs.h"
+-/* System header to define __stub macros and hopefully few prototypes,
+-    which can conflict with char $ac_func(); below.  */
+-#include <assert.h>
+-/* Override any gcc2 internal prototype to avoid an error.  */
+-/* We use char because int might match the return type of a gcc2
+-    builtin and then its argument prototype would still apply.  */
+-char $ac_func();
+-
+-int main() {
+-
+-/* The GNU C library defines this for functions which it implements
+-    to always fail with ENOSYS.  Some functions are actually named
+-    something starting with __ and the normal name is an alias.  */
+-#if defined (__stub_$ac_func) || defined (__stub___$ac_func)
+-choke me
+-#else
+-$ac_func();
+-#endif
+-
+-; return 0; }
+-EOF
+-if { (eval echo configure:1554: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+-  rm -rf conftest*
+-  eval "ac_cv_func_$ac_func=yes"
+-else
+-  echo "configure: failed program was:" >&5
+-  cat conftest.$ac_ext >&5
+-  rm -rf conftest*
+-  eval "ac_cv_func_$ac_func=no"
+-fi
+-rm -f conftest*
+-fi
+-
+-if eval "test \"`echo '$ac_cv_func_'$ac_func`\" = yes"; then
+-  echo "$ac_t""yes" 1>&6
+-    ac_tr_func=HAVE_`echo $ac_func | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`
+-  cat >> confdefs.h <<EOF
+-#define $ac_tr_func 1
+-EOF
+- 
+-else
+-  echo "$ac_t""no" 1>&6
+-echo "ERROR: Kibble needs a system with getenv()"
+-{ echo "configure: error: Fatal Error: no getenv()." 1>&2; exit 1; }
+-fi
+-done
+-
+-
+-for ac_func in strcat
++for ac_func in strlen
+ do
+ echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:1584: checking for $ac_func" >&5
++echo "configure:1604: checking for $ac_func" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1589 "configure"
++#line 1609 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char $ac_func(); below.  */
+@@ -1608,7 +1628,7 @@
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1612: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
++if { (eval echo configure:1632: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_$ac_func=yes"
+ else
+@@ -1629,21 +1649,22 @@
+  
+ else
+   echo "$ac_t""no" 1>&6
+-echo "ERROR: Kibble needs a system with strcat()"
+-{ echo "configure: error: Fatal Error: no strcat()." 1>&2; exit 1; }
++echo "ERROR: Kibble needs a system with strlen()"
++{ echo "configure: error: Fatal Error: no strlen()." 1>&2; exit 1; }
+ fi
+ done
+ 
+ 
+-for ac_func in strncpy
++# For CVS GTK+ code
++for ac_func in gtk_scrolled_window_add_with_viewport
+ do
+ echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:1642: checking for $ac_func" >&5
++echo "configure:1663: checking for $ac_func" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1647 "configure"
++#line 1668 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char $ac_func(); below.  */
+@@ -1666,7 +1687,7 @@
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1670: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
++if { (eval echo configure:1691: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_$ac_func=yes"
+ else
+@@ -1687,8 +1708,6 @@
+  
+ else
+   echo "$ac_t""no" 1>&6
+-echo "ERROR: Kibble needs a system with strncpy()"
+-{ echo "configure: error: Fatal Error: no strcpy()." 1>&2; exit 1; }
+ fi
+ done
+ 
+@@ -1716,7 +1735,7 @@
+ # Ultrix sh set writes to stderr and can't be redirected directly,
+ # and sets the high bit in the cache file unless we assign to the vars.
+ (set) 2>&1 |
+-  case `(ac_space=' '; set) 2>&1` in
++  case `(ac_space=' '; set | grep ac_space) 2>&1` in
+   *ac_space=\ *)
+     # `set' does not quote correctly, so add quotes (double-quote substitution
+     # turns \\\\ into \\, and sed turns \\ into \).
+@@ -1783,7 +1802,7 @@
+     echo "running \${CONFIG_SHELL-/bin/sh} $0 $ac_configure_args --no-create --no-recursion"
+     exec \${CONFIG_SHELL-/bin/sh} $0 $ac_configure_args --no-create --no-recursion ;;
+   -version | --version | --versio | --versi | --vers | --ver | --ve | --v)
+-    echo "$CONFIG_STATUS generated by autoconf version 2.12"
++    echo "$CONFIG_STATUS generated by autoconf version 2.13"
+     exit 0 ;;
+   -help | --help | --hel | --he | --h)
+     echo "\$ac_cs_usage"; exit 0 ;;
+@@ -1803,9 +1822,11 @@
+  s/@@/%@/; s/@@/@%/; s/@g\$/%g/' > conftest.subs <<\\CEOF
+ $ac_vpsub
+ $extrasub
++s%@SHELL@%$SHELL%g
+ s%@CFLAGS@%$CFLAGS%g
+ s%@CPPFLAGS@%$CPPFLAGS%g
+ s%@CXXFLAGS@%$CXXFLAGS%g
++s%@FFLAGS@%$FFLAGS%g
+ s%@DEFS@%$DEFS%g
+ s%@LDFLAGS@%$LDFLAGS%g
+ s%@LIBS@%$LIBS%g
+@@ -1825,8 +1846,8 @@
+ s%@infodir@%$infodir%g
+ s%@mandir@%$mandir%g
+ s%@INSTALL_PROGRAM@%$INSTALL_PROGRAM%g
+-s%@INSTALL_DATA@%$INSTALL_DATA%g
+ s%@INSTALL_SCRIPT@%$INSTALL_SCRIPT%g
++s%@INSTALL_DATA@%$INSTALL_DATA%g
+ s%@PACKAGE@%$PACKAGE%g
+ s%@VERSION@%$VERSION%g
+ s%@ACLOCAL@%$ACLOCAL%g
+@@ -1835,6 +1856,7 @@
+ s%@AUTOHEADER@%$AUTOHEADER%g
+ s%@MAKEINFO@%$MAKEINFO%g
+ s%@SET_MAKE@%$SET_MAKE%g
++s%@MAINT@%$MAINT%g
+ s%@CC@%$CC%g
+ s%@LN_S@%$LN_S%g
+ s%@GTK_CONFIG@%$GTK_CONFIG%g
+diff -d -u -r kibble/configure.in kibble-0.7.2/configure.in
+--- kibble/configure.in	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/configure.in	Mon Mar  8 17:56:44 1999
+@@ -3,7 +3,25 @@
+ AC_INIT(main.c)
+ 
+ PACKAGE=kibble
+-AM_INIT_AUTOMAKE(kibble, 0.7.1)
++AM_INIT_AUTOMAKE(kibble, 0.7.2)
++
++dnl Initialize maintainer mode
++AM_MAINTAINER_MODE
++
++AC_MSG_CHECKING(whether to enable debugging)
++debug_light_defined=no
++AC_ARG_ENABLE(debug,[  --enable-debug          Enable debugging.],
++[ case "$enableval" in
++  yes)
++    AC_MSG_RESULT(yes)
++    AC_DEFINE(DEBUG)
++    debug_defined=yes
++    ;;
++  *)
++    AC_MSG_RESULT(no)
++    ;;
++  esac ], AC_MSG_RESULT(no)
++)
+ 
+ dnl Specify a header configuration file
+ AM_CONFIG_HEADER(config.h)
+@@ -14,8 +32,8 @@
+ AC_PROG_LN_S
+ 
+ AM_PATH_GTK(1.0.0,
+-            [LIBS="$LIBS $GTK_LIBS" CFLAGS="$CFLAGS $GTK_CFLAGS"],
+-            AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?))
++  [LIBS="$LIBS $GTK_LIBS" CFLAGS="$CFLAGS $GTK_CFLAGS"],
++  AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?))
+ 
+ dnl Only use -Wall if we have gcc
+ if test "x$GCC" = "xyes"; then
+@@ -27,20 +45,12 @@
+ dnl Checks for header files.
+ AC_HEADER_STDC
+ 
++AC_CHECK_FUNCS(strlen, , [
++echo "ERROR: Kibble needs a system with strlen()"
++AC_MSG_ERROR([Fatal Error: no strlen().])])
++
+ # For CVS GTK+ code
+ AC_CHECK_FUNCS(gtk_scrolled_window_add_with_viewport)
+-
+-AC_CHECK_FUNCS(getenv, , [
+-echo "ERROR: Kibble needs a system with getenv()"
+-AC_MSG_ERROR([Fatal Error: no getenv().])])
+-
+-AC_CHECK_FUNCS(strcat, , [
+-echo "ERROR: Kibble needs a system with strcat()"
+-AC_MSG_ERROR([Fatal Error: no strcat().])])
+-
+-AC_CHECK_FUNCS(strncpy, , [
+-echo "ERROR: Kibble needs a system with strncpy()"
+-AC_MSG_ERROR([Fatal Error: no strcpy().])])
+ 
+ AC_OUTPUT(
+ Makefile)
+diff -d -u -r kibble/data_selectfile.c kibble-0.7.2/data_selectfile.c
+--- kibble/data_selectfile.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/data_selectfile.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* data_selectfile.c
+- * $Id: data_selectfile.c,v 0.4 1998/11/24 03:39:32 joseph Exp $
++ * $Id: data_selectfile.c,v 0.7 1999/02/05 05:49:39 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -22,64 +22,52 @@
+ 
+ #include "all.h"
+ 
+-/* This variable does not necessarily have to be global. */
+-GtkWidget *fileselection_data;
+-
+ /* Points to the text entry that is updated */
+ GtkWidget *entry_filename;
+ 
+ /* Opens the filesection_data window */
+ void on_button_browse_clicked (GtkButton *button, gpointer user_data){
+-	GtkWidget *fileselection_data;
+-
+-	MODAL2(
+-	fileselection_data = create_fileselection_data ();
+-	gtk_widget_show (fileselection_data);
+-	)
++	debug_msg("browse button clicked\n");
++	create_fileselection_data ();
+ }
+ 
+ void on_button_data_okay_clicked (GtkObject *dialog, gpointer user_data){
+         gtk_entry_set_text (GTK_ENTRY (entry_filename),
+ 		gtk_file_selection_get_filename(GTK_FILE_SELECTION
+-			(fileselection_data)));
++			(dialog)));
+ 	gtk_widget_show (entry_filename);
+ 
+-        if(GTK_IS_WINDOW(dialog))
++	debug_msg("data okay clicked, dialog = 0x%x, user_data = 0x%x\n" _
++			(gint)dialog _ (gint)user_data);
++        if(GTK_IS_WINDOW(dialog) != 0)
+                 gtk_object_destroy (GTK_OBJECT(dialog));
+         else
+                 gtk_object_destroy (GTK_OBJECT(user_data));
+-
+-        modal_open--;
+-        g_assert(modal_open >= 1);
+ }
+ 
+-GtkWidget* create_fileselection_data ()
++void create_fileselection_data ()
+ {
++	GtkWidget *fileselection_data;
+ 	GtkWidget *ok_button;
+ 	GtkWidget *cancel_button;
+ 
+ 	fileselection_data = gtk_file_selection_new ("Select File");
+-	gtk_object_set_data (GTK_OBJECT (fileselection_data), "fileselection_data", fileselection_data);
++	debug_msg("fileselection created = 0x%x\n" _ (gint)fileselection_data);
++	gtk_object_set_data (GTK_OBJECT (fileselection_data),
++			"fileselection_data", fileselection_data);
+ 	gtk_container_border_width (GTK_CONTAINER (fileselection_data), 10);
+-	gtk_signal_connect_object (GTK_OBJECT (fileselection_data), "delete_event",
+-			GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT (fileselection_data));
+ 
+ 	ok_button = GTK_FILE_SELECTION (fileselection_data)->ok_button;
+-	gtk_object_set_data (GTK_OBJECT (fileselection_data), "ok_button", ok_button);
+-	gtk_widget_show (ok_button);
+ 	GTK_WIDGET_SET_FLAGS (ok_button, GTK_CAN_DEFAULT);
+-	gtk_signal_connect_object (GTK_OBJECT (ok_button), "clicked",
++	(void) gtk_signal_connect_object (GTK_OBJECT (ok_button), "clicked",
+ 			GTK_SIGNAL_FUNC (on_button_data_okay_clicked),
+ 			GTK_OBJECT (fileselection_data));
+ 
+ 	cancel_button = GTK_FILE_SELECTION (fileselection_data)->cancel_button;
+-	gtk_object_set_data (GTK_OBJECT (fileselection_data), "cancel_button", cancel_button);
+-	gtk_widget_show (cancel_button);
+ 	GTK_WIDGET_SET_FLAGS (cancel_button, GTK_CAN_DEFAULT);
+-	gtk_signal_connect_object (GTK_OBJECT (cancel_button), "clicked",
+-			GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT (fileselection_data));
+-
+-	return fileselection_data;
++	(void) gtk_signal_connect_object (GTK_OBJECT (cancel_button),
++					  "clicked", GTK_SIGNAL_FUNC
++					  (gtk_object_destroy), GTK_OBJECT
++					  (fileselection_data));
++	gtk_widget_show_all (fileselection_data);
+ }
+diff -d -u -r kibble/data_selectfile.h kibble-0.7.2/data_selectfile.h
+--- kibble/data_selectfile.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/data_selectfile.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* data_selectfile.h
+- * $Id: data_selectfile.h,v 0.3 1998/11/24 03:39:32 joseph Exp $
++ * $Id: data_selectfile.h,v 0.4 1998/12/21 04:23:55 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -23,9 +23,6 @@
+ /* Points to the text entry that is updated */
+ extern GtkWidget *entry_filename;
+ 
+-GtkWidget* create_fileselection_data (void);
+-
+-/* Opens the filesection_data window */
+-void on_button_browse_clicked (GtkButton *button, gpointer user_data);
+-
+-void on_button_data_okay_clicked (GtkObject *dialog, gpointer user_data);
++extern void create_fileselection_data		(void);
++extern void on_button_browse_clicked		(GtkButton *, gpointer);
++extern void on_button_data_okay_clicked		(GtkObject *, gpointer);
+diff -d -u -r kibble/delete_dialog.c kibble-0.7.2/delete_dialog.c
+--- kibble/delete_dialog.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/delete_dialog.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* delete_dialog.c
+- * $Id: delete_dialog.c,v 0.5 1998/12/03 02:51:53 joseph Exp $
++ * $Id: delete_dialog.c,v 0.8 1999/02/05 05:49:39 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -22,23 +22,42 @@
+ 
+ #include "all.h"
+ 
+-GtkWidget *dialog_delete;
+-
+-void on_button_delete_okay_clicked (GtkButton *button, gpointer user_data)
++static void on_button_delete_okay_clicked (GtkButton *button,
++		gpointer user_data)
+ {
++	GtkWidget *dialog_delete;
++	GtkWidget *current_tree_item;
++
++	debug_msg("delete okay clicked\n");
++
++	dialog_delete = user_data;
++	g_assert (GTK_IS_WINDOW (dialog_delete) != 0);
++
++	current_tree_item = GTK_WIDGET (gtk_object_get_data (GTK_OBJECT 
++				(dialog_delete), "tree item"));
++	g_assert (current_tree_item != NULL);
++	if (GTK_IS_TREE_ITEM (current_tree_item) != 1) {
++		show_message_box ("Error!\n\n"
++				"Tree item no longer exists?\n"
++				"Aborting delete operation\n");
++		gtk_object_destroy (GTK_OBJECT (dialog_delete));
++		return;
++	}
++
+ 	if (current_tree_item == GTK_TREE(tree_kb)->children->data)
+ 		new_root_node();
+ 
+-        /* Probably should release the subordinate nodes' malloc'ed
++	/* Probably should release the subordinate nodes' malloc'ed
+ 	 * mem. This is the cheesy cop-out way to delete the node */
+ 	/* I should get around to using free_node */
++	debug_msg("removing 0x%x\n" _ (gint)current_tree_item);
+ 	gtk_widget_destroy (GTK_WIDGET (current_tree_item));
+-
+-        destroy_modal (GTK_OBJECT(dialog_delete), NULL);
++	gtk_object_destroy (GTK_OBJECT (dialog_delete));
+ }
+ 
+-GtkWidget* create_dialog_delete ()
++void create_dialog_delete ()
+ {
++	GtkWidget *dialog_delete;
+ 	GtkWidget *dialog_vbox;
+ 	GtkWidget *vbox;
+ 	GtkWidget *label;
+@@ -47,58 +66,53 @@
+ 	GtkWidget *button_okay;
+ 	GtkWidget *button_cancel;
+ 
++	debug_msg ("creating delete dialog\n");
+ 	dialog_delete = gtk_dialog_new ();
++	gtk_object_set_data (GTK_OBJECT (dialog_delete), "tree item",
++			KB_ITEM_SELECTED);
++	debug_msg ("dialog_delete = 0x%x\n" _ (gint)dialog_delete);
+ 	gtk_window_set_title (GTK_WINDOW (dialog_delete), "Delete");
+ 	gtk_window_set_policy (GTK_WINDOW (dialog_delete), TRUE, TRUE, FALSE);
+-	gtk_signal_connect_object (GTK_OBJECT (dialog_delete), "delete_event",                        GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT (dialog_delete));
+ 
+ 	dialog_vbox = GTK_DIALOG (dialog_delete)->vbox;
+-	gtk_widget_show (dialog_vbox);
+ 	gtk_container_border_width (GTK_CONTAINER (dialog_vbox), 10);
+ 
+ 	vbox = gtk_vbox_new (FALSE, 5);
+-	gtk_widget_show (vbox);
+ 	gtk_box_pack_start (GTK_BOX (dialog_vbox), vbox, TRUE, TRUE, 0);
+ 
+ 	label = gtk_label_new ("Are you sure that you want");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+ 
+ 	label = gtk_label_new ("to delete this node");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+ 
+ 	label = gtk_label_new ("(and all of its subtrees)?");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+ 
+ 	dialog_action_area = GTK_DIALOG (dialog_delete)->action_area;
+-	gtk_widget_show (dialog_action_area);
+ 	gtk_container_border_width (GTK_CONTAINER (dialog_action_area), 10);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 0);
+-	gtk_widget_show (hbox);
+ 	gtk_box_pack_start (GTK_BOX (dialog_action_area), hbox, TRUE, TRUE, 0);
+ 
+ 	button_okay = gtk_button_new_with_label ("Okay");
+-	gtk_widget_show (button_okay);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_okay, TRUE, FALSE, 0);
+ 	GTK_WIDGET_SET_FLAGS (button_okay, GTK_CAN_DEFAULT);
+-	gtk_signal_connect (GTK_OBJECT (button_okay), "clicked",
+-			GTK_SIGNAL_FUNC (on_button_delete_okay_clicked),
+-			NULL);
++	(void) gtk_signal_connect (GTK_OBJECT (button_okay), "clicked",
++				   GTK_SIGNAL_FUNC
++				   (on_button_delete_okay_clicked),
++				   GTK_OBJECT (dialog_delete));
+ 
+ 	button_cancel = gtk_button_new_with_label ("Cancel");
+-	gtk_widget_show (button_cancel);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_cancel, TRUE, FALSE, 0);
+ 	GTK_WIDGET_SET_FLAGS (button_cancel, GTK_CAN_DEFAULT);
+ 	gtk_widget_grab_focus (button_cancel);
+ 	gtk_widget_grab_default (button_cancel);
+-	gtk_signal_connect (GTK_OBJECT (button_cancel), "clicked",
+-			GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT (dialog_delete));
+-	g_assert (GTK_OBJECT (dialog_delete) != GTK_OBJECT (button_cancel));
++	(void) gtk_signal_connect_object (GTK_OBJECT (button_cancel),
++					  "clicked", GTK_SIGNAL_FUNC
++					  (gtk_object_destroy), GTK_OBJECT
++					  (dialog_delete));
+ 
+-	return dialog_delete;
++	g_assert (GTK_OBJECT (dialog_delete) != GTK_OBJECT (button_cancel));
++	gtk_widget_show_all (dialog_delete);
+ }
+diff -d -u -r kibble/delete_dialog.h kibble-0.7.2/delete_dialog.h
+--- kibble/delete_dialog.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/delete_dialog.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* delete_dialog.h
+- * $Id: delete_dialog.h,v 0.3 1998/11/18 00:37:17 joseph Exp $
++ * $Id: delete_dialog.h,v 0.4 1998/12/21 04:23:33 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -20,6 +20,4 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-GtkWidget* create_dialog_delete (void);
+-
+-void on_button_delete_okay_clicked	(GtkButton *button, gpointer user_data);
++extern void create_dialog_delete		(void);
+diff -d -u -r kibble/kb.c kibble-0.7.2/kb.c
+--- kibble/kb.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/kb.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* kb.c
+- * $Id: kb.c,v 0.7 1998/12/07 08:07:53 joseph Exp $
++ * $Id: kb.c,v 0.11 1999/02/05 05:49:39 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -24,7 +24,6 @@
+ 
+ /* Stores the actual KB. Woo hoo, global! */
+ GtkWidget *tree_kb;
+-GtkObject *current_tree_item=NULL;	/* Currently selected item */
+ 
+ /* Creates a new root node. Assumes that tree_kb's item has already been
+  * deleted. */
+@@ -33,18 +32,18 @@
+         node            *node_ptr;
+ 
+ 	/* Create a root node */
+-	kb_item = gtk_tree_item_new_with_label (g_string (KB root));
++	kb_item = gtk_tree_item_new_with_label ("KB root");
++        debug_msg("new root node created = 0x%x\n" _ (gint)kb_item);
+ 
+ 	node_ptr = new_node ();
+-	g_string_assign (node_ptr -> name, g_string (KB root));
++	(void) g_string_assign (node_ptr -> name, "KB root");
+ 	gtk_object_set_data (GTK_OBJECT (kb_item), "node",
+ 			(gpointer)node_ptr);
+ 	gtk_tree_append (GTK_TREE (tree_kb), kb_item);
+ 	gtk_widget_show (kb_item);
+-	gtk_signal_connect (GTK_OBJECT (kb_item),
+-			"button_press_event",
+-			GTK_SIGNAL_FUNC (on_tree_item_click),
+-			NULL);
++	(void) gtk_signal_connect (GTK_OBJECT (kb_item),
++				   "button_press_event", GTK_SIGNAL_FUNC
++				   (on_tree_item_click), NULL);
+ }
+ 
+ /* Perhaps more error-checking could be done or more lenient rules
+@@ -54,131 +53,152 @@
+  * Some of this function may be redundant, but oh well.
+  * I should check this for bugs more thoroughly, but it seems to work. */
+ void read_kbfile(void){
+-	gchar		kbfile[MAX_STR_LEN];
++	gchar		*kbfile;
+ 	FILE		*ptr;
+ 	gint		ret;
+ 
+-	/* Is it correct to weight by sizeof (gchar)? */
+-	strncpy (kbfile, getenv("HOME"), sizeof (gchar) * (MAX_STR_LEN - 10));
+-	strcat  (kbfile, KBFILE);
++        debug_msg("reading kb file\n");
+ 
++	kbfile = g_strconcat (g_get_home_dir (), KBFILE, NULL);
++
++        debug_msg("opening %s\n" _ kbfile);
+ 	ptr = fopen (kbfile, "rt");
+-	if (!ptr){
++	free (kbfile);
++	if (ptr == NULL){
++		debug_msg("unsuccessful file open\n");
+ 		new_root_node();
+ 	} else {
+-		fscanf (ptr, "%d", &ret);
+-		fgetc (ptr);	/* Read ONE newline */
++		debug_msg("successful file open\n");
++		(void) fscanf	(ptr, "%d", &ret);
++		(void) fgetc	(ptr);	/* Read ONE newline */
+ 		/* Start at depth 0, hopefully. */
+-		g_assert (!ret);
++		g_assert (ret == 0);
+ 		ret = read_tree_items(0, tree_kb, ptr);
+ 		g_assert(ret == -1);
+ 	}
+ }
+ 
+-/* Given that we are at tree depth "depth", chidren of "subtree", read
++/* Given that we are at tree depth "depth", children of "subtree", read
+    tree items from "ptr" */
+ gint read_tree_items (gint depth, GtkWidget *subtree, FILE *ptr){
+ 	gint		indent, desc_len, ret;
+-	gchar		tmpstr[MAX_DESC_LEN];
++	gchar		*tmpstr;
+ 	node		*node_ptr;
+ 	GtkWidget	*kb_item = NULL, *new_subtree;
+ 
++	debug_msg("reading at depth %d\n" _ depth);
++
+ 	/* We assume the indentation has already been read. */
+ 	ret = depth;
+-	while (!feof (ptr)){
++	tmpstr = g_malloc (sizeof (gchar) * MAX_STR_LEN);
++	while (feof (ptr) == 0){
+ 		/* If we have not already read the indentation (at a
+-		   higher depth) */
++		 * higher depth) */
+ 		if(ret == -1){
+-			fscanf (ptr, "%d", &indent);
+-			fgetc (ptr);	/* Read ONE newline */
++			(void) fscanf	(ptr, "%d", &indent);
++			(void) fgetc	(ptr);	/* Read ONE newline */
+ 			g_assert (indent <= depth+1);
+ 		} else {
+ 			indent = ret;
+ 			ret = -1;
+ 		}
++		debug_msg("reading at indent %d\n" _ indent);
+ 		g_assert(indent < MAX_TREE_DEPTH);
+ 		/* If proper indentation, read the node and put it in
+-		   the tree */
++		 * the tree */
+ 		if (indent == depth){
++			debug_msg ("reading the node\n");
+ 			node_ptr = new_node ();
+ 
+ 			/* Get the name */
+-			fgets (tmpstr, MAX_STR_LEN, ptr);
++			(void) fgets (tmpstr, MAX_STR_LEN, ptr);
+ 			/* Overwrite the final newline with NULL. */
+-			tmpstr[strlen (tmpstr) - 1] = 0;
+-			g_string_assign (node_ptr -> name, tmpstr);
++			tmpstr = g_strchomp (tmpstr);
++			(void) g_string_assign (node_ptr -> name, tmpstr);
+ 
+ 			/* Get the description */
+-			fscanf (ptr, "%d", &desc_len);
+-			fgetc (ptr);	/* Read ONE newline */
++			(void) fscanf (ptr, "%d", &desc_len);
++			(void) fgetc (ptr);	/* Read ONE newline */
+ 			g_assert (desc_len < MAX_DESC_LEN);
+ 			/* Silly little hack follows */
+-			tmpstr[0] = 0;
++			tmpstr[0] = (gchar)0;
+ 			do{
+-				fgets (tmpstr + strlen(tmpstr), MAX_DESC_LEN -
+-						strlen(tmpstr), ptr);
++				(void) fgets (tmpstr + strlen(tmpstr),
++					      MAX_DESC_LEN -
++					      strlen(tmpstr), ptr);
+ 			} while (strlen (tmpstr) - 1 < desc_len);
+ 			/* Overwrite the final newline with NULL. */
+-			tmpstr[strlen (tmpstr) - 1] = 0;
+-			g_assert (strlen (tmpstr) == desc_len);
+-			g_string_assign (node_ptr -> description, tmpstr);
++			tmpstr = g_strchomp (tmpstr);
++			g_assert ((gint) strlen (tmpstr) == desc_len);
++			(void) g_string_assign (node_ptr -> description,
++						tmpstr);
+ 
+ 			/* Get the filename */
+-			fgets (tmpstr, MAX_STR_LEN, ptr);
++			(void) fgets (tmpstr, MAX_STR_LEN, ptr);
+ 			/* Overwrite the final newline with NULL. */
+-			tmpstr[strlen (tmpstr) - 1] = 0;
+-			g_string_assign (node_ptr -> filename, tmpstr);
++			tmpstr = g_strchomp (tmpstr);
++			(void) g_string_assign (node_ptr -> filename,
++						tmpstr);
+ 
+ 			/* Read the trailing newline */
+-			fscanf(ptr, "\n");
++			(void) fscanf(ptr, "\n");
+ 
+ 			kb_item = gtk_tree_item_new_with_label (node_ptr
+ 					-> name -> str);
+-			gtk_object_set_data (GTK_OBJECT (kb_item), "node",
++			gtk_object_set_data (GTK_OBJECT (kb_item),
++					"node",
+ 					(gpointer)node_ptr);
+ 			gtk_tree_append (GTK_TREE (subtree), kb_item);
+-			gtk_widget_show (kb_item);
+-			gtk_signal_connect (GTK_OBJECT (kb_item),
+-					"button_press_event",
+-					GTK_SIGNAL_FUNC (on_tree_item_click),
+-					NULL);
++			(void) gtk_signal_connect (GTK_OBJECT (kb_item),
++						   "button_press_event",
++						   GTK_SIGNAL_FUNC
++						   (on_tree_item_click),
++						   NULL);
+ 		} else if (indent == depth + 1) {
+-			g_assert (kb_item);
++			debug_msg("reading child\n");
++			g_assert (kb_item != NULL);
+ 			new_subtree = gtk_tree_new ();
+ 			gtk_tree_item_set_subtree (GTK_TREE_ITEM (kb_item),
+                                 new_subtree);
+ 			gtk_tree_item_expand (GTK_TREE_ITEM (kb_item));
+-			gtk_widget_show (new_subtree);
+ 
+ 			ret = read_tree_items (indent, new_subtree, ptr);
+ 			if(ret < depth){
++				gtk_widget_show_all (subtree);
++				free (tmpstr);
+ 				return ret;
+ 			}
+ 		} else if (indent < depth) {
++			debug_msg("falling back\n");
++			gtk_widget_show_all (subtree);
++			free (tmpstr);
+ 			return indent;
+ 		} else {
+ 			/* What the fuck?!?!? */
++			g_error ("what the fuck?!?!?\n"
++"Please send a bug report to kibble@wish.student.harvard.edu\n");
+ 			g_assert (0);
+ 		}
+ 	}
++	gtk_widget_show_all (subtree);
++	free (tmpstr);
+ 	return -1;
+ }
+ 
+-void write_kbfile(void){
+-	gchar kbfile[MAX_STR_LEN];
++void write_kbfile (void){
++	gchar *kbfile;
+ 	FILE *ptr;
+ 
+-	/* Is it correct to weight by sizeof (gchar)? */
+-	strncpy (kbfile, getenv("HOME"), sizeof (gchar) * (MAX_STR_LEN - 10));
+-	strcat (kbfile, KBFILE);
++        kbfile = g_strconcat (g_get_home_dir (), KBFILE, NULL);
+ 
+-	ptr = fopen(kbfile, "wt");
++	debug_msg ("writing %s\n" _ kbfile);
++	ptr = fopen (kbfile, "wt");
+ 	if(!ptr){
+-		g_error("Could not open kb file %s for writing.", kbfile);
++		g_error ("Could not open kb file %s for writing.", kbfile);
+ 	}
+ 
+ 	write_node (ptr, tree_kb, 0);
+-	fclose(ptr);
++	(void) fclose(ptr);
+ }
+ 
+ void write_node (FILE *ptr, GtkWidget *tree, gint indent){
+@@ -186,6 +206,7 @@
+ 	node	*tree_node;
+ 
+ 	g_assert(indent < MAX_TREE_DEPTH);
++	debug_msg("writing tree item at depth %d\n" _ indent);
+ 	if(tree){
+ 		glistptr = GTK_TREE(tree)->children;
+ 		while(glistptr){
+@@ -212,34 +233,40 @@
+ void on_tree_item_click (GtkObject *tree_item, GdkEventButton *event,
+ 		gpointer func_data)
+ {
+-	g_assert (GTK_IS_TREE_ITEM(tree_item));
+-	current_tree_item = tree_item;
++        debug_msg("tree item 0x%x clicked\n" _ (gint)tree_item);
+ 
+ 	if (event->type==GDK_2BUTTON_PRESS && event->button==1){
+-		/* I might get screwed up if it starts actually using
+-		 * the data */
++		debug_msg("left button double click\n");
++		/* A strange little hack. */
++		gtk_tree_select_child (GTK_TREE (tree_kb), GTK_WIDGET
++				(tree_item));
+ 		on_view_activate(NULL, NULL);
++		gtk_tree_select_child (GTK_TREE (tree_kb), GTK_WIDGET
++				(tree_item));
+ 	}
+ }
+ 
+ node *new_node (void)
+ {
+ 	node *node_ptr;
+-	node_ptr = g_malloc (sizeof (node));
++
++	node_ptr = g_malloc ((gulong) sizeof (node));
++	debug_msg("creating new node 0x%x\n" _ (gint)node_ptr);
++	if (node_ptr != NULL) {
++		node_ptr -> name	= g_string_new ("");
++		node_ptr -> description	= g_string_new ("");
++		node_ptr -> filename	= g_string_new ("");
++	} else { g_assert (node_ptr != NULL); }
+ 	/* If we have this little memory, we're fucked anyhow */
+-	g_assert (node_ptr);
+-	node_ptr -> name	= g_string_new ("");
+-	node_ptr -> description	= g_string_new ("");
+-	node_ptr -> filename	= g_string_new ("");
+ 
+ 	return (node_ptr);
+ }
+ 
+ void free_node (node *node_ptr)
+ {
+-	/* What does g_string_free's 2nd arg do? */
+-	/* g_string_free(node_ptr -> name);
+-	 * g_string_free(node_ptr -> description);
+-	 * g_string_free(node_ptr -> filename); */
++	/* What about "node_ptr -> name";
++	 * "node_ptr -> description";
++	 * "node_ptr -> filename"; */
++	debug_msg("freeing node 0x%x\n" _ (gint)node_ptr);
+ 	g_free(node_ptr);
+ }
+diff -d -u -r kibble/kb.h kibble-0.7.2/kb.h
+--- kibble/kb.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/kb.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* kb.h
+- * $Id: kb.h,v 0.4 1998/12/03 20:47:22 joseph Exp $
++ * $Id: kb.h,v 0.6 1998/12/22 01:57:00 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -25,24 +25,28 @@
+ 				 * (e.g. filenames */
+ #define MAX_DESC_LEN	4096	/* Maximum length of descriptions */
+ 
+-#define DATA(str, dlg) (gtk_object_get_data (GTK_OBJECT (dlg), str))
+-#define TEXT_DATA(str, dlg) (gtk_entry_get_text (GTK_ENTRY (DATA (str, dlg))))
++#define DATA(str, dlg)		(gtk_object_get_data (GTK_OBJECT (dlg), str))
++#define TEXT_DATA(str, dlg)	(gtk_entry_get_text (GTK_ENTRY (DATA \
++				(str, dlg))))
++#define KB_ITEM_SELECTED	(GTK_TREE(tree_kb)->selection->data)
+ 
+-typedef struct{
++struct _node {
+ 	GString *name;
+ 	GString *description;
+ 	GString *filename;
+-} node;
++};
++
++typedef struct _node node;
+ 
+ /* Stores the actual KB. Woo hoo, global! */
+ extern GtkWidget *tree_kb;
+-extern GtkObject *current_tree_item;	/* Currently selected item */
+ 
+-void new_root_node	(void);
+-void read_kbfile	(void);
+-gint read_tree_items	(gint indent, GtkWidget *subtree, FILE *ptr);
+-void write_kbfile	(void);
+-void write_node		(FILE *ptr, GtkWidget *tree, gint indent);
+-void on_tree_item_click (GtkObject *tree_item, GdkEventButton *event, gpointer func_data);
+-node *new_node		(void);
+-void free_node		(node *);
++extern void new_root_node	(void);
++extern void read_kbfile		(void);
++extern gint read_tree_items	(gint indent, GtkWidget *subtree, FILE *ptr);
++extern void write_kbfile	(void);
++extern void write_node		(FILE *ptr, GtkWidget *tree, gint indent);
++extern void on_tree_item_click (GtkObject *tree_item, GdkEventButton *event,
++		gpointer func_data);
++extern node *new_node		(void);
++extern void free_node		(node *);
+diff -d -u -r kibble/main.c kibble-0.7.2/main.c
+--- kibble/main.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/main.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* main.c
+- * $Id: main.c,v 0.15 1998/12/07 17:08:01 joseph Exp $
++ * $Id: main.c,v 0.20 1999/02/05 05:49:39 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -22,8 +22,59 @@
+ 
+ #include "all.h"
+ 
++void not_implemented (void)
++{
++        /* Code idea borrowed from Glade */
++        /* I hope the translations don't overflow the buffer! */
++        gchar buf[1024];
++	debug_msg ("not implemented\n");
++        g_snprintf (buf, MAX_STR_LEN, ("Feature not yet implemented\n"
++			"Check http://wish.student.harvard.edu/kibble/\n"
++			"for a potentially newer version\n"
++			"or read the FAQ for help:\n"
++			"http://wish.student.harvard.edu/kibble/faq/"));
++        show_message_box (buf);
++}
++
++/*
++ * Shows a simple message box with a label and an 'OK' button.
++ * e.g. show_message_box ("Error saving file");
++ * Code taken from Glade's util.c
++ */
++void show_message_box (gchar *message)
++{
++	GtkWidget *dialog, *label, *button_okay;
++
++	dialog = gtk_dialog_new ();
++	debug_msg ("message box = 0x%x\n" _ (gint)dialog);
++	gtk_window_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
++	gtk_container_border_width (GTK_CONTAINER (dialog), 5);
++
++	label = gtk_label_new (message);
++	/* gtk_misc_set_padding (GTK_MISC (label), 20, 20); */
++	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), label,
++			TRUE, TRUE, 0);
++
++	button_okay = gtk_button_new_with_label ("Okay");
++	gtk_widget_set_usize (button_okay, 80, -1);
++	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->action_area), button_okay,
++			FALSE, FALSE, 14);
++	GTK_WIDGET_SET_FLAGS (button_okay, GTK_CAN_DEFAULT);
++	/* Added this focus line */
++        gtk_widget_grab_focus (button_okay);
++	gtk_widget_grab_default (button_okay);
++
++	(void) gtk_signal_connect_object (GTK_OBJECT (button_okay),
++					  "clicked", GTK_SIGNAL_FUNC
++					  (gtk_object_destroy), GTK_OBJECT
++					  (dialog));
++
++	gtk_widget_show_all (dialog);
++}
++
+ void destroy_program (GtkMenuItem *menuitem, gpointer user_data)
+ {
++	debug_msg ("destroy_program called\n");
+ 	/* Write unsaved data */
+ 	write_kbfile();
+ 
+@@ -35,20 +86,20 @@
+ int main (int argc, char *argv[])
+ {
+ 	GtkWidget	*window_main;
+-	gchar		rcfile[MAX_STR_LEN];
+ 
++#ifdef DEBUG
++	debug_msg ("Locale = %s\n" _ gtk_set_locale ());
++#else
+ 	gtk_set_locale ();
++#endif
++
+ 	gtk_init (&argc, &argv);
+ 
+-	/* Source ~/.gtkrc */
+-	/* (What about ~/gtkrc, /usr/local/share/themes/Default/gtk/gtkrc?) */
+-        strncpy (rcfile, getenv("HOME"), sizeof(gchar) * (MAX_STR_LEN - 10));
+-        strcat (rcfile, "/.gtkrc");
+-	gtk_rc_parse (rcfile);
++	window_main		= create_window_main ();
++	debug_msg ("window_main = 0x%x\n" _ (gint)window_main);
+ 
+-	window_main = create_window_main ();
+-	gtk_widget_show (window_main);
+ 	read_kbfile ();
++	gtk_widget_show_all (window_main);
+ 
+ 	gtk_main ();
+ 	return 0;
+diff -d -u -r kibble/main.h kibble-0.7.2/main.h
+--- kibble/main.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/main.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* main.h
+- * $Id: main.h,v 0.10 1998/12/01 02:42:49 joseph Exp $
++ * $Id: main.h,v 0.13 1999/02/05 01:57:57 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -20,7 +20,17 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++/* Print out a debugging message */
++#ifdef DEBUG
++#define debug_msg(args) (g_print("file %s: line %d: ", __FILE__, __LINE__), g_print(args))
++#define _ ,
++#else
++#define debug_msg(args) ;
++#endif
++
+ /* Opened in the user's home directory */
+-#define KBFILE	"/.kibble_kb"
++#define KBFILE	g_string (/.kibble_kb)
+ 
+-void destroy_program		(GtkMenuItem *menuitem, gpointer user_data);
++extern void not_implemented	(void);
++extern void show_message_box	(gchar *message);
++extern void destroy_program	(GtkMenuItem *menuitem, gpointer user_data);
+diff -d -u -r kibble/main_menu.c kibble-0.7.2/main_menu.c
+--- kibble/main_menu.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/main_menu.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* main_menu.c
+- * $Id: main_menu.c,v 0.15 1998/12/05 02:55:56 joseph Exp $
++ * $Id: main_menu.c,v 0.19 1999/02/05 01:57:57 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -24,76 +24,69 @@
+ 
+ void on_save_activate (GtkMenuItem *menuitem, gpointer user_data)
+ {
++        debug_msg("saving kb\n");
+ 	write_kbfile();
+-	MODAL(
+ 	show_message_box ("Save completed\nsuccessfully.\n");
+-	     )
+ }
+ 
+ void on_add_activate (GtkMenuItem *menuitem, gpointer user_data)
+ {
+ 	/* Grab tree data, display error message if none selected */
+-	GtkWidget *dialog_add;
+-
+-
++        debug_msg("add activated\n");
+ 	/* If no tree item is currently selected */
+-	if(!current_tree_item){
+-		MODAL(
++	if((tree_kb == NULL || GTK_TREE(tree_kb)->selection == NULL) ||
++			KB_ITEM_SELECTED == NULL){
++		debug_msg("no tree item selected\n");
+ 		show_message_box("No tree item is\ncurrently selected\n");
+-		     )
+ 	} else {
+-		MODAL(
+-		dialog_add = create_dialog_add ();
+-		gtk_widget_show (dialog_add);
+-		     )
++		debug_msg("parent tree item = 0x%x\n" _
++				(gint)KB_ITEM_SELECTED);
++		create_dialog_add ();
+ 	}
+ }
+ 
+ void on_view_activate (GtkMenuItem *menuitem, gpointer user_data)
+ {
+ 	/* Grab tree data, display error message if none selected */
+-	GtkWidget *dialog_view;
+-
++        debug_msg("view activated\n");
+ 	/* If no tree item is currently selected */
+-	if(!current_tree_item){
+-		MODAL(
++	if((tree_kb == NULL || GTK_TREE(tree_kb)->selection == NULL) ||
++			KB_ITEM_SELECTED == NULL){
++		debug_msg("no tree item selected\n");
+ 		show_message_box("No tree item is\ncurrently selected\n");
+-		     )
+ 	} else {
+-		MODAL(
+-		dialog_view = create_dialog_view ();
+-		gtk_widget_show (dialog_view);
+-		     )
++		debug_msg("tree item = 0x%x\n" _
++				(gint)KB_ITEM_SELECTED);
++		create_dialog_view ();
+ 	}
+ }
+ 
+ void on_delete_activate (GtkMenuItem *menuitem, gpointer user_data)
+ {
+ 	/* Grab tree data, display error message if none selected */
+-	GtkWidget *dialog_delete;
+-
+-
++        debug_msg("delete activated\n");
+ 	/* If no tree item is currently selected */
+-	if(!current_tree_item){
+-		MODAL(
++	if((tree_kb == NULL || GTK_TREE(tree_kb)->selection == NULL) ||
++			KB_ITEM_SELECTED == NULL){
++		debug_msg("no tree item selected\n");
+ 		show_message_box("No tree item is\ncurrently selected\n");
+-		     )
+ 	} else {
+-		MODAL(
+-		dialog_delete = create_dialog_delete ();
+-		gtk_widget_show (dialog_delete);
+-		     )
++		debug_msg("tree item = 0x%x\n" _
++				(gint)KB_ITEM_SELECTED);
++		create_dialog_delete ();
+ 	}
+ }
+ 
+ void on_contents_activate (GtkMenuItem *menuitem, gpointer user_data)
+ {
+-        modal_not_implemented();
++        debug_msg("contents activated\n");
++        not_implemented();
+ }
+ 
+ void on_index_activate (GtkMenuItem *menuitem, gpointer user_data)
+ {
+-        modal_not_implemented();
++        debug_msg("index activated\n");
++        not_implemented();
+ }
+ 
+ void on_about_activate (GtkMenuItem *menuitem, gpointer user_data)
+@@ -101,166 +94,86 @@
+ 	/* Code idea borrowed from Glade */
+ 	/* I hope the translations don't overflow the buffer! */
+ 	gchar buf[1024];
+-	/* VERSION comes from configure.in -
+-	 * the only place it should be defined */
+-	sprintf (buf, ("Kibble\n\n"
++
++        debug_msg("about activated\n");
++	g_snprintf (buf, MAX_STR_LEN,
++			("Kibble\n\n"
+ 			"A Knowledge Base program.\n\n"
+ 			"Version %s\n\n"
+ 			"By Joseph P. Turian\n\n"
+ 			"Email: kibble@wish.student.harvard.edu\n"
+ 			"Web: http://wish.student.harvard.edu/kibble/\n"),
+ 			VERSION);
+-	MODAL(
+ 	show_message_box (buf);
+-	)
+ }
+ 
+ #ifdef GTK_HAVE_FEATURES_1_1_0
+-void create_menu_main (GtkWidget *window_main, GtkWidget *vbox)
++/* How the hell do I do F1 in this? */
++#define GMC	(GtkItemFactoryCallback)
++#define ON	0, NULL
++static GtkItemFactoryEntry menu_items[] =
+ {
+-	GtkWidget *menu_bar;
+-	GtkWidget *menu;
+-	GtkWidget *menu_item;
+-	GtkAccelGroup *accel_group;
+-
+-	/* This code should be with the main_window code */
+-	accel_group = gtk_accel_group_new ();
+-	gtk_window_add_accel_group (GTK_WINDOW (window_main), accel_group);
+-
+-	menu_bar = gtk_menu_bar_new ();
+-	gtk_widget_show (menu_bar);
+-	// Unneccessary, yes?
+-	// gtk_object_set_data (GTK_OBJECT (window_main), "menu_bar", menu_bar);
+-	gtk_box_pack_start (GTK_BOX (vbox), menu_bar, FALSE, FALSE, 0);
+-
+-	menu_item = gtk_menu_item_new_with_label ("File");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu_bar), menu_item);
+-
+-	menu = gtk_menu_new ();
+-	gtk_widget_show (menu);
+-	gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), menu);
+-
+-	menu_item = gtk_menu_item_new_with_label ("Save");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (on_save_activate),
+-			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_s, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+-
+-	menu_item = gtk_menu_item_new ();
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-
+-	menu_item = gtk_menu_item_new_with_label ("Quit");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (destroy_program),
+-			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_q, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+-
+-	menu_item = gtk_menu_item_new_with_label ("Edit");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu_bar), menu_item);
+-
+-	menu = gtk_menu_new ();
+-	gtk_widget_show (menu);
+-	gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), menu);
+-
+-	menu_item = gtk_menu_item_new_with_label ("Add");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (on_add_activate),
+-			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_a, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+-
+-	menu_item = gtk_menu_item_new_with_label ("View");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (on_view_activate),
+-			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_v, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+-
+-	menu_item = gtk_menu_item_new_with_label ("Delete");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (on_delete_activate),
+-			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_d, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
++	{"/_File",		NULL,		NULL,	0, "<Branch>"},
++	{"/File/_Save",		"<control>S",	GMC on_save_activate,	ON},
++	{"/File/sep1",		NULL,		NULL,	0, "<Separator>"},
++	{"/File/_Quit",		"<control>Q",	GMC destroy_program,	ON},
++	{"/_Edit",		NULL,		NULL,	0, "<Branch>"},
++	{"/Edit/_Add",		"<control>A",	GMC on_add_activate,	ON},
++	{"/Edit/_View",		"<control>V",	GMC on_view_activate,	ON},
++	{"/Edit/_Delete",	"<control>D",	GMC on_delete_activate,	ON},
++	{"/_Help",		NULL,		NULL,	0, "<LastBranch>"},
++	{"/Help/_Contents",	NULL,		GMC on_contents_activate, ON},
++	{"/Help/_Index",	NULL,		GMC on_index_activate,	ON},
++	{"/Help/sep2",		NULL,		NULL,	0, "<Separator>"},
++	{"/Help/_About...",	NULL,		GMC on_about_activate,	ON},
++};
+ 
+-	menu_item = gtk_menu_item_new_with_label ("Help");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu_bar), menu_item);
+-	gtk_menu_item_right_justify (GTK_MENU_ITEM (menu_item));
++void create_menu_main (GtkWidget *window_main, GtkWidget *vbox)
++{
++	guint		nmenu_items = (guint) (sizeof (menu_items) /
++			sizeof (menu_items[0]));
++	GtkAccelGroup	*accel_group;
++	GtkItemFactory	*factory;
+ 
+-	menu = gtk_menu_new ();
+-	gtk_widget_show (menu);
+-	gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), menu);
+ 
+-	menu_item = gtk_menu_item_new_with_label ("Contents");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (on_contents_activate),
+-			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_F1, 0, GTK_ACCEL_VISIBLE);
++	debug_msg("creating 1.1.x main menu with item_factory\n");
+ 
+-	menu_item = gtk_menu_item_new_with_label ("Index");
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (on_index_activate),
++	accel_group = gtk_accel_group_new ();
++	factory = gtk_item_factory_new (GTK_TYPE_MENU_BAR, "<Main>",
++			accel_group);
++	gtk_item_factory_create_items (factory, nmenu_items, menu_items,
+ 			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_F1, GDK_SHIFT_MASK, GTK_ACCEL_VISIBLE);
++	gtk_accel_group_attach (accel_group, GTK_OBJECT (window_main));
+ 
+-	menu_item = gtk_menu_item_new ();
+-	gtk_widget_show (menu_item);
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
++	gtk_box_pack_start (GTK_BOX (vbox),  gtk_item_factory_get_widget
++			(factory, "<Main>"), FALSE, FALSE, 0);
+ 
+-	menu_item = gtk_menu_item_new_with_label ("About...");
+-	gtk_container_add (GTK_CONTAINER (menu), menu_item);
+-	gtk_signal_connect (GTK_OBJECT (menu_item), "activate",
+-			GTK_SIGNAL_FUNC (on_about_activate),
+-			NULL);
+-	gtk_widget_add_accelerator (menu_item, "activate", accel_group,
+-			GDK_F1, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+-	gtk_widget_show (menu_item);
++	gtk_widget_show (gtk_item_factory_get_widget (factory, "<Main>"));
+ }
++
+ #else
+ 
+ /* GtkMenuFactory is deprecated. Figure out GtkItemFactory. */
+ /* How the hell do I do F1 in this? */
+ static GtkMenuEntry menu_items[] =
+ {
+-	{"<Main>/File/Save",    "<control>S",
++	{"/File/Save",    "<control>S",
+ 		(GtkMenuCallback)on_save_activate, NULL},
+-	{"<Main>/File/<separator>", NULL,	NULL, NULL},
+-	{"<Main>/File/Quit",    "<control>Q",
++	{"/File/<separator>", NULL,	NULL, NULL},
++	{"/File/Quit",    "<control>Q",
+ 		(GtkMenuCallback)destroy_program, NULL},
+-	{"<Main>/Edit/Add",     "<control>A",
++	{"/Edit/Add",     "<control>A",
+ 		(GtkMenuCallback)on_add_activate, NULL},
+-	{"<Main>/Edit/View",    "<control>V",
++	{"/Edit/View",    "<control>V",
+ 		(GtkMenuCallback)on_view_activate, NULL},
+-	{"<Main>/Edit/Delete",  "<control>D",
++	{"/Edit/Delete",  "<control>D",
+ 		(GtkMenuCallback)on_delete_activate, NULL},
+-	{"<Main>/Help/Contents", NULL,
++	{"/Help/Contents", NULL,
+ 		(GtkMenuCallback)on_contents_activate, NULL},
+-	{"<Main>/Help/Index",   NULL,
++	{"/Help/Index",   NULL,
+ 		(GtkMenuCallback)on_index_activate, NULL},
+-	{"<Main>/Help/<separator>", NULL,	NULL, NULL},
+-	{"<Main>/Help/About...", NULL,
++	{"/Help/<separator>", NULL,	NULL, NULL},
++	{"/Help/About...", NULL,
+ 		(GtkMenuCallback)on_about_activate, NULL},
+ };
+ 
+@@ -272,18 +185,19 @@
+ 	GtkMenuFactory	*subfactory;
+ 	GtkMenuPath	*menu_path;
+ 
++        debug_msg("creating 1.0.x main menu with menu_factory\n");
+ 	factory = gtk_menu_factory_new (GTK_MENU_FACTORY_MENU_BAR);
+ 	subfactory = gtk_menu_factory_new (GTK_MENU_FACTORY_MENU_BAR);
+ 
+-	gtk_menu_factory_add_subfactory (factory, subfactory, "<Main>");
++	gtk_menu_factory_add_subfactory (factory, subfactory, "");
+ 	gtk_menu_factory_add_entries (factory, menu_items, nmenu_items);
+ 	gtk_window_add_accelerator_table (GTK_WINDOW (window_main),
+ 			subfactory->table);
+ 
+-	menu_path = gtk_menu_factory_find (factory, "<Main>/Help");
++	menu_path = gtk_menu_factory_find (factory, "/Help");
+ 	gtk_menu_item_right_justify (GTK_MENU_ITEM (menu_path->widget));
+ 
+-	g_assert (GTK_MENU_BAR (subfactory->widget));
++	g_assert (GTK_MENU_BAR (subfactory->widget) != NULL);
+ 	gtk_box_pack_start (GTK_BOX (vbox), subfactory->widget, FALSE,
+ 			FALSE, 0);
+ 	gtk_widget_show (subfactory->widget);
+diff -d -u -r kibble/main_menu.h kibble-0.7.2/main_menu.h
+--- kibble/main_menu.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/main_menu.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* main_menu.h
+- * $Id: main_menu.h,v 0.2 1998/11/17 08:12:31 joseph Exp $
++ * $Id: main_menu.h,v 0.3 1998/12/21 04:23:33 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -20,15 +20,15 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-void on_new_activate		(GtkMenuItem *menuitem, gpointer user_data);
+-void on_open_activate		(GtkMenuItem *menuitem, gpointer user_data);
+-void on_save_activate		(GtkMenuItem *menuitem, gpointer user_data);
+-void on_save_as_activate	(GtkMenuItem *menuitem, gpointer user_data);
+-void on_add_activate		(GtkMenuItem *menuitem, gpointer user_data);
+-void on_view_activate		(GtkMenuItem *menuitem, gpointer user_data);
+-void on_delete_activate		(GtkMenuItem *menuitem, gpointer user_data);
+-void on_contents_activate	(GtkMenuItem *menuitem, gpointer user_data);
+-void on_index_activate		(GtkMenuItem *menuitem, gpointer user_data);
+-void on_about_activate		(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_new_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_open_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_save_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_save_as_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_add_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_view_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_delete_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_contents_activate (GtkMenuItem *menuitem, gpointer user_data);
++extern void on_index_activate	(GtkMenuItem *menuitem, gpointer user_data);
++extern void on_about_activate	(GtkMenuItem *menuitem, gpointer user_data);
+ 
+-void create_menu_main (GtkWidget *, GtkWidget *);
++extern void create_menu_main	(GtkWidget *, GtkWidget *);
+diff -d -u -r kibble/main_window.c kibble-0.7.2/main_window.c
+--- kibble/main_window.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/main_window.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* main_window.c
+- * $Id: main_window.c,v 0.10 1998/12/07 02:42:53 joseph Exp $
++ * $Id: main_window.c,v 0.14 1999/03/08 22:26:14 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -29,38 +29,43 @@
+ 	GtkWidget *scrolledwindow;
+ 
+ 	window_main = gtk_window_new (GTK_WINDOW_TOPLEVEL);
++	debug_msg ("window_main = 0x%x created\n" _ (gint)window_main);
+ 	gtk_window_set_title (GTK_WINDOW (window_main), "Kibble");
+ 	gtk_window_position (GTK_WINDOW (window_main), GTK_WIN_POS_CENTER);
+ 	gtk_window_set_policy (GTK_WINDOW (window_main), TRUE, TRUE, TRUE);
+-	gtk_widget_set_usize (GTK_WIDGET (window_main), 200, 200);
+-        gtk_signal_connect (GTK_OBJECT (window_main), "destroy",
+-                        GTK_SIGNAL_FUNC (destroy_program), NULL);
++	gtk_widget_set_usize (GTK_WIDGET (window_main), 300, 300);
++        (void) gtk_signal_connect (GTK_OBJECT (window_main), "destroy",
++				   GTK_SIGNAL_FUNC (destroy_program), NULL);
+ 
+ 	vbox = gtk_vbox_new (FALSE, 0);
+-	gtk_widget_show (vbox);
+ 	gtk_container_add (GTK_CONTAINER (window_main), vbox);
+ 
+ 	create_menu_main (window_main, vbox);
+ 
+ 	scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
+-#ifdef GTK_HAVE_FEATURES_1_1_0
+-	/* Grrr... this should work with GTK 1.0.x, I don't know why it
++	/* Grrr... this should work with GTK 1.[02].x, I don't know why it
+ 	 * keeps snapping back to the original size. */
++	/* debug_msg ("scrolled_policy = automatic\n");
+ 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow),
+-			GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+-#endif
++			GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC); */
++	debug_msg ("SCROLLED_POLICY =/= AUTOMATIC\n");
+ 	gtk_box_pack_start (GTK_BOX (vbox), scrolledwindow, TRUE, TRUE, 10);
+ 
+ 	tree_kb = gtk_tree_new ();
+-	gtk_widget_show (tree_kb);
++	if (tree_kb == NULL) {
++		g_assert (0);
++		return NULL;
++	}
+ 	/* Check for CVS/very new GTK+ code */
+ #ifdef HAVE_GTK_SCROLLED_WINDOW_ADD_WITH_VIEWPORT
++	debug_msg ("have gtk_scrolled_window_add_with_viewport\n");
+ 	gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW
+ 			(scrolledwindow), tree_kb);
+ #else
++	debug_msg ("don't have gtk_scrolled_window_add_with_viewport\n"
++			"(using gtk_container_add"\n));
+ 	gtk_container_add (GTK_CONTAINER (scrolledwindow), tree_kb);
+ #endif
+-	gtk_widget_show (scrolledwindow);
+ 	gtk_container_border_width (GTK_CONTAINER (tree_kb), 10);
+ 	GTK_WIDGET_SET_FLAGS (tree_kb, GTK_CAN_FOCUS);
+ 	GTK_WIDGET_SET_FLAGS (tree_kb, GTK_CAN_DEFAULT);
+diff -d -u -r kibble/main_window.h kibble-0.7.2/main_window.h
+--- kibble/main_window.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/main_window.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* main_window.h
+- * $Id: main_window.h,v 0.1 1998/11/17 03:44:35 joseph Exp $
++ * $Id: main_window.h,v 0.2 1998/12/21 04:23:33 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -20,4 +20,4 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-GtkWidget* create_window_main (void);
++extern GtkWidget* create_window_main	(void);
+Only in kibble: modal_hack.c
+Only in kibble: modal_hack.h
+diff -d -u -r kibble/view_dialog.c kibble-0.7.2/view_dialog.c
+--- kibble/view_dialog.c	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/view_dialog.c	Mon Mar  8 17:56:44 1999
+@@ -1,5 +1,5 @@
+ /* view_dialog.c
+- * $Id: view_dialog.c,v 0.12 1998/12/05 02:53:40 joseph Exp $
++ * $Id: view_dialog.c,v 0.16 1999/02/05 05:49:39 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -22,85 +22,114 @@
+ 
+ #include "all.h"
+ 
+-/* This variable does not necessarily have to be global. */
+-GtkWidget *dialog_view;
+-
+-void on_button_view_okay_clicked (GtkButton *button, gpointer user_data)
++static void on_button_view_okay_clicked (GtkButton *button, gpointer user_data)
+ {
+-	node *tree_node = gtk_object_get_data (GTK_OBJECT
++	GtkWidget *dialog_view;
++	GtkWidget *current_tree_item;
++	node *tree_node;
++
++	debug_msg ("view okay button clicked\n");
++
++	dialog_view = user_data;
++	g_assert (GTK_IS_WINDOW (dialog_view) != 0);
++
++	current_tree_item = GTK_WIDGET (gtk_object_get_data (GTK_OBJECT 
++				(dialog_view), "tree item"));
++	g_assert (current_tree_item != NULL);
++	if (GTK_IS_TREE_ITEM (current_tree_item) != 1) {
++		show_message_box ("Error!\n\n"
++				"Tree item no longer exists?\n"
++				"Aborting view operation\n");
++		gtk_object_destroy (GTK_OBJECT (dialog_view));
++		return;
++	}
++
++	tree_node = gtk_object_get_data (GTK_OBJECT
+ 			(current_tree_item), "node");
+ 
+-	g_string_assign (tree_node->name, TEXT_DATA ("name", dialog_view));
++	(void) g_string_assign (tree_node->name, TEXT_DATA ("name",
++							    dialog_view));
+ 
+-	g_string_assign (tree_node->description, gtk_editable_get_chars
+-			(GTK_EDITABLE (DATA ("description", dialog_view)), 0,
+-			 gtk_text_get_length (GTK_TEXT (DATA ("description",
+-						 dialog_view)))));
++	/* Yuk. Clean up! */
++	(void) g_string_assign (tree_node->description,
++				gtk_editable_get_chars (
++					GTK_EDITABLE (DATA ("description",
++							dialog_view)), 0,
++					gtk_text_get_length (GTK_TEXT
++						(DATA ("description",
++						       dialog_view)))));
+ 
+-	g_string_assign (tree_node->filename, TEXT_DATA ("filename",
+-				dialog_view));
++	(void) g_string_assign (tree_node->filename, TEXT_DATA
++				("filename", dialog_view));
+ 
+ 	/* There must be a better way to modify the label: */
+ 	gtk_label_set (GTK_LABEL (GTK_TREE_ITEM (current_tree_item)
+ 				->item.bin.child), TEXT_DATA ("name",
+ 					dialog_view));
+ 
+-	destroy_modal (GTK_OBJECT(dialog_view), NULL);
++	gtk_object_destroy (GTK_OBJECT (dialog_view));
+ }
+ 
+-GtkWidget* create_dialog_view ()
++void create_dialog_view ()
+ {
+-	GtkWidget *vbox1;
++	GtkWidget *current_tree_item;
++	GtkWidget *dialog_view;
++	GtkWidget *vbox;
+ 	GtkWidget *vbox2;
+ 	GtkWidget *hbox;
+ 	GtkWidget *label;
+ 	GtkWidget *entry_name;
+ 	GtkWidget *text_description;
+ 	GtkWidget *frame;
+-	GtkWidget *vbox3;
+ 	GtkWidget *button_view;
+ 	GtkWidget *button_browse;
+ 	GtkWidget *action_area;
+ 	GtkWidget *button_okay;
+ 	GtkWidget *button_cancel;
+ 
+-	node *tree_node = gtk_object_get_data (GTK_OBJECT
++	node *tree_node;
++	
++	current_tree_item = GTK_WIDGET (KB_ITEM_SELECTED);
++	g_assert (current_tree_item != NULL);
++	if (GTK_IS_TREE_ITEM (current_tree_item) != 1) {
++		show_message_box ("Error!\n\n"
++				"Tree item no longer exists?\n"
++				"Aborting view operation\n");
++		return;
++	}
++
++	tree_node = gtk_object_get_data (GTK_OBJECT
+ 			(current_tree_item), "node");
+ 
++	debug_msg ("creating viewdialog\n");
+ 	dialog_view = gtk_dialog_new ();
++	gtk_object_set_data (GTK_OBJECT (dialog_view), "tree item",
++			current_tree_item);
++	debug_msg ("dialog_view = 0x%x\n" _ (gint)dialog_view);
+ 	gtk_window_set_title (GTK_WINDOW (dialog_view), "View");
+ 	gtk_window_set_policy (GTK_WINDOW (dialog_view), TRUE, TRUE, FALSE);
+-	gtk_signal_connect_object (GTK_OBJECT (dialog_view), "delete_event",
+-			GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT (dialog_view));
+ 
+-	vbox1 = GTK_DIALOG (dialog_view)->vbox;
+-	gtk_widget_show (vbox1);
++	vbox = GTK_DIALOG (dialog_view)->vbox;
+ 
+ 	vbox2 = gtk_vbox_new (FALSE, 0);
+-	gtk_widget_show (vbox2);
+-	gtk_box_pack_start (GTK_BOX (vbox1), vbox2, TRUE, TRUE, 0);
++	gtk_box_pack_start (GTK_BOX (vbox), vbox2, TRUE, TRUE, 0);
+ 	gtk_container_border_width (GTK_CONTAINER (vbox2), 10);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 0);
+-	gtk_widget_show (hbox);
+ 	gtk_box_pack_start (GTK_BOX (vbox2), hbox, TRUE, TRUE, 0);
+ 
+ 	label = gtk_label_new ("Name:");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 3);
+ 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+ 
+ 	entry_name = gtk_entry_new_with_max_length (MAX_STR_LEN);
+ 	gtk_entry_set_text (GTK_ENTRY (entry_name), tree_node->name->str);
+ 	gtk_object_set_data (GTK_OBJECT (dialog_view), "name", entry_name);
+-	gtk_widget_show (entry_name);
+ 	gtk_box_pack_start (GTK_BOX (hbox), entry_name, TRUE, TRUE, 5);
+ 	GTK_WIDGET_SET_FLAGS (entry_name, GTK_CAN_DEFAULT);
+ 	gtk_widget_grab_default (entry_name);
+ 
+ 	label = gtk_label_new ("Description:");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (vbox2), label, TRUE, TRUE, 3);
+ 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+ 
+@@ -114,80 +143,70 @@
+ 			tree_node->description->str,
+ 			-1);
+ 	gtk_object_set_data (GTK_OBJECT (dialog_view), "description", text_description);
+-	gtk_widget_show (text_description);
+ 	GTK_WIDGET_SET_FLAGS (text_description, GTK_CAN_DEFAULT);
+ 	gtk_text_set_editable (GTK_TEXT(text_description), 1);
++	/* What is the difference? */
++	gtk_text_set_line_wrap (GTK_TEXT(text_description), 1);
+ 	gtk_text_set_word_wrap (GTK_TEXT(text_description), 1);
+ 
+ 	frame = gtk_frame_new (NULL);
+-	gtk_widget_show (frame);
+ 	gtk_box_pack_start (GTK_BOX (vbox2), frame, TRUE, TRUE, 3);
+ 
+-	vbox3 = gtk_vbox_new (FALSE, 0);
+-	gtk_widget_show (vbox3);
+-	gtk_container_add (GTK_CONTAINER (frame), vbox3);
++	vbox = gtk_vbox_new (FALSE, 0);
++	gtk_container_add (GTK_CONTAINER (frame), vbox);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 5);
+-	gtk_widget_show (hbox);
+-	gtk_box_pack_start (GTK_BOX (vbox3), hbox, TRUE, TRUE, 0);
++	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+ 	gtk_container_border_width (GTK_CONTAINER (hbox), 5);
+ 
+ 	label = gtk_label_new ("Filename:");
+-	gtk_widget_show (label);
+ 	gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+ 
+         entry_filename = gtk_entry_new_with_max_length (MAX_STR_LEN);
+ 	gtk_entry_set_text (GTK_ENTRY (entry_filename), tree_node->filename->str);
+ 	gtk_object_set_data (GTK_OBJECT (dialog_view), "filename", entry_filename);
+-	gtk_widget_show (entry_filename);
+ 	gtk_box_pack_start (GTK_BOX (hbox), entry_filename, TRUE, TRUE, 0);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 5);
+-	gtk_widget_show (hbox);
+-	gtk_box_pack_start (GTK_BOX (vbox3), hbox, TRUE, TRUE, 0);
++	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+ 
+ 	button_view = gtk_button_new_with_label ("View");
+-	gtk_widget_show (button_view);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_view, TRUE, FALSE, 0);
+ 	GTK_WIDGET_SET_FLAGS (button_view, GTK_CAN_DEFAULT);
+-	gtk_signal_connect (GTK_OBJECT (button_view), "clicked",
+-			GTK_SIGNAL_FUNC (modal2_not_implemented),
+-			NULL);
++	(void) gtk_signal_connect (GTK_OBJECT (button_view), "clicked",
++				   GTK_SIGNAL_FUNC
++				   (not_implemented), NULL);
+ 
+ 	button_browse = gtk_button_new_with_label ("Browse");
+-	gtk_widget_show (button_browse);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_browse, TRUE, FALSE, 0);
+ 	GTK_WIDGET_SET_FLAGS (button_browse, GTK_CAN_DEFAULT);
+-	gtk_signal_connect (GTK_OBJECT (button_browse), "clicked",
+-			GTK_SIGNAL_FUNC (on_button_browse_clicked),
+-			NULL);
++	(void) gtk_signal_connect (GTK_OBJECT (button_browse), "clicked",
++				   GTK_SIGNAL_FUNC
++				   (on_button_browse_clicked), NULL);
+ 
+ 	action_area = GTK_DIALOG (dialog_view)->action_area;
+-	gtk_widget_show (action_area);
+ 	gtk_container_border_width (GTK_CONTAINER (action_area), 10);
+ 
+ 	hbox = gtk_hbox_new (FALSE, 0);
+-	gtk_widget_show (hbox);
+ 	gtk_box_pack_start (GTK_BOX (action_area), hbox, TRUE, TRUE, 0);
+ 
+ 	button_okay = gtk_button_new_with_label ("Okay");
+-	gtk_widget_show (button_okay);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_okay, TRUE, FALSE, 5);
+ 	GTK_WIDGET_SET_FLAGS (button_okay, GTK_CAN_DEFAULT);
+ 	gtk_widget_grab_focus (button_okay);
+ 	gtk_widget_grab_default (button_okay);
+-	gtk_signal_connect (GTK_OBJECT (button_okay), "clicked",
+-			GTK_SIGNAL_FUNC (on_button_view_okay_clicked),
+-			NULL);
++	(void) gtk_signal_connect (GTK_OBJECT (button_okay), "clicked",
++				   GTK_SIGNAL_FUNC
++				   (on_button_view_okay_clicked),
++				   GTK_OBJECT (dialog_view));
+ 
+ 	button_cancel = gtk_button_new_with_label ("Cancel");
+-	gtk_widget_show (button_cancel);
+ 	gtk_box_pack_start (GTK_BOX (hbox), button_cancel, TRUE, FALSE, 5);
+ 	gtk_container_border_width (GTK_CONTAINER (button_cancel), 1);
+ 	GTK_WIDGET_SET_FLAGS (button_cancel, GTK_CAN_DEFAULT);
+-	gtk_signal_connect (GTK_OBJECT (button_cancel), "clicked",
+-			GTK_SIGNAL_FUNC (destroy_modal),
+-			GTK_OBJECT (dialog_view));
+-
+-	return dialog_view;
++	(void) gtk_signal_connect_object (GTK_OBJECT (button_cancel),
++					  "clicked", GTK_SIGNAL_FUNC
++					  (gtk_object_destroy), GTK_OBJECT
++					  (dialog_view));
++	gtk_widget_show_all (dialog_view);
+ }
+diff -d -u -r kibble/view_dialog.h kibble-0.7.2/view_dialog.h
+--- kibble/view_dialog.h	Mon Dec  7 12:27:03 1998
++++ kibble-0.7.2/view_dialog.h	Mon Mar  8 17:56:45 1999
+@@ -1,5 +1,5 @@
+ /* view_dialog.h
+- * $Id: view_dialog.h,v 0.3 1998/11/18 00:37:17 joseph Exp $
++ * $Id: view_dialog.h,v 0.4 1998/12/21 04:23:33 joseph Exp $
+  */
+ 
+ /* kibble
+@@ -20,6 +20,4 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-GtkWidget* create_dialog_view (void);
+-
+-void on_button_view_okay_clicked	(GtkButton *button, gpointer user_data);
++extern void create_dialog_view			(void);

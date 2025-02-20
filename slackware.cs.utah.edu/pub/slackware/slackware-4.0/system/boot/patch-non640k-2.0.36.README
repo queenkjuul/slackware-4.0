@@ -1,0 +1,21 @@
+This patch will allow linux systems based on a 2.0.36 kernel to boot with 
+less than 640K of avalible base memory. This is based on an earlier patch 
+by Matthew M. Ogilvie for use on 2.0.10 kernels.
+
+This patch is mostly adjustments on the older patch to match the newer
+kernel, with the addition of a bit in loadflags in the setup.S file to
+allow the PXE linux loader to identify this kernel as loadable below the 
+reported top of base memory instead of loading at the normal 0x90000 
+location.
+
+This patch is necessary to run the linux UNDI drivers after a PXE network
+boot.
+
+
+To apply the patch, make sure linux source is in /usr/src/linux and run:
+
+cd /usr/src
+gzip -cd patch-non640k-2.0.36.gz |patch -p0
+
+
+                                - Dave Anderson (davex.anderson@intel.com)

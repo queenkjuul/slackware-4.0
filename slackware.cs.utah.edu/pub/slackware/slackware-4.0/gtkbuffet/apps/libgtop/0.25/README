@@ -1,0 +1,21 @@
+LibGTop 0.25 has been released:
+------------------------------
+
+Tarballs:
+
+	libgtop-0.25.0.tar.gz
+	libgtop-apps-0.25.0.tar.gz
+
+Source RPM:
+
+	libgtop-0.25.0-REL.src.rpm
+	libgtop-apps-0.25.0-REL.src.rpm
+
+Binary RPMS:
+
+	libgtop-0.25.0-REL.i386.rpm
+	libgtop-devel-0.25.0-REL.i386.rpm
+	libgtop-examples-0.25.0-REL.i386.rpm
+	libgtop-apps-0.25.0-REL.i386.rpm
+
+Martin <martin@home-of-linux.org>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/devel/debuggers</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/devel/debuggers</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/devel/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">669 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">5.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:52  </td><td align="right"> 70 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bdm-linux.0.9l.lsm">bdm-linux.0.9l.lsm</a></td><td align="right">1995-04-27 07:00  </td><td align="right">521 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bdm-linux.0.9l.tar.gz">bdm-linux.0.9l.tar.gz</a></td><td align="right">1995-04-27 07:00  </td><td align="right"> 33K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gdb-4.12+duel.lsm">gdb-4.12+duel.lsm</a></td><td align="right">1994-05-12 07:00  </td><td align="right">790 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gdb-4.12+duel.tgz">gdb-4.12+duel.tgz</a></td><td align="right">1994-05-12 07:00  </td><td align="right">488K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gdb-4.13.bin.gz">gdb-4.13.bin.gz</a></td><td align="right">1995-02-27 08:00  </td><td align="right">427K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gdb-4.17-bdm-patches.lsm">gdb-4.17-bdm-patches.lsm</a></td><td align="right">1998-07-14 17:56  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gdb-4.17-bdm-patches.tar.gz">gdb-4.17-bdm-patches.tar.gz</a></td><td align="right">1998-07-14 17:56  </td><td align="right">139K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kdbg-0.2.3.lsm">kdbg-0.2.3.lsm</a></td><td align="right">1998-10-14 21:16  </td><td align="right">700 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kdbg-0.2.3.tar.gz">kdbg-0.2.3.tar.gz</a></td><td align="right">1998-10-14 21:17  </td><td align="right">198K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kdbg-0.2.4.lsm">kdbg-0.2.4.lsm</a></td><td align="right">1998-11-23 21:35  </td><td align="right">700 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kdbg-0.2.4.tar.gz">kdbg-0.2.4.tar.gz</a></td><td align="right">1998-11-23 21:36  </td><td align="right">203K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mec-0.1.lsm">mec-0.1.lsm</a></td><td align="right">1995-09-22 07:00  </td><td align="right">856 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mec-0.1.tar.gz">mec-0.1.tar.gz</a></td><td align="right">1995-09-22 07:00  </td><td align="right"> 87K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mec-0.3.lsm">mec-0.3.lsm</a></td><td align="right">1995-11-19 08:00  </td><td align="right">453 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mec-0.3.tar.gz">mec-0.3.tar.gz</a></td><td align="right">1995-11-19 08:00  </td><td align="right">281K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mxgdb-1.2-patch">mxgdb-1.2-patch</a></td><td align="right">1995-05-30 07:00  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mxgdb-1.2-patch.lsm">mxgdb-1.2-patch.lsm</a></td><td align="right">1995-05-30 07:00  </td><td align="right">825 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mxgdb-1.2.tar.gz">mxgdb-1.2.tar.gz</a></td><td align="right">1995-05-30 07:00  </td><td align="right"> 84K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rhide-1.4.lsm">rhide-1.4.lsm</a></td><td align="right">1997-10-02 18:12  </td><td align="right">897 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tgdb-1.4.src.lsm">tgdb-1.4.src.lsm</a></td><td align="right">1995-05-23 07:00  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tgdb-1.4.src.tgz">tgdb-1.4.src.tgz</a></td><td align="right">1995-05-23 07:00  </td><td align="right">145K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tgdb_wish-linux.lsm">tgdb_wish-linux.lsm</a></td><td align="right">1994-10-28 07:00  </td><td align="right">904 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tgdb_wish-linux.tgz">tgdb_wish-linux.tgz</a></td><td align="right">1994-10-28 07:00  </td><td align="right">639K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tgdb_wish-lxELF-X11R6.lsm">tgdb_wish-lxELF-X11R6.lsm</a></td><td align="right">1996-05-22 07:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tgdb_wish-lxELF-X11R6.tgz">tgdb_wish-lxELF-X11R6.tgz</a></td><td align="right">1996-05-22 07:00  </td><td align="right">531K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tgdb_wish-lxR6.lsm">tgdb_wish-lxR6.lsm</a></td><td align="right">1995-05-23 07:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tgdb_wish-lxR6.tgz">tgdb_wish-lxR6.tgz</a></td><td align="right">1995-05-23 07:00  </td><td align="right">387K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ups-3.33-RGA.lsm">ups-3.33-RGA.lsm</a></td><td align="right">1998-10-16 05:49  </td><td align="right">2.3K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="ups-3.33.README">ups-3.33.README</a></td><td align="right">1998-10-16 05:51  </td><td align="right">6.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ups-3.33.lsm">ups-3.33.lsm</a></td><td align="right">1998-10-16 05:55  </td><td align="right">2.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ups-3.33.tar.gz">ups-3.33.tar.gz</a></td><td align="right">1998-10-16 05:50  </td><td align="right">1.0M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xxgdb-1.08.lsm">xxgdb-1.08.lsm</a></td><td align="right">1994-12-25 08:00  </td><td align="right">429 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="xxgdb-1.08.patch">xxgdb-1.08.patch</a></td><td align="right">1996-01-20 08:00  </td><td align="right">4.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xxgdb-1.08.tar.gz">xxgdb-1.08.tar.gz</a></td><td align="right">1994-12-25 08:00  </td><td align="right">102K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xxgdb.README.linux">xxgdb.README.linux</a></td><td align="right">1994-12-25 08:00  </td><td align="right">442 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

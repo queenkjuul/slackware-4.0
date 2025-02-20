@@ -1,0 +1,20 @@
+
+Begin3
+Title:          Tbackup
+Version:        0.9
+Entered-Date:   26APR98
+Description:    Tbackup (three backup) is a user friendly, fault tolerant
+                package for making backups of a Linux filesystem.  It is
+                primarily designed to make multi-megabyte backups to a set of
+                floppy disks.  It has incremental backups, backup indexes,
+                selective restore, error correcting codes, and more.
+Keywords:       tbackup  backup  floppy disk  fault tolerant  afio
+Author:         koen@win.tue.nl (Koen Holtman)
+Primary-site:   ftp.win.tue.nl /pub/linux/tbackup
+                327kb tbackup-0.9.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/backup
+                327kb tbackup-0.9.tgz
+Platforms:      fdformat, gawk, afio version 2.4.2 or higher.
+Copying-Policy: GPL
+End
+

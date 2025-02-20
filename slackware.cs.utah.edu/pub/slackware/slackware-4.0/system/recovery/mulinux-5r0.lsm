@@ -1,0 +1,36 @@
+Begin3
+Title:		muLinux	
+Version:	5r0	
+Entered-date:	26Mar99	
+Description:	Full-configured, application-centric 1722K one-floppy Linux. 
+		muLinux is a minimalistic, but almost complete, 
+		script-based Linux distribution made in Italy, fitted 
+		on a single 1722K floppy with  X11 and GCC floppy addon.
+	        Work on PC 386-4M + swap and install in RAM, UMSDOS & EXT2.
+        	SUPPORT: Internet connection (via PPP) or LAN (via eth);
+        	e-mail processing (fetch, read and send), NFS, SAMBA, ftp, 
+		IRC, finger, telnet, tcpdump, news and web browsing (lynx);
+		PC-PC link via pppd; IP firewall & IP masqueranding; 
+        	remote access via modem line (miterm); editing&printing;
+        	fdisk,e2fsck, fdformat ; job scheduler (atd), ringd daemon,
+        	WWW server, dialin server, serial server, fax server;
+        	play & record WAV, CD listening (workbone), say, etc. :)
+        	OTHER FEATURES: international keyboards support, BUS mouse,
+        	PAP/CHAP authentication, permanent multi-configuration,
+        	installation from LINUX/DOS/WINDOWS, PC speaker support,
+		NFS-root booting for diskless Xterminal applications. 
+
+Keywords:	QNX, linux, spaghetti-linux 
+Author: 	andreoli@pisoft.it (Michele Andreoli)
+Maintained-by:	andreoli@pisoft.it (Michele Andreoli)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/recovery
+		1771123	mulinux-5r0.tgz	
+		0	mulinux-5r0.lsm	
+Alternate-site:	http://www4.pisoft.it/~andreoli/mulinux.html
+		1771123	mulinux-5r0.tgz	
+		1737669	X11.tgz	
+		1752332	GCC.tgz	
+		495139	DOSTOOLS.zip	
+Platforms:	Dos/Win9-/Linux
+Copying-policy:	GPL
+End

@@ -1,0 +1,19 @@
+Begin3
+Title:          xdialdctl
+Version:        0.2
+Entered-date:   05DEC96
+Description:    A small X application for controlling and monitoring some
+                aspects of diald functionality.  Includes link status (up
+                or down), maximum time-to-live (TTL).  Allows a user with
+                permission to write diald's FIFO to force or unforce the
+                IP link.
+Keywords:       diald demand dial ppp slip
+Author:         joe@elem.com (Joe Edmonds)
+Maintained-by:  joe@elem.com (Joe Edmonds)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/serial
+                6090 xdialdctl-0.2.tgz
+Alternate-site: ftp.elem.com /pub/linux
+Original-site:  
+Platform:       diald (tested with v0.14), X Windows, Xaw
+Copying-policy: GPL
+End

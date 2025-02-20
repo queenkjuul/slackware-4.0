@@ -1,0 +1,17 @@
+Begin3
+Title:		lcdtext
+Version:	1.0        
+Entered-date:	14APR97   
+Description:	displays text of your choice on an alphanumeric LCD with 
+		HD44780 controller connected to a printer port. Supports
+		special characters (Umlaute, accents, kanji).    
+Keywords:	LCD, display, status       
+Author:         m.prinke@trashcan.mcnet.de (Matthias Prinke)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Status
+		64 K lcdtext-1.0.tgz
+Alternate-site: 
+Original-site:  
+Platforms:	80x86 Linux, DOS
+Copying-policy:	GPL
+End

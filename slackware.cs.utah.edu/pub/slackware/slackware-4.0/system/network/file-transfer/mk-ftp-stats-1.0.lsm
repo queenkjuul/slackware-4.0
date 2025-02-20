@@ -1,0 +1,18 @@
+
+Begin3
+Title: 		mk-ftp-stats
+Version: 	1.0       
+Entered-date: 	1998-03-04  
+Description: 	Creates a file showing your FTP usage.
+		Converts the xferlog file to a human readable format, inspired
+		from the WarFTP stats format.   
+Keywords: 	FTP, statistics, xferlog
+Author: 	d97van@dtek.chalmers.se (Guillaume Vangelder)
+Maintained-by: 	d97van@dtek.chalmers.se (Guillaume Vangelder)
+Primary-site: 	www.dtek.chalmers.se /~d97van/mk-ftp-stats/
+		2484 mk-ftp-stats-1.0.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

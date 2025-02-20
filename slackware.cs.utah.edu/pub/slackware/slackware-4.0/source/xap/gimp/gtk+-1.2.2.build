@@ -1,0 +1,11 @@
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/gtk+-1.2.2.tar.gz
+cd gtk+-1.2.2
+./configure --prefix=/usr --with-glib-prefix=/usr
+make CFLAGS=-O2
+make CFLAGS=-O2 install
+mkdir -p /usr/doc/gtk+-1.2.2
+cp -a ABOUT-NLS AUTHORS COPYING ChangeLog HACKING INSTALL \
+  NEWS README README.cvs-commits TODO /usr/doc/gtk+-1.2.2
+chown -R root.root /usr/doc/gtk+-1.2.2

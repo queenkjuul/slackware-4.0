@@ -1,0 +1,15 @@
+Begin3
+Title:          flin
+Version:        0.5.1
+Entered-date:   
+Description:    A dialog-like menuing system with fvwm-1.xx like syntax.
+		Used to be called `guest'. Useful as a restricted shell
+		or for as a simple access system for Unix newbies.
+Keywords:       menu, guest, flin, dialog
+Author:         shmit@kublai.com (Brian Cully)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Shells
+		43kB flin-0.5.1.tar.gz
+Alternate-site: ftp.panix.com /pub/bjc
+Platform:       ncurses-1.9 or greater
+Copying-policy: GPL
+End

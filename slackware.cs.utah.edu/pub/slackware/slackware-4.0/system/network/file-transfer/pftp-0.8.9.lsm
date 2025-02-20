@@ -1,0 +1,24 @@
+Begin3
+Title:          pftp
+Version:        0.8.9
+Entered-date:   Fri Jun 19 13:14:20 CEST 1998
+Description:    This program transfers files from host to host
+                on command line (within your telnet sessions).
+                You may copy directories recursively, send/receive
+                stdin/stdout, use your own filters, set packet size,
+                set bandwidth, accept specified clients, start pftp
+                as a daemon, let inetd start pftp, send files and
+                directories (including a message file) to other
+                people on the net, manage the data, etc.
+                It's worth to have a look at it! ;^)
+                Runs on AIX, FreeBSD, HP-UX, IRIX, Linux, NEXTSTEP,
+                OSF1, OpenBSD, SunOS, ULTRIX, and unicos.
+Keywords:       ftp file-transfer
+Author:         bhor0533@lehr.chem.tu-berlin.de (Ben Schluricke)
+Maintained-by:  bhor0533@lehr.chem.tu-berlin.de (Ben Schluricke)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/file-transfer
+                61k pftp-0.8.9.tar.gz
+Alternate-site: http://star.trek.org/~pftp
+Platforms:      Unix ANSI-C Compiler
+Copying-policy: GPL
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          Runset Init suite 
+Version:        1.0
+Entered-date:   18APR99
+Description:    An alternative `init' system based around a specialized 
+		script language.
+		Simpler than SysV Init, but allows switching groups of 
+		processes. Has inetd and crond functionality built-in
+		(although not drop-in compatible)
+Keywords:       init, inetd, crond
+Author:         Michael Deutschmann <michael@talamasca.wkpowerlink.com>
+Maintained-by:  Michael Deutschmann <michael@talamasca.wkpowerlink.com>
+Primary-site:   talamasca.wkpowerlink.com
+		120k /pub/software/runset/runset-1.0.tar.gz
+Copying-policy: GPL
+End

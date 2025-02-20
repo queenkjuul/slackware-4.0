@@ -1,0 +1,30 @@
+	This is the official home of Sheffield-NQS, a project funded by
+	JISC's New Technologies Initiative.
+	
+	The directory `Monsanto-NQS' contains a copy of NQS, developed by
+	John Roman at Monsanto Software.  Currently, we only support this
+	version of NQS.  If you are looking to provide an NQS service now,
+	you should use Monsanto-NQS.  We will release bug fixes to Monsanto
+	in the future.
+	
+	The directory `Sheffield-NQS' will eventually contain a copy of the
+	new Sheffield-derivative of Monsanto.  Please do not download this
+	unless you are willing to actively support its development - we
+	cannot provide support for Sheffield-NQS yet.
+	
+	The directory `doc' contains copies of all the information, reports
+	and anything else to do with NQS which I've either written, or found
+	on-line.  All of this documentation is also available on the Web :
+	
+	http://www.shef.ac.uk/uni/projects/nqs/NQS.home.contents.html
+
+	The directory 'tools' contains incidental software developed to help
+	this project along.
+	
+	Finally, there are two active electronic mailing lists - more
+	information can be found in doc/NQS.home.txt
+	
+	Stuart
+	--
+	Stuart Herbert	  Academic Computing Services, University of Sheffield
+	UNIX Support	      (0114) 282 4254 (External) / Ext 4254 (Internal)

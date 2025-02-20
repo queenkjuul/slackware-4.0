@@ -1,0 +1,72 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-devs
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_devs.tar.gz
+
+echo "+===============+"
+echo "| MAKEDEV-2.3.1 |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/MAKEDEV-2.3.1.tar.gz
+cd MAKEDEV-2.3.1
+cat MAKEDEV > $PKG/dev/MAKEDEV
+cat README > $PKG/dev/README.MAKEDEV
+gzip -9c MAKEDEV.man > $PKG/usr/man/man8/MAKEDEV.8.gz
+
+echo "+=================+"
+echo "| MAKEDEV-C-1.6.1 |"
+echo "+=================+"
+cd $TMP
+tar xzvf $CWD/MAKEDEV-C-1.6.1.tar.gz
+cd makedev-1.6.1
+make clean
+make
+cat MAKEDEV > $PKG/dev/MAKEDEV-C
+cat README > $PKG/dev/README.MAKEDEV-C
+cat devinfo > $PKG/etc/devinfo
+cat makedev.cfg > $PKG/etc/makedev.cfg
+gzip -9c MAKEDEV.8 > $PKG/usr/man/man8/MAKEDEV-C.8.gz
+gzip -9c devinfo.5 > $PKG/usr/man/man5/devinfo.5.gz
+gzip -9c makedev.cfg.5 > $PKG/usr/man/man5/makedev.cfg.5.gz
+mkdir -p $PKG/usr/doc/MAKEDEV-C-1.6.1
+cp -a LEGAL.NOTICE README $PKG/usr/doc/MAKEDEV-C-1.6.1
+chown root.root $PKG/usr/doc/MAKEDEV-C-1.6.1/*
+chmod 644 $PKG/usr/doc/MAKEDEV-C-1.6.1/*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/devs.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/makedev-1.6.1
+  rm -rf $TMP/MAKEDEV-2.3.1
+  rm -rf $PKG
+fi

@@ -1,0 +1,24 @@
+Begin3
+Title:		xmftp
+Version:	1.0.4
+Entered-date:	20AUG97
+Description:	xmftp is a simple X/Motif FTP client
+		Features
+		- Extensive transfer information when downloading/uploading
+		- Current file AND total transfer information (when
+		  transferring multiple files) given in real-time including:
+			- status bar
+			- textual file/total position indicators
+			- file AND total ETA (estimated time of arrival)
+			- speed/throughput of transfer information
+			- Provides easy retrieval of directories         
+		- Automatic resuming of downloads
+		- Easy to use interface
+Keywords:	X FTP Motif X11
+Author: 	valankar@bigfoot.com (Viraj Alankar)
+Maintained-by:	valankar@bigfoot.com (Viraj Alankar)
+Primary-site:	http://www.magg.net/~kaos/html/xmftp.html
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/file-transfer
+Platforms:	Motif 2.0, only tested with Linux
+Copying-policy:	GPL
+End

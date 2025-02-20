@@ -1,0 +1,12 @@
+Begin3
+Title: buildlib
+Version: 0.1
+Entered-date: Sun Dec 25 1994
+Description: Shared Libraries Perl Script Builder. Requires gcc,dll tools
+Keywords: shlib, library, perl
+Author: Patrick Nguyen <pnguyen@elde.epfl.ch> 
+Maintained-by: Patrick Nguyen <pnguyen@elde.epfl.ch>
+Primary-site: sunsite.unc.edu /pub/Linux/devel
+Platform: 
+Copying-policy: see disclaimer
+End

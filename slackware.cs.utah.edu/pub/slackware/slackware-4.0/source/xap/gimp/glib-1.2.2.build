@@ -1,0 +1,11 @@
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/glib-1.2.2.tar.gz
+cd glib-1.2.2
+./configure --prefix=/usr
+make CFLAGS="-O2 -Wall -D_REENTRANT"
+make CFLAGS="-O2 -Wall -D_REENTRANT" install
+mkdir /usr/doc/glib-1.2.2
+cp -a AUTHORS COPYING ChangeLog INSTALL NEWS README /usr/doc/glib-1.2.2
+chmod 644 /usr/doc/glib-1.2.2/*
+chown root.root /usr/doc/glib-1.2.2/*

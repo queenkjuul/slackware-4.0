@@ -1,0 +1,26 @@
+Begin3
+Title:          mz700em
+Version:        0.2
+Entered-date:   04DEC96
+Description:	mz700em is an svgalib Sharp MZ700 emulator. It runs
+		all the m/c games I've tried on it, but isn't perfect
+		by any means. Included is `mzget', a program to read
+		MZ700 tapes (you need a soundcard capable of 44.1kHz
+		recording for it to work).
+		
+		Though I (rjm) wrote mz700em, I give Ian main author
+		credit as I used his Z80 emulation (from his excellent
+		`xz80' ZX Spectrum emulator), which is the most
+		difficult bit, not to mention being half the code. :-)
+		(Please don't contact Ian in relation to mz700em; I just
+		used his code, he wasn't otherwise involved. The email
+		address below is given only for completeness, and
+		might be out of date.)
+Keywords:       Sharp MZ700 emulator VGA svgalib rawkey
+Author:         imc@comlab.ox.ac.uk (Ian Collier)
+		rjm@no_email_address (Russell Marks)
+Maintained-by:  rjm@no_email_address (Russell Marks)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Emulators
+		35321	mz700em-0.2.tar.gz
+Copying-policy: GPL
+End

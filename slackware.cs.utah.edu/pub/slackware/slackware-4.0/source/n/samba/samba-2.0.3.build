@@ -1,0 +1,22 @@
+#!/bin/sh
+# Build samba for Slackware.
+CWD=`pwd`
+tar xzvf samba-2.0.3.tar.gz
+cd samba-2.0.3
+# The patch below sets the following directories that 
+# can't be defined with flags to configure:
+# CODEPAGEDIR = /usr/lib/samba/codepages
+# SBINDIR = /usr/sbin  (there is a configure flag for this, but it's ignored)
+zcat $CWD/samba-2.0.3.diff.gz | patch
+cd source
+./configure --prefix=/usr \
+  --localstatedir=/var/log \
+  --bindir=/usr/bin \
+  --sbindir=/usr/sbin \
+  --sysconfdir=/etc \
+  --libdir=/etc  \
+  --with-privatedir=/usr/lib/samba/private  \
+  --with-swatdir=/usr/lib/samba/swat \
+  --with-lockdir=/var/lock \
+  --with-smbmount
+make CFLAGS="-O"

@@ -1,0 +1,14 @@
+Begin3
+Title:          knetmon
+Version:        0.90betaR2
+Entered-date:   07SEP98
+Description:    more than a X frontend for many network tools, especially samba
+Keywords:       KDE samba nfs talk network rlogin ping telnet finger
+Author:		Alexander Neundorf <alexander.neundorf@rz.tu-ilmenau.de>
+Maintained-by:  Alexander Neundorf <alexander.neundorf@rz.tu-ilmenau.de>
+Primary-site:   ftp.kde.org/pub/kde/stable/latest/apps/network/knetmon-0.90betaR2.tgz
+Alternate-site:
+Original-site: http://www.tu-ilmenau.de/~lekus/software.htm
+Platform:       Only tested on Slackware and Suse Linux, others should work too
+Copying-policy: GPL
+End

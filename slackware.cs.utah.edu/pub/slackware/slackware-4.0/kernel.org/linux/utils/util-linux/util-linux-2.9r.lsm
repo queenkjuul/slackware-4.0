@@ -1,0 +1,23 @@
+Begin3
+Title:          util-linux: Miscellaneous utilities for Linux
+Version:        2.9r
+Description: 	agetty arch cal cfdisk chfn chkdupexe chsh
+		clear col colcrt colrm column ctrlaltdel cytune
+		ddate dmesg fastboot fasthalt fdformat fdisk
+		fsck.minix getopt halt hexdump hwclock ipcrm ipcs
+		kbdrate kill last logger login look mcookie mesg mkfs
+		mkfs.minix mkswap more mount namei passwd ramsize rdev
+		readprofile reboot renice rescuept reset rev rootflags
+		script setfdprm setsid setterm sfdisk shutdown simpleinit
+		sln swapdev swapoff swapon tsort tunelp ul umount
+		vidmode vipw wall whereis write
+Keywords:       system utilities
+Author:         several
+Maintained-by:  Andries Brouwer <util-linux@math.uio.no> and others
+Primary-site:   ftp.win.tue.nl /pub/linux-local/utils/util-linux
+                ~870k util-linux-2.9r.tar.gz
+Alternate-site: ftp.*.kernel.org /pub/linux/utils/util-linux
+Alternate-site: metalab.unc.edu /pub/Linux/system/misc
+Platforms:      all Linux versions, all libc versions, all CPUs
+Copying-policy: GPL, BSD, others
+End

@@ -1,0 +1,19 @@
+Begin3
+Title:          ILOG Talk 3.2 for Linux
+Version:        3.2
+Entered-date:   1996-07-25
+Description:    Development environment for ILOG Talk, a Lisp-like language.
+                Emacs-based environment, interpreter, compiler, debugger,
+                foreign function interface, C++ binding generator.
+                Used for rapid prototyping, especially with C++ libraries.
+Keywords:       Lisp, C++, development.
+Author:         ILOG S.A. <talk@ilog.fr>
+Maintained-by:  
+Primary-site:   ftp.ilog.fr /pub/Products/Talk/linux
+                3.6 MB ilog-talk-3.2.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/lisp
+                3.6 MB ilog-talk-3.2.tar.gz
+Original-site:  
+Platforms:      x86 PC running Linux 1.2 or newer with ELF gcc/g++/ld.
+Copying-policy: Freely redistributable, but copyrighted.
+End

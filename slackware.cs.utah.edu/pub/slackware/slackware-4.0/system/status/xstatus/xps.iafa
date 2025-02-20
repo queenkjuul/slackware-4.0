@@ -1,0 +1,28 @@
+Title:		Xps (Process State Program for X)
+Version:	1.0
+Description:	Xps is a tool for analysing and observing Unix
+		processes. It continuously extracts all processes
+		of the system, filters them and graphically displays
+		them in a X-Window. The parent-child-relations
+		are symboliced by lines connecting a parent with
+		its childs. Xps shows a lot of properties of each
+		process and is able to send signals to a specified
+		process or a specified process group. Additionally 
+		there is a process state recorder implemented.
+		Using this recorder you may find out and investigate
+		short term events occuring to any process.
+Author:		Thomas Breitfeld
+		breitf@infotech.tu-chemnitz.de
+		Tel.: 0049-371-531-3241
+Maintained by:	breitf@infotech.tu-chemnitz.de
+Maintained at:	sunsite.unc.edu pub/linux/...?
+		ftp.infotech.tu-chemnitz.de /pub/misc/xps-1.0.tar.Z
+Platforms:	runs under Linux 0.99 and higher and SunOS 4.x
+		needs X11R5
+		compilation reqiures Ansi-C compiler and
+		libraries for X and Xview: X11, olgx, xview
+		for SunOS only: kvm library
+Copying-Policy:	GPL
+Keywords:	Xps, process analysing, process manager, ps for X,
+		Linux, SunOS
+

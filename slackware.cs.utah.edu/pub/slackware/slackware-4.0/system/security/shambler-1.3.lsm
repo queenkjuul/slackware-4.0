@@ -1,0 +1,18 @@
+Begin3
+Title:          Shambler - A firewall trap 
+Version:        1.3
+Entered-date:   19March1999
+Description:    Looks at process table, and kills unauthorized
+		process.  Run periodically from cron.
+		Uses a simple config file to define what users
+		are allowed.
+Keywords:       Security, Firewalls
+Author:         jay@fork.com (Jay D. Allen)
+Maintained-by:  jay@fork.com (Jay D. Allen)
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/security
+                shambler-1.3.tar.gz
+		shambler-1.3.lsm 
+Alternate-site: email request to help@fork.com
+Platforms:      linux 2.0.x
+Copying-policy: GNU
+End

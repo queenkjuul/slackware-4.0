@@ -1,0 +1,22 @@
+Begin3
+Title:          newsx
+Version:        1.3
+Entered-date:   05MAR99
+Description:    Exchange news articles between a local C News or INN spool
+		and an external NNTP server. Will connect to the remote 
+		server and delivers outgoing articles, then start fetching
+		new news with a minumum load on the news server. Provides 
+		the capabilities required for small news spools on
+		installations with NNTP access only through limited ISP 
+		accounts, as well as for adding news from solitary news 
+		sources to full news servers. Full error logging and recovery.
+Keywords:       NNTP, CNews, INN, news, post, fetch
+Author:         egil@kvaleberg.no (Egil Kvaleberg)
+Maintained-by:  author
+Primary-site:   sunsite.unc.edu    /pub/Linux/system/news/transport
+                224442  newsx-1.3.tar.gz
+                   926  newsx.lsm
+Alternate-site: ftp.kvaleberg.com  /pub
+Platforms:      Linux, Unix
+Copying-policy: GPL
+End

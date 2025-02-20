@@ -1,0 +1,49 @@
+
+Pat's "how to make the Slackware egcs package" notes.
+
+To make the Slackware package, untar egcs source, configure and build 
+as in egcs.configure and egcs.make.  Then, we add these items to what's
+installed with a "make install", and package it up with "makepkg".
+
+1. add /usr/bin/cpp:
+#!/bin/bash -
+for i in /usr/lib/gcc-lib/i*86*linux*/*/cpp; do
+  exec "$i" "$@"
+done
+
+2. add /lib/cpp -> /usr/bin/cpp link.
+
+3. Add links in /usr/bin:
+   lrwxrwxrwx   c++ -> g++
+   lrwxrwxrwx   cc -> gcc
+   lrwxrwxrwx   f77 -> g77
+   lrwxrwxrwx   i386-pc-linux-gnulibc1-gcc -> gcc
+
+4. mv /usr/i386-pc-linux-gnulibc1 to /usr/ix86-linux.
+
+5. add i386-pc-linux-gnulibc1 -> ix86-linux link in /usr.
+
+6. mv /usr/local/include/f2c.h to /usr/include/f2c.h.  rmdir empty /usr/local.
+
+7. Add links in /usr/lib:
+   g++-include -> /usr/include/g++
+   libstdc++.so -> libstdc++.so.2.8
+
+8. gzip files in /usr/info, /usr/man/man1.
+
+9. Add links in /usr/man/man1:
+   lrwxrwxrwx   c++.1.gz -> g++.1.gz
+   lrwxrwxrwx   cc.1.gz -> gcc.1.gz
+   lrwxrwxrwx   cpp.1.gz -> cccp.1.gz
+   lrwxrwxrwx   f77.1.gz -> g77.1.gz
+
+10.  That's about it... now add any additional documentation needed in 
+     /usr/doc, and then package it up with makepkg, or split into 
+     C/C++/Obj-C/F77 packages and package those up with makepkg.
+
+11.  ...Oh yeah, one more thing.  Netscape was linked against an obsolete
+     libg++, but these links seem to make Netscape happy:
+
+        lrwxrwxrwx   libg++.so.27 -> libstdc++.so.2.8
+        lrwxrwxrwx   libstdc++.so.27 -> libstdc++.so.2.8
+

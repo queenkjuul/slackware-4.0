@@ -1,0 +1,14 @@
+drwxr-xr-x root/root         0 1998-10-15 01:30 ./
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/X11R6/
+drwxr-xr-x root/root         0 1998-10-15 01:30 usr/X11R6/bin/
+-rwxr-xr-x root/root   2111292 1998-09-28 18:06 usr/X11R6/bin/XBF_i740
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/doc/
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/doc/XBF-i740-libc5-0.9.9/
+-rw-r--r-- root/root      4044 1998-09-28 17:55 usr/doc/XBF-i740-libc5-0.9.9/LICENSE.XBF
+-rw-r--r-- root/root      1846 1998-09-28 18:06 usr/doc/XBF-i740-libc5-0.9.9/README
+drwxr-xr-x root/root         0 1998-10-15 01:29 var/
+drwxr-xr-x root/root         0 1998-10-15 01:29 var/X11R6/
+drwxr-xr-x root/bin          0 1998-10-15 01:30 var/X11R6/bin/
+drwxr-xr-x root/root         0 1998-10-15 01:30 install/
+-rw-r--r-- root/root       169 1998-10-15 01:30 install/doinst.sh

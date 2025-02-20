@@ -1,0 +1,6 @@
+( cd usr/ix86-linuxaout/lib ; rm -rf libX11.so.3 )
+( cd usr/ix86-linuxaout/lib ; ln -sf libX11.so.3.1.0 libX11.so.3 )
+( cd usr/ix86-linuxaout/lib ; rm -rf libXaw.so.3 )
+( cd usr/ix86-linuxaout/lib ; ln -sf libXaw.so.3.1.0 libXaw.so.3 )
+( cd usr/ix86-linuxaout/lib ; rm -rf libXt.so.3 )
+( cd usr/ix86-linuxaout/lib ; ln -sf libXt.so.3.1.0 libXt.so.3 )

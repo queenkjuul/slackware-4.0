@@ -1,0 +1,15 @@
+Begin3
+Title: Socket Script
+Version: 1.14
+Entered-date: 06JUN98
+Description: Scripting language to make networking apps easily,
+             without thinking about all the socket and connect stuff.
+Keywords: Socket Script Networking
+Author: Patrick Lambert <drow@wildstar.net>
+Maintained-by: Patrick Lambert <drow@wildstar.net>
+Primary-site: http://devplanet.fastethernet.net/sscript.html  
+Alternate-site: http://www.wildstar.net/~drow/sscript-mirror/
+Original-site:
+Platforms: Linux, Solaris, BSD
+Copying-policy: GPL
+End

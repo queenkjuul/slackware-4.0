@@ -1,0 +1,13 @@
+Begin3
+Title:          guest
+Version:        0.1
+Entered-date:   Apr 26, 1995
+Description:    A text menuing system with fvwm-1.xx like syntax
+Keywords:       menu, guest
+Author:         shmit@meathook.intac.com (Brian Cully)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Shells
+		20kB guest-0.2.tar.gz
+Alternate-site: fandora.resnet.cornell.edu /pub/Brian
+Platform:       ncurses-1.9 or greater
+Copying-policy: GPL
+End

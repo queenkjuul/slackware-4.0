@@ -1,0 +1,16 @@
+Begin3
+Title:          make-3.74.patched.tar.gz
+Version:        Mon Dec 25 12:21:43 EST 1995
+Entered-date:   Mon Dec 25 12:21:43 EST 1995
+Description:    This is the complete make source with
+		patches to fix the dirent bug applied
+Keywords:       make elf binary dirent
+Author:         
+Maintained-by:  kuzniar@cs.unca.edu (Eric John Kuzniar)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/make
+		521683 make-3.74.patched.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       elf support, libc > 5.09 
+Copying-policy: See file COPYING
+End

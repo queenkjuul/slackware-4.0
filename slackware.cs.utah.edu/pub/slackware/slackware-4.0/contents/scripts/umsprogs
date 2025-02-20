@@ -1,0 +1,4 @@
+( cd sbin ; rm -rf umssetup )
+( cd sbin ; ln -sf umssync umssetup )
+( cd sbin ; rm -rf udosctl )
+( cd sbin ; ln -sf umssync udosctl )

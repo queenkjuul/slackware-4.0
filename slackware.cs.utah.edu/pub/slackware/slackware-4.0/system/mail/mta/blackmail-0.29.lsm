@@ -1,0 +1,21 @@
+Begin3
+Title: blackmail
+Version: 0.29
+Entered-date: 12OCT98
+Description: System wide anti-spam mailer filter that wraps around existing
+	mailer and rejects spam based on chosen rules.
+	See http://www.jsm-net.demon.co.uk/blackmail/blackmail.html
+	for more details.
+Keywords: anti-spam, spam, mail, filter, proxy
+Author: khollis@chatlink.com (Ken Hollis)
+Maintained-by: jsm@jsm-net.demon.co.uk (James Murray)
+Primary-site: http://www.jsm-net.demon.co.uk/blackmail/source
+ 	49k blackmail-0.29.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/mail/mta
+ 	49k blackmail-0.29.tar.gz
+Alternate-site: ftp.udw.ac.za /pub/linux/mail+MTA/blackmail/
+ 	49k blackmail-0.29.tar.gz
+Original-site:
+Platforms: Linux, BSD, NeXT, SVR4, Solaris, probably most other Unix systems
+Copying-policy:	GPL
+End

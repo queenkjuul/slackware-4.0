@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/devel/lang/tcl</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/devel/lang/tcl</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/devel/lang/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:52  </td><td align="right">102 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tkstep0.3b3.lsm">tkstep0.3b3.lsm</a></td><td align="right">1996-07-09 07:00  </td><td align="right">467 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tksm1.3.lsm">tksm1.3.lsm</a></td><td align="right">1996-07-12 07:00  </td><td align="right">494 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="minihelp_1.0b.lsm">minihelp_1.0b.lsm</a></td><td align="right">1996-04-01 08:00  </td><td align="right">503 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tkstep_shlibs.lsm">tkstep_shlibs.lsm</a></td><td align="right">1996-09-27 10:13  </td><td align="right">508 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tk95_099.lsm">tk95_099.lsm</a></td><td align="right">1998-08-27 03:15  </td><td align="right">525 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="itclstep.lsm">itclstep.lsm</a></td><td align="right">1996-07-25 07:00  </td><td align="right">532 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tcltk-7.6p2.src.lsm">tcltk-7.6p2.src.lsm</a></td><td align="right">1997-06-17 07:41  </td><td align="right">538 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tcltk7.6p2.src.lsm">tcltk7.6p2.src.lsm</a></td><td align="right">1997-06-17 07:36  </td><td align="right">538 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="blt1.7l3.lsm">blt1.7l3.lsm</a></td><td align="right">1995-01-17 08:00  </td><td align="right">560 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="itcl1.5l1.lsm">itcl1.5l1.lsm</a></td><td align="right">1994-09-07 07:00  </td><td align="right">566 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="expect-5.18bin.lsm">expect-5.18bin.lsm</a></td><td align="right">1996-01-22 08:00  </td><td align="right">727 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SSLtcl-0.42.lsm">SSLtcl-0.42.lsm</a></td><td align="right">1998-01-19 09:42  </td><td align="right">734 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tk4.1p1.lsm">tk4.1p1.lsm</a></td><td align="right">1996-08-22 17:28  </td><td align="right">759 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tcl7.5p1.lsm">tcl7.5p1.lsm</a></td><td align="right">1996-08-22 17:27  </td><td align="right">767 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tk4.2b1.lsm">tk4.2b1.lsm</a></td><td align="right">1996-09-04 20:15  </td><td align="right">782 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tcl7.6b1.lsm">tcl7.6b1.lsm</a></td><td align="right">1996-09-04 20:13  </td><td align="right">791 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Tix-4.1a3.lsm">Tix-4.1a3.lsm</a></td><td align="right">1996-09-17 20:31  </td><td align="right">862 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tclX7.5a-a2.shared.lsm">tclX7.5a-a2.shared.lsm</a></td><td align="right">1995-11-14 08:00  </td><td align="right">879 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="minihelp_1.0b.README">minihelp_1.0b.README</a></td><td align="right">1996-04-01 08:00  </td><td align="right">946 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SpecTcl-0.1a.aout.lsm">SpecTcl-0.1a.aout.lsm</a></td><td align="right">1995-12-05 08:00  </td><td align="right">947 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tclMotif.lsm">tclMotif.lsm</a></td><td align="right">1994-06-08 07:00  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.4K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="Tix-4.1a3.README">Tix-4.1a3.README</a></td><td align="right">1996-09-17 20:31  </td><td align="right">6.6K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="Tix-4.1a3.ManTitle.ps.gz">Tix-4.1a3.ManTitle.ps.gz</a></td><td align="right">1996-09-17 20:31  </td><td align="right">8.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">9.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="minihelp_1.0b.tgz">minihelp_1.0b.tgz</a></td><td align="right">1996-04-01 08:00  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="itcldiffs.for.tkstep.tgz">itcldiffs.for.tkstep.tgz</a></td><td align="right">1996-07-25 07:00  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tk95_099.tgz">tk95_099.tgz</a></td><td align="right">1998-08-27 03:15  </td><td align="right"> 45K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="itcl1.5l1-bin.tar.gz">itcl1.5l1-bin.tar.gz</a></td><td align="right">1994-09-07 07:00  </td><td align="right"> 47K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tkstep0.3b3.tar.gz">tkstep0.3b3.tar.gz</a></td><td align="right">1996-07-09 07:00  </td><td align="right">132K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="itcl1.5l1-src.tar.gz">itcl1.5l1-src.tar.gz</a></td><td align="right">1994-09-07 07:00  </td><td align="right">141K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcl-dp3.2.tar.gz">tcl-dp3.2.tar.gz</a></td><td align="right">1995-02-11 08:00  </td><td align="right">178K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="SSLtcl-0.42.tar.gz">SSLtcl-0.42.tar.gz</a></td><td align="right">1998-01-19 09:41  </td><td align="right">203K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="Tix-4.1a3.ManPages.ps.gz">Tix-4.1a3.ManPages.ps.gz</a></td><td align="right">1996-09-17 20:31  </td><td align="right">212K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="blt1.7l3-bin.tar.gz">blt1.7l3-bin.tar.gz</a></td><td align="right">1995-01-17 08:00  </td><td align="right">217K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tksm1.3.tgz">tksm1.3.tgz</a></td><td align="right">1996-07-12 07:00  </td><td align="right">231K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tkstep_shlibs.tgz">tkstep_shlibs.tgz</a></td><td align="right">1996-09-27 10:14  </td><td align="right">249K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="SpecTcl-0.1a.aout.tar.gz">SpecTcl-0.1a.aout.tar.gz</a></td><td align="right">1995-12-01 08:00  </td><td align="right">287K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcl7.5p1.ELF.tgz">tcl7.5p1.ELF.tgz</a></td><td align="right">1996-08-22 17:27  </td><td align="right">304K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tclMotif.1.2.tar.gz">tclMotif.1.2.tar.gz</a></td><td align="right">1994-06-08 07:00  </td><td align="right">379K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="expect-5.18src.tgz">expect-5.18src.tgz</a></td><td align="right">1996-02-01 08:00  </td><td align="right">397K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcl7.6b1.ELF.tgz">tcl7.6b1.ELF.tgz</a></td><td align="right">1996-09-04 20:13  </td><td align="right">452K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xf2.3-pl1.tar.gz">xf2.3-pl1.tar.gz</a></td><td align="right">1995-02-14 08:00  </td><td align="right">474K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="blt1.7l3-src.tar.gz">blt1.7l3-src.tar.gz</a></td><td align="right">1995-01-17 08:00  </td><td align="right">479K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xf-doc-us.ps.gz">xf-doc-us.ps.gz</a></td><td align="right">1995-02-14 08:00  </td><td align="right">539K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tclMotif.1.2.linux.binary.tar.gz">tclMotif.1.2.linux.binary.tar.gz</a></td><td align="right">1994-06-08 07:00  </td><td align="right">564K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="Tix-4.1a3.tar.gz">Tix-4.1a3.tar.gz</a></td><td align="right">1996-09-17 20:32  </td><td align="right">574K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="expect-5.18bin.tgz">expect-5.18bin.tgz</a></td><td align="right">1996-01-22 08:00  </td><td align="right">659K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tclX7.5a-a2.shared.tgz">tclX7.5a-a2.shared.tgz</a></td><td align="right">1995-11-19 08:00  </td><td align="right">663K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tk4.1p1.ELF.tgz">tk4.1p1.ELF.tgz</a></td><td align="right">1996-08-22 17:27  </td><td align="right">679K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcl7.5p1.src.tgz">tcl7.5p1.src.tgz</a></td><td align="right">1996-08-22 17:27  </td><td align="right">836K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcl7.6b1.src.tgz">tcl7.6b1.src.tgz</a></td><td align="right">1996-09-04 20:14  </td><td align="right">884K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tk4.2b1.ELF.tgz">tk4.2b1.ELF.tgz</a></td><td align="right">1996-09-04 20:15  </td><td align="right">1.0M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tk4.1p1.src.tgz">tk4.1p1.src.tgz</a></td><td align="right">1996-08-22 17:28  </td><td align="right">1.5M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tk4.2b1.tar.gz">tk4.2b1.tar.gz</a></td><td align="right">1996-09-04 20:16  </td><td align="right">1.6M</td></tr>
+<tr><td valign="top"><img src="/icons/tar.gif" alt="[   ]"></td><td><a href="tcltk-7.6p2.src.tar">tcltk-7.6p2.src.tar</a></td><td align="right">1997-06-17 07:41  </td><td align="right">2.6M</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

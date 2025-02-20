@@ -1,0 +1,13 @@
+Begin3
+Title:		Garrot
+Version:	0.2
+Entered-date:	07 Dec 94
+Description:	DOSEMU support program, returns idle CPU time to system
+Keywords:	dosemu cpu top
+Author:		tgm@netcom.com (Thomas G. McWilliams)	
+		thomas.mcwilliams@f615.n109.z1.fidonet.org
+Maintained-by:	tgm@netcom.com (Thomas G. McWilliams)	
+Primary-site:	sunsite.unc.edu  /pub/Linux/system/Emulators/dosemu
+		18 kB garrot02.tar.gz
+Copying-policy:	GPL
+End

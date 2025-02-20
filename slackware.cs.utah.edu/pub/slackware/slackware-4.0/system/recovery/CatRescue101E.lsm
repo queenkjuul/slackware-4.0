@@ -1,0 +1,19 @@
+Begin3
+Title:		CatRescue - An emergency boot floppy generator.
+Version:	1.01E (June 1995)
+Entered-date:	06/09/95
+Description:	Generates a compact boot floppy with kernel,
+		libraries and additional utilities you choose. A
+		useful pre-generated floppy image with editor,
+		filesystem utilites and so on is included.
+		This is an ELF upgrade version. Users and ftp sites
+		should keep CatRescue 1.00 for a.out systems.
+Keywords:	rescue, recovery, floppy, ELF
+Author: 	Oleg Kibirev <oleg@gd.cs.CSUFresno.EDU>
+Maintained-by:	ditto
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Recovery
+				1M CatRescue101E.tgz
+Alternative-site: gd.cs.CSUFresno.EDU:/pub/sun4bin/src
+				1M CatRescue101E.tgz
+Copying-policy:	GPL or ask for changes
+End

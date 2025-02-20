@@ -1,0 +1,19 @@
+Begin3
+Title:		cutils
+Version:	1.5.2
+Entered-date:	24NOV97
+Description:	C language miscellaneous utilities
+Keywords:	C obfusc shrouder highlight yacc literate
+Author:		ssigala@globalnet.it (Sandro Sigala)
+Maintained-by:	ssigala@globalnet.it (Sandro Sigala)
+Primary-site:	ftp.vix.com /guests/ssigala/pub/cutils
+		149k cutils-1.5.2.tar.gz
+		151k cutils-1.5.2-1.src.rpm
+		98k cutils-1.5.2-1.i386.rpm
+Alternate-size: sunsite.unc.edu /pub/Linux/devel/lang/c
+		149k cutils-1.5.2.tar.gz
+		151k cutils-1.5.2-1.src.rpm
+		98k cutils-1.5.2-1.i386.rpm
+Platforms:	ANSI C compiler
+Copying-policy:	BSD-like
+End

@@ -1,0 +1,9 @@
+# Since bison can function in yacc mode, we'll add a shell script to
+# do this if you didn't install Berkeley yacc:
+if [ ! -r usr/bin/yacc ]; then
+  echo '#!/bin/sh' > usr/bin/yacc
+  echo '# emulate yacc' >> usr/bin/yacc
+  echo 'bison -y $*' >> usr/bin/yacc
+  chown root.bin usr/bin/yacc
+  chmod 755 usr/bin/yacc
+fi

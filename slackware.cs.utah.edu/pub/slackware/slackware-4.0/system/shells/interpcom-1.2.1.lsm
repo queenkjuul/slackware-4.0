@@ -1,0 +1,19 @@
+Begin3
+Title:          interpcom
+Version:        1.2.1
+Entered-date:   04FEB99
+Description:    Command interpreter, containing some basic commands, it is
+                easy to add new ones. It is also possible to write and
+                execute programs. It is a library in C that should be linked 
+                with the new commands added by the user.
+Keywords:       command interpreter.
+Author:         drezet@math.jussieu.fr (Jean-Marc Drezet)
+Maintained-by:  drezet@math.jussieu.fr (Jean-Marc Drezet)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/shells
+		756    interpcom-1.2.1.lsm 
+		618443  interpcom-1.2.1.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      linux
+Copying-policy: Gnu Library General Public License version 2.0
+End

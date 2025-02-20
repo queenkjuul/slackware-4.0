@@ -1,0 +1,17 @@
+Begin3
+Title:          modemstat
+Version:        0.2
+Entered-date:   18SEP95
+Description:    ANSI color display of modem status as the top line of a
+                Linux console, runs as a daemon, source and executable
+                both included.
+Keywords:       modem status serial source
+Author:         madsci@mi.net (Doug McLean)
+Maintained-by:  madsci@mi.net (Doug McLean)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/serial
+                7k modemstat-0.2.tgz
+Alternate-site: 
+Original-site:  
+Platform:       Linux and maybe others
+Copying-policy: public domain
+End

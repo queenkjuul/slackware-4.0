@@ -1,0 +1,21 @@
+Begin3
+Title:            tcprepeater
+Version:          0.99.1
+Entered-date:     18OCT98
+Description:      tcp_repeater is a small utility which is used for
+                  tracing a custom made tcp protocol. It opens a listening
+                  port and transmits everything from there to another 
+                  specified port, while printing out what goes on there.
+                  If you do TCP/IP programming it might be a handy thing 
+                  around.
+Keywords:         sockets tcp/ip port inet network programming
+Author:           cic@fiz.uni-lj.si (Timotej Ecimovic)
+Maintained-by:    cic@fiz.uni-lj.si (Timotej Ecimovic)
+Primary-site:     sunsite.unc.edu /pub/Linux/system/network
+                      tcprepeater-0.99.1.tar.gz
+                      tcprepeater.lsm
+Alternate-site:   http://www.fiz.uni-lj.si/~cic/software/tcprepeater-0.99.1.tar.gz
+Original-site:    http://www.fiz.uni-lj.si/~cic/software/tcprepeater-0.99.1.tar.gz
+Platforms:        UNIX
+Copying-policy:   GPL
+End

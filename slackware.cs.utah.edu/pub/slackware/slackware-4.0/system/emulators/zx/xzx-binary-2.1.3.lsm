@@ -1,0 +1,15 @@
+Begin3
+Title:		xzx-binary
+Version:	2.1.3
+Entered-date:	21APR97
+Description:	An X11 based ZX Spectrum emulator, ELF binary
+Keywords:	X11 emulator ZX Spectrum ELF binary
+Author:		Des Herriott <dnh@mfltd.co.uk>
+		Erik Kunze <Erik.Kunze@fantasy.muc.de>
+Maintained-by:	George Lebl <jirka@5z.com>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/emulators
+		199789 xzx-binary-2.1.3.tar.gz
+		456 xzx-binary-2.1.3.lsm
+Platforms:	X11
+Copying-policy:	free
+End

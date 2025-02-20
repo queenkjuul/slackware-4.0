@@ -1,0 +1,16 @@
+Begin3
+Title:		lcc
+Version:	3.5
+Entered-date:	16AUG96
+Description:	lcc - Retargetable C Compiler
+Keywords:	lcc C compiler
+Author:		cwf@research.att.com (Chris Fraser),
+		drh@cs.princeton.edu (David Hanson)
+Maintained-by:	ssigala@globalnet.it (Sandro Sigala)
+Primary-site:	sunsite.unc.edu /pub/Linux/devel/lang/c
+		140k lcc-3.5-linux-bin.tar.gz
+Alternate-site:	
+Original-site:	ftp.cs.princeton.edu /pub/lcc
+Platforms:	Linux-ELF, libc 5.3.*
+Copying-policy:	AS IS, personal research and instructional use only
+End

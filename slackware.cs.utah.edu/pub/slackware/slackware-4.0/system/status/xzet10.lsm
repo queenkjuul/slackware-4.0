@@ -1,0 +1,39 @@
+Begin3
+Title:          xzet
+Version:        1.0
+Entered-date:   21OCT94
+Description:    A Graphical System Activity Monitor using the PROC file
+		system.  XZET is an acronym of sorts for Zmans version of
+ 		xEtat and Top.  Three monitors: 1) Displays CPU idle, user,
+		system and nice time percentages, with stripcharts.  Also 
+		displays the size of the available user physical memory and 
+		swap size along with stripcharts for free physical memory 
+		and free swap.  Finally it shows the  free space on three 
+		user selected file systems and a count of the processes 
+		running on the system with a breakdown of this count by  
+		task state.  2) Displays information on all of the currently 
+		running processes in the system.  This user can select   
+		a short or long format, with the long format providing
+		14 fields of information.  The list can be set to
+		auto-update if desired.  3) Displays two "tachometer" gauges
+		representing percentage of CPU and Resident Memory load
+		of any user selected process from display two.  Also
+		displays selected information from the short and long format
+		process list.  All displays are self updating (2 if desired).
+		A complete distribution of the Ztach widget is included.
+Keywords:       X, X-Windows, Unix, Linux, Xzet, Ztach, Activity, Processes,
+		Monitor, Graphical.
+Author:         zman@r2411srw.nsr.hp.com (Stanley M. Zitello)
+Maintained-by:  zman@r2411srw.nsr.hp.com (Stanley M. Zitello)
+		Zman, Loganville Technical Resources. I regret that the
+		email address at present is on my friends computer he will
+		forward any mail to me.  LTR is located at
+		5145 Ozora Church Road, Loganville, Georgia  30249 (USA)
+		Phone LTR at 404 466-8544.
+Primary-site:   sunsite.unc.edu 
+Platforms:      Xzet is an X windows application, written entirely in C.
+		It requires the PROC file system.  It was developed and 
+		tested with Linux on a 386/33.  It should be simple to port 
+		to any system which supports the PROC file system. 
+Copying-Policy: GPL
+End

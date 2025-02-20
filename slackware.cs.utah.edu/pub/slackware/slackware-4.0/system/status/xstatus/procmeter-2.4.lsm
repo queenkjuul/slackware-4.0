@@ -1,0 +1,20 @@
+Begin3
+Title:          Procmeter - Linux performance metering/logging program
+Version:        2.4 [Jan-10-98]
+Entered-date:   10JAN98
+Description:    Displays in a series of graph (using X windows) or in a log file
+                statistics about the amount of CPU, memory, disk accesses,
+                IP packets ... for the computer.
+                Uses the /proc filesystem so is very efficient compared to other
+                similar generic UNIX utilities.
+Keywords:       Linux X-Windows proc meter
+Author:         amb@gedanken.demon.co.uk
+Maintained-by:  amb@gedanken.demon.co.uk
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status/xstatus
+                39 kB procmeter-2.4.tgz
+Alternate-site: ftp.demon.co.uk /pub/unix/linux/X11/xutils
+                39 kB procmeter-2.4.tgz
+Original-site:  
+Platforms:      Linux X-Windows
+Copying-policy: GPL
+End

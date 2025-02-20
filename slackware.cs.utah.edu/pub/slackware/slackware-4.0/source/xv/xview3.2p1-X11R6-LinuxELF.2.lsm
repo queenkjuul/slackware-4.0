@@ -1,0 +1,23 @@
+Begin3
+Title:          xview3.2p1-X11R6-LinuxELF
+Version:        Linux-patchlevel 2
+Entered-date:   30MAY96
+Description:    A port of XView3.2 for XFree86 3.x and ELF shared
+                libraries. Includes a binary distribution of updated
+                /usr/openwin, patches and full source code. olvwm 
+                and xcenter are included as additional XView clients.
+                This is a fixed version of the previous LinuxELF-XView.
+Keywords:       XView, X, ELF, XFree86, openwin
+Author:         Sun Microsystems, Inc. / various
+Maintained-by:  martin-2.buck@student.uni-ulm.de (Martin Buck)
+Primary-site:   sunsite.unc.edu /pub/Linux/libs/X/xview
+                2.13MB xview3.2p1-X11R6-LinuxELF.2.bin.tar.gz
+                2.71MB xview3.2p1-X11R6-LinuxELF.2.src.tar.gz
+                65.8kB xview3.2p1-X11R6-LinuxELF.2.diff.gz
+                10.3kB xview3.2p1-X11R6-LinuxELF.2.README
+                1147   xview3.2p1-X11R6-LinuxELF.2.lsm
+Original-site:  ftp.x.org
+Platforms:      libc 5.0.9, gcc 2.7.2, XFree 3.x-ELF. Later versions
+                should work, too.
+Copying-policy: The same as Sun XView 3.2 release
+End

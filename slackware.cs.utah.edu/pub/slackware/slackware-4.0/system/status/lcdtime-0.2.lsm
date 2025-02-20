@@ -1,0 +1,22 @@
+Begin3
+Title:		lcdtime
+Version:	0.2
+Entered-date:	15JUL97
+Description:	lcdtime is an extension to the LED display circuit described
+		in led-stat.txt (included here). It incorporates a LCD device
+		to the basic LED's to display the system time, load and 
+		memory/swap space statistics. Circuit diagram and code to 
+		drive the lcd are included here.
+		
+		This version also includes a patch so meter-0.2 or portato-1.2
+		can be used in conjuction with lcdtime to drive the LED's.
+Keywords:	LED, LCD, display, cpu-meter
+Author:		blt@students.cs.mu.oz.au (Benjamin Lindsay Tse)
+Maintained-by:
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Status
+		25kB lcdtime-0.2.tar.gz
+Alternate-site:
+Original-site:  http://www.cs.mu.oz.au/~blt/status-display/lcdtime.html
+Platforms:	Linux
+Copying-policy:	GPL
+End

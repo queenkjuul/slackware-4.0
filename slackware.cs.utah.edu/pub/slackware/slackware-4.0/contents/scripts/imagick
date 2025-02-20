@@ -1,0 +1,4 @@
+( cd usr/X11R6/lib ; rm -rf libMagick.so )
+( cd usr/X11R6/lib ; ln -sf libMagick.so.4.0.22 libMagick.so )
+( cd usr/X11R6/lib ; rm -rf libMagick.so.4 )
+( cd usr/X11R6/lib ; ln -sf libMagick.so.4.0.22 libMagick.so.4 )

@@ -1,0 +1,14 @@
+Begin3
+Title:		adduser-shadow
+Version:	1.6
+Entered-date:	26APR97
+Description:	The adduser program, with shadow password support added.
+		Version 1.6 improves upon the user interface.
+Keywords:	adduser shadow accounts users
+Author:		dcrowson@mo.net (Dan Crowson) 	
+Maintained-by:	mtr@ratbert.bagel.org (Ben Osheroff)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/admin/accounts
+		13kB adduser-shadow-1.6.tar.gz
+Copying-policy: GPL
+End
+

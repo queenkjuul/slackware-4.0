@@ -1,0 +1,17 @@
+Begin3
+Title:          bigloo
+Version:        2.0a
+Entered-date:   12FEB1999
+Description:    A Scheme system which includes a compiler generating C code
+                and an interpreter. Bigloo is the tool of choice for the
+                construction of small autonomous applications in Scheme.
+                Bigloo is conformant to IEEE Scheme standard with some 
+                extensions. Release 2.0 contains an Integrated Development
+                Environment which contains a symbolic debugger.
+Keywords:       bigloo, scheme, compiler, integrated development environment
+Author:         Manuel.Serrano@unice.fr (Manuel Serrano)
+Primary-site:   kaolin.unice.fr /pub/Bigloo
+                4302655 bigloo2.0a.tar.gz
+Platforms:      Unix
+Copying-policy: GPL
+End

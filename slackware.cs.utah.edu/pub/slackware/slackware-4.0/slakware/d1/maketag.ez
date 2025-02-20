@@ -1,0 +1,68 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+cat /dev/null > $TMP/SeTnewtag
+dialog --title "SELECTING PACKAGES FROM SERIES D (PROGRAM DEVELOPMENT)" \
+       --checklist "Please select the packages you wish to install \
+from series D. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 22 70 11 \
+"autoconf" "GNU source autoconfig system" "on" \
+"automake" "GNU makefile generator" "on" \
+"binutils" "GNU C compiler utilities" "on" \
+"bison" "GNU bison parser generator 1.25" "on" \
+"byacc" "Berkeley Yacc" "on" \
+"egcs" "egcs-1.1.2 C/C++ compiler" "on" \
+"egcsobjc" "egcs Objective-C compiler (requires egcs)" "off" \
+"egcs_g77" "egcs Fortran-77 compiler (requires egcs)" "off" \
+"flex" "Fast lexical analyzer generator 2.5.4a" "on" \
+"gcc" "GNU gcc-2.7.2.3 C compiler" "on" \
+"gdb" "The GNU debugger" "on" \
+"gcl" "GNU Common LISP" "off" \
+"gettext" "GNU internationalization support package" "on" \
+"gmake" "GNU make" "on" \
+"libc" "Libraries for developing ELF binaries" "on" \
+"libcinfo" "Info files for the C compiler" "off" \
+"libtool" "GNU libtool library support script" "on" \
+"linuxinc" "Linux kernel include files" "on" \
+"lthreads" "Linux threads support" "on" \
+"m4" "GNU m4 1.4" "on" \
+"ncurses" "A curses-compatible library" "on" \
+"p2c" "A Pascal to C translator 1.19" "off" \
+"perl" "Larry Wall's systems language" "on" \
+"pmake" "BSD 4.4 make" "on" \
+"python" "An interpreted object-oriented language" "off" \
+"rcs" "GNU revision control system" "off" \
+"svgalib" "Svgalib Super-VGA Graphics Library" "on" \
+"strace" "Traces program execution" "on" \
+"terminfo" "Complete /usr/lib/terminfo database" "off" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ > $TMP/SeTnewtag
+ for pkg in autoconf automake \
+  binutils bison byacc egcs egcs_g77 egcsobjc flex gcc \
+  gcl gdb gmake libc libcinfo linuxinc m4 ncurses p2c perl pmake python \
+  rcs strace svgalib terminfo lthreads libtool gettext ; do
+  echo "$pkg: SKP" >> $TMP/SeTnewtag
+ done
+ exit
+fi
+cat /dev/null > $TMP/SeTnewtag
+for PACKAGE in autoconf automake \
+ binutils bison byacc egcs egcs_g77 egcsobjc flex gcc \
+ gcl gdb gmake libc libcinfo linuxinc m4 ncurses p2c perl pmake python \
+ rcs strace svgalib terminfo lthreads libtool gettext ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+rm -f $TMP/SeTpkgs

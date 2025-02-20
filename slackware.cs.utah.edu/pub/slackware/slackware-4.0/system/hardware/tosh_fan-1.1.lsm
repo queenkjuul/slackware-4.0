@@ -1,0 +1,19 @@
+Begin3
+Title:		tosh_fan 
+Version:        1.1 
+Entered-date:   07-August-1998   
+Description:    tosh_fan is a simple utility that can be run in the 
+                background to turn the fan of a Toshiba laptop on and
+                off.  tosh_fan uses the low-level routines from 'fan'
+                which was originally written by Jonathan Buzzard.  
+                tosh_fan just expands upon the capabilities fan.
+Keywords:       tosh_fan fan toshiba laptop
+Author:         stufflehead@bigfoot.com (Ken Sodemann)
+Maintained-by:  stufflehead@bigfoot.com (Ken Sodemann)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/hardware/
+                14036 tosh_fan-1.1.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux
+Copying-policy: GPL
+End

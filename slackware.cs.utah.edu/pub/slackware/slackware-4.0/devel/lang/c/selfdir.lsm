@@ -1,0 +1,20 @@
+Begin3
+Title:		selfdir
+Version:	04.10.94
+Entered-date:	05.10.94
+Description:	C-routine to get the path of a started binary
+                This is useful, if a binary should automatical seach 
+                it's datafiles. Such programpackages are full pathindepend 
+                and it's easy to spread them via NFS over a large number of 
+                workstation(-administrator)s
+Keywords:	selfdir  pathindependend programpackages  argv[0] PATH   
+Author: 	scheurich@rus.uni-stuttgart.de (Dipl. Phys. J. Scheurich)
+Maintained-by:	scheurich@rus.uni-stuttgart.de (Dipl. Phys. J. Scheurich)
+Primary-site:	ftp.rus.uni-stuttgart.de /pub/unix/systems/linux/local/libs
+                11kb selfdir.tgz 
+Alternate-site: sunsite.unc.edu /pub/Linux/libs
+                11kb selfdir.tgz 
+Original-site:	
+Platforms:	
+Copying-policy:	GPL
+End

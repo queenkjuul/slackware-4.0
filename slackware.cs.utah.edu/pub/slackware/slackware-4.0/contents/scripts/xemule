@@ -1,0 +1,4 @@
+( cd usr/X11R6/bin ; rm -rf xemacs )
+( cd usr/X11R6/bin ; ln -sf xemacs-20.4 xemacs )
+( cd usr/X11R6/lib/xemacs ; rm -rf lock )
+( cd usr/X11R6/lib/xemacs ; ln -sf /var/lock lock )

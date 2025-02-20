@@ -1,0 +1,17 @@
+Begin3
+Title:          iphunter
+Version:        0.2
+Entered-date:   AUG22 1996
+Description:    iphunter is a simple utility that tells the user
+		the IP address of the machine. Works with all
+		variations of SLIP and PPP. The user also
+		has the option of emailing the IP address.
+Keywords:       slip, ppp, ip, net, tcpip, internet, util
+Author:         Jawed Karim <kari0022@gold.tc.umn.edu>
+Maintained-by:  Jawed Karim <kari0022@gold.tc.umn.edu>
+Primary-site:   sunsite.unc.edu
+Alternate-site: http://umn.edu/~kari0022
+Original-site:  
+Platform:       Linux ELF
+Copying-policy: (C)opyright 1996 Jawed Karim, Freeware
+End

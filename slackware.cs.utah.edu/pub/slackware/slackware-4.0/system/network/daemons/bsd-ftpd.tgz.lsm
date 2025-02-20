@@ -1,0 +1,15 @@
+Begin3
+Title:          4.4BSD/NetBSD ftp daemon
+Version:        9/8/95
+Entered-date:   9/9/95
+Description:    Linux port of current NetBSD ftp daemon.
+Keywords:       BSD ftpd
+Author:         BSD
+Maintained-by:  downsj@teeny.org
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/daemons
+		32k bsd-ftpd.tgz
+Alternate-site: 
+Original-site:  ftp.netbsd.org /pub/NetBSD/NetBSD-current
+Platform:       
+Copying-policy: BSD
+End

@@ -1,0 +1,18 @@
+Begin3
+Title: libplant
+Version: 0.8.1 
+Entered-date: 01JUL96  
+Description: a simple set of c++ classes packed up in an ELF
+             shared library to simulate plants' behaviour,
+             providing fluids, turbomachines, heat exchangers, a.s.o.
+Keywords: c++ plant simulation 
+Author: cella@gatekeeper.conecta.it (Alessandro Cella)
+Maintained-by: Author
+Primary-site: sunsite.unc.edu /pub/Linux/devel/lang/c++
+		  579 libplant-v.0.8.1.lsm
+		64032 libplant-v.0.8.1.tar.gz
+Original-site: marvin.conecta.it /pub/libplant
+Platforms: libg++ libtermcap
+Copying-policy: GPL
+End
+

@@ -1,0 +1,16 @@
+Begin3
+Title:          IDS POP
+Version:        0.9.4
+Entered-date:   05MAY99
+Description:    a small, fast, efficient POP3 daemon
+Keywords:       POP3 server daemon
+Author:         jkaivo@nodomainname.net (Jakob 'sparky' Kaivo)
+Maintained-by:  jkaivo@nodomainname.net (Jakob 'sparky' Kaivo)
+Primary-site:   ftp.nodomainname.net /pub/ids-pop3d
+		110 k	ids-pop3d-0.9.4.tar.gz
+		473	ids-pop3d.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      *NIX
+Copying-policy: GPL
+End

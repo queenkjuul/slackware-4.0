@@ -1,0 +1,14 @@
+Begin3
+Title:          gpc
+Version:        2.0
+Entered-date:	13DEC96
+Description:    The GNU Pascal compiler, version 2.0
+Keywords:       GNU, pascal, programming, development
+Author:         jtv@hut.fi (Jukka Virtanen)
+Maintained-by:	j.j.vanderheijden@mail.student.utwente.nl (J.J. van der Heijden)
+Primary-site:   sunsite.unc.edu /pub/Linux/development/pascal
+		1010K gpc-2.0.i486-linux.tar.gz
+		1675K gpc-2.0.tar.gz
+Platform:       Linux
+Copying-policy: GPL
+End

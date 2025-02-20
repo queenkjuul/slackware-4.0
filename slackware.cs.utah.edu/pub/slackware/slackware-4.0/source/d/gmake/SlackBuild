@@ -1,0 +1,48 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-gmake
+SRC=/devel/manpagesrc
+INFO=$PKG/usr/info
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_gmake.tar.gz
+
+echo "+=============+"
+echo "| make-3.76.1 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/make-3.76.1.tar.gz
+cd make-3.76.1
+CFLAGS=-O2 LDFLAGS=-s ./configure --prefix=/usr
+make
+cat make > $PKG/usr/bin/make
+mkdir -p $INFO
+for file in make.info* ; do
+ cat $file | gzip -9c > $INFO/$file.gz
+done
+cat make.man | gzip -9c > $PKG/usr/man/man1/make.1.gz
+cp -a NEWS README $PKG/usr/doc/gnu-make/
+chmod 644 $PKG/usr/doc/gnu-make/*
+chown root.root $PKG/usr/doc/gnu-make/*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/gmake.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/make-3.76.1
+  rm -rf $PKG
+fi

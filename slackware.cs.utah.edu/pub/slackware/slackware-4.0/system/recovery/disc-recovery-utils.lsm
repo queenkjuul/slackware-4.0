@@ -1,0 +1,15 @@
+Begin3
+Title:          Disc recovery tools for EXT2FS
+Version:        1.0
+Entered-date:   16Apr97
+Description:    A few disc recovery tools (copy_blocks and copy_listed_blocks)
+		and an inode recovery tool for the EXT2 filesystem (e2fsfind).
+Keywords:       utilities, recovery, filesystem, Ext2fs
+Author:         rgooch@atnf.csiro.au (Richard Gooch)
+Maintained-by:  rgooch@atnf.csiro.au (Richard Gooch)
+Primary-site:   ftp.atnf.csiro.au /pub/people/rgooch/linux/
+Alternate-site: sunsite.unc.edu /pub/Linux/system/recovery/ (hopefully)
+Platforms:	linux 1.2.x/1.3.x/2.0.x/2.1.x
+Requires:	e2fsprogs-1.07 or later
+Copying-policy: GPL
+End

@@ -1,0 +1,28 @@
+Begin3
+Title:          nc100em
+Version:        1.0
+Entered-date:   11APR99
+Description:	nc100em/xnc100em/tnc100em are Amstrad NC100 emulators
+		for (respectively) svgalib, X, and ttys. They can run
+		both the ROM software and ZCN, my free CP/M-like OS
+		for the NC100.
+
+		Though I (rjm) wrote nc100em etc., I give Ian main author
+		credit as I used his Z80 emulation (from his excellent
+		`xz80' ZX Spectrum emulator), which is the most
+		difficult bit, not to mention being half the code. :-)
+		(Please don't contact Ian in relation to nc100em; I just
+		used his code, he wasn't otherwise involved. The email
+		address below is given only for completeness, and
+		might be out of date.)
+
+Keywords:       Amstrad NC100 emulator VGA text svgalib X
+Author:         imc@comlab.ox.ac.uk (Ian Collier)
+		rus@forfree.at (Russell Marks)
+Maintained-by:  rus@forfree.at (Russell Marks)
+Primary-site:   metalab.unc.edu /pub/Linux/system/emulators
+		54082	nc100em-1.0.tar.gz
+Platforms:      nc100em: Linux+svgalib, xnc100em: any modern Unix box
+		with X, tnc100em: any modern Unix box
+Copying-policy: GPL
+End

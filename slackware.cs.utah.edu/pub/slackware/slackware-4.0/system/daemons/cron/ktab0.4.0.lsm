@@ -1,0 +1,14 @@
+Begin3
+Title:          ktab
+Version:        0.4.0
+Entered-date:   23JAN99
+Description:    Easy-to-use daemon that runs binaries at specific times.
+Keywords:       : crontab ktab cron
+Author:         fralick@gate.net Keith Fralick
+Maintained-by:  jason@burghcom.com Jason Strickland
+Primary-site:   
+Alternate-site: 
+Original-site:  
+Platforms:  	Linux and FreeBSD    
+Copying-policy: GPL
+End

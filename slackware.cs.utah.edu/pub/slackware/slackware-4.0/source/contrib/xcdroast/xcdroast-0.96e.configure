@@ -1,0 +1,9 @@
+# To find newer versions of xcdroast, check:
+#    http://www.fh-muenchen.de/rz/xcdroast
+CWD=`pwd`
+tar xzvf xcdroast-0.96e.tar.gz
+cd xcdroast-0.96e
+./configure --prefixdir /usr/X11R6
+make
+#
+# Also, add KDE menu link.

@@ -1,0 +1,13 @@
+Title: 		secure_rpc
+Version:	4.0
+Entered-date:   8-may-1995
+Description:    Sun RPC 4.0 secure_rpc patches.  Since DES and secure_rpc are
+		already integrated into libc, this archive is only useful for
+		the keyserv/keyenvoy/keylogin/chkey commands and the secure
+		rpc test programs.
+Keywords:       secure_rpc, keyserv
+Author:         misc.
+Maintained-by:  nobody?
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+		52k	secure_rpc.tar.gz
+Copying-policy:	Freely Distributable

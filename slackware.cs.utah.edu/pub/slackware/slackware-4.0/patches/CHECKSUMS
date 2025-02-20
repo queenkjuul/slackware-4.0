@@ -1,0 +1,50 @@
+These are the CRCs and filesizes for the files in this directory.
+If you want to test your files, use 'cksum' and compare the values to
+the ones listed here. 'cksum' can be found in the GNU textutils 
+package on prep.ai.mit.edu in /pub/gnu, or at any GNU mirror site.
+
+CRC        Size     Filename
+200691170 2917 ./ChangeLog.txt
+3246402306 289536 ./MANIFEST
+1838299156 1637171 ./bind.tgz
+2266022601 659103 ./imapd.tgz
+3631464967 80453 ./nfs-server.tgz
+2258703874 1421328 ./pine.tgz
+1043174685 2829 ./sources/bind-8.2.2-P5/SlackBuild
+166137866 736 ./sources/bind-8.2.2-P5/_bind.tar.gz
+2335760623 314 ./sources/bind-8.2.2-P5/bind-8.2.2-P5/MD5
+4035699513 875229 ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-contrib.tar.gz
+234446296 284 ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-contrib.tar.gz.asc
+2987290962 1254602 ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-doc.tar.gz
+4128299643 284 ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-doc.tar.gz.asc
+1038337080 1251509 ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-src.tar.gz
+2923492740 284 ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-src.tar.gz.asc
+3150034580 380 ./sources/bind-8.2.2-P5/bind-debug.diff.gz
+355111491 286 ./sources/bind-8.2.2-P5/bind-manpages.diff.gz
+1785396168 8799 ./sources/bind-8.2.2-P5/named-bootconf.pl
+2945531100 586 ./sources/bind-8.2.2-P5/named.conf.sample
+3309455272 147 ./sources/bind-8.2.2-P5/named.reload
+1047514895 150 ./sources/bind-8.2.2-P5/named.restart
+2043681447 1583 ./sources/nfs-server-2.2beta47/SlackBuild
+3149573632 1024 ./sources/nfs-server-2.2beta47/_nfs-server.tar.gz
+1135563985 198202 ./sources/nfs-server-2.2beta47/nfs-server-2.2beta47.tar.gz
+3273706780 791 ./sources/nfs-server-2.2beta47/nfs-server.lsm
+1041362811 2120 ./sources/pine-4.21/SlackBuild
+2310922005 241 ./sources/pine-4.21/_imapd.tar.gz
+3976219760 289 ./sources/pine-4.21/_pine.tar.gz
+2625149940 2625 ./sources/pine-4.21/pine.diff.gz
+1108965261 3129479 ./sources/pine-4.21/pine4.21.tar.gz
+1543957650 1575 ./sources/sysklogd/SlackBuild
+1533638724 1000 ./sources/sysklogd/_sysklogd.tar.gz
+4213469229 63590 ./sources/sysklogd/sysklogd_1.3-33.diff.gz
+3650707475 442 ./sources/sysklogd/sysklogd_1.3-33.dsc.gz
+2512655602 62108 ./sources/sysklogd/sysklogd_1.3.orig.tar.gz
+2472423362 321 ./sources/wuftpd/wu-ftpd-2.6.1.diff.gz
+2186173259 341520 ./sources/wuftpd/wu-ftpd-2.6.1.tar.gz
+1126560672 290 ./sources/wuftpd/wu-ftpd-2.6.1.tar.gz.asc
+868460889 62255 ./sources/wuftpd/wu-ftpd-faq.txt
+2472167052 849 ./sources/wuftpd/wuftpd.build
+614932046 57956 ./sysklogd.tgz
+2671765021 58188 ./termcap.tgz
+2781503789 107341 ./wuftpd.tgz
+2599021977 71188 ./xterm.tgz

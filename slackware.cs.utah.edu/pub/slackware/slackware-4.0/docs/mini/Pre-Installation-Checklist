@@ -1,0 +1,462 @@
+
+   
+   
+   
+   
+                      "LINUX PRE-INSTALLATION CHECKLIST"
+                                       
+from
+Algologic Research & Solutions 
+
+   
+   
+   _How many times have you found yourself fumbling in the middle of a
+   Linux installation process, because some vital information about the
+   target hardware is not known ?
+   
+   Have you ever crossed your fingers when you were asked by the
+   installation procedure, a simple question, like: "to which COM port is
+   the mouse connected ?" ?
+   
+   Let's face it, all of us have, at one time or another, felt we should
+   have been better prepared before starting to install Linux. Here is a
+   simple solution, brought to you by _
+   
+  Algologic Research & Solutions. 
+  
+   
+   
+   What does this checklist achieve ?
+   Who must use this list ?
+   Japanese version of the checklist
+   The check list
+   Give us your feedback 
+   
+   
+  What does this checklist (aim to) achieve ?
+  
+   
+   
+   This is an aide-memoire which may make installation of Linux a
+   pleasant experience for you. It fills an important role in the
+   promotion of Linux.
+   It will help you to be prepared with all the answers which may be
+   needed during the course of installation of Linux on your machine or
+   on anybody else's machine. Sometimes, it is very inconvenient and even
+   impossible to find out some details in the middle of an installation
+   procedure. This becomes all the more difficult when you are installing
+   Linux on somebody else's machine, and in somebody else's office.
+   This checklist, when filled up, will help you go through your Linux
+   documentation and verify in advance whether certain hardware are
+   supported by the distribution you are planning to install. It will
+   also help you to be prepared with the packages you would need to
+   install, and the configuration choices which need to be done.
+   The idea is to reduce the chances of frustrating surprises.
+   This checklist is only for installing Linux on PCs. You may use this
+   checklist as a model for other classes of machines (e.g.SUN, Alpha,
+   ...).
+   
+   Goto top 
+   
+   
+   
+  Who must use this checklist ?
+     * If you are planning to install Linux on somebody else's machine,
+       or in a location which is not your own work place, you must
+       absolutely get this checklist completed in advance. It is
+       important to get this questionnaire answered by your host, so that
+       you go adequately prepared for the installation
+     * If you are planning to organise an "Install fest" (we Indians call
+       it "Linux mela"), ask your participants to come with this
+       checklist answered.
+     * Conversely, if you are going to an Install fest (aka Linux mela),
+       to get Linux installed on your machine, do your home-work. Go with
+       answers to this checklist.
+     * If you are going to ask someone to come over and install Linux for
+       you, send him/her this questionnaire with as many responses as you
+       know.
+     * If you are the D-I-Y type, you must start by answering all these
+       questions, so that you can save time for enjoying your Linux !
+       
+   
+   
+   Goto top 
+   
+  Japanese Version
+  
+   This checklist is also available in Japanese. The Japanese translation
+   is available as: a plain text file, or as a html file, at the URL
+   given below:
+     * _Japanese Text Version: _Click here for a text-only version.
+     * _Japanese html Version: _Click here for a html version.
+       
+   Click here to send a mail to Mrs. Chie Nakatani who did the
+   translation into Japanese. You can also visit her home page, by
+   clicking here.
+   
+   Goto top 
+   
+   
+   
+  Linux Pre-installation checklist
+
+    -------------------------------------------------------------
+
+                                LINUX
+            PRE-INSTALLATION CHECK LIST CUM QUESTIONNAIRE
+                       (Ver. 1.7 of 1998-01-27)
+    -------------------------------------------------------------
+                             prepared by
+         Algologic  Research  &  Solutions,   Secunderabad,
+                                India
+
+                           S. Parthasarathy
+                       algolog@hd1.vsnl.net.in
+
+    Updated versions of this checklist will be posted at:
+             http://members.tripod.com/~algolog/lnxchk.htm
+
+    Please  make  sure that you have the latest version  of  this
+    checklist.
+
+    -------------------------------------------------------------
+
+                               Welcome
+
+    Welcome to the world of Linux. Your first step in  installing
+    Linux on your PC will begin by answering a few (?), simple(?)
+    questions about your hardware.
+
+    This checklist will make it easy for you and us to go through
+    the  installation, painlessly and without  surprises.  Please
+    take  your  own  time and fill up  the  following  checklist.
+    Wherever   possible,  and  necessary,  we  have  given   some
+    suggestions and hints, for your convenience.
+
+    If you don't know all the details, you should be able to find
+    them  in  your  computer's manuals.  Or,  ask  your  hardware
+    vendor, or your local hardware "guru".
+
+    If  you still have problems finding answers, don't  worry  --
+    you   can  just  ignore any areas you don't know.  Bring   in
+    your   machine  and  ALL manuals you have.  The  installation
+    may succeed with some trials and  a lot of luck.
+
+    Remember,  Linux,  like many other software  products,  is  a
+    growing  product.  Some  of your hardware may  still  not  be
+    supported  in  the version of Linux which is being installed.
+
+    This  is a FREE service from Algologic. Algologic offers   no
+    warranties, and accepts no  liabilities  in  this exercise.
+
+    Each question below can be identified by a letter followed by
+    a numeral (e.g. G4 is a question on processor speed). If  you
+    need any assistance/clarifications about the questions  asked
+    in this form, please specify the chapter identifier(an alpha)
+    and the question number (a numeral), and send an e mail to:
+
+                       algolog@hd1.vsnl.net.in
+
+    ------------------------------------------------------------
+
+    Assumptions:
+
+    1. You  are  interested  in installing Linux  on  a  PC  (386
+       upwards).
+
+    2. You have a CD ROM drive on your PC.
+
+    3. You  have at least one 3.5" floppy diskette drive on  your
+       system.
+
+    4. The 3.5" diskette drive is a BOOTABLE drive.
+
+    5. You will keep readily available, three, blank, bad-sector-free,
+       formatted  (3.5")   diskettes,  for use in the installation
+       procedure.
+
+    If  your answer to any one of the above assumptions is a  NO,
+    please get in touch with Algologic first.
+
+    -------------------------------------------------------------
+                            CHECKLIST
+
+
+    A. ABOUT YOU
+
+        1* Your Name ____________________
+
+        2* Your contact phone numbers:
+
+
+        3* Your email adress ____________________
+
+        4* Have you used Linux before ? What distribution?
+
+        5* Have you used any version of Unix before ? Which one ? On
+           what platform ?
+
+        6* Is this an upgrade to an existing Linux distribution ?
+
+        7* What will be the end-use of this Linux installation ?
+
+        8* Do you wish to retain DOS/Win along with Linux, on your
+           system ?
+
+        9* Any other detail you want to add:
+
+           _____________________________________________________
+
+           _____________________________________________________
+
+    -------------------------------------------------------------
+
+    G.  GENERAL
+
+        1* CPU type [i386, i486 DX2...]:
+
+        2* Bus type [ISA, EISA, VESA, PCI, MCA ... ]:
+
+        3* Processor speed (MHz) ?
+
+        4* What size is your RAM (minimum 4 MB needed) ?
+
+        5* Do  you  want  X Window System (i.e. GUI for  Linux)  to  be
+           installed on your system ?
+
+        6* How many serial ports do you have on your PC ?
+
+        7* Are you planning to add dumb terminals to your PC ? How many ?
+
+        Please mention below, any additional details you wish  to
+        add:
+
+           __________________________________________________
+
+           __________________________________________________
+
+           __________________________________________________
+
+    -------------------------------------------------------------
+    M. MOUSE
+
+        1* To which port  is your mouse connected ? What IRQ ?
+
+        2* What type of mouse are you using
+           [Microsoft, Busmouse, PS/2 ..] ?
+
+    -------------------------------------------------------------
+
+    C. CD ROM
+
+        1* What is the make and type of CDROM drive
+           [e.g. IDE ATAPI, Sony, S-B Pro/Panasonic,  SCSI,  true
+           IDE ..]  ?
+
+        2* On  which drive interface [1st IDE, 2nd IDE, 3rd  IDE,
+           4th  IDE] and which drive [drive 1 , drive 2]  is  the
+           CDROM connected (e.g. drive 2 of 1st IDE) ?
+
+    -------------------------------------------------------------
+
+    F. FLOPPY DRIVES
+
+        1* Do you have a 3 1/2" floppy drive?
+
+        2* Is the 3 1/2 " floppy drive a bootable drive ?
+
+        3* Do you have a 5 1/4" floppy drive?
+
+        4* Is the 5 1/4 " drive a bootable drive ?
+
+    -------------------------------------------------------------
+    T. TAPE DRIVES
+
+        1* What  type  of tape drive do you have (can  be   NONE)
+           [floppy interface type, SCSI, parallel port ..] ?
+
+        2* Do  you  have a secondary floppy controller  for  your
+           tape drive?
+
+    _____________________________________________________________
+
+    D. DISK
+
+        1* What type of drive do you have [IDE, SCSI, RLL, MFM ....] ?
+
+        2* How many partitions are there on your first disk drive ?
+           Name, type, size ?
+
+        3* Can  we  re-partition your disk ? (All  existing  data
+           will be lost)
+
+        4* Which  partitions can be reformatted to  become  Linux
+           partitions ?
+
+        5* How  much of disk space can you give for  Linux
+           [50 MB minimum] ?
+
+        6* What is your second hard disk (if any)?
+
+        7* What is your third hard disk (if any)?
+
+        8* What is your fourth hard disk (if any)?
+
+        9* Do you have any SCSI device ? Which SCSI controller do
+           you have (if any)?
+
+    -------------------------------------------------------------
+
+    V. VDU
+
+        1* What kind of monitor do  you have [Monochrome, Colour]
+           [EGA, VGA, CGA ..] ? What make ?
+
+        2* Size of screen [14", 15", 19"] ?
+
+        3* What  are  the  resolutions, and  number  of   colours
+           possible on this monitor [600x480, 800x600, 1024x768]?
+
+        4* What is your monitor's vertical refresh rate (could be
+           a range)?
+
+        5* What is your monitor's horizontal refresh rate  (could
+           be a range) ?
+
+        6* VDU Control card : make and model ?
+
+        7* Chip set used in VDU control card ?
+
+        8* Monitor's horizontal sync. frequency ?
+
+        9* Monitor's vertical sync. frequency ?
+
+        10* Monitor's bandwidth ?
+
+        11* Video RAM size ?
+
+
+    -------------------------------------------------------------
+    N. NETWORKING
+
+        1* Are you using an internal modem | external modem ?
+
+        2* What make ?
+
+        3* On which COM port is the modem connected ? What IRQ ?
+
+        4* What is the speed of the modem [bps] ?
+
+        5* Is it a "Windows only" modem [WIN-MODEM...] ?
+
+        6* Which  ethernet card do you have [10base2 or  10baseT;
+           NONE for none] ?
+
+        7* Will  this  machine  be  a part  of  Internet  or  any
+           Intranet ?
+
+        8* Will this machine use a PPP connection to a server ?
+
+    ------------------------------------------------------------
+
+    P. PRINTER
+
+        1* Have you connected any printer on the parallel port of
+           your PC ?
+
+        2* What is the type, make of the printer ?
+
+
+    ------------------------------------------------------------
+
+    X. MISC.
+
+        1* Does  your keyboard use a round connector  (DIN-5)  or
+           PS/2 connector?
+
+        2* Do  you  plan to use keyboard mapping to  any  non-US
+            keyboards [French, Greek, Cyrillic, ..] ?
+
+        3* Are you using any Plug & play devices ?
+
+        4* Are  you using any sound card ? What card ? What  I/O,
+           IRQ, DMA does it use ?
+
+        5* How many ISA spare  slots do you have ?
+
+        6* How many EISA spare slots do you have ?
+
+        7* How many VESA spare slots do you have ?
+
+        8* How many PCI spare slots do you have ?
+
+        9* How many other (describe) spare slots?
+
+        10* What  kind of other removable media do you have  (can
+            be NONE)?
+
+        11* Do you have any other interesting hardware?
+
+        12* Please add any details you wish to highlight:
+
+           __________________________________________________
+
+           __________________________________________________
+
+           __________________________________________________
+
+
+    Did   you  find  this  form  clear  ?  Any  suggestions   for
+    improvement ?
+
+
+           __________________________________________________
+
+           __________________________________________________
+
+           __________________________________________________
+
+
+
+    -------------------------------------------------------------
+    That  is all. Thanks for filling out the form.
+
+    Please crosscheck the above  responses, and keep the checklist
+    handy at the time of installation.
+
+                              ACKNOWLEDGEMENTS
+
+    Algologic acknowledges with gratitude the useful  suggestions
+    and  inputs  from many members of the  Linux  community,  for
+    preparation of this checklist. This checklist is proof of the
+    cooperation  and goodwill which exists between  Linux  users.
+    Algologic submits this checklist to the Linux community, as a
+    humble tribute to the "spirit of Linux".
+
+
+    ********Endchecklist
+
+   
+   
+   Goto top 
+   
+   
+   
+  Your feedback is IMPORTANT
+  
+   Send us an email
+   Tell us if you found this webpage clear.
+   Tell us how we can improve this questionnaire and make it more useful.
+   
+   Tell us how you located this page.
+   _Visit our home page at:_ Algologic Research & Solutions. 
+   
+   
+   Goto top 
+   
+   
+   ------ http://members.tripod.com/~algolog/lnxchk.htm -----
+   ------- This page last modified on 1998-01-27 ----------
+   
+   Thank you for your visit.
+   Algologic Research & Solutions. 

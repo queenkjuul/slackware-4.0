@@ -1,0 +1,19 @@
+Begin3
+Title:          nisttime
+Version:        5.3 - fixed Linux pre-processor directive and added more
+                UUCP configuration file notes.  Also, the program is now
+                installed in /usr/local/bin with manual pages under
+                /usr/local/man/man8
+Entered-date:   15 April 1995
+Description:    Set the UNIX system clock by calling the National Institute
+                of Standards or by calling the U.S. Naval Observatory.
+Keywords:       nisttime, usnotime, time, naval observatory, nist
+Author:         John J. Rushford Jr
+Maintained-by:  John J. Rushford Jr
+Primary-site:   sunsite.unc.edu /pub/Linux/Admin/time
+                947 nisttime-5.3.lsm
+                7K nisttime-5.3.tgz
+Platforms:      Linux with gcc, uucp/cu package and 1200 baud modem.
+                SunOs Sparc workstation, uucp/cu package and 1200 baud modem.
+                Unixware with SDK, uucp/cu package and 1200 baud modem.
+End

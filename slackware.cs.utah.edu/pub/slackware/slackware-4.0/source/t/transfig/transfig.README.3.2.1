@@ -1,0 +1,88 @@
+July 1, 1998
+
+TransFig is a set of tools for creating TeX documents with graphics
+which are portable, in the sense that they can be printed in a wide
+variety of environments.
+
+TransFig 3.2.1 is available from ftp://ftp.x.org/contrib/applications/drawing_tools/transfig
+or from ftp://epb1.lbl.gov/xfig.
+Be sure to set binary mode when transferring.
+
+You also need a JPEG library, which can be found in ftp://ftp.x.org/contrib/libraries.
+
+The transfig directory contains the source for the transfig command
+which generates a Makefile which translates Fig code to various graphics
+description languages using the fig2dev program.  In previous releases,
+this command was implemented as a shell script.
+
+The fig2dev directory contains a general program for translating from
+Fig code to other graphics desciption languages.  The dev subdirectory
+contains a library of output drivers used by fig2dev.
+
+Drivers currently exist for the following graphics langauges:
+AutoCad slide, BOX, (E)EPIC macros, LaTeX picture environment, PIC, PiCTeX, PNG,
+PostScript, Encapsulated Postscript, GIF, IBM-GL, JPEG, PCX, MF (METAFONT),
+TeXtyl, TIFF, TPIC, XBM (X11 Bitmap), XPM (X11 Pixmap), and TK (tcl/tk).
+
+Fig2dev can be configured with a subset of these drivers.
+
+I have taken over the maintenance of TransFig from Micah Beck so please send any
+bug notices, fixes, contributions etc to me at xfig-bugs@epb1.lbl.gov.
+
+- Brian V. Smith
+- Lawrence Berkeley Laboratory
+
+*****************************************************************************
+Following is a description of the CHANGES for 3.2.1
+
+NEW FEATURES
+	o New driver for tk (tcl/tk) - Generates canvas objects and canvas.
+	  from Mike Markowski (mm@udel.edu)
+	o -h option to print all options for all output languages
+	o Japanese text support for LaTeX output
+	  from T. Sato (VEF00200@niftyserve.or.jp)
+
+BUGS FIXED
+	o XPMLIB renamed to XPMLIBS in Imakefile because of conflict with
+	  XFree86 variable name in xmkmf config files
+	o Fixed bug in JPEGINCDIR path when relative path is used (when
+	  USEINSTALLEDJPEG is *not* used) - the dev directory is one level
+	  deeper so "../" is prepended for that case
+	o The rest of the scaling problems for latex fixed :-)
+	  from Hans Werner Strube (strube@physik3.gwdg.de)
+	o fig2dev can now be used in a pipe (e.g. cat x.fig | fig2dev -L ps ...)
+	  was attempting to rewind file before
+	o Two bugs fixed in eepic driver
+		1) -l option didn't work because DPI was 0 when line width was
+		   defined
+		2) -W option produced 0 line widths because of a bad fprintf
+	o Dash length incorrect by factor of 80 for LaTeX output
+	o I18N support added for LaTeX output
+	o Incorrect amount of memory allocated for reading eps pictures
+	o Bug in provided strstr() (only used if you've uncommented
+	  #define NOSTRSTR in the Imakefile)
+	o Fixed M_PI incompatibility with RedHat 5.0
+	o moved convert_names procedure from readxpm.c into genps.c since only
+	  genps.c needs it.  Removed readxpm.c as a result.
+	o added missing PCX import driver
+	o metric scaling for latex part fixed
+	  From Martin Pahl <pahl@tnt.uni-hannover.de>
+	o Some Linuxes need -lgdbm instead of -ldbm (fig2dev/Imakefile)
+	o transparent color for GIF was not passed (new option -t)
+	o multiple co-incident points in splines caused problems on some
+	  machines (this patch was in the old spline model but failed to make
+	  it to the X-Spline model)
+	o endpoints of splines were missing sometimes
+	o new #ifdef for glibc which already has sys_errlist defined
+	o conflict with definition M_PI (3.14159....) on RedHat systems fixed
+	o "Ledger" paper size removed from list of paper sizes.  It is really
+	  "Tabloid" size in landscape mode.
+	o arrowheads were too far back from end of line
+	o dash length for lines were too large in LaTeX output
+	o fig2dev can now be used in a pipe (e.g. cat x.fig | fig2dev -L ps ...)
+	  was attempting to rewind file before
+	o error in I18N defines in fig2dev/Imakefile
+	o buggy strstr() proc in fig2dev source replaced by xfig's version
+	  (only used for systems that don't have their own strstr() )
+	o bug fixes and modernization of Metafont driver by Mats Bengtsson
+	  <mats.bengtsson@s3.kth.se>

@@ -1,0 +1,24 @@
+Title        =	admin-shells	Various administration shells for Linux
+Version      =	0.1
+Desc1        =	These shells are for locking peoples account so that they know
+Desc2        =	why they were locked, what to do about it, who to see, send mail
+Desc3        = 	to, or where to go. They consist of badpasswd - their password
+Desc4        =	is bad, message - not allowed to use this machine, moving -
+Desc5        =	acct is moving, nosharing - they shared the acct, generic diable
+Author       =	Ken P. Wilcox
+AuthorEmail  =	wilcox@kpw104.rh.psu.edu
+Maintainer   =	Same as above
+MaintEmail   =	"	"
+FileSize1    =	3416bytes
+Required1    =	Linux (any version) under any hardware. Compiled under Linux
+Required2    = 	0.99pl13 gcc 2.4.5 libc 4.4.2 but should work anywhere. 
+Required3    =	Including any Unix-OS.
+CopyPolicy1  =  Free copying
+Keywords     =	shells, admin-utils, utils
+Comment1     =	The install of this package is full documented in the read me.
+Comment2     =	Feel free to send me email with suggestions or anything.
+Entered      =	23OCT93
+EnteredBy    =	Ken P. Wilcox
+CheckedEmail =	wilcox@kpw104.rh.psu.edu
+End
+

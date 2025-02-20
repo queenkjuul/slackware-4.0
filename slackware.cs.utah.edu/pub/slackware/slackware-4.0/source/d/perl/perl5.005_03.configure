@@ -1,0 +1,1201 @@
+Script started on Mon Apr  5 23:23:04 1999
+zap:/tmp/perl/perl5.005_03# ./Configure 
+ 
+Beginning of configuration questions for perl5.
+ 
+Checking echo to see how to suppress newlines...
+...using -n.
+The star should be here-->*
+ 
+First let's make sure your kit is complete.  Checking...
+Looks good...
+ 
+ 
+Would you like to see the instructions? [n] 
+ 
+Locating common programs...
+awk is in /usr/bin/awk.
+cat is in /bin/cat.
+comm is in /usr/bin/comm.
+cp is in /bin/cp.
+echo is in /bin/echo.
+expr is in /usr/bin/expr.
+find is in /usr/bin/find.
+grep is in /usr/bin/grep.
+ls is in /bin/ls.
+make is in /usr/bin/make.
+mkdir is in /bin/mkdir.
+rm is in /bin/rm.
+sed is in /usr/bin/sed.
+sort is in /usr/bin/sort.
+touch is in /bin/touch.
+tr is in /usr/bin/tr.
+uniq is in /usr/bin/uniq.
+ 
+Don't worry if any of the following aren't found...
+I don't see Mcc out there, offhand.
+ar is in /usr/bin/ar.
+I don't see byacc out there, either.
+cpp is in /usr/bin/cpp.
+csh is in /bin/csh.
+date is in /bin/date.
+egrep is in /usr/bin/egrep.
+gzip is in /bin/gzip.
+less is in /usr/bin/less.
+I don't see line out there, either.
+ln is in /bin/ln.
+more is in /bin/more.
+nm is in /usr/bin/nm.
+nroff is in /usr/bin/nroff.
+perl is in /usr/bin/perl.
+I don't see pg out there, either.
+sendmail is in /usr/sbin/sendmail.
+tee is in /usr/bin/tee.
+test is in /usr/bin/test.
+uname is in /bin/uname.
+zip is in /usr/bin/zip.
+Using the test built into your sh.
+ 
+Checking compatibility between /bin/echo and builtin echo (if any)...
+They are compatible.  In fact, they may be identical.
+ 
+Symbolic links are supported.
+ 
+Good, your tr supports [:lower:] and [:upper:] to convert case.
+Using [:upper:] and [:lower:] to convert case.
+ 
+I see a config.sh file.  Shall I use it to set the defaults? [y] 
+Fetching default answers from your old config.sh file...
+
+Configure uses the operating system name and version to set some defaults.
+The default value is probably right if the name rings a bell. Otherwise,
+since spelling matters for me, either accept the default or answer "none"
+to leave it blank.
+
+Operating system name? [linux] 
+ 
+Operating system version? [2.2.5] 
+
+Perl can be built to take advantage of threads, on some systems.
+To do so, Configure must be run with -Dusethreads.
+
+Note that threading is a highly experimental feature, and
+some known race conditions still remain.  If you choose to try
+it, be very sure to not actually deploy it for production
+purposes.  README.threads has more details, and is required
+reading if you enable threads.
+Build a threading Perl? [n] 
+ 
+What is your architecture name [i386-linux] 
+ 
+AFS does not seem to be running...
+
+By default, perl5 will be installed in /usr/bin, manual
+pages under /usr/man, etc..., i.e. with /usr as prefix for
+all installation directories. Typically set to /usr/local, but you
+may choose /usr if you wish to install perl5 among your system
+binaries. If you wish to have binaries under /bin but manual pages
+under /usr/local/man, that's ok: you will be prompted separately
+for each of the installation directories, the prefix being only used
+to set the defaults.
+
+Installation prefix to use? (~name ok) [/usr] 
+ 
+Getting the current patchlevel...
+(You have perl5 5.0 patchlevel 5 subversion 3.)
+
+There are some auxiliary files for perl5 that need to be put into a
+private library directory that is accessible by everyone.
+
+Pathname where the private library files will reside? (~name ok)
+[/usr/lib/perl5] 
+
+Perl5 contains architecture-dependent library files.  If you are
+sharing libraries in a heterogeneous environment, you might store
+these files in a separate location.  Otherwise, you can just include
+them with the rest of the public library files.
+
+Where do you want to put the public architecture-dependent libraries? (~name ok)
+[/usr/lib/perl5/i386-linux] 
+ 
+Hmm...  Looks kind of like a Version 7 system, but we'll see...
+ 
+Congratulations.  You aren't running Eunice.
+ 
+It's not Xenix...
+ 
+Nor is it Venix...
+
+Some kernels have a bug that prevents setuid #! scripts from being
+secure.  Some sites have disabled setuid #! scripts because of this.
+
+First let's decide if your kernel supports secure setuid #! scripts.
+(If setuid #! scripts would be secure but have been disabled anyway,
+don't say that they are secure if asked.)
+
+If you are not sure if they are secure, I can check but I'll need a
+username and password different from the one you are using right now.
+If you don't have such a username or don't want me to test, simply
+enter 'none'.
+
+Other username to test security of setuid scripts with? [none] 
+Well, the previous value is *not* secure.
+Does your kernel have *secure* setuid scripts? [n] 
+ 
+Some systems have disabled setuid scripts, especially systems where
+setuid scripts cannot be secure.  On systems where setuid scripts have
+been disabled, the setuid/setgid bits on scripts are currently
+useless.  It is possible for perl5 to detect those bits and emulate
+setuid/setgid in a secure fashion.  This emulation will only work if
+setuid scripts have been disabled in your kernel.
+
+Do you want to do setuid/setgid emulation? [n] 
+ 
+System manual is in /usr/man/man1.
+ 
+Some systems have different model sizes.  On most systems they are called
+small, medium, large, and huge.  On the PDP11 they are called unsplit and
+split.  If your system doesn't support different memory models, say "none".
+If you wish to force everything to one memory model, say "none" here and
+put the appropriate flags later when it asks you for other cc and ld flags.
+Venix systems may wish to put "none" and let the compiler figure things out.
+(In the following question multiple model names should be space separated.)
+
+The default for most systems is "none".
+
+Which memory models are supported? [none] 
+ 
+Use which C compiler? [gcc] 
+ 
+Checking for GNU cc in disguise and/or its version number...
+You are using GNU cc 2.7.2.3.
+ 
+Hmm...  Doesn't look like a MIPS system.
+ 
+Now, how can we feed standard input to your C preprocessor...
+You used to use gcc -E - so we'll use that again.
+(And we'll use gcc -E - to preprocess directly.)
+
+Some systems have incompatible or broken versions of libraries.  Among
+the directories listed in the question below, please remove any you
+know not to be holding relevant libraries, and add any that are needed.
+Say "none" for none.
+
+Directories to use for library searches? [/lib /usr/lib] 
+
+On some systems, shared libraries may be available.  Answer 'none' if
+you want to suppress searching of shared libraries for the remaining
+of this configuration.
+
+What is the file extension used for shared libraries? [so] 
+ 
+Checking for optional libraries...
+No -lsfio.
+No -lsocket.
+No -linet.
+No -lnsl.
+No -lnm.
+Found -lndbm (shared).
+Found -lgdbm (shared).
+Found -ldbm (shared).
+Found -ldb (shared).
+No -lmalloc.
+Found -ldl (shared).
+No -ldld.
+No -lld.
+No -lsun.
+Found -lm (shared).
+Found -lc (shared).
+No -lcposix.
+No -lposix.
+No -lndir.
+No -ldir.
+No -lcrypt.
+No -lucb.
+No -lBSD.
+No -lPW.
+No -lx.
+ 
+Some versions of Unix support shared libraries, which make executables smaller
+but make load time slightly longer.
+
+On some systems, mostly System V Release 3's, the shared library is included
+by putting the option "-lc_s" as the last thing on the cc command line when
+linking.  Other systems use shared libraries by default.  There may be other
+libraries needed to compile perl5 on your machine as well.  If your system
+needs the "-lc_s" option, include it here.  Include any other special libraries
+here as well.  Say "none" for none.
+ 
+Any additional libraries? [-lndbm -lgdbm -ldbm -ldb -ldl -lm -lc] 
+
+Some C compilers have problems with their optimizers.  By default, perl5
+compiles with the -O flag to use the optimizer.  Alternately, you might want
+to use the symbolic debugger, which uses the -g flag (on traditional Unix
+systems).  Either flag can be specified here.  To use neither flag, specify
+the word "none".
+
+What optimizer/debugger flag should be used? [-O2] 
+
+Your C compiler may want other flags.  For this question you should include
+-I/whatever and -DWHATEVER flags and any other flags used by the C compiler,
+but you should NOT include libraries or ld flags like -lwhatever.  If you
+want perl5 to honor its debug switch, you should include -DDEBUGGING here.
+Your C compiler might also need additional flags, such as -D_POSIX_SOURCE.
+
+To use no flags, specify the word "none".
+
+Any additional cc flags? [-Dbool=char -DHAS_BOOL -I/usr/local/include] 
+ 
+Let me guess what the preprocessor flags are...
+They appear to be: -Dbool=char -DHAS_BOOL -I/usr/local/include
+
+Your C linker may need flags.  For this question you should
+include -L/whatever and any other flags used by the C linker, but you
+should NOT include libraries like -lwhatever.
+
+Make sure you include the appropriate -L/path flags if your C linker
+does not normally search all of the directories you specified above,
+namely
+	/lib /usr/lib
+To use no flags, specify the word "none".
+
+Any additional ld flags (NOT including libraries)? [none] 
+ 
+Checking your choice of C compiler and flags for coherency...
+OK, that should do.
+ 
+Computing filename position in cpp output for #include directives...
+Your cpp writes the filename in the third field of the line.
+ 
+<malloc.h> found.
+ 
+<stdlib.h> found.
+ 
+Do you wish to attempt to use the malloc that comes with perl5? [n] 
+ 
+Your system wants malloc to return 'void *', it would seem.
+Your system uses void free(), it would seem.
+ 
+Checking out function prototypes...
+Your C compiler appears to support function prototypes.
+ 
+Pathname where the public executables will reside? (~name ok) [/usr/bin] 
+ 
+ 
+Checking for GNU C Library...
+You are not using the GNU C Library
+
+I can use /usr/bin/nm to extract the symbols from your C libraries. This
+is a time consuming task which may generate huge output on the disk (up
+to 3 megabytes) but that should make the symbols extraction faster. The
+alternative is to skip the 'nm' extraction part and to compile a small
+test program instead to determine whether each symbol is present. If
+you have a fast C compiler and/or if your 'nm' output cannot be parsed,
+this may be the best solution.
+
+You probably shouldn't let me use 'nm' if you are using the GNU C Library.
+
+Shall I use /usr/bin/nm to extract C symbols from the libraries? [y] 
+ 
+Your C library seems to be in /lib/libc.so.5.4.46, as you said before.
+
+If the guess above is wrong (which it might be if you're using a strange
+compiler, or your machine supports multiple models), you can override it here.
+
+Where is your C library? [/lib/libc.so.5.4.46] 
+ 
+Extracting names from the following files for later perusal:
+ 
+	/lib/libc.so.5.4.46
+	/lib/libdl.so.1.9.9
+	/lib/libgdbm.so.1.7.3
+	/lib/libm.so.5.0.9
+	/usr/lib/libdb.so.1.85.4
+	/usr/lib/libdbm.so
+	/usr/lib/libndbm.so
+ 
+This may take a while.....done
+ 
+<dld.h> NOT found.
+ 
+dlopen() found.
+ 
+Do you wish to use dynamic loading? [y] 
+The following dynamic loading files are available:
+ext/DynaLoader/dl_aix.xs       ext/DynaLoader/dl_hpux.xs
+ext/DynaLoader/dl_beos.xs      ext/DynaLoader/dl_mpeix.xs
+ext/DynaLoader/dl_cygwin32.xs  ext/DynaLoader/dl_next.xs
+ext/DynaLoader/dl_dld.xs       ext/DynaLoader/dl_none.xs
+ext/DynaLoader/dl_dlopen.xs    ext/DynaLoader/dl_vms.xs
+Source file to use for dynamic loading [ext/DynaLoader/dl_dlopen.xs] 
+
+Some systems may require passing special flags to gcc -c to
+compile modules that will be used to create a shared library.
+To use no flags, say "none".
+
+Any special flags to pass to gcc -c to compile shared library modules?
+[-fpic] 
+
+Some systems use ld to create libraries that can be dynamically loaded,
+while other systems (such as those using ELF) use gcc.
+
+What command should be used to create dynamic libraries? [gcc] 
+
+Some systems may require passing special flags to gcc to create a
+library that can be dynamically loaded.  If your ld flags include
+-L/other/path options to locate libraries outside your loader's normal
+search path, you may need to specify those -L options here as well.  To
+use no flags, say "none".
+
+Any special flags to pass to gcc to create a dynamically loaded library?
+[-shared] 
+
+Some systems may require passing special flags to gcc to indicate that
+the resulting executable will use dynamic linking.  To use no flags,
+say "none".
+
+Any special flags to pass to gcc to use dynamic loading? [-rdynamic] 
+
+The perl executable is normally obtained by linking perlmain.c with
+libperl.a, any static extensions (usually just DynaLoader), and
+any other libraries needed on this system (such as -lm, etc.).  Since
+your system supports dynamic loading, it is probably possible to build
+a shared libperl.so.  If you will have more than one executable linked
+to libperl.so, this will significantly reduce the size of each
+executable, but it may have a noticeable affect on performance.  The
+default is probably sensible for your system.
+
+
+Build a shared libperl.so (y/n) [n] 
+
+Perl5 has manual pages available in source form.
+If you don't want the manual sources installed, answer 'none'.
+ 
+Where do the main Perl5 manual pages (source) go? (~name ok) [/usr/man/man1] 
+What suffix should be used for the main Perl5 man pages? [1] 
+ 
+You can have filenames longer than 14 characters.
+
+Perl5 has manual pages for many of the library modules.
+If you don't want the manual sources installed, answer 'none'.
+ 
+Where do the perl5 library man pages (source) go? (~name ok)
+[/usr/lib/perl5/man/man3] 
+What suffix should be used for the perl5 library man pages? [3] 
+ 
+Figuring out host name...
+Your host name appears to be "zap". Right? [y] 
+ 
+What is your domain name? [.slackware.com] 
+
+I need to get your e-mail address in Internet format if possible, i.e.
+something like user@host.domain. Please answer accurately since I have
+no easy means to double check it. The default value provided below
+is most probably close to the reality but may not be valid from outside
+your organization...
+
+What is your e-mail address? [root@zap.slackware.com] 
+
+If you or somebody else will be maintaining perl at your site, please
+fill in the correct e-mail address here so that they may be contacted
+if necessary. Currently, the "perlbug" program included with perl
+will send mail to this address in addition to perlbug@perl.com. You may
+enter "none" for no administrator.
+
+Perl administrator e-mail address [root@localhost] 
+I'll use #!/usr/bin/perl to start perl scripts.
+ 
+Some installations have a separate directory just for executable scripts so
+that they can mount it across multiple architectures but keep the scripts in
+one spot.  You might, for example, have a subdirectory of /usr/share for this.
+Or you might just lump your scripts in with all your other executables.
+ 
+Where do you keep publicly executable scripts? (~name ok) [/usr/bin] 
+
+The installation process will also create a directory for
+site-specific extensions and modules.  Some users find it convenient
+to place all local files in this directory rather than in the main
+distribution directory.
+
+Pathname for the site-specific library files? (~name ok)
+[/usr/lib/perl5/site_perl] 
+
+The installation process will also create a directory for
+architecture-dependent site-specific extensions and modules.
+
+Pathname for the site-specific architecture-dependent library files? (~name ok)
+[/usr/lib/perl5/site_perl/i386-linux] 
+
+Previous version of perl5 used the standard IO mechanisms as defined
+in <stdio.h>.  Versions 5.003_02 and later of perl allow alternate IO
+mechanisms via a "PerlIO" abstraction, but the stdio mechanism is still
+the default.  This abstraction layer can use AT&T's sfio (if you already
+have sfio installed) or regular stdio.  Using PerlIO with sfio may cause
+problems with some extension modules.  Using PerlIO with stdio is safe,
+but it is slower than plain stdio and therefore is not the default.
+
+If this doesn't make any sense to you, just accept the default 'n'.
+Use the experimental PerlIO abstraction layer? [n] 
+Ok, doing things the stdio way
+ 
+access() found.
+ 
+<unistd.h> defines the *_OK access constants.
+ 
+alarm() found.
+ 
+Checking whether your compiler can handle __attribute__ ...
+Your C compiler supports __attribute__.
+ 
+bcmp() found.
+ 
+bcopy() found.
+ 
+<unistd.h> found.
+ 
+getpgrp() found.
+ 
+Checking to see which flavor of getpgrp is in use...
+(I see you are running Configure as super-user...)
+You have to use getpgrp() instead of getpgrp(pid).
+ 
+setpgrp() found.
+ 
+Checking to see which flavor of setpgrp is in use...
+(I see you are running Configure as super-user...)
+You have to use setpgrp() instead of setpgrp(pid,pgrp).
+ 
+bzero() found.
+ 
+ 
+You have void (*signal())().
+ 
+Checking whether your C compiler can cast large floats to int32.
+Nope, it can't.
+ 
+Checking whether your C compiler can cast negative float to unsigned.
+Yup, it can.
+ 
+vprintf() found.
+Your vsprintf() returns (int).
+ 
+chown() found.
+ 
+chroot() found.
+ 
+chsize() NOT found.
+ 
+Checking to see if your C compiler knows about "const"...
+Yup, it does.
+ 
+crypt() found.
+ 
+cuserid() found.
+ 
+<limits.h> found.
+ 
+<float.h> found.
+ 
+DBL_DIG found.
+ 
+difftime() found.
+ 
+<sys/stat.h> found.
+ 
+<dirent.h> found.
+ 
+Your directory entries are struct dirent.
+ 
+Your directory entry does not know about the d_namlen field.
+ 
+dlerror() found.
+ 
+<dlfcn.h> found.
+
+On a few systems, the dynamically loaded modules that perl generates and uses
+will need a different extension than shared libs. The default will probably
+be appropriate.
+
+What is the extension of dynamically loaded modules [so] 
+ 
+Checking whether your dlsym() needs a leading underscore ...
+dlsym doesn't need a leading underscore.
+ 
+dup2() found.
+ 
+endhostent() found.
+ 
+endnetent() found.
+ 
+endprotoent() found.
+ 
+endservent() found.
+ 
+<sys/file.h> defines the O_* constants...
+and you have the 3 argument form of open().
+ 
+Figuring out the flag used by open() for non-blocking I/O...
+Using previous value O_NONBLOCK.
+ 
+Let's see what value errno gets from read() on a O_NONBLOCK file...
+Using previous value EAGAIN.
+Your read() returns -1 when no data is present.
+And you can see EOF because read() returns 0.
+ 
+fchmod() found.
+ 
+fchown() found.
+ 
+fcntl() found.
+ 
+fgetpos() found.
+ 
+flock() found.
+ 
+fork() found.
+ 
+pathconf() found.
+ 
+fpathconf() found.
+ 
+fsetpos() found.
+ 
+gethostbyaddr() found.
+ 
+gethostbyname() found.
+ 
+<sys/param.h> found.
+ 
+<sys/mount.h> found.
+ 
+fstatfs() found.
+ 
+ 
+<sys/statvfs.h> NOT found.
+ 
+fstatvfs() NOT found.
+ 
+gethostent() found.
+ 
+<netdb.h> found.
+ 
+gethostent() prototype found.
+ 
+getlogin() found.
+ 
+getnetbyaddr() found.
+ 
+getnetbyname() found.
+ 
+getnetent() found.
+ 
+getnetent() prototype found.
+ 
+getprotobyname() found.
+ 
+getprotobynumber() found.
+ 
+getprotoent() found.
+ 
+<mntent.h> found.
+ 
+getmntent() found.
+ 
+hasmntopt() found.
+ 
+getpgid() found.
+ 
+getpgrp2() NOT found.
+ 
+getppid() found.
+ 
+getpriority() found.
+ 
+getprotoent() prototype found.
+ 
+getservbyname() found.
+ 
+getservbyport() found.
+ 
+getservent() found.
+ 
+getservent() prototype found.
+ 
+gettimeofday() found.
+ 
+<netinet/in.h> found.
+ 
+<arpa/inet.h> found.
+ 
+htonl() found.
+ 
+Using <string.h> instead of <strings.h>.
+ 
+strchr() found.
+ 
+inet_aton() found.
+ 
+isascii() found.
+ 
+killpg() found.
+ 
+lchown() NOT found.
+ 
+link() found.
+ 
+localeconv() found.
+ 
+lockf() found.
+ 
+Checking to see if your system supports long doubles... Yup, it does.
+ 
+Checking to see if your system supports long long... Yup, it does.
+ 
+lstat() found.
+ 
+mblen() found.
+ 
+mbstowcs() found.
+ 
+mbtowc() found.
+ 
+memcmp() found.
+ 
+memcpy() found.
+ 
+memmove() found.
+ 
+memset() found.
+ 
+mkdir() found.
+ 
+mkfifo() found.
+ 
+mktime() found.
+ 
+msgctl() found.
+ 
+msgget() found.
+ 
+msgsnd() found.
+ 
+msgrcv() found.
+ 
+You have the full msg*(2) library.
+ 
+nice() found.
+ 
+pause() found.
+ 
+pipe() found.
+ 
+poll() found.
+pthread_yield() found.
+sched_yield() found.
+ 
+<pthread.h> found.
+ 
+<mach/cthreads.h> NOT found.
+ 
+<pwd.h> found.
+ 
+setpwent() found.
+ 
+getpwent() found.
+ 
+endpwent() found.
+ 
+readdir() found.
+ 
+seekdir() found.
+ 
+telldir() found.
+ 
+rewinddir() found.
+ 
+readlink() found.
+ 
+rename() found.
+ 
+rmdir() found.
+ 
+<memory.h> found.
+ 
+Checking to see if your bcopy() can do overlapping copies...
+Yes, it can.
+ 
+Checking to see if your memcpy() can do overlapping copies...
+It can't, sorry.
+But that's Ok since you have memmove().
+ 
+Checking if your memcmp() can compare relative magnitude...
+Yes, it can.
+ 
+select() found.
+ 
+semctl() found.
+ 
+semget() found.
+ 
+semop() found.
+ 
+You have the full sem*(2) library.
+ 
+You have union semun in <sys/sem.h>.
+ 
+You can use union semun for semctl IPC_STAT.
+You can also use struct semid_ds* for semctl IPC_STAT.
+ 
+setegid() found.
+ 
+seteuid() found.
+ 
+sethostent() found.
+ 
+setlinebuf() found.
+ 
+setlocale() found.
+ 
+setnetent() found.
+ 
+setprotoent() found.
+ 
+setpgid() found.
+ 
+setpgrp2() NOT found.
+ 
+setpriority() found.
+ 
+setregid() found.
+ 
+setresgid() found.
+ 
+setreuid() found.
+ 
+setresuid() NOT found.
+ 
+setrgid() NOT found.
+ 
+setruid() NOT found.
+ 
+setservent() found.
+ 
+setsid() found.
+ 
+setvbuf() found.
+ 
+<sfio.h> NOT found.
+ 
+shmctl() found.
+ 
+shmget() found.
+ 
+shmat() found.
+and it returns (char *).
+ 
+shmdt() found.
+ 
+You have the full shm*(2) library.
+ 
+sigaction() found.
+ 
+POSIX sigsetjmp found.
+ 
+Hmm... Looks like you have Berkeley networking support.
+ 
+socketpair() found.
+ 
+ 
+(Looks like you have stdio.h from Linux.)
+Checking how std your stdio is...
+Your stdio acts pretty std.
+And its _base field acts std.
+ 
+strcoll() found.
+ 
+Checking to see if your C compiler can copy structs...
+Yup, it can.
+ 
+ 
+strtod() found.
+ 
+strtol() found.
+ 
+strtoul() found.
+ 
+strxfrm() found.
+ 
+symlink() found.
+ 
+syscall() found.
+ 
+sysconf() found.
+ 
+system() found.
+ 
+tcgetpgrp() found.
+ 
+tcsetpgrp() found.
+ 
+<sys/times.h> found.
+ 
+times() found.
+ 
+truncate() found.
+ 
+tzname[] found.
+ 
+umask() found.
+ 
+uname() found.
+ 
+vfork() found.
+ 
+ 
+Perl can only use a vfork() that doesn't suffer from strict
+restrictions on calling functions or modifying global data in
+the child.  For example, glibc-2.1 contains such a vfork()
+that is unsuitable.  If your system provides a proper fork()
+call, chances are that you do NOT want perl to use vfork().
+
+Do you still want to use vfork()? [n] 
+Ok, we won't use vfork().
+ 
+<sys/dir.h> found.
+ 
+<sys/ndir.h> NOT found.
+ 
+<sys/types.h> found.
+ 
+closedir() found.
+ 
+Checking whether closedir() returns a status...
+Yes, it does.
+ 
+Checking to see if your C compiler knows about "volatile"...
+Yup, it does.
+ 
+wait4() found.
+ 
+waitpid() found.
+ 
+wcstombs() found.
+ 
+wctomb() found.
+ 
+Doubles must be aligned on a how-many-byte boundary? [4] 
+ 
+Checking to see how your cpp does stuff like catenate tokens...
+Oh!  Smells like ANSI's been here.
+We can catify or stringify, separately or together!
+ 
+<db.h> found.
+ 
+Checking Berkeley DB version ...
+You have Berkeley DB Version 1
+Looks OK.
+ 
+Checking return type needed for hash for Berkeley DB ...
+Your version of Berkeley DB uses u_int32_t for hash.
+ 
+Checking return type needed for prefix for Berkeley DB ...
+Your version of Berkeley DB uses size_t for prefix.
+ 
+Checking to see how well your C compiler groks the void type...
+ 
+ 
+Determining whether or not we are on an EBCDIC system...
+Nope, no EBCDIC.  Assuming ASCII or some ISO Latin.
+ 
+Looking for the type for group ids returned by getgid().
+gid_t found.
+ 
+getgroups() found.
+ 
+setgroups() found.
+ 
+What type of pointer is the second argument to getgroups() and setgroups()?
+Usually this is the same as group ids, gid_t, but not always.
+
+What type pointer is the second argument to getgroups() and setgroups()?
+[gid_t] 
+ 
+Checking if your /usr/bin/make program sets $(MAKE)...
+Yup, it does.
+ 
+What pager is used on your system? [/usr/bin/less] 
+ 
+ 
+How many bits does your rand() function produce? [31] 
+ 
+Checking how to generate random libraries on your machine...
+/usr/bin/ar appears to generate random libraries itself.
+ 
+<sys/select.h> NOT found.
+ 
+
+Checking to see how well your C compiler handles fd_set and friends ...
+Well, your system knows about the normal fd_set typedef...
+and you have the normal fd_set macros (just as I'd expect).
+ 
+Generating a list of signal names and numbers...
+signal.c: In function `main':
+signal.c:127: `_NSIG' undeclared (first use this function)
+signal.c:127: (Each undeclared identifier is reported only once
+signal.c:127: for each function it appears in.)
+(I can't seem be able to compile the whole test program)
+(I'll try it in little pieces.)
+NSIG 32
+SIGABRT found.
+SIGALRM found.
+SIGBUS found.
+SIGCHLD found.
+SIGCLD found.
+SIGCONT found.
+SIGDIL NOT found.
+SIGEMT NOT found.
+SIGFPE found.
+SIGHUP found.
+SIGILL found.
+SIGINT found.
+SIGIO found.
+SIGIOT found.
+SIGKILL found.
+SIGLOST NOT found.
+SIGPHONE NOT found.
+SIGPIPE found.
+SIGPOLL found.
+SIGPROF found.
+SIGPWR found.
+SIGQUIT found.
+SIGRTMAX NOT found.
+SIGRTMIN found.
+SIGSEGV found.
+SIGSTKFLT found.
+SIGSTKSZ found.
+SIGSTOP found.
+SIGSYS NOT found.
+SIGTERM found.
+SIGTRAP found.
+SIGTSTP found.
+SIGTTIN found.
+SIGTTOU found.
+SIGUNUSED found.
+SIGURG found.
+SIGUSR1 found.
+SIGUSR2 found.
+SIGUSR3 NOT found.
+SIGUSR4 NOT found.
+SIGVTALRM found.
+SIGWINCH found.
+SIGWIND NOT found.
+SIGWINDOW NOT found.
+SIGXCPU found.
+SIGXFSZ found.
+The following signals are available:
+ 
+SIGZERO SIGHUP SIGINT SIGQUIT SIGILL SIGTRAP SIGABRT SIGBUS SIGFPE 
+SIGKILL SIGUSR1 SIGSEGV SIGUSR2 SIGPIPE SIGALRM SIGTERM SIGSTKFLT 
+SIGCHLD SIGCONT SIGSTOP SIGTSTP SIGTTIN SIGTTOU SIGURG SIGXCPU 
+SIGXFSZ SIGVTALRM SIGPROF SIGWINCH SIGIO SIGPWR SIGUNUSED SIGIOT 
+SIGCLD SIGPOLL 
+ 
+I'll be using ssize_t for functions returning a byte count.
+ 
+Your stdio uses signed chars.
+ 
+ 
+Looking for the type for user ids returned by getuid().
+uid_t found.
+ 
+dbmclose() found.
+ 
+<dbm.h> found.
+ 
+<sys/file.h> found.
+ 
+We'll be including <sys/file.h>.
+ 
+<fcntl.h> found.
+ 
+We don't need to include <fcntl.h> if we include <sys/file.h>.
+ 
+<grp.h> found.
+ 
+setgrent() found.
+ 
+getgrent() found.
+ 
+endgrent() found.
+ 
+<locale.h> found.
+ 
+<math.h> found.
+ 
+<ndbm.h> found.
+ 
+dbm_open() found.
+ 
+<net/errno.h> NOT found.
+ 
+Hmm... Your C compiler and pre-processor define these symbols:
+__i386
+__i386__
+__i486__
+__linux__
+__unix
+__unix__
+i386
+linux
+unix
+ 
+Your C pre-processor also defines the following symbols:
+__STDC__
+ 
+Your C compiler further defines the following cpp symbols:
+__ELF__
+__GNUC_MINOR__=7
+__GNUC__=2
+__linux
+cpu=i386
+machine=i386
+system=posix
+system=unix
+ 
+tcsetattr() found.
+ 
+You have POSIX termios.h... good!
+ 
+<stdarg.h> found.
+ 
+<varargs.h> found.
+ 
+We'll include <stdarg.h> to get va_dcl definition.
+ 
+<stddef.h> found.
+ 
+<sys/filio.h> NOT found.
+ 
+<sys/ioctl.h> found.
+ 
+<sys/resource.h> found.
+ 
+<sys/un.h> found.
+ 
+<sys/wait.h> found.
+ 
+<utime.h> found.
+ 
+<values.h> found.
+ 
+<gdbm.h> found.
+ 
+gdbm_open() found.
+ 
+Looking for extensions...
+A number of extensions are supplied with perl5.  You may choose to
+compile these extensions for dynamic loading (the default), compile
+them into the perl5 executable (static loading), or not include
+them at all.  Answer "none" to include no extensions.
+Note that DynaLoader is always built and need not be mentioned here.
+
+What extensions do you wish to load dynamically?
+[B DB_File Data/Dumper Fcntl GDBM_File IO IPC/SysV NDBM_File ODBM_File Opcode POSIX SDBM_File Socket attrs re] 
+What extensions do you wish to load statically? [ ] 
+ 
+ 
+End of configuration questions.
+ 
+ 
+Stripping down executable paths...
+ 
+Creating config.sh...
+
+If you'd like to make any changes to the config.sh file before I begin
+to configure things, do it as a shell escape now (e.g. !vi config.sh).
+
+Press return or use a shell escape to edit config.sh: 
+ 
+Doing variable substitutions on .SH files...
+Extracting Makefile (with variable substitutions)
+Extracting Policy.sh (with variable substitutions)
+Extracting cflags (with variable substitutions)
+Extracting config.h (with variable substitutions)
+Extracting makeaperl (with variable substitutions)
+Extracting makedepend (with variable substitutions)
+Extracting makedir (with variable substitutions)
+Extracting perl.exp
+Extracting writemain (with variable substitutions)
+Extracting x2p/Makefile (with variable substitutions)
+Extracting x2p/cflags (with variable substitutions)
+
+Now you need to generate make dependencies by running "make depend".
+You might prefer to run it in background: "make depend > makedepend.out &"
+It can take a while, so you might not want to run it right now.
+
+Run make depend now? [y] 
+sh ./makedepend MAKE=make
+make[1]: Entering directory `/tmp/perl/perl5.005_03'
+sh writemain lib/auto/DynaLoader/DynaLoader.a  > tmp
+sh mv-if-diff tmp perlmain.c
+File perlmain.c not changed.
+echo  av.c scope.c op.c doop.c doio.c dump.c hv.c mg.c byterun.c perl.c perly.c pp.c pp_hot.c pp_ctl.c pp_sys.c regcomp.c regexec.c gv.c sv.c taint.c toke.c util.c deb.c run.c universal.c globals.c perlio.c miniperlmain.c perlmain.c | tr ' ' '\n' >.clist
+make[1]: Leaving directory `/tmp/perl/perl5.005_03'
+Finding dependencies for av.o.
+Finding dependencies for scope.o.
+Finding dependencies for op.o.
+Finding dependencies for doop.o.
+Finding dependencies for doio.o.
+Finding dependencies for dump.o.
+Finding dependencies for hv.o.
+Finding dependencies for mg.o.
+Finding dependencies for byterun.o.
+Finding dependencies for perl.o.
+Finding dependencies for perly.o.
+Finding dependencies for pp.o.
+Finding dependencies for pp_hot.o.
+Finding dependencies for pp_ctl.o.
+Finding dependencies for pp_sys.o.
+Finding dependencies for regcomp.o.
+Finding dependencies for regexec.o.
+Finding dependencies for gv.o.
+Finding dependencies for sv.o.
+Finding dependencies for taint.o.
+Finding dependencies for toke.o.
+Finding dependencies for util.o.
+Finding dependencies for deb.o.
+Finding dependencies for run.o.
+Finding dependencies for universal.o.
+Finding dependencies for globals.o.
+Finding dependencies for perlio.o.
+Finding dependencies for miniperlmain.o.
+Finding dependencies for perlmain.o.
+make[1]: Entering directory `/tmp/perl/perl5.005_03'
+echo Makefile.SH cflags.SH config_h.SH makeaperl.SH makedepend.SH makedir.SH perl_exp.SH writemain.SH | tr ' ' '\n' >.shlist
+make[1]: Leaving directory `/tmp/perl/perl5.005_03'
+Updating makefile...
+test -s perlmain.c && touch perlmain.c
+cd x2p; make depend
+make[1]: Entering directory `/tmp/perl/perl5.005_03/x2p'
+sh ../makedepend MAKE=make
+make[2]: Entering directory `/tmp/perl/perl5.005_03/x2p'
+echo hash.c  str.c util.c walk.c | tr ' ' '\n' >.clist
+make[2]: Leaving directory `/tmp/perl/perl5.005_03/x2p'
+Finding dependencies for hash.o.
+Finding dependencies for str.o.
+Finding dependencies for util.o.
+Finding dependencies for walk.o.
+make[2]: Entering directory `/tmp/perl/perl5.005_03/x2p'
+echo Makefile.SH cflags.SH | tr ' ' '\n' >.shlist
+make[2]: Leaving directory `/tmp/perl/perl5.005_03/x2p'
+Updating makefile...
+make[1]: Leaving directory `/tmp/perl/perl5.005_03/x2p'
+Now you must run a make.
+
+If you compile perl5 on a different machine or from a different object
+directory, copy the Policy.sh file from this object directory to the
+new one before you run Configure -- this will help you with most of
+the policy defaults.
+
+zap:/tmp/perl/perl5.005_03# exit
+Script done on Mon Apr  5 23:24:12 1999

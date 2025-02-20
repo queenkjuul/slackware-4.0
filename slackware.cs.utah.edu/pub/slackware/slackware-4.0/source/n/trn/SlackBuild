@@ -1,0 +1,3 @@
+#!/bin/sh
+SlackBuild-spool --cleanup 
+SlackBuild-nntp --cleanup

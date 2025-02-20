@@ -1,0 +1,15 @@
+Begin3
+Title:          TI for Linux
+Version:        0.2
+Entered-date:   Mar 28 1998
+Description:    This package contains a TI-99/4A emulator,
+                requires (G)ROM images to run at all.
+Keywords:       Texas Instruments TI emulator
+Author:         Ton Brouwer
+Maintained-by:  haubi@geocities.com (Stefan Haubenthal)
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/emulators
+                13K ti4linux-0.2.tar.gz
+Alternate-site: http://home.pages.de/~haubi/ports/
+                13K ti4linux-0.2.tar.gz
+Copying-policy: Freeware but ROMs
+End

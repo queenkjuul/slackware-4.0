@@ -1,0 +1,18 @@
+Begin3
+Title:          Citadel/UX
+Version:        5.52
+Entered-date:	Tue Jan 26 22:16:47 EST 1999
+Description:    An advanced messaging system which can be used for BBS,
+		groupware, and online community applications.  It is
+		multithreaded, client/server, database driven, and
+		accessible via a growing selection of front ends.
+Keywords:       Citadel Citadel/UX UNIX POSIX room-based BBS IGnet IGnet/Open
+Author:         Art Cancro <ajc@uncnsrd.mt-kisco.ny.us>
+Maintained-by:  Art Cancro <ajc@uncnsrd.mt-kisco.ny.us>
+Primary-site:	uncnsrd.mt-kisco.ny.us
+Alternate-site:	ftp.tux.org
+Original-site:	uncnsrd.mt-kisco.ny.us
+Platform:	Any reasonably compliant POSIX (Unix, Linux, etc.) type
+		system with a TCP/IP stack and POSIX Threads (pthreads).
+Copying-Policy: GPL
+End

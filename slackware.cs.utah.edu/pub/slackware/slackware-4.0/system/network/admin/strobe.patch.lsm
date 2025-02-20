@@ -1,0 +1,15 @@
+Begin3
+Title:          strobe.patch.gz
+Version:        3/26/97
+Entered-date:   3/26/97
+Description:    Patch for strobe to fix segmentation fault in newer systems
+Keywords:       strobe segmentation fault fix patch
+Author:         tforce@ais.net (Brian Knight)
+Maintained-by:  tforce@ais.net (Brian Knight)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/admin
+		729 strobe.patch.gz
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: Public domain
+End

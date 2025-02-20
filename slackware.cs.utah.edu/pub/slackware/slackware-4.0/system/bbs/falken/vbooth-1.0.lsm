@@ -1,0 +1,16 @@
+Begin3
+Title:          Falken Voting Booth
+Version:        1.0
+Entered-date:   1/29/99 
+Description:    A Voting Booth Module for Falken BBS
+Keywords:       falken bbs voting booth
+Author:         Eric Kilfoil <eric@ipass.net>
+Maintained-by:  Eric Kilfoil <eric@ipass.net>
+Primary-site:   ftp.falkenbbs.com /pub/FalkenBBS/rds/vbooth 
+                vbooth-1.0.src.tar.gz
+                vbooth-1.0.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/bbs/falken
+Original-site:  
+Platforms:      Falken BBS for Linux, DOSEMU
+Copying-policy: GPL
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          constream
+Version:        0.4
+Entered-date:   1996/05/02
+Description:    implementation of Borlands C++ constream interface
+                for the Linux platform using the ncurses library
+Keywords:       c++ constream interface ncurses
+Author:         jurgen@tap.de (Jurgen Eidt)
+Maintained-by:  jurgen@tap.de (Jurgen Eidt)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/c++
+                15 kB constream-0.4.tgz
+Alternate-site: 
+Original-site:  
+Platform:       linux, GNU g++, NCurses
+Copying-policy: GPL
+End

@@ -1,0 +1,15 @@
+Begin3
+Title:          asm68xx
+Version:        a01
+Entered-date:   06FEB97
+Description:    This package contains the sources to cross-assemble
+                most Motorola MC68xx microcomputers, which is mainly
+		used in embedded control applications. This is a
+		bug fix release.
+Keywords:       MC68xx, cross assemblers, Migrant Computing Services Inc.
+Author:         current - gil@netcom.com, origin - Motorola bbs group.
+Primary-site:   sunsite.unc.edu /pub/Linux/...
+		archive ~= 350K, unarchived ~= 1350K
+Copying-policy: Some freely redistributable. Some PD.
+End
+

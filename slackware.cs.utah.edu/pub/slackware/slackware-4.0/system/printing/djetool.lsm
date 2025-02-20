@@ -1,0 +1,17 @@
+Begin3
+Title:		Djetool - HP Deskjet Utility
+Version:	0.1.6
+Entered-date:	Jul 27 1998
+Description:	This is an utility for setting printing options for HP 
+		deskjets (like printing quality, paper type...)
+		Its functionality depends on HPDJ patch for ghostscript.
+		You can get this patch at
+		ftp://ftp.pdb.sni.de/pub/utilities/misc/.
+Keywords:	X11 QT printing deskjet
+Author:		peter.cebokli@kiss.uni-lj.si (Peter Cebokli)
+Maintained-by:	peter.cebokli@kiss.uni-lj.si (Peter Cebokli)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/printing
+		25kB djetool-0.1.6.tar.gz
+Platforms:	Un*x, X11, QT
+Copying-policy:	GPL
+End

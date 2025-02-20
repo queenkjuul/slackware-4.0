@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/source/a/util</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/source/a/util</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/source/a/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="util-linux-2.9i.tar.gz">util-linux-2.9i.tar.gz</a></td><td align="right">1999-02-05 02:26  </td><td align="right">556K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="net-tools-1.52.tar.gz">net-tools-1.52.tar.gz</a></td><td align="right">1999-04-22 20:25  </td><td align="right">209K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="clock-1.6.tar.gz">clock-1.6.tar.gz</a></td><td align="right">1999-02-06 21:28  </td><td align="right"> 29K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="setserial-2.14.tar.gz">setserial-2.14.tar.gz</a></td><td align="right">1998-06-16 06:21  </td><td align="right"> 25K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild">SlackBuild</a></td><td align="right">1999-04-30 19:35  </td><td align="right">9.6K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="updated-1.2.tar.gz">updated-1.2.tar.gz</a></td><td align="right">1996-07-27 13:09  </td><td align="right">8.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="_util.tar.gz">_util.tar.gz</a></td><td align="right">1999-03-26 02:45  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="jaztool-1.0.tar.gz">jaztool-1.0.tar.gz</a></td><td align="right">1997-02-02 18:38  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ziptool-1.0.tar.gz">ziptool-1.0.tar.gz</a></td><td align="right">1997-02-02 18:38  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rc.serial.gz">rc.serial.gz</a></td><td align="right">1999-03-29 15:49  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bsdgetopt.diff.gz">bsdgetopt.diff.gz</a></td><td align="right">1999-02-06 22:40  </td><td align="right">1.8K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="net-tools-1.52.diff.gz">net-tools-1.52.diff.gz</a></td><td align="right">1999-04-30 19:22  </td><td align="right">1.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="util-linux-2.9i.lsm">util-linux-2.9i.lsm</a></td><td align="right">1999-02-05 02:26  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="util-linux-libc5.diff.gz">util-linux-libc5.diff.gz</a></td><td align="right">1999-02-02 01:47  </td><td align="right">797 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="MCONFIG.diff.gz">MCONFIG.diff.gz</a></td><td align="right">1999-02-02 03:44  </td><td align="right">616 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="updated-1.2.lsm">updated-1.2.lsm</a></td><td align="right">1996-07-27 13:09  </td><td align="right">549 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="setserial.lsm">setserial.lsm</a></td><td align="right">1998-06-16 06:20  </td><td align="right">491 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="fdisk.hiddenfat32.diff.gz">fdisk.hiddenfat32.diff.gz</a></td><td align="right">1999-03-19 06:11  </td><td align="right">325 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="swapon.nowarning.diff.gz">swapon.nowarning.diff.gz</a></td><td align="right">1999-03-15 01:34  </td><td align="right">285 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

@@ -1,0 +1,23 @@
+Begin3
+Title:          SpecTcl - An alpha release of SUN's GUI builder for Tk/TCL
+Version:        0.1a
+Entered-date:   30 Nov 1995
+Description:    An alpha release of a Visual Basic style GUI builder
+		for Tk/TCL 4.0/7.4
+		This is a binary only distribution, for a.out systems.
+		it includes a bltt_wish (blt table wish) which is
+		statically linked with the blt_table code, and dynamically
+		with everything else.
+Keywords:       tk X11 toolkit tcl script language GUI builder
+Author:         Stephen Uhler of SUN (eng.sun.com)
+Maintained-by:  D. Jeff Dionne Jeff@RyeHam.EE.Ryerson.Ca
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/tcl
+		294k SpecTcl-0.1a.aout.tar.gz
+Original-site:  ftp.aud.alcatel.com/tcl/ftp.smli.com/SpecTcl-0.1a.tar.gz
+Platform:       Linux a.out development environment
+		libc.so.4.6.27
+                libtcl.so.7.4.0
+		libtk.so.4.0
+                libX11.so.6.0
+Copying-policy: Copyrighted but freely distributable
+End

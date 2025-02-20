@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/source/kernel-source/v2.2</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/source/kernel-source/v2.2</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/source/kernel-source/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="linux-2.2.0.README">linux-2.2.0.README</a></td><td align="right">1999-01-26 06:43  </td><td align="right"> 27 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.1.bz2">patch-2.2.1.bz2</a></td><td align="right">1999-01-29 01:56  </td><td align="right"> 22K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.1.bz2.sign">patch-2.2.1.bz2.sign</a></td><td align="right">1999-01-29 01:56  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.2.bz2">patch-2.2.2.bz2</a></td><td align="right">1999-02-23 07:58  </td><td align="right"> 85K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.2.bz2.sign">patch-2.2.2.bz2.sign</a></td><td align="right">1999-02-23 07:58  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.3.bz2">patch-2.2.3.bz2</a></td><td align="right">1999-03-09 05:42  </td><td align="right">261K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.3.bz2.sign">patch-2.2.3.bz2.sign</a></td><td align="right">1999-03-09 05:42  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="buggy-triton-mboard.patch.gz">buggy-triton-mboard.patch.gz</a></td><td align="right">1999-03-22 00:51  </td><td align="right">306 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.4.bz2">patch-2.2.4.bz2</a></td><td align="right">1999-03-23 22:33  </td><td align="right">550K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.4.bz2.sign">patch-2.2.4.bz2.sign</a></td><td align="right">1999-03-23 22:33  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.5.bz2">patch-2.2.5.bz2</a></td><td align="right">1999-03-29 06:54  </td><td align="right"> 80K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.5.bz2.sign">patch-2.2.5.bz2.sign</a></td><td align="right">1999-03-29 06:54  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-2.2.6.tar.bz2">linux-2.2.6.tar.bz2</a></td><td align="right">1999-04-16 21:46  </td><td align="right"> 11M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-2.2.6.tar.bz2.sign">linux-2.2.6.tar.bz2.sign</a></td><td align="right">1999-04-16 21:46  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.6.bz2">patch-2.2.6.bz2</a></td><td align="right">1999-04-16 21:46  </td><td align="right">365K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.6.bz2.sign">patch-2.2.6.bz2.sign</a></td><td align="right">1999-04-16 21:46  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-2.2.7.tar.bz2">linux-2.2.7.tar.bz2</a></td><td align="right">1999-04-28 18:42  </td><td align="right"> 11M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-2.2.7.tar.bz2.sign">linux-2.2.7.tar.bz2.sign</a></td><td align="right">1999-04-28 18:42  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.7.bz2">patch-2.2.7.bz2</a></td><td align="right">1999-04-28 18:42  </td><td align="right">252K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.2.7.bz2.sign">patch-2.2.7.bz2.sign</a></td><td align="right">1999-04-28 18:42  </td><td align="right">344 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">1.1K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

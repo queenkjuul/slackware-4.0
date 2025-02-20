@@ -1,0 +1,19 @@
+Begin3
+Title:          xc16emu
+Version:        0.5.1
+Entered-date:   Fri, 18 Sep 1998 19:26:31 +0200
+Description:    Emulator for the Commodore C16/C116/plus/4 style computers.
+                ROMs not included. Emulation for: keyboard, floppy
+		(load/save from Unix filesystem, no DIRECTORY yet), all video
+		modes, no sound yet. Split screen works.
+		md5sum: d349368870100cb5ab424437e23ede51
+Keywords:       c16, plus/4, c116, emulator, commodore, 6510
+Author:         overmann@iname.com (Johannes Overmann)
+Maintained-by:  overmann@iname.com (Johannes Overmann)
+Primary-site:   sunsite.unc.edu /pub/Linux/
+		  1k xc16emu-0.5.1.lsm
+                 64k xc16emu-0.5.1.tar.gz
+Alternate-site: http://www.netcologne.de/~nc-overmajo2/soft/
+Platforms:      Linux (or any other Un*x), X11, Qt from Troll Tech
+Copying-policy: GPL
+End

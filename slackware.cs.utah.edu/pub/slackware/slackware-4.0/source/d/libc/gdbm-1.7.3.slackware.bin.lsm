@@ -1,0 +1,15 @@
+Begin3
+Title:          gdbm 1.7.3 -- ELF shared library
+Version:        1.7.3
+Entered-date:   13 February 1998
+Description:    A binary package of GNU gdbm with all extra include files and
+                documentation.
+Keywords:       gdbm ELF shared library
+Author:         The GNU project
+Maintained-by:  volkerdi@slackware.com (Patrick J. Volkerding)
+Primary-site:   sunsite.unc.edu /pub/Linux/libs
+Alternate-site: 
+Original-site:  
+Platform:       Linux 2.0.x, libc 5.4.x
+Copying-policy: GPL
+End

@@ -1,0 +1,8 @@
+fingerd-exlog.README
+
+	This fingerd is modification of the NetBSD finger daemon version 8.
+This daemon logs into syslog information about the people that were
+fingered. It also allows you to block giving out "raw" information (i.e. it
+would block finger -l @somesite.com). These attempts will be also logged.
+
+				<alex@bach.cis.temple.edu>

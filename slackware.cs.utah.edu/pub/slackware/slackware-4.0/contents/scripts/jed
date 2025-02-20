@@ -1,0 +1,2 @@
+( cd usr/lib/jed ; rm -rf info )
+( cd usr/lib/jed ; ln -sf  /usr/info info )

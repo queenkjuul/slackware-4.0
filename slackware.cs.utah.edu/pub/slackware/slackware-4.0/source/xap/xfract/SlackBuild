@@ -1,0 +1,50 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-xfract
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_xfract.tar.gz
+
+echo "+================+"
+echo "| xfractint-3.04 |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/xfractint-3.04.tar.gz
+cd xfractint-3.04
+zcat $CWD/xfractint-3.04.diff.gz | patch
+make
+cat xfractint > $PKG/usr/X11R6/bin/xfractint
+chmod 755 $PKG/usr/X11R6/bin/xfractint
+chown root.bin $PKG/usr/X11R6/bin/xfractint
+cat xfractint.man | gzip -9c > $PKG/usr/X11R6/man/man1/xfractint.1.gz
+cp -a *.par *.frm *.ifs *.l *.map *.hlp $PKG/usr/lib/xfractint
+chown root.root $PKG/usr/lib/xfractint/*
+chmod 644 $PKG/usr/lib/xfractint/*
+cp -a README $PKG/usr/doc/xfractint
+chown root.root $PKG/usr/doc/xfractint/*
+chmod 644 $PKG/usr/doc/xfractint/*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/xfract.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/xfractint-3.04
+  rm -rf $PKG
+fi

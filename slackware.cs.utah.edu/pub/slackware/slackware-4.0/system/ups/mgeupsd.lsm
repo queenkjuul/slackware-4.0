@@ -1,0 +1,14 @@
+Begin3
+Title:          mgeupsd
+Version:        0.3
+Entered-date:   1998-12-26
+Description:    Program to interact with battery backups (Merlin Gerin Pulsar UPS)
+Keywords:       ups, battery, backup, power, Pulsar, MGE, Merlin Gerin
+Author:         Stanislav Voronyi (stas@esc.kharkov.com)
+Maintained-by:  Stanislav Voronyi (stas@esc.kharkov.com)
+Primary-site:   linux.esc.kharkov.com /pub/Linux/myown
+                9k mgeupsd.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/ups
+Copying-policy: PD
+End
+

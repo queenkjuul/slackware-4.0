@@ -1,0 +1,20 @@
+Begin3
+Title:		Motif-PPP - PPP Connection Setup Utility
+Version:	1.03
+Entered-date:	8-11-97
+Description:	Motif-PPP is an X-based dial-up ppp connection setup
+		utility program that is capable of automatically
+		configuring and triggering for the ppp daemon to be
+		executed. Inspite of configuring ppp connection
+		manually, which causes some people a trouble, this
+		utility allows users to avoid such troublesome and to
+		configure the settings automatically.
+Keywords:	Motif-PPP pppd ppp
+Author:		seto@Slip.Net (Seiji Eto)
+Maintained-by:	seto@Slip.Net (Seiji Eto)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/serial
+                764  Motif-PPP-1.03-Beta.lsm
+		556kB Motif-PPP-1.03-Beta.tar.gz
+Platforms:	pppd package 2.?.?
+Copying-policy:	GPL
+End

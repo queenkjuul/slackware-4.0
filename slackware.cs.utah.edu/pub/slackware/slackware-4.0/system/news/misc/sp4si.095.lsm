@@ -1,0 +1,21 @@
+Begin3
+Title:		sp4si
+Version:	0.95b
+Entered-date:	08.02.1999
+Description:	Script Package for Suck & INN is a spool management tool.
+		It makes the articles spool with INN and suck much easier
+		and keeps the configuration at the same simple level,
+		independent of the count of spooling news hosts.
+		sp4si is originated because of misery and is designed for
+		everybody who uses a dial-up internet connection and wants
+		to read the news offline on his own local INN newssystem.
+		And for everybody who just wants expand his INN newssystem.
+                After each spool, sp4si will sent spool reports to the specified
+		mail adress or local newsgroup. UUCP via TCP will be supported.
+Keywords:	suck, inn, spool, news, uucp
+Author:		petersob@gmx.net (Peter Sobisch)
+Primary-site:	http://members.xoom.com/LAMEpage/linux/news/sp4si.095.tar.gz
+Alternate-site:	http://cruise.de/ps/sp4si.095.tar.gz
+Platforms:	Linux
+Copying-policy:	GPL
+End

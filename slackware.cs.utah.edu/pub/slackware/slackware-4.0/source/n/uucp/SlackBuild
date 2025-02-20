@@ -1,0 +1,73 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-uucp
+SRC=/devel/manpagesrc
+INFO=$PKG/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_uucp.tar.gz
+
+echo "+=============+"
+echo "| uucp-1.06.1 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/uucp-1.06.1.tar.gz
+cd uucp-1.06.1
+zcat $CWD/policy.h.diff.gz | patch
+configure --prefix=/usr
+zcat $CWD/Makefile.diff.gz | patch
+make CFLAGS=-O2 LDFLAGS=-s
+cat cu > $PKG/usr/bin/cu
+cat uucp > $PKG/usr/bin/uucp
+cat uuname > $PKG/usr/bin/uuname
+cat uustat > $PKG/usr/bin/uustat
+cat uux > $PKG/usr/bin/uux
+cat uuchk > $PKG/usr/lib/uucp/uuchk
+cat uucico > $PKG/usr/lib/uucp/uucico
+cat uuconv > $PKG/usr/lib/uucp/uuconv
+cat uuxqt > $PKG/usr/lib/uucp/uuxqt
+cat cu.1 | gzip -9c > $PKG/usr/man/man1/cu.1.gz
+cat uucp.1 | gzip -9c > $PKG/usr/man/man1/uucp.1.gz
+cat uustat.1 | gzip -9c > $PKG/usr/man/man1/uustat.1.gz
+cat uux.1 | gzip -9c > $PKG/usr/man/man1/uux.1.gz
+cat uucico.8 | gzip -9c > $PKG/usr/man/man8/uucico.8.gz
+cat uuxqt.8 | gzip -9c > $PKG/usr/man/man8/uuxqt.8.gz
+makeinfo uucp.texi
+mkdir -p $INFO
+cat uucp.info | gzip -9c > $INFO/uucp.info.gz
+for file in uucp.info-? ; do
+  cat $file | gzip -9c > $INFO/$file.gz
+done
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/uucp.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/uucp-1.06.1
+  rm -rf $PKG
+fi

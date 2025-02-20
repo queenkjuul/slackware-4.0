@@ -1,0 +1,26 @@
+Begin2
+Title        =	   xhtalk
+Version      =	   2.9
+Desc1        =	   Nice X prog that shows a dynamic 'menu' of users logged in 
+Desc2        =     at systems you specify in file ~/.xhtalk (& idle times).
+Desc3        =     Click on one and start a talk/chat.
+Author       =	   Klaus Hartenstein
+AuthorEmail  =	   kdh@ira.uka.de
+Maintainer   =	   Klaus Hartenstein
+MaintEmail   =	   kdh@ira.uka.de
+Site1        =	   sunsite.unc.edu
+Path1        =	   ???
+File1        =	   xhtalk-2.9.linux.tgz
+FileSize1    =	   43K
+Required1    =	   If you compile yourself: gcc and X11R5.
+Required2    =	   If you use built exe: Xfree-2.0+, libc-4.5.24
+CopyPolicy1  =	   Leave copyright notice intact.
+Keywords     =	   xhtalk, finger monitor, X11
+Comment1     =	   Do *not* use very frequent updates (anything >5mins is ok)
+Comment2     =	   to avoid congesting the net with continuous finger reqs.
+Comment3     =	   A bit memory hungry (but sleeps/swaps-out for x mins).
+Comment4     =	   Sources a bit modif'd to compile with flex/bison.
+Entered      =	   03AUG94
+EnteredBy    =	   Angelo Haritsis
+CheckedEmail =	   ah@doc.ic.ac.uk
+End

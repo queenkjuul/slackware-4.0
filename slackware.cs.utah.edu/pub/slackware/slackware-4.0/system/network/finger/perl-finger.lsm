@@ -1,0 +1,17 @@
+
+Begin3
+Title: perl-finger         
+Version: 0.2        
+Entered-date: 14 July, 1996  
+Description: A replacement for in.fingerd that lets you attach perl scripts
+to be run for certain users to customize their finger responses. Also lets
+you modify default behaviour. 
+Keywords: finger, server      
+Author: jwesthue@ionline.net (Jonathan Westhues)        
+Maintained-by: jwesthue@ionline.net (Jonathan Westhues) 
+Primary-site: http://www.ionline.net/~jwesthue/perl-finger.tar  
+Alternate-site: 
+Original-site:  
+Platform: perl       
+Copying-policy: GPL
+End

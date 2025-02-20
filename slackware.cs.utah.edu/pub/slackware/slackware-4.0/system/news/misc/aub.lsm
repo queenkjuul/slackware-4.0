@@ -1,0 +1,32 @@
+Begin3
+Title:          aub
+Version:        2.0.5
+Entered-date:	12APR95
+Description: aub, which stands for "assemble usenet binaries", automates this 
+reassembly process for you.  aub is intended for use in newsgroups to which 
+binaries are posted exclusively.  When run, it accesses news articles via
+either a disk-based news spool directory, or via an NNTP news server, 
+determines whether or not any new binaries have appeared in selected 
+newsgroups since the last time it was run, and if so, retrieves, organizes 
+and decodes them, depositing them in a configurable location.  This process 
+requires no human intervention once aub has been configured.  aub also keeps 
+track of binaries which it has seen some, but not all, of the pieces of.  It 
+remembers how to find these old pieces, so that when new, previously missing 
+pieces arrive at your site, it will build the entire binary the next time it 
+is run.  It also remembers which binaries it has already seen all of the 
+pieces of already, so that it does not waste time rebuilding the same binaries 
+over and over again.
+	aub was created as a time saver; too many people at too many sites 
+were spending way too much time manually unpacking binary files.  Its ability 
+to identify and assemble binary images depends on people posting images with
+subject lines that observe (loosely) established conventions.  aub's 
+recognition capabilities have been significantly improved since the earliest 
+release.
+Keywords:       aub, Assemble Usenet Binaries
+Author:         stantz@sgi.com, stantz@sybase.com, (Mark Stantz)
+Primary-site:   sunsite.unc.edu, http://www.sjs.com
+		aub_perl5.tar.gz
+Platforms:      Linux, but should work on any Unix box.
+		Requires Perl version 5
+Copying-policy: GPL
+End

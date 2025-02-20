@@ -1,0 +1,23 @@
+Begin3
+Title:         	PriMa - Print Manager
+Version:	0.3
+Entered-date:   Mon Apr 21 00:14:30 MET DST 1997
+Description:    A graphical interface to the famous PSUtils by 
+		Angus J. C. Duggan. PriMa supports automatic
+		conversion by a magicfilter, interactive manipulation 
+		and previewing of the document, printing to printers
+		or printer spool systems (lpd), printing to files or
+		other programs (e.g. mail or telefax systems).
+		PriMa may be called by other programs (instead of lpr) 
+		or used standalone.
+		If you don't use postscript for printing 
+		(a postscript printer or ghostscript), you won't need PriMa!
+		For more info look at:
+		http://www.in-berlin.de/User/jops/PriMa/PriMa.html
+Keywords:       postscript psutils lpr printer mail fax
+Author:         Joerg Raedler <jora@jops.in-berlin.de>  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Printing
+		345kB PriMa-0.3.tar.gz (source+binaries)
+Platform:       linux with X11 and XForms 0.86
+Copying-policy: GPL
+End

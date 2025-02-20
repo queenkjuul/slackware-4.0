@@ -1,0 +1,16 @@
+Begin3
+Title:		Realtime Multi-line Modem Activity Monitor
+Version:	Beta-3
+Entered-date:	30MAY95
+Description:	A realtime monitor for observing inbound and outbound activity
+		on all your modem ports.  Uses the VU BBS display interface.
+		May be used stand-alone or as part of a VU BBS system.
+Keywords:	BBS, VU, LINEMON
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	ftp.amaranth.com /pub/VUBBS
+		linemon.tar.gz
+Platforms:	Late Linux 1.1.x and above.  Uses later console driver
+                escape sequences for 8 bit transparency modes.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

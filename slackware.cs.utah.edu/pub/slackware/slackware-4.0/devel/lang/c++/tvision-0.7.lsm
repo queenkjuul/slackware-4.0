@@ -1,0 +1,16 @@
+Begin3
+Title:		TVision
+Version:	0.7
+Entered-date:	10FEB99
+Description:	TVision
+Keywords:	c++ cui gui framework interface
+Author:		ssigala@globalnet.it (Sergio Sigala)
+Maintained-by:	ssigala@globalnet.it (Sergio Sigala)
+Primary-site:	ftp.vix.com /guests/ssigala/pub/tvision/
+		447k tvision-0.7.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/c++
+		447k tvision-0.7.tar.gz
+Original-site:	
+Platforms:	Linux, FreeBSD, GNU g++, gpm, ncurses
+Copying-policy:	BSD
+End

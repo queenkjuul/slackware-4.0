@@ -1,0 +1,318 @@
+
+                Windows 95 + Windows 3.x + Linux Howto
+             Robert Goodwin <Robert.Goodwin@mcc.ac.uk>
+                            August 1996
+
+  0. Introduction
+
+  This document was originally written in Jan96. I have incorporated
+  various comments, information, and questions received since then.
+  This document is also avilable in Japanese; see the collection of
+  Japanese linux docs at http://epsenewsc.gee.kyoto-u.ac.jp/JF/JF.html
+
+  1. Booting Multiple Operating Systems
+
+  If you want to boot multiple operating systems (and you don't want
+  to have to boot them from floppy disk!), you need to use some
+  sort of BOOT MANAGER.
+
+  Win95 doesn't really *have* a boot manager - it has boot options,
+  but in my book a "boot manager" can be configured to boot anything.
+
+  Lilo can be configured to boot almost anything, as can the OS/2
+  boot manager and the Windows NT boot manager. Which of these you
+  use is really up to you; it depends what you want on your system.
+  If you use the OS/2 manager, for example, it "hides" the "other"
+  DOSsy partitions from you.
+
+
+  2. Other Places You Might Look
+
+  If you just want Win95 and Linux, then you probably want the
+  Win95+Linux Howto. The latest version can be found at:
+
+       http://www.in.net/~jkatz/win95/Linux-HOWTO.html
+
+  Win95 and Linux can be installed on a single drive; the problems
+  covered in the rest of this document revolve around DOS not allowing
+  more than ONE primary DOS partition per drive.
+
+  If you want to use the NT boot manager, take a look at 
+  http://www.bcpl.lib.md.us/~dbryan/directboot.html
+  To add Linux (or others, including OS/2), there's a nifty little
+  program that makes boot sector files for use with the NT loader.
+  You can find information about this at
+  http://ourworld.compuserve.com/homepages/gvollant/othertl.htm
+
+  You might also investigate LOADLIN.EXE which allows you to "boot"
+  Linux by first booting into DOS.
+
+
+  3. Why this HOWTO?
+
+  This document addresses the following issues:
+
+  * How to get Win 3.x to live on the same machine as Win95 without
+    problems (and what those problems might otherwise be)
+  * How to avoid problems on a machine with Win95 which can also
+    remote boot DOS
+  * How to install Win95 with Linux without having to reinstall lilo
+    (with the tedious booting of Linux from floppy)
+
+  Although the Win95 filesystem lives on top of the standard DOS FAT,
+  it does some pretty unpleasant things to it. Boot your Win95 machine
+  from a bootable DOS floppy and get Norton to check the disk (but
+  DON'T let it attempt any repairs or you'll mess up some "long"
+  filenames)
+
+  I am currently required to support applications in the Win95
+  environment as well as under Win3.x (both run locally and network
+  booted). I developed the setup described in this document to allow me
+  to do all this with just one PC.
+
+  Don't ask how a Unix person ended up in this position :-)
+
+
+  4. Requirements
+
+  If you are prepared to tinker with the source to lilo (lilo 1.7
+  or later, I belive), it is possible to do all this with ONE
+  hard disk. This works by changing the contents of the partition
+  table as the system boots; if you don't feel confident about trying
+  this, then don't!
+
+  Otherwise, you will need TWO hard disks. This is due to some
+  DOS/Windows limitations with respect to booting and allocation of
+  drive letters. Believe me, I tried to get it working with one.
+  (but I didn't want to mess with the lilo source)
+
+
+  5. What you will end up with
+
+  A word on device names. I have seen systems which use /dev/hdc for
+  the 3rd IDE disk (first IDE disk on secondary controller) and
+  /dev/hdd for the fourth. I've also seen systems which use /dev/hd1a
+  and /dev/hd1b (giving such partitions as /dev/hd1a3 etc). My system
+  uses this second naming style, but I have changed to names to
+  /dev/hdc and /dev/hdd to minimise confusion.
+
+  Here is a brief description of what I now have - watch those drive
+  letters because they change...
+
+  If you use a secondary IDE controller, you may need to create the
+  /dev entries yourself (/dev/hdcd* and /dev/hdd*) This might be the
+  case if you add a second hard drive to a machine with one IDE disk
+  and an IDE CDROM already installed; your second hard disk would be
+  /dev/hdc. I have tried this arrangement with no problems.
+
+  I have: /dev/hda  - first hard disk
+          /dev/hdb  - cd-rom drive
+          /dev/hdc  - second hard disk
+
+  Option 1:
+    On powering up the machine, I can allow the boot ROM on the
+    ethernet card to remote boot DOS. The "C" drive is the first DOS
+    partition on the FIRST IDE disk (in my case /dev/hda1). The "D"
+    drive is the first DOS partition on the SECOND IDE disk (in my
+    case /dev/hdc1), and the "E" drive is the second DOS partition on
+    the SECOND IDE disk (/dev/hdc2). The CD-ROM becomes F:
+
+  Option 2:
+    Allow lilo to boot the default system (Linux, naturally)
+
+  Option 3:
+    Interrupt lilo and ask for an option I call DOS. This boots DOS
+    from /dev/hda1, and, as with option 1, the "C" drive is /dev/hda1
+    the "D" drive is /dev/hdc1 and the "E" drive is /dev/hdc2. The
+    CD-ROM becomes F:
+
+  Option 4:
+    Interrupt lilo and ask for an option I call Win95. This boots
+    Win95 from the first DOS partition on the SECOND IDE drive (in
+    my case /dev/hdc1). Follow this carefully: the "C" drive is now
+    the first DOS partition on the SECOND IDE disk (/dev/hdc1),
+    the "D" drive is now the first DOS partition on the FIRST IDE
+    disk (/dev/hda1), and the "E" drive remains the second DOS
+    partition on the SECOND IDE disk (/dev/hdc2). The CD-ROM
+    becomes F:
+
+  Notice that the C drive changes depending how you boot. This means
+  that when you install Win95, you install it to C:\WINDOWS, and when
+  you install Win3.x, you install it to C:\WINDOWS but this isn't the
+  same place :-)
+
+  Also notice that the third DOS partition (which I use as a general
+  data drive) is E: whichever way you boot, and that the CD-ROM
+  stays constant too.
+
+
+  6. How to do it
+
+  First of all, install Linux;  it does not matter which drive you
+  install it on; but since you are using two drives it makes sense to
+  create a swap partition on each.
+
+  Create a primary DOS partition on the second disk. Unfortunately, the
+  DOS FDISK won't let you do this, so you must use the Linux fdisk to
+  create the partition, set the type (6 for DOS 16 BIT FAT > 32Mb), set
+  the partition as bootable, and CAREFULLY follow the advice on the man
+  page for fdisk. This describes how to persuade DOS to recognise a
+  partition created in this manner using the dd command to zero the
+  first 512 bytes of the partition. (Basically, you use
+  "dd if=/dev/zero of=/dev/XXXX bs=512 count=1" where XXXX is the
+  device but be VERY careful since this is a good way to trash a disk
+  - for example by putting /dev/hda instead of /dev/hda1!)
+
+  Creating the primary DOS partition on the first hard disk can be done
+  with the DOS FDISK. Any other required DOS partitions can similarly
+  be created.
+
+  Both of these primary partitions must be formatted as bootable DOS
+  partitions; use FORMAT C: /S and FORMAT D: /S having booted from a
+  floppy. In order to avoid confusion, give the partitions meaningful
+  volume labels!
+
+  Edit /etc/lilo.conf to give you the option of booting from either
+  of the two primary DOS partitions. I have appended an example
+  to the end of this document. Note the use of the "loader" line in
+  this example file.  Which you choose to install as Win95 and which
+  as DOS/Win3.x is up to you; I used the second hard disk for Win95
+  since network booting of the machine then gives the normal DOS
+  drive as "C". Also (and usefully), installing Win95 on the second
+  hard disk avoids having to boot linux from a recovery disk and
+  re-install lilo (why this should be is explained below). Remember
+  to run lilo to install the options.
+
+  If you are (sensibly) planning to install Win95 from CDROM, you
+  will need to include the relevant drivers on the Win95 partition
+  such that when you boot from it, the CDROM drive will be accessible.
+
+  Now boot, using lilo, from the drive you wish to use for DOS/Win3.x
+  and install the rest of DOS and Win3.x - the Windows installation
+  should go to the C:\WINDOWS directory as per default.
+
+  Once this is done, reboot the machine and, using lilo, boot from the
+  Win95 partition. Perform your Win95 installation. The installation
+  procedure may suggest D:\WINDOWS for installing Win95 because it
+  searches the machine for existing WINDOWS versions - DON'T accept
+  this - install Win95 to C:\WINDOWS.
+
+  Now for the neat part! Win95 is a rather arrogant system - when you
+  install it, it assumes that it is the only operating system on the
+  machine and proceeds to write its own MBR (Master Boot Record) to
+  the hard disk. This is why you generally need to re-install lilo.
+  If you have installed Win95 to the second hard disk, you have done
+  something which the Microsoft(tm) programmers didn't consider.
+  On one machine where I performed this operation, Win95 wrote its
+  replacement MBR to the MBR of the SECOND hard disk. On another, I
+  never found any evidence of it at all. The practical upshot of this
+  is that the MBR which matters, that of the first hard disk, is
+  not disturbed. Thus when you reboot the machine, you will be greeted
+  by the friendly and familiar LILO prompt.
+
+  Example Partition List:
+  /dev/hda1  *   DOS partition  (C: or D: depending upon boot)
+  /dev/hda2      Extended partition
+  /dev/hda5      /
+  /dev/hda6      swap
+  /dev/hda7      /home
+
+  /dev/hdc1  *   Win95 partition  (C: or D: depending upon boot)
+  /dev/hdc2      DOS partition    (E: always)
+  /dev/hdc3      swap
+
+  (Partitions with a * are set as bootable (or "active") by fdisk)
+
+  Example lilo.conf:
+  # /etc/lilo.conf
+  install = /boot/boot.b
+  compact
+  delay = 20    # optional, for systems that boot very quickly
+  #prompt               # use instead of delay to force response to boot prompt
+  #vga = normal # force sane state
+  #ramdisk = 0  # paranoia setting
+  #root = current       # use "current" root
+  boot = /dev/hda
+  image = /boot/vmlinuz
+    read-only
+    label = linux
+  other = /dev/hdc1
+    label = win95
+    loader= /boot/any_d.b
+  other = /dev/hda1
+    table = /dev/hda
+    label = dos
+  image = /boot/vmlinuz.old
+    label = linux.old
+    optional
+    read-only
+
+
+
+  7. Some Questions and Answers
+
+  Q: Does this scheme work for SCSI disks?
+  A: I have been told that this works, but have not been able to try it
+     for myself
+
+  Q: Does this scheme work if Linux is wholly on one disk, and DOS and 
+     Win 95 are partitions of the other?
+  A: No - the DOS and Win95 bits both have to be the primary "DOS"
+     partition of a disk. It is possible to get round this by
+     recompiling LILO
+
+  Q: I have downloaded a Win95 FAQ which speaks of the ability to boot
+     between DOS and Win95. If I install Win3.11 in a different directory
+     from "windows" it says I can run Win95 and Win3.11 in harmony. This
+     is one partition.
+  A: Yes, this can be done. It may cause problems however. Win95 does
+     some nasty things to the FAT drive and some operations you perform
+     under your old DOS and old windows (3.x) can easily destroy the
+     long-filename information. For example, defragmenting the drive using
+     a DOS/Win3.x utility will do this. You are also introducing
+     difficulties for yourself when things don't work; you have to worry
+     about the INI files under each system *and* the win95 registry.
+
+  Q: Does LBA matter?
+  A: Yes. Ugh!
+     BIOS's after approx 1994 support LBA to get around a limit somewhere
+     inside DOS which prevents DOS from being able to cope with cylinder
+     numbers > 1024. (This is covered in much greater detail in PC hardware
+     FAQs). LBA fiddles the disk geometry, multiplying the number of heads
+     by 2 or 4 (etc) in order to divide the aparent number of cylinders by
+     2 or 4 (etc) to a number < 1024. This works around this limit.
+     
+     Linux can handle cylinders > 1024 (provided that the partition from
+     which you boot is wholly below 1024 cylinders), so can handle large
+     (>504Mb) disks even on old machines (pre-1994 BIOS). It can also
+     handle large disks on BIOS's which do support LBA, whether or not
+     LBA is enabled.
+
+     It is vital that ALL the OS's view each disk as having the same
+     geometry - this is because the numbers in the partition table are
+     "perceived" cylinder numbers, not the actual ones. Therefore, changing
+     the BIOS setting to activate LBA will invalidate the existing contents
+     of a disk.
+
+     If your linux system does not "see" the "correct" geometry (that is,
+     the same that DOS "sees"), you will need to add a line to lilo.conf
+     append="hd=x,y,z"  where x,y,z represent the disk geometry (see the
+     relevant man pages).
+     
+  Q: My BIOS only holds information on two HDDs, not four. Does this
+     matter?
+  A: Maybe! Having 4 HDDs with old BIOS's under DOS required the use of 
+     driver software. Newer BIOS's hold information on 4 HDDs.
+
+     Linux can happily use 4 HDDs even with most of these older BIOS's,
+     but if you put a DOS partition on disk 3 you will only be able to
+     access it via linux.
+
+     This is relevant since many machines have an IDE drive, an IDE
+     CD-ROM and, if you want to implement this document, another IDE
+     drive too.
+
+
+
+     If you have found this document useful, please let me know.
+

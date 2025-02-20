@@ -1,0 +1,18 @@
+Begin3
+Title:          RPilot
+Version:        1.01
+Entered-date:   4JULY98
+Description:    RPilot is an interpreter for the PILOT programming
+                language.  It combines standard features with new
+                extensions, and includes several examples programs.
+                In addition, there is a brief into to PILOT in the
+                docs.  Includes source and Linux binary.
+Keywords:       pilot, interpreter
+Author:         auntfloyd@biosys.net (Rob Linwood)
+Maintained-by:  auntfloyd@biosys.net (Rob Linwood)
+Primary-site:   sunsite.unc.edu  /pub/Linux/devel/lang/misc
+                29k rpilot-1.0.tar.gz
+Alternate-site: http://auntfloyd.home.ml.org/
+Platforms:      Linux or any system with an ANSI C compiler.
+Copying-policy: GPL
+End

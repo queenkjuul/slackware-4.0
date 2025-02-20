@@ -1,0 +1,8 @@
+( cd usr/openwin/lib ; rm -rf libxview.so.3 )
+( cd usr/openwin/lib ; ln -sf libxview.so.3.2.2 libxview.so.3 )
+( cd usr/openwin/lib ; rm -rf libolgx.so.3 )
+( cd usr/openwin/lib ; ln -sf libolgx.so.3.2.2 libolgx.so.3 )
+( cd usr/openwin/lib ; rm -rf libolgx.so )
+( cd usr/openwin/lib ; ln -sf libolgx.so.3.2.2 libolgx.so )
+( cd usr/openwin/lib ; rm -rf libxview.so )
+( cd usr/openwin/lib ; ln -sf libxview.so.3.2.2 libxview.so )

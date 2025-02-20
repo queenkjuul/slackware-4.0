@@ -1,0 +1,385 @@
+LANGUAGE = "German", "Deutsch"
+
+"00_index.txt"
+"00_index.ger"
+
+"dirs.txt"
+"dirs.ger"
+
+"00global.txt"
+"00global.ger"
+
+"Press the ENTER key to return to File Index Menu.\n"
+"ZurÅck zum Datei-Index-MenÅ mit Taste ENTER.\n"
+
+"Press ENTER to continue, or ESC to abort...."
+"Fortfahren mit ENTER oder Abbrechen mit ESC..."
+
+"Press any key to return to file index..."
+"ZurÅck zum Datei-Index mit beliebiger Taste..."
+
+"Press any key to continue..."
+"Fortfahren mit beliebiger Taste..."
+
+"Please insert %s disc #%d.\n\n"
+"Bitte CD %s #%d einlegen.\n\n"
+
+"Please wait while files are being uncompressed...\n"
+"Bitte warten, Dateien werden dekomprimiert...\n"
+
+"Please run this program through File Manager in Windows.\n"
+"Bitte dieses Programm vom Dateimanager unter Windows ausfÅhren lassen.\n"
+
+"Loading config file...\n"
+"Konfigurations-Datei wird geladen...\n"
+
+"Locating %s....\n"
+"%s wird gesucht...\n"
+
+"Select Language...\n\n"
+"Sprache wÑhlen...\n\n"
+
+"Checking cursor position..."
+"Cursor-Position wird ÅberprÅft..."
+
+"File %s is a windows program.\n"
+"Datei %s ist ein Windows-Programm.\n"
+
+"Language is not changed.\n"
+"Sprache nicht geÑndert.\n"
+
+"Language changed.\n"
+"Sprache geÑndert.\n"
+
+"Copying file....\n"
+"Datei wird kopiert...\n"
+
+"Exiting program....."
+"Programm wird verlassen..."
+
+"choice: "
+"Auswahl: "
+
+"Abort..."
+"Abbruch..."
+
+"%s Bytes"
+"%s Bytes"
+
+"Directory"
+"Verzeichnis"
+
+"Filename"
+"Dateiname"
+
+"File Size"
+"Dateigrî·e"
+
+"Date"
+"Datum"
+
+"Description"
+"Beschreibung"
+
+"Percent: "
+"Prozent: "
+
+"Word #: "
+"Wort #: "
+
+"Line #: "
+"Zeile #: "
+
+"Source:"
+"Quelle:"
+
+"Destination:"
+"Ziel:"
+
+"Current Directory:"
+"Aktuelles Verzeichnis:"
+
+"Avail Diskspace"
+"Freie Plattenkap."
+
+"Processing... %d%"
+"Wird bearbeitet... %d%"
+
+"Jump to [P]ercent, [W]ord, [L]ine? "
+"Auf [P]rozent, [W]ort, [L]Zeile springen? "
+
+"Cursor at %d%%, %ld/%ld char, %ld/%ld word, %ld/%ld line"
+"Cursor auf %d%%, Zeichen %ld/%ld, Wort %ld/%ld, Zeile %ld/%ld"
+
+"Executable program."
+"AusfÅhrbares Programm."
+
+"Executable batch file."
+"AusfÅhrbare Stapeldatei."
+
+"Probable text file. (Doc?)"
+"Wahrsch. Textdatei. (Doc?)"
+
+"Probable documentation file."
+"Wahrsch. Dokumentationsdatei."
+
+"Description file."
+"Beschreibungsdatei."
+
+"You're about to delete the directory:\n"
+"Sie wollen folgendes Verzeichnis lîschen:\n"
+
+"All files and sub directories will be erased.\n"
+"Alle Dateien und Unterverzeichnisse werden gelîscht.\n"
+
+"Are you sure you want to do this (Y/N)? "
+"Sind Sie sich sicher, da· Sie das wollen (Y=Ja/N=Nein)? "
+
+"Removing dir %s\n"
+"Verzeichnis %s wird gelîscht.\n"
+
+"Removing file %s\n"
+"Datei %s wird gelîscht.\n"
+
+"Removing directory %s\\%s\n"
+"Verzeichnis %s\\%s wird gelîscht.\n"
+
+"Removing directory %s%s\n"
+"Verzeichnis %s%s wird gelîscht.\n"
+
+"Directory %s has been removed.\n"
+"Verzeichnis %s wurde gelîscht.\n"
+
+"Can't find file %s\n"
+"Datei %s nicht gefunden.\n"
+
+"Can't find %s disc #%d.\n"
+"CD %s #%d nicht gefunden.\n"
+
+"Can't create file %s.\n"
+"Datei %s kann nicht angelegt werden.\n"
+
+"Cannot chdir to the directory %s.\n"
+"Wechseln in das Verzeichnis %s nicht mîglich.\n"
+
+"Cannot create the directory %s.\n"
+"Verzeichnis %s kann nicht angelegt werden.\n"
+
+"Cannot execute program %s.\n"
+"Programm %s kann nicht ausgefÅhrt werden.\n"
+
+"Invalid pathname %s\n\n"
+"UngÅltiger Pfadname %s\n\n"
+
+"%s is not a valid pathname.\n"
+"%s ist kein gÅltiger Pfadname.\n"
+
+"'%c' is not a valid drive.\n"
+"'%c' ist kein gÅltiges Laufwerk.\n"
+
+"Drive %c: doesnt exist.\n"
+"Laufwerk %c: nicht vorhanden.\n"
+
+"View File:\n\n"
+"Datei anzeigen:\n\n"
+
+"File Index Menu:\n\n"
+"Datei-Index-MenÅ:\n\n"
+
+"Unzip: Destination Query"
+"Unzip: Ziel-Abfrage"
+
+"Unzip: Uncompressing File"
+"Unzip: Datei dekomprimieren."
+
+"Unzip Menu: Directory Browswer.\n\n"
+"Unzip-MenÅ: Verzeichnis-Browser.\n\n"
+
+"Unzip Menu: Directory name edit.\n\n"
+"Unzip-MenÅ: Verzeichnisnamen Ñndern.\n\n"
+
+"Copy: Destination Query"
+"Copy: Ziel-Abfrage"
+
+"Copy: Copying File"
+"Copy: Datei kopieren"
+
+"Copy Menu: Directory name edit.\n\n"
+"Copy-MenÅ: Verzeichnisnamen Ñndern.\n\n"
+
+"Contents of zipped file %s:\n"
+"Inhalt der ZIP-Datei %s:\n"
+
+"View, Version %3.2f\n"
+"View, Version %3.2f\n"
+
+"Up Arrow    - Prev line.\n"
+"Pfeil      - Vorh Zeile\n"
+
+"Down Arrow  - Next line.\n"
+"Pfeil      - NÑch Zeile\n"
+
+"PgUp        - Prev Page.\n"
+"Bild       - Vorh Seite\n"
+
+"PgDn        - Next Page.\n"
+"Bild       - NÑch Seite\n"
+
+"Home        - Jump to beginning of list.\n"
+"Pos1        - Zum Listenanfang springen.\n"
+
+"End         - Jump to end of list.\n"
+"Ende        - Zum Listenende springen.\n"
+
+"Home        - Jump to beginning of file.\n"
+"Pos1        - Zum Dateianfang springen.\n"
+
+"End         - Jump to end of file.\n"
+"Ende        - Zum Dateiende springen.\n"
+
+"Left Arrow  - Move cursor left one character.\n"
+"Pfeil <-    - Cursor ein Zeichen nach links.\n"
+
+"Right Arrow - Move cursor right one character.\n"
+"Pfeil ->    - Cursor ein Zeichen nach rechts.\n"
+
+"Up Arrow    - Suggest the last directory used for unzip.\n"
+"Pfeil      - Letztes fÅr unzip ben. Verzeichnis vorschlagen.\n"
+
+"Down Arrow  - Suggest other destination directories.\n"
+"Pfeil      - Andere Zielverzeichnisse vorschlagen.\n"
+
+"Home        - Jump to beginning of line.\n"
+"Pos1        - Zum Zeilenanfang springen.\n"
+
+"End         - Jump to end of line.\n"
+"Ende        - Zum Zeilenende springen.\n"
+
+"Up Arrow    - Prev file.\n"
+"Pfeil      - Vorh Datei\n"
+
+"Down Arrow  - Next file.\n"
+"Pfeil      - NÑch Datei\n"
+
+"PgUp        - Prev Page.\n"
+"Bild       - Vorh Seite\n"
+
+"PgDn        - Next Page.\n"
+"Bild       - NÑch Seite\n"
+
+"Home        - Jump to beginning of file list.\n"
+"Pos1        - Zum Dateilistenanfang springen.\n"
+
+"End         - Jump to end of file list.\n"
+"Ende        - Zum Dateilistenende springen.\n"
+
+"S, F10      - Search for a pattern.\n"
+"S, F10      - Nach Muster suchen.\n"
+
+"R, F9       - Reverse search for a pattern.\n"
+"R, F9       - Nach Muster rÅckwÑrts suchen.\n"
+
+"ESC         - Abort back to previous menu.\n"
+"ESC         - Abbruch, zurÅck zum vorh. MenÅ.\n"
+
+"ESC         - Abort back to the file index menu.\n"
+"ESC         - Abbruch, zurÅck zum Datei-Index-MenÅ.\n"
+
+"ESC         - Abort back to dir edit window.\n"
+"ESC         - Abbruch, zurÅck zum Verzeichnis-Bearbeitungs-Fenster.\n"
+
+"Alt-X       - Exit the view program.\n"
+"Alt-X       - Das Programm verlassen.\n"
+
+"Enter       - Begin copy the selected file.\n"
+"Enter       - Kopieren der ausgewÑhlten Datei starten.\n"
+
+"Enter       - Begin uncompress the selected file.\n"
+"Enter       - Dekomprimieren der ausgewÑhlten Datei starten.\n"
+
+"Enter       - Enter directory, or change drive.\n"
+"Enter       - Verzeichnis angeben, oder Laufwerk wechseln.\n"
+
+"Enter       - Select file, or enter directory.\n"
+"Enter       - Datei auswÑhlen, oder Verzeichnis angeben.\n"
+
+"Enter       - View a text file, or executes a program.\n"
+"Enter       - Textdatei anzeigen, oder Programm ausfÅhren.\n"
+
+"TAB         - Switch to directory browser window.\n"
+"TAB         - Zum Verzeichnis-Browser-Fenster wechseln.\n"
+
+"TAB         - Yank current directory to edit window.\n"
+"TAB         - Akt. Verzeichnis in das Bearbeitungs-Fenster holen.\n"
+
+"C           - Copy file.\n"
+"C           - Datei kopieren.\n"
+
+"V           - View file headers inside a zipped file.\n"
+"V           - Datei-Header einer ZIP-Datei anzeigen.\n"
+
+"F5          - Select a new language.\n"
+"F5          - Neue Sprache wÑhlen.\n"
+
+"F6          - Toggle between English and the selected language.\n"
+"F6          - Zw. Englisch und ausgew. Sprache wechseln.\n"
+
+"Alt-J       - Jump to another place in file.\n"
+"Alt-J       - An eine andere Stelle der Datei springen.\n"
+
+"Alt-P       - Show the cursorbar's position in file.\n"
+"Alt-P       - Position des Cursor-Zeichens in der Datei anzeigen.\n"
+
+"Alt-G       - Toggle between directory and global indexing methods.\n"
+"Alt-G       - Zw. Verzeichnis- und globaler Indizierung wechseln.\n"
+
+"Alt-R       - Remove the current directory.\n"
+"Alt-R       - Aktuelles Verzeichnis lîschen.\n"
+
+"***** Searching *****"
+"******* Suche *******"
+
+"********** Please Wait **********"
+"********** Bitte warten **********"
+
+"********** Pattern Not Found **********"
+"********** Muster nicht gefunden **********"
+
+"Search: "
+"Suche:  "
+
+"R Srch: "
+"Such.rw:"
+
+"<Esc>-Abort Search"
+"<Esc>-Suche abbrechen"
+
+"<S>-Srch  <R>-Rev Srch"
+"<S>-Suche <R>-Suche rw"
+
+" <S>-Srch  <R>-Rev Srch  <Esc>-Prev Mode  <Alt-X>-Exit  <?>-"
+" <S>-Suche <R>-Suche rw  <Esc>-Vorh Modus <Alt-X>-Ende <?>-"
+
+"Help"
+"Hilfe"
+
+" <7>/<8>-Bits Mask   <Alt-J>-Jump   <Alt-P>-Show Cursor Position"
+" <7>/<8>-Bit-Maske <Alt-J>-Springe <Alt-P>-Zeige Cursor-Position"
+
+" <Enter>-Select/Begin To Uncompress File     <TAB>-Switch Window"
+" <Enter>-WÑhle/Starte Datei-Dekomprimierung <TAB>-Wechs. Fenster"
+
+" <Enter>-Selec./Begin To Copy File           <TAB>-Switch Window"
+" <Enter>-WÑhle/Starte Datei kopieren        <TAB>-Wechs. Fenster"
+
+" <Enter>-Select <F5>/<F6>-Lang Selct <C>-Copy <Alt-G>-Swtch Indx"
+" <Enter>-WÑhle <F5>/<F6>-Sprache <C>-Kopie  <Alt-G>-Wechs. Index"
+
+" <Enter>-Select  <F7>-Word Lookup  <C>-Copy  <Alt-G>-Swtch Index";
+" <Enter>-WÑhle   <F7>-Wort Suche <C>-Kopie  <Alt-G>-Wechs. Index"
+
+" <Enter>-View File/Exec Program <Alt-R>-Remove Current Directory"
+" <Enter>-Dat. anz./Progr. ausf. <Alt-R>-Akt. Verzeichnis lîschen"
+
+" <F10>-Find Next Occur.    <F9>-Find Prev Occur.    <Esc>-Abort Search"
+" <F10>-NÑchsten suchen    <F9>-Vorherigen suchen     <Esc>-Suche abbr."

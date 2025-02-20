@@ -1,0 +1,4 @@
+( cd sbin ; rm -rf mdrun )
+( cd sbin ; ln -sf /sbin/mdadd mdrun )
+( cd sbin ; rm -rf mdstop )
+( cd sbin ; ln -sf /sbin/mdadd mdstop )

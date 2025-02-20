@@ -1,0 +1,45 @@
+Begin
+Title        =	ptolemy-0.5-Linux.diffs
+Version      =	2 May 1994 (version 0.5 patch level 3)
+Desc1        =  Ptolemy provides a highly flexible foundation for the
+Desc2        =  specification, simulation, and rapid prototyping of systems.
+Desc3        =  It is an object oriented framework within which diverse models
+Desc4        =  of computation can co-exist and interact.  For example, using
+Desc5        =  Ptolemy a data-flow system can be easily connected to a
+Desc6        =  hardware simulator which in turn may be connected to a
+Desc7        =  discrete-event system, etc.  Because of this, Ptolemy can be
+Desc8        =  used to model entire systems.
+Desc9        =  In addition, Ptolemy now has code generation capabilities.
+Desc10       =  From a flow graph description, Ptolemy can generate both C code
+Desc11       =  and DSP assembly code for rapid prototyping.
+Desc12       =  ===========================================================
+Desc13       =  This is my second version of the patches needed to compile
+Desc14       =  Ptolemy on Linux. These are patches *against the standard
+Desc15       =  Berkeley distribution*, NOT against my own one.
+Desc16       =  ===========================================================
+Author       =	team at EECS Berkeley
+AuthorEmail  =	mailing list: ptolemy-hackers@ohm.berkeley.edu
+Maintainer   =	EECS Berkeley
+Site1        =	sunsite.unc.edu
+Path1        =	pub/Linux/apps/ptolemy
+File1        =	pt05p3-linux.tgz
+FileSize1    =  304112
+Required1    =	gcc2.5.8, libc 4.5.21, libg++2.5.3, XFree86 2.0
+Required2    =	tcl7.3, tk3.6a, f2c, 120M hard disk space
+Required3    =  ===========================================================
+Required4    =	Ptolemy SOURCES from ftp at ptolemy.eecs.berkeley.edu (27M)
+Required5    =  ===========================================================
+CopyPolicy1  =	Copyright @1990-94 The Regents of the University of California
+Keywords     =	CASE, DSP
+Comment1     =	Instructions and diffs about installing and compiling
+Comment2     =	Ptolemy v0.5 on Linux.
+Comment3     =
+RelFiles1    =	At ftp site ptolemy.eecs.berkeley.edu:
+RelFiles2    =	 /pub/ptolemy/ptolemy0.5/pt-0.5.src.tar.Z
+RelFiles3    =	 /pub/ptolemy/ptolemy0.5/pt-0.5.doc.tar.Z
+RelFiles4    =	 /pub/ptolemy/ptolemy0.5/pt-0.5.other.src.tar.Z
+Entered      =	2 May 1994
+EnteredBy    =  Alberto Vignani
+CheckedEmail =	alberto.vignani@pmn.it / alberto.vignani@crf.it
+End
+

@@ -1,0 +1,22 @@
+Begin2 
+Title        = binkley-FEddi patch
+Version      = 1.0
+Desc1        = Patches binkley 3.02pl10 to work with the FEddi nodelist.
+Desc2        = It also fixes a bug in the .FLO routines.
+Author       = Oliver Graf (2:2454/130.69)
+AuthorEmail  = linux@infko.uni-koblenz.de
+Maintainer   = Oliver Graf (2:2454/130.69)
+MaintEmail   = linux@infko.uni-koblenz.de
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/apps/comm
+File1        = btfpatch.tgz
+FileSize1    = 5k
+Required1    = binkley version 3.02pl10
+CopyPolicy1  = Gnu GPL Version 2
+Keywords     = communications,feddi,mailer
+Comment1     = read the readme
+RelFiles1    = feddi08.tgz
+Entered      = 04OCT94
+EnteredBy    = Oliver Graf (2:2454/130.69)
+CheckedEmail = linux@infko.uni-koblenz.de
+End

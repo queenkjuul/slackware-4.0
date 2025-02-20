@@ -1,0 +1,19 @@
+Begin3
+Title: 		xmem
+Version: 	1.02
+Entered-date: 	10AUG1997
+Description: 	xmem  xmem is a tool designed to make monitoring your memory 
+		usage easy by displaying a simple bar graph for both 
+		real and virtual memory. It updates the memory statistics at 
+		regular, user definable intervals. Supports Linux 1.0 and 2.0
+		kernels.
+Keywords: 	xmem, memory, monitor, status, admin
+Author: 	Robert_Gasch@peoplesoft.com (Robert Gasch)
+Maintained-by: 	Robert_Gasch@peoplesoft.com (Robert Gasch)
+Primary-site:	sunsite.unc.edu /pub/Linux/X11/xutils/status
+		26 KB xmem-1.02.tgz
+Alternate-site:	
+Original-site:	
+Platforms:	Linux
+Copying-policy:	GPL
+End

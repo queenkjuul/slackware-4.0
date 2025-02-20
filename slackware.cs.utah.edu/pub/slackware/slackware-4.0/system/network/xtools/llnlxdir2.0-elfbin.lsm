@@ -1,0 +1,13 @@
+Title:          llnlxdir2.0-elfbin
+Version:	4.0
+Entered-date:   10/26/95
+Description:    xdir file-manager/ftp utility for x windows.
+		ELF binary with motif libXm statically linked.
+Keywords:       X ftp file manager
+Author:         Neale Smith (smith59@llnl.gov)
+Maintained-by:  markcrim@umich.edu (Mark Crimmins)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xapps/networked
+Alternate-site: 
+Platform:       
+Copying-policy: 
+End

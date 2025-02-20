@@ -1,0 +1,16 @@
+Begin3
+Title:          ledstatus          
+Version:        0.1
+Entered-date:   03 April 98
+Description:    LED processor meter, based on meter-0.2
+	        but with more real-time output, and much less CPU 
+		usage.
+Keywords:       LED, display, monitor, status
+Author:         jer@xmission.com (Jeremy Garff)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, /proc filesystem
+Copying-policy: GPL
+End

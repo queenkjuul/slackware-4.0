@@ -1,0 +1,14 @@
+Begin3
+Title:          sendmail
+Version:        8.8.5
+Entered-date:   03FEB97
+Description:    Mail delivery program with NIS support...
+                Compiled elf no source...
+Keywords:       README.LINUX
+Author:         
+Primary-site:   ftp.cs.berkeley.edu /ucb/src/sendmail   <-Source.)
+Alternate-site: ftp.sunsite.unc.edu /pub/Linux/system/Mail/delivery
+Platforms:      Linux elf system...
+Copying-policy: 
+End
+

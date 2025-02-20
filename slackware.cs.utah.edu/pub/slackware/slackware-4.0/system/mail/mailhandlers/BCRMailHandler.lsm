@@ -1,0 +1,27 @@
+Begin2
+Title        = BCR Mail Handler
+Version      = 3.1 patch 4
+Desc1        = This is a set of programs for automatically replying to file
+Desc2        = requests via e-mail.  Also features "term" forwarding of
+Desc3        = private e-mail.
+Author       = Bill C. Riemers
+AuthorEmail  = bcr@physics.purdue.edu
+Site1        = bohr.physics.purdue.edu
+Path1        = /pub/bcr/BCRMailHandler
+File1        = BCRMailHandler314.tar.gz
+FileSize1    = 43741
+Site2        = sunsite.unc.edu
+Path2        = /pub/Linux/system/Mail/mailhandlers
+File2        = BCRMailHandler314.tar.gz
+FileSize2    = 43741
+Required1    = A C compiler, and an internet e-mail address.
+CopyPolicy1  = GNU Copy Left (w. minor additions): See notice in the file. 
+Keywords     = mail file request term forward
+Comment1     = This program is currently in use on a Titan and a HP.  I've
+Comment2     = only used it for forwarding under Linux.  If you are using
+Comment3     = this program let me know.
+RelFiles1    = 310, 311 (beta), 312 (beta), 313 (beta), 314 (beta)
+Entered      = 11MAY94
+EnteredBy    = Bill C. Riemers
+End
+

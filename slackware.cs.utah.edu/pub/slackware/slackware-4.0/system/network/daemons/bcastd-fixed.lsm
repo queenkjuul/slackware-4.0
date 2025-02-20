@@ -1,0 +1,24 @@
+Begin2
+Title        = bcastd
+Version      = 1.0b
+Desc1        = Allows networked Linux systems to generate customised, specific
+Desc2        = RIP packets to a gateway for broadcasting onwards.  Useful for
+Desc3        = systems on "terminal" networks who do not need to be able to
+Desc4        = handle incoming packets.  Also useful for SLIP/PPP operators
+Desc5        = who are given IP numbers in the same subnet as their feed.
+Desc6        = NOTE: This minor revision fixes a compilation error and 
+Desc7        = corrects the loop logic. Based on a suggestion from Al Longyear
+Author       = Ben Elliston
+AuthorEmail  = ben@cooper.compsol.fidonet.org
+Maintainer   = Ben Elliston
+MaintEmail   = ben@cooper.compsol.fidonet.org
+Site1        = sunsite.unc.edu
+File1        = bcastd-fixed.tar.gz
+FileSize1    = 3Kb
+Required1    = A Linux system with operational network code and an IP connection.
+CopyPolicy1  = Freely distributable, free to modify.
+Keywords     = rip, routed
+Entered      = 18 MAR 96
+EnteredBy    = Paul Matthews
+CheckedEmail = ben@cooper.compsol.fidonet.org
+End

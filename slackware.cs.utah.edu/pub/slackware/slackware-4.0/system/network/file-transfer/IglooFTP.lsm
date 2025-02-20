@@ -1,0 +1,27 @@
+Begin3
+Title:		IglooFTP
+Version:	0.6.1
+Entered-date:	16APR99
+Description:	IglooFTP is a graphical and user friendly FTP client.
+		Its main goals are to be easy to use and intuitive when used 
+		by novice,  but powerful and fully configurable in the hand 
+		of experienced users. It includes all the feature you may
+		expect as : intuitive user friendly interface, 
+		DRAG & DROP facilities, graphical configurability, 
+		fast-connect bar,  graphical directories browser, 
+		tree hierarchical site manager, user profile management,
+		local and remote prompt command,  advanced FTP 
+		operations,  Firewall support, file transfert resume, 
+		Queue transferts,  remote directories caching, 
+		remote file editing, support of passive and non-passive data
+		connection, anti-idle tool, own text editor, own Netscape 
+		mini-toolbar, and a great appearance.
+Keywords:	FTP, client, GTK, network, internet.
+Author:		jm@littleigloo.org (Jean-Marc JACQUET)
+Maintained-by:	jm@littleigloo.org (Jean-Marc JACQUET)
+Primary-site:	http://www.littleigloo.org		
+Alternate-site:	http://www.littleigloo.org
+Original-site:	http://www.littleigloo.org
+Platforms:		Linux, GTK+ lib for the sources dist. 
+Copying-policy:	OpenSource
+End

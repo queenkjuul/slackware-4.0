@@ -1,0 +1,23 @@
+Dear Sirs;
+
+I have uploaded the following files to sunsite in incoming/Linux:
+
+pcc-1.3.lsm
+pcc-1.3.tar.gz
+
+This is a front end to David Gilespie's p2c translator that functions in a
+fashion similar to the f77 front end to f2c; it turns p2c and gcc into a
+Pascal 'compiler'. It also includes a shell script to create an integrated
+development system something like Turbo Pascal. 
+
+I suggest that the files be moved to the devel/lang/pascal/ directory.
+
+The tar file includes c source code, a makefile, instructions, man pages,
+the 'p' shell script, and sample pascal files that show how to use the front
+end. The code is GPL and was written under Linux. This is a bug fix and
+upgrade to pcc.tar.gz already in this directory.
+
+Thank you,
+Robert E. Canup II
+73513.216@compuserve.com
+ 

@@ -1,0 +1,23 @@
+Begin3
+Title:          QTime Collection
+Version:        1.6 (29.I.1999)
+Entered-date:   29JAN1999
+Description:    QTime -- display time as English sentence.
+		This package contains a collection of QTime written in
+		AWK, C, ICI, Icon, JavaScript, Lite/mSQL, PHP3, Pike, Python,
+		REBOL, Rexx, Ruby, SLang, Spanner.
+Keywords:       awk, c, ici, icon, javascript, lite/msql, php3, pike, python,
+		rebol, rexx, ruby, slang, spanner
+Author:         Klaus Alexander Seistrup <kseis@magnetic-ink.dk>
+Maintained-by:  kseis@magnetic-ink.dk (Klaus Alexander Seistrup)
+WWW-site:       Magnetic Ink <URL:http://www.magnetic-ink.dk/download/>
+Primary-site:   metalab.unc.edu:/pub/Linux/devel/lang/misc/
+Original-site:  metalab.unc.edu:/pub/Linux/devel/lang/misc/
+Alternate-site:	
+Platforms:      Any with AWK/GAWK, C, ICI, Icon, JavaScript, Lite/mSQL, PHP3,
+		Pike, Python, Rebol, Rexx/ARexx, Ruby, S-Lang or Spanner, I
+		suppose. :-)  Only tested under Linux (all) and AmigaOS (C and
+		Rexx versions), though.
+Checked-date:	
+Copying-policy: GNU GPL
+End

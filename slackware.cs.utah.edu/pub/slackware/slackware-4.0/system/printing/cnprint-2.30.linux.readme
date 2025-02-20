@@ -1,0 +1,597 @@
+***********************************************
+* CNPRINT.HELP For CNPRINT Versions 2.30/2.31 *
+***********************************************
+ Copyright YIDAO CAI (~{2LR@5@~}), 1992, 1993  
+ All Rights Reserved.
+ Free for non-commercial and personal use only.
+
+Disclaimer: Posting CNPRINT on any FTP site does not imply the author's
+	endorsement of the beliefs of the organization who owns the FTP site.
+
+Last Revised on October 22, 1993
+-----------------------------------------------------------------------------
+PLEASE read parts 0 (What's New), II (what do you need), IV (First thing to 
+	do) and VI (Font) before compile, EVEN if you have used CNPRINT before.
+   ***  Cut off Appendix C and save it before print this document.
+   ***	Test with a small file the first time, or view the PS file on screen 
+	first, if possible. 
+   ***	If you encounter problem using CNPRINT, read part VII (known problems)  
+   ***  If you forgot the usage, type "cnprint" for quick on-line help.
+   ***  Users of CNPRINT V2.20/V2.21 do not need to get the HBF files and 
+	bitmap font files again, but need to update "cnprint.cmd".
+-----------------------------------------------------------------------------
+
+CONTENT
+-----------------------------------------
+0.    What Is CNPRINT and What's New
+I.    Functions and Features
+II.   What Do You Need to Use CNPRINT
+III.  Where to Get CNPRINT
+IV.   First Thing to Do
+V.    Usage
+VI.   Font Files
+VII.  Known Problems
+VIII. Author 
+IX.   Acknowledgements
+Appendix A, B, C
+-----------------------------------------
+
+0. What Is CNPRINT and What's New
+
+CNPRINT, a utility to print Chinese text (or convert to PostScript) under 
+	DOS, VMS and UNIX systems.  It works just as a print command on 
+	your system.  Currently GB, Hz and BIG-5 formats are supported. 
+
+These versions are updated from V2.20/V2.21.  New/improved features are 
+indicated by *.  Thanks to users for your valuable support and suggestions.
+
+Main changes:
+1. customized default settings in "cnprint.cmd", such as char size, margins,
+   character and line spaces, etc.
+2. specify the space between columns.
+3. created 4 modes for landscape printing l1, l2, l3 and l4, good for printing
+   HXWZ, save paper.  See V.(5) for details.
+4. auto-detection of Big-5 file.
+5. page-select options, possible to print only selected pages.
+6. specify the PS print command on command line (Note: all "PS print command"
+   in this document refers to "PS print device port" if your system is DOS).
+7. HBF environmental variable is changed to HBFPATH (this will also be used
+   by other softwares).
+8. fixed some bugs.
+
+Version 2.30 is for UNIX and VMS, Version 2.31 is for DOS.
+
+I. Functions and Features
+
+	1. Print GB/Hz/BIG-5 format Chinese text (or pure English text) 
+	   or convert them to PostScript. (a, b)
+    *	2. Hz to GB or GB to Hz conversions. (c).
+	3. Small disk space requirement; PS file < 400K per issue of HXWZ.  
+	4. Support HBF, work with almost all bitmap font files with any
+	   sizes.
+	5. Change font (character size) for a whole document, set font 
+	   (character size) for a group of characters.
+	6. Multicolumn for a page or part of a page.
+	7. "Intelligent" treatment of punctuation marks.
+	8. Set gray level for a whole document or a group of characters.
+	9. Page numbering, change of margins.
+       10. Set paper orientation: Portrait or Landscape.
+       11. Vertical printing mode.
+       12. Change line space and character space and width of English chars.
+       13. Change English font.
+       14. Multiple copies of print-out.
+    *  15. User defined default values for margins, character size, etc.
+    *  16. Start a new page at any point (@[P#]).
+       17. Friendly designed so that even if you make a mistake the program 
+	   would take care for you in most cases.
+
+(a). SPEED of printing depends on printer and the number of characters in 
+a page (from 3-4 pages per minute to 1.5 minutes per page).  The fastest 
+reported so far is 135 seconds for one issue of HXWZ.  
+
+(b). If one page, the PS file conforms to the Encapsulated PostScript file 
+format EPSF 3.0 and can be included in other documents (such as a Microsoft 
+Word document).  See part V for details.
+
+(c). Simple Hz<->GB conversion for standard Hz/GB file.  For files that might
+contain bugs, F. F. Lee's hz2gb is suggested. 
+
+II. What Do You Need to Use CNPRINT
+	A machine runing UNIX or VMS (V2.30), or an (IBM compatible) PC 
+	    running DOS (V2.31)
+	A PostScript printer (CAUTION: NOT ordinary laser printer)
+	CNPRINT V?.??
+	One or more Chinese (HBF) font file(s) (see part VI)
+
+III. Where to Get CNPRINT
+	site: ifcss.org
+	directory: /software/unix/print (cnprint230.c, cnprint230.readme)
+		   /software/vms/print (cnprint230.exe, VMS only)
+		   /software/dos/print (cnprint.doc, cnprint.exe, DOS only)
+		   /software/fonts  (fonts)
+		   /software/fonts/HBF  (HBF files)
+Note: 1. The /pub/software directory at cnd.org is a mirror of the /software
+	directory at ifcss.org.  You may also get the above files at cnd.org.
+      2. (UNIX only) There is a man file at /software/unix/man (compiled by 
+	Nelson Chin, butta1@cs.bu.EDU).
+      3. Get the following files according to your system (read part VI before
+	you get any font or HBF file).
+	VMS:	cnprint230.readme, cnprint230.exe, fonts, HBF files
+	UNIX:	cnprint230.readme, cnprint230.c, fonts, HBF files
+	DOS:	cnprint.doc, cnprint.exe, fonts, HBF files
+
+IV. First Thing to Do
+
+     1. There is a data file enclosed as Appendix C.  Please cut and save it 
+	as "cnprint.cmd" in the same directory where the fonts are kept (Note
+	CNPRINT can work without "cnprint.cmd", but some functions are lost).
+	In "cnprint.cmd", you need to 
+
+	a. Specify the PS print command (device port) on your system. 
+	(DOS only:  the device port for printing PostScript files is most 
+	likely to be one of LPT1, LPT2, COM2, COM1.  Put "LPT2:" if it is 
+	LPT2.  Ask a local expert for help)
+
+	WARNING: The print command (port) MUST be the command for printing
+		PostScript documents.  If you are NOT sure, please DO ask your
+		system manager, otherwise it could cause BIG problems. 
+
+	If you do not specify the print command (port), CNPRINT would still 
+	generate PostScript file(s) but would not print it, you can then print
+	it by sending it to a PS printer. 		
+
+	b. Specify the default Big-5 font (HBF) file name in "cnprint.cmd" 
+	if you are going to print Big-5 documents. 
+
+	c. If you are a user outside US, you may need to change the paper
+	size in "cnprint.cmd".  The default is A (8.5x11 inch).  For example,
+	if you use A4, you should change them to 8.27 and 11.69 respectively
+	(see Appendix A for paper sizes). 
+
+     2. Specify the full path (directory) for the font files (NOT required,
+	but highly recommended).  If you do not specify the full path, you 
+	need to run CNPRINT under the directory you store the bitmap font 
+	file, HBF files and cnprint.cmd (they are assumed to be in the same 
+	directory).
+
+	DOS: add a line in the "autoexec.bat" file: 
+
+	        HBFPATH=C:\FONT\  (if fonts is kept under dircetory C:\FONT)
+
+	UNIX: use either a) or b) below (if you used both, b) has priority):
+
+	    a). set an environment variable HBFPATH (put it in your .cshrc file)
+
+		setenv HBFPATH "~/your_subdir_for_fonts/"
+
+	    b). change line 28 of the source file and put your path there 
+
+		#define CNLIB "<path>cnj24.hbf"
+ 
+	VMS: You are recommended to follow steps in 4, although method b)
+	    for UNIX also works.
+
+	(NOTE: Other softwares may allow HBFPATH points to several paths, but
+	    currently CNPRINT only uses the first one)
+
+     3. (UNIX and VMS only) Compile the source program (there is no need to 
+	re-compile after making changes in "cnprint.cmd").  
+
+	UNIX:	cc cnprint.c -o cnprint
+
+	    if this did not work, ask a local expert or your system manager.
+
+	VMS: get "cnprint230.exe" directly.  If that did not work, you can
+	    get cnprint.c and compile:
+
+		cc cnprint
+		link cnprint
+		del cnprint.obj;*
+
+	If this did not work, ask your system manager for help on how to
+	compile a C program.  CNPRINT may not work on old versions of VMS.
+	If you are using old versions of VMS, ask your system manager to 
+	update it.
+
+     4.	(VMS only) You need to create a login file under your main directory
+	(or modify it if already exists).  The file name is "login.com" and
+	put two lines similar to the following in it:
+
+	$cnprint :=="$mvsd:[cai.gb]cnprint.exe"
+	$HBFPATH :=="mvsd:[cai.gb.font]"
+
+	here "mvsd" is my disk name; "[cai.gb]" and "[cai.gb.font]" are my
+	directories containing "cnprint.exe" and fonts respectively.  You 
+	should change them accordingly.  If this did not work, ask your
+	system manager for help on how to setup these things.
+
+V. USAGE  
+
+	For normal usage:	cnprint filename 
+	For help: 		cnprint 
+        For extended usage:
+		cnprint [-h] [-z]  ... [-l] [-f font] filename [PS(GB)name]
+
+	-h:	Help message
+     *	-5(-55): Input is Big-5 file (12)
+     *	-z(-zz)(-zzz): Hz to GB conversion only (4)
+	-w:	Convert GB/Hz to PS without printing (4)
+	-u:	Keep PS file after printing (4)
+	-x2:	Set character width/height 1.2  (2)
+	-y3:	Set character height/width 1.3  (2)
+	-p4:	Print/convert 4 pages at a time (8)
+     *	-c3(-c320): Divide one page into 3 columns (-c320, optionally specify 
+		the space between columns as 20 points, 1 point = 1/72 inch) 
+	-f font: Select font (2)
+     *	-l(-l3): Set paper orientation Landscape (5)
+     *	-j:	At the end of document, the printout does NOT go to the bottom
+		of a page if multicolumn
+	-v(-vv): Vertical printing (13)
+	-s:	Suppress the effects of the functional sequences @[**] (6) 
+	-t:	Do not print time and CNPRINT logo on the lower-left corner
+	-m3(-m): Print 3 copies of the document (do NOT display menu if -m)
+		(-m3m or -mm3 for both)
+     *	-hz:	Input is a Hz file, CNPRINT would not ask for conformation (7)
+     *	-a:	Print all CH alphabets and numbers as English ones (7)
+		(Note the definition of -a is changed)
+	-e56(-e): Set the width of English char 0.56 of that of Chinese char 
+		(Output is an EPS file if -e) (-e56e or -ee56 for both) (10)
+     *	-d:	Do -e5 and suppress the special treatment of punctuation 
+		marks (11)
+     *	-b3(e21): begin printing at page 3, and (optional) end printing at 
+		page 21 (14)
+     *	-o(-oo): print only odd-numbered or (-oo) even-numbered pages (14)
+     *	-q=laserps (DOS, -q=lpt2:): specify the PS print command as "laserps",
+		or in DOS, specify the PS print port name as "lpt2:" (15)
+
+Note:   a. Most of the options can be combined.
+	b. The order is not important except "filename" must appear before
+	   "PS(GB)name" (but need not appear consecutively)
+e.g.
+	cnprint -w -x2be10 filename 
+	cnprint -w -x2be10 filename PSname
+	cnprint -x2be10 filename -w PSname
+	cnprint -x2be10 filename -c2 PSname -q=laserps -o
+
+1. To set margins, line space, character space and character size for   
+	the WHOLE document, run CNPRINT and follow the menu instructions.
+	You can also set your preferred values in cnprint.cmd.
+
+2. To select font and character width-height ratio for the WHOLE document,
+	use -f, -x -y options above.  The use of -f option is 
+	
+	-f k24	or -f cnk24.hbf for 24x24 Kaishu font
+	-f f16	or -f cnf16.hbf for 16x16 Fanti font 
+	(see Part VI for meaning of k24, f16, etc)
+
+***Important*** It is recommended to set the font, line space, char space and 
+	char width/height used for the WHOLE document or majority of the 
+	document by -f, -x, -y or menu.  This would make the program much
+	more efficient.  
+
+3. To select font, character size, width-height ratio, line space, character 
+	space and width of English character for part of the document
+	(or a group of characters, even one character), or divide a page/part
+	of a page into several columns, insert the sequence @[**] in the text.
+	The meaning of **:
+	
+	@[f*] or @[F*]   select Chinese font, 16, 24, 48.  * is the font style 
+			code, see d).
+	@[v*] or @[V*]   select Chinese font, 40, 56, 64  (d)
+	@[h1] or @[H2]   select English font, normal (upright)
+	@[q3] or @[Q4]   select English font, italic/oblique (Xieti)
+                         capital H/Q: Bold; number 0-9 for different font, 
+			 see menu at run time.
+
+	@[18]	Integer number for character size in points.  1 point=0.355mm
+	@[X2]	Set character width/height 1.2
+	@[Y3]	Set character height/width 1.3
+	@[G2]	Set gray level 0.2, 0=black; 1=white
+	@[C2]	Select columns, i.e. divide the text into two columns
+
+	@[E7]	Set width of English character 0.7 of that of Chinese char
+	@[Ix]   Set line space, x must be 0-9, a-f.  1-9 set the line space 
+		0.1-0.9 of the standard value and a-f set it 1-6 times of 
+		the standard value (standard value = 50% of char size) 
+	@[Ax]	Set character space, x must be 0-9, a-f.  1-f set the char
+		space 1-15 times of the standard value (standard value = 8% of 
+		char size)
+
+    *	@[MVxxxyyy] Move current point to (xxx, yyy), allow you put text
+		anywhere on the page.  xxx, yyy are in points (1inch = 72pts)
+		and are relative to the upper-left corner of the text.  If 
+		(3, 25), put @[MV003025] instead of @[MV325] or @[MV 3 25].  
+		If xxx (or yyy) equals 001, then do NOT change x (y) position.
+		This is not designed to work with multicolumn at this stage 
+		so it may affect the column formatting.
+    *   @[P2]   If the current position is within 2 lines of the end of page,
+		start a new page.  If @[P0], start a new page immediately.
+		If used with multicolumn option, this command may produce 
+		effects some people don't like (while others may like).
+
+     a. All the above letters, except fvhq, must be in upper case; 0 or 00 would
+	select the default value except in @[f*] or @[F*]. 
+
+     b. Each of the above sequence would takes effect immediately and stop
+	only after the same nature of selection is choosed again.  For example,
+	if you select a character size 12 by @[12], it would remain 12 points
+	until you select another size, say 15 by @[15].  
+
+     c. Column marker must begin at the beginning of a paragraph and must end 
+	at the end of a paragraph right after the hard return (i.e. the
+	beginning of next line, even if it is a blank line).
+
+     d. To select font, you must specify font style by j, f, n, k, h, ...
+	or J, F, N, K, H, ... in the place of * in f* or F*.  The meaning of 
+	j, f... is j/J for Jianti, f/F for Fanti, etc (this is actually set 
+	by yourself, see the FONT part).  The font size are small (16x16), 
+	middle (24x24) and large (48x48).  To specify small size font, both
+	f* must be in lower case; to specify middle size font, one and only
+	one of f* or F* should be in lower case, the other in upper case.  
+	For example, @[fH] or @[Fh] both select 24x24 Heiti font, and @[ff] 
+	select 16x16 Fanti font.  Similar rules apply to 40x40, 56x56 and 
+	64x64 fonts (use v*, V* to select).
+
+    ***	The metric information about English font is obtained from HP printers
+	and may NOT apply to other printers.  Besides, only printable 
+	characters are included.
+
+     e. The program will use whatever character size, width/height ratio
+	right before the column maker @[C#] setting the parameters for the 
+	columns, so it is best to select the character size and width/height
+	ratio for most of the multicolumn portion right before the column
+	marker @[C#].
+ 
+4. If -w is selected, CNPRINT would generate a PS file but would not send
+	it to the printer.  -u would preserve the PS file after printing.  If
+	a PS file name is given, the PS file would be kept even if -u is not
+	selected.  The optional PS/GB name is taken as PS file name unless 
+	-z(z)(z) is selected.  (The next release will not support -u)
+    -zz:  GB -> Hz only; 
+    -zzz: GB/Big-5 -> GB/Big-5, filter out the functional sequences @[**].
+
+5. If you use -l to change paper orientation to Landscape, the default
+	character size is 12.2 pts (if width/height=1), and the page will be 
+	divided into 2 columns (to make it one column, use -lc1; -c1l would 
+	not work).
+   -l1, -l2, -l3, -l4:  select one of the sepecial landscape modes, the 
+	settings in "cnprint.cmd" will be suppressed.  These modes are 
+	designed for printing HXWZ (l1, l2) or LYTX (l3, l4).
+	
+6. Option -s would suppress the effect of the functional sequence @[**] and
+	would not print it.  But if you want it printed, use -s# (# is any
+	single digit number and # > 2). 
+
+7. If you use -hz to tell CNPRINT that the input is a Hz file, CNPRINT would 
+	not ask for conformation.  But this is only optioanl for Hz file.
+     Notice that in previous versions this is done with -a.  Now -a has
+	new definitions, i.e. to change CH alphebits and numbers to English
+	ones.  This function was default in previous versions.  The reason
+	to make it optional is to keep the original style of text.
+     -aa: Input is a pure English text (some settings to make it look nice).
+
+8. If you do not have enough disk space (this is less likely to happen because
+	the PS file generated by CNPRINT is quite small), try -p# option.
+
+9. You MAY not need to wait until the print job finishes to press RETURN.  In
+	most machines, you can hit return after the print job is STARTed (not
+	just put on the queue). You can test this with a small file. 
+
+10. Default is -e5, i.e., the width of English char half of that of a Chinese
+	char.  But since CNPRINT still adjust the puctuations in this case, 
+	the print out may not be the same as you expected.  Try -d (see 11) 
+	if you need the text to line up.
+    If -e, the PS file conforms to EPSF-3.0 standard and can be included in 
+	other document such as Microsoft Word on PC (which I tested, may not 
+	work on others).  You can NOT display/preview it properly, but the 
+	final print-out is OK.  Use -we option to generate the PS file and 
+	name the PS file as *.eps.  Be sure to transfer the PS file as a TEXT
+	file but open it as an "eps" file.  You may want to adjust the 
+	BoundingBox: llx lly urx ury at line 4 in the PS file.  llx and lly 
+	are the x and y coordinates of the lower left corner, urx and ury are
+	the x and y coordinates of the upper right corner (relative to lower-
+	left corner of the paper).  The unit is points (1 inch = 72 points) 
+	and the numbers must be integer.
+    -e can also used to specify the page number to end printing, see (14).
+
+11. In this case, the output would be the SAME as what you see on the screen
+	when you edit the text IF you adjusted the number of characters in 
+	a line properly.  Also, you should select Courier (the default) for 
+	English font if you want the text to line up.  CNPRINT would not 
+	adjust the punctuation marks in this case.  For example, a comma (,)
+	may appear on the left end of a line.
+    Note, some popular Chinese editors treat TABs differently, but I believe 
+	the way CNPRINT does is the correct way.
+
+12. For Big-5 documents, adjustment of puctunation marks is disabled.  If you 
+	did not specify the default big-5 HBF file in "cnprint.cmd", you need
+	to specify font with -f option.  If -5 is selected twice (by -55 or 
+	-5 -5), some horizontal punctuations would be printed as their 
+	vertical counterparts in vertical mode and vice versa.  Although 
+	CNPRINT can detect Big-5 files automatically, it may fail in some 
+	extreme cases, so it is best to supply -5.
+    Note -e5 (-e55) is NOT interpreted as -e and -5 (-55), use -5e (-55e)
+	in this case.
+    
+13. In vertical mode, adjustment of puctunation mark is disabled.  If document
+	is GB/Hz, selected symbol characters are rotated to make them appear 
+	better, and (if -v is selected twice by -vv or -v -v) some ASCII 
+	punctuations would be printed as their Chinese counterparts.  In both
+	GB and Big-5, if -v is selected twice, some punctuations are replaced
+	with better looking ones.
+    
+14. These page numbers are the actual numbers that appear on the print-out, 
+	please make sure they do not conflict with the starting page number.
+		-b3e or -b3:	page 3 to end
+		-b3e8:  	page 3 to page 8
+		-be21:  	beginning to page 21
+		-b3e20o:  	odd-numbered pages between 3 to 20
+    Note any -e option immeadiately following the -b option is considered to 
+	specify end-printing page number.  If the -e option is before the -b 
+	option or there are other options after -b but before -e, the -e
+	option is considered to be those defined in (10) above.	 
+
+15. This would disable the PS print command (DOS: port name) in "cnprint.cmd".
+	Another way to enter the PS print command (port name) is to select -w
+	option on command line, then select P and answer YES in the menu.
+
+16. Default Setting
+	Input:		GB or Hz
+	Font:		Jianti 24x24 (cnj24.hbf)
+	Character Size:	14.5 pts (if width/height=1)  
+	Character Width/Height:	1.0
+	Paper Orientation: Portrait
+	Line Orientation:  Horizontal
+ 
+VI. FONT FILES
+
+	Please finish reading this part before using CNPRINT.  Skip it only 
+if you have used CNPRINT V2.20/V2.21 before.
+
+	You need at least ONE font to run CNPRINT, and CNPRINT can use almost
+any HBF font.  If you do not have enough space, I suggest you get only one of 
+the following fonts.  The font-list below is only for the convenience of new 
+users.  For full list please see the README file under /software/fonts/HBF 
+directory.  All HBF files for bitmap font files with different style and size
+(both GB and Big-5) are stored in that directory.  Please read the README file
+under that directory before you get any bitmap font file or HBF file, and make
+sure the HBF file and the bitmap font file(s) match.
+
+		(Bitmap font files)		(HBF files)
+	GB:	cclib.j24 (Jianti)		ccs24.hbf
+		cclib.f24 (Fanti) 		ccs24f.hbf
+	Big-5:  kcchin24.f00 (Fanti)		kcm24.hbf
+
+   NOTE: a). Get all bitmap font files in BINARY mode, HBF files in ASCII mode. 
+
+	 b). The bitmap font files, HBF files and "cnprint.cmd" should be put 
+	under the same directory.
+
+	 c). An HBF font consists of one or more existing bitmap files and 
+	one HBF file (See article about HBF carried on HXWZ #128, CM9309B).
+	You need to get both the bitmap files and the HBF files in order to
+	use CNPRINT.  CNPRINT requires (*) the name of the HBF file to be in 
+	the following format:
+
+	cn*##.hbf
+
+	where * can be any letter (a-z, use lower case if your system is 
+	case-sensitive, like unix) and ## be the number reflecting the size 
+	of the font, e.g. 24 for 24x24.  It is suggested that you make the 
+	letters meaningful, for example, 'k' for Kaishu, 'f' for Fanti.
+	* However, you can select an HBF file with ANY name on command line:
+		cnprint -f my_own.hbf filename ...
+
+	 d). After you get the HBF file, you NEED to rename them.  For example: 
+
+		ccs24.hbf --> cnj24.hbf
+                -----------------------
+
+	For some non-square bitmap fonts, like kcchin16.f00, the HBF file is
+	named as kcm14.hbf, it is better to rename it as cnm16.hbf (i.e. use
+	numbers 16, 24, 48, 40, 56, 64).  If you name it as cnm14.hbf, you can
+	select it on command line with "-f m14", but you could not select it 
+	with @[f*].  Since CNPRINT gets the size information from the HBF file,
+	it is able to use fonts with any size.  For example, if you have a 
+	32x32 font and you name the HBF file as cnx56.hbf, it is still OK. 
+
+	You can also write your own HBF file according to the HBF standard.  
+	Note CNPRINT only uses the simple properties.
+
+VII. Known Problems 
+
+     1. Q: The characters look alright but are not what it meant to be, or
+	   are distorted, shifted up/down, left/right.
+	A1: Check HBF file, make sure it matches the bitmap font file.  If 
+	   you write you own HBF file, make sure the offset information is
+	   correct.
+	A2: The bitmap font is distorted in transmission.  Try to get it again,
+	   using BINARY mode and transmit properly.
+	A3: You are printing a Big-5 file with GB fonts.
+
+     2. Q: CNPRINT failed to print, but I saw the printer was processing 
+	   the job.
+	A: It may be due to small memory on printer.  Try -n # option with 
+	   smaller number (# = 1000 or less, default 2048) and contact author.  
+
+     3. Q: CNPRINT only printed the first page.
+	A: It may be due to the way your printer is connected to the computer,
+	   or the printer setup.  You can get around by using -p1 option, i.e. 
+	   print one page at a time (it helps if you also use -n 200 with -p1 
+	   if the document is large).
+
+     4. (VMS and UNIX only) Some machines do not support the time functions,
+	then CNPRINT may stop running after displaying "*** Page 1 has been 
+	done ***".  In this is the case, you should change line 26 of cnprint.c 
+	from "#define  TIME 1" to "#define  TIME 0".  Or delete the lines
+	containing those unsupported functions. 	
+	Some machines do not support function "remove()", just delete it.
+
+     5. Q: (DOS) When I typed "cnprint ...", the computer hung up.
+	   (VMS) When I typed "cnprint ...", strange messages were displayed
+		on the screen.
+
+ 	A1: Did you get cnprint.exe or cnprint230.exe in BINARY mode ?
+	A2: (VMS) Did you follow the steps in IV (4) ?
+
+     6. (DOS) Q: The message "Not enough memory" was displayed at some stage.
+	A: Disconnect network and other things and try CNPRINT again.  You 
+	   may want to generate PS file only (use -w option) if your printer
+	   is connected via network.
+
+     7. (Big-5 only) Q: Some non-frequently used characters are not printed
+	   correctly, but the frequently used chars or symbols are OK.
+	A: It is due to different versions of Big-5.  Try to match the 
+	   font and the text, or use a conversion program, such as et2hku.
+
+VIII. AUTHOR    
+
+	cai@neurophys.wisc.edu
+	Yidao Cai (~{2LR@5@~})
+	Department of Neurophysiology
+	University of Wisconsin Medical School
+	1300 University Ave
+	Madison, WI 53706  USA
+	608-262-5899
+
+	Please send suggestions and report bugs to the above address.  Please
+	include your e-mail address in the mail body as I sometimes could not
+	reach users with distorted e-mail addresses, and I understand those 
+	users need help the most because of their not-so-popular machines.
+	Thank you for using CNPRINT.
+
+	The author will try his best to offer technical support.  However,
+	there is no warranty for CNPRINT.
+
+	CNPRINT is free for non-commercial purpose and personal use only.
+	For any other use, please contact author.
+
+	Donations in any ammount (suggested $5-$20) are more than welcome.
+	Your contributions will be solely used to establish an educational 
+	fund (in memory of my mother) to help and encourage children from 
+	rural areas with their primary and high school education.  Thanks
+	for your generous support. 
+	(You are equally welcome to contact author if you have questions and
+	you decide not to donate).  
+
+IX. Acknowledgement
+
+	Thanks to numerous users of previous versions for valuble suggestions
+	and encouragements, which make the continuous improvement of CNPRINT
+	possible.  In particular, I would like to mention Nelson Chin (butta1
+	@cs.bu.EDU), for both his suggestions and testing of V2.30 on his 
+	systems.  Some of the initial ideas came from the GB2PS Version 1.00 
+	of Dr. Wei Sun at william@anucsd.anu.edu.au.
+
+Appendix A
+----------
+paper sizes    
+	A:      8.5 x 11 inch  or  215.90 x 279.40 mm
+	A4:    8.27 x 11.69        210.00 x 297.00
+	B:       11 x 17           279.40 x 431.80
+	A3:   11.69 x 16.54        297.00 x 420.00    
+
+Appendix B
+----------
+Dr. F. F. LEE's hz2gb can be found at /software/unix/convert
+For HBF standard, see /software/fonts/HBF

@@ -1,0 +1,21 @@
+Begin2
+Title        = gdb-4.12+duel.tgz
+Version      = GDB version 4.12, DUEL version 1.10.4
+Desc1        = GDB version 4.12 with DUEL 1.10.4 (A small C interpreter
+Desc2        = for enhancing GDB, it aims to explore/modify data while 
+Desc3        = debugging)
+Author       = GNU (for GDB), Michael Golan
+AuthorEmail  = bug-gdb@prep.ai.mit.edu(GNU), mg@cs.princeton.edu(DUEL)
+Maintainer   = Supoj Choachaicharoenkul
+MaintEmail   = supoj@kmitnb03.kmitnb.ac.th
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming
+File1        = gdb-4.12.duel.tgz
+FileSize1    = 499804
+CopyPolicy1  = GNU Copyleft
+Comment1     = Read /supoj/README
+Comment2     = some of new commands are not so compatible with duel, let try.
+Entered      = 11MAY94
+EnteredBy    = Supoj Choachaicharoenkul
+End
+

@@ -1,0 +1,18 @@
+Begin3
+Title:          qmail-unread
+Version:        0.9.0
+Entered-date:   7 June 1998
+Description:    Displays a summary table of all unread mail (i.e. waiting in a user's mailbox) for all users
+		on the system who appear to be Qmail users. The table displays username, location of incoming mail
+		file, mail file type (Mailbox or Maildir/) and number of messages waiting. It also performs many
+		sanity checks which will help locate problems with the user's mail setup.
+Keywords:       qmail mail unread
+Author:         bondsc@tcp.co.uk (Simon Bond)
+Maintained-by:  bondsc@tcp.co.uk (Simon Bond)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail
+		12KB qmail-unread-0.9.0.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux (Tested on 2.0.xx but should work on any version)
+Copying-policy: PD
+End

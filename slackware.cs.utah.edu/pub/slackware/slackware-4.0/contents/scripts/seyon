@@ -1,0 +1,2 @@
+( cd usr/X11R6/bin ; rm -rf seyon-emu )
+( cd usr/X11R6/bin ; ln -sf  /usr/X11/bin/xterm seyon-emu )

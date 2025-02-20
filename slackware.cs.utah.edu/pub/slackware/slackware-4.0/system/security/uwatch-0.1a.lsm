@@ -1,0 +1,22 @@
+Begin3
+Title:          uwatch
+Version:        0.1a
+Entered-date:   01MAR98
+Description:    Uwatch (user watch) is a program designed to inform you when
+                users log in or out of a system.  With uwatch, you have the
+                to define only a set of login names for which to watch and to
+                customize the notification messages.  Uwatch also allows you
+                to run an external program when it detects a that a user has
+                logged in or out.
+Keywords:       monitor watch
+Author:         Karyl F. Stein <xenon@xenos.net>
+Maintained-by:  Karyl F. Stein <xenon@xenos.net>
+Primary-site:   http://www.xenos.net/~xenon/software/uwatch
+                17190 uwatch-0.1a.tar.gz
+                25922 uwatch-0.1a.tar.Z
+                886   uwatch-0.1a.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Linux BSDI
+Copying-policy: GPL
+End

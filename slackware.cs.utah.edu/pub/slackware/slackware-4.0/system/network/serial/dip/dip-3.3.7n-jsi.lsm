@@ -1,0 +1,22 @@
+Begin3
+Title:	      dip
+Version:      3.3.7n-uri-inaky-jsi 24.Nov.1995
+Entered-date: 24NOV95
+Description:  dip-3.3.7n-uri-inaky modified to process string-variables.
+              Dip can now get strings from the remote line, save
+              this string in a variable, and send it to the remote line
+              afterwards.
+Keywords:     dip DIP dialup IP strings 
+Author:       uri@watson.ibm.com 
+              waltje@uWalt.NL.Mugnet.ORG
+              inaky@peloncho.fis.ucm.es
+              jsi@tierzucht.uni-kiel.de (Josef Siemes)
+Maintained-by:jsi@tierzucht.uni-kiel.de (Josef Siemes)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/serial
+                                124203 bytes dip-3.3.7n-jsi.tgz
+Alternate-site: http://www.informatik.uni-kiel.de/~jsi/dip
+                                124203 bytes dip-3.3.7n-jsi.tgz
+Original-site:  nic.funet.fi
+Platforms:      Linux
+Copying-policy: GPL 
+End

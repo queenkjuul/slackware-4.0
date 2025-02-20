@@ -1,0 +1,12 @@
+Title: 		nys
+Version:	0.27.4
+Entered-date:   8-may-1995
+Description:    nis, nis+, and name service switch support for linux.
+		Integrates transparently into libc-linux.
+Keywords:       yp, nis, nis+, nsswitch
+Author:         Peter Eriksson (pen@signum.se)
+Maintained-by:  Author
+Primary-site:   ftp.lysator.liu.se /pub/NYS/libs
+		212k	nys-0.27.4.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Admin
+Copying-policy:	Freely Distributable

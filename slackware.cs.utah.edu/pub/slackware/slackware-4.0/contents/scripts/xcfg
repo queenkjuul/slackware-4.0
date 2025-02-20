@@ -1,0 +1,4 @@
+# Make sure we have a default xinitrc:
+if [ ! -r var/X11R6/lib/xinit/xinitrc ]; then
+  cp var/X11R6/lib/xinit/xinitrc.twm var/X11R6/lib/xinit/xinitrc
+fi

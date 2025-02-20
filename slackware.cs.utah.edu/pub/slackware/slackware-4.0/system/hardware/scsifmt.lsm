@@ -1,0 +1,16 @@
+Begin3
+Title:          scsifmt.c
+Version:        0.1
+Entered-date:   08FEB97
+Description:    scsifmt is a low-level SCSI formatter. It sends the
+                FORMAT_UNIT command (04h) to a named SCSI device. The source
+                has a check enabled for Iomega ZIP drives, though the code
+                _should_ be applicable to any SCSI device, as far as I know.
+                Based on scsifmt.sh from FreeBSD and ziptool.c.
+Keywords:       SCSI low level format 04h 0x04 0x4
+Author:         Alex.Butcher@bris.ac.uk (Alex Butcher)
+Maintained-by:
+Primary-ste:    sunsite.unc.edu /pub/Linux/system/Misc
+                6kB scsifmt.c
+Copying-policy: GPL
+End

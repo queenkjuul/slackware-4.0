@@ -1,0 +1,264 @@
+  Vesafb mini-HOWTO
+  Alex Buell, alex.buell@tahallah.demon.co.uk
+  v0.5, 2 August 1998
+
+  This document describes how to use the vesafb device in Linux with a
+  VESA 2.0 compliant graphic card on Intel platforms.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Contributors
+
+  2. What is vesafb?
+
+  3. What is a framebuffer device?
+
+  4. How do I activate the vesafb drivers?
+
+  5. What VESA modes are available to me?
+
+  6. Is there a X11 driver for vesafb?
+
+  7. Can I make vesafb as a module?
+
+  8. Miscellaneous/Caveats
+
+
+
+  ______________________________________________________________________
+
+  1.  Contributors
+
+  Thanks go to these people listed below who helped improve the vesafb
+  HOWTO.
+
+
+  ·  Jeff Noxon jeff@planetfall.com
+
+  ·  Francis Devereux f.devereux@cs.ucl.ac.uk
+
+  ·  Andreas Ehliar ehliar@futurniture.se
+
+  ·  Martin McCarthy marty@ehabitat.demon.co.uk
+
+  ·  Simon Kenyon simon@koala.ie
+
+  ·  David Ford david@kalifornia.com
+
+  ·  Chris Black cblack@cmpteam4.unil.ch
+
+  ·  N Becker nbecker@fred.net
+
+  ·  Bob Tracy rct@gherkin.sa.wlk.com
+
+  ·  Marius Hjelle marius.hjelle@roman.uib.no
+
+  ·  Aaron Tiensivu tiensivu@pilot.msu.edu
+
+  and of course the authors of the framebuffer devices:
+
+
+  ·  Gerd Knorr kraxel@cs.tu-berlin.de
+
+  ·  Geert Uytterhoeven Geert.Uytterhoeven@cs.kuleuven.ac.be
+
+  ·  Martin Mares mj@ucw.cz
+
+  ·  Anyone else, stand up and be counted. :o)
+
+
+  2.  What is vesafb?
+
+  Vesafb is a framebuffer driver for Intel architecture that works with
+  VESA 2.0 compliant graphic cards. It is closely related to the
+  framebuffer device drivers in the kernel.
+
+  vesafb is a display driver that enables the use of graphical modes on
+  your Intel platform for bitmapped text consoles. It can also display a
+  logo, which is probably the main reason why you'd want to use vesafb
+  :o)
+
+  Unfortunately, you can not use vesafb successfully with VESA 1.2
+  cards.  This is because these 1.2 cards do not use framebuffering. It
+  may be that someone will write a vesafb12 device driver for these
+  cards, but this will use up precious kernel memory. :o(
+
+  There is however a potential workaround to add VESA 2.0 extensions for
+  your legacy VESA 1.2 card. You may be able to download a TSR type
+  program that will run from DOS, and used in cojunction with loadlin,
+  can help configure the card for the appropriate graphic console modes.
+  Note that this will not always work, as an example some Cirrus Logic
+  cards such as the VLB 54xx series are mapped to a range of memory
+  addresses (for example, within the 15MB-16MB range) for frame
+  buffering which preludes these from being used successfully with
+  systems that have more than 32MB of memory. [There is a way to make
+  this work, i.e. if you have a BIOS option to leave a memory hole at
+  15MB-16MB range, it might work, but I've been told that Linux doesn't
+  support this] If you wish to experiment with this option, there are
+  plenty of TSR style programs available, a prime example is UNIVBE,
+  which can be found on the Internet.
+
+
+  3.  What is a framebuffer device?
+
+  A framebuffer device is an abstraction for the graphic hardware. It
+  represents the frame buffer of some video hardware, and allows
+  application software to access the graphic hardware through a well-
+  defined interface, so that the software doesn't need to know anything
+  about the low-level interface stuff [Taken from Geert Uytterhoeven's
+  framebuffer.txt in the linux kernel sources]
+
+
+  4.  How do I activate the vesafb drivers?
+
+  [Note: The information is based on what I know and have achieved using
+  the Linux kernel v2.1.112 on a P75+ with an ATI VideoExpress 2MB
+  graphic card.  Feel free to email me with information/special cases
+  for different graphic cards]
+
+  Assuming you are using menuconfig, you will need to do the following
+  steps:
+
+  Go into the Code Maturity Level menu, and enable the prompt for
+  development and/or incomplete drivers [note this may change for future
+  kernels - when this happens, this HOWTO will be revised]
+
+  Go into the Console Drivers menu, and enable the following:
+
+
+  ·  VGA Text Console
+
+  ·  Video Selection Support
+
+  ·  Support for frame buffer devices (experimental)
+
+  ·  VESA VGA Graphic console
+
+  ·  Advanced Low Level Drivers
+
+  ·  Select Mono, 2bpp, 4bpp, 8bpp, 16bpp, 24bpp and 32bpp packed
+
+  ·  pixel drivers
+
+  ·  VGA character/attributes support
+
+  VGA Chipset Support (text only) - vgafb - used to be part of the list
+  above, but it has been removed as it is now deprecated and no longer
+  supported. It will be removed shortly. Use VGA Text Console instead.
+
+  Ensure that the Mac variable bpp packed pixel support is not enabled.
+  [As of 2.1.111, this seems to get enabled if Advanced Low Level
+  Drivers is initally selected]
+
+  Make sure these aren't going to be modules. [Not sure if it's possible
+  to build them as modules yet - please correct me on this]
+
+  Then rebuild the kernel, modify /etc/lilo.conf to include the VGA=ASK
+  parameter, and run lilo, this is required in order for you to be able
+  to select the modes you wish to use.
+
+  Reboot the kernel, and as a simple test, try entering 0301 at the VGA
+  prompt (this will give you 640x480 @ 256), and you should be able to
+  see a cute little Penguin logo.
+
+  Once you can see that's working well, you can explore the various VESA
+  modes (see below) and decide on the one that you like the best, and
+  hardwire that into the "VGA=x" parameter in lilo.conf. When you have
+  chosen the one you like the best, look up the decimal equivalent from
+  the tables below and use the corresponding decimal number (i.e. for
+  1280x1024 @ 256, you just use "VGA=775"), and re-run lilo. That's all
+  there it is to it. For further references, read the LoadLin/LILO
+  HOWTOs.
+
+
+  5.  What VESA modes are available to me?
+
+  This really depends on the type of VESA 2.0 compliant graphic card
+  that you have in your system, and the amount of video memory
+  available. This is just a matter of testing which modes work best for
+  your graphic card.
+
+  The following table shows the mode numbers you can input at the VGA
+  prompt (actually these numbers are plus 0x200 to make it easier to
+  refer to the table)
+
+
+  Colours   640x480 800x600 1024x768 1280x1024 1600x1200
+  --------+---------------------------------------------
+  256     |  0301    0303     0305     0307      031C
+  32,768  |  0310    0313     0316     0319      031D
+  65,536  |  0311    0314     0317     031A      031E
+  16.8M   |  0312    0315     0318     031B      031F
+
+
+
+  For convienence, here is the same table in decimal terms
+
+  Colours   640x480 800x600 1024x768 1280x1024 1600x1200
+  --------+---------------------------------------------
+  256     |   769     771      773      775       796
+  32,768  |   784     787      790      793       797
+  65,536  |   785     788      791      794       798
+  16.8M   |   786     789      792      795       799
+
+
+
+  [The author would be happy if you could supply him with additional
+  03xx numbers for additional modes i.e 1152x900?]
+
+
+  6.  Is there a X11 driver for vesafb?
+
+  Yes, there is, actually. You will need to use the XF86_FBdev driver if
+  for some reason your current X11 driver doesn't like vesafb. Go to
+  http://www.xfree86.org, and download the X332servonly.tgz archive,
+  unpack, configure it by editing xc/config/cf/xf86site.def, and
+  uncomment the #define for XF68FBDevServer. Don't worry about the m68k
+  reference, it supports Intel platforms. Then build the whole thing -
+  it'll take a long time though as it's a large source tree.
+
+  There is as of yet, no pre-compiled XF86_FBdev binary available, but I
+  understand that Debian may be working on this; and they will be able
+  to produce both libc5/glibc2 variants.
+
+  There have been reports that X11 is non functional on certain graphic
+  cards with this vesafb feature enabled, if this is happening, try the
+  new XF86_FBdev driver for X11.
+
+  This driver, along with vesafb can also help run X11 in higher graphic
+  resolutions with certain graphic chipsets which are not supported by
+  any of the current X11 drivers. Examples are MGA G-200 et. al.
+
+  Hopefully the X11 problems with supported graphic cards will be fixed
+  in future releases.
+
+
+  7.  Can I make vesafb as a module?
+
+  As of v2.1.112, vesafb can't be modularised, although at some point in
+  time, the developer of vesafb may decide to modify the sources for
+  modularising. Note that even if modularising is possible, at boot time
+  you will not be able to see any output on the display until vesafb is
+  'modprobed'. It's probably a lot wiser to leave it in the kernel, for
+  these cases when there are booting problems.
+
+
+  8.  Miscellaneous/Caveats
+
+  This is current only for v2.1.112 of the Linux kernel. This HOWTO will
+  be constantly updated as kernel development progresses. Feel free to
+  email the author with information/flames :o)
+
+  Another gotcha is that scrollback buffering does not work yet. May be
+  fixed in future releases.
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+Begin3
+Title:		Nmap
+Version:	2.12
+Entered-date:	April 11, 1999		
+Description:    Nmap is a utility for network exploration or security
+                auditing. It supports ping scanning (determine which
+                hosts are up), many port scanning techniques
+                (determine what services the hosts are offering), and
+                TCP/IP fingerprinting (remote host operating system
+                identification). Nmap also offers flexible target and
+                port specification, decoy scanning, determination of
+                TCP sequence predictability characteristics,
+                reverse-identd scanning, and more.
+Keywords:	Security Port Scanner Networking
+Author: 	fyodor@dhp.com (Fyodor)
+Maintained-by:	fyodor@dhp.com (Fyodor)
+Primary-site:	http://www.insecure.org/nmap/
+                329kB nmap-2.12.tgz
+Alternate-site: metalab.unc.edu /pub/Linux/system/network/admin
+                329kB nmap-2.12.tgz
+Copying-policy:	GPL
+End

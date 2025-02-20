@@ -1,0 +1,22 @@
+Begin3
+Title:		Less debug information - PPP daemon patch for pppd 2.2.0f
+Version:	1.0
+Entered-date:	06MAY97
+Description:	ppp-lessdebug is a patch for pppd 2.2.0f that adds two
+		additional command line arguments to pppd: -ld and
+		lessdebug. They represent long and short forms of the same
+		option (they are identical). This feature is a quick hack
+		to allow for a script to use ppp every couple hours by
+		cron and not fill your logs with 5000 lines of ppp messages.
+		If you wish to log a successful connection, use the 
+		"logger" command in an alternate ip-up script.
+Keywords:	pppd, debug, patch, syslog, klog, messages, lessdebug
+Author:		toby@eskimo.com (Toby Reed)
+Maintained-by:	toby@eskimo.com (Toby Reed)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/serial/ppp
+			3 kb ppp-lessdebug-1.0.tar.gz
+Original-site:  ftp.porknet.ml.org /pub/linux/patches
+			3 kb ppp-lessdebug-1.0.tar.gz
+Platform:       Linux
+Copying-policy: GNU
+End

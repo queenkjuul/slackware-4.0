@@ -1,0 +1,17 @@
+Begin3
+Title:		acctsum
+Version:	1.0
+Entered-date:	14FEB98
+Description:	Two shell scripts that truncate and summarize the process 
+		accounting and ISDN log files. This version can generate HTML
+		output and is much better configurable.
+Keywords:	process accounting summary statistic ISDN HTML
+Author:		Hans-Joachim Baader (hans@grumbeer.inka.de)
+Maintained-by:	Hans-Joachim Baader (hans@grumbeer.inka.de)
+Primary-site:	http://www.inka.de/sites/grumbeer/download_e.html
+		8 KB acctsum-1.0.tar.gz 
+Alternate-site:	sunsite.unc.edu:/pub/linux/system/Admin
+		ftp.inka.de:/pub/comp/Linux/system
+Platforms:	Linux, accounting utilities, optionally ISDN
+Copying-policy:	Public domain
+End

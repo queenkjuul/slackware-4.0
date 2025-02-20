@@ -1,0 +1,354 @@
+  The Linux Intranet HOWTO
+  Pramod Karnad, karnadp@mozart.inet.co.th
+  v1.1, 14 March 1996
+
+  This document describes how to convert your Linux machine into a HTTP
+  server and connect it to a Netware LAN using the Netware Client under
+  Windows
+
+  1.  Introduction
+
+  This document assumes that you already know how to install TCP/IP on
+  your Linux server and connect it physicaly to your LAN using an
+  Ethernet network card. This also assumes you have some basic knowledge
+  of Netware. The configuration of the Netware server has been shown
+  using version 3.1x as the basis. You can also use INETCFG to achieve
+  the same result. On the client side the discussion is with respect to
+  Windows 3.1x, Windows for Workgroups and Win95.
+
+  In all the examples I am assuming that the Linux server has an IP
+  address of 200.0.0.1 and therefore I am assigning the address of
+  200.0.0.2 to the Netware server and 200.0.0.3 to the workstation. You
+  may choose suitable addresses depending on your configuration.
+
+  1.1.  What is required
+
+  You will need the following software before attempting the
+  installation.
+
+  ·  the HTTP server software which can be downloaded from OneStep NCSA
+     HTTPd Downloader page.
+
+  ·  The Novell Netware Client available from Netwire (The TCP/IP files
+     can be found in the Lan Workplace update LW42T3.exe).
+
+  ·  WWW Browsers like Netscape Navigator or NCSA Mosaic
+
+  2.  Install the HTTP server
+
+  When you download the server you have two options: To get the source
+  and compile it yourself, or get the precompiled binaries. The
+  precompiled binaries for Linux (ELF) version are available at NCSA but
+  not the older versions.
+
+  2.1.  Preparation before downloading
+
+  The server at NCSA will guide you through the steps for configuration
+  options and prepare the various files for you. But before you attempt
+  to download HTTPd be prepared with answers to the following questions
+
+  2.1.1.  The Operating System
+
+  First, you much choose whether to download the source or a pre-
+  compiled version of the software. If your particular system doesn't
+  appear in the menu, then you will have to get the default source, and
+  compile it yourself.
+
+  To check the version of your Linux go to the command prompt on your
+  Linux machine and type
+
+         linux:~$  uname -a
+
+  which will respond with a line which looks similar to this
+
+          linux:~$  uname -a
+          Linux linux 1.0.9 #4 Tue Sep 13 04:05:51 CDT 1994 i586
+          linux:~$
+
+  The version of Linux is 1.0.9. (Note: The current versions are ELF and
+  should look like linux 1.2.13 ELF)
+
+  The remaining parameters can be specified before downloading or
+  configured later by modifying the file srm.conf in the
+  /usr/local/etc/httpd/conf directory. The names of the actual
+  directives that appear in the file httpd.conf are shown in brackets.
+  The only exception is the directive DocumentRoot which appears in the
+  file srm.conf
+
+  2.1.2.  Process type (ServerType)
+
+  This specifies how your machine will run your HTTPd server. The
+  preferred method is 'standalone'. This makes the HTTP daemon to be
+  running constantly. If you choose to load HTTPd under 'inetd', the
+  server binary will be reloaded into memory for every request, which
+  may slow your server down.
+
+  2.1.3.  Binding Port (Port)
+
+  This specifies which port of your machine that the HTTPd daemon will
+  bind to and listen for HTTP requests. If you can login as 'root', use
+  the default setting of 80.  Otherwise choose a setting between 1025
+  and 65535.
+
+  2.1.4.  Server user identity (User)
+
+  This is the user id the server will change to when answering requests
+  and acting on files.This question needs to be answered only if you are
+  running the server as 'standalone'.  If you are someone without root
+  permissions, just use your own login name. If you are system
+  administrator, you might want to create a special user so you can
+  control file permissions.
+
+  2.1.5.  Server group identity (Group)
+
+  This is the group id the server will change to when answering requests
+  and acting on files. This is similar to Server User identity and is
+  applicable only if you are running the server as standalone.
+
+  If you do not have root permissions, just use the name of your primary
+  group. You can find out your group by typing groups at the Linux
+  command prompt.
+
+  2.1.6.  Server administrator email address (ServerAdmin)
+
+  This is the email address that the user should send an email message
+  to when reporting a problem with the server. You can put your personal
+  e-mail address.
+
+  2.1.7.  Location of server directory (ServerRoot)
+
+  This is where the server resides on your system. If you have root
+  permissions leave it in its recommended location /usr/local/etc/httpd.
+  If you cannot login as root, choose a subdirectory in your home path.
+  You can find out the path of your home directory with the pwd command.
+
+  2.1.8.  Location of HTML files (DocumentRoot)
+
+  This is where the HTML files to be served are located. The default
+  location is /usr/local/etc/httpd/htdocs.  You could however set it to
+  be the home directory of the special user you chose in Server user
+  identity, or a subdirectory in your home directory if you can't login
+  as root.
+
+  When in doubt, use the default settings. Now that you have answers to
+  the above questions you can Download NCSA HTTPd.  You should read the
+  HTTPd Documentation before you attempt installation. If you are
+  planning to compile the code then you need to modify the makefiles in
+  each of the three directories support, src, cgi-src. If your version
+  of Linux is already supporte d then you just have to type make linux
+  at the top level directory (i.e. /usr/local/etc/httpd)
+
+  2.2.  Compiling HTTPd
+
+  Compiling is simple, just type make linux at the prompt in the server
+  root directory.  Note: Users of pre-ELF Linux have to uncomment
+  #define NO_PASS in file portability.h and set DBM_LIBS= -ldbm in the
+  Makefile before compiling HTTPd.
+
+  3.  Testing HTTPd
+
+  After you have installed HTTPd, login as root and start it by typing
+  httpd & . (assuming you have installed as standalone) You should now
+  be able to see it in the list generated by ps. The simplest way to
+  test HTTPd is by Telnet. At the Linux command prompt type
+
+          linux:~$  telnet 200.0.0.1 80
+
+  where 80 is the default port for HTTP. If you have configured 'Port'
+  as something different then type that number instead. You should get a
+  response which looks like this
+
+          Trying 200.0.0.1...
+          Connected to linux.ppg_corp.
+          Escape character is '^]'.
+
+  Now if you type in any character and press Enter you should get a
+  response similar to the one shown below.
+
+     HTTP/1.0 400 Bad Request
+     Date: Wed, 10 Jan 1996 10:24:37 GMT
+     Server: NCSA/1.5
+     Content-type: text/html
+
+     <HEAD><TITLE>400 Bad Request < /TITLE> < /HEAD>
+     <BODY><H1>400 Bad Request < /H1>
+     Your client sent a query that this server could
+     not understand.<P>
+     Reason: Invalid or unsupported method.<P>
+     < /BODY>
+
+  Now we are ready to connect to this server using another PC and a WWW
+  Browser.
+
+  4.  Connecting on a Netware LAN with Windows
+
+  In order to setup the Netware server you should have Supervisor
+  permissions or atleast Console operator permissions. If these cannot
+  be got, try asking your Network Administrator to help you with the
+  setup.
+
+  In the following examples I am assuming that the Linux server has an
+  IP address of 200.0.0.1 and therefore I am assigning the address of
+  200.0.0.2 to the Netware server and 200.0.0.3 to the workstation. You
+  may choose suitable addresses depending on your configuration.
+
+  4.1.  Setup the Netware server
+
+  At the Server enable the Ethernet_II frame type on the LAN by typing
+  these commands or include them in the AUTOEXEC.ncf file.
+
+          load NE2000 frame=Ethernet_II name=IPNET
+          load TCPIP
+          bind IP to IPNET addr=200.0.0.2 mask=FF.FF.FF.0
+
+  You might have to specify the slot or board number while loading the
+  NE2000 driver depending on your machine configuration. (eg: load
+  NE2000 slot=3 frame=.....)
+
+  4.2.  Setup the Netware Client
+
+  On the PC you have three choices Win3.1,WFWG or Win95. The
+  installation procedure differs between Win95 and the older windows if
+  you are using the 32bit client from Microsoft or Novell. If you are
+  going to use the 16bit client, the procedure is the you can refer to
+  the Windows 3.x installation instructions. For installing the 32bit
+  client for Win95 skip to ``Windows 95 installation''.
+
+  4.2.1.  Windows 3.x
+
+  If you are using Win3.1 or WFWG you can install the Netware Client
+  (VLMs) and some additional files which are provided with the TCP/IP
+  diskette, namely
+  TCPIP.exe, VTCPIP.386, WINSOCK.dll and WLIBSOCK.dll
+
+  Note that the WINSOCK.dll file is different from the ones provided
+  with Win95 and Trumpet. Install the Netware Client with the support
+  for windows. Copy VTCPIP.386, WINSOCK.dll and WLIBSOCK.dll to the
+  SYSTEM directory and TCPIP.exe to the NWCLIENT directory. Now modify
+  the STARTNET.bat in the NWCLIENT directory to
+
+          lsl
+          ne2000     ---> your network card driver
+          c:\windows\odihlp.exe     ---->if you are using WFWG
+          ipxodi
+          tcpip        ---> add this line
+          vlm
+
+  Create a subdirectory (say) \NET\TCP and copy the files HOSTS,
+  NETWORKS, PROTOCOLS and SERVICES from /etc on your Linux server or the
+  directory SYS:ETC on your Netware server. Edit the copied HOSTS file
+  to add the line for your new Linux server. This will enable you to
+  refer to the Linux server as http://linux.ppg_corp/ instead of
+  http://200.0.0.1/in your WWW browser
+
+          127.0.0.1      localhost
+          200.0.0.1      linux.ppg_corp
+
+  Edit the NET.cfg file in NWCLIENT directory
+
+          Link Driver NE2000
+              port 300
+              int 3
+              MEM D0000
+              FRAME Ethernet_802.2
+
+       ; ---- add these lines ----
+
+             FRAME Ethernet_II
+
+          Protocol TCPIP
+             PATH TCP_CFG C:\NET\TCP
+             ip_address  200.0.0.3
+             ip_netmask  255.255.255.0
+
+          Link Support
+             MemPool 6192       ---> the minimum is 1024. Try with different values
+             Buffers 10 1580    ---> this again can be fine tuned
+
+       ;---------------------------------
+
+  Edit the SYSTEM.ini file in the WINDOWS directory and add this entry
+  for VTCPIP.386
+
+     [386Enh]
+     .....
+     network=*vnetbios, vipx.386, vnetware.386, VTCPIP.386
+     .....
+
+  Reboot your PC, run STARTNET.bat and you can now use your favorite WWW
+  browser to access your Web pages. You need not login to Netware and
+  you don't have to run TCPMAN (if you use Trumpet Winsock).
+
+  4.2.2.  Windows 95
+
+  This section explains how to install the 32bit client on Win95.
+  Firstly you must install the following
+
+          Client for Netware Networks (from Microsoft or Novell)
+          Microsoft TCP/IP Protocol
+          Network Adapter
+
+  To install these items, click on My Computer, Control Panel, Networks.
+  Click Add. You will now be in a window that displays Client, Adapter,
+  Protocol and Service.  To install the Client for Netware Networks:
+
+         1. DoubleClick on Client
+         2. Click on Microsoft or Novell
+         3. DoubleClick on Client for Netware Networks
+
+  To install the TCP/IP Protocol:
+
+         1. DoubleClick on Protocol
+         2. Click on Microsoft
+         3. DoubleClick on TCP/IP
+
+  Windows 95 by default installs several other protocols automatically.
+  Remove them by clicking on them and clicking the Remove button.
+  Typically Win95 installs the Microsoft NetBeui protocol, and IPX/SPX
+  compatible protocol. You can delete the NetBEUI protocol, but you will
+  need the IPX/SPX protocol if you wish to login to the Netware Server.
+  Refer to the TCP/IP Setup FAQ for more details.
+
+  To setup TCP/IP click on TCP/IP, click on Properties, click on the tab
+  IP address
+
+         Enter your IP address in the 'Specify an IP address '
+                               box as 200.0.0.3
+         In the Subnet Mask box enter 255.255.255.0
+         Click OK
+
+  You should get a message to reboot. Do so. You should now be able to
+  use the Browser to connect to your HTTP Server.
+
+  5.  Other Connections
+
+  This is not the only way to connect to the Linux Server. You can try
+  several other software like:
+
+  ·  SAMBA Web Page
+
+  ·  TCP/IP from Microsoft
+
+  ·  Trumpet TCP/IP packet driver
+
+  ·  CRYNWR Packet drivers
+
+  You might also be interested in providing access to the Netware Server
+  by loading the NCP driver for Linux
+
+  6.  Applications of the WWW server
+
+  The HTTP server can be used in the office to provide transparent
+  access to information residing on different servers, at several
+  locations and directories. The data can be simple documents in Word,
+  Lotus spreadsheets, or complex databases. It can be used to create an
+  interface with RDBMS like ORACLE and SYBASE for generating real-time
+  information. Here is a list of database gateways to the WWW
+
+  7.  Credits & Legalities
+
+  Thanks to the people at NCSA for providing such excellent
+  documentation & David Anderson for his comments and trying out this
+  HOWTO!  I am told (by David) that you cannot use the Netware Client
+  without having a Netware License.
+

@@ -1,0 +1,6 @@
+( cd var/lib/news ; rm -rf inews )
+( cd var/lib/news ; ln -sf /usr/lib/newsbin/inject/inews inews )
+( cd usr/bin ; rm -rf inews )
+( cd usr/bin ; ln -sf /usr/lib/newsbin/inject/inews inews )
+( cd usr/bin ; rm -rf injnews )
+( cd usr/bin ; ln -sf /usr/lib/newsbin/inject/injnews injnews )

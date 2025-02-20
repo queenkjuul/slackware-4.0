@@ -1,0 +1,16 @@
+Begin3
+Title:          aD!BBS       
+Version:        3.0       
+Entered-date:   01/12/98 
+Description:    A BBS/Menuing system for linux, with ANSI colour support,
+		file bases, message boards and much more.  Easily modified
+		and configured.  Can be used for a variety of operations,
+		from basic BBS to advanced administration menuing system.
+		Many new features in this version.
+Keywords:       bbs menu perl aD      
+Author:         Chris Church (psylark@netropolis.net)        
+Maintained-by:  Chris Church (psylark@netropolis.net)
+Primary-site:   sunsite.unc.edu/pub/Linux/system/BBS/bbs/adbbs-3.0.tgz 
+Platform:       Will work on any *NIX amchine      
+Copying-policy: GPL
+End

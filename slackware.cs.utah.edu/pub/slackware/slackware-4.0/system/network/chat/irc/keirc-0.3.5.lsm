@@ -1,0 +1,13 @@
+Begin3
+Title:          keirc
+Version:        0.3.5
+Entered-date:   10 Aug 1998
+Description:    keirc is irc client for KDE, supports tcl script.
+Keywords:       KDE, Qt, irc, keirc, tcl
+Author:         sj039su@uni-duisburg.de (Eko Bono)
+Maintained-by:  sj039su@uni-duisburg.de (Eko Bono)
+Primary-site:   http://www.indonesia-undernet.org/keirc
+File1:		keirc-0.3.5.tgz
+Platform:       UNIX (tested on Linux,  needs Qt 1.3 or higher and the kde libs beta 4 or higher)
+Copying-policy: GPL 
+End

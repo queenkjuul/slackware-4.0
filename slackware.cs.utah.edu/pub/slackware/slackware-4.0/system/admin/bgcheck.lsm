@@ -1,0 +1,17 @@
+Begin3
+Title:		bgcheck
+Version:	0.3
+Entered-date:	03-19-99
+Description:	bgcheck is a process monitor for Linux written in perl
+		that can be a very useful tool for administrators used to
+		limit the amount of background processes that each user
+		can run.
+Keywords:	ps, background, process, processes, monitor, perl
+Author: 	blue@blue.dhs.org (blue)
+Maintained-by:	blue@blue.dhs.org (blue)
+Primary-site:	ftp://metalab.unc.edu/pub/Linux/system/admin/bgcheck-0.3.tar.gz
+Alternate-site: 
+Original-site:	
+Platforms:	perl
+Copying-policy:	PD
+End

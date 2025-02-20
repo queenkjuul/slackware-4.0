@@ -1,0 +1,66 @@
+This directory contains a collection of net source programs for Linux.
+
+NetKit-A	A is the first character in the alphabet -> basic things
+		contains a collection of Linux-specific programs and
+		several small utility programs found somewhere in the
+		Internet or on News
+		(contains also net-032 from Alan Cox)
+NetKit-B	B like BSD, even if we only think about Linux
+		contains source code derived from NetBSD
+NetKit-M	M like mail
+		contains context diffs and some source code to make a
+		good mail system
+NetKit-N	N like news
+		contains context diffs for a good News system
+		(news readers and also INN for your own newsfeed)
+NetKit-X	X like eXtra
+		will maybe be necessary, if NetKit-A grows too large
+
+The main goal is to know exactly all the time, what had to be changed for
+Linux to make a source package work for Linux. It is never good to just change
+a couple of things and then make a new release. (What version of dip would
+you suggest?)
+This additional effort speeds up the development circle of programs. And if
+you know how to use Un*x/Linux standard tools, then it is not too much work.
+It is right now a lot of work for me to convert to that new way.
+
+I want to improve the binary packages, so that they can be used in all those
+different Linux distributions without modification. If not possible, I at least
+want to give a very good example for those distributions.
+The main advantage is maybe a consistent packaging and also setup of net-related
+things. What is really missing, is a general net-setup script.
+But I am working on this. (And also other people, I think.)
+Could all people, who make Linux distributions, please email, what additional
+things you include and what modifications you make to the setup scripts.
+This will speed up the development circle again.
+
+Any comments, improvements, suggestions, flames are very much welcome.
+
+
+Installing a binary package:
+============================
+
+* Please note, that you must know yourself what to do. You are sys-admin!
+
+* I compiled everything with kernel 1.1.12, gcc 2.5.8, libc 4.5.26.
+  Be careful, if you have a shared C library prior to 4.5.26.
+  Upgrade *first* to that new version!
+
+* Do all the following steps as root.
+
+* If you want to install a binary package, first look at the package, if
+  it will not overwrite any setup scripts, you already have on your system.
+  Do this by executing "tar tzvf package-bin.tar.gz | less".
+  Make a backup copy with "cp /etc/inetd.conf /etc/inetd.conf.my" and
+  then see, which one is better yourself...
+
+  The important config files in NetKit-B are /etc/inetd.config and
+  /etc/printcap.
+
+* Go to the root-directory with "cd /".
+
+* Extract the package with "tar xzplf package-bin.tar.gz".
+
+
+Florian  La Roche    flla@stud.uni-sb.de
+

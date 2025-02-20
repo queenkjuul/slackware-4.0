@@ -1,0 +1,191 @@
+
+VERSION
+   to-talk 1.4, 26 May 1997
+
+
+NEW IN VERSION 1.4
+
+   - Security fix
+
+
+NEW IN VERSION 1.3
+
+   - Added support for annoucement via xmessage
+     Copy the "sample.talkd.sh" as ".talkd.sh" to your home directory
+     and make it executable.
+     If your're running X on the console display, any talk announcement
+     will be done through an "xmessage" popup.
+     Pushing "Yes" in the xmessage pupop will automatically start an
+     xterm running the appropriate "talk" to answer the request.
+      
+   - applied security patch FreeBSD-SA-96:21
+
+   - added support of 8-bit chars
+     (will only work properly when communicating to a "compatible" remote 
+     client, e.g. another to-talk)
+
+   - check for ESC-char in user oder hostname of incoming request
+
+
+ABSTRACT
+
+   Version 1.1 used to be an "old talk" client and server.
+   Due to popular demand, version 1.4 compiles now to both an
+   otalk AND ntalk client & server.
+
+   This is a hacked version of NetBSD's [n]talk & [n]talkd
+
+   The programs were modified to conform to the protocol used 
+   by the OLD (BSD4.2) talk server and clients
+   i.e. those using port 517/udp.
+
+   to-talk-1.x has successfully been tested on linux-2.0.30/i586.
+   It was able to communicate locally to itself as well as to 
+   remote native talks on
+        SINIX-N 5.41    RM400   R3000             (otalk)
+        SunOS   4.1.3   sun4m   sparc             (otalk)
+        SunOS   5.4     sun4m   sparc             (otalk)
+	SunOS   5.5.1   sum4m   sparc             (otalk)
+        TOS64M  4.1.01  i88_hfx TARGON/35-M50     (otalk)
+        SINIX-L 5.41    i386    MX300             (otalk)
+        unisys  4.0     i386    386/AT            (otalk)
+	OSF1    V3.2    alpha                     (ntalk)
+
+                      Thomas Omerzu <omerzu@quantum.de>, 26.5.97
+
+SYNOPSIS
+
+   Old talk:
+
+       to-otalk user[@host] [tty]
+       otalk    user[@host] [tty]
+
+   New talk:
+
+       to-ntalk user[@host] [tty]
+       ntalk    user[@host] [tty]
+
+   inetd.conf:
+
+   talk    dgram   udp     wait    root    /usr/local/sbin/to-otalkd to-otalkd
+   ntalk   dgram   udp     wait    root    /usr/local/sbin/to-ntalkd to-ntalkd
+
+
+
+INSTALLATION NOTES
+
+   to-ntalkd & to-otalkd require to be entered to /etc/inetd.conf.
+   "make install" automates this.
+
+
+
+INSTALLATION FROM SOURCE CODE
+
+   Under Linux, follow these steps:
+
+   unpack:      tar xvfz to-talk-1.3.src.tar.gz
+   compile:     cd to-talk-1.3 ; make
+   install:     su root -c "make install"
+
+
+
+INSTALLATION FROM BINARY CODE
+
+   Under Linux, follow these steps:
+   (Note: Binary version is statically linked to reduce system dependencies)
+
+   unpack:      tar xvfz to-talk-1.4.bin.tar.gz
+   install:     cd to-talk-1.4; su root -c "make install"
+
+
+
+BUGS
+
+  to-talk-1.x cannot talk to new talk daemons (518/udp).
+  to-talk-1.x cannot talk to the following old talk daemons:
+        ULTRIX  4.3     RISC            
+        (this is not really an old talk; use new talk instead!) 
+
+
+CAVEATS
+
+   - When starting X from a tty, you should disable messages first.
+     Otherwises you'll end up in getting the annoucenments on the
+     original tty, rather than an xmessage popup.
+     I'm using an "alias startx 'mesg n ; exec /usr/bin/X11/startx'" to
+     accomplish this automatically.
+
+   - When accessing X through xdm, you'll have to allow local access to
+     your X display to get xmessages.
+     Try "xhost +localhost".
+
+   - Beware of talking to users who are using that machine as a PPP or
+     SLIP server.
+    
+ 
+
+VERSION HISTORY
+
+   to-talk 1.4, 26 May 1997
+     - Security fix: Set gid before executing ~/.talkd.sh
+       Thanks to Andrew J. Robinson <ajr@bellatlantic.net> <arobinso@nyx.net>
+
+   to-talk 1.3, 21 May 1997
+     - added support for annoucement via xmessage;
+       based on an idea by Dave Woodhouse <dwmw2@cam.ac.uk>
+     - applied security patch FreeBSD-SA-96:21
+     - added support of 8-bit chars
+     - check for ESC-char in user oder hostname of incoming request
+
+   to-talk 1.2, 12 May 1996
+     - experimental version, never released
+
+   to-talk 1.1, 25 Sep 1995
+     - added compatibility for machines using wrong byteorder for sa_family,
+       e.g. SINIX/i386 and Unisys/i386
+
+   to-talk 1.0, 24 Sep 1995
+     -  first release
+
+
+TODO
+  * support for other X displays than :0.0
+  * adapt man page
+  * automatic choose of "right" talk protocol (old/new)
+
+
+
+DISCLAIMER & COPYRIGHT NOTICE
+
+   Copyright (c) 1995,1997 Thomas Omerzu, <omerzu@quantum.de>
+   Copyright (c) 1983 Regents of the University of California.
+   All rights reserved.
+  
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+   3. All advertising materials mentioning features or use of this software
+      must display the following acknowledgement:
+        This product includes software developed by the University of
+        California, Berkeley and its contributors.
+   4. Neither the name of the University nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+  
+   THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+   FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   SUCH DAMAGE.
+  

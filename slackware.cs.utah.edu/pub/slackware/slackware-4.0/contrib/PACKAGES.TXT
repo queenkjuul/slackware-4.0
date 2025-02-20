@@ -1,0 +1,411 @@
+
+PACKAGES.TXT;  Fri May  7 22:19:55 CDT 1999
+
+This file provides details on the Slackware packages found
+in the ./contrib/ directory.
+
+Total size of all packages (compressed):  56 MB
+Total size of all packages (uncompressed):  140 MB
+
+
+PACKAGE NAME:  XBF-i740-1.0.0-1.tgz
+PACKAGE LOCATION:  ./contrib/extra-X-servers
+PACKAGE SIZE (compressed):  864 K
+PACKAGE SIZE (uncompressed):  2090 K
+PACKAGE DESCRIPTION:
+XBF-i740-1.0.0-1: X Server for i740 based video cards.
+
+PACKAGE NAME:  afterstep.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  314 K
+PACKAGE SIZE (uncompressed):  780 K
+PACKAGE DESCRIPTION:
+afterstep: AfterStep 1.0
+afterstep:
+afterstep: AfterStep is a window manager with quite an interesting history. It
+afterstep: was originally a continuation of the Bowman window manager (based on 
+afterstep: fvwm), but is now its own project. This is a classic version of
+afterstep: AfterStep, which offers a single configuration file (.steprc) and
+afterstep: NEXTSTEP-like widgets. It's a lean, mean, window managing machine.
+afterstep:
+afterstep: For the new version of AfterStep, check out http://www.afterstep.org
+afterstep:
+
+PACKAGE NAME:  amp.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  44 K
+PACKAGE SIZE (uncompressed):  120 K
+PACKAGE DESCRIPTION:
+amp:      amp 0.7.6
+amp:
+amp:      amp is a command line MP3 player. It's written by Tomislav Uzelac
+amp:      and is supported by many frontends available on the Internet. Most
+amp:      of the current MP3 players out there got their start by using amp
+amp:      as a code base.
+amp:
+amp:      REQUIREMENTS: Well, you'll probably want to have an MP3 file or
+amp:      two and also sound support in your kernel (/dev/dsp).  :)
+amp:
+
+PACKAGE NAME:  aoutools.tgz
+PACKAGE LOCATION:  ./contrib/a.out-compilers
+PACKAGE SIZE (compressed):  155 K
+PACKAGE SIZE (uncompressed):  610 K
+PACKAGE DESCRIPTION:
+aoutools: aoutools 2.17
+aoutools:
+aoutools: Eric Youngdale's collection of tools that are used to generate DLL
+aoutools: jumptable libraries.
+aoutools:
+
+PACKAGE NAME:  bash-2.03.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  381 K
+PACKAGE SIZE (uncompressed):  680 K
+PACKAGE DESCRIPTION:
+bash-2.03: GNU bash-2.03.
+bash-2.03:
+bash-2.03: The GNU Bourne-Again SHell.  Bash is a sh-compatible command
+bash-2.03: interpreter that executes commands read from the standard input or
+bash-2.03: from a file.  Bash also incorporates useful features from the Korn
+bash-2.03: and C shells (ksh and csh).  Bash is ultimately intended to be a
+bash-2.03: conformant implementation of the IEEE Posix Shell and Tools
+bash-2.03: specification (IEEE Working Group 1003.2).
+bash-2.03:
+
+PACKAGE NAME:  bind-4.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  894 K
+PACKAGE SIZE (uncompressed):  2580 K
+PACKAGE DESCRIPTION:
+bind-4:    bind-4.9.7-REL.
+bind-4:
+bind-4:    The named daemon and support utilities such as dig, dnsquery, host,
+bind-4:    nslookup, nsquery, and nstest.  Documentation on setting up a name
+bind-4:    server can be found in /usr/doc/bind-4.9.7-REL/.
+bind-4:
+
+PACKAGE NAME:  blackbox.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  86 K
+PACKAGE SIZE (uncompressed):  250 K
+PACKAGE DESCRIPTION:
+blackbox: blackbox-0.50.2
+blackbox:
+blackbox: BlackBox is a lean and clean X11 window manager.
+blackbox:
+
+PACKAGE NAME:  cvs-1.10.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  606 K
+PACKAGE SIZE (uncompressed):  1330 K
+PACKAGE DESCRIPTION:
+cvs-1.10:  cvs-1.10.
+cvs-1.10:
+cvs-1.10:  CVS is a freely available collection of programs that provide for
+cvs-1.10:  software release and revision control functions in a UNIX
+cvs-1.10:  environment.
+cvs-1.10:
+
+PACKAGE NAME:  diald-0.16.5.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  117 K
+PACKAGE SIZE (uncompressed):  290 K
+PACKAGE DESCRIPTION:
+diald-0.16.5: diald-0.16.5.
+diald-0.16.5:
+diald-0.16.5: Diald is a daemon that provides on demand IP links via SLIP or 
+diald-0.16.5: PPP.  The purpose of diald is to make it transparently appear that
+diald-0.16.5: you have a permanent connection to a remote site.  Diald sets up a
+diald-0.16.5: "proxy" device which stands in for the physical connection to a
+diald-0.16.5: remote site.  It then monitors the proxy, waiting for packets to
+diald-0.16.5: arrive. When interesting packets arrive it will attempt to
+diald-0.16.5: establish the physical link to the remote site using either SLIP
+diald-0.16.5: or PPP, and if it succeeds it will forward traffic from the proxy
+diald-0.16.5: to the physical link.
+
+PACKAGE NAME:  emacspeak-9.0.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  855 K
+PACKAGE SIZE (uncompressed):  3220 K
+PACKAGE DESCRIPTION:
+emacspeak-9.0:  Emacspeak is a speech output system that will allow
+emacspeak-9.0:  someone who cannot see to work directly on a UNIX system.
+emacspeak-9.0:  (Until now, the only option available to visually impaired
+emacspeak-9.0:  users has been to use a talking PC as a terminal.)
+emacspeak-9.0:  Emacspeak is built on top of Emacs.  Once you start emacs
+emacspeak-9.0:  with emacspeak loaded, you get spoken feedback for
+emacspeak-9.0:  everything you do.  Your mileage will vary depending on
+emacspeak-9.0:  how well you can use Emacs.  There is nothing that you
+emacspeak-9.0:  cannot do inside Emacs :-).  This package supports the
+emacspeak-9.0:  DECtalk Express and DECtalk MultiVoice speech
+emacspeak-9.0:  synthesizers.  For other synthesizers, look for separate
+emacspeak-9.0:  driver packages.
+
+PACKAGE NAME:  f2c.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  279 K
+PACKAGE SIZE (uncompressed):  780 K
+PACKAGE DESCRIPTION:
+f2c:      A Fortran-77 to C translator. 
+f2c:
+f2c:      Contains libf2c.so.0.11, ported by Rob Hooft. This package uses
+f2c:      an 'f77' script that hides the C translation process from the user.
+f2c:
+
+PACKAGE NAME:  fvwm-1.23b.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  212 K
+PACKAGE SIZE (uncompressed):  820 K
+PACKAGE DESCRIPTION:
+fvwm-1.23b: FVWM version 1.23b
+fvwm-1.23b:
+fvwm-1.23b: Fvwm is a window manager for X11.  It is a derivative of twm,
+fvwm-1.23b: redesigned to minimize memory consumption, provide a 3-D look to
+fvwm-1.23b: window frames, and provide a simple virtual desktop.
+fvwm-1.23b:
+
+PACKAGE NAME:  gcc-2.8.1.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  2796 K
+PACKAGE SIZE (uncompressed):  5930 K
+PACKAGE DESCRIPTION:
+gcc-2.8.1:   gcc-2.8.1.
+gcc-2.8.1:
+gcc-2.8.1:   The GNU C compiler and support files (v. 2.8.1)
+gcc-2.8.1:
+
+PACKAGE NAME:  gccaout.tgz
+PACKAGE LOCATION:  ./contrib/a.out-compilers
+PACKAGE SIZE (compressed):  592 K
+PACKAGE SIZE (uncompressed):  1560 K
+PACKAGE DESCRIPTION:
+gccaout:
+gccaout:  Compiled with 486 optimizations, but works fine with 386.
+gccaout:
+
+PACKAGE NAME:  glibc-2.0.7pre6.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  3991 K
+PACKAGE SIZE (uncompressed):  19520 K
+PACKAGE DESCRIPTION:
+glibc-2.0.7pre6: glibc-2.0.7pre6 development package (preliminary)
+glibc-2.0.7pre6:
+glibc-2.0.7pre6: See the README file for this; don't say you weren't warned.
+glibc-2.0.7pre6:
+
+PACKAGE NAME:  gxxaout.tgz
+PACKAGE LOCATION:  ./contrib/a.out-compilers
+PACKAGE SIZE (compressed):  793 K
+PACKAGE SIZE (uncompressed):  1910 K
+PACKAGE DESCRIPTION:
+gxxaout:  The GNU C++ compiler and support files for the a.out format.
+gxxaout:
+gxxaout:  Compiled with 486 optimizations, but works fine with 386.
+gxxaout:
+gxxaout:  NOTE: Be sure to install the gccaout package, too.
+gxxaout:
+
+PACKAGE NAME:  icewm.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  88 K
+PACKAGE SIZE (uncompressed):  350 K
+PACKAGE DESCRIPTION:
+icewm:    This is icewm-0.8.9, a window manager for X11.
+icewm:    
+icewm:    The goal of IceWM is to provide a small, fast and familiar window
+icewm:    manager for the X11 window system. Compatibility with the mwm window
+icewm:    manager is desired and will be implemented where appropriate.
+icewm:    
+icewm:    The IceWM is designed to emulate the look of Motif, OS/2 Warp 4, OS/2
+icewm:    Warp 3 and Windows 95. Others might added in the future.
+icewm:    
+icewm:    It also tries to combine the feel of the above systems whenever it is
+icewm:    compatible.
+
+PACKAGE NAME:  ircd.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  149 K
+PACKAGE SIZE (uncompressed):  340 K
+PACKAGE DESCRIPTION:
+ircd:     ircd - The Internet Relay Chat Program Server
+ircd:     ircd is the server (daemon) program for the Internet Relay
+ircd:     Chat Program.  The ircd is a server in that its function
+ircd:     is to "serve" the client program irc(1) with messages and
+ircd:     commands.  All commands and user messages are passed
+ircd:     directly to the ircd for processing and relaying to other
+ircd:     ircd sites. The irc(1) program depends upon there being
+ircd:     an ircd server running somewhere (either on your local
+ircd:     UNIX site or a remote ircd site) so that it will have
+ircd:     somewhere to connect to and thus allow the user to begin
+ircd:     talking to other users.
+
+PACKAGE NAME:  ircii-4.4.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  772 K
+PACKAGE SIZE (uncompressed):  2540 K
+PACKAGE DESCRIPTION:
+ircii-4.4: IRC clients
+ircii-4.4:
+ircii-4.4: Contains the ircii-4.4 IRC client, as well as the ircii-pana_0.74p2
+ircii-4.4: (BitchX) IRC client.
+ircii-4.4:
+
+PACKAGE NAME:  libaout.tgz
+PACKAGE LOCATION:  ./contrib/a.out-compilers
+PACKAGE SIZE (compressed):  655 K
+PACKAGE SIZE (uncompressed):  2160 K
+PACKAGE DESCRIPTION:
+libaout:  Libraries for the old a.out binary format. (libc-4.7.6)
+libaout:
+libaout:  These libraries are needed if you plan to compile programs in the
+libaout:  a.out binary format.
+libaout:
+
+PACKAGE NAME:  noweb-2.8a.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  1625 K
+PACKAGE SIZE (uncompressed):  3780 K
+PACKAGE DESCRIPTION:
+noweb-2.8a: Noweb is a literate-programming tool like FunnelWEB or nuweb, only
+noweb-2.8a: simpler.  A noweb file contains program source code interleaved with
+noweb-2.8a: documentation.  When noweb is invoked, it writes the program source
+noweb-2.8a: code to the output files mentioned in the noweb file, and it writes
+noweb-2.8a: a TeX file for typeset documentation.  The author recommends using 
+noweb-2.8a: LaTeX; noweb comes with an efficient LaTeX->HTML converter, so the
+noweb-2.8a: resulting programs can easily be browsed on the World-Wide Web.
+noweb-2.8a: More info can be found at URL http://www.cs.virginia.edu/~nr/noweb
+noweb-2.8a: and on the USENET news group comp.programming.literate.
+noweb-2.8a:
+
+PACKAGE NAME:  nvi-1.79.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  429 K
+PACKAGE SIZE (uncompressed):  1230 K
+PACKAGE DESCRIPTION:
+nvi-1.79: nvi - 'vi' clone.
+nvi-1.79:
+nvi-1.79: Version 1.79 of nex/nvi, a freely redistributable replacement for the
+nvi-1.79: Berkeley ex and vi text editors.
+nvi-1.79:
+
+PACKAGE NAME:  objcaout.tgz
+PACKAGE LOCATION:  ./contrib/a.out-compilers
+PACKAGE SIZE (compressed):  554 K
+PACKAGE SIZE (uncompressed):  1290 K
+PACKAGE DESCRIPTION:
+objcaout: The GNU Objective-C compiler and support files for the a.out format.
+objcaout:
+objcaout: Compiled with 486 optimizations, but works fine with 386.
+objcaout:
+objcaout: NOTE: Be sure to install the gccaout.tgz package, too.
+objcaout:
+
+PACKAGE NAME:  pdksh-2.1.13.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  197 K
+PACKAGE SIZE (uncompressed):  450 K
+PACKAGE DESCRIPTION:
+pdksh-2.1.13: pdksh-5.2.13
+pdksh-2.1.13:
+pdksh-2.1.13: A freely distributable Korn shell clone.
+pdksh-2.1.13:
+
+PACKAGE NAME:  qv-utils.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  40 K
+PACKAGE SIZE (uncompressed):  140 K
+PACKAGE DESCRIPTION:
+qv-utils: qv-utils.
+qv-utils:
+qv-utils: This package contains utilities for use with Casio's QV-10, QV-10a,
+qv-utils: QV-11, QV-30, QV-100, and QV-300 digital cameras.  It may also work
+qv-utils: with other Casio cameras.
+qv-utils:
+
+PACKAGE NAME:  readline-2.1.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  190 K
+PACKAGE SIZE (uncompressed):  540 K
+PACKAGE DESCRIPTION:
+readline-2.1: GNU readline-2.1
+readline-2.1:
+readline-2.1: This is a binary package containing the GNU readline library,
+readline-2.1: header files, and documentation.  Readline is a library used to
+readline-2.1: facilitate easy command line input and editing in user programs.
+readline-2.1:
+
+PACKAGE NAME:  wmaker.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  1479 K
+PACKAGE SIZE (uncompressed):  3790 K
+PACKAGE DESCRIPTION:
+wmaker:   This is WindowMaker-0.51.2, a window magager for X11.
+wmaker:
+wmaker:   Window Maker is a X11 window manager with a NEXTSTEP look.
+wmaker:   It tries to emulate NeXT's look as much as possible, but
+wmaker:   it deviates from it as necessary.
+wmaker:
+
+PACKAGE NAME:  xcdroast.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  440 K
+PACKAGE SIZE (uncompressed):  1170 K
+PACKAGE DESCRIPTION:
+xcdroast: xcdroast-0.96e.
+xcdroast:
+xcdroast: xcdroast is an X11 based frontend for programs like cdrecord and
+xcdroast: mkisofs.  With a few simple mouse clicks you can copy or create your
+xcdroast: own CDs, without long study of any command line parameters.
+xcdroast:
+
+PACKAGE NAME:  xemacs.tgz
+PACKAGE LOCATION:  ./contrib/xemacs
+PACKAGE SIZE (compressed):  17076 K
+PACKAGE SIZE (uncompressed):  36460 K
+PACKAGE DESCRIPTION:
+xemacs:   xemacs-20.4.
+xemacs:
+xemacs:   XEmacs is a version of Emacs for the X Window System, compatible with
+xemacs:   and containing many improvements over GNU Emacs, written by Richard
+xemacs:   Stallman of the Free Software Foundation.  It was originally based on
+xemacs:   an early release of GNU Emacs Version 19, and has tracked subsequent
+xemacs:   releases of GNU Emacs as they have become available.
+xemacs:
+
+PACKAGE NAME:  xemule.tgz
+PACKAGE LOCATION:  ./contrib/xemacs
+PACKAGE SIZE (compressed):  21274 K
+PACKAGE SIZE (uncompressed):  46800 K
+PACKAGE DESCRIPTION:
+xemule:   xemacs-20.4-mule.
+xemule:
+xemule:   XEmacs is a version of Emacs for the X Window System.  This version of
+xemule:   XEmacs was compiled with MULE (MULtilingual Enhancement) support.  It
+xemule:   can handle not only ASCII characters (7 bits) and ISO Latin-1 (8 bits)
+xemule:   but also Japanese, Chinese, Korean (16 bits) coded in the ISO2022
+xemule:   standard and its variants (e.g. EUC, Compound Text).  For Chinese
+xemule:   there is support for both GB and Big5.  In addition, Thai (based on
+xemule:   TIS620), Vietnamese (based on VISCII and VSCII), Arabic, and Ethiopic
+xemule:   are also supported.  Some languages require fonts from intlfonts-1.1.
+xemule:
+
+PACKAGE NAME:  xf86config-for-i740-1.0.0.tgz
+PACKAGE LOCATION:  ./contrib/extra-X-servers
+PACKAGE SIZE (compressed):  34 K
+PACKAGE SIZE (uncompressed):  130 K
+PACKAGE DESCRIPTION:
+xf86config-for-i740-1.0.0: Configuration tool with i740 setup patches added.
+
+PACKAGE NAME:  xgrabsc.tgz
+PACKAGE LOCATION:  ./contrib
+PACKAGE SIZE (compressed):  45 K
+PACKAGE SIZE (uncompressed):  110 K
+PACKAGE DESCRIPTION:
+xgrabsc:  A screengrabber for X.
+xgrabsc:
+xgrabsc:  Xgrabsc and xgrab allow you do take PostScript shapshots of individual
+xgrabsc:  X clients, regions of the X screen, or the entire screen.
+xgrabsc:
+
+

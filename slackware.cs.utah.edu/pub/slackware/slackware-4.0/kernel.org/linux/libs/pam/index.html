@@ -1,0 +1,133 @@
+<html>
+<TITLE>A Linux-PAM page</TITLE>
+<H3>Linux-PAM</H3>
+<P>
+This is the primary distribution site for the <a href="whatispam.html"
+>Linux-PAM (Pluggable Authentication Modules for Linux)</a> project. (The
+ftp version of this site is <a href="ftp://ftp.kernel.org/pub/linux/libs/pam/"
+>ftp://ftp.kernel.org/pub/linux/libs/pam/</a>.)
+</P>
+
+<p>
+Mirrors of this site include:
+<ul>
+<li> <a href="ftp://ftp.man.szczecin.pl/pub/security/SystemTools/pam"
+>ftp://ftp.man.szczecin.pl/pub/security/SystemTools/pam</a>
+<li> <a href="ftp://src.doc.ic.ac.uk:/packages/linux/ftp.kernel.org/libs/pam"
+>ftp://src.doc.ic.ac.uk:/packages/linux/ftp.kernel.org/libs/pam</a>
+<li> <a href="ftp://ftp.ras.ru/pub/mirrors/ftp.kernel.org/pub/linux/libs/pam"
+>ftp://ftp.ras.ru/pub/mirrors/ftp.kernel.org/pub/linux/libs/pam</a>
+</ul>
+</p>
+
+<p>
+Things to be found here are documentation and source code for Linux-PAM.
+</P>
+
+<h4>Documentation</h4>
+
+<p>
+<ul>
+<li> Some documentation:
+<ul>
+<li> The beginnings of a <a href="FAQ">FAQ</a>
+<li> <a href="Linux-PAM-html/"
+>Online documentation</a>
+<li> PostScript documentation:
+<ul>
+<li>For <a href="pam.ps.gz">sys-admins</a>, <a
+href="pam_appl.ps.gz">application writers</a> and <a
+href="pam_modules.ps.gz">module developers</a>.
+</ul>
+<li> a gzip'd tar file of html+PostScript+text documentation:
+<ul>
+<li> <a href="Linux-PAM-doc.tar.gz">Linux-PAM-doc.tar.gz</a>
+</ul>
+<li> A current list of <a href="modules.html">modules (and
+application patches)</a> available or under development.
+<li> Some more information on Linux-PAM from <a
+href="http://www.redhat.com/linux-info/pam/">Red Hat</a> (who've been
+including PAM in their distribution since they released Red Hat Linux 3.0.4).
+If you're confused about what PAM is, you might like to look here.
+Red Hat gets to deal with a lot of users, so they have taken some time
+to provide a gentle (amusing) overview.
+</ul>
+<li> FindMail have taken on the task of archiving the <a
+href="http://www.findmail.com/listsaver/pam-list/">Linux-PAM mailing
+list</a>.
+<li> Here is a <a href="pre/doc/current-draft.txt">working document</a>
+attempting to generalize PAM to support
+client<->server programming models. The original
+<a href="rfc86.0.txt.gz">DCE/OSF-RFC</a>
+as proposed by the people at SunSoft.
+<li> Further documentation courteously made available by Sun Microsystems,
+<ul>
+<li> The manual for <a href="sun_pam.conf.ps.gz">pam.conf</a>
+<li> The manual for <a href="sun_pam.ps.gz">pam</a>
+<li> The manual for <a href="sun_pam_sm.ps.gz">pam_sm module functions</a>
+<li> The manual for <a href="pam_get_user.ps.gz">pam_get_user</a>
+<li> The <a href="xsso.ps.gz">XSSO spec</a> which is X/Open's attempt
+to absorb PAM into something bigger (draft from 1997 courteously made
+available to us by Vipin).
+</ul>
+<li> Some more information for you if you want to use both <a 
+href="http://www.dementia.org/~shadow/pam.html">Solaris and
+Linux's PAM implementation</a>.
+</ul>
+
+<h4>Hall of Fame</h4>
+
+<p>
+Here we list the people that have <a href="HallOfFame.html">found bugs</a>
+in the Linux-PAM distribution. It is thanks to their efforts that Linux-PAM
+is a <em>safer</em> piece of software.</p>
+
+<h4>Source code</h4>
+
+<p>
+PAM for me is a hobby.  For this reason I do not supply pre-compiled
+binaries and am probably not the most appropriate person to seek
+support from.  [Feedback <B>is</B> welcome -- see below for email
+addresses.] If you are looking for a stable version of this code, you
+should look to versions that are included in standard distributions.
+<a href="http://www.caldera.com">Caldera</a> and <a
+href="http://www.redhat.com/">Red Hat</a> have PAM support integrated
+into their systems.  They also offer user support.
+
+<p>
+All of the <a href="pre">source code for PAM is here</a>.  Primarily
+this is the <a href="pre/library/Linux-PAM-0.66.tar.gz">Latest Linux-PAM tar
+ball</a>.  This file is <a href="pre/library/Linux-PAM-0.66.tar.gz.asc">PGP
+signed</a> with my PGP key:
+</p>
+<p>
+<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: 2.6.3a
+
+mQCNAzKOhJ4AAAEEAJ9xYnZSD1kYanF+8GUBhHf/gx6hGd8ZNmS5qIC8Qb8rMcTI
++E16nV+FnNRlPRbShITYjq1TPvVK8gTliZf41N9LRQZw0rywRt1NQyhdfKgDWYxB
+kSOwK67oDjkzzC56XS2rrGI6K3Rz/VtYElRyuQ6ZyaKTGcgU/TTwrUUqOYF1AAUR
+tChBbmRyZXcgRy4gTW9yZ2FuIDxtb3JnYW5AcGFyYy5wb3dlci5uZXQ+iQCVAwUQ
+MvNT5Cd5aW9FNqjdAQFt+wP/elq589YoIgZewnFbhB/wZ9cvNBOuDwKT7B71s5L4
+DW3cbE1SaCLgCwgZ3P5KRmqf2Yma+zAmj3zA5BqLou9czdrVeBRiIq77vDWR01q+
+vqiaQD5egroboOPt8OwT0tyTUvFTN+jVJHaBkmoYePvBvAbHJJhKuXSoRdTOgIx2
+lp6JAJUDBRAyjoSfNPCtRSo5gXUBATTWA/9IJKdFUmfndQtVPkPiQ76BUHmYXAUV
+zs/r/3V/KV14HhaPAHijAn/eCsB8vbD/WG41cjYb8VCjDE6QRmn+ydbv+7FPbBFU
+X30J8hCBLB/Ft7CL+lkMsjoZ+2usH7Wqx+yiyRdq7QLohZZy2nXSJjRzp+OFci1E
+bK45M7J9uNvl6Q==
+=tk+w
+-----END PGP PUBLIC KEY BLOCK-----
+</pre>
+</p>
+
+<p>
+Send comments etc to
+<a href="mailto:pam-list@redhat.com">The Linux-PAM mailing list</a>.
+Or to <a href="mailto:morgan@linux.kernel.org">me</a>. 
+</p>
+
+<hr>
+This page was last changed on 1998/2/28
+<hr>
+</html>

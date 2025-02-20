@@ -1,0 +1,2974 @@
+                 Linux Frequently Asked Questions with Answers
+                                       
+
+   October 4, 1998
+   
+   This is the list of Frequently Asked Questions for Linux, the free
+   Unix for just about every computer hardware platform on the planet.
+   Originally written for 386/486/586 Intel/ISA bus machines, versions
+   exist for Alpha, MIPS, ARM, 680x0, and PPC processors, and many
+   others. (See the question, "What is Linux? " below.) This
+   document should be read in conjunction with the Linux Documentation
+   Project's HOWTO series. ("Where can I get Linux material by FTP?
+   " and, "Where can I get the HOWTO's and other documentation? ")
+   The INFO-SHEET and META-FAQ, which are found in the same place, als
+   list sources of Linux information. Please look at these documents,
+   and, "You still haven't answered my question! " before posting
+   to a Usenet news group. You can also get Postscript, HTML, SGML, an
+   plain ASCII versions of this document. ("Formats in which this
+   FAQ is available. ")
+   
+1. Introduction and General Information 
+
+     * 1.1 What is Linux? 
+     * 1.2 Where do I start? 
+     * 1.3 What software does Linux support? 
+     * 1.4 Does Linux run on my computer? What hardware is supported?
+     * 1.5 What ports to other processors are there? 
+     * 1.6 How much hard disk space does Linux need? 
+     * 1.7 How much memory does Linux need? 
+     * 1.8 How much memory can Linux use? 
+     * 1.9 Is Linux public domain? Copyrighted? 
+       
+2. Network sources and resources. 
+
+     * 2.1 Where can I get the HOWTO's and other documentation? 
+     * 2.2 Where should I look on the World Wide Web for Linux stuff?
+     * 2.3 What newsgroups are there for Linux? 
+     * 2.4 Where can I find out about Linux and the Millennium (Y2K)
+       bug? 
+     * 2.5 Where can I get Linux material by FTP? 
+     * 2.6 I don't have FTP access. Where do I get Linux? 
+     * 2.7 I don't have Usenet access. Where do I get information? 
+     * 2.8 What mailing lists are there? 
+     * 2.9 Are the newsgroups archived anywhere? 
+       
+3. Compatibility with other operating systems. 
+
+     * 3.1 Can Linux share my disk with DOS? OS/2? 386BSD? Win95? 
+     * 3.2 How do I access files on my DOS partition or floppy? 
+     * 3.3 Does Linux support compressed ext2 file systems? 
+     * 3.4 Can I use my Stacked/DBLSPC/etc. DOS drive? 
+     * 3.5 Can I access OS/2 HPFS partitions from Linux? 
+     * 3.6 Can Linux access Amiga file systems? 
+     * 3.7 Can Linux access BSD, SysV, etc. UFS? 
+     * 3.8 Can Linux access SMB file systems? 
+     * 3.9 Can Linux access Macintosh file systems? 
+     * 3.10 Can I run Microsoft Windows programs under Linux? 
+     * 3.11 How can I boot Linux from OS/2's Boot Manager? 
+     * 3.12 How can I share a swap partition between Linux and MS
+       Windows? 
+       
+4. Linux's handling of file systems, disks, and drives 
+
+     * 4.1 How can I get Linux to work with my disk? 
+     * 4.2 How can I undelete files? 
+     * 4.3 Is there a defragmenter for ext2fs etc.? 
+     * 4.4 How do I format and create a file system on a floppy? 
+     * 4.5 I get nasty messages about inodes, blocks, and the like. 
+     * 4.6 My swap area isn't working. 
+     * 4.7 How do I remove LILO so my system boots DOS again? 
+     * 4.8 Why can't I use fdformat except as root? 
+     * 4.9 My ext2fs partitions are checked each time I reboot. 
+     * 4.10 My root file system is read-only! 
+     * 4.11 I have a huge /proc/kcore! Can I delete it? 
+     * 4.12 My AHA1542C doesn't work with Linux. 
+       
+5. Porting, compiling and obtaining programs 
+
+     * 5.1 How do I compile programs? 
+     * 5.2 How do I port XXX to Linux? 
+     * 5.3 What is ld.so and where do I get it? 
+     * 5.4 How do I upgrade the libraries withough trashing my
+       system? 
+     * 5.5 Has anyone ported / compiled / written XXX for Linux? 
+     * 5.6 Can I use code or a compiler compiled for a 486 on my 386?
+     * 5.7 What does gcc -O6 do? 
+     * 5.8 Where are linux/*.h and asm/*.h? 
+     * 5.9 I get errors when I try to compile the kernel. 
+     * 5.10 How do I make a shared library? 
+     * 5.11 My executables are (very) large. 
+     * 5.12 Does Linux support threads or lightweight processes? 
+     * 5.13 Where can I get `lint' for Linux? 
+     * 5.14 Where can I find kermit for Linux? 
+       
+6. Solutions to common miscellaneous problems. 
+
+     * 6.1 free dumps core. 
+     * 6.2 My clock is very wrong. 
+     * 6.3 Setuid scripts don't seem to work. 
+     * 6.4 Free memory as reported by free keeps shrinking. 
+     * 6.5 When I add more memory, the system slows to a crawl. 
+     * 6.6 Some programs (e.g. xdm) won't let me log in. 
+     * 6.7 Some programs let me log in with no password. 
+     * 6.8 My machine runs very slowly when I run GCC / X / ... 
+     * 6.9 I can only log in as root. 
+     * 6.10 My screen is all full of weird characters instead of
+       letters. 
+     * 6.11 I have screwed up my system and can't log in to fix it. 
+     * 6.12 I've discovered a huge security hole in rm! 
+     * 6.13 lpr(1) and/or lpd(8) don't work. 
+     * 6.14 Timestamps on files on MS-DOS partitions are set
+       incorrectly. 
+     * 6.15 How do I get LILO to boot the vmlinux file? 
+       
+7. How do I do this or find out that ... ? 
+
+     * 7.1 How can I get scrollback in text mode? 
+     * 7.2 How do I switch virtual consoles? How do I enable them? 
+     * 7.3 How do I set the time zone? 
+     * 7.4 What version of Linux and what machine name am I using? 
+     * 7.5 How can I enable or disable core dumps? 
+     * 7.6 How do I upgrade/recompile my kernel? 
+     * 7.7 Can I have more than 3 serial ports by sharing interrupts?
+     * 7.8 How do I make a bootable floppy? 
+     * 7.9 How do I remap my keyboard to UK, French, etc.? 
+     * 7.10 How do I get NUM LOCK to default to on? 
+     * 7.11 How do I set (or reset) my initial terminal colors?
+     * 7.12 How can I have more than 128Mb of swap? 
+       
+8. Miscellaneous information and questions answered. 
+
+     * 8.1 How do I program XYZ under Linux? 
+     * 8.2 What's all this about ELF? 
+     * 8.3 What is a .gz file ? And a .tgz ? And ... ? 
+     * 8.4 What does VFS stand for? 
+     * 8.5 What is a BogoMip? 
+     * 8.6 What is the Linux Journal and where can I get it? 
+     * 8.7 What online/free periodicals exist for Linux? 
+     * 8.8 How many people use Linux? 
+     * 8.9 How should I pronounce Linux? 
+       
+9. Frequently encountered error messages. 
+
+     * 9.1 Modprobe can't locate module, "XXX," and similar
+       messages. 
+     * 9.2 Unknown terminal type linux and similar. 
+     * 9.3 lp1 on fire 
+     * 9.4 INET: Warning: old style ioctl... called! 
+     * 9.5 ld: unrecognized option '-m486' 
+     * 9.6 GCC says Internal compiler error. 
+     * 9.7 make says Error 139 
+     * 9.8 shell-init: permission denied when I log in. 
+     * 9.9 No utmp entry. You must exec ... when I log in. 
+     * 9.10 Warning--bdflush not running. 
+     * 9.11 Warning: obsolete routing request made. 
+     * 9.12 EXT2-fs: warning: mounting unchecked file system. 
+     * 9.13 EXT2-fs warning: maximal count reached. 
+     * 9.14 EXT2-fs warning: checktime reached. 
+     * 9.15 df says Cannot read table of mounted file systems. 
+     * 9.16 fdisk says Partition X has different physical/logical
+       ... 
+     * 9.17 fdisk: Partition 1 does not start on cylinder boundary. 
+     * 9.18 fdisk says partition n has an odd number of sectors. 
+     * 9.19 mtools says cannot initialize drive XYZ 
+     * 9.20 At the start of booting: Memory tight 
+     * 9.21 My syslog says `end_request: I/O error, ...'. 
+     * 9.22 You don't exist. Go away. 
+       
+10. The X Window System. 
+
+     * 10.1 Does Linux support X Windows? 
+     * 10.2 Where can I get an XF86Config for my system? 
+     * 10.3 xterm logins show up strangely in who, finger. 
+     * 10.4 I can't get X Windows to work right. 
+       
+11. Questions applicable to very out-of-date software. 
+
+     * 11.1 fdisk says cannot use nnn sectors of this partition. 
+     * 11.2 GCC sometimes uses huge amounts of virtual memory and
+       thrashes.
+       
+12. How to get further assistance. 
+
+     * 12.1 You still haven't answered my question! 
+     * 12.2 What to put in a request for help. 
+     * 12.3 I want to mail someone about my problem. 
+       
+13. Administrative information and acknowledgments. 
+
+     * 13.1 Feedback is invited. 
+     * 13.2 Formats in which this FAQ is available. 
+     * 13.3 Authorship and acknowledgments. 
+     * 13.4 Disclaimer and Copyright. 
+   
+   
+   
+1. Introduction and General Information
+
+1.1 What is Linux?
+
+   Linux is the free Unix written from scratch by Linus Torvalds with
+   assistance from a loosely-knit team of hackers from across the
+   Internet. Linux aims towards POSIX compliance, and has all of the
+   features you would expect of a modern, fully fledged Unix: true
+   multitasking, virtual memory, shared libraries, demand loading,
+   shared, copy-on-write executables, proper memory management, and
+   TCP/IP networking.
+   
+   Linux runs mainly on 386/486/586-based PC's, using the hardware
+   facilities of the 80386 processor family (TSS segments, et al.) to
+   implement these features. Ports to other architectures are underway
+   (See, "What ports to other processors are there? ")
+   
+   See the Linux INFO-SHEET for more details. ("Where can I get
+   the HOWTO's and other documentation? ")
+   
+   The Linux kernel is distributed under the GNU General Public Licens
+   ("Is Linux public domain? Copyrighted? ")
+   
+   
+1.2 Where do I start?
+
+   There are a handful of major Linux distributions. For information
+   about them, and how they are installed, see Matthew Welsh's
+   Installation and Getting Started, or IGS for short. It's located at
+   the Linux Documentation Project Home Page,
+   http://sunsite.unc.edu/LDP.
+   
+   There is also an Installation HOWTO on the LDP Home Page.
+   
+   Most of the distributions are available via anonymous FTP from vari
+   Linux archive sites. ("Where can I get Linux material by FTP?
+   ") There are also a large number of other releases which are
+   distributed less globally that suit special local and national need
+   
+   
+1.3 What software does Linux support?
+
+   Linux supports GCC, Emacs, the X Window System, all the standard Un
+   utilities, TCP/IP (including SLIP and PPP), and all of the hundreds
+   programs that people have compiled or ported to it.
+   
+   There is a DOS emulator, called DOSEMU. The latest stable release i
+   0.98.1. The FTP archives are at ftp://ftp.dosemu.org/dosemu. The
+   Web site is htmlurl url="http://www.dosemu.org"
+   name="http://www.dosemu.org">.
+   
+   The emulator can run DOS itself and some (but not all) DOS
+   applications. Be sure to look at the README file to determine which
+   version you should get. Also, see the DOSEMU-HOWTO (slightly dated 
+   this point--it doesn't cover the most recent version of the program
+   at sunsite.unc.edu/pub/Linux/docs/HOWTO.
+   
+   Work has been progressing on an emulator for Microsoft Windows
+   binaries. ("Can I run Microsoft Windows programs under Linux?
+   ")
+   
+   iBCS2 (Intel Binary Compatibility Standard) emulator code for SVR4 
+   and SVR3.2 COFF binaries can be included in the kernel as a
+   compile-time option. There is information at
+   tsx-11.mit.edu/pub/linux/BETA/ibcs2/README.
+   
+   For more information see the INFO-SHEET, which is one of the HOWTO'
+   ("Where can I get the HOWTO's and other documentation? " and,
+   "How do I port XXX to Linux? ")
+   
+   Some companies have commercial software available, including Motif.
+   They announce their availability in comp.os.linux.announce--try
+   searching the archives. ("Are the newsgroups archived anywhere?
+   ")
+   
+   
+1.4 Does Linux run on my computer? What hardware is supported?
+
+   Giving Linux a try requires a machine with an Intel '386, '486, or
+   '586 processor with at least 2Mb of RAM and a single floppy drive. 
+   do anything useful, more RAM and disk space is needed. ("How
+   much memory does Linux need? ")
+   
+   VESA Local Bus and PCI are supported.
+   
+   MCA (IBM's proprietary bus) and ESDI hard drives are mostly support
+   There is further information on the MCA bus and what cards Linux
+   supports on the Micro Channel Linux Web page,
+   http://glycerine.itsmm.uni.edu/mca.
+   
+   Linux runs on '386 family based laptops, with X on most of them. Th
+   is a Web page at
+   http://www.cs.utexas.edu/users/kharker/linux-laptop/.
+   
+   For details of exactly which PC's, video cards, disk controllers, e
+   work see the INFO-SHEET and the Hardware-HOWTO. (See "Where can
+   I get the HOWTO's and other documentation? ")
+   
+   There is a port of Linux to the 8086, known as the Embeddable Linux
+   Kernel Subset (ELKS). This is a 16-bit subset of the Linux kernel
+   which will mainly be used for embedded systems. See
+   http://www.linux.org.uk/Linux8086.html for more information.
+   Linux will never run fully on an 8086 or '286, because it requires
+   task-switching and memory management facilities not found on these
+   processors.
+   
+   Linux supports multiprocessing with Intel MP architecture. See the
+   file Documentation/smp.tex in the Linux kernel source code
+   distribution.
+   
+   See the next question for a (probably incomplete) list of hardware
+   platforms Linux has been ported to.
+   
+   
+1.5 What ports to other processors are there?
+
+   There is a reasonably complete list of Linux ports at
+   http://www.ctv.es/USERS/xose/linux/linux_ports.html, and at
+   http://www.linuxhq.com/dist-index.html.
+   
+   A project has been underway for a while to port Linux to suitable
+   68000-series based systems like Amigas and Ataris. The Linux/m68K F
+   is located at www.clark.net/pub/lawrencc/linux/faq/faq.html. The
+   URL of the Linux/m68k home page is www.linux-m68k.
+   
+   There is a linux-680x0 mailing list. ("What mailing lists are
+   there? ")
+   
+   There is (or was) a FTP site for the Linux-m68k project on
+   ftp.phil.uni-sb.de/pub/atari/linux-68k, but this address may no
+   longer be current.
+   
+   Debian GNU/Linux is being ported to Alpha, Sparc, PowerPC, and ARM
+   platforms. There are mailing lists for all of them. See
+   http://www.debian.org/MailingLists/subscribe.
+   
+   One of the Linux-PPC project pages has moved recently. Its location
+   http://www.linuxppc.org, and the archive site is
+   ftp.linuxppc.org/linuxppc.
+   
+   There is a Linux-PPC support page at www.cs.nmt.edu/~linuxppc/.
+   There you will find the kernel that is distributed with Linux.
+   
+   Apple now supports MkLinux development on Power Macs, based on OSF 
+   the Mach microkernel. See http://www.mklinux.apple.com.
+   
+   A port to the 64-bit DEC Alpha/AXP is at
+   http://www.azstarnet.com/~axplinux/. There is a mailing list at
+   vger.rutgers.edu. ("What mailing lists are there? ")
+   
+   Ralf Baechle is working on a port to the MIPS, initially for the R4
+   on Deskstation Tyne machines. The Linux-MIPS FTP sites are
+   ftp.fnet.fr/linux-mips and
+   ftp://ftp.linux.sgi.com/pub/mips-linux. Interested people may
+   mail their questions and offers of assistance to
+   linux@waldorf-gmbh.de.
+   
+   There is also a MIPS channel on the Linux Activists mail server and
+   linux-mips mailing list. ("What mailing lists are there? ")
+   
+   There are currently two ports of Linux to the ARM family of
+   processors. One of these is for the ARM3, fitted to the Acorn A5000
+   and it includes I/O drivers for the 82710/11 as appropriate. The ot
+   is to the ARM610 of the Acorn RISC PC. The RISC PC port is currentl
+   in its early to middle stages, owing to the need to rewrite much of
+   the memory handling. The A5000 port is in restricted beta testing. 
+   release is likely soon.
+   
+   For more, up-to-date information, read the newsgroup
+   comp.sys.acorn.misc. There is a FAQ at
+   http://www.arm.uk.linux.org
+   
+   The Linux SPARC project is a hotbed of activity. There is a FAQ
+   available from Jim Mintha's Linux for SPARC Processors page,
+   http://www.geog.ubc.ca/sparclinux.html. The SPARC/Linux archives
+   are at vger.rutgers.edu/pub/linux/Sparc.
+   
+   There is also a port ("Hardhat") to SGI/Indy machines. The URL is
+   http://www.linux.sgi.com.
+   
+   
+1.6 How much hard disk space does Linux need?
+
+   About 10Mb for a very minimal installation, suitable for trying Lin
+   and not much else.
+   
+   You can fit an installation that includes X into 80Mb. Installing
+   Debian GNU/Linux takes 500Mb--1GB, including kernel source code, so
+   space for user files, and spool areas.
+   
+   
+1.7 How much memory does Linux need?
+
+   At least 4MB, and then you will need to use special installation
+   procedures until the disk swap space is installed. Linux will run
+   comfortably in 4MB of RAM, although X Windows Apps will run slowly
+   because they need to swap out to disk.
+   
+   Some recent applications, like Netscape, require 64MB of physical
+   memory.
+   
+   
+1.8 How much memory can Linux use?
+
+   A number of people have asked how to address more than 64 MB of
+   memory, which is the default upper limit. Place the following in yo
+   lilo.conf file:
+append="mem=XXM"
+
+   Where "XX" is the amount of memory, specified as megabytes; for
+   example, '128M'. For further details, see the lilo manual page.
+   
+   
+1.9 Is Linux public domain? Copyrighted?
+
+   The Linux kernel copyright belongs to Linus Torvalds. He has placed
+   under the GNU General Public License, which basically means that yo
+   may freely copy, change, and distribute it, but you may not impose 
+   restrictions on further distribution, and you must make the source
+   code available.
+   
+   This is not the same as Public Domain. See the Copyright FAQ,
+   rtfm.mit.edu/pub/usenet/news.answers/law/copyright, for details.
+   
+   Full details are in the file COPYING in the Linux kernel sources
+   (probably in /usr/src/linux on your system).
+   
+   The licenses of the utilities and programs which come with the
+   installations vary. Much of the code is from the GNU Project at the
+   Free Software Foundation, and is also under the GPL.
+   
+   Note that discussion about the merits or otherwise of the GPL shoul
+   be posted to the news group gnu.misc.discuss, and not to the
+   comp.os.linux hierarchy.
+   
+   
+   
+   
+2. Network sources and resources.
+
+   
+2.1 Where can I get the HOWTO's and other documentation?
+
+   Look in the following places, and the sites that mirror them.
+     * ftp.funet.fi : /pub/OS/Linux/doc/HOWTO
+     * tsx-11.mit.edu : /pub/linux/docs/HOWTO
+     * sunsite.unc.edu : /pub/Linux/docs/HOWTO
+       
+   For a complete list of Linux FTP sites, see, "Where can I get
+   Linux material by FTP? "
+   
+   If you don't have access to FTP, try the FTP-by-mail servers at
+   ftpmail@decwrl.dec.com, ftpmail@doc.ic.ac.uk, or
+   ftp-mailer@informatik.tu-muenchen.de.
+   
+   A complete list of HOWTO's and Mini-HOWTO's is available in the fil
+   HOWTO-INDEX in the docs/HOWTO directory at the FTP sites, and on th
+   Web at http://sunsite.unc.edu/LDP/HOWTO/HOWTO-INDEX.html, but
+   here is a (possibly incomplete) list:
+AX25-HOWTO                             Access-HOWTO
+Assembly-HOWTO                         Benchmarking-HOWTO
+BootPrompt-HOWTO                       Bootdisk-HOWTO
+CD-Writing-HOWTO                       CDROM-HOWTO
+Chinese-HOWTO                          Commercial-HOWTO
+Consultants-HOWTO                      Cyrillic-HOWTO
+DNS-HOWTO                              DOS-to-Linux-HOWTO
+DOSEMU-HOWTO                           Danish-HOWTO
+Distribution-HOWTO                     ELF-HOWTO
+Emacspeak-HOWTO                        Ethernet-HOWTO
+Finnish-HOWTO                          Firewall-HOWTO
+Ftape-HOWTO                            GCC-HOWTO
+German-HOWTO                           HAM-HOWTO
+HOWTO-INDEX                            Hardware-HOWTO
+Hebrew-HOWTO                           IPX-HOWTO
+ISP-Hookup-HOWTO                       Installation-HOWTO
+Intranet-Server-HOWTO                  Italian-HOWTO
+Java-CGI-HOWTO                         Kernel-HOWTO
+Keyboard-and-Console-HOWTO             MGR-HOWTO
+MILO-HOWTO                             Mail-HOWTO
+NET-3-HOWTO                            NFS-HOWTO
+NIS-HOWTO                              News-HOWTO
+Optical-Disk-HOWTO                     PCI-HOWTO
+PCMCIA-HOWTO                           PPP-HOWTO
+Pilot-HOWTO                            Polish-HOWTO
+Printing-HOWTO                         Printing-Usage-HOWTO
+RPM-HOWTO                              Reading-List-HOWTO
+SCSI-HOWTO                             SCSI-Programming-HOWTO
+SMB-HOWTO                              Serial-HOWTO
+Serial-Programming-HOWTO               Shadow-Password-HOWTO
+Slovenian-HOWTO                        Sound-HOWTO
+Sound-Playing-HOWTO                    Spanish-HOWTO
+TeTeX-HOWTO                            Thai-HOWTO
+Tips-HOWTO                             UMSDOS-HOWTO
+UPS-HOWTO                              UUCP-HOWTO
+User-Group-HOWTO                       VAR-HOWTO
+VMS-to-Linux-HOWTO                     XFree86-HOWTO
+XFree86-Video-Timings-HOWTO
+3-Button-Mouse
+
+   The following Mini-HOWTO's are available from
+   http://sunsite.unc.edu/pub/Linux/HOWTO/mini:
+ADSM-Backup                            AI-Alife
+Advocacy                               Backup-With-MSDOS
+Battery-Powered                        Boca
+BogoMips                               Bridge
+Bridge+Firewall                        Clock
+Colour-ls                              Comeau-C++
+DHCPd                                  Dial-On-Demand
+Diald                                  Dip+SLiRP+CSLIP
+Diskless                               Dynamic-IP-Hacks
+Ext2fs-Undeletion                      GTEK-BBS-550
+HTML-Validation                        IO-Port-Programming
+IP-Alias                               IP-Masquerade
+IP-Subnetworking                       JE
+Jaz-Drive                              Kerneld
+Key-Setup                              LBX
+Large-Disk                             Linux+DOS+Win95
+Linux+DOS+Win95+OS2                    Linux+NT-Loader
+Linux+OS2+DOS                          Linux+Win95
+Loadlin+Win95                          Locales
+MIDI+SB                                Mail-Queue
+Mail2News                              Man-Page
+Multiple-Disks-Layout                  Multiple-Ethernet
+NFS-Root                               NFS-Root-Client
+Netscape+Proxy                         Offline-Mailing
+Online-Support                         PLIP
+PPP-over-minicom                       Pager
+Partition                              Print2Win
+Process-Accounting                     Proxy-ARP
+Public-Web-Browser                     Qmail+MH
+Quota                                  RCS
+Remote-Boot                            Remote-X-Apps
+SLIP+proxyARP                          SLIP-PPP-Emulator
+Sendmail+UUCP                          Software-Building
+Software-RAID                          Soundblaster-16
+Soundblaster-AWE64                     StarOffice
+Swap-Space                             Term-Firewall
+Tiny-News                              Token-Ring
+Upgrade                                VPN
+Virtual-wu-ftpd                        Visual-Bell
+Win95+Win+Linux                        Windows-Modem-Sharing
+WordPerfect                            X-Big-Cursor
+XFree86-XInside                        Xterm-Title
+Xterminal                              ZIP-Drive
+ZIP-Install
+
+   In addition, translations of the HOWTO's are available from
+   sunsite.unc.edu/pub/Linux/docs/HOWTO/translations and mirrors
+   worldwide. Translations in the following languages are available:
+   
+Chinese (zh)                    Croatian(hr)
+French (fr)                     German (de)
+Hellenic (el)                   Indonesian (id)
+Italian (it)                    Japanese (jp)
+Korean (ko)                     Polish (pl)
+Spanish (es)                    Slovenian (sl)
+Swedish (sv)                    Turkish (tr)
+
+   The HOWTO's are also on the Web, at the Linux Documentation Project
+   Home Page, http://sunsite.unc.edu/LDP.
+   
+   More of these documents are always in preparation. Please get in to
+   with Timothy Bynum, tjbynum@sunsite.unc.edu, the HOWTO
+   coordinator, if you are interested in writing one. The file
+   sunsite.unc.edu/pub/Linux/HOWTO/HOWTO-INDEX contains guidelines
+   for writing a HOWTO. He has a Web page that lists current HOWTO
+   updates and additions at
+   wallybox.cei.net/~tjbynum/HOWTO/projects.
+   
+   The Guide Series produced by the Linux Documentation Project is
+   available from http://sunsite.unc.edu/LDP. Please read them if
+   you are new to Unix and Linux. Here is a list of those available so
+   far:
+   
+     * The Linux Documentation Project Manifesto, by Matt Welsh.
+     * Installation and Getting Started Guide, by Matt Welsh.
+     * The Linux Kernel, by David Rusling.
+     * The Network Administrator's Guide, by Olaf Kirch.
+     * The Linux Programmer's Guide, by Sven Goldt, Sven van der
+       Meer, Scott Burkett, and Matt Welsh.
+     * The Linux System Administrator's Guide, Version 0.5, by Lars
+       Wirzenius.
+       
+   In addition, there is a FAQ for Linux kernel developers at
+   http://www.tux.org/html/.
+   
+   
+2.2 Where should I look on the World Wide Web for Linux stuff?
+
+   Two Web pages in particular provide good starting point for general
+   Linux information: Linux International's Home Page, at
+   http://www.li.org, and the Linux Online's Linux Home Page at
+   http://www.linux.org/.
+   
+   Both of these pages provide links to other sites, information about
+   general information, distributions, new software, documentation, an
+   news.
+   
+   Greg Hankins, gregh@cc.gatech.edu, maintains the Linux
+   Documentation Project Home Page, at http://sunsite.unc.edu/LDP.
+   This page refers to all of the HOWTO's and FAQ's, both those which 
+   available in HTML (WWW) format, and those which aren't.
+   
+   
+2.3 What newsgroups are there for Linux?
+
+   Comp.os.linux.announce is the moderated announcements group; you
+   should read this if you intend to use Linux: it contains informatio
+   about software updates, new ports, user group meetings, and commerc
+   products. It is the ONLY newsgroup that may carry commercial postin
+   Submissions for that group should be e-mailed to
+   linux-announce@news.ornl.gov.
+   
+   comp.os.linux.announce, however, is not archived on DejaNews or Alt
+   Vista. The only archive for the news group seems to be
+   www.iki.fi/mjr/linux/cola.html.
+   
+   [Axel Boldt]
+   
+   Also worth reading are the following other groups in the
+   comp.os.linux.* hierarchy--you may find many common problems too
+   recent for the documentation but are answered in the newsgroups.
+comp.os.linux.setup
+comp.os.linux.hardware
+comp.os.linux.networking
+comp.os.linux.x
+comp.os.linux.development.apps
+comp.os.linux.development.system
+comp.os.linux.advocacy
+comp.os.linux.misc
+
+   Remember that Linux is POSIX compatible, and most all of the materi
+   in comp.unix.* and comp.windows.x.* groups will be relevant. Apart
+   from hardware considerations, and some obscure or very technical
+   low-level issues, you'll find that these groups are good places to
+   start.
+   
+   Please read "You still haven't answered my question! " before
+   posting. Cross posting between different comp.os.linux.* groups is
+   rarely a good idea.
+   
+   There may well be Linux groups local to your institution or
+   area--check there first.
+   
+   See also "I don't have Usenet access. Where do I get
+   information? "
+   
+   Other regional and local newsgroups also exist--you may find the
+   traffic more manageable there. The French Linux newsgroup is
+   fr.comp.os.linux. The German one is de.comp.os.linux. In Australia,
+   try aus.computers.linux. In Croatia there is hr.comp.linux. In Ital
+   there is it.comp.linux.
+   
+   
+2.4 Where can I find out about Linux and the Millennium (Y2K) bug?
+
+   The Debian/GNU Linux people have a statement on their Web site at
+   http://www.debian.org
+   
+   Essentially, Linux uses libraries that store dates as 32-bit intege
+   which count the seconds since 1970. This counter will not overflow
+   until the year 2038, by which time the library programmers will
+   (hopefully) have upgraded the system software to store dates as 64-
+   integers.
+   
+   This, of course, does not mean that applications are not susceptibl
+   to the millennium bug, if they do not use the standard library
+   routines.
+   
+   The Free Software Foundation has a Web page about Y2K issues in GNU
+   software at http://www.fsf.org/software/year2000.html
+   
+   There is also a Usenet newsgroup, comp.software.year-2000, for gene
+   discussion of Y2K issues.
+   
+   
+2.5 Where can I get Linux material by FTP?
+
+   There are three main archive sites for Linux:
+     * ftp.funet.fi (Finland) : /pub/OS/Linux
+     * sunsite.unc.edu (US) : /pub/Linux
+     * tsx-11.mit.edu (US) : /pub/linux
+       
+   The best place to get the Linux kernel is
+   ftp.cs.helsinki.fi/pub/Linux_Kernel. Linus Torvalds uploads the
+   most recent kernel versions to this site.
+   
+   Of the U.S. distributions, Debian GNU/Linux is available at
+   ftp.debian.org/pub/debian. Red Hat Linux's home site is
+   ftp.redhat.com, and Linux Slackware's is ftp.cdrom.com.
+   
+   The contents of these sites is mirrored (copied, usually approximat
+   daily) by a number of other sites. Please use a site close to you--
+   will be faster for you and easier on the network.
+     * ftp.sun.ac.za/pub/linux/sunsite/ (South Africa)
+     * ftp.is.co.za/linux/sunsite/ (South Africa)
+     * ftp.cs.cuhk.hk/pub/Linux/ (Hong Kong)
+     * ftp.cs.cuhk.hk/pub/Linux/ (Hong Kong)
+     * ftp.spin.ad.jp/pub/linux/sunsite.unc.edu/ (Japan)
+     * ftp.nuri.net/pub/Linux/ (Korea)
+     * ftp.jaring.my/pub/Linux/ (Malaysia)
+     * ftp.nus.sg/pub/unix/Linux/ (Singapore)
+     * ftp.nectec.or.th/pub/mirrors/linux/ (Thailand)
+     * mirror.aarnet.edu.au/pub/linux/ (Australia)
+     * sunsite.anu.edu.au/pub/linux/ (Australia)
+     * ftp.monash.edu.au/pub/linux/ (Australia)
+     * ftp.univie.ac.at/systems/linux/sunsite/ (Austria)
+     * ftp.fi.muni.cz/pub/UNIX/linux/ (Czech Republic)
+     * ftp://sunsite.fri.uni-lj.si/pub/linux/ (Slovenia)
+     * ftp.funet.fi/pub/Linux/sunsite/ (Finland)
+     * ftp.univ-angers.fr/pub/Linux/ (France)
+     * ftp.iut-bm.univ-fcomte.fr (France)
+     * ftp.ibp.fr/pub/linux/sunsite/ (France)
+     * ftp.loria.fr/pub/linux/sunsite/ (France)
+     * ftp.dfv.rwth-aachen.de/pub/linux/sunsite/ (Germany)
+     * ftp.germany.eu.net/pub/os/Linux/Mirror.SunSITE/ (Germany)
+     * ftp.tu-dresden.de/pub/Linux/sunsite/ (Germany)
+     * ftp.uni-erlangen.de/pub/Linux/MIRROR.sunsite/ (Germany)
+     * ftp.gwdg.de/pub/linux/mirrors/sunsite/ (Germany)
+     * ftp.rz.uni-karlsruhe.de/pub/linux/mirror.sunsite/ (Germany)
+     * ftp.ba-mannheim.de/pub/linux/mirror.sunsite/ (Germany)
+     * ftp.uni-paderborn.de/pub/Mirrors/sunsite.unc.edu/ (Germany)
+     * ftp.uni-rostock.de/Linux/sunsite/ (Germany)
+     * tp.rus.uni-stuttgart.de/pub/unix/systems/linux/MIRROR.sunsite
+       / (Germany)
+     * ftp.uni-tuebingen.de/pub/linux/Mirror.sunsite/ (Germany)
+     * ftp.rz.uni-ulm.de/pub/mirrors/linux/sunsite/ (Germany)
+     * ftp.kfki.hu/pub/linux/ (Hungary)
+     * linux.italnet.it/pub/Linux/ (Italy)
+     * ftp.unina.it/pub/linux/sunsite/ (Italy)
+     * giotto.unipd.it/pub/unix/Linux/ (Italy)
+     * cnuce-arch.cnr.it/pub/Linux/ (Italy)
+     * ftp.flashnet.it/mirror2/sunsite.unc.edu/ (Italy)
+     * ftp.nijenrode.nl/pub/linux/sunsite.unc-mirror/ (Netherlands)
+     * ftp.LeidenUniv.nl/pub/linux/sunsite/ (Netherlands)
+     * ftp.nvg.unit.no/pub/linux/sunsite/ (Norway)
+     * ftp://sunsite.icm.edu.pl/pub/Linux/sunsite.unc.edu/ (Poland)
+     * ftp.rediris.es/software/os/linux/sunsite/ (Spain)
+     * sunsite.rediris.es/software/linux/ (Spain)
+     * ftp.cs.us.es/pub/Linux/sunsite-mirror/ (Spain)
+     * ftp.etse.urv.es/pub/mirror/linux/ (Spain)
+     * ftp.etsimo.uniovi.es/pub/linux/ (Spain)
+     * ftp.luna.gui.es/pub/linux.new/ (Spain)
+     * ftp.switch.ch/mirror/linux/ (Switzerland)
+     * ftp.metu.edu.tr/pub/linux/sunsite/ (Turkey)
+     * unix.hensa.ac.uk/mirrors/sunsite/pub/Linux/ (UK)
+     * ftp.maths.warwick.ac.uk/mirrors/linux/sunsite.unc-mirror/
+       (UK)
+     * ftp.idiscover.co.uk/pub/Linux/sunsite.unc-mirror/ (UK)
+     * sunsite.doc.ic.ac.uk/packages/linux/sunsite.unc-mirror/ (UK)
+     * ftp.dungeon.com/pub/linux/sunsite-mirror/ (UK)
+     * ftp.io.org/pub/mirrors/linux/sunsite/ (Canada)
+     * ftp.cc.gatech.edu/pub/linux/ (US)
+     * ftp.cdrom.com/pub/linux/sunsite/ (US)
+     * ftp.siriuscc.com/pub/Linux/Sunsite/ (US)
+     * ftp.engr.uark.edu/pub/linux/sunsite/ (US)
+     * ftp.infomagic.com/pub/mirrors/linux/sunsite/ (US)
+     * linux.if.usp.br/pub/mirror/sunsite.unc.edu/pub/Linux/
+       (Brazil)
+     * farofa.ime.usp.br/pub/linux/ (Brazil)
+       
+   Not all of these mirror all of the other "source" sites, and some
+   have material not available on the "source" sites.
+   
+   
+2.6 I don't have FTP access. Where do I get Linux?
+
+   The easiest thing is probably to find a friend with FTP access. If
+   there is a Linux user's group near you, they may be able to help.
+   
+   If you have a reasonably good email connection, you could try the
+   FTP-by-mail servers at ftpmail@ftp.sunet.se,
+   ftpmail@garbo.uwasa.fi, or ftpmail@ftp.uni-stuttgart.de.
+   
+   Linux is also available via traditional mail on CD-ROM. The file
+   sunsite.unc.edu/pub/Linux/docs/HOWTO/Installation-HOWTO, and the
+   file sunsite.unc.edu/pub/Linux/docs/HOWTO/Distribution-HOWTO
+   contain information on these distributions.
+   
+   
+2.7 I don't have Usenet access. Where do I get information?
+
+   A digest of comp.os.linux.announce is available by mailing the word
+   "subscribe" (without the quotes) as the body of a message to
+   linux-announce-REQUEST@news-digests.mit.edu. Subscribing to this
+   list is a good idea, as it carries important information and
+   documentation about Linux.
+   
+   Please remember to use the *-request addresses for your subscribe a
+   unsubscribe messages; mail to the other address is posted to the ne
+   group.
+   
+   
+2.8 What mailing lists are there?
+
+   The Linux developers now mainly use the Majordomo server at
+   majordomo@vger.rutgers.edu. Send a message with the word
+   "lists" (without the quotes) in the body to get a list of lists
+   there. Add a line with the word, "help," to get the standard
+   Majordomo help file that lists instructions for subscribing and
+   unsubscribing to the lists.
+   
+   Most of the lists are used by Linux developers to talk about techni
+   issues and future developments. These are not intended for new user
+   questions.
+   
+   There is a linux-newbie list where, "no question is too stupid."
+   Unfortunately, it seems that few experienced users read that list, 
+   it has very low volume.
+   
+   
+2.9 Are the newsgroups archived anywhere?
+
+   The Usenet Linux news groups are archived at
+   http://www.dejanews.com, http://www.reference.com, and
+   http://altavista.digital.com
+   
+   Sunsite.unc.edu/pub/Linux/docs/linux-announce.archive contains
+   archives of comp.os.linux.announce. These are mirrored from
+   src.doc.ic.ac.uk/usenet, which also archives comp.os.linux,
+   comp.os.linux.development.apps, and comp.os.linux.development.syste
+   
+   There is an `easy to access' archive of comp.os.linux.announce on t
+   World Wide Web at
+   http://www.leo.org/archiv/linux/archiv/ann_index.html which
+   supports searching and browsing.
+   
+   
+   contents
+   
+   
+3. Compatibility with other operating systems.
+
+   
+3.1 Can Linux share my disk with DOS? OS/2? 386BSD? Win95?
+
+   Yes. Linux uses the standard MS-DOS partitioning scheme, so it can
+   share your disk with other operating systems. Note, however, that m
+   other operating systems may not be exactly compatible. DOS's FDISK.
+   and FORMAT.EXE, for example, can overwrite data in a Linux partitio
+   because they sometimes incorrectly use partition data from the
+   partition's boot sector rather than the partition table.
+   
+   In order to prevent programs from doing this, it is a good idea to
+   zero out--under Linux--the start of a partition you created, before
+   you use MS-DOS--or whatever--to format it. Type:
+$ dd if=/dev/zero of=/dev/hdXY bs=512 count=1
+
+   where hdXY is the relevant partition; e.g., /dev/hda1 for the first
+   partition of the first (IDE) disk.
+   
+   Linux can read and write the files on your DOS and OS/2 FAT partiti
+   and floppies using either the DOS file system type built into the
+   kernel or mtools. There is kernel support for the VFAT file system
+   used by Windows 9x and Windows NT.
+   
+   For information about FAT32 partition support, see
+   http://bmrc.berkeley.edu/people/chaffee/fat32.html.
+   
+   See, "What software does Linux support? " for details and
+   status of the emulators for DOS, MS Windows, and System V programs.
+   
+   See also, "Can Linux access Amiga file systems? ", "Can
+   Linux access Macintosh file systems? ", "Can Linux access BSD,
+   SysV, etc., UFS? ", and "Can Linux access SMB file systems? "
+   
+   There are said to be NTFS drivers under development, which should
+   support compression as a standard feature.
+   
+   
+3.2 How do I access files on my DOS partition or floppy?
+
+   Use the DOS file system, type, for example:
+$ mkdir /dos
+$ mount -t msdos -o conv=text,umask=022,uid=100,gid=100 /dev/hda3 /dos
+
+   If it's a floppy, don't forget to umount it before ejecting it!
+   
+   You can use the conv=text/binary/auto, umask=nnn, uid=nnn, and gid=
+   options to control the automatic line-ending conversion, permission
+   and ownerships of the files in the DOS file system as they appear
+   under Linux. If you mount your DOS file system by putting it in you
+   /etc/fstab, you can record the options (comma-separated) there,
+   instead of defaults.
+   
+   Alternatively, you can use mtools, available in both binary and sou
+   form on the FTP sites. ("Where can I get Linux material by FTP?
+   ")
+   
+   A kernel patch (known as the fd-patches) is available which allows
+   floppies with nonstandard numbers of tracks and/or sectors to be us
+   this patch is included in the 1.1 alpha testing kernel series.
+   
+   
+3.3 Does Linux support compressed ext2 file systems?
+
+   As of recently, it does. Information about them is located at
+   http://www.netspace.net.au/~reiter/e2compr/.
+   
+   There is also a Web site for the e2compr patches The code is still
+   experimental and consists of patches for the 2.0 and 2.1 kernels. F
+   more information about the project, including the latest patches, a
+   the address of the mailing list, look up the URL at
+   http://debs.fuller.edu/e2compr/.
+   
+   [Roderich Schupp]
+   
+   Zlibc is a program that allows existing applications to read
+   compressed (GNU gzip'ed) files as if they were not compressed. Look
+   sunsite.unc.edu in /pub/Linux/libs/. The author is Alain Knuff.
+   
+   There is also a compressing block device driver, "DouBle," by
+   Jean-Marc Verbavatz, which can provide on-the-fly disk compression 
+   the kernel. The source-only distribution is located at sunsite.unc.
+   in the directory /pub/Linux/patches/diskdrives/. This driver
+   compresses inodes and directory information as well as files, so an
+   corruption of the file system is likely to be serious.
+   
+   There is also a package called tcx (Transparently Compressed
+   Executables), which allows you to keep infrequently compressed
+   executables compressed and only uncompress them temporarily when in
+   use. It is located on sunsite.unc.edu in the directory
+   /pub/Linux/utils/compress/.
+   
+   
+3.4 Can I use my Stacked/DBLSPC/etc. DOS drive?
+
+   Until recently, not very easily. You can access DOS 6.X volumes fro
+   the DOS emulator ("What software does Linux support? "), but
+   it's harder than accessing a normal DOS volume via the DOS kernel
+   option, a module, or mtools.
+   
+   There is a recently added package, dmsdos, which reads and writes
+   compressed file systems like DoubleSpace/DriveSpace in MS-DOS 6.x a
+   Win95, as well as Stacker versions 3 and 4. It is available in the
+   archives on
+   ftp://sunsite.unc.edu/pub/Linux/system/Filesystem/dosfs.
+   
+   There is a module available for the Linux kernel which can do
+   read-only access of compressed volume. Look at
+   sunsite.unc.edu/pub/Linux/system/filesystems/dosfs/.
+   
+   
+3.5 Can I access OS/2 HPFS partitions from Linux?
+
+   Yes, but Linux access to HPFS partitions is read-only. HPFS file
+   system access is available as an option when compiling the kernel o
+   as a module. See the Documentation/filesystems/hpfs.txt file in the
+   kernel source distribution. ("How do I upgrade/recompile my
+   kernel? ") Then you can mount HPFS partition, using, for example:
+$ mkdir /hpfs
+$ mount -t hpfs /dev/hda5 /hpfs
+
+   
+3.6 Can Linux access Amiga file systems?
+
+   The Linux kernel has support for the Amiga Fast File System (AFFS)
+   version 1.3 and later, both as a compile-time option and as a modul
+   The file Documentation/filesystems/affs.txt in the Linux kernel sou
+   distribution has more information.
+   
+   See "How do I upgrade/recompile my kernel? ".
+   
+   Linux supports AFFS hard-drive partitions only. Floppy access is no
+   supported due to incompatibilities between Amiga floppy controllers
+   and PC and workstation controllers. The AFFS driver can also mount
+   disk partitions used by the Un*x Amiga Emulator, by Bernd Schmidt.
+   
+   
+3.7 Can Linux access BSD, SysV, etc. UFS?
+
+   Recent kernels can mount (read only) the UFS file system used by
+   System V; Coherent; Xenix; BSD; and derivatives like SunOS, FreeBSD
+   NetBSD, and NeXTStep. UFS support is available as a kernel
+   compile-time option and a module.
+   
+   See, "How do I upgrade/recompile my kernel? "
+   
+   
+3.8 Can Linux access SMB file systems?
+
+   Linux supports read/write access of Windows for Workgroups and Wind
+   NT SMB volumes. See the file Documentation/filesystems/smbfs.txt of
+   the Linux kernel source distribution, and "How do I
+   upgrade/recompile my kernel? " in this FAQ.
+   
+   There is also a suite of programs called Samba which provide suppor
+   for WfW networked file systems (provided they're for TCP/IP).
+   Information is available in the README file at
+   sunsite.unc.edu/pub/Linux/system/network/samba/.
+   
+   There is a SMB Web site at samba.anu.edu.au/samba/.
+   
+   
+3.9 Can Linux access Macintosh file systems?
+
+   There is a set of user-level programs that read and write the
+   Macintosh Hierarchical File System (HFS). It is available at
+   sunsite.unc.edu/pub/Linux/utils/disk-management.
+   
+   
+3.10 Can I run Microsoft Windows programs under Linux?
+
+   WINE, a MS Windows emulator for Linux, is still not ready for gener
+   distribution. If you want to contribute to its development, look fo
+   the status reports in the comp.emulators.ms-windows.wine newsgroup.
+   
+   There is also a FAQ, compiled by P. David Gardner, at
+   sunsite.unc.edu/pub/Linux/docs/faqs/Wine-FAQ/.
+   
+   In the meantime, if you need to run MS Windows programs, the best
+   bet--seriously--is to reboot. LILO, the Linux boot loader, can boot
+   one of several operating systems from a menu. See the LILO
+   documentation for details.
+   
+   Also, LOADLIN (a DOS program to load a Linux, or other OS, kernel i
+   one way to make Linux co-exist with DOS. LOADLIN is particularly ha
+   when you want to install Linux on a 3rd or 4th drive on a system (o
+   when you're adding a SCSI drive to a system with an existing IDE).
+   
+   In these cases, it is common for LILO's boot loader to be unable to
+   find or load the kernel on the "other" drive. So you just create a
+   C:\LINUX directory (or whatever), put LOADLIN in it with a copy of
+   your kernel, and use that.
+   
+   LOADLIN is a VCPI compliant program. Win95 will want to, "shutdown
+   into DOS mode," to run it (as it would with certain other DOS
+   protected-mode programs).
+   
+   Earlier versions of LOADLIN sometimes required a package called
+   REALBIOS.COM, which required a boot procedure on an (almost) blank
+   floppy to map the REALBIOS interrupt vectors (prior to the loading 
+   any software drivers). (Current versions don't seem to ship with it
+   and don't seem to need it).
+   
+   [Jim Dennis]
+   
+   
+3.11 How can I boot Linux from OS/2's Boot Manager?
+
+    1. Create a partition using OS/2's FDISK.EXE (Not Linux's fdisk).
+    2. Format the partition under OS/2, either with FAT or HPFS. This 
+       so that OS/2 knows about the partition being formatted. (This s
+       is not necessary with OS/2 `warp' 3.0.)
+    3. Add the partition to the Boot Manager.
+    4. Boot Linux, and create a file system on the partition using mkf
+       -t ext2 or mke2fs. At this point you may, if you like, use Linu
+       fdisk to change the code of the new partition to type 83 (Linux
+       Native)--this may help some automated installation scripts find
+       the right partition to use.
+    5. Install Linux on the partition.
+    6. Install LILO on the Linux partition--NOT on the master boot rec
+       of the hard drive. This installs LILO as a second-stage boot
+       loader on the Linux partition itself, to start up the kernel
+       specified in the LILO configuration file. To do this, you shoul
+       put
+boot = /dev/hda2
+       (where /dev/hda2 is the partition you want to boot from) in you
+       /etc/lilo/config or /etc/lilo.config file.
+    7. Make sure that it is the Boot Manager partition that is marked
+       active, so that you can use Boot Manager to choose what to boot
+       
+   There is a set of HOWTO's on the subject of multi-boot systems on t
+   LDP Home Page, http://sunsite.unc.edu/LDP/.
+   
+   
+3.12 How can I share a swap partition between Linux and MS Windows?
+
+   See the Mini-HOWTO on the subject. The Mini-HOWTO is currently
+   unmaintained but is available at
+   ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO/mini/unmaintained.
+   
+   
+   contents
+   
+   
+4. Linux's handling of file systems, disks, and drives
+
+   
+4.1 How can I get Linux to work with my disk?
+
+   If your disk is an IDE or EIDE drive, you should read the file
+   /usr/src/linux/drivers/block/README.ide (part of the Linux kernel
+   source code). This README contains many helpful hints about IDE
+   drives. Many modern IDE controllers do translation between `physica
+   cylinders/heads/sectors, and `logical' ones.
+   
+   SCSI disks are accessed by linear block numbers. The BIOS invents s
+   `logical' cylinder/head/sector fiction to support DOS.
+   
+   An IBM PC-compatible BIOS will usually not be able to access
+   partitions which extend beyond 1024 logical cylinders, and will mak
+   booting a Linux kernel from such partitions using LILO problematic 
+   best.
+   
+   You can still use such partitions for Linux or other operating syst
+   that access the controller directly.
+   
+   It's recommend that you create at least one Linux partition entirel
+   under the 1024 logical cylinder limit, and boot from that. The othe
+   partitions will then be okay.
+   
+   Also there seems to be a bit of trouble with the newer Ultra-DMA
+   drives. I haven't gotten the straight scoop on them--but they are
+   becoming a very common problem at the SVLUG installfests. When you 
+   get 8 to 12 Gig drives for $200 to $300 it's no wonder.
+   
+   [Jim Dennis]
+   
+   
+4.2 How can I undelete files?
+
+   In general, this is very hard to do on Unices because of their
+   multitasking nature. Undelete functionality for the ext2fs file sys
+   is being worked on, but don't hold your breath.
+   
+   There are a number of packages available which instead provide new
+   commands for deleting and copying which move deleted files into a
+   `wastebasket' directory. The files can be recovered until cleaned o
+   automatically by background processing.
+   
+   Alternatively, you can search the raw disk device which holds the f
+   system in question. This is hard work, and you will need to be logg
+   in as root to do this.
+   
+   
+4.3 Is there a defragmenter for ext2fs etc.?
+
+   Yes. There is defrag, a Linux file system defragmenter for ext2,
+   Minix, and old-style ext file systems. It is available at
+   sunsite.unc.edu/pub/Linux/system/filesystems/defrag-0.70.tar.gz.
+   
+   Users of the ext2 file system can probably do without defrag, becau
+   ext2 contains extra code to keep fragmentation reduced even in very
+   full file systems.
+   
+   
+4.4 How do I format and create a file system on a floppy?
+
+   To format a 3.5-inch, high density floppy:
+$ fdformat /dev/fd0H1440
+$ mkfs -t ext2 -m 0 /dev/fd0H1440 1440
+
+   For a 5.25 inch floppy, use fd0h1200 and 1200 as appropriate. For t
+   `B' drive use fd1 instead of fd0.
+   
+   The -m 0 option tells mkfs.ext2 not to reserve any space on the dis
+   for the superuser--usually the last 10% is reserved for root.
+   
+   The first command performs a low-level format. The second creates a
+   empty file system. You can mount the floppy like a hard disk partit
+   and simply cp and mv files, etc.
+   
+   Device naming conventions generally are the same as for other Unice
+   They can be found in Matt Welsh's Installation and Getting Started
+   Guide. (See "Where can I get the HOWTO's and other
+   documentation? ") A more detailed and technical description is Linu
+   Allocated Devices by H. Peter Anvin, hpa@zytor.com, which is
+   included in LaTeX and ASCII form in the kernel source distribution
+   (probably in /usr/src/kernel/Documentation), as devices.tex and
+   devices.txt.
+   
+   
+4.5 I get nasty messages about inodes, blocks, and the like.
+
+   You may have a corrupted file system, probably caused by not shutti
+   Linux down properly before turning off the power or resetting. You
+   need to use a recent shutdown program to do this--for example, the 
+   included in the util-linux package, available on sunsite and tsx-11
+   
+   If you're lucky, the program fsck (or e2fsck or xfsck as appropriat
+   if you don't have the automatic fsck front-end) will be able to rep
+   your file system. If you're unlucky, the file system is trashed, an
+   you'll have to re-initialize it with mkfs (or mke2fs, mkxfs, etc.),
+   and restore from a backup.
+   
+   NB: don't try to check a file system that's mounted read/write--thi
+   includes the root partition, if you don't see
+   VFS: mounted root ... read-only
+
+   at boot time.
+   
+   
+4.6 My swap area isn't working.
+
+   When you boot (or enable swapping manually) you should see
+        Adding Swap: NNNNk swap-space
+
+   If you don't see any messages at all you are probably missing
+swapon -av
+
+   (the command to enable swapping) in your /etc/rc.local or /etc/rc.d
+   (the system startup scripts), or have forgotten to make the right
+   entry in /etc/fstab:
+   
+/dev/hda2       none       swap       sw
+
+   for example.
+   
+   If you see
+Unable to find swap-space signature
+
+   you have forgotten to run mkswap. See the manual page for details; 
+   works much like mkfs.
+   
+   Running, 'free' in addition to showing free memory, should display:
+             total       used       free
+Swap:        10188       2960       7228
+
+   [Andy Jefferson]
+   
+   Take a look also at the Installation HOWTO for detailed instruction
+   of how to set up a swap area.
+   
+   
+4.7 How do I remove LILO so my system boots DOS again?
+
+   Using DOS (MS-DOS 5.0 or later, or OS/2), type FDISK /MBR (which is
+   not documented). This will restore a standard MS-DOS Master Boot
+   Record. If you have DR-DOS 6.0, go into FDISK in the normal way and
+   then select the `Re-write Master Boot Record' option.
+   
+   If you don't have MS-DOS or DR-DOS, you need to have the boot secto
+   that LILO saved when you first installed it. You did keep that file
+   didn't you? It's probably called boot.0301 or some such. Type
+   dd if=boot.0301 of=/dev/hda bs=445 count=1
+
+   (or /dev/sda if you're using a SCSI disk). This may also wipe out y
+   partition table, so beware! If you're desperate, you could use
+   dd if=/dev/zero of=/dev/hda bs=512 count=1
+
+   This will erase your partition table and boot sector completely: yo
+   can then reformat the disk using your favorite software. But this w
+   render the contents of your disk inaccessible--you'll lose it all
+   unless you're an expert.
+   
+   Note that the DOS MBR boots whichever (single!) partition is flagge
+   as `active'. You may need to use fdisk to set and clear the active
+   flags on partitions appropriately.
+   
+   
+4.8 Why can't I use fdformat except as root?
+
+   The system call to format a floppy can only be done as root,
+   regardless of the permissions of /dev/fd0*. If you want any user to
+   able to format a floppy, try getting the fdformat2 program. This wo
+   around the problems by being setuid to root.
+   
+   
+4.9 My ext2fs partitions are checked each time I reboot.
+
+   See "EXT2-fs: warning: mounting unchecked file system.".
+   
+   
+4.10 My root file system is read-only!
+
+   Remount it. If /etc/fstab is correct, you can simply
+mount -n -o remount /
+
+   If /etc/fstab is wrong, you must give the device name and possibly 
+   type, too: e.g.
+mount -n -o remount -t ext2 /dev/hda2 /
+
+   To understand how you got into this state, see, "EXT2-fs:
+   warning: mounting unchecked file system."
+   
+   
+4.11 I have a huge /proc/kcore! Can I delete it?
+
+   None of the files in /proc are really there--they're all, "pretend,
+   files made up by the kernel, to give you information about the syst
+   and don't take up any hard disk space.
+   
+   /proc/kcore is like an `alias' for the memory in your computer. Its
+   size is the same as the amount of RAM you have, and if you read it 
+   a file, the kernel does memory reads.
+   
+   
+4.12 My AHA1542C doesn't work with Linux.
+
+   The option to allow disks with more than 1024 cylinders is only
+   required as a workaround for a PC-compatible BIOS misfeature and
+   should be turned `off' under Linux. For older Linux kernels you nee
+   to turn off most of the `advanced BIOS' options--all but the one ab
+   scanning the bus for bootable devices.
+   
+   
+   contents
+   
+   
+5. Porting, compiling and obtaining programs
+
+   
+5.1 How do I compile programs?
+
+   Most Linux software is written in C and compiled with the GNU C
+   compiler. GCC is a part of every Linux distribution. The latest
+   compiler version, documentation, and patches are on
+   ftp://ftp.gnu.org/pub/gnu/.
+   
+   Programs that are written in C++ must be compiled with the GNU G++
+   compiler, which is also included in Linux distributions and availab
+   from the same place as GCC.
+   
+   To build version 2.0.x kernels, you will need GCC version 2.7.2.x.
+   Trying to build a Linux kernel with a different compiler, like GCC
+   2.8.x, EGCS, or PGCC, may cause problems until code dependencies of
+   the 2.7.2.x compilers are fixed.
+   
+   Information on the EGCS compiler is at htmlurl
+   url="http://egcs.cygnus.com" name="http://egcs.cygnus.com">.
+   
+   Note that at this time, the kernel developers are not answering bug
+   requests for 2.0.x version kernels, but instead are concentrating o
+   developing 2.1.x version kernels.
+   
+   [J.H.M. Dassen]
+   
+   
+5.2 How do I port XXX to Linux?
+
+   In general, Unix programs need very little porting. Simply follow t
+   installation instructions. If you don't know--and don't know how to
+   find out--the answers to some of the questions asked during the
+   installation procedure, you can guess, but this tends to produce bu
+   programs. In this case, you're probably better off asking someone e
+   to do the port.
+   
+   If you have a BSD-ish program, you should try using -I/usr/include/
+   and -lbsd on the appropriate parts of the compilation lines.
+   
+   
+5.3 What is ld.so and where do I get it?
+
+   Ld.so is the dynamic library loader. Each binary using shared
+   libraries used to have about 3K of start-up code to find and load t
+   shared libraries. Now that code has been put in a special shared
+   library, /lib/ld.so, where all binaries can look for it, so that it
+   wastes less disk space, and can be upgraded more easily.
+   
+   Ld.so can be obtained from tsx-11.mit.edu/pub/linux/packages/GCC/
+   and mirror sites. The latest version at the time of writing is
+   ld.so.1.9.5.tar.gz.
+   
+   /lib/ld-linux.so.1 is the same thing for ELF ("What's all this
+   about ELF? ") and comes in the same package as the a.out loader.
+   
+   
+5.4 How do I upgrade the libraries withough trashing my system?
+
+   Note: You should always have a rescue disk set ready when you perfo
+   this procedure, in the likely event that something goes wrong!
+   
+   This procedure is especially difficult if you're upgrading very old
+   libraries like libc4. But you should be able to keep libc4 on the s
+   system with libc5 libraries for the programs that still need them. 
+   same holds true for upgrading from libc5 to the newer-yet glibc2
+   libraries.
+   
+   The problem with upgrading dynamic libraries is that, the moment yo
+   remove the old libraries, the utilities that you need to upgrade to
+   the new version of the libraries don't work. There are ways around
+   around this. One is to temporarily place a spare copy of the run ti
+   libraries, which are in /lib/, in /usr/lib/, or /usr/local/lib/, or
+   another directory that is listed in the /etc/ld.so.conf file.
+   
+   For example, when upgrading libc5 libraries, the files in /lib/ mig
+   look something like:
+   
+libc.so.5
+libc.so.5.4.33
+libm.so.5
+libm.so.5.0.9
+
+   These are the C libraries and the math libraries. Copy them to anot
+   directory that is listed in /etc/ld.so.conf, like /usr/lib/.
+   
+cp -df /lib/libc.so.5* /usr/lib/
+cp -df /lib/libm.so.5* /usr/lib/
+ldconfig
+
+   Be sure to run ldconfig to upgrade the library configuration.
+   
+   The files libc.so.5 and libm.so.5 are symbolic links to the actual
+   library files. When you upgrade, the new links will not be created 
+   the old links are still there, unless you use the -f flag with cp. 
+   -d flag to cp will copy the symbolic link itself, and not the file 
+   points to.
+   
+   If you need to overwrite the link to the library directly, use the 
+   flag with ln.
+   
+   For example, to copy new libraries over the old ones, try this. Mak
+   symbolic link to the new libraries first, then copy both the librar
+   and the links to /lib/, with the following commands.
+ln -sf ./libm.so.5.0.48 libm.so.5
+ln -sf ./libc.so.5.0.48 libc.so.5
+cp -df libm.so.5* /lib
+cp -df libc.so.5* /lib
+
+   Again, remember to run ldconfig after you copy the libraries.
+   
+   If you are satisfied that everything is working correctly, you can
+   remove the temporary copies of the old libraries from /usr/lib/ or
+   wherever you copied them.
+   
+   
+5.5 Has anyone ported / compiled / written XXX for Linux?
+
+   First, look in the Linux Software Map--it's at
+   sunsite.unc.edu/pub/Linux/docs/linux-software-map, and on the
+   other FTP sites. A search engine is available on the World Wide Web
+   http://www.boutell.com/lsm/.
+   
+   Check the FTP sites ("Where can I get Linux material by FTP?
+   ") first--search the ls-lR or INDEX files for appropriate strings.
+   
+   Also look at the Linux Projects Map,
+   ftp.ix.de/pub/ix/Linux/docs/Projects-Map.gz.
+   
+   There's a search engine for Linux FTP archives at
+   http://lfw.linuxhq.com/
+   
+   Also check out the Freshmeat Web site http://www.freshmeat.org,
+   which is really cool. ("What online/free periodicals exist for
+   Linux? "
+   
+   If you don't find anything, you could download the sources to the
+   program yourself and compile them. See "How do I port XXX to
+   Linux? " If it's a large package that may require some porting, pos
+   a message to comp.os.linux.development.apps.
+   
+   If you compile a large-ish program, please upload it to one or more
+   the FTP sites, and post a message to comp.os.linux.announce (submit
+   your posting to linux-announce@news.ornl.gov).
+   
+   If you're looking for an application program, the chances are that
+   someone has already written a free version. The comp.sources.wanted
+   FAQ has instructions for finding the source code.
+   
+   
+5.6 Can I use code or a compiler compiled for a 486 on my 386?
+
+   Yes, unless it's the kernel.
+   
+   The -m486 option to GCC, which is used to compile binaries for x486
+   machines, merely changes certain optimizations. This makes for
+   slightly larger binaries that run somewhat faster on a 486. They st
+   work fine on a 386, though, with a small performance hit.
+   
+   However, from version 1.3.35 the kernel uses 486 or Pentium-specifi
+   instructions if configured for a 486 or Pentium, thus making it
+   unusable on a 386.
+   
+   GCC can be configured for a 386 or 486; the only difference is that
+   configuring it for a 386 makes -m386 the default and configuring fo
+   486 makes -m486 the default. In either case, these can be overridde
+   on a per-compilation basis or by editing
+   /usr/lib/gcc-lib/i*-linux/n.n.n/specs.
+   
+   There is an Alpha version of GCC which knows how to do optimization
+   well for the 586, but it is quite unreliable, especially at high
+   optimization settings. The Pentium GCC can be found on tsx-11.mit.e
+   in /pub/linux/ALPHA/pentium-gcc. I'd recommend using the ordinary 4
+   GCC instead; word has it that using -m386 produces code that's bett
+   for the Pentium, or at least slightly smaller.
+   
+   
+5.7 What does gcc -O6 do?
+
+   Currently, the same as -O2 (GCC 2.5) or -O3 (GCC 2.6, 2.7). Any num
+   greater than that does the same thing. The Makefiles of newer kerne
+   use -O2, and you should probably do the same.
+   
+   
+5.8 Where are linux/*.h and asm/*.h?
+
+   The files /usr/include/linux/ and /usr/include/asm/ are often soft
+   links to the directories where the kernel headers are. They are
+   usually under /usr/src/kernel*/.
+   
+   If you don't have the kernel sources, download them--see, "How
+   do I upgrade/recompile my kernel? "
+   
+   Then, use rm to remove any garbage, and ln to create the links:
+rm -rf /usr/include/linux /usr/include/asm
+ln -sf /usr/src/linux/include/linux /usr/include/linux
+ln -sf /usr/src/linux/include/asm /usr/include/asm
+
+   /usr/src/linux/include/asm/ is a symbolic link to an
+   architecture-specific asm directory--if you have a freshly unpacked
+   kernel source tree, you must make symlinks. You'll also find that y
+   may need to do `make config' in a newly-unpacked kernel source tree
+   to create linux/autoconf.h.
+   
+   
+5.9 I get errors when I try to compile the kernel.
+
+   See the previous question regarding the header files.
+   
+   Remember that when you apply a patch to the kernel, you must use th
+   -p0 or -p1 option: otherwise, the patch may be misapplied. See the
+   patch manual page for details.
+   
+   "ld: unrecognized option `-qmagic"' means that you should get a
+   newer linker, from ftp://tsx-11.mit.edu/pub/linux/packages/GCC/,
+   in the file binutils-2.8.1.0.1.bin.tar.gz.
+   
+   
+5.10 How do I make a shared library?
+
+   For ELF,
+   gcc -fPIC -c *.c
+   gcc -shared -Wl,-soname,libfoo.so.1 -o libfoo.so.1.0 *.o
+
+   For a.out, get tools-n.nn.tar.gz from tsx-11.mit.edu, in
+   /pub/linux/packages/GCC/src/. It comes with documentation that will
+   tell you what to do. Note that a.out shared libraries are a very
+   tricky business. Consider upgrading your libraries to ELF shared
+   libraries. See the ELF HOWTO, at
+   sunsite.unc.edu/pub/Linux/docs/HOWTO/
+   
+   
+5.11 My executables are (very) large.
+
+   With an ELF compiler ("What's all this about ELF? "), the most
+   common cause of large executables is the lack of an appropriate .so
+   library link for one of the libraries you're using. There should be
+   link like libc.so for every library like libc.so.5.2.18.
+   
+   With an a.out compiler the most common cause of large executables i
+   the -g linker (compiler) flag. This produces (as well as debugging
+   information in the output file) a program which is statically
+   linked--one which includes a copy of the C library instead of a
+   dynamically linked copy.
+   
+   Other things worth investigating are -O and -O2, which enable
+   optimization (check the GCC documentation), and -s (or the strip
+   command) which strip the symbol information from the resulting bina
+   (making debugging totally impossible).
+   
+   You may wish to use -N on very small executables (less than 8K with
+   the -N), but you shouldn't do this unless you understand its
+   performance implications, and definitely never with daemons.
+   
+   
+5.12 Does Linux support threads or lightweight processes?
+
+   As well as the Unix multiprocessing model involving heavyweight
+   processes, which is of course part of the standard Linux kernel, th
+   are several implementations of lightweight processes or threads.
+   Recent kernels implement a thread model, kthreads. In addition, the
+   are the following packages available for Linux.
+     * GNU glibc2 for Linux has optional support for threads. The arch
+       is available from the same place as glibc2,
+       ftp://ftp.gnu.org/pub/gnu
+     * In sipb.mit.edu:/pub/pthread or
+       ftp.ibp.fr:/pub/unix/threads/pthreads. Documentation isn't in t
+       package, but is available on the World Wide Web at
+       http://www.mit.edu:8001/people/proven/home_page.html. Newer Lin
+       libc's contain the pthreads source. The GNU Ada compiler on
+       sunsite.unc.edu in
+       /pub/Linux/devel/lang/ada/gnat-3.01-linux+elf.tar.gz contains
+       binaries made from that source code.
+     * In ftp.cs.washington.edu:/pub/qt-001.tar.Z is QuickThreads. Mor
+       information can be found in the technical report, available on 
+       same site as /tr/1993/05/UW-CSE-93-05-06.PS.Z.
+     * In gummo.doc.ic.ac.uk/rex/ is lwp, a very minimal implementatio
+     * In ftp.cs.fsu.edu:/pub/PART/, an Ada implementation. This is
+       useful mainly because it has a lot of Postscript papers that
+       you'll find useful in learning more about threads. This is not
+       directly usable under Linux.
+       
+   Please contact the authors of the packages in question for details.
+   
+   
+5.13 Where can I get `lint' for Linux?
+
+   Roughly equivalent functionality is built into GCC. Use the -Wall
+   option to turn on most of the useful extra warnings. See the GCC
+   manual for more details (type control-h followed by i in Emacs and
+   select the entry for GCC).
+   
+   There is a freely available program called `lclint' that does much 
+   same thing as traditional lint. The announcement and source code ar
+   available at on larch.lcs.mit.edu in /pub/Larch/lclint/; on the Wor
+   Wide Web, look at http://larch-www.lcs.mit.edu:8001/larch/lclint.ht
+   
+   
+5.14 Where can I find kermit for Linux?
+
+   Kermit is distributed under a non-GPL copyright that makes its term
+   of distribution somewhat different. The sources and some binaries a
+   available on kermit.columbia.edu.
+   
+   The WWW Home Page of the Columbia University Kermit project is
+   http://www.columbia.edu/kermit/.
+   
+   
+   contents
+   
+   
+6. Solutions to common miscellaneous problems.
+
+   
+6.1 free dumps core.
+
+   In Linux 1.3.57 and later, the format of /proc/meminfo was changed 
+   a way that the implementation of free doesn't understand.
+   
+   Get the latest version, from sunsite.unc.edu, in
+   /pub/Linux/system/Status/ps/procps-0.99.tgz.
+   
+   
+6.2 My clock is very wrong.
+
+   There are two clocks in your computer. The hardware (CMOS) clock ru
+   even when the computer is turned off, and is used when the system
+   starts up and by DOS (if you use DOS). The ordinary system time, sh
+   and set by "date," is maintained by the kernel while Linux is
+   running.
+   
+   You can display the CMOS clock time, or set either clock from the
+   other, with /sbin/clock program--see "man 8 clock."
+   
+   There are various other programs that can correct either or both
+   clocks for system drift or transfer time across the network. Some o
+   them may already be installed on your system. Try looking for adjti
+   (corrects for drift), netdate, and getdate (get the time from the
+   network), or xntp (accurate, full-featured network time daemon).
+   
+   
+6.3 Setuid scripts don't seem to work.
+
+   That's right. This feature has been disabled in the Linux kernel on
+   purpose, because setuid scripts are almost always a security hole.
+   Sudo and SuidPerl can provide more security that setuid scripts or
+   binaries, especially if execute permissions are limited to a certai
+   user ID or group ID.
+   
+   If you want to know why setuid scripts are a security hole, read th
+   FAQ for comp.unix.questions.
+   
+   
+6.4 Free memory as reported by free keeps shrinking.
+
+   The "free" figure printed by free doesn't include memory used as a
+   disk buffer cache--shown in the "buffers" column. If you want to
+   know how much memory is really free add the "buffers" amount to
+   "free"--newer versions of free print an extra line with this info.
+   
+   The disk buffer cache tends to grow soon after starting Linux up. A
+   you load more programs and use more files, the contents get cached.
+   will stabilize after a while.
+   
+   
+6.5 When I add more memory, the system slows to a crawl.
+
+   This is a common symptom of a failure to cache the additional memor
+   The exact problem depends on your motherboard.
+   
+   Sometimes you have to enable caching of certain regions in your BIO
+   setup. Look in the CMOS setup and see if there is an option to cach
+   the new memory area which is currently switched off. This is
+   apparently most common on a '486.
+   
+   Sometimes the RAM has to be in certain sockets to be cached.
+   
+   Sometimes you have to set jumpers to enable caching.
+   
+   Some motherboards don't cache all of the RAM if you have more RAM p
+   amount of cache than the hardware expects. Usually a full 256K cach
+   will solve this problem.
+   
+   If in doubt, check the manual. If you still can't fix it because th
+   documentation is inadequate, you might like to post a message to
+   comp.os.linux.hardware giving all of the details--make, model numbe
+   date code, etc., so other Linux users can avoid it.
+   
+   
+6.6 Some programs (e.g. xdm) won't let me log in.
+
+   You are probably using non-shadow password programs and are using
+   shadow passwords.
+   
+   If so, you have to get or compile a shadow password version of the
+   programs in question. The shadow password suite can be found at
+   tsx-11.mit.edu:/pub/linux/sources/usr.bin/shadow/. This is the sour
+   code. The binaries are probably in linux/binaries/usr.bin/.
+   
+   
+6.7 Some programs let me log in with no password.
+
+   You probably have the same problem as in "Some programs (e.g.
+   xdm) won't let me log in. ", with an added wrinkle.
+   
+   If you are using shadow passwords, you should put a letter `x' or a
+   asterisk in the password field of /etc/passwd for each account, so
+   that if a program doesn't know about the shadow passwords it won't
+   think it's a passwordless account and let anyone in.
+   
+   
+6.8 My machine runs very slowly when I run GCC / X / ...
+
+   You may have too little real memory. If you have less RAM than all 
+   programs you're running at once, Linux will swap to your hard disk
+   instead and thrash horribly. The solution in this case is to not ru
+   so many things at once or buy more memory. You can also reclaim som
+   memory by compiling and using a kernel with less options configured
+   See "How do I upgrade/recompile my kernel? ".
+   
+   You can tell how much memory and swap you're using with the free
+   command, or by typing:
+cat /proc/meminfo
+
+   If your kernel is configured with a RAM disk, this is probably wast
+   space and will cause things to go slowly. Use LILO or rdev to tell 
+   kernel not to allocate a RAM disk (see the LILO documentation or ty
+   man rdev).
+   
+   
+6.9 I can only log in as root.
+
+   You probably have some permission problems, or you have a file
+   /etc/nologin.
+   
+   In the latter case, put rm -f /etc/nologin in your /etc/rc.local or
+   /etc/rc.d/* scripts.
+   
+   Otherwise, check the permissions on your shell, and any file names
+   that appear in error messages, and also the directories that contai
+   these files, up to and including the root directory.
+   
+   
+6.10 My screen is all full of weird characters instead of letters.
+
+   You probably sent some binary data to your screen by mistake. Type
+   echo '\033c' to fix it. Many Linux distributions have a command,
+   "reset," that does this.
+   
+   If that doesn't help, try a direct screen escape command.
+echo <Ctrl-V><Ctrl-O>
+
+   This resets the default font of a Linux console. Remember to hold d
+   the Control key and type the letter, instead of, for example,
+   `Ctrl-V'. The sequence
+echo <Ctrl-V><Esc>c
+
+   causes a full screen reset. If there's data left on the shell comma
+   line after typing a binary file, press Ctrl-C a few times to restor
+   the shell command line.
+   
+   [Bernhard Gabler]
+   
+   
+6.11 I have screwed up my system and can't log in to fix it.
+
+   Reboot from an emergency floppy or floppy pair. For example, the
+   Slackware boot and root disk pair in the install subdirectory of th
+   Slackware distribution.
+   
+   There are also two, do-it-yourself rescue disk creation packages in
+   sunsite.unc.edu/pub/Linux/system/Recovery. These are better
+   because they have your own kernel on them, so you don't run the ris
+   of missing devices and file systems.
+   
+   Get to a shell prompt and mount your hard disk with something like
+mount -t ext2 /dev/hda1 /mnt
+
+   Then your file system is available under the directory /mnt and you
+   can fix the problem. Remember to unmount your hard disk before
+   rebooting (cd somewhere else first, or it will say it's busy).
+   
+   
+6.12 I've discovered a huge security hole in rm!
+
+   No you haven't. You are obviously new to Unix and need to read a go
+   book to find out how things work. Clue: the ability to delete files
+   under Unix depends on permission to write in that directory.
+   
+   
+6.13 lpr(1) and/or lpd(8) don't work.
+
+   First make sure that your /dev/lp* port is correctly configured. It
+   IRQ (if any) and port address need to match the settings on the
+   printer card. You should be able to dump a file directly to the
+   printer.
+cat the_file >/dev/lp1
+
+   If lpr gives you a message like "myname@host: host not found," it
+   may mean that the TCP/IP loopback interface, lo, isn't working
+   properly. Loopback support is compiled into most distribution kerne
+   Check that the interface is configured with the ifconfig command. B
+   Internet convention, the network number is 127.0.0.0, and the local
+   host address is 127.0.0.1. If everything is configured correctly, y
+   should be able to telnet to your own machine and get a login prompt
+   
+   Make sure that /etc/hosts.lpd contains the machine's host name.
+   
+   If your machine has a network-aware lpd, like the one that comes wi
+   LPRng, make sure that /etc/lpd.perms is configured correctly.
+   
+   Also look at the Printing-HOWTO "Where can I get the HOWTO's
+   and other documentation? ".
+   
+   
+6.14 Timestamps on files on MS-DOS partitions are set incorrectly.
+
+   There is a bug in the program "clock" (often found in /sbin). It
+   miscounts a time zone offset, confusing seconds with minutes or
+   something like that. Get a recent version.
+   
+   
+6.15 How do I get LILO to boot the vmlinux file?
+
+   >From kernel versions 1.1.80 on, the compressed kernel image, which
+   what LILO needs to find, is in arch/i386/boot/zImage. The vmlinux f
+   in the root directory is the uncompressed kernel, and you shouldn't
+   try to boot it.
+   
+   This was changed to make it easier to build kernel versions for
+   several different processors from one source tree.
+   
+   
+   contents
+   
+   
+7. How do I do this or find out that ... ?
+
+   
+7.1 How can I get scrollback in text mode?
+
+   With the default US keymap, you can use Shift with the PageUp and
+   PageDown keys. (The gray ones, not the ones on the numeric keypad.)
+   With other keymaps, look in /usr/lib/keytables. You can remap the
+   ScrollUp and ScrollDown keys to be whatever you like. For example, 
+   remap them to the keys on an 84-key, AT keyboard.
+   
+   The "screen" program,
+   http://vector.co.jp/vpack/browse/person/an010455.html provides a
+   searchable scrollback buffer and the ability to take "snapshots" of
+   text-mode screens.
+   
+   You can't increase the amount of scrollback, because it is implemen
+   using the video memory to store the scrollback text. You may be abl
+   to get more scrollback in each virtual console by reducing the tota
+   number of VC's. See linux/tty.h.
+   
+   
+7.2 How do I switch virtual consoles? How do I enable them?
+
+   In text mode, press Left Alt-F1 to Alt-F12 to select the consoles t
+   to tty12; Right Alt-F1 gives tty13 and so on. To switch out of X
+   Windows you must press Ctrl-Alt-F1, etc; Alt-F5 or whatever will
+   switch back.
+   
+   If you want to use a VC for ordinary login, it must be listed in
+   /etc/inittab, which controls which terminals and virtual consoles h
+   login prompts. The X Window System needs at least one free VC in or
+   to start.
+   
+   
+7.3 How do I set the time zone?
+
+   Change directory to /usr/lib/zoneinfo/. Get the time zone package i
+   you don't have this directory. The source is available as
+   sunsite.unc.edu/pub/Linux/system/admin/time/timesrc-1.2.tar.gz.
+   
+   Then make a symbolic link named localtime pointing to one of the fi
+   in this directory (or a subdirectory), and one called posixrules
+   pointing to localtime. For example:
+   ln -sf US/Mountain localtime
+   ln -sf localtime posixrules
+
+   This change will take effect immediately--try date(1).
+   
+   The manual page for tzset describes setting the time zone. Some
+   programs recognize the TZ environment variable, but this is not
+   POSIX-correct.
+   
+   You should also make sure that your Linux kernel clock is set to th
+   correct GMT time--type date -u and check that the correct UTC time 
+   displayed. ("My clock is very wrong. ")
+   
+   
+7.4 What version of Linux and what machine name am I using?
+
+   Type:
+uname -a
+
+   
+7.5 How can I enable or disable core dumps?
+
+   By using the ulimit command in bash, the limit command in tcsh, or 
+   rlimit command in ksh. See the appropriate manual page for details.
+   
+   This setting affects all programs run from the shell (directly or
+   indirectly), not the whole system.
+   
+   If you wish to enable or disable core dumping for all processes by
+   default, you can change the default setting in linux/sched.h--see t
+   definition of INIT_TASK, and look also in linux/resource.h.
+   
+   
+7.6 How do I upgrade/recompile my kernel?
+
+   See the Kernel HOWTO or the README files which come with the kernel
+   release on ftp.cs.helsinki.fi, in /pub/Software/Linux/Kernel/ and
+   mirrors. (See "Where can I get Linux material by FTP? ") You
+   may already have a version of the kernel source code installed on y
+   system, but if it is part of a standard distribution it is likely t
+   be somewhat out of date (this is not a problem if you only want a
+   custom configured kernel, but it probably is if you need to upgrade
+   
+   With newer kernels you can (and should) make all of the following
+   targets. Don't forget that you can specify multiple targets with on
+   command.
+make clean dep install modules modules_install
+
+   Also remember to update the module dependencies.
+depmod -a
+
+   Remember that to make the new kernel boot you must run LILO after
+   copying the kernel into your root partition--the Makefile in recent
+   kernels has a special zlilo target for this; try:
+make zlilo
+
+   Kernel version numbers with an odd minor version (ie, 1.1.x, 1.3.x)
+   are the testing releases; stable production kernels have even minor
+   versions (1.0.x, 1.2.x). If you want to try the testing kernels you
+   should probably subscribe to the linux-kernel mailing list. (See "
+   What mailing lists are there? .")
+   
+   
+7.7 Can I have more than 3 serial ports by sharing interrupts?
+
+   Yes, but you won't be able to use simultaneously two ordinary ports
+   which share an interrupt (without some trickery). This is a limitat
+   of the ISA Bus architecture.
+   
+   See the Serial HOWTO for information about possible solutions and
+   workarounds for this problem.
+   
+   
+7.8 How do I make a bootable floppy?
+
+   Make a file system on it with bin, etc, lib and dev
+   directories--everything you need. Install a kernel on it and arrang
+   to have LILO boot it from the floppy (see the LILO documentation, i
+   lilo.u.*.ps).
+   
+   If you build the kernel (or tell LILO to tell the kernel) to have a
+   RAM disk the same size as the floppy the RAM disk will be loaded at
+   boot time and mounted as root in place of the floppy.
+   
+   See the Bootdisk HOWTO.
+   
+   
+7.9 How do I remap my keyboard to UK, French, etc.?
+
+   For recent kernels, get /pub/Linux/system/Keyboards/kbd-0.90.tar.gz
+   from sunsite.unc.edu. Make sure you get the appropriate version; yo
+   have to use the right keyboard mapping package for your kernel
+   version.
+   
+   For older kernels you have to edit the top-level kernel Makefile, i
+   /usr/src/linux.
+   
+   You may find more helpful information in The Linux Keyboard and
+   Console HOWTO, by Andries Brouwer, at
+   sunsite.unc.edu/pub/Linux/docs/HOWTO.
+   
+   
+7.10 How do I get NUM LOCK to default to on?
+
+   Use the setleds program, for example (in /etc/rc.local or one of th
+   /etc/rc.d/* files):
+for t in 1 2 3 4 5 6 7 8
+do
+    setleds +num < /dev/tty$t > /dev/null
+done
+
+   Setleds is part of the kbd package ("How do I remap my keyboard
+   to UK, French, etc.? ").
+   
+   Alternatively, patch your kernel. You need to arrange for KBD_DEFLE
+   to be defined to (1 << VC_NUMLOCK) when compiling
+   drivers/char/keyboard.c.
+   
+   
+7.11 How do I set (or reset) my initial terminal colors?
+
+   The following shell script should work for VGA consoles:
+for n in 1 2 4 5 6 7 8; do
+        setterm -fore yellow -bold on -back blue -store > /dev/tty$n
+        done
+
+   Substitute your favorite colors, and use /dev/ttyS$n for serial
+   terminals.
+   
+   To make sure they are reset when people log out (if they've been
+   changed):
+   
+   Replace the references to "getty" (or "mingetty" or "uugetty" or
+   whatever) in /etc/inittab with references to "/sbin/mygetty."
+#!/bin/sh
+setterm -fore yellow -bold on -back blue -store > $1
+exec /sbin/mingetty $@
+
+   [Jim Dennis]
+   
+7.12 How can I have more than 128Mb of swap?
+
+   Use several swap partitions or swap files--Linux supports up to 16
+   swap areas, each of up to 128Mb.
+   
+   Very old kernels only supported swap partition sizes up to 16Mb.
+   
+   Linux on machines with 8KB paging, like Alpha and Sparc64, support 
+   swap partition up to 512KB. The 128KB limitation comes from
+   PAGE_SIZE*BITSPERBYTE on machines with 4KB paging, but is 512KB on
+   machines with 8KB paging. The limit is due to the use of a single p
+   allocation map.
+   
+   The file mm/swapfile.c has all of the gory details.
+   
+   [Peter Moulder, Gordon Weast]
+   
+   
+   contents
+   
+   
+8. Miscellaneous information and questions answered.
+
+   
+8.1 How do I program XYZ under Linux?
+
+   Read the manuals, or a good book on Unix. Manual pages (type "man
+   man") are usually a good source of reference information on exactly
+   how to use a particular command or function.
+   
+   There is also a lot of GNU Info documentation, which is often more
+   useful as a tutorial. Run Emacs and type C-h i, or type info info i
+   you don't have or don't like Emacs. Note that the Emacs libc node m
+   not exactly describe the latest Linux libc, or GNU glibc2. But the 
+   progject and LDP are always looking for volunteers to upgrade their
+   library documentation.
+   
+   Anyway, between the existing Texinfo documentation, and the manual
+   pages in sections 2 and 3, should provide enough information to get
+   started.
+   
+   As with all free software, the best tutorial is the source code
+   itself.
+   
+   The latest release of the Linux manual pages, a collection of usefu
+   GNU Info documentation, and various other information related to
+   programming Linux, can be found on sunsite.unc.edu in
+   /pub/Linux/docs/man-pages.
+   
+   
+8.2 What's all this about ELF?
+
+   See the ELF HOWTO by Daniel Barlow--note, this is not the file
+   move-to-elf, which is a blow-by-blow account of how to upgrade to E
+   manually.
+   
+   Linux has two different formats for executables, object files, and
+   object code libraries, known as, "ELF." (The old format is called
+   `a.out'.) They have advantages, including better support for shared
+   libraries and dynamic linking.
+   
+   Both a.out and ELF binaries can coexist on a system. However, they 
+   different shared C libraries, both of which have to be installed.
+   
+   If you want to find out whether your system can run ELF binaries, l
+   in /lib for a file named, "libc.so.5." If it's there, you probably
+   have ELF libraries. If you want to know whether your installation
+   actually is ELF you can pick a representative program, like ls, and
+   run file on it:
+-chiark:~> file /bin/ls
+/bin/ls: Linux/i386 impure executable (OMAGIC) - stripped
+
+valour:~> file /bin/ls
+/bin/ls: ELF 32-bit LSB executable, Intel 80386, version 1, stripped
+
+   There is a patch to get 1.2.x to compile using the ELF compilers, a
+   produce ELF core dumps, at tsx-11.mit.edu in /pub/packages/GCC/. Yo
+   do not need the patch merely to run ELF binaries. 1.3.x and later d
+   not need the patch at all.
+   
+   
+8.3 What is a .gz file ? And a .tgz ? And ... ?
+
+   .gz (and .z) files are compressed using GNU gzip. You need to use
+   gunzip (which is a symlink to the gzip command which comes with mos
+   Linux installations) to unpack the file.
+   
+   .taz and .tz are tar files (made with Unix tar) compressed using
+   standard Unix compress.
+   
+   .tgz (or .tpz) is a tar file compressed with gzip.
+   
+   .lsm is a Linux Software Map entry, in the form of a short text fil
+   Details about the LSM and the LSM itself are available in the docs
+   subdirectory on sunsite.unc.edu.
+   
+   .deb is a Debian Binary Package - the binary package format used by
+   the Debian GNU/Linux distribution. It is manipulated using dpkg and
+   dpkg-deb (available on Debian systems and from ftp.debian.org).
+   
+   .rpm is a Red Hat RPM package, which is used in the Red Hat
+   distribution. They can be found on ftp.redhat.com.
+   
+   .bz2 is a file compressed by the more recent bzip program.
+   
+   The "file" command can often tell you what a file is.
+   
+   If you find that gzip complains when you try to uncompress a gzip'e
+   file you probably downloaded it in ASCII mode by mistake. You must
+   download most things in binary mode--remember to type binary as a
+   command in FTP before using, "get," to get the file.
+   
+   
+8.4 What does VFS stand for?
+
+   Virtual File System. It's the abstraction layer between the user an
+   real file systems like ext2, Minix and MS-DOS. Among other things, 
+   job is to flush the read buffer when it detects a disk change on th
+   floppy disk drive.
+VFS: Disk change detected on device 2/0
+
+   
+8.5 What is a BogoMip?
+
+   "BogoMips" is a contraction of "Bogus MIPS." MIPS stands for
+   (depending who you listen to) Millions of Instructions per Second, 
+   Meaningless Indication of Processor Speed.
+   
+   The number printed at boot time is the result of a kernel timing
+   calibration, used for very short delay loops by some device drivers
+   
+   As a very rough guide, the BogoMips rating for your machine will be
+   approximately:
+     386SX              clock * 0.14
+     386DX              clock * 0.18
+     486Cyrix/IBM       clock * 0.33
+     486SX/DX/DX2       clock * 0.50
+     586                clock * 0.39
+
+   If the number is wildly lower, you may have the Turbo button or CPU
+   speed set incorrectly, or have some kind of caching problem (as
+   described in "When I add more memory, the system slows to a
+   crawl. .")
+   
+   For values people have seen with other, rarer, chips, see the BogoM
+   Mini-HOWTO, on sunsite.unc.edu in
+   /pub/Linux/docs/howto/mini/BogoMips/.
+   
+   
+8.6 What is the Linux Journal and where can I get it?
+
+   The Linux Journal is a monthly magazine (printed on paper) that is
+   available on news stands and via subscription worldwide. Email
+   linux@ssc.com for details. Their URL is http://www.ssc.com/.
+   
+   
+8.7 What online/free periodicals exist for Linux?
+
+   There are a number of recent additions to the list of periodicals
+   devoted to Linux.
+     * Linux Gazette. http://www.linuxgazette.com.
+     * Linux Weekly News. http://www.lwn.net.
+     * Slashdot. http://www.slashdot.org.
+     * Freshmeat. http://www.freshmeat.org.
+       
+   [Jim Dennis, Robert Kiesling]
+   
+   
+8.8 How many people use Linux?
+
+   Linux is freely available, and no one is required to register their
+   copy with any central authority, so it is difficult to know. Severa
+   businesses survive solely on selling and supporting Linux. The Linu
+   newsgroups are some of the most heavily read on Usenet, so the numb
+   is likely in the hundreds of thousands. Accurate numbers probably
+   don't exist.
+   
+   However, one brave soul, Harald T. Alvestrand,
+   Harald.T.Alvestrand@uninett.no, has decided to try, and asks that
+   if you use Linux, send a message to linux-counter@uninett.no with
+   one of the following subjects: "I use Linux at home," "I use Linux
+   at work," or, "I use Linux at home and at work." He will also
+   accept `third party' registrations--ask him for details.
+   
+   Alternatively, you can register using the WWW forms found at
+   http://domen.uninett.no/~hta/linux/counter.html.
+   
+   He posts his counts to aun.uninett.no in /pub/misc/linux-counter/ o
+   at the web page above.
+   
+   
+8.9 How should I pronounce Linux?
+
+   This is a matter of religious debate, of course!
+   
+   If you want to hear Linus himself say how he pronounces it, downloa
+   english.au or swedish.au from ftp.funet.fi (in
+   /pub/Linux/PEOPLE/Linus/SillySounds/). If you have a sound card or 
+   PC-speaker audio driver you can hear them by typing
+cat english.au >/dev/audio
+
+   The difference isn't in the pronunciation of Linux but in the langu
+   Linus uses to say, "hello."
+   
+   For the benefit of those who don't have the equipment or inclinatio
+   Linus pronounces Linux approximately as Leenus, where the "ee" is
+   pronounced as in "feet," but rather shorter, and the "u" is like a
+   much shorter version of the French "eu" sound in "peur"
+   (pronouncing it as the "u" in "put" is probably passable).
+   
+   
+   contents
+   
+   
+9. Frequently encountered error messages.
+
+   
+9.1 Modprobe can't locate module, "XXX," and similar messages.
+
+   These types of messages mostly occur at boot time or shutdown. If
+   modprobe, insmod, or rmmod complain about not being able to find a
+   module, add the following to the /etc/modules.conf or
+   /etc/modutils/aliases file, whichever is present on your system.
+alias <module-name> off
+
+   And use the name of the module that appears in the error message.
+   
+   [J.H.M. Dassen]
+   
+   
+9.2 Unknown terminal type linux and similar.
+
+   In early kernels the default console terminal type has changed from
+   "console" to "linux." You must edit /etc/termcap to change the
+   line reading:
+console|con80x25:\
+
+   to
+linux|console|con80x25:\
+
+   (there may be an additional dumb in there--if so it should be
+   removed.)
+   
+   To get the editor to work you may need say
+TERM=console
+
+   (for bash and ksh), or
+setenv TERM console
+
+   for csh or tcsh.
+   
+   Some programs use /usr/lib/terminfo instead of /etc/termcap. For th
+   programs you should upgrade your terminfo, which is part of ncurses
+   
+   
+9.3 lp1 on fire
+
+   This is a joke/traditional error message indicating that some sort 
+   error is being reported by your printer, but that the error status
+   isn't a valid one. It may be that you have some kind of I/O or IRQ
+   conflict-- check your cards' settings. Some people report that they
+   get this message when their printer is switched off. Hopefully it
+   isn't really on fire ...
+   
+   In newer kernels, this message reads, "lp1 reported invalid error
+   status (on fire, eh?)"
+   
+   
+9.4 INET: Warning: old style ioctl... called!
+
+   You are trying to use the old network configuration utilities. The 
+   ones can be found on ftp.linux.org.uk in
+   /pub/linux/Networking/PROGRAMS/NetTools/ (source only, I'm afraid).
+   
+   Note that they cannot be used just like the old-style programs. See
+   the NET-2 HOWTO for instructions on how to set up the old-style
+   networking programs correctly. Even better, see the NET-3 HOWTO and
+   upgrade your networking software.
+   
+   
+9.5 ld: unrecognized option '-m486'
+
+   You have an old version of ld. Install a newer binutils package--th
+   will contain an updated ld. Look on tsx-11.mit.edu in
+   /pub/linux/packages/GCC/ for binutils-2.6.0.2.bin.tar.gz.
+   
+   
+9.6 GCC says Internal compiler error.
+
+   If the fault is repeatable (i.e., it always happens at the same pla
+   in the same file--even after rebooting and trying again, using a
+   stable kernel) you have discovered a bug in GCC. See the GCC Info
+   documentation (type Control-h i in Emacs, and select GCC from the
+   menu) for details on how to report the error--make sure you have th
+   latest version, though.
+   
+   Note that this is probably not a Linux-specific problem. Unless you
+   are compiling a program many other Linux users also compile, you
+   should not post your bug report to any of the comp.os.linux groups.
+   
+   If the problem is not repeatable, you may be experiencing memory
+   corruption--see make says Error 139 .
+   
+   
+9.7 make says Error 139
+
+   Your compiler driver (gcc) dumped core. You probably have a corrupt
+   buggy, or old version of GCC--get the latest release. Alternatively
+   you may be running out of swap space--see My machine runs very
+   slowly when I run GCC / X / ... .
+   
+   If this doesn't fix the problem, you are probably having problems w
+   memory or disk corruption. Check that the clock rate, wait states, 
+   refresh timing for your SIMMS and cache are correct (hardware manua
+   are sometimes wrong, too). If so, you may have some marginal SIMMS,
+   a faulty motherboard or hard disk or controller.
+   
+   Linux, like any Unix, is a very good memory tester--much better tha
+   MS-DOS based memory test programs.
+   
+   Reportedly, some clone x87 math coprocessors can cause problems. Tr
+   compiling a kernel with math emulation ( How do I
+   upgrade/recompile my kernel? .) You may need to use the "no387"
+   kernel command line flag on the LILO prompt to force the kernel to 
+   math emulation, or it may be able to work and still use the '387, w
+   the math emulation compiled in but mainly unused.
+   
+   More information about this problem is available on the Web at
+   http://www.bitwizard.nl/sig11/.
+   
+   
+9.8 shell-init: permission denied when I log in.
+
+   Your root directory and all the directories up to your home directo
+   must be readable and executable by everybody. See the manual page f
+   chmod or a book on Unix for how to fix the problem.
+   
+   
+9.9 No utmp entry. You must exec ... when I log in.
+
+   Your /var/run/utmp is screwed up. You should have
+> /var/run/utmp
+
+   in your /etc/rc.local or /etc/rc.d/*. See ("I have screwed up
+   my system and can't log in to fix it. ") Note that the utmp may als
+   be found in /var/adm/ or /etc/ on some older systems.
+   
+   
+9.10 Warning--bdflush not running.
+
+   Modern kernels use a better strategy for writing cached disk blocks
+   In addition to the kernel changes, this involves replacing the old
+   update program which used to write everything every 30 seconds with
+   more subtle daemon (actually a pair), known as bdflush.
+   
+   Get bdflush-n.n.tar.gz from the same place as the kernel source cod
+   How do I upgrade/recompile my kernel? ) and compile and install
+   it. Bdflush should be started before the usual boot-time file syste
+   checks. It will work fine with older kernels as well, so there's no
+   need to keep the old update around.
+   
+   
+9.11 Warning: obsolete routing request made.
+
+   This is nothing to worry about. The message means that your version
+   route is a little out of date, compared to the kernel. You can make
+   the message go away by getting a new version of route from the same
+   place as the kernel source code. ( How do I upgrade/recompile my
+   kernel? )
+   
+   
+9.12 EXT2-fs: warning: mounting unchecked file system.
+
+   You need to run e2fsck (or fsck -t ext2 if you have the fsck front 
+   program) with the -a option to get it to clear the `dirty' flag, an
+   then cleanly unmount the partition during each shutdown.
+   
+   The easiest way to do this is to get the latest fsck, umount, and
+   shutdown commands, available in Rik Faith's util-linux package (`
+   Where can I get Linux material by FTP? ") You have to make sure
+   that your /etc/rc*/ scripts use them correctly.
+   
+   NB: don't try to check a file system that's mounted read/write--thi
+   includes the root partition if you don't see
+VFS: mounted root ... read-only
+
+   at boot time. You must arrange to mount the root file system read/o
+   to start with, check it if necessary, and then remount it read/writ
+   Read the documentation that comes with util-linux to find out how t
+   do this.
+   
+   Note that you need to specify the -n option to mount so it won't tr
+   to update /etc/mtab, since the root file system is still read-only,
+   and this will otherwise cause it to fail.
+   
+   
+9.13 EXT2-fs warning: maximal count reached.
+
+   This message is issued by the kernel when it mounts a file system
+   that's marked as clean, but whose "number of mounts since check"
+   counter has reached the predefined value. The solution is to get th
+   latest version of the ext2fs utilities (e2fsprogs-0.5b.tar.gz at th
+   time of writing) from the usual sites. (` Where can I get Linux
+   material by FTP? ")
+   
+   The maximal number of mounts value can be examined and changed usin
+   the tune2fs program from this package.
+   
+   
+9.14 EXT2-fs warning: checktime reached.
+
+   Kernels from 1.0 onwards support checking a file system based on th
+   elapsed time since the last check as well as by the number of mount
+   Get the latest version of the ext2fs utilities. "( EXT2-fs
+   warning: maximal count reached. ")
+   
+   
+9.15 df says Cannot read table of mounted file systems.
+
+   There is probably something wrong with your /etc/mtab or /etc/fstab
+   files. If you have a reasonably new version of mount, /etc/mtab sho
+   be emptied or deleted at boot time (in /etc/rc.local or /etc/rc.d/*
+   using something like
+rm -f /etc/mtab*
+
+   Some versions of SLS have an entry for the root partition in /etc/m
+   made in /etc/rc* by using rdev. This is incorrect--the newer versio
+   of mount do this automatically.
+   
+   Other versions of SLS have a line in /etc/fstab that looks like:
+/dev/sdb1   /root   ext2   defaults
+
+   This is wrong. /root should read simply /.
+   
+   
+9.16 fdisk says Partition X has different physical/logical ...
+
+   If the partition number (X, above) is 1, this is the same problem a
+   in "fdisk: Partition 1 does not start on cylinder boundary. "
+   
+   If the partition begins or ends on a cylinder numbered greater than
+   1024, this is because the standard DOS disk geometry information
+   format in the partition table can't cope with cylinder numbers with
+   more than 10 bits. You should see "How can I get Linux to work
+   with my disk? "
+   
+   
+9.17 fdisk: Partition 1 does not start on cylinder boundary.
+
+   The version of fdisk that comes with many Linux systems creates
+   partitions that fail its own validity checking. Unfortunately, if
+   you've already installed your system, there's not much you can do
+   about this, apart from copying the data off the partition, deleting
+   and remaking it, and copying the data back.
+   
+   You can avoid the problem by getting the latest version of fdisk, f
+   Rik Faith's util-linux package (available on all the usual FTP site
+   Alternatively, if you are creating a new partition 1 that starts in
+   the first cylinder, you can do the following to get a partition tha
+   fdisk likes.
+     * Create partition 1 in the normal way. A `p' listing will produc
+       the mismatch complaint.
+     * Type `u' to set sector mode and do `p' again. Copy down the num
+       from the "End" column.
+     * Delete partition 1.
+     * While still in sector mode, re-create partition 1. Set the firs
+       sector to match the number of sectors per track. This is the
+       sector number in the first line of the `p' output. Set the last
+       sector to the value you wrote down in the step above.
+     * Type `u' to reset cylinder mode and continue with other
+       partitions.
+       
+   Ignore the message about unallocated sectors--they refer to the
+   sectors on the first track apart from the Master Boot Record, and t
+   are not used if you start the first partition in track 2.
+   
+   
+9.18 fdisk says partition n has an odd number of sectors.
+
+   The PC disk partitioning scheme works in 512-byte sectors, but Linu
+   uses 1K blocks. If you have a partition with an odd number of secto
+   the last sector is wasted. Ignore the message.
+   
+   
+9.19 mtools says cannot initialize drive XYZ
+
+   This means that mtools is having trouble accessing the drive. This 
+   be due to several things.
+   
+   Often this is due to the permissions on floppy drive devices
+   (/dev/fd0* and /dev/fd1*) being incorrect--the user running mtools
+   must have the appropriate access. See the manual page for chmod for
+   details.
+   
+   Most versions of mtools distributed with Linux systems (not the
+   standard GNU version) use the contents of a file /etc/mtools to
+   determine which devices and densities to use, in place of having th
+   information compiled into the binary. Mistakes in this file often
+   cause problems. There is often no documentation about this.
+   
+   For the easiest way to access your MS-DOS files (especially those o
+   hard disk partition) see How do I access files on my DOS
+   partition or floppy? Note--you should never use mtools to access fi
+   on an msdosfs mounted partition or disk!
+   
+   
+9.20 At the start of booting: Memory tight
+
+   This means that you have an extra-large kernel, which means that Li
+   has to do some special memory-management magic to be able to boot
+   itself from the BIOS. It isn't related to the amount of physical
+   memory in your machine. Ignore the message, or compile a kernel
+   containing only the drivers and features you need. ("How do I
+   upgrade/recompile my kernel? )"
+   
+   
+9.21 My syslog says `end_request: I/O error, ...'.
+
+   This error message, and messages like it, almost always indicate a
+   hardware error with a hard drive.
+   
+   This commonly indicates a hard drive defect. The only way to avoid
+   further data loss is to completely shut own the system. You must al
+   make sure that whatever data is on the drive is backed up, and rest
+   it to a non-defective hard drive.
+   
+   This error message may also indicate a bad connection to the drive,
+   especially with homebrew systems. If you install an IDE drive, ALWA
+   use new cables. It's probably is a good idea with SCSI drives, too.
+   
+   In one instance, this error also seemed to coincide with a bad grou
+   between the system board and the chassis. Be sure that all electric
+   connections are clean and tight before placing the blame on the har
+   drive itself.
+   
+   [Peter Moulder, Theodore T'so]
+   
+   
+9.22 You don't exist. Go away.
+
+   This is not a viral infection :-). It comes from programs like writ
+   talk, and wall, if your invoking UID doesn't correspond to a valid
+   user (probably due to /etc/passwd being corrupted), or if the sessi
+   (pseudoterminal, specifically) you're using isn't properly register
+   in the utmp file (probably because you invoked it in a funny way).
+   
+   
+   contents
+   
+   
+10. The X Window System.
+
+   
+10.1 Does Linux support X Windows?
+
+   Yes. Linux uses XFree86 (the current version is 3.3.2, which is bas
+   on X11R6). You need to have a video card which is supported by
+   XFree86. See the Linux XFree86 HOWTO for more details.
+   
+   Most Linux distributions nowadays come with an X installation.
+   
+   However, you can install or upgrade your own, from
+   /pub/Linux/X11/Xfree86-* on sunsite.unc.edu and its mirror sites.
+   
+   
+10.2 Where can I get an XF86Config for my system?
+
+   See the Linux XFree86 HOWTO, recent versions of Installation and
+   Getting Started, and the instructions for the XF86Setup program.
+   
+   The contents of the XF86Config file depend on the your exact
+   combination of video card and monitor. It can either be configured 
+   hand, or using the XF86Setup utility. Read the instructions that ca
+   with XFree86, in /usr/X11R6/lib/X11/etc. The file you probably need
+   look at most is README.Config.
+   
+   You should not use the sample XF86Config.eg file which is included
+   with newer versions of XFree86 verbatim, because the wrong video cl
+   settings can damage your monitor.
+   
+   Please don't post to comp.os.linux.x asking for an XF86Config, and
+   please don't answer such requests.
+   
+   
+10.3 xterm logins show up strangely in who, finger.
+
+   The xterm that comes with XFree86 2.1 and earlier doesn't correctly
+   understand the format that Linux uses for the /var/adm/utmp file,
+   where the system records who is logged in. It therefore doesn't set
+   all the information correctly.
+   
+   The Xterms in XFree86 3.1 and later versions fix this problem.
+   
+   
+10.4 I can't get X Windows to work right.
+
+   Read the XFree86 HOWTO--note the question and answer section.
+   
+   Try reading comp.windows.x.i386unix--specifically read the the FAQ 
+   that group.
+   
+   Please don't post X Windows or XFree86 related questions to
+   comp.os.linux.x unless they are Linux-specific.
+   
+   
+   contents
+   
+   
+11. Questions applicable to very out-of-date software.
+
+   The questions in this section are only relevant to users of softwar
+   that is at least three months old.
+   
+   Please let me know if you find the answer to a problem you had here
+   as unused questions in this section will eventually disappear. (See
+   Feedback is invited. ")
+   
+   
+11.1 fdisk says cannot use nnn sectors of this partition.
+
+   Originally Linux only supported the Minix file system, which cannot
+   use more than 64Mb per partition. This limitation is not present in
+   the more advanced file systems that are now available, such as ext2
+   (the 2nd version of the Extended File System, the `standard' Linux
+   file system).
+   
+   If you intend to use ext2fs you can ignore the message.
+   
+   
+11.2 GCC sometimes uses huge amounts of virtual memory and thrashes.
+
+   Older versions of GCC had a bug which made them use lots of memory 
+   you tried to compile a program which had a large static data table 
+   it.
+   
+   You can either upgrade your version of GCC, or add more swap space 
+   necessary, or just wait for the program to finish compiling.
+   
+   
+   contents
+   
+   
+12. How to get further assistance.
+
+   
+12.1 You still haven't answered my question!
+
+   Please read all of this answer before posting. I know it's a bit lo
+   but you may be about to make a fool of yourself in front of 50,000
+   people and waste hundreds of hours of their time. Don't you think i
+   worth spending some of your time to read and follow these
+   instructions?
+   
+   If you think an answer is incomplete or inaccurate, please e-mail
+   Robert Kiesling at kiesling@terracom.net.
+   
+   Read the appropriate Linux Documentation Project books--see "
+   Where can I get the HOWTO's and other documentation? "
+   
+   If you're a Unix newbie, read the FAQ for comp.unix.questions, and
+   those for any of the other comp.unix.* groups that may be relevant.
+   
+   Linux has so much in common with commercial Unices, that almost
+   everything you read there will apply to Linux. The FAQs, like all
+   FAQs, be found on rtfm.mit.edu in /pub/usenet/news.answers (the
+   mail-server@rtfm.mit.edu can send you these files, if you don't
+   have FTP access). There are mirrors of rtfm's FAQ archives on vario
+   sites--check the Introduction to *.answers posting, posted, or look
+   news-answers/introduction in the directory above.
+   
+   Check the relevant HOWTO for the subject in question, if there is o
+   or an appropriate old style sub-FAQ document. Check the FTP sites.
+   
+   Try experimenting--that's the best way to get to know Unix and Linu
+   
+   Read the documentation. Check the manual pages (type "man man" if
+   you don't know about manual pages. Try "man -k subject"--it often
+   lists useful and relevant manual pages.
+   
+   Check the Info documentation (type C-h i, i.e. Control H followed b
+   in Emacs). This isn't just for Emacs. For example, the GCC
+   documentation lives here as well.
+   
+   There will also often be a README file with a package that gives
+   installation and/or usage instructions.
+   
+   Make sure you don't have a corrupted or out-of-date copy of the
+   program in question. If possible, download it again and re-install
+   it--you probably made a mistake the first time.
+   
+   Read comp.os.linux.announce--this often contains very important
+   information for all Linux users.
+   
+   General X Window System questions belong in comp.windows.x.i386unix
+   not in comp.os.linux.x. But read the group first (including the FAQ
+   before you post.
+   
+   Only if you have done all of these things and are still stuck, shou
+   you post to the appropriate comp.os.linux.* newsgroup. Make sure yo
+   read the next question first. "( What to put in a request for
+   help. )"
+   
+   
+12.2 What to put in a request for help.
+
+   Please read the following advice carefully about how to write your
+   posting or email. Making a complete posting will greatly increase t
+   chances that an expert or fellow user reading it will have enough
+   information and motivation to reply.
+   
+   This advice applies both to postings asking for advice and to perso
+   email sent to experts and fellow users.
+   
+   Make sure you give full details of the problem, including:
+     * What program, exactly, you are having problems with. Include th
+       version number if known and say where you got it. Many standard
+       commands tell you their version number if you give them a
+       --version option.
+     * Which Linux release you're using (Red Hat, Slackware, Debian, o
+       whatever) and what version of that release.
+     * The exact and complete text of any error messages printed.
+     * Exactly what behavior you expected, and exactly what behavior y
+       observed. A transcript of an example session is a good way to s
+       this.
+     * The contents of any configuration files used by the program in
+       question and any related programs.
+     * What version of the kernel and shared libraries you have
+       installed. The kernel version can be found by typing uname -a, 
+       the shared library version by typing ls -l /lib/libc.so.4.
+     * Details of what hardware you're running on, if it seems
+       appropriate.
+       
+   You are in little danger of making your posting too long unless you
+   include large chunks of source code or uuencoded files, so err on t
+   side of giving too much information.
+   
+   Use a clear, detailed Subject line. Don't put things like `doesn't
+   work', `Linux', `help', or `question' in it--we already know that.
+   Save the space for the name of the program, a fragment of an error
+   message, or summary of the unusual behavior.
+   
+   If you report an `unable to handle kernel paging request' message,
+   follow the instructions in the Linux kernel sources README file for
+   turning the numbers into something more meaningful. If you don't do
+   this, no one who reads your post will be able to do it for you. The
+   mapping from numbers to function names varies from one kernel to
+   another.
+   
+   Put a summary paragraph at the top of your posting.
+   
+   At the bottom of your posting, ask for responses by email and say
+   you'll post a summary. Back this up by using Followup-To: poster.
+   Then, actually post the summary in a few days or a week or so. Don'
+   just concatenate the replies you got--summarize. Putting the word
+   SUMMARY in your summary's Subject line is also a good idea. Conside
+   submitting the summary to comp.os.linux.announce.
+   
+   Make sure your posting doesn't have an inappropriate References:
+   header line. This marks your article as part of the thread of the
+   article referred to, which will often cause it to be junked by
+   readers, along with the rest of a boring thread.
+   
+   You might like to say in your posting that you've read this FAQ and
+   the appropriate HOWTO's--this may make people less likely to skip y
+   posting.
+   
+   Remember that you should not post email sent to you personally with
+   the sender's permission.
+   
+   
+12.3 I want to mail someone about my problem.
+
+   Try to find the author or developer of whatever program or componen
+   is causing you difficulty. If you have a contact point for your Lin
+   distribution, you should use it.
+   
+   Please put everything in your e-mail message that you would put in 
+   posting asking for help.
+   
+   Finally, remember that, despite the fact that most of the Linux
+   community are very helpful and responsive to e-mailed questions,
+   you're asking for help from unpaid volunteers, so you have no right
+   expect an answer.
+   
+   
+   
+   
+13. Administrative information and acknowledgments.
+
+   
+13.1 Feedback is invited.
+
+   Please send me your comments on this FAQ.
+   
+   I accept contributions to the FAQ in any format. All contributions,
+   comments, and corrections are gratefully received. Please send e-ma
+   to kiesling@terracom.net.
+   
+   If you wish to refer to a question in the FAQ, it's better for me i
+   you do so by the question heading, rather than number. The question
+   numbers are generated automatically, and I don't see them in the
+   source file I edit.
+   
+   I prefer comments in English to patch files--context diff is not my
+   first language.
+   
+   
+13.2 Formats in which this FAQ is available.
+
+   This document is available as an ASCII text file, an HTML World Wid
+   Web page, Postscript, and as a USENET news posting.
+   
+   All of these formats are generated from SGML source using SGML Tool
+   and the LinuxDoc DTD.
+   
+   The HTML version of this FAQ is available as
+   http://sunsite.unc.edu/LDP/ at other sites.
+   
+   The Usenet version is posted regularly to news.answers, comp.answer
+   comp.os.linux.misc, and comp.os.linux.announce. It is archived at
+   ftp://rtfm.mit.edu/pub/usenet-by-hierarchy/comp/os/linux/misc/.
+   
+   The most recent text, HTML, SGML, and Postscript versions are
+   available from the Linux archives at sunsite.unc.edu, and from
+   http://www.terracom.net/~kiesling
+   
+   
+13.3 Authorship and acknowledgments.
+
+   This FAQ is compiled and maintained by Robert Kiesling
+   kiesling@ix.netcom.com, with assistance and comments from Linux
+   activists all over the world.
+   
+   Special thanks are due to Matt Welsh, who moderated
+   comp.os.linux.announce and comp.os.linux.answers, coordinated the
+   HOWTO's and wrote substantial portions of many of them, Greg Hankin
+   and Timothy Bynum, the former and current Linux Documentation Proje
+   HOWTO maintainers, Lars Wirzenius and Mikko Rauhala, the former and
+   current moderators of comp.os.linux.announce, Marc-Michel Corsini, 
+   wrote the original Linux FAQ, and Ian Jackson, the previous FAQ
+   maintainer. Thanks also to Roman Maurer for his many updates and
+   additions, especially with European Web sites, translations, and
+   general miscellany.
+   
+   Last but not least, thanks to Linus Torvalds and the other
+   contributors to Linux for giving us something to talk about!
+   
+   
+13.4 Disclaimer and Copyright.
+
+   Note that this document is provided `as is'. The information in it 
+   not warranted to be correct. Use it at your own risk.
+   
+   Linux Frequently Asked Questions with Answers is Copyright (c) 1997
+   1998 by Robert Kiesling kiesling@terracom.net, under the
+   copyright of the Linux Documentation Project. The full text of the 
+   copyright is available via anonymous FTP from sunsite.unc.edu, in t
+   directory /pub/Linux/docs/LDP, and is included below.
+   
+   Portions are Copyright (c) 1994, 1995, 1996 by Ian Jackson, the
+   previous Linux FAQ maintainer.
+   
+   Linux Frequently Asked Questions with Answers may be reproduced and
+   distributed in its entirety (including this authorship, copyright, 
+   permission notice), provided that no charge is made for the documen
+   itself, without the author's consent. This includes "fair use"
+   excerpts like reviews and advertising, and derivative works like
+   translations.
+   
+   Note that this restriction is not intended to prohibit charging for
+   the service of printing or copying the document.
+   
+   Exceptions to these rules may be granted. I would be happy to answe
+   any questions regarding this copyright. E-mail me at
+   kiesling@ix.netcom.com. As the license below says, these
+   restrictions are here to protect the contributors, not to restrict 
+   as educators and learners.
+   
+                  LINUX DOCUMENTATION PROJECT COPYING LICENSE
+
+   Last modified 6 January 1997
+
+
+   The following copyright license applies to all works by the Linux
+   Documentation Project.
+
+   Please read the license carefully---it is somewhat like the GNU
+   General Public License, but there are several conditions in it that
+   differ from what you may be used to. If you have any questions, ple
+   email the LDP coordinator, mdw@sunsite.unc.edu.
+
+   The Linux Documentation Project manuals may be reproduced and
+   distributed in whole or in part, subject to the following condition
+
+   All Linux Documentation Project manuals are copyrighted by their
+   respective authors. THEY ARE NOT IN THE PUBLIC DOMAIN.
+     * The copyright notice above and this permission notice must be
+       preserved complete on all complete or partial copies.
+     * Any translation or derivative work of Linux Installation and
+       Getting Started must be approved by the author in writing befor
+       distribution.
+     * If you distribute Linux Installation and Getting Started in par
+       instructions for obtaining the complete version of this manual
+       must be included, and a means for obtaining a complete version
+       provided.
+     * Small portions may be reproduced as illustrations for reviews o
+       quotes in other works without this permission notice if proper
+       citation is given.
+     * The GNU General Public License referenced below may be reproduc
+       under the conditions given within it.
+
+   Exceptions to these rules may be granted for academic purposes: Wri
+   to the author and ask. These restrictions are here to protect us as
+   authors, not to restrict you as educators and learners. All source
+   code in Linux Installation and Getting Started is placed under the 
+   General Public License, available via anonymous FTP from the GNU
+   archive site.
+
+
+
+                            PUBLISHING LDP MANUALS
+
+    If you're a publishing company interested in distributing any of t
+   LDP manuals, read on.
+
+   By the license given in the previous section, anyone is allowed to
+   publish and distribute verbatim copies of the Linux Documentation
+   Project manuals. You don't need our explicit permission for this.
+   However, if you would like to distribute a translation or derivativ
+   work based on any of the LDP manuals, you must obtain permission fr
+   the author, in writing, before doing so.
+
+   All translations and derivative works of LDP manuals must be placed
+   under the Linux Documentation License given in the previous section
+   That is, if you plan to release a translation of one of the manuals
+   it must be freely distributable by the above terms.
+
+   You may, of course, sell the LDP manuals for profit. We encourage y
+   to do so. Keep in mind, however, that because the LDP manuals are
+   freely distributable, anyone may photocopy or distribute printed
+   copies free of charge, if they wish to do so.
+
+   We do not require to be paid royalties for any profit earned from
+   selling LDP manuals. However, we would like to suggest that if you 
+   sell LDP manuals for profit, that you either offer the author
+   royalties, or donate a portion of your earnings to the author, the 
+   as a whole, or to the Linux development community. You may also wis
+   to send one or more free copies of the LDP manual that you are
+   distributing to the author. Your show of support for the LDP and th
+   Linux community will be very appreciated.
+
+   We would like to be informed of any plans to publish or distribute 
+   manuals, just so we know how they're becoming available. If you are
+   publishing or planning to publish any LDP manuals, please send emai
+   to Matt Welsh (email mdw@sunsite.unc.edu).
+
+   We encourage Linux software distributors to distribute the LDP manu
+   (such as the Installation and Getting Started Guide) with their
+   software. The LDP manuals are intended to be used as the "official"
+   Linux documentation, and we'd like to see mail-order distributors
+   bundling the LDP manuals with the software. As the LDP manuals matu
+   hopefully they will fulfill this goal more adequately.
+
+
+    Matt Welsh, mdw@sunsite.unc.edu
+   
+

@@ -1,0 +1,11 @@
+Package-Name:   nxm.tar.Z
+Title:          nxm
+Version:        0.05a
+Description:    Fido EMSI Mailer for Linux
+Author:         Anthony Rumble <arumble@extro.ucc.su.oz.au>
+Maintained-by:  Anthony Rumble <arumble@extro.ucc.su.oz.au>
+Maintained-at:  extro.ucc.su.oz.au:/pub/arumble (Down currently)
+Platforms:      Written for Linux 0.99 in c.
+Copying-policy: GNU copyleft
+Keywords:       LINUX EMSI FIDO MAIL
+

@@ -1,0 +1,14 @@
+Begin3
+Title:          totem
+Version:        2.1
+Entered-date:   25OCT97
+Description:    Implements the /proc/totem file, which associates your
+                kernel release with a particular symbolic totem, or animal.
+Keywords:       kernel driver module totem animal
+Author:         lilo@linpeople.org (lilo)
+Maintained-by:  John Gotts <jgotts@engin.umich.edu>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/misc
+                12818 totem-2.1.tar.gz
+Platforms:      Linux 2.1.x kernels.
+Copying-policy: GPL
+End

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/mail/mailhandlers</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/mail/mailhandlers</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/mail/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:55  </td><td align="right"> 96 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="antijunk-6.1.lsm">antijunk-6.1.lsm</a></td><td align="right">1998-08-08 14:38  </td><td align="right">280 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="email-pager.20.lsm">email-pager.20.lsm</a></td><td align="right">1997-07-13 11:41  </td><td align="right">296 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mailall-1.0.lsm">mailall-1.0.lsm</a></td><td align="right">1997-08-12 06:32  </td><td align="right">429 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linomail.lsm">linomail.lsm</a></td><td align="right">1998-05-06 01:43  </td><td align="right">469 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mpack-1.5-linux.lsm">mpack-1.5-linux.lsm</a></td><td align="right">1995-02-16 08:00  </td><td align="right">518 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="frontdesk-0.3.lsm">frontdesk-0.3.lsm</a></td><td align="right">1998-02-22 04:01  </td><td align="right">522 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mailback-1.0.1.lsm">mailback-1.0.1.lsm</a></td><td align="right">1998-12-20 03:37  </td><td align="right">598 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Autoresponder.v02.lsm">Autoresponder.v02.lsm</a></td><td align="right">1997-10-28 06:19  </td><td align="right">642 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="maildec-2.1.lsm">maildec-2.1.lsm</a></td><td align="right">1997-02-18 16:21  </td><td align="right">685 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">723 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="vacation-1.2.0.lsm">vacation-1.2.0.lsm</a></td><td align="right">1998-12-22 03:58  </td><td align="right">767 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="arrow-0.6.5.lsm">arrow-0.6.5.lsm</a></td><td align="right">1998-10-07 06:23  </td><td align="right">843 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="metamail-INSTALL.linux">metamail-INSTALL.linux</a></td><td align="right">1993-04-02 08:00  </td><td align="right">852 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="splitdigest-2.4.lsm">splitdigest-2.4.lsm</a></td><td align="right">1998-03-30 21:50  </td><td align="right">909 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="BCRMailHandler.lsm">BCRMailHandler.lsm</a></td><td align="right">1994-05-12 07:00  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pypost.lsm">pypost.lsm</a></td><td align="right">1997-12-07 03:16  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="maildrop.lsm">maildrop.lsm</a></td><td align="right">1999-02-27 22:25  </td><td align="right">1.8K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mailall-1.0.tgz">mailall-1.0.tgz</a></td><td align="right">1997-08-12 06:32  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">2.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="VxMail-1.39.lsm">VxMail-1.39.lsm</a></td><td align="right">1999-05-03 23:32  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="Autoresponder.v02.tgz">Autoresponder.v02.tgz</a></td><td align="right">1997-10-28 01:53  </td><td align="right">3.5K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mailback-1.0.1.tgz">mailback-1.0.1.tgz</a></td><td align="right">1998-12-20 03:37  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="procmail.README">procmail.README</a></td><td align="right">1996-08-26 06:31  </td><td align="right">5.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">5.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="linomail-0.1.tgz">linomail-0.1.tgz</a></td><td align="right">1998-05-06 01:43  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pypost-1.0.tar.gz">pypost-1.0.tar.gz</a></td><td align="right">1997-12-07 03:16  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="maildec-2.1.tar.gz">maildec-2.1.tar.gz</a></td><td align="right">1997-02-18 16:21  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="email-pager.20.tar.gz">email-pager.20.tar.gz</a></td><td align="right">1995-04-24 07:00  </td><td align="right"> 24K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="frontdesk-0.3.tar.gz">frontdesk-0.3.tar.gz</a></td><td align="right">1998-02-22 04:01  </td><td align="right"> 25K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="splitdigest-2.4.tar.gz">splitdigest-2.4.tar.gz</a></td><td align="right">1998-03-30 21:50  </td><td align="right"> 30K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mpack-1.5-linux.tar.gz">mpack-1.5-linux.tar.gz</a></td><td align="right">1995-02-16 08:00  </td><td align="right"> 32K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="BCRMailHandler314.tar.gz">BCRMailHandler314.tar.gz</a></td><td align="right">1994-05-12 07:00  </td><td align="right"> 43K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="vacation-1.2.0.tar.gz">vacation-1.2.0.tar.gz</a></td><td align="right">1998-12-22 03:58  </td><td align="right"> 48K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="antijunk-6.1.tar.gz">antijunk-6.1.tar.gz</a></td><td align="right">1998-08-08 14:39  </td><td align="right">102K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="procmail-3.11pre4.tar.gz">procmail-3.11pre4.tar.gz</a></td><td align="right">1996-08-26 06:31  </td><td align="right">167K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="metamail-linux.tar.z">metamail-linux.tar.z</a></td><td align="right">1993-04-02 08:00  </td><td align="right">209K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="maildrop-0.62.tar.gz">maildrop-0.62.tar.gz</a></td><td align="right">1999-02-27 22:25  </td><td align="right">251K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="VxMail-1.39.tgz">VxMail-1.39.tgz</a></td><td align="right">1999-05-03 23:32  </td><td align="right">444K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="arrow-0.6.5.tar.gz">arrow-0.6.5.tar.gz</a></td><td align="right">1998-10-07 06:23  </td><td align="right">726K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

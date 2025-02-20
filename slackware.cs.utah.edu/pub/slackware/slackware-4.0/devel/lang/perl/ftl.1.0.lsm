@@ -1,0 +1,20 @@
+Begin3
+Title:          File Test Library for Perl
+Version:        1.0
+Entered-date:   95/1/20
+Description:    This is a file-test library that can be used with Perl.  This
+                makes the testing of file attributes much simpler, and it makes
+                things easier to read in your Perl code.  Try it out and let me
+                know what you guys think.  This library includes an example of
+                how to use the library, and an example of the files that can be
+                tested.  Read the README file for more information.
+Keywords:       perl programming library file
+Author:         khollis@chatlink.com (Ken Hollis)
+Maintained-by:  khollis@chatlink.com (Ken Hollis)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/perl
+                20kB ftl.1.0.tgz
+Alternate-site: -
+Original-site:  -
+Platform:       
+Copying-policy: GPL
+End

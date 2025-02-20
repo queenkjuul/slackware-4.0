@@ -1,0 +1,24 @@
+Title:         Linux to GO32 cross-compiler
+Version:       0.2 beta
+Description:   From the original author Carlos O'Ryan:
+	       'Provides a Linux to MS-DOS cross compiler enviroment using the
+               standard Linux GCC to compile and the go32 driver to run under
+               MS-DOS. Basically a set of tools, no extra code by myself.'
+               From me:
+	       Nothing else, just an updated version.
+Author:        Carlos O'Ryan, Laurent Chemla
+AuthorEmail:   coryan@mat.puc.cl laurent@brasil.frmug.fr.net
+Maintainer:    Laurent Chemla
+MaintEmail:    laurent@brasil.frmug.fr.net
+Required:      Linux 0.99pl10 or higher GCC version 2.4.3 or higher.
+CopyPolicy:    GPL
+Keywords:      Cross-compiling, MS-DOS
+Comments:      From the original author, Carlos O'Ryan:
+	       'It is not a different compiler, all I did was to put together a
+               lot of tools that let you create MS-DOS programs under Linux.
+               When go32 and dosemu understand each other the thing would be
+               more useful.'
+	       From me:
+	       Nothing else :-)
+DateEntered:   20/06/94
+WhoEntered:    Laurent Chemla

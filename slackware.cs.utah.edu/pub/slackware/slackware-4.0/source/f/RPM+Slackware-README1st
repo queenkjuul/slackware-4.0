@@ -1,0 +1,17 @@
+
+FWIW, I'm not sure I fully agree with the information in RPM+Slackware.  Sure,
+you can install the rpm binary on a Slackware system, but there won't be
+any existing rpm database to tell rpm what is/isn't installed, so there's
+no conflict checking between the packages installed with RPM, and those
+installed by Slackware.  It's real possible to destroy the entire system
+if you install/uninstall RPM packages using RPM on systems where it is not
+the native package system.  On the other hand, there are much fewer problems
+with converting RPMs to .tgz packages with rpm2targz (in Slackware's
+contrib directory), and then installing them with Slackware's package 
+management tools, like 'installpkg', 'removepkg', and 'pkgtool'.
+
+My $0.02...
+
+Patrick J. Volkerding
+Slackware maintainer
+

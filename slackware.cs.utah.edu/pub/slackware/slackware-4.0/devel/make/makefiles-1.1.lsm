@@ -1,0 +1,32 @@
+Begin3
+Title:          makefiles
+Version:        1.1
+Entered-date:   15JUL97
+Description:    makefiles allows portable and concurrent compilation on most UNIX platforms
+		makefiles is an easy to use system of makefiles
+			and includable make rules that results in
+			easy to read and to maintain leaf makefiles
+		makefiles allows to mount a source tree via NFS
+			and simultaneous compilation on all supported platforms
+			makefiles therefore allows to re-use a source tree for
+			all supported platforms in favor of the GNU concept of
+			untar -> configure -> make -> install -> remove
+		makefiles currently uses a handcrafted but autoconf
+			compatible mconfig.h file to grant portablility
+			future versions will use autoconf to produce this file on demand
+		makefiles include many template makefiles for all purposes
+		makefiles includes a set of include files that makes porting easier
+		makefiles includes a set of binary 'smake' versions for different
+			platforms for convenience and easier debugging
+			because gnu make allows no make file debugging
+Keywords:       makefiles make smake gmake portability source development
+Author:         schilling@fokus.gmd.de (Jörg Schilling)
+Maintained-by:  schilling@fokus.gmd.de (Jörg Schilling)
+Primary-site:   ftp.fokus.gmd.de /pub/unix/makefiles
+		465864 makefiles-1.1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel
+		465864 makefiles-1.1.tar.gz
+Platforms:      SunOS Solaris Linux *BSD HP-UX AIX IRIX DG/UX
+		Supported make programs: smake (schily), SunPro make, gnu make
+Copying-policy: GPL
+End

@@ -1,0 +1,14 @@
+Begin3
+Title:          defrag
+Version:        0.70
+Entered-date:   17-Aug-1997
+Description:    Filesystem defragmenter for Linux filesystems
+Keywords:       defrag, ext2fs, e2defrag
+Author:         Stephen Tweedie <sct@dcs.ed.ac.uk>
+Maintained-by:  Stephen Tweedie <sct@dcs.ed.ac.uk>
+Primary-site:   ftp://linux.dcs.ed.ac.uk/pub/linux/defrag/defrag-0.70.tar.gz
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/filesystems/defrag-0.70.tar.gz
+Original-site:  
+Platforms:      Linux
+Copying-policy: GNU Public License
+End

@@ -1,0 +1,16 @@
+Begin3
+Title: rpc.rstatd          
+Version: 3.03       
+Entered-date: January 1996  
+Description: an rstatd, rup, and rsysinfo for linux, new version which includes the ability to display the number or users on the remote system.  Still remains
+backwardly compatible with older daemons and clients.
+Keywords: rup, rsysinfo, inetd, rpc.rstatd, portmapper
+Author: amigus@cs.mun.ca (Adam Migus)         
+Maintained-by: amigus@cs.mun.ca (Adam Migus) 
+Primary-site: ftp.cs.mun.ca /pub/netapps
+			15037 rpc.rstatd-3.02.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network/daemons 
+Original-site:  ftp.cs.mun.ca /pub/netapps
+Platform:       
+Copying-policy: GPL 
+End

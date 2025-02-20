@@ -1,0 +1,14 @@
+Begin3
+Title:          tksm
+Version:        1.3
+Entered-date:   02JUL96
+Description:    TkSM is an OpenGL based 3D modeling extension for Tcl/Tk.
+Keywords:       tksm, OpenGL, 3D, tcl/tk
+Author:         ihsu@eng.umd.edu (Irving Hsu)
+Primary-site:   http://www.isr.umd.edu/~ihsu/tksm.html
+                236481 tksm1.3.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/tcl
+                236481 tksm1.3.tgz
+Platforms:      tcl7.4/tk4.0 or tcl7.5/tk4.1, Mesa 1.2.7
+Copying-policy: 
+End

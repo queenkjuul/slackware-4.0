@@ -1,0 +1,16 @@
+Begin3
+Title:          pslabels
+Version:        1.1
+Entered-date:   03JAN99
+Description:    Command line utility that places encapsulated postscript files
+                on a page for label printing.
+Keywords:       labels, postscript, pslabels, printing, filter, cd booklet
+Author:         perk@consilio.oslo.no (Per Arne Karlsen)
+Maintained-by:  perk@consilio.oslo.no (Per Arne Karlsen)
+Primary-site:   http://consilio.oslo.no/pub/pslabels/
+                13 kb pslabels-1.1.tar.gz
+                0.7 kb pslabels-1.1.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/printing
+Platforms:      Unix
+Copying-policy: GPL
+End

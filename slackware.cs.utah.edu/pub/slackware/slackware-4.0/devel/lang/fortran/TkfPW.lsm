@@ -1,0 +1,20 @@
+Begin3
+Title:          TkfPW
+Version:        Version 1.3 14dec1998
+Entered-date:   12JAN99
+Description:    A GUI Fortran Programmer's Workshop for Unix/X11
+Keywords:       Fortran Tcl Tk
+Author:         Patrick.Queutey@ec-nantes.fr (Patrick Queutey)
+Maintained-by:  Patrick.Queutey@ec-nantes.fr (Patrick Queutey)
+Primary-site:   http://WWW.ec-nantes.fr/DMN/WWW/Software/TkfPW/
+			693		TkfPW.lsm
+			4kB		TkfPW-1.3.readme
+			106Kb	TkfPW-1.3.tar.gz
+
+Alternate-site: ftp://ftp.ec-nantes.fr/pub/DMN/TkfPW/
+		
+Original-site:  
+Platforms:      Tcl/Tk version 8 or higher, Fortran compiler
+Copying-policy: Freeware, just read the copyright notice
+		and send a mail to the author if you like it...
+End

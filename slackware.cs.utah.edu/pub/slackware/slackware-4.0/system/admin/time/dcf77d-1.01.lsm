@@ -1,0 +1,19 @@
+Begin3
+Title:          DCF77 serial radio clock daemon
+Version:        1.01
+Entered-date:   01Oct97
+Description:	Reads the time and date from a dcf77 receiver
+		connected to the serial port and is able to set
+		the time and date for the kernel and the cmos.    
+		NOTE: V01.00 doesn´t work correctly after 1st Oct.
+		      Replace it as soon as possible. 
+Keywords:       dcf77, clock, date, daemon
+Author:         quacks@paula.owl.de (Joerg Krause)
+Maintained-by:  quacks@paula.owl.de (Joerg Krause)
+Primary-site:   sunsite.unc.edu
+                15343 /pub/Linux/system/admin/time/dcf77d-1.00.tar.gz
+Alternate-site: 
+Original-site:
+Platforms:	linux 2.0.x
+Copying-policy: GPL
+End

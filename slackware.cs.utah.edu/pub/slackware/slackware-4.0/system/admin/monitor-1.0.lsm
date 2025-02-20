@@ -1,0 +1,33 @@
+Begin3
+Title:           monitor
+Version:         1.0
+Entered-date:    17APR99 
+Description:     The monitor script will monitor a command and record any 
+                 changes the command makes to the system, you can then use 
+		 the record to remove those changes.
+                 Examples: Monitor a make install command.
+                 monitor
+                 make install   
+                 monitor
+                 Monitor a tar xzvf command.
+                 monitor name
+                 tar xzvf package.tar.gz   
+                 monitor name
+                 If you don't put a name after monitor, the name of the 
+		 current directory is used.
+                 A record will be put in /var/log/packages/name.
+                 You can then remove it like this.
+                 # removepkg name
+                 The monitor script is taken from parts of the instmon.sh 
+		 script, which is part of the instmon v1.4 package.
+                 The removepkg script is taken from the slackware hdsetup.tgz 
+		 package, if you already have a /sbin/removepkg script, you 
+		 don't need the one included with monitor.
+Keywords:        Monitor make install package
+Author:          krobot@erols.com (Kent Robotti) 
+Maintained-by:   
+Primary-site:    ftp://metalab.unc.edu/pub/Linux/system/admin
+Alternate-site:  
+Platforms:       Linux 
+Copying-policy:  GPL
+End

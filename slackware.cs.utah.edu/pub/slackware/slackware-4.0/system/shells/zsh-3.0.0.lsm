@@ -1,0 +1,24 @@
+Begin3
+Title:          zsh
+Version:        3.0.0
+Entered-date:   22AUG96
+Description:    A high level shell with lots of possibilities. See the FAQ
+                for more informations.
+                See also http://www.mal.com/zsh/
+
+                Binary provided by Jeremie Petit (petit@eurecom.fr) and
+                coming with no warranty.
+Keywords:       zsh, shell
+Author:         zsh@math.gatech.edu <Paul Falstad>
+Maintained-by:  zsh-workers@math.gatech.edu (Zsh Team, send bugs reports here !)
+                hzoli@cs.elte.hu (Zoltán Hidvégi, Coordinator)
+Primary-site:   ftp.math.gatech.edu /pub/zsh
+                628435 zsh-3.0.0.tar.gz
+                730962 zsh-doc.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Shells
+                294284 zsh-3.0.0.ELF.tgz
+                628435 zsh-3.0.0.src.tgz
+                730962 zsh-3.0.0.doc.tgz
+Platforms:      Linux and most *nix platforms
+Copying-policy: No fee, copyright respect
+End

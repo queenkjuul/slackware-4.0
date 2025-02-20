@@ -1,0 +1,21 @@
+Title:          5LiS - "Linux  STREAMS"
+Desc1:          LiS is a STREAMS framework which is compatible with
+Desc2:          SVR4 STREAMS.  It has lots of debugging features not
+Desc3:          found in other STREAMS packages.
+Desc4:          Good to do networking and other things.
+Desc5:		It allows for installation of binary drivers.
+Author:         Francisco J. Ballesteros, Graham Wheeler, David Grothe, others
+AuthorEmail:    <linux-streams@gsyc.inf.uc3m.es>
+InfoSources1:   email  <linux-streams@gsyc.inf.uc3m.es> to get in touch w/authors
+InfoSources2:   finger <LiS@gsyc.inf.uc3m.es> to get preposterous .plan
+InfoSources3:   linux-streams@gsyc.inf.uc3m.es  majordomo mailing list
+InfoSources4:   <http://www.gsyc.inf.uc3m.es/~LiS> LiS web home page
+Assistance:     assistance appreciated
+CurrentStat:    Operational
+ETA:            Available
+Remarks1:       Would enjoy to hear comments from the  kernel guys.
+Remarks4:       Need adapter driver from Linux TCP/IP to DLPI STREAMS.
+Remarks5:       Need DLPI LAN drivers.
+Remarks6:	Does a TLI STREAMS TCP/IP make sense?
+Remarks7:	Do STREAMS tty drivers make sense?
+

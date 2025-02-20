@@ -1,0 +1,18 @@
+Begin3
+Title:          p910nd          
+Version:        0.2
+Entered-date:   18AUG98
+Description:    Tiny non-spooling printer daemon for Linux hosts.
+		Accepts data over a TCP network connection from
+		a spooling host.
+Keywords:       printer, lpd, network, diskless
+Author:         ken.yap@acm.org (Ken Yap)
+Maintained-by:  ken.yap@acm.org (Ken Yap)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/printing
+                4956 p910nd-0.2.tar.gz
+                637 p910nd-0.2.lsm
+Alternate-site:	http://www.slug.org.au/etherboot/p910nd/p910nd-0.2.tar.gz
+Original-site:  
+Platforms:      x86 based Linux hosts
+Copying-policy: GPL
+End

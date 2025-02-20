@@ -1,0 +1,27 @@
+Begin2
+Title        = SOCKS Internet Security Package - "behind the firewall"
+Version      = 4.2beta
+Desc1        = Allows using TCP clients from behind the firewall,
+Desc2        = making the firewall transparent to the user.
+Author       = Am not sure, probably Ying-Da Lee (NEC Systems Lab)
+AuthorEmail  = ylee@syl.dl.nec.com
+Maintainer   = Probably me for now...
+MaintEmail   = uri@watson.ibm.com
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming until sysadm moves it to where it belongs...
+File1        = socks-linux-src.tgz
+FileSize1    = 239839
+Required1    = gcc-2.5.8, libc-4.5.26.
+CopyPolicy1  = Read the COPYRIGHT.
+Keywords     = Internet, Firewall, Security
+Comment1     = Very good package, allows one to access hosts and services
+Comment2     = beyond the firewall transparently, as if firewall didn't
+Comment3     = exist. Unfortunately, supports TCP only. Thus: telnet, ftp,
+Comment4     = gopher, whois, finger, Mosaic can benefit from SOCKS; but
+Comment5     = Xarchie cannot yet.
+RelFiles1    = none
+Entered      = 14AUG94
+EnteredBy    = Uri Blumenthal
+CheckedEmail = uri@watson.ibm.com
+End
+

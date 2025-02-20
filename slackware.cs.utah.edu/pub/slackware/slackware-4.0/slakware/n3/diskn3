@@ -1,0 +1,34 @@
+CONTENTS: imapd inn smailcfg       
+imapd:    ipop3d/imapd from Pine 4.10
+imapd:
+imapd:    /sbin/ipop3d and /sbin/imapd are servers supporting the POP3 and
+imapd:    IMAP remote mail access protocols.  They allow users to download
+imapd:    mail from your Linux system for remote viewing.
+imapd:
+imapd:
+imapd:
+imapd:
+imapd:
+imapd:
+inn:      INN-1.7.2
+inn:
+inn:      Rich Salz's InterNetNews news transport system.  The core part of the
+inn:      package is a single long-running daemon that handles all incoming NNTP
+inn:      connections.  It files the articles and arranges for them to be 
+inn:      forwarded to downstream sites.
+inn:
+inn:
+inn:
+inn:
+inn:
+smailcfg: Configuration files for sendmail.
+smailcfg:
+smailcfg: These files are used to create sendmail.cf configuration files.  The
+smailcfg: m4 macro processor (on the D series of disks) is also required in
+smailcfg: order to make use of these files. 
+smailcfg:
+smailcfg: These files and the documentation in /usr/src/sendmail should make it
+smailcfg: possible to support virtually any mail configuration.  NOTE: you
+smailcfg: probably won't need this package if you're planning to use one of the
+smailcfg: sendmail.cf samples included in the sendmail package.
+smailcfg:

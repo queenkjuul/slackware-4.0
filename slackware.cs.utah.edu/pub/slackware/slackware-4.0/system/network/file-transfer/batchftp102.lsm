@@ -1,0 +1,47 @@
+Begin2
+Title        = Batchftp 
+Version      = 1.02 (for Linux)
+Desc1        = Automates the ftp transfers. Can run in the 
+Desc2        = background and will not give up until a
+Desc3        = successful connection with the remote site
+Desc4        = has been established. 
+Desc5        = 
+Author       = Shawn Cooper, 3708 Melissa Drive, Harvey, LA 70058
+AuthorEmail  = cooper@rex.tulane.edu
+Maintainer   =
+MaintEmail   =
+Site1        = sunsite.unc.edu
+Path1        = pub/Linux/Incoming
+File1        = batchftp102.tar.gz
+FileSize1    = 26K
+Site2        =
+Path2        =
+File2        =
+FileSize2    =
+Site3        =
+Path3        =
+File3        =
+FileSize3    =
+Site4        =
+Path4        =
+File4        =
+FileSize4    =
+Required1    = A single C program, needs not be linked with
+Required2    = additional libraries.
+Required3    =
+Required4    =
+CopyPolicy1  =
+CopyPolicy2  =
+Keywords     =
+Comment1     =
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = 05JAN94
+EnteredBy    = S. J. Lewandowski
+CheckedEmail = lewan@ifpan.edu.pl
+End
+

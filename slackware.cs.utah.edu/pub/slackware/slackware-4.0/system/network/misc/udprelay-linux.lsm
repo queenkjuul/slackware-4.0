@@ -1,0 +1,18 @@
+Begin3
+Title:          udprelay
+Version:        0.2
+Entered-date:   Dec 2, 1996
+Description:    This is a modified version of Tom Fitzgerald <fitz@wang.com>'s
+                udprelay program which will work with linux.  It has been
+		very minimally tested by me using archie on inside machines.
+		UDPrelay is a socks-like program for UDP packets.  
+		Use at your own risk, download it and read README.Linux for
+		more info. 
+Keywords:       udprelay firewall archie relay udp socks
+Author:         Joe Augst <morph@slac.com>
+Maintained-by:  Nobody At All <null@slac.com>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/misc
+		30k udprelay-linux.tgz
+		 2k udprelay-linux.lsm
+Copying-policy: GPL?
+End

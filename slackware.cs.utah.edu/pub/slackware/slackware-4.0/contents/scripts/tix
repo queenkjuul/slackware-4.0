@@ -1,0 +1,8 @@
+( cd usr/lib ; rm -rf libtix.so )
+( cd usr/lib ; ln -sf libtix4.1.8.0.so libtix.so )
+( cd usr/lib ; rm -rf libtix.a )
+( cd usr/lib ; ln -sf libtix4.1.8.0.a libtix.a )
+( cd usr/lib ; rm -rf libtixsam.a )
+( cd usr/lib ; ln -sf libtixsam4.1.8.0.a libtixsam.a )
+( cd usr/lib ; rm -rf libtixsam.so )
+( cd usr/lib ; ln -sf libtixsam4.1.8.0.so libtixsam.so )

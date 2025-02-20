@@ -1,0 +1,18 @@
+Begin3
+Title: FTP Keepup          
+Version: 1.1       
+Entered-date: April 19, 1995   
+Description: A sh/dialog Script That allows a person to display total FTP
+             Logins via the welcome file of wu.ftpd. Now with text based
+             menuing system  
+Keywords: Keepup, ftp, login, wu.ftpd      
+Author: psylark@ICSI.Net        
+Maintained-by: psylark@ICSI.Net 
+Primary-site: psylark.ICSI.Net /pub/linux  
+              457  keepup.lsm
+              3094  keepup-1.1.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: GPL
+End

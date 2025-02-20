@@ -1,0 +1,11 @@
+Package-Name:   mdm-2.09beta1.tar.gz
+Title:          MDM
+Version:        2.09beta1
+Description:    Linux Modem Server (Better than uugetty)
+Author:         Anthony Rumble <root@lsupoz.apana.org.au>
+Maintained-by:  Anthony Rumble <root@lsupoz.apana.org.au>
+Maintained-at:  yarrina.connect.com.au:/tmp/mdm
+Platforms:      Written for Linux 0.99pl12 in c.
+Copying-policy: GNU copyleft
+Keywords:       LINUX MODEM UUGETTY
+

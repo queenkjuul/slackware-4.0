@@ -1,0 +1,18 @@
+Title        = Perfmeter and rpc.rstatd daemon for Linux
+Version      = 1.1 + 1.4 perf
+Desc1        = This is a replacement for the OpenWindows Perfmeter and
+Desc2        = the rpc.rstatd daemon, modified to run under newer Linux
+Desc3        = versions (newer = >1.1, or thereabouts).
+Author       = Rudolf Koenig, modified by Karl Keyte
+AuthorEmail  = ???, but see Maintainer below
+Maintainer   = Karl Keyte (for rpc.rstatd)
+MaintEmail   = kkeyte@koft.rhein-main.de
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming (will move probably to system/Network/Daemons)
+File1        = perf+rstatd.tar.gz
+FileSize1    = 30590
+Required1    = Must have the /proc filesystem configured in the kernel
+CopyPolicy1  = GPL
+Keywords     = perf,rstatd,rpc,statistics
+Entered      = 2nd October 1995
+EnteredBy    = Karl Keyte

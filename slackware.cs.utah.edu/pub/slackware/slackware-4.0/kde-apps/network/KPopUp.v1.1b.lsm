@@ -1,0 +1,15 @@
+Begin3
+Title:          KPopUp
+Version:        1.1b
+Entered-date:   08 JAN 98
+Description:    PopUp-Client for sending and receiving messages in a 
+                Microsoft-Network-surrounding(requires intalled Samba) 
+Keywords:       popup SAMBA smbclient Linux X11 Qt KDE
+Author:         Stocker Gernot (muecketb@sbox.tu-graz.ac.at) 
+Maintained-by:  Stocker Gernot (muecketb@sbox.tu-graz.ac.at) 
+Primary-site:   ftp://ftp.kde.org/pub/kde
+Alternate-site: 
+Original-site:  ftp://ftp.hr.vc-graz.ac.at/pub/systems/linux/kde/apps
+Platform:       Linux, FreeBSD, IRIX and possibly other Unices with KDE
+Copying-policy: GPL
+End

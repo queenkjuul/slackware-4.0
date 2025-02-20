@@ -1,0 +1,14 @@
+Begin3
+Title: 		TkSTEP
+Version:       	0.3b3 
+Entered-date:  	09JUL1996 
+Description:   	Set of patches to make Tk4.1 widgets look 
+ 		like NEXTSTEP(tm) 
+Keywords:       tcl tk afterstep bowman nextstep gnustep widgets
+Author:         kojima@inf.ufrgs.br (Alfredo K. Kojima)
+Maintained-by:  kojima@inf.ufrgs.br
+Primary-site:  	sunsite.unc.edu /pub/Linux/devel/lang/tcl 
+		134k tkstep0.3b3.tar.gz
+Platforms:      tcl7.5, tk4.1
+Copying-policy: Freely distributable
+End

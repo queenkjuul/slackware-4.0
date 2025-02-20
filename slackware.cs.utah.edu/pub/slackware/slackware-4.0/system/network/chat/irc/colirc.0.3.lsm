@@ -1,0 +1,12 @@
+Begin3
+Title:        colirc
+Version:      0.3 <ircii 2.8.2>
+Entered-date: 15AUG96
+Description:  colored irc <colored nicks and other such things>
+              0.3 adds some scripting functions for color and a colirc script
+Keywords:     color irc ircii
+Author:       clue@oz.net (Erik Scrafford <MadHacker on LinuxNet>)        
+Primary-site: sunsite.unc.edu /pub/Linux/system/Network/chat
+              122308 colirc.0.3.bin.tgz
+	      39232  colirc.0.3.patch
+End

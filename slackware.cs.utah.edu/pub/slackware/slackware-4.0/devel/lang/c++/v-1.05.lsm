@@ -1,0 +1,17 @@
+Begin3
+Title:          V GUI Framework for C++
+Version:        1.04
+Entered-date:   26FEB96
+Description:    V is a free,  easy to use, portable C++ GUI
+                Framework for X and Windows. Full information
+                is available at http://www.cs.unm.edu/~wampler.
+Keywords:       V, GUI, C++, Freeware, X11, Windows
+Author:         Bruce Wampler <wampler@cs.unm.edu>
+Maintained-by:  Bruce Wampler
+Primary-site:   ftp.cs.unm.edu /pub/wampler
+                827374 v-1.05.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/X11/libs
+                827374 v-1.05.tar.gz
+Platforms:      X11 Linux WIN3.1
+Copying-policy: GNU LGPL
+End

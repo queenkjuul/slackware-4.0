@@ -1,0 +1,64 @@
+Gtk AOL Instant Messenger
+========================
+Jim Duchek <jimduchek@ou.edu> IM: Zilding (current maintainer)
+Mark Spencer <markster@marko.net>
+Peter Jones <pjones@redhat.com> (gnome & applet stuff) 
+
+Build:
+
+Type "make" to build the stock GTK version.  If you want gtk-themes support,
+uncomment "USE_THEMES" in the Makefile.  If you want to build as a gnome 
+applet, uncomment USE_GNOME instead.
+
+NB: You need the latest GTK-1.1.  I've been told it compiles under 1.0 but
+there's a number of cosmetic problems.  With Gimp 1.1 out, there's no need
+to even have 1.0 lying around anymore ;)
+
+Run:
+
+type "./aim"
+
+If you built as a GNOME applet, su to root and run "make install". 
+Afterwards panel->add applet->Amusements->Gaim should be there.
+Note that the current source will work with GNOME 0.99.2 .  It will NOT work 
+with 0.99.1 .  It may work with earlier versions.
+
+Notes:
+
+The import buddy list isn't done, and export just writes to a file gaim-buddy in your
+home directory.  Sorry, but this was scratched together as a quick buddy list backup.
+
+
+
+This should now compile under Solaris, Digital Unix, Irix, etc w/o a
+problem.
+This compiles without warnings on Linux-x86 2.0.36 glibc, GTK 1.1.9 system.
+If you get warnings on something else, let me know.
+If you get errors, upgrade to the latest GTK-1.1 before bothering me.
+
+
+The resulting executable is standalone, so you can put it in /usr/bin or
+whatever.
+
+Send me bug reports.  The web page is http://www.marko.net/gaim and the ftp
+site is ftp://ftp.marko.net/pub/gaim
+
+Keep your eyes out for updates, and I'll try to keep the program maintained.
+Other contributors and patches are welcomed.
+
+
+WindowMaker Users:
+Having trouble getting the appicon thing working quite right.  I'm not sure
+of the deal.  Anyway, here's the best way (I think) to get it working right.
+First, when you're in the 'login' screen, go to 'advanced options' under
+'attributes' and turn the emulation of app icons ON.
+Then, once you're logged in, make sure app icon emulation is OFF on the
+buddy window.
+When a dialog pops up (either for errors or buddy chat invite), go into it's
+attributes, and under 'application specific' set 'no app icon' ON.
+
+Apologies about the pain in the ass.  I'll get this working :)
+
+
+
+

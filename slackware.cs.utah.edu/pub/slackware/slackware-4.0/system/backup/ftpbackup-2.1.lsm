@@ -1,0 +1,28 @@
+Begin3
+Title:          ftpbackup utility: backup to/restore from ftp server
+Version:        2.1
+Entered-date:   15SEP97
+Description:    This utility allows you to backup or restore filesystems
+		or directories to/from a remote ftp server, _without_
+		having to create an intermediate file first. This allows
+		you to conveniantly backup systems without backup facilities.
+		The remote pathname does not have to be a regular file -
+		it may be the special device pathname of a tape drive or
+		some other suitable device.
+		Addtionally, this utility can be used to view the contents
+		of remote tar.gz files without actually downloading them on
+		your local disk. Other uses include the extraction of
+		subsets of a remote tar archive etc.
+		This flexibillity is achieved by piping to cpio, tar,
+		gzip etc.
+Keywords:       ftp backup restore tcp ip tcp/ip cpio tar archive
+Author:         wwg@ica.net (Warren W. Gay VE3WWG)
+Maintained-by:  wwg@ica.net (Warren W. Gay VE3WWG)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/backup/ftpbackup-2.1.tar.gz
+			13kB ftpbackup-2.1.tar.gz
+			1298 ftpbackup-2.1.lsm
+Alternate-site: 
+Original-site:  
+Platforms:	LINUX but other UNIX platforms also.
+Copying-policy: GPL2
+End

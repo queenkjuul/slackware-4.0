@@ -1,0 +1,101 @@
+			Announcing XEmacs 20.4
+
+XEmacs 20.4 is now available.  This is a version of Emacs derived
+from Emacs version 19 from the Free Software Foundation.
+
+This is a minor upgrade from 20.3, containing many bugfixes.  If you
+are using XEmacs 19, XEmacs 20.0 or XEmacs 20.2 in any flavor
+(including off of the Sun CD) you should definitely consider upgrading
+to 20.4.  XEmacs 20.4 built without Mule should be as fast or faster
+than XEmacs 19.13.
+
+The XEmacs/Mule support has been only seriously tested in a Japanese
+locale, and no doubt many problems still remain.  The support for
+ISO-8859-x and Japanese is fairly strong.  MULE support comes at a
+price -- about a 30% slowdown from 19.16.  We're making progress on
+improving performance and XEmacs 20.4 compiled without Mule (which is
+the default) is much faster than XEmacs 19.16.
+
+
+You can get XEmacs via anonymous FTP from FTP.XEMACS.ORG (207.96.122.8).
+Please see README.MIRRORS for mirror FTP sites.
+
+	ftp://ftp.xemacs.org/pub/xemacs/xemacs-20.4/
+
+A complete list of features and improvements (NEWS), the complete list
+of mirror sites, the current FAQ, and several other XEmacs related
+items can be found at the XEmacs World Wide Web page:
+
+	 	 http://www.xemacs.org/
+
+Total disk space requirements are as follows:
+
+			    without Mule            with Mule
+
+Unpacked distrib               76 Mb                  90 Mb
+
+Compilation                    102 Mb                 103 Mb
+
+Due to increasing size, the source distribution has been split into
+four files.
+
+  README
+	This file.
+
+  README.executables
+	Instructions for selecting and installing a precompiled binary
+	kit.
+
+  README.jp
+	These instructions in EUC encoded Japanese.
+
+  README.de
+	These instructions in German.
+
+  xemacs-20.4.tar.gz
+	The core source distribution.  This file is about 13 megabytes 
+	and contains the minimum possible source code to build
+	XEmacs.  If you are on a slow and expensive connection, you
+	might wish to build the online manuals and the bytecompiled
+	lisp code yourself.
+
+ xemacs-20.4-elc.tar.gz
+	This file contains all the standard bytecompiled lisp.  If you 
+	have a reasonable net connection, download this file with the
+	core distribution and untar it in the same directory.
+
+ xemacs-20.4-info.tar.gz
+	This file contains the TeXinfo processed online manuals.  Note:
+	if you wish to build these yourself, you will need a very new
+	`makeinfo' program from the most recent texinfo distribution.
+	At least makeinfo-1.68 (from GNU texinfo 3.11) is required.
+	If you download this file, untar it in the same directory you
+	untarred the core distribution.
+
+ xemacs-20.4-mule.tar.gz
+	This file contains all of the Mule support code, both C source 
+	and Lisp and supporting files.  If you wish to use the Mule
+	internationalization features you will need it.  Untar this
+	file in the same directory you untarred the core distribution.
+
+Don't forget to set "binary" mode when transferring these files.  Unpack them
+with some variation of the command
+"gunzip -c xemacs-20.4.tar.gz | tar -pvxf -".
+
+
+Thanks to the tireless efforts of Jason Mastaler and the kit builders
+(enumerated in the READMEs), there are binary kits again for this XEmacs
+release.  As of this announcement, a number of binary kits are already
+available.  Please check the FTP site for details.  More should become
+available over the next week given sufficient interest.
+
+
+sparc-sun-solaris
+rs6000-ibm-aix
+i386-unknown-freebsd
+i386-pc-solaris
+i386-pc-linux
+i386-pc-bsdi
+hppa1.1-hp-hpux
+
+Additional platforms will become available during the next week.

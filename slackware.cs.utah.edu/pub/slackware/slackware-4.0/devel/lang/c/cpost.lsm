@@ -1,0 +1,17 @@
+Begin3
+Title:          cPost
+Version:        1.4
+Entered-date:   1996/04/26
+Description:    Produces excellent listings of C language files in Postscript
+		highlighting C keywords.
+Keywords:       Postscript C formatter
+Author:         Patrick Mueller (pmuellr@vnet.ibm.com)
+		ported to Linux by Doug Walker (dwalker@cos.gtd.eds.com)
+Maintained-by:  none
+Primary-site:   unknown
+Alternate-site: unknown
+Original-site:  unknown
+Platforms:      Linux, AIX, OS/2, DOS
+Copying-policy: Public Domain
+End
+

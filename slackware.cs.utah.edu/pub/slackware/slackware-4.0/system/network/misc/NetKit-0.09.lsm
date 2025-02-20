@@ -1,0 +1,26 @@
+Begin3
+Title:          NetKit
+Version:        0.09
+Entered-date:   Dec 31 1996
+Description:    Update of NetKit-B-0.08
+		Collection of basic network tools, fixed and ported
+		from BSD code. This version supersedes NetKit-B-0.08.
+		Please note that "NetKit-B-0.07B" was an unauthorized
+		release - please do not use it and remove it if you see 
+		it anywhere. This version includes several critical
+		security fixes. Contains: biff comsat finger fingerd
+		ftp inetd ping rcp rlogin rlogind routed rusersd
+		rwalld bootparamd rpcgen rpcinfo rsh rshd rusers rwall
+		rwho rwhod talk talkd telnet telnetd tftp tftpd timed
+		timedc write writed routed
+Keywords:       daemons network tools netkit security
+Author:         various
+Maintained-by:  dholland@hcs.harvard.edu (David A. Holland)
+Primary-site:   ftp.uk.linux.org /pub/linux/Networking/base
+                    467667 NetKit-0.09.tar.gz
+		    152 NetKit-0.09.tar.gz.sig
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network
+Original-site:  
+Platform:       Portable; intended for Linux
+Copying-policy: BSD
+End

@@ -1,0 +1,19 @@
+Begin3
+Title:          Autolog
+Version:        0.35
+Entered-date:   October 21, 1998
+Description:    Autolog is a program to automatically log off users who
+                are idle for a specified amount of time.   A configuration
+                file allows you to specify different idle times and logout
+                rules for different users, groups, tty lines, etc.
+Keywords:       autolog logout watchdog idleout
+Author:         Enhancements by Kyle Bateman, kyle@actarg.com
+Maintained-by:  kyle@actarg.com.com (Kyle Bateman)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin/idle
+			 22 kb autolog-0.34.tgz
+			  1 kb autolog-0.34.lsm
+Alternate-site: ftp.dreamsint.com/pub/autolog
+Original-site:
+Platform:       linux
+Copying-policy: GNU license
+End

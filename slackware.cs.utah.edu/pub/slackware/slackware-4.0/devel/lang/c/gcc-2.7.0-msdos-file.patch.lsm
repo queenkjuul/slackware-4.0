@@ -1,0 +1,15 @@
+Begin3
+Title:          gcc-2.7.0-msdos-file.patch.tar.gz
+Version:
+Entered-date:   09SEP95
+Description:    A small patch to the gcc 2.7.0 preprocessor to allow
+		for different end-of-line sequences (can directly use
+		MS-DOS CR-LF format)
+Keywords:       gcc filter MS-DOS
+Author:         a.vignani@crf.it (Alberto Vignani)
+Maintained-by:  a.vignani@crf.it (Alberto Vignani)
+Primary-site:   sunsite.unc.edu /pub/Linux/GCC
+		125821	gcc-2.7.0-msdos-file.patch.tar.gz
+Copying-policy: GPL
+End
+

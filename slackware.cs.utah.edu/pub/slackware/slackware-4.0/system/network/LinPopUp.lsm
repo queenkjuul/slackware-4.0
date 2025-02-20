@@ -1,0 +1,22 @@
+Begin3
+Title:		LinPopUp
+Version:	0.9.3
+Entered-date:	20SEP98
+Description:	LinPopUp is a Xwindow port of Winpopup,
+		running over Samba. It permits to communicate with a
+		windows computer that run Winpopup, sending or receiving
+		message. (It also provides an alternative way 
+		to communicate between Linux computers that run Samba). 
+		Note that LinPopUp is not only a port, as it includes 
+		several enhanced features.
+Keywords:	Samba winpopup chat message.
+Author:		littleigloo@chez.com (Jean-Marc JACQUET)
+Maintained-by:	littleigloo@chez.com (Jean-Marc JACQUET)
+Primary-site:	http://www.chez.com/littleigloo
+		533k LinPopUp-0.9.3.bin.tgz
+		48k LinPopUp-0.9.3.src.tgz
+Alternate-site: ftp://sunsite.unc.edu/pub/linux/system/network
+Original-site:	http://www.chez.com/littleigloo
+Platforms:	Linux, Samba. GTK+ >=1.0.4 for the sources dist. 
+Copying-policy:	GPL
+End

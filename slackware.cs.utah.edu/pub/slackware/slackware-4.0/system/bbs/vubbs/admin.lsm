@@ -1,0 +1,20 @@
+Begin3
+Title:		VU Admin Package
+Version:	Beta-3
+Entered-date:	14JUL95
+Description:	General purpose system, user, tape backup, and line monitoring
+		services packaged with the VU package installer and operating
+		in the user friendly VU visual screen environment.  System
+		administration has never been easier!  This is a subset of
+		the system administration services to be found in the upcoming
+		Beta-3 release of VU BBS, and is an operational demonstration
+		of the VU BBS package installer.
+Keywords:	BBS, VU
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	ftp.amaranth.com /pub/VUBBS
+		admin-b3.tar.gz
+Platforms:	Late Linux 1.1.x and above.  Uses later console driver
+                escape sequences for 8 bit transparency modes.
+Copying-policy:	Free.
+End

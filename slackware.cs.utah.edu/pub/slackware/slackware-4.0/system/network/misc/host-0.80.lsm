@@ -1,0 +1,14 @@
+Begin3
+Title: host          
+Version: 0.80     
+Entered-date: 7 Jul 1997
+Description: host name lookup program
+Keywords: host bind nslookup DNS
+Author: e07@nikhef.nl (Eric Wassenaar)
+Maintained-by: 
+Primary-site: ftp://sunsite.unc.edu/pub/Linux/system/network/admin/
+Alternate-site: 
+Original-site: ftp://ftp.nikhef.nl/pub/network/host/
+Platforms: Linux i386, maybe others 
+Copying-policy: USB Public
+End

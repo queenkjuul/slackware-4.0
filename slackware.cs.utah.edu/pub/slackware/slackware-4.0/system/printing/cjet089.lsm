@@ -1,0 +1,18 @@
+Begin3
+Title: Cjet PCL emulation for Canon CaPSL printers          
+Version: 0.8.9       
+Entered-date: 23FEB1996
+Description: A filter program to provide HP LaserJet emulation for Canon 
+             CaPSL III laser printers. Emulates a HP LJ2, some LJ2P and 
+             PCL5 features are supported: font downloads, raster 
+             compression modes 1-3, etc. Compiles on various UNIX
+             systems (Linux, FreeBSD, Irix) and MSDOS 
+Keywords:    printer driver emulation LaserJet Canon CaPSL PCL   
+Author:      mgh@sbox.tu-graz.ac.at  (Michael Huijsmans)   
+Maintained-by:  
+Primary-site: sunsite.unc.edu /pub/Linux/system/Printing
+                50k cjet087.tgz
+                 1k cjet087.lsm
+Platforms: Canon CaPSL-III laser printer: LBP-8MkIII(+), LBP-4(+)       
+Copying-policy: GPL
+End

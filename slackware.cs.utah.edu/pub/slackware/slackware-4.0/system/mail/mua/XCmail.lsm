@@ -1,0 +1,18 @@
+Begin3
+Title:        XCmail
+Version:      0.99.7
+Entered-date: 30Mar1999
+Description:  X11 email client. All required things are implemented in the
+              main program. XCmail has an easy to use user interface
+              (thanks to Xclasses) and many features (like file attachment,
+              charset encoding, MIME support, POP3, address book, PGP
+              support, ispell and more).
+              And XCmail is fast - really fast!
+Keywords:     mail, mailtool, X11, X-Windows, Xclasses, POP, POP3,MIME, PGP 
+Author:       schmitzj@fsai.fh-trier.de (Juergen Schmitz)
+Maintained-by: xcmail-development@fsai.fh-trier.de (XC-Team)
+Primary-site: http://www.fsai.fh-trier.de/~schmitzj/Xclasses/XCmail
+Alternate-site: ftp://trilug.fh-trier.de/pub/XCmail
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/mail/mua
+Copying-policy: Free binary
+End

@@ -1,0 +1,22 @@
+Begin3
+Title:          cdrecord
+Version:        1.6.1
+Entered-date:   19OCT98
+Description:    CD-Recording program for SunOS/Solaris/Linux/SGI/HP-UX/*BSD/AIX/OSF-1
+Keywords:       cdrecord cdwrite SCSI CD CD-R CD-RW
+Author:         schilling@fokus.gmd.de (Jörg Schilling)
+Maintained-by:  schilling@fokus.gmd.de (Jörg Schilling)
+Primary-site:   ftp.fokus.gmd.de /pub/unix/cdrecord
+		498812 cdrecord-1.6.1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/utils/disk-management
+		498812 cdrecord-1.6.tar.gz
+Platforms:      SunOS Solaris Linux SGI/IRIX HP-UX FreeBSD NetBSD OpenBSD AIX OSF-1/Digital UNIX
+				Next STep and Apple Rhapsody versions available on request
+		Writers from COMPRO Dysan DynaTec Grundig HP Hi-Val JVC Kodak
+				Matsushita Memorex Microboards MicroNet Mitsubishi
+				Mitsumi Nomai Olympus Optima OTI Panasonic 
+				Philips Pinnacle Micro Pioneer Plasmon Plextor Procom
+				Ricoh Smart & Friendly Sony TEAC Taiyo-Yuden 
+				Traxdata Turtle Beach Wearnes Yamaha
+Copying-policy: GPL
+End

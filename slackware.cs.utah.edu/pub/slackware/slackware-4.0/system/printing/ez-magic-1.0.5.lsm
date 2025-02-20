@@ -1,0 +1,27 @@
+Begin3
+Title:		ez-magic printer filter
+Version:	1.0.5
+Entered-date:	January 26, 1997
+Description:	ez-magic is a printer filter that supports 8 common file
+		formats (txt,ps,gif,bmp,pcx,png,jpg,tif) for printing.
+		It can print over a network (SMB), or to a local printer.
+		Reads from a file, STDIN, or lpd. Simple to use and
+		configure. Just one script file, no huge manuals and
+		multibillion drivers. The only catch is that you need a
+		few common helper programs like netpbm and ghostscript.
+		Written in bash. Easy to add formats and code. Still more
+		bugs than I have appendages, but less than the number of
+		grams of fat in a hot dog. Pre-configured for HP DeskJet
+		870Cse over network. Comparable to apsfilter and others.
+Keywords:	magic filter, print, graphics, samba, network, smb,
+		ghostscript, postscript, gif, jpg, simple
+Author:		toby@eskimo.com (Toby Reed)
+Maintained-by:	toby@eskimo.com (Toby Reed)
+Primary-site:	http://www.eskimo.com/~toby/ez-magic-1.0.5.tar.gz
+			 38 kb ez-magic-1.0.5.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Printing
+			 38 kb ez-magic-1.0.5.tar.gz
+Platform:       Linux (other unices untested)
+Copying-policy: Copyrighted, full manipulation rights, with one or two
+		restrictions.
+End

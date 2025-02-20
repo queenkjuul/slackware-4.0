@@ -1,0 +1,15 @@
+F FLOPPY.O                          	floppy.o
+F IDE-CD.O                          	ide-cd.o
+F IDE-DISK.O                        	ide-disk.o
+F IDE-FLOP.O                        	ide-floppy.o
+F IDE-MOD.O                         	ide-mod.o
+F IDE-PROB.O                        	ide-probe.o
+F IDE-TAPE.O                        	ide-tape.o
+F LINEAR.O                          	linear.o
+F LOOP.O                            	loop.o
+F NBD.O                             	nbd.o
+F RAID0.O                           	raid0.o
+F RAID1.O                           	raid1.o
+F RAID5.O                           	raid5.o
+F RD.O                              	rd.o
+F XD.O                              	xd.o

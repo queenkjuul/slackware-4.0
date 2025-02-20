@@ -1,0 +1,23 @@
+Begin3
+Title:          Dless-Linux
+Version:        0.1
+Entered-date:   05/08/1995
+Description:    A package for making a diskless Linux box with the help
+		of a NFS mounted Linux server
+Keywords:       Boot Linux Diskless
+Author:         Mario Guerra (mguerra@cariari.ucr.ac.cr)
+Maintained-by:  The same person
+Primary-site:   ftp.ucr.ac.cr:/pub/Unix/linux/Dless-Linux
+                5.8 KB -  Dless-Linux.README
+		106 B  -  make.boot.noram
+		109 B -   make.boot.ram
+		1.44 MB - root.no.swapfile
+		1.44 MB - root.swapfile
+Alternate-site: sunsite.unc.edu:/pub/Linux/system/Linux-boot/Dless-Linux
+                5.8 KB -  Dless-Linux.README                
+		106 B  -  make.boot.noram                
+		109 B -   make.boot.ram                
+		1.44 MB - root.no.swapfile                
+		1.44 MB - root.swapfile   
+Copying-policy: GNU
+End

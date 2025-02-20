@@ -1,0 +1,21 @@
+Begin3
+Title:          statnet
+Version:        3.3
+Entered-date:   13DEC98
+Description:    Summary of protocols currently being used on network.
+                Statnet views the statistics of ethernet/PLIP/PPP
+                for IP, IPX and Appletalk.  Statnetd gathers the info.
+                it views:
+                - number of kilobytes per second on your interfaces
+                - the ethernet load
+                - frames per second ....
+                - how many frames of each type (Ethernet,IP,SAP,TCP,UDP and
+                  some appletalk frames) 
+Keywords:       protocol statistics load ethernet appletalk DIPC
+Author:         jeroenb@igwe.vub.ac.be ( Jeroen Baekelandt)
+Maintained-by:  sewilco@fieldday.mn.org ( Scot Wilcoxon)
+Primary-site:   sunsite.unc.edu /pub/linux/system/Network/management/
+                160K statnet-3.3.tar.gz
+Platforms:      Linux
+Copying-policy: GPL2.0
+End

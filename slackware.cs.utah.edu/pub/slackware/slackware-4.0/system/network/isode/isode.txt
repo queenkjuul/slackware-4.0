@@ -1,0 +1,31 @@
+Much of this is related to building a shared library which includes
+libisode.a, libdsap.a and libftam.a. It isn't pretty. If you want to
+build the shared library yourself expect to have to do a lot of
+fiddling around. You will also need a *lot* of disk space :-).
+
+  There are also general patches in here - notably to ensure the
+timeouts for selects are reset correctly and to correct some rather
+nasty carelessness in the logging code that could result in attempted
+freeing of string literals.
+
+  The 8.0.1 patches are included here. If you have already patched
+you 8.0 source tree to 8.0.1 you might want to reverse them out first.
+I don't think the 8.0.1 patches conflict with anything I did (they are
+mostly to quipu) so you could probably just ignore the rejects...
+
+  You will need the documentation for ISODE to set it up. I won't be
+uploading it myself but the archive maintainer may have put it in the
+same directory where you found this. If not it is on src.doc.ic.ac.uk
+under /packages/isode among other places.
+
+  You should find patches to PP 6.0 where you found this - along with
+precompiled binaries. Note that the binaries are packaged for The Purple
+Distribution of Linux. If you aren't using the Purple Distribution's
+package manager you will have to read the .../PKG/map files in each
+archive to find out where things should go.
+
+  If ISODE/X.400/X.500 is of serious interest to you you might like to
+consider donating hard disks/fast processors/T1 connections. I'm way
+beyond the capabilities of my available resources here :-(.
+
+	Mike Jagdis <jaggy@purplet.demon.co.uk>

@@ -1,0 +1,20 @@
+Begin3
+Title:          guile
+Version:        iii
+Entered-date:   21MAY96
+Description:    Guile is the GNU project's extension language library.
+                Libguile provides support for multiple, integrated extension
+                languages sharing a common object system, calling conventions,
+                and libraries of extension code. The library is organized
+                around a flexible implementation of Scheme. It is designed
+                to mix unobstrusively with ordinary C programs.
+Keywords:       guile, scm, scheme, tcl/tk
+Author:         lord@cygnus.com (Thomas Lord)
+Primary-site:   ftp.cygnus.com /pub/lord/guile-iii
+                824881 guile-iii.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/lisp
+                412410 guile-iii.ELF.tgz
+                824881 guile-iii.src.tgz
+Platforms:      Unix
+Copying-policy: GPL2
+End

@@ -1,0 +1,277 @@
+This is the README file for Sharity-Light.
+
+What does Sharity-Light do?
+===========================
+If you know smbfs for Linux: Sharity-Light is roughly the same. It is
+derived from smbfs, but runs as a user level program, not in the kernel.
+If you know samba: Sharity-Light is roughly the opposite: a client for the
+Lanmanager protocol. If you know neither of these: Sharity-Light lets you
+mount drives exported by Windows (f.Workgroups/95/NT), Lan Manager, OS/2
+etc. on Unix machines.
+
+Sharity-Light has previously been called rumba. However, it turned out that
+Wall Data Incorporated owns the trademark "RUMBA". To avoid confusion and
+a violation of the trademark rights, the program has been renamed to
+"Sharity-Light". The name has been chosen because Sharity-Light implements
+the same protocol (CIFS/SMB) as the more professional program "Sharity",
+which is also available from our web site.
+
+
+What is the future of Sharity-Light?
+====================================
+This version (1.0) will be one of the last versions maintained by me.
+I will merge in ports to other operating systems and incorporate patches
+when I receive them, but I won't do much restructuring. Sharity-Light is
+stuck because it's based on smbfs which has gone a (for Sharity-Light)
+incompatible path. Using one of the newer smbfs versions would require a
+rewrite of much of Sharity-Light.
+
+That's why I decided to write a new implementation from scratch, avoiding
+all the limitations and mistakes made in Sharity-Light. This new version is
+named "Sharity" (not light) and is available from the URL:
+
+    http://www.obdev.at/Products/
+
+This new program, alghough a commercial product, is free for academic use,
+comes with source code and has a usable demo-mode.
+
+
+Does Sharity-Light run on my machine?
+=====================================
+Currently, Sharity-Light can be compiled for:
+  - NEXTSTEP 3.X and 4.X (tested for i386 and m68k architectures)
+  - Linux
+  - FreeBSD
+  - NetBSD
+  - HP-Unix
+  - Solaris 2.x
+  - IRIX (does not run on 6.4 and probably newer releases, however)
+It should be relatively easy to port Sharity-Light to other Unix-like
+operating systems (see "How do I port Sharity-Light to XXX?")
+
+
+Where can I get Sharity-Light?
+==============================
+Please visit our web site at
+
+    http://www.obdev.at/Products/
+
+The Sharity-Light page contains the download links.
+
+
+What's the difference between Sharity-Light and smbfs for Linux?
+================================================================
+Sharity-Light is currently based on the modules "proc.c", "sock.c" and
+"smbmount.c" of smbfs 0.8, but runs in user-space, not as part of the
+kernel. It uses the nfs interface to the kernel. This has several
+advantages:
+  - In case of a crash, it's just a user program that crashes, not
+    the kernel. It should be possible to restart Sharity-Light and
+    continue the work.
+  - You can re-export the Sharity-Light mounted filesystems with an nfs
+    daemon that allows re-exporting, because Sharity-Light has to create
+    constant inode numbers.
+Of course, there are also disadvantages:
+  - Nfs has no way of telling about open files and file locking.
+    Sharity-Light opens the file at every read- or write-request and keeps
+    it open for 5 seconds (without any locking) for a faster access in
+    subsequent accesses to the same file. This may cause problems with
+    file-locking by other clients. smbfs on the other hand keeps the
+    file open as long as it is opened by a program.
+  - Due to the translation to nfs, Sharity-Light is slower than smbfs.
+
+
+How do I use Sharity-Light?
+===========================
+The usage of Sharity-Light is more or less the same as that of smbmount for
+Linux:
+
+    usage: shlight //server/service mount-point [options]
+
+    -s servername   Netbios name of server
+    -c clientname   Netbios name of client
+        If the hostname of either the server or the client differs from
+        the respective hostname, you have to use these options to set
+        the netbios names.
+    -U username     Username sent to server
+        By default, the user name is read from the environment
+        variables "USER" or "LOGNAME". If these are not set or if you
+        want to log in to the server as a different user, use this
+        option to specify the username.
+    -u uid          uid the mounted files get
+    -g gid          gid the mounted files get
+        These options specify the Unix user- and group-IDs for the
+        mounted files. The defaults are the real user- and group-IDs of
+        the user that runs Sharity-Light. You can specify numeric or
+        symbolic IDs.
+    -f mode         permission the files get (octal notation)
+    -d mode         permission the dirs get (octal notation)
+    -C              Don't convert password to uppercase
+        These three options are self-explaining, I think.
+    -P password     Use this password
+        You can specify a password from the commandline. To avoid
+        compromising your password by using the "ps" command, Sharity-Light
+        overwrites it with '*' as soon as possible.
+    -i              Read password from standard input
+        One line from standard input is read and interpreted as
+        password. In this way you can store your passwords encrypted
+        and have a program decrypt them and pipe them to Sharity-Light, eg.:
+            decrypt_password | shlight //server/share /mountpoint -i
+    -n              Do not use any password
+                    If neither -P nor -n are given, you are
+                    asked for a password.
+    -S              Read/write access is safe. Without this
+                    option, files are closed when switching from
+                    read to write or vice versa
+        Sharity-Light opens all files for read and write. At least samba has
+        problems when the file is really used for read _and_ write. To
+        avoid these problems, Sharity-Light closes and reopens the file when
+        it switches from read to write or vice versa. If you don't need
+        this behaviour, you may switch it off with this option.
+    -w              allow setting files to read only
+        The implications of the read only attribute are slightly
+        different on DOS/Windows and Unix machines. To avoid problems
+        with this, Sharity-Light does not set files to read only, unless
+        this parameter is given.
+    -e              use getattrE and setattrE smb commands
+        The core version of the LanManager protocol uses only one time
+        per file: the time of the last modification. Unix has 3 times
+        for every file. Per default, only the core functions are used
+        and all three Unix times are set to the modification time.
+        If this option is specified, an attempt is made to use the
+        E-commands, which allow the transfer of all three times. The
+        disadvantage is a tremendous slowdown when attributes are read,
+        because the files must be open if the E-commands should be used.
+    -F .            don't fake . entry in root directory
+    -F ..           don't fake .. entry in root directory
+        Unix requires a "." and ".." entry in each directory. DOS-disks
+        don't have them in their root directory. If you mount the root of
+        a remote DOS-disk, these entries must be faked. This is the
+        default behaviour of Sharity-Light, because it is usual to mount
+        the root of the disk.
+    -h              print this help text
+    -v              print version number and exit
+    
+    -p port         Port to connect to (used only for testing)
+    -m max_xmit     max_xmit offered (used only for testing)
+    -D debug-mode   activate debugging (bitmask, hex/dec/octal
+                    notation) this option also forces foreground
+                    operation
+        Normally, Sharity-Light runs as a daemon. If a debug-mode is
+        specified (even if it's 0), Sharity-Light stays in foreground
+        to make debugging with a debugger easier.
+
+To unmount a Sharity-Light-mounted directory, use the script "unshlight.sh"
+that is distributed in the source directory:
+
+    usage: unshlight (-a | <mounted path>)
+
+    -a
+        Unmount all Sharity-Light mounted directories
+    <mounted_path>
+        Path of the mount point that should be unmounted
+
+I have added the man-page for smbmount to this distribution, because
+the operation of Sharity-Light and smbmount is so similar. You can view
+it in a terminal window by typing:
+
+    nroff -man smbmount.8 | more
+
+
+Security considerations
+=======================
+If you want that non-root users can use shlight und unshlight, you must
+install them "set uid root" (example for shlight):
+    chown root shlight
+    chmod u+s shlight
+This is a potential security risk. Bugs in shlight or unshlight might allow
+non root users to gain root access to your computer. If that's too risky
+for you, you can only use the programs as root.
+
+An other issue are passwords for the server. Sharity-Light always sends
+the password in clear text over the network. Everyone who is on one
+of the network segments on the way to your server can sniff your
+password. The more professional tool "Sharity" (not light) allows
+encrypted passwords, encrypted data transport (with a modified samba or
+sslproxy for NT) and is generally faster.
+
+
+Bugs
+====
+There are several known problems in Sharity-Light, which you might
+consider as bugs:
+1.) The time needed for readdir is proportional to the number of entries
+    within the directory _squared_. This is due to the implementation in
+    proc.c from smbfs.
+2.) unshlight is a shell script which is far from perfect. It uses grep
+    to find the mount entries in /etc/mtab and it finds all entries that
+    _contain_ the path specification you entered. If you are good in
+    awk and sed syntax, maybe you can help out with a better script.
+    The current distribution also comes with unshlight.c. This is an
+    implementation in C but runs currently only on NEXTSTEP/OPENSTEP.
+    It is not built by the Makefile, you have to build it by hand:
+        cc -Wall -O -o unshlight unshlight.c
+3.) Dates and times are not correct on shares imported from NT 4.0. This
+    is a feature inherited from smbfs 0.8. It's caused by a different
+    word order between NT 4.0 and other implementations for the SMB command
+    that's used. "Sharity" (not light) uses a very different apporach for
+    attributes to work around this problem.
+4.) You can only mount one share from a given MS-server. This is due to
+    a restriction in Microsoft's servers: all connections from one client
+    must go through the same socket connection. Because Sharity-Light uses
+    one daemon per share, this requirement can not be met. "Sharity"
+    (not light)also works around this problem by handling all shares in one
+    daemon.
+
+How do I port Sharity-Light to XXX?
+===================================
+Sharity-Light should be relatively easy to port, as long as you have GNU-C
+available. There are three files to consider for a port (although it
+always turns out that you have to do more...):
+  - You have to make an entry in the system specific part of the
+    "Makefile".
+  - Every system specific header and define should go into #ifdefs in
+    "syshdr.h".
+  - You have to add a routine that does the mount(), umount() and
+    mount-tab handling system calls to "syscall.c".
+If you have done a new port of Sharity-Light, _please_ mail me your changes.
+
+
+References:
+===========
+I have used parts of source code or concepts from the following GPL'ed
+programs:
+  - smbfs, the smb filesystem for Linux by Paal-Kr. Engstad and
+    Volker Lendecke
+  - nfs-server-2.1 for Linux by Mark A. Shand, Donald J. Becker,
+    Rick Sladkey, Fred N. van Kempen and Eric Kasten
+  - p3nfs, the Psion NFS daemon by Rudolf Koenig (I think)
+  - vmount (by me)
+
+
+Thanks:
+=======
+For the ports to various platforms and several bug-fixes I have to thank
+the following people:
+  - FreeBSD and NetBSD:
+    Dmitrij Tejblum <tejblum@arc.hq.cti.ru> (real port)
+    Mathieu CHOLLIN <cholli_m@epita.fr> (adaptions for NetBSD)
+  - HP-UX:
+    Erik Devriendt <Erik.Devriendt@te6.siemens.be>
+  - Solaris 2.x:
+    Marc Boucher <marc@CAM.ORG>
+  - SGI/IRIX:
+    Frank M. Siegert <fms@this.net>
+
+
+Copyright:
+==========
+Sharity-Light is distributed under the terms of the GNU General Public
+License (version 2). You should have received a copy of the GNU General
+Public License along with this program; if not, ask the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA for a copy.
+
+
+Author:
+=======
+Christian Starkjohann <cs@obdev.at>

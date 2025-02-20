@@ -1,0 +1,22 @@
+
+Begin3
+Title:        vn-console
+Version:      0.12
+Entered-date: 28MAR97
+Description:	Vietnamese language support on the linux console.
+		VISCII 1.1 vietnamese fonts & keymaps for the Linux console;
+		filter for manipulating and converting vietnamese text
+		in various formats, including sortable format.
+		Preliminary release.
+Keywords:	vietnamese, viscii, viqr, vn, console, keymap, font, vncode
+Author:         Francois.Rene.Rideau@ens.fr (Fare')
+Maintained-by:  Francois.Rene.Rideau@ens.fr (Fare')
+Primary-site: http://www.eleves.ens.fr:8080/home/rideau/files/
+              18997   vn-console.tgz
+              918     vn-console.lsm
+Alternate-site:       sunsite.unc.edu /pub/Linux/system/keyboards
+              18997   vn-console-0.12.tgz
+              918     vn-console-0.12.lsm
+Platforms:	Linux for console stuff; Perl5 for vncode filter
+Copying-policy:	freeware (fonts&keymap) + postcardware (vncode)
+End

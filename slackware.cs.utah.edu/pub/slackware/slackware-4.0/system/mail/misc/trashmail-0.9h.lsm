@@ -1,0 +1,17 @@
+Begin3
+Title:		trashmail         
+Version:	0.9h
+Entered-date:	9/25/98
+Description:	Smart mail-purging utility, it allows you to
+		free up disk space by cleaning out unused mails.
+		By feeding some options (as criterias), it will do the
+		job smartly
+Keywords:	purge, trash, mail     
+Author:		edwin@indo.net.id (Edwin P. Pranoto)
+Maintained-by:	edwin@indo.net.id (Edwin P. Pranoto) 
+Primary-site:	sunsite.unc.edu /pub/Linux/system/mail/misc
+		trashmail-0.9h.tgz
+Platforms:	Linux (all Unix) with Perl 5 (tested on 5.004)
+Copying-policy: Freeware, copy and use it as you like
+		Please leave the author's name attached.
+End

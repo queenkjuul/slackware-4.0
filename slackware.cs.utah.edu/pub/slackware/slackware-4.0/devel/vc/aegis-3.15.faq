@@ -1,0 +1,766 @@
+Subject: Aegis Frequently Asked	Questions (FAQ)
+From: Peter Miller <millerp@canb.auug.org.au>
+Newsgroups: comp.software-eng,comp.software.config-mgmt,comp.software.testing,comp.sources.d,alt.sources.d
+
+Submitted-by: Peter Miller <millerp@canb.auug.org.au>
+Archive-name: aegis.3.15/FAQ
+
+This message contains answers to a number of frequently	asked
+questions about	Aegis.	If you don't know what Aegis is, read on.
+
+Suggestions for	additions or improvements to this FAQ are most
+welcome.
+
+			       Contents
+1.   What is Aegis?
+1.1.   What operating systems are supported?
+1.1.1.	 Cygwin
+1.1.2.	 Windows NT
+1.2.   Where can I get Aegis?
+1.3.   Is Aegis	actively being maintained?
+1.4.   Is there	an Aegis mailing list?
+1.5.   How does	Aegis compare with program X?
+2.   Configuration and initial build problems
+2.1.   Changing	Makefile and common/config.h
+2.2.   RCS
+2.3.   SCCS
+2.4.   Why does	aenf limit file	names to 14 characters?
+3.   Testing
+3.1.   Can I use something besides a shell script?
+3.2.   Testing curses programs
+3.2.1.	 Expect
+3.3.   Testing X11 programs
+3.3.1.	 replayXt
+3.4.   Testing embedded	systems
+3.5.   Do I really need	to test	my software?
+4.   Miscellaneous
+4.1.   How do you pronounce ``Aegis''?
+4.2.   How do I	automate the integration queue?
+4.3.   How do I	enforce	coding standards?
+4.4.   How do I	get dates printed before and after build commands?
+4.5.   How do I	stop Aegis automatically merging?
+4.6.   How do I	modify which developer is assigned to a	change?
+4.7.   Do I have to type all the config	examples in the	User Guide?
+4.8.   Is there	a way to recreate a previous baseline?
+4.9.   How do I	stop it	using the pager?
+4.10.	Why does develop end complain about builds?
+4.10.1.	  Build	Time Stamps
+4.10.2.	  Build	Architectures
+5.   Internationalization
+5.1.   Say What?
+5.2.   So why are the error messages So	Bad, now?
+5.3.   What controls which language is used?
+5.4.   What localizations are available?
+5.5.   So can I	change the text	of error messages?
+6.   Branches
+6.1.   What is a Branch?
+6.2.   What is an Anabranch?
+6.3.   Do branches have	to end?
+6.4.   Why are branches	called projects?
+6.5.   Why must	aed be used when integrating a branch?
+6.6.   How come	the branch baseline is incomplete?
+
+----------------------------------------------------------------------
+
+Subject: 1.  What is Aegis?
+
+Aegis is a transaction-based software configuration management system.
+It provides a framework	within which a team of developers may work on
+many changes to	a program independently, and Aegis coordinates
+integrating these changes back into the	master source of the program,
+with as	little disruption as possible.
+
+For a more complete description, see the README	file or	the User
+Guide.	Both are available from	the anonymous FTP site (see below).
+
+------------------------------
+
+Subject: 1.1.  What operating systems are supported?
+
+Aegis will run on almost any version of	UNIX.  The distribution
+contains a configure script generate by	GNU autoconf to	adapt to your
+site.
+
+There is no Aegis port to NT, OS/2, MS-DOS or VMS.  The	author has no
+expertise is these operating systems.  If you do have such expertise,
+you are	welcome	to donate a port of Aegis, and I will try to include
+your work in the next release.
+
+------------------------------
+
+Subject: 1.1.1.	 Cygwin
+
+There is a very	capable	UNIX emulation layer known as Cygwin available
+from Cygnus.  Please see http://sourceware.cygnus.com/cygwin/ for more
+information.  But before you get too excited, see the next item.
+
+------------------------------
+
+Subject: 1.1.2.	 Windows NT
+
+Aegis depends on the underlying	security provided by the operating
+system (rather than re-invent yet another security mechanism).
+However, in order to do	this, Aegis uses the POSIX seteuid system
+call, which has	no direct equivalent on	Windows	NT.  This makes
+porting	difficult.  Single-user	ports are possible (e.g. using
+Cygwin), but are not usually what folks	want.
+
+Compounding this is the	fact that many sites want to develop their
+software for both Unix and Windows NT simultaneously.  This means that
+the security of	the repository needs to	be guaranteed to be handled in
+the same way by	both operating systems,	otherwise one can act as a
+``back door'' into the repository.  Many sites do not have the same
+users and permissions (sourced from the	same network register of
+users) on both Unix and	Windows	NT, making the mapping almost
+impossible even	if the security	models did actually correspond.
+
+Most sites using Aegis and Windows NT together do so by	running	Aegis
+on the Unix systems, but building and testing on the NT	systems.  The
+work areas and repository are accessed via Samba or NFS.
+
+------------------------------
+
+Subject: 1.2.  Where can I get Aegis?
+
+Aegis is available by WWW from
+    URL:    http://www.canb.auug.org.au/~millerp/
+    File:   aegis.3.15.README	  # the	README file from the tar set
+    File:   aegis.3.15.faq	  # Frequently Asked Questions
+    File:   aegis.3.15.lsm	  # description	in LSM format
+    File:   aegis.3.15.rm.ps.gz	  # PostScript of the Reference	Manual
+
+    File:   aegis.3.15.tar.gz	  # the	complete source
+    File:   aegis.3.15.ug.ps.gz	  # PostScript of the User Guide
+
+The above site has a very slow network link to the outside world.
+Aegis is also carried by sunsite.unc.edu in its	Linux archives.	 You
+will be	able to	find Aegis on any of its mirrors.
+    Host:   sunsite.unc.edu
+    Dir:    /pub/Linux/devel/vc
+    File:   aegis.3.15.README	  # the	README file from the tar set
+    File:   aegis.3.15.faq	  # Frequently Asked Questions
+    File:   aegis.3.15.lsm	  # description	in LSM format
+    File:   aegis.3.15.rm.ps.gz	  # PostScript of the Reference	Manual
+    File:   aegis.3.15.tar.gz	  # the	complete source
+    File:   aegis.3.15.ug.ps.gz	  # PostScript of the User Guide
+
+For those of you without FTP, I	recommend the use of a local ftp-by-
+email server.  Here is a list of a few (there are many more):
+    ftpmail@cs.uow.edu.au	   Australia
+    ftpmail@grasp.insa-lyon.fr	   France
+    ftpmail@ftp.uni-stuttgart.de   Germany
+    ftpmail@doc.ic.ac.uk	   Great Britain
+    ftpmail@ieunet.ie		   Ireland
+    ftpmail@decwrl.dec.com	   USA
+    ftpmail@ftp.uu.net		   USA
+    ftpmail@sunsite.unc.edu	   USA
+
+In general, you	can get	a help message about how to use	each system by
+sending	email with a subject of	"help" and a message body containing
+just the word "help".
+
+------------------------------
+
+Subject: 1.3.  Is Aegis	actively being maintained?
+
+Yes, Aegis is actively being maintained	by the author.	You can
+contact	him by email
+	       Peter Miller <millerp@canb.auug.org.au>
+
+------------------------------
+
+Subject: 1.4.  Is there	an Aegis mailing list?
+
+Yes.  Discussion may include, but is not limited to: bugs,
+enhancements, and applications.	 The list is not moderated.
+
+The address of the mailing list	is
+	aegis-users@canb.auug.org.au
+
+DO NOT send email to the list if you wish to subscribe.
+
+To subscribe to	this mailing list, send	an email message to
+majordomo@canb.auug.org.au with	a message body containing the single
+line
+	subscribe aegis-users
+If you have an address which is	not readily derived from your mail
+headers	(majordomo is only a Perl program, after all) you will need to
+use a message of the form:
+	subscribe aegis-users address
+where address is an email address to which you want messages sent.
+
+The software which handles this	mailing	list CANNOT send you a copy of
+Aegis.	Please use FTP or ftp-by-email,	instead.
+
+------------------------------
+
+Subject: 1.5.  How does	Aegis compare with program X?
+
+For all	X, ``The author	has no experience with X.  If you wish to
+contribute a comparison	between	Aegis and X, it	will be	considered for
+addition here.''
+
+------------------------------
+
+Subject: 2.  Configuration and initial build problems
+
+Aegis is accompanied by	a set of regression tests, and the BUILDING
+instructions included in the distribution detail how to	run these
+tests.
+
+------------------------------
+
+Subject: 2.1.  Changing	Makefile and common/config.h
+
+It is a	Bad Idea to change the Makefile	or the common/config.h file by
+hand.  This is because much of the work	done by	the configure script
+is inter-related.
+
+In particular, if you change the C compiler (CC) you absolutely	must
+do this	with the involvement of	the configure script.
+
+------------------------------
+
+Subject: 2.2.  RCS
+
+The tests distributed with Aegis use RCS as their history tool.	 It is
+important that you use version 5.6 or later.
+
+There seems to be a problem with the version of	RCS distributed	with
+HP/UX, even though it claims to	be RCS-5.6.0.1.	 You will need to get
+the latest GNU RCS if you are on a HP box.
+
+------------------------------
+
+Subject: 2.3.  SCCS
+
+The tests do not automatically detect that you have SCCS.  You will
+need to	go out and grab	RCS even if you	already	have SCCS installed at
+your site.
+
+------------------------------
+
+Subject: 2.4.  Why does	aenf limit file	names to 14 characters?
+
+There are a number of controls on the length and form of filenames
+within a project, controlled by	the project config file, see
+aepconf(5) for more information.  The default maximum filename length
+is 14, for greatest portability.  You can increase this	by setting the
+``maximum_filename_length'' field of the project config	file to	the
+desired	limit.
+
+------------------------------
+
+Subject: 3.  Testing
+
+One of the things many sites like about	Aegis, is that it provides
+mandatory testing.  This enforcement of	testing	is optional, and is
+configurable per-project.
+
+Please note that even if Aegis'	testing	framework is not useful	to
+your project, the other	aspects	of Aegis' process still	are (e.g.
+concurrent development,	mandatory reviews, etc.).
+
+------------------------------
+
+Subject: 3.1.  Can I use something besides a shell script?
+
+Yes, the ``test_command'' field	of the project config file may be set
+to whatever command you	like, see aepconf(5) for more information.
+
+A shell	script is the default, because you can run anything out	of the
+shell script.  In particular, you can set up a temporary directory
+within which to	run the	tests.	If you ``cd'' into this	temporary
+directory when running tests, cleanup, no matter what the fallout,
+even a core dump, is thus a simple matter of ``rm -rf''	of the
+temporary directory.
+
+------------------------------
+
+Subject: 3.2.  Testing curses programs
+
+I don't	have a curses program tester, nor do I know of one.  It	seems
+to me that the ``screen'' program contains all the necessary elements,
+however	additional code	would be required to make it a suitable	test
+harness.
+
+If anyone has found suitable curses testers, even commercial ones, I
+would be happy to list (FTP) locations here.
+
+------------------------------
+
+Subject: 3.2.1.	 Expect
+
+Some sites have	been using ``expect'' to test curses programs.	You
+need to	be careful about terminal types.  The author is	Don Libes
+<libes@nist.gov>
+
+expect is available by anonymous FTP from
+    Host:   sunsite.unc.edu
+    Dir:    pub/Linux/system/Shells
+    File:   expect-5.12.tgz
+
+The author has not personally used this	system,	and so can make	no
+comment	on it.
+
+------------------------------
+
+Subject: 3.3.  Testing X11 programs
+
+I don't	have an	X11 program tester, however several commercial ones
+seem to	be advertised heavily.
+
+If anyone has found suitable X11 testers, even commercial ones,	I
+would be happy to list additional (FTP)	locations here.
+
+------------------------------
+
+Subject: 3.3.1.	 replayXt
+
+ReplayXt is a library that allows Intrinsics (or Xt) based application
+to be executed from a script file.  In particular, applications	based
+on the Athena and the Motif toolkits can be played.  The author	is Jan
+Newmarch <jan@pandonia.canberra.edu.au>
+
+replayXt is available by anonymous FTP from
+    Host:   ftp.x.org
+    Dir:    /contrib/devel_tools
+    File:   replayXt.README
+
+    File:   replayXt.1.1.tar.z
+
+The author has not personally used this	system,	and so can make	no
+comment	on it.	This entry originated from Simon Pickup
+<simon@adacel.com.au>
+
+------------------------------
+
+Subject: 3.4.  Testing embedded	systems
+
+Yes, embedded system can be developed with Aegis.  Naturally, you will
+need a suitable	cross compiler.
+
+To test	embedded software, you will need suitable testing hardware:
+
+1. you will need to be able to (automatically) download	the software
+into suitable hardware - probably with RAM emulating the ROM of	the
+distributed product.
+
+2. you will need to be able to simulate	the various inputs and capture
+the various outputs, if	you don't want to do manual testing.
+
+3. you will probably have to write the testing program yourself, to
+allow scripting	the inputs and outputs.
+
+4. The gotcha is that in diverting input and output, you will need to
+manually test the device drivers, because the tests will probably not
+exercise them.
+
+The author has worked in an environment	like this, and Aegis is
+definitely intended to be useful in this situation.
+
+------------------------------
+
+Subject: 3.5.  Do I really need	to test	my software?
+
+No, you	do not.	 There are alternatives, as this quote demonstrates:
+
+    New	York, NJ, Sept.	24 -- People for the Ethical Treatment of
+    Software (PETS) announced today that seven more software companies
+    have been added to the group's "watch list"	of companies that
+    regularly practice software	testing.
+
+    "There is no need for software to be mistreated in this way	so
+    that companies like	these can market new products,"	said Ken
+    Granola, spokesperson for PETS.  "Alternative methods of testing
+    these products are available."
+
+    According to PETS, these companies force software to undergo
+    lengthly and arduous tests,	often without rest for hours or	days
+    at a time.	Employees are assigned to "break" the software by any
+    means necessary, and inside	sources	report that they often joke
+    about "torturing" the software.
+
+    "It's no joke," said Granola.  "Innocent programs, from the	day
+    they are compiled, are cooped up in	tiny rooms and 'crashed' for
+    hours on end.  They	spend their whole lives	on dirty, ill-
+    maintained computers, and are unceremoniously deleted when they're
+    not	needed anymore."
+
+    Granola said the software is kept in unsanitary conditions and is
+    infested with bugs.
+
+    "We	know alternatives to this horror exist," he said, citing
+    industry giant Microsoft Corp. as a	company	that has become
+    extremely successful without resorting to software testing.
+
+If anyone has an accurate attribution for the above quote, I would
+like to	include	it here.
+
+------------------------------
+
+Subject: 4.  Miscellaneous
+
+This section contains a	whole bunch of things which do not yet belong
+anywhere else.
+
+------------------------------
+
+Subject: 4.1.  How do you pronounce ``Aegis''?
+
+There are many alternatives for	pronouncing this word, and all focus
+on the myriad of sounds	available for the "ae" vowel.  Alternatives
+include: maestro, aerial, algae, etc.  The author has chosen the
+pronunciation found in the majority of dictionaries: ee.j.iz.  That is
+"ee" as	in "tree", a "j" as in "job", and "iz" as in "prism".
+
+------------------------------
+
+Subject: 4.2.  How do I	automate the integration queue?
+
+There is a shell script	in the aegis library directory (usually
+/usr/local/lib/aegis/integrate_q.sh) which can be run from cron(1)
+daily, or whatever.  This shell	script is a good starting point	for
+customizing automatic integrations.
+
+Please note that the integration phase also serves to answer the
+question ``who reviews the reviewers?''	 Monitoring review quality is
+essential to maintain product quality.
+
+------------------------------
+
+Subject: 4.3.  How do I	enforce	coding standards?
+
+The ``diff_command'' field of the project config file need not only
+difference the file, it	can also be overloaded to do other things.  If
+the difference command fails for any source file, the change may not
+leave the being	developed state.
+
+For example, if	you wanted to check that line lengths were always 80
+characters or less, you	could run the hypothetical ``cklinlen''
+command	at diff	time, using
+	diff_command = "cklinlen $in &&	fcomp -w -s $orig $in -o $out";
+Checking other coding standards	are also possible using	the same basic
+method.
+
+------------------------------
+
+Subject: 4.4.  How do I	get dates printed before and after build
+	commands?
+
+Just as	the diff_command file of the project config file can be
+extended, so can the build_command field.
+	build_command =	"set +e; date; cook ...; x=$?; date; exit $x";
+You need to be careful about the -e flag, because Aegis	invokes	the
+shell to run the commands with the -e option, to abort after the first
+error.
+
+You may	want to	upgrade	to Aegis 3.0.  In this version,	the times are
+automatically printed as part of the verbose commencement and
+completion messages.
+
+------------------------------
+
+Subject: 4.5.  How do I	stop Aegis automatically merging?
+
+The merging behavior is	controlled by the ``diff_preference'' field of
+the user config	file.  See aeuconf(5) for more information.  There are
+also three command line	options	to the aed(1) command which can
+override the preferences, see aed(1) for more information.
+
+To stop	the automatic merging, add the line
+	diff_preference	= no_merge;
+to the .aegisrc	file in	your more directory.  To specifically perform
+a merge	after that, you	will need to use the ``aed -merge_only''
+command.  There	is an ``aem'' alias for	your convenience.
+
+------------------------------
+
+Subject: 4.6.  How do I	modify which developer is assigned to a
+	change?
+
+There have been	times when we have one developer working on a change
+and, for one reason or another,	we need	assign that change to
+different developer before the change is at a point where it can be
+integrated.  Is	there a	way to tell Aegis that a new developer has
+been assigned to the change so that it would change files permissions
+accordingly?  (My thanks to Mark Meuer <markm@endo.com>	for this
+question.)
+
+Yes, you need to use the aechown(1) command.  This command may be run
+by a project administrator to reassign a change	to a different
+developer.  Because chown(2) does not work over	NFS, a new development
+directory owned	by the new developer is	created, and the change	files
+are copied, before the old development directory is deleted.
+
+------------------------------
+
+Subject: 4.7.  Do I have to type all the config	examples in the	User
+	Guide?
+
+No, you	do not.	 The lib/config.example	directory contains a number of
+files with the config command from the User Guide ready	for inserting
+into your project config file.
+
+------------------------------
+
+Subject: 4.8.  Is there	a way to recreate a previous baseline?
+
+For example, let's say we have shipped one version to a	customer and
+since then made	30 changes to the baseline.  When the customer calls
+in with	a failure report that we can't reproduce, how can I easily
+rebuild	the baseline from 30 changes ago to help track down the	error?
+
+Yes, it	is possible to recreate	a previous baseline.  You need to
+follow these steps:
+
+1. Determine which delta was shipped to	the customer.  This is easiest
+if you embed the version supplied by Aegis into	your executables at
+build time.
+
+2. Create a change a change (you want to fix the bug, right?)  and
+start developing it.
+
+3. Copy	all of the project files into the change, using	the delta
+number determined in step 1.  Use these	commands:
+	aecd
+	aecp . -delta N
+where N	is the delta number from the first step.  Files	created	since
+the delta will be copied into your change as empty files, leave	them
+alone for a while.
+
+Note that you need Aegis 2.3 for directory copying to work correctly.
+Earlier	versions will need to use
+	aecd
+	aecp `aegis -list project_files	-terse`	-delta N
+Note the backward quotes.  The above can be abbreviated, its just long
+so you can see what it is doing.
+
+4. Build the change as normal.	This will completely rebuild the
+version	sent to	the customer.  Note that a number of things are	beyond
+Aegis' scope, like operating system updates and	compiler updates.
+These can have an effect in accurately reproducing what	was sent to
+the customer.
+
+5. Find	the bug	and fix	it, as you would normally do.
+
+5. Merge the change.  This will	bring the files	up to the most recent
+version, and merge the bug fix with the	current	version.
+
+6. You can now uncopy all of the files which are unchanged.  Aegis
+provides a fast	way to do this
+	aecpu -unchanged
+This command behaves like aecpu, but it	goes hunting for files which
+are the	same between the baseline and the development directory.  Note
+that you must do this step after the merge.
+
+------------------------------
+
+Subject: 4.9.  How do I	stop it	using the pager?
+
+Aegis automatically redirects the output of listing and	help into the
+pager program described	in the $PAGER environment variable, or more if
+not set.  This is only done if aegis is	running	in the foreground and
+the output is a	terminal.
+
+The simplest way to stop the use of the	pager is to pipe the output
+through	cat.  A	more elegant method is to use the -No_Pager option.
+
+If you want to permanently disable the pager, set the following	line
+in your	.aegisrc file:
+	pager_preference = never;
+If you want to use the pager now, you will need	to use the -PAGer
+option.
+
+------------------------------
+
+Subject: 4.10.	Why does develop end complain about builds?
+
+Why does aede complain that "this change must successfully complete an
+'aegis -Build' before it can end development" but I have just done a
+successful build?
+
+There are two possibilities: time stamps and architectures.
+
+------------------------------
+
+Subject: 4.10.1.  Build	Time Stamps
+
+Aegis tracks time stamps on files and builds, etc, to determine	when
+files are out of date.	If time	clocks on various networked machines
+disagree, it is	possible for Aegis to conclude that a file or files
+are logically out of date.
+
+This problem is	mentioned in the User Guide.  Essentially, you need to
+install	NTP or XNTP.  If you can't do that, run	rdate(1) on your
+client machines	from cron, to sync their clocks	with the file server's
+clock.
+
+------------------------------
+
+Subject: 4.10.2.  Build	Architectures
+
+The ``aede'' can also complain about builds when you have changed the
+architecture field of the project "config" file, but have not yet
+updated	the change's attributes	to match.  This	can also happen	when a
+separate change	updates	the architecture field,	and all	existing
+changes	suddenly get this mystery error.
+
+It happens because the default architecture is "unspecified" in	the
+change attributes (use ``aeca -l'' to take a look).  When the config
+file changes, the required architecture, according to the change's
+attributes, is still "unspecified".  To	fix, use ``aeca	-e'' and edit
+the change's attributes	to match the architecture names	in the
+"config" file.
+
+You may	wish to	upgrade	to version 3.0,	which checks for this, and
+prints a suitable error	message, with a	suggestion to edit either the
+project	``config'' file	or the change attributes.
+
+------------------------------
+
+Subject: 5.  Internationalization
+
+This section discusses a number	of issues surrounding
+internationalization, and the effect it	has has	upon Aegis and its
+error messages.
+
+------------------------------
+
+Subject: 5.1.  Say What?
+
+Internationalization is	the process of modifying code so that it may
+produce	messages in the	native language	of the user.  A	data file is
+supplied for each supported language, containing the strings to	be
+substituted for	error messages and other text produces by a program.
+
+------------------------------
+
+Subject: 5.2.  So why are the error messages So	Bad, now?
+
+There is a set of default error	messages in the	code itself.  These
+error messages are used	if the localization file cannot	be found, or
+if the message is absent from the localization file for	some reason.
+These messages tend to be in the ``programmer cryptic''	language, and
+the English localization has probably not been installed correctly.
+The English localization *needs* to be installed.
+
+There is also a	small, slight, tiny (cough) possibility	that the
+necessary code changes have introduced bugs into some error reporting.
+(And we	need bugs there	like we	need a third arm pit.)	Please report
+any problems immediately to the	author.
+
+------------------------------
+
+Subject: 5.3.  What controls which language is used?
+
+There are a range of environment variables, depending on your
+operating system.  The most common is the LANG environment variable.
+The default is ``en'' (for English) if nothing is specified.
+
+------------------------------
+
+Subject: 5.4.  What localizations are available?
+
+Only English is	available at this writing.
+
+More may become	available if there are any generous bilingual Aegis
+users out there, who want to provide a localization file in another
+language.
+
+------------------------------
+
+Subject: 5.5.  So can I	change the text	of error messages?
+
+Yes, you can, but it is	not advised.  Seriously.  (I'm going to	regret
+admitting this,	so I'm not going to tell you how.)  If you have
+suggestions for	improving error	messages, please email them to the
+author.
+
+------------------------------
+
+Subject: 6.  Branches
+
+This section discusses a number	of issued surrounding branching.
+
+------------------------------
+
+Subject: 6.1.  What is a Branch?
+
+Aegis treats branches as ``big changes''.  This	allows much of Aegis'
+development model be be	applied	unchanged, but still allow the
+development of projects	to be broken down into fine grained pieces, or
+aggregated into	large ``release	sized''	chunks.
+
+------------------------------
+
+Subject: 6.2.  What is an Anabranch?
+
+Aegis' branches	can end.  This is a consequence	of treating branches
+as ``big changes''.  Logical places to end branches are	times like
+when a release of the software is made.	 The geographic	term for a
+stream which breaks off	and rejoins downstream is an anabranch.
+
+Because	branches can end, combined with	the fact that branches are
+``big changes'', this means that you use ``aede'' to end development
+of the branch.	After that, it is just like any	other change on	its
+parent branch.
+
+------------------------------
+
+Subject: 6.3.  Do branches have	to end?
+
+No.  You are not required to end development of	a branch, just as you
+are not	required to end	development of a change.  In particular, the
+project	trunk is an unnumbered branch which never ends.	 How you
+manage your project is up to you.
+
+------------------------------
+
+Subject: 6.4.  Why are branches	called projects?
+
+In order for the branches to be	``big changes'', there are times when
+you will refer to the branch as	a change to its	parent project.	 In
+order for branches to have changes, there are times when you will
+refer to them as a project.
+
+The conversion between the two is intended to be simple.  When you
+need to	refer to a branch in its project role, join the	branch's
+parent project name to the branch's number with	a dot; e.g. ``-p
+aegis.1.2''.  When you need to refer to	a branch in its	change role,
+separate the branch's project name from	the branch's number at the
+last dot; e.g. ``-p aegis.1 -c 2''.
+
+------------------------------
+
+Subject: 6.5.  Why must	aed be used when integrating a branch?
+
+Because	branches are ``big changes'' and follow	all of the things a
+change must do,	including aed.	The only time a	branch is writable is
+at integration time for	a change on that branch.  Thus,	the aed	for
+the branch is done between aeib	and aeipass.  The trunk	doesn't
+require	it, because you	never say aede to the trunk.
+
+------------------------------
+
+Subject: 6.6.  How come	the branch baseline is incomplete?
+
+The branch baseline is the development directory for the ``big
+change'' represented by	the branch.  Just as a developers development
+directory only contains	the things being worked	on, and	their
+implications, so does the branch baseline.
+
+This means that	wherever you specify a search path (-I,	VPATH, etc) to
+look first in your development directory and then in the baseline, it
+must also look in each of the branch's ancestors' baselines.  Aegis
+provides a ``$search_path'' substitution telling you where to search;
+this is	usually	used in	the ``build_command'' field of the project
+config file.
+
+The ``aefind'' command may also	be used	to perform actions similar to
+use usual Unix find(1),	but across the Aegis search path.
+
+------------------------------
+
+End of aegis.3.15.faq Digest
+***************************

@@ -1,0 +1,19 @@
+Begin2
+Title        = make-3.74.bin.ELF.tar.gz
+Version      =
+Desc1        = This is the pre-built ELF binary for make-3.74
+Desc2        = just in case you don't feel like building it yourself.
+AuthorEmail  =
+Maintainer   = Neal Becker
+MaintEmail   = neal@ctd.comsat.com
+Site1        = sunsite.unc.edu
+Path1        =
+File1        = make-3.74.bin.ELF.tar.gz
+Site2        = ftp.ctd.comsat.com
+Path2        = pub/linux/ELF
+Path3        = http://www.comsat.com/pub/linux/ELF
+Required1    = libc-5.0.9
+Keywords     = make, FSF, ELF
+Entered      = neal@ctd.comsat.com
+End
+

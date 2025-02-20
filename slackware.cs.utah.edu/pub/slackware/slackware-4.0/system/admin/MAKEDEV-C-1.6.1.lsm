@@ -1,0 +1,21 @@
+Begin3
+Title:          MAKEDEV-C
+Version:        1.6.1
+Entered-date:   Apr 24 1997
+Description:    Enhanced (compiled, not shell) version of MAKEDEV.
+                MAKEDEV is the program for creating special file
+                (device) entries in /dev. Configurable; includes 
+                configuration files believed to be fairly current
+                as of time of upload. Release 1.6.1 fixes a security 
+                problem in 1.6's devinfo file.
+Keywords:       MAKEDEV mknod devices /dev
+Author:         dholland@hcs.harvard.edu (David A. Holland)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+                    48410 MAKEDEV-C-1.6.1.tar.gz
+                    152 MAKEDEV-C-1.6.1.tar.gz.sig
+Alternate-site: hcs.harvard.edu /pub/linux/makedev
+Original-site:  
+Platform:       Linux.
+Copying-policy: BSDish, freely redistributable.
+End

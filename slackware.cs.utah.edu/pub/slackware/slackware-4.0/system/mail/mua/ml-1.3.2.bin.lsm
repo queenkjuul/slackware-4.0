@@ -1,0 +1,20 @@
+Begin3
+Title:		ml
+Version:	1.3.2       
+Entered-date:	08AUG95
+Description:	ML - an IMAP mail client for X11/Motif. Provides a
+		full-featured MIME aware mail/news system with active 
+		filtering of messages based on rules which you define,
+		plus point-n-click PGP access.
+		This package provides a (non-ELF) binary which is 
+		statically linked to Motif, a binary IMAP server, 
+		plus all support files and documentation.
+Keywords:	mail mime imap pgp ml filter       
+Author:		Mike Macgirvin <Mike_Macgirvin@CAMIS.Stanford.EDU>
+Maintained-by:	Mike Macgirvin <Mike_Macgirvin@CAMIS.Stanford.EDU>
+Primary-site:	ftp://ftp-camis.stanford.edu/pub/ml
+Alternate-site: 
+Original-site:  
+Platforms:       
+Copying-policy:	Freely distributable 
+End

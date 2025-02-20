@@ -1,0 +1,21 @@
+Begin2
+Title        = FIXPERMS! - set or get permissions of a list of files
+Version      = 1.00
+Desc1        = Fixperms allows uid/gid/permissions/etc to be set or
+Desc2        = checked on lists of files.  Fixperms can also creates
+Desc3        = lists of files for setting uid/gid/permissions/etc.
+Author       = Anthony E. Hall
+AuthorEmail  = aehall@seattleu.edu
+Maintainer   = Anthony E. Hall
+MaintEmail   = aehall@seattleu.edu
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Admin
+File1        = fixperms.1.00.tar.gz
+FileSize1    = 24000 bytes
+Required1    = a C++ compiler (although a binary is included)
+CopyPolicy1  = GNU General Public License
+Keywords     = fix permissions sysadmin utility
+Entered      = 29JAN94
+EnteredBy    = Anthony E. Hall
+CheckedEmail = aehall@seattleu.edu
+End

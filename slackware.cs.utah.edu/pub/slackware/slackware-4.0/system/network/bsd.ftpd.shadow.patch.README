@@ -1,0 +1,17 @@
+
+This is a patch for the 6.00/Linux port of bsd.ftpd found on
+sunsite (/pub/Linux/system/Network/bsd-ftpd.tgz, 32227 bytes),
+for shadow password support. I originally used bsd.ftpd because
+of its size and security features, and if it's security you're
+after, you might as well have shadow support in it :)
+
+A few fixes have been made, namely a definition of d_namlen
+which seems to be screwed up somewhere in the Linux include
+files, a conditional definition of _PATH_WTMP which causes
+gcc to bitch, and a certain basename() call which caused gcc
+to bitch a pointer error but doesn't seem to be needed :)
+
+Untar bsd.ftpd into a directory, and apply this patch in it.
+
+Gary Marsh, gmarsh@surf.seascape.com.
+

@@ -1,0 +1,29 @@
+Begin3
+Title:          Posix.1b Real Time Scheduler Tools for Linux
+Version:        1.0
+Entered-date:   02/Apr/98
+Description:
+                Two programs: setpriority and getpriority. 
+		
+		setpriority - puts running processes on any of the
+		schedulers defined by the Posix.1b standard and sets their 
+		static priorities, thus increasing process performance.
+		Works great for emulators (snes9x), X servers, and cdrom
+		burning utilities.
+		
+		getpriority - prints out schedule and priority information
+		on running a process.
+
+Keywords:       setpriority getpriority performance snes9x posix.1b
+                scheduler real-time realtime
+
+Author:         Bradford J Snow <bradford@wpi.edu>
+Maintained-by:  Bradford J Snow <bradford@wpi.edu>
+
+Primary-site:   sunsite.unc.edu /incoming/Linux/
+		rtstools-1.0.tgz
+
+Platforms:      Any Posix.1b complient operating system, with a c
+                compiler. Tested on Linux 2.0.x and Linux 2.1.x
+Copying-policy: GPL
+End

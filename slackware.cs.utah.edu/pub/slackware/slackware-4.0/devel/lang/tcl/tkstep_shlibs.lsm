@@ -1,0 +1,15 @@
+Begin3
+Title:          TkStep Shared Lib + Wish 
+Version:        0.3b3
+Entered-date:   26SEP96
+Description:    Tk4.1p1+wish interpreter Shared libs with TkStep 0.3b3 
+		applied. TkStep provides the look-and-feel of NeXTSTEP
+Keywords:       tk4.1p1, TkStep
+Author:         kojima@inf.ufrgs.br <Alfredo Kojima>
+Maintained-by:
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/tcl
+Alternate-site: 
+Original-site:  http://www.inf.ufrgs.br/~kojima/tkstep.html
+Platforms:      Linux(ELF)
+Copying-policy: 
+End 

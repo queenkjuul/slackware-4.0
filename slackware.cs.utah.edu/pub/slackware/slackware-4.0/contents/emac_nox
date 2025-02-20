@@ -1,0 +1,11 @@
+drwxr-xr-x root/root         0 1998-10-14 17:35 ./
+drwxr-xr-x root/root         0 1998-03-30 23:34 usr/
+drwxr-xr-x root/root         0 1998-03-30 21:36 usr/share/
+drwxr-xr-x root/root         0 1998-10-14 17:34 usr/share/emacs/
+drwxr-xr-x root/root         0 1998-03-30 23:32 usr/share/emacs/20.3/
+drwxr-xr-x root/root         0 1998-10-14 17:35 usr/share/emacs/20.3/etc/
+-rw-r--r-- root/root   1086673 1998-10-14 17:31 usr/share/emacs/20.3/etc/DOC-20.3.1
+drwxr-xr-x root/bin          0 1998-10-14 17:35 usr/bin/
+-rwxr-xr-t root/bin    2788708 1998-10-14 17:34 usr/bin/emacs-20.3-no-x11
+drwxr-xr-x root/root         0 1998-10-14 17:35 install/
+-rw-r--r-- root/root       179 1998-10-14 17:35 install/doinst.sh

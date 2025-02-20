@@ -1,0 +1,18 @@
+You need to make an installation floppy prior to installation.
+This can be done in one of two ways.
+
+1) From MS-DOS or WinXX (safest):
+
+Place a floppy in your floppy drive.
+Run 'BOOTMENU.EXE A:'
+Leave floppy in drive and reset.
+
+2) From Linux / FREE-BSD:
+
+Place a floppy in your floppy drive.
+Run 'cat BOOTMENU.BIN > /dev/fd0H1440'
+Leave floppy in drive and reset.
+
+The installation and configuration programs are pretty self-
+explanatory. If further documentation is needed it can be 
+downloaded from 'http://home.sol.no/~psycodad'.

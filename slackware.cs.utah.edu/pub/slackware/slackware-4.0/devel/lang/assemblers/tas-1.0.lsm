@@ -1,0 +1,13 @@
+Begin3
+Title:          TPU assembler
+Version:        1.0.0
+Entered-date:   25June98
+Description:    Motorola Time Processor Unit assembler
+Keywords:       TPU assembler embedded
+Author:         Zoltan Kocsi, Josef Wolf, Joern Tietjen
+Maintained-by:  zoltan@bendor.com.au (Zoltan Kocsi)
+Primary-site:   sunsite.unc.edu, in apps/
+Original-site:  
+Platform:       Linux, Solaris, HP, NetBSD, FreeBSD, even Windows
+Copying-policy: GPL
+End

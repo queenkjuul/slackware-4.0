@@ -1,0 +1,18 @@
+Begin3
+Title: rfiledist
+Version: 0.90
+Entered-date: 20JAN1999
+Description: remote file distribution system, useful for making client
+Description: systems look uniform across a network.  Can aid in installation,
+Description: maintenence, upgrade.
+Keywords: remote file distribution master
+Author: tkunz@fast.net (Tom Kunz)
+Maintained-by: tkunz@fast.net (Tom Kunz)
+Primary-site: sunsite.unc.edu /pub/Linux/system/admin/
+	1k rfiledist-0.90.lsm
+	45k rfiledist-0.90.tar.gz
+Alternate-site: http://noc.rutgers.edu/~tkunz/linux/rfiledist
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          X11/Motif OTP Calculator
+Version:        0.9
+Entered-date:   21NOV1997
+Description:    xotpcalc is a one-time password calculator which can
+		be used with S/Key and OPIE authentication schemes.
+Keywords:       password one-time OPIE S/Key X11 Motif
+Author:         ian@uns.ns.ac.yu (Ivan Nejgebauer)
+Maintained-by:  ian@uns.ns.ac.yu (Ivan Nejgebauer)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/security
+		44035 xotpcalc-0.9.tar.gz
+		578 xotpcalc.lsm
+Platforms:      Linux >= 1.2, Motif >= 1.2
+		dumps core with lesstif 0.80
+Copying-policy: GPL
+End

@@ -1,0 +1,24 @@
+Begin3
+Title:          hc-cron
+Version:        0.11
+Entered-date:   22OCT98
+Description:    This program is a modified version of Paul Vixie's widely
+		used cron daemon. Like the original program it runs specified
+		jobs at periodic intervals. However, the original crond relies
+		on the computer running continuously, otherwise jobs will be
+		missed. This problem is addressed by hc-cron, that is indended
+		for use on 'home-computers' that are typically turned off 
+		several times a day; hc-cron will remember the time when it
+		was shut down and catch up jobs that have occurred during
+		down time when it is started again.
+Keywords:       cron home-computer catch up power down rerun
+Author:         paul@vixie.com (Paul Vixie)
+		fbraun@atdot.org (Felix Braun)
+Maintained-by:  fbraun@atdot.org (Felix Braun)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/daemons/cron
+		65 kB hc-cron-0.11.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

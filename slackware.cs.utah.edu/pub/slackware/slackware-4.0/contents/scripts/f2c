@@ -1,0 +1,17 @@
+crunch() {
+	LIBDIR=$1
+	LIBPREFIX=$2
+	for f in $LIBDIR/$LIBPREFIX.so.?.*
+	do
+		bname=`basename $f`
+#		echo "   - compacting $bname."
+		cp $f $LIBDIR/t$bname || exit 1
+		rm -f $f
+		mv $LIBDIR/t$bname $f
+	done
+}
+#echo "Compacting shared library to decrease disk space utilization..."
+crunch usr/lib libf2c;
+#echo "Shared library compacted."
+( cd usr/lib ; rm -rf libf2c.so.0 )
+( cd usr/lib ; ln -sf libf2c.so.0.11 libf2c.so.0 )

@@ -1,0 +1,16 @@
+Begin3
+Title:	vftpd-linux
+Version:	0.5a (alpha)
+Entered-date:	Thu Feb 4 17:55:54 GMT+1 1999
+Description:	Virtual FTP daemon (enhanced FTP proxy server).
+Keywords:	ftp daemon proxy gateway permissions chroot ratio autoban
+Author: 	lcd@gkb.com (Luc Deschenaux).
+Maintained-by:	lcd@gkb.com (Luc Deschenaux).
+Primary-site:	heaven.infomaniak.ch /~lzer
+                382965 vftpd-linux-0.5a.tar.gz
+                637 vftpd-linux-0.5a.tar.gz.lsm
+Alternate-site: sunsite.cnlab-switch.ch /mirror/linux/sunsite/system/network/file-transfer
+Original-site:  heaven.infomaniak.ch /~lzer
+Platforms:	Linux, win32, Tcl/Tk 8.0
+Copying-policy:	GPL2
+End

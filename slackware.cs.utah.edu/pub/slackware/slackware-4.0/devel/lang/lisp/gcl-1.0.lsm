@@ -1,0 +1,14 @@
+Begin3
+Title:          GCL (GNU Common Lisp)
+Version:        1.0, ported to Linux
+Entered-date:   1994-10-28
+Description:    Source and Linux binaries of gcl-1.0
+Keywords:       common lisp, kcl, akcl, gcl, linux
+Author:         T. Yuasa, M. Hagiya, W. Schelter
+Maintained-by:  W. Schelter, B. Haible <haible@ma2s2.mathematik.uni-karlsruhe.de>
+Primary-site:   ma2s2.mathematik.uni-karlsruhe.de:/pub/lisp/gcl/gcl*
+Alternate-site: sunsite.unc.edu:/pub/Linux/devel/lisp/gcl*
+Original-site:  ftp.cli.com:/pub/gcl/*
+Platform:       Source: Unix, DOS. Binaries: Linux.
+Copying-policy: GPL, LGPL
+End

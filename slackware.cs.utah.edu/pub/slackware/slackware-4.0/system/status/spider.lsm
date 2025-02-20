@@ -1,0 +1,16 @@
+Begin3
+Title:		spider
+Version:	2.4.3
+Entered-date:	22 December 1998
+Description:	The program can recognize your systems configuration.
+		You can save a configuration in a special file and use
+		it on other computers. Currently Linux, HP-UX, SunOS and
+		Ultrix are supported.
+Keywords:	system, configuration, status, monitor, config
+Author:		sweet@gmx.net (Stephan Trebs)
+Maintained-by:	sweet@gmx.net (Stephan Trebs)
+Primary-site: 	http://studcom.urz.uni-halle.de/~aeca7/spider
+		109kB	spider-2.4.3.tar.gz
+Platforms:	gzip, tar, /proc filesystem, ELF binary support
+Copying-policy:	Freeware
+End

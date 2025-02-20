@@ -1,0 +1,25 @@
+Begin3
+Title:          qb2c
+Version:        3.2k
+Entered-date:   1999-04-30
+Description:    QB2C package makes possible execution of BASIC programs
+                under UNIX provided that a C compiler is available on the
+                system. It allows for mixing of BASIC and C code in a single
+                file/program as well as use of X11 based graphics. The
+                graphics in QB2C is extended to handle up to 16 X11 graphic
+                windows at a time. QB2C is built around the QuickBASIC-to-C
+                translator (qb2c) which translates BASIC code into C code.
+                Scripts 'brun' (to run directly BASIC programs) and 'bcc'
+                (to compile BASIC program and produce an executable) are also
+                provide. BASIC syntax is similar to Microsoft's QuickBASIC one.
+Keywords:       BASIC, language, compiler, translator, graphics, X-windows, C
+Author:         stipy@rudjer.irb.hr (Mario Stipcevic)
+Maintained-by:  stipy@rudjer.irb.hr (Mario Stipcevic)
+Primary-site:   darkstar.irb.hr /pub/qb2c/
+                1.2k qb2c-3.4t.lsm
+                143k qb2c-3.4t.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/basic/
+Original-site:  darkstar.irb.hr /pub/qb2c/ 
+Platforms:      Linux, DEC-OSF, Sun-OS, IBM-Aix, SGI Silicon Graphics, HP-UX
+Copying-policy: GPL
+End

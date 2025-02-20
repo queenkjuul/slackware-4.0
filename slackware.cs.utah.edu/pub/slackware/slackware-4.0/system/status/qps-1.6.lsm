@@ -1,0 +1,20 @@
+Begin3
+Title:          qps - visual process manager
+Version:        1.6
+Entered-date:	15JAN99
+Description:    An visual process monitor (like "top" but with a
+		graphical interface).  Processes can be reniced
+		and have signals sent to them.  Supports Posix.1b realtime
+		scheduling.  Allows inspection of memory mappings, TCP/UDP
+		sockets and open files for each process.
+		Requires the Qt library version 1.40 or later.
+Keywords:       process status monitor X11 Qt
+Author:         f91-men@nada.kth.se (Mattias Engdegård)
+Maintained-by:  f91-men@nada.kth.se (Mattias Engdegård)
+Primary-site:   ptah.lnf.kth.se /pub/qps
+                142k qps-1.6.tar.gz
+Alternate-site: metalab.unc.edu /pub/Linux/system/status
+Platforms:      Linux 2.0 or higher; Qt 1.40 or later required.
+		(obtainable from ftp.troll.no)
+Copying-policy: GPL
+End

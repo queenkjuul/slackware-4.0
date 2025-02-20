@@ -1,0 +1,15 @@
+Begin3
+Title:			set2wwv
+Version:		V0.0-01        
+Entered-date:		19980427
+Description:		Shell script to update system clock to correct UTC
+Keywords: 		clock, time, system_time
+Author: 		Tim Conway (hiram@indy.net)
+Maintained-by:
+Primary-site:		sunsite.unc.edu: /pub/Linux/Incoming
+			2k set2wwv.tar.gz
+Alternate-site:
+Original-site:		may be on ftp.kingsystems.com if it exists
+Platform:		Linux, any complete unix if customized to date formats
+Copying-policy:		PD
+End

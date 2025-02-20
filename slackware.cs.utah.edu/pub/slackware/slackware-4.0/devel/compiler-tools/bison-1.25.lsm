@@ -1,0 +1,19 @@
+Begin3
+Title:          Bison
+Version:        1.25
+Entered-date:   25MAY96
+Description:    This is the Bison parser generator.
+
+                Binary provided by Jeremie Petit (petit@eurecom.fr)
+                and comes with no warranty.
+Keywords:       bison, yacc, parser
+Author:         (Numerous)
+Maintained-by:  bug-gnu-utils@prep.ai.mit.edu
+Primary-site:   prep.mit.ai.edu /pub/gnu
+                287239 bison-1.25.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/
+                106436 bison-1.25.ELF.tgz
+                287239 bison-1.25.src.tgz
+Platforms:      Unices
+Copying-policy: GPL2
+End

@@ -1,0 +1,18 @@
+Begin3
+Title:		PPPConfig
+Version:	1.0.1
+Entered-date:	10.23.96
+Description:	This package will handle calling and setting up
+		a PPP connection and then calling pppd.  Requires
+		the ppp daemon to work properly.
+Keywords:	chat pppd ppp scripts modem network
+Author:		blkmajik@mcn.net Shawn Michael
+Maintained-by:	blkmajik@mcn.net Shawn Michael
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/serial/ppp
+		38 k pppconfig-1.0.1.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: public domain/GPL (on some files)
+End
+

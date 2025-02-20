@@ -1,0 +1,20 @@
+Begin3
+Title:          RemoteD
+Version:        0.1
+Entered-date:   1MAY98
+Description:    RemoteD is a daemon that will perform certain commands 
+		when it detects keypresses from Remote Master connected
+		to serial port. You can redefine any internal command.
+		By default plays audio CDs, adjusts sound volume, 
+		switches VT.
+Keywords:       remoted remote master daemon console switch vc play cd sound volume
+Author:         Oleg Drokin <green@ccssu.crimea.ua>
+Maintained-by:  Oleg Drokin <green@ccssu.crimea.ua>
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/daemons
+		6K remoted-0.1.tgz
+Alternate-site: 
+Original-site:  ftp.ccssu.crimea.ua:/pub/linux/misc
+		6K remoted-0.1.tgz
+Platforms:      Linux 2.0.X or above.
+Copying-policy: Freely distributable.
+End

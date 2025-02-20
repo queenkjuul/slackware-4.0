@@ -1,0 +1,42 @@
+Begin2
+Title        = CU-SEEME reflector for Linux
+Version      = 3.0b3
+Desc1        = CU-SEEME is an experimental visual confrenceing system for
+Desc2        = the Internet that is being developed at Cornell U.
+Desc3        = This program acts as a server for CU-SEEME clients, reflecting
+Desc4        = the pictures sent by clients to all the other clients.
+Desc5        =
+Author       = John Lynn
+AuthorEmail  = jal7@cornell.edu
+Maintainer   = John Lynn
+MaintEmail   = jal7@cornell.edu
+Site1        = mama.indstate.edu
+Path1        = /linux/CUSEEME/
+File1        = reflect-3.0.b3-LINUX.tgz
+FileSize1    = 126201
+Site2        =
+Path2        =
+File2        =
+FileSize2    =
+Required1    = Any network equipped Linux box, Sun, or Sparc station plus
+Required2    = others.  Just about any unix really. CU-SEEME actually
+Required3    = works OK over a modem of 14.4K or faster via SLIP or PPP.
+Required4    =
+CopyPolicy1  = Freeware, can copy and freely distribute.
+CopyPolicy2  =
+Keywords     = network video reflector
+Comment1     = Needed some fixing for Linux, which means that the orginal
+Comment2     = of this will NOT work w/ Linux without patching some of the
+Comment3     = code.
+Comment4     = The clients for this program only work on Mac's and PC's
+Comment5     = running windows.  I know of no X clients unfortunately.
+Comment6     = Well, nv, sd, vat and nvbin are supposed to work with it,
+Comment7     = but I've had no success finding them or getting them to work.
+Comment8     = It's a back-bone breaker! =)
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = 02/20/95
+EnteredBy    = Steve Baker
+CheckedEmail = root@mama.indstate.edu
+End

@@ -1,0 +1,27 @@
+October 12, 1996
+
+    I hacked together this 'updated' telnetsnoopd by doing a line-by-line
+comparison between the original telnetsnoopd source found with slackware
+sources (InfoMagic June '96 in this case) and telnetd found in NetKit.  I
+am far from a coder in any sense of the word, but there did not seem to be
+significant differences between telnetsnoopd and telnetd.  The most
+obvious changes are in global.c, and the addition of logwtmp from NetKit's
+telnetd. 
+
+  Most of the other changes I made seemed more like differences in style,
+but I told you I'm not a programmer, so those changes may be significant. 
+No one else wanted to fix it, so I did what I could to emulate the
+security-mindedness of Dave Holland's current NetKit :)
+
+  This version of telnetsnoopd works for me. I'm not -sure- if it's any
+more secure, I'm running it here so I guess I'll be the 1st victim :) I
+think it's at least improved over the old telnetsnoopd, with it's
+'environment variable' vulnerabilities. I would appreciate any feedback
+letting me know of any blatant errors I made.
+
+ You'll need the libtelnet files, they can be found with the original
+telnetsnoopd source, probably other places as well.
+
+CiAo
+rosc@fbn.globalent.net
+aka wraith@styx.ios.com

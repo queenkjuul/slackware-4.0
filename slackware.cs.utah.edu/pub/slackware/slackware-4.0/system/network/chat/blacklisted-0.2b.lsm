@@ -1,0 +1,18 @@
+Begin
+Title:          Blacklisted
+Version:        0.2 BETA
+Entered-date:   20 NOV 1997
+Description:    Patch against talkd (NetKit-B-0.08) to filter incoming
+		talk requests depending on user name and host/domain
+                reading configuration from a file in each user's home dir.
+Keywords:       talk, talkd, filter, blacklist
+Author:         fer@ceu.fi.udc.es (Fernando Sanchez)
+		y168900303@abonados.cplus.es (David Fernandez Vaamonde)
+		rss-trgn@usa.net (Roberto Suarez Soto)
+Maintained-by:  fer@ceu.fi.udc.es (Fernando Sanchez)
+Primary-site:   ceu.fi.udc.es
+		/pub/os/linux/network/
+		blacklisted-0.2b.tar.gz 3227 bytes
+Platform:       LINUX
+Copying-policy: GPL
+End

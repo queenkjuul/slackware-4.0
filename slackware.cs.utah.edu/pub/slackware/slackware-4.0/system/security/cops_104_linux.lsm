@@ -1,0 +1,20 @@
+Begin3
+Title:          cops 
+Version:        104 (Redhat Linux configuration)
+Entered-date:   9/13/98
+Description:    COPS is a static security checking tool that checks 
+		common procedural (non-bug) problems of a Un*x system. 
+		It basically takes a snapshot of a system, and then 
+		generates a report of it's findings.
+Keywords:       security unix linux
+Author:         Dan Farmer
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/security
+		300850  /pub/Linux/system/security/cops_104_linux.tgz
+		763 /pub/Linux/system/security/cops_104_linux.lsm
+Alternate-site: 
+Original-site:  sunsite.unc.edu /pub/Linux/system/security 
+		400k /pub/Linux/system/security/cops_104.tgz
+Platforms:      Redhat Linux 5.2 (preferred)
+Copying-policy: MIT
+End

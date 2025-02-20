@@ -1,0 +1,18 @@
+Begin3
+Title:          xload - display graphically a system load (source)
+Version:        1.36p
+Entered-date:   December 25, 1996
+Description:    Simple X-windows utility to show a changing value
+                of a system load.  Can be used inside of a "live" icon.
+                An old workhorse modified to use data from /proc;
+                sources now have prototypes.
+                Also included "Red Hat style" specification file
+	        (use with 'rpm -bb' to recompile automatically).
+Keywords:       system utility, X-windows, nice toy
+Author:         K. Shane Hartman, Stuart A. Malone and many others...
+Maintained-by:  michal@ellpspace.math.ualberta.ca (Michal Jaegermann)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xutils/system
+                        12 kb xload-1.36p.tar.gz
+Platform:       
+Copying-policy: MIT copyright, free
+End

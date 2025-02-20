@@ -1,0 +1,13 @@
+
+These XFree86 server packages have been repackaged for Slackware, so ignore
+the installation instructions in the other README files.  To install these
+servers:
+
+For the i740 server, execute this as root:
+
+installpkg XBF-i740-1.0.0-1.tgz
+
+To install a version of xf86config patched to know about the i740:
+
+installpkg xf86config-for-i740-1.0.0.tgz
+

@@ -1,0 +1,108 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-netatalk
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_netatalk.tar.gz
+
+echo "+===========================+"
+echo "| netatalk 1.4b2+asun 2.1.3 |"
+echo "+===========================+"
+cd $TMP
+tar xzvf $CWD/netatalk-1.4b2+asun2.1.3.tar.gz
+cd netatalk-1.4b2+asun2.1.3
+zcat $CWD/netatalk-Makefile.diff.gz | patch
+cd sys/linux
+zcat $CWD/netatalk-sys_linux_Makefile.diff.gz | patch
+cd ../../
+make
+cat config/AppleVolumes.default > $PKG/etc/AppleVolumes.default
+cat config/AppleVolumes.system > $PKG/etc/AppleVolumes.system
+cat << EOF >> $PKG/etc/AppleVolumes.system
+
+# If uncommented, this line would export the /tmp directory as "Temporary".
+#/tmp Temporary
+EOF
+cat config/atalkd.conf > $PKG/etc/atalkd.conf
+cat config/papd.conf > $PKG/etc/papd.conf
+cat config/afpd.conf > $PKG/etc/afpd.conf
+sed -e s@:DESTDIR:@/usr@ -e s@:SBINDIR:@/usr/sbin@ \
+    -e s@:BINDIR:@/usr/bin@ -e s@:RESDIR:@/usr/lib/atalk@ \
+    -e s@:ETCDIR:@/etc@ -e s@:LIBDIR:@/usr/lib@ \
+    -e s@:INCDIR:@/usr/include@ \
+    < rc.atalk.bsd > $PKG/etc/rc.d/rc.atalk
+( cd $PKG/etc/rc.d
+  zcat $CWD/netatalk-rc.atalk.cosmetic.diff.gz | patch
+  rm rc.atalk.orig )
+cat bin/aecho/aecho > $PKG/usr/bin/aecho
+cat bin/getzones/getzones > $PKG/usr/bin/getzones
+cat bin/megatron/megatron > $PKG/usr/bin/megatron
+cat bin/nbp/nbplkup > $PKG/usr/bin/nbplkup
+cat bin/nbp/nbprgstr > $PKG/usr/bin/nbprgstr
+cat bin/nbp/nbpunrgstr > $PKG/usr/bin/nbpunrgstr
+cat bin/pap/pap > $PKG/usr/bin/pap
+cat bin/pap/papstatus > $PKG/usr/bin/papstatus
+cat bin/psorder/psorder > $PKG/usr/bin/psorder
+cat bin/adv1tov2/adv1tov2 > $PKG/usr/bin/adv1tov2
+cd include/atalk
+for headername in *.h
+do
+   cat $headername > $PKG/usr/include/atalk/$headername
+done
+cd ../../
+cd include/netatalk
+for headername in *.h
+do
+   cat $headername > $PKG/usr/include/netatalk/$headername
+done
+cd ../../
+cat libatalk/libatalk.a > $PKG/usr/lib/libatalk.a
+cat libatalk/libatalk_p.a > $PKG/usr/lib/libatalk_p.a
+cd man
+for manpage in */*.? ; do
+sed -e s@:DESTDIR:@/usr@ -e s@:SBINDIR:@/usr/sbin@ \
+    -e s@:BINDIR:@/usr/bin@ -e s@:RESDIR:@/usr/lib/atalk@ \
+    -e s@:ETCDIR:@/etc@ -e s@:LIBDIR:@/usr/lib@ \
+    -e s@:INCDIR:@/usr/include@ \
+    < $manpage | gzip -9c > $PKG/usr/man/`dirname $manpage`/`basename $manpage`.gz
+done
+cd ..
+cat etc/afpd/afpd > $PKG/usr/sbin/afpd
+cat etc/atalkd/atalkd > $PKG/usr/sbin/atalkd
+cat etc/papd/papd > $PKG/usr/sbin/papd
+cat etc/psf/psa > $PKG/usr/sbin/psa
+cat etc/psf/psf > $PKG/usr/sbin/psf
+
+# Build the package:
+cd $PKG
+tar cvzf $TMP/netatalk.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+cd $TMP
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/netatalk-1.4b2+asun2.1.3
+  rm -rf $PKG
+fi

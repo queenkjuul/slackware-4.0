@@ -1,0 +1,14 @@
+Begin3
+Title:		kimager
+Version:	0.1
+Entered-date:	20/11/98
+Description:	scans directories for image files and generates a HTML file including these pictures
+Keywords:	K HTML Imager
+Author:		aheck@heilbronn.netsurf.de (Andreas Heck)
+Maintained-by:	aheck@heilbronn.netsurf.de (Andreas Heck)
+Primary-site:	
+Alternate-site:	ftp://upload.kde.org/pub/kde/Incoming
+Original-site:	
+Platform:	Linux with Qt GUI library and KDE libraries
+Copying-policy:	GPL
+End

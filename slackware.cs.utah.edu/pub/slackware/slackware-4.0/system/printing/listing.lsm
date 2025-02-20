@@ -1,0 +1,16 @@
+Begin3
+Title:          LISTING
+Version:        1.4
+Entered-date:   1996
+Description:    Listing printer. Allows the printing of postscript
+		listing files on non postscript printers, with
+		combination of A2ps and Ghostscript.
+Keywords:       printing, postscript, a2ps, ghostscript.
+Author:         Sebastien Fernier
+Maintained-by:  Sebastien Fernier (fernier@aemiaif.ibp.fr)
+Primary-site:   sunsite.unc.edu
+Alternate-site: 
+Original-site:  
+Platform:       Unix, standard bourne-shell, or bash.
+Copying-policy: GPL
+End

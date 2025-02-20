@@ -1,0 +1,18 @@
+Begin3
+Title:		killproc and assorted tools for boot scripts
+Version:	1.6
+Entered-date:	13NOV1998
+Description:	Some useful programs for a replacment of the shell functions
+ 		daemom and killproc found in the Linux System V init suite.
+ 		killproc(8) for signaling or terminating, checkproc(8) for
+ 		checking and startproc(8) for starting processes.
+ 		Each program has its own manual page.
+Keywords:	killproc, startproc, checkproc, process control
+Author:		Werner Fink <werner@suse.de>
+Maintained-by:	Werner Fink <werner@suse.de>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/daemons/init
+		23303 killproc-1.6.tar.gz
+Alternate-site:	ftp.suse.com /pub/projects/init
+Platforms:	Linux with System VR2 or higher boot scheme
+Copying-policy:	GPL
+End

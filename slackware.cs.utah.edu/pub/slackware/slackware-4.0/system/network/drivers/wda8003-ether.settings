@@ -1,0 +1,126 @@
+Article 13264 of comp.os.linux:
+Newsgroups: comp.os.linux
+Path: samba!concert!gatech!darwin.sura.net!jvnc.net!yale.edu!think.com!snorkelwacker.mit.edu!bloom-picayune.mit.edu!daemon
+From: schenk@cgull.ccsu.edu (Tom Schenk)
+Subject: WD8003E and WD8003EBT Jumper Settings
+Message-ID: <1992Oct14.194529.4830@athena.mit.edu>
+Sender: daemon@athena.mit.edu (Mr Background)
+Reply-To: schenk@cgull.ccsu.edu (Tom Schenk)
+Organization: The Internet
+Date: Wed, 14 Oct 1992 19:45:29 GMT
+Lines: 112
+
+
+
+I noticed some people asking about jumper settings for the WD8003 ethernet
+card and in looking through my stuff, came across the following information
+regarding the WD8003E and WD8003EBT.  I hope this is helpful to someone out
+there.
+
+== EtherCard PLUS (WD8003E) ==
+            And
+== EtherCard PLUS With Boot ROM Socket (WD8003EBT) ==
+
+  JUMPER  PIN              FUNCTION SELECTED
+  BLOCK   NUMBERS   NAME   WHEN JUMPER IS INSTALLED
+  ------  --------  ----   ----------------------------
+  W1       1-2      Zero   Select zero wait states for optimized
+                    Wait   operation in a 6MHz AT.  (Factory
+                           setting is jumper removed, which
+                           ensures correct operation in faster
+ 			   AT bus systems.)  This jumper is 
+                           ignored in XT bus systems.
+
+  W1             I/O Base  Selects the I/O Base Address
+                  Address  (Up to 3 jumpers)
+
+         3-4*,5-6*,9-10*   280 -- the factory setting
+         5-6, 9-10         2A0
+         3-4, 9-10         2C0
+         9-10              2E0
+         3-4, 5-6, 7-8     300
+         5-6, 7-8          320
+         3-4, 7-8          340
+
+  W2     1-2      IRQ7     Interrupt request level.
+         3-4      IRQ6     Only one jumper may be installed at a
+         5-6      IRQ5     time.
+         7-8      IRQ4
+         9-10*    IRQ3     (Factory setting is IRQ3)
+         11-12    IRQ2
+
+  W3     1-2*     AUI-     Ethernet type: pins all jumpered to
+         3-4*     BNC      use J1 BNC connector for this Ethernet
+         5-6*              cable (* - the factory setting).
+         7-8*              Jumpers all removed to use J2 AUI
+         9-10*             connector (thick Ethernet cable).
+         11-12*
+
+  W4     1-2    Ethernet   Jumper removed for thin Ethernet and
+                Version    IEEE 802.3/Version 2 thick Ethernet
+                           (the factory setting);  jumper in-
+                           stalled for thick Ethernet Version 1.
+
+  W5     1-2*    Segment   Selects thin Ethernet segment length:
+                 Length    jumpered for IEEE 802.3 standard 185m
+                           length (*-the factory setting); jumper
+                           removed for 300m extended length.
+
+== Additiional Jumpers On ==
+== EtherCard PLUS With ROM Socket Only (WD8003EBT) ==
+
+  JUMPER  PIN              FUNCTION SELECTED
+  BLOCK   NUMBERS   NAME   WHEN JUMPER IS INSTALLED
+  ------  --------  ----   ----------------------------
+  W6      Open      ROM    C0000 (16K, 32K, 64K ROMs)
+          1-2       Base   C4000 (16K ROMs)
+          3-4      Address C8000 (16K, 32K ROMs)
+          1-2, 3-4         CC000 (16K ROMs)
+          5-6              D0000 (16K, 32K, 64K ROMs)
+          1-2, 5-6         D4000 (16K ROMs)
+          3-4*, 5-6*       D8000 (16K, 32K ROMs)--factory setting
+          1-2, 3-4, 5-6    DC000 (16K ROMs)
+                           (NOTE:  Do not use addresses C0000
+                           or C4000 for Boot ROMs)
+
+  W6      7-8*,9-10* ROM   ROM Disabled -- the factory setting
+  W9      3-4*       Size       "
+  W10     3-4*                  "
+
+  W6      Open       ROM   16 Kbytes ROM
+  W9      3-4        Size       "
+  W10     3-4                   "
+
+  W6      7-8        ROM   32 Kbytes ROM
+  W9      3-4        Size       "
+  W10     1-2                   "
+
+  W6      9-10       ROM   64 Kbytes ROM
+  W9      1-2        Size       "
+  W10     1-2                   "
+
+  W7      3-4*       RAM   8 Kbytes RAM -- the factory setting
+  W8      3-4*       Buffer    "
+  W11     2-3*       Size      "  (NOTE:  valid 8 Kbyte RAM base
+                           addresses are C0000, C2000, C8000,
+                           CA000, D0000, D2000, D8000 and DA000.)
+
+  W7      1-2        RAM   32 Kbytes RAM
+  W8      1-2        Buffer       "
+  W11     1-2        Size         "      (NOTE:  valid 32 Kbyte RAM
+                           base addresses are C0000, C8000,
+                           D0000 and D8000.)
+
+
+I don't know if there is a difference  between the WD8003 and the WD8003E,
+and if this information is helpful, I can finally feel that I have made a
+contribution to the Linux effort (small though it is).  Later.
+
+
+---                         /|
+Thomas Schenk            \~o.O'        Internet:  schenk@cgull.ccsu.edu
+Programmer               =(___)=            or    schenk@falcon.ccsu.edu
+Corpus Christi State        U          BITNET:    ccsys007@ccsuvm1.bitnet    
+University           Ack! Thpptpht!    Fidonet:   Thomas Schenk at 1:160/1.99
+
+

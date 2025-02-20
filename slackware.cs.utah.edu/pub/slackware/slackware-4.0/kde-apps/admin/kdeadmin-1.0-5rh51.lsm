@@ -1,0 +1,16 @@
+Begin3
+Title:kdeadmin          
+Version:1.0-5rh51        
+Entered-date:10SEP98   
+Description: egcs-compiled KDE-1.0 rpms for RedHat-5.x + qt-1.33   
+Keywords: KDE Qt X11  RedHat-5.x rpm  egcs     
+Author:KDE Team         
+Maintained-by:Duncan Haldane <f.d.m.haldane@MCI2000.com>  
+Primary-site:ftp.kde.org /pub/kde/stable/1.0/distribution/rpm/RedHat-5.1
+               276928  i386/binary/kdeadmin-1.0-5rh51.i386.rpm 
+               449355  i386/src/kdeadmin-1.0-5rh51.src.rpm   
+Alternate-site: 
+Original-site:  
+Platforms: RedHat Linux 5.x, i386,  Qt-1.33/1.40      
+Copying-policy: GPL
+End

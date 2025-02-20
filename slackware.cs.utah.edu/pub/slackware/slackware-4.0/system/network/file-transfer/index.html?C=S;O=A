@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/network/file-transfer</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/network/file-transfer</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/network/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:56  </td><td align="right"> 97 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-ftp-0.10.tar.gz.sig">netkit-ftp-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:52  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-tftp-0.10.tar.gz.sig">netkit-tftp-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:54  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="tftpd.README">tftpd.README</a></td><td align="right">1992-10-24 07:00  </td><td align="right">206 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="ftpd-shadow-nis.README">ftpd-shadow-nis.README</a></td><td align="right">1994-07-20 07:00  </td><td align="right">277 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lurkftp-0.99.lsm">lurkftp-0.99.lsm</a></td><td align="right">1997-07-31 03:46  </td><td align="right">410 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="freefly.lsm">freefly.lsm</a></td><td align="right">1997-07-15 04:56  </td><td align="right">416 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="FtpGet.lsm">FtpGet.lsm</a></td><td align="right">1997-04-15 05:33  </td><td align="right">474 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kzilla-0.34.lsm">kzilla-0.34.lsm</a></td><td align="right">1998-10-15 00:01  </td><td align="right">486 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="BeroFTPD-1.3.3.lsm">BeroFTPD-1.3.3.lsm</a></td><td align="right">1999-02-07 23:33  </td><td align="right">487 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ftp-rl-with-ticks.txt">ftp-rl-with-ticks.txt</a></td><td align="right">1993-05-02 07:00  </td><td align="right">497 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="diku-shadow.README">diku-shadow.README</a></td><td align="right">1993-06-23 07:00  </td><td align="right">515 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ftpstat-3b.lsm">ftpstat-3b.lsm</a></td><td align="right">1996-08-25 13:10  </td><td align="right">527 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mirror-2.8.lsm">mirror-2.8.lsm</a></td><td align="right">1998-02-27 17:56  </td><td align="right">531 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="etftp-1.1.3.lsm">etftp-1.1.3.lsm</a></td><td align="right">1999-03-26 13:14  </td><td align="right">535 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mget.lsm">mget.lsm</a></td><td align="right">1996-12-01 06:32  </td><td align="right">538 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mk-ftp-stats-1.0.lsm">mk-ftp-stats-1.0.lsm</a></td><td align="right">1998-03-04 22:28  </td><td align="right">550 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="keepup.lsm">keepup.lsm</a></td><td align="right">1995-04-27 07:00  </td><td align="right">561 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rdist-6.1.0-linux.lsm">rdist-6.1.0-linux.lsm</a></td><td align="right">1995-06-16 07:00  </td><td align="right">566 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ncftp-2.4.2+ltr-1.0.lsm">ncftp-2.4.2+ltr-1.0.lsm</a></td><td align="right">1998-02-01 12:05  </td><td align="right">589 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="snarf-1.2.lsm">snarf-1.2.lsm</a></td><td align="right">1997-02-06 09:58  </td><td align="right">592 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ncftpput-1.0.0.lsm">ncftpput-1.0.0.lsm</a></td><td align="right">1997-05-27 22:22  </td><td align="right">610 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cmirror.lsm">cmirror.lsm</a></td><td align="right">1998-05-27 05:56  </td><td align="right">615 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="vftpd-0.4a.tar.gz.lsm">vftpd-0.4a.tar.gz.lsm</a></td><td align="right">1998-11-08 10:06  </td><td align="right">620 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="vftpd-linux-0.5a.tar.gz.lsm">vftpd-linux-0.5a.tar.gz.lsm</a></td><td align="right">1999-02-05 01:53  </td><td align="right">638 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="autoftp.lsm">autoftp.lsm</a></td><td align="right">1998-11-07 22:59  </td><td align="right">653 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="qftp.lsm">qftp.lsm</a></td><td align="right">1998-06-08 02:47  </td><td align="right">712 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sendfile.lsm">sendfile.lsm</a></td><td align="right">1999-03-11 01:57  </td><td align="right">715 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gftp-0.2.i586-unknown-Linux.lsm">gftp-0.2.i586-unknown-Linux.lsm</a></td><td align="right">1998-12-28 17:36  </td><td align="right">718 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gftp-0.2.lsm">gftp-0.2.lsm</a></td><td align="right">1998-12-28 17:36  </td><td align="right">718 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="tftp.README">tftp.README</a></td><td align="right">1992-10-24 07:00  </td><td align="right">742 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="em-1.9.lsm">em-1.9.lsm</a></td><td align="right">1997-04-16 03:26  </td><td align="right">744 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-ftp.lsm">netkit-ftp.lsm</a></td><td align="right">1997-06-13 02:52  </td><td align="right">770 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nftp-1.52-linuxlibc6-x86.lsm">nftp-1.52-linuxlibc6-x86.lsm</a></td><td align="right">1999-04-10 21:42  </td><td align="right">785 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gftp-1.11.i586-unknown-Linux.lsm">gftp-1.11.i586-unknown-Linux.lsm</a></td><td align="right">1999-02-08 09:24  </td><td align="right">805 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gftp-1.11.lsm">gftp-1.11.lsm</a></td><td align="right">1999-02-08 09:25  </td><td align="right">805 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-tftp.lsm">netkit-tftp.lsm</a></td><td align="right">1997-06-13 02:54  </td><td align="right">812 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xmftp-1.0.4.lsm">xmftp-1.0.4.lsm</a></td><td align="right">1997-08-21 05:36  </td><td align="right">892 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lftp-1.2.4.lsm">lftp-1.2.4.lsm</a></td><td align="right">1999-01-13 04:01  </td><td align="right">933 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="wxftp.lsm">wxftp.lsm</a></td><td align="right">1998-12-25 08:20  </td><td align="right">966 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xmftp-1.0.4.bin.ELF.shared.lsm">xmftp-1.0.4.bin.ELF.shared.lsm</a></td><td align="right">1997-08-21 05:40  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xmftp-1.0.4.bin.ELF.static.lsm">xmftp-1.0.4.bin.ELF.static.lsm</a></td><td align="right">1997-08-21 05:40  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ssm-1.0.6.lsm">ssm-1.0.6.lsm</a></td><td align="right">1998-01-18 06:48  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pmirror-1.6.lsm">pmirror-1.6.lsm</a></td><td align="right">1995-03-21 08:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="batchftp102.lsm">batchftp102.lsm</a></td><td align="right">1994-01-16 08:00  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pftp-0.8.9.lsm">pftp-0.8.9.lsm</a></td><td align="right">1998-06-19 18:17  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="IglooFTP.lsm">IglooFTP.lsm</a></td><td align="right">1999-04-18 01:31  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="fspclient.lsm">fspclient.lsm</a></td><td align="right">1993-12-17 08:00  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">2.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mk-ftp-stats-1.0.tar.gz">mk-ftp-stats-1.0.tar.gz</a></td><td align="right">1998-03-04 22:28  </td><td align="right">2.4K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ncftp-2.4.2+ltr-1.0.tgz">ncftp-2.4.2+ltr-1.0.tgz</a></td><td align="right">1998-02-01 12:06  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sftp-0.81.lsm">sftp-0.81.lsm</a></td><td align="right">1998-06-30 02:49  </td><td align="right">2.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ftp-rl-with-ticks.tar.z">ftp-rl-with-ticks.tar.z</a></td><td align="right">1993-05-02 07:00  </td><td align="right">3.0K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="vftpd.README">vftpd.README</a></td><td align="right">1998-10-28 15:38  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="etftp-1.1.2-to-1.1.3.patch.gz">etftp-1.1.2-to-1.1.3.patch.gz</a></td><td align="right">1999-03-26 13:14  </td><td align="right">4.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">4.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ftpstat-3b.tar.gz">ftpstat-3b.tar.gz</a></td><td align="right">1996-09-02 17:38  </td><td align="right">4.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="keepup-1.1.tar.gz">keepup-1.1.tar.gz</a></td><td align="right">1995-04-27 07:00  </td><td align="right">4.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">6.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">6.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cmirror-1.10.tar.gz">cmirror-1.10.tar.gz</a></td><td align="right">1998-05-27 05:55  </td><td align="right">7.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ssm-1.0.6.tar.gz">ssm-1.0.6.tar.gz</a></td><td align="right">1998-01-18 06:47  </td><td align="right">9.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mget02.tar.gz">mget02.tar.gz</a></td><td align="right">1996-12-01 06:32  </td><td align="right">9.4K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="autoftp-0.93.tgz">autoftp-0.93.tgz</a></td><td align="right">1998-10-30 12:27  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="diku-shadow.tgz">diku-shadow.tgz</a></td><td align="right">1993-06-23 07:00  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pmirror-1.6.tar.gz">pmirror-1.6.tar.gz</a></td><td align="right">1995-03-21 08:00  </td><td align="right"> 16K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tftpd.tar.Z">tftpd.tar.Z</a></td><td align="right">1992-10-24 07:00  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="freefly-0.9.2.tar.gz">freefly-0.9.2.tar.gz</a></td><td align="right">1997-07-15 04:55  </td><td align="right"> 18K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="em-1.9.tar.gz">em-1.9.tar.gz</a></td><td align="right">1997-04-16 03:26  </td><td align="right"> 18K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="FtpGet-1.0.tar.gz">FtpGet-1.0.tar.gz</a></td><td align="right">1997-04-15 05:33  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="snarf-1.2.tar.gz">snarf-1.2.tar.gz</a></td><td align="right">1997-02-06 09:58  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pmirror-1.6.zip">pmirror-1.6.zip</a></td><td align="right">1995-03-21 08:00  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-tftp-0.10.tar.gz">netkit-tftp-0.10.tar.gz</a></td><td align="right">1997-06-13 02:54  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="FtpGet-bin-1.0.tar.gz">FtpGet-bin-1.0.tar.gz</a></td><td align="right">1997-04-15 05:33  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="batchftp102.tar.gz">batchftp102.tar.gz</a></td><td align="right">1994-01-16 08:00  </td><td align="right"> 25K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tftp.tar.Z">tftp.tar.Z</a></td><td align="right">1992-10-24 07:00  </td><td align="right"> 37K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="qftp-0.98.tar.gz">qftp-0.98.tar.gz</a></td><td align="right">1998-06-08 02:47  </td><td align="right"> 45K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-ftp-0.10.tar.gz">netkit-ftp-0.10.tar.gz</a></td><td align="right">1997-06-13 02:52  </td><td align="right"> 48K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lurkftp-0.99.tar.gz">lurkftp-0.99.tar.gz</a></td><td align="right">1997-07-31 03:46  </td><td align="right"> 54K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ftpd-shadow-nis.tgz">ftpd-shadow-nis.tgz</a></td><td align="right">1994-07-20 07:00  </td><td align="right"> 56K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pftp-0.8.9.tar.gz">pftp-0.8.9.tar.gz</a></td><td align="right">1998-06-19 18:17  </td><td align="right"> 61K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mirror-2.8.tar.gz">mirror-2.8.tar.gz</a></td><td align="right">1998-02-27 17:56  </td><td align="right"> 70K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="etftp-1.1.3.tar.gz">etftp-1.1.3.tar.gz</a></td><td align="right">1999-03-26 13:14  </td><td align="right"> 73K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wxftp-0.4.1.libc6.gtk.tar.gz">wxftp-0.4.1.libc6.gtk.tar.gz</a></td><td align="right">1998-12-25 08:21  </td><td align="right"> 78K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wxftp-0.4.1.libc5.gtk.tar.gz">wxftp-0.4.1.libc5.gtk.tar.gz</a></td><td align="right">1998-12-25 08:21  </td><td align="right"> 79K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ftpd-diku.taz">ftpd-diku.taz</a></td><td align="right">1993-02-24 08:00  </td><td align="right"> 86K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gftp-1.11.tar.gz">gftp-1.11.tar.gz</a></td><td align="right">1999-02-08 09:25  </td><td align="right"> 91K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="fspclient+term.tgz">fspclient+term.tgz</a></td><td align="right">1994-08-27 07:00  </td><td align="right"> 91K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sftp-0.81.src.tgz">sftp-0.81.src.tgz</a></td><td align="right">1998-06-30 02:49  </td><td align="right"> 99K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rdist-6.1.0-linux.tar.gz">rdist-6.1.0-linux.tar.gz</a></td><td align="right">1995-06-16 07:00  </td><td align="right">110K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rdist-6.1.0-linuxpl2.tar.gz">rdist-6.1.0-linuxpl2.tar.gz</a></td><td align="right">1995-10-21 07:00  </td><td align="right">111K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="fspclient.tar.gz">fspclient.tar.gz</a></td><td align="right">1993-12-17 08:00  </td><td align="right">134K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="fspclient+term.working.tgz">fspclient+term.working.tgz</a></td><td align="right">1995-02-13 08:00  </td><td align="right">135K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wxftp-0.4.1.libc6.dynamic.tar.gz">wxftp-0.4.1.libc6.dynamic.tar.gz</a></td><td align="right">1998-12-25 08:21  </td><td align="right">138K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wxftp-0.4.1.libc5.dynamic.tar.gz">wxftp-0.4.1.libc5.dynamic.tar.gz</a></td><td align="right">1998-12-25 08:21  </td><td align="right">139K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="vftpd-0.4a.tar.gz">vftpd-0.4a.tar.gz</a></td><td align="right">1998-11-08 10:06  </td><td align="right">147K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="fsp.280-B1.tar.gz">fsp.280-B1.tar.gz</a></td><td align="right">1996-08-26 03:26  </td><td align="right">148K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xmftp-1.0.4.tar.gz">xmftp-1.0.4.tar.gz</a></td><td align="right">1997-08-21 05:35  </td><td align="right">149K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ftp-rl.taz">ftp-rl.taz</a></td><td align="right">1992-12-19 08:00  </td><td align="right">151K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ncftpput-1.0.0.tar.gz">ncftpput-1.0.0.tar.gz</a></td><td align="right">1997-05-27 22:20  </td><td align="right">162K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kzilla-0.34.tar.gz">kzilla-0.34.tar.gz</a></td><td align="right">1998-10-15 00:01  </td><td align="right">270K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="IglooFTP-0.6.1.bin.tar.gz">IglooFTP-0.6.1.bin.tar.gz</a></td><td align="right">1999-04-18 01:29  </td><td align="right">276K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sendfile-2.1.tar.gz">sendfile-2.1.tar.gz</a></td><td align="right">1999-03-11 01:57  </td><td align="right">282K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="IglooFTP-0.6.1.src.tar.gz">IglooFTP-0.6.1.src.tar.gz</a></td><td align="right">1999-04-18 01:31  </td><td align="right">294K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xmftp-1.0.4.bin.ELF.shared.tar.gz">xmftp-1.0.4.bin.ELF.shared.tar.gz</a></td><td align="right">1997-08-21 05:34  </td><td align="right">294K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="BeroFTPD-1.3.3.tar.gz">BeroFTPD-1.3.3.tar.gz</a></td><td align="right">1999-02-07 23:33  </td><td align="right">295K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="vftpd-linux-0.5a.tar.gz">vftpd-linux-0.5a.tar.gz</a></td><td align="right">1999-02-05 01:55  </td><td align="right">374K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wxftp-0.4.1.src.tar.gz">wxftp-0.4.1.src.tar.gz</a></td><td align="right">1998-12-25 08:20  </td><td align="right">387K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="nftp-1.52-linuxlibc6-x86.tar.gz">nftp-1.52-linuxlibc6-x86.tar.gz</a></td><td align="right">1999-04-10 21:41  </td><td align="right">502K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wxftp-0.4.1.libc5.static.tar.gz">wxftp-0.4.1.libc5.static.tar.gz</a></td><td align="right">1998-12-25 08:21  </td><td align="right">634K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wxftp-0.4.1.libc6.static.tar.gz">wxftp-0.4.1.libc6.static.tar.gz</a></td><td align="right">1998-12-25 08:21  </td><td align="right">657K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lftp-1.2.4.tar.gz">lftp-1.2.4.tar.gz</a></td><td align="right">1999-01-13 04:04  </td><td align="right">679K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gftp-1.11.i586-unknown-Linux.tar.gz">gftp-1.11.i586-unknown-Linux.tar.gz</a></td><td align="right">1999-02-08 09:25  </td><td align="right">740K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xmftp-1.0.4.bin.ELF.static.tar.gz">xmftp-1.0.4.bin.ELF.static.tar.gz</a></td><td align="right">1997-08-21 05:35  </td><td align="right">754K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="IglooFTP-0.6.1-static.bin.tar.gz">IglooFTP-0.6.1-static.bin.tar.gz</a></td><td align="right">1999-04-18 01:28  </td><td align="right">927K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gftp-0.2.i586-unknown-Linux.tar.gz">gftp-0.2.i586-unknown-Linux.tar.gz</a></td><td align="right">1998-12-28 17:36  </td><td align="right">1.2M</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

@@ -1,0 +1,15 @@
+Begin3
+Title:PCNFSD V2 for Linux
+Version: 24 June 1995
+Entered-date:24 June 1995
+Description:Port of Sun's PCNFSD to Linux and long shadow passwords.
+Printing works in this version.
+Keywords:pcnfsd nfs authentication shadow
+Author:Sun Microsystems Inc
+Maintained-by:Stephen Davies scldad@sdc.com.au
+Primary-site:sunsite.unc.edu
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy:"freely distributable"
+End

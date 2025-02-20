@@ -1,0 +1,449 @@
+
+                            SLIP/PPP EMULATOR HOWTO
+                                       
+version 3.0 (updated 8/7/97) by Irish
+
+    This document will describe how to get your Linux box to connect to a
+   generic site via a SLIP/PPP emulator, such as SLiRP or TIA. I take no
+   responsibility for your use of this information, but corrections are
+   welcome.
+   
+   I will not attempt to describe all that can be done over this
+   connection once established, but I will refer you to other documents
+   or sites that will contain the relevant information.
+   
+   That done, let's do it!
+   
+   
+     _________________________________________________________________
+   
+     * 1.0 How does an emulator work?
+       
+       It is important to understand how a SLIP/PPP emulator works in
+       general, to be aware of its limitations. First, you do not need to
+       install the emulator on your machine. It runs on your remote host
+       only. What you need on your machine is the TCP/IP and SLIP or PPP
+       protocols installed in your kernel (more on that in a bit), and
+       some clients.
+       
+       Here's what happens: you send network requests from your machine
+       to your remote host over the SLIP/PPP link. The emulator grabs
+       them and sends them out to the Net at large. Then, incoming data
+       is sent back from the Net to your account on the remote host,
+       where the emulator grabs it and sends it back over the SLIP/PPP
+       link to your machine. So, to the Net it appears as if you are
+       working out of your account on the remote host, but to you it
+       looks like you are really connected right to the Net.
+       
+       As you can see, this can confuse stuff that is incoming from the
+       Net. For example, talk doesn't work via an emulator, because the
+       incoming talk request tries to start the remote hosts talk daemon,
+       not yours.
+       
+       The other big difference between an emulator and real SLIP/PPP is
+       you are NOT assigned your own IP address; remember, you are only
+       converting a dialup account to a SLIP/PPP connection.
+       
+     * 1.1 What is TIA?
+       
+       The Intenet Adaptor was written by the fine folks at
+       marketplace.com. They have quit working on it now, and consider it
+       a 'mature' product. The last version is 2.05; if you are going to
+       use TIA, please get this version. !NOTE! At last report, only site
+       licenses are available now.
+       
+     * 1.2 What is SLiRP? This is a freeware application, covered under
+       the GNU Public License. It is out of beta, and is real stable. It
+       sports a few more features than TIA, and is (reportedly) easier on
+       host resources. Available at fine Linux FTP sites everywhere.
+       
+     * 1.3 What about Term?
+       
+       If you don't have root access to your machine for one reason or
+       another, and you can't persuade someone who does to install SLIP
+       and dip, then you won't have much choice except to use Term. If
+       you want to know more about Term, please read the HOWTO on
+       Sunsite.
+       
+     * 1.4 What about real SLIP/PPP?
+       
+       Hey, a lot of places are offering real SLIP/PPP at reasonable
+       prices for non-dedicated dialup nowadays. If you can afford it, or
+       feel the need, go for it. The Real Thing is always better than
+       emulation. However, one of the things an emulator provides is
+       security; it acts as an impregnable firewall, and with it you are
+       pretty much as bulletproof as your provider is. You'll pay for it
+       though, emulation is slower, and does not fully support every
+       protocol. Still and all, emulation is good enough for most people,
+       and is a fine way to connect to the Net.
+       
+   
+     _________________________________________________________________
+   
+   Enough already! How do I set it up?
+   
+   Alright hotrod, we're getting there, but first there's some info you
+   need to get, and a couple of explanations.
+   
+   First, you need to get the IP address of your provider, if you don't
+   have it already. You can do this by typing 'who' at a shell prompt
+   there, or reading their /etc/hosts, or even just asking them. While
+   your getting that, get the IP address of the POP/SMTP host and the
+   NNTP server (if you don't know what those are, trust me and ask for
+   them anyway, you'll need 'em).
+   
+   Next, let me explain quickly about hostnames and domain names. The
+   hostname is the first part of a machines name, the domain is the rest
+   of it. Like this: hostname.domain.name (a four parter would be
+   hostname.do.main.name). Together, they make a Fully Qualified Domain
+   Name (FQDN).
+   
+   The name of your Linux machine is stored in /etc/HOSTNAME, and yes,
+   you can change it. In fact, please do (if you're using Slackware,
+   it'll be "darkstar.frop.org" by default). Just edit the /etc/HOSTNAME
+   file to be whatever you want - remember, if you are using an emulator,
+   you are essentially invisible to the Net at large, so you can be
+   creative. However, if you plan to get a real SLIP/PPP connection down
+   the road sometime, you'll probably want to conform to being a sub-host
+   of your provider. For example, if your provider is
+   "info.superhiway.com", the domain is "superhiway.com" and the hostname
+   is "info". So you could either be "offramp.info.superhiway.com" or
+   just "offramp.superhiway.com". Either would work, and in either case
+   your hostname is "offramp".
+   
+     * 2.0 Preparing your Linux machine
+       
+       In a nutshell, here's what's required. I'll explain the first
+       three in detail.
+       
+       
+          + -> Compile your kernel to include SLIP and TCP/IP
+          + -> Edit some files in /etc
+          + -> Install and configure dip
+          + -> Install pppd (optional, for PPP only)
+   You will also need to get an emulator binary appropriate for your
+       remote host and install it. SLiRP is available at Sunsite and
+       other fine Linux FTP sites. All of the relevant info for TIA is
+       available at TIAs home site.
+       
+   That's it! Let's get started.
+   
+     * 2.1 Compiling your kernel
+       
+       If you have never done this, you should. And you should read the
+       FAQ first, but don't worry, it's easy. If you want, you can e-mail
+       me and I'll help.
+       
+       I'll assume that you have here, for the sake of brevity. When you
+       'make config', look for "Network Devices". Say 'y', of course,
+       then say 'y' to SLIP, CSLIP, (or PPP) and TCP/IP and 'n' to
+       everything else, unless you have ethercards or need some other
+       protocol for something else. _If you don't do this, it won't work!
+       _Finish compiling and installing the new kernel, then,
+       
+     * 2.2 Edit some files in /etc
+       
+       These files will set up your routes to your remote host. /etc is
+       the directory for system configurations. Replace everything in
+       double quotes with the appropriate values, naturally (but don't
+       include the quotes - they are there for reference). There are
+       three files you need to edit, they are:
+       
+          + /etc/hosts:
+
+#The next line is required to be EXACTLY as below.
+127.0.0.1       localhost
+
+#Note at the end of the next two entries the hostname is repeated.
+#This abbreviation is an alias, and is required for the first entry.
+#If you're on a LAN, you'll need to substitute your IP address for
+#the first one below.
+192.0.2.1       "yourhostname.domain.name  yourhostname"
+"XXX.XXX.XX.XX" "remotehostname.domain.name  remotehostname"
+                  + /etc/host.conf:
+
+order hosts, bind
+multi on
+                  + /etc/resolv.conf:
+
+domain "yourdomain.name"
+#The next line usually uses the same remote IP address that's in /etc/hosts
+nameserver "XXX.XXX.XX.XX"
+                  + To use an NNTPserver, put this line in your
+            /etc/profile:
+            
+            export NNTPSERVER="remote.hosts.nntpservername"
+            
+     * 2.3.1 DIP
+       
+       DIP (Dialup Internet Protocol) is what you will use to dial up the
+       remote host, start the emulator, and convert the line to SLIP/PPP.
+       It comes in the "N" set of Slackware, along with a bunch of
+       clients and utilities, some of which you may want to install also
+       =). It is also available at Sunsite in an individual tar file
+       
+       Once you have it installed, you will need to have a dip script,
+       Here's a sample, just plug in the appropriate stuff where the
+       double quotes are (but don't include the quotes, they are there
+       for reference).
+       
+       ----------CUT HERE--------------------------------
+       
+
+main:
+  get $local "yourhostname.domain.name"
+  get $remote "remotehostname.domain.name"
+
+#Your port here
+  port cua"?"
+
+#Use 115200 for 28.8 modems
+  speed 57400
+  reset
+
+#don't use spaces in your AT command string!
+  init AT "string of commands"
+  wait OK 5
+
+# This will redial. If it doesn't work, play with the wait time (listen
+# to your modem). If it still doesn't work, mail me.
+# _See also; the note at the bottom of the script re: error codes._
+
+dial:
+  dial "phonenumber"
+  print Dialing...
+  if $errlvl != 0 goto error
+
+#You may need to change this wait time to suit your modem
+  wait BUSY 20
+  if $errlvl == 0 goto dial
+
+login:
+  print Connected and Logging in...
+
+#This wait and send gets me past my hosts Annex. _Change for your site!_
+  wait ==> 60
+  send 4\n
+  wait ogin: 60
+  if $errlvl != 0 goto login_error1
+  send "LOGIN"\n
+  wait assword: 60
+  if $errlvl != 0 goto login_error2
+  send "PASSWORD"\n
+
+loggedin:
+  wait "SYSTEM PROMPT" 60
+  if $errlvl != 0 goto shell_error
+  print Logged in!
+  send "emulator startup command"\n
+  wait "emulator startup response" 60
+  if $errlvl != 0 goto emu_error
+
+#The recommended mtu setting is 1500, but this is faster interactively.
+#Ftp may be slower, so adjust to taste.
+  get $mtu 296
+  default
+
+done:
+  print CONNECTED to $remote with address $rmtip
+  mode CSLIP
+  goto exit
+
+error:
+  print Dialing Error
+
+login_error1:
+  print No Login
+
+login_error2:
+  print No Password prompt
+
+shell_error:
+  print No shell prompt
+
+emu_error:
+  There was a problem starting the emulator
+
+exit:
+
+#This will error out when the -v flag is used, but work when run normally
+#(ends dip at a local prompt).
+  \r
+   -------------CUT HERE-----------------------------
+       
+       
+       
+     * 2.3.2 Dip notes Newer versions of dip don't return modem status
+       codes (BUSY, NO CONNECT, etc.), they use numbers instead. Here's a
+       table:
+       
+          + 0 = OK
+          + 1 = CONNECT
+          + 2 = ERROR
+          + 3 = BUSY
+          + 4 = NO CARRIER
+            
+   This would make your dial section look like this:
+
+dial:
+  dial "phonenumber"
+  print Dialing...
+  if $errlvl != 0 goto error
+  wait 1 20
+  if $errlvl != 1 goto dial
+   
+       
+       Thanks to Lee Olds (lee@eskimo.com) for that bit.
+       
+       \n = newline, \r = carriage return. You may require one or the
+       other (or both) in the appropriate places. If the ones provided
+       don't work, experiment.
+       
+       A word about the form of the wait and sends. If it isn't clear by
+       the example, here's what's happening:
+
+  wait ogin: 60
+        (the script will wait for the remote to send 'ogin:' for 60
+         seconds. When it gets it, the script advances. If it doesn't get
+         it, it will advance after the timeout of 60 seconds.)
+  if $errlvl != 0 goto login_error1 (this whole line is optional)
+        (if the script is advancing because it got what it was waiting for,
+         this gets skipped. if the script is advancing because it timed out,
+o        it will go to where you tell it to ('login_error1' in this case)
+  send "LOGIN"\n
+        (DIP will send 'LOGIN' and a newline)
+   
+       
+       You can put in sleep statements if you need to, like this: "sleep
+       10" This will make the script pause for 10 seconds.
+       
+       After editing this file, rename it, say, remote.dip and put it in
+       /root. Then, as root, run 'dip remote'. Use the -v flag the first
+       time to debug it ('dip -v remote'), this will show you all the
+       steps dip takes.
+       
+       Dip will only run as root, but there is a way to make it run from
+       a user account. For now, if you need this info, ask. I may include
+       it in this file later if enough people want it.
+       
+       If dip errors out right away, try removing the comments from the
+       script.
+       
+     * 2.4 PPP
+       
+       The above gets you rolling with CSLIP, which is really fine most
+       of the time. It truly is easy to get working, since the protocol
+       is supported at the kernel level - just make sure it's in there
+       and it works.
+       
+       However, some of you will want PPP, for what reasons, only you can
+       say. I'm not going to tell you how to set it up here, there's a
+       whole other HOWTO written just for that. What I will do is tell
+       you what the gotchas are when using PPP with an emulator.
+       
+       First, the latest version of DIP says you can use it to start PPP,
+       and you can, BUT it only starts the PPP daemon - no flags,
+       nothing. So if you want to use DIP to start PPP, be sure to put
+       all of your startup info in the /etc/ppp/options file, or it won't
+       work.
+       
+       Speaking of the options file, one of the things that MUST be in
+       there no matter how you start pppd is this:
+       '192.0.2.1:XXX.XXX.XX.XX'. What this is is
+       'localIPaddress:remoteIPaddress'. You need it there because
+       normally pppd can fill in the blank itself, but fails when
+       connecting to an emulator.
+       
+       Be sure to get the latest and greatest pppd package. It seems
+       there were a few versions recently that had a bit of trouble.
+       
+       Lastly, unless you have a good reason to use PPP, or just want to
+       learn how it works, you really don't need it. I have tried them
+       both, and didn't notice any performance difference with the
+       standard set of clients. Of course, Your Mileage May Vary. :)
+       
+   
+     _________________________________________________________________
+   
+     * 3.0 Now what?
+       
+       Hey, if all went well, you are now connected to the Net! Try a
+       'telnet remotehostname' (remember that abbreviation in your hosts
+       file?). You should get the remotes telnet login prompt. Go on, try
+       it! You can now telnet/FTP/etc. anywhere on the Net from your
+       local machine. How? Your machine is using the remote as a
+       nameserver to resolve addresses (resolv.conf). Experiment, find
+       out what works and what doesn't.
+       
+       You will not be able to use services that are not provided already
+       on your remote host! For example, if your server doesn't allow
+       telnets, chances are you can't do it either. Why? Because the
+       emulator is only re-directing what is already available.
+       
+     * 3.1 Mail
+       
+       The obvious text based solution is Pine, you can get it from The
+       University of Washington.
+       
+       My pick for 'Best Mail Reader, X Based' has to go to XFmail. This
+       has now gotten out of beta, and rocks. Easy to install; requires
+       no local mail system be installed (but will work with local
+       spools) because it has POP built in - no more popclient/fetchpop!
+       Easy to use; totally customizable from the GUI. Also supports
+       MIME. Get it from The XFmail Homesite.
+       
+     * 3.2 News
+       
+       The text based News Reader SLRN is fairly simple to install and
+       use. It is a true NNTP newsreader, which means _no local news
+       transport is required_ to make it work (you don't have install
+       Cnews or INN). It does require that you have access to an
+       NNTPserver, naturally, but most ISPs have this. It is text based,
+       but has color and mouse support, and runs fine in an rxvt window.
+       
+       The X based News Reader KNews is almost perfect. As with SLRN
+       above, no local transport is required, but an NNTP server is. It's
+       at least worth a look.
+       
+     * 3.3 Mosaic/Netscape
+       
+       Obviously, you will need to have X running for this to work, but
+       it's a simple matter of FTPing the binary, unpacking it, and
+       installing it.
+       
+   
+     _________________________________________________________________
+   
+     * 4.0 Misc.
+       
+       If I've left anything out, or you still have questions, I read my
+       mail daily. This information gets updated fairly regularly, so
+       keep checking back every so often (I'll change the version
+       numbers). Naturally, the more you contribute, the more info will
+       be included here, so don't hesitate to tell me about whatever you
+       have to offer.
+       
+       If you would like some help, or are having trouble with your
+       setup, I'll help _but you must send me the following info:_ 1. A
+       copy of your three /etc files. 2. A copy of your script output,
+       run with the -v flag (_please_ remove your password from this!)
+       Even if you don't have anything to contribute, but used this info
+       sucsessfully, PLEASE MAIL ME. I want to know how useful this
+       really is.
+     * 4.1 References
+       
+       Sunsite is the FTP site sunsite.unc.edu, a veritable plethora of
+       everything Linux, including almost every FAQ, HOWTO, and README
+       written.
+       
+       Marketplace.com is the home of TIA, the only place it is
+       available. I am Irish, irish@eskimo.com, available for comment on
+       Linux almost everyday, when I'm not petting my cat or hugging my
+       kid.
+       
+       
+       
+       This HOWTO is available in the following places:
+          + http://www.eskimo.com/~irish
+          + ftp://ftp.eskimo.com/u/i/irish
+          + ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO/mini/TIA

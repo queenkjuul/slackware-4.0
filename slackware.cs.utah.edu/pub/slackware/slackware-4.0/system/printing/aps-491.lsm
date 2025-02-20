@@ -1,0 +1,17 @@
+Begin3
+Title:		apsfilter
+Version:	4.9.1
+Entered-date:	Montag, 10. Juli 1995, 21:22:35 Uhr MET DST
+Description:	magicfilter for lpd with auto filetype detection
+Keywords:	lpd magicfilter aps apsfilter
+Author: 	andreas@knobel.GUN.de (Andreas Klemm)
+Maintained-by:	sledge@hammer.oche.de (Thomas Bueschgens)
+		andreas@knobel.GUN.de (Andreas Klemm)
+		Primary-site:	sunsite.unc.edu
+				/pub/Linux/system/Printing/
+				211KB aps-491.tgz
+Original-site:	ftp-i2.informatik.rwth-aachen.de
+		/pub/Linux/pak/APSfilter/aps-491.tgz
+Platforms:	C-Compiler, gs Postscript emulator, pbmutils
+Copying-policy:	GPL
+End

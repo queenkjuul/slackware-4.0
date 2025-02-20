@@ -1,0 +1,20 @@
+Begin3
+Title:  	kimon        
+Version:        0.2.3
+Entered-date:   13MAY98
+Description:    kimon is a ISDN-Monitor for the K Desktop Environment.
+		This tool reside in the Toolbar of the KDE Desktop and
+		shows the status of two ISDN-Channels. On an incoming
+		or outgoing call kimon pops up a window with more
+		detailed information.
+Keywords:       kde isdn imon Qt X11
+Author:         dahlweid@tzi.org (Markus Dahlweid)
+Maintained-by:  dahlweid@tzi.org (Markus Dahlweid)
+Primary-site:   ftp.kde.org /pub/kde/stable/apps/network
+		kimon-0.2.3.tar.gz
+		kimon.lsm
+Alternate-site: ftp.kde.org /pub/kde/unstable/apps/network
+Original-site:  
+Platforms:      unix (only tested on linux)
+Copying-policy: GPL
+End

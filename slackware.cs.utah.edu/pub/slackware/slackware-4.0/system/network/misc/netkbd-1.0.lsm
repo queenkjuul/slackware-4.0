@@ -1,0 +1,19 @@
+Begin3
+Title:          Network Device Rx/Tx Monitor
+Version:        1.00
+Entered-date:   February 20, 1997
+Description:    You can see flashing CAPS and SCLK lights on kbd
+		when any packets are sent or received on any network
+		devices. May be used for ppp or any interesting device.
+Keywords:       network, device, ppp, monitor, keyboard, led, linux
+		proc
+Author:         emre@mercan.cmpe.boun.edu.tr (Emre Celebi)
+Maintained-by:  emre@mercan.cmpe.boun.edu.tr (Emre Celebi)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/misc/
+			  4 kb netkbd-1.0.tgz
+			  0 kb netkbd-1.0.lsm
+Alternate-site:
+Original-site:
+Platform:	linux
+Copying-policy:	Freeware
+End

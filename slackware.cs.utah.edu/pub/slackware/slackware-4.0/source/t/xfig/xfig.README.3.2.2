@@ -1,0 +1,48 @@
+Xfig is a menu-driven tool that allows the user to draw and manipulate objects
+interactively in an X window.  The resulting pictures can be saved, printed
+on postscript printers or converted to a variety of other formats (e.g. to
+allow inclusion in LaTeX documents).
+
+xfig 3.2.2 is available from ftp://ftp.x.org/contrib/applications/drawing_tools/xfig
+or ftp://epb1.lbl.gov/xfig and usually from any CTAN (Comprehensive TeX Archive
+Network) site such as ftp://ftp.cdrom.com/pub/tex/ctan/.
+See http://math.nmu.edu/Web/TeXArchives/ctansite.html for a long list of CTAN sites.
+
+Be sure to set binary mode when transferring.
+
+There is also an incremental patch file to convert from 3.2.1 to 3.2.2  This
+is in the file xfig.3.2.1.to.3.2.2.  You may use the 'patch' program to
+automatically apply the changes to your 3.2.1 release.  It is compressed so you
+must uncompress it first or do "zcat xfig.3.2.1.to.3.2.2 | patch -p".
+
+You also need to get TransFig version 3.2.1.  TransFig contains the post-
+processor needed by xfig to convert fig files to one of several output formats,
+such as PostScript, pic, LaTeX etc.  The TransFig package is in the directory
+/contrib/applications/drawing_tools/transfig.
+
+Please send email about any questions/bug fixes/contributions etc. about
+TransFig or xfig to xfig-bugs@epb1.lbl.gov.
+
+Brian V. Smith
+Lawrence Berkeley National Laboratory
+I don't speak for LBNL; they don't pay me enough for that.
+
+*****************************************************************************
+Following is a description of the CHANGES for 3.2.2:
+
+=============================================================================
+Version 3.2
+=============================================================================
+
+Patchlevel 2 (July 2, 1998)
+
+BUGS FIXED:
+	o Placing a library object caused xfig to die after recursing for a
+	  long time 
+	o Arrowheads in xfig 2.x files were incorrectly converted to 3.2.1
+	  (they came out too large)
+	o Imakefile didn't properly install Electrical/Physical and 
+	  Electrical/Schematic directories
+	o Some variables multiply defined in u_draw.c
+	o Some systems' "install" program don't have the "-d" (create directory)
+	  option so I have reworked the install part of the Imakefile

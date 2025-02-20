@@ -1,0 +1,17 @@
+Begin3
+Title:          QCL - A Quantum Computation Language
+Version:        0.3
+Entered-date:   8th Sept. 1998
+Description:    Programming language and simulator for quantum computers
+Keywords:	QCL quantum computing language interpreter physics simulator 
+Author:         oemer@tph.tuwien.ac.at (Bernhard Oemer)
+Maintained-by:  oemer@tph.tuwien.ac.at (Bernhard Oemer)
+Primary-site:   http://tph.tuwien.ac.at/~oemer/qc/
+Alternate-site: ftp://sunsite.und.edu/pub/Linux/devel/lang/misc/
+		126k qcl-0.3.tgz
+Original-site:  http://tph.tuwien.ac.at/~oemer/qc/
+Platform:       Linux, GNU C++
+Copying-policy: C++ sources: GPL, 
+		book: freely distributable on electronic media
+End
+

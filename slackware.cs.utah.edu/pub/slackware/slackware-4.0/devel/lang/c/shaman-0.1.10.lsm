@@ -1,0 +1,21 @@
+Begin3
+Title:          The Shaman library
+Version:        0.1.10
+Entered-date:   March 10 1998
+Description:    A C library aiming to provide a portable environment
+Description:    and simplify some common tasks. Current features:
+Description:     A set of basic functions isolating you from the OS
+Description:     Resource management and error handling
+Description:       (similar to C++ exceptions)
+Description:     Caches
+Description:     Interface to an arbitrary interpreter
+Keywords:       library resource error cache
+Author:         George Bronnikov <goga@goga.mainet.msk.su>
+Author:         Andrey Smirnov <admie@iasis.msk.su>
+Author:         Yury Filimonov <yfil@aha.ru>
+Maintained-by:  Andrey Smirnov <admie@iasis.msk.su>
+Primary-site:   sunsite.unc.edu /pub/Linux/libs
+Primary-site:   208978 shaman-0.1.10.tar.gz
+Platforms:      Linux Win32
+Copying-policy: LGPL
+End

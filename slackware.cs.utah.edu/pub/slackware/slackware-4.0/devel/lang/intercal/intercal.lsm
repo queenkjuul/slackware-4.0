@@ -1,0 +1,18 @@
+Begin3
+Title:		intercal
+Version:	0.14
+Entered-date:	Sun Jun  9 12:26:33 EDT 1996
+Description:	An implementation of the language INTERCAL, legendary for
+		its perversity and horribleness (this version adds COME FROM
+		for extra flavor).  Includes language manual and examples
+		including possibly the entire extant body of INTERCAL code.
+Keywords:	language, compiler, retrocomputing
+Author: 	esr@snark.thyrsus.com (Eric S. Raymond)
+Maintained-by:	esr@snark.thyrsus.com (Eric S. Raymond)
+Primary-site:	locke.ccil.org /pub/esr
+		intercal-0.14
+Platform:	All
+Copying-policy:	BSD-like
+End
+
+

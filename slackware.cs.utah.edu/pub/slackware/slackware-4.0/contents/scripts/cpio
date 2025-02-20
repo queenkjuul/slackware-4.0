@@ -1,0 +1,2 @@
+( cd bin ; rm -rf mt )
+( cd bin ; ln -sf  mt-GNU mt )

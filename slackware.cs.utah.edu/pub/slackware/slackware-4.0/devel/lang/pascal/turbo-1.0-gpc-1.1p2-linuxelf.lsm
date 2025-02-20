@@ -1,0 +1,16 @@
+Begin3
+Title:          gpc
+Version:        1.1p2
+Entered-date:	20DEC95
+Description:    The GNU pascal compiler, version 1.1p2
+		This version produces ELF executables and understands a
+		number of Borland extensions to the ISO pascal language.
+Keywords:       pascal, programming, development
+Author:         jtv@hut.fi (Jukka Virtanen)
+		pege@mail.theo-phys.uni-essen.de (Peter Gerwinski)
+Maintained-by:	j.j.vanderheijden@mail.student.utwente.nl (J.J. van der Heijden)
+Primary-site:   sunsite.unc.edu /pub/Linux/development/pascal
+		709K gpc-1.1p2-linuxelf.tar.gz
+Platform:       Linux
+Copying-policy: GPL
+End

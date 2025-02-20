@@ -1,0 +1,23 @@
+Begin3
+Title:          Xeject - CDROM Utility for Linux / X Windows
+Version:        1.1
+Entered-date:   20FEB98
+Description:    A small CDROM utility for Linux / X Windows which allows
+                you to mount, unmount, and eject the default cdrom
+                which must be /dev/cdrom in the directory /mnt/cdrom
+                I recommend you to launch it automatically whenever your
+                windows manager starts.
+                you must ensure that the /mnt/cdrom directory exists and
+                that /dev/cdrom is a link to your cdrom device 
+                (e.g. /dev/hdc for me).
+                Also works for other ejectable devices with small
+                modifications.
+Keywords:       linux cdrom eject tcl tk 
+Author:         alet@unice.fr (Jerome Alet)
+Maintained-by:  alet@unice.fr (Jerome Alet)
+Primary-site:   sunsite.unc.edu /pub/Linux/incoming
+                10 kb Xeject-1.1.tar.gz
+                1 kb Xeject.lsm
+Platform:       Linux systems with X, Tcl/Tk (wishx), and the eject utility
+Copying-policy: GPL
+End

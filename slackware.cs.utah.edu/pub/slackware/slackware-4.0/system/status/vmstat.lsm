@@ -1,0 +1,17 @@
+
+Begin3
+Title:          vmstat
+Version:        1.0
+Entered-date:   Thu Feb 23 1995
+Description:    vmstat performance monitoring tool (text oriented, uses /proc)
+Keywords:       Performance monitoring, I/O, network, context switches
+Author:         lm@engr.sgi.com (Larry McVoy)
+Maintained-by:  lm@engr.sgi.com (Larry McVoy)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc
+		495 vmstat-lsm
+		2953 vmstat-1.0.tar.z
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: GPL
+End

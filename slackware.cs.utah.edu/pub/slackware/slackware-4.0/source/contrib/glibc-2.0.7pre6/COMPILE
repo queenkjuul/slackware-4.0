@@ -1,0 +1,7 @@
+tar xzvf glibc-2.0.7pre6.tar.gz
+cd glibc-2.0.7pre6
+tar xzvf ../glibc-linuxthreads-2.0.7pre6.tar.gz
+tar xzvf ../glibc-localedata-2.0.7pre3.tar.gz
+./configure --prefix=/usr --enable-add-ons=linuxthreads,localedata \
+  --disable-sanity-checks
+time make

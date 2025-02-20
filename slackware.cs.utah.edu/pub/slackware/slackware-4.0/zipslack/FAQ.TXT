@@ -1,0 +1,308 @@
+
+These are the most frequently asked questions about ZipSlack:
+
+Q1: How do I add X to this?
+Q2: I get "unable to open virtual console" when I boot!
+Q3: Why does the boot process stop with this "Kernel panic" error?
+Q4: I can't unzip the file -- it says I don't have enough memory!
+Q5: All I have is DOS!  Do you know of an unzipper that works with 
+    zipslack.zip for DOS or Windows 3.1?
+Q6: How can zipslack.zip be split into floppy sized chunks?
+Q7: Can my ZipSlack installation be moved onto a real Linux partition?
+Q8: Will ZipSlack work on machines using IBM's Microchannel bus?
+    (many IBM PS/2's use this, including the PS/2 Thinkpad 700)
+Q9: How do I get ZipSlack to recognize the Iomega Zip Zoom SCSI card?
+Q10: The kernel freezes during the boot process!
+
+--------------------------------
+
+Q1: How do I add X to this?
+
+A:  Assuming you've got the space to install it, download the X packages
+    (the files ending in .tgz) from this directory:
+
+    ftp://ftp.cdrom.com/pub/linux/slackware/slakware/x1/
+
+    You might also grab the diskx1 file, which describes each of the
+    packages.  You can save disk space if you don't install all of the X
+    servers (you only need the one for your video card), and you might
+    also leave out extra fonts, old X shared libraries (oldlibs*.tgz),
+    and possibly development tools if you're not planning to compile X
+    software yourself.  Once you've collected the packages you plan to
+    install into a directory, run this to install them:
+
+    installpkg *.tgz
+
+    Before running X, you'll need to set it up with 'xf86config'.
+
+--------------------------------
+
+Q2: I get "unable to open virtual console" when I boot!
+
+A:  You're probably not giving LINUX.BAT the correct partition name.  If
+    you really have no idea which one to use, you can try each of these.
+    If it's on an IDE partition, it will almost definately be one of them:
+
+    /dev/hda1 /dev/hda2 /dev/hda3 /dev/hda4 /dev/hda5 /dev/hda6
+    /dev/hdb1 /dev/hdb2 /dev/hdb3 /dev/hdb4 /dev/hdb5 /dev/hdb6
+    /dev/hdc1 /dev/hdc2 /dev/hdc3 /dev/hdc4 /dev/hdc5 /dev/hdc6
+    /dev/hdd1 /dev/hdd2 /dev/hdd3 /dev/hdd4 /dev/hdd5 /dev/hdd6
+
+    If you know which hard drive (not C:, D:, etc, but which number
+    drive, 1, 2, 3, or 4) the partition is on, then you can narrow the
+    list down quite a bit.  The first IDE drive's partitions all start
+    with /dev/hda, the second hard drive's partitions begin with /dev/hdb,
+    and so on.
+
+    This can also be caused by unzipping zipslack.zip in the wrong place
+    on a partition.  It must be unzipped in the top directory on the partition
+    (such as in the C:\ directory) or the kernel won't be able to find the
+    installation when it boots.  The unzipping process will create a new
+    directory for the files automatically (C:\LINUX).
+
+
+--------------------------------
+
+Q3: Why does the boot process stop with this "Kernel panic" error?
+
+      VFS: Cannot open root device 08:04
+      Kernel panic: VFS : Unable to mount root fs on 08:04
+
+A:  Well, you see, device 08:04 is the fourth partition on a SCSI drive
+    (/dev/sda4).  In most machines these days, there are no SCSI devices,
+    only IDE ones.  (NOTE: the parallel-port version of the Zip drive
+                           *is* treated as a SCSI device by Linux)
+
+    What you need to do is edit the LINUX.BAT file and change the
+    uncommented loadlin line (without the 'rem') to boot the partition
+    where you installed Linux.  This is probably something like /dev/hda1
+    if you used your C: drive.
+
+    If you have no idea what the partition is, look right before it stops
+    and you'll see something like:
+       hda: hda1 hda2 hda3
+
+    In this case, the partition must be one of: /dev/hda1, /dev/hda2,
+    /dev/hda3.
+
+
+--------------------------------
+
+Q4: I can't unzip the file -- it says I don't have enough memory!
+
+A:  This happens if you use a 16-bit unzipper.  You must use a 32-bit version
+    such as WinZip or PKZIP for Windows95 or NT. (of course, unzip for Linux
+    also works fine :)
+
+--------------------------------
+
+Q5: All I have is DOS!  Do you know of an unzipper that works with zipslack.zip
+    for DOS or Windows 3.1?
+
+A:  Yes, (for Win 3.x) I hear there's something called Zip Navigator.
+
+    If you can't find that, here's how to unzip it under Linux.
+
+    First, grab a bootdisk that works with your system.
+
+     For an average IDE system:
+      ftp://ftp.cdrom.com/pub/linux/slackware/bootdsks.144/bare.i
+     For a SCSI system:
+      ftp://ftp.cdrom.com/pub/linux/slackware/bootdsks.144/scsi.s
+     For an IBM PS/2 microchannel bus machine:
+      ftp://ftp.cdrom.com/pub/linux/slackware/bootdsks.144/ibmmca.s
+     If you're unzipping the file to a parallel port Zip drive:
+      ftp://ftp.cdrom.com/pub/linux/slackware/bootdsks.144/iomega.s
+
+    Then, you'll need the rescue disk.  This is a small Linux system on a
+    floppy disk.  One of the utilities it includes is unzip.  Here's where
+    you can get the rescue disk image:
+
+    ftp://ftp.cdrom.com/pub/linux/slackware/rootdsks/rescue.gz
+
+    Boot the first disk (the bootdisk), and hit enter at the 'boot:' prompt.
+    When prompted, insert the rootdisk (rescue.gz) and hit enter to load it.
+
+    Log in as root.
+
+    Now, you'll need to mount the DOS partition where the zipslack.zip file
+    resides.  If the final destination is a Zip disk, you might still just
+    want to go ahead and unzip the file on your DOS partition, and then move
+    the directory tree onto the Zip disk under DOS with XCOPY or a similar
+    tool.  If you're not sure what the name of your DOS partition is under
+    Linux, use this command:
+
+        fdisk -l | more
+
+    The partition name will be something like /dev/hda1.  To mount the
+    partition, use a command like this:
+
+         mount /dev/hda1 /mnt -t msdos
+
+    Switch to the /mnt directory, and unzip the file:
+
+         cd /mnt
+         unzip zipslack.zip
+
+    That should unzip the file.  Now you're ready to hit crtl-alt-delete and
+    reboot your machine.  From there, follow the directions in README.1st to
+    boot the Linux OS.
+
+
+--------------------------------
+
+Q6: How can zipslack.zip be split into floppy sized chunks?
+
+A:  Splitting up the file is another way to handle the problem of 16-bit
+    unzippers failing to unzip ZIPSLACK.ZIP.
+
+    Here's a report from one of our users about how to do this:
+
+    I had trouble unzipping - I don't have a win95 machine, and pkunzip
+    for DOS croaked horribly. Info-zip unzip did a much better job, but
+    died after about 3/4 of the unzip process (out of memory). So, I used
+    a "zip splitter" to split the zipslack.zip into floppy sized bites
+    (from Simtel, filename zc300.zip), then extracted each of the 26
+    zips to the Zip disk. Booted like a champ, runs nice but slow on a 486/66
+    with 12Mb ram.
+
+--------------------------------
+
+Q7: Can my ZipSlack installation be moved onto a real Linux partition?
+
+A:  Yes, it can.  Here are the steps you'll need to follow to migrate your
+    installation onto a Linux ext2 partition:
+
+    1.  Define a Linux partition using fdisk or cfdisk.  If you find it
+        easier, you can use DOS or Windows tools to create the partition and
+        then use Linux fdisk to change the partition type to 83 (Linux native).
+
+    2.  Format this partition with 'mke2fs'.  For example, if your new Linux
+        partition is /dev/hdb1 you'd use the following command:
+
+        mke2fs /dev/hdb1
+
+        Formatting destroys the existing filesystem on the partition, so make
+        sure to format the correct partition!
+
+    3.  Mount the new partition on /mnt.  In the case of the example above,
+        this command will do it:
+
+        mount /dev/hdb1 /mnt
+
+    4.  Make a few directories on the new partition:
+
+        mkdir /mnt/cdrom
+        mkdir /mnt/mnt
+        mkdir /mnt/proc
+
+    5.  Now it's time to actually move the data.  First you'll need to set your
+        'umask' to 000 to correctly preserve all file permissions, and then
+        you'll copy the top-level directories (other than cdrom, mnt, and proc)
+        and the kernel file (vmlinuz) onto the new Linux partition:
+
+        umask 000
+        cp -a /bin /mnt
+        cp -a /boot /mnt
+        cp -a /dev /mnt
+        cp -a /etc /mnt
+        cp -a /home /mnt
+        cp -a /lib /mnt
+        cp -a /root /mnt
+        cp -a /sbin /mnt
+        cp -a /tmp /mnt
+        cp -a /usr /mnt
+        cp -a /var /mnt
+        cp -a vmlinuz /mnt
+
+        If you've made any new top-level directories that you want to save,
+        copy them over to the new partition in the same way.
+
+    6.  Edit the /mnt/etc/fstab.  Change the device listed for the '/'
+        partition to the new Linux partition's device.
+
+    7.  That's it!  Your system should be ready to boot on the new partition.
+        To do that, you can use loadlin (if it's installed on your DOS or
+        Windows partition), or a bootdisk.  Once you've booted the new
+        partition you can proceed to set up LILO if you like.  Note that when
+        you boot a native Linux partition you should boot it in read-only
+        mode (unlike UMSDOS).  This allows it to do automatic filesystem
+        checking periodically, or if the machine is ever shut down improperly.
+        To boot a partition in read-only mode, add 'ro' instead of 'rw' to the
+        bootdisk or loadlin command line.
+
+    Since this operation must be done as root and involves dangerous operations
+    like using fdisk, you need to be careful to avoid losing data.  But, if you
+    can migrate your installation successfully, you've earned your intermediate
+    Linux sysadmin merit badge.  :^)
+
+--------------------------------
+
+Q8: Will ZipSlack work on machines using IBM's Microchannel bus?
+    (many IBM PS/2's use this, including the PS/2 Thinkpad 700)
+
+A:  Yes, but you'll need to use a Linux kernel especially designed for
+    the Microchannel bus.  A suitable kernel may be found here:
+
+    ftp://ftp.cdrom.com/pub/linux/slackware/kernels/ibmmca.s/bzImage
+    
+    Copy this kernel over ZipSlack's default Linux kernel:
+
+    COPY BZIMAGE \LINUX\VMLINUZ
+
+    Edit the LINUX.BAT, and you should be able to boot your machine.
+
+    If your machine uses ESDI hard drives (rather than IDE or SCSI), you
+    may need to specify booting to an ESDI device such as /dev/eda1 in your
+    LINUX.BAT.  This example would be for the first partition (1) on the
+    first ESDI drive (/dev/eda) in LINUX.BAT:
+
+    rem \linux\loadlin  \linux\vmlinuz  root=/dev/eda1 rw
+
+--------------------------------
+
+Q9: How do I get ZipSlack to recognize the Iomega Zip Zoom SCSI card?
+
+A:  The Iomega Zoom SCSI card is a little tricky to use with Linux, since
+    Linux cannot automatically detect it.  To use it, you will need to add
+    a command line in the LINUX.BAT telling the kernel where to look for the
+    card.  You put this on the end of the uncommented loadlin line, right
+    after the 'rw'.  Here's an example:
+
+    rem \linux\loadlin  \linux\vmlinuz  root=/dev/sdb4 rw aha152x=0x340,11,7
+
+    This is for a card at I/O address 0x340, IRQ 11.  Your card may report the
+    numbers it uses at boot time, or you can look them up under windows in
+    My Computer -> Properties -> Device Manager, then look up the SCSI adapter
+    and look at the properties -> resources for that.
+
+--------------------------------
+
+Q10: The kernel freezes during the boot process!
+
+A:   The default Linux kernel included with ZipSlack contains drivers for
+     many of the most common SCSI cards.  While these don't cause problems
+     on most systems, sometimes the hardware probing process can cause a
+     machine to hang at boot time.  The solution for this is to obtain a
+     different kernel and install it in place of the default \linux\vmlinuz.
+
+     If your machine doesn't contain SCSI devices, you can use this kernel:
+
+     ftp://ftp.cdrom.com/pub/linux/slackware/kernels/bare.i/bzImage
+
+     After downloading, copy it over the existing kernel:
+
+     COPY BZIMAGE \LINUX\VMLINUZ
+
+     There are many other kernels in the directory
+     ftp://ftp.cdrom.com/pub/linux/slackware/kernels/ -- you should be able
+     to find one to suit just about any machine.  For more information on
+     the drivers included in the kernels, see the file:
+
+     ftp://ftp.cdrom.com/pub/linux/slackware/bootdsks.144/README.TXT
+
+     (this file is about the bootdisks used with a traditional Slackware
+     installation, but it's also a good source of information about what the
+     kernels in the ./kernels directory support)
+
+--------------------------------

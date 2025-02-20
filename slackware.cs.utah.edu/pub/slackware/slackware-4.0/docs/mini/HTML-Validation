@@ -1,0 +1,238 @@
+  The HTML Validation HOWTO
+  Keith M. Corbett, kmc@specialform.com
+  v0.2, 29 October 1995
+
+  This document explains how to use the nsgmls parser to validate HTML
+  documents for conformance with the HTML 2.0 document type definition,
+  or "DTD".  This DTD is the most commonly accepted SGML based defini-
+  tion of HTML, and thus defines a subset of current practice in HTML
+  markup that is likely to be portable to a wide number of HTML users
+  agents (browsers).
+  ______________________________________________________________________
+
+  Table of Contents:
+
+  1.      Introduction
+
+  1.1.    Costs and benefits
+
+  1.2.    Getting started
+
+  2.      Tools
+
+  2.1.    The
+
+  2.2.    The
+
+  2.3.    Download the HTML specification materials
+
+  3.      Parsing an HTML document
+
+  3.1.    Parser input
+
+  3.2.    Parser output
+
+  3.3.    Parser messages
+
+  3.4.    Return status
+
+  4.      Resources
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  This is a guide to using the nsgmls parser to validate and process
+  HTML documents.
+
+  1.1.  Costs and benefits
+
+  Using the full features of SGML markup will enrich your HTML
+  documents.  However, validating your documents to the HTML DTD has
+  certain cost / benefit tradeoffs, basically because you are dealing
+  with a more circumscribed dialect of HTML than is currently in vogue.
+  The "official" HTML rules for enforcing document structure, and the
+  SGML rules for data content markup, are more restrictive than current
+  practice on the Web.
+
+  The main issue you must consider is that valid HTML is restricted to a
+  standard set of element tags.
+
+  There isn't an accepted DTD that accurately reflects "browser HTML" as
+  understood by many client browser programs.  For the most part, the
+  HTML 2.0 DTD reflects tags and attributes that were commonly in use on
+  the Web around June 1994.  Various efforts to define a more advanced
+  HTML+ or HTML 3.0 DTD have gotten somewhat bogged down.  And none of
+  the DTDs in circulation will recognize all of the tags that have been
+  popularized recently by browser vendors such as Netscape and
+  Microsoft.
+
+  1.2.  Getting started
+
+  Contrary to popular opinion, working with SGML does not have to cost a
+  lot of time and money.  It is possible to build a robust development
+  environment consisting entirely of software that is freely available
+  on a wide range of platforms, including Linux, DOS, and most Unix
+  workstations.  Thanks to a few very dedicated folks, all the tools you
+  need to work with SGML have been made publicly available on the
+  Internet.
+
+  Setting up your environment (the parser and supporting program
+  libraries) takes a bit of work but not nearly as much as one might
+  think.
+
+  You may also want to peruse an introductory SGML text such as "SGML:
+  An Author's Guide to the Standard Generalized Markup Language" by
+  Martin bryan, or "Practical SGML" by Eric van Herwijnen.
+
+  2.  Tools
+
+  2.1.  The HTML Check toolkit package
+
+  If you want a completely self-installing / canned package, check out
+  the HalSoft HTML Check Toolkit at URL: http://www.halsoft.com/html-
+  tk/index.html
+
+  The only disadvantage of using the HalSoft kit is that it uses the
+  older sgmls parser, which produces error messages that are sometimes
+  (even) more cryptic than those from nsgmls.
+
+  I've used nsgmls on Linux and Windows (3.x and NT); it is supposed to
+  work on many other platforms as well.
+
+  2.2.  The nsgmls parser
+
+  James Clark has built a software kit called sp which includes the
+  validating SGML parser, nsgmls.  (This is the successor to the sgmls
+  parser which has long been considered the reference parser.)
+
+  For information on the sp kit, see URL: http://www.jclark.com/sp.html
+
+  You can download the kit directly from: ftp://ftp.jclark.com/pub/sp/
+
+  You may be able to pick up nsgmls executable files for your platform.
+  Or, download the source kit and follow the directions in the README
+  file for running make.
+
+  Consider creating a high level public directory that will contain
+  SGML-related files.  For example, on my Linux PC I have various SGML
+  related directories including:
+
+  /usr/sgml/bin
+
+  /usr/sgml/html
+
+  /usr/sgml/sgmls
+
+  /usr/sgml/sp
+
+  2.3.  Download the HTML specification materials
+
+  The draft standard for HTML 2.0 includes SGML definition files you
+  need to run the parser, namely the DTD (Document Type Definition),
+  SGML Declaration, and entity catalog.  To obtain the HTML 2.0 public
+  text, see URL:
+
+  http://www.w3.org/hypertext/WWW/MarkUp/html-spec/
+
+  Download and install the following files:
+
+  DTD html*.dtd
+
+  SGML declaration html.decl
+
+  Entity catalog catalog
+
+  You can add two entries to the HTML entity catalog for ease of use
+  with nsgmls:
+
+       ______________________________________________________________________
+               -- catalog: SGML Open style entity catalog for HTML --
+               -- $Id: catalog,v 1.2 1994/11/30 23:45:18 connolly Exp $ --
+        :
+        :
+               -- Additions for ease of use with nsgmls --
+       SGMLDECL        "html.decl"
+       DOCTYPE HTML    "html.dtd"
+       ______________________________________________________________________
+
+  Alternatively, you can create a second catalog containing these
+  entries; you will have to pass this catalog to nsgmls as an argument
+  with the -m switch.
+
+  3.  Parsing an HTML document
+
+  Following is a "cookbook" for validating a single document.  Simply
+  invoke the nsgmls parser and pass it the pathnames of the HTML catalog
+  file(s) and the document:
+
+       % nsgmls -s -m /usr/sgml/html/catalog <test.html
+
+  The -s switch suppresses the parser's output; see below.
+
+  3.1.  Parser input
+
+  Your document must conform to SGML, which means, among other things,
+  that the document type must be declared at the beginning of the input.
+  (You can fudge this by prepending the information to the document
+  instance on the nsgmls command line.)
+
+  Here's a simple HTML document that can be parsed correctly using the
+  scheme I've outlined:
+
+       ______________________________________________________________________
+       <!doctype html public "-//IETF//DTD HTML 2.0//EN">
+       <html>
+       <head>
+       <title>Simple HTML document.</title>
+       </head>
+       <body>
+       <h1>Test document</h1>
+       <p>This is a test document.</p>
+       </body>
+       </html>
+       ______________________________________________________________________
+
+  3.2.  Parser output
+
+  The standard output of nsgmls is a digested form of the SGML input
+  that processing systems can use as a lexer for navigating the
+  structure of the document.  For the purpose of validation, you can
+  throw the standard output away and rely on the error output.
+
+  If you do want the full output, omit the -s switch and pipe standard
+  output to a file:
+
+       % nsgmls -m /usr/sgml/html/catalog <test.html >test.out
+
+  3.3.  Parser messages
+
+  Error and warning messages from nsgmls can be very cryptic.  And you
+  may see very many errors from illegal markup.
+
+  To pipe messages to a file, use the -f switch:
+
+       % nsgmls -s -m /usr/sgml/html/catalog -f test.err <test.html
+
+  3.4.  Return status
+
+  The parser indicates whether the input document conforms to the HTML
+  DTD in two ways:
+
+  Return code - the parser returns a 0 exit status on success, non-zero
+  otherwise.
+
+  Output - if the document conforms to the DTD, the last line of
+  standard output will consist of a single C character.
+
+  4.  Resources
+
+  The HalSoft HTML Check Toolkit is at URL: http://www.halsoft.com/html-
+  tk/index.html
+
+  James Clark's page on sp is at URL: http://www.jclark.com/sp.html
+
+  The W3C page on the HTML specification is at URL:
+  http://www.w3.org/hypertext/WWW/MarkUp/html-spec/
+
+  Feel free to contact me via email: kmc@specialform.com.
+

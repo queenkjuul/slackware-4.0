@@ -1,0 +1,139 @@
+                    Linux 1.1.59 Twelve Consoles Example
+
+The result of the following is that tty[1-8,12] are, respectively, activated by
+<left-alt>F[1-8,12].  I wanted F12 for root and/or something running "top -s"
+while F[1-8] run whatever and can simply be extended through F11 without moving
+the F12 functions.  It seems to be working fine.  I have had all 12 of them
+logged in at once in testing.
+
+                                      R. Mark Salathiel  RSalathi@Nyx.cs.du.edu
+
+# ls -Al /dev/tty[0-9]*
+crw--w--w-   1 root     tty        4,   0 Jul 17 17:29 /dev/tty0
+crw--w--w-   1 root     root       4,   1 Dec 25 05:55 /dev/tty1
+crw--w--w-   1 root     tty        4,  10 Dec 25 05:23 /dev/tty10    <--added
+crw--w--w-   1 root     tty        4,  11 Dec 25 05:53 /dev/tty11    <--added
+crw--w--w-   1 root     root       4,  12 Dec 25 20:13 /dev/tty12    <--added
+crw--w--w-   1 root     root       4,   2 Dec 25 13:47 /dev/tty2
+crw--w--w-   1 root     root       4,   3 Dec 25 05:55 /dev/tty3
+crw--w--w-   1 root     root       4,   4 Dec 25 09:39 /dev/tty4
+crw--w--w-   1 root     root       4,   5 Dec 25 05:55 /dev/tty5
+crw--w--w-   1 root     root       4,   6 Dec 25 05:55 /dev/tty6
+crw--w--w-   1 root     root       4,   7 Dec 25 05:55 /dev/tty7
+crw--w--w-   1 root     root       4,   8 Dec 25 20:13 /dev/tty8
+crw--w--w-   1 root     tty        4,   9 Dec 25 05:23 /dev/tty9
+
+/etc/securetty:
+
+console
+tty1
+tty2
+tty3
+tty4
+tty5
+tty6
+tty7     <--added
+tty8     <--added
+tty9     <--added
+tty10    <--added
+tty11    <--added
+tty12    <--added
+ttyS0
+ttyS1
+ttyS2
+ttyS3
+ttyp0
+ttyp1
+ttyp2
+ttyp3
+
+/etc/ttys:
+
+console tty1
+console tty2
+console tty3
+console tty4
+console tty5
+console tty6
+console tty7     <--added
+console tty8     <--added
+console tty9     <--added
+console tty10    <--added
+console tty11    <--added
+console tty12    <--added
+vt100 ttyp0
+vt100 ttyp1
+vt100 ttyp2
+vt100 ttyp3
+
+/etc/inittab:
+
+#
+# inittab	This file describes how the INIT process should set up
+#		the system in a certain run-level.
+#
+# Version:	@(#)inittab		2.04	17/05/93	MvS
+#
+# Author:	Miquel van Smoorenburg, <miquels@drinkel.nl.mugnet.org>
+#
+# Default runlevel.
+id:5:initdefault:
+
+# System initialization (runs when system boots).
+si:S:sysinit:/etc/rc.d/rc.S
+
+# Script to run when going single user.
+su:S:wait:/etc/rc.d/rc.K
+
+# Script to run when going multi user.
+rc:123456:wait:/etc/rc.d/rc.M
+
+# What to do at the "Three Finger Salute".
+ca::ctrlaltdel:/sbin/shutdown -t3 -rf now
+
+# What to do when power fails (shutdown to single user).
+pf::powerfail:/sbin/shutdown -f +5 "THE POWER IS FAILING"
+
+# If power is back before shutdown, cancel the running shutdown.
+pg:0123456:powerokwait:/sbin/shutdown -c "THE POWER IS BACK"
+
+# If power comes back in single user mode, return to multi user mode.
+ps:S:powerokwait:/sbin/init 5
+
+# The getties in multi user mode on consoles and serial lines.
+#
+# NOTE NOTE NOTE adjust this to your getty or you will not be
+#                able to login !!
+#
+# Note: for 'agetty' you use linespeed, line.
+# for 'getty_ps' you use line, linespeed and also use 'gettydefs'
+1:12345:respawn:/sbin/agetty 38400 tty1
+2:12345:respawn:/sbin/agetty 38400 tty2
+3:45:respawn:/sbin/agetty 38400 tty3
+4:45:respawn:/sbin/agetty 38400 tty4
+5:45:respawn:/sbin/agetty 38400 tty5
+6:45:respawn:/sbin/agetty 38400 tty6       <--changed
+7:45:respawn:/sbin/agetty 38400 tty7       <--added
+8:45:respawn:/sbin/agetty 38400 tty8       <--added
+#9:45:respawn:/sbin/agetty 38400 tty9      <--added
+#10:45:respawn:/sbin/agetty 38400 tty10    <--added
+#11:45:respawn:/sbin/agetty 38400 tty11    <--added
+12:456:respawn:/sbin/agetty 38400 tty12    <--added
+
+# Serial lines
+#s1:45:respawn:/sbin/agetty 19200 ttyS0
+#s2:45:respawn:/sbin/agetty 19200 ttyS1
+
+# Dialup lines
+#d1:45:respawn:/sbin/agetty -mt60 38400,19200,9600,2400,1200 ttyS0
+#d2:45:respawn:/sbin/agetty -mt60 38400,19200,9600,2400,1200 ttyS1
+
+# Runlevel 6 used to be for an X-window only system, until we discovered
+# that it throws init into a loop that keeps your load avg at least 1 all 
+# the time.  Thus, there is now one getty opened on tty12.            <--changed
+# Hopefully no one will notice. ;^)                                   <--changed
+# It might not be bad to have one text console anyway, in case something
+# happens to X.
+x1:6:wait:/etc/rc.d/rc.6
+
+# End of /etc/inittab

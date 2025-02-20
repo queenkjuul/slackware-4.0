@@ -1,0 +1,21 @@
+Begin3
+Title:          OnlineCC 
+Version:        0.8
+Entered-date:   09APR97
+Description:    OnlineCC (Online Command Center) (former T-OnlineCC)
+         	is a program to control a Slip/PPP connection to the
+         	main German internet providers (actually supported :
+         	T-Online, CompuServe and normal Internet Providers)
+         	and to calculate your phone and online costs.
+Keywords:       T-Online, CompuServe, Motif, Dip, Slip ,PPP   
+Author:         schoeba@str.daimler-benz.com (Reinhold Schoeb)  
+Maintained-by:  schoeba@str.daimler-benz.com (Reinhold Schoeb) 
+Primary-site:   http://privat.swol.de
+                /ReinholdSchoeb/Online/OnlineCC-doc-en.html
+                46kB OnlineCC-0.8.tar.gz
+Alternate-site: http://sunsite.unc.edu
+                /pub/Linux/System/Network/serial/
+Original-site: 
+Platforms:      Linux, all other Unix platforms should also work
+Copying-policy: GPL
+End

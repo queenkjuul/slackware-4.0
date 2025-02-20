@@ -1,0 +1,7 @@
+smbfs-2.0.x.tgz   User utilities for the smbfs in the latest Linux
+		  kernels.
+
+smbfs-0.10.tgz    User utilities and 1.2.x kernel module for smbfs.
+                  If possible, please upgrade to Linux 2.0.28.
+
+smbmount-1.3.tar.gz A SMB->NFS protocol converter

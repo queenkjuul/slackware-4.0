@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/devel</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/devel</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="patch-2.1-bin.lsm">patch-2.1-bin.lsm</a></td><td align="right">1993-11-30 08:00  </td><td align="right">604 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="patch-2.1-bin.tar.gz">patch-2.1-bin.tar.gz</a></td><td align="right">1993-11-30 08:00  </td><td align="right"> 77K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="patch-2.1.tar.gz">patch-2.1.tar.gz</a></td><td align="right">1994-02-13 08:00  </td><td align="right"> 70K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="buildlib-0.1.lsm">buildlib-0.1.lsm</a></td><td align="right">1995-02-09 08:00  </td><td align="right">364 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="buildlib-0.1.tar.gz">buildlib-0.1.tar.gz</a></td><td align="right">1995-02-09 08:00  </td><td align="right">6.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="strace-3.1.lsm">strace-3.1.lsm</a></td><td align="right">1996-05-31 07:00  </td><td align="right">645 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="strace-3.1.tar.gz">strace-3.1.tar.gz</a></td><td align="right">1996-05-31 07:00  </td><td align="right">172K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="agat-1.5.lsm">agat-1.5.lsm</a></td><td align="right">1996-07-12 07:00  </td><td align="right">687 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="agat-1.5.tgz">agat-1.5.tgz</a></td><td align="right">1996-07-12 07:00  </td><td align="right">341K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="autoconf-2.10.bin.tgz">autoconf-2.10.bin.tgz</a></td><td align="right">1996-07-12 07:00  </td><td align="right">120K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="autoconf-2.10.lsm">autoconf-2.10.lsm</a></td><td align="right">1996-07-12 07:00  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="autoconf-2.10.src.tgz">autoconf-2.10.src.tgz</a></td><td align="right">1996-07-12 07:00  </td><td align="right">372K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bprof-2.0beta.tar.gz">bprof-2.0beta.tar.gz</a></td><td align="right">1997-04-25 07:00  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bprof.lsm">bprof.lsm</a></td><td align="right">1997-04-25 07:00  </td><td align="right">738 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tkrun-0.1.tar.gz">tkrun-0.1.tar.gz</a></td><td align="right">1997-11-24 00:55  </td><td align="right"> 51K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tkrun.lsm">tkrun.lsm</a></td><td align="right">1997-11-24 00:55  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sscript-1.14.lsm">sscript-1.14.lsm</a></td><td align="right">1998-06-07 10:34  </td><td align="right">523 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sscript-1.14.tar.gz">sscript-1.14.tar.gz</a></td><td align="right">1998-06-07 10:34  </td><td align="right">403K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="iprobe_suite-4.0-driver.o.gz">iprobe_suite-4.0-driver.o.gz</a></td><td align="right">1999-01-07 02:17  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="iprobe_suite-4.0.tgz">iprobe_suite-4.0.tgz</a></td><td align="right">1999-01-07 02:17  </td><td align="right">699K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="iprobe_suite-4.0.lsm">iprobe_suite-4.0.lsm</a></td><td align="right">1999-01-07 02:18  </td><td align="right">734 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="argtable-1.1.tar.gz">argtable-1.1.tar.gz</a></td><td align="right">1999-01-26 11:55  </td><td align="right"> 93K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="argtable.lsm">argtable.lsm</a></td><td align="right">1999-01-26 11:55  </td><td align="right">1.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="argtable.html">argtable.html</a></td><td align="right">1999-01-26 11:56  </td><td align="right"> 28K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="superget-1.1.tgz">superget-1.1.tgz</a></td><td align="right">1999-02-04 14:41  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="superget-1.1.lsm">superget-1.1.lsm</a></td><td align="right">1999-02-04 14:42  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:52  </td><td align="right"> 90 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="strace-3.1.0.1_glibc_linux22.lsm">strace-3.1.0.1_glibc_linux22.lsm</a></td><td align="right">1999-03-28 20:07  </td><td align="right">499 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="strace-3.1.0.1_glibc_linux22.tar.gz">strace-3.1.0.1_glibc_linux22.tar.gz</a></td><td align="right">1999-03-28 20:08  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="webmacro.0.89.1.tgz">webmacro.0.89.1.tgz</a></td><td align="right">1999-05-10 05:18  </td><td align="right">429K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="webmacro.lsm">webmacro.lsm</a></td><td align="right">1999-05-10 05:40  </td><td align="right">829 </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="compiler-tools/">compiler-tools/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="corba/">corba/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="debuggers/">debuggers/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="literate/">literate/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="make/">make/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="msdos/">msdos/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="opd/">opd/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="ptolemy/">ptolemy/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="vc/">vc/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">685 </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="lang/">lang/</a></td><td align="right">1999-05-18 00:48  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">6.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">2.3K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

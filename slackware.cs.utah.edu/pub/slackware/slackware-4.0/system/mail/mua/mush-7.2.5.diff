@@ -1,0 +1,2482 @@
+diff -rc --new-file orig/mush-7.2.5/Makefile mush-7.2.5/Makefile
+*** orig/mush-7.2.5/Makefile	Thu Jan  1 01:00:00 1970
+--- mush-7.2.5/Makefile	Wed Oct 27 17:22:17 1993
+***************
+*** 0 ****
+--- 1,70 ----
++ # makefile.linux	(c) copyright 1991	(Dan Heller)
++ #
++ HDRS= mush.h config.h-dist strings.h bindings.h options.h version.h glob.h pop.h
++ 
++ SRCS= main.c init.c misc.c mail.c hdrs.c execute.c commands.c print.c dates.c \
++       signals.c setopts.c msgs.c pick.c sort.c expr.c folders.c \
++       loop.c viewopts.c curses.c curs_io.c bind.c file.c strings.c \
++       lock.c macros.c options.c addrs.c malloc.c glob.c command2.c \
++       pop.c pmush.c xcreat.c
++ OBJS= main.o init.o misc.o mail.o hdrs.o execute.o commands.o print.o file.o \
++       signals.o setopts.o msgs.o pick.o sort.o expr.o strings.o \
++       folders.o dates.o loop.o viewopts.o curses.o curs_io.o bind.o \
++       lock.o macros.o options.o addrs.o malloc.o glob.o command2.o \
++       pop.o pmush.o xcreat.o
++ 
++ HELP_FILES= README README-7.0 README-7.1 README-7.2.0 README-7.2.2 \
++ 	README-7.2.4 mush.1 cmd_help Mushrc Mailrc Gnurc \
++ 	sample.mushrc advanced.mushrc digestify
++ 
++ MAKES= makefile.bsd makefile.xenix makefile.sys.v makefile.hpux makefile.sun
++ 
++ # See the README for changes needed to compile under Ultrix.
++ # In particular, you may need -DSIGRET=void and/or -ltermcap.
++ CFLAGS= -O2 -Olimit 1024 -DBSD -D_BSD_SOURCE -DCURSES -DSIGRET=void
++ LDFLAGS= -s
++ LINTFLAGS= -bxah -Dlint -DCURSES -DBSD -D_BSD_SOURCE
++ LIBS= -lcurses -ltermcap
++ OTHERLIBS=
++ # Use some variant of this one if you #define MMDF in config.h
++ #OTHERLIBS=/usr/src/mmdf/lib/libmmdf.a
++ 
++ mush: $(OBJS)
++ 	@echo loading...
++ 	@cc $(LDFLAGS) $(OBJS) $(LIBS) $(OTHERLIBS) -o mush
++ 
++ $(OBJS): config.h mush.h
++ loop.o: version.h
++ 
++ tape:
++ 	@tar cv $(MAKES) $(HDRS) $(SRCS) $(HELP_FILES)
++ 
++ tar:
++ 	@tar fcv MUSH $(MAKES) $(HDRS) $(SRCS) $(HELP_FILES)
++ 
++ tarmail:
++ 	tar fcv - $(MAKES) $(HDRS) $(SRCS) $(HELP_FILES) | \
++ 	compress | btoa > mush.tarmail
++ 
++ lint:
++ 	lint $(LINTFLAGS) $(SRCS)
++ 
++ clean:
++ 	rm -f *.o core mush
++ 
++ BINDIR= /usr/bin
++ LIBDIR= /usr/lib
++ MRCDIR= /usr/lib
++ MANDIR= /usr/man/man1
++ MANEXT= 1
++ 
++ install: mush
++ 	mv mush $(BINDIR)
++ 	strip $(BINDIR)/mush
++ 	chmod 0755 $(BINDIR)/mush
++ 	cp mush.1 $(MANDIR)/mush.$(MANEXT)
++ 	chmod 0644 $(MANDIR)/mush.$(MANEXT)
++ 	cp cmd_help $(LIBDIR)
++ 	chmod 0644 $(LIBDIR)/cmd_help
++ 	cp Mushrc $(MRCDIR)/Mushrc
++ 	chmod 0644 $(MRCDIR)/Mushrc
+diff -rc --new-file orig/mush-7.2.5/README-7.2.5+ mush-7.2.5/README-7.2.5+
+*** orig/mush-7.2.5/README-7.2.5+	Thu Jan  1 01:00:00 1970
+--- mush-7.2.5/README-7.2.5+	Wed Oct 27 18:14:32 1993
+***************
+*** 0 ****
+--- 1,37 ----
++ This is release 7.2.5+ of the Mail User's Shell (mush).
++ This subservion was done on 931027
++ 
++ Sinze Z-mailer, the productified version of mush, has been introduced,
++ the authors of mush have not released (surprise, surprise) any update
++ to mush 7.2.5; here is a small one, perhaps it should be called 7.3.
++ 
++ The changes are:
++ 
++ * ported to Linux (this has been based on Linus Torvalds' own port).
++ 
++ * faster sorting on subject, by caching in core the subject line; this
++   raises the working set, but the speedup is spectacular.
++ 
++ * sorting on To: or Newsgroups: line.
++ 
++ * pop3 support improved; the mailbox will not be checked (with consequent
++   request for the password) at inconvenient times, like when composing
++   a message to send, or if in mailbox mode. I actually think that the
++   mailbox should not be checked automatically at all, but what the heck.
++ 
++ I have felt tempted to do more extensive surgery, like:
++ 
++ * completely removing tool mode, which just complicates the source, is
++   not so elegant, and is obsolete by now.
++ 
++ * perhaps removing curses mode entirely too, as there are too many whacky
++   compromises to shoehorn it in; it should be replaced, like tool mode,
++   by a full screen frontend running as a separate process.
++ 
++ * cleaning up header line generation. Currently the header lines are rebuilt
++   every time. Perhaps they ought to be cached, after all they are not
++   that large. At the very least the ones on the current page in curses mode
++   ought to be cached.
++ 
++ But these mods, while sensible, would require a new release number for mush
++ (say version 8), and I don't know who are the current maintainers...
+diff -rc --new-file orig/mush-7.2.5/cmd_help mush-7.2.5/cmd_help
+*** orig/mush-7.2.5/cmd_help	Fri May 17 02:28:46 1991
+--- mush-7.2.5/cmd_help	Wed Oct 27 18:08:16 1993
+***************
+*** 430,441 ****
+  %%
+  
+  %sort%
+!       sort [-i] [-r|a|d|l|R|s|S]
+  
+    -i         ignore case in alphabetical sorts
+    -r         reverse order of next criteria
+  
+    -a         by author (alphabetical)
+    -d         according to date
+    -l         by length (size in characters, not lines)
+    -p         by priority (marks)
+--- 430,442 ----
+  %%
+  
+  %sort%
+!       sort [-i] [-r|a|t|d|l|R|s|S]
+  
+    -i         ignore case in alphabetical sorts
+    -r         reverse order of next criteria
+  
+    -a         by author (alphabetical)
++   -t         by target (alphabetical)
+    -d         according to date
+    -l         by length (size in characters, not lines)
+    -p         by priority (marks)
+diff -rc --new-file orig/mush-7.2.5/config.h mush-7.2.5/config.h
+*** orig/mush-7.2.5/config.h	Thu Jan  1 01:00:00 1970
+--- mush-7.2.5/config.h	Sun Oct 17 15:31:38 1993
+***************
+*** 0 ****
+--- 1,260 ----
++ /* config.h 1.1	(c) copyright 1986 (Dan Heller) */
++ 
++ /* Default names and locations for files */
++ #define MAILRC		".mushrc"
++ #define ALTERNATE_RC	".mailrc"
++ #define DEFAULT_RC	"/usr/lib/Mushrc"
++ #define ALT_DEF_RC	"/usr/lib/Mail.rc"
++ #define SIGNATURE	".signature"
++ #define FORTUNE		"/usr/games/fortune"
++ #define COMMAND_HELP	"/usr/lib/cmd_help"
++ #ifdef SUNTOOL
++ #    define TOOL_HELP	"/usr/lib/tool_help"
++ #endif /* SUNTOOL */
++ #define ALTERNATE_HOME	"/tmp"       /* Path must be read/write to EVERYONE */
++ #define EDFILE  	".edXXXXXX"  /* file/pathname added to user's "home" */
++ 
++ #define LS_COMMAND	"ls"
++ #define LPR		"lpr"
++ #define DEF_PRINTER	"lp"
++ /* If your lpr command understands only -P or -d (or some other flag) then
++  * define PRINTER_OPT to the appropriate value.  If you want to be able to
++  * use either one, don't define this at all.  The defaults (when neither
++  * -P nor -d is used on the mush "lpr" command line) are as noted here.
++  * If your lpr requires that the option and the printer name be separate
++  * arguments, include a trailing space in this definition.
++  */
++ #ifdef SYSV
++ #define PRINTER_OPT	"-d"
++ #endif /* SYSV */
++ #ifdef BSD
++ #define PRINTER_OPT	"-P"
++ #endif /* BSD */
++ 
++ /* default settings for some variable strings */
++ #define DEF_PROMPT	"Msg %m of %t: "
++ #define DEF_PAGER	"more" /* set to "internal" to use internal pager */
++ #define DEF_SHELL	"sh"
++ #define DEF_EDITOR	"vi"
++ #define DEF_FOLDER	"~/Mail"        /* default Mail folder */
++ #define DEF_MBOX	"~/mbox"	/* default mbox */
++ #define DEF_INDENT_STR	"> "		/* indent included mail */
++ #define DEF_ESCAPE	"~"
++ #define DEF_HDR_FMT	"%25f %7d (%l/%c) \"%s\"" /* default hdr_format */
++ #define DEF_CURSES_HELP	\
++     "display save mail reply next-msg back-msg screen-next screen-back"
++ 
++ /* Headers that will NOT be included when forwarding mail */
++ #define IGNORE_ON_FWD	"status,priority,return-receipt-to"
++ 
++ #define	MAXMSGS	1000		/* Maximum number of messages we can read */
++ #define HDRSIZ	(2*BUFSIZ)	/* This should not be < BUFSIZ! */
++ 
++ /*
++  * Define INTERNAL_MALLOC and recompile if you have trouble with mush
++  * core-dumping due to malloc/free errors.  Also, if you run a System 5
++  * variant, you might notice a performance improvement if you define this
++  * variable.  It uses the malloc distributed by Larry Wall for perl v2.
++  */
++ /* #define INTERNAL_MALLOC /**/
++ 
++ /*
++  * Define TIMEZONE if your system has neither the SysV external variable
++  * tzname nor the BSD timezone() function.  The example below is for
++  * Gould BSD4.3 systems; others should define it as a string, e.g. "PST"
++  * If TIMEZONE is defined, DAYLITETZ can also be defined, e.g. "PDT"
++  *
++  * Define USA if you are using US/NorthAmerican time zone abbreviations.
++  * If USA is not defined, dates in outgoing mail will include timezones
++  * specified as offsets from GMT, e.g. Pacific Standard Time is -0800.
++  */
++ /* #define TIMEZONE T->tm_zone /**/
++ /* #define USA /**/
++ 
++ /* mail delivery system macros and defines... */
++ 
++ /*
++  * For POP3_SUPPORT, define this.  Mush will act as a POP-3 client,
++  * periodically calling the server on the machine described by the
++  * environment variable MAILHOST to pick up new mail.
++  */
++ #define POP3_SUPPORT /**/
++ #ifdef POP3_SUPPORT
++ #define HOMEMAIL
++ #endif /* POP3_SUPPORT */
++ 
++ /*
++  * If you are using MMDF, define MMDF here.
++  */
++ /* #define MMDF /**/
++ #if defined(M_UNIX) && defined(M_XENIX)
++ #define MMDF
++ /* #define M_EXECMAIL	/* Define if you haven't fixed submit permissions */
++ #endif /* M_UNIX && M_XENIX */
++ #ifdef MMDF
++ /*
++  * If MMDF delivers mail the user's home directory, define HOMEMAIL.
++  * Also check the definition of the delivery file name MAILFILE, below.
++  */
++ /* #define HOMEMAIL /**/
++ #ifdef M_EXECMAIL
++ #define MAIL_DELIVERY	"/usr/lib/mail/execmail"
++ # define VERBOSE_ARG	"-v"
++ # define METOO_ARG	"-m"
++ #else /* M_EXECMAIL */
++ #define MAIL_DELIVERY	"exec /usr/mmdf/bin/submit -mlnr"
++ #define VERBOSE_ARG	"Ww"
++ #define MTA_EXIT	9	/* exit status for successful submit */
++ #endif /* M_EXECMAIL */
++ #else /* MMDF */
++ /*
++  * If you are not using MMDF, check these definitions.
++  */
++ #define MAIL_DELIVERY	"/usr/lib/sendmail -i" /* "-i" works like "-oi" */
++ #define VERBOSE_ARG	"-v"    /* undef if none exists */
++ #define METOO_ARG	"-m"    /* man sendmail for more info. */
++ #define MTA_EXIT	0	/* exit status for successful mail delivery */
++ #endif /* MMDF */
++ 
++ /* If your mail transfer agent uses something *besides* "From " to separate
++  * adjacent messages in a folder, define MSG_SEPARATOR to be this string.
++  * If that string is 4 ^A's, then the string would be "\001\001\001\001".
++  * With the exception of MMDF, below, you should OMIT a trailing newline
++  * from the setting of MSG_SEPARATOR.
++  * If you don't know what any of this means, leave it alone.
++  */
++ /* #define MSG_SEPARATOR "From " /**/
++ #ifdef MMDF
++ /*
++  * These values should be identical (respectively) to the contents of
++  * delim1 and delim2 in MMDFSRC/conf/yoursite/conf.c (sans newline).
++  */
++ #define MSG_SEPARATOR	"\001\001\001\001\n"
++ #define END_MSG_SEP	"\001\001\001\001\n"
++ /*
++  * You only need to define LCKDFLDIR if you have MMDF configured to use the
++  * locking routines in lib/util/lk_lock.c (ie., link(2)-based locking).
++  * Most of you WILL NOT need this, since you probably use one of the more
++  * sophisticated locking modules provided with MMDF.  Remember to alter the
++  * Makefile so as to access the MMDF library at the link step.
++  */
++ /* #define LCKDFLDIR	"/usr/spool/mmdf/lockfiles" /* (for example) */
++ #else /* !MMDF */
++ #ifdef M_XENIX
++ #define DOT_LOCK	/* DOT_LOCK should be used for SCO Xenix */
++ #endif /* M_XENIX */
++ #endif /* MMDF */
++ 
++ #ifdef HOMEMAIL
++ #define MAILFILE	".mailbox"	/* or whatever */
++ #else /* HOMEMAIL */
++ #ifndef MAILDIR
++ #if defined(SYSV) && !defined(SVR4)
++ #define MAILDIR		"/usr/mail"
++ #else /* BSD || SVR4 */
++ #define MAILDIR		"/usr/spool/mail"
++ #endif /* SYSV && !SVR4 */
++ #endif /* MAILDIR */
++ #endif /* HOMEMAIL */
++ 
++ /* If your mailer does not understand commas between addresses, you should
++  * define NO_COMMAS.  This includes pre-3.0 smail and default MTAs used on
++  * xenix, and sys-v systems.
++  * This does NOT apply to MMDF or sendmail, in most cases.  SunOS 4.1 as
++  * shipped needs this, but note that if you are allowing mush to default
++  * to SUN_4_1 (see the end of this file) you won't get this.
++  */
++ #ifdef SUN_4_1		/* SunOS 4.1 has warped sendmail.cf */
++ #define NO_COMMAS /**/
++ #endif /* SUN_4_1 */
++ 
++ /*
++  * Most RFC822-compliant mailers (sendmail) will add the headers From:
++  * and Date: on outgoing mail.  If the user or UA sends these headers,
++  * such MTAs will generally use the headers as the user or UA set them.
++  * Mailers that are not RFC822-compliant sometimes fail to add these
++  * headers at all, so the UA must supply them.  Mush normally does so.
++  *
++  * However, there are certain MTAs which will insist on adding new From:
++  * and Date: headers.  These "picky mailers" may remove the user or UA 
++  * From: and Date: headers, or they may leave them but insert a leading
++  * '>', which makes the headers very ugly and redundant or contradictory.
++  * PICKY_MAILER prevents mush from adding From: or Date:, so the MTA can.
++  *
++  * Many RFC822-compliant mailers are "picky", including certain sendmail
++  * configurations.  It is advisable to set PICKY_MAILER *UNLESS* your MTA
++  * is known not to be RFC822 compiant (xenix, older sys-v) or can be
++  * counted on to pass through user-defined headers without modification.
++  */
++ /* #define PICKY_MAILER /**/
++ 
++ /* If your system supports the vprintf() functions, True for sys-v and
++  * later sun versions (3.0+ ?).  Typically not true for BSD systems, but
++  * that will probably change in the future.
++  */
++ #if defined(__linux__) || defined(SYSV) || defined(sun)
++ #define VPRINTF
++ #endif /* __linux__ || SYSV || sun */
++ 
++ /* If your system uses the getwd() system call (as opposed to getcwd()),
++  * and your system is not a BSD system (e.g. MIPS), define GETWD below.
++  */
++ /* #define GETWD	/**/
++ 
++ /* If your system has the BSD-style directory routines (opendir/readdir),
++  * define DIRECTORY.  This happens automatically in glob.h for BSD.
++  */
++ #if defined(SVR4) || defined(__linux__)
++ #define DIRECTORY
++ #endif /* SVR4 || __linux__ */
++ 
++ /* If your system has the POSIX "utimbuf" structure for utime(2),
++  * define POSIX_UTIME.  You may have to change <sys/utime.h> to <utime.h>
++  * in mush.h.
++  */
++ #if defined(__linux__) || (defined(SVR4) && !defined(sun))
++ #define POSIX_UTIME
++ #endif /* __linux__ || (SVR4 && !sun) */
++ 
++ /* The remainder of this file attempt to automatically supply some sanity.
++  * You shouldn't need to change this part unless your system is really odd.
++  */
++ 
++ #ifdef BSD
++ #    undef SYSV /* Sorry, can't do both BSD and SYSV */
++ #    undef SVR4
++ #    undef SVR3
++ #    undef SVR2
++ #endif /* BSD */
++ #if defined(SUNTOOL) || defined(SUN_3_5) || defined(SUN_4_0) || defined(SUN_4_1)
++ #if !defined(BSD) && !defined(SYSV)
++ #    define BSD /* default to BSD */
++ #endif /* !BSD && !SYSV */
++ #if !defined(SUN_3_5) && !defined(SUN_4_0)
++ #    ifndef SUN_4_1
++ #        define SUN_4_1 /* default to sun 4.1 */
++ #    endif /* SUN_4_1 */
++ #    define SUN_4_0 /* 4.0 stuff needed too */
++ #endif /* !SUN_3_5 && !SUN_4_0 */
++ #ifdef SUN_4_0
++ #    undef SUN_3_5
++ #    undef SIGRET
++ #    define SIGRET void
++ #endif /* SUN_4_0 */
++ #endif /* SUNTOOL || SUN_3_5 || SUN_4_0 || SUN_4_1 */
++ #ifdef SVR4
++ #    undef SVR3
++ #    undef SYSV
++ #    define SYSV
++ #else
++ #ifdef SYSV
++ #    undef SVR3
++ #    ifndef SVR2
++ #        define SVR3
++ #    endif /* SVR2 */
++ #endif /* SYSV */
++ #endif /* SVR4 */
++ #ifdef SVR3
++ #    undef SYSV
++ #    define SYSV
++ #endif /* SVR3 */
+diff -rc --new-file orig/mush-7.2.5/config.h-linux mush-7.2.5/config.h-linux
+*** orig/mush-7.2.5/config.h-linux	Thu Jan  1 01:00:00 1970
+--- mush-7.2.5/config.h-linux	Sun Oct 17 15:31:29 1993
+***************
+*** 0 ****
+--- 1,260 ----
++ /* config.h 1.1	(c) copyright 1986 (Dan Heller) */
++ 
++ /* Default names and locations for files */
++ #define MAILRC		".mushrc"
++ #define ALTERNATE_RC	".mailrc"
++ #define DEFAULT_RC	"/usr/lib/Mushrc"
++ #define ALT_DEF_RC	"/usr/lib/Mail.rc"
++ #define SIGNATURE	".signature"
++ #define FORTUNE		"/usr/games/fortune"
++ #define COMMAND_HELP	"/usr/lib/cmd_help"
++ #ifdef SUNTOOL
++ #    define TOOL_HELP	"/usr/lib/tool_help"
++ #endif /* SUNTOOL */
++ #define ALTERNATE_HOME	"/tmp"       /* Path must be read/write to EVERYONE */
++ #define EDFILE  	".edXXXXXX"  /* file/pathname added to user's "home" */
++ 
++ #define LS_COMMAND	"ls"
++ #define LPR		"lpr"
++ #define DEF_PRINTER	"lp"
++ /* If your lpr command understands only -P or -d (or some other flag) then
++  * define PRINTER_OPT to the appropriate value.  If you want to be able to
++  * use either one, don't define this at all.  The defaults (when neither
++  * -P nor -d is used on the mush "lpr" command line) are as noted here.
++  * If your lpr requires that the option and the printer name be separate
++  * arguments, include a trailing space in this definition.
++  */
++ #ifdef SYSV
++ #define PRINTER_OPT	"-d"
++ #endif /* SYSV */
++ #ifdef BSD
++ #define PRINTER_OPT	"-P"
++ #endif /* BSD */
++ 
++ /* default settings for some variable strings */
++ #define DEF_PROMPT	"Msg %m of %t: "
++ #define DEF_PAGER	"more" /* set to "internal" to use internal pager */
++ #define DEF_SHELL	"sh"
++ #define DEF_EDITOR	"vi"
++ #define DEF_FOLDER	"~/Mail"        /* default Mail folder */
++ #define DEF_MBOX	"~/mbox"	/* default mbox */
++ #define DEF_INDENT_STR	"> "		/* indent included mail */
++ #define DEF_ESCAPE	"~"
++ #define DEF_HDR_FMT	"%25f %7d (%l/%c) \"%s\"" /* default hdr_format */
++ #define DEF_CURSES_HELP	\
++     "display save mail reply next-msg back-msg screen-next screen-back"
++ 
++ /* Headers that will NOT be included when forwarding mail */
++ #define IGNORE_ON_FWD	"status,priority,return-receipt-to"
++ 
++ #define	MAXMSGS	1000		/* Maximum number of messages we can read */
++ #define HDRSIZ	(2*BUFSIZ)	/* This should not be < BUFSIZ! */
++ 
++ /*
++  * Define INTERNAL_MALLOC and recompile if you have trouble with mush
++  * core-dumping due to malloc/free errors.  Also, if you run a System 5
++  * variant, you might notice a performance improvement if you define this
++  * variable.  It uses the malloc distributed by Larry Wall for perl v2.
++  */
++ /* #define INTERNAL_MALLOC /**/
++ 
++ /*
++  * Define TIMEZONE if your system has neither the SysV external variable
++  * tzname nor the BSD timezone() function.  The example below is for
++  * Gould BSD4.3 systems; others should define it as a string, e.g. "PST"
++  * If TIMEZONE is defined, DAYLITETZ can also be defined, e.g. "PDT"
++  *
++  * Define USA if you are using US/NorthAmerican time zone abbreviations.
++  * If USA is not defined, dates in outgoing mail will include timezones
++  * specified as offsets from GMT, e.g. Pacific Standard Time is -0800.
++  */
++ /* #define TIMEZONE T->tm_zone /**/
++ /* #define USA /**/
++ 
++ /* mail delivery system macros and defines... */
++ 
++ /*
++  * For POP3_SUPPORT, define this.  Mush will act as a POP-3 client,
++  * periodically calling the server on the machine described by the
++  * environment variable MAILHOST to pick up new mail.
++  */
++ #define POP3_SUPPORT /**/
++ #ifdef POP3_SUPPORT
++ #define HOMEMAIL
++ #endif /* POP3_SUPPORT */
++ 
++ /*
++  * If you are using MMDF, define MMDF here.
++  */
++ /* #define MMDF /**/
++ #if defined(M_UNIX) && defined(M_XENIX)
++ #define MMDF
++ /* #define M_EXECMAIL	/* Define if you haven't fixed submit permissions */
++ #endif /* M_UNIX && M_XENIX */
++ #ifdef MMDF
++ /*
++  * If MMDF delivers mail the user's home directory, define HOMEMAIL.
++  * Also check the definition of the delivery file name MAILFILE, below.
++  */
++ /* #define HOMEMAIL /**/
++ #ifdef M_EXECMAIL
++ #define MAIL_DELIVERY	"/usr/lib/mail/execmail"
++ # define VERBOSE_ARG	"-v"
++ # define METOO_ARG	"-m"
++ #else /* M_EXECMAIL */
++ #define MAIL_DELIVERY	"exec /usr/mmdf/bin/submit -mlnr"
++ #define VERBOSE_ARG	"Ww"
++ #define MTA_EXIT	9	/* exit status for successful submit */
++ #endif /* M_EXECMAIL */
++ #else /* MMDF */
++ /*
++  * If you are not using MMDF, check these definitions.
++  */
++ #define MAIL_DELIVERY	"/usr/lib/sendmail -i" /* "-i" works like "-oi" */
++ #define VERBOSE_ARG	"-v"    /* undef if none exists */
++ #define METOO_ARG	"-m"    /* man sendmail for more info. */
++ #define MTA_EXIT	0	/* exit status for successful mail delivery */
++ #endif /* MMDF */
++ 
++ /* If your mail transfer agent uses something *besides* "From " to separate
++  * adjacent messages in a folder, define MSG_SEPARATOR to be this string.
++  * If that string is 4 ^A's, then the string would be "\001\001\001\001".
++  * With the exception of MMDF, below, you should OMIT a trailing newline
++  * from the setting of MSG_SEPARATOR.
++  * If you don't know what any of this means, leave it alone.
++  */
++ /* #define MSG_SEPARATOR "From " /**/
++ #ifdef MMDF
++ /*
++  * These values should be identical (respectively) to the contents of
++  * delim1 and delim2 in MMDFSRC/conf/yoursite/conf.c (sans newline).
++  */
++ #define MSG_SEPARATOR	"\001\001\001\001\n"
++ #define END_MSG_SEP	"\001\001\001\001\n"
++ /*
++  * You only need to define LCKDFLDIR if you have MMDF configured to use the
++  * locking routines in lib/util/lk_lock.c (ie., link(2)-based locking).
++  * Most of you WILL NOT need this, since you probably use one of the more
++  * sophisticated locking modules provided with MMDF.  Remember to alter the
++  * Makefile so as to access the MMDF library at the link step.
++  */
++ /* #define LCKDFLDIR	"/usr/spool/mmdf/lockfiles" /* (for example) */
++ #else /* !MMDF */
++ #ifdef M_XENIX
++ #define DOT_LOCK	/* DOT_LOCK should be used for SCO Xenix */
++ #endif /* M_XENIX */
++ #endif /* MMDF */
++ 
++ #ifdef HOMEMAIL
++ #define MAILFILE	".mailbox"	/* or whatever */
++ #else /* HOMEMAIL */
++ #ifndef MAILDIR
++ #if defined(SYSV) && !defined(SVR4)
++ #define MAILDIR		"/usr/mail"
++ #else /* BSD || SVR4 */
++ #define MAILDIR		"/usr/spool/mail"
++ #endif /* SYSV && !SVR4 */
++ #endif /* MAILDIR */
++ #endif /* HOMEMAIL */
++ 
++ /* If your mailer does not understand commas between addresses, you should
++  * define NO_COMMAS.  This includes pre-3.0 smail and default MTAs used on
++  * xenix, and sys-v systems.
++  * This does NOT apply to MMDF or sendmail, in most cases.  SunOS 4.1 as
++  * shipped needs this, but note that if you are allowing mush to default
++  * to SUN_4_1 (see the end of this file) you won't get this.
++  */
++ #ifdef SUN_4_1		/* SunOS 4.1 has warped sendmail.cf */
++ #define NO_COMMAS /**/
++ #endif /* SUN_4_1 */
++ 
++ /*
++  * Most RFC822-compliant mailers (sendmail) will add the headers From:
++  * and Date: on outgoing mail.  If the user or UA sends these headers,
++  * such MTAs will generally use the headers as the user or UA set them.
++  * Mailers that are not RFC822-compliant sometimes fail to add these
++  * headers at all, so the UA must supply them.  Mush normally does so.
++  *
++  * However, there are certain MTAs which will insist on adding new From:
++  * and Date: headers.  These "picky mailers" may remove the user or UA 
++  * From: and Date: headers, or they may leave them but insert a leading
++  * '>', which makes the headers very ugly and redundant or contradictory.
++  * PICKY_MAILER prevents mush from adding From: or Date:, so the MTA can.
++  *
++  * Many RFC822-compliant mailers are "picky", including certain sendmail
++  * configurations.  It is advisable to set PICKY_MAILER *UNLESS* your MTA
++  * is known not to be RFC822 compiant (xenix, older sys-v) or can be
++  * counted on to pass through user-defined headers without modification.
++  */
++ /* #define PICKY_MAILER /**/
++ 
++ /* If your system supports the vprintf() functions, True for sys-v and
++  * later sun versions (3.0+ ?).  Typically not true for BSD systems, but
++  * that will probably change in the future.
++  */
++ #if defined(__linux__) || defined(SYSV) || defined(sun)
++ #define VPRINTF
++ #endif /* __linux__ || SYSV || sun */
++ 
++ /* If your system uses the getwd() system call (as opposed to getcwd()),
++  * and your system is not a BSD system (e.g. MIPS), define GETWD below.
++  */
++ /* #define GETWD	/**/
++ 
++ /* If your system has the BSD-style directory routines (opendir/readdir),
++  * define DIRECTORY.  This happens automatically in glob.h for BSD.
++  */
++ #if defined(SVR4) || defined(__linux__)
++ #define DIRECTORY
++ #endif /* SVR4 || __linux__ */
++ 
++ /* If your system has the POSIX "utimbuf" structure for utime(2),
++  * define POSIX_UTIME.  You may have to change <sys/utime.h> to <utime.h>
++  * in mush.h.
++  */
++ #if defined(__linux__) || (defined(SVR4) && !defined(sun))
++ #define POSIX_UTIME
++ #endif /* __linux__ || (SVR4 && !sun) */
++ 
++ /* The remainder of this file attempt to automatically supply some sanity.
++  * You shouldn't need to change this part unless your system is really odd.
++  */
++ 
++ #ifdef BSD
++ #    undef SYSV /* Sorry, can't do both BSD and SYSV */
++ #    undef SVR4
++ #    undef SVR3
++ #    undef SVR2
++ #endif /* BSD */
++ #if defined(SUNTOOL) || defined(SUN_3_5) || defined(SUN_4_0) || defined(SUN_4_1)
++ #if !defined(BSD) && !defined(SYSV)
++ #    define BSD /* default to BSD */
++ #endif /* !BSD && !SYSV */
++ #if !defined(SUN_3_5) && !defined(SUN_4_0)
++ #    ifndef SUN_4_1
++ #        define SUN_4_1 /* default to sun 4.1 */
++ #    endif /* SUN_4_1 */
++ #    define SUN_4_0 /* 4.0 stuff needed too */
++ #endif /* !SUN_3_5 && !SUN_4_0 */
++ #ifdef SUN_4_0
++ #    undef SUN_3_5
++ #    undef SIGRET
++ #    define SIGRET void
++ #endif /* SUN_4_0 */
++ #endif /* SUNTOOL || SUN_3_5 || SUN_4_0 || SUN_4_1 */
++ #ifdef SVR4
++ #    undef SVR3
++ #    undef SYSV
++ #    define SYSV
++ #else
++ #ifdef SYSV
++ #    undef SVR3
++ #    ifndef SVR2
++ #        define SVR3
++ #    endif /* SVR2 */
++ #endif /* SYSV */
++ #endif /* SVR4 */
++ #ifdef SVR3
++ #    undef SYSV
++ #    define SYSV
++ #endif /* SVR3 */
+diff -rc --new-file orig/mush-7.2.5/config.h-svr4 mush-7.2.5/config.h-svr4
+*** orig/mush-7.2.5/config.h-svr4	Thu Jan  1 01:00:00 1970
+--- mush-7.2.5/config.h-svr4	Sat Sep 11 20:36:53 1993
+***************
+*** 0 ****
+--- 1,176 ----
++ /* config.h 1.1	(c) copyright 1986 (Dan Heller) */
++ 
++ /* Default names and locations for files */
++ #define MAILRC		".mushrc"
++ #define ALTERNATE_RC	".mailrc"
++ #define DEFAULT_RC	"/usr/local/lib/Mushrc"
++ #define ALT_DEF_RC	"/usr/local/lib/Mail.rc"
++ #define SIGNATURE	".signature"
++ #define FORTUNE		"/usr/local/games/fortune"
++ #define COMMAND_HELP	"/usr/local/lib/cmd_help"
++ #ifdef SUNTOOL
++ #    define TOOL_HELP	"/usr/local/lib/tool_help"
++ #endif /* SUNTOOL */
++ #define ALTERNATE_HOME	"/tmp"       /* Path must be read/write to EVERYONE */
++ #define EDFILE  	".edXXXXXX"  /* file/pathname added to user's "home" */
++ 
++ #define LS_COMMAND	"ls"
++ #define LPR		"lp"
++ #define DEF_PRINTER	"lp"
++ /* If your lpr command understands only -P or -d (or some other flag) then
++  * define PRINTER_OPT to the appropriate value.  If you want to be able to
++  * use either one, don't define this at all.  The defaults (when neither
++  * -P nor -d is used on the mush "lpr" command line) are as noted here.
++  * If your lpr requires that the option and the printer name be separate
++  * arguments, include a trailing space in this definition.
++  */
++ #ifdef SYSV
++ #define PRINTER_OPT	"-d"
++ #endif /* SYSV */
++ #ifdef BSD
++ #define PRINTER_OPT	"-P"
++ #endif /* BSD */
++ 
++ /* default settings for some variable strings */
++ #define DEF_PROMPT	"%m/%t: "
++ #define DEF_PAGER	"internal" /* set to "internal" to use internal pager */
++ #define DEF_SHELL	"$SHELL"
++ #define DEF_EDITOR	"$EDITOR"
++ #define DEF_FOLDER	"~/Mail"        /* default Mail folder */
++ #define DEF_MBOX	"~/mbox"	/* default mbox */
++ #define DEF_INDENT_STR	"  "		/* indent included mail */
++ #define DEF_ESCAPE	"~"
++ #define DEF_HDR_FMT	"%16n %13d %-4l %34s" /* default hdr_format */
++ #define DEF_CURSES_HELP	\
++     "display save mail reply next-msg back-msg screen-next screen-back"
++ 
++ /* Headers that will NOT be included when forwarding mail */
++ #define IGNORE_ON_FWD	"status,priority,return-receipt-to"
++ 
++ #define	MAXMSGS	1000		/* Maximum number of messages we can read */
++ #define HDRSIZ	(2*BUFSIZ)	/* This should not be < BUFSIZ! */
++ 
++ /*
++  * Define INTERNAL_MALLOC and recompile if you have trouble with mush
++  * core-dumping due to malloc/free errors.  Also, if you run a System 5
++  * variant, you might notice a performance improvement if you define this
++  * variable.  It uses the malloc distributed by Larry Wall for perl v2.
++  */
++ /* #define INTERNAL_MALLOC /**/
++ 
++ /*
++  * Define TIMEZONE if your system has neither the SysV external variable
++  * tzname nor the BSD timezone() function.  The example below is for
++  * Gould BSD4.3 systems; others should define it as a string, e.g. "PST"
++  * If TIMEZONE is defined, DAYLITETZ can also be defined, e.g. "PDT"
++  *
++  * Define USA if you are using US/NorthAmerican time zone abbreviations.
++  * If USA is not defined, dates in outgoing mail will include timezones
++  * specified as offsets from GMT, e.g. Pacific Standard Time is -0800.
++  */
++ /* #define TIMEZONE T->tm_zone /**/
++ /* #define USA /**/
++ 
++ /* mail delivery system macros and defines... */
++ 
++ /*
++  * If you are using MMDF, define MMDF here.
++  */
++ /* #define MMDF /**/
++ #if defined(M_UNIX) && defined(M_XENIX)
++ #define MMDF
++ /* #define M_EXECMAIL	/* Define if you haven't fixed submit permissions */
++ #endif /* M_UNIX && M_XENIX */
++ #ifdef MMDF
++ /*
++  * If MMDF delivers mail the user's home directory, define HOMEMAIL.
++  * Also check the definition of the delivery file name MAILFILE, below.
++  */
++ /* #define HOMEMAIL /**/
++ #ifdef M_EXECMAIL
++ #define MAIL_DELIVERY	"/usr/lib/mail/execmail"
++ # define VERBOSE_ARG	"-v"
++ # define METOO_ARG	"-m"
++ #else /* M_EXECMAIL */
++ #define MAIL_DELIVERY	"exec /usr/mmdf/bin/submit -mlnr"
++ #define VERBOSE_ARG	"Ww"
++ #define MTA_EXIT	9	/* exit status for successful submit */
++ #endif /* M_EXECMAIL */
++ #else /* MMDF */
++ /*
++  * If you are not using MMDF, check these definitions.
++  */
++ #define MAIL_DELIVERY	"/usr/lib/sendmail -i" /* "-i" works like "-oi" */
++ #define VERBOSE_ARG	"-v"    /* undef if none exists */
++ #define METOO_ARG	"-m"    /* man sendmail for more info. */
++ #define MTA_EXIT	0	/* exit status for successful mail delivery */
++ #endif /* MMDF */
++ 
++ /* If your mail transfer agent uses something *besides* "From " to separate
++  * adjacent messages in a folder, define MSG_SEPARATOR to be this string.
++  * If that string is 4 ^A's, then the string would be "\001\001\001\001".
++  * With the exception of MMDF, below, you should OMIT a trailing newline
++  * from the setting of MSG_SEPARATOR.
++  * If you don't know what any of this means, leave it alone.
++  */
++ /* #define MSG_SEPARATOR "From " /**/
++ #ifdef MMDF
++ /*
++  * These values should be identical (respectively) to the contents of
++  * delim1 and delim2 in MMDFSRC/conf/yoursite/conf.c (sans newline).
++  */
++ #define MSG_SEPARATOR	"\001\001\001\001\n"
++ #define END_MSG_SEP	"\001\001\001\001\n"
++ /*
++  * You only need to define LCKDFLDIR if you have MMDF configured to use the
++  * locking routines in lib/util/lk_lock.c (ie., link(2)-based locking).
++  * Most of you WILL NOT need this, since you probably use one of the more
++  * sophisticated locking modules provided with MMDF.  Remember to alter the
++  * Makefile so as to access the MMDF library at the link step.
++  */
++ /* #define LCKDFLDIR	"/usr/spool/mmdf/lockfiles" /* (for example) */
++ #else /* !MMDF */
++ #ifdef M_XENIX
++ #define DOT_LOCK	/* DOT_LOCK should be used for SCO Xenix */
++ #endif /* M_XENIX */
++ #endif /* MMDF */
++ 
++ /* If your mailer does not understand commas between addresses, you should
++  * define NO_COMMAS.  This includes pre-3.0 smail and default MTAs used on
++  * xenix, and sys-v systems.
++  * This does NOT apply to MMDF or sendmail, in most cases.
++  */
++ /* #ifdef SUN_4_1		/* SunOS 4.1 has warped sendmail.cf */
++ #define NO_COMMAS /**/
++ /* #endif /* SUN_4_1 */
++ 
++ /*
++  * Most RFC822 compliant mailers (sendmail) will add the headers From:
++  * and Date: on outgoing mail.  If the user or UA sends these headers,
++  * most MTAs will not append them automatically.  However, there are
++  * certain MTAs which will not allow this -- these "picky mailers" will
++  * precede such headers with a '>' and make the headers very ugly and
++  * somewhat redundant or contradictory.  It is advisable to set this
++  * *UNLESS* your MTA is not RFC822 compiant -- therefore you should NOT
++  * set this (xenix, sys-v).
++  */
++ /* #define PICKY_MAILER /**/
++ 
++ /* If your system supports the vprintf() functions, True for sys-v and
++  * later sun versions (3.0+ ?).  Typically not true for BSD systems, but
++  * that will probably change in the future.
++  */
++ #if defined(SYSV) || defined(sun)
++ #define VPRINTF
++ #endif /* SYSV || sun */
++ 
++ /* If your system uses the getwd() system call (as opposed to getcwd()),
++  * and your system is not a BSD system (e.g. MIPS), define GETWD below.
++  */
++ /* #define GETWD	/**/
++ 
++ #ifdef HOMEMAIL
++ #define MAILFILE	"Mailbox"	/* or whatever */
++ #else /* HOMEMAIL */
++ #define MAILDIR		"/usr/spool/mail"
++ #endif /* HOMEMAIL */
+diff -rc --new-file orig/mush-7.2.5/curses.c mush-7.2.5/curses.c
+*** orig/mush-7.2.5/curses.c	Fri Oct 30 19:55:31 1992
+--- mush-7.2.5/curses.c	Sun Oct 17 15:22:30 1993
+***************
+*** 487,504 ****
+  
+  	/* order messages (sort) and redisplay the headers */
+  	when C_SORT : case C_REV_SORT :
+! 	    (void) strcpy(file, "sort");
+! 	    if (c == C_REV_SORT) {
+! 		print("Reverse "), turnon(glob_flags, CONT_PRNT);
+! 		(void) strcat(file, " -");
+! 	    }
+! 	    print(
+! 	"Order messages by [author, date, length, Status, subject, priority]: "
+! 		);
+! 	    if ((c = m_getchar()) == 'a' || c == 'd' || c == 'l' ||
+! 		    c == 'S' || c == 's' || c == 'R' || c == 'p') {
+  		print("reordering messages...");
+! 		(void) cmd_line(sprintf(buf, "%s %c", file, c), msg_list);
+  		print_more("done.");
+  		if (ison(glob_flags, CNTD_CMD))
+  		    putchar('\n'), puts(compose_hdr(current_msg));
+--- 487,501 ----
+  
+  	/* order messages (sort) and redisplay the headers */
+  	when C_SORT : case C_REV_SORT :
+! 	    print((c == C_SORT) ? "Order " : "Reverse order ");
+! 	    turnon(glob_flags, CONT_PRNT);
+! 	    print("by [author, date, length, Status, subject, priority, to]: ");
+! 	    n = m_getchar();
+! 	    if (index("adlSRspt",n)) {
+  		print("reordering messages...");
+! 		sprintf(buf,"sort %s%c%s",(c == C_SORT) ? "" : "r",n,
+! 		    (n == 'd' || n == 'l') ? "" : "d");
+! 		(void) cmd_line(buf, msg_list);
+  		print_more("done.");
+  		if (ison(glob_flags, CNTD_CMD))
+  		    putchar('\n'), puts(compose_hdr(current_msg));
+diff -rc --new-file orig/mush-7.2.5/folders.c mush-7.2.5/folders.c
+*** orig/mush-7.2.5/folders.c	Tue Mar 31 23:03:48 1992
+--- mush-7.2.5/folders.c	Wed Oct 27 17:14:57 1993
+***************
+*** 85,91 ****
+  	 */
+  	n = 0;
+  	if (*tmp != '/') {
+! 	    if (!GetCwd(buf, sizeof buf)) {
+  		error("getcwd: %s",buf);
+  		return -1;
+  	    }
+--- 85,92 ----
+  	 */
+  	n = 0;
+  	if (*tmp != '/') {
+! 	    buf[0] = '\0';
+! 	    if (GetCwd(buf, sizeof buf) == NULL) {
+  		error("getcwd: %s",buf);
+  		return -1;
+  	    }
+***************
+*** 132,137 ****
+--- 133,148 ----
+  	xfree(msg[msg_cnt].m_date_recv);
+  	xfree(msg[msg_cnt].m_date_sent);
+  	msg[msg_cnt].m_date_recv = msg[msg_cnt].m_date_sent = NO_STRING;
++ 	xfree(msg[msg_cnt].m_subject);
++ 	xfree(msg[msg_cnt].m_target);
++ 	xfree(msg[msg_cnt].m_source);
++ 	xfree(msg[msg_cnt].m_from);
++ 	xfree(msg[msg_cnt].m_name);
++ 	xfree(msg[msg_cnt].m_addr);
++ 	msg[msg_cnt].m_subject = NULL;
++ 	msg[msg_cnt].m_target = msg[msg_cnt].m_source = NULL;
++ 	msg[msg_cnt].m_from = msg[msg_cnt].m_name = msg[msg_cnt].m_addr = NULL;
++ 	msg[msg_cnt].m_author = 0;
+      }
+      msg_cnt = 0, msg[0].m_offset = 0L;
+      turnoff(glob_flags, CONT_PRNT);
+***************
+*** 677,683 ****
+  	if (fputs(from, fp) == EOF)
+  #endif /* MSG_SEPARATOR */
+  	    art_cnt = -1;
+! 	if (!(p = header_field(n, "from")))
+  	    p = "Mush-Undigest (Real author unknown)";
+  	if (fprintf(fp, "From: %s\n", p) == EOF)
+  	    art_cnt = -1;
+--- 688,694 ----
+  	if (fputs(from, fp) == EOF)
+  #endif /* MSG_SEPARATOR */
+  	    art_cnt = -1;
+! 	if (!(p = header_field(n, "source")))
+  	    p = "Mush-Undigest (Real author unknown)";
+  	if (fprintf(fp, "From: %s\n", p) == EOF)
+  	    art_cnt = -1;
+diff -rc --new-file orig/mush-7.2.5/hdrs.c mush-7.2.5/hdrs.c
+*** orig/mush-7.2.5/hdrs.c	Fri Oct 30 19:55:32 1992
+--- mush-7.2.5/hdrs.c	Wed Oct 27 17:27:46 1993
+***************
+*** 52,58 ****
+   * "buf" and return its address.
+   */
+  char *
+! header_field(n, str)
+  char *str;
+  {
+      static char    buf[HDRSIZ];
+--- 52,58 ----
+   * "buf" and return its address.
+   */
+  char *
+! real_header_field(n, str)
+  char *str;
+  {
+      static char    buf[HDRSIZ];
+***************
+*** 88,96 ****
+--- 88,231 ----
+      }
+      if (b > buf && *--b == ',')
+  	*b = 0;
++ 
+      return (*buf)? buf: NULL;
+  }
+  
++ /*
++  * To speed up sorting at the expense of some space we cache here
++  * the subject and the to/newsgroups and reply-to/from fields.
++  */
++ 
++ #define Strncpy(buf,p) (void)(strncpy(buf,p,sizeof(buf)),buf[sizeof(buf)-1]=0)
++ 
++ unsigned
++ author_of(n, from, name, addr, isauthor, show_to, to)
++ char from[HDRSIZ], name[HDRSIZ], addr[HDRSIZ], to[HDRSIZ];
++ unsigned *isauthor;
++ {
++     register char *p, *p2;
++ 
++     from[0] = name[0] = addr[0] = '\0';
++ 
++     /* who's the message from */
++ 
++     if ((p = reply_to(n, 0, from))) {
++ 	/* NOTE:  this fails if the sender has '<' or '!' in
++ 	 * the RFC822 comment fields -- leading "comment"
++ 	 * or trailing (comment) -- but that isn't critical
++ 	 */
++ 	if ((p2 = rindex(p, '!')) || (p2 = index(p, '<')))
++ 	    p = p2 + 1;
++     } else
++ 	p = strcpy(from, "unknown"); /* just in case */
++ 
++     /* If the From field contains the user's login name, then the message
++      * could be from the user -- attempt to give more useful information
++      * by telling to whom the message was sent.  This is not possible if
++      * the "to" header failed to get info (which is probably impossible).
++      * Use take_me_off() to be sure the message really is from the current
++      * user and not just someone with the same login at another site.
++      */
++     if (show_to /* && !strncmp(p, login, strlen(login)) */)
++ 	(void) take_me_off(from);
++     if (show_to && (*isauthor = !*from) && to) {  /* assign and test */
++ 	(void) get_name_n_addr(to, name+4, addr+4);
++ 	if (addr[4])
++ 	    (void) strncpy(addr, "TO: ", 4);
++ 	if (name[4]) {  /* check to see if a name got added */
++ 	    (void) strncpy(name, "TO: ", 4);
++ 	    Strncpy(from, name);
++ 	} else
++ 	    Strncpy(from, addr);
++     } else
++ 	(void) get_name_n_addr(from, name, addr);
++ 
++     if (from[0] && msg[n].m_from == NULL)	msg[n].m_from = savestr(from);
++     if (addr[0] && msg[n].m_addr == NULL)	msg[n].m_addr = savestr(addr);
++     if (name[0] && msg[n].m_name == NULL)	msg[n].m_name = savestr(name);
++ 
++     msg[n].m_author = 1;
++ 
++     return (from[0] || addr[0] || name[0]);
++ }
++ 
++ char *
++ author_to(n, str)
++ char *str;
++ {
++     register char *p;
++ 
++     if (!msg[n].m_author) {
++ 	char from[HDRSIZ], name[HDRSIZ], addr[HDRSIZ];
++ 	author_of(n,from,name,addr,(unsigned *) 0,0,(char *) 0);
++     }
++ 
++     if ((p = msg[n].m_addr) != NULL) {
++ 	Debug("author_to: msg %d: cached addr %s\n", n, p);
++ 	strcpy(str,p);
++ 	return str;
++     }
++ 
++     if ((p = msg[n].m_name) != NULL) {
++ 	Debug("author_to: msg %d: cached name %s\n", n, p);
++ 	strcpy(str,p);
++ 	return str;
++     }
++ 
++     if ((p = msg[n].m_from) != NULL) {
++ 	Debug("author_to: msg %d: cached from %s\n", n, p);
++ 	strcpy(str,p);
++ 	return str;
++     }
++ 
++     return NULL;
++ }
++ 
++ char *
++ header_field(n, str)
++ char *str;
++ {
++     register char *p,*q;
++ 
++ #if 0 /* not used anywhere */
++     if (!strcmp(str,"author")) {
++ 	(p = author_to(n,str));
++       	if (p == NULL) return NULL;
++     }
++     else
++ #endif
++     if (!strcmp(str,"subject")) {
++ 	(p = q = msg[n].m_subject)
++ 	    || (p = real_header_field(n,"subject"));
++ 	if (p == NULL) return NULL;
++ 	if (q == NULL) msg[n].m_subject = savestr(p);
++     }
++     else if (!strcmp(str,"source")) {
++ 	(p = q = msg[n].m_source)
++ 	    || (p = real_header_field(n,"from"))
++ 	    || (p = real_header_field(n,"reply-to"))
++ 	    || (p = real_header_field(n,"sender"))
++ 	    || (p = real_header_field(n,"apparently-from"))
++ 	    || (p = real_header_field(n,"resent-from"));
++ 	if (p == NULL) return NULL;
++ 	if (q == NULL) msg[n].m_source = savestr(p);
++     }
++     else if (!strcmp(str,"target")) {
++ 	(p = q = msg[n].m_target)
++ 	    || (p = real_header_field(n,"to"))
++ 	    || (p = real_header_field(n,"newsgroups"))
++ 	    || (p = real_header_field(n,"resent-to"))
++ 	    || (p = real_header_field(n,"apparently-to"));
++ 	if (p == NULL) return NULL;
++ 	if (q == NULL) msg[n].m_target = savestr(p);
++     }
++     else
++ 	p = real_header_field(n,str);
++ 
++     return p;
++ }
++ 
+  do_hdrs(argc, argv, list)
+  register char **argv, list[];
+  {
+***************
+*** 333,340 ****
+      return 0;
+  }
+  
+- #define Strncpy(buf,p) (void)(strncpy(buf,p,sizeof(buf)),buf[sizeof(buf)-1]=0)
+- 
+  /*
+   * format a header from the information about a message (from, to, date,
+   * subject, etc..).  The header for message number "cnt" is built and is
+--- 468,473 ----
+***************
+*** 389,430 ****
+      user[0] = name[0] = Day[0] = Mon[0] = Tm[0] = Yr[0] = Wkday[0] = 0;
+  
+      /* who's the message to */
+!     if ((p = header_field(cnt, "resent-to")) ||
+! 	(p = header_field(cnt, "to")) ||
+! 	(p = header_field(cnt, "apparently-to")))
+  	Strncpy(to, p);
+  
+!     /* who's the message from */
+!     if ((p = header_field(cnt, "from")) && strcpy(from, p)
+! 	    || (p = reply_to(cnt, 0, from))) {
+! 	/* NOTE:  this fails if the sender has '<' or '!' in
+! 	 * the RFC822 comment fields -- leading "comment"
+! 	 * or trailing (comment) -- but that isn't critical
+! 	 */
+! 	if ((p2 = rindex(p, '!')) || (p2 = index(p, '<')))
+! 	    p = p2 + 1;
+!     } else
+! 	p = strcpy(from, "unknown"); /* just in case */
+!     /* If the From field contains the user's login name, then the message
+!      * could be from the user -- attempt to give more useful information
+!      * by telling to whom the message was sent.  This is not possible if
+!      * the "to" header failed to get info (which is probably impossible).
+!      * Use take_me_off() to be sure the message really is from the current
+!      * user and not just someone with the same login at another site.
+!      */
+!     if (show_to && !strncmp(p, login, strlen(login)))
+! 	(void) take_me_off(from);
+!     if (show_to && (isauthor = !*from)) {  /* assign and test */
+! 	(void) get_name_n_addr(to, name+4, addr+4);
+! 	if (addr[4])
+! 	    (void) strncpy(addr, "TO: ", 4);
+! 	if (name[4]) {  /* check to see if a name got added */
+! 	    (void) strncpy(name, "TO: ", 4);
+! 	    Strncpy(from, name);
+! 	} else
+! 	    Strncpy(from, addr);
+!     } else
+! 	(void) get_name_n_addr(from, name, addr);
+  
+      if (ison(glob_flags, DATE_RECV))
+  	date_p = msg[cnt].m_date_recv;
+--- 522,531 ----
+      user[0] = name[0] = Day[0] = Mon[0] = Tm[0] = Yr[0] = Wkday[0] = 0;
+  
+      /* who's the message to */
+!     if ((p = header_field(cnt, "target")))
+  	Strncpy(to, p);
+  
+!     author_of(cnt, from, name, addr, &isauthor, show_to, to);
+  
+      if (ison(glob_flags, DATE_RECV))
+  	date_p = msg[cnt].m_date_recv;
+***************
+*** 518,524 ****
+  		when 's': p2 = subject;
+  		when 'l': p2 = sprintf(lines, "%d", msg[cnt].m_lines);
+  		when 'c': p2 = sprintf(lines, "%ld", msg[cnt].m_size);
+! 		when 'i': (p2 = header_field(cnt, "message-id")) || (p2 = "");
+  		/* date formatting chars */
+  		when 'd': p2 = date; /* the full date */
+  		when 'T': p2 = Tm;
+--- 619,625 ----
+  		when 's': p2 = subject;
+  		when 'l': p2 = sprintf(lines, "%d", msg[cnt].m_lines);
+  		when 'c': p2 = sprintf(lines, "%ld", msg[cnt].m_size);
+! 		when 'i': (p2 = real_header_field(cnt, "message-id")) || (p2 = "");
+  		/* date formatting chars */
+  		when 'd': p2 = date; /* the full date */
+  		when 'T': p2 = Tm;
+***************
+*** 643,651 ****
+  	if (!p)
+  	    print("Warning: message contains no `reply_to_hdr' headers.\n");
+      }
+!     if (p || (!p && ((p = header_field(n, field = "reply-to")) ||
+! 		    (p = header_field(n, field = "from")) ||
+! 		    (p = header_field(n, field = "return-path"))))) {
+  	skipspaces(0);
+      } else if (!p) {
+  DoFrom:
+--- 744,752 ----
+  	if (!p)
+  	    print("Warning: message contains no `reply_to_hdr' headers.\n");
+      }
+!     if (p || (!p && ((p = real_header_field(n, field = "reply-to")) ||
+! 		    (p = real_header_field(n, field = "from")) ||
+! 		    (p = real_header_field(n, field = "return-path"))))) {
+  	skipspaces(0);
+      } else if (!p) {
+  DoFrom:
+***************
+*** 694,706 ****
+  	 */
+  BrokenFrom:
+  	if (!lcase_strncmp(field, "from_", -1) &&
+! 		(p = header_field(n, "resent-from")) ||
+! 		    (p = header_field(n, "from")) ||
+! 		    (p = header_field(n, "sender"))) {
+  	    /* p2 is either NULL or addr (BrokenFrom) */
+  	    (void) get_name_n_addr(p, name, p2);
+  	}
+! 	if (!name[0] && (p = header_field(n, "name")))
+  	    (void) strcpy(name, p);
+  	if (name[0]) {
+  	    if ((p = any(name, "(<,\"")) && (*p == ',' || *p == '<'))
+--- 795,807 ----
+  	 */
+  BrokenFrom:
+  	if (!lcase_strncmp(field, "from_", -1) &&
+! 		(p = real_header_field(n, "resent-from")) ||
+! 		    (p = real_header_field(n, "from")) ||
+! 		    (p = real_header_field(n, "sender"))) {
+  	    /* p2 is either NULL or addr (BrokenFrom) */
+  	    (void) get_name_n_addr(p, name, p2);
+  	}
+! 	if (!name[0] && (p = real_header_field(n, "name")))
+  	    (void) strcpy(name, p);
+  	if (name[0]) {
+  	    if ((p = any(name, "(<,\"")) && (*p == ',' || *p == '<'))
+***************
+*** 726,751 ****
+  	 * The assumption that HDRSIZ is correct is unwise, but I know it
+  	 * to be true for Mush.  Be forewarned if you call this routine.
+  	 */
+! 	if (lim > 0 && (p = header_field(n, "resent-to")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    b += Strcpy(b, p);
+  	    lim = HDRSIZ - (b - buf) - 2;
+  	}
+! 	if (lim > 0 && (p = header_field(n, "to")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    b += Strcpy(b, p);
+  	    lim = HDRSIZ - (b - buf) - 2;
+  	}
+! 	if (lim > 0 && (p = header_field(n, "apparently-to")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    b += Strcpy(b, p);
+  	    lim = HDRSIZ - (b - buf) - 2;
+  	}
+  	/* Also append the Resent-From address if there is one. */
+! 	if (lim > 0 && (p = header_field(n, "resent-from")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    (void) strcpy(b, p);
+--- 827,852 ----
+  	 * The assumption that HDRSIZ is correct is unwise, but I know it
+  	 * to be true for Mush.  Be forewarned if you call this routine.
+  	 */
+! 	if (lim > 0 && (p = real_header_field(n, "resent-to")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    b += Strcpy(b, p);
+  	    lim = HDRSIZ - (b - buf) - 2;
+  	}
+! 	if (lim > 0 && (p = real_header_field(n, "to")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    b += Strcpy(b, p);
+  	    lim = HDRSIZ - (b - buf) - 2;
+  	}
+! 	if (lim > 0 && (p = real_header_field(n, "apparently-to")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    b += Strcpy(b, p);
+  	    lim = HDRSIZ - (b - buf) - 2;
+  	}
+  	/* Also append the Resent-From address if there is one. */
+! 	if (lim > 0 && (p = real_header_field(n, "resent-from")) && *p) {
+  	    *b++ = ',', *b++ = ' ';
+  	    p[lim] = '\0'; /* prevent overflow */
+  	    (void) strcpy(b, p);
+***************
+*** 780,786 ****
+  {
+      register char *p;
+      buf[0] = 0; /* make sure it's already null terminated */
+!     if (!(p = header_field(n, "subject")))
+  	return NULL;
+      if (lcase_strncmp(p, "Re:", 3))
+  	(void) strcpy(buf, "Re: ");
+--- 881,887 ----
+  {
+      register char *p;
+      buf[0] = 0; /* make sure it's already null terminated */
+!     if (!(p = header_field(n,"subject")))
+  	return NULL;
+      if (lcase_strncmp(p, "Re:", 3))
+  	(void) strcpy(buf, "Re: ");
+***************
+*** 793,799 ****
+  {
+      register char *p;
+      buf[0] = 0; /* make sure it's already null terminated */
+!     if (!(p = header_field(n, "cc")))
+  	return NULL;
+      fix_up_addr(p);
+      if (!do_set(set_options, "metoo"))
+--- 894,900 ----
+  {
+      register char *p;
+      buf[0] = 0; /* make sure it's already null terminated */
+!     if (!(p = real_header_field(n, "cc")))
+  	return NULL;
+      fix_up_addr(p);
+      if (!do_set(set_options, "metoo"))
+diff -rc --new-file orig/mush-7.2.5/init.c mush-7.2.5/init.c
+*** orig/mush-7.2.5/init.c	Fri Oct 30 19:55:33 1992
+--- mush-7.2.5/init.c	Mon Sep 13 10:56:28 1993
+***************
+*** 19,25 ****
+--- 19,27 ----
+      extern char		*getlogin();
+      char		buf[MAXPATHLEN];
+  #if defined(SYSV) && !defined(HPUX) && !defined(IRIX4)
++ #ifndef __linux__
+      extern struct passwd *getpwuid();  /* sys-v forgot this in pwd.h! */
++ #endif
+      struct utsname ourhost;
+  #else
+      char ourhost[128];
+diff -rc --new-file orig/mush-7.2.5/lock.c mush-7.2.5/lock.c
+*** orig/mush-7.2.5/lock.c	Fri Oct 30 19:55:34 1992
+--- mush-7.2.5/lock.c	Fri Oct 15 12:54:32 1993
+***************
+*** 14,19 ****
+--- 14,25 ----
+  #include <sys/locking.h>
+  #endif /* SYSV && !USG */
+  
++ #ifdef __linux__
++ #undef USG
++ #undef SYSV
++ #define BSD
++ #endif
++ 
+  #ifdef DOT_LOCK
+  
+  #ifndef DOLOCK_PATH
+***************
+*** 253,258 ****
+--- 259,265 ----
+  /*
+   * Define some BSD names for the SYSV world
+   */
++ #if !defined(LOCK_SH) && !defined(__linux__)
+  #ifdef USG
+  #define LOCK_SH F_RDLCK
+  #define LOCK_EX F_WRLCK
+***************
+*** 263,268 ****
+--- 270,276 ----
+  #define LOCK_UN LK_UNLCK
+  #endif /* USG */
+  #define LOCK_NB 0	/* Always non-blocking in this case */
++ #endif /* !LOCK_SH && !__linux__ */
+  
+  #ifdef EWOULDBLOCK
+  #undef EWOULDBLOCK
+diff -rc --new-file orig/mush-7.2.5/mail.c mush-7.2.5/mail.c
+*** orig/mush-7.2.5/mail.c	Fri Oct 30 19:55:36 1992
+--- mush-7.2.5/mail.c	Wed Oct 27 18:10:47 1993
+***************
+*** 1076,1089 ****
+  
+  	tmpf = ed_fp;
+  	msg[msg_cnt].m_offset = 0L;
+! 	if (p = header_field(msg_cnt, "to")) {
+  	    (void) strcpy(To, p);
+  	    Cc[0] = Bcc[0] = 0;
+! 	    if (p = header_field(msg_cnt, "cc"))
+  		(void) strcpy(Cc, p);
+! 	    if (p = header_field(msg_cnt, "bcc"))
+  		(void) strcpy(Bcc, p);
+! 	    if (p = header_field(msg_cnt, "fcc"))
+  		next_file += find_files(p, names+next_file, size-next_file, 1);
+  	} else
+  	    *To = 0; /* Error caught below */
+--- 1076,1089 ----
+  
+  	tmpf = ed_fp;
+  	msg[msg_cnt].m_offset = 0L;
+! 	if (p = real_header_field(msg_cnt, "to")) {
+  	    (void) strcpy(To, p);
+  	    Cc[0] = Bcc[0] = 0;
+! 	    if (p = real_header_field(msg_cnt, "cc"))
+  		(void) strcpy(Cc, p);
+! 	    if (p = real_header_field(msg_cnt, "bcc"))
+  		(void) strcpy(Bcc, p);
+! 	    if (p = real_header_field(msg_cnt, "fcc"))
+  		next_file += find_files(p, names+next_file, size-next_file, 1);
+  	} else
+  	    *To = 0; /* Error caught below */
+diff -rc --new-file orig/mush-7.2.5/main.c mush-7.2.5/main.c
+*** orig/mush-7.2.5/main.c	Fri Oct 30 19:55:37 1992
+--- mush-7.2.5/main.c	Mon Sep 13 11:44:19 1993
+***************
+*** 333,338 ****
+--- 333,339 ----
+  {
+      char cwd[MAXPATHLEN];
+  
++     cwd[0] = '\0';
+      if (GetCwd(cwd, MAXPATHLEN) == NULL) {
+  	error("set_cwd: %s", cwd);
+  	(void) un_set(&set_options, "cwd");
+diff -rc --new-file orig/mush-7.2.5/makefile.linux mush-7.2.5/makefile.linux
+*** orig/mush-7.2.5/makefile.linux	Thu Jan  1 01:00:00 1970
+--- mush-7.2.5/makefile.linux	Sun Oct 17 18:34:50 1993
+***************
+*** 0 ****
+--- 1,70 ----
++ # makefile.linux	(c) copyright 1991	(Dan Heller)
++ #
++ HDRS= mush.h config.h-dist strings.h bindings.h options.h version.h glob.h pop.h
++ 
++ SRCS= main.c init.c misc.c mail.c hdrs.c execute.c commands.c print.c dates.c \
++       signals.c setopts.c msgs.c pick.c sort.c expr.c folders.c \
++       loop.c viewopts.c curses.c curs_io.c bind.c file.c strings.c \
++       lock.c macros.c options.c addrs.c malloc.c glob.c command2.c \
++       pop.c pmush.c xcreat.c
++ OBJS= main.o init.o misc.o mail.o hdrs.o execute.o commands.o print.o file.o \
++       signals.o setopts.o msgs.o pick.o sort.o expr.o strings.o \
++       folders.o dates.o loop.o viewopts.o curses.o curs_io.o bind.o \
++       lock.o macros.o options.o addrs.o malloc.o glob.o command2.o \
++       pop.o pmush.o xcreat.o
++ 
++ HELP_FILES= README README-7.0 README-7.1 README-7.2.0 README-7.2.2 \
++ 	README-7.2.4 mush.1 cmd_help Mushrc Mailrc Gnurc \
++ 	sample.mushrc advanced.mushrc digestify
++ 
++ MAKES= makefile.bsd makefile.xenix makefile.sys.v makefile.hpux makefile.sun
++ 
++ # See the README for changes needed to compile under Ultrix.
++ # In particular, you may need -DSIGRET=void and/or -ltermcap.
++ CFLAGS= -g -fwritable-strings -DSYSV -DUSG -DCURSES -DSIGRET=void
++ LDFLAGS= -g -static
++ LINTFLAGS= -bxah -Dlint -DCURSES -DBSD -D_BSD_SOURCE
++ LIBS= -lcurses -ltermcap
++ OTHERLIBS=
++ # Use some variant of this one if you #define MMDF in config.h
++ #OTHERLIBS=/usr/src/mmdf/lib/libmmdf.a
++ 
++ mush: $(OBJS)
++ 	@echo loading...
++ 	@cc $(LDFLAGS) $(OBJS) $(LIBS) $(OTHERLIBS) -o mush
++ 
++ $(OBJS): config.h mush.h
++ loop.o: version.h
++ 
++ tape:
++ 	@tar cv $(MAKES) $(HDRS) $(SRCS) $(HELP_FILES)
++ 
++ tar:
++ 	@tar fcv MUSH $(MAKES) $(HDRS) $(SRCS) $(HELP_FILES)
++ 
++ tarmail:
++ 	tar fcv - $(MAKES) $(HDRS) $(SRCS) $(HELP_FILES) | \
++ 	compress | btoa > mush.tarmail
++ 
++ lint:
++ 	lint $(LINTFLAGS) $(SRCS)
++ 
++ clean:
++ 	rm -f *.o core mush
++ 
++ BINDIR= /usr/bin
++ LIBDIR= /usr/lib
++ MRCDIR= /usr/lib
++ MANDIR= /usr/man/man1
++ MANEXT= 1
++ 
++ install: mush
++ 	mv mush $(BINDIR)
++ 	strip $(BINDIR)/mush
++ 	chmod 0755 $(BINDIR)/mush
++ 	cp mush.1 $(MANDIR)/mush.$(MANEXT)
++ 	chmod 0644 $(MANDIR)/mush.$(MANEXT)
++ 	cp cmd_help $(LIBDIR)
++ 	chmod 0644 $(LIBDIR)/cmd_help
++ 	cp Mushrc $(MRCDIR)/Mushrc
++ 	chmod 0644 $(MRCDIR)/Mushrc
+diff -rc --new-file orig/mush-7.2.5/makefile.svr4 mush-7.2.5/makefile.svr4
+*** orig/mush-7.2.5/makefile.svr4	Thu Jan  1 01:00:00 1970
+--- mush-7.2.5/makefile.svr4	Sat Sep 11 20:36:54 1993
+***************
+*** 0 ****
+--- 1,62 ----
++ # Mush makefile for system V.4.  Note: SIGRET should return void for normal
++ # sys-v, but Att PC users should *not* have it defined.  See the README!!
++ #
++ HDRS1= mush.h config.h
++ HDRS2= strings.h options.h
++ HDRS3= bindings.h glob.h
++ HDRS4= version.h
++ SRCS1= commands.c dates.c execute.c expr.c folders.c \
++ 	hdrs.c init.c loop.c mail.c main.c misc.c msgs.c pick.c \
++ 	print.c setopts.c signals.c sort.c viewopts.c options.c lock.c
++ SRCS2= bind.c curs_io.c curses.c file.c strings.c macros.c \
++ 	addrs.c malloc.c glob.c command2.c
++ 
++ OBJS1= commands.o dates.o execute.o expr.o folders.o \
++ 	hdrs.o init.o loop.o mail.o main.o misc.o msgs.o pick.o \
++ 	print.o setopts.o signals.o sort.o viewopts.o options.o lock.o
++ OBJS2= bind.o curs_io.o curses.o file.o strings.o macros.o \
++ 	addrs.o malloc.o glob.o command2.o
++ 
++ HELP= README README-7.0 README-7.1 README-7.2.0 README-7.2.2 mush.1 \
++ 	cmd_help Mushrc Mailrc Gnurc sample.mushrc advanced.mushrc digestify
++ 
++ # Sun OS systems who wish to compile with sys-v options:
++ # CC= /usr/5bin/cc
++ # CFLAGS= 	-O -DSYSV -DCURSES -DUSG -DDIRECTORY
++ # LIBS= -L/usr/5lib -lcurses
++ 
++ # IRIX 3.2 systems (SGI Iris workstations) should add -DDIRECTORY to CFLAGS
++ # SCO UNIX 3.2 should add -DDIRECTORY -DSELECT and should avoid library -lx
++ 
++ CFLAGS= 	-O -DSYSV -DUSG -DDIRECTORY -DSELECT -DCURSES -DREGCMP -DSIGRET=void
++ LDFLAGS=
++ LIBS= 		-lcurses -lsocket -lnsl -lgen $$LDPATH -lmalloc
++ OTHERLIBS=
++ # Use some variant of this one if you #define MMDF in config.h
++ #OTHERLIBS=/usr/src/mmdf/lib/libmmdf.a
++ PROG=		mush
++ 
++ $(PROG): $(OBJS1) $(OBJS2)
++ 	@echo loading...
++ 	@$(CC) $(LDFLAGS) $(OBJS1) $(OBJS2) -o $(PROG) $(LIBS) $(OTHERLIBS)
++ 
++ $(OBJS1): $(HDRS1) $(HDRS2)
++ $(OBJS2): $(HDRS1) $(HDRS2) $(HDRS3)
++ loop.o: version.h
++ 
++ BINDIR= /usr/local/bin
++ LIBDIR= /usr/local/lib
++ MRCDIR= /usr/local/lib
++ MANDIR= /usr/local/man/man1
++ MANEXT= 1
++ 
++ install: mush
++ 	cp mush $(BINDIR)
++ 	strip $(BINDIR)/mush
++ 	chmod 0755 $(BINDIR)/mush
++ 	cp mush.1 $(MANDIR)/mush.$(MANEXT)
++ 	chmod 0644 $(MANDIR)/mush.$(MANEXT)
++ 	cp cmd_help $(LIBDIR)
++ 	chmod 0644 $(LIBDIR)/cmd_help
++ 	cp Mushrc $(MRCDIR)/Mushrc
++ 	chmod 0644 $(MRCDIR)/Mushrc
+diff -rc --new-file orig/mush-7.2.5/msgs.c mush-7.2.5/msgs.c
+*** orig/mush-7.2.5/msgs.c	Fri Oct 30 19:55:39 1992
+--- mush-7.2.5/msgs.c	Fri Oct 15 12:43:53 1993
+***************
+*** 171,177 ****
+  	}
+  
+  	if (ison(flags, UPDATE_STATUS))
+! 	    if (!strncmp(line, "Status:", 7) || !strncmp(line, "Priority:", 9))
+  		continue; /* ignore "Status" and "Priority" lines */
+  	    else if (!on_hdr) {
+  		int i, write_priority = 0;
+--- 171,177 ----
+  	}
+  
+  	if (ison(flags, UPDATE_STATUS))
+! 	    if (!lcase_strncmp(line, "Status:", 7) || !lcase_strncmp(line, "Priority:", 9))
+  		continue; /* ignore "Status" and "Priority" lines */
+  	    else if (!on_hdr) {
+  		int i, write_priority = 0;
+***************
+*** 516,522 ****
+--- 516,524 ----
+  	struct utimbuf times[1];
+  	(void) fflush(mail_fp); /* just in case */
+  	times[0].modtime = time(&times[0].actime) - 2;
++ #ifndef __linux__
+  	times[0].ausec = times[0].modusec = 0;
++ #endif /* !__linux__ */
+  #else /* !POSIX_UTIME */
+  	long times[2];
+  	(void) fflush(mail_fp); /* just in case */
+***************
+*** 744,757 ****
+  
+      path[0] = '\0';
+      while (fgets(buf, sizeof buf, fp)) {
+! 	if (strncmp(buf, ">From ", 6))
+  	    break;
+  	p = buf + 6;
+  
+  	(void) sscanf(p, "%s", user);
+  
+  	while (p = index(p+1, 'r')) {
+! 	    if (!strncmp(p, "remote from ", 12)) {
+  		char *p2 = path+strlen(path);
+  		skipspaces(12);
+  		(void) sscanf(p, "%s", p2); /* add the new machine to current path */
+--- 746,759 ----
+  
+      path[0] = '\0';
+      while (fgets(buf, sizeof buf, fp)) {
+! 	if (lcase_strncmp(buf, ">From ", 6))
+  	    break;
+  	p = buf + 6;
+  
+  	(void) sscanf(p, "%s", user);
+  
+  	while (p = index(p+1, 'r')) {
+! 	    if (!lcase_strncmp(p, "remote from ", 12)) {
+  		char *p2 = path+strlen(path);
+  		skipspaces(12);
+  		(void) sscanf(p, "%s", p2); /* add the new machine to current path */
+***************
+*** 922,935 ****
+  			    strdup(msg[cnt].m_date_recv, p);
+  		    } else
+  #endif /* MMDF */
+! 		    if (!strncmp(buf, "Date:", 5))
+  			strdup(msg[cnt].m_date_sent, parse_date(p+5));
+  		    else if (!msg[cnt].m_date_sent &&
+! 			    !strncmp(buf, "Resent-Date:", 12))
+  			msg[cnt].m_date_sent = savestr(parse_date(p+12));
+! 		    else if (!strncmp(buf, "Content-Type:", 13))
+  			turnon(msg[cnt].m_flags, METAMAIL);
+! 		    else if (!strncmp(buf, "Priority:", 9)) {
+  			for (p += 9 ; *p != '\n'; p++) {
+  			    if (!isalpha(*p) || upper(*p) > 'A' + MAX_PRIORITY)
+  				continue;
+--- 924,937 ----
+  			    strdup(msg[cnt].m_date_recv, p);
+  		    } else
+  #endif /* MMDF */
+! 		    if (!lcase_strncmp(buf, "Date:", 5))
+  			strdup(msg[cnt].m_date_sent, parse_date(p+5));
+  		    else if (!msg[cnt].m_date_sent &&
+! 			    !lcase_strncmp(buf, "Resent-Date:", 12))
+  			msg[cnt].m_date_sent = savestr(parse_date(p+12));
+! 		    else if (!lcase_strncmp(buf, "Content-Type:", 13))
+  			turnon(msg[cnt].m_flags, METAMAIL);
+! 		    else if (!lcase_strncmp(buf, "Priority:", 9)) {
+  			for (p += 9 ; *p != '\n'; p++) {
+  			    if (!isalpha(*p) || upper(*p) > 'A' + MAX_PRIORITY)
+  				continue;
+***************
+*** 937,943 ****
+  				M_PRIORITY(upper(*p) - 'A' + 1));
+  			}
+  		    } else if (get_status &&
+! 			    !(get_status = strncmp(p, "Status:", 7))) {
+  			/* new mail should not have a Status: field! */
+  			turnon(msg[cnt].m_flags, OLD);
+  			for (p += 7 ; *p != '\n'; p++) {
+--- 939,945 ----
+  				M_PRIORITY(upper(*p) - 'A' + 1));
+  			}
+  		    } else if (get_status &&
+! 			    !(get_status = lcase_strncmp(p, "Status:", 7))) {
+  			/* new mail should not have a Status: field! */
+  			turnon(msg[cnt].m_flags, OLD);
+  			for (p += 7 ; *p != '\n'; p++) {
+diff -rc --new-file orig/mush-7.2.5/mush.1 mush-7.2.5/mush.1
+*** orig/mush-7.2.5/mush.1	Fri Oct 30 19:55:03 1992
+--- mush-7.2.5/mush.1	Wed Oct 27 18:07:40 1993
+***************
+*** 3249,3255 ****
+  .B home
+  variable descriptions for more information.
+  .TP
+! .BR sort " [\-i] [[\-r] \-a | \-d | \-l | \-p | \-R | \-s | \-S]"
+  This command sorts messages according to author, date, status or subject
+  (with or without considering the \*QRe:\ \*U, in replied messages).
+  In addition, the messages can be sorted in reverse order (same arguments).
+--- 3249,3255 ----
+  .B home
+  variable descriptions for more information.
+  .TP
+! .BR sort " [\-i] [[\-r] \-a \-t | \-d | \-l | \-p | \-R | \-s | \-S]"
+  This command sorts messages according to author, date, status or subject
+  (with or without considering the \*QRe:\ \*U, in replied messages).
+  In addition, the messages can be sorted in reverse order (same arguments).
+***************
+*** 3261,3266 ****
+--- 3261,3267 ----
+  \-i	ignore case in alphabetical sorts
+  \-r	reverse sort order of next option
+  \-a	sort by author (alphabetical)
++ \-t	sort by target (alphabetical)
+  \-d	sort by date
+  \-l	sort by length of message
+  \-p	sort by message priority
+diff -rc --new-file orig/mush-7.2.5/mush.h mush-7.2.5/mush.h
+*** orig/mush-7.2.5/mush.h	Fri Oct 30 19:55:40 1992
+--- mush-7.2.5/mush.h	Wed Oct 27 17:55:45 1993
+***************
+*** 2,7 ****
+--- 2,11 ----
+  
+  #include "config.h"
+  
++ #if __STDC__
++ # include <unistd.h>
++ #endif
++ 
+  #ifdef CURSES
+  
+  #ifdef USG
+***************
+*** 31,37 ****
+  #else /* CURSES */
+  #include <stdio.h>
+  #if defined(SYSV) && defined(USG) || defined(AIX)
+! #include <termio.h>
+  #endif /* SYSV && USG */
+  #endif /* CURSES */
+  
+--- 35,45 ----
+  #else /* CURSES */
+  #include <stdio.h>
+  #if defined(SYSV) && defined(USG) || defined(AIX)
+! # ifdef __linux__
+! #   include <termios.h>
+! # else
+! #   include <termio.h>
+! # endif
+  #endif /* SYSV && USG */
+  #endif /* CURSES */
+  
+***************
+*** 87,97 ****
+  #	    include <sys/select.h>
+  #	endif /* M_UNIX */
+  #	include <fcntl.h>
+  #    endif /* SYSV */
+  #endif /* SUNTOOL */
+  
+  #ifdef POSIX_UTIME
+! #include <sys/utime.h>
+  #endif /* POSIX_UTIME */
+  #include <sys/stat.h>
+  #include <sys/file.h>
+--- 95,112 ----
+  #	    include <sys/select.h>
+  #	endif /* M_UNIX */
+  #	include <fcntl.h>
++ #	ifndef __linux__
++ #	  undef TIOCGLTC
++ #	endif
+  #    endif /* SYSV */
+  #endif /* SUNTOOL */
+  
+  #ifdef POSIX_UTIME
+! # ifdef __linux__
+! #   include <utime.h>
+! # else
+! #   include <sys/utime.h>
+! # endif
+  #endif /* POSIX_UTIME */
+  #include <sys/stat.h>
+  #include <sys/file.h>
+***************
+*** 173,182 ****
+  #endif /* nocrmode */
+  
+  unsigned char vmin, vtime;
+! #define sg_erase  c_cc[2]
+  #define sg_flags  c_lflag
+! #define sg_kill   c_cc[3]
+  #define sg_ospeed c_cflag
+  #define gtty(fd, SGTTYbuf)	ioctl(fd, TCGETA, SGTTYbuf)
+  #undef stty
+  #define stty(fd, SGTTYbuf)	ioctl(fd, TCSETAW, SGTTYbuf)
+--- 188,203 ----
+  #endif /* nocrmode */
+  
+  unsigned char vmin, vtime;
+! #define sg_erase  c_cc[VERASE]
+  #define sg_flags  c_lflag
+! #define sg_kill   c_cc[VKILL]
+  #define sg_ospeed c_cflag
++ #ifdef __linux__
++ # undef TCGETA
++ # undef TCSETAW
++ # define TCGETA TCGETS
++ # define TCSETAW TCSETSW
++ #endif
+  #define gtty(fd, SGTTYbuf)	ioctl(fd, TCGETA, SGTTYbuf)
+  #undef stty
+  #define stty(fd, SGTTYbuf)	ioctl(fd, TCSETAW, SGTTYbuf)
+***************
+*** 187,200 ****
+  #define cbrkoff()  \
+  	(_tty.sg_flags |= ICANON,_tty.c_cc[VMIN] = vmin,_tty.c_iflag |= ICRNL, \
+  		_tty.c_cc[VTIME] = vtime, stty(0, &_tty))
+! #define savetty()  \
+  	(void) gtty(0, &_tty), vtime = _tty.c_cc[VTIME], vmin = _tty.c_cc[VMIN]
+! #define cbreak()   cbrkon()
+! #define nocbreak() cbrkoff()
+  
+  /* If curses isn't defined, declare our 'tty' and macros for echo/cbreak */
+  #ifndef CURSES
+! typedef struct termio SGTTY;
+  #define echom()    echon()
+  #define noechom()  echoff()
+  #define crmode()   cbrkon()
+--- 208,238 ----
+  #define cbrkoff()  \
+  	(_tty.sg_flags |= ICANON,_tty.c_cc[VMIN] = vmin,_tty.c_iflag |= ICRNL, \
+  		_tty.c_cc[VTIME] = vtime, stty(0, &_tty))
+! 
+! #ifdef __linux__
+! # undef savetty
+! # undef cbreak
+! # undef nocbreak
+! #endif
+! 
+! #ifndef savetty
+! # define savetty()  \
+  	(void) gtty(0, &_tty), vtime = _tty.c_cc[VTIME], vmin = _tty.c_cc[VMIN]
+! #endif
+! #ifndef cbreak
+! # define cbreak()   cbrkon()
+! #endif
+! #ifndef nocbreak
+! # define nocbreak() cbrkoff()
+! #endif
+  
+  /* If curses isn't defined, declare our 'tty' and macros for echo/cbreak */
+  #ifndef CURSES
+! #ifdef __linux__
+!   typedef struct termios SGTTY;
+! #else
+!   typedef struct termio SGTTY;
+! #endif
+  #define echom()    echon()
+  #define noechom()  echoff()
+  #define crmode()   cbrkon()
+***************
+*** 403,408 ****
+--- 441,448 ----
+  #define HELP_TEXT   ULBIT(25) /* create textsw frame for paging help messages */
+  #define CORRUPTED   ULBIT(26) /* error loading new mail has occurred */
+  
++ #define DONT_CHECK  (DO_SHELL|IS_PIPE|IGN_SIGS|IS_GETTING|READ_ONLY|REDIRECT|CNTD_CMD|IS_SENDING|IN_MACRO)
++ 
+  /* flags to control composition */
+  #define VERBOSE		ULBIT(0)  /* verbose flag for sendmail */
+  #define INCLUDE		ULBIT(1)  /* include msg in response */
+***************
+*** 446,451 ****
+--- 486,498 ----
+      int    m_lines;	/* number of lines in msg */
+      char   *m_date_recv;/* Date user received msg (see dates.c for fmt) */
+      char   *m_date_sent;/* Date author sent msg (see dates.c for fmt) */
++     char   *m_source;	/* Cached From: or Reply-To: field */
++     char   *m_target;	/* Cached To: or Newsgroups: field */
++     char   *m_subject;	/* Cached Subject: field */
++     char   *m_from;	/* Cached Reply-To: or From: field */
++     char   *m_addr;	/* Cached Reply-To: or From: field */
++     char   *m_name;	/* Cached Reply-To: or From: field */
++     char   m_author;	/* if any of the 3 preceding ones has been inited */
+  } msg[MAXMSGS];
+  
+  struct options {
+***************
+*** 526,532 ****
+      *cc_to(),     	/* when responding, return str which is the cc-list */
+      *compose_hdr(),	/* passes hdr_format to format_hdr() for displays */
+      *format_hdr(),	/* returns a formatted line describing passed msg # */
+!     *header_field(),    /* the line in msg described by arg (message header) */
+      *reply_to(),	/* who do we reply to when responding */
+      *subject_to(),      /* when responding, return str which is the subject */
+  
+--- 573,580 ----
+      *cc_to(),     	/* when responding, return str which is the cc-list */
+      *compose_hdr(),	/* passes hdr_format to format_hdr() for displays */
+      *format_hdr(),	/* returns a formatted line describing passed msg # */
+!     *real_header_field(),/* the line in msg described by arg (message header) */
+!     *header_field(),    /* like the real_ version, but cached or extended */
+      *reply_to(),	/* who do we reply to when responding */
+      *subject_to(),      /* when responding, return str which is the subject */
+  
+***************
+*** 589,597 ****
+  #ifdef TIOCGLTC
+  struct ltchars ltchars;			/* tty character settings */
+  #endif /* TIOCGLTC */
+! #if defined(BSD) && !defined(AIX) /* (TIOCGETC) */
+  struct tchars  tchars;			/* more tty character settings */
+! #endif /* BSD && !AIX (TIOCGETC) */
+  
+  #ifdef CURSES
+  
+--- 637,645 ----
+  #ifdef TIOCGLTC
+  struct ltchars ltchars;			/* tty character settings */
+  #endif /* TIOCGLTC */
+! #if defined(BSD) && !defined(AIX)
+  struct tchars  tchars;			/* more tty character settings */
+! #endif /* BSD && !AIX */
+  
+  #ifdef CURSES
+  
+diff -rc --new-file orig/mush-7.2.5/pick.c mush-7.2.5/pick.c
+*** orig/mush-7.2.5/pick.c	Fri Oct 30 19:55:41 1992
+--- mush-7.2.5/pick.c	Wed Oct 27 17:21:38 1993
+***************
+*** 370,376 ****
+  		    if (!(p = header_field(n, "subject")))
+  			break;
+  		} else if (search_from) {
+! 		    if (!(p = header_field(n, "from"))) {
+  			/*
+  			 * Check for MSG_SEPARATOR here?  Maybe not...
+  			 */
+--- 370,376 ----
+  		    if (!(p = header_field(n, "subject")))
+  			break;
+  		} else if (search_from) {
+! 		    if (!(p = header_field(n, "source"))) {
+  			/*
+  			 * Check for MSG_SEPARATOR here?  Maybe not...
+  			 */
+***************
+*** 384,394 ****
+  			    *p2 = 0;
+  		    }
+  		} else if (search_to) {
+! 		    if (!(p = header_field(n, "to")) &&
+! 		        !(p = header_field(n, "apparently-to")))
+  			break;
+  		} else if (*search_hdr) {
+! 		    if (!(p = header_field(n, search_hdr)))
+  			break;
+  		}
+  		if (icase)
+--- 384,393 ----
+  			    *p2 = 0;
+  		    }
+  		} else if (search_to) {
+! 		    if (!(p = header_field(n, "target")))
+  			break;
+  		} else if (*search_hdr) {
+! 		    if (!(p = real_header_field(n, search_hdr)))
+  			break;
+  		}
+  		if (icase)
+diff -rc --new-file orig/mush-7.2.5/pmush.c mush-7.2.5/pmush.c
+*** orig/mush-7.2.5/pmush.c	Fri Oct 30 19:56:16 1992
+--- mush-7.2.5/pmush.c	Sat Sep 11 20:42:58 1993
+***************
+*** 9,17 ****
+  	variable POP3_SUPPORT is defined.
+  **************************************************************************/
+  
+  #ifdef POP3_SUPPORT
+  
+- #include "config.h"
+  #include "mush.h"
+  #include "pop.h"
+  
+--- 9,18 ----
+  	variable POP3_SUPPORT is defined.
+  **************************************************************************/
+  
++ #include "config.h"
++ 
+  #ifdef POP3_SUPPORT
+  
+  #include "mush.h"
+  #include "pop.h"
+  
+***************
+*** 203,225 ****
+  	    close(open(mailbox, O_WRONLY | O_CREAT | O_EXCL, 0600));
+  	}
+      }
+!     if (!(mfstream = fopen(mailbox, "a"))) {
+! 	perror("Error opening mailbox in loadmail");
+  	pop_close(postinfo);
+  	return;
+      }
+      for (i = 1; i <= msgcount; i++) {	/* Load new messages */
+  	msgptr = pop_retrieve(postinfo, i);
+! 	dateline = date(msgptr);
+! 	fromline = from_line(msgptr);
+! 	if (fprintf(mfstream, "\nFrom %s %s\n%s", fromline, dateline, msgptr)
+! 		< (strlen(fromline) + strlen(dateline) + strlen(msgptr))) {
+! 	    fprintf(stderr, "Error writing mailbox file\n");
+! 	    pop_close(postinfo);
+! 	    cleanup(-1);
+  	}
+- 	free(dateline);
+- 	free(fromline);
+  	free(msgptr);
+  	if (pop_delete(postinfo, i)) {
+  	    fprintf(stderr, "Error deleting message from post office: %s\n",
+--- 204,236 ----
+  	    close(open(mailbox, O_WRONLY | O_CREAT | O_EXCL, 0600));
+  	}
+      }
+!     if ((mfstream = fopen(mailbox, "a")) == NULL) {
+! 	perror(mailbox);
+  	pop_close(postinfo);
+  	return;
+      }
+      for (i = 1; i <= msgcount; i++) {	/* Load new messages */
+  	msgptr = pop_retrieve(postinfo, i);
+! 	if (msgptr == NULL) break;
+! 	if (strncmp(msgptr,"From ",5) == 0) {
+! 	    if (fputs(msgptr,mfstream) < 0) {
+! 		perror(mailbox);
+! 		pop_close(postinfo);
+! 		cleanup(-1);
+! 	    }
+! 	}
+! 	else {
+! 	  dateline = date(msgptr);
+! 	  fromline = from_line(msgptr);
+! 	  if (fprintf(mfstream, "\nFrom %s %s\n%s", fromline, dateline, msgptr)
+! 		  < (strlen(fromline) + strlen(dateline) + strlen(msgptr))) {
+! 	      perror(mailbox);
+! 	      pop_close(postinfo);
+! 	      cleanup(-1);
+! 	  }
+! 	  free(dateline);
+! 	  free(fromline);
+  	}
+  	free(msgptr);
+  	if (pop_delete(postinfo, i)) {
+  	    fprintf(stderr, "Error deleting message from post office: %s\n",
+***************
+*** 227,233 ****
+  	}
+      }
+      if (fclose(mfstream) == EOF) {
+! 	perror("Error closing mailbox file in loadmail");
+  	pop_close(postinfo);
+  	return;
+      }
+--- 238,244 ----
+  	}
+      }
+      if (fclose(mfstream) == EOF) {
+! 	perror(mailbox);
+  	pop_close(postinfo);
+  	return;
+      }
+diff -rc --new-file orig/mush-7.2.5/pop.c mush-7.2.5/pop.c
+*** orig/mush-7.2.5/pop.c	Fri Oct 30 19:56:14 1992
+--- mush-7.2.5/pop.c	Mon Sep 13 11:12:40 1993
+***************
+*** 6,11 ****
+--- 6,13 ----
+   * August 13, 1991
+   */
+  
++ #include "config.h"
++ 
+  #ifdef POP3_SUPPORT
+  
+  #include <sys/types.h>
+***************
+*** 47,52 ****
+--- 49,57 ----
+  extern char *
+  strstr( /* char *, char * */ );
+  
++ extern char *
++ index( /* char *, char */);
++ 
+  #include <netdb.h>
+  #include <errno.h>
+  #include <stdio.h>
+***************
+*** 178,212 ****
+  #endif
+      if (!host) {
+  	host = getenv("MAILHOST");
+! 	if (!host) {
+! 	    strcpy(pop_error, "Could not determine POP server");
+! 	    return (0);
+! 	}
+!     }
+!     /* Determine the password */
+! #ifdef KERBEROS
+! #define DONT_NEED_PASSWORD (! (flags & POP_NO_KERBEROS))
+! #else
+! #define DONT_NEED_PASSWORD 0
+! #endif
+! 
+!     /* Modified to return password if possible -- Bart */
+!     if ((!password || !*password) && (!DONT_NEED_PASSWORD)) {
+! 	if (!(flags & POP_NO_GETPASS)) {
+! 	    char *p = getpass("Enter POP password:");
+! 	    if (p && password)
+! 		(void) strcpy(password, p);
+! 	    password = p;
+! 	}
+! 	if (!password) {
+! 	    strcpy(pop_error, "Could not determine POP password");
+! 	    return (0);
+! 	}
+      }
+-     if (password)
+- 	flags |= POP_NO_KERBEROS;
+-     else
+- 	password = username;
+  
+      sock = socket_connection(host, flags);
+      if (sock == -1)
+--- 183,191 ----
+  #endif
+      if (!host) {
+  	host = getenv("MAILHOST");
+! 	if (host == NULL || host[0] == '\0')
+! 	    host = "mailhost";
+      }
+  
+      sock = socket_connection(host, flags);
+      if (sock == -1)
+***************
+*** 233,250 ****
+  		"Username too long; recompile pop.c with larger ERROR_MAX");
+  	return (0);
+      }
+!     sprintf(pop_error, "USER %s", username);
+  
+      if (sendline(server, pop_error) || getok(server)) {
+  	return (0);
+      }
+      if (strlen(password) > ERROR_MAX - 6) {
+  	pop_close(server);
+  	strcpy(pop_error,
+  		"Password too long; recompile pop.c with larger ERROR_MAX");
+  	return (0);
+      }
+!     sprintf(pop_error, "PASS %s", password);
+  
+      if (sendline(server, pop_error) || getok(server)) {
+  	return (0);
+--- 212,255 ----
+  		"Username too long; recompile pop.c with larger ERROR_MAX");
+  	return (0);
+      }
+!     sprintf(pop_error, "USER \"%s\"", username);
+  
+      if (sendline(server, pop_error) || getok(server)) {
+  	return (0);
+      }
++ 
++     /* Determine the password */
++ #ifdef KERBEROS
++ #define DONT_NEED_PASSWORD (! (flags & POP_NO_KERBEROS))
++ #else
++ #define DONT_NEED_PASSWORD 0
++ #endif
++ 
++     /* Modified to return password if possible -- Bart */
++     if ((!password || !*password) && (!DONT_NEED_PASSWORD)) {
++ 	if (!(flags & POP_NO_GETPASS)) {
++ 	    char *p = getpass("Password: ");
++ 	    if (p && password)
++ 		(void) strcpy(password, p);
++ 	    password = p;
++ 	}
++ 	if (!password) {
++ 	    strcpy(pop_error, "Could not determine POP password");
++ 	    return (0);
++ 	}
++     }
++     if (password)
++ 	flags |= POP_NO_KERBEROS;
++     else
++ 	password = username;
++ 
+      if (strlen(password) > ERROR_MAX - 6) {
+  	pop_close(server);
+  	strcpy(pop_error,
+  		"Password too long; recompile pop.c with larger ERROR_MAX");
+  	return (0);
+      }
+!     sprintf(pop_error, "PASS \"%s\"", password);
+  
+      if (sendline(server, pop_error) || getok(server)) {
+  	return (0);
+***************
+*** 882,888 ****
+      int ret;
+  
+      cp = buf;
+!     while ((ret = write(fd, cp, nbytes)) > 0) {
+  	cp += ret;
+  	nbytes -= ret;
+      }
+--- 887,893 ----
+      int ret;
+  
+      cp = buf;
+!     while (nbytes > 0 && (ret = write(fd, cp, nbytes)) > 0) {
+  	cp += ret;
+  	nbytes -= ret;
+      }
+***************
+*** 969,985 ****
+   * 	Changes made to the maildrop since the session was started (or
+   * 	since the last pop_reset) may be lost.
+   */
+  void 
+  pop_close(server)
+  PopServer server;
+  {
+-     sendline(server, "RSET");
+-     sendline(server, "QUIT");
+  
+!     close(server->file);
+!     free((char *) server);
+  
+!     return;
+  }
+  
+  #endif /* POP3_SUPPORT */
+--- 974,996 ----
+   * 	Changes made to the maildrop since the session was started (or
+   * 	since the last pop_reset) may be lost.
+   */
++ 
++ unsigned pop_closing = 0;
++ 
+  void 
+  pop_close(server)
+  PopServer server;
+  {
+  
+!     if (pop_closing == 0) {
+! 	pop_closing = 1;
+! 
+! 	sendline(server, "RSET");
+! 	sendline(server, "QUIT");
+  
+! 	close(server->file);
+! 	free((char *) server);
+!     }
+  }
+  
+  #endif /* POP3_SUPPORT */
+diff -rc --new-file orig/mush-7.2.5/signals.c mush-7.2.5/signals.c
+*** orig/mush-7.2.5/signals.c	Fri Oct 30 19:55:42 1992
+--- mush-7.2.5/signals.c	Sat Oct 16 19:57:00 1993
+***************
+*** 8,13 ****
+--- 8,14 ----
+  
+  static int was_stopped;
+  
++ #ifndef __linux__
+  #ifndef SYSV
+  extern char *sys_siglist[];
+  #else
+***************
+*** 34,40 ****
+  /* SIGCLD */	"death of a child",
+  /* SIGPWR */	"power-fail restart"
+  };
+! #endif /* SYSV */
+  
+  SIGRET
+  intrpt(sig)
+--- 35,42 ----
+  /* SIGCLD */	"death of a child",
+  /* SIGPWR */	"power-fail restart"
+  };
+! #endif /* !SYSV */
+! #endif /* !__linux__ */
+  
+  SIGRET
+  intrpt(sig)
+***************
+*** 425,431 ****
+      if (last_check < 0)
+  	last_check = time((long *)0);
+      
+!     if (istool || time((long *)0) - last_check > time_out) {
+  	popchkmail();
+  	last_check = time((long *)0);
+      }
+--- 427,434 ----
+      if (last_check < 0)
+  	last_check = time((long *)0);
+      
+!     if (isoff(glob_flags,DONT_CHECK)
+! 		&& (istool || time((long *)0) - last_check > time_out)) {
+  	popchkmail();
+  	last_check = time((long *)0);
+      }
+diff -rc --new-file orig/mush-7.2.5/sort.c mush-7.2.5/sort.c
+*** orig/mush-7.2.5/sort.c	Mon Oct 22 03:25:03 1990
+--- mush-7.2.5/sort.c	Wed Oct 27 18:04:05 1993
+***************
+*** 40,45 ****
+--- 40,46 ----
+  		case 'l': /* sort by length in bytes */
+  		case 'S': /* sort by message status */
+  		case 'p': /* sort by message priority */
++ 		case 't': /* sort by addressee */
+  		    /* skip consecutive repeats of the same flag */
+  		    if (depth < 1 || subsort[depth-1] != argv[0][n])
+  			subsort[depth++] = argv[0][n];
+***************
+*** 164,175 ****
+  
+  author_cmp(msg1, msg2)
+  register struct msg *msg1, *msg2;
+  {
+      char buf1[HDRSIZ], buf2[HDRSIZ];
+      int retval;
+  
+!     (void) reply_to(msg1 - msg, 0, buf1); /* "0" for "author only" */
+!     (void) reply_to(msg2 - msg, 0, buf2);
+      Debug("author: msg %d: %s, msg %d: %s\n", msg1-msg, buf1, msg2-msg, buf2);
+      if (ignore_case)
+  	retval = lcase_strncmp(buf1, buf2, -1) * order;
+--- 165,177 ----
+  
+  author_cmp(msg1, msg2)
+  register struct msg *msg1, *msg2;
++ #if 1
+  {
+      char buf1[HDRSIZ], buf2[HDRSIZ];
+      int retval;
+  
+!     (void) author_to(msg1 - msg, buf1);
+!     (void) author_to(msg2 - msg, buf2);
+      Debug("author: msg %d: %s, msg %d: %s\n", msg1-msg, buf1, msg2-msg, buf2);
+      if (ignore_case)
+  	retval = lcase_strncmp(buf1, buf2, -1) * order;
+***************
+*** 177,182 ****
+--- 179,204 ----
+  	retval = strcmp(buf1, buf2) * order;
+      return retval ? retval : msg_cmp(msg1, msg2);
+  }
++ #else
++ {
++     char buf1[HDRSIZ], buf2[HDRSIZ], *p;
++     int retval;
++ 
++     if (!(p = header_field(msg1 - msg, "source")))
++ 	p = "";
++     (void) strcpy(buf1, p);
++     if (!(p = header_field(msg2 - msg, "source")))
++ 	p = "";
++     (void) strcpy(buf2, p);
++     Debug("authors: (%d): \"%s\" (%d): \"%s\"\n",
++ 	msg1-msg, buf1, msg2-msg, buf2);
++     if (ignore_case)
++ 	retval = lcase_strncmp(buf1, buf2, -1) * order;
++     else
++ 	retval = strcmp(buf1, buf2) * order;
++     return retval ? retval : msg_cmp(msg1, msg2);
++ }
++ #endif
+  
+  /* compare messages according to size (length) */
+  size_cmp(msg1, msg2)
+***************
+*** 249,254 ****
+--- 271,300 ----
+      return retval ? retval : msg_cmp(msg1, msg2);
+  }
+  
++ /*
++  * compare addressee strings from two messages.
++  */
++ addressee_cmp(msg1, msg2)
++ register struct msg *msg1, *msg2;
++ {
++     char buf1[HDRSIZ], buf2[HDRSIZ], *p;
++     int retval;
++ 
++     if (!(p = header_field(msg1 - msg, "target")))
++ 	p = "";
++     (void) strcpy(buf1, p);
++     if (!(p = header_field(msg2 - msg, "target")))
++ 	p = "";
++     (void) strcpy(buf2, p);
++     Debug("addressees: (%d): \"%s\" (%d): \"%s\"\n",
++ 	msg1-msg, buf1, msg2-msg, buf2);
++     if (ignore_case)
++ 	retval = lcase_strncmp(buf1, buf2, -1) * order;
++     else
++ 	retval = strcmp(buf1, buf2) * order;
++     return retval ? retval : msg_cmp(msg1, msg2);
++ }
++ 
+  date_cmp(msg1, msg2)
+  register struct msg *msg1, *msg2;
+  {
+***************
+*** 306,311 ****
+--- 352,358 ----
+  	when 'R': retval = subj_with_re(msg1, msg2);
+  	when 'l': retval = size_cmp(msg1, msg2); /* length compare */
+  	when 'p': retval = pri_cmp(msg1, msg2);
++ 	when 't': retval = addressee_cmp(msg1, msg2);
+  	otherwise: retval = status_cmp(msg1, msg2);
+      }
+      depth = sv_depth;
+diff -rc --new-file orig/mush-7.2.5/xcreat.c mush-7.2.5/xcreat.c
+*** orig/mush-7.2.5/xcreat.c	Fri Oct 30 19:56:16 1992
+--- mush-7.2.5/xcreat.c	Mon Sep 13 12:17:18 1993
+***************
+*** 157,171 ****
+      int j = -2, i;
+  
+      q = rindex(name, '/');
+!     if (q)
+! 	i = q - name;
+!     else {
+! 	i = 0;	/* Creating in the current directory */
+!     }
+      p = strncpy(buf, name, i);
+      if (unique(p, p + i, mode))
+  	j = myrename(p, name);	/* try and rename it, fails if nonexclusive */
+-     free(p);
+      return j;
+  }
+  
+--- 157,166 ----
+      int j = -2, i;
+  
+      q = rindex(name, '/');
+!     i = (q == 0) ? 0 : q-name+1;
+      p = strncpy(buf, name, i);
+      if (unique(p, p + i, mode))
+  	j = myrename(p, name);	/* try and rename it, fails if nonexclusive */
+      return j;
+  }
+  

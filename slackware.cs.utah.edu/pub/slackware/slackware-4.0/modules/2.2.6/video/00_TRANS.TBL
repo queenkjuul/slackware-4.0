@@ -1,0 +1,7 @@
+F FBCON-CF.000                      	fbcon-cfb2.o
+F FBCON-CF.O                        	fbcon-cfb4.o
+F FBCON-MA.O                        	fbcon-mac.o
+F FBCON-MF.O                        	fbcon-mfb.o
+F MATROXFB.O                        	matroxfb.o
+F MDACON.O                          	mdacon.o
+F VFB.O                             	vfb.o

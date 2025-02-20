@@ -1,0 +1,924 @@
+  Linux-Esperanto-HOWTO
+  Kelkaj helpindikoj por uzi Esperanton sub Linukso
+  Kompilita de Wolfram Diestel (diestel@rzaix340.rz.uni-
+  leipzig.de) helpita de aliaj.
+  v1.11, June 1998
+  ____________________________________________________________
+
+  Table of Contents
+
+
+  1. Antauxvortoj kaj dankoj
+
+  2. Kodoj kaj Esperantaj Tiparoj
+
+  3. Metamail
+
+  4. X-fenestra sistemo
+
+     4.1 Tiparoj
+     4.2 Tajpi E-signojn
+
+  5. Netscape Communicator
+
+  6. Xterm
+
+  7. Redakti per Vi (Elvis, Vim)
+
+  8. Redakti per Emakso (Emacs)
+
+     8.1 Emakso 19.34
+        8.1.1 Vidi E-signojn
+        8.1.2 Tajpi
+     8.2 Emakso 20.* kaj MULE
+
+  9. Retposxto per Xfmail
+
+  10. Diskutgrupoj per Knews
+
+  11. TeX / LaTeX
+
+  12. Esperanto-subteno en internaciigitaj programoj
+
+  13. Esperanto-signoj en HTML-tekstoj
+
+  14. Koderoj
+
+     14.1 koderoj deksesume
+     14.2 koderoj dekume
+     14.3 koderoj okume
+
+
+  ______________________________________________________________________
+
+  1.  Antauxvortoj kaj dankoj
+
+  Cxar tiu cxi teksto estas verkita per linuxdoc-sgml, gxi ne povas uzi
+  Esperantajn signojn.
+
+  La avantagxo estas, ke la teksto aperas en la HOWTO-kolekto (anstataux
+  en la mini-HOWTO-kolekto) kaj estas havebla en pluraj formoj (teksto,
+  TTT-teksto, Postskript-teksto, k.a.)
+
+  La malavantagxo estas, ke mi devas kodi la esperantajn signojn per la
+  x-maniero kaj el tio povus estigxi miskomprenoj cxe la
+  konfigurajxoekzemploj Nu, mi provas rimarkigi tion cxe la koncernitaj
+  lokoj.
+  Solvojn kaj gravajn informojn donis: Eduard Werner (Emakso 19.34,
+  TeX), Marko Rauhamaa (xmodmap, TeX, mailcap), Edmund Grimley Evans
+  (TeX), Lee Sau Dan (setfont, Emakso 20, MULE, TeX) kaj Richard Hable
+  (Vi, Xfmail, Knews).  Dankon al ili kaj cxiuj aliaj, kiuj helpis
+  kompili tiun cxi dosieron.
+
+
+  2.  Kodoj kaj Esperantaj Tiparoj
+
+  Ekzistas tri internaciaj normoj por signokodoj, kiuj enhavas la
+  esperantajn signojn, la du kutime uzataj estas ISO-8859-3 (Latin-3)
+  kaj Unikodo (Unicode).  La unua normo estas por 8-bitaj signoj kaj la
+  dua por 16-bitaj. Por povi transporti unikodajxojn tra 8bitaj kaj
+  7bitaj medioj ekzistas la kodoj UTF-8 kaj UTF-7.
+
+
+  Cxar Unikodo samtempe difinas koderojn por la signoj de cxiuj
+  mondlingvoj, gxi ricevas pli kaj pli da subteno de
+  programarproduktantoj.  Tamen en Linukso Unikodo ankoraux estas tre
+  malmulte subtenata. Aparte la sistemo mem pli malpli bazigxas sur
+  8-bitaj kodoj. Pro tio en Linukso oni momente uzas kutime la normon
+  ISO-8859-3.
+
+  Ampleksajn informojn pri la unuopaj kodoj kun E-signoj en internaciaj
+  normoj kaj en specialaj programoj, vi trovas cxe Edmundo
+  <http://www.cl.cam.ac.uk/users/etg10/esperanto-kodoj.html>.
+
+  Latin-3-tiparojn por la teksta modo vi trovas sub la nomoj
+  /usr/lib/kbd/consolefonts/iso03.f??  Por aktivigi unu el ili tajpu
+  ekzemple:
+
+
+         setfont iso03.f16
+
+
+
+
+  Foje vi bezonas la eblecon konverti esperantajn tekstojn de UTF-8 al
+  Latin-3. Por tio vi povas uzi la sekvan Perl-programeton.
+
+
+         #!/usr/bin/perl
+         while (<>) {
+           s/\304\210/\306/g;
+           s/\304\211/\346/g;
+           s/\304\234/\330/g;
+           s/\304\235/\370/g;
+           s/\304\244/\246/g;
+           s/\304\245/\266/g;
+           s/\304\264/\254/g;
+           s/\304\265/\274/g;
+           s/\305\234/\336/g;
+           s/\305\235/\376/g;
+           s/\305\254/\335/g;
+           s/\305\255/\375/g;
+           print;
+         };
+
+
+
+
+  Por konverti en la alian direkton, intersxangxu la du kolumnojn inter
+  /../../.
+
+
+
+  3.  Metamail
+
+  La programeto Metamail estas uzata de aliaj programoj, aparte
+  retposxtaj kaj diskutgrupaj legiloj, se ili ne scias trakti iun MIME-
+  tipon. En la dosiero /etc/mailcap trovigxas informoj, kiel montri
+  tiajn MIME-tipojn. Por povi legi tekstojn koditajn laux UTF-8, ni
+  aldonos la sekvajn du liniojn al la dosiero /etc/mailcap:
+
+
+         text/plain; /plena/pado/al/utf8-l3 %s; \
+         test=test "`echo %{charset} | tr '[A-Z]' '[a-z]'`" = utf-8;\
+         copiousoutput
+         text/utf8; /plena/pado/al/utf8-l3 %s; copiousoutput
+
+
+
+
+  La duan ni aldonis, cxar kelkaj programoj provas mem trakti mesagxojn
+  en la formo text/plain, ecx se ili ne havas tauxgan tiparon por gxi,
+  ekzemple cxe Content-Type: text/plain; charset="utf-8".
+
+
+  4.  X-fenestra sistemo
+
+  4.1.  Tiparoj
+
+  Por trovi Latin-3-tiparojn kaj rilatajn informojn por la X-fenestra
+  sistemo vi rigardu en la Virtuala Esperanto-Biblioteko - sub la
+  rubriko "Komputadaj fakoj".
+
+  Cxe la tiparoj vi trovas indikojn kiel instali ilin.  Per:
+
+
+         xlsfonts -fn *iso8859-3
+
+
+
+
+  vi povas kontroli cxu la tiparoj (sukcese) estas instalitaj en via
+  sistemo. La proporciaj adobe-tiparoj bone tauxgas por vidado en
+  Communicator, Knews, Xfmail...).  Por Xterm kaj la Vi-variantoj vi uzu
+  la tiparojn de Alain Fagot.
+
+
+  4.2.  Tajpi E-signojn
+
+  La X-fenestro-sistemo permesas difini reagojn al klavpremoj de la
+  "kompona klavo" (plej ofte tiu estas difinita kiel AltGr) plus alia
+  klavo.
+
+  Ekzemple sur germana klavaro AltGr+q donas la signon '@'
+
+  Per la programo xmodmap oni povas difini, ke
+
+
+         AltGr+c -> cx
+         AltGr+Shift+c -> Cx
+         ...
+
+
+
+
+  Por tio metu en vian uzanto-dosierujon dosieron ~/.Xmodmap. (Ofte gxi
+  jam estas tie kaj vi nur bezonas modifi gxin.)  Kaj aldonu la sekvajn
+  liniojn:
+
+    keycode  54 = C NoSymbol AE
+    keycode  42 = G NoSymbol Ooblique
+    keycode  43 = H NoSymbol paragraph brokenbar
+    keycode  44 = J NoSymbol onequarter notsign
+    keycode  39 = S NoSymbol Thorn
+    keycode  30 = U NoSymbol Yacute
+
+
+
+
+  Ne cxiuj programoj gxuste traktas tion. Alia ebleco (vi povas uzi
+  ambaux variantojn samtempe) do estas, meti la 12 esperantoliterojn sur
+  la 12 funkcio-klavojn:
+
+
+         keysym F1 = F1 ae
+         keysym F2 = F2 AE
+         keysym F3 = F3 oslash
+         keysym F4 = F4 Ooblique
+         keysym F5 = F5 paragraph
+         keysym F6 = F6 brokenbar
+         keysym F7 = F7 onequarter
+         keysym F8 = F8 notsign
+         keysym F9 = F9 thorn
+         keysym F10 = F10 Thorn
+         keysym F11 = F11 yacute
+         keysym F12 = F12 Yacute
+
+
+
+
+  Certigu, ke dum la starto de la X-fenestro-sistemo lancxigxas la
+  ordono xmodmap ~/.Xmodmap. Normale en /usr/X11R6/lib/X11/xinit/xinitrc
+  jam trovigxas linioj kiel
+
+
+         usermodmap=$HOME/.Xmodmap
+         if [ -f $usermodmap ]; then
+           xmodmap $usermodmap
+         fi
+
+
+
+
+
+  5.  Netscape Communicator
+
+  Ofta bezono de Esperanto-tiparoj estigxas dum la legado de interretaj
+  pagxoj kaj diskutgrupaj artikoloj.  Netscape Communicator ja permesas
+  difini kaj uzi multajn diversajn kodojn por rigardi diverslingvajn
+  dokumentojn, sed bedauxrinde gxi ne rekte subtenas Latin-3-kodon.
+  Anstatauxe vi povas uzi la kodon "User-defined". Por tio elektu en la
+  menuo "Edit Preferences", iru al la dialogo "Appearance Fonts", elektu
+  tie la kodon "User-defined" kaj alordigu konvenajn Latin-3-tiparojn.
+
+  Nun vi povas elekti en la menuo "View Encoding User-Defined" por legi
+  dokumenton koditan laux normo Latin-3.
+
+  Bedauxrinde vi ne povas legi la esperantajn literojn en unikodaj
+  tekstoj. Unikodaj tekstoj estas aperigitaj tiel, ke la signoj estas
+  prenitaj el konvenaj 8-bitaj tiparoj.  Tiel vi bone povas legi
+  cirilajn, grekajn ecx cxinajn literojn, sed pro la nesuficxa subteno
+  de Latin-3 anstataux supersignaj literoj vi vidas nur demandsignon :-(
+
+  Cetere mi rimarkis eraron en Netscape Communicator 4.0x Se oni legas
+  diskutgrupon, oni komence ne vidas Esperanto-signojn, kvankam kiel
+  kutima kodo estas elektita "User-Defined". Sed post elekto de iu alia
+  kodo kaj posta reelekto de la kodo "User-Defined" vi vidas la e-ajn
+  signojn.
+
+
+  6.  Xterm
+
+  Por vidi esperantajn signojn en Xterm, vi povas meti la sekvan linion
+  en la dosieron ~/.Xresources:
+
+
+         xterm*font: <tiparnomo>
+
+
+
+
+  Kiel <tiparnomo>n donu iun konvenan Latin-3-tiparon.  (t.e. unu el la
+  nomoj ricevitaj per xlsfonts -fn *iso8859-3).
+
+  Aux voku Xterm rekte tiel:
+
+
+         xterm -fn <tiparnomo>
+
+
+
+
+  Tio funkcias ankaux en kelkaj aliaj programoj, ekz. en Emakso.  Se vi
+  ofte bezonas jen vian nacian jen Latin-3an kodon, estas rekomendinde
+  difini alinomon en .bashrc:
+
+
+         alias eterm='xterm -fn fixed-l3' # simile por aliaj programoj
+
+
+
+
+
+  7.  Redakti per Vi (Elvis, Vim)
+
+  Kun la Vi-variantoj Vim kaj Elvis en la aktualaj versioj vi povas
+  senprobleme uzi la samajn latin-3-tiparojn kiel kun Xterm.
+
+  Se vi lancxas ilin en propra fenestro, uzu la elekton -fn <tiparnomo>:
+
+
+
+         elvis -fn fixed-l3
+         vim -g -fn fixed-l3
+
+
+
+
+  Por tajpi esperantajn signojn, vi povas aux uzi la metodon laux la 3a
+  cxapitro aux uzi la sekvajn difinojn:
+
+
+
+
+
+
+
+
+
+
+
+    digraph G^ X
+    digraph g^ x
+    digraph H^ &
+    digraph h^ 6
+    digraph J^ ,
+    digraph j^ <
+    digraph C^ F
+    digraph c^ f
+    digraph S^ ^
+    digraph s^ ~
+    digraph U^ ]
+    digraph u^ }
+    set digraph
+
+
+
+
+  Metu tiujn difinojn en dosieron, ekz. ~/.elvis.lat3 kaj lancxu:
+
+
+
+         elvis -fn fixed-l3 +source~/.elvis.lat3
+
+
+
+
+  Nun vi povas tajpi ekz. la literon gx per la klavoj ^Kg^ (Ctrl-k g ^)
+  aux ^, retropasxo, g.
+
+  Vim <http://www.math.fu-berlin.de/~guckes/vim/> kaj Elvis
+  <ftp://ftp.cs.pdx.edu/pub/elvis/README.html> vi trovas jen ankaux en
+  Interreto.
+
+
+  8.  Redakti per Emakso (Emacs)
+
+
+
+  8.1.  Emakso 19.34
+
+  8.1.1.  Vidi E-signojn
+
+  Por vidi E-signojn en Emakso, vi devas certigi, ke Emakso uzas
+  Latin-3-tiparon. Tion vi povas atingi per aldono de la sekva linio en
+  la dosiero ~/.Xdefaults:
+
+
+         Emacs.font: <tiparnomo>
+
+
+
+
+  Kiel <tiparnomo>n indiku iun konvenan Latin-3-tiparon.
+
+  Same kiel cxe Xterm kaj kelkaj aliaj programoj funkcias:
+
+
+         emacs -fn <tiparnomo>
+
+
+
+
+
+
+
+
+  8.1.2.  Tajpi
+
+  Se vi uzas Emakson sub X-fenestroj vi per la solvo realigita sub
+  cxapitro 3 bone povas tajpi.  Sed ekzistas alia alternativo, la modo
+  "iso-accents-mode".  Por instrui al tiu modo la lingvon Esperanto,
+  aldonu tauxgajn difinojn en la dosiero iso-acc.el.
+
+
+         ("esperanto"
+          (?^ (?C . ?\306) (?G . ?\330) (?H . ?\246) (?J . ?\254)
+               (?S . ?\336) (?U . ?\335) (?c . ?\346) (?g . ?\370)
+               (?h . ?\266) (?j . ?\274) (?s . ?\376) (?u . ?\375))
+          (?' (?C . ?\306) (?G . ?\330) (?H . ?\246) (?J . ?\254)
+               (?S . ?\336) (?U . ?\335) (?c . ?\346) (?g . ?\370)
+               (?h . ?\266) (?j . ?\274) (?s . ?\376) (?u . ?\375))
+         )
+
+
+
+
+  La sintakson divenu de la jam enhavitaj lingvoj, gxi iom varias en la
+  diversaj Emaks-versioj. La supra ekzemplo difinas la esperantosignojn
+  por la kombinoj ^+<litero> kaj '+<litero>.  Poste kompilu la dosieron
+  al iso-acc.elc. Ekde nun vi povas aktivigi viajn tajperojn per la
+  komandoj:
+
+
+         M-x iso-accents-mode
+         M-x iso-accents-customize
+           language: Esperanto
+
+
+
+
+  Atentu, ke se '^' cxe vi estas senpasxa klavo (t.e. gxi aperas nur
+  post premo de '^' kaj alia klavo), vi ne povas uzi gxin en tiu Emaks-
+  modo, anstatauxe uzu alian signon, ekz. '+c por tajpi cx. Kelkaj ecx
+  tajpas c+x por cx.
+
+  Por pli facile atingi tiun tajpmodon, metu la sekvajn liniojn en la
+  dosieron ~/.emacs:
+
+
+         (defun esperanto-mode ()
+           (interactive)
+           (iso-accents-mode)
+           (iso-accents-customize "esperanto")
+         )
+         (global-set-key "\C-ce" 'esperanto-mode)
+
+
+
+
+  Poste per premo de C-c e (t.e. Ctrl+c e) vi trovigxas en Esperanto-
+  modo. Estus avantagxe, difini ankaux tian klavmallongigon por reatingi
+  normalan modon.
+
+
+  8.2.  Emakso 20.* kaj MULE
+
+  notoj: Pri tiuj Emakso-variantoj Lee Sau Dan donis la sekvajn
+  indikojn:
+
+  Emakso 20.* kaj MULE normale povas trovi la tauxgajn tiparojn, se ili
+  jam estas instalitaj en la X-servilo aux tiparserviloj.
+
+  Emakso 20.* povas montri latin-3-literojn se vi uzas gxin sur teksta
+  ekrano kun aktivigita latin-3-a tiparo.  Informu Emakson pri tio per
+  la  klavpremoj:
+
+
+         C-x C-m t iso-8859-3 RET
+
+
+
+
+
+  Por tajpado de Esperantosignoj, klavu:
+
+
+         C-u C-\ esperanto-postfix
+
+
+
+
+  aux:
+
+
+         C-u C-\ esperanto-prefix
+
+
+
+
+
+  Utilas ankaux
+
+
+         M-x set-language-environment latin-3 RET
+
+
+
+
+
+  aux se vi ofte bezonas tion, metu en .emacs:
+
+
+
+         (set-language-environment "latin-3")
+         (setq default-input-method "esperanto-postfix")
+
+
+
+
+
+  9.  Retposxto per Xfmail
+
+  Xfmail estas retposxtprogramo kun plena MIME-subteno.  Oni konfiguras
+  gxin ene de la grafika surfaco. En la menuo vi trovas sub "Misc
+  Config" dialogon por la konfigurado.
+
+  La butono "Appearance" kondukas al listo, kie oni povas rilatigi
+  kodojn kaj tiparojn. Unue premu "Add" kaj indiku la plenan nomon de
+  latin-3-tiparo. Ekz.
+
+
+         adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso8859-3
+
+
+
+
+  La tiparnomo nun aperas en la maldekstra listo. Por rilatigi gxin al
+  la kodo "iso-8859-3" vi devas unue elekti tiun kodon en la dekstra
+  listo kaj poste elekti la tiparon en la maldekstra listo. Nun premu
+  "OK" kaj poste "Save".
+
+  Xfmail enhavas internan redkatilon per kies menuo "Language" vi povas
+  elekti la gxustan kodon.
+
+  Se vi volas uzi eksteran redaktilon vi povas iri per la butonoj
+  "View", "Edit" al dialogo, kie vi povas indiki gxin, ekzemple per:
+
+
+         elvis -fn <tiparnomo> +source~/.elvis.lat3
+
+
+
+
+  Jen vi trovas Xfmail
+  <http://Burka.NetVision.net.il/xfmail/xfmail.html> en la reto.
+
+  Atentu ankoraux alian aferon. Estas ne cxiam facile sendi 8bitan
+  mesagxon. Cxar kelkaj serviloj ankoraux funkcias 7bite kaj simple
+  ignoras la okan biton tiel, ke viaj E-literoj farigxas iuj aliaj
+  signoj. Se vi tamen volas sendi 8bite kaj uzas lokan Sendmail, vi
+  startu gxin kun la elekto -B8BITMIME. Bedauxrinde tio, lige kun eraro
+  de Xfmail (vd. malsupre), kauxzis senderarojn cxe mi en certaj kazoj.
+
+  Por trasendi 8bitajn mesagxojn tra 7bitaj medioj ekzistas la normo
+  "quoted printable". Tiu rekodas 8bitajn signoj per signaro =NN, cxe
+  kio NN estas la kodero de la signo.  Mi rekomendas ensxalti tiun
+  rekodon sub "Misc Config Intern." en Xfmail.
+
+  Tio bedauxrinde estas uzata nur por novaj mesagxoj. Se vi respondas al
+  retmesagxo, Xfmail transprenas ties rekodon.  Tiel povas okazi, ke via
+  mesagxenhavo (ekz. Content-Type: text/plain; charset=Iso-8859-3) ne
+  harmonias kun la rekodo (ekz. Content-Transfer-Encoding: 7Bit). Tio
+  aux kauxzas problemojn kun Sendmail (vd. supre) aux forigas la 8an
+  biton de la E-literoj.
+
+
+  10.  Diskutgrupoj per Knews
+
+
+  Knews (Karl's threaded newsreader for X) estas legilo por
+  diskutgrupoj, kiu kapablas rekoni kaj skribi gxustajn MIME-kapliniojn
+  pri la signokodo. Por uzi Latin-3 oni devas aldoni kelkajn liniojn al
+  la konfiguraj dosieroj.
+
+  Dum la instalo de Knews, la dosiero Knews.ad estas kopiata el la
+  fontdosierujo al /usr/X11R6/lib/X11/app-defaults/Knews.
+
+  Aldonu en tiu dosiero la sekvajn liniojn:
+
+
+         Knews.iso-8859-3.bodyFont:      \
+                   -*-helvetica-medium-r-normal-*-*-120-*-*-*-*-iso8859-3
+         Knews.iso-8859-3.quoteFont:     \
+                   -*-helvetica-medium-r-normal-*-*-120-*-*-*-*-iso8859-3
+         Knews.iso-8859-3.headerFont:    \
+                   -*-helvetica-medium-r-normal-*-*-120-*-*-*-*-iso8859-3
+
+         Knews.editCommand: elvis +%i %s -fn fixed-l3 +source~/.elvis.lat3
+
+
+
+
+  Anstataux Elvis vi povas ankaux uzi ekzemple Emakson kiel redaktilo.
+
+  Por povi legi ankaux esperantajn afisxojn kun malgxusta kaplinio pri
+  kodo aux koditajn laux UTF-8, estas avantagxe aldoni sub
+
+
+         Knews.baseTranslations: #override \n\
+
+
+
+
+  la linion:
+
+
+         c    <Key> e:          mime-hack(text/plain, 8bit) \n\
+         c s  <Key> u:          mime-hack(text/utf8, 8bit)  \n\
+
+
+
+
+  Atentu, la \n\, kiu finu cxiun linion en la alineo krom la lastan.
+
+  Nun per Ctrl-e oni povas sxalti en cxiu afisxo al la implicita kodo.
+  Per Ctrl-Shift-u vi povas sxalti al la MIME-tipo text/utf8.  Cxar
+  Knews ne scias trakti gxin, gxi demandas Metamail kaj montras la
+  tekston kiel difinita en /etc/mailcap. En la sekcio pri Metmail ni
+  difinis, ke text/utf8 estu konvertata al Latin-3.  Tial sxangxu ankaux
+  la linion pri Knews.copiousoutput al:
+
+
+         Knews.copiousOutput:  exec xterm \
+               -fn 'fixed-l3' -e /bin/sh -c '(%C) | less'
+
+
+
+
+  Anstataux fixed-l3 enmetu la de vi preferatan Latin-3-tiparon.
+
+  La implicitan kodon (uzatan cxe Ctrl-e) oni difinas en la dosiero
+  ~/.knews/config-* (* estas la uzata diskutgrupa servilo. Tiu dosiero
+  estas auxtomate kreata cxe la unua lancxo de Knews. Aldonu la sekvan
+  linion:
+
+
+         *esperanto*defaultCharset:  iso-8859-3
+
+
+
+
+  Nun en cxiu diskutgrupo, kiu enhavas la nomon "esperanto", estas uzata
+  la kodo Latin-3 kiel implicita.
+
+  Jen vi trovas Knews <http://www.matematik.su.se/~kjj/> en Interreto.
+
+
+  11.  TeX / LaTeX
+
+  Por produkti la supersignajn literojn en TeX, vi normale tajpas:
+
+
+         \^C \^c \^G \^g \^H \^h \^J \^{\j} \^S \^s \u{U} \u{u}
+
+
+
+
+  La \j cetere estas 'j' sen la punkto. Tamen, se vi skribas longajn
+  tekstojn, estas iom tede skribi tiujn ordonojn. Do estas avantagxe
+  krei dosieron esperanto.sty kun la sekva enhavo:
+         \let\mathcaret=^
+
+         \def\esperantocaret#1{
+           \ifx#1u\u{#1}\else
+           \ifx#1U\u{#1}\else
+           \ifx#1j\^{\j}\else
+           \^{#1}\fi\fi\fi
+         }
+
+         \catcode`\^=\active
+
+         \def^{\ifmmode\let\next\mathcaret
+             \else\let\next\esperantocaret
+             \fi\next}
+
+
+
+
+  Tio permesas skribi ^C ^c ... ^U ^u por la esperantaj literoj. Iom
+  komplikas la aferon, ke la signo ^ estas ankaux uzata por supraj
+  indicoj en la matematika modo, t. e. por matematikaj formuloj. Do vi
+  ne povas uzi tiujn mallongigojn en formuloj ekzemple. (Pro tio ankaux
+  la konfuzigaj linioj kun "mathcaret" en la supraj difinoj)
+
+  Se vi ebligis la uzadon de Latin-3 en via sxatata redaktilo, vi povas
+  ankaux rekte traduki la Latin-3 kodojn al la esperantaj signoj:
+
+
+         \catcode`\cx=\active \defcx{\^c}
+         \catcode`\gx=\active \defgx{\^g}
+         \catcode`\hx=\active \defhx{\^h}
+         \catcode`\jx=\active \defjx{\^\j}
+         \catcode`\sx=\active \defsx{\^s}
+         \catcode`\ux=\active \defux{\u u}
+         \catcode`\Cx=\active \defCx{\^C}
+         \catcode`\Gx=\active \defGx{\^G}
+         \catcode`\Hx=\active \defHx{\^H}
+         \catcode`\Jx=\active \defJx{\^J}
+         \catcode`\Sx=\active \defSx{\^S}
+         \catcode`\Ux=\active \defUx{\u U}
+
+
+
+
+  Noto: En la supra ekzemplo vi devas anstatauxigi la Esperantajn
+  literojn cx ... Ux en cxiu linio kaj maldekstre kaj dekstre per la
+  gxustaj literoj laux Latin-3-kodo.
+
+  Cetere pli ampleksa dosiero esperant.sty estas enhavata en la Babel-
+  pakajxo por LaTeX2e. Simple kontrolu per locate esperant, cxu gxi eble
+  jam estas instalita cxe vi.  Gxi ekzemple ankaux kreas esperantajn
+  titolojn en la enhavtabelo kaj indeksoj.
+
+  Por uzi la pakajxon, tajpu
+
+  sub TeX:
+
+
+         \input{esperant.sty}
+
+
+
+
+  sub LaTeX:
+
+
+    \usepackage[esperanto]{babel}
+
+
+
+
+  Ioma problemo estas, ke en tiparoj aliaj ol la normala "Computer
+  Modern" ne trovigxas la senpunkta j. Por kasxi la punkton super j
+  ekzistas dosiero dotlessj.sty <ftp://ftp.tex.ac.uk/tex-
+  archive/macros/latex/contrib/supported/carlisle/dotlessj.sty>.
+  Detalaj informoj pri gxi trovigxas cxe Edmundo
+  <http://www.cl.cam.ac.uk/users/etg10/dotlessj.html>.
+
+
+  12.  Esperanto-subteno en internaciigitaj programoj
+
+  Kelkaj Gnu-programoj kaj aliaj estas internaciigitaj. T.e.  iliaj
+  mesagxoj povas aperi en diversaj lingvoj. Tamen la Esperanto-tradukoj
+  de tiuj programoj nur nun estas komencataj. Sed ja vi povas kontroli,
+  cxu en via sistemo ekzistas dosierujo /usr/share/locale/eo aux cxu cxe
+  la fontdistribuoj de viaj programoj estas iuj dosieroj po/eo.po. Se
+  jes, la programoj kapablas montri esperantajn mesagxojn. Por vidi
+  tiujn mesagxojn, vi devas difini la variablon LANG aux LANGUAGE en la
+  cxirkauxajxo de la programo.
+
+  Por unuopa ordono vi povas ekzemple tajpi tiel:
+
+
+         LANG=eo <programo>
+
+
+
+
+
+  Aux vi povas dauxre difini la preferatajn lingvojn, se vi metas en
+  vian startskripton ion kiel
+
+
+         export LANG=eo:de:en  # en bash
+
+         setenv LANG eo:de:en  # en tcsh
+
+
+
+
+  Tio signifas: lauxeble uzu Esperanton, alikaze la germanan lingvon,
+  aux se ankaux tiu ne estas subtenata de la programo, uzu la anglan.
+
+
+  13.  Esperanto-signoj en HTML-tekstoj
+
+  Vi povas uzi la Latin-3-koderojn por montri E-signojn en HTML-teksto.
+  La normo volas, ke tiukaze vi metu la sekvan linion en la kapon
+  (<head>...</head>) de via dosiero:
+
+
+         <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-3">
+
+
+
+
+  Bedauxrinde Netscape Communicator kaj eble ankaux aliaj TTT-legiloj
+  misinterpretas tiun linion kaj malhelpas, ke ecx per via "User-
+  defined"-kodo vidigxos E-signoj. Do eble estas pli bone, ne indiki
+  tiun linion.
+
+
+  Pri kodado per Unikodo, legu la informpagxon cxe Aaron Irvine
+  <http://www.cs.qub.ac.uk/~AD.Irvine/lat3.html>. Pro la problemoj de
+  Netscape Communicator rilate al E-signoj en Unikodo ni malrekomendas
+  la uzon de Unikodo en pure esperantaj HTML-tekstoj. Por multlingvaj
+  tekstoj eble ne ekzistas pli tauxga alternativo. Sed por Esperanto uzu
+  prefere Latin-3 ankoraux iom da tempo.
+
+
+  14.  Koderoj
+
+  Pro kompleteco tie cxi ni donas ankoraux la koderojn de la E-signoj
+  laux la plej vastigxintaj normoj. UTF-8 estas normo por kodi unikodajn
+  signojn per 8bitaj koderoj.  Gxi estas ekzemple uzata en HTML-pagxoj.
+
+
+  14.1.  koderoj deksesume
+
+
+
+         litero  Latin-3 Unikodo UTF-8
+         -----------------------------
+         Cx      C6      0108    C4 88
+         cx      E6      0109    C4 89
+         Gx      D8      011C    C4 9C
+         gx      F8      011D    C4 9D
+         Hx      A6      0124    C4 A4
+         hx      B6      0125    C4 A5
+         Jx      AC      0134    C4 B4
+         jx      BC      0135    C4 B5
+         Sx      DE      015C    C5 9C
+         sx      FE      015D    C5 9D
+         Ux      DD      016C    C5 AC
+         ux      FD      016D    C5 AD
+
+
+
+
+
+  14.2.  koderoj dekume
+
+
+
+         litero  Latin-3 Unikodo UTF-8
+         -------------------------------
+         Cx      198     0264    196 136
+         cx      230     0265    196 137
+         Gx      216     0284    196 156
+         gx      248     0285    196 157
+         Hx      166     0292    196 164
+         hx      182     0293    196 165
+         Jx      172     0308    196 180
+         jx      188     0309    196 181
+         Sx      222     0348    197 156
+         sx      254     0349    197 157
+         Ux      221     0364    197 172
+         ux      253     0365    197 173
+
+
+
+
+
+  14.3.  koderoj okume
+
+
+
+
+    litero  Latin-3 Unikodo UTF-8
+    -------------------------------
+    Cx      306     0410    304 210
+    cx      346     0411    304 211
+    Gx      330     0434    304 234
+    gx      370     0435    304 235
+    Hx      246     0444    304 244
+    hx      266     0445    304 245
+    Jx      254     0464    304 264
+    jx      274     0465    304 265
+    Sx      336     0534    305 234
+    sx      376     0535    305 235
+    Ux      335     0554    305 254
+    ux      375     0555    305 255
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

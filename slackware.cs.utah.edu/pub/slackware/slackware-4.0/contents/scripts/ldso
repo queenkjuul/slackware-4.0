@@ -1,0 +1,40 @@
+#!/bin/sh
+cd lib
+mv ld.so.incoming ld.so
+if [ -x /sbin/ldconfig ]; then # update library links
+  /sbin/ldconfig .
+  if [ -x /bin/sln ]; then
+    /bin/sln ld-linux.so.1.9.9 ld-linux.so.1
+    /bin/sln libdl.so.1.9.9 libdl.so.1
+  fi
+else # no ldconfig, we must be running safely from the bootdisk
+  ln -sf ld-linux.so.1.9.9 ld-linux.so.1
+  ln -sf libdl.so.1.9.9 libdl.so.1
+fi
+cd ..
+( cd lib ; rm -rf libdl.so )
+( cd lib ; ln -sf libdl.so.1 libdl.so )
+( cd lib ; rm -rf ld-linux.so )
+( cd lib ; ln -sf ld-linux.so.1 ld-linux.so )
+( cd usr
+  if [ -L ix86-coff ]; then
+    if [ -d i486-coff ]; then
+      rm ix86-coff
+      mv i486-coff ix86-coff
+      ln -sf ix86-coff i486-coff
+    fi
+  fi
+  if [ -L ix86-linux ]; then
+    if [ -d i486-linux ]; then
+      rm ix86-linux
+      mv i486-linux ix86-linux
+      ln -sf ix86-linux i486-linux
+    fi
+  fi
+  if [ -L ix86-linuxaout ]; then
+    if [ -d i486-linuxaout ]; then
+      rm ix86-linuxaout
+      mv i486-linuxaout ix86-linuxaout
+      ln -sf ix86-linuxaout i486-linuxaout
+    fi
+  fi )

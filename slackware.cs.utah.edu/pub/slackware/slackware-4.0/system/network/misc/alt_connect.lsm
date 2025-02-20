@@ -1,0 +1,15 @@
+Begin3
+Title: alt_connect          
+Version: 0.99       
+Entered-date: 8/22/97   
+Description: alternate ip source for tcp clients without recompilation
+Description: useful for ip aliases testing 
+Keywords: alternate ip source tcp ipalias sharedlib 
+Author: rancurel@capmedia.fr        
+Maintained-by: rancurel@capmedia.fr 
+Primary-site: sunsite.unc.edu   
+Alternate-site: 
+Original-site: sunsite.unc.edu 
+Platforms: linux     
+Copying-policy: GPL
+End

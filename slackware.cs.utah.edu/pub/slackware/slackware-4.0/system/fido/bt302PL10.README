@@ -1,0 +1,39 @@
+
+Newsgroups: comp.os.linux.announce
+From: etmelag@crosby.ericsson.se (Louis Lagendijk)
+Subject: New Binkley version uploaded
+Followup-To: comp.os.linux
+Keywords: binkley, fidonet
+Organization: Ericsson Telecom, Stockholm, Sweden
+Approved: linux-announce@tc.cornell.edu (Lars Wirzenius)
+
+[ Moderator's note: I posted this once with the wrong subject.  Sorry
+  for the inconvenience.  --liw ]
+
+I have just uploaded a new revision of the Unix ort of Binkley, a 
+fidonet mailer ported to Unix by Ben Stuyts with a number of Linux 
+changes by me. This release should now work on both the Next and Linux.
+Compared to the previous release a number of bugs have been fixed:
+- Janus works now (Janus is a bi-directional protocol)
+- Binkley had some bugs in the termio stuff, so the 4.3.3 library
+  caused some problems
+- Timing did not work right
+- probably a lot more that I can not remeber right now.
+
+Binkley works quite nicely with my port of Rfmail. So If you have
+news and mail setup, adding fido capabilities to your    system
+is easy. Documentation is not included in the archive, if a lot
+of people need it, I'll try to get hold of it. You should try to
+get the docs of the Atari-ST version of Binkley, as that was used as 
+base for this port.
+
+I uploaded binkley to tsx-11.mit.edu (not to other sites, our ftp
+connection is quite (not to say very) slow right now.
+Look for binkley at:
+tsx-11.mit.edu:/pub/linux/sources/bt302PL10.tar.gz
+It should appear there quite soon.
+
+Cheers, Louis
+
+
+

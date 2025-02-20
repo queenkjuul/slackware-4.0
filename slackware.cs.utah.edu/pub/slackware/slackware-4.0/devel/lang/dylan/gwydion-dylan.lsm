@@ -1,0 +1,25 @@
+Begin3
+Title:          Gwydion Dylan
+Version:        2.2.0
+Entered-date:   8 February 1999
+Description:    Gwydion Dylan is a portable, optimizing Dylan compiler. It
+                was originally written by the Gwydion Group at CMU and is
+                now maintained by volunteers. Dylan is an object-oriented,
+                dynamic language with four goals: high performance, rapid
+                prototyping, ease of use, and seamless support for libraries
+                written in C.
+Keywords:       programming, compiler, dynamic, Dylan, C FFI
+Author:         gwydion-group@cs.cmu.edu (Gwydion Group)
+Maintained-by:  gd-hackers@randomhacks.com (Volunteer Maintainers)
+Primary-site:   metalab.unc.edu /pub/Linux/devel/lang/dylan/
+                1939007 gwydion-dylan-2.2.0.src.tar.gz
+Alternate-site: berlin.ccc.de /pub/gd/src/
+                1939007 gd-2.2.0.tar.gz
+Original-site:  
+Platforms:      Linux x86, Linux PPC, FreeBSD. Other Unix-like systems with
+                an ANSI C compiler require tweaks and bootstrapping. If you
+                wish to build Gwydion Dylan from source, you'll need to get
+                a binary from <http://www.gwydiondylan.org/downloading.phtml>
+                for your platform.
+Copying-policy: MIT-like (regular MIT in future versions)
+End

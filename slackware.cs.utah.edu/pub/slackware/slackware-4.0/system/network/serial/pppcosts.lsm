@@ -1,0 +1,22 @@
+Begin3
+Title:          PPPCOSTS/PPPTIME: Display time & costs for PPP sessions 
+Version:        0.64 [6-Apr-99]
+Entered-date:   06APR99
+Description:    A program to display online time and phone costs
+                of Internet sessions using PPP dialup. Displays
+                time and costs for current session and for previous
+                sessions. Cost files provided for *many* phone
+                companies. Should be easy to adapt to your phone
+                company. Uses hardly any system resources ;)
+                Works with modem and ISDN.
+	        Now also comes with an X interface written in Tcl/Tk
+Keywords:       ppp dialup time costs pppcosts telecom modem isdn
+Author:         tst@bigfoot.com (Tillmann Steinbrecher)
+Maintained-by:  tpo@spin.ch (Tomas Pospisek)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial/
+                37K pppcosts-0.61.src.tar.gz
+Alternate-site: http://isjm.com/tst/pppcosts.htm
+Original-site:  
+Platforms:      Linux, FreeBSD
+Copying-policy: GPL
+End

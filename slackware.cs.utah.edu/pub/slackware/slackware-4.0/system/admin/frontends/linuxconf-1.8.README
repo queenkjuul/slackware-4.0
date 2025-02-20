@@ -1,0 +1,58 @@
+I am proud to announce the release of Linuxconf 1.8. This release 
+incorporate many enhancement and features. The last official release was 
+1.6. Linuxconf-1.6 was a major user interface rework and 1.8 has fixed
+many details.
+
+Linuxconf-1.6 was really the release which "makes it". The user base is
+now pretty important. The number of hits on my web server (from several
+thousand different sites per month) and the number of email I have
+received have raised significantly from previous release. Linuxconf-1.8
+add some fine tuning to all this and add many important building blocks. 
+
+Linuxconf is a sophisticated administration system for Linux under the
+GPL. It has a ncurses and HTML interface.
+
+It has been uploaded to sunsite in the pub/Linux/Incoming directory and 
+should move to /pub/Linux/system/Admin/linuxconf-1.8.src.tar.gz. Binaries 
+for both elf and a.out systems are provided at the same place.
+
+Check out the following URL for more info
+
+	http://www.solucorp.qc.ca/linuxconf
+	http://www.solucorp.qc.ca/linuxconf/changes.html
+
+The major enhancements are
+
+	-the HTML mode had some bugs and was not using all available
+	 HTML widgets.
+	-A privilege system has been designed. You can now grant some
+	 administrative privilege to simple user (Create POP account
+	 for example). Much more privilege can be added to Linuxconf.
+	 Comments welcome and suggestion about new privileges.
+	-Management of linuxconf's logs (What Linuxconf has done) is
+	 now cleaner. Linuxconf is now much much more verbose at boot time
+	 (All this is configurable). You can review everything that was
+	 thrown at you using Linuxconf.
+	-Interactive booting. If anything goes wrong during the boot
+	 process and something seems to hang, you can recover control
+	 and either skip the guilty command, terminate it, or jump right
+	 into Linuxconf configure mode. When you exit, Linuxconf will
+	 continue the boot process, potentially backtracking because you
+	 may have done complex configuration changes. This is a unique
+	 feature unheard on any OS.
+	-There is now an UN-install script for those who are not sure if
+	 they need Linuxconf.
+	-Support for RedHat 4.0, Debian 1.1 and Slackware 3.1.
+	-Enhance Sendmail.cf generation. Linuxconf configure Sendmail
+	 on all distribution I could test (7).
+	-Enhance PPP dial-out script. You can do PPP over ssh to create
+	 secure channel. You can also enter routing information directly
+	 in the dial-out dialog. No need to fiddle with /etc/ppp/ip-up.
+	-A new concept of Virtual Email Hosting have been invented. Fully
+	 managed by Linuxconf. ISPs, check it out!
+	-A new menu entry in the main menu: Control panel. This is expect
+	 to grow into a command center.
+	-Lot of enhancement for shadow password management, including
+	 default policies.
+
+

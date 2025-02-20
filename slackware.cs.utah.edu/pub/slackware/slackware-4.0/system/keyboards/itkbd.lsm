@@ -1,0 +1,20 @@
+Begin2
+Title        = itkbd.tar.gz
+Version      = 0.1
+Desc1        = Maps for Italian keyboards to be loaded with loadkeys
+Desc2        = and xmodmap. They still need a little bit of fixes but
+Desc3        = they works. 
+Author       = Romolo Manfredini
+AuthorEmail  = romolo@ursamajor.eng.unipr.it
+Site1        = sunsite.unc.edu
+Path1        =
+File1        = itkbdmaps.tar.gz
+FileSize1    = 3199
+Required1    = loadkeys, xmodmap
+CopyPolicy1  = public domain
+Keywords     = keyboards, italy, xmodmap, kbd
+Entered      = 23Jul94
+EnteredBy    = Romolo Mamfredini
+CheckedEmail = romolo@ursamajor.eng.unipr.it
+End
+

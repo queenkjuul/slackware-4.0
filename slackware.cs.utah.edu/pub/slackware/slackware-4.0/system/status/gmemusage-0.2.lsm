@@ -1,0 +1,22 @@
+Begin3
+Title:         gmemusage
+Version:       0.2
+Entered-date:  January 14, 1998
+Description:   Gmemusage is a graphical program modelled after the
+               Silicon Graphics Inc.  program of the same
+               name. Gmemusage displays a window with a stacked
+               bar. Areas on the bar correspond to individual
+               processes running on the system and are updated
+               periodically. Multiple copies of the same program
+               (actually, programs with the same name) are merged into
+               one area on the stack. Sizes of areas in the stack
+               correspond to resident sizes of the processes.
+Keywords:      process memory
+Author:        Raju Mathur (raju@sgi.com)
+Maintained-by: Raju Mathur (raju@sgi.com)
+Primary-site:  http://reality.sgi.com/raju
+Alternate-site: sunsite.unc.edu:pub/Linux/system/status
+Original-site:  http://reality.sgi.com/raju/software
+Platform:      Linux
+Copying-policy: GPL
+End

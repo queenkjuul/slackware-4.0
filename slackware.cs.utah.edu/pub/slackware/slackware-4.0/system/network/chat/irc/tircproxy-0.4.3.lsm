@@ -1,0 +1,26 @@
+Begin3
+Title:          tircproxy
+Version:        0.4.3
+Description:	This is an IRC proxy server.  Features:
+		+ Supports DCC CHAT, SEND, RESUME and TSEND protocols.
+		+ Supports both transparent and dedicated operation.
+		+ Supports "anonymization" to hide users' identities.
+		+ Supports flexible authentication for access.
+		+ Can be run either standalone or via inetd.
+		+ Allows the admin to send "MOTD" style messages and/or
+		  broadcasts to the user(s).
+		+ Can block trojans such as 'script.ini', 'dmsetup.exe', etc.
+		+ Access controlled by /etc/hosts.allow and /etc/hosts.deny.
+		+ Can cooperate with some identd's for non-root operation, or
+		  (if root) can change UID/GID according to client's IP addr.
+		+ Extensive documentation
+Keywords:       IRC DCC transparent proxy
+Author:         bre@mmedia.is (Bjarni R. Einarsson)
+Maintained-by:  bre@mmedia.is (Bjarni R. Einarsson)
+Primary-site:   metalab.unc.edu /pub/Linux/system/network/chat/irc
+Alternate-site:	ftp.mmedia.is /pub/linux/tircproxy
+Original-site:	http://www.mmedia.is/~bre/tircproxy/
+Platform:       Linux, NetBSD, HP-UX, Solaris, hopefully other unices.
+		Linux 2.0+ or IPF required for transparent operation.
+Copying-policy: GPL
+End

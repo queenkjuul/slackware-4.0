@@ -1,0 +1,22 @@
+Begin3
+Title:          rt - run program on realtime priority
+Version:        1.0
+Entered-date:   12 Jan 1997
+Description:    rt starts any program on realtime priority, like nice
+		does with lower priority. Lets you choose scheduler
+		class (SCHED_RR vs SCHED_FIFO policy) and priority.
+Keywords:       linux, real time, scheduler
+Author:         Boris Tobotras <boris@xtalk.msk.su>
+Maintained-by:  Boris Tobotras <boris@xtalk.msk.su>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+			10 kb rt-1.0.tar.gz
+Alternate-site: ftp.macsimum.ru /pub/Linux/local
+			10 kb rt-1.0.tar.gz
+Platform:       Linux 1.3.87 and later
+Copying-policy: GPL
+End
+
+
+
+
+

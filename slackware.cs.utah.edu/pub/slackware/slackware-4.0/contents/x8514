@@ -1,0 +1,10 @@
+drwxr-xr-x root/root         0 1999-03-14 15:21 ./
+drwxr-xr-x root/root         0 1999-03-14 15:21 usr/
+drwxr-xr-x root/root         0 1999-03-14 15:21 usr/X11R6/
+drwxr-xr-x root/bin          0 1999-03-14 15:21 usr/X11R6/bin/
+-rwxr-xr-x root/bin    1636648 1999-03-14 15:21 usr/X11R6/bin/XF86_8514
+drwxr-xr-x root/root         0 1999-03-14 15:21 var/
+drwxr-xr-x root/root         0 1999-03-14 15:21 var/X11R6/
+drwxr-xr-x root/root         0 1999-03-14 15:21 var/X11R6/bin/
+drwxr-xr-x root/root         0 1999-03-14 15:21 install/
+-rw-r--r-- root/root       467 1999-03-14 15:21 install/doinst.sh

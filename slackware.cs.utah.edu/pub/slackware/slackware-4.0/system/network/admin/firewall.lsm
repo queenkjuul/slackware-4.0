@@ -1,0 +1,15 @@
+Begin3
+Title: firewall.sh
+Version: 1.0
+Entered-date: 30JAN99
+Description: A console menu-based script to configure a firewall on Linux
+             2.0 system using ipfwadm
+Keywords: firewall ipfwadm
+Author: Patrick Lambert <drow@darkelf.net>
+Maintained-by: Patrick Lambert <drow@darkelf.net>
+Primary-site: http://devplanet.fastethernet.net/files.html
+Alternate-site: http://sunsite.unc.edu/pub/Linux
+Original-site:
+Platforms: Linux, Unix
+Copying-policy: GPL
+End

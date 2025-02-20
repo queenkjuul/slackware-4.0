@@ -1,0 +1,18 @@
+F 00_INDEX.TXT                      	00_index.txt
+F COPYRIGH                          	Copyright
+F HOMEPAGE                          	homepage
+F README                            	README
+F REGEXP                            	regexp
+F RGLCLOCK.000                      	rglclock_1.2.2-1.dsc~
+F RGLCLOCK.001                      	rglclock_1.2.2-1.diff.gz
+F RGLCLOCK.002                      	rglclock_1.2.1-1.diff.gz
+F RGLCLOCK.003                      	rglclock-1.2.2.tar.gz
+F RGLCLOCK.004                      	rglclock-1.2.1.tar.gz
+F RGLCLOCK.005                      	rglclock_1.2.2-1.diff.gz~
+F RGLCLOCK.006                      	rglclock_1.2.2-1.dsc
+F RGLCLOCK.007                      	rglclock-1.1.6.tar.gz
+L RGLCLOCK.008                      	rglclock_1.2.2.orig.tar.gz	rglclock-1.2.2.tar.gz
+F RGLCLOCK.DEB                      	rglclock_1.2.2-1_i386.deb~
+F RGLCLOCK.DSC                      	rglclock_1.2.1-1.dsc
+L RGLCLOCK.GZ                       	rglclock_1.2.1.orig.tar.gz	rglclock-1.2.1.tar.gz
+D SNAPSHOT                          	Snapshot

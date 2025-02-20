@@ -1,0 +1,53 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-dip
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_dip.tar.gz
+
+echo "+=============+"
+echo "| dip337o-uri |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/dip337o-uri.tar.gz
+cd dip-3.3.7o
+zcat $CWD/dip337o-uri.diff.gz | patch
+make clean
+make depend
+rm -f dip
+make
+strip dip
+cat dip > $PKG/sbin/dip-3.3.7o
+cat dip.8 | gzip -9c > $PKG/usr/man/man8/dip.8.gz
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/dip.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/dip-3.3.7o
+  rm -rf $PKG
+fi

@@ -1,0 +1,15 @@
+Begin3
+Title: bdm-linux
+Version: 0.90l
+Entered-date: 4/25/95
+Description: Background Debug Mode interface for Motorola CPU16 and CPU32
+Keywords: BDM ICE CPU32 CPU16 debugger
+Author: Scott_Howard-SCN088@email.mot.com
+Maintained-by: Jeff@RyeHam.EE.Ryerson.Ca (D.Jeff Dionne)
+Primary-site: sunsite.unc.edu (probabily /pub/Linux/devel/debuggers)
+              34k bdm-linux.0.9l.tar.gz
+Alternate-site:
+Original-site: freeware.aus.sps.mot.com
+Platform: Linux
+Copying-policy: Free, provided copywrite message is maintained
+End

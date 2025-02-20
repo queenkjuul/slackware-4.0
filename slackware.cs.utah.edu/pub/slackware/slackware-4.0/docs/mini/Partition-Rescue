@@ -1,0 +1,419 @@
+
+                     THE LINUX PARTITION-RESCUE MINI-HOWTO
+                                       
+Rolf Klausen, <rolfk@romsdal.vgs.no>
+
+   Version 1.1, 22 Oct 1997
+   
+   
+     _________________________________________________________________
+   
+   _This mini-HOWTO document describes how to rescue your Linux partition
+   if M$-DOG has deleted it for you. _
+     _________________________________________________________________
+   
+   
+   
+1.Introduction
+
+     * 1.1 Disclaimer
+     * 1.2 Legal stuff
+       
+   
+   
+2.Some preparations and needs
+
+     * 2.1 What you need
+     * 2.2 I assume that...
+       
+   
+   
+3.Let's do it! I want my partition back!
+
+     * 3.1 Using the Partition Magic program to recover your partition
+     * 3.2 Changing the partition type to Linux Native
+     * 3.3 The final touches
+       
+   
+   
+4.Contributors
+
+     * 4.1 Authors
+     * 4.2 Thanx go out to:
+     * 4.3 Thanx does NOT go out to:
+       
+   
+     _________________________________________________________________
+   
+   
+   
+   
+   
+                               1. INTRODUCTION
+                                       
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   On my computer I have installed Linux, and I have used it for over an
+   year now, and I think it is the best OS ever created. I also have
+   M$-DOG and Windows NT 4.0 installed on my computer. The reason that I
+   use M$-DOG is simply because, as Lars Wirzenius once wrote: "MS-DOS -
+   you can't live with it, you can't live without it". I use it to play
+   games and run demos and stuff with.
+   
+   But enough about that. I have two DOS partitions, one primary
+   partition and onelogical drive (I assume you know what a partition is
+   - if not read the Partition mini-HOWTO. It is located at
+   sunsite.unc.edu somewhere and probably many other places too.). They
+   are about 500 MB each (I have one 3.2 GB disk and one 1.2 GB disk :).
+   My Linux partition is 1200 MB. I have a free space of about 800 MB
+   which I don't know what do do with yet, and I was wondering about what
+   I should do if I needed more space for DOS (some large game or
+   something), because I wasn't sure how many logical drives DOS could
+   use / access. I don't know why, but for some reason I thought that DOS
+   could use only one (in addition to the primary DOS partition). So I
+   thought that I could check out if DOS could access more logical
+   drives. I fired up fdisk (in DOS), and used the menu system to create
+   a "logical DOS drive", and that worked fine. I created one with the
+   size of 100 MB. Then I formatted it and it worked fine! Great! I
+   thought. Then I knew that! But I didn't need that drive now, so I
+   decided to delete it. I used DOS' fdisk again, chose "delete DOS
+   primary partition or logical drive" (or something like that) on the
+   menu, selected drive E to be deleted, typed the volume label, which
+   was nothing (I just tapped ENTER) and fdisk told me that the disk was
+   successfully deleted. Then I rebooted. On my computer I use a program
+   called System Commander. It is a great program which displays a nice
+   menu (a la OS/2's Boot Manager) with icons and many nice features. It
+   detects and removes new/deleted OSes automatically etc. But when I
+   rebooted, Linux wasn't on the menu anymore! I started DOS, typed e:
+   and enter, and there it was still! Then I started fdisk. It chose to
+   print the partition table, and it said that drive E was there, and
+   where my Linux partition was before, now only a free space was left!
+   SHOCK! HORROR! I started to sweat and shake! What should I do now! I
+   couldn't just reinstall everything! It had to be a way to get it all
+   back. And, yes, it was! Thank God (even though I don't believe in
+   him), it was! I had lots of useful information and programs on that
+   partition! Before I figured out how to rescue my partition, I wished
+   Bill Gates was never even born! Have you experienced the same thing
+   recently? Don't be afraid! The rescue is here! Just read on a little
+   bit more...!
+   Oh, BTW: Due to the fact that I live in Norway, my english is probably
+   not so good, but I hope you understand it anyway :-) 
+   
+1.1 Disclaimer
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   This mini-HOWTO is Copyright (C) 1997 Rolf Klausen. All rights
+   reserved. You may do (almost) whatever you want with it. I don't care.
+   Just be sure to keep my name intact. I just hope it becomes useful for
+   any person in the Linux community. But please read section 1.2 below.
+   
+                                 IMPORTANT!!!!
+                                       
+   
+     _________________________________________________________________
+   
+   
+   
+   I am not responsible of any damage on any computer as a result of
+   anyone reading this HOWTO. If you do any damage, _it is YOUR fault,
+   NOT MINE!_ Be careful when partitioning disks, and don't make any
+   mistakes, because it can be fatal! Backup all your important data and
+   check that everything you do is correct! What is described here worked
+   on my computer, but it may or may not work on your computer. Although
+   it should work for everyone, I can't garantee anything. This is the
+   last warning you get: _BACKUP IMPORTANT DATA!_ Or, to put it short:
+   Use at your own risk!
+     _________________________________________________________________
+   
+   
+   
+   
+   
+                               1.2 LEGAL STUFF
+                                       
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   Unless otherwise stated, Linux HOWTO documents are copyrighted by
+   their respective authors. Linux HOWTO documents may be reproduced and
+   distributed in whole or in part, in any medium physical or electronic,
+   as long as this copyright notice is retained on all copies. Commercial
+   redistribution is allowed and encouraged; however, the author would
+   like to be notified of any such distributions.
+   
+   All translations, derivative works, or aggregate works incorporating
+   Linux HOWTO documents must be covered under this copyright notice.
+   That is, you may not produce a derivative work from a HOWTO and impose
+   additional restrictions on its distribution. Exceptions to these rules
+   may be granted under certain conditions; please contact the Linux
+   HOWTO coordinator at the address given below.
+   
+   In short, we wish to promote dissemination of this information through
+   as many channels as possible. However, we do wish to retain copyright
+   on the HOWTO documents, and would like to be notified of any plans to
+   redistribute the HOWTOs.
+   
+   If you have any questions, please contact Greg Hankins, the Linux
+   HOWTO coordinator, at gregh@sunsite.unc.edu via email, or at +1 404
+   853 9989.
+   
+   
+     _________________________________________________________________
+   
+   
+   
+                        2 SOME PREPARATIONS AND NEEDS
+                                       
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   
+   
+2.1 What you need
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+    OK! So, MS-DOG has deleted your Linux partition? Here is what you need to
+    bring it back from the dead:
+    
+   
+   
+     * A working DOS installation, preferrably on a harddrive, maybe a
+       floppy will work, I don't know.
+     * A dos program called Partition Magic. It is shareware, afaik, and
+       you should be able to get it on the net, either one way or the
+       other ;^)
+     * A Linux Boot floppy and a Linux Root Floppy. I used the ones from
+       my Slackware distribution. You must have Linux fdisk on the root
+       floppy.
+       
+   
+   
+   
+   
+2.2 I assume that...
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+     * ... M$-DOG has deleted your Linux partition (accidently?)
+     * ... you haven't changed anything in your partition table since
+       that happened.
+     * ... you satisfy the needs described in section 2.1
+       
+   
+   If this suites you, then the chances for succesfully recovering your
+   partition are very large!
+   
+   
+     _________________________________________________________________
+   
+   
+   
+                   3. LET'S DO IT! I WANT MY PARTITON BACK!
+                                       
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   OK! Get ready to rescue... grab a cup of coffee, and relax. Everything
+   will be just fine :)
+   BTW - Can you imagine how I felt when MeSsy-DOS deleted my partiton? I
+   have never been so angry in my entire life (almost). But I found a way
+   to rescue the partition. Here it is...:
+   
+   
+   
+3.1 Using the Partition Magic program to recover your partition.
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   Get the partition magic program from the internet somewhere. Fire it
+   up, and you will get a nice win95 look-alike user interface. It is
+   very easy to use, and if you have used windoze 95, you should be able
+   to use this program too. Press the OK button, and then a graphical
+   presentation (is that the right word to use? I'm not so very good in
+   english.) of your disk should appear on your disk. The different
+   partitions and filesystems have different colors. I have a DOS primary
+   partiton, and I assume you have the same. One of my logical drives is
+   my Linux partition. Where that previously were, now only a grey bar of
+   free space is left. To the right or left of it you should have a small
+   logical drive which is you Linux Swap partition. Now right click on
+   the free space and select "create", or choose from the menus. You
+   should be able to figure out how it works. It is, as said earlier, a
+   very easy to use interface. When the create partition dialog box
+   appears, select "Unformatted" where it says "FAT". You can choose from
+   "FAT", "HPFS" and "Unformatted". If you choose FAT or HPFS, a FAT or
+   HPFS filesystem will be created on that partition and your linux
+   filesystem destroyed, so make sure that you have selected the right
+   value. Now select OK, and the partition will be created. But the
+   partition is now marked as a DOS FAT16 partition (in the partition
+   table, every partition has a mark (a hexadecimal number) which shows
+   what OS the partition belongs to.). What do you do then? Goes on to
+   section 3.2 :)
+   
+   
+   
+3.2 Changing the partition type to Linux Native
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   Now you need the boot and root floppies, so I hope you have them. It
+   is also possible to use loadlin. Just make sure you can start Linux
+   and run fdisk under it. First thing to do is login ;). fire up fdisk
+   by typing fdisk at the shell prompt. If you have more than one hd,
+   then check that fdisk is using the right one. Type 'p' (only the
+   letter p) and tap ENTER. You should now get a listing of your
+   partition table. It should have one "DOS 16-BIT >= 32M" more than
+   normal. Find out which one is your Linux partition (look at the sizes
+   etc) and remember its number (i.e. mine is /dev/hda6, so I would have
+   to remember the number 6 :). Now type 't' and ENTER to change a
+   partitions type, or ID as it is called in Linux fdisk (i'm not sure
+   which one is right; type or id, but I use the word type). Now type the
+   number you should remember and press ENTER. Now you shall type the hex
+   code of the OS which the partition belongs to. Type the number 83 and
+   press ENTER. 83 means that the partition is a Linux Native partition.
+   Linux Swap partitions have the type set to 82. You can type 'L' to see
+   a list of codes when you are asked to type the hex code of the
+   partition.
+   
+   When you have done all this, and when you have done everything right,
+   your partition shall be OK!! YES! It is true! It did work for me, and
+   should work for you too! All you now have to do is the final step:
+   
+   
+   
+3.3 The final touches
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   There are some small details still remaining. First of all, reboot and
+   fire up Linux the way you usually do it (LILO etc) and see if
+   everything works. If it doesn't, then you have odne something wrong or
+   my recovery mothod doesn't work for you :( But if it boots correctly,
+   then congratulations! You have done everything correctly! Now fsck
+   will check you filesystem once (it checked mine twice, I dunno why ;),
+   and then everything shall work fine again! If not, then don't blame
+   me. As said, it worked for me, but maybe not for you. If I saved your
+   partition, then a e-mail would be very nice :)
+   
+   
+     _________________________________________________________________
+   
+   
+   
+                               4. CONTRIBUTORS
+                                       
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   
+   
+4.1 Authors
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   There are only one author, and that one is me:
+
+Rolf Klausen
+E-mail: rolfk@romsdal.vgs.no
+WWW: http://www2.romsdal.vgs.no/~rolfk/
+Snail mail:
+
+Rolf Klausen
+Neptunvn. 10
+6400 Molde
+NORWAY
+
+   
+   
+   
+   
+4.2 Thanx go out to:
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+     * Eivind Stormyr (eivind@ardata.no) for introducing me to Linux, the
+       best OS ever created :) and learning me lots of things about
+       computers.
+     * Bjorn Olav Stormyr (bjorn@ardata.no) for giving me large discounts
+       on every part of my computer :) Whitout him I couldn't have
+       afforded to buy the computer I own :)
+     * Every other member of the Linux community and everybody who
+       supports Linux and writes documentation and programs for Linux and
+       all the authors of the LDP and virtually any person involved in
+       anything which has to do with Linux. Particularly Linus B.
+       Thorvalds - he is _The King_ !!!
+       
+       
+       
+       
+       
+       
+     * And of course:
+     * Tone B. Skjoelsvik - the most beautiful girl in the world :-)
+       
+   
+   
+   
+   
+4.3. Thanx does NOT go out to:
+
+   
+   
+    Previous  Next  Table of Contents
+    
+   
+   
+   Bill Gates (bill.gates@microsoft.com (?)) for creating the worst
+   "operating systems" in the world and for deleting my Linux partition
+   (Yes, I blame him. If he wasn't born, then my partition wouldn't have
+   been deleted and I wouldn't have had to recover it or even write this
+   little HOWTO.

@@ -1,0 +1,15 @@
+Begin3
+Title:		Update VU BBS
+Version:	Beta-2a
+Entered-date:	05MAY95
+Description:	Updated files for Beta-2 release of VU BBS. Fixes missing
+		USER=userid in environment space on some Linux logins.
+Keywords:	BBS, VU
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	sunsite.unc.edu /pub/Linux/systems/BBS/vubbs
+		updatevu-fix2.tar.gz
+Platforms:	Late Linux 1.1.x and above.  Uses later console driver
+                escape sequences for 8 bit transparency modes.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

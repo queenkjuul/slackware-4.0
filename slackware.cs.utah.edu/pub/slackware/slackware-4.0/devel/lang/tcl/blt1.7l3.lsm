@@ -1,0 +1,17 @@
+Begin3
+Title:          BLT
+Version:        1.7l3
+Entered-date:   12JAN95
+Description:    An add-on library for Tk which adds several useful
+		widgets and commands.
+Keywords:       Tcl, Tk, scripting, language
+Author:         george.howlett@att.com (George Howlett)
+Maintained-by:  david@ods.com (David Engel)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/tcl
+		blt1.7l3-src.tar.gz
+		blt1.7l3-bin.tar.gz
+Original-site:  harbor.ecn.purdue.edu /pub/tcl/extensions
+		BLT-1.7.tar.gz
+Platform:       Linux
+Copying-policy: Copyrighted but freely distributable
+End

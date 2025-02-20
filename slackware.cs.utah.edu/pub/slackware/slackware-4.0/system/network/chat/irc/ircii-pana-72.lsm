@@ -1,0 +1,24 @@
+Begin3
+Title:          BitchX-72
+Version:        72
+Entered-date:   01JLY97
+Description:    This is a ansi color irc client. All colors are user
+		definable. Alot of various internal features have been
+		added. A new libtermcap is required for compiling with linux
+		2.0 series of kernels. EPIC irc client help files should be
+		used with this client and are avail from ftp.neato.org
+		DLL loadable modules are supported. TCL is supported
+		internally. Many platforms are supported as well as
+		Windows 95/NT.
+Keywords:       irc ircii BitchX tcl dll Win95 WinNT
+Author:         edwac@sk.sympatico.ca (Colten D. Edwards)
+Maintained-by:  author
+Original-by:	various
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/chat
+		1.5Mb   ircii-pana-72.tar.gz
+		156kb	BitchX-extra.tar.gz
+		1kB	ircii-pana-72.lsm
+Alternate-site: bitchx.stuph.org raistlin.toledolink.com
+Original-site:  None
+Copying-policy: GPL portions are copyright the author.
+End

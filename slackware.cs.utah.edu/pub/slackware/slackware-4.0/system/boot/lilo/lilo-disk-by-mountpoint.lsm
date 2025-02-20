@@ -1,0 +1,18 @@
+Begin3
+Title:		LILO disk-by-mountpoint patch
+Version:	0.1
+Entered-date:	29SEP98
+Description:	Patch to lilo-20 to allow disk= stanzas to be specified
+                by mount point.  This obviates the need for some fancy 
+                footwork when using a loopback device to build a boot
+                floppy image for an El Torito CD.  
+Keywords:	LILO loopback loop ElTorito
+Author: 	B.A.McCauley@bham.ac.uk (Brian McCauley)
+Maintained-by:	B.A.McCauley@bham.ac.uk (Brian McCauley)
+Primary-site:	ftp.wcl.bham.ac.uk /pub/bam/patches/
+		1802 lilo-disk-by-mountpoint.diff
+Alternate-site: sunsite.unc.edu /pub/Linux/system/boot/lilo/
+		841 lilo-disk-by-mountpoint-0.1.patch.gz
+Platforms:	Linux, lilo-20.
+Copying-policy:	PD
+End

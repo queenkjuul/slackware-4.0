@@ -1,0 +1,25 @@
+Begin3
+Title:          serialmon
+Version:        0.23
+Entered-date:   27NOV98
+Description:    Serial line monitor program with statistics
+	Emulates modem frontpanel lights using curses on a console.
+	Can log statistics to a logfile.
+	Logging includes the modem line status changes, process id of the
+	process using the line, total characters transferred in each direction,
+	the amount of time the line was idle during transfer, and various other
+	statistics: peak data transfer rate over 1s and 10s, the average data
+	rate over the whole connect time and the active time.
+Keywords:       Serial Statistics Logger
+Author:         fox@roestock.demon.co.uk (Peter Fox)
+Maintained-by:  fox@roestock.demon.co.uk (Peter Fox)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/serial
+        21k serialmon-0.23.tgz
+Alternate-site: tsx-11.mit.edu /pub/linux/sources/sbin
+        21k serialmon-0.23.src.tar.gz
+Alternate-site:   ftp.demon.co.uk /pub/unix/linux/utils
+	21k serialmon-0.23.tgz
+Original-site:  ftp.demon.co.uk /pub/unix/linux/utils
+	21k serialmon-0.23.tgz
+Copying-policy: GNU
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          CMU SNMP package -- ELF binary version for developers
+Version:        2.1.2l3
+Entered-date:   7/9/95
+Description:	A binary release of the CMU snmp package compiled to use
+		an ELF shared library. Header files are also included so
+		that snmp developers can use the shared library. API
+		documentation and some sample source code is included.
+Keywords:       Network Administration SNMP ELF
+Author:         Carnegie Mellon University
+Maintained-by:  Joel Katz <Stimpson@Panix.COM>
+Primary-site:   sunsite.unc.edu://pub/Linux/Incoming/snmp-devel-2.1.2l3.tar.gz
+Original-site:  ftp.epinet.com
+Platform:       Linux, versions 1.2.8 and up with ELF and recent libc-5
+Copying-policy: Copyrighted. Freely distributable.
+End

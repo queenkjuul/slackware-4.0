@@ -1,0 +1,14 @@
+Begin3
+Title:          talkd
+Version:        1.5.2
+Entered-date:   09MAY99
+Description:    Full-featured talk daemon with answering machine, forward...
+Keywords:       talk talkd KDE otalk ntalk answering machine forward in.ntalkd
+Author:		David Faure <faure@kde.org>
+Maintained-by:  David Faure <faure@kde.org>
+Primary-site:   sunsite.unc.edu/pub/Linux/system/network/chat/talkd-1.5.2.tgz
+Alternate-site:
+Original-site:
+Platform:       Some unices (Linux/BSD/...). With or without KDE.
+Copying-policy: BSD
+End

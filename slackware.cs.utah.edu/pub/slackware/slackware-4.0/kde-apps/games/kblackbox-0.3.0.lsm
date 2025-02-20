@@ -1,0 +1,15 @@
+Begin3
+Title: kblackbox
+Version: 0.3.0
+Entered-date: 17 January 1999  
+Description: A little logical game for the KDE project.
+Keywords: KDE, Qt, gui, X11, game, logical
+Author: Robert Cimrman <cimrman3@students.zcu.cz, cimrman@kde.org>
+Maintained-by: Robert Cimrman <cimrman3@students.zcu.cz, cimrman@kde.org>
+Primary-site: ftp://ftp.kde.org/pub/kde/stable/1.0/apps/games
+Alternate-site: 
+Original-site: ftp://ftp.kde.org/pub/kde/stable/1.0/apps/games
+Platform: Linux, but should work on other unixes supported by KDE,
+needs Qt by Troll Tech Inc. and KDE installed
+Copying-policy: GPL
+End

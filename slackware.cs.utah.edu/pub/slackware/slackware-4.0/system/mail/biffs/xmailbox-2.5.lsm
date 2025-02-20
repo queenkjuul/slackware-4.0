@@ -1,0 +1,28 @@
+Begin3
+Title:          xmailbox
+Version:        July 16 1997
+Entered-date:   Wed Jul 16 21:10:15 EET DST 1997
+Description:    The main purpose of xmailbox is to get a user's 
+                attention when new mail arrives.  Xmailbox tries to
+                achieve this by using sound effects, color icons, and/or
+                icon animation.  For sound effects, xmailbox currently
+                supports the NCD audio server, the Rplay audio server,
+                Linux's Sun-compatible audio device, Sun's audio device,
+                and any external sound player program.  For color icons,
+                xmailbox uses XPM type 3 files.  For animation, you can
+                configure xmailbox to play up to 8 XPM files in repeated
+                sequence.
+Keywords:       mail, mailbox, XPM, animation, sound
+Author:         dbouras@hol.gr (Dimitrios P. Bouras)
+                wcheung@mail.spiralcomm.com (William K. W. Cheung)
+Maintained-by:  dbouras@hol.gr (Dimitrios P. Bouras)
+                wcheung@mail.spiralcomm.com (William K. W. Cheung)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/biffs
+                42.5k xmailbox-2.5-src.tar.gz
+                40K xmailbox-2.5-bin.tar.gz
+Alternate-site:
+Original-site:  ftp.x.org /contrib/applications
+                42.5K xmailbox-2.5.tar.gz
+Platform:
+Copying-policy: 
+End

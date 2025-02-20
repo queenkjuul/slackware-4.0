@@ -1,0 +1,27 @@
+Begin2
+Title        = dipeye
+Version      = 0.65
+Entered-date:	04NOV94
+Desc1        = Three sh scripts for use with DIP to keep a dial-up SLIP
+Desc2        = connection online.  Supports process killing/respawning,
+Desc3        = as well as connection logging.
+Author       = Adam Dace
+AuthorEmail  = glide@mcs.com
+Maintainer   = Adam Dace
+MaintEmail   = glide@mcs.com
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Network/serial
+File1        = dipeye-0.65.tar.gz
+FileSize1    = 2170
+Site2        = ftp.mcs.com
+Path2        = /mcsnet.users/glide
+File2        = dipeye-0.65.tar.gz
+FileSize2    = 2170
+Required1    = Software: dip, and a semi-complete set Un*x of system tools
+Required2    = Hardware: a modem ;)
+CopyPolicy1  = Freeware.  Do with this as you please.
+Keywords     = dip dipeye network slip
+Entered      = 04NOV94
+EnteredBy    = Adam Dace
+CheckedEmail = glide@mcs.com
+End

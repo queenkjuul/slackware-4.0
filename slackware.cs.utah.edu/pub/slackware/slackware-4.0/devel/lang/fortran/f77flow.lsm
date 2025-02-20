@@ -1,0 +1,15 @@
+
+Begin3
+Title:           flow
+Version:         0.12       
+Entered-date:    7. March 1997 
+Description:     A C-program to analyse the structure of a fortran77 program
+Keywords:        fortran flow f77 analyse
+Author:          Dirk Geschke 
+Maintained-by:   Dirk Geschke <geschke@physik.uni-kassel.de>
+Primary-site:    sunsite.unc.edu
+Alternate-site:  
+Original-site:  
+Platforms:       Linux, AIX, IRIX
+Copying-policy:  GPL
+End

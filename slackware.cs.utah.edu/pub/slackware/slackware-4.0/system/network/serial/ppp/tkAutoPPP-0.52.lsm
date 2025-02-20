@@ -1,0 +1,17 @@
+Begin3
+Title:          tkAutoPPP
+Version:        0.52
+Entered-date:   04OKT97
+Description:    TkAutoPPP is a Tcl/Tk script that handles the connection to
+                an Internet Service Provider with PPP.
+Keywords:       PPP script ISP Tcl Tk
+Author:         km@TheArtOfWeb.com (Karsten Mueller)
+
+Maintained-by:  km@TheArtOfWeb.com (Karsten Mueller)
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/network/serial/ppp
+                12kB tkAutoPPP-0.52.tar.gz
+Alternate-site: ftp://TheArtOfWeb.com/pub/tkAutoPPP
+                12kB tkAutoPPP-0.52.tar.gz
+Platforms:      Linux (other UN*XES ?)
+Copying-policy: GPL
+End

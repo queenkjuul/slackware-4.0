@@ -1,0 +1,27 @@
+User:
+	Written by Dean P. Junk (dpjunk@mmm.com)
+
+	Displays all interactive users on the system along with
+        the count of logins, name, location, and phone.
+
+        To create the executable:
+             1. uncompress user.tar.Z
+             2. tar xvof user.tar
+             3. cd user
+             4. type make 
+
+        Sample output is:
+
+        Users on node grumpy Linux i386 @ Thu Jun 10 14:21:11 1993 :
+
+        User Name  Count  Real Name             Location          Phone           
+        ---------  -----  --------------------  ----------------  --------------
+        us292121       3  Dean Junk             Knoxville Iowa    842-3780        
+
+        Total number of users are 3.
+
+
+        It should compile cleanly on most *nix systems.  I have it running
+        on HP-UX 8.06 and Linux currently.
+
+        Have fun!

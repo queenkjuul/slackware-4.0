@@ -1,0 +1,8 @@
+if [ ! -r usr/info/dir ]; then
+  echo '  --- PLEASE ADD DOCUMENTATION TO THIS TREE. (See INFO topic first.) ---' > usr/info/dir
+fi
+if fgrep emacspeak usr/info/dir 1> /dev/null 2> /dev/null; then
+  echo > /dev/null
+else
+  echo '* Emacspeak:(emacspeak).  A speech interface to Emacs' >> usr/info/dir
+fi

@@ -1,0 +1,326 @@
+Thu Mar 11 20:15:38 1999  joseph  <joseph@wish.student.harvard.edu>
+
+	* TODO: Updated to reflect 0.7.3.
+
+	* kibble.lsm: Changed to reflect 0.7.3 release.
+
+	* README: Changed the wording a bit.
+
+	* README: Added a disclaimer regarding GTK 1.0.x
+
+	* src/main_window.c: Corrected a small string bug
+
+	* AUTHORS: Changed the spelling of my name.
+
+	* NEWS, README, configure.in: Updated for version 0.7.3.
+
+	* THANKS: Added a small message to email me if I forgot.
+
+	* src/main_menu.c: Changed the spelling of my name.
+
+	* src/data_selectfile.h, src/delete_dialog.h, src/kb.h, src/main.h, src/main_menu.h, src/main_window.h, src/view_dialog.h, src/Makefile.am, src/acconfig.h, src/add_dialog.c, src/add_dialog.h, src/all.h, src/data_selectfile.c, src/delete_dialog.c, src/kb.c, src/main.c, src/main_menu.c, src/main_window.c, src/view_dialog.c:
+	Added i18n support.
+
+Mon Mar  8 23:07:10 1999  joseph  <joseph@wish.student.harvard.edu>
+
+	* kibble.lsm, NEWS: Updated for version 0.7.2
+
+	* README, TODO: Updated for version 0.7.2.
+
+	* src/main_window.c:
+	Snapping occurs in GTK 1.2.0. Removed AUTOMATIC policy from scollbar.
+
+Fri Feb  5 05:49:39 1999  joseph  <joseph@wish.student.harvard.edu>
+
+	* src/add_dialog.c, src/data_selectfile.c, src/delete_dialog.c, src/kb.c, src/main.c, src/main_window.c, src/view_dialog.c:
+	Compressed gtk_widget_show()'s to gtk_widget_show_all()'s
+
+	* src/main.c: Referenced the FAQ in the not-implemented message.
+
+	* src/add_dialog.c, src/view_dialog.c: text_set_line_wrap
+
+	* configure.in, src/acconfig.h, src/kb.c, src/main.c, src/main.h, src/main_menu.c:
+	Used glib equivalents of all external functions (except strlen).
+	Removed padding in show_message_box (no right padding??).
+
+Tue Dec 22 03:47:50 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* TODO, src/main_menu.c: item_factory used to create main menu.
+
+	* src/add_dialog.c: Word wrap in add/view.
+
+	* NEWS, configure.in, src/Makefile.am, src/add_dialog.c, src/all.h, src/data_selectfile.c, src/delete_dialog.c, src/kb.c, src/kb.h, src/main.c, src/main.h, src/main_menu.c, src/main_window.c, src/view_dialog.c:
+	Multiple simultaneous operations permitted. (Modal hack code removed.)
+
+Mon Dec 21 04:23:55 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* src/data_selectfile.h, src/delete_dialog.h, src/kb.h, src/main.h, src/main_menu.h, src/main_window.h, src/modal_hack.h, src/view_dialog.h, src/acconfig.h, src/add_dialog.c, src/add_dialog.h, src/data_selectfile.c, src/delete_dialog.c, src/kb.c, src/main.c, src/main_menu.c, src/main_window.c, src/modal_hack.c, src/view_dialog.c:
+	Linted all files (except view_dialog.[ch] because of lclint bugs).
+	Added debug_msg's
+
+Mon Dec  7 17:25:57 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* kibble.lsm: Updated for 0.7.1.
+
+	* TODO: Need debugging output.
+
+	* src/main.c: Now sources ~/.gtkrc, not ~.gtkrc
+
+	* src/all.h: Removed extraneous kb filename name.
+
+	* TODO: Another scrolled_window issue to resolve
+
+	* README: Reflects GTK 1.0.x compliance.
+
+	* BUGS, NEWS, README, THANKS, TODO, configure.in:
+	Updated for version 0.7.1
+
+	* kibble.lsm: Initial revision
+
+	* src/kb.c:
+	Removed "right-click" -> "add" code, as right-clicking collapses/expands
+	the tree item.
+
+	* src/all.h: Includes config.h
+
+	* src/acconfig.h:
+	Copied decls from configure.in based on GIMP's acconfig.h
+
+	* src/main_window.c: Main window is now 200x200 by default.
+
+	* src/main_window.c: Now compatible with CVS GTK+.
+	Moderate bug fixed: Window no longer snaps back in 1.0.x (as a
+	side-effect, the scrolled window policy must be ALWAYS)
+
+Sat Dec  5 02:55:56 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* src/main_menu.c:
+	Moderate bugs fixed: No more strange tiny menu windows in GTK 1.0.x.
+
+	* src/add_dialog.c, src/view_dialog.c:
+	Added and standardized text boundary and tree depth checking.
+
+Thu Dec  3 20:50:07 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* src/kb.c:
+	Oops. Previous code did not compile. gassert is undefined :)
+
+	* src/kb.c, src/kb.h:
+	Added and standardized text boundary and tree depth checking.
+
+	* src/add_dialog.c, src/kb.c, src/main_window.c:
+	Minor bug fixed: The tree is fully expanded, by default, with
+	correct +/-'s.
+
+	* src/main_menu.c:
+	Minor bug fix: Menu's vbox cell no longer expands when the main window
+	is resized.
+
+	* src/delete_dialog.c, src/kb.c, src/kb.h:
+	Moderate bug fix: Deleting the root node now works.
+
+	* src/main.c: Sources ~/.gtkrc
+
+	* src/view_dialog.c:
+	Minor bug fix: No more GTK warnings with GTK 1.0.x. Additionally, the
+	view dialog looks identical to that under 1.1.x.
+
+Wed Dec  2 04:51:36 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* src/main_menu.c, src/main_window.c: Fixed moderate program bug:
+	Added scrollbars for trees larger than the window.
+
+Tue Dec  1 02:42:49 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* src/add_dialog.c, src/kb.c, src/kb.h, src/main.c, src/main.h, src/main_menu.c, src/main_window.c, src/view_dialog.c:
+	Saving and loading data have been implemented.
+
+	* TODO:
+	Changed to reflect new version (reading/writing now implemented).
+
+	* NEWS: Version 0.7
+
+Tue Nov 24 03:39:32 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* src/add_dialog.c, src/data_selectfile.c, src/data_selectfile.h, src/modal_hack.c, src/view_dialog.c:
+	Data file selection works.
+
+	* configure.in, src/all.h: Removed references to kb_selectifile
+
+	* src/modal_hack.c, src/modal_hack.h:
+	Moved modal window hack code into here.
+
+	* src/Makefile.am, src/all.h, src/main.c, src/main.h:
+	Moved modal window hack code to a separate file.
+	Began coding the datafile read/write routines.
+
+	* README, TODO, src/main_menu.c, src/view_dialog.c:
+	Hacked GTK 1.0.x support in.
+
+Wed Nov 18 19:17:47 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* TODO: Added several ideas that occurred to my while coding the first
+	decent version.
+
+	* src/add_dialog.c:
+	Basic node adding works correctly. Cleaned up the code.
+
+	* src/delete_dialog.c:
+	Basic node deletion works properly. Cleaned up the code.
+
+	* src/view_dialog.c: Basic node viewing/editing works properly.
+
+	* src/main_menu.c: Hacked together modal2 for a second modal window.
+
+	* BUGS: Modal support is still kludgey.
+
+	* NEWS, configure.in: Version 0.6.
+
+	* src/data_selectfile.c, src/main.c, src/main.h, src/main_menu.c, src/view_dialog.c:
+	Improved modal support.
+
+	* src/main.c, src/main.h, src/main_menu.c, NEWS, TODO:
+	Improved modality support.
+
+	* src/main_menu.c:
+	"view", "add", and "delete" now require that a tree node be selected.
+
+	* src/main_window.c: Added creation of the KB root's data.
+	KB tree is now BROWSE (not MULTIPLE)
+	KB root is created by default.
+
+	* src/view_dialog.c: Cleaned up the code.
+	Displays the data of the currently selected node.
+
+	* src/all.h: Added glib.h and kb.h
+
+	* src/Makefile.am: Added kb.c and kb.h
+
+	* TODO: Added some more short-term and mid-term goals.
+
+	* src/add_dialog.c: Description text box is now editable.
+
+	* src/main.c, src/main.h: Moved tree_kb to kb.c
+
+	* NEWS: Version 0.5.
+
+	* src/kb.c, src/kb.h: Handles double-clicks.
+	Create/free KB nodes.
+
+	* BUGS: Two bugs noticed by Eric Corwin.
+
+	* configure.in: Version 0.5.
+
+	* src/main.c, src/add_dialog.h, src/delete_dialog.c, src/delete_dialog.h, src/view_dialog.c, src/view_dialog.h, src/add_dialog.c:
+	Minor cosmetic change.
+
+Tue Nov 17 22:26:29 1998  joseph  <joseph@wish.student.harvard.edu>
+
+	* NEWS: Version 0.4. NEWS.
+
+	* src/main.c, src/view_dialog.c:
+	Fixed a bug causing "delete event" to fail.
+
+	* configure.in: Version 0.4.
+
+	* src/main_menu.c: Added Ctl-O as Open's accelerator.
+
+	* NEWS: Updated for version 0.3
+
+	* src/main.h: Added modal window support.
+
+	* src/add_dialog.h, src/data_selectfile.h, src/delete_dialog.h, src/view_dialog.h:
+	Added modal window support.
+	"cancel" button works.
+
+	* src/main.c, src/main_menu.c, src/main_window.c, src/view_dialog.c:
+	Added modal window support.
+
+	* src/data_selectfile.c, src/delete_dialog.c, src/add_dialog.c:
+	Added modal window support.
+	"cancel" button works.
+
+	* TODO: Added "undo" button idea.
+
+	* src/main.h: Minor cosmetic change.
+
+	* configure.in: Changed the version number to 0.3.
+
+	* NEWS: Added version 0.2 information.
+
+	* src/main_menu.c: Added basic functionality for all the menu items.
+
+	* src/main.h: Added a not_implemented dialog box.
+
+	* src/main.c: Added a not_implemented dialog box.
+	Made the message boxes have focusable buttons.
+
+	* TODO: Added several new short-term ideas.
+
+	* src/main_menu.c: Added error message boxes for the help commands
+
+	* src/main_window.c: Removed the menu code, moved it to main_menu.c.
+	Cleaned up the variable names.
+
+	* src/main_menu.h, src/main_menu.c:
+	Cleaned up the menu code a bit, added about_box implementation.
+	Acceleration seems to work.
+
+	* src/main.h, src/main.c:
+	Globalized the KB, added message box code lifted from GLADE's util.c
+
+	* configure.in: Changed the version number to 0.2.
+
+	* TODO: Added a few more ideas, mid/long term.
+
+	* THANKS: Added references to Damon Chaplin/Glade.
+
+	* src/all.h, src/Makefile.am: Removed references to about_dialog.
+
+	* src/main.c:
+	Does not contain any references to any windows besides the main one.
+
+	* src/main_window.c, src/main.c: Added quitting functionality.
+
+	* TODO: Added a few long term ideas.
+
+	* README: Basic README. Structure stolen from that of Automake's.
+
+	* TODO: Get the program working. That is a good todo.
+
+	* THANKS: I had no one to thank, so I included Eran E.
+
+	* AUTHORS: Contains me! :)
+
+	* NEWS: First program. What do you expect?
+
+	* COPYING: GPL. Duh.
+
+	* INSTALL: Generic installation instructions.
+
+	* src/all.h: Contains all current header files.
+
+	* src/main.h, src/main.c: Basic GTK initialization.
+
+	* src/main_menu.h, src/main_menu.c:
+	Contains glade-generated menu for the main program window.
+
+	* src/view_dialog.h, src/view_dialog.c:
+	Contains glade-generated "view" dialog window.
+
+	* src/main_window.h, src/main_window.c:
+	Contains glade-generated main program window.
+
+	* src/delete_dialog.h, src/delete_dialog.c:
+	Contains glade-generated delete dialog window.
+
+	* src/data_selectfile.h, src/data_selectfile.c:
+	Contains glade-generated data file selection window.
+
+	* src/add_dialog.h, src/add_dialog.c:
+	Contains glade-generated "add" dialog window.
+
+	* configure.in: Contains glade generated configuration information.
+
+	* src/Makefile.am: Contains all current files.
+

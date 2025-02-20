@@ -1,0 +1,54 @@
+                                  eIrc (1.1.0)
+
+           - thE X Internet Relay Chat client Motif(ver 1.1.0) -
+
+This is an Internet Relay Chat client program written using  the  
+Motif . It contains virtually all of the features that you would 
+expect in an IRC client:  
+multiple windows session such as server message, channel message, 
+private message query, DCC chat query, DCC send/get and more with 
+a simple mouse operations. 
+The integrated popup menu and the dynamic menu structure allows you 
+to make easily and clearly to navigate this client.
+
+eIrc has been successfully compiled with gcc 2.6.3 under Linux 1.2.12 in
+a.out format with motif 2.0.
+I have used these pieces to compile eIrc:
+	- libXm.so.2.0.0
+	- libXt.so.6.0
+	- libX11.so.6.0
+	- libXpm.so.4.3
+	- libc.so.4.6.27
+
+Comments are welcome, please send us any suggestions.
+coz you have for improving the program in any way.
+
+Have fun :))
+
+Eko Bono S
+eko.bono.surprijadi@duisburg.netsurf.de
+
+History 
+20.05.96 eIrc 1.0.0b 
+The first eIrc is  released 
+
+*.06.96  eIrc 1.0.1b
+Try to fix some bugs especially DCC bugs..
+Add DCC options 
+
+10.07.96 eIrc 1.1.0
+Add simple history command list
+
+eIrc is downloadable from:
+  - ftp://ftp.undernet.org/irc/clients/xwindows/eirc
+  - ftp://sunsite.unc.edu/pub/Linux/system/Network/chat
+  - http://www.shsu.edu/~stdaxo01/eirc/eirc.html
+  - http://www.castrop-rauxel.netsurf.de/homepages/eko.bono.surprijadi/eirc.html
+  - http://www.wupper.de/sites/chandra3/eirc/eirc.html
+
+
+
+
+
+
+

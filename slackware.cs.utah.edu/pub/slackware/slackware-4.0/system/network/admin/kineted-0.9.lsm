@@ -1,0 +1,14 @@
+Begin3
+Title:          KInetEd - Inetd Editor
+Version:        0.9
+Entered-Date:   26MAY98
+Description:    GUI point'n'click editor for inetd configuration.
+Keywords:       inetd config utility editor KDE Qt
+Author:         Jorgen Sigvardsson <jorgen@wermland.se>
+Maintained-by:  Jorgen Sigvardsson <jorgen@wermland.se>
+Primary-site:   http://krutov.sax.hks.se/source/
+                11kB kineted-0.9.tar.gz
+                1kB  kineted-0.9.lsm
+Platforms:      Linux, Qt 1.3x and KDE (Beta 4) libs
+Copying-policy: GPL
+End

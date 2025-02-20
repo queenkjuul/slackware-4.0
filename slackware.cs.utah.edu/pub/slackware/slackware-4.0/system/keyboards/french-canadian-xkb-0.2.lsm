@@ -1,0 +1,18 @@
+Begin3
+Title:          french-canadian-xkb
+Version:        0.2
+Entered-date:   02NOV98
+Description:    French-canadian configuration files for xkb
+		that matches most french-canadian keyboards.
+		This version adds support for sundeadkeys,
+		which is needed by WP7.
+Keywords:       Keyboard, X11, XKB, French, Canada
+Author:         eric_moreau@compuserve.com (Eric Moreau)
+Maintained-by:  eric_moreau@compuserve.com (Eric Moreau)
+Primary-site:   sunsite.unc.edu /pub/Linux/systems/keyboards
+		6303	french-canadian-xkb-0.2.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      X11
+Copying-policy: Freely distributable
+End

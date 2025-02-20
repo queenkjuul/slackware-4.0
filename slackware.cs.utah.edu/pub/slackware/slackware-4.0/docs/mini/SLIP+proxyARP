@@ -1,0 +1,185 @@
+
+             Using SLIP And Proxy ARP To Connect
+      A Local Ethernet LAN To An Internet Connected LAN
+
+               Dave Kennedy <davek@Muscle.Net>
+                     November 20, 1996
+
+---------------------------------------------------------------
+$Id: slip-arp,v 1.3 1996/11/20 16:06:51 davek Exp $
+---------------------------------------------------------------
+
+---------------------------------------------------------------
+
+0. Introduction
+1. Other Options Available
+2. The Final Result
+3. Setting It Up
+4. Kernel And Software
+5. Outstanding Issues And Questions
+6. Acknowledgments
+7. Further Reading
+
+---------------------------------------------------------------
+
+0. Introduction
+
+In late 1994 and much of 1995, I had a small Ethernet LAN at home that 
+I connected to the Internet.  At the time, I did not have my own 
+network address and I wanted to piggyback on my employer's network 
+address.  I succeeded using SLIP and proxy ARP.  This document quickly 
+describes how I did it at the time.  It also provides information on 
+other options available now that were not there in 1993/1994.  More 
+than likely, these other options will be your best bet.  But, I'm 
+continuing to maintain this document for those who need this type of 
+solution.  
+
+---------------------------------------------------------------
+
+1. Other Options Available
+
+When I originally wrote this mini-HOWTO, the options to connect via a 
+dial-up LAN were more limited than today.  If you want to connect a 
+local LAN to the Internet via a dial-up connection, you should look 
+at:  
+
+    IP Masquerade
+        http://www.hwy401.com/achau/ipmasq/
+        http://www.indyramp.com/masq/
+
+    Use of proxy services
+        http://harvest.transarc.com/afs/transarc.com/public/trg/Harvest/
+        http://harvest.cs.colorado.edu/
+
+All links are current as of the date of this document.  I no longer
+use this technique; if I had the same requirements today, I would
+use IP Masquerade.
+
+---------------------------------------------------------------
+
+2. The Final Result
+
+First, I'll present the final result and then describe how to get there.
+
+The final network is all on a Class C network (a.b.c.0):
+
+           Internet
+              |               
+      o-------+---------+----------------o     <- Remote Ethernet
+                        | .126
+                    NetBlazer
+                        | .215                 <- SLIP (via 14.4 modem)
+                       gw
+                        | .253
+      o-----------------+--------+-------o     <- Local Ethernet
+                                 | .254 
+                                mus
+
+---------------------------------------------------------------
+
+3. Setting It Up
+
+The keys to getting this working are routing and proxy ARP.
+
+Here is gw's routing table:
+
+Kernel routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+    a.b.c.254   *               255.255.255.255 UH    0      0     5628 eth0
+    a.b.c.253   *               255.255.255.255 UH    0      0        0 eth0
+    a.b.c.126   *               255.255.255.255 UH    0      0       22 sl0
+127.0.0.0       *               255.0.0.0       U     0      0       32 lo
+default             a.b.c.126   *               UG    0      0        9 sl0
+
+This table was created with the following commands:
+
+    1. The SLIP connection was established which created the default
+       gateway entry and the a.b.c.126 entry.
+
+    2. ifconfig eth0 a.b.c.253
+
+    3. route add a.b.c.253 eth0
+
+    4. route add a.b.c.254 eth0
+
+Gw is now set up to talk to both eth0 and sl0.  (This might be a good
+time to note that my kernel has IP forwarding configured.)  The reason for
+the explicit route of a.b.c.253 may not be needed, but ping .253 from .253
+without the route causes the ping to take the default route out the SLIP
+link.
+
+
+Here is mus's routing table:
+
+Kernel routing table
+Destination     Gateway         Genmask         Flags MSS    Window Use Iface
+    a.b.c.253   *               255.255.255.255 UH    1436   0       59 eth0
+127.0.0.0       *               255.0.0.0       U     1936   0       52 lo
+default             a.b.c.253   *               UG    1436   0    21661 eth0
+
+This table was created with the following commands:
+
+    1. ifconfig eth0 a.b.c.254
+
+    2. route add a.b.c.253 eth0
+
+    3. route add default gw 192.68.22.253
+
+Now, at this point I attempted to ping the NetBlazer.  I could see the
+packets being sent out the modem (SD was flashing), but there was no
+response.  This was good since it indicated that gw was getting packets
+in on eth0 (Ethernet) and sending them out sl0 (SLIP).
+
+The next step is to get the other side of the SLIP connection (NetBlazer)
+to recognize and know how to talk to me.  This was done by using its
+proxy arp command.
+
+    Usage: proxy <hostid> ether|token|<interface> <mac-addr>
+
+    proxy a.b.c.253 ether 00:c0:6d:11:66:d3
+    proxy a.b.c.254 ether 00:c0:6d:11:66:e4
+
+At this point I was able to ping the Internet from mus.  And all was well
+with the world.  :)
+
+NOTE: The 'proxy' command is available only on the NetBlazer.  The
+equivalent command under linux is 'arp -s <IP> <HW ADDR> pub'.
+
+---------------------------------------------------------------
+
+4. Kernel And Software
+
+The kernel used on gw was 1.1.88 with IP Forwarding configured.  This
+is required.  The kernel on mus was also 1.1.88, but IP Forwarding
+was not configured.  This does not matter.
+
+It's also worth noting that PPP could have been used instead of
+SLIP just as easily.  [See, I told you this was a long time ago!]
+
+---------------------------------------------------------------
+
+5. Outstanding Issues And Questions
+
+The main question I have came up while writing this.  When I checked 
+the ARP table on the NetBlazer, my ARP entries were no longer there, but
+everything was still working.  I readded the entry for mus and it made
+no difference.  If anyone has ideas on this, let me know.
+
+---------------------------------------------------------------
+
+6. Acknowledgments
+
+My thanks to John Garnett <garnett@actlab.rtf.utexas.edu> for his
+post Dec 21, 1994 "A Guide on Using SLIP with ProxyARP..."  I'm not
+so sure that my document is anything more than a rehash of what he
+wrote other than I'm using a NetBlazer on the Internet side and he
+had a modem attached to a computer.  Anyway, thanks, John!
+
+---------------------------------------------------------------
+
+7. Further Reading
+
+Dawson, Terry; "NET-2-HOWTO."
+Garnett, John; "A (client) SLIP Guide for Linux."
+Lots of other HOWTO's.
+

@@ -1,0 +1,30 @@
+Begin3
+Title:          tiger
+Version:        2.2.4 (Redhat Linux configuration)
+Entered-date:   14SEP98
+Description:    TIGER, or the 'tiger' scripts, is a set of Bourne shell 
+		scripts, C programs and data files which are used to perform
+		a security audit of UNIX systems.  TIGER has one primary goal:
+		report ways 'root' can be compromised.
+
+		tiger-2.2.4 includes support for Redhat Linux 2.x.xx.
+
+		See README.linux for a list of modified and additional files.
+
+		The original files are included as <filename>.org-2.2.3.
+
+		All instructions in README.1st README, and USING still hold
+		for this version.
+
+Keywords:       security unix linux tiger
+Author:         Douglas Lee Schales, Dave Hess, Khalid Warraich, Dave Safford 
+Maintained-by:  Doug.Schales@net.tamu.edu (Douglas Lee Schales)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/security
+		307k  /pub/Linux/system/security/tiger-2.2.4.tgz
+		1k /pub/Linux/system/security/tiger-2.2.4.lsm
+Alternate-site: 
+Original-site:  ftp://coast.cs.purdue.edu /pub/tools/unix/tiger/TAMU
+		259k /pub/tools/unix/tiger/TAMU/tiger-2.2.3.tar.gz
+Platforms:      Redhat Linux 5.2 (Linux 2.0.35)
+Copying-policy: GPL
+End

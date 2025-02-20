@@ -1,0 +1,14 @@
+Begin3
+Title:          in.pop3d
+Version:        1.00.4+shadow+ELF
+Entered-date:   31JUL95
+Description:    POP3 daemon that utilizes the shadow password suite
+Keywords:       mail, pop3, pop
+Author:         
+Maintained-by:  
+Primary-site:   sunsite.unc.edu ; Please use Mirror sites
+Alternate-site: 
+Original-site:  
+Platform:       Linux ( 1.3.x, gcc 2.7.0 + ELF + Shadow-3.3.2 )
+Copying-policy: 
+End

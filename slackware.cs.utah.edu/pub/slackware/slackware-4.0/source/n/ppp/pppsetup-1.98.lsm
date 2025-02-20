@@ -1,0 +1,25 @@
+Begin3
+Title:           pppsetup 
+Version:         1.98
+Entered-date:    22FEB98 
+Description:     PPPSETUP is a easy-to-use, user-friendly way to set up your 
+                 PPP daemon. Get it if you're having trouble creating a chat
+		 script to connect to your service provider with pppd & chat.
+		 New options: pap, chap, ms-chap, chose modem init string, 
+		 monitor connection while it's being made, & callback
+		 support.
+		 Demand dialing setup, ppp-2.3.0 and later have demand
+		 dialing.
+		 Added demand dialing setup for ppp-2.3.0 or later.
+		 Included 'chat' program from ppp-2.3.3, if you have 'chat'
+		 from ppp-2.3.3 or later there's no need to install it.  
+Keywords:        ppp pppd chat setup isp internet dialup README  
+Author:          robotti@pop.erols.com (Kent Robotti) 
+Maintained-by:   
+Primary-site:    http://www.tux.org/pub/people/kent-robotti/index.html
+                 ftp://ftp.tux.org/pub/people/kent-robotti
+Alternate-site:  ftp://sunsite.unc.edu/pub/Linux/system/network/serial/ppp
+                 pppsetup-1.98.tar.gz 77Kb 
+Platforms:       Linux system with 'bash' shell & 'dialog' program. 
+Copying-policy:  Freeware 
+End

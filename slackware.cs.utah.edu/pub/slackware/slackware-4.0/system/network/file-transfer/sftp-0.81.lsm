@@ -1,0 +1,50 @@
+Begin3
+Title:          sftp
+Version:        0.81
+Entered-date:03JUN98
+Description:    sFTP is a screen-oriented FTP client, based on the curses
+                library.  It establishes a session to the FTP server, and
+                displays the contents of the directory on the FTP server in
+                a window.  Another window shows the contents of the current
+                directory, locally.  You can transfer files simply by moving
+                the cursor in the scrollable list until it is on top of the
+                file, then hitting ENTER.
+                ---
+                sFTP automates many tasks.  sFTP will remember a list of
+                your favorite FTP servers, and a userid for each one, then
+                connect to it when the server is selected from a menu.
+                A one-key shortcut is provided for an anonymous FTP session.
+                It is no longer necessary to enter "anonymous", and your
+                E-mail address, each time you wish to browse sunsite :-)
+                ---
+                sFTP allows you to tag multiple files, and transfer them
+                all in one shot.  sFTP estimates how long the transfer
+                takes, and shows you the rate of transfer.  sFTP can be
+                instructed which filename extensions represent text files, and,
+                sFTP will choose an ASCII or a BINARY transfer for each
+                file individually, and automatically.
+                ---
+                sFTP supports many common FTP operations: rename, delete,
+                create directory, delete directory.
+                ---
+                sFTP can grab a short README file, and display it on the
+                screen, without having to save the README in a file, exit
+                to the shell, read the file, and delete it.
+                ---
+                sFTP can be programmed, using a shell script, to understand
+                the directory layout of pretty much any FTP server in
+                existence.  The distribution file includes a shell script for
+                your typical, run-of-the-mill, Unix based FTP server.  The
+                included manual page documents this process fully.
+		---
+		In other words, sFTP will make your life a little easier.
+Keywords:       sftp, ftp, curses, ncurses, freeware, linux, unix
+Author:         mrsam@geocities.com (Sam Varshavchik)
+Maintained-by:  mrsam@geocities.com (Sam Varshavchik)
+Primary-site:	ftp://sunsite.unc.edu/pub/Linux/system/network/file-transfer/
+			 80k sftp-0.81.src.tgz
+			100k sftp-0.81-1.src.rpm
+Original-Site:	http://www.geocities.com/SiliconValley/Peaks/5799/
+Platform:       Linux 2.0
+Copying-policy: GPL
+End

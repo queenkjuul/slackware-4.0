@@ -1,0 +1,15 @@
+Begin3
+Title:			mirror - an FTP mirroring program in Perl
+Version:		2.8
+Entered-date:		
+Description:	A VERY good Perl program to mirror small/large sites via FTP.
+Keywords:		perl mirror ftp 
+Author:			lmjm@doc.ic.ac.uk (Lee McLoughlin)
+Maintained-by:		lmjm@doc.ic.ac.uk (Lee McLoughlin)
+Primary-site:		src.doc.ic.ac.uk /computing/archiving/mirror
+			71KB	mirror-2.8.tar.gz
+Alternate-site:		ftp.th-darmstadt.de /pub/networking/mirror
+			71KB	mirror-2.8.tar.gz
+Platform:		Most Unixes
+Requires:		Perl 4 or Perl 5
+Copying-policy:		GPL

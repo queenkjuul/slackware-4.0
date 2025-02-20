@@ -1,0 +1,1056 @@
+  The Linux HOWTO Index
+  by Tim Bynum, linux-howto@metalab.unc.edu
+  v2.10.98, 28 March 1999
+
+  This document contains an index to the Linux HOWTOs and mini-HOWTOs,
+  as well as other information about the HOWTO project.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. What Are Linux HOWTOs?
+
+  2. Where Can I Get Linux HOWTOs?
+
+     2.1 HOWTO Translations
+
+  3. Index
+
+     3.1 HOWTOs
+     3.2 mini-HOWTOs
+     3.3 Special HOWTOs
+     3.4 Unmaintained HOWTOs and mini-HOWTOs
+
+  4. Writing and Submitting a HOWTO
+
+  5. Copyright
+
+
+
+  ______________________________________________________________________
+
+  1.  What Are Linux HOWTOs?
+
+  Linux HOWTOs are documents which describe in detail a certain aspect
+  of configuring or using Linux. For example, there is the Installation
+  HOWTO, which gives instructions on installing Linux, and the Mail
+  HOWTO, which describes how to set up and configure mail under Linux.
+  Other examples include the NET-3 HOWTO and the Printing HOWTO.
+
+  HOWTOs are comprehensive docs - much like an FAQ but generally not in
+  question-and-answer format. However, many HOWTOs contain an FAQ
+  section at the end.
+
+  There are several HOWTO formats available: plain text, PostScript,
+  DVI, and HTML.
+
+  In addition to the HOWTOs, there are a multitude of mini-HOWTOs on
+  short, specific subjects.  They are only available in plain text and
+  HTML format.
+
+
+  2.  Where Can I Get Linux HOWTOs?
+
+  HOWTOs can be retrieved via anonymous FTP from the following sites:
+
+  ·  ftp://metalab.unc.edu/pub/Linux/docs/HOWTO
+
+  ·  ftp://tsx-11.mit.edu/pub/linux/docs/HOWTO
+
+
+  as well as many mirror sites.
+
+  You can also browse HOWTOs in HTML format
+  <http://metalab.unc.edu/LDP/HOWTO/>.  Many mirror sites
+  <http://metalab.unc.edu/LDP/hmirrors.html> mirror the HTML files.
+  metalab.unc.edu is heavily used, so please use a mirror site if
+  possible.
+
+  HOWTOs are also posted towards the beginning of the month to the
+  Usenet newsgroup comp.os.linux.answers.  There is a tool called
+  NewstoHOWTO <ftp://metalab.unc.edu/pub/Linux/system/news/misc/> that
+  will assemble the postings.
+
+
+  2.1.  HOWTO Translations
+
+  HOWTO translations are available on metalab.unc.edu
+  <ftp://metalab.unc.edu/pub/Linux/docs/HOWTO/translations> and mirrors
+  around the world.  So far there are:
+
+  ·  Chinese (zh)
+
+  ·  Croatian (hr)
+
+  ·  French (fr)
+
+  ·  German (de)
+
+  ·  Hellenic (el)
+
+  ·  Indonesian (id)
+
+  ·  Italian (it)
+
+  ·  Japanese (ja)
+
+  ·  Korean (ko)
+
+  ·  Polish (pl)
+
+  ·  Slovenian (sl)
+
+  ·  Spanish (es)
+
+  ·  Swedish (sv)
+
+  ·  Turkish (tr)
+
+  If you know of any other translation projects, please let me know and
+  I will add them to this list.  If you are interested in getting your
+  translations archived on metalab.unc.edu, please read the directory
+  structure specification at
+  http://metalab.unc.edu/pub/Linux/docs/HOWTO/translations/Directory-
+  Structure and get in touch with me.
+
+
+  3.  Index
+
+  3.1.  HOWTOs
+
+  The following Linux HOWTOs are currently available:
+
+
+  ·  3Dfx HOWTO, by Bernd Kreimeier <bk@gamers.org>.  How to use 3Dfx
+     graphics accelerator chip support.  Updated 6 February 1998.
+
+  ·  AX25 HOWTO, by Terry Dawson <terry@perf.no.itg.telecom.com.au>.
+     How to configure AX25 networking for Linux.  Updated 17 October
+     1997.
+
+
+  ·  Access HOWTO, by Michael De La Rue <access-howto@ed.ac.uk>.  How to
+     use adaptive technology with Linux.  Updated 28 March 1997.
+
+  ·  Alpha HOWTO, by David Mosberger <davidm@azstarnet.com>.  Overview
+     of Alpha systems and processors.  Updated 6 June 1997.
+
+  ·  Assembly HOWTO, by François-René Rideau <rideau@ens.fr>.
+     Information on programming in x86 assembly.  Updated 16 November
+     1997.
+
+  ·  Bash Prompt HOWTO, by Giles Orr <giles@interlog.com>.  Creating and
+     controlling terminal and xterm prompts.  Updated 07 January 1999.
+
+  ·  Benchmarking HOWTO, by André D. Balsa <andrewbalsa@usa.net>.  How
+     to do basic benchmarking.  Updated 15 August 1997.
+
+  ·  Beowulf HOWTO, by Jacek Radajewski <jacek@usq.edu.au> Douglas
+     Eadline plogic.com>.  Introduces the Beowulf Supercomputer
+     architecture and provides background information on parallel
+     programming..  Updated 22 November 1998.
+
+
+  ·  BootPrompt HOWTO, by Paul Gortmaker <gpg109@rsphy1.anu.edu.au>.
+     List of boot time arguments and overview of booting software.
+     Updated 1 February 1998.
+
+  ·  Bootdisk HOWTO, by Tom Fawcett <fawcett@croftj.net>.  How to create
+     a boot/root maintenance disk for Linux.  Updated 1 February 1998.
+
+  ·  Busmouse HOWTO, by Chris Bagwell <cbagwell@sprynet.com>.
+     Information on bus mouse compatibility with Linux.  Updated 15 June
+     1998.
+
+  ·  CD Writing HOWTO, by Winfried Trümper <winni@xpilot.org>.  How to
+     write CDs.  Updated 16 December 1997.
+
+  ·  CDROM HOWTO, by Jeff Tranter <jeff_tranter@pobox.com>.  Information
+     on CDROM drive compatibility for Linux.  Updated 23 January 1998.
+
+  ·  Chinese HOWTO, by Chih-Wei Huang <cwhuang@phys.ntu.edu.tw>.  How to
+     configure Linux for use with the Chinese characterset.  Updated 2
+     June 1998.
+
+  ·  Commercial HOWTO, by Martin Michlmayr <tbm@cyrius.com>.  Listing of
+     commercial software products for Linux.  Updated 21 September 1998.
+
+  ·  Config HOWTO, by Guido Gonzato <guido@ibogfs.cineca.it>.  How to
+     fine-tune and customize your Linux system.  Updated 19 January
+     1999.
+
+  ·  Consultants HOWTO, by Martin Michlmayr <tbm@cyrius.com>.  Listing
+     of Linux consultants.  Updated 8 November 1998.
+
+  ·  Cyrillic HOWTO, by Alexander L. Belikoff <abel@bfr.co.il>.  How to
+     configure Linux for use with the Cyrillic characterset.  Updated 23
+     January 1998.
+
+  ·  DNS HOWTO, by Nicolai Langfeldt <janl@math.uio.no>.  How to set up
+     DNS.  Updated 12 November 1998.
+
+  ·  DOS/Win to Linux HOWTO, by Guido Gonzato <guido@ibogfs.cineca.it>.
+     How to move from DOS/Windows to Linux.  Updated 15 April 1998.
+
+  ·  DOSEMU HOWTO, by Uwe Bonnes <bon@elektron.ikp.physik.th-
+     darmstadt.de>.  HOWTO about the Linux MS-DOS Emulator, DOSEMU.
+     Updated 15 March 1997 for dosemu-0.64.4 (in progress).
+  ·  Danish HOWTO, by Niels Kristian Bech Jensen <nkbj@image.dk>.  How
+     to configure Linux for use with the Danish characterset.  Updated 1
+     December 1998.
+
+  ·  Distribution HOWTO, by Eric S. Raymond <esr@snark.thyrsus.com>.  A
+     list of Linux distributions.  Updated 10 September 1998.
+
+  ·  ELF HOWTO, by Daniel Barlow <daniel.barlow@linux.org>.  How to
+     install and migrate to the ELF binary file format.  Updated 14 July
+     1996.
+
+  ·  Emacspeak HOWTO, by Jim Van Zandt <jrv@vanzandt.mv.com>.  How to
+     use 'emacspeak' with Linux.  Updated 21 Dececember 1997.
+
+  ·  Esparanto HOWTO, by Wolfram Diestel <diestel@rzaix340.rz.uni-
+     leipzig.de>.  How to use Esperanto in general and ISO-8859-3 in
+     special with Linux.  Updated June 1998.
+
+  ·  Ethernet HOWTO, by Paul Gortmaker <gpg109@rsphy1.anu.edu.au>.
+     Information on Ethernet hardware compatibility for Linux.  Updated
+     6 July 1998.
+
+  ·  Finnish HOWTO, by Pekka Taipale <pjt@iki.fi>.  How to configure
+     Linux for use with the Finnish characterset.  Updated 14 February
+     1996.
+
+  ·  Firewall HOWTO, by Mark Grennan <markg@netplus.net>.  How to set up
+     a firewall using Linux.  Updated 8 November 1996.
+
+  ·  French HOWTO, by Guylhem Aznar <guylhem@danmark.linux.eu.org>.  How
+     to configure Linux for use with the French characterset.
+
+  ·  Ftape HOWTO, by Kevin Johnson <kjj@pobox.com>.  Information on
+     ftape drive compatibility with Linux.  Updated August 1998.
+
+  ·  GCC HOWTO, by Daniel Barlow <daniel.barlow@linux.org>.  How to set
+     up the GNU C compiler and development libraries.  Updated 28
+     February 1996.
+
+  ·  German HOWTO, by Winfried Trümper <winni@xpilot.org>.  Information
+     on using Linux with German-specific features.  Updated 19 March
+     1997.
+
+  ·  Glibc2 HOWTO, by Eric Green <ejg3@cornell.edu>.  How to install and
+     migrate to the glibc2 library.  Updated 8 February 1998.
+
+  ·  HAM HOWTO, by Terry Dawson <terry@perf.no.itg.telecom.com.au>.
+     HOWTO configure amateur radio software for Linux.  Updated 1 April
+     1997.
+
+  ·  HOWTO Index, by Tim Bynum <linux-howto@metalab.unc.edu>.  Index of
+     HOWTO documents about Linux.  Updated 28 March 1999.
+
+  ·  Hardware Compatibility HOWTO, by Patrick Reijnen
+     <antispam.patrickr@antispam.bart.nl>.  A list of hardware known to
+     work with Linux.  Updated 30 July 1998.
+
+  ·  Hebrew HOWTO, by Yair G. Rajwan <yair@hobbes.jct.ac.il>.  How to
+     configure Linux for use with the Hebrew characterset.  Updated 12
+     September 1995.
+
+  ·  INFO-SHEET, by Michael K. Johnson <johnsonm@redhat.com>.  Generic
+     introduction to the Linux operating system.  Updated 1 September
+     1998.
+
+
+  ·  IPCHAINS HOWTO, by Paul Russell <Paul.Russell@rustcorp.com.au>.
+     Install and configure the enhanced IP firewalling chains software.
+     Updated 27 October 1998.
+
+  ·  IPX HOWTO, by Terry Dawson <terry@perf.no.itg.telecom.com.au>.  How
+     to install and configure IPX networking.  Updated 06 May 1998.
+
+  ·  IR HOWTO, by Werner Heuser <r2d2c3po@zedat.fu-berlin.de>.  An
+     introduction to the software provided by the Linux/IR project.
+     Updated 9 February 1999.
+
+  ·  ISP Hookup HOWTO, by Egil Kvaleberg <egil@kvaleberg.no>.  Basic
+     introduction to hooking up to an ISP.  Updated 5 March 1998.
+
+  ·  Installation HOWTO, by Eric S. Raymond <esr@snark.thyrsus.com>.
+     How to obtain and install Linux.  Updated 20 November 1998.
+
+  ·  Intranet Server HOWTO, by Pramod Karnad <karnad@indiamail.com>.
+     How to setup a Linux Intranet server.  Updated 7 August 1997.
+
+  ·  Italian HOWTO, by Marco ``Gaio'' Gaiarin <gaio@dei.unipd.it>.  How
+     to configure Linux for use with the Italian characterset.  Updated
+     3 November 1998.
+
+  ·  Java-CGI HOWTO, by David H. Silber <dhs@orbits.com>.  How to set up
+     Java-capable CGI bin.  Updated 1 December 1998.
+
+  ·  Kernel HOWTO, by Brian Ward <ward@blah.math.tu-graz.ac.at>.
+     Upgrading and compiling the Linux kernel.  Updated 26 May 1997.
+
+  ·  Keyboard and Console HOWTO, by Andries Brouwer <aeb@cwi.nl>.
+     Information about the Linux keyboard, console and non-ASCII
+     characters.  Updated 25 February 1998.
+
+  ·  KickStart HOWTO, by Martin Hamilton <martinh@gnu.org>.  Briefly
+     describes how to use the RedHat Linux KickStart system to rapidly
+     install large numbers of identical Linux boxes.  Updated 11 January
+     1999.
+
+  ·  LinuxDoc+Emacs+Ispell HOWTO, by Philippe Martin <feloy@wanadoo.fr>.
+     Assist writers and translators of Linux HOWTOs or any other paper
+     for the Linux Documentation Project.  Updated 27 February 1998.
+
+  ·  META-FAQ, by Michael K. Johnson <johnsonm@redhat.com>.  A listing
+     of Linux sources of information.  Updated 25 October 1997.
+
+  ·  MGR HOWTO, by Vincent Broman <broman@nosc.mil>.  Information on the
+     MGR graphics interface for Linux.  Updated 30 May 1996.
+
+  ·  MILO HOWTO, by David A. Rusling <david.rusling@reo.mts.dec.com>.
+     How to use the Alpha Linux Miniloader (MILO).  Updated 6 December
+     1996.
+
+  ·  Mail HOWTO, by Guylhem Aznar <guylhem@danmark.linux.eu.org>.
+     Information on electronic mail servers and clients.  Updated 4
+     January 1999.
+
+  ·  Modem HOWTO, by David S. Lawyer <bf347@lafn.org>.  Help with
+     selecting, connecting, configuring, trouble-shooting, and
+     understanding modems for a PC.  Updated January 1999.
+
+  ·  Multi-Disk HOWTO, by Stein Gjoen <sgjoen@nyx.net>.  How to setup
+     multiple hard disk drives.  Updated 3 February 1998.
+
+  ·  Multicast HOWTO, by Juan-Mariano de Goyeneche <jmseyas@dit.upm.es>.
+     This HOWTO tries to cover most aspects related to multicast over
+     TCP/IP networks.  Updated 20 March 1998.
+
+  ·  NET-3 HOWTO, by Terry Dawson <terry@perf.no.itg.telecom.com.au>.
+     Howto configure TCP/IP networking under Linux.  Updated August
+     1998.
+
+  ·  NFS HOWTO, by Nicolai Langfeldt <janl@math.uio.no>.  How to set up
+     NFS clients and servers.  Updated 3 November 1997.
+
+  ·  NIS HOWTO, by Thorsten Kukuk <kukuk@vt.uni-paderborn.de>.
+     Information on using NIS/YP on Linux systems.  Updated 12 June
+     1998.
+
+  ·  Networking Overview HOWTO, by Daniel López Ridruejo
+     <ridruejo@esi.us.es>.  The purpose of this document is to give an
+     overview of the networking capabilities of the Linux Operating
+     System providing pointers for further information and
+     implementation details.  Updated 10 July 1998.
+
+  ·  Optical Disk HOWTO, by Skip Rye <Skip_Rye@faneuil.com>.  How to use
+     optical disk drives with Linux.  Updated 11 December 1998.
+
+  ·  Oracle HOWTO, by Paul Haigh <paul@nailed.demon.co.uk>.  How to
+     setup Oracle as a database server.  Updated 4 August 1998.
+
+  ·  PCI HOWTO, by Michael Will <Michael.Will@student.uni-tuebingen.de>.
+     Information on PCI-architecture compatibility with Linux.  Updated
+     30 March 1997.
+
+  ·  PCMCIA HOWTO, by Dave Hinds <dhinds@allegro.stanford.edu>.  How to
+     install and use PCMCIA Card Services.  Updated 08 February 1999.
+
+  ·  PPP HOWTO, by Robert Hart <hartr@interweft.com.au>.  Information on
+     using PPP networking with Linux.  Updated 31 March 1997.
+
+  ·  PalmOS HOWTO, by David H. Silber <pilot@orbits.com>.  How to use
+     your Palm OS device with a Linux system.  Updated 20 September
+     1998.
+
+  ·  Parallel Processing HOWTO, by Hank Dietz <pplinux@ecn.purdue.edu>.
+     Discussion of parallel processing approaches for Linux.  Updated 5
+     January 1998.
+
+  ·  Plug and Play HOWTO, by David Lawyer <bf347@lafn.org>.  How to get
+     your Linux system to support Plug-and-Play.  Updated November 1998.
+
+  ·  Polish HOWTO, by Sergiusz Pawlowicz <ser@arch.pwr.wroc.pl>.
+     Information on using Linux with Polish-specific features.  Updated
+     1 June 1998.
+
+  ·  Portuguese-HOWTO, by Carlos Augusto Moreira dos Santos
+     <casantos@cpmet.ufpel.tche.br>.  Este documento pretende ser um
+     guia de referência de configuraçao do Linux e seus programas....
+     Updated 1 January 1999.
+
+  ·  PostgreSQL HOWTO, by Al Dev (Alavoor Vasudevan)
+     <aldev@hotmail.com>.  How to setup PostgreSQL as a database server.
+     Updated 8 January 1999.
+
+  ·  Printing HOWTO, by Grant Taylor <gtaylor+pht@picante.com>.  HOWTO
+     on printing software for Linux.  Updated 02 February 1999.
+
+  ·  Printing Usage HOWTO, by Mark Komarinski <markk@auratek.com>.  How
+     to use the printing system for a variety of file types and options.
+     Updated 6 February 1998.
+
+  ·  Quake HOWTO, by Bob Zimbinski <bobz@mr.net> Thomas Mike Hallock
+     medina.net>.  This document explains how to install, run and
+     troubleshoot Quake, QuakeWorld and Quake II on an Intel Linux
+     system.  Updated 30 August 1998.
+
+
+  ·  RPM HOWTO, by Donnie Barnes <djb@redhat.com>.  How to use the Red
+     Hat Package Manager (.rpm).  Updated 8 April 1997.
+
+  ·  Reading List HOWTO, by Eric S. Raymond <esr@snark.thyrsus.com>.
+     Interesting books pertaining to Linux subjects.  Updated 22
+     November 1998.
+
+  ·  Root RAID HOWTO, by Michael A. Robinton <michael@bzs.org>.  How to
+     create a root-mounted RAID filesystem.  Updated 25 March 1998.
+
+  ·  SCSI Programming HOWTO, by Heiko Eissfeldt
+     <heiko@colossus.escape.de>.  Information on programming the generic
+     Linux SCSI interface.  Updated 7 May 1996.
+
+  ·  SMB HOWTO, by David Wood <dwood@plugged.net.au>.  How to use the
+     Session Message Block (SMB) protocol with Linux.  Updated 10 August
+     1996.
+
+  ·  SRM HOWTO, by David Mosberger <davidm@azstarnet.com>.  How to boot
+     Linux/Alpha using the SRM firmware.  Updated 17 August 1996.
+
+  ·  Security HOWTO, by Kevin Fenzi <kevin@scrye.com>.  General overview
+     of security issues.  Updated 1 May 1998.
+
+  ·  Serial HOWTO, by David Lawyer <bf347@lafn.org>.  How on use serial
+     devices (modems, terminals) with Linux.  Updated July 1998.
+
+  ·  Serial Programming HOWTO, by Peter H. Baumann
+     <Peter.Baumann@dlr.de>.  How to use serial ports in programs.
+     Updated 22 January 1998.
+
+  ·  Shadow Password HOWTO, by Michael H. Jackson <mhjack@tscnet.com>.
+     How to obtain, install, and configure shadow passwords.  Updated 3
+     April 1996.
+
+  ·  Slovenian HOWTO, by Primoz Peterlin <primoz.peterlin@biofiz.mf.uni-
+     lj.si>.  Information on using Linux with Slovenian-specific
+     features.  Updated 30 October 1996.
+
+  ·  Software Release Practice HOWTO, by Eric S. Raymond
+     <esr@snark.thyrsus.com>.  Describes good release practices for
+     Linux open-source projects.  Updated 21 November 1998.
+
+  ·  Sound HOWTO, by Jeff Tranter <jeff_tranter@pobox.com>.  Sound
+     hardware and software for the Linux operating system.  Updated 23
+     January 1998.
+
+  ·  Sound Playing HOWTO, by Yoo C. Chung <wacko@laplace.snu.ac.kr>.
+     How to play various sound formats under Linux.  Updated 11 August
+     1998.
+
+  ·  Spanish HOWTO, by Gonzalo Garcia Agullo <Gonzalo.Garcia-
+     Agullo@jrc.es>.  Information on using Linux with Spanish-specific
+     features.  Updated 20 August 1996.
+
+  ·  teTeX HOWTO, by Robert Kiesling <kiesling@terracom.net>.  How to
+     install the teTeX package (TeX and LaTeX) under Linux.  Updated 9
+     November 1998.
+
+
+  ·  Text-Terminal HOWTO, by David S. Lawyer <bf347@lafn.org>.  This
+     document explains what text terminals are, how they work, how to
+     install and configure them.  Updated January 1999.
+
+  ·  Thai HOWTO, by Poonlap Veeratanabutr <poon-v@fedu.uec.ac.jp>.  How
+     to configure Linux for use with the Thai characterset.  Updated 4
+     August 1998.
+
+  ·  Tips HOWTO, by Paul Anderson <paul@geeky1.ebtech.net>.  HOWTO on
+     miscellaneous tips and tricks for Linux.  Updated June 1998.
+
+  ·  UMSDOS HOWTO, by Jacques Gelinas <jacques@solucorp.qc.ca>.  How to
+     install and use the UMSDOS filesystem.  Updated 13 November 1995.
+
+  ·  UPS HOWTO, by Harvey J. Stein <abel@netvision.net.il>.  Information
+     on using a UPS power supply with Linux.  Updated 18 November 1997.
+
+  ·  UUCP HOWTO, by Guylhem Aznar <guylhem@danmark.linux.eu.org>.
+     Information on UUCP software for Linux.  Updated 6 February 1998.
+
+  ·  Unix and Internet Fundamentals HOWTO, by Eric S. Raymond
+     <esr@snark.thyrsus.com>.  Describes the working basics of PC-class
+     computers, Unix-like operating systems, and the Internet in non-
+     technical language.  Updated 3 December 1998.
+
+  ·  User Group HOWTO, by Kendall Grant Clark <kclark@ntlug.org>.  Tips
+     on founding, maintaining, and growing a Linux User Group.  Updated
+     24 April 1998.
+
+  ·  VAR HOWTO, by Martin Michlmayr <tbm@cyrius.com>.  Listing of Linux
+     value added resellers.  Updated 25 October 1998.
+
+  ·  VME HOWTO, by John Huggins and Michael Wyrick <vmelinux@va.net>.
+     How to run Linux on your VMEbus Pentium and other PCI local bus
+     based VMEbus processor designs.  Updated 30 July 1998.
+
+  ·  VMS to Linux HOWTO, by Guido Gonzato <guido@ibogfs.cineca.it>.  How
+     to move from VMS to Linux.  Updated 20 April 1998.
+
+  ·  Virtual Services HOWTO, by Brian Ackerman <brian@nycrc.net>.  How
+     to set up virtual hosting services.  Updated 15 August 1998.
+
+  ·  WWW HOWTO, by Wayne Leister <n3mtr@qis.net>.  How to set up WWW
+     clients and servers.  Updated 19 November 1997.
+
+  ·  WWW mSQL HOWTO, by Oliver Corff <corff@zedat.fu-berlin.de>.  How to
+     set up a web server database with mSQL.  Updated 17 September 1997.
+
+  ·  XFree86 HOWTO, by Eric S. Raymond <esr@snark.thyrsus.com>.  How to
+     obtain, install, and configure XFree86 3.2 (X11R6).  Updated 2
+     January 1999.
+
+  ·  XFree86 Video Timings HOWTO, by Eric S. Raymond
+     <esr@snark.thyrsus.com>.  How to compose a mode line for XFree86.
+     Updated 18 January 1999.
+
+  ·  X Window User HOWTO, by Ray Brigleb <ray@croftj.net>.  Information
+     on configuring the X Window environment for the Linux user.
+     Updated 22 January 1999.
+
+
+  3.2.  mini-HOWTOs
+
+  The following mini-HOWTOs are available:
+
+
+  ·  3 Button Mouse mini-HOWTO, by Geoff Short
+     <geoff@kipper.york.ac.uk>.  How to configure your mouse to use 3
+     buttons.  Updated 31 May 1998.
+
+  ·  ADSM Backup mini-HOWTO, by Thomas Koenig <Thomas.Koenig@ciw.uni-
+     karlsruhe.de>.  How to install and use the ADSM backup program.
+     Updated 15 January 1997.
+
+  ·  Asymmetric Digital Subscriber Loop (ADSL) mini-HOWTO, by David
+     Fannin <dfannin@dnai.com>.  Addresses the ordering, installation
+     and configuration.  Updated 7 June 1998.
+
+  ·  AI-Alife mini-HOWTO, by John A. Eikenberry <jae@ai.uga.edu>.
+     Information about AI software for Linux.  Updated 13 January 1998.
+
+  ·  Advocacy mini-HOWTO, by Paul L. Rogers <Paul.L.Rogers@li.org>.
+     Suggestions on how to advocate the use of Linux.  Updated 7 May
+     1998.
+
+  ·  Alsa Sound mini-HOWTO, by Valentijn Sessink.  Describes the
+     installation of the Alsa sound drivers for Linux.  Updated 8
+     February 1999.
+
+  ·  Apache SSL PHP/FI frontpage mini-HOWTO, by Marcus Faure
+     <marcus@faure.de>.  Build a multipurpose webserver.  Updated July
+     1998.
+
+  ·  Automount mini-HOWTO, by Don <don@sabotage.org>.  This file
+     describes the autofs automounter, how to configure it, and points
+     out some problems to avoid.  Updated 7 September 1998.
+
+  ·  Backup with MSDOS mini-HOWTO, by Christopher Neufeld
+     <neufeld@physics.utoronto.ca>.  How to backup Linux machines with
+     MSDOS.  Updated 5 August 1997.
+
+  ·  Battery Powered mini-HOWTO, by Hanno Mueller <hanno@lava.de>.  How
+     to reduce a Linux system's power consumption.  Updated 21 December
+     1997.
+
+  ·  Boca mini-HOWTO, by David H Dennis <david@freelink.net>.  How to
+     install a Boca 16-port serial card (Boca 2016).  Updated 1 August
+     1997.
+
+  ·  BogoMips mini-HOWTO, by Wim C.A. van Dorst
+     <baron@clifton.hobby.nl>.  Information about BogoMips.  Updated 8
+     February 1999.
+
+  ·  Bridge mini-HOWTO, by Chris Cole <cole@lynkmedia.com>.  How to
+     setup an ethernet bridge.  Updated 7 September 1998.
+
+  ·  Bridge+Firewall mini-HOWTO, by Peter Breuer <ptb@it.uc3m.es>.  How
+     to setup and ethernet bridge and firewall.  Updated 19 December
+     1997.
+
+  ·  Bzip2 mini-HOWTO, by David Fetter <dfetter@best.com>.  How to use
+     the new bzip2 compression program.  Updated 29 June 1998.
+
+  ·  Cable Modem mini-HOWTO, by Vladimir Vuksan <vuksan@veus.hr>.  How
+     to use a cable modem with a cable ISP.  Updated 11 February 1999.
+
+  ·  Cipe+Masquerading mini-HOWTO, by Anthony Ciaravalo <acj@home.com>.
+     How to setup a Virtual Private Network between your LAN and other
+     LAN's using cipe through linux masquerading firewall machines.
+     Updated 28 October 1998.
+
+
+  ·  Clock mini-HOWTO, by Ron Bean <rbean@execpc.com>.  How to set and
+     keep your clock on time.  Updated December 1996.
+
+  ·  Coffee mini-HOWTO, by Georgatos Photis <gef@ceid.upatras.gr>.
+     Thoughts about making coffee with Linux (humorous).  Updated 15
+     January 1998.
+
+  ·  Colour ls mini-HOWTO, by Thorbjoern Ravn Andersen <ravn@dit.ou.dk>.
+     How to set up the colours with 'ls'.  Updated 7 August 1997.
+
+  ·  Cyrus IMAP mini-HOWTO, by Kevin Mitchell <kevin@iserv.net>.  How to
+     install the Cyrus IMAP server.  Updated 21 January 1998.
+
+  ·  DHCP mini-HOWTO, by Vladimir Vuksan <vuksan@veus.hr>.  How to setup
+     a DHCP Server and Client.  Updated 11 February 1999.
+
+  ·  DPT Hardware RAID mini-HOWTO, by Ram Samudrala <me@ram.org>.  How
+     to configure hardware RAID.  Updated 15 December 1997.
+
+  ·  Diald mini-HOWTO, by Harish Pillay <h.pillay@ieee.org>.  How to use
+     'diald' to dial an ISP.  Updated 3 June 1996.
+
+  ·  Diskless mini-HOWTO, by Robert Nemkin <buci@math.klte.hu>.  How to
+     set up a diskless Linux box.  Updated 12 September 1996.
+
+  ·  Ext2fs Undeletion mini-HOWTO, by Aaron Crane <aaronc@pobox.com>.
+     How to retrieve deleted files from an ext2 filesystem.  Updated 4
+     August 1997.
+
+  ·  Fax Server mini-HOWTO, by Erez Strauss <erez@newplaces.com>.  How
+     to setup a fax server.  Update 8 November 1997.
+
+  ·  Firewall Piercing mini-HOWTO, by François-René Rideau
+     <rideau@ens.fr>.  Using ppp over telnet transparently through an
+     Internet firewall.  Updated 27 November 1998.
+
+  ·  GIS-GRASS mini-HOWTO, by David A. Hastings <dah@ngdc.noaa.gov>.
+     How to install Geographic Information System (GIS) software.
+     Updated 13 November 1997.
+
+  ·  GTEK BBS-550 mini-HOWTO, by Wajihuddin Ahmed
+     <wahmed@sdnpk.undp.org>.  How to setup the GTEK BBS-550 multiport
+     board with Linux.  Updated 20 August 1997.
+
+  ·  Hard Disk Upgrade mini-HOWTO, by Yves Bellefeuille
+     <yan@ottawa.com>.  How to copy a Linux system from one hard disk to
+     another.  Updated 31 January 1998.
+
+  ·  IO Port Programming mini-HOWTO, by Riku Saikkonen
+     <Riku.Saikkonen@hut.fi>.  How to use I/O ports in C programs.
+     Updated 28 December 1997.
+
+  ·  IP Alias mini-HOWTO, by Harish Pillay <h.pillay@ieee.org>.  How to
+     use IP aliasing.  Updated 13 January 1997.
+
+  ·  IP Masquerade mini-HOWTO, by Ambrose Au <ambrose@writeme.com>.  How
+     to use IP masquerading.  Updated 07 February 1999.
+
+  ·  IP Subnetworking mini-HOWTO, by Robert Hart
+     <hartr@interweft.com.au>.  Why and how to subnetwork an IP network.
+     Updated 31 March 1997.
+
+  ·  ISP Connectivity mini-HOWTO, by Michael Strates
+     <mstrates@croftj.net>.  How to get mail and news over a dialup
+     connection.  Updated 6 November 1997.
+
+  ·  Install From ZIP mini-HOWTO, by Kevin Snively
+     <k.snively@seaslug.org>.  How to install Linux from a parallel port
+     ZIP drive.  Updated 29 April 1998.
+
+  ·  Kerneld mini-HOWTO, by Henrik Storner <storner@osiris.ping.dk>.
+     How to use 'kerneld' (dynamic module loading).  Updated 19 July
+     1997.
+
+  ·  LBX mini-HOWTO, by Paul D. Smith <psmith@baynetworks.com>.  How to
+     use Low-Bandwidth X (LBX).  Updated 11 December 1997.
+
+  ·  LILO mini-HOWTO, by Alessandro Rubini <rubini@linux.it>.  Examples
+     of typical LILO installations.  Updated 16 August 1998.
+
+  ·  Large Disk mini-HOWTO, by Andries Brouwer <aeb@cwi.nl>.  How to use
+     disks with > 1024 cylinders.  Updated 22 January 1999.
+
+  ·  Leased Line mini-HOWTO, by Rob van der Putten
+     <rob@sput.webster.nl>.  How to setup leased line modems.  Updated
+     July 1998.
+
+  ·  Linux+DOS+Win95+OS2 mini-HOWTO, by Mike Harlan <r3mdh@raex.com>.
+     How to use Linux and DOS and OS/2 and Win95 together.  Updated 11
+     November 1997.
+
+  ·  Linux+FreeBSD mini-HOWTO, by Niels Kristian Bech Jensen
+     <nkbj@image.dk> How to use Linux and FreeBSD together.  Updated 15
+     January 1999.
+
+  ·  Linux+NT-Loader mini-HOWTO, by Bernd Reichert
+     <reichert@dial.eunet.ch>.  How to use Linux and the Windows NT boot
+     loader together.  Updated 2 September 1997.
+
+  ·  Linux+Win95 mini-HOWTO, by Jonathan Katz <jkatz@in.net>.  How to
+     use Linux and Windows95 together.  Updated 26 October 1996.
+
+  ·  Loadlin+Win95 mini-HOWTO, by Chris Fischer <protek@brigadoon.com>.
+     How to use Linux and Windows95 together, using loadlin.  Updated 13
+     March 1999.
+
+  ·  Mac Terminal mini-HOWTO, by Robert Kiesling
+     <kiesling@terracom.net>.  How to use an Apple Macintosh as a serial
+     terminal.  Updated 9 November 1997.
+
+  ·  Mail Queue mini-HOWTO, by Leif Erlingsson <leif@lege.com>.  How to
+     queue remote mail and deliver local mail.  Updated 3 September
+     1997.
+
+  ·  Mail2News mini-HOWTO, by Robert Hart <iweft@ipax.com.au>.  How to
+     set up a mail to news gateway.  Updated 4 November 1996.
+
+  ·  Man Page mini-HOWTO, by Jens Schweikhardt <schweikh@noc.dfn.de>.
+     How to write man pages.  Updated  July 1998.
+
+  ·  Modules mini-HOWTO, by Riley H. Williams <rhw@bigfoot.com>.  How to
+     setup and configure kernel modules.  Updated 14 November 1997.
+
+  ·  Multiboot using LILO mini-HOWTO, by Renzo Zanelli
+     <rzanelli@southeast.net>.  Howto multiboot between Windows 95,
+     Windows NT, and Linux.  Updated 26 March 1998.
+
+  ·  NCD X Terminal mini-HOWTO, by Ian Hodge <ihodge@nortel.ca>.
+     Describes how to connect an NCD X terminal to a UNIX host.  Updated
+     3 April 1998.
+
+
+  ·  NFS-Root mini-HOWTO, by Andreas Kostyrka <andreas@ag.or.at>.  How
+     to set up diskless Linux machines.  Updated 8 August 1997.
+
+  ·  NFS-Root-Client mini-HOWTO, by Ofer Maor <ofer@hadar.co.il>.  How
+     to set up diskless Linux machines using NFS.  Updated 02 February
+     1999.
+
+  ·  Netrom-Node mini-HOWTO, by Karl Larsen <k5di@yahoo.com>.  How to
+     setup the ax25-utilities package for Amateur Radio such making
+     Netrom Nodes.  Updated 19 October 1998.
+
+  ·  Netscape+Proxy mini-HOWTO, by Sarma Seetamraju <sarma@usa.net>.
+     How to set up a proxy server for Netscape.  Updated 15 August 1997.
+
+  ·  Netstation mini-HOWTO, by Kris Buytaert
+     <Kris.Buytaert@advalvas.be>.  How to hook up a IBM Netstation to
+     your local network using a Linux box as server.  Updated 22
+     February 1998.
+
+  ·  News Leafsite mini-HOWTO, by Florian Kuehnert <sutok@gmx.de>.  How
+     to set up a leaf news site.  Updated 4 January 1998.
+
+  ·  Offline Mailing mini-HOWTO, by Gunther Voet <freaker@tuc.ml.org>.
+     How to set up email addresses without a dedicated Internet
+     connection.  Updated 4 June 1998.
+
+  ·  PLIP mini-HOWTO, by Andrea Controzzi <controzz@cli.di.unipi.it>.
+     How to set up PLIP (Parallel Line Interface Protocol).  Updated 12
+     March 1998.
+
+  ·  Partition mini-HOWTO, by Kristian Koehntopp <kris@koehntopp.de>.
+     How to choose disk partitions.  Updated 3 November 1997.
+
+  ·  Partition Rescue mini-HOWTO, by Rolf Klausen
+     <rolfk@romsdal.vgs.no>.  How to rescue deleted Linux partitions.
+     Updated 22 October 1997.
+
+  ·  Path mini-HOWTO, by Esa Turtiainen <etu@dna.fi>.  How to use the
+     PATH environment variable.  Updated 15 November 1997.
+
+  ·  Pre-installation Checklist mini-HOWTO, by S. Parthasarathy
+     <algolog@hd1.vsnl.net.in>.  Pre-installation checklist and
+     questionnaire.  Updated 29 August 1998.
+
+  ·  Process Accounting mini-HOWTO, by Albert M.C. Tam <bertie@scn.org>.
+     How to set up process accounting.  Updated 8 August 1997.
+
+  ·  Proxy ARP Subnet mini-HOWTO, by Bob Edwards
+     <bob@faceng.anu.edu.au>.  How to use proxy ARP with subnetting.
+     Updated August 1997.
+
+  ·  Public Web Browser mini-HOWTO, by Donald B. Marti Jr.
+     <dmarti@best.com>.  How to set up a guest account to use a WWW
+     browser.  Updated 5 January 1998.
+
+  ·  Qmail+MH mini-HOWTO, by Christopher Richardson
+     <rdn@tara.n.eunet.de>.  How to install qmail and MH.  Updated 5
+     March 1998.
+
+  ·  Quota mini-HOWTO, by Albert M.C. Tam <bertie@scn.org>.  How to set
+     up disk quotas.  Updated 8 August 1997.
+
+  ·  RCS mini-HOWTO, by Robert Kiesling <kiesling@terracom.net>.  How to
+     use RCS (Revision Control System).  Updated 14 August 1997.
+
+
+  ·  RPM+Slackware mini-HOWTO, by Dave Whitinger <dave@whitinger.net>.
+     How to install the Red Hat Package Manager (RPM) under Slackware.
+     Updated 13 April 1998.
+
+  ·  RedHat CD mini-HOWTO, by Morten Kjeldgaard <mok@imsb.au.dk> Peter
+     von der Ahé <pahe+rhcd@daimi.au.dk>.  How to make your own CDs from
+     the Red Hat Linux distribution equivalent  to the ones commercially
+     available from Red Hat.  Updated 9 September 1998.
+
+  ·  Remote Boot mini-HOWTO, by Marc Vuilleumier Stückelberg
+     <Marc.VuilleumierStuckelberg@cui.unige.ch>.  How to set up a
+     server-based boot selector.  Updated February 1999.
+
+  ·  Remote X Apps mini-HOWTO, by Vincent Zweije <zweije@xs4all.nl>.
+     How to run remote X applications.  Updated 14 July 1998.
+
+  ·  SLIP-PPP Emulator mini-HOWTO, by Irish <irish@eskimo.com>.  How to
+     use SLIP-PPP emulators with Linux.  Updated 7 August 1997.
+
+  ·  Sendmail Address Rewrite mini-HOWTO, by Thomas Roessler
+     <roessler@guug.de>.  Set up sendmail's configuration file for the
+     home user's dial-up access.  Updated 6 May 1998.
+
+  ·  Sendmail+UUCP mini-HOWTO, by Jamal Hadi Salim <jamal@glcom.com>.
+     How to use sendmail and UUCP together.  Updated August 1998.
+
+  ·  Secure POP via SSH mini-HOWTO, by Manish Singh <yosh@gimp.org>.
+     How to set up secure POP connections using ssh.  Updated 30
+     September 1998.
+
+  ·  Small Memory mini-HOWTO, by Todd Burgess <tburgess@uoguelph.ca>.
+     How to run Linux on a system with a small amount of memory.  Update
+     29 October 1997.
+
+  ·  Software Building mini-HOWTO, by Mendel Leo Cooper
+     <thegrendel@theriver.com>.  How to build software packages.
+     Updated 6 July 1998.
+
+  ·  Software RAID mini-HOWTO, by Linas Vepstas <linas@fc.net>.  How to
+     configure software RAID.  Updated 21 November 1998.
+
+  ·  Soundblaster AWE mini-HOWTO, by Marcus Brinkmann
+     <Marcus.Brinkmann@ruhr-uni-bochum.de>.  How to install the
+     Soundblaster AWE 32/64.  Updated 11 January 1998.
+
+  ·  StarOffice mini-HOWTO, by Matthew Borowski <mkb@poboxes.com>.
+     Information on installing the StarOffice suite.  Updated 2 June
+     1998.
+
+  ·  Term Firewall mini-HOWTO, by Barak Pearlmutter <bap@cs.unm.edu>.
+     How to use 'term' over a firewall.  Updated 15 July 1997.
+
+  ·  TkRat mini-HOWTO, by Dave Whitinger <dave@whitinger.net>.  How to
+     install and use the TkRat mail program.  Updated 2 February 1998.
+
+  ·  Token Ring mini-HOWTO, by Mike Eckhoff <mike.e@emissary.aus-
+     etc.com>.  How to use token ring cards.  Updated 7 January 1998.
+
+  ·  Ultra-DMA mini-HOWTO, by Brion Vibber <brion@pobox.com>.  How to
+     use Ultra-DMA drives and controllers.  Updated 6 July 1998.
+
+  ·  Update mini-HOWTO, by Stein Gjoen <sgjoen@nyx.net>.  How to stay
+     updated about Linux development.  Updated 3 February 1998.
+
+  ·  Upgrade mini-HOWTO, by Greg Louis <glouis@dynamicro.on.ca>.  How to
+     upgrade your Linux distribution.  Updated 6 June 1996.
+  ·  VAIO mini-HOWTO, by Hideki Saito <hideki@chatlink.com>.  This
+     document explains installation of Linux on Sony VAIO computers.
+     Updated 16 September 1998.
+
+  ·  Vesafb mini-HOWTO, by Alex Buell <alex.buell@tahallah.demon.co.uk>.
+     How to use the vesafb device.  Updated 2 August 1998.
+
+  ·  VPN mini-HOWTO, by Árpád Magosányi <mag@bunuel.tii.matav.hu>.  How
+     to set up a VPN (Virtual Private Network).  Updated 7 August 1997.
+
+  ·  Visual Bell mini-HOWTO, by Alessandro Rubini <rubini@linux.it>.
+     How to disable audible bells, and enable visual bells.  Updated 11
+     November 1997.
+
+  ·  Windows Modem Sharing mini-HOWTO, by Friedemann Baitinger
+     <baiti@toplink.net>.  How to setup Windows to use a shared modem on
+     a Linux machine.  Updated 2 November 1997.
+
+  ·  WordPerfect mini-HOWTO, by Wade Hampton <whampton@staffnet.com>.
+     How to set up WordPerfect for Linux.  Updated 13 August 1997.
+
+  ·  X Big Cursor mini-HOWTO, by Joerg Schneider <schneid@ira.uka.de>.
+     How to use enlarged cursors with XWindows.  Updated 11 August 1997.
+
+  ·  XFree86-XInside mini-HOWTO, by Marco Melgazzi <marco@techie.com>.
+     How to convert XFree86 to XInside modelines.  Updated September
+     1997.
+
+  ·  xterm Title mini-HOWTO, by Ric Lister <ric@giccs.georgetown.edu>.
+     How to put strings into the titlebar of an xterm.  Updated 7
+     January 1998.
+
+  ·  ZIP Install mini-HOWTO, by John Wiggins <jwiggins@comp.uark.edu>.
+     How to install Linux onto a ZIP drive.  Updated 10 January 1999.
+
+  ·  ZIP Drive mini-HOWTO, by Kyle Dansie <dansie@ibm.net>.  Provides a
+     quick reference quide on setting up and using the Iomega ZIP drive
+     with Linux.  Updated 10 January 1999.
+
+
+  3.3.  Special HOWTOs
+
+  The High Availability HOWTO, by Harald Milz <hm@seneca.muc.de> is
+  available at http://metalab.unc.edu/pub/Linux/ALPHA/linux-ha/High-
+  Availability-HOWTO.html.  It is not included with the HOWTO collection
+  because it relies on figures and cannot be distributed in all
+  supported formats.
+
+
+  The Graphics mini-HOWTO, by Michael J. Hammel <mjhammel@graphics-
+  muse.org> is available at http://www.graphics-muse.org/linux/lgh.html.
+  It is not included with the HOWTO collection because it needs to use a
+  lot of images, which don't translate to other output formats.
+
+
+  3.4.  Unmaintained HOWTOs and mini-HOWTOs
+
+  There are a number of unmaintained documents at
+  ftp://metalab.unc.edu/pub/Linux/docs/HOWTO/unmaintained.  These are
+  kept around since old documentation is sometimes better than none.
+  However, you should be aware that you are reading old documentation.
+
+
+
+
+
+  4.  Writing and Submitting a HOWTO
+
+  If you are interested in writing a HOWTO or mini-HOWTO, please get in
+  touch with me FIRST!!! at linux-howto@metalab.unc.edu.
+
+
+  Here are a few guidelines that you should follow when writing a HOWTO
+  or mini-HOWTO:
+
+
+  ·  Try to use meaningful structure and organization, and write
+     clearly. Remember that many of the people reading HOWTOs do not
+     speak English as their first language.
+
+  ·  If you are writing a HOWTO, you must use the SGML-Tools package,
+     available from http://www.sgmltools.org/, to format the HOWTO. This
+     package allows us to produce LaTeX (for DVI and PostScript), plain
+     text, and HTML from a single source document, and was designed
+     specifically for the HOWTOs. This also gives all of the HOWTOs a
+     uniform look.  It is very important that you format and review the
+     output of the formatting in PostScript, plain text and HTML.
+
+  ·  If you are writing a mini-HOWTO, you can either use SGML (as
+     described above) or HTML.  If you use SGML for your mini-HOWTO, it
+     will be pubished along with the HOWTOs in LDP books.
+
+  ·  Make sure that all of the information is correct. I can't stress
+     this enough. When in doubt, speculate, but make it clear that
+     you're only guessing.
+
+  ·  Make sure that you are covering the most recent version of the
+     available software. Also, be sure to include full instructions on
+     where software can be downloaded from (FTP site name, full
+     pathname), and the current version number and release date of the
+     software.
+
+  ·  Include an FAQ section at the end, if appropriate. Many HOWTO
+     documents need an ``FAQ'' or ``Common Problems'' section to cover
+     information which can't be covered in the regular text.
+
+  ·  Use other HOWTOs or mini-HOWTOs as a model!  The SGML source to the
+     HOWTOs is available on Linux FTP sites.  In addition, have a look
+     at the LDP Style Guide <http://metalab.unc.edu/LDP/HOWTO/LDP-Style-
+     Guide.html> for some guidelines.
+
+  ·  Make sure that your name, email address, date, and a version number
+     is near the beginning of the document.  You could also include WWW
+     addresses and a snail mail address if you want.  The standard
+     header is:
+
+             Title
+             Author's name and email address
+             Version number and date
+
+
+
+  for example:
+
+          The Linux HOWTO Index
+          by Tim Bynum
+          v2.10.29, 31 July 1997
+
+
+
+
+
+  ·  Lastly, be prepared to receive questions and comments about your
+     writing.  There are several hundreds of accesses to the HOWTO
+     collection every day from around the world!
+
+  After you have written the HOWTO, mail it to me.  If you used SGML-
+  Tools, simply mail me the SGML source; I take care of formatting the
+  documents.  I'll also take care of archiving the HOWTOs on
+  metalab.unc.edu and posting them to the various newsgroups.
+
+  It is important that you go through me when submitting a HOWTO, as I
+  maintain the archives and need to keep track of what HOWTOs are being
+  written and who is doing what.
+
+  Then, all you have to do is send me periodic updates whenever
+  appropriate.
+
+
+  5.  Copyright
+
+  Copyright (c) 1995 - 1998 by Tim Bynum.
+
+  Unless otherwise stated, Linux HOWTO documents are copyrighted by
+  their respective authors. Linux HOWTO documents may be reproduced and
+  distributed in whole or in part, in any medium physical or electronic,
+  as long as this copyright notice is retained on all copies. Commercial
+  redistribution is allowed and encouraged; however, the author would
+  like to be notified of any such distributions.
+
+  All translations, derivative works, or aggregate works incorporating
+  any Linux HOWTO documents must be covered under this copyright notice.
+  That is, you may not produce a derivative work from a HOWTO and impose
+  additional restrictions on its distribution. Exceptions to these rules
+  may be granted under certain conditions; please contact the Linux
+  HOWTO coordinator at the address given below.
+
+  In short, we wish to promote dissemination of this information through
+  as many channels as possible. However, we do wish to retain copyright
+  on the HOWTO documents, and would like to be notified of any plans to
+  redistribute the HOWTOs.
+
+  If you have questions, please contact Tim Bynum, the Linux HOWTO
+  coordinator, at linux-howto@metalab.unc.edu via email.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+Begin3
+Title:          Technical overview of the extended-2 filesystem.
+Version:        0.1
+Entered-date:   24AUG95
+Description:    This is a small article I wrote as a part of the EXT2ED
+		documentation. It presents a technical overview of the ext2
+		filesystem.
+Keywords:       ext2ed, ext2, ext2fs, e2fs, filesystem
+Author:         Gadi Oxman, tgud@tochnapc2.technion.ac.il
+Maintained-by:  Gadi Oxman, tgud@tochnapc2.technion.ac.il
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Filesystems/ext2
+		43kB Ext2fs-overview-0.1.ps.gz
+Alternate-site:	tochnapc2.technion.ac.il /pub/ext2ed
+		43kB Ext2fs-overview-0.1.ps.gz
+Platforms:      linux + ext2 filesystem
+Copying-policy: GPL
+End

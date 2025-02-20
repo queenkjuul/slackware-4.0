@@ -1,0 +1,12 @@
+drwxr-xr-x root/root         0 1995-08-28 17:51 ./
+drwxr-xr-x root/root         0 1995-08-28 17:51 usr/
+drwxr-xr-x root/root         0 1995-01-11 20:33 usr/doc/
+drwxr-xr-x root/root         0 1995-01-11 20:34 usr/doc/rdist/
+-rw-r--r-- root/root      8521 1996-07-19 12:24 usr/doc/rdist/README
+drwxr-xr-x root/root         0 1995-01-11 20:43 usr/bin/
+-rwxr-xr-x root/bin      66052 1998-03-29 17:11 usr/bin/rdist
+-rwxr-xr-x root/bin      42484 1998-03-29 17:11 usr/bin/rdistd
+drwxr-xr-x root/root         0 1995-08-28 17:51 usr/man/
+drwxr-xr-x root/root         0 1995-08-28 17:51 usr/man/man1/
+-rw-r--r-- root/root      8238 1998-03-29 17:11 usr/man/man1/rdist.1.gz
+-rw-r--r-- root/root      1346 1998-03-29 17:11 usr/man/man1/rdistd.1.gz

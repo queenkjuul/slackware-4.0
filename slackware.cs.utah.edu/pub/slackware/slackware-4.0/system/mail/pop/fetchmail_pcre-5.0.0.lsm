@@ -1,0 +1,17 @@
+Begin3
+Title:		fetchmail pcre filter patch
+Version:	5.0.0
+Entered-date:	6APR99
+Description:	This patch brings filtering features to the well-known
+		fetchmail program.
+		It uses the pcre library 2.04 from
+		ftp://ftp.cus.cam.ac.uk/pub/software/programs/pcre/
+		for perl-ish regular expression matching.
+Keywords:	mail, client, POP, POP2, POP3, APOP, RPOP, KPOP, IMAP, SMTP, filter, regex
+Author: 	Soenke J. Peters <peters@simprovement.com>
+Primary-site:	http://www.simprovement.com/cgi-bin/frech/
+		5007 Bytes fetchmail_pcre-5.0.0.patch.gz
+Secondary-site:	metalab.unc.edu /pub/Linux/system/mail/pop
+Platforms:	All (hopefully)
+Copying-policy:	Free
+End

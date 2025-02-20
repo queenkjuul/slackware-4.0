@@ -1,0 +1,29 @@
+Begin3
+Title:		SBScan
+Version:	0.0.4
+Entered-date:
+Description:	SBScan is a localhost security scanner which currently
+		checks for  	Anonymous FTP
+ 				Unpassworded accounts
+				Open Ports
+				l33t Open Ports
+				Entire Subnet Promisc Check
+				Local machine promisc check
+				Suspicious Files
+				RHost files
+				Sniffer check - Log files
+				Suid programs in slash home
+				Evidence of a Rootkit
+				X Hosts allowed to connect
+				Permissions on Vital directories.
+				Log file permissions.
+				NFS basic Check
+				And it makes MD5 sums of common files...
+Keywords:	security network nfs ftp ports elite l33t rootkit logs
+Author:		sy@haqd.demon.co.uk (Simon Baker)
+Maitained-by:	sy@haqd.demon.co.uk (Simon Baker)
+Primary-site:	http://www.haqd.demon.co.uk/
+Alternate-site:
+Platforms:	Linux
+Copying-policy: MIT
+End

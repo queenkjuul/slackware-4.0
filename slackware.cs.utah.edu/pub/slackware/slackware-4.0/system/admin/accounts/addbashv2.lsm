@@ -1,0 +1,15 @@
+Begin3
+Title:		Addbash Accounts
+Version:	2.0
+Entered-date:	4NOV97
+Description:	Creates bash accounts with shadowed passwords, an operational
+                web directory with a default user homepage (Apache Server).
+                Adds additional user information and notifies the user of
+                the creation of their account by emailing them a welcome
+                message on their new address.
+Keywords:	slackware apache accounts user bash red hat debian tgz add
+Author:		michaelw@icon.co.za
+Primary-site:	sunsite.unc.edu /pub/Linux/system/admin
+		32	addbashv2.tar.gz
+Copying-policy:	GPL
+End

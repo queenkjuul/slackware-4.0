@@ -1,0 +1,164 @@
+Linux Software Map Entry Template                            Release: 05SEP93
+=============================================================================
+
+Synopsis:
+
+The LSM is a directory of information about each of the software packages
+available via FTP for the Linux operating system.  It is meant to be a public
+information resource.  All entries have been entered by volunteers all over
+the world via email using the template below.  New versions will appear
+first on sunsite.unc.edu and will be announced in the newsgroup
+comp.os.linux.announce .  Discussions pertaining to the LSM will be held in
+the newsgroup comp.os.linux.help .  Any questions or comments can be entered in
+comp.os.linux.help or sent to me directly at jeffk@msen.com .
+
+Instructions:
+
+Any new packages or updates to old entries should be entered in the template
+below and sent to jeffk@msen.com (Jeff Kopmanis).  Each release of the
+LSM will have the current template as part of the package.  Any changes to
+the template will be made and released there.
+
+*PLEASE* use the entry template below when submitting information.  It has
+been designed so that all you have to do is fill in the blanks and send it
+in as is.  Your entry will be read into the database directly from your
+email response with little if any hand manipulation.
+
+DO NOT RENAME FIELDS.  DO NOT REMOVE THE BEGIN OR END MARKERS.  Please pay
+attention to the field lengths listed to the left of the field names, as 
+any text beyond that length will be truncated.  If you use some of the new
+fields, be sure to use the newer Begin2 keyword to start your entry to
+save me a few headaches and file editing.
+
+Complete as many fields as possible.  As of the 05SEP93 version, you don't
+need to keep blank fields around, but I strongly encourage developers to
+complete all the fields, as its more descriptive.  Make any corrections
+that are necessary.  The initial data came from a variety of sources, 
+and is not at all assumed to be correct.
+
+Once you have completed the documentation as best as possible, email the
+modified version of this file to:   jeffk@msen.com
+
+Thank you VERY much for your time and enthusiasm.  Your contribution will
+help to ensure that the Linux Software Map will continue to be a trusted
+Linux resource.
+
+-Jeff.  :)   (jeffk@msen.com) (Jeffrey J. Kopmanis)
+
+
+============================================================================
+Changes in 05SEP93:
+
+No field lengths are needed in the actual template entry.  I've got the lengths
+in the field description section of this document.
+
+You can leave fields out.  If they're blank, leave 'em out.
+
+Expanded fields: 5 lines of descriptions, 4 lines of required, 2 lines of
+copypolicy, 4 comment lines, 3 lines of relatedfiles, 4 site/path/file/size
+groups.
+
+Site, Path, File and Size are now separate fields.  Also, there are 4 possible
+site/path/file/size groups allowed.  This should cover just about anything.
+
+Author and email have been split up.
+
+Entered and Enteredby have been split up.
+
+PkgName and Last3Rel are gone.
+
+Things that were 65 chars are now 80.  In general, areas that didn't have
+enough space were expanded to hold what was coming in.
+
+=============================================================================
+Descriptions of fields used in the LSM template
+=============================================================================
+Field:len          Description
+-----------        -----------------------------------------------------------------
+Title:40           Mumail 2.4Beta
+Version:25         2.4 Beta
+Desc1:80           Mumail is an X based stand alone mail reader with mime 
+Desc2:80           support and digest exploding.  This is the first release
+Desc3:80           by the new maintainer (dave_boyd@sterling.com). 
+Desc4:80
+Desc5:80
+Author:65          Muhammad M. Saggaf
+AuthorEmail:40     
+Maintainer:65      David W. Boyd
+MaintEmail:40      dave_boyd@sterling.com
+Site1:30           sunsite.unc.edu
+Path1:50           /pub/Linux/X11/xapps
+File1:40           mumail-2.4b-src.tgz mumail-2.4b-bin.tgz
+FileSize1:size     src - 240K  bin - 85K 
+Site2/Path2/File2/FileSize2  (same as first one)
+Site3/Path3/File3/FileSize3  (same as first one)
+Site4/Path4/File4/FileSize4  (same as first one)
+Required1:80       None
+Required2:80  
+Required3:80 
+Required4:80
+CopyPolicy1:80     See the file 1-COPYING in the distribution
+CopyPolicy2:80
+Keywords:80        mail X 
+Comment1:80        This is a Beta Release of the software.  I expect there
+Comment2:80        to be problems as I am still getting used to the software.
+Comment3:80	   See the file 1-CHANGES for changes since the last release.
+Comment4:80	   The Beta period will run approx 60 days.
+RelFiles1:80       The source code for some of the FWF widgets comes with
+RelFiles2:80       the source distribution.
+RelFiles3:80
+Entered:12         04 Apr 1994
+EnteredBy:30       David W. Boyd
+CheckedEmail:40    dave_boyd@sterling.com
+=============================================================================
+
+NOTE: The example file below contains ALL AVAILABLE fields.  You may delete
+any fields you do not use.
+-------------------------------- cut here ------------------------------------
+Begin2
+Title        =
+Version      =
+Desc1        =
+Desc2        =
+Desc3        =
+Desc4        =
+Desc5        =
+Author       =
+AuthorEmail  =
+Maintainer   =
+MaintEmail   =
+Site1        =
+Path1        =
+File1        =
+FileSize1    =
+Site2        =
+Path2        =
+File2        =
+FileSize2    =
+Site3        =
+Path3        =
+File3        =
+FileSize3    =
+Site4        =
+Path4        =
+File4        =
+FileSize4    =
+Required1    =
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  =
+CopyPolicy2  =
+Keywords     =
+Comment1     =
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      =
+EnteredBy    =
+CheckedEmail =
+End
+

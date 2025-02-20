@@ -1,0 +1,23 @@
+Begin3
+Title:          occ
+Version:        4.3
+Entered-date:   06AUG98
+Description:    online cost calculator
+                calculates phone cost.
+		Intended for those with a dial up account using dip-uri or
+		pppd / chat.
+		Uses reports from dip and pppd in /var/adm/messages.
+                Uses /root/.occrc file holding your phone companies rates.
+                You do not have to be online to see the total you have to
+                pay to the phone company, you can check anytime, get the 
+                last logings cost or todays cost, etc.
+                Defines provided in occ.c for different connect and
+                disconnect messages from pppd.
+Keywords:       online, phone bill, dip, pppd, chat, dial up, cost, uri 
+Author:         jan@panteltje.demon.nl (Jan Mourer)
+Maintained-by:  jan@panteltje.demon.nl
+Primary-site:   sunsite.unc.edu
+		/pub/Linux/?
+Platforms:      LINUX
+Copying-policy: GPL
+End

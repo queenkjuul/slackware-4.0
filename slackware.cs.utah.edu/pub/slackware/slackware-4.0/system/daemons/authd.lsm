@@ -1,0 +1,25 @@
+Begin2
+Title        = identd
+Version      = authd
+Desc1        = Authd is an implementation of identd daemon, which
+Desc2        = enables remote sites to determine the user-id of the
+Desc3        = person initiating the transfer.
+Author       = Pauline Middelink
+AuthorEmail  = middelin@calvin.iaf.nl
+Maintainer   = Pauline Middelink
+MaintEmail   = middelin@calvin.iaf.nl
+Site1        = tsx-11.mit.edu
+Path1        = /pub/linux/sources/usr.bin/
+File1        = authd.tar.gz
+FileSize1    = 22593
+Site2        = sunsite.unc.edu
+Path2        = /pub/Linux/system/Daemons
+File2        = authd.tar.gz
+FileSize2    = 22593
+Required1    = TCP/IP
+CopyPolicy1  = GNU Copyleft
+Comment1     = It is derived from the bsd-pidentd implementation found
+Comment2     = on many, many sites...
+Entered      = 12OCT93
+EnteredBy    = Pauline Middelin
+End

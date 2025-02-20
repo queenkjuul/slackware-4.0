@@ -1,0 +1,60 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-ircd
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_ircd.tar.gz
+
+echo "+===============+"
+echo "| ircu2.10.05.9 |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/ircu2.10.05.9.tar.gz
+cd ircu2
+sh ./configure
+#make config
+zcat $CWD/ircu2.10.05.9.diff.gz | patch -p1
+make
+cat ircd/ircd > $PKG/usr/sbin/ircd
+cat ircd/chkconf > $PKG/usr/sbin/chkconf
+cat doc/ircd.8 | gzip -9c > $PKG/usr/man/man8/ircd.8.gz
+cat doc/example.conf > $PKG/var/lib/ircd/ircd.conf
+mkdir -p $PKG/usr/doc/ircd
+cp -a doc/Configure.help $PKG/usr/doc/ircd
+cp -a doc/readme.* $PKG/usr/doc/ircd
+cp -a doc/Authors $PKG/usr/doc/ircd
+cp -a INSTALL $PKG/usr/doc/ircd
+chown root.root $PKG/usr/doc/ircd/*
+chmod 644 $PKG/usr/doc/ircd/*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/ircd.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/ircu2
+  rm -rf $PKG
+fi

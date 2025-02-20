@@ -1,0 +1,518 @@
+--- Makefile
++++ Makefile	1994/06/18 13:38:08
+@@ -1,6 +1,6 @@
+-BINDIR=		/usr/local/bin
+-ETCDIR=		/usr/local/etc
+-MANDIR=		/usr/local/man
++BINDIR=		/usr/bin
++ETCDIR=		/usr/sbin
++MANDIR=		/usr/man
+ MANEXT=		8
+ 
+ all:
+@@ -8,18 +8,18 @@
+ 	@ echo 'You can say "build help" for details on how it works.'
+ 
+ install: bin/ftpd bin/ftpcount bin/ftpshut
+-	-mv -f ${ETCDIR}/ftpd ${ETCDIR}/ftpd-old
+ 	@echo Installing binaries.
+-	install -o bin -g bin -m 755 bin/ftpd ${ETCDIR}/ftpd
+-	install -o bin -g bin -m 755 bin/ftpshut ${BINDIR}/ftpshut
+-	install -o bin -g bin -m 755 bin/ftpcount ${BINDIR}/ftpcount
+-	install -o bin -g bin -m 755 bin/ftpwho ${BINDIR}/ftpwho
++	install -s bin/ftpd ${ETCDIR}/wu-ftpd
++	install -s bin/ftpshut ${BINDIR}/ftpshut
++	install -s bin/ftpcount ${BINDIR}/ftpcount
++	install -s bin/ftpwho ${BINDIR}/ftpwho
++	install util/xferstats ${BINDIR}/xferstats
+ 	@echo Installing manpages.
+-	install -o bin -g bin -m 755 doc/ftpd.8 ${MANDIR}/man8/ftpd.8
+-	install -o bin -g bin -m 755 doc/ftpcount.1 ${MANDIR}/man1/ftpcount.1
+-	install -o bin -g bin -m 755 doc/ftpwho.1 ${MANDIR}/man1/ftpwho.1
+-	install -o bin -g bin -m 755 doc/ftpshut.8 ${MANDIR}/man8/ftpshut.8
+-	install -o bin -g bin -m 755 doc/ftpaccess.5 ${MANDIR}/man5/ftpaccess.5
+-	install -o bin -g bin -m 755 doc/ftphosts.5 ${MANDIR}/man5/ftphosts.5
+-	install -o bin -g bin -m 755 doc/ftpconversions.5 ${MANDIR}/man5/ftpconversions.5
+-	install -o bin -g bin -m 755 doc/xferlog.5 ${MANDIR}/man5/xferlog.5
++	install -m 644 doc/ftpd.8 ${MANDIR}/man8/wu-ftpd.8
++	install -m 644 doc/ftpcount.1 ${MANDIR}/man1/ftpcount.1
++	install -m 644 doc/ftpwho.1 ${MANDIR}/man1/ftpwho.1
++	install -m 644 doc/ftpshut.8 ${MANDIR}/man8/ftpshut.8
++	install -m 644 doc/ftpaccess.5 ${MANDIR}/man5/ftpaccess.5
++	install -m 644 doc/ftphosts.5 ${MANDIR}/man5/ftphosts.5
++	install -m 644 doc/ftpconversions.5 ${MANDIR}/man5/ftpconversions.5
++	install -m 644 doc/xferlog.5 ${MANDIR}/man5/xferlog.5
+--- Makefile.Linux
++++ Makefile.Linux	1994/07/05 12:13:59
+@@ -0,0 +1,12 @@
++ifdef HAVE_SHADOW_PASSWORDS
++opt = -DHAVE_SHADOW_PASSWORDS
++else
++opt =
++endif
++
++all:
++	./build lnx $(opt)
++
++install: compile
++	make install
++
+--- build
++++ build	1994/06/18 13:38:08
+@@ -92,12 +93,12 @@
+         cd ..
+         if [ ! -d bin ] ;  then    mkdir bin;        fi
+         cd bin
+-        rm -f ftpd ftpcount ftpshut
++        rm -f ftpd ftpcount ftpshut ftpwho
+         if [ -s ../src/ftpd ] ;      then ln ../src/ftpd  ftpd      ; fi
+         if [ -s ../src/ftpcount ] ;  then ln ../src/ftpcount ftpcount ; fi
+         if [ -s ../src/ftpshut ] ;   then ln ../src/ftpshut ftpshut    ; fi
+-        if [ -s ../src/ftpshut ] ;   then ln ../src/ftpcount ftpwho    ; fi
+-		if [ -s ../src/ckconfig ] ;  then ln ../src/ckconfig ckconfig  ; fi
++        if [ -s ../src/ftpcount ] ;   then ln ../src/ftpcount ftpwho    ; fi
++	if [ -s ../src/ckconfig ] ;  then ln ../src/ckconfig ckconfig  ; fi
+         cd ..
+         echo ''
+         echo "Links to executables are in bin directory:"
+--- src/access.c
++++ src/access.c	1994/06/18 13:38:08
+@@ -100,7 +100,7 @@
+     while (match && isalpha(*whattime) && isupper(*whattime)) {
+         match = 0;
+         for (loop = 0; loop < 8; loop++) {
+-            if (strncmp(days[loop], whattime, 2) == NULL) {
++            if (strncmp(days[loop], whattime, 2) == 0) {
+                 whattime += 2;
+                 match = 1;
+                 if ((wday == loop) | ((loop == 7) && wday && (wday < 6))) {
+@@ -110,7 +110,7 @@
+         }
+     }
+ 
+-    if (strncmp(whattime, "Any", 3) == NULL) {
++    if (strncmp(whattime, "Any", 3) == 0) {
+         validday = 1;
+         whattime += 3;
+     }
+@@ -428,7 +428,7 @@
+     struct aclmember *entry = NULL;
+ 
+     if (msgpathbuf)
+-        *msgpathbuf = NULL;
++        *msgpathbuf = '\0';
+ 
+     /* limit <class> <n> <times> [<message_file>] */
+     while (getaclentry("limit", &entry)) {
+--- src/acl.c
++++ src/acl.c	1994/06/18 13:38:08
+@@ -39,6 +39,7 @@
+ #else
+ #include <syslog.h>
+ #endif
++#include <stdlib.h>
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -93,7 +94,7 @@
+     aclmembers = (struct aclmember *) NULL;
+     acltail = (struct aclmember *) NULL;
+ 
+-    while (*aclptr != NULL) {
++    while (*aclptr != '\0') {
+         line = aclptr;
+         while (*aclptr && *aclptr != '\n')
+             aclptr++;
+@@ -103,7 +104,7 @@
+         if ((ptr = strchr(line, '#')) != NULL)
+             /* allowed escaped '#' chars for path-filter (DiB) */
+             if (*(ptr-1) != '\\')
+-                *ptr = NULL;
++                *ptr = '\0';
+ 
+         ptr = strtok(line, " \t");
+         if (ptr) {
+@@ -111,8 +112,16 @@
+ 
+             (void) strcpy(member->keyword, ptr);
+             cnt = 0;
+-            while ((ptr = strtok(NULL, " \t")) != NULL)
++            while ((ptr = strtok(NULL, " \t")) != NULL) {
++		if (cnt >= MAXARGS) {
++		    syslog(LOG_ERR,
++			"Too many args (>%d) in ftpaccess: %s %s %s %s %s ...",
++			MAXARGS - 1, member->keyword, member->arg[0],
++			member->arg[1], member->arg[2], member->arg[3]);
++		    break;
++		}
+                 member->arg[cnt++] = ptr;
++	    }
+             if (acltail)
+                 acltail->next = member;
+             acltail = member;
+--- src/config/config.lnx
++++ src/config/config.lnx	1994/07/05 12:12:12
+@@ -14,14 +14,17 @@
+ #undef  REGEX
+ #define SETPROCTITLE
+ #undef  SHADOW_PASSWORD
++#ifdef	HAVE_SHADOW_PASSWORDS
++#define SHADOW_PASSWORD
++#endif
+ #define UPLOAD
+ #undef  USG
+ #define SVR4
++#define FACILITY LOG_DAEMON
+ 
+ #include <varargs.h>
+ #include <bsd.h>
+ 
+-typedef	int	mode_t
+-typedef int SIGNAL_TYPE
++typedef void SIGNAL_TYPE;
+ 
+ #include "../config.h"
+--- src/extensions.c
++++ src/extensions.c	1994/06/18 13:38:08
+@@ -42,6 +42,7 @@
+ #include <time.h>
+ #include <pwd.h>
+ #include <grp.h>
++#include <unistd.h>
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -167,7 +168,7 @@
+ 
+             case 'T':
+                 strncpy(outptr, ctime(&curtime), 24);
+-                *(outptr + 24) = NULL;
++                *(outptr + 24) = '\0';
+                 break;
+ 
+             case 'F':
+@@ -198,17 +199,17 @@
+ 
+             case 's':
+                 strncpy(outptr, shuttime, 24);
+-                *(outptr + 24) = NULL;
++                *(outptr + 24) = '\0';
+                 break;
+ 
+             case 'd':
+                 strncpy(outptr, disctime, 24);
+-                *(outptr + 24) = NULL;
++                *(outptr + 24) = '\0';
+                 break;
+ 
+             case 'r':
+                 strncpy(outptr, denytime, 24);
+-                *(outptr + 24) = NULL;
++                *(outptr + 24) = '\0';
+                 break;
+ 
+             case '%':
+@@ -227,7 +228,7 @@
+         }
+         inptr++;
+     }
+-    *outptr = NULL;
++    *outptr = '\0';
+ }
+ 
+ /*************************************************************************/
+@@ -253,7 +254,7 @@
+     (void) realpath(".", cwd);
+ 
+     for (curptr = head; curptr != NULL; curptr = curptr->next)
+-        if (strcmp(curptr->dirname, cwd) == NULL) {
++        if (strcmp(curptr->dirname, cwd) == 0) {
+             if (!(curptr->dircode & dircode)) {
+                 curptr->dircode |= dircode;
+                 return (0);
+@@ -345,7 +346,7 @@
+                 show++;
+             else {
+                 for (which = 2; (which < MAXARGS) && ARG[which]; which++)
+-                    if (strcasecmp(class, ARG[which]) == NULL)
++                    if (strcasecmp(class, ARG[which]) == 0)
+                         show++;
+             }
+         if (mode == C_WD && ARG1 && !strncasecmp(ARG1, "cwd=", 4) &&
+@@ -355,7 +356,7 @@
+                 show++;
+             else {
+                 for (which = 2; (which < MAXARGS) && ARG[which]; which++)
+-                    if (strcasecmp(class, ARG[which]) == NULL)
++                    if (strcasecmp(class, ARG[which]) == 0)
+                         show++;
+             }
+         if (show && strlen(ARG0) > 0) {
+@@ -417,7 +418,7 @@
+                 show++;
+             else {
+                 for (which = 2; (which < MAXARGS) && ARG[which]; which++)
+-                    if (strcasecmp(class, ARG[which]) == NULL)
++                    if (strcasecmp(class, ARG[which]) == 0)
+                         show++;
+             }
+         if (mode == C_WD && ARG1 && !strncasecmp(ARG1, "cwd=", 4)
+@@ -427,7 +428,7 @@
+                 show++;
+             else {
+                 for (which = 2; (which < MAXARGS) && ARG[which]; which++)
+-                    if (strcasecmp(class, ARG[which]) == NULL)
++                    if (strcasecmp(class, ARG[which]) == 0)
+                         show++;
+             }
+         if (show) {
+--- src/ftpcmd.y
++++ src/ftpcmd.y	1994/06/18 13:38:09
+@@ -52,6 +52,7 @@
+ #include <netinet/in.h>
+ #include <arpa/ftp.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <signal.h>
+ #include <ctype.h>
+ #include <pwd.h>
+--- src/ftpcount.c
++++ src/ftpcount.c	1994/06/18 13:38:09
+@@ -95,7 +95,7 @@
+     while (match && isalpha(*whattime) && isupper(*whattime)) {
+         match = 0;
+         for (loop = 0; loop < 8; loop++) {
+-            if (strncmp(days[loop], whattime, 2) == NULL) {
++            if (strncmp(days[loop], whattime, 2) == 0) {
+                 whattime += 2;
+                 match = 1;
+                 if ((wday == loop) | ((loop == 7) && wday && (wday < 6)))
+@@ -104,7 +104,7 @@
+         }
+     }
+ 
+-    if (strncmp(whattime, "Any", 3) == NULL) {
++    if (strncmp(whattime, "Any", 3) == 0) {
+         validday = 1;
+         whattime += 3;
+     }
+@@ -156,10 +156,10 @@
+       linebuf[1024];
+     int limit;
+ 
+-    while (*aclbuf != NULL) {
++    while (*aclbuf != '\0') {
+         if (strncasecmp(aclbuf, "limit", 5) == 0) {
+             for (crptr = aclbuf; *crptr++ != '\n';) ;
+-            *--crptr = NULL;
++            *--crptr = '\0';
+             strcpy(linebuf, aclbuf);
+             *crptr = '\n';
+             (void) strtok(linebuf, " \t");  /* returns "limit" */
+@@ -304,10 +304,10 @@
+ 
+     (void) new_list(&list);
+     myaclbuf = aclbuf;
+-    while (*myaclbuf != NULL) {
++    while (*myaclbuf != '\0') {
+         if (strncasecmp(myaclbuf, "class", 5) == 0) {
+             for (crptr = myaclbuf; *crptr++ != '\n';) ;
+-            *--crptr = NULL;
++            *--crptr = '\0';
+             strcpy(linebuf, myaclbuf);
+             *crptr = '\n';
+             (void) strtok(linebuf, " \t");  /* returns "class" */
+--- src/ftpd.c
++++ src/ftpd.c	1994/06/18 13:38:09
+@@ -560,10 +560,10 @@
+ randomsig(int sig)
+ {
+     syslog(LOG_ERR, "exiting on signal %d", sig);
+-    chdir("/etc/tmp");
++    chdir("/tmp");
+     signal(SIGIOT, SIG_DFL);
+     signal(SIGILL, SIG_DFL);
+-    abort();
++    exit(1);
+     /* dologout(-1); *//* NOTREACHED */
+ }
+ 
+@@ -999,7 +999,7 @@
+         }
+ #endif
+ 
+-        *guestpw = NULL;
++        *guestpw = '\0';
+         if (pw == NULL)
+             salt = "xx";
+         else
+@@ -1223,11 +1223,11 @@
+     static char buf[100];
+     char *ptr = buf;
+ 
+-    if ((options & O_COMPRESS) != NULL)
++    if ((options & O_COMPRESS) != 0)
+         *ptr++ = 'C';
+-    if ((options & O_TAR) != NULL)
++    if ((options & O_TAR) != 0)
+         *ptr++ = 'T';
+-    if ((options & O_UNCOMPRESS) != NULL)
++    if ((options & O_UNCOMPRESS) != 0)
+         *ptr++ = 'U';
+     if (options == 0)
+         *ptr++ = '_';
+@@ -1339,7 +1339,7 @@
+             strcpy(namebuf, cptr->external_cmd);
+             if ((ptr = strchr(namebuf, ' ')) != NULL)
+                 *ptr = '\0';
+-            if (stat(namebuf, &st) != NULL) {
++            if (stat(namebuf, &st) != 0) {
+                 syslog(LOG_ERR, "external command %s not found",
+                        namebuf);
+                 (void) reply(550,
+--- src/ftpshut.c
++++ src/ftpshut.c	1994/06/18 13:38:09
+@@ -185,10 +185,10 @@
+     }
+ 
+     myaclbuf = aclbuf;
+-    while (*myaclbuf != NULL) {
++    while (*myaclbuf != '\0') {
+         if (strncasecmp(myaclbuf, "shutdown", 8) == 0) {
+             for (crptr = myaclbuf; *crptr++ != '\n';) ;
+-            *--crptr = NULL;
++            *--crptr = '\0';
+             strcpy(linebuf, myaclbuf);
+             *crptr = '\n';
+             (void) strtok(linebuf, " \t");  /* returns "shutdown" */
+--- src/glob.c
++++ src/glob.c	1994/06/18 13:38:10
+@@ -54,6 +54,7 @@
+ #include <errno.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #define	QUOTE 0200
+ #define	TRIM 0177
+--- src/hostacc.c
++++ src/hostacc.c	1994/06/18 13:38:10
+@@ -69,7 +69,7 @@
+         while (((ptHtmp = gethacc()) != (hacc_t *)NULL) && !iLineMatch)
+         {
+                 if ( (strcasecmp(pcRuser, ptHtmp->ha_login)) &&
+-                      strcmp(ptHtmp->ha_login, "*") != NULL)
++                      strcmp(ptHtmp->ha_login, "*") != 0)
+                         /* wrong user, check rest of file */
+                         continue;
+ 
+--- src/makefiles/Makefile.lnx
++++ src/makefiles/Makefile.lnx	1994/07/05 12:13:06
+@@ -1,17 +1,21 @@
+ CC       = gcc
+ IFLAGS   = -I.. -I../support -I/usr/include/bsd
+ LFLAGS   = -L../support
+-CFLAGS   = -O -DDEBUG ${IFLAGS} ${LFLAGS}
++CFLAGS   = -O2 -fomit-frame-pointer -DDEBUG ${IFLAGS} ${LFLAGS}
+ LIBES    = -lsupport -lbsd
++ifdef HAVE_SHADOW_PASSWORDS
++LIBES = $(LIBES) -lshadow
++CFLAGS = $(CFLAGS) -DHAVE_SHADOW_PASSWORDS
++endif
+ LIBC     = /usr/lib/libc.a
+ LINTFLAGS=	
+ LKERB    = -lauth -lckrb -lkrb -ldes
+ MKDEP    = ../util/mkdep
+ 
+ SRCS   = ftpd.c ftpcmd.c glob.c logwtmp.c popen.c vers.c access.c extensions.c \
+-		 realpath.c acl.c private.c authenticate.c conversions.c hostacc.c
++		 acl.c private.c authenticate.c conversions.c hostacc.c
+ OBJS   = ftpd.o ftpcmd.o glob.o logwtmp.o popen.o vers.o access.o extensions.o \
+-		 realpath.o acl.o private.o authenticate.o conversions.o hostacc.o
++		 acl.o private.o authenticate.o conversions.o hostacc.o
+ 
+ all: ftpd ftpcount ftpshut ckconfig
+ 
+--- src/pathnames.h
++++ src/pathnames.h	1994/07/05 12:00:18
+@@ -30,23 +30,23 @@
+  * @(#)pathnames.h 5.2 (Berkeley) 6/1/90 */
+ 
+ #define _PATH_FTPUSERS  "/etc/ftpusers"
+-#define _PATH_FTPACCESS "/usr/local/etc/ftpaccess"
+-#define _PATH_EXECPATH  "/bin/ftp-exec"
+-#define _PATH_PIDNAMES  "/usr/local/daemon/ftpd/ftp.pids-%s"
+-#define _PATH_CVT       "/usr/local/etc/ftpconversions"
+-#define _PATH_XFERLOG   "/usr/adm/xferlog"
++#define _PATH_FTPACCESS "/etc/ftpaccess"
++#define _PATH_EXECPATH  "/bin"
++#define _PATH_PIDNAMES  "/var/pid/ftp.pids-%s"
++#define _PATH_CVT       "/etc/ftpconversions"
++#define _PATH_XFERLOG   "/var/adm/xferlog"
+ #define _PATH_PRIVATE   "/etc/ftpgroups"
+ 
+ #ifndef _PATH_UTMP
+ #define _PATH_UTMP      "/etc/utmp"
+-#define _PATH_WTMP      "/usr/adm/wtmp"
+-#define _PATH_LASTLOG   "/usr/adm/lastlog"
++#define _PATH_WTMP      "/var/adm/wtmp"
++#define _PATH_LASTLOG   "/var/adm/lastlog"
+ #endif
+ 
+ #define _PATH_BSHELL    "/bin/sh"
+ #define _PATH_DEVNULL   "/dev/null"
+ 
+ #ifdef  HOST_ACCESS
+-#define _PATH_FTPHOSTS  "/usr/local/etc/ftphosts"
++#define _PATH_FTPHOSTS  "/etc/ftphosts"
+ #endif
+ 
+--- src/private.c
++++ src/private.c	1994/06/18 13:38:10
+@@ -42,6 +42,7 @@
+ #include <syslog.h>
+ #endif
+ #include <grp.h>
++#include <stdlib.h>
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+--- support/ftw.c
++++ support/ftw.c	1994/06/18 13:38:10
+@@ -149,7 +149,7 @@
+ 					break;
+ 		}
+ 		if (cur.off) {
+-			*name = NULL;
++			*name = '\0';
+ 			if ( (cur.dirp = opendir(bp)) ) {
+ 				seekdir(cur.dirp, cur.off);
+ 				/* tricky; if we have to reset the directory pointer we know
+--- support/makefiles/Makefile.lnx
++++ support/makefiles/Makefile.lnx	1994/06/18 13:38:10
+@@ -2,18 +2,17 @@
+ AR     = ar cq
+ RANLIB = ranlib
+ LIBC   = /lib/libc.a
+-IFLAGS = 
++IFLAGS = -I /usr/include/bsd
+ LFLAGS = 
+-CFLAGS = -O -DDEBUG ${IFLAGS} ${LFLAGS}
++CFLAGS = -O2 -fomit-frame-pointer -DDEBUG -I /usr/include/bsd
+ 
+ SRCS   = getusershell.c fnmatch.c strcasestr.c strerror.c authuser.c ftw.c
+ OBJS   = getusershell.o fnmatch.o strcasestr.o strerror.o authuser.o ftw.o
+- 
+-all: $(OBJS)
+- 	-rm -f libsupport.a
+- 	${AR} libsupport.a $(OBJS)
+- 	${RANLIB} libsupport.a
+- 
++
++all:	$(OBJS)
++	${AR} libsupport.a $(OBJS)
++	${RANLIB} libsupport.a
++
+ clean:
+ 	-rm -f *.o libsupport.a
+ 

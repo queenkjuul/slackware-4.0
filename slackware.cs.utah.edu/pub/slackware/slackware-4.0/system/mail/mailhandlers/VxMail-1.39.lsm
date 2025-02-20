@@ -1,0 +1,44 @@
+Begin3
+Title:          VxMail
+Version:        1.39
+Entered-date:   3.5.1999 (05/03/1999)
+Description:    VxMail enables the handling of multiple e-mail domains on one
+                server; it is independant a system's user/password database;
+                it uses a user database instead.
+                At the moment VxMail consists of eight programs:
+                    vxcheck     - check mail folders for outdated or size
+                                  exceeding messages and remove these
+                                  (unchecked yet)
+                    vxconv      - convert a smail-like folder into the VxMail
+                                  folder format
+                    vxdeliver   - mail local delivery agent which looks up
+                                  for complete e-mail addresses in a user
+                                  database
+                    vxdomcheck  - smail addendum for a /etc/smail/routers
+                                  entry (VxMail-1.xx/examples/smail)
+                    vxdump      - dump the user database to a file/stdout in
+                                  a format which may be re-read by using
+                                  `vxmkdb' (see below)
+                    vxgetconf   - write the current VxMail configuration
+                                  completely - or the value of a single
+                                  configuration item to stdout
+                    vxmkdb      - create/extend the user database from an
+                                  ASCII description file (may be stdin)
+                    vxpop       - a RFC1957 compliant POP3-server which allows
+                                  the redirection of POP3 requests to another
+                                  host
+                - and a library consisting of functions shared by the
+                  programs including a user database interface which should
+                  hide the underlying database system from the programs of the
+                  VxMail system.
+                (Most of the documentation is in german - and it is far
+                 from beeing complete - sorry)
+Keywords:       Local Mail Delivery, POP3, multiple domains on one host
+Author:         Boris Jakubith <bj@cs.tu-berlin.de> (alt: <boris@isv-gmbh.de>)
+Maintained-by:  Boris Jakubith <bj@cs.tu-berlin.de> (alt: <boris@isv-gmbh.de>)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/mailhandlers
+Alternate-site: 
+Original-site:  sunsite.unc.edu /pub/Linux/system/mail/mailhandlers
+Platforms:      Linux (maybe SunOS-5.6)
+Copying-policy: GPL+LGPL
+End

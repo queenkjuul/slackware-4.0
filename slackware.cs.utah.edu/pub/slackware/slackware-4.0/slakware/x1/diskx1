@@ -1,0 +1,485 @@
+CONTENTS: fvwm2 fvwmicns lesstif ltstatic oldlibs5 oldlibs6 x3dl x8514 xagx xbin xcfg xdoc xf100 xfb xfcyr xfnon xfnts xfscl xfsrv xhtml xi128 xjdoc xjset xlib xma32 xma64 xma8 xman xmono xnest xp9k xprog xprt xps xs3 xs3v xset xsvga xvfb xvg16 xw32 xaw3d xlock xpm       
+fvwm2:    fvwm2_2.0.46-BETA
+fvwm2:
+fvwm2:    Fvwm is a window manager for X11.  It is a derivative of twm, 
+fvwm2:    redesigned to minimize memory consumption, provide a 3-D look to
+fvwm2:    window frames, and provide a simple virtual desktop.
+fvwm2:
+fvwm2:
+fvwm2:
+fvwm2:
+fvwm2:
+fvwm2:
+fvwmicns: xpm3icons.
+fvwmicns:
+fvwmicns: Color icons from xpm3icons.tar.Z, found in the /pub/X11/contrib
+fvwmicns: directory of metalab.unc.edu.  These icons work great with fvwm.
+fvwmicns:
+fvwmicns: These icons go in the /usr/X11R6/include/X11/pixmaps directory.  For
+fvwmicns: more information on how to use these icons, see fvwm's manpage.
+fvwmicns:
+fvwmicns:
+fvwmicns:
+fvwmicns:
+lesstif:  LessTif 0.85 (A Motif 1.2 alternative)
+lesstif:
+lesstif:  Lesstif is a freely available Motif clone.  It aims to be source level
+lesstif:  compatible with Motif 1.2.  This package contains the libraries and
+lesstif:  header files to be able to run and compile Motif 1.2 applications,
+lesstif:  along with the lesstif version of mwm, the Motif window manager.
+lesstif:
+lesstif:
+lesstif:
+lesstif:
+lesstif:
+ltstatic: Static libraries for LessTif 0.85
+ltstatic:
+ltstatic: Libraries needed to compile static LessTif applications.  Includes
+ltstatic: libMrm.a and libXm.a.
+ltstatic:
+ltstatic:
+ltstatic:
+ltstatic:
+ltstatic:
+ltstatic:
+ltstatic:
+oldlibs5: Shared X libraries from XFree86 2.1.1 (X11R5).
+oldlibs5:
+oldlibs5: This package adds libX11.so.3.1.0, libXaw.so.3.1.0, and
+oldlibs5: libXt.so.3.1.0 to your /usr/ix86-linuxaout/lib directory.  
+oldlibs5:
+oldlibs5: These are a.out format libraries that are mostly obsolete by now, but
+oldlibs5: are retained in case you encounter one of the a.out X11R5 X binaries
+oldlibs5: that are still floating around.
+oldlibs5:
+oldlibs5:
+oldlibs5:
+oldlibs6: a.out (DLL) format shared libraries for X11R6 binaries.
+oldlibs6:
+oldlibs6: These libraries go in /usr/ix86-linuxaout/lib, where they will be used
+oldlibs6: to provide backwards compatibility for dynamically linked a.out format
+oldlibs6: X binaries.  Also includes shared stubs (.sa) for compiling a.out
+oldlibs6: X applications with 'gcc -b ix86-linuxaout'.
+oldlibs6:
+oldlibs6:
+oldlibs6:
+oldlibs6:
+oldlibs6:
+x8514:    An accelerated server for cards using IBM8514 chips.
+x8514: 
+x8514:    Installing this package will create a link in /usr/X11R6/bin from
+x8514:    XF86_8514 to X, setting this server as the default.
+x8514: 
+x8514: 
+x8514: 
+x8514: 
+x8514: 
+x8514: 
+x8514: 
+xfb:      Frame buffer X server.
+xfb:
+xfb:      This X server uses the Linux frame buffer device available with Linux
+xfb:      2.1.x to provide a general X server for bitmapped, unaccelerated video
+xfb:      hardware.  See /var/X11R6/lib/doc/README.fbdev for more information.
+xfb:
+xfb:
+xfb:
+xfb:
+xfb:
+xfb:
+x3dl:     An accelerated server for 3DLabs chipsets.
+x3dl:
+x3dl:     This server supports the GLINT 500TX with IBM RGB526 RAMDAC,
+x3dl:     GLINT MX with IBM RGB526 and IBM RGB640 RAMDAC,
+x3dl:     Permedia with IBM RGB526 RAMDAC,
+x3dl:     Permedia 2 (classic, 2a, 2v).
+x3dl:
+x3dl:     Installing this package will create a link in /usr/X11R6/bin from
+x3dl:     XF86_3DLabs to X, setting this server as the default.
+x3dl:
+x3dl:
+xagx:     An accelerated server for IIT AGX chipsets.
+xagx:
+xagx:     This server supports the IIT AGX-016, AGX-015, AGX-014 and XGA-2
+xagx:     chipsets.  There's also untested support for the XGA-1 and AGX-010
+xagx:     chipsets.
+xagx:
+xagx:     Installing this package will create a link in /usr/X11R6/bin from
+xagx:     XF86_AGX to X, setting this server as the default.
+xagx:
+xagx:
+xagx:
+xbin:     Basic client binaries required for XFree86 3.3.3.1.
+xbin:
+xbin:     Installs the basic set of programs needed to run X in your 
+xbin:     /usr/X11R6/bin directory.
+xbin:
+xbin:
+xbin:
+xbin:
+xbin:
+xbin:
+xbin:
+xcfg:     Configuration files for XFree86 3.3.3.1.
+xcfg:
+xcfg:     Configuration files needed by X and xdm.
+xcfg:
+xcfg:
+xcfg:
+xcfg:
+xcfg:
+xcfg:
+xcfg:
+xcfg:
+xdoc:     Documentation and release notes for XFree86 3.3.3.1.
+xdoc:
+xdoc:
+xdoc:
+xdoc:
+xdoc:
+xdoc:
+xdoc:
+xdoc:
+xdoc:
+xdoc:
+xf100:    100-dpi screen fonts.
+xf100:
+xf100:    These fonts are compressed to reduce disk usage.
+xf100:
+xf100:
+xf100:
+xf100:
+xf100:
+xf100:
+xf100:
+xf100:
+xfcyr:    Cyrillic fonts for XFree86 3.3.3.1.
+xfcyr:
+xfcyr:
+xfcyr:
+xfcyr:
+xfcyr:
+xfcyr:
+xfcyr:
+xfcyr:
+xfcyr:
+xfcyr:
+xfnon:    Some large X fonts.
+xfnon:
+xfnon:    These fonts are compressed to reduce disk usage.
+xfnon:
+xfnon:    Fonts included:  gb16fs.pcf.gz gb16st.pcf.gz gb24st.pcf.gz
+xfnon:                     hanglg16.pcf.gz hanglm16.pcf.gz hanglm24.pcf.gz
+xfnon:                     heb6x13.pcf.gz heb8x13.pcf.gz jiskan16.pcf.gz
+xfnon:                     jiskan24.pcf.gz k14.pcf.gz
+xfnon:
+xfnon:
+xfnon:
+xfnts:    Fonts for the X window system.
+xfnts:
+xfnts:    This is the minimal set of fonts needed to run XFree86 3.3.3.1.
+xfnts:
+xfnts:    These fonts are compressed to reduce disk usage.
+xfnts:
+xfnts:
+xfnts:
+xfnts:
+xfnts:
+xfnts:
+xfscl:    Scaled fonts.
+xfscl:
+xfscl:    Speedo and Type 1 scalable fonts for XFree86 3.3.3.1.
+xfscl:
+xfscl:
+xfscl:
+xfscl:
+xfscl:
+xfscl:
+xfscl:
+xfscl:
+xfsrv:    xfs (X font server)
+xfsrv:
+xfsrv:    Xfs is the X Window System font server.  It supplies fonts to X Window
+xfsrv:    System display servers.
+xfsrv:
+xfsrv:
+xfsrv:
+xfsrv:
+xfsrv:
+xfsrv:
+xfsrv:
+xhtml:    Docs for XFree86 in HTML format.
+xhtml:
+xhtml:    A set of documentation for XFree86, in a format readable with web
+xhtml:    browsing tools such as Netscape or Lynx.
+xhtml:
+xhtml:
+xhtml:
+xhtml:
+xhtml:
+xhtml:
+xhtml:
+xi128:    A server for the Number Nine Imagine 128.
+xi128:
+xi128:    This server supports the Number Nine Imagine 128. (series I and II)
+xi128:    Installing this package will create a link in /usr/X11R6/bin from
+xi128:    XF86_I128 to X, setting this server as the default.
+xi128:
+xi128:
+xi128:
+xi128:
+xi128:
+xi128:
+xjdoc:    Japanese documentation and release notes for XFree86 3.3.3.1.
+xjdoc:
+xjdoc:
+xjdoc:
+xjdoc:
+xjdoc:
+xjdoc:
+xjdoc:
+xjdoc:
+xjdoc:
+xjdoc:
+xjset:    Japanese configuration utility for XFree86.
+xjset:
+xjset:    A Japanese version of the XFree86 graphical configuration utility.
+xjset:    Produces an initial XF86Config file or tunes the existing one.  Runs
+xjset:    on the X desktop using TCL (this also requires the vg16 X server) or
+xjset:    runs on the Linux console (using the dialog utility).
+xjset:
+xjset:
+xjset:
+xjset:
+xjset:
+xlib:     Various library files for XFree86 3.3.3.1.
+xlib:
+xlib:     Files needed by X:  bitmaps, locale files, and other configuration
+xlib:     files found under /var/X11R6/lib.
+xlib:
+xlib:
+xlib:
+xlib:
+xlib:
+xlib:
+xlib:
+xma32:    An accelerated server for cards using Mach32 chips.
+xma32:
+xma32:    Installing this package will create a link in /usr/X11R6/bin from
+xma32:    XF86_Mach32 to X, setting this server as the default.
+xma32:
+xma32:
+xma32:
+xma32:
+xma32:
+xma32:
+xma32:
+xma64:    An accelerated server for cards using the Mach64 chipset.
+xma64:
+xma64:    The Mach64 server will now correctly recognise some of the newer ATI
+xma64:    chip revisions, including the 3D Rage, 3D Rage II, 3D Rage IIC, 
+xma64:    3D Rage II+DVD, Rage Pro, and Rage LT Pro.
+xma64:
+xma64:    Installing this package will create a link in /usr/X11R6/bin from
+xma64:    XF86_Mach64 to X, setting this server as the default.
+xma64:
+xma64:
+xma64:
+xma8:     An accelerated server for cards using Mach8 chips.
+xma8:
+xma8:     Installing this package will create a link in /usr/X11R6/bin from
+xma8:     XF86_Mach8 to X, setting this server as the default.
+xma8:
+xma8:
+xma8:
+xma8:
+xma8:
+xma8:
+xma8:
+xman:     Man pages for XFree86 3.3.3.1.
+xman:
+xman:
+xman:
+xman:
+xman:
+xman:
+xman:
+xman:
+xman:
+xman:
+xmono:    A Monochrome server.
+xmono:
+xmono:    Installing this package will create a link in /usr/X11R6/bin from
+xmono:    XF86_Mono to X, setting this server as the default.
+xmono:
+xmono:
+xmono:
+xmono:
+xmono:
+xmono:
+xmono:
+xnest:    Xnest - a nested X server.
+xnest:
+xnest:    An experimental nested server for X.
+xnest:
+xnest:    Xnest is a client and a server.  Xnest is a client of the real server
+xnest:    which manages windows and graphics requests on its behalf.  Xnest is a
+xnest:    server to its own clients.  Xnest manages windows and graphics 
+xnest:    requests on their behalf.  To these clients Xnest appears to be a 
+xnest:    conventional server.
+xnest:
+xnest:
+xp9k:     An accelerated server for cards using the P9000 chipset.
+xp9k:
+xp9k:     Some of the cards this server will work with are the Diamond Viper
+xp9k:     VLB, Diamond Viper PCI, Orchid P9000 (and some other clones, such as
+xp9k:     the STAR 2000).  Viper Pro and other P9100 and P9130 cards are NOT
+xp9k:     supported, but are supported in the p9x00 driver of the SVGA server. 
+xp9k:
+xp9k:     Installing this package will create a link in /usr/X11R6/bin from
+xp9k:     XF86_P9000 to X, setting this server as the default.
+xp9k:
+xp9k:
+xprog:    Libraries, include files, and configuration files for X programming.
+xprog:
+xprog:    This is a set of include files (found in /usr/X11R6/include), static
+xprog:    libraries (found in /usr/X11R6/lib/*.a) and configuration files 
+xprog:    (found in /var/X11R6/lib/config) needed to compile X programs under
+xprog:    Linux.
+xprog:
+xprog:
+xprog:
+xprog:
+xprog:
+xprt:     Print-only server (Xprt) for XFree86 3.3.3.1.
+xprt:
+xprt:
+xprt:
+xprt:
+xprt:
+xprt:
+xprt:
+xprt:
+xprt:
+xprt:
+xps:      XFree86 documentation in PostScript format.
+xps:
+xps:      PostScript versions of the documentation for XFree86 3.3.3.1.  This is
+xps:      the same in content as the test-based versions, but formatted nicely
+xps:      for printing on a PostScript printer or viewing with ghostview. 
+xps:      These documents take up quite a bit of space, so if you don't need
+xps:      PostScript format you may want to skip this package.
+xps:
+xps:
+xps:
+xps:
+xs3:      An accelerated server for cards using S3 chips.
+xs3:
+xs3:      The current S3 Server supports all available S3 chipsets: 911, 924,
+xs3:      801/805, 928, 732 (Trio32), 764, 765, 775, 785 (Trio64*), 864, 868,
+xs3:      964, 968 and M65 (Aurora64V+).  However, this does not mean that all
+xs3:      S3 boards will work -- see the XFree86 docs for complete information.
+xs3:      The S3 server will also recognise the 866, but it has not been tested
+xs3:      with this chipset.  Installing this package will create a link in
+xs3:      /usr/X11R6/bin from XF86_S3 to X, setting this server as the default.
+xs3:
+xs3:
+xs3v:     An accelerated server for cards using S3 ViRGE chips.
+xs3v:
+xs3v:     The current XF86_S3V server supports the S3 ViRGE (86C325), the
+xs3v:     ViRGE/DX (86C375), ViRGE/GX (86C385) and the ViRGE/VX (86C988) chips.
+xs3v:     It has been tested with ViRGE cards with 2 and 4MB DRAM, ViRGE/DX 4M,
+xs3v:     ViRGE/VX 8M (4M VRAM/4M DRAM), and with a 220MHz ViRGE/VX card with
+xs3v:     2MB VRAM up to 1600x1200 with 8/15/16bpp.  Note that the XF86_SVGA
+xs3v:     server also supports these chipsets (and others).  It's recommended to
+xs3v:     try using that first.  Installing this package will create a link in
+xs3v:     /usr/X11R6/bin from XF86_S3V to X, setting this server as the default.
+xs3v:
+xset:     Graphical configuration utility for XFree86.
+xset:
+xset:     A graphical configuration utility.  Produces an initial XF86Config
+xset:     file, or tunes the existing one.  Runs on the X desktop using TCL
+xset:     (this also requires the vg16 X server) or runs on the Linux console
+xset:     (using the dialog utility).
+xset:
+xset:
+xset:
+xset:
+xset:
+xsvga:    A server for many SuperVGA video cards.
+xsvga:
+xsvga:    Installing this package will create a link in /usr/X11R6/bin from
+xsvga:    XF86_SVGA to X, setting this server as the default.
+xsvga:
+xsvga:
+xsvga:
+xsvga:
+xsvga:
+xsvga:
+xsvga:
+xvfb:     Virtual framebuffer X server.
+xvfb:
+xvfb:     Xvfb is an X server that can run on machines with no display hardware
+xvfb:     and no physical input devices.  It emulates a dumb framebuffer using 
+xvfb:     virtual memory.  The primary use of this server is intended to be 
+xvfb:     server testing.  The mfb or cfb code for any depth can be exercised
+xvfb:     with this server without the need for real hardware that supports the
+xvfb:     desired depths.  A secondary use is testing clients against unusual
+xvfb:     depths and screen configurations.
+xvfb:
+xvfb:
+xvg16:    A server for 16 color EGA/VGA graphics modes.
+xvg16:
+xvg16:    This is a server that uses standard generic video modes -- it works
+xvg16:    with nearly all video hardware (but with only 16 colors).  Installing
+xvg16:    this package will create a link in /usr/X11R6/bin from XF86_VGA16 to
+xvg16:    X, setting this server as the default.
+xvg16:
+xvg16:
+xvg16:
+xvg16:
+xvg16:
+xw32:     A server for chipsets in the ET4000/W32 series.
+xw32:
+xw32:     This server currently supports the w32, w32i, w32p and et6000 chips.
+xw32:     XF86_W32 gets phased out, now that the SVGA server with XAA 
+xw32:     acceleration is at least as fast as the W32 server but supports more
+xw32:     cards and higher color depths.  Use this server if the SVGA server
+xw32:     fails to work/accelerate for you.
+xw32:
+xw32:     Installing this package will create a link in /usr/X11R6/bin from
+xw32:     XF86_W32 to X, setting this server as the default.
+xw32:
+xaw3d:    Xaw3d-1.4
+xaw3d:
+xaw3d:    This is Release 1.4 (21 April, 1998) of a set of 3-D widgets by Kaleb
+xaw3d:    S. Keithley based on the R6.3 Athena Widget set.  The Three-D Athena
+xaw3d:    may be used as a replacement for the Athena (Xaw) Widget set -- you
+xaw3d:    may relink almost any Athena Widget based application and obtain a
+xaw3d:    three dimensional appearance on some of the widgets.  You can also
+xaw3d:    replace your shared libXaw with libXaw3d and obtain the three
+xaw3d:    dimensional appearance without even relinking.
+xaw3d:
+xaw3d:
+xlock:    xlockmore-4.12
+xlock:
+xlock:    Patrick J. Naughton's xlock screensaver/locker for X, with many
+xlock:    more modes added by David A. Bagley.  
+xlock:
+xlock:    The 'Bob' bitmap has been included especially for Slackware, as well
+xlock:    as a Linux penguin logo.
+xlock:
+xlock:
+xlock:
+xlock:
+xpm:      The Xpm shared and static libraries, v. 3.4k (with libXpm.so.4.11)
+xpm:
+xpm:      These libraries provide a means for X programs to store and retrieve
+xpm:      bitmaps.  The shared libraries are needed to run programs compiled
+xpm:      with Xpm, such as fvwm.
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:
+xpm:

@@ -1,0 +1,34 @@
+Begin3
+Title: erltools         
+Version: 1.11
+Entered-date: 02MAR97  
+Description:
+	C/C++ beautifier.              
+	Lexical/Syntaxic Parser Generator with Backtrack             
+	Syntaxic tree manipulation tool
+        ****
+        version 1.00 sunsite release
+        version 1.01 bug correction
+        version 1.O2 update dos djgpp compilation
+        version 1.O3 update .ps files bad layout
+        version 1.04 bug correction in pretty printer, float constants
+        version 1.05 bug correction in pretty printer, initialization in 
+                  constructor of herited class without parameter
+        version 1.06 compilation under djgpp 7.2.1/W95, 
+                  calc example for parser generator
+	version 1.07 bug correction in pretty printer for template arguments
+	version 1.08 in pretty printer add ansi exceptions
+	version 1.09 documentation on prettyprint flags
+        version 1.10 bug correction in pretty printer, functions with template
+	version 1.11 bug correction in pretty printer change new precedence
+        ****
+Keywords: beautifier prettyprinter parser generator       
+Author: Lavileric@aol.com (Eric Lavillonniere)        
+Maintained-by: Lavileric@aol.com 
+Primary-site: sunsite.unc.edu (/pub/linux/Incoming 
+               /pub/Linux/devel/lang/c/erltools)  
+Alternate-site: 
+Original-site:  
+Platforms: unix (with g++ 2.7.2) dos(with djgpp 2.7.2.1)
+Copying-policy: GPL
+End 

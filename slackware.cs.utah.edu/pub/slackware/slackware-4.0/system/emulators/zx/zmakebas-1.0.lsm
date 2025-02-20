@@ -1,0 +1,13 @@
+Begin3
+Title:          Zmakebas
+Version:        1.0
+Entered-date:   06FEB99
+Description:    Zmakebas converts a Spectrum Basic program written as
+		a text file into an actual speccy Basic file (as a
+		.TAP file, or optionally a raw headerless file).
+Keywords:       Sinclair Spectrum BASIC conversion
+Author:         rus@forfree.at (Russell Marks)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/emulators/zx
+		13988	zmakebas-1.0.tar.gz
+Copying-policy: Public domain
+End

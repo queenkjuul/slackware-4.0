@@ -1,0 +1,8 @@
+( cd usr/lib/expect5.28 ; rm -rf libexpect5.28.a )
+( cd usr/lib/expect5.28 ; ln -sf ../libexpect5.28.a libexpect5.28.a )
+( cd usr/lib/expect5.28 ; rm -rf libexpect5.28.so )
+( cd usr/lib/expect5.28 ; ln -sf ../libexpect5.28.so libexpect5.28.so )
+( cd usr/lib ; rm -rf libexpect.a )
+( cd usr/lib ; ln -sf libexpect5.28.a libexpect.a )
+( cd usr/lib ; rm -rf libexpect.so )
+( cd usr/lib ; ln -sf libexpect5.28.so libexpect.so )

@@ -1,0 +1,19 @@
+Begin3
+Title:          watchcrond
+Version:        0.90.01-1
+Entered-date:   980623
+Description:    watchcrond is a daemon that periodically runs jobs at
+                hourly, daily, weekly, and monthly intervals. Hourly jobs
+		are run on the hour. Daily, weekly, and monthly jobs run
+		at 02:30 by default or at the time of the day specified
+		on the command line. Weekly jobs run on Monday and monthly
+		jobs run on the first day of the month
+Keywords:       daemon system job utility		
+Author:         mike knerr <mk@eonova.com>
+Maintained-by:  mike knerr <mk@eonova.com>
+Primary-site:   ftp.eonova.com /pub/linux/prog/watchcrond
+                16kB watchcrond-0.90.01-1.tar.gz
+		1kB  watchcrond-0.90.01-1.lsm
+Alternate-site: ftp.metrotron.com /pub/packages/watchcrond
+Copying-policy: GPL
+End

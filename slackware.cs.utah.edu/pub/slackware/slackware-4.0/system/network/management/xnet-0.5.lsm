@@ -1,0 +1,13 @@
+Begin3
+Title: xnet
+Version: 0.5
+Entered-date: Sept 17, 1996
+Description: An xload-ish display for packet traffic on network devices.
+Keywords: X11, Xwindows, network, xload, histogram
+Author: peek@math.utk.edu (Michael Peek)
+Maintained-by: peek@math.utk.edu (Michael Peek)
+Primary-site: sunsite.unc.edu/pub/Linux/X11/xutils/
+Platforms: Linux only (most likely), requires /proc
+Copying-policy: GPL
+End
+

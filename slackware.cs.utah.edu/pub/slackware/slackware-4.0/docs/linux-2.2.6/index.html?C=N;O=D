@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/docs/linux-2.2.6</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/docs/linux-2.2.6</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/docs/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/image2.gif" alt="[IMG]"></td><td><a href="xterm-linux.xpm">xterm-linux.xpm</a></td><td align="right">1996-07-14 10:04  </td><td align="right">3.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="watchdog.txt">watchdog.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">2.7K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="video4linux/">video4linux/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="unicode.txt">unicode.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">5.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="sysrq.txt">sysrq.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">4.9K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="sysctl/">sysctl/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="svga.txt">svga.txt</a></td><td align="right">1998-07-10 22:18  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="stallion.txt">stallion.txt</a></td><td align="right">1999-03-28 17:02  </td><td align="right"> 18K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="spinlocks.txt">spinlocks.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">7.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="specialix.txt">specialix.txt</a></td><td align="right">1998-10-29 06:04  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="sound/">sound/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="smp.txt">smp.txt</a></td><td align="right">1998-12-18 22:01  </td><td align="right">855 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="smp.tex">smp.tex</a></td><td align="right">1998-06-24 21:30  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="smart-config.txt">smart-config.txt</a></td><td align="right">1998-06-05 05:53  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="sgi-visws.txt">sgi-visws.txt</a></td><td align="right">1999-01-20 18:18  </td><td align="right">678 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="serial-console.txt">serial-console.txt</a></td><td align="right">1998-04-01 22:58  </td><td align="right">3.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="scsi.txt">scsi.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">1.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="rtc.txt">rtc.txt</a></td><td align="right">1998-06-05 05:53  </td><td align="right">8.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="riscom8.txt">riscom8.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ramdisk.txt">ramdisk.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">8.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="proc.txt">proc.txt</a></td><td align="right">1999-02-06 20:46  </td><td align="right"> 52K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="powerpc/">powerpc/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="pcwd-watchdog.txt">pcwd-watchdog.txt</a></td><td align="right">1997-01-19 13:47  </td><td align="right">3.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="pci.txt">pci.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">2.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="parport.txt">parport.txt</a></td><td align="right">1999-03-26 21:23  </td><td align="right">5.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="paride.txt">paride.txt</a></td><td align="right">1998-12-22 16:29  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="oops-tracing.txt">oops-tracing.txt</a></td><td align="right">1999-01-05 19:14  </td><td align="right">7.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="nfsroot.txt">nfsroot.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">7.8K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="networking/">networking/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="nbd.txt">nbd.txt</a></td><td align="right">1998-02-26 19:01  </td><td align="right">2.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="mtrr.txt">mtrr.txt</a></td><td align="right">1998-05-03 00:42  </td><td align="right">8.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="modules.txt">modules.txt</a></td><td align="right">1998-03-10 22:43  </td><td align="right">8.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="memory.txt">memory.txt</a></td><td align="right">1998-12-22 16:31  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="md.txt">md.txt</a></td><td align="right">1998-02-02 21:07  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="mca.txt">mca.txt</a></td><td align="right">1998-11-08 21:29  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="mandatory.txt">mandatory.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">7.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="magic-number.txt">magic-number.txt</a></td><td align="right">1998-08-09 19:15  </td><td align="right">5.4K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="m68k/">m68k/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="logo.txt">logo.txt</a></td><td align="right">1999-01-15 06:53  </td><td align="right">563 </td></tr>
+<tr><td valign="top"><img src="/icons/image2.gif" alt="[IMG]"></td><td><a href="logo.gif">logo.gif</a></td><td align="right">1996-06-09 05:42  </td><td align="right"> 16K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="locks.txt">locks.txt</a></td><td align="right">1999-01-07 16:41  </td><td align="right">3.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="kmod.txt">kmod.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="kernel-docs.txt">kernel-docs.txt</a></td><td align="right">1999-01-04 19:37  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="kbuild/">kbuild/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="joystick.txt">joystick.txt</a></td><td align="right">1998-12-02 03:05  </td><td align="right"> 24K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="joystick-parport.txt">joystick-parport.txt</a></td><td align="right">1998-12-02 03:05  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="joystick-api.txt">joystick-api.txt</a></td><td align="right">1998-10-21 15:43  </td><td align="right">9.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="java.txt">java.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">4.2K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="isdn/">isdn/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ioctl-number.txt">ioctl-number.txt</a></td><td align="right">1998-02-21 01:54  </td><td align="right">4.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="initrd.txt">initrd.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ide.txt">ide.txt</a></td><td align="right">1999-01-04 23:07  </td><td align="right"> 25K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="i386/">i386/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="hayes-esp.txt">hayes-esp.txt</a></td><td align="right">1998-07-24 18:10  </td><td align="right">6.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ftape.txt">ftape.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="filesystems/">filesystems/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="fb/">fb/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="exception.txt">exception.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="digiepca.txt">digiepca.txt</a></td><td align="right">1999-01-07 16:41  </td><td align="right">3.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="digiboard.txt">digiboard.txt</a></td><td align="right">1999-01-07 16:41  </td><td align="right">9.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="devices.txt">devices.txt</a></td><td align="right">1998-12-16 20:52  </td><td align="right"> 55K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="devices.tex">devices.tex</a></td><td align="right">1998-08-16 18:35  </td><td align="right"> 79K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="cdrom/">cdrom/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="binfmt_misc.txt">binfmt_misc.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">4.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="VGA-softcursor.txt">VGA-softcursor.txt</a></td><td align="right">1998-08-04 17:52  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="SMP.txt">SMP.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">714 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="IO-mapping.txt">IO-mapping.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">7.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="IO-APIC.txt">IO-APIC.txt</a></td><td align="right">1998-06-24 21:30  </td><td align="right">5.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Configure.help">Configure.help</a></td><td align="right">1999-04-12 16:58  </td><td align="right">509K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="CodingStyle">CodingStyle</a></td><td align="right">1998-06-24 21:30  </td><td align="right">8.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Changes">Changes</a></td><td align="right">1999-04-12 23:18  </td><td align="right"> 26K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="BUG-HUNTING">BUG-HUNTING</a></td><td align="right">1996-04-12 06:49  </td><td align="right">3.6K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="ARM-README">ARM-README</a></td><td align="right">1998-05-21 01:54  </td><td align="right">5.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-13 23:01  </td><td align="right">855 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">3.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00-INDEX">00-INDEX</a></td><td align="right">1999-02-01 20:03  </td><td align="right">5.0K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

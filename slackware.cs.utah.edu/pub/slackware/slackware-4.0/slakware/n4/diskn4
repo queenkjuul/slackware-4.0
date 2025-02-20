@@ -1,0 +1,45 @@
+CONTENTS: lynx netatalk nn_nntp procmail       
+lynx:     Lynx 2.8.1
+lynx:
+lynx:     Lynx is a distributed hypertext browser with full World Wide Web
+lynx:     capabilities.  Lynx can be used to access information on the World 
+lynx:     Wide Web, or to build information systems intended primarily for local
+lynx:     access.  For example, Lynx has been used to build several Campus Wide
+lynx:     Information Systems (CWIS).  
+lynx:
+lynx:     Lynx's authors include Lou Montulli, Garrett Blythe, Craig Lavender,
+lynx:     Michael Grobe, and Charles Rezac.
+lynx:
+netatalk: netatalk-1.4b2+asun2.1.3
+netatalk:
+netatalk: Netatalk is an Appletalk file and print server for Linux.  Using 
+netatalk: Netatalk, Macintosh computers on your local network can mount Linux 
+netatalk: volumes as if they were standard Appletalk network drives, and can
+netatalk: print to the Linux box's printer as if it were a network printer
+netatalk: supporting PostScript.
+netatalk:
+netatalk: Netatalk is brought to you by our friends at The Research Systems
+netatalk: Unix Group, The University of Michigan.  <netatalk@umich.edu>
+netatalk:
+nn_nntp:  nn-6.5.0.b3 compiled to use NNTP.
+nn_nntp:
+nn_nntp:  nn is an easy to use menu driven newsreader by Kim F. Storm.  
+nn_nntp:  
+nn_nntp:  nn stands for "No News is good news", and the nn newsreader is
+nn_nntp:  designed to let you minimize the amount of time you spend reading news
+nn_nntp:  (or, more realistically, to let you to read even more newsgroups :-).
+nn_nntp:  This version of nn reads news from a news server via NNTP, and can
+nn_nntp:  make use of your NNTP server's NOV database.
+nn_nntp:
+nn_nntp:
+procmail: The procmail mail processing program. (v3.13 1999/03/31)
+procmail:
+procmail: Can be used to create mail-servers, mailing lists, sort your incoming
+procmail: mail into separate folders/files (real convenient when subscribing to
+procmail: one or more mailing lists or for prioritising your mail), preprocess
+procmail: your mail, start any programs upon mail arrival (e.g. to generate
+procmail: different chimes on your workstation for different types of mail) or
+procmail: selectively forward certain incoming mail automatically to someone.
+procmail:
+procmail: The author of procmail is Stephen R. van den Berg.
+procmail:

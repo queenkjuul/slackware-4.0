@@ -1,0 +1,53 @@
+Begin3
+Title:          National Institute of Standards and Technology (NIST)
+		Parallel Applications Development Environment (PADE)
+		or PADE (pronounced "pah-DAY").
+
+Version:        1.0
+
+Entered-date:   4/4/95
+
+Description:    The National Institute of Standards and Technology (NIST) 
+		Parallel Applications Development Environment, PADE for 
+		short, is a flexible, customizable environment for developing 
+		parallel applications that use the Parallel Virtual Machine 
+		(PVM) message-passing library.  It provides an integrated 
+		framework for all phases of development of a parallel
+		application: editing, compilation, execution, debugging, and 
+		performance monitoring.  PADE consists of an intuitive 
+		graphical user interface, a suite of PVM utilities, and 
+		extensive documentation in PostScript, ASCII, and HTML 
+		formats.  PADE requires X-windows, Tcl 7.3/Tk 3.6, and PVM 
+		software in order to run on the development host of the 
+		virtual machine.  To exercise all of its features, PADE 
+		also needs a WWW-browser such as Mosaic or Netscape.
+
+Keywords:       parallel applications development pvm Tcl/Tk 
+
+Author:         Mark Edwards	edwards@bruce.nist.gov and
+				edwards@amo.phy.gasou.edu
+		Judith Devaney
+		Robert Lipman
+		Minwen Lo
+		William F. Mitchell
+		Justin Turner
+		Charles Clark
+
+Maintained-by:  Robert Lipman (pade@cam.nist.gov)
+
+Primary-site:   gams.nist.gov /pub/pade
+		460308 nist_pade.1.0.0.tar.gz
+
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network/distrib 
+		(I guess, currently in /pub/Linux/Incoming)
+		460308 nist_pade.1.0.tar.gz (name shortened to 20 chars)
+		1934   nist_pade.1.0.lsm
+
+Platforms:      Tested with Linux kernels 1.0.9, 1.1.59, and 1.2.0.
+		Also tested on SGI, SUN, HP, and NeXT (Motorola and Intel)
+		hardware.
+
+Copying-policy: Public Domain -- This software and documentation is a work
+		of the United States government and is not subject to U.S.
+		copyright.
+End

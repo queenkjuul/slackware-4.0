@@ -1,0 +1,1254 @@
+  ADSL HOWTO for Linux Systems
+  David Fannin, dfannin@dnai.com
+  v0.90, 7 June 1998
+
+  How to setup a Linux System to work with Asymmetric Digital Subscriber
+  Loop (ADSL), a new high-speed digital access line technology available
+  from Telcos. ADSL is one of a family of digital subscriber line (DSL)
+  technologies available to residential and business customers using
+  existing copper loops, providing speeds from 384kbps to 1.5Mbps. This
+  document provides an introduction to ADSL, and information on how to
+  install, configuration and turn up service.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Legal Stuff
+
+  2. Hot Dead Chicken
+
+  3. Introduction
+
+  4. ADSL Overview
+
+     4.1 What is ADSL?
+     4.2 ADSL Applications
+     4.3 What is xDSL/DSL?
+     4.4 Why so many speeds?
+
+  5. How it works.
+
+     5.1 CPE: ADSL ANT and NIC
+     5.2 Splitter or Splitterless Design
+     5.3 DSLAM
+     5.4 ISP connection
+
+  6. Ordering Service
+
+     6.1 Home Requirements
+     6.2 Telco Options
+     6.3 ISP Options
+
+  7. Wiring it up
+
+     7.1 Wire the Splitter/NID (at the SNI)
+     7.2 Wire the DSL Jack (at the computer location)
+     7.3 Install the ANT (at the computer location)
+
+  8. Configuring Linux
+
+     8.1 Install and Connect the NIC card
+     8.2 Configure the Ethernet Interface
+     8.3 Setting up a Router
+     8.4 Setting up a Firewall/Masquerading
+
+  9. Appendix
+
+     9.1 FAQs
+     9.2 Links
+     9.3 Credits
+     9.4 Glossary
+
+
+  ______________________________________________________________________
+
+
+  1.  Legal Stuff
+
+  ADSL HOWTO for Linux Systems
+
+  Copyright (C)1998 David Fannin.
+
+  This document  is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or (at
+  your option) any later version.
+
+  This document is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+
+  You can get a copy of the GNU GPL at at
+  <http://www.gnu.org/copyleft/gpl.html>.
+
+
+  2.  Hot Dead Chicken
+
+  Here's a story that I think will illustrate why xDSL services have
+  such a cumbersome name. The short answer is that it was developed by
+  the Telco industry in the US, which uses way too many TLAs (Three
+  Letter Acronyms).  SNI, DS3, OSS, DTC, RMS, SS7, MTP, SNI, .... and
+  you get the picture.  Pretty much any three or four letter acronym has
+  a meaning in the Telco domain.
+
+  However, here's a better way to explain it:
+
+
+       One of the Regional Bell Operating Companies (RBOCs) decided
+       to diversify their business and after many months and dol­
+       lars with consultants they decided to purchase a fast food
+       business.  They choose Kentucky Fried Chicken, since they
+       already have changed their name to KFC, which was very much
+       in line with the Telco way of thinking.
+
+       Soon after the new management team was brought in (all were
+       from the RBOC marketing department), they decided to launch
+       a new advertising campaign.  The slogan for the new
+       campaign?
+
+       "We sell Hot Dead Chicken".
+
+
+
+  3.  Introduction
+
+  This document addresses the ordering, installation and configuration
+  of ADSL service for use on Linux Systems.
+
+
+  ADSL or Asymmetric Digital Subscriber Loop is a high-speed  Internet
+  access technology that uses a commonly available telephone copper loop
+  (same wire as your phone service).  Designed to run on up to 80% of
+  the telephone available in the United States,  and utilizing line-
+  adaptive modulation,  ADSL provides data speeds from 384kbps to 1.5
+  Mbps, normally using different speeds for the upstream and downstream
+  channel (hence the " Asymmetric" ).  ADSL provides a direct, dedicated
+  pipe to an ISP.
+
+
+  ADSL was designed for SOHO applications, such as a small business with
+  5-30 systems, or the high-end Linux user that has wants bandwidth and
+  has some money to spend.   Applications range from low-bandwidth
+  server interconnection to streaming video applications.  ADSL is
+  designed and priced somewhere in between ISDN and T1 service,
+  providing near T1 speeds without the cost/complexity/availability
+  issues of T1.  Since ADSL is a dedicated service, it avoids the delays
+  and use charges inherent in ISDN service.
+
+  This HOW-TO starts with a description of ADSL services and it many
+  variants, and a block diagram of the components that make up the
+  service.  Next, a list of requirements for ordering ADSL are provided.
+  Also included is guide on ADSL wiring and configuring your Linux
+  System.  I have also included an Appendix with a FAQ, a listing of
+  interesting Links,and a Glossary.
+
+  I welcome any and all comments on this document; They can be sent to
+  dfannin@dnai.com .
+
+  The latest version of this FAQ is available from
+  <http://www.dnai.com/~dfannin/adsl/>.
+
+
+  4.  ADSL Overview
+
+
+  4.1.  What is ADSL?
+
+  Asymmetric Digital Subscriber Line (ADSL) is:
+
+  ·  A Telephone Loop Technology that uses existing phone lines
+
+  ·  Provides high-speed data and analog voice (Data over Voice)
+
+  ·  Dedicated digital line for an IP connection
+
+  ·  Data rates (North America) combinations of :
+     Upstream/downstream
+     256 kbps/256 kbps
+     384 kbps/128 kbps
+     384 kbps/384 kbps
+     384 kbps/1.5 Mbps
+     and many others
+
+  ·  Wide range of CPE options, including Ethernet 10baseT Interfaces.
+
+  ·  Dedicated ISP connection (static or dynamic addresses)
+
+  ·  Can support an IP subnet (from 1 to 254 IP addresses, depending on
+     ISP)
+
+  ·  Priced lower than dedicated private line (T1) connections
+
+
+
+  4.2.  ADSL Applications
+
+  ADSL was designed to provide a dedicated, high-speed data connection
+  for Internet/Intranet Access, using existing copper phone lines.  This
+  allows ADSL to work on over 60-80% of the phone lines existing in the
+  U.S. without modification.  Additionally, ADSL provides speeds
+  approaching T1 (1.5Mbps), which are much greater than analog modems
+  (56kbps) or ISDN (128kbps) services provided over the same type of
+  line.  ADSL is usually priced to be much less other dedicated digital
+  services, and is expected to priced somewhere between T1 and ISDN
+  services (including the ISDN usage charges).
+
+
+  The Telcos see ADSL as a competitive offering to the Cable Company's
+  Cable Modems, and as such, are expected to provide competitive
+  pricing/configuration offerings.  Although Cable Modems  are
+  advertised as having 10-30Mbps bandwidth, they use a shared
+  transmission medium with many other users on the same line, and
+  therefore performance varies, perhaps greatly, with the amount of
+  traffic and other users.  Which should you choose?  The main drivers
+  will be availability (Will Cable companies or Telcos have it first in
+  your area?)  price (both should be fairly competitive), and your
+  desired performance (do you want dedicated access (ADSL) or shared
+  (Cable Modems)?).
+
+
+  ADSL is positioned for Home and Small Office (SOHO) applications that
+  require high-speed Internet Access. Since it also provides dedicated
+  access, It can be used for interconnecting low-bandwidth servers to
+  the Internet, and would provide a great access solution for 5-20 PCs
+  in an Office location.  It is also a great solution for those Linux
+  power users that just want high speed access from home:-).
+
+
+  4.3.  What is xDSL/DSL?
+
+  Digital Subscriber Line (DSL) provides a dedicated digital circuit
+  from your home to the Telcos central office, using analog telephone
+  line.  DSL also provides a separate channel for voice phone
+  conversations, which means analog calls (voice, fax. etc.) can be
+  carried at the same time high-speed data is flowing across the line.
+  DSL uses the frequency spectrum between 0kHz-4kHz for Analog Voice,
+  and 4kHz-2.2MHz for data.  xDSL is a generic acronym for a family of
+  dedicated services, where the " x"stands for:
+
+  ·  ADSL Asymmetric Digital Subscriber Line:     1.5
+     Mbps-384kbps/384-128kbps
+
+  ·  HDSL High-bit-rate Digital Subscriber Line:  1.5 Mbps/1.5 Mbps
+     (4Wire)
+
+  ·  SDSL Single-line Digital Subscriber Line:    1.5 Mbps/1.5 Mbps
+     (2Wire)
+
+  ·  VDSL Very high Digital Subscriber Line:      13 Mbps-52 Mbps/1.5
+     Mbps- 2.3 Mbps.
+
+  ·  IDSL ISDN Digital Subscriber Line:   128 Kbps/128 Kbps.
+
+  ·  RADSL Rate Adaptive Digital Subscriber Line:  384kbps/128kbps
+
+  ·  UDSL Universal Digital Subscriber Line:
+     1.0Mbps-384kbps/384kbps-128kbps
+     also called " splitterless" DSL or DSL-Lite, as it doesn't require
+     a splitter.
+
+  where Xbps/Ybps is X=Downstream Bit rate, Y=Upstream Bit rate
+
+  4.4.  Why so many speeds?
+
+  ADSL has to work over existing phone lines, which were designed 100
+  years ago, and were never designed for digital services (See the FAQ
+  answers for more information). Also, ADSL is a new service, and all
+  the providers are trying to find the right price/feature combinations
+  that will make it in the market.
+
+  For the average user, the basic way of thinking about it is to segment
+  the options into three categories:
+
+  ·  Low End Residential
+
+       Speed ranges from 384kbps-128kbps, Asymmetric
+
+
+  ·  High End Residential or Business End User
+
+       Speed ranges from 1.5Mbps-384kbps, Asymmetric
+
+
+  ·  High End Server
+
+       Speed ranges from +2.0Mbps-1.1kbps, Symmetric
+
+
+
+  5.  How it works.
+
+  ADSL is made up of several parts (shown by Figures 1 and 2):
+
+
+  ·  ADSL Network Termination (ANT) and Network Interface Card (NIC)
+
+  ·  Splitter or Splitterless Design
+
+  ·  DSLAM and Telco Loop
+
+  ·  ISP connection
+
+
+
+  Figure 1: ADSL Block Diagram (POTS Splitter)
+
+
+  <-------Home/Office--------------->              <-----Telco Central Office---->
+                                 NID
+                                -----               -----
+  2 wire     X-----------Voice-=| S |               | D |
+  phone                         | P |               | S |=----- Voice Switch
+  line                          | L |    2 wire     | L |
+                                | I |=-------------=| A |
+                                | T |   Local Loop  | M |=----- ISP Connection
+  10baseT       ---------- Data | T |               |   |
+  Ethernet  X--=|        |=----=| E |               -----
+    or          ----------      | R |
+  ATMF            ADSL          -----
+  NIC             ANT
+
+
+
+
+  5.1.  CPE: ADSL ANT and NIC
+
+  The Customer Premises Equipment (CPE) for ADSL consists of the ANT
+  and/or NIC card.  The ADSL Network Termination (ANT), shown in Figure
+  1, is located at your home or office, provides an IP connection. ANTs
+  come in several types:
+
+  ·  Router ANT with 10/100baseT Interface
+
+  ·  Bridge ANT with 10/100baseT Interface
+
+  ·  ANT with ATMF Interface
+
+  ·  ANT with USB Interface
+
+  ·  Integrated ANT/NIC Card
+
+  In each case, the ANT/NIC  provides the a router address to an ISP.
+  Each Telco will specify the configurations that they will allow.  The
+  most desirable configuration for the Linux user is the ANT with a
+  10baseT Interface, since the cost/setup is the easiest. The other
+  options require special drivers, which have, to date, not been made
+  available for Linux. The bad news is that some providers  allow only
+  integrated ANT/NIC PCI cards that do not have Linux Drivers.
+
+  Warning!  Make sure any third party ANT/NIC you may purchase are
+  compatible with your Telco provider. There are two major line
+  encodings for ADSL (CAP, DMT), and several options for IP
+  encapsulation. Your Telco should provide you a list of allowable
+  options.
+
+  The ANT is connected to your house's inside wire (2 wire phone line).
+  This inside wire is connected to the data side of a POTS splitter, or,
+  in the case of the splitterless version, directly connected to the
+  local loop.  Figure 1 shows the POTS splitter wiring, and Figure 2
+  shows a splitterless type.
+
+  In my case, I was provided with an Alcatel ANT, which supports a
+  10baseT (wired as a Crossover) RJ45 jack. I understand that a NIC card
+  that fits directly in the PC will be available sometime in the future.
+
+
+
+  Figure 2: ADSL Block Diagram (Splitterless Design)
+
+
+  <-------Home/Office--------------->           <-----Telco Central Office---->
+                               SNI
+                                -               -----
+  2 wire    X-[RJ11]---Voice----|               | D |
+  phone       Filter            |               | S |=----- Voice Switch
+  line                          |    2 wire     | L |
+                                |=-------------=| A |
+                                |   Local Loop  | M |=----- ISP Connection
+  10baseT       ---------- Data |               |   |
+  Ethernet  X--=|        |=-----|               -----
+    or          ----------
+  ATMF            ADSL
+  NIC             ANT
+
+
+
+  5.2.  Splitter or Splitterless Design
+
+  Somehow, the digital and analog signals need to be separated  for all
+  of this to work. Thus, a filter needs to be placed in the signal path
+  at some point.  There are two methods for doing this: Using a POTS
+  Splitter or using RJ11 phone jack filters.
+
+  First, in the POTS splitter method, device  is located on the "side of
+  the house" where the Telco line is connected. The splitter provides
+  two functions. First, it is the "demarcation point" that separates the
+  Telco wiring from the inside wiring. Second, it "splits" the DSL
+  signal from Telco into a separated data channel and a voice channel.
+  The voice channel is a normal analog phone line (2 wire), and the data
+  channel is sent to the ANT.  The splitter is a passive, non-powered
+  device, which will allow the voice channel to operate even if the
+  power fails at the home location. The Telco signal is sent to the
+  splitter using an existing 2 wire line to the home.  The Splitter is
+  housed in the Network Interface Device (NID) on the outside of your
+  house.
+  Second, in the splitterless design, shown in Figure 2, the outside
+  local loop is connected directly to the inside wire at the Subscriber
+  Network Interface (SNI), the same box that is used today at your
+  house. At each extension jack where you wish to plug in an analog
+  phone, you place a special jack that contains a filter that removes
+  the digital signal. This is called an RJ11 filter (RJ11 is the
+  official Telco term used for your 4/6 pin phone jack).  The extension
+  used for your ANT does NOT use a filter (otherwise it won't work).
+  That's all there is to it!  It should also be noted that some low
+  speed ADSLs will  not require RJ-11 filters.
+
+  The splitterless design is very desirable from the Telco point of
+  view, as they won't have to roll any trucks to do the install work,
+  and allows them to offer ADSL at a lower price. For most users, it
+  doesn't really matter, in fact, the analog phones will still work
+  without the RJ11 filter in place. The only thing is that you will hear
+  a bit of a high pitched whine when you use the phone.  However, this
+  is not recommended, as later version may damage the phone or have some
+  other nasty effect.
+
+
+  5.3.  DSLAM
+
+  The DSLAM is the equipment at the Telco Central Office that that
+  splits the signal and connects the user to the Voice Switch and ISP.
+  That's all you need to know from a user perspective.
+
+  5.4.  ISP connection
+
+  An ISP connects to the DSLAM via a high-speed data connection, usually
+  ATM over a T3 (45Mbps) or OC-3 (155Mbps).  The important thing here is
+  that an ISP must "subscribe" with your Telco to provide this
+  connection.
+
+
+  6.  Ordering Service
+
+  The basic procedure is as follows:
+
+  ·  Check to see if you meet the following requirements for ADSL.
+
+  ·  Select a Telco and ISP, and see what configurations they offer.
+
+  ·  Call the Telco and order the service.
+
+  Once you have ordered the service, the Telco should provide you with a
+  Due Date. I was able to do the entire order in one phone call through
+  my Telco, and they coordinated with the order with my ISP.  I was
+  given a due date that was one week later, and everything was completed
+  on time, with no problems.
+
+
+  6.1.  Home Requirements
+
+
+  ·  An appropriate NIC card
+
+     The system (PC, workstation, router or hub) that will be directly
+     connected to the ADSL ANT .
+
+
+  ·  Inside Wiring
+
+     You need inside wire (2 or 4 wire) from the Telco Demarcation Point
+     (the side of your house) to your PC location. Your existing phone
+     line can be used. However, this inside wire can only be used for
+     the ANT, and no other phones or extensions can be connected to this
+     line. The Telcos or other companies can be contracted to install a
+     new wire for you as well.
+
+
+  ·  Installation
+
+
+     Who will wire it up in your house?  You can do the splitter wiring
+     yourself (My local Telco provided a wiring kit and instructions for
+     performing the inside wiring ) or you can contract them do it for
+     an additional fee.  You can save around $ 150-250 dollars by doing
+     it yourself, which I did, or you can save yourself the hassle and
+     have them do it. You can decide what you want to do after reading
+     the procedure that I have included in this document.  The bottom
+     line is if you are used to dealing with phone and/or network LAN
+     wiring procedures, and feel comfortable with doing this, then you
+     should consider going for it.  If you haven't, and your company is
+     going to pay for it, then have them do it.
+
+
+
+  6.2.  Telco Options
+
+
+  ·  Qualified Copper Loop
+
+     The Telco will normally test your line before you order service to
+     see if it is can pass the ADSL signal.  You must be within 2-3
+     miles (11-16 kilofeet) of the Central Office, and have a loop that
+     has no loading coils, bridge taps, DAMLs, or other impediments.
+     Most of the Loops that support ISDN can also support ADSL, but
+     since ADSL is more restrictive, this is no guarantee of success.
+     Your Telco will help you here.
+
+
+  ·  ADSL Available from your Telco
+
+     Is the ADSL/DSLAM equipment is available at your Central Office?
+     Again, the Telco will check to see if it available in your area.
+     Every major Telco in the US, and many new dedicated ADSL providers
+     have announced plans for ADSL. I expect wide scale deployment by
+     1Q99.
+
+
+  ·  Bit Rate
+
+     ADSL is priced according to the Bit Rate - Check with your Telco.
+     You can usually order some combination of 128k,256k,384k, or 1.5M
+     speeds.  Your loop may restrict the bit rate you can be offered.
+     My Telco also prices the service differently if you're a Residence
+     or Business Customer.
+
+
+  ·  POTS Service
+
+
+     Some providers (usually the big Telcos) offer POTS with ASDL. If
+     you choose this option, you will need to specify which phone number
+     (new or existing) you want assigned to it. You will need to
+     designation whether you want the ADSL to go over an existing POTS
+     service, or whether you want a new phone number for the analog
+     phone line. If you have ISDN service, and want to use the same
+     line, the ISDN service must first be disconnected. Note that some
+     Telcos (usually dedicated DSL providers) do not offer this option.
+
+  6.3.  ISP Options
+
+
+  ·  ISP Presubscription
+
+     Your ISP of choice must be presubscribed with the ADSL Telco
+     provider. Check with your ISP to see if they are connected.  If
+     they are not connected then you must either move to another ISP,
+     convince them to connect up, or decide not to use ADSL.
+
+
+
+  ·  IP Subnet and Address.
+
+     First, you'll need to know whether your IP addressing will be
+     static or dynamic. Dynamic addressing is set through the use of
+     DHCP.
+
+     Additionally, for static addressing, ISPs will allow anywhere from
+     1 to 254 IP addresses to be assigned to an ADSL line, with the
+     corresponding Variable Length Subnet Mask (VLSM).
+
+     My ISP charges more money as you get more hosts. I suspect that
+     most applications will use either 1 host (32 bit mask) or 6 hosts
+     (29 bit mask).  If your confused, then read the IP-Subnetting
+     HOWTO.  Also remember than multi-host subnets require 1 of the
+     hosts to be the ISP router address (meaning that the 6 host subnet
+     is really 5 hosts to you) and you can use IP Masquerading/ (see the
+     HOWTO) or Network Address Translation (NAT) to support a larger
+     number of addresses behind your LAN. If you request more than 30
+     hosts, be prepared to fill out a justification form for your ISP.
+
+
+  ·  Gateway Address
+
+     The default gateway address. Normally, this is the first host
+     address in your subnet. (e.g. if your subnet range and mask is
+     192.168.1.240/29, then your host range is .241 through .246, with
+     the default gateway assigned to the .241 address.
+
+
+  ·  Number of MAC addresses
+
+     The ANTs can support a set number of MAC addresses for bridging.
+     For example, the ADSL ANT that I use is limited to 16 MAC
+     addresses. This should be sufficient for most applications.
+     However, if you plan to support a large number of machines directly
+     off the hub of the  ANT, you should check first to see what your
+     limit is.
+
+
+  ·  DNS Servers
+
+     The ISP should provide you with one or more DNS server addresses to
+     support Domain Name Lookups.  Some ISPs also provide Domain Name
+     Server hosting (either primary or secondary server) for you as part
+     of the dedicated service packages. See your ISP for more details.
+
+
+  ·  User ID and Password.
+
+     The ISP will normally assign you a login/password for shell, mail,
+     etc. access. My ISP also provides web space, mail server, and some
+     other goodies.
+
+
+  7.  Wiring it up
+
+  If you have ordered the installation option from the Telco, then you
+  can skip this section and move to " Configuring Linux" .  The
+  following procedures are meant to illustrate the wiring process.
+  Please note that your procedures may be different at your location.
+  Make sure you follow any warnings or safety instructions provided, and
+  that you are familiar with Telco wiring procedures.
+
+  The first step will be to wire up the connections from your Telco.
+  Identify the line on which service will be installed, and the
+  locations of your splitter and DSL jacks.
+
+  7.1.  Wire the Splitter/NID (at the SNI)
+
+  If you have the splitterless design, you can skip this part.
+
+  The splitter will consist of two parts, the splitter and a small
+  outdoor housing, called the Network Interface Device.  Mount the
+  splitter and NID housing per the Telcos instructions at the Subscriber
+  Network Interface (SNI) point, usually the side of your house where
+  the phone line is located.  The phone company will need to access the
+  splitter for maintenance, so its advisable to locate it on the outside
+  where they can get at it.  Connect the incoming 2W Telco line to the "
+  LINE"side of the splitter. Then wire the inside pair for your
+  telephone to the "VOICE" , and your inside wire pair for the ANT to
+  "DATA".
+
+  Checkstep At this point, you should be able to pull dial tone off the
+  voice side of the splitter. If this doesn't work, then either you've
+  wired it wrong, or the ADSL service is not yet connected on the Telco
+  side.
+
+
+  7.2.  Wire the DSL Jack (at the computer location)
+
+  Wire up the DSL jack (RJ11)  at your computer location (connected to
+  the DATA side of the splitter). The specifics differ greatly for each
+  situation, but basically you will have a 2 wire pair that you will
+  connect to the DSL jack. Make sure you read the directions, as the
+  DSL-RJ11 wiring is different for phones and ADSL jacks.  In my case,
+  you wire the phone jack on the red/green pair (the two inside prongs
+  of the RJ11 jack) and the ADSL jack is wired on the yellow/black pair
+  (the two outside prongs of the RJ11 jack).
+
+  7.3.  Install the ANT (at the computer location)
+
+  Connect up the ANT's power cord, and connect the phone line (category
+  3 cable) between the DSL jack and the ANT.  This cable is usually
+  provided.
+
+  Checkstep  At this point, verify the ANT syncs up to the Telco signal.
+  Most ANTs have an green LED that lights up when the signal is good.
+  If it doesn't sync, then check your wiring, or make sure that the
+  Telco signal is being sent (do this by calling your Telco and
+  verifying they have activated the service. Note that having dial tone
+  on the line does NOT confirm the presence of the ADSL data signal.)
+
+  If you have completed the previous steps, you are now ready to move on
+  to connecting your Linux System.
+
+
+  8.  Configuring Linux
+
+  After you have wired up the  ANT and you're getting the sync signal,
+  then you're ready to configure your Linux System and verify your
+  connection to your ISP.  Although I will refer to a Linux System, you
+  can connect any type of 10baseT device to the ANT. This includes a
+  router, hub, PC, or any other system that you wish to use.
+
+   Caution! Before you connect to your ISP, make sure you understand all
+  security issues of having a direct connection to the Internet via
+  ADSL. Depending on your ISP, most outside uses can access your
+  systems, and you should setup any firewalls, deactivate
+  ports/services, and setup any passwords prior to connecting your
+  machine to the world.  Read the Security-HOWTO if you need a good
+  overview on this subject.
+
+
+  8.1.  Install and Connect the NIC card
+
+  Install your NIC card in your Linux machine, configure the kernel,
+  etc., etc.  See the various Linux references for doing this. See the
+  Ethernet-HOWTO for more information.
+
+  Connect the RJ45 cable between the NIC and the ANT. Note A gotcha here
+  is that some ANTs are already wired as a 10baseT crossover, and
+  require a direct Category 5 cable for a direct connection to a NIC,
+  rather than a crossover cable.  I lost around 12 hours figuring this
+  one out, so don't make the same mistake -  make sure you read the
+  instructions first.
+
+
+  8.2.  Configure the Ethernet Interface
+
+  Configure the IP address, Subnet Mask, Default Gateway, and DNS server
+  information.  Each Linux Distribution (RH, debian, Slackware,
+  S.U.S.E.)  has a different way of doing this, so check on your
+  particulars.  You can also do this manually using the ifconfig and
+  route commands. See the NET3-HOWTO for information for more
+  information.
+
+  Once your system is configured, see if you can ping to the your
+  default gateway address provided by the ISP.  If the ping is
+  successful, the you should see around 20 ms roundtrip delay for this
+  connection.  Congratulations, you're connected to the Net!
+
+
+  8.3.  Setting up a Router
+
+  Depending on your local setup, you should consider some other issues.
+  These include a firewall setup, and any associated configurations.
+  For my setup, shown in Figure 3, I use an old i486 machine configured
+  as a firewall/router between the ADSL connection and the rest of my
+  machines.  I use private IP addresses on my Private LAN subnet, and
+  have configured my router to provide IP Masquerading and Firewalling
+  between the LAN and Internet connection. See the IP_Masquerading-
+  HOWTO, and Firewall-HOWTO for more information. My experience is that
+  Linux provides superior routing/firewalling performance , and is much
+  cheap than a commercial router, if you find an old 386/486 machine
+  that you may be using as a doorstop somewhere.
+
+
+
+
+
+
+
+
+
+
+
+  Figure 3: My  SOHO Network Setup
+
+
+  <-Private Subnet-->         <-Public Subnet->    <-ADSL Line--------->
+                                       |
+                                  X----|
+                                       |
+       X------|                   X----|     |----|
+              |      |--------|        |     |ADSL|            Internet
+              |      | Linux  |        |-----|ANT |----------> Service
+       X------|------| System |--------|     |    |            Provider
+              |    E1|(Router)|E0      |     |----|            Router
+              |      |--------|        |
+       X------|        IP_Masq      10baseT
+                     IP_Firewall     Hub
+
+
+
+
+  What I did is setup a router (Linux RH 5.0  on a i486) with two
+  Ethernet interfaces.  One interface routes to the ISP subnet/gateway,
+  and the other interface supports a class private network  address
+  (i.e. 192.168.2.x).   Using the private network address behind your
+  router allows some additional security because it is not directly
+  addressable from outside your ISP.   You have to explicitly masquerade
+  your private  addresses in order to connect to the Internet.
+
+  Caution Make sure your kernel is complied with IP forwarding and the
+  IP forwarding is turned on. You can check this by
+
+  cat /proc/sys/net/ipv4/ip_forward
+
+
+  The value is "1" for on, and "0" for off.  You can change this value
+  by echoing the desired value into this file.
+
+  (e.g.) echo 1 > /proc/sys/net/ipv4/ip_forward
+
+
+  Will turn forwarding on.
+
+
+  8.4.  Setting up a Firewall/Masquerading
+
+  If you have a direct connection to the Internet, then you want to also
+  turn on Firewall Administration and Masquerading. Figure 4 shows a
+  picture of this.
+
+  Caution!  I also need to stress that this configuration is only part
+  of the things that need to be performed to create a secure
+  environment. Other considerations include turning off ftp, telnet, and
+  other services on the Router, and ensuring all password, login, etc.
+  configurations are correctly setup for your environment.  Make sure
+  you read the Security-HOWTO.
+
+  Figure 4: Firewall/Masquerading for ADSL
+
+         |-------|       |-------|     |-X
+  ======X| ADSL  |=------| Linux |-----|
+  ADSL   |  ANT  |     E0|       |E1   |-X   Private Network
+  Line   |-------|       |-------|     |     (e.g. 192.168.2.x)
+                 <------->             |...
+               ISP Subnet or host
+              (Public Net Address)
+
+
+  The kernel for the Linux  router is complied for IP
+  forwarding/masquerading, and has the "ipfwadm" (IP firewall software)
+  installed with the following options:
+
+  file: /etc/rc.d/rc.firewall  (called by rc.sysinit in RH5.0)
+
+  echo "Setting up the firewall"
+  #
+  # From the "Firewall-HOWTO"
+  #
+  # flushes all setting
+  #
+  ipfwadm -F -f
+  #
+  # set the firewall
+  #
+  ipfwadm -F -p deny
+  #
+  # allow any machine with address 192.168.2.x to masquerade.
+  #
+  ipfwadm -F -a accept -m -S 192.168.2.0/24 -D 0.0.0.0/0
+  #
+  # allow the domain name server to work (udp 53)
+  #
+  ipfwadm -F -a accept -b -P udp -S 0.0.0.0/0 53 -D 192.168.2.0/24
+  ipfwadm -F -p masquerade
+  #
+  # the rest just list out the options for your enjoyment
+  #
+  ipfwadm -F -l
+  ipfwadm -O -l
+  ipfwadm -I -l
+
+
+
+  You need to be careful, as some application will still not work
+  without special modules (namely ftp, real audio, and some others).
+  Check the ipfwadm documentation for more information.  I found this
+  pretty easy to set up.
+
+  Additionally, using the private network addressing scheme is cheap,
+  and gives an administrator complete flexibility in setting up their
+  local LAN.  The drawback is that Masquerading has a limit on the
+  number of private hosts that it can reasonably support, and that some
+  IP applications that pass the host address in their data fields will
+  not work, but this tends to be a limited number.
+
+
+  9.  Appendix
+
+  9.1.  FAQs
+
+  This is the Frequently Asked Questions (FAQ) section for ADSL.
+
+
+  1. Q: Which is better: Cable Modems or ADSL?
+
+     A: It depends. Early on, the major factor should be availability of
+     the service in your area.  Most areas will have only one or the
+     other.  This should change in early 1999 to most areas having both
+     offerings. Image that ... Cable Companies vs. Phone Companies,
+     kinda like Godzilla vs. Rodan, well, you get the picture.
+
+     If you want a dedicated, high-speed connection with predictable
+     bandwidth, and a dedicated IP address, then ADSL is your service.
+     However, if are concerned with cost and don't mind the shared
+     network thing, then Cable Modems may turn out to be a bit cheaper.
+
+     My belief is that Cable Modems will make some early inroads, but
+     that ADSL will ultimately blow them out of the water, as long as
+     the phone companies don't overprice it.
+
+
+
+  2. Q: Are there ADSL Standards.
+
+     A: Sort of. The U.S. Bell Operating Companies have standardized on
+     Discrete Multi-Tone (DMT) ANTs (ANSI T1.413)  in their current
+     rollout.  Most others should follow their lead in the states. There
+     are other types of ANTs, most notably Carrier-less Amplitude Phase
+     Modulation (CAP), which, of course, are incompatible with each
+     other.
+
+     A biased comparison from an DMT-based vendor on this subject can be
+     found at the Aware <http://www.aware.com>.  Still, it provides the
+     best detail on this issue I have seen so far.
+
+     A rather expensive copy of the ANSI standard can be ordered at:
+     American National Standards Institute ANSI Home Page
+     <http://www.ansi.org>
+     Asymmetric Digital Subscriber Line (ADSL) Metallic Interface
+     ANSI TI.413-1995
+     Note: ANSI TI.413 Issue 2 was released September 26, 1997
+
+
+  3. Q: Can I use ATM to connect to ADSL ANT?
+
+     A: Yes, you can! Some ADSL ANT (at least the Alcatel version) has a
+     ATM Forum 25Mbps interface, which connects to a PCI NIC card.
+     However, I have not yet heard of any Linux drivers for such cards.
+
+
+  4. Q: Why the heck does ADSL have all these bit rates
+     (384/1.5/8M/20M/etc) options?
+
+     A: The basic problem is the 100 year old design of the copper loop.
+     It works great for analog phone, but it presents a real challenge
+     for a digital signal. Remember that the distance of a loop is
+     inversely proportional to the data rate that it can carry.  Rate-
+     Adaptive technologies are great for making a digital signal work in
+     many situations, but it can't provide a consistent bandwidth for
+     all applications, especially for very long (over 18 kilofeet)
+     loops.  The different bandwidth that you see advertised reflect
+     various marketing wars of vendors equipment, and the Telco struggle
+     to finalize on a ''standard'' set of data rates.  I think that the
+     384k/1.5Mbps will become the standard for now. The high bit rates
+     will only be available for special application and/or situations,
+     since they can only be provided on a small percentage of the
+     available loops.
+
+     Also, check out the next question on the loop imparments that cause
+     this to happen.
+
+
+  5. Q: What are all these loop imparments (bridge taps, loading coils)
+     that could disqualify my line from using ADSL? (thanks to Bruce
+     Ediger)
+
+     Load coils: in-line inductances that improve voice-frequency
+     transmission characteristics of a telephone circuit.  Essentially,
+     a "load" steals energy from high frequencies and gives it to lower
+     frequencies.  Typically only used in very long (>9,000 ft) phone
+     lines.
+
+     By "bridges" I assume you mean "bridged taps".  In older
+     neighborhoods, the phone wiring will have been used by more than
+     one customer.  Perhaps these customers lived at different (though
+     near-by) addresses.  The unconnected "spur" of wiring is a "bridged
+     tab" on the currently connected circuit.
+
+     Digital loop carriers: there's a bunch of systems for carrying more
+     than one voice transmission on a single pair of wires.  You can
+     shift the frequencies up or down, or you can digitize the voice
+     transmissions and divide the telephone circuit by time or code or
+     something.  The more general term is "pair gain".
+
+     These things cause different problems for high-frequency
+     communication.
+
+     Loads will completely mess up things by filtering high frequencies
+     and passing low frequencies.  They probably also change the "delay
+     envelope", allowing some frequencies to arrive before others.  One
+     byte's tones will interfere with the next byte's.
+
+     Bridged taps act as shunt capacitances if they're long in relation
+     to the signals wavelength, and they'll actually act as band pass
+     filters if they're about 1/4 wavelength of the signal.  That is,
+     they'll pass particular frequencies freely.  Particular tones of a
+     DMT modem might get shunted back, rather than passed along to the
+     receiving modem, reducing bandwidth for that telephone line.
+
+     Pair gain, digital or analog, limit the bandwidth available to one
+     transmission in order to multiplex several on one wire.  High and
+     low tones of a DMT transmission get filtered out by the apparatus.
+
+     The book "Subscriber Loop Signaling and Transmission Handbook", by
+     Whitham D. Reeve, , IEEE Press 1992, ISBN 0-87942-274-2 covers the
+     math of how to calculate the effect of line length, bridged tap,
+     etc on the transmission characteristics of a telephone line.  It's
+     pretty expensive, however.
+
+
+  6. Q: Do you have examples of ADSL ANTs?
+
+     A: Short Answer: Yes. Real Answer: The evolution of this technology
+     is  moving too rapidly for anyone to keep up to date in a HOWTO.  A
+     good source of ADSL ANTs is the ADSL Forum Home Page
+     <http://www.adsl.com>.  Go to the Vendors pages to see what's
+     happening.
+
+     However, I will provide a list of some of the current technology as
+     of June 1998.
+
+
+
+  ·  Router ANT with 10/100baseT Interface
+
+
+     Examples: Flowpoint 2000 DSL (CAP), Netspeed Speedrunner 202 (CAP),
+     Speedrunner 204 (CAP), 3COM Viper-DSL (CAP), StarNet Ezlink 500/100
+     (DMT), Westell ATU-R-Flexcap (CAP), Aware x200
+
+
+  ·  Bridge ANT with 10/100baseT Interface
+
+     Examples: Alcatel A1000 (DMT),  Westell ATU-R-Flexcap2 (CAP)
+
+
+  ·  ANT with ATMF Interface
+
+     Examples: Alcatel A1000 (DMT), Netspeed Speedrunner 203 (CAP),
+     Ariel Horizon II
+
+
+  ·  Bridge ANT with V.35 Serial Interface (T1, Serial Router)
+
+     Examples: Westell ATU-R
+
+
+  ·  ANT with USB Interface
+
+
+     Rumored to being pushed by Intel.
+
+
+  ·  Integrated ANT/NIC Card
+
+     Examples: Netspeed PCI Runner (CAP), Efficient Networks Speedstream
+     3020 (DMT)
+
+     These are NOT endorsements of the products listed, just provided
+     for illustration.;-).
+
+
+
+  9.2.  Links
+
+
+  ·  ADSL Forum Home Page <http://www.adsl.com> A comprehensive web site
+     created by the adsl vendors. Fairly complete for reference
+     information on ADSL.
+
+
+  ·  Dan Kegels ADSL Page
+     <http://www.alumni.caltech.edu/~dank/isdn/adsl.html> A good general
+     reference on xDSL - includes vendor, service provider, and other
+     links. This page was getting a little long in the tooth as of 2Q98.
+     Dan also maintains a super page on ISDN.
+
+
+  ·  PacBell's ADSL Page
+     <http://www.pacbell.com/products/business/fastrak/adsl/index.html>
+     Pacific Bell is the local Telco and my provider of ADSL service.
+
+
+
+  ·  DNAI ADSL Page <http://www.dnai.com/services/dedicated/dsl.html> My
+     ISP's home page  - If you're in the San Francisco Area, I would
+     highly recommend them.
+
+
+  ·  Covad Home Page <http://www.covad.com> Another ADSL provider in
+     California.
+
+
+  ·  Jeremie's Unofficial Ameritech ADSL FAQ
+     <http://www.rc.lsa.umich.edu/~jeremie/adsl/>
+
+
+  ·  Telechoice xDSL News Page
+     <http://www.telechoice.com/xdslnewz/indexDSL.cgi>
+
+
+
+  ·  ADSL Deployment 'round the World
+     <http://www.geocities.com/Paris/Metro/5013/adsl.html> Claims to
+     have a complete list - looked accurate for my area - gives
+     providers, prices, speeds, etc.
+
+
+  ·  Bell Atlantic ASDL Home Page <http://www.bell-atl.com/adsl>
+
+
+  ·  comp.dcom.xdsl FAQ <http://homepage.interaccess.com/~jkristof/xdsl-
+     faq.txt>
+
+
+
+  9.3.  Credits
+
+  Thanks to all those that contributed information to this HOWTO.  I
+  have anti-spammed their email addresses for their safety (and mine!).
+  Remove the X's from their names.
+
+
+  ·  B Ediger (Xbediger@csn.net) Great Description of loop impairment.
+
+  ·  C Wiesner ( Xcraig@wkmn.com)  List of many ADSL URLs.
+
+  ·  J Leeuw ( Xjacco2@dds.nl) Many tips on ADSL, especially in Europe
+
+  ·  J Kass ( Xjeremie@umich.edu) Unoffical Ameritech ASDL FAQ
+
+  ·  N Silberstein ( Xnick@tpdinc.com) Info on Netrunner and his
+     experience with US Worst.
+
+
+  9.4.  Glossary
+
+  A dictionary of some of the jargon I use in this FAQ.
+
+     2 wire Copper Loop
+        The two wire twisted pair from the Telco Central Office that
+        terminates at a customer location.
+
+
+     ADSL
+        Asymmetric Digital Subscriber Line
+
+
+     ANT
+        ADSL Network Termination (a.k.a. the ADSL modem)
+
+
+     ATM
+        Asynchronous Transfer Mode - provides high-speed packet
+        switching from 155 Mbps to (currently) 2Gbps. Used to provide
+        backbone switching for the Internet.
+
+
+     ATMF-25Mbps
+        ATM Forum Interface - 25Mbps speed, provided by a PCI NIC card..
+        One of the interfaces used between the ANT and PC.
+
+
+     Central Office
+        Usually refers to one of two meanings -1) The Telco Building
+        that houses Telephone equipment 2) The Telco Voice Switch that
+        provides dial tone.
+
+     CPE
+        Customer Premises Equipment - The Telco term for customer
+        equipment (i.e. the stuff you are responsible for fixing).
+        Examples are CSU/DSU, modems, ANTs, and your phone.
+
+
+     DHCP
+        Dynamic Host Configuration Protocol - The IP protocol used to
+        set up dynamically assigned IP addresses.
+
+
+     DS0
+        The basic digital circuit for Telcos - offered at 56 kbps or
+        64kbps. Can support one analog voice channel.
+
+
+     DSLAM
+        Digital Subscriber Line Access Multiplexer - The Telco equipment
+        that concentrates and multiplexes the DSL lines.
+
+
+     xDSL
+        Digital Subscriber Line - A term describing a family of DSL
+        services, including ADSL, SDSL, VDSL, etc.
+
+
+     HDC
+        See Section 2
+
+
+     ISDN
+        Innovations Subscribers Don't Need; I Still Don't kNow or maybe
+        Integrated Services Digital Network, a digital phone service
+        that uses a single copper pair to run 2B (64k) + 1D(16k)
+        channels that can be used for switched voice or data.
+
+
+     ISP
+        Internet Service Provider
+
+
+     NID
+        Network Interface Device -  The housing used to protect the ADSL
+        splitter from the elements.
+
+
+     NIC
+        Network Interface Card - A PC card (PCI/ISA) that supports the
+        required network interface. Usually an Ethernet 10baseT or an
+        ATMF-25Mbps Card..
+
+
+     POTS
+        Plain Old Telephone Service - The service that provides a single
+        analog voice line. (i.e. your phone line)
+
+
+     Recursion
+        See "Recursion"
+
+
+     SNI
+        Subscriber Network Interface - The Telco term for the phone
+        wiring housing on the side of your house. It designates the
+        point between the Telco side and the Inside Wire.  This is also
+        called the Demarcation Point.
+     Splitter
+        The passive device (low-bandpass filter) at the SNI that splits
+        the ADSL signal into separate voice and data channels.
+
+
+     Splitterless
+        An ADSL installation that does not require the Splitter. For
+        higher speeds, a RJ11 filter is placed on every extension phone
+        jack where an analog phone is used, thus providing the filtering
+        at the jack, rather than at the NID.  For lower speeds, no
+        filter is required.
+
+
+     SOHO
+        Small Office HOme
+
+
+     T1 a.k.a DS1 - A digital dedicated line at 1.544 Mbps, used for
+        both Voice (24 DS0s) or Data.
+
+
+     T3 a.k.a DS3 - A digital dedicated line at 44.736 Mbps, provides
+        for both Voice (672 DS0s or 28 DS1s) or Data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+Title: Queue
+Version:    1.12p2
+Entered-date:   05FEB99
+Description:    Innovative load-balancing/batch-processing tool that allows users to control execution of remote jobs usint intuitive local shell job control; also an rsh replacement for executing jobs on hosts in the local cluster.
+Keywords:    queue, load-balancing, batch-processing, rsh, cluster, distributed programming, virtual machine, GNU
+Author:      Werner G. Krebs
+Maintained-by:  Werner G. Krebs
+Primary-site:  http://www.gnu.org/software/queue
+Alternate-site:  http://bioinfo.mbb.yale.edu/~wkrebs/queue.html
+Original-site:  http://bioinfo.mbb.yale.edu/~wkrebs/queue.html
+Platforms:      GNU/Linux, HP-UX
+Copying-policy: GPL

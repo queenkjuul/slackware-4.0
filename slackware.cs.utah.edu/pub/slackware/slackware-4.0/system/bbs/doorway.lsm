@@ -1,0 +1,20 @@
+Begin3
+Title:		doorway
+Version:	Beta-1
+Entered-date:	06APR95
+Description:	getty/front end replacement for use with modem devices to
+		support in-bound callers.  Supports uucp style locking,
+		and flexible modem / call treatment that can be configured
+		uniquely down to a per-port basis.  Supports polling of
+		terminal types at connect, and multiplexing dial-in terminal
+		sessions with mailers and network protocols (term, ppp, etc).
+		Will interface with ifmail.  Primary use is as front-end for
+		VU BBS.
+Keywords:	BBS, VU, getty, modem, fido, uucp
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/BBS/vubbs
+		doorway-b1.tar.gz
+Platforms:	All Linux kernels, 1.0 and above.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

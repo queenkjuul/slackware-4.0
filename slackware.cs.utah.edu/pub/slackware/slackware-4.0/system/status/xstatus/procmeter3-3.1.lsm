@@ -1,0 +1,19 @@
+Begin3
+Title:          Procmeter3 - Linux system monitoring program
+Version:        3.1 [Mar-06-99]
+Entered-date:   06MAR99
+Description:    Displays in a series of graph (using X windows) statistics about
+                the system status (amount of CPU, memory, disk accesses,
+                IP packets) and user level information (date, time, mailbox size).
+                Uses the /proc filesystem and other sources of information.
+Keywords:       Linux X-Windows proc meter cpu load packet memory clock biff
+Author:         amb@gedanken.demon.co.uk
+Maintained-by:  amb@gedanken.demon.co.uk
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status/xstatus
+                53 kB procmeter3-3.1.tgz
+Alternate-site: ftp.demon.co.uk /pub/unix/linux/X11/xutils
+                53 kB procmeter3-3.1.tgz
+Original-site:  
+Platforms:      Linux X-Windows
+Copying-policy: GPL
+End

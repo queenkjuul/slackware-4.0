@@ -1,0 +1,21 @@
+Begin3
+Title:          Allows selected users to run selected commands as root.
+Version:        4.2
+Entered-date:   December 15, 1997
+Description:    Sources for a program which allows selected users to run
+		selected commands as root.  It is highly configurable.
+		Features: Multiple passwords, multiple log files, syslog,
+		command aliases, multiple time intervals for passwords,
+		wildcarded lists of users and groups, creation of commands
+		using hard or soft links.  It supports the use of PAM.
+Keywords:       root security
+Author:         dbell@canb.auug.org.au
+Maintained-by:  dbell@canb.auug.org.au
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+		25k su1-4.2.tgz
+		su1-4.2.lsm
+Alternate-site: 
+Original-site:  
+Platform:       Linux, UNIX
+Copying-policy: The copyright notices must be preserved.
+End

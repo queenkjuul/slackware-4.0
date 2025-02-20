@@ -1,0 +1,13 @@
+Begin3
+Title:          mconv2
+Version:        0.1
+Entered-date:   Fri Jan 27 1995
+Description:    Allows more than one programs to use a ps/2-style mouse
+		simultaneously, and also the use of programs which doesn't
+		understand the ps/2 mouse protocol, but does understand
+		the microsoft serial mouse protocol (like svgalibdoom).
+Keywords:       ps/2, mouse, svgalib, doom
+Author:         Johan Myreen, modifications by Frode V. Fjeld.
+Maintained-by:  frodef@stud.cs.uit.no (Frode V. Fjeld)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc
+End

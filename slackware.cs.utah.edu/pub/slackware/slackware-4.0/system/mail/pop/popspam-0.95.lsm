@@ -1,0 +1,12 @@
+Begin3
+Title:           popspam
+Version:         0.95    
+Entered-date:    4SEP98
+Description:     POP3 client with integrated spam filtering
+                 Added APOP support and more filtering features
+Keywords:        mail, retrieval, pop3, APOP, spam-filtering    
+Author:          jamesjde@yahoo.com (James DeRidder)
+Primary-site:    sunsite.unc.edu  /pub/Linux/system/mail/pop/
+Platforms:       Linux
+Copying-policy:  GPL
+End

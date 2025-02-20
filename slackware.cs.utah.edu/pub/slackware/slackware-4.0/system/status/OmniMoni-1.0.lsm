@@ -1,0 +1,19 @@
+Begin3
+Title:		OmniMoni
+Version:	1.0
+Entered-date:	November 12, 1995
+Description:	A highly configurable, realtime, information monitoring
+		system.  It can monitor information similarly to xload, 
+		perfmeter, ps, uptime, and others.  But, it has many
+		features they do not.
+Keywords:	meter monitor graph text update window Tcl Tk
+Author:		rvm@fore.com (Rainer Mager)
+Maintained-by:	rvm@fore.com (Rainer Mager)
+Primary-site:	sunsite.unc.edu in /pub/Linux/system/Status
+		OmniMoni-1.0.tar.gz
+Alternate-site: shrine.cyber.ad.jp/pub/archives/users/rvm
+		OmniMoni-1.0.tar.gz
+Original-site:
+Platform:	any Unix with a Tcl/Tk interpreter installed
+Copying-policy:	GPL
+End

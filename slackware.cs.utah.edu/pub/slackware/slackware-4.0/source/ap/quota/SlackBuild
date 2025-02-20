@@ -1,0 +1,69 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-quota
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_quota.tar.gz
+
+echo "+============+"
+echo "| quota-1.70 |"
+echo "+============+"
+cd $TMP
+tar xzvf $CWD/quota-1.70.tar.gz
+cd quota
+make
+cat quotacheck > $PKG/sbin/quotacheck
+cat quotaon > $PKG/sbin/quotaon
+for file in edquota repquota warnquota quotastats setquota ; do
+  cat $file > $PKG/usr/sbin/$file
+done
+cat quota > $PKG/usr/bin/quota
+cat rquota.h > $PKG/usr/include/rpcsvc/rquota.h
+cat rquota.x > $PKG/usr/include/rpcsvc/rquota.x
+for page in *.1 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man1/$page.gz
+done
+for page in *.2 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man2/$page.gz
+done
+for page in *.3 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man3/$page.gz
+done
+for page in edquota.8 quotacheck.8 quotaon.8 repquota.8 setquota.8 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man8/$page.gz
+done
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/quota.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/quota
+  rm -rf $PKG
+fi

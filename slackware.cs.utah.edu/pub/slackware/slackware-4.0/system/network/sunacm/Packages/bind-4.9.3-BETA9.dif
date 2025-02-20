@@ -1,0 +1,160 @@
+--- Makefile
++++ Makefile	1994/07/25 10:11:41
+@@ -93,14 +93,18 @@
+ INSTALL = install
+ RANLIB = ranlib
+ 
+-#(Linux)
+-#CC = gcc -DSYSV
+-#LIBS = -lfl
+-#PIDDIR = /etc
+-#DESTEXEC = /usr/sbin
+-#DESTMAN = /usr/man
+-#DESTHELP = /usr/lib
+-#CATEXT = $$$$N
++#(Linux) Look at the end of this Makefile for further patches for Linux.
++CC = gcc -DSYSV
++CDEBUG=-O2 -fomit-frame-pointer -pipe
++LEX=flex -8 -I
++LIBS = -lfl
++PIDDIR = /var/run
++DESTEXEC = /usr/sbin
++DESTMAN = /usr/man
++DESTHELP = /usr/lib
++CATEXT = $$$$N
++DESTINC = /usr/include/bind-4.9.3
++INSTALL_COMPAT = install-compat
+ 
+ #(CRAY)
+ #LEX=lex
+@@ -440,3 +444,8 @@
+ 	)
+ 
+ FRC:
++	# Enable the following lines for Linux.
++	if [ -f compat/include/sys/cdefs.h ]; then \
++	mv compat/include/sys/cdefs.h compat/include/sys/cdefs.h.old; \
++	fi
++
+--- compat/include/sys/Makefile
++++ compat/include/sys/Makefile	1994/07/25 10:12:04
+@@ -53,7 +53,7 @@
+ # -
+ # --Copyright--
+ 
+-HFILES = cdefs.h bitypes.h
++HFILES = bitypes.h
+ 
+ DESTDIR=
+ DESTINC= /usr/include
+--- compat/include/sys/bitypes.h
++++ compat/include/sys/bitypes.h	1994/07/25 10:12:43
+@@ -67,6 +67,10 @@
+ #ifndef __BIT_TYPES_DEFINED__
+ #define __BIT_TYPES_DEFINED__
+ 
++#ifdef __linux__
++#include <linux/types.h>
++#endif
++
+ 	/*
+ 	 * Basic integral types.  Omit the typedef if
+ 	 * not possible for a machine/compiler combination.
+--- compat/lib/Makefile
++++ compat/lib/Makefile	1994/07/25 10:13:35
+@@ -82,8 +82,7 @@
+ SRCS=	mktemp.c strcasecmp.c strerror.c strpbrk.c strtoul.c inet_addr.c \
+ 	putenv.c setenv.c setitimer.c writev.c ftruncate.c gettimeofday.c
+ 
+-OBJS=	mktemp.o strcasecmp.o strerror.o strpbrk.o strtoul.o inet_addr.o \
+-	putenv.o setenv.o setitimer.o writev.o ftruncate.o gettimeofday.o
++OBJS=	inet_addr.o
+ 
+ all: lib44bsd.a
+ 
+@@ -91,7 +90,7 @@
+ 	ar cru lib44bsd.a ${AROBJS}
+ 	$(RANLIB) lib44bsd.a
+ 
+-install: ${DESTDIR}${DESTLIB}/lib44bsd.a
++install: all
+ 
+ ${DESTDIR}${DESTLIB}/lib44bsd.a: lib44bsd.a
+ 	${INSTALL} -c -o bin -g bin -m 644 lib44bsd.a ${DESTDIR}${DESTLIB}/
+--- doc/bog/Makefile
++++ doc/bog/Makefile	1994/07/25 10:13:59
+@@ -59,8 +59,8 @@
+ 	root.cache named.local ucbhosts.rev ucbhosts manage.me
+ ME=	-me
+ NROFF=	nroff -rb3
+-PRINTER= -Pdp
+-TBL=	dtbl $(PRINTER)
++PRINTER=
++TBL=	tbl $(PRINTER)
+ TROFF= ditroff $(PRINTER)
+ GROFF= groff -Tps -t $(ME)
+ 
+--- man/Makefile
++++ man/Makefile	1994/07/25 10:14:40
+@@ -31,7 +31,7 @@
+ # entries on the fly, use
+ #	MANDIR = man
+ #
+-MANDIR = cat
++MANDIR = man
+ 
+ #
+ # Default extension for manual entries. To install the manual entries under
+@@ -299,7 +299,7 @@
+ #
+ # Command used to produce manual entries
+ #
+-MK_MANFILE = ( ${EXT_SED_CMD} | ${MANROFF} )
++MK_MANFILE = ( ${EXT_SED_CMD} )
+ 
+ #
+ # Extensions for the generated manual entries
+--- named/Makefile
++++ named/Makefile	1994/07/25 12:05:02
+@@ -169,13 +169,13 @@
+ 	mkdep -I${INCL} -I${COMPINCL} ${SRCS} ${XFERSRCS}
+ 
+ install:
+-	${INSTALL} -c -s -o bin -g bin -m 555 \
++	${INSTALL} -c -s -m 555 \
+ 		named ${DESTDIR}${DESTSBIN}/${INDOT}named
+-	${INSTALL} -c -s -o bin -g bin -m 555 \
++	${INSTALL} -c -s -m 555 \
+ 		named-xfer ${DESTDIR}${PATH_XFER}
+-	${INSTALL} -c -o bin -g bin -m 555 \
++	${INSTALL} -c -m 555 \
+ 		named.restart ${DESTDIR}${DESTSBIN}/${INDOT}named.restart
+-	${INSTALL} -c -o bin -g bin -m 555 \
++	${INSTALL} -c -m 555 \
+ 		named.reload ${DESTDIR}${DESTSBIN}/${INDOT}named.reload
+ 	@echo "*** Install symlinks if needed ***"
+ 
+--- res/Makefile
++++ res/Makefile	1994/07/25 11:33:23
+@@ -105,7 +105,7 @@
+ install: ${DESTDIR}${DESTLIB}/libresolv.a
+ 
+ ${DESTDIR}${DESTLIB}/libresolv.a: libresolv.a
+-	${INSTALL} -c -o bin -g bin -m 644 libresolv.a ${DESTDIR}${DESTLIB}/
++	${INSTALL} -c -m 644 libresolv.a ${DESTDIR}${DESTLIB}/
+ 	$(RANLIB) ${DESTDIR}${DESTLIB}/libresolv.a
+ 
+ .c.o:
+--- tools/nslookup/Makefile
++++ tools/nslookup/Makefile	1994/07/25 12:04:13
+@@ -112,8 +112,8 @@
+ 	mkdep -I${INCL} -I${COMPINCL} ${DEFS} ${SRCS}
+ 
+ install:
+-	${INSTALL} -s -c -o bin -g bin -m 755 nslookup ${DESTDIR}${DESTBIN}/
+-	${INSTALL}    -c -o bin -g bin -m 444 nslookup.help \
++	${INSTALL} -s -c -m 755 nslookup ${DESTDIR}${DESTBIN}/
++	${INSTALL}    -c -m 444 nslookup.help \
+ 		 ${DESTDIR}${DESTHELP}/
+ 
+ lint: ${SRCS}

@@ -1,0 +1,56 @@
+ LINUX ROOTDISKS
+
+ The Linux "rootdisk" contains the actual installation software.  You use
+ a bootdisk to load it into your system and begin the installation.  You'll
+ probably want to use either the color or the umsdos disk to install Linux
+ depending on whether you'll be installing it in its own partition.
+
+README.TXT    Detailed descriptions of the root disk images.
+
+ Now, choose one of the boot disk images below.  Hitting ENTER will create
+ a boot disk in drive A:
+
+color.bat    This is the default Slackware installation disk, used to install
+             Slackware Linux to its own partition.  The name color.gz comes
+             from the color menus used to install Slackware.  This is the 
+             installation disk most people should use.  NOTE: The 'dialog'
+             program used by the install system is not forgiving of extra
+             keystrokes entered between screens, so type carefully.
+
+umsdos.bat   This is similar to the color.gz disk, but installs using UMSDOS,
+             a system that allows you to install Slackware into a directory
+             on an existing MS-DOS partition.  This isn't as fast as using a
+             native Linux filesystem, and can use more drive space because of
+             limitations in the way DOS stores small files.  The big advantage
+             of using UMSDOS is that you can try Slackware without
+             repartitioning your hard drive.  This is much easier for the
+             beginner, and a lot less potentially dangerous to your system.
+
+             [NOTE: If you want to use UMSDOS, you might want to consider
+             using the ZipSlack installation found in the /zipslack
+             directory.  This is a little easier way to get started -- just
+             unzip a file on your FAT or FAT32 partition to install Linux. ]
+
+pcmcia.bat   This is a version of the color.gz rootdisk with added support
+             for PCMCIA cards.  You should use this disk to install to a
+             laptop through the network using NFS, or from a drive connected
+             through a PCMCIA card.  [NOTE: at this time there is no support
+             for actually installing onto a PCMCIA device]
+
+text.bat     A rootdisk that uses text-based install scripts.  This is
+             preferred by some people, but may not have as many features as
+             the color.gz, umsdos.gz, or pcmcia.gz rootdisks.  One advantage
+             is that you can back up to look at error messages using
+             Shift-PageUp.  Another useful feature is the ability to install
+             using a serial console with this command on the bootdisk's
+             'boot:' prompt:   ramdisk console=ttyS0
+
+  There's also this non-installation rootdisk:
+
+rescue.bat   This is a rescue disk for Linux.  It is a reasonably complete
+             mini-Linux system running from a four megabyte ramdisk.  
+             It contains an editor (vi), lilo, and other utilities useful for
+             fixing your Linux machine if you ever get locked out for some
+             reason.  It includes basic TCP/IP utilities such as ping, telnet,
+             and ftp.
+

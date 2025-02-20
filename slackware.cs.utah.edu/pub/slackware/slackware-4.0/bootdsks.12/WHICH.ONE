@@ -1,0 +1,22 @@
+
+Q: There are so many bootdisks! Which one should I use?
+
+A: Here's a little table to help you decide.  There aren't many in the 1.2
+   directory any more, so it shouldn't be a difficult choice.
+
+   -- Pat
+
+
+----------------\          Target hard drive type:
+Slackware        \   
+source on:        \  IDE              SCSI                       MFM
+-------------------+----------------+--------------------------+--------------
+ Hard Drive        | bare.i         | scsi.s                   |
+-------------------+----------------+--------------------------+--------------
+ SCSI CD-ROM       | scsi.s         | scsi.s                   |
+-------------------+----------------+--------------------------+--------------
+ IDE/ATAPI CD-ROM  | bare.i         | scsi.s                   |
+-------------------+----------------+--------------------------+--------------
+ NFS               | net.i          | scsinet.s                |
+-------------------+----------------+--------------------------+--------------
+

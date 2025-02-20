@@ -1,0 +1,16 @@
+Begin3
+Title:          Pug
+Version:        0.1.1
+Entered-date:	14SEP98
+Description:    Pug is a perl script to help control a CNews system
+                running newsx as its transport agent.
+Keywords:       cnews c-news newsx pug news
+Author:         toon@waste.org (Tod D. Ihde)
+Maintained-by:  toon@waste.org (Tod D. Ihde)
+Primary-site:   ftp.waste.org /pub/users/toon/
+                9980 pug-0.1.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/news/misc/
+Original-site:  
+Platforms:      Needs Perl5, CNews, NewsX
+Copying-policy: GPL
+End

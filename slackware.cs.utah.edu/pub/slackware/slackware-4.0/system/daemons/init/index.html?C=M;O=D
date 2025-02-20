@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/daemons/init</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/daemons/init</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/daemons/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:50  </td><td align="right">1.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:50  </td><td align="right">3.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:50  </td><td align="right">946 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">395 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="runset-1.0.tar.gz">runset-1.0.tar.gz</a></td><td align="right">1999-04-19 06:43  </td><td align="right">119K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="runset-1.0.lsm">runset-1.0.lsm</a></td><td align="right">1999-04-19 06:42  </td><td align="right">619 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:55  </td><td align="right">102 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="killproc-1.6.tar.gz">killproc-1.6.tar.gz</a></td><td align="right">1998-11-13 22:17  </td><td align="right"> 23K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="killproc-1.6.lsm">killproc-1.6.lsm</a></td><td align="right">1998-11-13 22:17  </td><td align="right">746 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sysvinit-2.76.tar.gz">sysvinit-2.76.tar.gz</a></td><td align="right">1998-11-11 23:15  </td><td align="right"> 98K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sysvinit-2.76.lsm">sysvinit-2.76.lsm</a></td><td align="right">1998-11-11 23:15  </td><td align="right">621 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sysvinit-2.74.tar.gz">sysvinit-2.74.tar.gz</a></td><td align="right">1998-03-18 23:29  </td><td align="right"> 97K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sysvinit-2.74.lsm">sysvinit-2.74.lsm</a></td><td align="right">1998-03-18 23:29  </td><td align="right">527 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="failinit-1.31.tar.gz">failinit-1.31.tar.gz</a></td><td align="right">1998-01-14 09:48  </td><td align="right">6.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="failinit-1.31.lsm">failinit-1.31.lsm</a></td><td align="right">1998-01-14 09:48  </td><td align="right">891 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="r2d2-0.6.3.tar.gz">r2d2-0.6.3.tar.gz</a></td><td align="right">1997-11-30 22:48  </td><td align="right"> 32K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="r2d2-0.6.3.lsm">r2d2-0.6.3.lsm</a></td><td align="right">1997-11-30 22:48  </td><td align="right">896 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="chkconfig-0.3c.tar.gz">chkconfig-0.3c.tar.gz</a></td><td align="right">1997-09-18 07:08  </td><td align="right">3.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="chkconfig-0.3c.lsm">chkconfig-0.3c.lsm</a></td><td align="right">1997-09-18 07:08  </td><td align="right">574 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="r2d2_v0.4.tar.gz">r2d2_v0.4.tar.gz</a></td><td align="right">1997-08-16 01:23  </td><td align="right">6.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="initfunc-0.01.tgz">initfunc-0.01.tgz</a></td><td align="right">1996-02-09 08:00  </td><td align="right">4.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="initfunc-0.01.lsm">initfunc-0.01.lsm</a></td><td align="right">1996-02-09 08:00  </td><td align="right">480 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bootsys5a.tgz">bootsys5a.tgz</a></td><td align="right">1994-03-18 08:00  </td><td align="right"> 56K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bootsys5.lsm">bootsys5.lsm</a></td><td align="right">1994-03-18 08:00  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bootsy4a.tgz">bootsy4a.tgz</a></td><td align="right">1993-04-02 08:00  </td><td align="right"> 46K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

@@ -1,0 +1,16 @@
+Begin3
+Title:          bonnie: Unix filesystem performance benchmark
+Version:        2.0.6-big
+Entered-date:   Mon Sep 2 20:43:00 1996
+Description:    Benchmark utility that targets Unix filesystem
+                performance. Modified to work with multiple 
+                volumes to allow >2GB tests on 32-bit operating
+                systems.
+Keywords:       Benchmark Filesystem IO
+Author:         Tim Bray <tbray@textuality.com>
+Maintained-by:   
+Primary-site:   http://www.textuality.com/bonnie/download.html
+Alternate-site: sunsite.unc.edu /pub/Linux/Incoming
+Platforms:      Linux 2.0.x (Should compile on any Unix system)
+Copying-policy: Distributible
+End

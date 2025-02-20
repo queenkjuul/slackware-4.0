@@ -1,0 +1,246 @@
+Q0: What exactly is PAM?
+Q1: Whom should I email when I'm having trouble?
+Q2: Is there a "free" version of PAM available?
+Q3: Are there any distributions (of Linux) that come with PAM?
+    [Note on Solaris implementation]
+Q4: Is Linux-PAM just for Linux?
+Q5: What do I need to use Linux-PAM?
+Q6: Do I have to wait for Red Hat to upgrade my version of PAM?
+Q7: When I upgrade to a newer version of PAM, my login prompt changes! Why?
+Q8: Root cannot do this without typing the user's password! Can I fix this?
+Q9: xlock doesn't work with shadow passwords
+Q10: how do I shadow my system?
+Q11: how come passwd doesn't know who I am?
+Q12: why is rlogin slow?
+Q13: Is there an archive of email to the pam-list?
+
+Module specific questions:
+
+----------------------------------------------
+
+Q0: What exactly is PAM?
+
+PAM = Pluggable Authentication Modules
+
+Basically, it is a flexible mechanism for authenticating users.
+
+Since the beginnings of UNIX, authenticating a user has been accomplished
+via the user entering a password and the system checking if the entered
+password corresponds to the encrypted official password that is stored
+in /etc/passwd . The idea being that the user *is* really that user if
+and only if they can correctly enter their secret password.
+
+That was in the beginning. Since then, a number of new ways of
+authenticating users have become popular. Including more complicated
+replacements for the /etc/passwd file, and hardware devices Smart cards
+etc..
+
+The problem is that each time a new authentication scheme is developed, it
+requires all the necessary programs (login, ftpd etc...) to be rewritten to
+support it.
+
+PAM provides a way to develop programs that are independent of
+authentication scheme. These programs need "authentication modules" to be
+attatched to them at run-time in order to work. Which authentication module
+is to be attatched is dependent upon the local system setup and is at the
+discretion of the local system administrator.
+
+Q1: Whom should I email when I'm having trouble?
+
+Before emailing anyone.  Consider the nature of your trouble.  Are you using
+the Red Hat Linux default PAM?  If so, you should email the folks at Red
+Hat:
+
+	redhat-list@redhat.com
+
+Are you experiencing trouble with SimplePAMApps? In this case you should
+email:
+
+	morgan@linux.kernel.org
+
+Only if you are experiencing trouble with the latest version of, or would
+like to contribute to the ongoing development of, Linux-PAM should you
+email:
+
+	pam-list@redhat.com
+
+If you would like to suggest someting you have "solved" for yourself be
+added to this FAQ, please email its maintainer (see end of file).
+
+Q2: Is there a "free" version of PAM available?
+
+YES. It is Linux-PAM and can be found at
+
+	http://linux.kernel.org/pub/linux/libs/pam
+	ftp://linux.kernel.org/pub/linux/libs/pam
+
+.
+
+Q3: Are there any distributions (of Linux) that come with PAM?
+
+YES. Currently, Red Hat Linux, Caldera, Debian as of 2.2. Also,
+FreeBSD supports PAM, as of version 3.1.
+
+A note about Sun's implementation of PAM:
+- - - - - - - - - - - - - - - - - - - - -
+PAM was invented by SUN Microsystems. They have their own implementation of
+the specification(!). It is present in an internal form in Solaris 2.5 and
+will be fully realized in 2.6 . [Internal form = no stacking of modules and
+no pam.conf file]
+
+Q4:  Is Linux-PAM just for Linux?
+
+Primarily, Yes. Linux-PAM is actively being developed using Liunx machines.
+There have been some efforts to make the distribution compile on others
+and future releases will hopefully be easier to install on these systems.
+
+Q5: What do I need to use Linux-PAM?
+
+You will need the library installed (libpam.so{.X.YY}) some modules
+(pam_ZZZZ.so) an /etc/pam.conf file and some applications that were compiled
+to use PAM.  Generally, the applications will have come with your
+distribution of Linux, but (thanks to Red Hat) many mainstream applications
+have PAM patches in them -- if you are doing it yourself, you will have to
+compile these. (The applications may require the presence of
+libpam_misc.[a|so]). If you just want to play, you might consider
+downloading the SimplePAMApps (see pointer above) some of these require the
+presence of libpwdb (but then so do some of the modules...).
+
+Q6: Do I have to wait for Red Hat to upgrade my version of PAM?
+
+If you worry about having someone to complain to. The answer is YES. 
+
+If, however, you are willing to try alpha/beta versions, Cristian Gafton
+tries to make rpms for more recent PAM (& libpwdb) distributions available
+from
+
+	ftp://sysadm.sorosis.ro/pub/pam/
+
+While there is no guaranteed support for this software, bug reports should
+be posted to pam-list@redhat.com, so they can be fixed.
+
+Q7: When I upgrade to a newer version of PAM, my login prompt changes! Why?
+
+Red Hat shipped a version of Linux-PAM that had a default PAM_USER_PROMPT
+(defined in Linux-PAM-X.YY/libpam/pam_private.h as PAM_DEFAULT_PROMPT) of
+"Login: ". They did this to reduce the amount of work needed to port
+applications to using PAM authentication.  In the longer term, applications
+should be fixed to specify their preferred user prompt with the following
+line inserted before their first call to pam_authenticate():
+
+	pam_set_item(pamh, PAM_USER_PROMPT, "Login: ");
+
+[Instead of "Login: ", the desired prompt should be used..]
+
+The default prompt, is more ugly: "Please enter username: ", and will remain
+this way, to encourage application developers to write robust applications!
+
+(In case you are wondering, the "official" Sun version is
+
+	"Please enter user name: "
+
+, which besides being ugly, is also bad UN*X-speak..!)
+
+Another solution, if you find this behavior to be a problem, is to do the
+following: upgrade to an enhanced version of the linux-utilities:
+
+Derrick J. Brashear has contributed this:
+> ftp://ftp.dementia.org/pub/pam/util-linux-2.5-26.src.rpm
+> has been updated but again I forgot to increment the build number.
+
+Q8: Root cannot do this without typing the user's password! Can I fix this?
+
+Historically, root could do a number of things on behalf of a user without
+having to bother with typing the user's password. Applications like
+'passwd', 'su' and 'chfn' would skip the "Enter user's password: " prompt
+in such cases.
+
+PAM places this behavior at the discretion of the System Administrator. To
+enable this behavior, the admin should insert a line of the following form
+in the /etc/pam.conf file. (It should be placed before the line that would
+otherwise prompt for a password):
+
+	XXX	auth	sufficient	/usr/lib/security/pam_rootok.so
+
+Here, XXX is the "service name" of interest.
+
+**NOTE**: This should only be applied to applications that a
+pre-authenticated user invokes to obtain a restricted service (su, passwd,
+etc.). Applications like 'login', 'ftpd' etc. are always invoked with the
+identity of root (indirectly by init) and so this line will effectively
+remove any security on this service!!
+
+Q9: xlock doesn't work with shadow passwords
+
+This may be to do with the fact that 'xlock' does not have permission to
+read the /etc/shadow file. The simlpest thing to do to overcome this, is to
+setuid (chmod +s `which xlock`). To my knowledge no one has verified that
+xlock cannot be made to launch a root-owned shell this way, so think twice
+before you do this.
+
+The pwdb module can use the help of a helper binary to verify the password
+field for the current user.  So an alternative to making xlock setuid is to
+use the pam_pwdb module for authentication.
+
+If pwdb still doesn't work check the /etc/log/messages file for a clue... If
+the  module complains that it cannot open the configuration file, check the
+access permissions on the /etc/pam.conf (OR /etc/pam.d/) file (directory).
+
+Q10: how do I shadow my system?
+
+A shadowed system is one in which all passwords are stored in the
+/etc/shadow file. The single character, 'x', is placed in the passwd field
+of /etc/passwd .
+
+The remainder of this answer is Red Hat specific. There is a utility in
+RedHat's distribution
+
+	/usr/sbin/pwconv5
+
+(part of the shadow-utils package) it makes your /etc/passwd file shadowed.
+There is also a shell script in
+/usr/sbin/ that adds new users (the nifty usercfg breaks when you shadow
+your system) you need to apply the following patch to adduser-1.2-1 to make
+it work (pre-4.1, the nifty usercfg program will break once your system is
+shadowed):
+
+========================================================================
+--- adduser~    Mon Aug 26 11:24:48 1996
++++ adduser     Fri Jan 31 10:03:31 1997
+@@ -115,7 +115,7 @@
+   # The date invocation is non-standard, but works with GNU date.
+   # It fills in the "last changed" field with the number of DAYS
+   # since epoch (86400 seconds per day; %s is second since epoch).
+-  echo "$LOGIN:*:$(($(date '+%s')/86400))::-1:-1:-1:-1:-1:-1" >> $SHADOW
++  echo "$LOGIN:*:$(($(date '+%s')/86400)):-1:-1:-1:-1:-1:-1" >> $SHADOW
+ else
+   echo "$LOGIN:*:$NUID:$NGID:RHS Linux User:$DHOME/$LOGIN:$DSHELL" >>
+$PASSWD
+ fi
+========================================================================
+
+Q11: how come passwd doesn't know who I am?
+
+This is a bug.  Most likely it is outside PAM but it seems to be related to
+corruption of the /var/log/utmp file.  Functions like getlogin() rely on
+this file, another symptom of the problem is that 'logname' doesn't work.
+
+The problem has been pinned down to the NetKit-B rpm. You should upgrade to
+a newer one (the problem is actually in telnetd).
+
+Q12: Why is rlogin slow?
+
+All things point to you having a nameserver misconfiguration.  You can
+verify that this is likely to be the case by substituting the IP addresses
+for any hostnames in your .rhosts (etc.) file(s).
+
+Q13: Is there an archive of email to the pam-list?
+
+Yes, please try:
+
+	http://www.linuxhq.com/lnxlists/linux-pam/
+
+---------
+This FAQ is maintained by Andrew Morgan <morgan@linux.kernel.org>
+
+             http://linux.kernel.org/pub/linux/libs/pam

@@ -1,0 +1,24 @@
+Begin2
+Title        = Bogomips - standalone BogoMIPs benchmark program
+Version      = 1.2
+Desc1        = This is a standalone program to display the system
+Desc2        = performance in "BogoMIPs".
+Desc3        = It is based on the code in the Linux kernel.
+Author       = Jeff Tranter
+AuthorEmail  = Jeff_Tranter@Mitel.COM
+Maintainer   = Jeff Tranter
+MaintEmail   = Jeff_Tranter@Mitel.COM
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Misc
+File1        = bogo-1.2.tar.gz
+FileSize1    = 3391 bytes
+Required1    = ANSI C compiler and C library
+CopyPolicy1  = GNU General Public License
+Keywords     = benchmarks, BogoMIPS, bogus
+Comment1     = This is the third release.
+RelFiles1    = bogo-1.2.tar.gz
+RelFiles2    = bogo-1.2.lsm
+Entered      = 4JUN94
+EnteredBy    = Jeff Tranter
+CheckedEmail = Jeff_Tranter@Mitel.COM
+End

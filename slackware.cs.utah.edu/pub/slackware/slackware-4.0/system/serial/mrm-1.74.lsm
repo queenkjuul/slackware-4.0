@@ -1,0 +1,15 @@
+Begin3
+Title:		Modem Resource Manager.
+Version:	1.74
+Entered-date:	Wed May  7 22:27:47 WST 1997
+Description:	Monitors specified list of devices and performs disconnections
+		when user time limits are reached.  Can specify periods that
+		users must wait before re-loging into a system.  Very versatile
+		and configurable program that will suit many dialin and other
+		environments.
+Keywords:	daemon,hangup,user,disconnect,modem,management,resource
+Author: 	ice@space.net.au
+Primary-site:	ftp.space.net.au /pub/linux/mrm
+		30kB mrm-1.74.tar.gz
+Copying-policy:	GPL
+End

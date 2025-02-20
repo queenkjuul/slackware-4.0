@@ -1,0 +1,37 @@
+Begin3
+Title:          smirc
+Version:        0.62b
+Entered-date:26JUL98
+Description:    SmIRC is an X11R6 IRC client, based on the Motif widget set.
+                This release has most of the functionality expected from an IRC
+                client. The only major missing feature is DCC.
+                Everything else usually expected from an IRC client is included.
+                The interface is designed to be simple, short, and sweet.
+                SmIRC's look and feel is highly customizable, via its resource
+                file.
+                Runtime help pages are provided in an HTML format. You will
+                need an HTML browser (lynx is fine) to read them.
+                You will need Motif 2.1 libraries to compile the source code.
+                If you do not have Motif 2.1 libraries, you can try running the
+                provided ELF binary which is statically-linked with the Motif
+                library.
+                In addition to the above, SmIRC needs a machine with plenty of
+                RAM in order to compile the source code. Some modules take as
+                much as 22-23MB to compile. Your machine should have at least
+                16MB of physical RAM, and 16MB of swap in order to be able to
+                compile the source code.
+Keywords:       smirc, irc, freeware, linux, unix, motif, X, X11, X11R6
+Author:         mrsam@geocities.com (Sam Varshavchik)
+Maintained-by:  mrsam@geocities.com (Sam Varshavchik)
+Primary-site:   ftp.undernet.org /irc/clients/xwindows/smirc/
+			221 Kb smirc-0.62b.tgz
+			760 Kb smirc-0.62b.bin.static.tgz
+                        209 Kb smirc-0.62b-1.i386.rpm
+                         97 Kb smirc-common-0.62b-1.i386.rpm
+                        676 Kb smirc-static-0.62b-1.i386.rpm
+                        223 Kb smirc-0.62b-1.src.rpm
+			  2 kb smirc-0.62b.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/chat/irc
+Alternate-site: ftp.nstc.com /pub/software/unix/
+Copying-policy: GPL
+End

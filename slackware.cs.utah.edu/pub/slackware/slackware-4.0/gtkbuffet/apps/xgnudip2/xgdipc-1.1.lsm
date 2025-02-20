@@ -1,0 +1,21 @@
+Begin3
+Title:                  X-GnuDIP2
+Version:                1.1
+Entered-date:           20FEB99
+Description:            X-GnuDIP2 Client is a X client for the GnuDIP2
+                        dynamic dns server package. The tool tips are
+                        pretty much self explanitory as what goes where.
+                        X-GnuDIP2 does NOT work with versions of GnuDIP
+                        under 2.0.1. Requires GnuDIP >= 2.0.3 for set offline
+Keywords:               dynamic IP DNS hostname ISP gnudip dyndns
+Author:                 Mike Machado <mike@innercite.com>
+                        Ryan Wahle <wahle@innercite.com>
+Maintained-by:          Mike Machado <mike@innercite.com>
+                        Ryan Wahle <wahle@innercite.com>
+Primary-site:           gnudip.cheapnet.net
+Alternate-site:
+Original-site:
+Platforms:              Any platform that supports X11 and Gtk+ 1.0.2 or
+                        better.
+Copying-policy:         GPL
+End

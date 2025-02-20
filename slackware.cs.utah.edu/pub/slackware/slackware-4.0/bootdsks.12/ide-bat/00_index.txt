@@ -1,0 +1,57 @@
+
+  Slackware IDE bootdisks
+  -----------------------
+
+  This directory contains a collection of batch files used to create Slackware
+  bootdisks.  To create a disk, just put a formatted floppy disk in your drive
+  and choose one of the options listed below to make the disk.  Read all of the
+  choices carefully to pick the disk that best matches the hardware in your
+  machine.  NOTE:  Using the VIEW program to create the Slackware bootdisks
+  may not work under Windows95 and 98.  If you're running Windows, you should
+  restart your machine in MS-DOS mode before creating a bootdisk.
+
+  NOTE:  All of these disks contain support for IDE hard drives and CDROM
+         drives.  If you have additional equipment, look for the disk that
+         supports it.
+
+  Name        Additional driver support
+  ----        -------------------------
+
+bare.bat           This is the disk to use for installation on most IDE
+                   based PCs.  It includes support for IDE/ATAPI CD-ROM
+                   drives.  Most CD-ROM drives made today fall into this
+                   catagory.
+  
+net.bat            An IDE/ATAPI bootdisk with Ethernet support.  Use this
+                   for installing over a network to an IDE hard drive.
+
+                   NOTE:  net.i, while a nice shortcut if it works, does
+                   not work on every machine, nor does it include every
+                   Linux network driver.  Because of the large number of
+                   devices it looks for, it can hang the machine or cause
+                   other problems if it misidentifies something.  This is
+                   an unavoidable risk when probing for hardware on the PC
+                   platform.
+
+                   If you run into problems with net.i (or it doesn't see
+                   your network card), don't panic, just use a disk with
+                   less drivers.  If you're not installing over the
+                   network, bare.i is probably the right choice.  If you
+                   need network support, use bare.i, plus put 'insmod' and
+                   the required network modules on another floppy to load
+                   before running setup.  The README files in the 
+                   ../modules directory explain this process in detail.
+
+                   This disk also includes PLIP support, but you'll need
+                   to pass a parameter to the kernel to tell the parallel
+                   port driver which IRQ to use.  For example, if you want
+                   to use a parallel port on 0x378, IRQ 7, you would use
+                   this command on the bootdisk's 'boot:' prompt:
+
+                   ramdisk parport=0x378,7
+
+                   You may also use this command to make the driver
+                   autodetect your port and IRQ:
+
+                   ramdisk parport=auto
+

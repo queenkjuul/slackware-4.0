@@ -1,0 +1,29 @@
+ The files in this directory are as follows.
+
+sticky-notes-0.8.tar.bz2
+sticky-notes-0.8.tar.gz
+
+ The source for the programs.
+
+sticky-notes-0.8-x86+glibc.tar.bz2
+sticky-notes-0.8-x86+glibc.tar.gz
+
+ The source for the programs compiled dynamicaly against glibc-2.0.x,
+just type... make install
+
+sticky-notes-0.8-x86.tar.bz2
+sticky-notes-0.8-x86.tar.gz
+
+ The source for the programs compiled staticaly 
+just type... make install
+
+ Note: the main program has been renamed from sticky_notes to
+sticky_note_server, there is also a new program called sticky_note_input
+which allows you to input data from the command line...
+
+date | sticky_note_input
+
+ or...
+
+date | sticky_note_input -n "my note"
+

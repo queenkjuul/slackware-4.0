@@ -1,0 +1,24 @@
+Begin3
+Title:          Prerelease of PCthreads (tm) for Linux.
+Version:        Version 0.6 (Beta)
+Entered-date:   10JUL95
+Description:    PCthreads(tm) for Linux is a pre-release beta test
+                multithread library based on the POSIX .1c standard.
+                In addtition to POSIX threads, the PCthreads kit also
+                contains a DCE threads library and a port of the DCE
+                threads exception handling package.
+Keywords:       Pthreads, multithreading, POSIX threads, Exceptions, DCE
+Author:         MPeterson@medio.net (Michael T. Peterson)
+Maintained-by:  
+Primary-site:   uiarchive.cso.uiuc.edu /pub/linux/sunsite/devel
+                pthread-V0.6/
+                33Kb ./pthread-V0.6/examples
+                38Kb ./pthread-V0.6/include
+                73Kb ./pthread-V0.6/lib
+                26Kb ./pthread-V0.6/man
+                8Kb ./pthread-V0.6/src
+Alternate-site: ftp.funet.fi
+Original-site:  
+Platforms:      Linux/80x86-based platforms, V1.1.59 and 1.2.8
+Copying-policy: FRS
+End

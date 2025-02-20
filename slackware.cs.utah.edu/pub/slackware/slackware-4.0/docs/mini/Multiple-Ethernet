@@ -1,0 +1,175 @@
+
+             MINI-HOWTO ON USING MULTIPLE ETHERCARDS WITH LINUX
+                                       
+Don Becker, becker@cesdis.gsfc.nasa.gov
+
+   
+   
+   This is an short note on configuring Linux to recognize multiple
+   ethernet adapters.
+   
+   For most people running a standard Linux distribution, just add this
+   line to the top of your /etc/lilo.conf file and re-run `lilo':
+   
+
+append = "ether=0,0,eth1"
+
+   
+   
+   That's all there is to it. The next time you boot Linux should
+   recognize your second ethercard.
+   
+What you did, and how you did it.
+
+   
+   
+   By default a stock Linux kernel probes for a single ethercard, and
+   once one is found the probe ceases. There are three defined ways to
+   cause the kernel to probe for additional cards. In increasing order of
+   difficulty and permanence they are:
+     * Passing parameters to your kernel at boot time.
+     * Configuring your boot loader to always pass those parameters.
+     * Modifying the kernel netcard probe tables in drivers/net/Space.c.
+       
+   
+   
+   For most people the second method is most appropriate, and it's the
+   one that was described above.
+   
+Passing parameters using your boot loader
+
+   
+   
+   In the following instructions it's assumed that you are using the
+   standard Linux boot loader, `LILO'.
+   
+   The Linux kernel recognizes certain parameters passed at boot-time.
+   Most often these parameters specify aspects of the configuration that
+   cannot be determined at boot-time. For network adaptors the following
+   parameter is recognized:
+   
+
+ether=<IRQ>,<IO-ADDR>,<PARAM1>,<PARAM2>,<NAME>
+
+   Valid numeric arguments may be in decimal, octal (with a leading '0')
+   or hexadecimal (preceded by a '0x'). The first non-numeric argument is
+   taken to be the NAME of the device. Empty arguments are taken to be
+   zero, and any omitted arguments before the name are left unchanged.
+   
+   IRQ
+          This entry specifies the IRQ value to be set (on boards with
+          software-settable IRQs) or used (on boards with jumpered IRQs).
+          A value of '0' means to read the IRQ line from the board (if
+          possible) or use autoIRQ if the board doesn't provide a way to
+          read the IRQ.
+          
+   IO-ADDR
+          This entry specifies a single base I/O address to probe. A
+          value of zero specifies that all reasonable I/O address are to
+          be probed.
+          
+          Normally an I/O region reservation map is used to decide if a
+          location can be probed. This map is ignored if an I/O address
+          is specified. This allows the "reserve=," parameter to exclude
+          other device probes from an IO region.
+          
+   PARAM1,PARAM2
+          Originally these entries were for specifying the memory address
+          of adaptors that use shared memory, like the WD8013. Over time
+          they have been extended to provide other driver-specific
+          information.
+          
+   NAME
+          The name of a predefined device. The stock kernel defines at
+          least "eth0", "eth1", "eth2", and "eth3". Other devices names
+          (e.g. for PPP, SLIP, or a pocket ethernet device) may exist but
+          will have different semantics.
+          
+   
+   
+   LILO provides two ways to pass these boot-time parameters to the
+   kernel. The most common way to do this is to type them immediately
+   after specifying the name of the boot image. The following example
+   enables all four of the available probe slots.
+   
+
+linux ether=0,0,eth1 ether=0,0,eth2 ether=0,0,eth3
+
+   
+   
+   Of course this is pretty complicated to type in at each boot, and
+   would preclude unattended reboots. You can make the kernel parameters
+   permanent by adding an "append" line to your LILO configuration file,
+   /etc/lilo.conf, and running LILO to install your updated
+   configuration.
+   
+
+append = "ether=0,0,eth1 ether=0,0,eth2 ether=0,0,eth3"
+
+Modifying your kernel
+
+   
+   
+   If it's possible for you to configure your system without modifying
+   the kernel source, I recommend that you do so. Modifying the source
+   code isn't self-documenting and results in extra complications at
+   upgrade time. Still there are a few instances where it is appropriate:
+     * When you need to enable more than four devices. (The
+       drivers/net/Space.c only has entries for eth0...eth3.)
+     * When you must limit the probe types to a subset of possible card
+       types e.g. when a probe confuses a different type of device.
+     * When you want a device name other than ethN.
+       
+   If you've decided to go this route, edit the device list in
+   drivers/net/Space.c to insert your desired values. If you need to add
+   a new device take care that you preserve the chaining: use the
+   existing list entries as a guide.
+   
+Special notes on the specific device probes
+
+  LANCE/PCNET CARDS
+  
+   
+   
+   The LANCE driver requires special low-memory DMA buffers, and so the
+   LANCE probe is differently and earlier than the other network device
+   probes. The upside of this is that you can ignore this whole section:
+   multiple LANCE cards are automatically probed for. The downside is
+   that the LANCE driver doesn't (yet!) use the LILO parameters e.g. IRQ.
+   
+  THE 3C509 IN ISA MODE
+  
+   
+   
+   The 3c509 has a unique feature that allows truly safe probing on the
+   ISA bus. This is great, but unfortunately for us this method doesn't
+   mix well with the rest of the probes.
+   
+   The most noticeable aspect is that it's difficult to predict a priori
+   which card will be accepted "first" -- the order is based on the
+   hardware ethernet address. That means that the ethercard with the
+   lowest ethernet address will be assigned to "eth0", and the next to
+   "eth1", etc. If the "eth0" ethercard is removed, they all shift down
+   one number.
+   
+   A related aspect is that it's not possible to leave an "earlier" card
+   disabled, enable a card at an address or IRQ different than the EEPROM
+   setting, or enable a card at a specific address.
+   
+  THE EISA 3C579 AND THE 3C509 IN EISA MODE
+  
+   Kernels before 1.1.25 will not correctly probe for multiple EISA-mode
+   cards. If multiple "ethN" entries are specified the *same* 3c5*9 card
+   will be found multiple times. The work-around is to specify the
+   slot-based I/O address explicitly. Kernels after 1.1.25 will correctly
+   find multiple EISA-mode cards, and will continue to find additional
+   ISA-mode adaptors after all of the potential EISA-mode addresses are
+   checked.
+     _________________________________________________________________
+   
+   Top
+   Linux at CESDIS
+    Author: Donald Becker, becker@cesdis.gsfc.nasa.gov
+    
+   The HowTo right-to-copy is given in
+   http://sunsite.unc.edu/mdw/HOWTO/HOWTO-INDEX-6.html

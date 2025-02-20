@@ -1,0 +1,17 @@
+Begin3
+Title:          Patch for Set-Boot, fixes problem with CDROM
+Version:        1.0
+Entered-date:   7 June 97
+Description:    Eliminates the message "MBR of /dev/hdb has bad magic number"
+Keywords:       SETBOOT, Boot Manager, patch
+Author:         gef@ceid.upatras.gr (Georgatos Photis)
+Maintained-by:  gef@ceid.upatras.gr (Georgatos Photis)
+Primary-site:  sunsite.unc.edu /pub/Linux/system/boot
+                                      1kB setboot-patch.tar.gz
+                                      1kb setboot-patch.lsm
+Original-site:  http://students.ceid.upatras.gr/~gef/programs
+Platforms:      Linux
+Copying-policy: GPL ( GNU Public License), please inform me of use!
+Required1:      OS/2 Boot Man
+Required2:      setboot-1.2.tar.gz
+End

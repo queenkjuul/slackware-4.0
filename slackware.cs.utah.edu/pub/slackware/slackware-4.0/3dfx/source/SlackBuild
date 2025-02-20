@@ -1,0 +1,151 @@
+#!/bin/sh
+# Set initial variables:
+PATH=$PATH:/usr/X11R6/bin
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+
+# ok, so this SlackBuild is a little goofy
+# I explode the Glide header files since they are used by
+# all three glide-*.tgz packages....you'll see, I promise
+cd $TMP
+tar xvzf $CWD/glide-headers.tar.gz
+
+for chipset in vg v2 vr
+do
+   echo "+=========+"
+   echo "| $chipset-libs |"
+   echo "+=========+"
+   # determine what Glide tarball to use
+   if [ "$chipset" = "vg" ]; then
+      TARBALL=$CWD/Glide_VG-2.46-i386-libc5.tar.gz
+   fi
+   if [ "$chipset" = "v2" ]; then
+      TARBALL=$CWD/Glide_V2-2.53-i386-libc5.tar.gz
+   fi
+   if [ "$chipset" = "vr" ]; then
+      TARBALL=$CWD/Glide_VR-2.46-i386-libc5.tar.gz
+   fi
+   # make the packaging directory
+   PKG=$TMP/package-$chipset-libs
+   if [ ! -d $PKG ]; then
+      mkdir -p $PKG # place for the package to be built
+   fi
+   # this is the temporary dir for building Mesa against Glide for VG
+   TMPPKG=$TMP/glidetmp
+   if [ ! -d $TMPPKG ]; then
+      mkdir -p $TMPPKG # place for the package to be built
+   fi
+   cd $TMPPKG
+   tar xzvf $TARBALL
+   # build Mesa against the Glide VG libraries
+   cd $TMP
+   tar xvzf $CWD/MesaLib-3.0.tar.gz
+   cd Mesa-3.0
+   zcat $CWD/Make-config.diff.gz | patch
+   zcat $CWD/mklib.glide.diff.gz | patch
+   make linux-glide
+   # make the glide package
+   cd $PKG
+   tar xvzf $TARBALL
+   cd $TMP/Mesa-3.0/lib
+   cp -d * $PKG/usr/lib
+   chmod 755 $PKG/usr/lib/*
+   mkdir -p $PKG/usr/include/glide
+   mkdir -p $PKG/usr/include/GL
+   cd $TMP/Mesa-3.0/include/GL
+   cp -a * $PKG/usr/include/GL
+   cd $TMP/glide/include
+   cp -a * $PKG/usr/include/glide
+   # copy documentation for Mesa
+   mkdir -p $PKG/usr/doc/Mesa-3.0
+   cd $TMP/Mesa-3.0
+   cp -a README* $PKG/usr/doc/Mesa-3.0
+   cp -a CONFORM $PKG/usr/doc/Mesa-3.0
+   cp -a FUTURE $PKG/usr/doc/Mesa-3.0
+   cp -a IAFA-PACKAGE $PKG/usr/doc/Mesa-3.0
+   cp -a LICENSE $PKG/usr/doc/Mesa-3.0
+   cp -a RELNOTES $PKG/usr/doc/Mesa-3.0
+   cp -a VERSIONS $PKG/usr/doc/Mesa-3.0
+   # fix permissions since we really didn't have a framework
+   cd $PKG/usr/include
+   chmod 755 *
+   chmod 644 GL/*
+   chmod 644 glide/*
+   cd $PKG/usr/doc
+   chmod 755 Mesa-3.0
+   chmod 644 Mesa-3.0/*
+   cd $TMP
+   chown -R root.root package-$chipset-libs
+   # build the package
+   cd $PKG
+   yes | makepkg $TMP/$chipset-libs.tgz
+   # clean up temporary directories
+   rm -rf $TMP/Mesa-3.0
+   rm -rf $TMP/glidetmp
+done
+
+echo "+==========+"
+echo "| glidesdk |"
+echo "+==========+"
+PKG=$TMP/package-glidesdk
+if [ ! -d $PKG ]; then
+   mkdir -p $PKG # place for the package to be built
+fi
+cd $PKG
+tar xvzf $CWD/Glide2x-SDK.tar.gz
+chmod 755 $PKG
+tar cvzf $TMP/glidesdk.tgz .
+
+echo "+=====+"
+echo "| xvr |"
+echo "+-----+"
+PKG=$TMP/package-xvr
+if [ ! -d $PKG ]; then
+   mkdir -p $PKG # place for the package to be built
+fi
+cd $PKG
+tar xvzf $CWD/XFree86_VR-SVGA-3.3.2-i386-libc5.tar.gz
+cat $PKG/usr/X11R6/man/man1/XF86_SVGA.1x | gzip -9c > \
+   $PKG/usr/X11R6/man/man1/XF86_SVGA.1x.gz
+rm $PKG/usr/X11R6/man/man1/XF86_SVGA.1x
+chmod 644 $PKG/usr/X11R6/man/man1/XF86_SVGA.1x.gz
+cat $PKG/usr/X11R6/man/man5/XF86Config.5x | gzip -9c > \
+   $PKG/usr/X11R6/man/man5/XF86Config.5x.gz
+rm $PKG/usr/X11R6/man/man5/XF86Config.5x
+chmod 644 $PKG/usr/X11R6/man/man5/XF86Config.5x.gz
+# make the package
+chmod 755 $PKG
+cd $PKG
+tar cvzf $TMP/xvr.tgz .
+
+echo "+=========+"
+echo "| xvrlibs |"
+echo "+=========+"
+PKG=$TMP/package-xvrlibs
+if [ ! -d $PKG ]; then
+   mkdir -p $PKG # place for the package to be built
+fi
+cd $PKG
+tar xvzf $CWD/XFree96_VR-libs-3.3.2-i386-libc5.tar.gz
+# create the package
+chmod 755 $PKG
+yes | makepkg $TMP/xvrlibs.tgz
+
+# remove Glide header files that were used during builds
+rm -rf $TMP/glide
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/package-vg-libs
+  rm -rf $TMP/package-v2-libs
+  rm -rf $TMP/package-vr-libs
+  rm -rf $TMP/package-glidesdk
+  rm -rf $TMP/package-xvr
+  rm -rf $TMP/package-xvrlibs
+fi

@@ -1,0 +1,18 @@
+Begin3
+Title:		Protolog
+Version:	1.0
+Entered-date:	17FEB99
+Description:	Protolog (The Internet Protocols logger)
+		It is a set of three daemons that logs incoming
+		IP/TCP, IP/UDP and IP/ICMP packets.
+		Also produces detailed logs.
+Keywords:	security log logging IP TCP UDP ICMP packet daemon
+Author:		diego@grigna.com (Diego Javier Grigna)
+Maintained-by:	diego@grigna.com (Diego Javier Grigna)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/monitor
+		28kB protolog-1.0.8.tar.gz
+Alternate-site:	http://www.grigna.com/diego/linux/
+Original-site:	http://www.grigna.com/diego/linux/
+Platforms:	Linux
+Copying-policy:	GPL
+End

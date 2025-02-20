@@ -1,0 +1,141 @@
+From cs.athabascau.ca!smail3-users-request Mon Nov  7 18:56:39 1994
+>From erlendbm  Mon Nov  7 18:56:39 1994
+Return-Path: <smail3-users-request@cs.athabascau.ca>
+Received: from aupair.cs.athabascau.ca by colargol.edb.tih.no  with smtp
+	(Linux Smail3.1.28.1 #12) id m0r4YJ3-0001uda; Mon, 7 Nov 94 18:56 MET
+Received: by aupair.cs.athabascau.ca (Smail3.1.28.1 #8)
+	id m0r4YYa-0002AQa; Mon, 7 Nov 94 11:12 MST
+Message-Id: <m0r4ZYz-000JueC@pigpen.ohm.york.ac.uk>
+To: smail3-users@cs.athabascau.ca, smail3-wizards@cs.athabascau.ca
+Cc: linux-uk@mailbase.ac.uk
+Subject: ANNOUNCEMENT - Release of smail 3.1.29
+X-Mailer: exmh version 1.3 4/7/94
+Date: Mon, 07 Nov 1994 19:17:05 +0100
+From: Nigel Metheringham <nigelm@ohm.york.ac.uk>
+Precedence: bulk
+Status: RO
+
+
+The Smail Development Team announce the release of version 3.1.29 of the 
+smail MTA (Mail Transport Agent).
+
+Introduction
+============
+Smail is an MTA, that is it routes and sends messages within and between 
+different computers.  It is not an MUA (Mail User Agent) - you will need one 
+of these to use smail.
+
+Smail will run on a wide variety of Unix like systems.  It handles many forms 
+of mail transport including internet type SMTP and UUCP, other transports and 
+routing methods can easily be configured in if required.
+
+Smail is command line compatible with the sendmail MTA, and can be used as a 
+drop in replacement for sendmail.  However it is not internally compatible 
+with sendmail.  In particular the configuration files are completely 
+different although much simpler in form.
+
+Changes from 3.1.28
+===================
+The 3.1.29 release is the first to be co-ordinated by the Smail Development 
+Group, following the decision by Ronald S Karr (the primary developer of 
+smail previous to this) to take a less active role.  The group includes 
+Ronald Karr, so this is a change in emphasis rather than ownership!
+
+Changes are detailed in the CHANGES file within the distribution.  However in 
+brief:-
+  + Several security holes fixed
+  + Bug fixes to SMTP retry code
+  + New bindlib (for DNS/MX routing)
+  + RFC1413 identification (with external library)
+  + some extra functionality including queue reprocessing speed ups
+  + Linux support*
+
+*Linux has been supported by previous versions of smail.  The reason people 
+had so many problems with Linux is that the descriptions of Linux produced 
+for smail by a number of people were incorrect.  There was also one bug in 
+smail ((now fixed) that only shows on a Linux system.  This version is 
+correctly configured for Linux, if you are using a binary distribution of 
+smail on linux we implore you to upgrade so that we stop getting queries 
+regarding smail on linux which are purely due to someone releasing a broken 
+binary version to the net.
+
+Release Files
+=============
+The release files are available from ftp.uu.net and its mirror sites, of 
+which there are too many to list here.  Please use a local mirror to keep the 
+bandwidth used down - and to increase your own speed of access.  On UUNET the 
+files are in the directory
+	/networking/mail/smail
+
+There are 4 files in this release - you will not require them all.
+
+smail-3.1.28-29.patch
+        The patch file from 3.1.28 to 3.1.29
+        Needs a clean 3.1.28 to patch to.
+        This is big since all the version headers were changed
+
+smail-3.1.29.tar.gz
+        The source in tar/gzip format
+
+smail-linuxbin-3.1.29.tar.gz
+        A linux binary distribution.
+        No sample configs are included.
+        Compiled on Slackware 2.0.1, config files go in /etc/smail
+
+smail-psdocs-3.1.29.tar.gz
+        Smail 3.1 documentation in PS format for A4 paper.
+ 
+Bugs
+====
+
+Please report any bugs to 
+	smail3-bugs@smail.sbay.org
+
+This will go to a bug tracking system which will send you a reply back.  
+Please be patient for a full reply.
+
+Late Breaking Stuff
+===================
+There is one small patch to the SGI IRIX 5.x configuration file, which I 
+enclose here:-
+
+*** 1.1	1994/10/18 08:30:04
+--- irix5	1994/11/04 05:39:12
+***************
+*** 1,4 ****
+! # $Id: irix5,v 1.1 1994/10/18 08:30:04 nm4 Exp $
+  #
+  # irix5 - describe characteristics of SGI IRIX version 5.X (5.2, actually)
+  #
+--- 1,4 ----
+! # $Id: irix5,v 1.1.1.1 1994/11/04 05:37:44 lyndon Exp $
+  #
+  # irix5 - describe characteristics of SGI IRIX version 5.X (5.2, actually)
+  #
+***************
+*** 11,17 ****
+  # The following override the SVR4 settings - Irix has fixed some of the
+  # braindamage.
+  CC=cc
+- OSLIBS=-lc_s
+  INCLUDES=
+  
+  HAVE=$HAVE:RENAME:MKDIR:SYSEXITS:YP:FTRUNCATE:GETHOSTNAME
+--- 11,16 ----
+
+Plea
+====
+Please can you keep smail related communication with me to the smail3-bugs 
+adress given above, or to the mailing lists which I do read and often reply 
+to.  I cannot cope with a torrent of personally address smail3 mail and do my 
+real job as well!
+
+	Nigel.
+
+
+--
+- Nigel Metheringham  --  EMail: nm4@unix.york.ac.uk nigelm@ohm.york.ac.uk -
+- System Administrator, Electronics Dept, University of York, York YO1 5DD -
+- Tel: +44 1904 432374, Fax: +44 1904 432335 | PGP key available from WWW  -
+- WWW: http://www.amp.york.ac.uk/~nm4/     |                               -
+

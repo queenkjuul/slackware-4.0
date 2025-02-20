@@ -1,0 +1,22 @@
+This is the first "official" release of tftp for Linux TCP/IP.
+
+It's not the same as the testing version on nic.funet.fi.
+Bug fixes: Alarm Clocks.
+
+You should have the inetd/config utils installed in /usr/etc/inet to use
+tftp/tftpd.
+
+The following line should be in /usr/etc/inet/services:
+tftp            69/udp
+
+and this one in /usr/etc/inet/inetd.conf:
+tftp    dgram   udp     wait    root    /usr/etc/inet/tftpd     tftpd
+
+Send a HUP signal to or restart inetd after installing tftpd.
+
+NOTE: tftp is often looked upon as a security hole, since it provides
+unauthenticated access to world-readable files. You may wish to reconsider
+installing it if you don't want unrestricted access to those files.
+
+David Black 10/24/92
+dlbb0@amdahl.com

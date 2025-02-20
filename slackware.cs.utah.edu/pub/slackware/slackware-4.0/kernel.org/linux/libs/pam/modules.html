@@ -1,0 +1,440 @@
+<TITLE>Linux-PAM modules etc. page</TITLE>
+<H3>Modules/Applications available or in progress...</H3>
+
+<p>
+Here is a list of the modules that people are using/developing for
+use with Linux-PAM:
+
+<p> The point of having modules is that you can just plug them in(!)
+In other words, they do not need to be compiled at the same time as
+the Linux-PAM library to work. Here are some alternative sources for
+modules that are being provided independently of the main library:</p>
+
+<p>
+<ul>
+
+<li> <B>Squid</B>
+<ul>
+<li>Henrik Nordstr&ouml;m has added <a
+href="http://hem.passagen.se/hno/squid/">PAM support</a> to <a
+href="http://squid.nlanr.net/">squid</a>.
+</ul>
+<li> <B>Perl</B>
+<ul>
+<li> Nikolay Pelov has written a <a
+href="http://www.cs.kuleuven.ac.be/~pelov/pam/">Perl 
+module for accessing the PAM library</a>.
+</ul>
+
+<li> AFS (Andrew Filesystem):
+<ul>
+<li>Tobias Sch&auml;fer has written a module for doing <a href=
+"http://www.uni-hohenheim.de/~schaefer/linux/pam/index.html">authentication
+and password changing</a> based on the AFS commands "klog", "unlog"
+and "kas".
+<li>Tobias has also written a logging module which you can find in the
+same place.
+</ul>
+
+<li> <b>pam_if</b>
+<ul>
+<li> <a href="http://www.dcit.cz/~kan/pam/">Pavel Kankovsky</a> has an
+interesting module that can nest other modules conditionally. He's
+also offering an ftpd patch.
+</ul>
+
+<li> <b>pam_xauth</b>
+<ul>
+<li> pam_xauth will be called by su (and other programs that do the
+same thing, presumably...) and will forward xauth keys between users
+in a configurable way, manageable (including disabling...) by the user
+running su and the user whose identity is being assumed.  It will even
+remove keys on a closed session when appropriate (but not when
+inappropriate).
+</ul>
+<li> <b>pam_console</b>
+<ul>
+<li> <i>???</a> From Michael K. Johnson.
+</ul>
+
+<li> <B>LDAP</B>
+<ul>
+<li> <a href="http://www.padl.com">Luke Howard</a> has written a pair of <a
+href="ftp://ftp.padl.com/pub/nss_ldap.tar.gz">NSS</a> and
+<a href="ftp://ftp.padl.com/pub/pam_ldap.tar.gz">PAM</a> modules.  There are
+also a bunch of <a
+href="ftp://ftp.padl.com/pub/MigrationTools.tar.gz">migration
+tools</a>. (Follow these links for more info on <a
+href="http://www.rage.net/ldap/">LDAP</a> and <a
+href="http://www.umich.edu/~dirsvcs/ldap/index.html">University of
+Michigan LDAP page</a>).
+<li> Chris Albone had previously written an
+<a href="http://anath.gmp.usyd.edu.au/pam_ldap">LDAP</a> PAM module,
+but this link seems to be broken [Sorry].
+</ul>
+
+<li> <b>pam_tcpd</b>
+<ul>
+<li>
+Max Liccardo has written <a
+href="http://village.flashnet.it/users/fn50678/pam/pam_tcpd.html"
+>PAM TCPD</a> module which implements TCP level access control with PAM.
+</ul>
+
+<li> <b>pam_tacplus</b>
+<ul>
+Pawel Krawczyk has written a <a
+href="http://www.ceti.com.pl/~kravietz/progs/pam_tacplus.html"
+>PAM module allowing basic authentication, authorization and accounting
+over TACACS+ protocol.</a>
+</ul>
+<li> <b>pam_make</b>
+<ul>
+Mihai Ibanescu has written a <a
+href="ftp://sysadm.dntis.ro/pub/devel/pam/pam_make/">password
+module</a> that runs 'make' in a specified directory.  The <a
+href="ftp://sysadm.dntis.ro/pub/devel/pam/pam_make/README">need for
+this</a> stemed from wanting to keep db in synch with the
+<tt>/etc/passwd</tt> file.
+</ul>
+<li> <B>IMAP</B> 
+<ul>
+<li>There are PAM patches for Cyrus imap-server here:
+<a href="ftp://sysadm.dntis.ro/pub/devel/cyrus/"
+>ftp://sysadm.dntis.ro/pub/devel/cyrus/</a>.
+</ul>
+
+<li> <B>ProFTPD</B> 
+<ul>
+<I>MacGyver</I> has written a <a
+href="http://www.macgyver.org/software/proftpd/mod_pam.c">module</a>
+to give PAM support to <a href="http://www.proftpd.org/">ProFTPD</a>.
+Read more here: <a
+href="http://www.macgyver.org/software/proftpd-pam.html"
+>http://www.macgyver.org/software/proftpd-pam.html</a>.
+</ul>
+
+<li> <B>Pamrelay</B>
+<ul>
+<li> Tom Rothamel has started work on <I>Pamrelay</I> which is a
+networked authentication-server model.  For the source to his server
+and the complementary PAM module look <a href="http://tr.ml.org/~tom/software/pamrelay">here</a>.
+</ul>
+
+<li> <B>Netware</B>
+<ul>
+<li> David Airlie has written a Netware module that is available from
+<a href="http://www.csn.ul.ie/~airlied/pam_ncp/">here</a>.  <li>John
+Taylor and Brian Hammond have written a pam_nw_auth module for
+authenticating users against a Netware server.  This module is
+available from the Linux-PAM <a href="pre/modules">pre-release
+directory</a> [According to Alexander List, when combined with <a
+href="ftp://platan.vc.cvut.cz/pub/linux/ncpfs">libncp</a>, it will
+allow authentication via NDS (Netware 4) servers].
+</ul>
+
+<li> <B>SAMBA</B>
+<ul>
+<li>Early alpha attempt from John Lane to make a module to change
+passwords: <a
+href="http://www.cse.msu.edu/~lanejohn/en/hacks/pam_smb_passwd-0.1.tar.gz"
+>http://www.cse.msu.edu/~lanejohn/en/hacks/pam_smb_passwd-0.1.tar.gz</a>
+using PAM.
+
+<li>David Airlie has produced a module that validates a username /
+password / domain combination <a
+href="http://www.csn.ul.ie/~airlied/pam_smb/">using any SMB (CIFS)
+Server, which includes an NT Server</a>.
+
+<li>Luke Leighton has used David's module as the basis for a <a
+href="ftp://samba.anu.edu.au/pub/samba/pam_ntdom">more secure form of
+validation</a> that can only be performed against a Primary Domain
+Controller (either an NT or a <a
+href="http://samba.anu.edu.au/samba">Samba</a> PDC).
+
+<li>Steve Langasek, has provided modules that will keep <a
+href="ftp://ftp.netexpress.net/pub/pam/">UNIX and SMB password changes
+in sync</a> by amending the UNIX database when you change a SMB
+password.
+
+</ul>
+
+<li> NRL OPIE:
+<ul>
+<li>Andy Berkheimer has written <a
+href="http://www.tho.org/~andy/pam-opie.html">PAM-OPIE module</a>.
+<li> (Backgroud information, NRL OPIE is a one-time password
+authentication scheme based on S/Key and works on most unix systems.
+Available in <a href="ftp://ftp.ipv6.inner.net/pub/opie"
+>ftp://ftp.ipv6.inner.net/pub/opie</a> and <a
+href="ftp://ftp.inner.net/pub/opie">ftp://ftp.inner.net/pub/opie</a>.
+</ul>
+
+<li>People at Stanford including Tom Wu have created something
+called <a href="http://srp.stanford.edu/srp/">Secure Remote Password
+(SRP)</a> and it has support for PAM -- both <a
+href="http://srp.stanford.edu/srp/export/current/">Linux</a> and <a
+href="http://srp.stanford.edu/srp/export/current/">Solaris</a>.
+
+<li> <a href="mailto:pam@engr.leemah.com">Vladimir Gurevich</a> of <a
+href="http://www.leemah.com">SafeAccess(tm) technology</a> has
+released two <a href="ftp://engr.leemah.com/pub/pam">modules</a> in
+addition to some <a
+href="ftp://engr.leemah.com/pub/pam/docs/">documentation</a>: The
+first is <a href="ftp://engr.leemah.com/pub/pam">pam_infocard.so</a>
+which authenticates users using LeeMah Datacom SafeAccess(tm)
+Challenge/Response (or Response-only) technology against a local user
+database.  The other is covered in the next section.
+
+<li>One of the glorious things about PAM is that you can pick and
+choose the way you implement something.  For example, we have a three
+module flavors and a server implementation to get PAM support into
+your RADIUS system:
+<ul>
+<li> For a PAM supporting Radius server take a look at: <a
+href="http://www.iphil.net/~map/radius/">http://www.iphil.net/~map/radius/</a>.
+
+<li> <a href="http://www.cryptocard.net/">Cryptocard</a> have some <a
+href="ftp://ftp.cryptocard.net/pub/alan/pam_radius_auth.tar">GPL'd
+pam_radius_auth code</a> (works for linux and solaris).
+
+<li> <a href="http://www.leemah.com">SafeAccess(tm) technology</a> has
+releaseed a GPL'd <a
+href="ftp://engr.leemah.com/pub/pam">pam_lradius.so</a> which
+authenticates users using RADIUS. The module supports RADIUS
+Access-Challenge request and thus can be used to provide
+SafeAccess(tm) authentication against an appropriate RADIUS server
+(like TraqNet8000 for Windows NT and patched Merit, Livingston &
+Ascend UNIX RADIUS servers).
+
+<li> The standard <a href="pre">Linux-PAM</a> distribution contains a
+non-authentication (only session logging) <tt>pam_radius</tt>
+implementation by Cristian Gafton.
+</ul>
+
+<li> Thorsten Kukuk has produced a pam_keylogin module for <a href=
+"ftp://ftp.kernel.org/pub/linux/utils/net/NIS+/">NIS+</a> support.
+
+<li> Luigi Catuogno is working on a Transparent Cryptographic
+Filesystem <a href="ftp://mikonos.dia.unisa.it/pub/tcfs/v2.0/pam">PAM
+module</a>.
+
+<li>Tom Ryan's modules: 
+<a href="http://camlaw.rutgers.edu/pam/">http://camlaw.rutgers.edu/pam/</a>
+
+<li>Tim Baverstock's modules (and more):
+<a
+href="http://www.sable.demon.co.uk/pam/">http://www.sable.demon.co.uk/pam/</a>
+
+<li>Ingo L&uuml;tkebohle's page about <a 
+href="http://blank.pages.de/pam/">getting Apache to use PAM</a>.
+
+</ul>
+
+<p>
+The following modules are (mostly) to be found in the Linux-PAM source tree:
+
+<ul>
+
+<p>
+<li><tt>pam_cracklib:</tt></a>
+strength checking for new passwords. Requires the cracklib library to
+compile: libcrack. Intended for stacking before other password modules.
+<br>
+<em>Cristian Gafton &lt;gafton@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_deny:</tt>
+deny all forms of access;
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_desgold:</tt>
+<a href="http://www.safeword.com/">Enigma Logic</a> DESGold card -- smart card;
+<br>
+<em>Alexander O. Yuriev &lt;alex@yuriev.com&gt;</em>
+
+<p>
+<li><tt>pam_filter:</tt>
+module to allow easy access to the stdin/out of a running process. It
+can be used to log users input etc..
+Current pluggable filters include:
+<ul>
+<li><tt>upperLOWER</tt>:
+demonstration filter that transposes upper and lower case characters.
+</ul>
+You are encouraged to write your own.. (Email me if you need help.);
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_ftp:</tt>
+A module that checks if the user is `<tt>ftp</tt>' or `<tt>anonymous</tt>'.
+On finding this to be the case, it prompts for a email address for a
+password, and proceeds to set the <tt>PAM_RUSER</tt> item with this value.
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_group:</tt>
+extension to the <tt>/etc/group</tt> concept. This module grants group
+privileges based on who the user is when/where they are requesting a
+service from and what they are trying to do;
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_kerberos:</tt>
+<a href="http://web.mit.edu/kerberos/www/">Kerberos</a> authentication scheme;
+<br>
+<em>Theodore Y. Ts'o &lt;tytso@mit.edu&gt;</em> 
+<br>
+An implementation has been written for 
+<a href="ftp://ftp.dementia.org/pub/pam/">Kerberos 4 authentication</a>
+<br>
+<em>Derrick J Brashear &lt;shadow+@andrew.cmu.edu&gt;</em>
+<br>
+<a href="http://www-personal.engin.umich.edu/~itoi/">Kerberos 5
+authentication</a>
+<br>
+<em>Naomaru Itoi  &lt;itoi@eecs.umich.edu&gt;</em>
+
+<p>
+<li><tt>pam_limits:</tt>
+a module to set the resource limits for a service. Two implementations of
+this have been merged to produce this module.
+<br>
+<em>Cristian Gafton &lt;gafton@redhat.com&gt;</em> and
+<br>
+<em>Elliot Lee &lt;sopwith@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_listfile:</tt> authenticate users based on the
+contents of a specified file.
+<br>
+<em>Elliot Lee &lt;sopwith@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_nologin:</tt>
+This module always lets root in; it lets other users in only if the file
+/etc/nologin doesn't exist.  In any case, if /etc/nologin exists, it's
+contents are displayed to the user.
+<br>
+<em>Michael K. Johnson &lt;johnsonm@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_passwd+:</tt> password strength checking;
+<br>
+<em>Al Longyear &lt;longyear@netcom.com&gt;</em>
+
+<p>
+<li><tt>pam_permit:</tt> always allow access;
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_pwdb:</tt> plug in replacement for <tt>pam_unix_*</tt>
+that uses the Password Database library.
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_radius:</tt> RADIUS authentication, using the <a
+href="http://sysadm.sorosis.ro/devel/pwdb/">Password Database
+library</a>.  [Redhat offer fixes and changes to libpwdb, for info on
+these, take a look here: <a
+href="http://rufus.w3.org/linux/RPM/libpwdb.so.0.html">libpwdb</a>. <a
+href="http://www.nl.debian.org/Packages/unstable/allpackages.html">Debian
+also have a package for this</a>.]
+
+<br>
+<em>Cristian Gafton &lt;gafton@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_rhosts:</tt> rhost verification as per rlogin etc..;
+<br>
+<em>Al Longyear &lt;longyear@netcom.com&gt;</em>
+
+<p>
+<li><tt>pam_rootok:</tt> module to authenticate the user if their
+(real) uid is root (intendend for use with the <tt>sufficient</tt>
+control flag);
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_securetty:</tt> /etc/securretty access controls;
+<br>
+<em>Elliot Lee &lt;sopwith@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_shells:</tt> authenticate users if their shell is
+listed in the <tt>/etc/shells</tt> file.
+<br>
+<em>Erik Troan &lt;ewt@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_skey:</tt> <a href="http://search.yahoo.com/bin/search?p=S%2FKey&d=y&g=0&s=a&w=s&n=25">S/Key</a> authentication;
+<ul>
+<li><em>Jeff Uphoff  &lt;juphoff@tarsier.cv.nrao.edu&gt;</em>
+<ul>
+<li><a href="ftp://linux.nrao.edu/pub/people/juphoff/PAM/">ftp://linux.nrao.edu/pub/people/juphoff/PAM/</a>
+</ul>
+<li><tt>pam_skey2:</tt> is being worked on by
+<em>Sean Reifschneider &lt;jafo@tummy.com&gt;</em>
+</ul>
+
+<p>
+<li><tt>pam_stress:</tt> stress test your application with this module;
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_tally:</tt> this module keeps track of the number of times
+an attempt is made to access an account.  It can deny access after a
+specified number of failures.  Root's account can be treated
+specially.  RPMS for newer versions of this module than the one
+contained in the source tree are here:
+<a href="ftp://rudy.mif.pg.gda.pl/pub/People/milek"
+>ftp://rudy.mif.pg.gda.pl/pub/People/milek</a>.
+<br>
+<em>Tim Baverstock &lt;warwick@demon.co.uk&gt;</em>
+
+<p>
+<li><tt>pam_time:</tt>
+authorize users based on when and where they log in (like securetty,
+but) in a way that is dependent on the service they are requesting;
+<br>
+<em>Andrew Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_unix_*:</tt> standard unix authentication (with some shadow support);
+This module is being supported by Red Hat.
+<br>
+<em>Michael K. Johnson &lt;johnsonm@redhat.com&gt;</em>
+
+<p>
+<li><tt>pam_warn:</tt>
+provides a diagnostic tool for dumping information to <tt>syslog(2)</tt>
+about the service-application.
+<br>
+<em>Andrew G. Morgan &lt;morgan@linux.kernel.org&gt;</em>
+
+<p>
+<li><tt>pam_wheel:</tt> for enforcing the wheel group privileges;
+<br>
+<em>Cristian Gafton &lt;gafton@redhat.com&gt;</em>
+
+</ul>
+
+<HR>
+
+<a href="index.html">Back to Linux-PAM</a> also see the <a
+href="http://http://temp.redhat.com/linux-info/pam">The Red Hat PAM page</a>.
+
+<hr>
+
+Send comments etc. to
+<a href="mailto:pam-list@redhat.com">The Linux-PAM mailing list</a>.
+Or to <a href="mailto:morgan@linux.kernel.org">me</a>.

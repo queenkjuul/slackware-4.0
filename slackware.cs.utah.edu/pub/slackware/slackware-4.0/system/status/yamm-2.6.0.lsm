@@ -1,0 +1,16 @@
+Begin3
+Title:          yamm
+Version:        2.6.0
+Entered-date:   24JAN1999
+Description:    Yet Another Micro Monitor, a powerful system monitor/tool.
+Keywords:       yamm top ps uptime kill proc renice free
+Author:         fizban@tin.it (Riccardo Facchetti)
+Maintained-by:  fizban@tin.it (Riccardo Facchetti)
+Primary-site:   ftp://ftp.oasi.gpa.it/pub/yamm/
+                yamm-2.6.0.tar.gz      (77 Kb)
+Alternate-site: sunsite.unc.edu /pub/linux/system/status
+                yamm-2.6.0.tar.gz      (77 Kb)
+Original-site:  ftp.dsi.unimi.it
+Platform:       Linux, HPUX
+Copying-policy: GNU General Public License
+End

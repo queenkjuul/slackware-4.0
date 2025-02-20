@@ -1,0 +1,28 @@
+Begin3
+Title:          vgrind binary distribution
+Version:        1.0
+Entered-date:   April 8, 1995
+Description:    vgrind formats the program sources which are arguments in
+                a nice style using troff.  Comments are placed in
+                italics, keywords in bold face, and the name of the
+                current function is listed down the margin of each
+                page as it is encountered.
+Keywords:       PostScript, Print, Source Code
+Author:         BSD
+Maintained-by:  Frank_Swasey@vnet.ibm.com (Frank Swasey)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Printing
+                16909 vgrindbin.tgz
+Original-site:  ftp.uu.net /systems/unix/bsd-sources/usr.bin/vgrind/
+                364  Makefile.Z
+                1312 pathnames.h.Z
+                6560 regexp.c.Z
+                519  tmac.vgrind.Z
+                7969 vfontedpr.c.Z
+                3541 vgrind.1.Z
+                2293 vgrind.sh.Z
+                3470 vgrindefs.5.Z
+                4477 vgrindefs.c.Z
+                4009 vgrindefs.src.Z
+Platform:       groff, PostScript printing capability
+Copying-policy: BSD
+End

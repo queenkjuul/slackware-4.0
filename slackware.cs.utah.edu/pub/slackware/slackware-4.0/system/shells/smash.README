@@ -1,0 +1,10 @@
+i am currently working on getline support (hopefully done w/in the
+next two weeks; i've got two programming projects due, one of
+which i should be working on as i type this.).  I'm using getline
+'cause it's smaller, but it will make the shell not as small as it
+could possibly be, so i'll still keep the bare input functions there.
+getline allows Smash to have a much nicer command line (with editing,
+scrolling trough history, etc.
+
+-jonM<><
+jmadison@klingon.iupucs.iupui.edu

@@ -1,0 +1,30 @@
+Begin3
+Title:          clig - Command Line Interpreter Generator
+Version:        1.1.1
+Entered-date:   1999-01-23
+Description:    Clig generates C-code to take apart the typical
+                command line of a C program. Input to clig is a simple
+                description file. It specifies the name of options,
+                their type (Flag, String, Float, Int), the range of
+                the number of parameters, the allowed range (for Int
+                and Float), whether the option must show up on the
+                command line and a string to put in a usage
+                message. Clig generates self contained C-code to be
+                compiled into your program. Besides the command line
+                interpreter it creates a usage message and the
+                skeletton of a manual page. Clig does a lot more than
+                getopt.
+Keywords:       code generator, C, C++, command line, getopt
+Author:         kir@iitb.fhg.de (Harald Kirsch)
+Maintained-by:  kir@iitb.fhg.de (Harald Kirsch)
+Primary-site:   http://wsd.iitb.fhg.de/~kir/clighome/
+                    40kB clig-*.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/???
+Original-site:  originally developed on Linux
+Platforms:      Tcl, because clig itself is a Tcl-program. However the
+                resulting C does not rely in any way on Tcl.
+Copying-policy: GPL
+End
+
+
+CVS: $Revision: 1.3 $, $Date: 1999/01/23 07:58:40 $

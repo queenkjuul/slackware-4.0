@@ -1,0 +1,19 @@
+Begin3
+Title:          flex
+Version:        2.5.3
+Entered-date:   02JUL96
+Description:    Fast lexical analyzer generator, a tool for generating
+                programs that perform pattern-matching on text.
+
+                Binary provided by Jeremie Petit (petit@eurecom.fr) is
+                coming with no warranty.
+Keywords:       flex, lexical analyser
+Author:         vern@ee.lbl.gov (Vern Paxson)
+Primary-site:   prep.ai.mit.edu /pub/gnu
+                384355 flex-2.5.3.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/compiler_tools
+                 95807 flex-2.5.3.ELF.tgz
+                384355 flex-2.5.3.src.tgz
+Platforms:      unix and others. Bison.
+Copying-policy: GPL
+End

@@ -1,0 +1,22 @@
+Begin3
+Title:          Splitdigest
+Version:        2.4
+Entered-date:   27 March 1998.
+Description:    Splitdigest undigests a file which contains one or more
+		digests concatenated together. The files generated can be
+		read by using "mail -f" and each message in the digest can
+		be read/replied to as individual messages. Splitdigest can
+		be easily configured to recognise a variety of digest
+		formats without recompilation.
+Keywords:       digest, splitdigest, undigest, mail, mailing list
+Author:         cyfheng@singnet.com.sg (Christopher Heng)
+Maintained-by:  cyfheng@singnet.com.sg (Christopher Heng)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Mail/mailhandlers/
+		splitdigest-2.4.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: GPL version 2. In addition, you may not alter or remove any
+		of the copyright notices and/or conditions for use and
+		distribution.
+End

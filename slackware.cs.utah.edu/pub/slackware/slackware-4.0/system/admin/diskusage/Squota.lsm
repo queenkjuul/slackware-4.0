@@ -1,0 +1,18 @@
+Begin3
+Title:          Squota - Screw Quota
+Version:        .02
+Entered-date:   16May96
+Description:    A set of small bourne scripts to keep track of the
+		average HD usage of users. This is a nice little
+		package for those who can't get quota working.
+		verion .01b should be fix installation problems..
+		File size: 2677 bytes in .tgz format
+Keywords:       quota
+Author:         gman@infinex.com (Gary Barrueto)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+Alternate-site: 
+Original-site:  
+Platforms:      BASH/KORN shell
+Copying-policy: Can be distrubited so long as it is un-modified.
+End

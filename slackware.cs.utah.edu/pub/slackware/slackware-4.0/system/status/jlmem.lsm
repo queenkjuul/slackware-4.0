@@ -1,0 +1,27 @@
+Title        = jlmem
+Version      = 1.00
+Desc1	     = jlmem stands for Java Linux MEmory Monitor and runs under Java 
+Desc2	     = on LINUX machines. It's a tool designed designed to make monitoring 
+Desc3	     = your memory usage easy by displaying a simple bar graph for both 
+Desc3	     = real and virtual memory. 
+Author       = Robert Gasch
+AuthorEmail  = Robert_Gasch@peoplesoft.com
+Maintainer   = Robert Gasch
+MaintEmail   = Robert_Gasch@peoplesoft.com
+Site1        = sunsite.unc.edu
+Path1        = X11/xutils/status
+File1        = jlmem.1.00.tar.gz
+FileSize1    = 18Kb
+Site2        = 
+Path2        = 
+File2        = 
+FileSize2    = 
+Required1    = java, javac 
+CopyPolicy1  = Free use, modification and redistribution with Copyright 
+CopyPolicy2  = intact under the GNU General Public Licence.
+Keywords     = java, File System, Monitor, Status, Admin
+Entered      = 16DEC96
+EnteredBy    = Robert Gasch
+CheckedEmail = Robert_Gasch@peoplesoft.com
+End 
+ 

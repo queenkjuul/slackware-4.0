@@ -1,0 +1,48 @@
+Using kernel modules with the installation bootdisks
+----------------------------------------------------
+
+These modules can be used to add additional hardware support before running
+"setup" to install Linux.  The Configure.help file (this comes from the Linuxi
+kernel source) explains what drivers are available for Linux.  The modules
+themselves are in the directories below ./2.2.6/, and have names that are
+similar to the devices they support.
+
+To use these modules, put "insmod" (the module loading utility) on a floppy
+disk along with the module(s) you need to load. After booting with a bootdisk,
+loading a rootdisk (install disk), and logging in as root, make a directory
+and mount the floppy disk on it:
+
+mkdir /floppy
+mount /dev/fd0 /floppy -t vfat
+
+Then, you need to load the module.  Let's say you're loading a module to
+support a 3com 3c509 ethernet card:
+
+cd /floppy
+./insmod 3c509.o
+
+You should see a message on the screen indicating the module was loaded
+successfully.  You can then unmount the floppy:
+
+cd
+umount /floppy
+
+And, at this point you can run "setup" and install Linux.  Upon rebooting,
+you'll probably want to edit /etc/rc.d/rc.modules to load the module at
+boot time.
+
+Also note that many ethernet cards based on the Western Digital 8390 chipset
+will require the 8390.o module to be loaded before you load the module for
+the specific card you need.  Modules that require 8390.o include 3c503.o,
+ac3200.o, e2100.o, hp-plus.o, hp.o, ne.o, ne2k-pci.o, smc-ultra.o,
+smc-ultra32.o, and wd.o.  In addition, the ISA NE2000 module (ne.o) requires
+an extra argument such as io=0x360 to tell the kernel the I/O address where
+the card is found.  An example of loading NE2000 support:
+
+./insmod 8390.o
+./insmod ne.o io=0x360
+
+Other common I/O addresses for the NE2000 are 0x300, 0x280, 0x320, and 0x340.
+
+Good luck!
+

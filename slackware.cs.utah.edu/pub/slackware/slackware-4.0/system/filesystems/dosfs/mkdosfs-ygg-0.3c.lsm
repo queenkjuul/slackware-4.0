@@ -1,0 +1,18 @@
+Begin3
+Title:          mkdosfs
+Version:        Yggdrasil 0.3c
+Entered-date:   03DEC97
+Description:    A utility to create MS-DOS FAT filesystems under
+		Linux. This version fixes some minor bugs, as well
+		as an override to the whole device check and adds
+		floppy image file support.
+Keywords:       mkdosfs, DOS FAT filesystem
+Author:         Dave Hudson <dave@humbug.demon.co.uk>
+Maintained-by:  H. Peter Anvin <hpa@yggdrasil.com>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Filesystems/dosfs
+		19207 mkdosfs-ygg-0.3c.tar.gz
+Alternate-site:	ftp.yggdrasil.com /pub/dist/mkdosfs
+Original-site:  
+Platform:       Linux
+Copying-policy: GPL
+End

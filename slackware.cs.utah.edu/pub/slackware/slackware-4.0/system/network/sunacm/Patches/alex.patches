@@ -1,0 +1,96 @@
+From owner-linux-activists%fi.hut.cs.joker@fi.hut.FINHUTC Wed Feb 16 02:56:43 1994
+Received: from [000040010500] by pyr.swan.ac.uk; Wed, 16 Feb 94 02:56:29 GMT
+Received: from finhutc.hut.fi by sun3.nsfnet-relay.ac.uk with Internet SMTP 
+          id <sg.29655-0@sun3.nsfnet-relay.ac.uk>;
+          Wed, 16 Feb 1994 02:58:10 +0000
+Received: from joker.cs.hut.fi by FINHUTC.hut.fi (IBM VM SMTP V2R2) with TCP;
+          Wed, 16 Feb 94 04:57:57 EET
+Received: from joker.cs.hut.fi by niksula.hut.fi id <61627-3>;
+          Wed, 16 Feb 1994 04:14:44 +0200
+From: Linux Activists <linux-activists@fi.hut.Niksula>
+To: Linux-Activists <linux-activists@fi.hut.Niksula>
+Reply-To: Linux-Activists <linux-activists@fi.hut.Niksula>
+X-Note1: Remember to put 'X-Mn-Key: NET' to your mail body or header
+Subject: Linux-Activists - NET Channel digest. 94-1-15-23:37
+X-Mn-Key: NET
+Original-Sender: owner-linux-activists@fi.hut.Niksula
+Message-Id: <94Feb16.041444eet.61627-3@niksula.hut.fi>
+Date: Wed, 16 Feb 1994 04:14:34 +0200
+Sender: owner-linux-activists%fi.hut.cs.joker@fi.hut.FINHUTC
+Status: R
+
+
+Topics:
+	 Alex for Linux
+
+
+----------------------------------------------------------------------
+
+From: Mitchum DSouza <Mitchum.Dsouza@mrc-applied-psychology.cambridge.ac.uk>
+Subject: Alex for Linux
+Date: Wed, 16 Feb 1994 00:41:13 +0200
+
+
+
+Hi,
+
+Here is the minimal patches to compile Alex. It actually compiled flawlessy
+(what else would one expect ??) except when dealing with the FILE structure
+internals because of the recent changes to stdio in the standard linux C
+library. You need libc version 4.5.8 and above to use this patch (It is
+probably just as trivial for libraries prior to this).
+
+You may obtain the complete sources from (for example):
+
+	Site: suncite.doc.ic.ac.uk
+	Dir:  computing/archiving/alex
+
+What is Alex ?? Well briefly it lets you access the world FTP directories
+on a NFS mounted partition (typically /alex). So you could say for example
+
+	% cp /alex/fi/funet/nic/README ~/
+
+to copy the toplevel README from nic.funet.fi.
+
+I have only done limited testing. Please send bug reports to me.
+
+begin 664 diff.gz
+M'XL("")*82T``V1I9F8`U59;;]I(%'Z&7W&B2A40<#`8PJ5!57>3*FH#JY*N
+M]LTR]AA&&6PTER;T\M_WS-C&!INH+_NPH\@9'\[YYER^<\:M5@L\1EYHY`MK
+M8\6<KFN/BL`=68$]@)X]&70G]ACL\=BI=SJ=@O*)GNU,'"?1:QTO_0[]Z[;3
+M!_.J8?3K->"N4P=X`X"03`4$WHF]N`H1?0:GZZH%H,+D5X`X@JT7[?'A;VA$
+M!+2NZD:-O$C"(_`W'H?6UF,L]AO-:0E)$+(5(#>$$Z`"HA@27<2N1.(D@ZI?
+MPAO"!-'_T?$P("&X+J.1>G'=5)A%DV'.DBA3L^1%VP(:H_=!PW7[H^&'Y9^N
+MVX2?/POB.9&).#,ZR96B\0&^]...)X=7%61HMX?#O"##0?O:+A0$G8T"&J9^
+M9]MD<YEMP(22'TG7D<=2=P[2B,A@E7H!_E8A=_PJHB&!!OV<:*GFD5)O8H\F
+MW>YYE@VNQ^W!R,G#TH)AMY<%5L.4-RB\@VX3@!.IL+Z-V\4=5M7$4FMH0G1F
+M;LB\M<!2W&!IEZ@PK=60-12C]CU)`"6:)H8)1U5,:=#45;[41,,GM.!Q@QS#
+M/QFCKL?@F<J-)A]$Y!GN%R`D\FL+H8I\2>,(=2/XK*&`T94/WP@7*$ZP'&M@
+MC<"+`NR!9X\'PH)[B8B,P386,G5&LCV2&N4Q?TJ.0R3N<8JMLB)AS$F")M$S
+M"_YBQ!,$,[*+N8256@O0B4`OT.,M@0X\4.EOD-!6(&+UW7N_Y7['VRG+][:6
+MYUOJ:6;PS$,G)ETZWUE.[Q<N1AFXR!T$/!'N)&_"3-?EATY;R)38H"-AB&H!
+MIF.GY!'PX0"X@6=.L28-T\PA9:1=`=[^72>F%6<8TES<G*J?#^2$6R7$L@U4
+MH1<M?R64JNF`=9!^O-M#(P_Y$'USJJD:>D@%_0I&T:3N%?8;[&P5"J81BLV`
+M(C3`EKB=3T^#JF@02$?E42HS>#^2AY)78)VC0$GW50KHTD/AP&DRAN(HI.NJ
+M"Z\WZ=J3GE.80ZEJ6:O;?V40C=K#=`QE8[/D]R%2T\M/@$T)L8Y`G%%-HB\G
+MH`1XD0VD/QZ^-K75!<[C,!=O=NJE"6_?YA+%)*<GLCGYY]%<.XD`OB[OYQ^_
+MW"X7G_^^_9+6.P0E:+2&#N-$Q.R;'EP/WI.IP;D`\LO#3&B3J>SB^1]GZDA2
+MN`G^RP1JJJDH%$'5E8JW97?2&^943C5/E329SS/9MIUQV[8'@_Q2S43CK&S'
+M2PDLC%6'O%DQ-$M(3RJ!K3J_6[J+3^8SJOSQ5-0.!>Y<9>&MQ/:6%/0[07.[
+EVW/R;S#X#8N1/>X5+<S7B3DYJ64*HD>3C;.H_B]](!%Z%`L``/:6
+`
+end
+
+Mitch
+-- 
+mitchum.dsouza@mrc-apu.cam.ac.uk
+m.dsouza@mrc-apu.cam.ac.uk
+
+
+
+------------------------------
+
+End of NET Digest
+*****************
+-------
+

@@ -1,0 +1,17 @@
+Begin3
+Title:		pnmposter
+Version:	0.1
+Entered-date:	08NOV98
+Description:	pnmposter is a netpbm-based unix command line tool to print
+                images in poster size using many pages wich are glued together.
+		The program reads in a pnm bitmap image and creates postscript
+		files for each page. Poster size and page size can be specified
+		in millimeters or inches.
+Keywords:	netpbm, poster, print, postscript
+Author: 	stahl@studcs.uni-sb.de (Christoph Stahl)
+Primary-site:   http://fsinfo.cs.uni-sb.de/~stahl/pnmposter/
+                  10K pnmposter-0.1.tgz
+		  654 pnmposter.lsm
+Platforms:	Linux, probably other Unices.
+Copying-policy:	GPL
+End

@@ -1,0 +1,96 @@
+Hello there,
+
+This is a bugfix release of:
+
+This is modified and fixed (to a certain extent, at least)
+dip-3.3.7, that works with NET2-Debugged and kernels pl15
+and up (maybe it works for your pl14 as well).
+
+I somewhat modified this package, adding support for a few
+commands:
+
+1. quit - this was needed to prevent DIP from just dropping
+   the tty device in some weird state, in case it couldn't
+   succeed establishing connection (like, the phone was
+   busy).
+
+2. netmas xxx.xxx.xxx.xxx - obviously, if you have some
+   specific netmask in mind, you put this into your 
+   profile... Otherwise it won't specify "netmask ..." in
+   it's "ifconfig" and may G-d help you.
+
+3. default - this tells DIP that it should set up the
+   default route to the remote host it made a connection to.
+   If this command isn't present in the command file,
+   default route won't be set/changed.
+
+4. exit - not really needed, just for the cleanness of the
+   script... Instead of just falling through the bottom,
+   you can use this command and it will nicely exit
+   leaving established [C]SLIP connection intact and
+   running. I didn't ad the code for this command,
+   just spotted it in the source (:-).
+
+Take a look at "sample.dip" file - it's there for a purpose. (:-)
+
+I'm not sure Fred will support these changes of mine, nor
+can I guarantee I didn't introduce new bugs with my patch.
+Use it on your own risk. At least it works for me, for
+Compressed SLIP with MTU 296 and a LOT of remote X11
+and FTPing and so on.
+
+Enjoy!
+uri@watson.ibm.com
+
+
+This is the last version of DIP using the "/etc/diphosts" file.
+It has been updated to use the "databits" serial patches, the
+"speed" setting bugfix, Jim Seagrave's "echo" and "init" adds,
+and Paul Mossip's "dynamic address" patches, as sent to me by
+Jeff Uphoff.  Here is his README:
+
+-----------------------------------------------------------------------------
+For those of us that have our SLIP IP addresses assigned dynamically,
+here is a patch for dip that will trap the address when the remote
+host 'displays' it.  (This is an option--those that don't want this
+need not enable it.)
+
+The meat of this patch was written by Paul Mossip (mossip@vizlab.rutgers.edu)
+Someone mentioned the existance of his patch, so I emailed him requesting
+a copy and he anonymously ftp'd it into my linux box.  
+
+I have been using it heavily for several days now, and it works
+beautifully.  Bravo to the author!  (And many thanks)
+
+I extended his patch a slight bit; whenever I initiated a slip connection,
+dip executed a 'route' command that assigned the remote machine's IP
+address as both my Destination net/address and my Gateway address.
+My connection would not function unless I deleted that route and created
+a new one specifying my Destination net/address as 'default'.
+I have added 'default' to the set of commands that dip accepts--
+if you use it, your Destination net/address will be set to 'default',
+if you don't use it, dip sets up the route as it did before.  (This
+command, like the ones that Paul added, can either be entered in
+dip's command mode, or read in from a script file.)
+
+The abilites that Paul's patch added to dip allowed me to totally
+automate my SLIP connections, with the exception of the routing change.
+This patch has taken the last step; everything is done from a script
+file and I haven't had a problem with the address assignment trapping once.
+
+Those that have to deal with dynamically assigned IP address will
+find this very useful.
+
+Thanks once again to Paul Mossip--he put all of the real work into
+this patch.
+-----------------------------------------------------------------------------
+
+The next release of DIP will use a much more powerful scripting
+language (derived from the Minicom communications package), and
+it will use the "/etc/diptab" "termcap"-like database for its
+client hosts.  This will allow for a much more flexible setup
+of hosts, and it will allow me to implement a Dynamic Address
+Server for DIP, making it usable as a "real" SLIP/PPP dialin
+server.
+
+Fred, 07/20/93

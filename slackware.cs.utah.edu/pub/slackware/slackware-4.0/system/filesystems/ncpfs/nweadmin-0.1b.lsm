@@ -1,0 +1,20 @@
+Begin3
+Title:          NWEAdmin
+Version:        0.1b
+Entered-date:   LSM and Package created 8-5-98
+Description:    Allows administration of a MarsNWE server from Windows.
+		Package has nothing to do with Martin Stover problems aren't
+                his fault!
+Keywords:       mars admin windows netware emulator
+Author:         James@linux-box.demon.co.uk (James Jeffrey)                
+
+Maintained-by:  James@linux-box.demon.co.uk (James Jeffrey)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/filesystems/ncpfs
+				      943kB nweadmin-0.1b.zip
+				      795   nweadmin-0.1b.lsm		
+                                       
+Alternate-site: http://www.linux-box.demon.co.uk/
+Original-site:  http://www.linux-box.demon.co.uk/
+Platforms:      Windows*, Mars_NWE
+Copying-policy: GPL
+End

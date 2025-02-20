@@ -1,0 +1,36 @@
+Begin3
+Title:          Yard - tool for creating custom rescue disks
+Version:        1.17
+Entered-date:  Nov 1998
+Description: Yard is a suite of Perl scripts for creating custom boot/rescue
+	disks.  Using a compressed filesystem, it can put a standard kernel
+	image plus about 2.4 meg of utilities on a single floppy.  Yard is
+	also useful for creating self-contained Linux-on-a-floppy systems.
+	You specify a basic set of files and utilities for inclusion and
+	Yard handles many of the details.  Features:
+	- File specs allow absolute and relative filenames, symbolic links,
+	  file replacements and full shell-style globbing.
+	- Automatically determines necessary libraries and loaders.
+	- Allows stripping of binaries and libraries during copying.
+	- Automatically regenerates ld.so.cache
+	- Checks for broken symlinks
+	- Checks /etc/{fstab,inittab,termcap,pam.conf} for common errors and 
+		inconsistencies.
+	- Checks user directories and files mentioned in /etc/passwd 
+	- Checks command files (eg, rc.local and .login) and scripts for
+	  missing binaries and command interpreters.
+	- Automatically performs filesystem compression and copying.
+	- Can be used with or without LILO.
+	- Can make single or double disk sets.
+	- Extensive checking of user choices and execution errors.
+	Requires: Perl 5, Linux kernel 2.0 or later
+Keywords:       rescue, ramdisk, bootdisk, recovery
+Author:         fawcett@croftj.net (Tom Fawcett)
+Maintained-by:  fawcett@croftj.net (Tom Fawcett)
+Primary-site:   http://www.croftj.net/~fawcett/yard/
+			160451 yard-1.17.tar.gz
+Alternate-site: http://sunsite.unc.edu/pub/Linux/system/Recovery
+Original-site:  
+Platform:       
+Copying-policy: Artistic
+End

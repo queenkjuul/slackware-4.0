@@ -1,0 +1,19 @@
+tar xzvf gettext-0.10.35.tar.gz
+cd gettext-0.10.35
+./configure --prefix=/usr --enable-static --enable-shared
+make
+# This l=l business is the only way I found to make gettext build a shared
+# library.  Since Gmone won't accept libintl.a, I figured the shared stuff
+# had better be included in the gettext package, especially since it's not
+# obvious how to make a shared libintl.so.  Maybe there's a better way to do
+# this, but this seems to work just fine.
+make l=l
+make l=l install
+# The shared libraries also need manual installation:
+( cd intl ; cp -a libintl.la /usr/lib )
+( cd intl/.libs ; cp -a libintl.a libintl.so libintl.so.1 libintl.so.1.0.0 /usr/lib )
+mkdir -p /usr/doc/gettext-0.10.35
+cp -a ABOUT-NLS AUTHORS BUGS COPYING ChangeLog DISCLAIM INSTALL \
+  NEWS README-alpha README.gemtext THANKS TODO /usr/doc/gettext-0.10.35
+chown root.root /usr/doc/gettext-0.10.35/*
+chmod 644 /usr/doc/gettext-0.10.35/*

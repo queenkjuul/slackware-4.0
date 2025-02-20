@@ -1,0 +1,21 @@
+Begin3
+Title:		Yabbs (Yet Another BBS)
+Version:	client .994/server .994
+Entered-date:	Sat Feb 11 1995
+Description:	A server/client unix bbs system centered around messages
+                chat and gopher.  Has low resource usage and works well
+				with many users (a running system has been tested with
+				about 50 active users).  Server/client means that clients
+				and servers can be run on different machines for better
+				resource utilization.  Works well for internet and dialup
+				systems.
+Keywords:	bbs chat messages gopher yabbs
+Author: 	alex@phred.org
+Maintained-by:	alex@phred.org
+Primary-site:	ftp.phred.org /pub/yabbs
+				yabbsnet-0.994s-0.995c.tar.gz
+				yabbscli-0.994.tar.gz
+Alternate-site: ftp.cs.cmu.edu /afs/cs/user/arw/ftp/yabbs
+Platforms:		any unix system supporting berkeley sockets
+Copying-policy:	GPL
+End

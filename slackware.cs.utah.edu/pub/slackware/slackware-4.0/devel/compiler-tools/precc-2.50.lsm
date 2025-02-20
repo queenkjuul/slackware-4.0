@@ -1,0 +1,57 @@
+Begin3
+Title:		PRECCX
+Version:	2.50
+Entered-date:	22JAN99
+Description:	PRECCX is an infinite-lookahead compiler-compiler for
+                context-dependent attributed grammars.  It uses and
+                produces ANSI C and is plug-compatible with lex/flex
+                lexers. Tested on numerous platforms.
+          
+                Compiler-compilers aren't that easy to describe!  Cf.
+                yacc or bison.
+          
+                2.50 is a new public release, hoped stable, of the
+                compiler compiler first released 8 years ago now and
+                used worldwide on many platforms.  I have personally
+                tested this release on linux 2.0.*/libc 5, solaris
+                2.5/2.6, irix 6.3, all successful, and I'd like to be
+                notified of any problems on other platforms!
+
+                In the 2.45 development series I introduced a couple of
+                major internal code shifts that should be shaken down
+                now.
+          
+                The changes since last public release at 2.44 are aimed
+                principally at **object orientation**.  Precc and
+                generated code now compile and link under g++ as well as
+                ansi c.  I can't speak for other c++ compilers.  I hope
+                to improve the c++ quality later, but at least it works
+                for now.
+                
+                Multiple instances of PRECCX parsers can now co-exist in
+                C or C++ code without any cross-effects.
+          
+                If you wonder what the advantage of PRECCX is over yacc
+                and friends, it is: parameterized/context sensitive
+                grammars, higher order "macros", arbitrary lookahead
+                (yacc has 1-token lookahead), referential transparancy,
+                ...  in summary, it's just not the same technology.
+          
+                Substantial examples included.
+
+          
+Keywords:	Compiler-Compiler, ANSI C, synthetic, parameterized,
+                attribute grammar.
+Author: 	ptb@it.uc3m.es (Peter T. Breuer)
+Maintained-by:	ptb@it.uc3m.es (Peter T. Breuer)
+Primary-site:   oboe.it.uc3m.es /pub/Programs
+                240KB precc-2.45j.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel
+Alternate-site: ftp.it.uc3m.es /pub/Programs
+Alternate-site: ftp.comlab.ox.ac.uk /pub/Programs
+Alternate-site: http://oboe.it.uc3m.es/~ptb/cgi-bin/cvs-precc.cgi
+Alternate-site: http://it.uc3m.es/~ptb/cgi-bin/cvs-precc.cgi
+Platforms:	ANSI C compiler (gcc preferred).
+Copying-policy:	GPL with GPLlib. Commercial maintenance licences
+                available.
+End

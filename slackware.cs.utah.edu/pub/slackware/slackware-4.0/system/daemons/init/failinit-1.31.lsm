@@ -1,0 +1,21 @@
+Begin3
+Title:		A really simple failsave init extension
+Version:	1.31
+Entered-date:	14Jan1998
+Description:	This is an init-before-the-init to spawn an emergency shell
+		in case something got mixed up in /etc/inittab or /etc/rc,
+		you have trouble with shared libraries crashing /sbin/init
+		or you sometimes want a 'quick shell' right after booting
+		before init comes up. This version now accomodates for lazy
+		sysops who forget a "fail lock" on LILO's command line on
+		unattended systems. You should install sash too, see
+		ftp://sunsite.unc.edu/pub/Linux/system/shells/sash.tar.gz
+Keywords:	init,boot,emergency shell
+Author:		tino@augsburg.net (Valentin Hilbig)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/daemons/init/
+		  891  failinit-1.31.lsm
+		 6258  failinit-1.31.tar.gz
+Platforms:	Linux
+Copying-policy:	GNU GPL V2 or above.
+		Partly copied from /usr/src/linux/init/main.c
+End

@@ -1,0 +1,5 @@
+tetex: ADD
+tex_bin: ADD
+tex_doc: REC
+xfig: OPT
+transfig: OPT

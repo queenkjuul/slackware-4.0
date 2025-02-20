@@ -1,0 +1,56 @@
+CONTENTS: bash cpio devs e2fsbn elvis       
+bash:     GNU bash-1.14.7
+bash:
+bash:     The GNU Bourne-Again SHell.  Bash is a sh-compatible command language
+bash:     interpreter that executes commands read from the standard input or 
+bash:     from a file.  Bash also incorporates useful features from the Korn
+bash:     and C shells (ksh and csh).  Bash is ultimately intended to be a 
+bash:     conformant implementation of the IEEE Posix Shell and Tools
+bash:     specification (IEEE Working Group 1003.2).
+bash:
+bash:     Bash must be present for the system to boot properly.
+bash:
+cpio:     The GNU cpio backup and archiving utility v. 2.4.2
+cpio:
+cpio:     This is GNU cpio, a program to manage archives of files. This package
+cpio:     also includes mt, a tape drive control program. cpio copies files into
+cpio:     or out of a cpio or tar archive, which is a file that contains other
+cpio:     files plus information about them, such as their pathname, owner,
+cpio:     timestamps, and access permissions. The archive can be another file on
+cpio:     the disk, a magnetic tape, or a pipe.
+cpio:
+cpio:
+cpio:
+devs:     Device files.
+devs:
+devs:     This package creates special files in the /dev directory that 
+devs:     represent your system's hardware.
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+devs:
+e2fsbn:   Utilities for the second extended file system v. 1.14
+e2fsbn:
+e2fsbn:   Utilities needed to create and maintain ext2 filesystems under Linux.
+e2fsbn:   Included in this package are: chattr, lsattr, mke2fs, mklost+found,
+e2fsbn:   tune2fs, fsck, e2fsck, e2label, debugfs, dumpe2fs, and badblocks. 
+e2fsbn:
+e2fsbn:   These utilities were written by Remy Card (the developer and
+e2fsbn:   maintainer of the ext2 fs) and Theodore T'so.
+e2fsbn:
+e2fsbn:
+e2fsbn:
+elvis:    elvis-2.1.
+elvis:
+elvis:    Elvis is a text editor.  It is intended to be a modern replacement
+elvis:    for the classic ex/vi editor of UNIX fame.  Elvis supports many new
+elvis:    features, including multiple edit buffers, multiple windows, and a
+elvis:    variety of display modes.
+elvis:
+elvis:    As elvis is Slackware's default vi, this is a required package.
+elvis:
+elvis:
+elvis:

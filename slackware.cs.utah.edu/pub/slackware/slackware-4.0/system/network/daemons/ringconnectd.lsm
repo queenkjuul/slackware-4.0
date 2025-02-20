@@ -1,0 +1,16 @@
+Begin3
+Title:          ringconnectd
+Version:        2.2
+Entered-date:   02-Aug-97
+Description:    Auto-connects online when you call your modem line
+Keywords:       ppp connect modem
+Author:         kstenerud@mdsi.bc.ca (Karl Stenerud)
+Maintained-by:  kstenerud@mdsi.bc.ca (Karl Stenerud)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/netowrk/daemons/
+                12k ringconnectd-2.2.tar.gz
+Alternate-site: http://milliways.scas.bcit.bc.ca/~karl/files/
+                12k ringconnectd-2.2.tar.gz
+Original-site:  
+Platforms:      Any Linux using the proc filesystem
+Copying-policy: GPL
+End

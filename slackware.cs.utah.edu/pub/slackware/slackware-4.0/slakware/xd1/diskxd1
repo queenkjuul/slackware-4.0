@@ -1,0 +1,12 @@
+CONTENTS: xlkit       
+xlkit:    XFree86 3.3.3.1 server linkkit.
+xlkit: 
+xlkit:    If you want or need to rebuild an XFree86 3.3.3.1 server you need this
+xlkit:    package in addition to the base configuration and the programmers kit.
+xlkit:    It is not needed for other X program development.
+xlkit:
+xlkit:    When rebuilding all the servers you will typically need an additional
+xlkit:    38MB of disk space.  If you are building just a single server you will
+xlkit:    need 5MB of space.
+xlkit: 
+xlkit: 

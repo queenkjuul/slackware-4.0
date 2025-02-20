@@ -1,0 +1,14 @@
+Begin3
+Title:		getty_ps-patch for incoming ccmail
+Version:        1.0.0
+Entered-date:   17JUN97
+Description:    A patch to original getty_ps-2.0.7j to allow incoming
+		cc:Mail connections via dosemu, tested with dosemu-0.64.3
+		and cc:Mail router 5.13
+Keywords:	getty uugetty serial modem ccmail dosemu
+Author:		ea@emb.frmug.org (evaldas auryla)
+Maintained-by:  ea@emb.frmug.org, http://www.geocities.com/~sabas
+Primary-site:   sunsite.unc.edu /pub/Linux/system/serial/getty/getty_ps-2.0.7jccmail-1.0.gz
+Alternate-site:
+Copying-policy: Freely distributable
+End

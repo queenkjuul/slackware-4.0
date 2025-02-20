@@ -1,0 +1,182 @@
+		    Standard ML of New Jersey
+	          Version 107, December 25, 19934
+
+	 ------------------------------------------------
+
+STANDARD ML OF NEW JERSEY COPYRIGHT NOTICE, LICENSE AND DISCLAIMER.
+
+Copyright 1989, 1990, 1991, 1992, 1993, 1994 by AT&T Bell Laboratories
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both the copyright notice and this permission notice and warranty
+disclaimer appear in supporting documentation, and that the name of
+AT&T Bell Laboratories or any AT&T entity not be used in advertising
+or publicity pertaining to distribution of the software without
+specific, written prior permission.
+
+AT&T disclaims all warranties with regard to this software, including
+all implied warranties of merchantability and fitness.  In no event
+shall AT&T be liable for any special, indirect or consequential
+damages or any damages whatsoever resulting from loss of use, data or
+profits, whether in an action of contract, negligence or other
+tortious action, arising out of or in connection with the use or
+performance of this software.
+
+	------------------------------------------------
+
+Version 107 of Standard ML of New Jersey (SML/NJ) is an internal working
+version that is probably stable enough for use by brave souls.  The
+transition from Version 93 to the next general release involves a complete
+reworking of almost the entire system.  Version 107 is perhaps 80% of the
+way there, but there are still changes to come.
+
+This version works on the following machine/OS combinations:
+
+  MIPS; Irix 4.x
+  MIPS; Irix 5.x
+  SPARC; SunOs 4.x
+  SPARC; Solarix 2.x
+  Alpha; OSF/1 (V 2.0 or later; does not work under V 1.3)
+  RS/6000; AIX 3.x (may work on AIX 4.x, but we haven't tested it)
+  x86; Linux
+  x86; FreeBSD (thanks to Jeffrey Hsu)
+
+Here is a list of the files in the distribute.  Note that, unlike in previous
+versions, you do not need the compiler source (107-sml-nj.tar.Z) to install
+the system.
+
+  107-README			This file
+  107-INSTALL			Installation instructions
+  107-notes.tar.Z		Misc. documentation.
+  107-config.tar.Z		Configuration/installation scripts (REQUIRED)
+  107-ml-yacc.tar.Z		ML-Yacc source
+  107-ml-lex.tar.Z		ML-Lex source
+  107-ml-burg.tar.Z		ML-Burg source
+  107-smlnj-lib.tar.Z		SML/NJ Library source
+  107-cml.tar.Z			CML source
+  107-eXene.tar.Z		EXene source
+  107-runtime.tar.Z		Run-time system source (REQUIRED)
+				Compiler binaries for specific architectures:
+  107-bin.mipseb.tar.Z		  Big endian MIPS binaries
+  107-bin.sparc.tar.Z		  Sparc binaries
+  107-bin.alpha32.tar.Z		  Alpha binaries
+  107-bin.rs6000.tar.Z		  RS/6000 binaries
+  107-bin.x86.tar.Z		  Intel x86 binaries.
+
+KNOWN BUGS
+In addition to reported open bugs, version 107 suffers from the following
+problems:
+
+  - there is essentially no documentation (what little there is can be
+    found in the notes directory).
+
+  - stopping sml using ^Z and then restarting it causes sml to lose contact
+    with the terminal input stream under Irix 4.0.5.  This doesn't appear to
+    be a problem with Irix 5.x.
+
+  - Unsigned division (and thus printing of unsigned numbers) doesn't work on
+    the SPARC.
+
+  - Big unsigned constants (> 2^30) are unsupported and can cause the system
+    to dump core.
+
+
+CHANGES FROM 106 to 107
+Most of the changes are compiler improvements and bug fixes.  Most of the
+visible changes have to do with a reorganization of the ML callable C code.
+
+  - eXene has been ported to 107, and a snapshot is included in the release.
+    This is very much a working version, but there is some high-level
+    documentation in eXene/README.
+
+  - the function System.Unsafe.CInterface.c_string has been deleted (ML strings
+    are always NULL terminated in 107).  Also, the type of c_function has changed.
+
+  - the function System.Unsafe.CInterface.syscall has been eliminated.
+
+  - the implementation of System.Directory.getWD has been fixed.  We now use
+    the POSIX getcwd() to implement this.
+
+  - The ML callable C library in the run-time has been split into a collection
+    of libraries, which are organized by related function.  This organization
+    should make it somewhat easier to add C code to the system.  See the file
+    notes/HOWTO-ADD-C-CODE for more information.
+
+
+CHANGES FROM 103 to 106
+The last working version that was made available via ftp was 103; here is
+a list of the major changes since then:
+
+  - Version 106 uses a new run-time system with a multi-generational
+    collector.  This affects users and installers of the system in
+    several significant ways:
+
+      - The new run-time separates the run-time executable from the
+	ML heap images.  This means that an application (e.g., sml-sc)
+	consists of a run-time system and a heap image.  The run-time
+	executables depend on the architecture and OS, while the heap
+	image depends on the application and architecture.  There is a
+	standard driver shell script that gets created as part of the
+	installation process (see the 106-INSTALL file for details).
+	The "exportML" and "exportFn" commands generate heap images.
+
+      - The new collector tends to use more virtual memory than the
+        old collector, but less physical memory.  The virtual memory
+        performance will be improved before the next release, but you
+        may have trouble running this on machines with small swap spaces.
+
+  - Version 106 supports characters as a first class type.  Character
+    literals are written as length one strings preceeded by "#" (e.g.,
+    #"a", #" ", #"\"", #"\128").  The structure Char defines various
+    operations on characters.  As a result of this change, the signature
+    of the String structure has changed.  In particular, the functions
+    String.length, String.ord and String.ordof no longer exist, and the
+    functions implode and explode have different types.  The old versions
+    can be defined roughly as follows:
+
+      val length = String.size
+      val ordof = Char.ord o String.sub
+      fun ord s = ordof(s, 0)
+      val explode = (map Char.ord) o String.explode
+      val implode = String.implode o (map Char.chr)
+
+    The Ord exception is no longer raised, instead Subscript is raised.
+    Also, the Chr exception has been moved to the Char structure.
+
+  - As a result of the changes to the String and the addition of the Char
+    structure, ML-Lex, ML-Yacc, the SML/NJ Library, and CML have been changed.
+    In the case of ML-Lex and ML-Yacc, you will have to regenerate your
+    parsers/scanners using the new version, if you want to use 106.  There
+    were significant changes to some of the interfaces in the SML/NJ library
+    (e.g., CType, CharSet), but the changes to CML are all internal.  We
+    haven't ported eXene to 106 yet, but that will be done soon.
+
+  - Version 106 has a different signature for the Array and Vector structures.
+    The exceptions Subscript and Size have been moved to the General
+    structure.
+
+  - Version 106 has generic monomorphic array and vector signatures (MONO_ARRAY
+    and MONO_VECTOR).  Currently, the only implementation of these are the
+    CharVector and CharArray types, but the RealArray structure will be
+    switched over soon.  The type CharVector.vector is the same as String.string.
+
+  - Versions are now numbered as integers (i.e., 106 instead of 1.06).  The
+    signature of Compiler.Version has changed.
+
+  - The get_fd_out function was removed from the IO signature.
+
+CHANGES FROM 0.93 to 1.03
+  - The top-level environment was restructured; stuff that used to be in
+    System has been split into System and Compiler.  Note that the System
+    side of this split is definitely NOT stable; it will change again in
+    substantial ways.
+
+  - The bootstrapping process has changed radically from version 0.93.
+    If you don't know about sml-scb and "bin files", this version
+    is probably not for you.
+
+  - The "source groups" tool has been replaced with "SC", which generally works
+    better.
+

@@ -1,0 +1,17 @@
+drwxr-xr-x root/root         0 1998-11-28 21:23 ./
+drwxr-xr-x root/root         0 1998-11-28 21:23 usr/
+drwxr-xr-x root/root         0 1998-11-28 21:23 usr/X11R6/
+drwxr-xr-x root/root         0 1998-11-28 21:23 usr/X11R6/lib/
+drwxr-xr-x root/root         0 1998-11-28 21:23 usr/X11R6/lib/fonts/
+drwxr-xr-x root/root         0 1998-11-28 21:23 usr/X11R6/lib/fonts/misc/
+-r--r--r-- root/root    241462 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/gb16fs.pcf.gz
+-r--r--r-- root/root    261502 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/gb16st.pcf.gz
+-r--r--r-- root/root    402745 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/gb24st.pcf.gz
+-r--r--r-- root/root    221852 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/hanglg16.pcf.gz
+-r--r--r-- root/root    224065 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/hanglm16.pcf.gz
+-r--r--r-- root/root    341473 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/hanglm24.pcf.gz
+-r--r--r-- root/root      3732 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/heb6x13.pcf.gz
+-r--r--r-- root/root      3352 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/heb8x13.pcf.gz
+-r--r--r-- root/root    229782 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/jiskan16.pcf.gz
+-r--r--r-- root/root    367802 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/jiskan24.pcf.gz
+-r--r--r-- root/root    198168 1998-11-14 00:31 usr/X11R6/lib/fonts/misc/k14.pcf.gz

@@ -1,0 +1,188 @@
+#!/bin/sh
+# This is the installation script for KDE, packaged in .tgz form for Slackware.
+#
+# Add the KDE library path to /etc/ld.so.conf:
+if fgrep /opt/kde/lib etc/ld.so.conf 1> /dev/null 2> /dev/null ; then
+  # Good, we've already found the KDE path in etc/ld.so.conf, so we
+  # won't need to add it again.
+  FOUND=GOOD # :^)
+else
+  echo "/opt/kde/lib" >> etc/ld.so.conf
+fi
+# Look for KDE additions to etc/profile, and if we don't find them
+# then add them:
+if fgrep KDEDIR etc/profile 1> /dev/null 2> /dev/null ; then
+  # Good, we've already found the KDE path in etc/profile, so we
+  # won't need to add it again.
+  FOUND=GOOD # :^)
+else
+  # Add KDE stuff to etc/profile:
+  cat << EOF >> etc/profile
+# KDE additions:
+KDEDIR=/opt/kde
+PATH=\$PATH:\$KDEDIR/bin
+export KDEDIR PATH
+EOF
+fi
+# OK, now we need to do the same thing to etc/csh.login:
+if fgrep KDEDIR etc/csh.login 1> /dev/null 2> /dev/null ; then
+  # Good, we've already found the KDE stuff in etc/csh.login, so we
+  # won't need to add it again.
+  FOUND=GOOD # :^)
+else
+  cat << EOF >> etc/csh.login
+# KDE additions:
+if ( ! \$?KDEDIR ) then
+    setenv KDEDIR /opt/kde
+endif
+if ( \$?PATH ) then
+    setenv PATH \$KDEDIR/bin:\$PATH
+else
+    setenv PATH \$KDEDIR/bin
+endif
+EOF
+fi
+# Make KDE the default window manager:
+( cd var/X11R6/lib/xinit ; rm -rf xinitrc )
+( cd var/X11R6/lib/xinit ; ln -sf xinitrc.kde xinitrc )
+# Links included with KDE:
+( cd opt/kde/lib ; rm -rf libjpeg.so.6 )
+( cd opt/kde/lib ; ln -sf libjpeg.so.6.0.1 libjpeg.so.6 )
+( cd opt/kde/lib ; rm -rf libjpeg.so )
+( cd opt/kde/lib ; ln -sf libjpeg.so.6.0.1 libjpeg.so )
+( cd opt/kde/lib ; rm -rf libgdbm.so.1 )
+( cd opt/kde/lib ; ln -sf libgdbm.so.1.7.3 libgdbm.so.1 )
+( cd opt/kde/lib ; rm -rf libgdbm.so )
+( cd opt/kde/lib ; ln -sf libgdbm.so.1.7.3 libgdbm.so )
+( cd opt/kde/lib ; rm -rf libgif.so.3 )
+( cd opt/kde/lib ; ln -sf libgif.so.3.0.0 libgif.so.3 )
+( cd opt/kde/lib ; rm -rf libgif.so )
+( cd opt/kde/lib ; ln -sf libgif.so.3.0.0 libgif.so )
+( cd opt/kde/lib ; rm -rf libmimelib.so.1 )
+( cd opt/kde/lib ; ln -sf libmimelib.so.1.0.0 libmimelib.so.1 )
+( cd opt/kde/lib ; rm -rf libmimelib.so )
+( cd opt/kde/lib ; ln -sf libmimelib.so.1.0.0 libmimelib.so )
+( cd opt/kde/lib ; rm -rf libuulib.so.5 )
+( cd opt/kde/lib ; ln -sf libuulib.so.5.0.13 libuulib.so.5 )
+( cd opt/kde/lib ; rm -rf libuulib.so )
+( cd opt/kde/lib ; ln -sf libuulib.so.5.0.13 libuulib.so )
+( cd opt/kde/lib ; rm -rf libQwSpriteField.so.1 )
+( cd opt/kde/lib ; ln -sf libQwSpriteField.so.1.5.0 libQwSpriteField.so.1 )
+( cd opt/kde/lib ; rm -rf libQwSpriteField.so )
+( cd opt/kde/lib ; ln -sf libQwSpriteField.so.1.5.0 libQwSpriteField.so )
+( cd opt/kde/lib ; rm -rf libjs.so.0 )
+( cd opt/kde/lib ; ln -sf libjs.so.0.2.0 libjs.so.0 )
+( cd opt/kde/lib ; rm -rf libjs.so )
+( cd opt/kde/lib ; ln -sf libjs.so.0.2.0 libjs.so )
+( cd opt/kde/lib ; rm -rf libkdecore.so.2 )
+( cd opt/kde/lib ; ln -sf libkdecore.so.2.0.0 libkdecore.so.2 )
+( cd opt/kde/lib ; rm -rf libkdecore.so )
+( cd opt/kde/lib ; ln -sf libkdecore.so.2.0.0 libkdecore.so )
+( cd opt/kde/lib ; rm -rf libkdeui.so.2 )
+( cd opt/kde/lib ; ln -sf libkdeui.so.2.0.0 libkdeui.so.2 )
+( cd opt/kde/lib ; rm -rf libkdeui.so )
+( cd opt/kde/lib ; ln -sf libkdeui.so.2.0.0 libkdeui.so )
+( cd opt/kde/lib ; rm -rf libjscript.so.2 )
+( cd opt/kde/lib ; ln -sf libjscript.so.2.0.0 libjscript.so.2 )
+( cd opt/kde/lib ; rm -rf libjscript.so )
+( cd opt/kde/lib ; ln -sf libjscript.so.2.0.0 libjscript.so )
+( cd opt/kde/lib ; rm -rf libkimgio.so.2 )
+( cd opt/kde/lib ; ln -sf libkimgio.so.2.0.0 libkimgio.so.2 )
+( cd opt/kde/lib ; rm -rf libkimgio.so )
+( cd opt/kde/lib ; ln -sf libkimgio.so.2.0.0 libkimgio.so )
+( cd opt/kde/lib ; rm -rf libkhtmlw.so.2 )
+( cd opt/kde/lib ; ln -sf libkhtmlw.so.2.0.0 libkhtmlw.so.2 )
+( cd opt/kde/lib ; rm -rf libkhtmlw.so )
+( cd opt/kde/lib ; ln -sf libkhtmlw.so.2.0.0 libkhtmlw.so )
+( cd opt/kde/lib ; rm -rf libkfm.so.2 )
+( cd opt/kde/lib ; ln -sf libkfm.so.2.0.0 libkfm.so.2 )
+( cd opt/kde/lib ; rm -rf libkfm.so )
+( cd opt/kde/lib ; ln -sf libkfm.so.2.0.0 libkfm.so )
+( cd opt/kde/lib ; rm -rf libkfile.so.2 )
+( cd opt/kde/lib ; ln -sf libkfile.so.2.0.0 libkfile.so.2 )
+( cd opt/kde/lib ; rm -rf libkfile.so )
+( cd opt/kde/lib ; ln -sf libkfile.so.2.0.0 libkfile.so )
+( cd opt/kde/lib ; rm -rf libmediatool.so.2 )
+( cd opt/kde/lib ; ln -sf libmediatool.so.2.0.0 libmediatool.so.2 )
+( cd opt/kde/lib ; rm -rf libmediatool.so )
+( cd opt/kde/lib ; ln -sf libmediatool.so.2.0.0 libmediatool.so )
+( cd opt/kde/lib ; rm -rf libkspell.so.2 )
+( cd opt/kde/lib ; ln -sf libkspell.so.2.0.0 libkspell.so.2 )
+( cd opt/kde/lib ; rm -rf libkspell.so )
+( cd opt/kde/lib ; ln -sf libkspell.so.2.0.0 libkspell.so )
+( cd opt/kde/lib ; rm -rf libkab.so.2 )
+( cd opt/kde/lib ; ln -sf libkab.so.2.0.0 libkab.so.2 )
+( cd opt/kde/lib ; rm -rf libkab.so )
+( cd opt/kde/lib ; ln -sf libkab.so.2.0.0 libkab.so )
+( cd opt/kde/lib ; rm -rf libpuke.so.0 )
+( cd opt/kde/lib ; ln -sf libpuke.so.0.0.1 libpuke.so.0 )
+( cd opt/kde/lib ; rm -rf libpuke.so )
+( cd opt/kde/lib ; ln -sf libpuke.so.0.0.1 libpuke.so )
+( cd opt/kde/lib/ksirc ; rm -rf libpframe.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libpframe.so.0.0.0 libpframe.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libpframe.so )
+( cd opt/kde/lib/ksirc ; ln -sf libpframe.so.0.0.0 libpframe.so )
+( cd opt/kde/lib/ksirc ; rm -rf libplined.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libplined.so.0.0.0 libplined.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libplined.so )
+( cd opt/kde/lib/ksirc ; ln -sf libplined.so.0.0.0 libplined.so )
+( cd opt/kde/lib/ksirc ; rm -rf libpbutton.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libpbutton.so.0.0.0 libpbutton.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libpbutton.so )
+( cd opt/kde/lib/ksirc ; ln -sf libpbutton.so.0.0.0 libpbutton.so )
+( cd opt/kde/lib/ksirc ; rm -rf libppushbt.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libppushbt.so.0.0.0 libppushbt.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libppushbt.so )
+( cd opt/kde/lib/ksirc ; ln -sf libppushbt.so.0.0.0 libppushbt.so )
+( cd opt/kde/lib/ksirc ; rm -rf libpprogress.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libpprogress.so.0.0.0 libpprogress.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libpprogress.so )
+( cd opt/kde/lib/ksirc ; ln -sf libpprogress.so.0.0.0 libpprogress.so )
+( cd opt/kde/lib/ksirc ; rm -rf libptablevw.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libptablevw.so.0.0.0 libptablevw.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libptablevw.so )
+( cd opt/kde/lib/ksirc ; ln -sf libptablevw.so.0.0.0 libptablevw.so )
+( cd opt/kde/lib/ksirc ; rm -rf libplistbox.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libplistbox.so.0.0.0 libplistbox.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libplistbox.so )
+( cd opt/kde/lib/ksirc ; ln -sf libplistbox.so.0.0.0 libplistbox.so )
+( cd opt/kde/lib/ksirc ; rm -rf libplabel.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libplabel.so.0.0.0 libplabel.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libplabel.so )
+( cd opt/kde/lib/ksirc ; ln -sf libplabel.so.0.0.0 libplabel.so )
+( cd opt/kde/lib/ksirc ; rm -rf libpmenudta.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libpmenudta.so.0.0.0 libpmenudta.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libpmenudta.so )
+( cd opt/kde/lib/ksirc ; ln -sf libpmenudta.so.0.0.0 libpmenudta.so )
+( cd opt/kde/lib/ksirc ; rm -rf libppopmenu.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libppopmenu.so.0.0.0 libppopmenu.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libppopmenu.so )
+( cd opt/kde/lib/ksirc ; ln -sf libppopmenu.so.0.0.0 libppopmenu.so )
+( cd opt/kde/lib/ksirc ; rm -rf libpalistbox.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libpalistbox.so.0.0.0 libpalistbox.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libpalistbox.so )
+( cd opt/kde/lib/ksirc ; ln -sf libpalistbox.so.0.0.0 libpalistbox.so )
+( cd opt/kde/lib/ksirc ; rm -rf libptabdialog.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libptabdialog.so.0.0.0 libptabdialog.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libptabdialog.so )
+( cd opt/kde/lib/ksirc ; ln -sf libptabdialog.so.0.0.0 libptabdialog.so )
+( cd opt/kde/lib/ksirc ; rm -rf libksirclistbox.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libksirclistbox.so.0.0.0 libksirclistbox.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libksirclistbox.so )
+( cd opt/kde/lib/ksirc ; ln -sf libksirclistbox.so.0.0.0 libksirclistbox.so )
+( cd opt/kde/lib/ksirc ; rm -rf libpkfiledialog.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libpkfiledialog.so.0.0.0 libpkfiledialog.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libpkfiledialog.so )
+( cd opt/kde/lib/ksirc ; ln -sf libpkfiledialog.so.0.0.0 libpkfiledialog.so )
+( cd opt/kde/lib/ksirc ; rm -rf libpobjfinder.so.0 )
+( cd opt/kde/lib/ksirc ; ln -sf libpobjfinder.so.0.0.0 libpobjfinder.so.0 )
+( cd opt/kde/lib/ksirc ; rm -rf libpobjfinder.so )
+( cd opt/kde/lib/ksirc ; ln -sf libpobjfinder.so.0.0.0 libpobjfinder.so )
+( cd opt/kde/share/doc/HTML/en/kppp ; rm -rf index.html )
+( cd opt/kde/share/doc/HTML/en/kppp ; ln -sf kppp.html index.html )
+( cd opt/kde/share/doc/HTML/en/kpm ; rm -rf index.html )
+( cd opt/kde/share/doc/HTML/en/kpm ; ln -sf kpm.html index.html )
+( cd opt/kde/share/doc/HTML/en/korganizer ; rm -rf index.html )
+( cd opt/kde/share/doc/HTML/en/korganizer ; ln -sf korganizer.html index.html )
+( cd opt/kde/share/doc/HTML ; rm -rf default )
+( cd opt/kde/share/doc/HTML ; ln -sf en default )

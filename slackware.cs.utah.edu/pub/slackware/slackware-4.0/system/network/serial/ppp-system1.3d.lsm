@@ -1,0 +1,22 @@
+Begin3
+Title:          PPP System
+Version:        1.3d
+Entered-date:   18APR99
+Description:	This program is a complete PPP connect system based
+		on the one released by Al Longyear (in /usr/doc/HOWTO).
+		This system has new features, like ISP cycling, FULL
+		support for multipal PPP lines, automatic firewalling/
+		foawarding (and/or masquerading) support, aswell as a few
+		handy scripts like mk/rmfirewall for instant firewalling
+		of any Class A/B/C/D, or curip, curhip, chk4net and more!
+		Also now fully detects and supports ip chains!
+Keywords:       ppp, firewall, isp, connect, internet, masquerade
+Author:         Preston A. Elder <prez@antisocial.com>
+Primary-site:   ftp.srealm.net.au /pub/ppp-system
+                19kb ppp-system1.3d.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/serial
+                19kb ppp-system1.3d.tgz
+Platforms:      Any unix, requires pppd and chat.
+Copying-policy: GNU General Public License
+		Copyright 1997 Preston A. Elder
+End

@@ -1,0 +1,67 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-ldso
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_ldso.tar.gz
+
+echo "+=============+"
+echo "| ld.so-1.9.9 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/ld.so-1.9.9.tar.gz
+cd ld.so-1.9.9
+# These are pre-built by trustworthy individuals, so there's really no
+# need to recompile them...
+# make clean
+# make
+cat README > $PKG/usr/doc/ldso/README
+cat COPYRIGHT > $PKG/usr/doc/ldso/COPYRIGHT
+cat d-link/ld-linux.so > $PKG/lib/ld-linux.so.1.9.9
+strip d-link/libdl/libdl.so
+cat d-link/libdl/libdl.so > $PKG/lib/libdl.so.1.9.9
+cat d-link/libdl/dlfcn.h > $PKG/usr/include/dlfcn.h
+strip util/ldd
+cat util/ldd > $PKG/usr/bin/ldd
+chgrp bin $PKG/usr/bin/ldd
+strip util/ldconfig
+cat util/ldconfig > $PKG/sbin/ldconfig
+chgrp bin $PKG/sbin/ldconfig
+strip ld-so/ld.so
+cat ld-so/ld.so > $PKG/lib/ld.so.incoming
+cat man/ldd.1 | gzip -9c > $PKG/usr/man/man1/ldd.1.gz
+cat man/ldconfig.8 | gzip -9c > $PKG/usr/man/man8/ldconfig.8.gz
+cat man/ld.so.8 | gzip -9c > $PKG/usr/man/man8/ld.so.8.gz
+cat man/dlopen.3 | gzip -9c > $PKG/usr/man/man3/dlopen.3.gz
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/ldso.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/ld.so-1.9.9
+  rm -rf $PKG
+fi

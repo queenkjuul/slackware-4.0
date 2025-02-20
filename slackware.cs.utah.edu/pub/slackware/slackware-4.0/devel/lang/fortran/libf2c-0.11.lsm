@@ -1,0 +1,17 @@
+Begin3
+Title:          shared libaray for f2c functions
+Version:        jan 95 downloaded from netlib.att.com
+Entered-date:   15JAN95
+Description:    DLL shared library for linux of the libI77 and libF77
+                libraries from AT&Ts fortran to C translator. Also included
+                is a binary of the latest f2c.
+Keywords:       fortran development f2c shared library
+Author:         AT&T
+                dfg@research.att.com
+Maintained-by:  Hooft@EMBL-Heidelberg.DE (Rob Hooft)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/fortran
+                libf2c-0.11.tar.gz
+                libf2c-0.11.lsm
+Original-site:  netlib.att.com
+Platform:       Linux, libc V4.6.x or newer.
+End

@@ -1,0 +1,11 @@
+Begin3
+Title:          SETBOOT (OS/2 Boot Manager) utility for Linux, BSD, and DOS
+Version:        1.4
+Entered-date:   24 Jul 1998
+Description:    Boot Manager selector, chooses which OS to boot to
+Keywords:       SETBOOT, Boot Manager
+Author:         csmith@stoneboro.uucp.cirr.com
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/boot/dualboot
+Platforms:      Linux BSD DOS
+Copying-policy: Freeware
+End

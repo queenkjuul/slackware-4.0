@@ -1,0 +1,24 @@
+Begin3
+Title:          hweb
+Version:        0.1
+Entered-date:   Tues April 27 21:17:47 EDT 1999
+Description:    hweb - a literate-programming tool
+                Hweb supports literate programming---the art of writing programs
+	        as documents for human readers.  Hweb is a set of tools and 
+	        methods for using html documents with C programming source code.
+	        Hweb is a very simple tool, with a great idea behind it. 
+	        Interleave documentation with html and C source.
+	        Hweb comes with an HTML extracter called, htangle.
+                This distribution contains binaries and html documents.
+Keywords:       literate programming, WEB, hweb
+Author:         smalllinux@superant.com (steve gibson)
+Maintained-by:  smalllinux@superant.com (steve gibson)
+Primary-site:   metalab.unc.edu /pub/linux/devel/literate
+	        55 K hweb-0.1.tar.gz
+		1 K hweb.lsm
+Alternate-site: 
+Original-site:  ftp.superant.com /pub/hweb/
+		hweb-0.1.tar.gz
+Platform:       
+Copying-policy: GPL
+End

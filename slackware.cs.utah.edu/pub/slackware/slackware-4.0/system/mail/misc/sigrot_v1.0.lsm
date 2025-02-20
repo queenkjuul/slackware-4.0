@@ -1,0 +1,21 @@
+Begin3
+Title: sigrot
+Version: 1.0
+Entered-date: 18NOV95
+Description: Manages multiple .signatures by storing then all in one archive
+             file.  Each time sigrot is called, it copies the next
+             signature from the archive to .signature. 
+Keywords:signature email mail
+Author: cmorrone@udel.edu (Christopher Morrone)
+Maintained-by: Author
+Primary-site: gilb5.gilb.udel.edu
+              /pub/linux/ 
+              sigrot_v1.0.tar.gz
+Alternate-site: sunsite.unc.edu
+                /pub/Linux/Mail/
+                sigrot_v1.0.tar.gz
+Platforms: Should compile on most UNIX systems.
+Copying-policy: Copyright by Christopher Morrone - 1995
+                Can be FREEly distributed as long as the full source is 
+                distibuted in unaltered form.
+End

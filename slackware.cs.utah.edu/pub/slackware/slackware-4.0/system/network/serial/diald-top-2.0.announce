@@ -1,0 +1,77 @@
+Subject: diald-top v2.0 on sunsite -- top-like listing of network packets
+Newsgroups: comp.os.linux.announce
+Cc: linux-diald@vger.rutgers.edu
+Followup-to: comp.os.linux.networking
+Organization: Beirdo's Home Computer
+Summary: 
+Keywords: 
+
+Since the release of diald-top-1.1, I have spent some time extending the 
+capabilities of diald-top to allow a network client-server relationship to ve
+in place with the server running on the machine that is running diald, and the
+clients being elsewhere on the network and communicating to the server via
+TCP/IP on port 1313.  This allows the server to be run by anyone that would 
+have access priviledges to run diald-top locally.
+
+Authentication of the remote user is done via identd, and a configuration file
+is used that indicates what userids get full access (i.e. can send diald
+commands) by giving the userid, IP address and netmask (to easily allow access
+to entire networks).  Currently the address and netmask must be in numeric
+format.
+
+I also fixed the bug that was causing segfaults in v1.1 when a non-resolvable
+IP was encountered.  Slight oversight...  Sorry.
+
+The patches incorporated into version 2.0 were contributed by:
+	- Steffen Ullrich <ccrlphr@xensei.com>
+	  Wed, 10 Sep 1997 15:24:21 +0200
+	  - use of select rather than timeouts
+	  - added -L command line argument to log the monitor data to a file
+	    with timestamps to aid in debugging
+	  - fixed some local allocation problems
+
+
+
+
+Since some people may not have Flex or Bison installed, I have included the 
+generated code in the archive, along with a prebuilt ELF binary dynamically
+linked with ncurses-1.9.9e and libresolv.so.4.   Enjoy.
+
+NOTE:  This may NOT compile with earlier versions of ncurses.
+
+Please send any comments, bug reports or patches to:
+	gjhurlbu@beirdo.ott.uplink.on.ca
+
+
+
+
+The LSM entry follows:
+
+
+Begin3
+Title:          diald-top
+Version:        2.0
+Entered-date:   28SEP97
+Description:    Maintains a 'top'-like listing of all packets and their time to
+		live for use with diald (tested with version 0.16).  Requires
+		ncurses, flex, bison to compile, and uses named pipes for 
+		communication.
+		Since v1.1:  Incorporated patches contributed by:
+			Steffen Ullrich <ccrlphr@xensei.com>
+		Added capability to run as a client on a remote networked
+		  machine.
+		Added a network server that runs on the machine running diald.
+		Now uses non-blocking I/O on the monitor FIFO, and uses select
+		  rather than timeouts to choose between the keyboard and the
+		  FIFO as input streams.
+		Fixed the help screen to fit on normal sized screens as the
+		  development was done with a 50 line screen.
+		Fixed the nasty segfault bug in v1.1.
+Keywords:       diald statistics
+Author:         gjhurlbu@beirdo.ott.uplink.on.ca (Gavin J. Hurlbut)
+Maintained-by:  author
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+		101kB	diald-top-2.0.tar.gz
+		1kB	diald-top-2.0.lsm
+Copying-policy: GPL but with a twist...  I want email if you hack on it :)
+End

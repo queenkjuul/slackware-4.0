@@ -1,0 +1,21 @@
+Begin3
+Title:          magicfilter
+Version:        1.2
+Entered-date:   17MAR96
+Description:	A customizable, extensible automatic printer filter.
+		Lets you automatically detect and print just about any
+		data type you can find a conversion utility for.  This
+		filter is written in C and is controlled completely
+		from an external printer configuration file.
+		This version adds automagic creation of configuration
+		files based on the installed software on your system,
+		courtesy of GNU Autoconf.
+Keywords:	lpd magicfilter printing automatic       
+Author:         H. Peter Anvin <hpa@zytor.com>
+Maintained-by:  H. Peter Anvin <hpa@zytor.com>
+Primary-site:   sunsite.unc.edu
+		53176	/pub/Linux/system/Printing/magicfilter-1.2.tar.gz
+Alternate-site: 
+Original-site:  
+Copying-policy: GPL
+End

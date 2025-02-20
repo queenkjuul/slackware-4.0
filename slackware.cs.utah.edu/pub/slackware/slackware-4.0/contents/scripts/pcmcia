@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ ! -r etc/conf.modules ]; then
+  mv etc/conf.modules.new etc/conf.modules
+else
+  rm -f etc/conf.modules.new
+fi

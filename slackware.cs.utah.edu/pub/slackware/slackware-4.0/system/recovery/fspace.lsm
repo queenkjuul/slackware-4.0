@@ -1,0 +1,34 @@
+Begin3
+Title:          fspace
+Version:        0.01
+Entered-date:   December 12, 1996
+Description:    fspace prints out basic information regarding the amount
+		of free space on a filesystem.	fspace was written to
+		be included in a boot/root rescue set for the Linux
+		operating system and was designed to be small and fast
+		(and thus, statically-linkable.)  The reason fspace exists
+		is two-fold: first, the author desperately needed to work
+		on his C, and thought that playing around with pointers
+		to structs would be a good way to do it, and second,
+		the author wanted a small, statically linked tool to
+		report filesystem usage for those inevitable times when
+		your development system suddenly seems to not have any
+		libraries available and you can't tell what disks are
+		running full and which aren't.	Anyway, keep in mind
+		that this was more an experiment in pointer swapping
+		than anything else.  If you use it, have fun.
+
+Keywords:       fspace filesystem status rescue utility
+Author:         cider@speakeasy.org (cyrus durgin)
+Maintained-by:  cider@speakeasy.org (cyrus durgin)
+Primary-site:   sunsite.unc.edu /pub/Linux/Incoming
+			  2 kb fspace.tgz
+			  1 kb fspace.lsm
+Alternate-site: 
+Original-site:  sunsite.unc.edu /pub/Linux/Incoming
+                          2 kb fspace.tgz
+			  1 kb fspace.lsm
+
+Platform:       Linux
+Copying-policy: free
+End

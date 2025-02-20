@@ -1,0 +1,30 @@
+Begin3
+Title:          ledportcard
+Version:        0.02
+Entered-date:   03/10/95
+Description:    LEDPORTCARD gives you an idea how to build an expandable 
+		interface card which is accessable via a device driver. 
+		It is possible to expand it up to 64 bit of output and 
+		64 bit of input. 
+		A "handmade" circuit diagramm is included as a Postscript 
+		file. 
+		An example is a 10 digit LED-CPU-Meter which reflects the
+		current CPU activity in conjunction with meter-0.2
+		(patched meter-0.2 included).
+		
+	
+                base for future Projects (Power-fail detection, Device 
+                Power-Switching or LC-Display for system-messages). The 
+		second part is a device-driver for the led-cpu-meter 
+		(10-digit-bargraph and six-free usable LEDs) and a patch 
+		for meter-0.2 for using the new device.
+Keywords:       cpu-meter hardware i/o-port 
+Author:         TIETZE_A@etech.fh-hamburg.de(Alexander Tietzel)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system
+	      
+Alternate-site:
+Original-site:
+Platform:	linux-1.1.92 (ISA-Bus) 
+Copying-policy: GPL
+End

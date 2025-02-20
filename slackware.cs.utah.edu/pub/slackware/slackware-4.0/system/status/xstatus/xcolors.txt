@@ -1,0 +1,34 @@
+xcolors.tar.z contains the source for the xcolors command, it also
+includes a binary for XFree 1.3.  It required only a simple
+make.  Excerpts from the man page follow.
+Andrew Tristan
+atristan@ac.ucr.edu
+---------------------------------------------------------------------------
+
+
+
+XCOLORS(1)               USER COMMANDS                 XCOLORS(1)
+
+
+
+NAME
+     xcolors - display all X11 color names and colors
+
+SYNOPSIS
+     xcolors [ -start color ] [ -near color ] [ -distance  howfar ]
+
+DESCRIPTION
+     xcolors reads the rgb.txt file that defines the color  names
+     the X server knows and displays the colors found.
+
+     At the top of the window is a sample region containing text.
+     By clicking on the color names, the color of the sample text
+     can be changed.  Mouse button 1 changes the foreground; but-
+     ton 2 changes the background.  The text can also be edited.
+
+     Typing ``q'' exits the program.
+
+AUTHOR
+     Stephen Gildea, MIT X Consortium
+
+

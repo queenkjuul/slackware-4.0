@@ -1,0 +1,15 @@
+Begin3
+Title:          sn
+Version:        0.2.5
+Entered-date:   18APR99
+Description:    hassle-free usenet news system for small sites.
+Keywords:       small news leafnode nntpcache
+Author:         harold-sn@nb.com.sg (Harold Tay)
+Maintained-by:  harold-sn@nb.com.sg (Harold Tay)
+Primary-site:   sunsite.unc.edu /pub/Linux/news/system/transport
+                109kB sn-0.2.5.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux/i386 libz.so,libz.a
+Copying-policy: GPL
+End

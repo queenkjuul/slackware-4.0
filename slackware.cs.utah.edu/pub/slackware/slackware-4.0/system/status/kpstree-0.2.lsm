@@ -1,0 +1,13 @@
+Begin3
+Title:          kpstree
+Version:        0.2
+Entered-date:   Jan 22 1998
+Description:    Running processes list (tree).
+Keywords:       KDE Qt pstree
+Authors:        Nicolas Leclercq <nicknet@planete.net>
+Maintained-by:  Nicolas Leclercq <nicknet@planete.net>
+Primary-site:   ftp://ftp.kde.org
+Alternate-site:
+Platform:       unix (only tested on RedHat linux 5.0)
+Copying-policy: GPL
+End

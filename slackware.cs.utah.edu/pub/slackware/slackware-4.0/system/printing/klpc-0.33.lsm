@@ -1,0 +1,15 @@
+Begin3
+Title:          klpc
+Version:        0.33
+Entered-date:   12JUL98
+Description:    Gui for LPRNG
+Keywords:       GUI LPRNG Printing
+Author:         Dietmar Kling <dietmar.kling@usa.net>
+Maintained-by:  Dietmar Kling <dietmar.kling@usa.net>
+Primary-site:   ftp://ftp.kde.org/pub/kde/unstable/apps/utils/klpc-0.1.3.tgz
+File1:          klpc-0.3.tar.gz
+Home-page:      
+Original-site:  
+Platform:       unix (only tested on linux)
+Copying-policy: GPL
+End

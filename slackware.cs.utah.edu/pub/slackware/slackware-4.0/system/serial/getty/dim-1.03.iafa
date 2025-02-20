@@ -1,0 +1,17 @@
+Title:          DIM: A Dial-In Monitor for Linux modems
+Version:        1.03
+Description:    The dial-in monitor is intended to give its user control
+                over the way the modem reacts to incoming calls. 
+                The modem may be told to accept or refuse incoming calls.
+                If calls are accepted, getty_ps will take the line.
+                Much info about modem/getty setup in the documentfile.
+Author:         Frank B. Brokken
+                email: frank@icce.rug.nl
+                postal address: ICCE, Westerhaven 16, 9718 AW, the Neherlands
+                phone: (+31) 50 63 36 88 (mo-vr, 9:00-17:00 MET)
+Maintained by:  Frank B. Brokken
+Maintained at:  sunsite.unc.edu, tsx-11.mit.edu, beatrix.icce.rug.nl
+Platforms:      Linux, Hayes compatible modem
+Copying Policy: Freely distributable
+Keywords:       modem, dial-in, serial-line
+

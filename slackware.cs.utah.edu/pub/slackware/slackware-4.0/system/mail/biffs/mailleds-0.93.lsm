@@ -1,0 +1,16 @@
+Begin3
+Title:          mailleds
+Version:        0.93
+Entered-date:   21MAY96
+Description:    mailleds is a quiet, unobtrusive way to signify 
+                that you have new mail: a user daemon to 
+                blink LEDs when there is new mail.
+Keywords:       LED mail keyboard newmail
+Author:         mtr@ratbert.bagel.org (Benjamin Osheroff)
+Primary-site:   ftp.netcom.com /pub/os/osheroff/mailleds
+		    19K mailleds-0.93.tar.gz	
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Mail
+                    19K mailleds-0.93.tar.gz
+Platforms:      linux
+Copying-policy: GPL
+End

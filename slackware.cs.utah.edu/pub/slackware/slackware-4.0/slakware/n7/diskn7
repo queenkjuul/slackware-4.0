@@ -1,0 +1,34 @@
+CONTENTS: sendmail tin wget       
+sendmail: BSD sendmail 8.9.3.
+sendmail:
+sendmail: Eric Allman's mail transport agent. The _Unix System Administration
+sendmail: Handbook_ calls sendmail 'The most complex and complete mail delivery
+sendmail: system in common use...'
+sendmail:
+sendmail: Ready-made configuration files are included for systems connected by
+sendmail: TCP/IP (with or without a nameserver) and for systems using UUCP.
+sendmail:
+sendmail: procmail is included as a local mail agent.
+sendmail:
+tin:      The 'tin' news reader. (pre-1.4 release 980226)
+tin:
+tin:      Tin is a full-screen, easy-to-use Netnews reader.  It can read news
+tin:      locally (i.e. /var/spool/news) or remotely (rtin or tin -r option)
+tin:      via a NNTP (Network News Transport Protocol) server.  It will
+tin:      automatically utilize NOV (news overview) style index files if
+tin:      available locally or via the nntp xover command.
+tin:
+tin:      Tin was written by Iain Lea <iain@ecrc.de> and is currently
+tin:      maintained by Urs Janssen <urs@tin.org>.
+tin:
+wget:     wget-1.5.3
+wget:
+wget:     GNU Wget is a free network utility to retrieve files from the 
+wget:     World Wide Web using HTTP and FTP, the two most widely used Internet
+wget:     protocols.  It works non-interactively, thus enabling work in the
+wget:     background after having logged off.
+wget:
+wget:     The author of Wget is Hrvoje Niksic <hniksic@srce.hr>.
+wget:
+wget:
+wget:

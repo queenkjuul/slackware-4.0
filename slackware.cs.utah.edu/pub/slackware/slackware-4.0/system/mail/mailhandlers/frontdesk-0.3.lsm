@@ -1,0 +1,16 @@
+Begin3
+Title: frontdesk
+Version: 0.3
+Entered-date: 19970818
+Description: Frontdesk is a set of scripts that put incoming mail into 
+  threaded queues which can be accessed via the web.  Very useful for 
+  customer support and bug tracking.  Some work need to be done to
+  get this to work.
+Keywords: www html database gui 
+Author: dbedit@gnacademy.org
+Maintained-by: dbedit@gnacademy.org
+Primary-site: sunsite.unc.edu /pub/Linux/apps/databases
+     30kB frontdesk-0.3.tar.gz
+Platforms: Needs Perl5
+Copying-policy: GPL
+End

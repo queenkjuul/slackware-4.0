@@ -1,0 +1,16 @@
+
+Begin3
+Title:          Domainedit
+Version:        2.0
+Entered-date:   10/12/95
+Description:    Modify, create, and delete domain entries with Internic
+Keywords:       Domain DNS Internic
+Author:         kclark@usa.net
+Maintained-by:  kclark@usa.net
+Primary-site:   sunsite.unc.edu /pub/Linux/Incoming
+
+Alternate-site: 
+Original-site:  sunsite.unc.edu /pub/Linux/Incoming 
+Platform:       All UNIX Platforms, requires Perl
+Copying-policy: Freeware
+End

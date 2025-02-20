@@ -1,0 +1,361 @@
+
+                      HOW TO CHANGE THE TITLE OF AN XTERM
+                                       
+Richard Lister, ric@giccs.georgetown.edu
+
+   
+   
+   $Revision: 1.6 $, Last modified: Wed Jan 7 14:34:31 EST 1998
+   
+   
+     _________________________________________________________________
+   
+   _This document explains how to use escape sequences to dynamically
+   change window and icon titles of an xterm. Examples are given for
+   several shells, and the appendix gives escape sequences for some other
+   terminal types._
+     _________________________________________________________________
+   
+     * Where to find this document
+     * Static titles
+     * Dynamic titles
+     * Examples for different shells
+          + zsh
+          + bash
+          + tcsh
+          + csh
+          + ksh
+     * Appendix: escapes for other terminal types
+          + SGI wsh, xwsh and winterm
+          + CDE dtterm
+          + Sun cmdtool and shelltool
+          + Example
+     * Credits
+       
+   
+     _________________________________________________________________
+   
+Where to find this document
+
+   
+   
+   This document is now part of the Linux HOWTO Index and can be found at
+   http://sunsite.unc.edu/LDP/HOWTO/mini/Xterm-Title.html.
+   
+   The latest version can always be found at
+   http://www.giccs.georgetown.edu/~ric/howto/Xterm-Title.html.
+   
+   
+     _________________________________________________________________
+   
+Static titles
+
+   
+   
+   A static title may be set for any of the terminals xterm, color-xterm
+   or rxvt, by using the -T and -n switches:
+
+  xterm -T "My XTerm's Title" -n "My XTerm's Icon Title"
+
+Dynamic titles
+
+   
+   
+   Many people find it useful to set the title of a terminal to reflect
+   dynamic information, such as the name of the host the user is logged
+   into, the current working directory, etc.
+   
+   This may be done by using XTerm escape sequences. The following
+   sequences are useful in this respect:
+
+  ESC]0;_string_BEL    Set icon name and window title to _string_
+  ESC]1;_string_BEL    Set icon name to _string_
+  ESC]2;_string_BEL    Set window title to _string_
+
+   where ESC is the _escape_ character (\033), and BEL is the _bell_
+   character (\007).
+   
+   _Note_: these sequences apply to most xterm derivatives, such as
+   nxterm, color-xterm and rxvt. Other terminal types often use different
+   escapes; see the appendix for examples. For the full list of xterm
+   escape sequences see the file ctlseq2.txt, which comes with the xterm
+   distribution, or xterm.seq, which comes with the rxvt distribution.
+   
+   These escapes really need to be applied every time the prompt changes.
+   This way the string is updated with every command you issue and can
+   keep track of information such as current working directory, username,
+   hostname, etc. Some shells provide special functions for this purpose,
+   some don't and we have to insert the title sequences directly into the
+   prompt string.
+   
+   
+     _________________________________________________________________
+   
+Examples for different shells
+
+   
+   
+   In all the examples below we test the environment variable TERM to
+   make sure we only apply the escapes to xterms. We test for
+   TERM=xterm*; the wildcard is because some variants (such as rxvt) can
+   set TERM=xterm-color.
+   
+  zsh
+  
+   
+   
+   zsh provides some functions and expansions, which we will use:
+
+  precmd ()   a function which is executed just before each prompt
+  chpwd ()    a function which is executed whenever the directory is changed
+  \e          escape sequence for escape (ESC)
+  \a          escape sequence for bell (BEL)
+  %n          expands to $USERNAME
+  %m          expands to hostname up to first '.'
+  %~          expands to directory, replacing $HOME with '~'
+
+   There are many more expansions available: see 'man zshmisc'.
+   
+   Thus, the following inserted in ~/.zshrc will set the xterm title to
+   "_username_@_hostname_: _directory_" ...
+
+  case $TERM in
+      xterm*)
+          precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+          ;;
+  esac
+
+   This could also be achieved by using chpwd() instead of precmd().
+   
+  bash
+  
+   
+   
+   bash supplies a variable PROMPT_COMMAND which contains a command to
+   execute before the prompt. This example (inserted in ~/.bashrc) sets
+   the title to "_username_@_hostname_: _directory_":
+
+  PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+
+   where \033 is the character code for ESC, and \007 for BEL. Note that
+   the quoting is important here: variables are expanded in "...", and
+   not expanded in '...'. So PROMPT_COMMAND is set to an unexpanded
+   value, but the variables inside "..." are expanded when PROMPT_COMMAND
+   is used.
+   
+   However, PWD produces the full directory path. If we want to use the
+   '~' shorthand we need to embed the escape string in the prompt, which
+   allows us to take advantage of the following prompt expansions
+   provided by the shell:
+
+  \u          expands to $USERNAME
+  \h          expands to hostname up to first '.'
+  \w          expands to directory, replacing $HOME with '~'
+  \[...\]     embeds a sequence of non-printing characters
+
+   
+   
+   Thus, the following produces a prompt of "bash$ ", and an xterm title
+   of "_username_@_hostname_: _directory_" ...
+
+  case $TERM in
+      xterm*)
+          PS1="\[\033]0;\u@\h: \w\007\]bash\$ "
+          ;;
+      *)
+          PS1="bash\$ "
+          ;;
+  esac
+
+   Note the use of \[...\], which tells bash to ignore the non-printing
+   control characters when calculating the width of the prompt. Otherwise
+   line editing commands get confused while placing the cursor.
+   
+  tcsh
+  
+   
+   
+   tcsh has functions and expansions similar to those of zsh:
+
+  precmd ()   a function which is executed just before each prompt
+  cwdcmd ()   a function which is executed whenever the directory is changed
+  %n          expands to username
+  %m          expands to hostname
+  %~          expands to directory, replacing $HOME with '~'
+
+   
+   
+   Unfortunately, there is no equivalent to zsh's print command allowing
+   us to use prompt escapes in the title string, so the best we can do is
+   to use shell variables (in ~/.tcshrc):
+
+  switch ($TERM)
+      case "xterm*":
+          alias precmd 'echo -n "\033]0;${HOST}:$cwd\007"'
+          breaksw
+  endsw
+
+   but this gives the directory's full path instead of using '~'. Instead
+   you can insert the string in the prompt:
+
+  switch ($TERM)
+      case "xterm*":
+          set prompt="%{\033]0;%n@%m:%~\007%}tcsh%% "
+          breaksw
+      default:
+          set prompt="tcsh%% "
+          breaksw
+  endsw
+
+   which sets a prompt of "tcsh% ", and an xterm title and icon of
+   "_username_@_hostname_: _directory_". Note that the "%{...%}" must be
+   placed around escape sequences (and cannot be the last item in the
+   prompt: see 'man tcsh' for the details).
+   
+  csh
+  
+   
+   
+   This is very difficult indeed in csh, and we end up doing something
+   like the following (in ~/.cshrc):
+
+  switch ($TERM)
+      case "xterm*":
+          set host=`hostname`
+          set user=`whoami`
+          alias cd 'cd \!*; set prompt="^[]0;${user}@${host}: ${cwd}^Gcsh% "'
+          breaksw
+      default:
+          set prompt='csh% '
+          breaksw
+  endsw
+
+   where we have had to alias the cd command to do all the work of
+   setting the prompt. Note that the '^[' and '^G' in the prompt string
+   are single characters for ESC and BEL (can be entered in emacs using
+   'C-q ESC' and 'C-q C-g').
+   
+   I strongly recommend abandoning csh in favour of a more advanced
+   shell: zsh, bash or tcsh.
+   
+  ksh
+  
+   
+   
+   ksh provides little in the way of functions and expansions, so we have
+   to insert the escape string in the prompt to have it updated
+   dynamically. This example produces a title of "_username_@_hostname_:
+   _directory_" and a prompt of "ksh$ ".
+
+  case $TERM in
+      xterm*)
+          HOST=`hostname`
+          PS1='^[]0;${USER}@${HOST}: ${PWD}^Gksh$ '
+          ;;
+      *)
+          PS1='ksh$ '
+          ;;
+  esac
+
+   However, PWD produces the full directory path. We can remove the
+   prefix of $HOME/ from the directory using the ${...##...} construct.
+   We can also use ${...%%...} to truncate the hostname:
+
+  HOST=`hostname`
+  HOST=${HOST%%.*}
+  PS1='^[]0;${USER}@${HOST}: ${PWD##${HOME}/}^Gksh$ '
+
+   Note that the '^[' and '^G' in the prompt string are single characters
+   for ESC and BEL (can be entered in emacs using 'C-q ESC' and 'C-q
+   C-g').
+   
+   
+     _________________________________________________________________
+   
+Appendix: escapes for other terminal types
+
+  SGI wsh, xwsh and winterm
+  
+   
+   
+   These terminals set TERM=iris-ansi and use the following escapes:
+
+  ESC P 1 .y _string_ ESC \\        Set window title to _string_
+  ESC P 3 .y _string_ ESC \\        Set icon title to _string_
+
+   For the full list of xwsh escapes see xwsh(1G).
+   
+  Sun cmdtool and shelltool
+  
+   
+   
+   cmdtool and shelltool both set TERM=sun-cmd and use the following
+   escapes:
+
+  ESC ] l _string_ ESC \            Set window title to _string_
+  ESC ] L _string_ ESC \            Set icon title to _string_
+
+   These are truly awful programs: use something else.
+   
+  CDE dtterm
+  
+   
+   
+   dtterm sets TERM=dtterm, and appears to recognise both the standard
+   xterm escape sequences and the Sun cmdtool sequences. (I've only
+   tested this on a Sun ... anyone have HP and DEC versions they can test
+   for me?).
+   
+  Example
+  
+   
+   
+   Here's my full setup using zsh to handle all these terminal types:
+
+  case $TERM in
+
+    xterm*|dtterm)
+      precmd () {print -Pn "\e]0;%n@%m: %~\a"}  ## window & icon title
+      ;;
+
+    iris-ansi)
+      precmd () {
+        print -Pn "\eP1.y%n@%m: %~\e\\"         ## window title
+        print -Pn "\eP3.y%n@%m: %~\e\\"         ## icon title
+      }
+      ;;
+
+    sun-cmd)
+      precmd () {
+        print -Pn "\e]l%n@%m: %~\e\\"           ## window title
+        print -Pn "\e]L%n@%m: %~\e\\"           ## icon title
+      }
+      ;;
+
+  esac
+
+   
+     _________________________________________________________________
+   
+Credits
+
+   Thanks to the following people.
+   
+   Paul D. Smith <psmith@BayNetworks.COM> and Christophe Martin
+          <cmartin@ipnl.in2p3.fr>
+          both pointed out that I had the quotes the wrong way round in
+          the bash PROMPT_COMMAND. Getting them right means variables
+          _are_ expanded dynamically.
+          
+   Paul D. Smith <psmith@BayNetworks.COM>
+          suggested the use of \[...\] in the bash prompt for embedding
+          non-printing characters.
+          
+   Christophe Martin <cmartin@ipnl.in2p3.fr>
+          provided the solution for ksh.
+          
+   Keith Turner <keith@silvaco.com>
+          supplied the escape sequences for Sun cmdtool and shelltool.
+          
+   
+     _________________________________________________________________

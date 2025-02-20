@@ -1,0 +1,23 @@
+Begin3
+Title: ext2-os2 (32 bits edition)
+Version: 2.4
+Entered-date: 10AUG97
+Description: 32 bits Linux ext2fs Installable File System driver (IFS) for OS/2.
+             Makes Linux ext2fs partitions appear as new drive letters that can be
+             seamlessly accessed as standard OS/2 drives (both read/write). This is
+             a port based on the Linux ext2 0.5b kernel code. This code is consistent
+             with Linux kernels up to the latest available today (2.1.15).
+             Includes also an OS/2  port of the linux ext2 file system utilities
+             (e2fsprogs-1.10)
+             ext2-os2 home page at http://www.geocities.com/SiliconValley/Bay/5313
+Keywords: ext2fs, OS/2, WARP, IFS, file system
+Author: willm@ibm.net (Matthieu WILLM)
+Maintained-by: willm@ibm.net (Matthieu WILLM)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Filesystems/ext2
+                2314472 ext2_240.zip
+Alternate-site: ftp-os2.nmsu.edu /pub/os2/system/drivers/filesys/ext2_240.zip
+                2314472 ext2_240.zip
+Platform: OS/2 WARP
+Copying-policy: GPL
+End
+

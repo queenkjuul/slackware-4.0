@@ -1,0 +1,573 @@
+Dial-On-Demand mini-HOWTO
+Rodney.van.den.Oever@tip.nl
+Version 1.0, 28 July 1996 / updated and submitted 29 february 1997
+
+
+Introduction:
+
+This document describes how to do dial-on-demand dialling and how to use a
+Linux host connected to a private local network as a dial-on-demand
+PPP-router.
+
+The kerneld-mini-HOWTO already describes how kerneld can execute a
+'request-route' script, I'd like to describe a working setup in more detail.
+
+If you have a small network at home, this is a very elegant way to provide
+transparent Internet-access for a couple of other machines.
+
+
+______________________________
+__|__                  ___|___
+|     | local network  |       |   ______  PPP-link to provider
+| PC  |  192.168.1.0   | Linux |--|modem |------------------>
+|     |                | Router|  |______|      x.x.x.x
+|_____|                |_______|          (dynamic IP-address)
+                         named
+                         pppd
+
+This setup requires:
+
+* Kernel 2.0.0 or later.
+* ppp-2.2.0f.tar.gz or later
+* modules-2.0.0.tar.gz or later
+* ipfwadm-2.3.tar.gz (http://www.xos.nl/linux/ipfwadm)
+
+
+The following steps need to be taken:
+
+1. Kernel Configuration
+2. Modules Installation
+3. PPP Installation
+4. Serial Port and Modem Configuration
+5. PPP Configuration
+6. Dial-On-Demand
+7. Network Configuration
+8. Masquerading configuration
+9. Workstation configuration
+
+----------------------------------------------------------------------------
+
+---
+
+
+1. Kernel Configuration:
+
+First we need to compile a kernel with kerneld, ppp and IP-masquerading
+support.
+I'll only show the options required for this setup, other options like
+firewall
+logging or transparent proxying can be turned on, but are not required:
+
+cd /usr/src/linux
+make config (or make menuconfig)
+
+* Code maturity level options
+*
+Prompt for development and/or incomplete code/drivers (CONFIG_EXPERIMENTAL)
+
+[Y/n/?]
+
+* Loadable module support
+*
+Enable loadable module support (CONFIG_MODULES) [Y/n/?]
+Set version information on all symbols for modules (CONFIG_MODVERSIONS)
+[N/y/?]
+Kernel daemon support (e.g. autoload of modules) (CONFIG_KERNELD) [Y/n/?]
+*
+Networking support (CONFIG_NET) [Y/n/?]
+*
+* Networking options
+*
+Network firewalls (CONFIG_FIREWALL) [Y/n/?]
+TCP/IP networking (CONFIG_INET) [Y/n/?]
+IP: forwarding/gatewaying (CONFIG_IP_FORWARD) [Y/n/?]
+IP: firewalling (CONFIG_IP_FIREWALL) [Y/n/?]
+IP: masquerading (EXPERIMENTAL) (CONFIG_IP_MASQUERADE) [Y/n/?]
+*
+* Protocol-specific masquerading support will be built as modules.
+*
+IP: always defragment (CONFIG_IP_ALWAYS_DEFRAG) [Y/n/?]
+IP: optimize as router not host (CONFIG_IP_ROUTER) [Y/n/?]
+*
+* Network device support
+*
+Network device support (CONFIG_NETDEVICES) [Y/n/?]
+*
+PPP (point-to-point) support (CONFIG_PPP) [M/n/y/?]
+*
+* CCP compressors for PPP are only built as modules.
+*
+Ethernet (10 or 100Mbit) (CONFIG_NET_ETHERNET) [Y/n/?]
+NE2000/NE1000 support (CONFIG_NE2000) [Y/m/n/?]
+
+
+The latter option depends of course on the netword card used!
+
+
+Compile the kernel with:
+
+make zlilo
+make modules
+make modules_install
+
+If you don't use LILO, copy /usr/src/linux/arch/i386/boot/zImage to the
+proper
+location for your setup.
+The modules are installed in /lib/modules/x.x.x, Where x.x.x reflects the
+version-number of your kernel.
+
+----------------------------------------------------------------------------
+
+---
+
+
+2. Modules Installation:
+
+The following module-utilities are required:
+
+/sbin/insmode           Loads module requested
+/sbin/rmmod             Removes module no longer needed
+/sbin/depmod            Creates depedencies
+/sbin/kerneld           Kerneld extension to load modules automatically
+
+If you don't have these yet, install 'm by:
+
+cd /usr/src
+tar zxf modules-2.0.0.tar.gz
+make install
+
+To load kerneld at startup we need to edit /etc/rc.d/rc.S or create a
+seperate
+script rc.modules which is called from rc.S. Add or change the following
+lines:
+
+/etc/rc.d/rc.modules:
+
+if [ ! -f /lib/modules/`uname -r`/modules.dep ] ; then
+        echo "Updating module dependencies for Linux `uname -r`:"
+        /sbin/depmod -a
+fi
+
+[ -x /sbin/kerneld ] && /sbin/kerneld
+
+
+The first part checks for the module-dependencies and creates them if they
+don't
+exist yet.
+
+----------------------------------------------------------------------------
+
+---
+
+
+3. PPP Installation:
+
+The following stuff is required to setup a PPP-link:
+
+/usr/sbin/pppd            PPP-daemon
+/usr/sbin/pppstats        PPP-statistics
+/usr/sbin/chat            Execution of scripts
+
+Install these by:
+
+cd /usr/src
+tar zxf ppp-2.2.0f.tar.gz
+cd ppp-2.2.0f
+./configure
+make kernel
+
+Since later kernels already include the PPP-code, 'make kernel' won't
+replace
+anything. Check the README and Makefile for shadow-support (if you also
+want to
+dial-in to this host) and other options. Then do:
+
+make
+make install
+
+----------------------------------------------------------------------------
+
+---
+
+
+4. Serial port and modem configuration:
+
+This setup requires a modem. Serial port setup is done in /etc/rc.d/rc.seria
+
+l:
+
+${SETSERIAL} /dev/cua0 uart 16450 port 0x3F8 irq 4
+${SETSERIAL} /dev/cua1 uart 16550A port 0x2F8 irq 3 spd_vhi
+
+In this setup COM1 is used by the mouse and COM2 by an internal 28k8
+modem.
+The spd_vhi-parameter replace the 38400 bps-entry in the speeds-table with
+115200.
+Likewise, spd_hi replaces this by 57600.
+
+Use spd_vhi with a 28k8 modem and spd_hi with a 14k4 modem, but start with
+38400,
+just to be on the safe side.
+
+You can check your modem setup by running 'minicom' or some other terminal
+program.
+Your modem should echo the characters typed. Use Ctrl-A, P to change the
+communication parameters. Check if it still works at 57600 or 115200 bps.
+Entering 'ATZ' should return 'OK'. Use Ctrl-A X to leave minicom.
+
+Minicom can also be used to dial your provider manually. Make a note of
+what you
+need to enter to setup the link and what the response are from the remote
+server.
+If your provider doesn't use PAP or CHAP you probably need to enter a
+username and
+password and possibly enter a command to setup the link in PPP-mode.
+
+----------------------------------------------------------------------------
+
+---
+
+
+5. PPP Configuration:
+
+pppd searches /etc/ppp for scripts and the file 'options'.
+
+/etc/ppp/options:
+
+/dev/modem 38400 crtscts modem noipdefault defaultroute idle-disconnect
+120
+
+Meaning:
+
+/dev/modem      In my setup a link to /dev/cua1.
+38400           Gets replaced by 115200 (spd_vhi-parameter in
+/etc/rc.d/rc.serial)
+crtscts         Hardware handshake, RTS/CTS, don't use Xon-Xoff-handshaking!
+
+
+noipdefault     The IP-address is assigned automatically.
+defaultroute    This sets the default route to the PPP-interface when the
+link is up.
+idle-disconnect PPP-2.2.0f automatically disconnects an idle link after
+120
+seconds.
+
+Now we need to create a script, just name it 'default', meaning the ISP
+you
+normally
+use. If you want to make other connections too, creates differents scripts
+for these
+sites and name them with the remote IP-address.
+
+/etc/ppp/default:
+
+"" ats11=55dtXXXXXXXX CONNECT "" rname: UUUUU sword: PPPPP > ppp
+
+
+Meaning:
+
+ats11=55        shortens the duration of the dial tones to speed up
+dialing.
+XXXXXXXX        Enter the phone-number for your provider here.
+CONNECT         chat waits for your modem to return 'CONNECT'.
+rname:          chat waits for 'rname', and enters 'UUUUU'
+sword:          chat waits for 'sword', and then enters 'PPPPP'.
+
+Replace 'UUUUU' and 'PPPPP' by your username and password. I use 'rname'
+and
+'sword' because sometimes the first letter gets missed or could be upper-
+or
+lowercase and language-dependent. Some ISP's require you to enter 'ppp'
+after
+your enter the username and password, so I wait for the last character of
+the
+routerprompt ('>').
+
+If you get errors like 'serial line looped back' or 'serial line not 8-bit
+clean'
+the link is not yet in PPP-mode.
+
+This command is long enough to place it in a small script:
+
+/etc/ppp/ppp:
+
+#!/bin/sh
+/usr/sbin/pppd connect '/usr/sbin/chat -v -f /etc/ppp/default'
+
+You should now be able to connect to your ISP, you might add the 'debug'
+parameter
+to the /etc/ppp/options-file, make sure you increase the loglevel of
+syslogd to
+see whats going on:
+
+/etc/syslog.conf
+*.debug                                 /var/log/messages
+
+If you edit syslog.conf be sure to notify syslogd about this change.
+Depending on
+the location of its PID-file, do:
+
+kill -1 `cat /var/run/syslog.pid`
+
+or
+
+kill -1 `cat /etc/syslog.pid`
+
+
+After the connection is made, check with 'ifconfig' for the existing of a
+'ppp0'-
+interface. Check your default route with 'netstat -r', it should point to
+your ISP.
+Try pinging a remote server, e.g. your providers nameserver.
+
+If this works you could add this nameserver to your /etc/resolv.conf:
+
+search your.isp.domain
+nameserver x.x.x.x
+
+----------------------------------------------------------------------------
+
+---
+
+
+6. Dial-on-Demand:
+
+Kerneld can be used to load modules, like ppp, on demand. An additional
+feature,
+described in the kerneld-HOWTO, is the ability to invoke a script, if a
+particular
+route is missing. Kerneld will look for '/sbin/request-route'. The script
+below is
+an almost exact copy of the script included with the modules-2.0.0.tar.gz:
+
+/sbin/request-route:
+
+#!/bin/sh
+LOCK=/var/run/request-route.pid
+export PATH=/usr/sbin:$PATH     # for ppp-2.2*
+
+# This script will be called from kerneld with the requested route as $1
+
+chatfile=/etc/ppp/$1
+
+# If no chatscript exists use a default value (symlink to preferred
+script):
+
+[ ! -f $chatfile ] && chatfile=/etc/ppp/default
+
+# Check if we're already running:
+
+if [ ! -f $LOCK ] ; then
+        pppd connect "chat -f $chatfile" &
+
+        # Timer to be killed by ip-up, tunable! Check kerneld delay as
+well
+        sleep 60 &
+        sleepid=$!
+        echo $sleepid > $LOCK
+        wait $sleepid
+        rm -f $LOCK
+        exit 0
+fi
+exit 1
+
+
+Kerneld will run this script using the missing route as an argument:
+
+/sbin/request-route x.x.x.x
+
+The script uses a lock-file to prevent multiple 'request-route'-instances.
+
+At first I used a script that was triggered by a nameserver query, but
+since I like
+to run a local nameserver, this lookup would be cached and a second query
+wouldn't
+bring the link up. That's why I changed the script to use a default
+chat-script if
+none exists.
+
+This also allows you to create multiple chat-scripts for different links
+and use a
+default chat-script to connect to your ISP.
+
+After the link has been brought up, pppd executes the script /etc/ppp/ip-up
+
+which
+removes the lock-file. Add commands you'd like to execute everytime the
+link is
+brought up, like a sendmail queue-run:
+
+#!/bin/ash
+LOCK=/var/run/request-route.pid
+[ -f $LOCK ] && kill `cat $LOCK`
+
+# Execute these commands after connecting:
+#/usr/sbin/sendmail -q
+
+
+The 'idle-disconnect'-option automatically disconnects an idle link, use
+'ppp-off'
+is you want to disconnect immediately:
+
+/usr/sbin/ppp-off:.
+
+#!/bin/sh
+LOCK=/var/run/request-route.pid
+DEVICE=ppp0
+
+rm -f $LOCK
+#
+# If the ppp0 pid file is present then the program is running. Stop it.
+if [ -r /var/run/$DEVICE.pid ]; then
+        kill -INT `cat /var/run/$DEVICE.pid`
+#
+# If unsuccessful, ensure that the pid file is removed.
+#
+        if [ ! "$?" = "0" ]; then
+                echo "removing stale $DEVICE pid file."
+                rm -f /var/run/$DEVICE.pid
+                exit 1
+        fi
+#
+# Success. Terminate with proper status.
+#
+        echo "$DEVICE link terminated"
+        exit 0
+fi
+#
+# The link is not active
+#
+echo "$DEVICE link is not active"
+
+exit 1
+
+----------------------------------------------------------------------------
+
+---
+
+
+7. Network Configuration:
+
+If your Linux-box has another network interface, like an Ethernet-card or
+if you
+use PLIP to connect to another machine, you can configure this box to
+function as
+a router. This is how I configured my network, I always enter all
+IP-addresses in
+/etc/hosts so I only have one file to maintain:
+
+/etc/hosts:
+
+127.0.0.1       localhost
+10.0.0.1        your.domain.com host
+10.0.0.2        some.other.machine
+
+
+/etc/networks:
+
+loopback        127.0.0.0
+localnet        10.0.0.0
+
+
+/etc/rc.d/inet1:
+
+# Loopback interface:
+ifconfig lo localhost
+route add -net loopback
+
+# Local interface:
+ifconfig eth0 host
+route add -net localnet eth0
+
+
+The last rule adds a route to the local network. We don't need to enter
+the
+default
+gateway here, since we don't have one until a PPP-link is setup.
+
+----------------------------------------------------------------------------
+
+---
+
+
+8. Masquerading Configuration:
+
+If you need to connect multiple machines, but only have one IP-address,
+you
+can use
+the Linux masquerading feature. This allows you to configure an internal
+network-
+number (preferably a private IP-address) which gets translated to the
+IP-address
+assigned to the PPP-interface.
+
+You are free to use the following network numbers:
+
+Class A: 10.0.0.0
+Class B: 172.16.0.0 - 172.31.0.0
+Class C: 192.168.0.0 - 192.168.254.0
+
+
+Add the following rules to /etc/rc.d/rc.inet1:
+
+FW=/sbin/ipfwadm
+
+${FW} -F -f
+
+${FW} -F -a m -P tcp -S localnet/8 -D default/0
+${FW} -F -a m -P udp -S localnet/8 -D default/0
+
+# Masquerading timeout-values (tcp tcpfin udp), defaults:
+${FW} -M -s 3600 0 0
+
+# Load module for special protocols:
+/sbin/modprobe ip_masq_ftp
+/sbin/modprobe ip_masq_raudio
+/sbin/modprobe ip_masq_irc
+
+
+The two masquerading rules will translate UDP and TCP-traffic to the
+IP-address
+used as the default gateway (the PPP-interface). Ping, which uses the
+ICMP-protocol,
+will fail from other hosts, it will only work from the router.
+I used network 10.0.0.0 with subnet mask 255.0.0.0 or in CIDR-notation:
+'/8'.
+
+The next rule prevents FTP-DATA connections from timing out, by increasing
+the TCP-
+timeout value.
+
+The modules are only required if you want to use these protocols across
+the
+firewall.
+E.g. if you want to use normal ftp through the firewall, you need to load
+the
+ip_masq_ftp-module.
+
+----------------------------------------------------------------------------
+
+----
+
+9. Workstation Configuration:
+
+Configure your other machine for your local network number and set them up
+to
+use the Linux-box as their default gateway.
+
+----------------------------------------------------------------------------
+
+----
+
+10. Disclaimer
+
+This document describes a configuration that works for me, use it at your
+own
+risk. If anything substantial is missing or if something is terribly
+wrong,
+please let me know!
+
+One thing I could add is a description of how to setup a local nameserver.
+
+
+Rodney van den Oever <Rodney.van.den.Oever@tip.nl>

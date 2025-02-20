@@ -1,0 +1,2 @@
+( cd sbin ; rm -rf rmmod )
+( cd sbin ; ln -sf insmod rmmod )

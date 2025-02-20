@@ -1,0 +1,17 @@
+Begin3
+Title:		pload
+Version:	0.9.4
+Entered-date:	04MAR99
+Description:	display ppp, and for Linux 2.2 any network interface
+		statistics in an X window
+Keywords:	ppp monitor X xload Xaw
+Author:		mdsmith@engr.utk.edu (Matt Smith)
+Maintained-by:	mdsmith@engr.utk.edu (Matt Smith)
+Primary-site:	http://www.engr.utk.edu/~mdsmith/pload/
+		pload-0.9.4.tar.gz
+Alternate-site:	metalab.unc.edu /pub/Linux/system/network/serial/ppp
+Original-site:	http://www.engr.utk.edu/~mdsmith/pload/
+Platforms:	Any that can run pppd and X11 theoretically, but only
+		tested on Linux and Solaris with gcc
+Copying-policy:	GPL
+End

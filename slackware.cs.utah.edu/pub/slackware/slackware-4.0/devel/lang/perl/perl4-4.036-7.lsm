@@ -1,0 +1,12 @@
+Begin3
+Title:             Perl4
+Version:           4.036-7
+Entered-date:      27APR1999
+Description:       Programing Language, This version builds on vanilla RedHat 5.2
+Keywords:          Perl4 glibc2
+Maintained-by:     Nobody; updated by Pavel Roskin and Alexandre Oliva
+Primary-site:      sunsite.unc.edu /pub/Linux/devel/lang/perl
+Original-site:     http://www.dcc.unicamp.br/~oliva/snapshots/perl4
+Platforms:         RedHat 5.2
+Copying-policy:    Artistic License
+End

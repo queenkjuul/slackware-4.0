@@ -1,0 +1,14 @@
+Begin3
+Title:          cfingerd-1.3.2-rejected.patch
+Version:        3 Aug 1998
+Entered-date:   4 Aug 1998
+Description:    A patch to cfingerd-1.3.2 that fixes problems with
+                displaying rejected_banner.txt
+Keywords:       cfingerd in.fingerd finger
+Author:         khollis@bitgate.com (Ken Hollis) - cfingerd
+                tadek@nautilus.uwoj.krakow.pl (Tadek Knapik) - the patch
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/finger
+                2kB cfingerd-1.3.2-rejected.patch
+Platforms:      Linux
+Copying-policy: GPL/LGPL
+End

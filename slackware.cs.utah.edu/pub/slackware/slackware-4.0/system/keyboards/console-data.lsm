@@ -1,0 +1,16 @@
+Begin3
+Title:          Console data file for Linux.
+Version:        1999.04.15
+Entered-date:   15APR99
+Description:    Keymaps, console fonts, and various tables
+                for the Linux console.
+                These are based on kbd-0.99.tar.gz, with
+                enhancements.
+Keywords:       keyboard map mapping console font charset unicode
+Author:         several
+Platforms:      Linux
+Maintained-by:  Yann Dirson <dirson@debian.org>
+Primary-site:   metalab.unc.edu /pub/Linux/system/keyboards
+		519K console-data-1999.04.15.tar.gz
+Copying-policy: GPL
+End

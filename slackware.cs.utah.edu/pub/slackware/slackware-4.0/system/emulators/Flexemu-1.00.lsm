@@ -1,0 +1,17 @@
+Begin3
+Title:          flexemu
+Version:        1.00
+Entered-date:   07MAY98
+Description:    FLEX Operating system emulator with full graphics display
+		based on an MC6809 Processor emulation
+Keywords:       emulator mc6809 motorola flex x11
+Author:         wolfgang.schwotzer@etas.de (Wolfgang Schwotzer)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/emulators
+		430k flexemu-1.00.tgz
+Alternate-site: 
+Original-site:  
+Platforms:      X11, at least XLib, better XToolkit
+		xpm (optional)
+Copying-policy: GPL
+End

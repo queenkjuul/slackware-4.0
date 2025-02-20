@@ -1,0 +1,17 @@
+Begin3
+Title:          KJukeBox -- mp3 database and player
+Version:        0.1.2
+Entered-date:   03.02.1999
+Description:    Mp3 database and player
+Keywords:       KDE Qt audio mp3 splay yaf 
+Author:         Rainer Maximini <r_maximi@informatik.uni-kl.de>
+Maintained-by:  Rainer Maximini <r_maximi@informatik.uni-kl.de>
+Home-page:      http://third.informatik.uni-kl.de/~rainer/Linux/kjukebox.html
+Alternate-site:
+Primary-site:   ftp://ftp.kde.org/pub/kde/stable/1.0/apps/multimedia/sound
+                464k kjukebox-0.1.2.tar.gz
+                1k   kjukebox-0.1.2.lsm
+Platform:       Unix. Needs Qt-1.42 ,KDE-1.0, glibc
+Copying-policy: GPL
+End
+         

@@ -1,0 +1,17 @@
+Begin3
+Title: sends video images over IP multicast (Fixes CUSeeMe)
+Version: 3.3beta-cu
+Entered-date: 22/08/95
+Description: Send out and receive live video images over IP
+             Multicast (MBone) or Unicast. Works with the CUSeeMe
+             Reflector.
+Keywords: multicast video cuseeme conferensing
+Author: frederick@parc.xerox.com (Ron Frederick)
+Maintained-by: arumble@mpx.com.au (Anthony Rumble)
+Primary-site: sunsite.unc.edu /pub/Linux/pub/system/Network/chat
+              495kB nvbin-3.3beta.linux.mcast-cu.tar.gz
+Alternate-site: 
+Original-site:  
+Platform: Tk4.0 Tcl3.1 X11R6 Linux kernel 1.1.73 or later
+Copying-policy: Copyright Xerox, permission for use for research or evalutaion
+End

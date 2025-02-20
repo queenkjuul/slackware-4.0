@@ -1,0 +1,19 @@
+Begin3
+Title:          mt-st - tape control programs for Linux SCSI tapes
+Version:        0.5b
+Entered-date:   1998-08-16
+Description:    Includes a mt-like program supporting commands using
+		ioctls specific to the Linux SCSI tape driver (up to
+		kernel 2.1.95), and the program stinit to define the
+		SCSI tape devices in system startup scripts.
+Keywords:       tape SCSI
+Author:         Kai.Makisara@metla.fi (Kai Makisara)
+Maintained-by:  Kai.Makisara@metla.fi (Kai Makisara)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/backup
+		26  kB mt-st-0.5b.tar.gz
+		0.7 kB mt-st-0.5b.lsm
+Alternate-site:
+Original-site:  
+Platform:       
+Copying-policy: GNU
+End

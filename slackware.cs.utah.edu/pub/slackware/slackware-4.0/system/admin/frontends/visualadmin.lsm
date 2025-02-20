@@ -1,0 +1,20 @@
+
+Begin3
+Title:          Visual Admin          
+Version:        2.0
+Entered-date:   09SEP97
+Description:    Add/Modify/Delete Users (with shadow support), 
+		Manage your DNS Server files and edit custom System
+		files from your WWW browser whith this CGI tool. 
+Keywords:       www admin visual cgi
+Author:         Mauro J. De Gennaro <mauro@minter.com.ar>
+Maintained-by:  Mauro J. De Gennaro <mauro@minter.com.ar>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+                15kb  visualadmin-2.0.src.tar.gz
+                40kb  visualadmin-2.0.bin.tar.gz
+		660b  visualadmin.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

@@ -1,0 +1,18 @@
+Begin3
+Title:          IPTraf
+Version:        1.4.3
+Entered-date:   15 Apr 1999
+Description:    IPTraf is an ncurses-based IP LAN monitor that generates
+		various network statistics including TCP info, UDP
+		counts, ICMP and OSPF information, Ethernet load
+		info, node stats, IP checksum errors, and others.
+Keywords:       LAN, IP, network, statistics, traffic, monitor, load		
+Author:         riker@mozcom.com (Gerard Paul Java)
+Maintained-by:  riker@mozcom.com (Gerard Paul Java)
+Primary-site:   ftp.cebu.mozcom.com /pub/linux/net
+		217k iptraf-1.4.3.tar.gz
+Alternate-site: metalab.unc.edu /pub/Linux/system/network/monitor/
+		217k iptraf-1.4.3.tar.gz
+Platform:       Linux 2.0 series
+Copying-policy: GPL 2.0
+End

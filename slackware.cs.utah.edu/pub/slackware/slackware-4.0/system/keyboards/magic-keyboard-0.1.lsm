@@ -1,0 +1,22 @@
+Begin3
+Title: Magical Keyboard Extensions          
+Version: 0.1
+Entered-date: Dec 3, 1997   
+Description: The Magical Keyboard Extensions (or MKB) allow you to
+             use one physical keyboard with several linux machines.
+             It does this by sending scancodes over the network, thus
+             giving full transparency --- good enough to run Quake, X
+             and UAE --- a user level process cannot tell the difference
+             between a keyboard redirected via MKB and a real, local
+             keyboard.
+Keywords:    keyboard share raw scancode
+Author:      bmeyer@cs.monash.edu.au
+Maintained-by:  bmeyer@cs.monash.edu.au
+Primary-site:   sunsite.unc.edu /pub/Linux/system/keyboards
+		13k magic-keyboard-0.1.tar.gz
+                 1k magic-keyboard-0.1.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Tested on linux/x86 and linux/AXP
+Copying-policy: GPL
+End

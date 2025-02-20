@@ -1,0 +1,2706 @@
+  Linux VAR HOWTO
+  Mr. Poet <poet@linuxports.com>
+  v2.84, 7 March 1999
+
+  This document contains a listing of service companies which do not
+  manufacture hardware or create packaged software, but add value to
+  existing products.  It is maintained by Mr. Poet <poet@linux­
+  ports.com>.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  1. About this document
+
+  2. Copyright Information
+
+  3. Argentina
+
+     3.1 IWCC Argentina
+
+  4. Australia
+
+     4.1 IPAX Systems
+
+  5. Austria
+
+     5.1 DEAS EDV-Lösungen G.m.b.H.
+     5.2 Quant X EDV-Ges.m.b.H.
+
+  6. Belgium
+
+     6.1 ABV Computer sa/nv.
+     6.2 BeFree SA.NV Belgium
+     6.3 Better Access N.V.
+
+  7. Brazil
+
+     7.1 Dextra Soluções em Informática
+
+  8. Canada
+
+     8.1 Centurion Services
+     8.2 dotcom Marketing Corporation
+     8.3 Hard Data Ltd.
+     8.4 Kwan's Research Laboratory
+     8.5 Sound Software Ltd.
+
+  9. Finland
+
+     9.1 SOT - Oy Suomen Ohjelmistotyö Ab
+
+  10. France
+
+     10.1 Alcôve
+
+  11. Germany
+
+     11.1 bee Baastrup EDV-Entwicklung GmbH
+     11.2 dcp, design+commercial partner GmbH
+     11.3 GISMA EDV System & Service GmbH
+     11.4 innominate Multifunktionale Serverlösungen und IT-Dienstleistungen GbR
+     11.5 LINUXHAUS
+     11.6 netEstate
+     11.7 PRONETICS
+
+  12. Hong Kong
+
+     12.1 Genesis Systems Int'l Ltd.
+
+  13. The Netherlands
+
+     13.1 Stone IT Services BV
+
+  14. Poland
+
+     14.1 Emit Sp. z o.o.
+     14.2 Polskie Sieci Teleinformatyczne S.A.
+
+  15. South Africa
+
+     15.1 Symphony Research (Pty) Ltd
+
+  16. United Kingdom
+
+     16.1 Annex Technology Europe Ltd
+     16.2 Definite Linux Systems
+     16.3 Nene Information Systems
+     16.4 D. Grant Crawley Limited
+
+  17. USA
+
+     17.1 ApeX Systems Integration Corp.
+     17.2 ASL Workstations, Inc.
+     17.3 Apache Digital Corporation
+     17.4 BrainStorm Technologies
+     17.5 The Computer Underground, Inc.
+     17.6 DCG Computers Inc.
+     17.7 Enterprise Computer Consulting
+     17.8 International Technology Sales
+     17.9 LAND-5 Corporation
+     17.10 Linux Hardware Solutions, Inc.
+     17.11 MicroUnix Systems
+     17.12 Microway
+     17.13 Net Express
+     17.14 Pacific Internet
+     17.15 Psytronics
+     17.16 Sunset Systems
+     17.17 SW Technology
+     17.18 Telenet System Solutions, Inc.
+     17.19 VA Research
+
+
+  ______________________________________________________________________
+
+  1.  About this document
+
+
+  This is the Linux VAR HOWTO.  It contains a listing of service
+  companies which do not manufacture hardware or create packaged
+  software, but add value to existing products.  This added value can
+  take many forms, such as installation of Linux on computer hardware,
+  configuration, or custom applications.  However, at the moment the
+  Linux VAR HOWTO only contains companies selling preconfigured hardware
+  for the purpose of running Linux.  Companies offering other services
+  are invited to contact the maintainer poet@linuxports.com at
+  <poets@linuxports.com> for a listing.
+
+
+  If you contact any companies listed in this document, please mention
+  the Linux VAR HOWTO.
+
+  If you need to know more about the Linux Documentation Project or
+  about Linux HOWTO's, feel free to contact the supervisor Tim Bynum
+  <linux-howto@sunsite.unc.edu>.
+
+
+  Tim Bynum will post the listing to several national and international
+  newsgroups on a monthly basis.  In addition, the Linux VAR HOWTO can
+  be found on the World Wide Web at http://var.cyrius.com.  New versions
+  of the Linux VAR HOWTO are always placed at this site first, so please
+  be sure to check if the copy you are reading is still up to date!
+
+
+
+  Companies selling hardware for the purpose of running Linux are
+  invited to fill out the following form and contact me at
+  poet@linuxports.com.  Companies offering other services should contact
+  me so a more appropriate template can be worked out.
+
+
+
+
+       Name:
+       Address:
+       Phone:
+       Fax:
+       EMail:
+       URL:
+       Contact (Name of contact person):
+       Architecture (Intel, Alpha, SPARC):
+       Linux distribution (e.g. Debian, Red Hat Linux):
+       Special expertise:
+
+
+
+
+
+
+  2.  Copyright Information
+
+
+  This HOWTO is Copyright © 1997, 1998 by Martin Michlmayr.
+
+  This HOWTO s Copyright © 1999 Mr. Poet and LinuxPorts
+
+  A verbatim copy may be reproduced or distributed in any medium
+  physical or electronic without permission of the author.  Translations
+  are similarly permitted without express permission if it includes a
+  notice on who translated it.
+
+  Short quotes may be used without prior consent by the author.
+  Derivative work and partial distributions of the Linux VAR HOWTO must
+  be accompanied with either a verbatim copy of this file.
+
+  Commercial redistribution is allowed and encouraged; however, the
+  author would like to be notified of any such distributions.
+
+  In short, we wish to promote dissemination of this information through
+  as many channels as possible.  However, we do wish to retain copyright
+  on the HOWTO documents, and would like to be notified of any plans to
+  redistribute the HOWTOs.
+
+  We further want that all information provided in the HOWTOs is
+  disseminated.  If you have questions, please contact Tim Bynum, the
+  Linux HOWTO coordinator, at linux-howto@sunsite.unc.edu.
+
+
+  3.  Argentina
+
+
+
+  3.1.  IWCC Argentina
+
+
+
+
+
+
+
+
+  Libertad 2472
+  Florida, CP 1602
+  Buenos Aires
+  Argentina
+
+
+
+
+
+
+     Phone:
+        +54 1 791 9877, +54 1 781 9710
+
+     Fax:
+        +54 1 791 9877
+
+     EMail:
+        godel@iwcc.com
+
+     URL:
+        http://www.iwcc.com.ar
+
+     Contact:
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Linux servers for Internet web servers and firewalls and special
+        product called VNET Linux: Connect your entire LAN to Internet
+        with one IP address and one telephone line.
+
+
+     Last modified:
+        October 12, 1997.
+
+
+
+  4.  Australia
+
+
+
+  4.1.  IPAX Systems
+
+
+
+
+       GPO Box 94A
+       Melbourne, 3001
+       Australia
+
+
+
+
+
+
+     Phone:
+        +61 3 9887 1984
+
+     Fax:
+        +61 3 9801 8533
+
+     EMail:
+        info@ipax.com.au
+
+     URL:
+        http://www.ipax.com.au
+
+     Contact:
+        Adam Neat
+
+
+     Architecture:
+        Intel and SPARC.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Network management, file, print and mail servers for LAN's,
+        custom written database facilities, system installation.
+
+
+     Last modified:
+        November 28, 1997.
+
+
+
+  5.  Austria
+
+
+
+  5.1.  DEAS EDV-Lösungen G.m.b.H.
+
+
+
+
+       Mariahlilfer Str. 74B
+       A-1070 Wien
+       Austria
+
+
+
+
+
+
+     Phone:
+        +43 1 522 72 51 0
+
+     Fax:
+        +43 1 522 72 52
+
+     EMail:
+        deas@deas.co.at
+
+     URL:
+        http://www.deas.co.at
+
+     Contact:
+        Andreas Gudorf <gudorf@deas.co.at>
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Primary Red Het Linux and S.u.S.E. but also Debian and DLD.
+     Special expertise:
+        Firewall, web, file and FTP servers.
+
+
+     Last modified:
+        July 12, 1998.
+
+
+
+  5.2.  Quant X EDV-Ges.m.b.H.
+
+
+
+
+       Hintnausdorf 14/1
+       A-9300 St. Veit/Glan
+       Austria
+
+
+
+
+
+
+     Phone:
+        +43 4212 60040
+
+     Fax:
+        +43 4212 60044 20
+
+     EMail:
+        support@quant-x.com
+
+     URL:
+        http://www.quant-x.at
+
+     Contact:
+        Wolfgang Dreyer
+
+
+     Architecture:
+        Alpha.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Last modified:
+        August 9, 1997.
+
+
+
+  6.  Belgium
+
+
+
+  6.1.  ABV Computer sa/nv.
+
+
+
+
+       rue Lambiotte 81
+       B-1050 Brussels
+       Belgium
+
+
+
+     Phone:
+        +32 2 2151234
+
+     Fax:
+        +32 2 7327482
+
+     EMail:
+        bates@student.fsa.ucl.ac.be
+
+     URL:
+        http://web.arcadis.be/abv
+
+     Contact:
+        James Bates
+
+
+     Architecture:
+        Intel and SPARC.
+
+     Linux distribution:
+        Odyssee Server (derived from Slackware 3.2).
+
+     Special expertise:
+        Complex network environments: dialin, dialout, Internet and
+        Intranet, ISDN, integration with Novell NetWare (3.11 and above)
+        and with IBM AS/400, and more...
+
+
+     Last modified:
+        August 16, 1997.
+
+
+
+  6.2.  BeFree SA.NV Belgium
+
+
+
+
+       4, rue d'Aineffe
+       B-4317 Borlez Faimes
+       Belgium
+
+
+
+
+
+
+     Phone:
+        +32 19 566115
+
+     Fax:
+        +32 19 567337
+
+     EMail:
+        tech@befree.be
+
+     URL:
+        http://www.befree.be
+
+     Contact:
+        Alexandre J.D. Dulaunoy
+
+
+     Architecture:
+        Intel, Alpha and SPARC.
+
+     Linux distribution:
+        Caldera OpenLinux, Red Hat Linux and own distribution for
+        embedded systems.
+
+
+     Special expertise:
+        We build your mission critical application with Linux.  We make
+        complex inter-networking with wireless for WAN and MAN.  We make
+        embedded systems or dedicated servers with Linux for the real
+        world.  We provide service around Open Source for Belgium.
+
+
+     Last modified:
+        June 30, 1998.
+
+
+
+  6.3.  Better Access N.V.
+
+
+
+
+       Geldenaakse Vest 6
+       B-3000 Leuven
+       Belgium
+
+
+
+
+
+
+     Phone:
+        +32 16 298045
+
+     Fax:
+        +32 16 298046
+
+     EMail:
+        jacko@ba.be
+
+     URL:
+        http://www.ba.be
+
+     Contact:
+        Jan Guldentops
+
+
+     Architecture:
+        Intel, Alpha and SPARC.
+
+     Linux distribution:
+        Caldera OpenLinux and Red Hat Linux.
+
+
+     Special expertise:
+        Testing facility, Internet and Intranet setup and connectivity,
+        security (VPN, firewalls, audits), technical webdevelopment,
+        general IT-consultancy.
+
+
+     Last modified:
+        June 30, 1997.
+
+
+
+
+  7.  Brazil
+
+
+
+  7.1.  Dextra Soluções em Informática
+
+
+
+
+       Av. José de Souza Campos, 1815 cj. 1205
+       13025-320 Campinas, SP
+       Brazil
+
+
+
+
+
+
+     Phone:
+        +55 19 251 3644
+
+     Fax:
+        +55 19 253 0440
+
+     EMail:
+        staff@dextra.com.br
+
+     URL:
+        http://www.dextra.com.br
+
+     Contact:
+        Bill Coutinho
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Firewalls and VPN endpoints, dialup Internet access servers for
+        LANs, Intranet servers, disk and printer servers for Windows
+        LANs, servers for ISPs.
+
+
+     Last modified:
+        October 2, 1998.
+
+
+
+  8.  Canada
+
+
+
+  8.1.  Centurion Services
+
+
+
+
+       9351 Blundell Road
+       Richmond, BC V6Y 1K5
+       Canada
+
+
+     Phone:
+        +1 604 279 1857
+
+     Fax:
+        +1 604 279 1800
+
+     EMail:
+        jwalter@rogers.wave.ca
+
+     URL:
+        http://www.ipipeline.net/centurion
+
+     Contact:
+        Jan Walter
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Caldera OpenLinux, Red Hat Linux and Slackware.
+
+
+     Special expertise:
+        Integration with non-Unix systems. Intranet and Internet
+        databases and mail.  Server system design.
+
+
+     Last modified:
+        September 3, 1997.
+
+
+
+  8.2.  dotcom Marketing Corporation
+
+
+
+
+       #500-1168 Hamilton Street
+       Vancouver, BC V6B 2S2
+       Canada
+
+
+
+
+
+
+     Phone:
+        +1 604 664 7455
+
+     Fax:
+        +1 604 664 7465
+
+     EMail:
+        info@dotcom.bc.ca
+
+     URL:
+        http://www.dotcom.bc.ca
+
+     Contact:
+        Graham TerMarsch <graham@dotcom.bc.ca>
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Internet and Intranet servers, mail and news servers, fax
+        servers, workstations.  Web server installations running Apache
+        can (and have) be configured for internal and external use with
+        extensions for electronic commerce and system automation.
+        Custom software development available upon request.
+
+
+     Last modified:
+        October 16, 1997.
+
+
+
+  8.3.  Hard Data Ltd.
+
+
+
+
+       11060 - 166 Avenue
+       Edmonton, AB T5X 1Y3
+       Canada
+
+
+
+
+
+
+     Phone:
+        +1 403 456 1510
+
+     Fax:
+        +1 403 456 1510
+
+     EMail:
+        harddata@bigfoot.com
+
+     Contact:
+        Maurice Hilarius, Michal Jaegermann.
+
+
+     Architecture:
+        Intel, Alpha and SPARC.
+
+     Linux distribution:
+        Red Hat Linux and S.u.S.E.
+
+
+     Special expertise:
+        Samba, large capacity and high performance disk subsystems,
+        RAID, data library applications, Digital Alpha systems,
+        communications and networking application and setup.
+
+
+     Last modified:
+        November 3, 1997.
+
+
+
+  8.4.  Kwan's Research Laboratory
+
+
+
+       Markham
+       Ontario
+       Canada
+
+
+
+
+
+
+     EMail:
+        e_lib@hotmail.com
+
+     URL:
+        http://www.geocities.com/ResearchTriangle/5461
+
+     Contact:
+        Derek Kwan
+
+
+     Architecture:
+        Intel
+
+     Linux distribution:
+        Caldera OpenLinux, Red Hat Linux and Slackware.
+
+
+     Special expertise:
+        Design custom systems for customer's unique requirement.
+
+
+     Last modified:
+        November 28, 1997.
+
+
+
+  8.5.  Sound Software Ltd.
+
+
+
+
+       20 Abelard Avenue
+       Brampton, ON L6Y 2K8
+       Canada
+
+
+
+
+
+
+     Phone:
+        +1 905 452 0504
+
+     Fax:
+        +1 905 452 9754
+
+     EMail:
+        sales@telly.org
+
+     URL:
+        http://www.telly.org/sound
+
+     Contact:
+        Evan Leibovitch
+
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Caldera OpenLinux.
+
+
+     Special expertise:
+        EDI, Progress DB, Internet integration, SCO/Unix migration.
+        Authorized Caldera Business Partner.
+
+
+     Last modified:
+        August 5, 1997.
+
+
+
+  9.  Finland
+
+
+
+  9.1.  SOT - Oy Suomen Ohjelmistotyö Ab
+
+
+
+
+       Hermiankatu 8 E
+       FIN-33720 Tampere
+       Finland
+
+
+
+
+
+
+     Phone:
+        +358 3 3165544
+
+     Fax:
+        +358 3 3165959
+
+     EMail:
+        sales@sot.com
+
+     URL:
+        http://www.sot.com
+
+     Contact:
+        Santeri Kannisto <sk@sot.com>
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux FI, SOT-linux.
+
+
+     Special expertise:
+        Software localization, high technology Intel based computers and
+        servers and software developement for Linux.
+
+
+     Last modified:
+        October 1, 1998.
+
+  10.  France
+
+
+
+  10.1.  Alcôve
+
+
+
+
+       12, place Indira Gandhi
+       92230 Gennevilliers
+       France
+
+
+
+
+
+
+     Phone:
+        +33 1 47 33 82 84
+
+     Fax:
+        +33 1 47 33 76 98
+
+     EMail:
+        ventes@alcove.fr
+
+     URL:
+        http://www.alcove.fr
+
+     Contact:
+        Christophe Le Bars, Lucien Petit
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Every distribution available.
+
+
+     Special expertise:
+        Internet and Intranet server, proxy server, mail and news
+        server, firewalls, fax server, workstations.
+
+
+     Last modified:
+        February 4, 1998.
+
+
+
+  11.  Germany
+
+
+
+  11.1.  bee Baastrup EDV-Entwicklung GmbH
+
+
+
+
+       Mallinkrodtstraße 7
+       D-44145 Dortmund
+       Germany
+
+
+
+     Phone:
+        +49 231 9812060
+
+     Fax:
+        +49 231 9812062
+
+     EMail:
+        info@bee.de
+
+     URL:
+        http://www.bee.de
+
+     Contact:
+        Jörn Baastrup, Jürgen Stanke, Wiebke Schrader.
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+
+     ·  Germany: DLD and S.u.S.E.
+
+     ·  International: Red Hat Linux
+
+
+     Special expertise:
+
+     ·  Configurated Linux servers and workstations
+
+     ·  bee-iX11-terminals (diskless Linux workstations)
+
+     ·  Rack-mountable Linux workstations for scientific needs
+
+     ·  bee-Linux-DialIn-Servers and Routers, based in Cyclades cards
+        and ICN ISDN cards
+
+     ·  Distribution of different hardware components especially for
+        Linux users: Cyclades serial multiport cards, ICN ISDN cards,
+        DPT SCSI host adapters and RAID controler, Berkshire hardware
+        watchdog cards, ELSA graphic adapters for the XFree86 server
+        and/or Xinside X11 server, commercial software products for
+        Linux.
+
+
+     Last modified:
+        March 6, 1997.
+
+
+
+  11.2.  dcp, design+commercial partner GmbH
+
+
+
+
+       Alfredstr. 1
+       D-22087 Hamburg
+       Germany
+
+
+
+
+
+
+     Phone:
+        +49 40 2540850
+     Fax:
+        +49 40 25408599
+
+     EMail:
+        info@dcp.de
+
+     URL:
+        http://www.dcp.de
+
+     Contact:
+        Ottmar Röhrig, Frank Hellmann
+
+
+     Architecture:
+        Alpha.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        High-end workstations with Linux on 500 MHz Alpha CPU.
+
+
+     Last modified:
+        August 5, 1997.
+
+
+
+  11.3.  GISMA EDV System & Service GmbH
+
+
+
+
+       Spitalgasse 23
+       D-96450 Coburg
+       Germany
+
+
+
+
+
+
+     Phone:
+        +49 9561 8824 x0
+
+     Fax:
+        +49 9561 8824 x24
+
+     EMail:
+        a.huemmer@gisma.de
+
+     URL:
+        http://www.gisma.de, http://www.gisma-edv.com
+
+     Contact:
+        Andreas Hümmer
+
+
+     Architecture:
+        Intel
+
+     Linux distribution:
+        S.u.S.E. with some enhancements.
+
+
+     Special expertise:
+        Building and configuring high availability systems under Linux.
+
+
+     Last modified:
+        March 5, 1998.
+
+
+
+  11.4.  innominate Multifunktionale Serverlösungen und IT-Dienstleis­
+  tungen GbR
+
+
+
+
+       Stresemannstraße 128
+       10117 Berlin
+       Germany
+
+
+
+
+
+
+     Phone:
+        +49 30 202 90 477
+
+     Fax:
+        +49 30 202 90 249
+
+     EMail:
+        info@innominate.de
+
+     URL:
+        http://innominate.de
+
+     Contact:
+        Sascha Ottolski
+
+
+     Architecture:
+        Intel; Alpha auf Anfrage.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Wir bieten komplett konfigurierte Kommunikationsserver ("Lingo")
+        auf der Basis von Red Hat Linux an.  Mit Lingo wird neben dem
+        Zugang zum Internet auch die Anbindung mehrerer Standorte und
+        Telearbeitsplätze per ISDN oder Modem realisiert.  Lingo
+        organisiert den EMail-Verkehr am Standort, zwischen den
+        Standorten und ins Internet.  Außerdem bietet Lingo komplette
+        File-, Print- Voice- und Fax-Serverfunktionalität für alle
+        Clients im LAN und WAN.  Mit seinen Online-Funktionen hilft
+        Lingo Kosten sparen (Auswertung der ISDN-Verbindungen, IP-
+        Accounting, Proxy-Dienste, Offline-Surfen im Internet).  Zum
+        Schutz vor unberechtigtem Zugriff verfügt Lingo außerdem über
+        mehrere Firewall-Schutzmechanismen und Online-Verschlüsselung.
+
+
+     Last modified:
+        September 27, 1997.
+
+
+  11.5.  LINUXHAUS
+
+
+
+
+       Ringbahnstraße 13
+       D-10711 Berlin
+       Germany
+
+
+
+
+
+
+     Phone:
+        +49 30 890 944 63
+
+     Fax:
+        +49 30 890 944 64
+
+     EMail:
+        info@linuxhaus.de
+
+     URL:
+        http://www.linuxhaus.de
+
+     Contact:
+        Jörg Frühbrodt
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Debian GNU/Linux, Red Hat Linux and S.u.S.E.
+
+
+     Special expertise:
+        Database, Internet servers and firewalls.
+
+
+     Last modified:
+        October 25, 1998.
+
+
+
+  11.6.  netEstate
+
+
+
+
+       Am Blütenanger 8
+       D-80995 München
+       Germany
+
+
+
+
+
+
+     Phone:
+        +49 89 15820444
+
+     Fax:
+        +49 89 15820445
+
+     EMail:
+        info@netestate.de
+
+     URL:
+        http://www.netestate.de
+
+     Contact:
+        Michael Brunnbauer
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Own.
+
+
+     Special expertise:
+        Internet server, proxy server, mail and news server, firewalls.
+
+
+     Last modified:
+        August 4, 1997.
+
+
+
+  11.7.  PRONETICS
+
+
+
+
+       Märkische Straße 117
+       D-44141 Dortmund
+       Germany
+
+
+
+
+
+
+     Phone:
+        +49 231 557203 0
+
+     Fax:
+        +49 231 557203 27
+
+     EMail:
+        sales@pronetics.de
+
+     URL:
+        http://www.pronetics.de
+
+     Contact:
+        Horst Hohmeier
+
+
+     Architecture:
+        Intel and PowerPC.
+
+     Linux distribution:
+        GNU.
+
+
+     Special expertise:
+        Internet server, proxy server, mail and news server, firewalls.
+
+     Last modified:
+        April 11, 1997.
+
+
+
+  12.  Hong Kong
+
+
+
+  12.1.  Genesis Systems Int'l Ltd.
+
+
+
+
+       7/F., Honytex Building
+       22 Ashley Road, T.S.T. Kowloon
+       Hong Kong
+
+
+
+
+
+
+     Phone:
+        +852 2815 0728
+
+     Fax:
+        +852 2815 0729
+
+     EMail:
+        info@genesis.com.hk
+
+     URL:
+        http://www.genesis.com.hk
+
+     Contact:
+        Gyver Lo
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Web database server.
+
+
+     Last modified:
+        May 30, 1998.
+
+
+
+  13.  The Netherlands
+
+
+
+  13.1.  Stone IT Services BV
+
+
+
+
+
+
+  Lassuslaan 105
+  NL-3723 LJ Bilthoven
+  The Netherlands
+
+
+
+
+
+
+     Phone:
+        +31 30 22 87 995
+
+     Fax:
+        +31 30 22 87 997
+
+     EMail:
+        linux@stonebv.com
+
+     URL:
+        http://www.stonebv.com
+
+     Contact:
+        Martijn Smit
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Caldera OpenLinux, Red Hat Linux and S.u.S.E.
+
+
+     Special expertise:
+        Internet and Intranet solutions.
+
+
+     Last modified:
+        January 30, 1997.
+
+
+
+  14.  Poland
+
+
+
+  14.1.  Emit Sp. z o.o.
+
+
+
+
+       Koszarowa 48/9
+       51-149 Wroclaw
+       Poland
+
+
+
+
+
+
+     Phone:
+        +48 71 721848
+
+     Fax:
+        +48 71 721733
+
+
+     EMail:
+        kontakt@emit.com.pl
+
+     URL:
+        http://www.emit.com.pl
+
+     Contact:
+        Ian Carr-de Avelon
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Security patched and customized.
+
+
+     Special expertise:
+        Secure transfer of data or electronic cash.
+
+
+     Last modified:
+        October 2, 1997.
+
+
+
+  14.2.  Polskie Sieci Teleinformatyczne S.A.
+
+
+
+
+       ul. Zaolzianska 11
+       41-800 Zabrze
+       Poland
+
+
+
+
+
+
+     Phone:
+        +48 32 276 14 30
+
+     Fax:
+        +48 32 276 01 75
+
+     EMail:
+        amadloch@netpol.pl
+
+     URL:
+        http://www.netpol.pl
+
+     Contact:
+        Andrzej Madloch
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Every distribution available.
+
+
+     Special expertise (English):
+        Internet and Intranet setup and connectivity, Internet Service
+        Provider (ISP) systems, configurated Linux servers and
+        workstations, X11-terminals (diskless or with floppy drive),
+        Linux dialin servers and routers, security (firewalls, VPN,
+        audits), Samba, Novell server emulator, mail server
+        configurations, distribution of Equinox and BOCA serial
+        multiport cards, general IT and Linux consultancy.
+
+
+     Special expertise (Polish):
+        Instalacja i konfiguracja serwerow Internetowych i
+        Intranetowych, Instalacja i konfiguracja Linux'a jako routera
+        internetowego, Systemy dla Providerow Internetu Skonfigurowane
+        serwery i stacje robocze z systemem Linux X-Terminale (komputery
+        z Linux bez dysku twardego), serwery i routey dostepowe bazujace
+        na systemie Linux.  Bezpieczenstwo (firewall, Virtualne Sieci
+        Prywatne, sprawdzanie bezpieczenstwa). Emulator serwera Novell,
+        nie musisz kupowac Novella, konfiguracja serwerow pocztowych na
+        Linuxie, sprzedaz kart wieloportowych Equinox i Boca, konsulacje
+        z systemu Linux i IT.
+
+
+     Last modified:
+        March 17, 1998.
+
+
+
+  15.  South Africa
+
+
+
+  15.1.  Symphony Research (Pty) Ltd
+
+
+
+
+       6 Woodlands Road
+       Victoria 2192, Johannesburg
+       South Africa
+
+
+
+
+
+
+     Phone:
+        +27 11 728 5742
+
+     Fax:
+        +27 11 492 1058
+
+     EMail:
+        info@sr.co.za
+
+     URL:
+        http://sr.co.za
+
+     Contact:
+        Evan Summers
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        TCP/IP networking, thin client technology.
+
+
+     Last modified:
+        August 4, 1997.
+
+
+
+  16.  United Kingdom
+
+
+
+  16.1.  Annex Technology Europe Ltd
+
+
+
+
+       9 Horseshoe Park
+       Reading, RG8 7JW
+       UK
+
+
+
+
+
+
+     Phone:
+        +44 118 984 1207
+
+     Fax:
+        +44 118 984 1217
+
+     EMail:
+        linux@annex.co.uk
+
+     URL:
+        http://www.annex.co.uk
+
+     Contact:
+        Alastair Martin <alastair@annex.co.uk>, Alex Butcher
+        <alex@annex.co.uk>
+
+
+     Architecture:
+        Alpha.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Preconfigured Linux/Alpha systems, final few genuine UDB
+        systems, 21164A based systems, support of porting efforts for
+        Intel software to Alpha.
+
+
+     Last modified:
+        August 4, 1997.
+
+
+
+  16.2.  Definite Linux Systems
+
+
+
+       264 Ripon Road
+       Stevenage
+       Herts, SG1 4NF
+       United Kingdom
+
+
+
+
+
+
+     Phone:
+        +44 800 956 7213
+
+     Fax:
+        +44 1438 311993
+
+     EMail:
+        info@ukpost.com
+
+     URL:
+        http://definite.ukpost.com
+
+     Contact:
+        Jason Clifford
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Debian GNU/Linux, Red Hat Linux, Slackware and S.u.S.E.
+
+
+     Special expertise:
+        Networking and integration with other sytems.  Network security,
+        wide area networking.
+
+
+     Last modified:
+        October 1, 1998.
+
+
+
+  16.3.  Nene Information Systems
+
+
+
+
+       32 Glasgow Street
+       Northampton, NN5 5BL
+       UK
+
+
+
+
+
+
+     Phone:
+        +44 7020 953494 (Note this is an automatically redirected
+        number, if you come through to an operator please ask for
+        Timothy Peters).
+
+
+     Fax:
+        +44 7020 953496
+
+     EMail:
+        sales@nisys.demon.co.uk
+
+     URL:
+        http://www.nisys.demon.co.uk
+
+     Contact:
+        Timothy Peters <tim@nisys.demon.co.uk>
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Linux Pro, Red Hat Linux and Slackware.
+
+
+     Special expertise:
+        UK reseller for the Linux Mall and Cyclades Multiport Serial
+        cards.
+
+
+     Last modified:
+        August 12, 1997.
+
+
+
+  16.4.  D. Grant Crawley Limited
+
+
+
+
+       7 Owen Road
+       Rainhill, Merseyside, L35 0PJ
+       UK
+
+
+
+
+
+
+     Phone:
+        +44 151 289 9250
+
+     Fax:
+        +44 151 289 7895
+
+     EMail:
+        enquiry@dgc-nms.co.uk
+
+     Contact:
+        Grant Crawley
+
+
+     Architecture:
+        Intel, SPARC, Alpha, MIPS, PowerPC and StrongARM.
+
+
+     Linux distribution:
+        ARMLinux, Caldera OpenLinux, Extreme Linux, Red Hat Linux,
+        Slackware, S.u.S.E and TurboLinux.
+
+
+     Special expertise:
+        We specialise in providing a wide range of Linux software and
+        hardware products to users in the UK and across Europe.
+        Software RAID, firewalls, Internet servers, Intranet servers are
+        just a few of the products and services we offer, please check
+        out our web site for the latest news.
+
+
+     Last modified:
+        October 1, 1998.
+
+
+
+  17.  USA
+
+
+
+  17.1.  ApeX Systems Integration Corp.
+
+
+
+
+       P.O. Box 338
+       Apex, NC 27502-0338
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 919 468 8150
+
+     Fax:
+        +1 919 468 5288
+
+     EMail:
+        apex@2boot.com
+
+     URL:
+        http://apex.com
+
+     Contact:
+        Joe Ferguson
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux, Slackware and S.u.S.E.
+
+
+     Special expertise:
+        Custom systems, telecommunication, industrial, rack mount.
+
+
+     Last modified:
+        February 28, 1998.
+
+
+
+  17.2.  ASL Workstations, Inc.
+
+
+
+
+
+  2342 Shade Tree Lane
+  San Jose, CA 95131
+  U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 408 923 3837
+
+     Fax:
+        +1 408 923 4615
+
+     EMail:
+        info@aslab.com
+
+     URL:
+        http://www.aslab.com
+
+     Contact:
+        Jeff Nguyen
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Craftworks Linux and Red Hat Linux.
+
+
+     Special expertise:
+        Custom built high end servers and workstations with up to 4 GB
+        of memory and support for RAID level 0, 1 and 5.  Custom built
+        rackmount enclosures are available too.
+
+
+     Last modified:
+        March 6, 1997.
+
+
+
+  17.3.  Apache Digital Corporation
+
+
+
+
+       777 Main Ave. Suite 211
+       Durango, CO 81301
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 970 259 8153
+
+     Fax:
+        +1 970 259 8145
+
+     EMail:
+        info@apache.com
+
+     URL:
+        http://www.apache.com
+
+     Contact:
+        Mark Wauchope
+
+
+     Architecture:
+        Intel, Alpha and SPARC.
+
+     Linux distribution:
+        Caldera OpenLinux, Red Hat Linux and Slackware.
+
+
+     Special expertise:
+        Custom service configuration available including innd, httpd,
+        ftpd, telnetd, sendmail, POP 3, radius, procmail, etc.
+        Especially useful to ISPs and network administrators.
+
+
+     Last modified:
+        August 4, 1997.
+
+
+
+  17.4.  BrainStorm Technologies
+
+
+
+
+       5836 Florrence Boulevard
+       Omaha, NE 68110
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 402 690 7306
+
+     Fax:
+        +1 402 733 8499
+
+     EMail:
+        info@bstc.net
+
+     URL:
+        http://www.bstc.net
+
+     Contact:
+        Brian Roberson
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Complete hardware and software solutions to integrate the power
+        of Linux into your current business computing environment.
+        Specializing in ISP services, corporate LAN/WAN needs, system
+        administration, general training and familiarization.
+
+
+     Last modified:
+        October 1, 1998.
+
+
+
+  17.5.  The Computer Underground, Inc.
+
+
+
+
+       1357 West Lane Avenue, Suite 210
+       Columbus, OH 43221
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 614 485 0506, +1 888 485 5865
+
+     EMail:
+        president@tcu-inc.com
+
+     URL:
+        http://www.tcu-inc.com
+
+     Contact:
+        Mark Nielsen
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Caldera OpenLinux, Debian GNU/Linux, Red Hat Linux and S.u.S.E.
+
+
+     Special expertise:
+        Networking, programming and integrating Linux into multi
+        operating system envrionments.
+
+
+     Last modified:
+        October 1, 1998.
+
+
+
+  17.6.  DCG Computers Inc.
+
+
+
+
+       4 Sanborn Road, Suite 2
+       Londonderry, NH 03053
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 603 421 1800
+
+     Fax:
+        +1 603 421 0911
+
+     EMail:
+        sjg@dcginc.com
+
+     URL:
+        http://www.dcginc.com
+
+     Contact:
+        Stephen J. Gaudet
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Debian GNU/Linux and Red Hat Linux.
+
+
+     Special expertise:
+        Customs systems running Linux or Digital Unix.
+
+
+     Last modified:
+        August 9, 1997.
+
+
+
+  17.7.  Enterprise Computer Consulting
+
+
+
+
+       327 E Main Street, Suite E.
+       Jackson, OH 45640
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 740 286 0151
+
+     Fax:
+        +1 740 286 7236
+
+     EMail:
+        ecc@nternet.net
+
+     Contact:
+        Matt Borghese
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux and Slackware.
+
+
+     Special expertise:
+        Configuring Internet servers, dial on demand IP masq servers,
+        ISP hardware.
+
+
+     Last modified:
+        December 12, 1997.
+
+
+
+  17.8.  International Technology Sales
+
+
+
+
+       500 North Cary Algonquin Road
+       Cary, IL 60013
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 847 639 0775
+
+     Fax:
+        +1 847 639 0710
+
+     EMail:
+        rip@itsinfonet.com
+
+     URL:
+        http://www.itsinfonet.com
+
+     Contact:
+        Clarence Fleming
+
+
+     Architecture:
+        Alpha.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        International Technology Sales is a Digital TOEM (Technical
+        Original Equipment Manufacturer) and Business Partner.
+
+
+        We sell Digital Boards, Alpha CPU's, Digital Computers and
+        Systems and Digital Networking Products.  As an authorized
+        seller of Digital products we have been selling Boards and
+        Systems for use with Linux.
+
+        ITS can supply Linux support to our customers.  ITS also sells
+        Motorola and IBM products, Internet and Intranet services,
+        design and hosting.
+
+
+     Last modified:
+        March 18, 1998.
+
+
+  17.9.  LAND-5 Corporation
+
+
+
+
+       9747 Businesspark Avenue
+       San Diego, CA 92126
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 800 526 3885
+
+     Fax:
+        +1 619 566 3611
+
+     EMail:
+        sales@land-5.com
+
+     URL:
+        http://www.land-5.com
+
+     Contact:
+        David Licosati
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        RAID, fault tolerance
+
+
+     Last modified:
+        July 15, 1998.
+
+
+
+  17.10.  Linux Hardware Solutions, Inc.
+
+
+
+
+       130 North Front Street
+       Wilmington, NC 28401
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 888 LINUX HW, +1 910 251 9998
+
+     Fax:
+        +1 910 251 8832
+
+     EMail:
+        info@linux-hw.com
+
+     URL:
+        http://www.linux-hw.com
+
+     Contact:
+        Kit Cosper <cosper@linux-hw.com>
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Caldera OpenLinux and Red Hat Linux.
+
+
+     Last modified:
+        November 3, 1997.
+
+
+
+  17.11.  MicroUnix Systems
+
+
+
+
+       15391 Turquoise Circle North
+       Chino Hills, CA 91709
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 909 597 3592
+
+     Fax:
+        +1 909 393 5316
+
+     EMail:
+        markjc@microux.com
+
+     URL:
+        http://www.microux.com
+
+     Contact:
+        Mark J. Carrozza
+
+
+     Architecture:
+        PowerPC.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        AIX 4.2 administration.
+
+
+     Last modified:
+        June 26, 1998.
+
+  17.12.  Microway
+
+
+
+
+       Research Park, Box 79
+       Kingston, MA 02364
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 508 746 7341
+
+     Fax:
+        +1 508 746 4678
+
+     EMail:
+        annf@microway.com
+
+     URL:
+        http://www.microway.com
+
+     Contact:
+        Ann Fried
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Years experience in Unix and high performance PC numerics.
+
+
+     Last modified:
+        August 13, 1997.
+
+
+
+  17.13.  Net Express
+
+
+
+
+       3205 Isherwood Way
+       Fremont, CA 94536
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 510 494 9493 (University or Government use only)
+
+     Fax:
+        +1 510 790 2342
+
+     EMail:
+        sales@netex.tdl.com, tech@netex.tdl.com
+
+     URL:
+        http://www.tdl.com/~netex
+
+     Contact:
+        Roland Baker
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Every distribution available.
+
+
+     Special expertise:
+        High performance Linux workstations and SMP severs for U.S.
+        Universities, U.S. Government agencies, scientists, engineers
+        and the telecommunications industry.  Rack mount chassis and
+        pre-configured Internet servers and WAN hardware available.  Our
+        web site is a clearing house of technical information on
+        designing and building high performance Linux systems from
+        commodity PC hardware.  Please see our web site for more
+        information.
+
+
+     Last modified:
+        August 8, 1997.
+
+
+
+  17.14.  Pacific Internet
+
+
+
+
+       600 Corporate Pointe, Suite 100
+       Culver City, CA 90230
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 310 410 9700
+
+     Fax:
+        +1 310 215 8071
+
+     EMail:
+        sales@pacnet.com
+
+     URL:
+        http://www.pacnet.com
+
+     Contact:
+        Tania Hayek, Michael Boyer, Denise Schutte, Maria Lepisto,
+        Natalie Jackson
+
+
+     Architecture:
+        Intel.
+     Linux distribution:
+        Caldera OpenLinux and Red Hat Linux.
+
+
+     Special expertise:
+        Internet Service Provider (ISP) systems.
+
+
+     Last modified:
+        March 7, 1997.
+
+
+
+  17.15.  Psytronics
+
+
+
+
+       99 Leroy Street
+       Binghamton, NY 13905
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 607 724 3240
+
+     Fax:
+        +1 516 598 4619
+
+     EMail:
+        info@psytronics.com
+
+     URL:
+        http://www.psytronics.com
+
+     Contact:
+        Jaron Rubenstein
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Red Hat Linux.
+
+
+     Special expertise:
+        Psytronics is an authorized Red Hat Support Partner and Red Hat
+        Hardware Partner.  We provide custom workstation and server
+        hardware solutions.
+
+
+     Last modified:
+        October 25, 1998.
+
+
+
+  17.16.  Sunset Systems
+
+
+
+
+  1328 East Barbarita Avenue
+  Gilbert, AZ 85234
+  U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 602 497 9335
+
+     Fax:
+        +1 602 497 8012
+
+     EMail:
+        info@sunsetsystems.com
+
+     URL:
+        http://www.sunsetsystems.com
+
+     Contact:
+        Rod Roark
+
+
+     Architecture:
+        Intel.
+
+     Linux distribution:
+        Slackware.
+
+
+     Special expertise:
+        We specialize in very low-cost (starting at US$500)
+        preconfigured Linux machines, offering the newcomer an easy way
+        to get started, and the experienced user a time-saving
+        alternative.
+
+
+     Last modified:
+        August 15, 1998.
+
+
+
+  17.17.  SW Technology
+
+
+
+
+       1701 North Greenville Suite 1106
+       Richardson, TX 75081
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 972 907 0871
+
+     Fax:
+        +1 972 907 9339
+
+     EMail:
+        sales@swt.com
+     URL:
+        http://www.swt.com
+
+     Contact:
+        Marvin Y. Wu
+
+
+     Architecture:
+        Intel, Alpha and SPARC.
+
+     Linux distribution:
+        Caldera OpenLinux, Debian GNU/Linux and Red Hat Linux.
+
+
+     Special expertise:
+        SW Technology is one of the first companies to offer machines
+        with Linux pre-installed.  Our current products range from
+        notebook computer to computer cluster with Gigabits/s network
+        link that provides supercomputer capacity.
+
+
+     Last modified:
+        November 14, 1997.
+
+
+
+  17.18.  Telenet System Solutions, Inc.
+
+
+
+
+       2480 Kruse Drive
+       San Jose, CA 95131
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 408 383 0334 x102
+
+     Fax:
+        +1 408 383 0335
+
+     EMail:
+        linux@tesys.com
+
+     URL:
+        http://www.tesys.com/linux
+
+     Contact:
+        Billy Bath <billy@tesys.com>
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Every distribution available.
+
+
+     Special expertise:
+        All of our systems are pretested and ready to go for the
+        Internet, including RAID subsystems.  Our main clients are Linux
+        devlopers and users who want high end and reliable hardware.
+
+
+     Last modified:
+        November 7, 1997.
+
+
+
+  17.19.  VA Research
+
+
+
+
+       1235 Pear Avenue, Suite 109
+       Mountain View, CA 94043
+       U.S.A.
+
+
+
+
+
+
+     Phone:
+        +1 888 LINUX 4U, +1 650 934 3666
+
+     Fax:
+        +1 650 964 7668 or +1 650 964 7669
+
+     EMail:
+        sales@varesearch.com
+
+     URL:
+        http://www.varesearch.com
+
+     Contact:
+        Tim O'Mahoney
+
+
+     Architecture:
+        Intel and Alpha.
+
+     Linux distribution:
+        Debian GNU/Linux, Red Hat Linux and S.u.S.E.
+
+
+     Special expertise:
+        All our efforts benchmarking hardware, evalualing compatibility,
+        and configuring systems are geared towards maximizing
+        performance and reliability under Linux.
+
+
+     Last modified:
+        November 4, 1997.
+
+
+
+
+
+
+
+
+
+
+
+
+

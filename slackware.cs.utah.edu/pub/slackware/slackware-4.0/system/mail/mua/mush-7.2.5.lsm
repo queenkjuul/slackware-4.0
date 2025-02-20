@@ -1,0 +1,35 @@
+Begin2
+Title        =upgrade for MUSH mail user shell/agent
+Version      =7.2.5 for mush, 931105 for the patches
+Desc1        =MUSH is a MUA that provides a complete CLI for
+Desc2        =manipulating mail msgs and folders thereof; it is
+Desc3        =in several respects a vast superset of UCB Mail.
+Desc4        =This version of the patch corrects some bugs in the
+Desc5        =released three weeks ago. Apply it on fresh 7.2.5.
+Desc6        =sources; it is not incremental.
+Author       =Dan Heller, Bart Schaefer
+AuthorEmail  =argv@z-code.com, schaefer@z-code.com
+Maintainer   =Dan Heller
+MaintEmail   =argv@z-code.com
+Site1        =cse.ogi.edu
+Path1        =/pub/mush
+File1	     =mush-7.2.5.tar.Z
+Size1        =500KB
+Site2        =sunsite.unc.edu
+Path2        =/pub/Linux/Mail
+File2	     =mush-7.2.5.diff
+Size2        =80KB
+Required1    =curses, termcap
+Required2    =optionally a POP-3 server
+CopyPolicy1  =the original sources may not be redistributed except in
+CopyPolicy2  =their entirety and without modifications.
+Keywords     =MUA POP3
+Comment1     =This is only a patch to 7.2.5; the copyright prohibits
+Comment2     =distributing derivatives. Since the authors are selling
+Comment3     =a commercial version, the free one is not being kept
+Comment4     =with any great zeal.
+RelFiles1    =the original mush-7.2.5 dist to which this patch applies
+Entered      =18OCT93
+EnteredBy    =Piercarlo Grandi
+CheckedEmail =pcg@aber.ac.uk
+End

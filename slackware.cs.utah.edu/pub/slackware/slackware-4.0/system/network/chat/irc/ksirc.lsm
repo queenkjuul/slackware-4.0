@@ -1,0 +1,19 @@
+Begin3
+Title: ksirc
+Version: 0.8
+Entered-date:07feb98
+Description: An X irc client based on sirc which provides powerfull
+             perl scripting, regex filter rules, colours, mutliple server
+             connections, etc. kSirc is fully featured and easily extended
+             through user scripts.
+Keywords: ksirc perl sirc X11 KDE
+Author: asj@ksirc.org (Andrew Stanley-Jones)
+Maintained-by: asj@ksirc.org (Andrew Stanley-Jones)
+Primary-site: ftp.ksirc.org /pub/ksirc
+              800k ksirc-Linux-0.8.tgz (static binary)
+              200k ksirc-0.8.tgz (source)
+Alternate-site: sunsite.unc.edu 
+Original-site:  
+Platforms: To compile source, KDE and Qt is required.  To use static binaries, only perl is required.
+Copying-policy: GPL
+End

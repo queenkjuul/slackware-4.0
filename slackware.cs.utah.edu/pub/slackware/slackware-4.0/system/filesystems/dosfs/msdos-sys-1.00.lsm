@@ -1,0 +1,12 @@
+Begin3
+Title:          MSDOS boot disk maker
+Version:        1.00 --- previously 0.99 version had faulty README.
+Description:    This is a DOS boot disk maker
+Keywords:       dos msdos boot bootdisk
+Author:         gb2187@wcuvax1.wcu.edu
+Maintained-by:  gb2187@wcuvax1.wcu.edu
+Primary-site:   sunsite.unc.edu /pub/Linux/Incoming
+Alternate-site: 
+Platform:       Linux. mtools required
+Copying-policy: Freely distributable.
+End

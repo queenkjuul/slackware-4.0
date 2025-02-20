@@ -1,0 +1,3232 @@
+
+PACKAGES.TXT;  Mon May 10 15:29:14 CDT 1999
+
+This file provides details on the Slackware packages found
+in the ./slakware/ directory.
+
+Total size of all packages (compressed):  226 MB
+Total size of all packages (uncompressed):  647 MB
+
+
+PACKAGE NAME:  aaa_base.tgz
+PACKAGE LOCATION:  ./slakware/a1
+PACKAGE SIZE (compressed):  564 K
+PACKAGE SIZE (uncompressed):  1220 K
+PACKAGE DESCRIPTION:
+aaa_base: Basic Linux filesystem package.
+aaa_base:
+aaa_base: Sets up the basic directory structure and adds a few important
+aaa_base: binaries such as GNU mtools-3.8, fdutils-5.2, zip21, and unzip531.
+aaa_base:
+
+PACKAGE NAME:  aoutlibs.tgz
+PACKAGE LOCATION:  ./slakware/a1
+PACKAGE SIZE (compressed):  311 K
+PACKAGE SIZE (uncompressed):  1030 K
+PACKAGE DESCRIPTION:
+aoutlibs: a.out shared libraries:
+aoutlibs:
+aoutlibs: These shared libraries provide support for running older Linux 
+aoutlibs: programs compiled in the a.out binary format.
+aoutlibs:
+aoutlibs: /lib/libc.so.4.7.6
+aoutlibs: /lib/libcurses.so.0.1.2
+aoutlibs: /lib/libm.so.4.6.27
+aoutlibs: /usr/i486-linuxaout/lib/libdb.so.1.85.1
+aoutlibs: /usr/i486-linuxaout/lib/libvga.so.1.2.9
+aoutlibs:
+
+PACKAGE NAME:  apache.tgz
+PACKAGE LOCATION:  ./slakware/n1
+PACKAGE SIZE (compressed):  759 K
+PACKAGE SIZE (uncompressed):  2650 K
+PACKAGE DESCRIPTION:
+apache:   Apache WWW server v 1.3.6
+apache:
+apache:   Apache is an HTTP server designed as a plug-in replacement for the
+apache:   NCSA HTTP server.  It fixes numerous bugs in the NCSA server and 
+apache:   includes many frequently requested new features, and has an API which
+apache:   allows it to be extended to meet users' needs more easily.
+apache:
+apache:   Apache is the most popular web server in the known universe; over
+apache:   half of the servers on the Internet are running Apache or one of
+apache:   its variants.
+apache:
+
+PACKAGE NAME:  apsfilt.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  185 K
+PACKAGE SIZE (uncompressed):  590 K
+PACKAGE DESCRIPTION:
+apsfilt:  apsfilter-5.0.1.
+apsfilt:
+apsfilt:  Apsfilter is a printer input filter.  With apsfilter installed and
+apsfilt:  configured, you can print many different file types (like ASCII,
+apsfilt:  PostScript, and DVI, as well as compressed versions of all of these)
+apsfilt:  directly with 'lpr', and apsfilter will automatically handle the
+apsfilt:  conversion process on the fly.
+apsfilt:
+apsfilt:  To configure apsfilter, run the SETUP program in /usr/lib/apsfilter.
+apsfilt:
+
+PACKAGE NAME:  arena.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  243 K
+PACKAGE SIZE (uncompressed):  580 K
+PACKAGE DESCRIPTION:
+arena:    Arena beta-3b
+arena: 
+arena:    Arena is a freeware browser for the World Wide Web.
+arena: 
+
+PACKAGE NAME:  ash.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  51 K
+PACKAGE SIZE (uncompressed):  100 K
+PACKAGE DESCRIPTION:
+ash:      Kenneth Almquist's ash shell.
+ash:
+ash:      A lightweight (62K) Bourne compatible shell.  Great for machines with
+ash:      low memory, but does not provide all the extras of shells like bash,
+ash:      tcsh, and zsh.  Runs most shell scripts compatible with the Bourne
+ash:      shell.  Note that under Linux, most scripts seem to use at least some
+ash:      bash-specific syntax.  The Slackware setup scripts are a notable
+ash:      exception, since ash is the shell used on the install disks.  NetBSD
+ash:      uses ash as its /bin/sh.
+ash:
+
+PACKAGE NAME:  autoconf.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  281 K
+PACKAGE SIZE (uncompressed):  710 K
+PACKAGE DESCRIPTION:
+autoconf: GNU autoconf 2.13
+autoconf:
+autoconf: Autoconf is an extensible package of m4 macros that produce shell
+autoconf: scripts to automatically configure software source code packages.
+autoconf: These scripts can adapt the packages to many kinds of UNIX-like
+autoconf: systems without manual user intervention.  Autoconf creates a
+autoconf: configuration script for a package from a template file that lists the
+autoconf: operating system features that the package can use, in the form of m4
+autoconf: macro calls.
+autoconf: You must install the "m4" package to be able to use autoconf.
+autoconf:
+
+PACKAGE NAME:  automake.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  228 K
+PACKAGE SIZE (uncompressed):  750 K
+PACKAGE DESCRIPTION:
+automake: GNU automake 1.4
+automake:
+automake: This is Automake, a Makefile generator.  It was inspired by the 4.4BSD
+automake: make and include files, but aims to be portable and to conform to the
+automake: GNU standards for Makefile variables and targets.
+automake: Automake is a Perl script.  The input files are called Makefile.am.
+automake: The output files are called Makefile.in; they are intended for use
+automake: with Autoconf.  Automake requires certain things to be done in your
+automake: configure.in.
+automake: You must install the "m4" and "perl" packages to be able to use
+automake: automake.
+
+PACKAGE NAME:  bash.tgz
+PACKAGE LOCATION:  ./slakware/a2
+PACKAGE SIZE (compressed):  243 K
+PACKAGE SIZE (uncompressed):  440 K
+PACKAGE DESCRIPTION:
+bash:     GNU bash-1.14.7
+bash:
+bash:     The GNU Bourne-Again SHell.  Bash is a sh-compatible command language
+bash:     interpreter that executes commands read from the standard input or 
+bash:     from a file.  Bash also incorporates useful features from the Korn
+bash:     and C shells (ksh and csh).  Bash is ultimately intended to be a 
+bash:     conformant implementation of the IEEE Posix Shell and Tools
+bash:     specification (IEEE Working Group 1003.2).
+bash:
+bash:     Bash must be present for the system to boot properly.
+bash:
+
+PACKAGE NAME:  bc.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  81 K
+PACKAGE SIZE (uncompressed):  200 K
+PACKAGE DESCRIPTION:
+bc:       GNU bc 1.04 - An arbitrary precision calculator language.
+bc:
+bc:       bc is a language that supports arbitrary precision numbers with 
+bc:       interactive execution of statements.  There are some similarities in
+bc:       the syntax to the C programming language.
+bc:
+
+PACKAGE NAME:  bin.tgz
+PACKAGE LOCATION:  ./slakware/a3
+PACKAGE SIZE (compressed):  882 K
+PACKAGE SIZE (uncompressed):  1720 K
+PACKAGE DESCRIPTION:
+bin:      Binaries that go in /bin and /usr/bin.
+bin:
+bin:      Various required utilities and programs, such as apmd_3.0beta3-2,
+bin:      asapm-2.2, at-2.9b, Dillon's crond 2.2, file-3.24, GNU gawk 3.0.3,
+bin:      man-1.5b, patch 2.1b, sed 2.05, sharutils-4.1, time-1.7,
+bin:      splitvt-1.6.3, tput-1.0, unarj-230, hdparm-3.5, and zoo-2.10.
+bin:
+
+PACKAGE NAME:  bind.tgz
+PACKAGE LOCATION:  ./slakware/n2
+PACKAGE SIZE (compressed):  801 K
+PACKAGE SIZE (uncompressed):  2040 K
+PACKAGE DESCRIPTION:
+bind:     BIND-8.1.2-REL.
+bind:
+bind:     The named daemon and support utilities such as dig, dnsquery, host,
+bind:     nslookup, nsquery, and nstest.  Documentation on setting up a name
+bind:     server can be found in /usr/doc/bind-8.1.2-REL/.
+bind:
+
+PACKAGE NAME:  binutils.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  1577 K
+PACKAGE SIZE (uncompressed):  3270 K
+PACKAGE DESCRIPTION:
+binutils: GNU binutils 2.9.1.0.19a
+binutils:
+binutils: Includes these development tools:
+binutils:  
+binutils: addr2line ar as as86 c++filt gasp gprof ld ld86 nm objcopy objdump
+binutils: ranlib size strings-GNU strip
+binutils:
+binutils: These utilities are REQUIRED to compile C, C++, Objective-C, Fortran,
+binutils: and many other programming languages.
+binutils:
+
+PACKAGE NAME:  bison.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  58 K
+PACKAGE SIZE (uncompressed):  160 K
+PACKAGE DESCRIPTION:
+bison:    GNU bison parser generator version 1.25.
+bison:
+bison:    Bison is a parser generator in the style of yacc(1).  It should be
+bison:    upwardly compatible with input files designed for yacc.
+bison:
+
+PACKAGE NAME:  bsdgames.tgz
+PACKAGE LOCATION:  ./slakware/y1
+PACKAGE SIZE (compressed):  2263 K
+PACKAGE SIZE (uncompressed):  5390 K
+PACKAGE DESCRIPTION:
+bsdgames: BSD games collection, version 2.0.
+bsdgames: 
+bsdgames: Games that go in /usr/games:  adventure arithmetic atc backgammon
+bsdgames:   banner battlestar bcd caesar canfield cfscores countmail cribbage
+bsdgames:   factor fish fortune gomoku hangman hunt mille monop morse number
+bsdgames:   phantasia pig pom ppt primes quiz rain random robots rot13 sail
+bsdgames:   snake snscore teachgammon trek wargames worm worms wump
+bsdgames:
+bsdgames: Adds a call to 'fortune' to /etc/profile and /etc/csh.login, so that
+bsdgames: users will get a fortune message when they log in.
+bsdgames:
+
+PACKAGE NAME:  bsdlpr.tgz
+PACKAGE LOCATION:  ./slakware/a1
+PACKAGE SIZE (compressed):  70 K
+PACKAGE SIZE (uncompressed):  170 K
+PACKAGE DESCRIPTION:
+bsdlpr:   BSD lpr-5.9-26
+bsdlpr:
+bsdlpr:   This is the lpr printing suite ported from BSD.  It's the most
+bsdlpr:   standard UN*X printing system in current use.  If you're interested
+bsdlpr:   in automatic detection of PostScript and DVI files, check out the
+bsdlpr:   apsfilter add-on in Slackware's contrib directory.
+bsdlpr:
+
+PACKAGE NAME:  byacc.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  27 K
+PACKAGE SIZE (uncompressed):  70 K
+PACKAGE DESCRIPTION:
+byacc:    Berkeley Yacc
+byacc:
+byacc:    Berkeley Yacc is an LALR(1) parser generator.  Berkeley Yacc
+byacc:    has been made as compatible as possible with AT&T Yacc.  Berkeley
+byacc:    Yacc can accept any input specification that conforms to the AT&T
+byacc:    Yacc documentation.  Specifications that take advantage of 
+byacc:    undocumented features of AT&T Yacc will probably be rejected.
+byacc:    If you skip this package and install GNU bison, a /usr/bin/yacc
+byacc:    shell script will be created which will allow you to use bison
+byacc:    instead. (It contains 'bison -y $*')
+byacc:    
+
+PACKAGE NAME:  bzip2.tgz
+PACKAGE LOCATION:  ./slakware/a1
+PACKAGE SIZE (compressed):  69 K
+PACKAGE SIZE (uncompressed):  210 K
+PACKAGE DESCRIPTION:
+bzip2:    bzip2 version 0.9.0b (a block-sorting file compressor)
+bzip2:
+bzip2:    Bzip2 compresses files using the Burrows-Wheeler block sorting text
+bzip2:    compression algorithm, and Huffman coding.  Compression is generally
+bzip2:    considerably better than that achieved by more conventional 
+bzip2:    LZ77/LZ78-based compressors, and approaches the performance of the PPM
+bzip2:    family of statistical compressors. 
+bzip2:
+bzip2:    Julian Seward <jseward@acm.org> is the author of bzip2.
+bzip2:
+
+PACKAGE NAME:  cdutils.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  231 K
+PACKAGE SIZE (uncompressed):  580 K
+PACKAGE DESCRIPTION:
+cdutils:  Tools for mastering and writing compact discs.
+cdutils:
+cdutils:  Contains these utilities:
+cdutils:
+cdutils:  cdwrite  -- burn discs in some CD-R drives from Philips/IMS/Kodak,
+cdutils:              Yamaha, and HP.
+cdutils:  cdrecord -- burn discs in most ATAPI and SCSI CD-R drives.
+cdutils:  mkisofs  -- create ISO9660 filesystem images.
+cdutils:  mkhybrid -- create hybrid ISO9660/HFS/Joliet CD-ROM images.
+cdutils:
+
+PACKAGE NAME:  cnews.tgz
+PACKAGE LOCATION:  ./slakware/n1
+PACKAGE SIZE (compressed):  276 K
+PACKAGE SIZE (uncompressed):  800 K
+PACKAGE DESCRIPTION:
+cnews:    20 Feb 1993 Performance Release of C News
+cnews:
+cnews:    Controls the spooling and transmission of Usenet news. 
+cnews:
+cnews:    Cnews is typically used with UUCP - for NNTP connections INN might
+cnews:    be a better choice.
+cnews:
+
+PACKAGE NAME:  cpio.tgz
+PACKAGE LOCATION:  ./slakware/a2
+PACKAGE SIZE (compressed):  70 K
+PACKAGE SIZE (uncompressed):  190 K
+PACKAGE DESCRIPTION:
+cpio:     The GNU cpio backup and archiving utility v. 2.4.2
+cpio:
+cpio:     This is GNU cpio, a program to manage archives of files. This package
+cpio:     also includes mt, a tape drive control program. cpio copies files into
+cpio:     or out of a cpio or tar archive, which is a file that contains other
+cpio:     files plus information about them, such as their pathname, owner,
+cpio:     timestamps, and access permissions. The archive can be another file on
+cpio:     the disk, a magnetic tape, or a pipe.
+cpio:
+
+PACKAGE NAME:  devs.tgz
+PACKAGE LOCATION:  ./slakware/a2
+PACKAGE SIZE (compressed):  61 K
+PACKAGE SIZE (uncompressed):  970 K
+PACKAGE DESCRIPTION:
+devs:     Device files.
+devs:
+devs:     This package creates special files in the /dev directory that 
+devs:     represent your system's hardware.
+devs:
+
+PACKAGE NAME:  diff.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  114 K
+PACKAGE SIZE (uncompressed):  210 K
+PACKAGE DESCRIPTION:
+diff:     GNU diffutils-2.7
+diff:
+diff:     The GNU diff utilities - finds differences between files. (to make
+diff:     source code patches, for instance)
+diff:
+
+PACKAGE NAME:  dip.tgz
+PACKAGE LOCATION:  ./slakware/n1
+PACKAGE SIZE (compressed):  63 K
+PACKAGE SIZE (uncompressed):  170 K
+PACKAGE DESCRIPTION:
+dip:      DIP - dialup IP connection handler 3.3.7o
+dip:
+dip:      Uri Blumenthal's version of Fred N. van Kempen's DIP utility. DIP 
+dip:      handles the connections needed for dialup IP links, like SLIP or
+dip:      CSLIP.  It can handle both incoming and outgoing connections, using
+dip:      password security for incoming connections.  
+dip:
+
+PACKAGE NAME:  e2fsbn.tgz
+PACKAGE LOCATION:  ./slakware/a2
+PACKAGE SIZE (compressed):  226 K
+PACKAGE SIZE (uncompressed):  630 K
+PACKAGE DESCRIPTION:
+e2fsbn:   Utilities for the second extended file system v. 1.14
+e2fsbn:
+e2fsbn:   Utilities needed to create and maintain ext2 filesystems under Linux.
+e2fsbn:   Included in this package are: chattr, lsattr, mke2fs, mklost+found,
+e2fsbn:   tune2fs, fsck, e2fsck, e2label, debugfs, dumpe2fs, and badblocks. 
+e2fsbn:
+e2fsbn:   These utilities were written by Remy Card (the developer and
+e2fsbn:   maintainer of the ext2 fs) and Theodore T'so.
+e2fsbn:
+
+PACKAGE NAME:  egcs.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  2808 K
+PACKAGE SIZE (uncompressed):  7260 K
+PACKAGE DESCRIPTION:
+egcs:     The GNU C and C++ compilers (egcs-1.1.2).
+egcs:
+egcs:     This package contains the GNU C and C++ compilers and libstdc++ from
+egcs:     egcs-1.1.2.  To compile, you'll also need (at least) these packages:
+egcs:     binutils.tgz, gmake.tgz, libc.tgz, and linuxinc.tgz.  These compilers
+egcs:     contain many fixes and enhancements by the egcs team.  For more
+egcs:     information, see the egcs home page: 
+egcs:         http://egcs.cygnus.com/
+egcs:
+egcs:     egcs is pronounced "eggs", the c is silent.
+egcs:
+
+PACKAGE NAME:  egcs_g77.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  1241 K
+PACKAGE SIZE (uncompressed):  2730 K
+PACKAGE DESCRIPTION:
+egcs_g77: GNU Fortran-77 compiler from the egcs-1.1.2 release.
+egcs_g77:
+egcs_g77: This package contains the GNU Fortran-77 compiler from egcs.  To use
+egcs_g77: this compiler, you'll also need to install the egcs.tgz C/C++ compiler
+egcs_g77: package, binutils.tgz, gmake.tgz, libc.tgz, and linuxinc.tgz.
+egcs_g77:
+
+PACKAGE NAME:  egcsobjc.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  731 K
+PACKAGE SIZE (uncompressed):  1670 K
+PACKAGE DESCRIPTION:
+egcsobjc: GNU Objective-C compiler from the egcs-1.1.2 release.
+egcsobjc:
+egcsobjc: This package contains the GNU Objective-C compiler from the egcs
+egcsobjc: release.  To use this compiler, you'll also need to install the
+egcsobjc: egcs.tgz C/C++ compiler package, binutils.tgz, gmake.tgz, libc.tgz,
+egcsobjc: and linuxinc.tgz.
+egcsobjc:
+egcsobjc: For more information on egcs, see http://egcs.cygnus.com/
+egcsobjc:
+
+PACKAGE NAME:  elflibs.tgz
+PACKAGE LOCATION:  ./slakware/a4
+PACKAGE SIZE (compressed):  1008 K
+PACKAGE SIZE (uncompressed):  2790 K
+PACKAGE DESCRIPTION:
+elflibs:  ELF shared libraries.
+elflibs:
+elflibs:  This is a collection of shared libraries needed to run Linux code in
+elflibs:  the ELF binary format. ELF (Executable and Linking Format) is the
+elflibs:  standard Linux binary format, replacing the older a.out format.  One
+elflibs:  of the main advantages of ELF over a.out is the ease of building and
+elflibs:  maintaining shared libraries.
+elflibs:
+
+PACKAGE NAME:  elisp.tgz
+PACKAGE LOCATION:  ./slakware/e1
+PACKAGE SIZE (compressed):  4226 K
+PACKAGE SIZE (uncompressed):  17280 K
+PACKAGE DESCRIPTION:
+elisp:    Emacs lisp source files.
+elisp:
+elisp:    This package contains source code for the parts of Emacs that are
+elisp:    written in Emacs Lisp.  *.el files are Emacs Lisp source, and the
+elisp:    corresponding *.elc files are byte-compiled versions.
+elisp:
+elisp:    The emacsbin.tgz package contains all of the *.el files that emacs
+elisp:    requires to run, but these are probably good to have if you've got
+elisp:    the space on your hard drive.
+elisp:
+
+PACKAGE NAME:  elm.tgz
+PACKAGE LOCATION:  ./slakware/n2
+PACKAGE SIZE (compressed):  342 K
+PACKAGE SIZE (uncompressed):  920 K
+PACKAGE DESCRIPTION:
+elm:      Menu-driven user mail program. (v. 2.4pl25)
+elm:
+elm:      Elm is an interactive screen-oriented mailer program originally
+elm:      written by Dave Taylor, and continued by the Elm Development Group. 
+elm:
+
+PACKAGE NAME:  elvis.tgz
+PACKAGE LOCATION:  ./slakware/a2
+PACKAGE SIZE (compressed):  440 K
+PACKAGE SIZE (uncompressed):  1240 K
+PACKAGE DESCRIPTION:
+elvis:    elvis-2.1.
+elvis:
+elvis:    Elvis is a text editor.  It is intended to be a modern replacement
+elvis:    for the classic ex/vi editor of UNIX fame.  Elvis supports many new
+elvis:    features, including multiple edit buffers, multiple windows, and a
+elvis:    variety of display modes.
+elvis:
+elvis:    As elvis is Slackware's default vi, this is a required package.
+elvis:
+
+PACKAGE NAME:  emac_nox.tgz
+PACKAGE LOCATION:  ./slakware/e1
+PACKAGE SIZE (compressed):  1165 K
+PACKAGE SIZE (uncompressed):  3800 K
+PACKAGE DESCRIPTION:
+emac_nox: Emacs binary without X support.
+emac_nox:
+emac_nox: A replacement /usr/bin/emacs binary that is not compiled with X11 menu
+emac_nox: support.  This version of emacs is about 400K smaller than the full
+emac_nox: version of emacs, and is the same in every respect except for X11
+emac_nox: extensions.  It can still run in an xterm or rxvt if you wish to run
+emac_nox: it under X, but it is mainly included for those folks who don't have X
+emac_nox: (or the X11, Xaw, and Xt shared libs) installed on their machines.
+emac_nox: You might want to remove the version that requires X if you install
+emac_nox: and use this one.
+emac_nox:
+
+PACKAGE NAME:  emacinfo.tgz
+PACKAGE LOCATION:  ./slakware/e1
+PACKAGE SIZE (compressed):  1071 K
+PACKAGE SIZE (uncompressed):  1140 K
+PACKAGE DESCRIPTION:
+emacinfo: Info files for emacs-20.3
+emacinfo:
+emacinfo: These gzipped info files go in /usr/info, providing online 
+emacinfo: documentation for Emacs.
+emacinfo:
+
+PACKAGE NAME:  emacmisc.tgz
+PACKAGE LOCATION:  ./slakware/e1
+PACKAGE SIZE (compressed):  1038 K
+PACKAGE SIZE (uncompressed):  3120 K
+PACKAGE DESCRIPTION:
+emacmisc: Miscellaneous files for emacs-20.3.
+emacmisc:
+emacmisc: This package contains the architecture-independent files used by or
+emacmisc: with Emacs.  This includes various text files containing documentation
+emacmisc: for GNU Emacs, or of interest to Emacs users.  These files are
+emacmisc: installed in /usr/share/emacs/20.3/etc/.
+emacmisc:
+
+PACKAGE NAME:  emacsbin.tgz
+PACKAGE LOCATION:  ./slakware/e1
+PACKAGE SIZE (compressed):  5026 K
+PACKAGE SIZE (uncompressed):  16930 K
+PACKAGE DESCRIPTION:
+emacsbin: GNU Emacs 20.3
+emacsbin:
+emacsbin: Base binaries and support files for the GNU Emacs editor/environment.
+emacsbin: This version supports X.  If you do not have X installed, you will
+emacsbin: also have to install the replacement /usr/bin/emacs-20.3 that does not
+emacsbin: require the X11, Xaw, and Xt libraries from XFree86.
+emacsbin:
+emacsbin: The emacs binary in this package was configured with these options:
+emacsbin:   i586-slackware-linux --prefix=/usr --with-x11 --with-x-toolkit
+emacsbin:
+
+PACKAGE NAME:  enscript.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  351 K
+PACKAGE SIZE (uncompressed):  1470 K
+PACKAGE DESCRIPTION:
+enscript: GNU enscript 1.6.1
+enscript:
+enscript: Enscript converts text files to PostScript and spools the generated
+enscript: output to a printer or saves it to a file.  If no input files are
+enscript: given, enscript processes standard input.  Enscript can be extended to
+enscript: handle different output media and it has many options for customizing
+enscript: printouts.  
+enscript:
+
+PACKAGE NAME:  etc.tgz
+PACKAGE LOCATION:  ./slakware/a3
+PACKAGE SIZE (compressed):  151 K
+PACKAGE SIZE (uncompressed):  480 K
+PACKAGE DESCRIPTION:
+etc:      System configuration files that go into the /etc directory.
+etc:
+etc:      The /etc directory is traditionally the location where configuration
+etc:      files and administration binaries are found. Under Linux, the binaries
+etc:      have been moved out of the /etc directory and into the /sbin 
+etc:      directory; the /etc directory is now reserved for configuration files
+etc:      only. 
+etc:
+
+PACKAGE NAME:  expect.tgz
+PACKAGE LOCATION:  ./slakware/tcl1
+PACKAGE SIZE (compressed):  480 K
+PACKAGE SIZE (uncompressed):  1280 K
+PACKAGE DESCRIPTION:
+expect:   expect-5.28.
+expect:
+expect:   Expect is a program that talks to other interactive programs according
+expect:   to a script.  Following the script, Expect knows what can be expected
+expect:   from a program and what the correct response should be.  An
+expect:   interpreted language provides branching and high-level control
+expect:   structures to direct the dialogue. 
+expect:
+expect:   Expect was written by Don Libes of the National Institute of Standards
+expect:   and Technology.
+expect:
+
+PACKAGE NAME:  fileutls.tgz
+PACKAGE LOCATION:  ./slakware/a5
+PACKAGE SIZE (compressed):  392 K
+PACKAGE SIZE (uncompressed):  1060 K
+PACKAGE DESCRIPTION:
+fileutls: fileutils-3.16
+fileutls:
+fileutls: These are the GNU file management utilities.  Most of these programs
+fileutls: have significant advantages over their Unix counterparts, such as
+fileutls: greater speed, additional options, and fewer arbitrary limits.
+fileutls:
+fileutls: These utilities are included:  chgrp chmod chown cp dd df dircolors
+fileutls:   du ginstall ln ls mkdir mkfifo mknod mv rm rmdir sync touch
+fileutls:
+
+PACKAGE NAME:  find.tgz
+PACKAGE LOCATION:  ./slakware/a5
+PACKAGE SIZE (compressed):  86 K
+PACKAGE SIZE (uncompressed):  170 K
+PACKAGE DESCRIPTION:
+find:     GNU findutils-4.1
+find:
+find:     This package contains the GNU find, xargs, and locate programs.
+find:     find and xargs comply with POSIX 1003.2, as far as I know.  They
+find:     also support some additional options, some borrowed from Unix and
+find:     some unique to GNU.
+find:
+
+PACKAGE NAME:  flex.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  152 K
+PACKAGE SIZE (uncompressed):  350 K
+PACKAGE DESCRIPTION:
+flex:     flex - fast lexical analyzer generator version 2.5.4a
+flex:
+flex:     flex is a tool for generating scanners:  programs which recognize
+flex:     lexical patterns in text.  
+flex:
+
+PACKAGE NAME:  freefont.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  2300 K
+PACKAGE SIZE (uncompressed):  2630 K
+PACKAGE DESCRIPTION:
+freefont: freefonts-0.10
+freefont:
+freefont: This is a collection of fonts that work with the GIMP, X11,
+freefont: ghostscript, and groff.  If you plan on installing the GIMP (the GNU
+freefont: Image Manipulation Program), then these fonts are highly recommended.
+freefont: The fonts are installed in /usr/X11R6/lib/fonts/Type1/.  To use the
+freefont: fonts with ghostscript, see the instructions in /usr/doc/freefont/.
+freefont:
+
+PACKAGE NAME:  fsmods.tgz
+PACKAGE LOCATION:  ./slakware/a5
+PACKAGE SIZE (compressed):  374 K
+PACKAGE SIZE (uncompressed):  990 K
+PACKAGE DESCRIPTION:
+fsmods:   Filesystem modules for Linux 2.2.6.
+fsmods:
+fsmods:   A kernel module is a piece of object code that can be dynamically
+fsmods:   loaded into the Linux kernel to provide new kernel functions.  These
+fsmods:   modules support additional filesystems, such as HPFS, HFS, and NTFS.
+fsmods:
+
+PACKAGE NAME:  fvwm2.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  350 K
+PACKAGE SIZE (uncompressed):  1060 K
+PACKAGE DESCRIPTION:
+fvwm2:    fvwm2_2.0.46-BETA
+fvwm2:
+fvwm2:    Fvwm is a window manager for X11.  It is a derivative of twm, 
+fvwm2:    redesigned to minimize memory consumption, provide a 3-D look to
+fvwm2:    window frames, and provide a simple virtual desktop.
+fvwm2:
+
+PACKAGE NAME:  fvwm95.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  512 K
+PACKAGE SIZE (uncompressed):  1920 K
+PACKAGE DESCRIPTION:
+fvwm95:   fvwm95-2.0.43b
+fvwm95:
+fvwm95:   This is fvwm-2.0.43b hacked for a look and feel similar to Windows95.
+fvwm95:
+
+PACKAGE NAME:  fvwmicns.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  11 K
+PACKAGE SIZE (uncompressed):  210 K
+PACKAGE DESCRIPTION:
+fvwmicns: xpm3icons.
+fvwmicns:
+fvwmicns: Color icons from xpm3icons.tar.Z, found in the /pub/X11/contrib
+fvwmicns: directory of metalab.unc.edu.  These icons work great with fvwm.
+fvwmicns:
+fvwmicns: These icons go in the /usr/X11R6/include/X11/pixmaps directory.  For
+fvwmicns: more information on how to use these icons, see fvwm's manpage.
+fvwmicns:
+
+PACKAGE NAME:  gcc.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  1940 K
+PACKAGE SIZE (uncompressed):  4140 K
+PACKAGE DESCRIPTION:
+gcc:      The GNU C compiler and support files (v. 2.7.2.3)
+gcc:
+gcc:      This C compiler is provided for kernel compiling and as a general
+gcc:      alternative to the egcs-1.1.2 compiler.
+gcc:
+
+PACKAGE NAME:  gchess.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  945 K
+PACKAGE SIZE (uncompressed):  2560 K
+PACKAGE DESCRIPTION:
+gchess:   GNU chess (v. 4.0 patch level 79)  
+gchess:   and xboard (v. 4.0.2)
+gchess:
+gchess:   A worthy chess opponent.  Adds 'gnuchess', an ASCII based chess 
+gchess:   engine, and 'xboard', an X based interface to 'gnuchessx'.
+gchess:
+
+PACKAGE NAME:  gcl.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  1021 K
+PACKAGE SIZE (uncompressed):  2820 K
+PACKAGE DESCRIPTION:
+gcl:      GNU Common LISP 2.2.2
+gcl:
+gcl:      The GNU Common LISP system.  The GCL system contains C and Lisp source
+gcl:      files to build a Common Lisp system.  The original KCL system was
+gcl:      written by Taiichi Yuasa and Masami Hagiya in 1984.  The AKCL system
+gcl:      work was begun in 1987 by William Schelter and continued through 1994.
+gcl:      In 1994 AKCL was released as GCL (GNU Common Lisp) under the GNU
+gcl:      Public Library License.  
+gcl:
+gcl:      A number of people have contributed ports and pieces.
+gcl:
+
+PACKAGE NAME:  gdb.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  770 K
+PACKAGE SIZE (uncompressed):  1570 K
+PACKAGE DESCRIPTION:
+gdb:      The GNU debugger. (v. 4.18)
+gdb:
+gdb:      You can use GDB to debug programs written in C, C++, and Modula-2. 
+gdb:      GDB now includes support for GNU Fortran 77.
+gdb:
+
+PACKAGE NAME:  gettext.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  399 K
+PACKAGE SIZE (uncompressed):  1210 K
+PACKAGE DESCRIPTION:
+gettext:  GNU gettext-0.10.35
+gettext:
+gettext:  The GNU gettext package is useful for authors and maintainers of
+gettext:  internationalized software, or for anyone compiling programs that
+gettext:  use it.  GNU gettext provides the needed tools and library functions
+gettext:  for the handling of messages in different languages.  Some other GNU
+gettext:  packages use the gettext program (included in this package) to
+gettext:  internationalize the messages given by shell scripts.
+gettext:
+
+PACKAGE NAME:  getty.tgz
+PACKAGE LOCATION:  ./slakware/a5
+PACKAGE SIZE (compressed):  59 K
+PACKAGE SIZE (uncompressed):  150 K
+PACKAGE DESCRIPTION:
+getty:    getty_ps 2.0.7j
+getty:
+getty:    /sbin/getty and /sbin/uugetty. 
+getty:    These control the process of logging into your system, and may be used
+getty:    instead of 'agetty', which is the default getty included with the
+getty:    util-linux package. getty_ps supports a number of enhancements such as
+getty:    ringback support.
+getty:
+
+PACKAGE NAME:  ghostscr.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  1203 K
+PACKAGE SIZE (uncompressed):  3580 K
+PACKAGE DESCRIPTION:
+ghostscr: Ghostscript version 5.10
+ghostscr:
+ghostscr: Preview, print and process PostScript documents on both PostScript and
+ghostscr: non-PostScript devices.  If you need X11 support, you should also 
+ghostscr: install the package 'gs_x11' found on the XAP series.  It contains a 
+ghostscr: /usr/bin/gs with support for X11.
+ghostscr:
+
+PACKAGE NAME:  gimp.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  9850 K
+PACKAGE SIZE (uncompressed):  22010 K
+PACKAGE DESCRIPTION:
+gimp:     The GIMP -- GNU Image Manipulation Program version 1.0.4
+gimp:
+gimp:     The GIMP is a powerful tool for the preparation and manipulation of
+gimp:     digital images.  The GIMP provides the user with a wide variety of
+gimp:     image manipulation, painting, processing, and rendering tools.  The
+gimp:     key to the GIMP's power lies in its flexible core and easily
+gimp:     extensible design.  The GIMP's open design and extensible architecture
+gimp:     make for a very powerful end product for photo and image retouching,
+gimp:     web graphics design, or digital illustration.  Also includes the
+gimp:     gtk+ and glib 1.2.2 libraries (with thread support).
+gimp:
+
+PACKAGE NAME:  glibc1.tgz
+PACKAGE LOCATION:  ./slakware/a6
+PACKAGE SIZE (compressed):  705 K
+PACKAGE SIZE (uncompressed):  1880 K
+PACKAGE DESCRIPTION:
+glibc1:   glibc-2.0.7pre6 runtime support
+glibc1:
+glibc1:   This package contains the shared libraries, binaries, and support
+glibc1:   files required to run most Linux applications linked with glibc.
+glibc1:
+
+PACKAGE NAME:  glibc2.tgz
+PACKAGE LOCATION:  ./slakware/a7
+PACKAGE SIZE (compressed):  784 K
+PACKAGE SIZE (uncompressed):  5790 K
+PACKAGE DESCRIPTION:
+glibc2:   glibc-2.0.7pre6 internationalization files
+glibc2:
+glibc2:   International support files for glibc -- installed in usr/share/i18n.
+glibc2:
+
+PACKAGE NAME:  gmake.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  183 K
+PACKAGE SIZE (uncompressed):  270 K
+PACKAGE DESCRIPTION:
+gmake:    GNU make utility 3.76.1.
+gmake:
+gmake:    This is the GNU implementation of make, which was written by Richard
+gmake:    Stallman and Roland McGrath.  The purpose of the make utility is to
+gmake:    determine automatically which pieces of a large program need to be 
+gmake:    recompiled, and issue the commands to recompile them.  
+gmake:
+gmake:    This is needed to compile just about any major C program, including
+gmake:    the Linux kernel.
+gmake:
+
+PACKAGE NAME:  gnuplot.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  716 K
+PACKAGE SIZE (uncompressed):  2200 K
+PACKAGE DESCRIPTION:
+gnuplot:  gnuplot 3.7
+gnuplot:
+gnuplot:  Gnuplot is a command-line driven interactive function plotting utility
+gnuplot:  for UNIX, MSDOS, and VMS platforms.  The software is copyrighted but
+gnuplot:  freely distributed (i.e., you don't have to pay for it).  It was
+gnuplot:  originally intended as graphical program which would allow scientists
+gnuplot:  and students to visualize mathematical functions and data.  Gnuplot
+gnuplot:  supports many different types of terminals, plotters, and printers
+gnuplot:  (including many color devices, and pseudo-devices like LaTeX) and is
+gnuplot:  easily extensible to include new devices.
+gnuplot:
+
+PACKAGE NAME:  gpm.tgz
+PACKAGE LOCATION:  ./slakware/a5
+PACKAGE SIZE (compressed):  127 K
+PACKAGE SIZE (uncompressed):  290 K
+PACKAGE DESCRIPTION:
+gpm:      General purpose mouse support v1.14
+gpm:
+gpm:      This program is based on the 'selection' package, and allows you to
+gpm:      use the mouse to cut and paste text from the screen.  It also acts as
+gpm:      a mouse server for applications running on the Linux console, such as 
+gpm:      the Midnight Commander file manager and dialog. 
+gpm:
+gpm:      NOTE:  This program may cause problems when you start X on systems 
+gpm:      that do not use a serial mouse.  If you get an 'unable to open mouse 
+gpm:      device' error from X, remove gpm from /etc/rc.d/rc.local.
+gpm:
+
+PACKAGE NAME:  grep.tgz
+PACKAGE LOCATION:  ./slakware/a6
+PACKAGE SIZE (compressed):  175 K
+PACKAGE SIZE (uncompressed):  450 K
+PACKAGE DESCRIPTION:
+grep:     GNU grep 2.3
+grep:
+grep:     Grep searches the named input files (or standard input if no files are
+grep:     named, or the file name - is given) for lines containing a match to
+grep:     the given pattern.  This is the 'fastest grep in the west' (we hope).
+grep:
+
+PACKAGE NAME:  groff.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  948 K
+PACKAGE SIZE (uncompressed):  3080 K
+PACKAGE DESCRIPTION:
+groff:    GNU troff 1.11 document formatting system.
+groff:
+groff:    The groff package provides versions of troff, nroff, eqn, tbl, and 
+groff:    other Unix text-formatting utilities.  Groff is used to 'compile' man
+groff:    pages stored in groff/nroff format into a form which can be printed or
+groff:    displayed on the screen.  These man pages are stored in compressed
+groff:    form in the /usr/man/man? directories.
+groff:
+
+PACKAGE NAME:  gs_x11.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  540 K
+PACKAGE SIZE (uncompressed):  1350 K
+PACKAGE DESCRIPTION:
+gs_x11:   Replacement /usr/bin/gs with X11 options compiled in.
+gs_x11:
+gs_x11:   This should be installed on top of the 'ghostscr' package from the
+gs_x11:   A series to provide X11 support for ghostview.  If you plan to preview
+gs_x11:   Postscript documents under X, you need to install this.  Also, if 
+gs_x11:   you've installed ghostscript already it is highly recommended that you
+gs_x11:   install this package just in case.  Since it replaces another binary
+gs_x11:   it really only uses about 35K.
+gs_x11:
+
+PACKAGE NAME:  gsfonts.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  2193 K
+PACKAGE SIZE (uncompressed):  3810 K
+PACKAGE DESCRIPTION:
+gsfonts:  Fonts for the Ghostscript interpreter/previewer.
+gsfonts:
+gsfonts:  These fonts come from ghostscript-fonts-other-5.10.tar.gz and
+gsfonts:  ghostscript-fonts-std-5.10.tar.gz.
+gsfonts:
+
+PACKAGE NAME:  gv.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  136 K
+PACKAGE SIZE (uncompressed):  380 K
+PACKAGE DESCRIPTION:
+gv:       gv 3.5.8
+gv:
+gv:       gv is a PostScript and PDF previewer.  It allows users to view and
+gv:       navigate through PostScript and PDF documents on an X display by 
+gv:       providing a user interface for the ghostscript interpreter.
+gv:
+gv:       gv was written by Johannes Plass, using the source code for Tim
+gv:       Theisen's ghostview 1.5 as a starting point.
+gv:
+
+PACKAGE NAME:  gzip.tgz
+PACKAGE LOCATION:  ./slakware/a6
+PACKAGE SIZE (compressed):  49 K
+PACKAGE SIZE (uncompressed):  100 K
+PACKAGE DESCRIPTION:
+gzip:     GNU zip compression utilities. (v. 1.2.4a)
+gzip:
+gzip:     Gzip reduces the size of the named files using Lempel-Ziv coding
+gzip:     (LZ77).  Whenever possible, each file is replaced by one with the
+gzip:     extension .gz, while keeping the same ownership modes, access and
+gzip:     modification times.
+gzip:
+
+PACKAGE NAME:  hdsetup.tgz
+PACKAGE LOCATION:  ./slakware/a6
+PACKAGE SIZE (compressed):  116 K
+PACKAGE SIZE (uncompressed):  490 K
+PACKAGE DESCRIPTION:
+hdsetup:  The Slackware setup/package maintenance system v. 4.0.0
+hdsetup:
+hdsetup:  The full screen and tty versions of setup and pkgtool, two utilities
+hdsetup:  included with Slackware that allow you to easily install software 
+hdsetup:  packages, remove software packages, and review the installed software
+hdsetup:  packages.
+hdsetup:
+hdsetup:  Also contains the command line utilities 'installpkg', 'removepkg',
+hdsetup:  'makepkg', 'explodepkg', and 'upgradepkg' that install, remove, build,
+hdsetup:  examine, and upgrade software packages.  Man pages are included.
+hdsetup:
+
+PACKAGE NAME:  hfsutils.tgz
+PACKAGE LOCATION:  ./slakware/tcl1
+PACKAGE SIZE (compressed):  198 K
+PACKAGE SIZE (uncompressed):  470 K
+PACKAGE DESCRIPTION:
+hfsutils: hfsutils-3.1.
+hfsutils:
+hfsutils: hfsutils is a collection of tools for reading and writing Macintosh
+hfsutils: HFS volumes.  These utilities can manipulate HFS volumes on nearly any
+hfsutils: medium.  Since hfs and xhfs are linked with Tcl/Tk shared libraries,
+hfsutils: the hfsutils package is included here in the TCL software series.
+hfsutils:
+hfsutils: hfsutils was written by Robert Leslie <rob@mars.org>
+hfsutils:
+
+PACKAGE NAME:  howto.tgz
+PACKAGE LOCATION:  ./slakware/f1
+PACKAGE SIZE (compressed):  2874 K
+PACKAGE SIZE (uncompressed):  9010 K
+PACKAGE DESCRIPTION:
+howto:    HOWTOs from the Linux Documentation Project.
+howto:
+howto:    Documentation on many tasks relating to Linux setup and operation.
+howto:
+howto:    These documents will be installed in /usr/doc/Linux-HOWTOs/.
+howto:
+
+PACKAGE NAME:  ibcs2.tgz
+PACKAGE LOCATION:  ./slakware/a8
+PACKAGE SIZE (compressed):  419 K
+PACKAGE SIZE (uncompressed):  1270 K
+PACKAGE DESCRIPTION:
+ibcs2:    Intel Binary Compatibility Specification module
+ibcs2:
+ibcs2:    The iBCS module allows many binaries from other OS's to run on Linux:
+ibcs2:
+ibcs2:    i386 BSD (386BSD, FreeBSD, NetBSD, BSDI/386) - very alpha.
+ibcs2:    SVR4 (Interactive, Unixware, USL, Dell etc.)
+ibcs2:    SVR3 generic
+ibcs2:    SCO (SVR3 with extensions for symlinks and long filenames)
+ibcs2:    Wyse V/386 (SVR3 with extensions for symlinks)
+ibcs2:    Xenix V/386 (386 small model binaries only)
+ibcs2:
+
+PACKAGE NAME:  ide.tgz
+PACKAGE LOCATION:  ./slakware/a9
+PACKAGE SIZE (compressed):  740 K
+PACKAGE SIZE (uncompressed):  930 K
+PACKAGE DESCRIPTION:
+ide:      Linux kernel version 2.2.6, without SCSI support.
+ide:  
+ide:      A Linux kernel for computers that do not need SCSI support. You MUST
+ide:      install a kernel image in order for your system to boot. This kernel
+ide:      supports IDE hard drives and IDE CD-ROM drives.  Other drivers (such
+ide:      as for CD-ROM drives on proprietary interfaces, or ethernet cards)
+ide:      may be loaded as modules.  See /etc/rc.d/rc.modules for examples.
+ide:
+
+PACKAGE NAME:  imagick.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  1444 K
+PACKAGE SIZE (uncompressed):  4050 K
+PACKAGE DESCRIPTION:
+imagick:  ImageMagick-4.2.2
+imagick:
+imagick:  ImageMagick is a collection of tools for manipulating and displaying
+imagick:  digital images.  It can merge images, transform image dimensions,
+imagick:  do screen captures, create animation sequences, and convert between
+imagick:  many different image formats.  
+imagick:  
+imagick:  See the man pages for these tools:  animate combine convert display
+imagick:  identify import mogrify montage xtp
+imagick:  
+
+PACKAGE NAME:  imapd.tgz
+PACKAGE LOCATION:  ./slakware/n3
+PACKAGE SIZE (compressed):  579 K
+PACKAGE SIZE (uncompressed):  1050 K
+PACKAGE DESCRIPTION:
+imapd:    ipop3d/imapd from Pine 4.10
+imapd:
+imapd:    /sbin/ipop3d and /sbin/imapd are servers supporting the POP3 and
+imapd:    IMAP remote mail access protocols.  They allow users to download
+imapd:    mail from your Linux system for remote viewing.
+imapd:
+
+PACKAGE NAME:  inn.tgz
+PACKAGE LOCATION:  ./slakware/n3
+PACKAGE SIZE (compressed):  667 K
+PACKAGE SIZE (uncompressed):  1770 K
+PACKAGE DESCRIPTION:
+inn:      INN-1.7.2
+inn:
+inn:      Rich Salz's InterNetNews news transport system.  The core part of the
+inn:      package is a single long-running daemon that handles all incoming NNTP
+inn:      connections.  It files the articles and arranges for them to be 
+inn:      forwarded to downstream sites.
+inn:
+
+PACKAGE NAME:  ispell.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  413 K
+PACKAGE SIZE (uncompressed):  1030 K
+PACKAGE DESCRIPTION:
+ispell:   ispell-3.1.20
+ispell:
+ispell:   Ispell is a fast screen-oriented spelling checker that shows you your
+ispell:   errors in the context of the original file, and suggests possible 
+ispell:   corrections when it can figure them out.  Compared to UNIX spell, it
+ispell:   is faster and much easier to use.  Ispell can also handle languages
+ispell:   other than English.  Ispell has a long history, and many people have
+ispell:   contributed to the current version -- some of the major contributors
+ispell:   include R. E. Gorin, Pace Willisson, Walt Buehring, and Geoff 
+ispell:   Kuenning. 
+ispell:
+
+PACKAGE NAME:  jed.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  474 K
+PACKAGE SIZE (uncompressed):  1400 K
+PACKAGE DESCRIPTION:
+jed:      John E. Davis's JED 0.97-14 editor.
+jed:
+jed:      JED is an extremely powerful but small emacs programmer's editor that
+jed:      is extensible in a C-like macro language and is able to perform color
+jed:      syntax highlighting.  Among the many features:
+jed:      Emacs, wordstar, EDT emulation;
+jed:      C, Fortran, TeX, text editing modes;  Full undo;
+jed:      GNU Emacs compatible info reader, and lots more.
+jed:
+jed:      8 bit clean, so you can even edit binary files!  
+jed:
+
+PACKAGE NAME:  joe.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  118 K
+PACKAGE SIZE (uncompressed):  300 K
+PACKAGE DESCRIPTION:
+joe:      Joe text editor v2.8
+joe:
+joe:      Joseph H. Allen's easy to use text editor, similar to WordStar[tm].
+joe:
+
+PACKAGE NAME:  jove.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  115 K
+PACKAGE SIZE (uncompressed):  290 K
+PACKAGE DESCRIPTION:
+jove:     Jonathan's Own Version of Emacs (4.14.10) 
+jove:
+jove:     A mostly Emacs compatible text editor, with man pages and the 
+jove:     'teachjove' tutorial program.  If you'd rather have the real thing, 
+jove:     the actual Emacs editor/environment is available in series 'E'.
+jove:
+
+PACKAGE NAME:  jpeg6.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  154 K
+PACKAGE SIZE (uncompressed):  330 K
+PACKAGE DESCRIPTION:
+jpeg6:    Independent JPEG Group's JPEG software version 6b
+jpeg6:
+jpeg6:    Software to implement JPEG image compression and decompression.  JPEG
+jpeg6:    (pronounced 'jay-peg') is a standardized compression method for 
+jpeg6:    full-color and gray-scale images.  JPEG is intended for compressing
+jpeg6:    'real-world' scenes; cartoons and other non-realistic images are not
+jpeg6:    its strong suit.  JPEG is lossy, however, on typical images of 
+jpeg6:    real-world scenes, very good compression levels can be obtained with
+jpeg6:    no visible change, and amazingly high compression levels are possible
+jpeg6:    if you can tolerate a low-quality image.
+jpeg6:
+
+PACKAGE NAME:  kbd.tgz
+PACKAGE LOCATION:  ./slakware/a8
+PACKAGE SIZE (compressed):  420 K
+PACKAGE SIZE (uncompressed):  2220 K
+PACKAGE DESCRIPTION:
+kbd:      kbd 0.95
+kbd:
+kbd:      Load and save keyboard mappings. Needed if you are not using the US
+kbd:      keyboard map. This package also contains utilities to change your
+kbd:      console fonts - if you install it you'll get a menu later on that lets
+kbd:      you select from many different fonts. If you like one, you can make it
+kbd:      your default font. A new default font can be chosen at any time by
+kbd:      typing 'fontconfig'. This package includes fonts from the 
+kbd:      kbd_fonts.tar.gz package uploaded to SunSITE.
+kbd:
+
+PACKAGE NAME:  kde.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  17667 K
+PACKAGE SIZE (uncompressed):  48610 K
+PACKAGE DESCRIPTION:
+kde:      KDE 1.1.1
+kde:
+kde:      KDE is a network transparent contemporary desktop environment for UNIX
+kde:      workstations.  It was written by a world-wide network of software
+kde:      engineers committed to free software development.  KDE seeks to fill
+kde:      the need for an easy to use desktop for Unix workstations, similar to
+kde:      the desktop environments found under the MacOS or Windows98/NT.
+kde:
+kde:      KDE requires the Qt library package (also in this directory).
+kde:
+
+PACKAGE NAME:  koules.tgz
+PACKAGE LOCATION:  ./slakware/y1
+PACKAGE SIZE (compressed):  213 K
+PACKAGE SIZE (uncompressed):  430 K
+PACKAGE DESCRIPTION:
+koules:   Koules 1.4
+koules:
+koules:   Koules is a fast action arcade-style game.  This version is compiled
+koules:   to use SVGAlib in high resolution (up to 900x620) with 256 color
+koules:   graphics, full sound, and, of course, network support.  Koules is an
+koules:   original idea.  The first version of Koules was developed from scratch
+koules:   by Jan Hubicka in July 1995.
+koules:
+
+PACKAGE NAME:  ldso.tgz
+PACKAGE LOCATION:  ./slakware/a7
+PACKAGE SIZE (compressed):  193 K
+PACKAGE SIZE (uncompressed):  460 K
+PACKAGE DESCRIPTION:
+ldso:     ld.so 1.9.9, the dynamic linker/loader.
+ldso:
+ldso:     ld.so completes the final process of linking all necessary references
+ldso:     to sharable objects and unreferenced symbols in an impure executable,
+ldso:     (usually a dynamically linked executable), to produce a runnable file.
+ldso:     Nearly all Linux binaries are 'incomplete' and require further linking
+ldso:     at run time. ld.so's job is thus to complete the linking process 
+ldso:     started at compilation. ld.so was written by David Engel, 
+ldso:     Eric Youngdale, Peter MacDonald, Hongjiu Lu, Linus Torvalds,
+ldso:     Lars Wirzenius and Mitch D'Souza.
+ldso:
+
+PACKAGE NAME:  less.tgz
+PACKAGE LOCATION:  ./slakware/a7
+PACKAGE SIZE (compressed):  62 K
+PACKAGE SIZE (uncompressed):  140 K
+PACKAGE DESCRIPTION:
+less:     less-332
+less:
+less:     Less is a paginator similar to more (1), but which allows backward
+less:     movement in the file as well as forward movement. Also, less does not
+less:     have to read the entire input file before starting, so with large
+less:     input files it starts up faster than text editors like vi (1). 
+less:
+less:     Less was written by Mark Nudelman.
+less:
+
+PACKAGE NAME:  lesstif.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  707 K
+PACKAGE SIZE (uncompressed):  2470 K
+PACKAGE DESCRIPTION:
+lesstif:  LessTif 0.85 (A Motif 1.2 alternative)
+lesstif:
+lesstif:  Lesstif is a freely available Motif clone.  It aims to be source level
+lesstif:  compatible with Motif 1.2.  This package contains the libraries and
+lesstif:  header files to be able to run and compile Motif 1.2 applications,
+lesstif:  along with the lesstif version of mwm, the Motif window manager.
+lesstif:
+
+PACKAGE NAME:  libc.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  1130 K
+PACKAGE SIZE (uncompressed):  3930 K
+PACKAGE DESCRIPTION:
+libc:     Development libraries for the C compiler.
+libc:
+libc:     These libraries are needed to compile C code in the ELF format.    
+libc:
+libc:     Includes the 5.4.46 Linux C libraries, libcurses 1.0.0, 
+libc:     GNU libgdbm 1.7.3, libtermcap 2.0.8, and BSD db 1.85.4.
+libc:
+
+PACKAGE NAME:  libcinfo.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  842 K
+PACKAGE SIZE (uncompressed):  890 K
+PACKAGE DESCRIPTION:
+libcinfo: C library documentation
+libcinfo:
+libcinfo: Info files for the GNU C library and GDBM library.
+libcinfo:
+
+PACKAGE NAME:  libgr.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  926 K
+PACKAGE SIZE (uncompressed):  2520 K
+PACKAGE DESCRIPTION:
+libgr:    libgr-2.0.13
+libgr:
+libgr:    Shared and static graphics-related ELF libraries and header files.
+libgr:
+libgr:    These libraries are included:  libfbm, libjpeg, libpbm, libpgm,
+libgr:    libpng, libpnm, libppm, librle, libtiff, libz.
+libgr:
+
+PACKAGE NAME:  libtool.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  113 K
+PACKAGE SIZE (uncompressed):  340 K
+PACKAGE DESCRIPTION:
+libtool:  GNU libtool 1.2
+libtool:
+libtool:  This is GNU Libtool, a generic library support script. Libtool hides
+libtool:  the complexity of using shared libraries behind a consistent, portable
+libtool:  interface.  To use libtool, add the new generic library building
+libtool:  commands to your Makefile, Makefile.in, or Makefile.am.  See the
+libtool:  documentation for details.
+libtool:
+libtool:  You must install the "m4" package to be able to use libtool.
+libtool:
+
+PACKAGE NAME:  lilo.tgz
+PACKAGE LOCATION:  ./slakware/a8
+PACKAGE SIZE (compressed):  156 K
+PACKAGE SIZE (uncompressed):  530 K
+PACKAGE DESCRIPTION:
+lilo:     LILO 20
+lilo:
+lilo:     Generic Boot Loader for Linux ('LInux LOader') by Werner Almesberger.
+lilo:     LILO boots Linux from your hard drive. It can also boot other
+lilo:     operating systems such as MS-DOS and OS/2, and can even boot DOS from
+lilo:     the second hard drive. LILO comes with utilities and documentation
+lilo:     that make it easier to install, such as 'liloconfig' and 'QuickStart'.
+lilo:     NOTE: Installing boot loaders is inherently dangerous. Be sure to have
+lilo:     some means to boot your system from a different media if you install
+lilo:     LILO on your hard disk.
+lilo:
+
+PACKAGE NAME:  linuxinc.tgz
+PACKAGE LOCATION:  ./slakware/k1
+PACKAGE SIZE (compressed):  1536 K
+PACKAGE SIZE (uncompressed):  7850 K
+PACKAGE DESCRIPTION:
+linuxinc: Linux 2.2.6 kernel include files.
+linuxinc:
+linuxinc: These are the include files from the 2.2.6 Linux kernel.  You'll
+linuxinc: need these to compile most system (and other) software for Linux.
+linuxinc: These include files are also part of the Linux kernel source package,
+linuxinc: and this package is also included with the D (development) software
+linuxinc: series.  This redundancy is intentional, since the kernel sources
+linuxinc: use quite a bit of disk space, it's useful to be able to easily
+linuxinc: remove the Linux kernel sources without disturbing the kernel include
+linuxinc: files.
+linuxinc:
+
+PACKAGE NAME:  lizards.tgz
+PACKAGE LOCATION:  ./slakware/y1
+PACKAGE SIZE (compressed):  260 K
+PACKAGE SIZE (uncompressed):  1050 K
+PACKAGE DESCRIPTION:
+lizards:  Lizards -- a video game for Linux.
+lizards:
+lizards:  Lizards is a clone of R*pt*n from the old BBC Micro and B**ld*rd*sh
+lizards:  from the C64/spectrum. It's a run-around-collect-em-up type game, 
+lizards:  running under Linux using the most excellent SVGAlib and Brad Pitzel's
+lizards:  excellent soundIt library.  Lizards was contributed by John M Dow.
+lizards:
+
+PACKAGE NAME:  loadlin.tgz
+PACKAGE LOCATION:  ./slakware/a9
+PACKAGE SIZE (compressed):  93 K
+PACKAGE SIZE (uncompressed):  100 K
+PACKAGE DESCRIPTION:
+loadlin:  LOADLIN v1.6a
+loadlin:
+loadlin:  LOADLIN.EXE, a loader (running under DOS) for LINUX kernel images
+loadlin:  fully supporting the kernel's command line feature. 
+loadlin:
+loadlin:  LOADLIN is the safest way to boot Linux from your hard disk, if you
+loadlin:  have a bootable DOS partition on your machine.
+loadlin:
+loadlin:  LOADLIN is (C) 1994...1995 Hans Lermen (lermen@elserv.ffm.fgan.de)
+loadlin:
+
+PACKAGE NAME:  lthreads.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  97 K
+PACKAGE SIZE (uncompressed):  360 K
+PACKAGE DESCRIPTION:
+lthreads: LinuxThreads 0.7.1
+lthreads:
+lthreads: Implementation of POSIX 1003.1c-compliant threads library for Linux
+lthreads: by Xavier Leroy.
+lthreads:
+lthreads: LinuxThreads provides kernel-level threads: each thread is a separate
+lthreads: Unix process, sharing its address space with the other threads through
+lthreads: the new system call clone(). Scheduling between threads is handled by
+lthreads: the kernel scheduler, just like scheduling between Unix processes.
+lthreads:
+
+PACKAGE NAME:  ltstatic.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  446 K
+PACKAGE SIZE (uncompressed):  1220 K
+PACKAGE DESCRIPTION:
+ltstatic: Static libraries for LessTif 0.85
+ltstatic:
+ltstatic: Libraries needed to compile static LessTif applications.  Includes
+ltstatic: libMrm.a and libXm.a.
+ltstatic:
+
+PACKAGE NAME:  lx226.tgz
+PACKAGE LOCATION:  ./slakware/k1
+PACKAGE SIZE (compressed):  13429 K
+PACKAGE SIZE (uncompressed):  59500 K
+PACKAGE DESCRIPTION:
+lx226:    Linux kernel source version 2.2.6.
+lx226:
+lx226:    Source code for Linus Torvalds' Linux kernel.
+lx226:
+lx226:    This is the complete and unmodified source code for the Linux kernel
+lx226:    version 2.2.6.
+lx226:
+
+PACKAGE NAME:  lynx.tgz
+PACKAGE LOCATION:  ./slakware/n4
+PACKAGE SIZE (compressed):  545 K
+PACKAGE SIZE (uncompressed):  1320 K
+PACKAGE DESCRIPTION:
+lynx:     Lynx 2.8.1
+lynx:
+lynx:     Lynx is a distributed hypertext browser with full World Wide Web
+lynx:     capabilities.  Lynx can be used to access information on the World 
+lynx:     Wide Web, or to build information systems intended primarily for local
+lynx:     access.  For example, Lynx has been used to build several Campus Wide
+lynx:     Information Systems (CWIS).  
+lynx:
+lynx:     Lynx's authors include Lou Montulli, Garrett Blythe, Craig Lavender,
+lynx:     Michael Grobe, and Charles Rezac.
+lynx:
+
+PACKAGE NAME:  m4.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  84 K
+PACKAGE SIZE (uncompressed):  190 K
+PACKAGE DESCRIPTION:
+m4:       GNU m4 1.4
+m4:
+m4:       This is release 1.4 of GNU m4, a program which copies its input to the
+m4:       output, expanding macros as it goes.  m4 has built-in functions for
+m4:       including named files, running Unix commands, doing integer 
+m4:       arithmetic, manipulating text in various ways, recursion, etc...  
+m4:       Macros can also be user-defined, and can take any number of arguments.
+m4:       GNU 'm4' has been originally written by Rene Seindal, from Denmark.
+m4:
+
+PACKAGE NAME:  mailx.tgz
+PACKAGE LOCATION:  ./slakware/n1
+PACKAGE SIZE (compressed):  70 K
+PACKAGE SIZE (uncompressed):  170 K
+PACKAGE DESCRIPTION:
+mailx:    BSD mailx 8.1.1.
+mailx:
+mailx:    Mail is a intelligent mail processing system, which has a command
+mailx:    syntax reminiscent of ed with lines replaced by messages.  It's small;
+mailx:    it's the standard; it's a good thing to install if you're going to use
+mailx:    mail.
+mailx:
+
+PACKAGE NAME:  manpages.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  883 K
+PACKAGE SIZE (uncompressed):  1600 K
+PACKAGE DESCRIPTION:
+manpages: Man-pages 1.23
+manpages:
+manpages: Man pages are online documentation for Linux.  This package includes
+manpages: many section 1, 2, 3, 4, 5, 7, and 8 man pages for Linux.
+manpages:
+manpages: The man-pages distribution is maintained by Andries E. Brouwer with
+manpages: the help of more writers, editors, and other contributors than we
+manpages: can name here.  (See the list in /usr/man/man-pages-1.23.Announce)
+manpages:
+
+PACKAGE NAME:  manyfaqs.tgz
+PACKAGE LOCATION:  ./slakware/f1
+PACKAGE SIZE (compressed):  1061 K
+PACKAGE SIZE (uncompressed):  1300 K
+PACKAGE DESCRIPTION:
+manyfaqs: A collection of frequently asked questions/answers on many subjects.
+manyfaqs:
+manyfaqs: Some of the FAQs included in this package: 
+manyfaqs: comp.lang FAQs for Fortran, GCC, G++, TCL, Objective-C, Lisp,
+manyfaqs: Scheme, and Perl; PostScript FAQ; Linux FAQ; comp.windows.x X FAQ
+manyfaqs: and many other FAQs relating to X. 
+manyfaqs:
+manyfaqs: These FAQs will be installed under /usr/doc/faq. 
+manyfaqs:
+
+PACKAGE NAME:  mc.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  399 K
+PACKAGE SIZE (uncompressed):  930 K
+PACKAGE DESCRIPTION:
+mc:       Midnight Commander version 4.1.35
+mc:
+mc:       The Midnight Commander is a Norton Commander clone, a program that
+mc:       manipulates and manages files and directories.  Useful, fast, and has
+mc:       color displays on the Linux console.  Mouse support is provided
+mc:       through the gpm mouse server.
+mc:
+mc:       mc was written by Miguel de Icaza and Mauricio Plaza.
+mc:
+
+PACKAGE NAME:  md.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  22 K
+PACKAGE SIZE (uncompressed):  70 K
+PACKAGE DESCRIPTION:
+md:       md-0.35 (multiple device utilities)
+md:
+md:       These utilities, in conjunction with the MD kernel driver, are used to
+md:       group several block devices as a single drive, whatever the interface
+md:       type.  Support for linear concatenation of devices, as well as RAID-0
+md:       (disk striping).
+md:
+
+PACKAGE NAME:  metamail.tgz
+PACKAGE LOCATION:  ./slakware/n1
+PACKAGE SIZE (compressed):  123 K
+PACKAGE SIZE (uncompressed):  300 K
+PACKAGE DESCRIPTION:
+metamail: metamail-2.7
+metamail:
+metamail: Metamail is an implementation of MIME, the Multipurpose Internet
+metamail: Mail Extensions, a proposed standard for multimedia mail on the
+metamail: Internet.  Metamail implements MIME, and also implements extensibility
+metamail: and configuration via the "mailcap" mechanism described in an
+metamail: informational RFC that is a companion to the MIME document.
+metamail:
+
+PACKAGE NAME:  mini.tgz
+PACKAGE LOCATION:  ./slakware/f1
+PACKAGE SIZE (compressed):  1077 K
+PACKAGE SIZE (uncompressed):  3300 K
+PACKAGE DESCRIPTION:
+mini:     Linux Mini-HOWTOs.
+mini:
+mini:     Short documentation files explaining many common Linux tasks.
+mini:
+mini:     These files will be installed in /usr/doc/Linux-mini-HOWTOs/.
+mini:
+
+PACKAGE NAME:  minicom.tgz
+PACKAGE LOCATION:  ./slakware/a9
+PACKAGE SIZE (compressed):  120 K
+PACKAGE SIZE (uncompressed):  280 K
+PACKAGE DESCRIPTION:
+minicom:  Minicom 1.82-3
+minicom:   
+minicom:  Minicom - a full featured menu-driven communications package similar
+minicom:  to the DOS program 'Telix'.  Also includes sz/rz - utilities used to
+minicom:  upload and download files using the Zmodem protocol.
+minicom:
+minicom:   
+
+PACKAGE NAME:  modules.tgz
+PACKAGE LOCATION:  ./slakware/a10
+PACKAGE SIZE (compressed):  1016 K
+PACKAGE SIZE (uncompressed):  2760 K
+PACKAGE DESCRIPTION:
+modules:  Linux kernel modules for 2.2.6.
+modules:
+modules:  A kernel module is a piece of object code that can be dynamically
+modules:  loaded into the Linux kernel to provide new kernel functions.  Most
+modules:  of these modules provide support for devices such as CD-ROM drives,
+modules:  tape drives, and ethernet cards.  You can choose which modules to load
+modules:  by editing /etc/rc.d/rc.modules.
+modules:
+
+PACKAGE NAME:  modutils.tgz
+PACKAGE LOCATION:  ./slakware/a11
+PACKAGE SIZE (compressed):  105 K
+PACKAGE SIZE (uncompressed):  260 K
+PACKAGE DESCRIPTION:
+modutils: modutils-2.1.121
+modutils:
+modutils: Utilities to use kernel modules.  These tools are used for loading
+modutils: and unloading chunks of kernel code on the fly, to add support for a
+modutils: CD-ROM drive or ethernet card, for instance.
+modutils:
+modutils: Many Linux drivers are provided as kernel modules, and some packages
+modutils: (like the PCMCIA package) require the module utilities to work, so you
+modutils: probably want to install these.
+modutils:
+
+PACKAGE NAME:  mt_st.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  9 K
+PACKAGE SIZE (uncompressed):  30 K
+PACKAGE DESCRIPTION:
+mt_st:    mt-st-0.4 - controls magnetic tape drive operation
+mt_st:
+mt_st:    This mt originates from BSD NET-2.  Some Linux SCSI tape-specific
+mt_st:    ioctls have been added to the original source and the man page has
+mt_st:    been updated.  Although this mt program is tailored for SCSI tape, it
+mt_st:    can also be used with the QIC-02 driver and hopefully with other Linux
+mt_st:    tape drivers using the same ioctls (some of the commands may not work
+mt_st:    with all drivers).
+mt_st:
+
+PACKAGE NAME:  ncurses.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  926 K
+PACKAGE SIZE (uncompressed):  3550 K
+PACKAGE DESCRIPTION:
+ncurses:  A curses-compatible screen management library with color. (v. 1.9.9g)
+ncurses:
+ncurses:  Documentation and sample programs are included.
+ncurses:
+
+PACKAGE NAME:  netatalk.tgz
+PACKAGE LOCATION:  ./slakware/n4
+PACKAGE SIZE (compressed):  282 K
+PACKAGE SIZE (uncompressed):  800 K
+PACKAGE DESCRIPTION:
+netatalk: netatalk-1.4b2+asun2.1.3
+netatalk:
+netatalk: Netatalk is an Appletalk file and print server for Linux.  Using 
+netatalk: Netatalk, Macintosh computers on your local network can mount Linux 
+netatalk: volumes as if they were standard Appletalk network drives, and can
+netatalk: print to the Linux box's printer as if it were a network printer
+netatalk: supporting PostScript.
+netatalk:
+netatalk: Netatalk is brought to you by our friends at The Research Systems
+netatalk: Unix Group, The University of Michigan.  <netatalk@umich.edu>
+netatalk:
+
+PACKAGE NAME:  netmods.tgz
+PACKAGE LOCATION:  ./slakware/n5
+PACKAGE SIZE (compressed):  895 K
+PACKAGE SIZE (uncompressed):  2350 K
+PACKAGE DESCRIPTION:
+netmods:  Network support modules for linux-2.2.6.
+netmods:
+netmods:  These modules can be loaded into the kernel to support many network
+netmods:  cards and protocols.
+netmods:
+
+PACKAGE NAME:  netpipes.tgz
+PACKAGE LOCATION:  ./slakware/n2
+PACKAGE SIZE (compressed):  74 K
+PACKAGE SIZE (uncompressed):  210 K
+PACKAGE DESCRIPTION:
+netpipes: netpipes 4.2
+netpipes:
+netpipes: Robert Forsman's netpipes package makes TCP/IP streams usable in shell
+netpipes: scripts.  It can also simplify client/server code by allowing the 
+netpipes: programmer to skip all the tedious programming bits related to sockets
+netpipes: and concentrate on writing a filter/service.  Here's an example of
+netpipes: what you can do with 'faucet' and 'hose', two netpipes commands:
+netpipes: 
+netpipes: server$ faucet 3000 -out tar cf - .
+netpipes: client$ hose server 3000 -in tar xvf -
+netpipes:
+
+PACKAGE NAME:  netscape.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  13633 K
+PACKAGE SIZE (uncompressed):  28200 K
+PACKAGE DESCRIPTION:
+netscape: Netscape Communicator 4.51. (v451-export.x86-unknown-linux2.0)
+netscape:
+netscape: Netscape Communicator is an integrated Internet browser program.  It
+netscape: is the world's most popular piece of Internet software, and winner
+netscape: of numerous awards for software excellence.
+netscape:
+netscape: NOTE: The Linux version of Netscape Communicator does not include
+netscape: support.  If your organization requires product support, see the file
+netscape: /usr/lib/netscape/SUPPORT for information about purchasing support
+netscape: from Netscape.
+netscape:
+
+PACKAGE NAME:  nn_nntp.tgz
+PACKAGE LOCATION:  ./slakware/n4
+PACKAGE SIZE (compressed):  354 K
+PACKAGE SIZE (uncompressed):  810 K
+PACKAGE DESCRIPTION:
+nn_nntp:  nn-6.5.0.b3 compiled to use NNTP.
+nn_nntp:
+nn_nntp:  nn is an easy to use menu driven newsreader by Kim F. Storm.  
+nn_nntp:  
+nn_nntp:  nn stands for "No News is good news", and the nn newsreader is
+nn_nntp:  designed to let you minimize the amount of time you spend reading news
+nn_nntp:  (or, more realistically, to let you to read even more newsgroups :-).
+nn_nntp:  This version of nn reads news from a news server via NNTP, and can
+nn_nntp:  make use of your NNTP server's NOV database.
+nn_nntp:
+
+PACKAGE NAME:  oldlibs5.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  321 K
+PACKAGE SIZE (uncompressed):  790 K
+PACKAGE DESCRIPTION:
+oldlibs5: Shared X libraries from XFree86 2.1.1 (X11R5).
+oldlibs5:
+oldlibs5: This package adds libX11.so.3.1.0, libXaw.so.3.1.0, and
+oldlibs5: libXt.so.3.1.0 to your /usr/ix86-linuxaout/lib directory.  
+oldlibs5:
+oldlibs5: These are a.out format libraries that are mostly obsolete by now, but
+oldlibs5: are retained in case you encounter one of the a.out X11R5 X binaries
+oldlibs5: that are still floating around.
+oldlibs5:
+
+PACKAGE NAME:  oldlibs6.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  729 K
+PACKAGE SIZE (uncompressed):  2320 K
+PACKAGE DESCRIPTION:
+oldlibs6: a.out (DLL) format shared libraries for X11R6 binaries.
+oldlibs6:
+oldlibs6: These libraries go in /usr/ix86-linuxaout/lib, where they will be used
+oldlibs6: to provide backwards compatibility for dynamically linked a.out format
+oldlibs6: X binaries.  Also includes shared stubs (.sa) for compiling a.out
+oldlibs6: X applications with 'gcc -b ix86-linuxaout'.
+oldlibs6:
+
+PACKAGE NAME:  p2c.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  247 K
+PACKAGE SIZE (uncompressed):  640 K
+PACKAGE DESCRIPTION:
+p2c:      A Pascal to C translator. (v. 1.19)
+p2c:
+
+PACKAGE NAME:  pciutils.tgz
+PACKAGE LOCATION:  ./slakware/a4
+PACKAGE SIZE (compressed):  37 K
+PACKAGE SIZE (uncompressed):  90 K
+PACKAGE DESCRIPTION:
+pciutils: pciutils-1.10 (Linux PCI utilities)
+pciutils:
+pciutils: lspci displays detailed information about all PCI buses and devices
+pciutils: in the system, replacing the original /proc/pci interface.
+pciutils:
+pciutils: setpci allows reading from and writing to PCI device configuration
+pciutils: registers. For example, you can adjust the latency timers with it.
+pciutils:
+pciutils: See manual pages for more details.
+pciutils:
+
+PACKAGE NAME:  pcmcia.tgz
+PACKAGE LOCATION:  ./slakware/a11
+PACKAGE SIZE (compressed):  464 K
+PACKAGE SIZE (uncompressed):  1230 K
+PACKAGE DESCRIPTION:
+pcmcia:   pcmcia-cs-3.0.9
+pcmcia:
+pcmcia:   Card Services for Linux is a complete PCMCIA support package.  It
+pcmcia:   includes a set of loadable kernel modules that implement a version of
+pcmcia:   the PCMCIA Card Services applications program interface, a set of
+pcmcia:   client drivers for specific cards, and a card manager daemon that can
+pcmcia:   respond to card insertion and removal events, loading and unloading
+pcmcia:   drivers on demand.  It supports ``hot swapping'' of PCMCIA cards, so
+pcmcia:   cards can be inserted and ejected at any time.
+pcmcia:
+
+PACKAGE NAME:  perl.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  4172 K
+PACKAGE SIZE (uncompressed):  9840 K
+PACKAGE DESCRIPTION:
+perl:     Larry Wall's interpreted systems language. (v. 5.005_03)
+perl:
+perl:     ELF dynamic loading is supported in this version.
+perl:
+
+PACKAGE NAME:  pine.tgz
+PACKAGE LOCATION:  ./slakware/n6
+PACKAGE SIZE (compressed):  1157 K
+PACKAGE SIZE (uncompressed):  2830 K
+PACKAGE DESCRIPTION:
+pine:     Pine version 4.10
+pine:
+pine:     A menu driven user mail program. Originally based on Elm (Pine Is
+pine:     No-longer Elm), but with many additional features that make it
+pine:     easier to use.  Also contains pilot (a simple file manager) and
+pine:     pico (an easy to use text editor).
+pine:
+
+PACKAGE NAME:  pmake.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  53 K
+PACKAGE SIZE (uncompressed):  120 K
+PACKAGE DESCRIPTION:
+pmake:    BSD 4.4 make. 
+pmake:
+pmake:    This may be required if you're going to port software with Makefiles
+pmake:    designed for BSD.  The binary is installed as /usr/bin/pmake.
+pmake:
+
+PACKAGE NAME:  pnp.tgz
+PACKAGE LOCATION:  ./slakware/a11
+PACKAGE SIZE (compressed):  89 K
+PACKAGE SIZE (uncompressed):  260 K
+PACKAGE DESCRIPTION:
+pnp:      isapnptools-1.18
+pnp:
+pnp:      These programs allow ISA Plug-And-Play devices to be
+pnp:      configured on a Linux machine.  See the documentation in 
+pnp:      /usr/doc/isapnptools-1.18.
+pnp:
+
+PACKAGE NAME:  ppp.tgz
+PACKAGE LOCATION:  ./slakware/n5
+PACKAGE SIZE (compressed):  237 K
+PACKAGE SIZE (uncompressed):  600 K
+PACKAGE DESCRIPTION:
+ppp:      PPP for Linux, versions 2.2.0f and 2.3.7
+ppp:
+ppp:      PPP for Linux -- Michael Callahan's ppp.c kernel driver and the pppd
+ppp:      daemon (ported by Al Longyear).  Linux PPP support is included as a 
+ppp:      loadable module in the modules.tgz package.  This package also
+ppp:      contains pppsetup, an easy-to-use, user-friendly utility for setting
+ppp:      up your PPP daemon.
+ppp:
+
+PACKAGE NAME:  procmail.tgz
+PACKAGE LOCATION:  ./slakware/n4
+PACKAGE SIZE (compressed):  125 K
+PACKAGE SIZE (uncompressed):  270 K
+PACKAGE DESCRIPTION:
+procmail: The procmail mail processing program. (v3.13 1999/03/31)
+procmail:
+procmail: Can be used to create mail-servers, mailing lists, sort your incoming
+procmail: mail into separate folders/files (real convenient when subscribing to
+procmail: one or more mailing lists or for prioritising your mail), preprocess
+procmail: your mail, start any programs upon mail arrival (e.g. to generate
+procmail: different chimes on your workstation for different types of mail) or
+procmail: selectively forward certain incoming mail automatically to someone.
+procmail:
+procmail: The author of procmail is Stephen R. van den Berg.
+procmail:
+
+PACKAGE NAME:  procps.tgz
+PACKAGE LOCATION:  ./slakware/a11
+PACKAGE SIZE (compressed):  189 K
+PACKAGE SIZE (uncompressed):  480 K
+PACKAGE DESCRIPTION:
+procps:   procps-2.0.2, psmisc-18, procinfo-16
+procps:
+procps:   Utilities for displaying process and memory information written by
+procps:   Michael K. Johnson, Werner Almesberger, Charles Blake, Branko 
+procps:   Lankester, Robert Nation, David Engel, Larry Greenfield, Roger Binns,
+procps:   Sander van Malssen, and Brian Edmonds.
+procps:
+
+PACKAGE NAME:  python.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  2502 K
+PACKAGE SIZE (uncompressed):  8260 K
+PACKAGE DESCRIPTION:
+python:   python-1.5.1.
+python:
+python:   Python is an interpreted, interactive, object-oriented programming
+python:   language that combines remarkable power with very clear syntax.  
+python:   Python's basic power can be extended with your own modules written in
+python:   C or C++.  Python is also adaptable as an extension language for
+python:   existing applications. 
+python:
+
+PACKAGE NAME:  qt_1_44.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  4596 K
+PACKAGE SIZE (uncompressed):  16770 K
+PACKAGE DESCRIPTION:
+qt_1_44:  Qt-1.44
+qt_1_44:
+qt_1_44:  Qt is a complete and well-developed object-oriented framework for
+qt_1_44:  developing graphical user interface (GUI) applications using C++.
+qt_1_44:  This release, Qt 1.44, is free only for development of free software
+qt_1_44:  for the X Window System.  If you use Qt for developing commercial
+qt_1_44:  or other non-free software, you must have a professional license.
+qt_1_44:  Please see http://www.troll.no/pricing.html for information on how
+qt_1_44:  to obtain a professional license.
+qt_1_44:
+
+PACKAGE NAME:  quota.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  41 K
+PACKAGE SIZE (uncompressed):  130 K
+PACKAGE DESCRIPTION:
+quota:    Linux disk quota utilities (1.70)
+quota:
+quota:    An implementation of the diskquota system for the Linux operating
+quota:    system -- keeps those greedy users from gobbling up 100% of the hard
+quota:    drive space.  Should work for all filesystems because of integration 
+quota:    into the VFS layer of the operating system.  This system is a heavily
+quota:    modified version of the Melbourne quota system by Robert Elz, which
+quota:    uses both user and group quota files.  Edvard Tuinder <ed@ow.org> and
+quota:    Marco van Wieringen <mvw@planets.ow.org> are responsible for the 
+quota:    additional code and porting effort to make quotas work on Linux.
+quota:
+
+PACKAGE NAME:  rcs.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  258 K
+PACKAGE SIZE (uncompressed):  520 K
+PACKAGE DESCRIPTION:
+rcs:      GNU revision control system.  (v. 5.7)
+rcs:
+rcs:      RCS, the Revision Control System, manages multiple revisions of files.
+rcs:
+rcs:      RCS can store, retrieve, log, identify, and merge revisions.  It is
+rcs:      useful for files that are revised frequently, e.g. programs,
+rcs:      documentation, graphics, and papers.
+rcs:
+
+PACKAGE NAME:  rdist.tgz
+PACKAGE LOCATION:  ./slakware/n2
+PACKAGE SIZE (compressed):  64 K
+PACKAGE SIZE (uncompressed):  140 K
+PACKAGE DESCRIPTION:
+rdist:    rdist-6.1.3.
+rdist:
+rdist:    Rdist is a remote file distribution program.  It is used to maintain
+rdist:    identical copies of files over multiple network hosts.  It preserves
+rdist:    the owner, group, mode, and mtime of files if possible and can update
+rdist:    programs that are executing.
+rdist:
+
+PACKAGE NAME:  rsync.tgz
+PACKAGE LOCATION:  ./slakware/n5
+PACKAGE SIZE (compressed):  91 K
+PACKAGE SIZE (uncompressed):  200 K
+PACKAGE DESCRIPTION:
+rsync:    rsync-2.3.1
+rsync:
+rsync:    rsync is a replacement for rcp that has many more features.  It
+rsync:    uses the "rsync algorithm" which provides a very fast method for
+rsync:    bringing remote files into sync.  It does this by sending just the
+rsync:    differences in the files across the link, without requiring that both
+rsync:    sets of files are present at one of the ends of the link beforehand.
+rsync:
+rsync:    rsync was written by Andrew Tridgell and Paul Mackerras.
+rsync:
+
+PACKAGE NAME:  samba.tgz
+PACKAGE LOCATION:  ./slakware/n11
+PACKAGE SIZE (compressed):  2421 K
+PACKAGE SIZE (uncompressed):  6650 K
+PACKAGE DESCRIPTION:
+samba:    Samba 2.0.3
+samba:
+samba:    Samba is a Unix based SMB file and print server.  This allows a Unix
+samba:    host to act as a file and print server for SMB clients.  This includes
+samba:    Lan-Manager compatible clients such as LanManager for DOS, Windows95,
+samba:    Windows NT, OS/2, Pathworks and many more.  If you have any PCs 
+samba:    running SMB clients, such as a PC running Windows95, then you can 
+samba:    mount file space or printers from a Linux host, so that directories,
+samba:    files and printers on the Linux host are available on the Windows PC.
+samba:
+
+PACKAGE NAME:  sastroid.tgz
+PACKAGE LOCATION:  ./slakware/y1
+PACKAGE SIZE (compressed):  91 K
+PACKAGE SIZE (uncompressed):  320 K
+PACKAGE DESCRIPTION:
+sastroid: Sasteroids 1.3
+sastroid:
+sastroid: Sasteroids is an asteroids-like game, the whole point to shoot
+sastroid: asteroids and an occasional enemy space ship.  Ok, so its not DOOM,
+sastroid: but it can be amusing, and does use a few DOOM-like brown colors.
+sastroid: This started out as a direct port of xasteroids to run under svgalib
+sastroid: (a wonderful super-vga graphics library by Harm Hanemaayer)
+sastroid:
+sastroid: Sasteroids was derived from Phil Goetz's Xasteroids by Brad Pitzel.
+sastroid:
+
+PACKAGE NAME:  sc.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  78 K
+PACKAGE SIZE (uncompressed):  190 K
+PACKAGE DESCRIPTION:
+sc:       The 'sc' spreadsheet. (v. 6.21)
+sc:
+sc:       This is a simple spreadsheet program.
+sc:
+
+PACKAGE NAME:  scsi.tgz
+PACKAGE LOCATION:  ./slakware/a12
+PACKAGE SIZE (compressed):  1052 K
+PACKAGE SIZE (uncompressed):  1270 K
+PACKAGE DESCRIPTION:
+scsi:     Linux kernel version 2.2.6, with SCSI support.
+scsi:
+scsi:     A Linux kernel for computers with SCSI and/or IDE.  You MUST install a
+scsi:     kernel image in order for your system to boot. This kernel supports
+scsi:     IDE and SCSI hard drives and CD-ROM drives.  Other drivers (such as
+scsi:     for CD-ROM drives on proprietary interfaces, or ethernet cards) may
+scsi:     be loaded as modules.  See /etc/rc.d/rc.modules for examples.
+scsi:
+
+PACKAGE NAME:  scsimods.tgz
+PACKAGE LOCATION:  ./slakware/a13
+PACKAGE SIZE (compressed):  803 K
+PACKAGE SIZE (uncompressed):  1880 K
+PACKAGE DESCRIPTION:
+scsimods: Linux SCSI, RAID, and CD-ROM kernel modules for Linux 2.2.6.
+scsimods:
+scsimods: A kernel module is a piece of object code that can be dynamically
+scsimods: loaded into the Linux kernel to provide new kernel functions.  These
+scsimods: modules support SCSI interface cards, RAID (both IDE and SCSI), and
+scsimods: non-SCSI CD-ROM drives (like the kind that attach to sound cards).
+scsimods:
+
+PACKAGE NAME:  seejpeg.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  53 K
+PACKAGE SIZE (uncompressed):  120 K
+PACKAGE DESCRIPTION:
+seejpeg:  seejpeg-1.6.1
+seejpeg:
+seejpeg:  Seejpeg is an image viewer which uses SVGAlib.  In spite of the name,
+seejpeg:  it understands the JPEG, GIF, PPM, BMP and TARGA formats.  One nice
+seejpeg:  feature of seejpeg is that it automatically decides on the best video
+seejpeg:  mode to use based on the image being displayed and the video card
+seejpeg:  being used.  
+seejpeg:
+seejpeg:  Evan Harris is the author of seejpeg.
+seejpeg:
+
+PACKAGE NAME:  sendmail.tgz
+PACKAGE LOCATION:  ./slakware/n7
+PACKAGE SIZE (compressed):  665 K
+PACKAGE SIZE (uncompressed):  1700 K
+PACKAGE DESCRIPTION:
+sendmail: BSD sendmail 8.9.3.
+sendmail:
+sendmail: Eric Allman's mail transport agent. The _Unix System Administration
+sendmail: Handbook_ calls sendmail 'The most complex and complete mail delivery
+sendmail: system in common use...'
+sendmail:
+sendmail: Ready-made configuration files are included for systems connected by
+sendmail: TCP/IP (with or without a nameserver) and for systems using UUCP.
+sendmail:
+sendmail: procmail is included as a local mail agent.
+sendmail:
+
+PACKAGE NAME:  seyon.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  126 K
+PACKAGE SIZE (uncompressed):  340 K
+PACKAGE DESCRIPTION:
+seyon:    Seyon 2.14c. 
+seyon:
+seyon:    A full-featured telecommunications package for X.
+seyon:
+
+PACKAGE NAME:  sh_utils.tgz
+PACKAGE LOCATION:  ./slakware/a14
+PACKAGE SIZE (compressed):  306 K
+PACKAGE SIZE (uncompressed):  960 K
+PACKAGE DESCRIPTION:
+sh_utils: GNU sh-utils-1.16
+sh_utils:
+sh_utils: This is a package of small shell programming utilities.  They are
+sh_utils: mostly compliant with POSIX.2, where applicable.
+sh_utils:
+sh_utils: The programs in this package are:
+sh_utils:   basename chroot date dirname echo env expr false logname nice
+sh_utils:   nohup pathchk printenv printf sleep stty tee test true tty
+sh_utils:   uname who whoami yes
+sh_utils:
+
+PACKAGE NAME:  shadow.tgz
+PACKAGE LOCATION:  ./slakware/a14
+PACKAGE SIZE (compressed):  355 K
+PACKAGE SIZE (uncompressed):  990 K
+PACKAGE DESCRIPTION:
+shadow:   Shadow password suite (shadow-19990307)
+shadow:
+shadow:   This set of login related programs utilizes an alternate, non-readable
+shadow:   file to contain the actual encrypted passwords.  This is presumed to 
+shadow:   increase system security by increasing the difficulty with which 
+shadow:   system crackers obtain encrypted passwords.  It was written by 
+shadow:   Julianne Frances Haugh and the Linux port is maintained by Marek 
+shadow:   Michalkiewicz.
+shadow:
+
+PACKAGE NAME:  smailcfg.tgz
+PACKAGE LOCATION:  ./slakware/n3
+PACKAGE SIZE (compressed):  79 K
+PACKAGE SIZE (uncompressed):  580 K
+PACKAGE DESCRIPTION:
+smailcfg: Configuration files for sendmail.
+smailcfg:
+smailcfg: These files are used to create sendmail.cf configuration files.  The
+smailcfg: m4 macro processor (on the D series of disks) is also required in
+smailcfg: order to make use of these files. 
+smailcfg:
+smailcfg: These files and the documentation in /usr/src/sendmail should make it
+smailcfg: possible to support virtually any mail configuration.  NOTE: you
+smailcfg: probably won't need this package if you're planning to use one of the
+smailcfg: sendmail.cf samples included in the sendmail package.
+smailcfg:
+
+PACKAGE NAME:  sox.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  76 K
+PACKAGE SIZE (uncompressed):  210 K
+PACKAGE DESCRIPTION:
+sox:      sox-11gamma-cb3
+sox:
+sox:      Sox is a universal sound converter, player, and recorder.  It can
+sox:      play, record, and convert between several sound file formats such as
+sox:      .au, .snd, .voc and .wav.
+sox:
+
+PACKAGE NAME:  sspkg.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  587 K
+PACKAGE SIZE (uncompressed):  2030 K
+PACKAGE DESCRIPTION:
+sspkg:    SlingShot extensions 2.1
+sspkg:
+sspkg:    These are extensions for programming under XView.  Includes shared
+sspkg:    (ELF) libraries, include files, and many programming samples.
+sspkg:
+
+PACKAGE NAME:  strace.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  66 K
+PACKAGE SIZE (uncompressed):  160 K
+PACKAGE DESCRIPTION:
+strace:   strace-3.1.0.1 - traces system calls and signals.
+strace:
+strace:   Strace allows you to trace the execution of a command.  It runs the
+strace:   specified command until it exits, intercepting signals and system
+strace:   calls and dumping the information to the standard output.
+strace:
+
+PACKAGE NAME:  sudo.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  89 K
+PACKAGE SIZE (uncompressed):  210 K
+PACKAGE DESCRIPTION:
+sudo:     sudo-1.5.4
+sudo:
+sudo:     'sudo' is a command that allows users to execute some commands as 
+sudo:     root.  The /etc/sudoers file (edited with 'visudo') specifies which
+sudo:     users have access to sudo and which commands they can run.  'sudo' 
+sudo:     logs all its activities to /var/log/ so the system administrator
+sudo:     can keep an eye on things.
+sudo:
+
+PACKAGE NAME:  svgalib.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  881 K
+PACKAGE SIZE (uncompressed):  2250 K
+PACKAGE DESCRIPTION:
+svgalib:  Svgalib Super-VGA Graphics Library 1.3.1
+svgalib: 
+svgalib:  A video hardware graphics library, based on VGAlib 1.2.  Supports most
+svgalib:  video graphics adaptors, at least in VGA modes.  Contains additional
+svgalib:  support for higher resolution modes with cards based on ALI2301, ARK
+svgalib:  Logic ARK1000PV/2000PV, ATI SVGA, ATI Mach32, ATI Mach64, Chips and
+svgalib:  Technologies, Cirrus Logic GD542x/3x, Genoa GVGA6400, Hercules
+svgalib:  Stingray 64/Video, Oak Technologies OTI-037/67/77/87, S3, Trident TVGA
+svgalib:  8900C/9000/9440, Tseng ET4000/ET4000W32, and some other chipsets.
+svgalib: 
+
+PACKAGE NAME:  sysklogd.tgz
+PACKAGE LOCATION:  ./slakware/a9
+PACKAGE SIZE (compressed):  56 K
+PACKAGE SIZE (uncompressed):  130 K
+PACKAGE DESCRIPTION:
+sysklogd: Sysklogd 1.3-31
+sysklogd:
+sysklogd: Dr. Greg Wettstein and Stephen Tweedie's syslogd/klogd.
+sysklogd:
+sysklogd: This package contains a modified version of syslogd for the Linux
+sysklogd: environment.  An additional utility, klogd, is included which allows
+sysklogd: kernel logging to be directed through the syslogd facility.
+sysklogd: Syslogd and klogd are started when your system boots.
+sysklogd:
+
+PACKAGE NAME:  sysvinit.tgz
+PACKAGE LOCATION:  ./slakware/a11
+PACKAGE SIZE (compressed):  152 K
+PACKAGE SIZE (uncompressed):  380 K
+PACKAGE DESCRIPTION:
+sysvinit: sysvinit-2.76-3
+sysvinit:
+sysvinit: System V style init programs by Miquel van Smoorenburg that control
+sysvinit: the booting and shutdown of your system. These support a number of
+sysvinit: system runlevels, each with a specific set of utilities spawned. For
+sysvinit: example, the normal system runlevel is 3, which starts agetty on
+sysvinit: virtual consoles tty1 - tty6. Runlevel 4 starts xdm. Runlevel 0 shuts
+sysvinit: the system down. See the documentation in /usr/doc/sysvinit and the
+sysvinit: scripts in /etc/rc.d for more information.
+sysvinit:
+
+PACKAGE NAME:  tar.tgz
+PACKAGE LOCATION:  ./slakware/a14
+PACKAGE SIZE (compressed):  290 K
+PACKAGE SIZE (uncompressed):  640 K
+PACKAGE DESCRIPTION:
+tar:      GNU tar 1.12
+tar:
+tar:      Tape ARchiver - adds and extracts files and directories to/from tape
+tar:      or archive files. This version of tar also supports archive 
+tar:      compression using GNU zip or bzip2.
+tar:
+
+PACKAGE NAME:  tcl.tgz
+PACKAGE LOCATION:  ./slakware/tcl1
+PACKAGE SIZE (compressed):  1297 K
+PACKAGE SIZE (uncompressed):  2550 K
+PACKAGE DESCRIPTION:
+tcl:      The Tcl script language, version 8.0.5.
+tcl:  
+tcl:      Tcl, developed by Dr. John Ousterhout, is a simple to use text-based
+tcl:      script language with many built-in features which make it especially
+tcl:      nice for writing interactive scripts.
+tcl:  
+
+PACKAGE NAME:  tclx.tgz
+PACKAGE LOCATION:  ./slakware/tcl1
+PACKAGE SIZE (compressed):  551 K
+PACKAGE SIZE (uncompressed):  2000 K
+PACKAGE DESCRIPTION:
+tclx:     Extended Tcl (TclX) 8.0.4.
+tclx:  
+tclx:     Extended Tcl (TclX), is a set of extensions to Tcl 8.0.x, the Tool
+tclx:     Command Language invented by Dr. John Ousterhout. Extended Tcl is
+tclx:     oriented towards Unix system programming tasks and large application
+tclx:     development. Many additional interfaces to the Unix operating system
+tclx:     are provided. Extended Tcl was designed and implemented by Karl
+tclx:     Lehenbauer (karl@NeoSoft.com) and Mark Diekhans (markd@Grizzly.com),
+tclx:     with help in the early stages from Peter da Silva (peter@NeoSoft.com).
+tclx:  
+
+PACKAGE NAME:  tcpip1.tgz
+PACKAGE LOCATION:  ./slakware/n8
+PACKAGE SIZE (compressed):  943 K
+PACKAGE SIZE (uncompressed):  2280 K
+PACKAGE DESCRIPTION:
+tcpip1:   TCP/IP networking programs and support files.
+tcpip1:
+tcpip1:   This a basic set of TCP/IP utilities for Linux.  Some of these were
+tcpip1:   written from scratch and some were ported from various sources
+tcpip1:   including BSD.  The code was written and ported by Florian  La Roche,
+tcpip1:   Alan Cox, Fred N. van Kempen, Donald J. Becker, Rick Sladkey, 
+tcpip1:   Mark Shand, Orest Zborowski, Johannes Stille, Linus Torvalds,
+tcpip1:   David A. Holland, Olaf Kirch, and others.
+tcpip1:
+
+PACKAGE NAME:  tcpip2.tgz
+PACKAGE LOCATION:  ./slakware/n9
+PACKAGE SIZE (compressed):  1048 K
+PACKAGE SIZE (uncompressed):  2600 K
+PACKAGE DESCRIPTION:
+tcpip2:   Extra TCP/IP programs.
+tcpip2:
+tcpip2:   These are additional networking programs for Linux.
+tcpip2:
+tcpip2:   This package includes automount, bootp, dhcp, dhcpcd, fetchmail,
+tcpip2:   ipfwadm, ipchains, ipmasqadm, ncftp, netwatch, nntp, slattach,
+tcpip2:   sliplogin, telnetsnoopd, ttysnoop, yp-tools, ypbind, ypserv, and
+tcpip2:   ytalk.
+tcpip2:
+
+PACKAGE NAME:  tcsh.tgz
+PACKAGE LOCATION:  ./slakware/a13
+PACKAGE SIZE (compressed):  207 K
+PACKAGE SIZE (uncompressed):  390 K
+PACKAGE DESCRIPTION:
+tcsh:     tcsh 6.07
+tcsh:
+tcsh:     tcsh is an enhanced but completely compatible version of the Berkeley
+tcsh:     UNIX C shell, csh(1). It is a command language interpreter usable both
+tcsh:     as an interactive login shell and a shell script command processor. It
+tcsh:     includes a command-line editor, programmable word completion, spelling
+tcsh:     correction, a history mechanism, job control, and a C-like syntax.
+tcsh:
+
+PACKAGE NAME:  terminfo.tgz
+PACKAGE LOCATION:  ./slakware/d1
+PACKAGE SIZE (compressed):  182 K
+PACKAGE SIZE (uncompressed):  1660 K
+PACKAGE DESCRIPTION:
+terminfo: Complete /usr/share/terminfo database.
+terminfo:
+terminfo: This is the the master terminfo database maintained by Eric Raymond.
+terminfo: This database is the official descendant of the 4.4BSD termcap file,
+terminfo: and includes information about virtually every terminal known.  The
+terminfo: ncurses libraries use this database to adjust screen output for the
+terminfo: terminal type in use.  Unless you're allowing logins from terminal
+terminfo: types other than the Linux console, xterms, or vt100 terminals, you
+terminfo: probably won't need this database - a minimal /usr/share/terminfo with
+terminfo: support for those types is included in the ncurses package.
+terminfo:
+
+PACKAGE NAME:  tetex.tgz
+PACKAGE LOCATION:  ./slakware/t1
+PACKAGE SIZE (compressed):  15074 K
+PACKAGE SIZE (uncompressed):  52510 K
+PACKAGE DESCRIPTION:
+tetex:    teTeX-0.9-990309 base support files.
+tetex:
+tetex:    This package contains the support files required for the teTeX TeX
+tetex:    distribution, such as input files for TeX, runtime configuration
+tetex:    files, hyphenation tables, manpages, and the computer modern fonts.
+tetex:
+
+PACKAGE NAME:  tex_bin.tgz
+PACKAGE LOCATION:  ./slakware/t1
+PACKAGE SIZE (compressed):  3334 K
+PACKAGE SIZE (uncompressed):  7370 K
+PACKAGE DESCRIPTION:
+tex_bin:  teTeX-0.9-990309 binaries.
+tex_bin:
+tex_bin:  This package installs the teTeX binaries for Linux in 
+tex_bin:  /usr/share/texmf/bin/ and edits /etc/profile and /etc/csh.login to
+tex_bin:  add this directory to the default PATH.
+tex_bin:
+
+PACKAGE NAME:  tex_doc.tgz
+PACKAGE LOCATION:  ./slakware/t1
+PACKAGE SIZE (compressed):  10003 K
+PACKAGE SIZE (uncompressed):  30370 K
+PACKAGE DESCRIPTION:
+tex_doc:  Documentation for teTeX-0.9-990309.
+tex_doc:
+tex_doc:  This package contains documentation for AMSTeX, BibTeX, extended plain
+tex_doc:  format, font packages, format files (babel, texdraw, pstricks, xypic),
+tex_doc:  LaTeX, MetaPost, Makeindex, pdftex, the Kpathsea library, as well as
+tex_doc:  general information about TeX such as a list of ftp servers, a draft
+tex_doc:  for the TeX Directory Standard (TDS), The TeX and LaTeX Catalogue, and
+tex_doc:  TeX FAQs.  
+tex_doc:
+
+PACKAGE NAME:  texinfo.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  425 K
+PACKAGE SIZE (uncompressed):  820 K
+PACKAGE DESCRIPTION:
+texinfo:  GNU texinfo-3.12
+texinfo:
+texinfo:  'Texinfo' is a documentation system that uses a single source file to
+texinfo:  produce both on-line information and printed output.  Using Texinfo,
+texinfo:  you can create a printed document with the normal features of a book,
+texinfo:  including chapters, sections, cross references, and indices.  From the
+texinfo:  same Texinfo source file, you can create a menu-driven, on-line Info
+texinfo:  file with nodes, menus, cross references, and indices.
+texinfo:
+texinfo:  This package is needed to read the documentation files in /usr/info.
+texinfo:
+
+PACKAGE NAME:  tin.tgz
+PACKAGE LOCATION:  ./slakware/n7
+PACKAGE SIZE (compressed):  260 K
+PACKAGE SIZE (uncompressed):  560 K
+PACKAGE DESCRIPTION:
+tin:      The 'tin' news reader. (pre-1.4 release 980226)
+tin:
+tin:      Tin is a full-screen, easy-to-use Netnews reader.  It can read news
+tin:      locally (i.e. /var/spool/news) or remotely (rtin or tin -r option)
+tin:      via a NNTP (Network News Transport Protocol) server.  It will
+tin:      automatically utilize NOV (news overview) style index files if
+tin:      available locally or via the nntp xover command.
+tin:
+tin:      Tin was written by Iain Lea <iain@ecrc.de> and is currently
+tin:      maintained by Urs Janssen <urs@tin.org>.
+tin:
+
+PACKAGE NAME:  tix.tgz
+PACKAGE LOCATION:  ./slakware/tcl1
+PACKAGE SIZE (compressed):  1117 K
+PACKAGE SIZE (uncompressed):  3840 K
+PACKAGE DESCRIPTION:
+tix:      Tix4.1.0.006.
+tix:
+tix:      The Tix library is an extension to the Tk toolkit that contains over
+tix:      40 new widgets for Tk.  Highlights include:  Hierarchical Listbox,
+tix:      Directory List/Tree View, SpreadSheet, Tabular Listbox, ComboBox,
+tix:      Motif style FileSelectBox, MS Windows style FileSelectBox,
+tix:      PanedWindow, NoteBook, Spin Control widget, and many more. With these
+tix:      new widgets, your applications will look great and interact with your
+tix:      users in intuitive ways.
+tix:
+
+PACKAGE NAME:  tk.tgz
+PACKAGE LOCATION:  ./slakware/tcl1
+PACKAGE SIZE (compressed):  1879 K
+PACKAGE SIZE (uncompressed):  4140 K
+PACKAGE DESCRIPTION:
+tk:       The Tk toolkit for Tcl, version 8.0.5.
+tk:
+tk:       Tk is an extension to Tcl that allows you to quickly and easily build
+tk:       X11 applications that have the look and feel of Motif apps.
+tk:
+
+PACKAGE NAME:  tkdesk.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  1024 K
+PACKAGE SIZE (uncompressed):  3760 K
+PACKAGE DESCRIPTION:
+tkdesk:   TkDesk 1.0
+tkdesk:
+tkdesk:   TkDesk is a graphical file manager for Unix (esp. Linux) and the X
+tkdesk:   Window System.  Compared with other file managers available, it offers
+tkdesk:   the most complete set of file operations and services, plus gives the
+tkdesk:   user the ability to configure most every aspect of TkDesk in a
+tkdesk:   powerful way.  The reason for this is the use of Tcl/Tk as the
+tkdesk:   configuration and implementation language. 
+tkdesk:
+tkdesk:   TkDesk's author is Christian Bolik.
+tkdesk:
+
+PACKAGE NAME:  transfig.tgz
+PACKAGE LOCATION:  ./slakware/t1
+PACKAGE SIZE (compressed):  175 K
+PACKAGE SIZE (uncompressed):  500 K
+PACKAGE DESCRIPTION:
+transfig: transfig 3.2.1.
+transfig:
+transfig: This package contains the binaries to transform .fig files (created by
+transfig: xfig) to some other formats like epsf and LaTeX.  If you have 
+transfig: installed xfig, you should also install this package if you want to
+transfig: use xfig to create other files than .fig files, which can then be
+transfig: included in your LaTeX documents.
+transfig:
+
+PACKAGE NAME:  trn.tgz
+PACKAGE LOCATION:  ./slakware/n6
+PACKAGE SIZE (compressed):  162 K
+PACKAGE SIZE (uncompressed):  340 K
+PACKAGE DESCRIPTION:
+trn:      A threaded news reader for reading a remote NNTP server. (v. 3.5)
+trn:
+trn:      Compiled to use Overviews or mthreads, and to read news through your
+trn:      NNTP server.  Be sure to set NNTPSERVER in your /etc/profile or
+trn:      /etc/csh.login. 
+trn:
+
+PACKAGE NAME:  txtutils.tgz
+PACKAGE LOCATION:  ./slakware/a15
+PACKAGE SIZE (compressed):  291 K
+PACKAGE SIZE (uncompressed):  750 K
+PACKAGE DESCRIPTION:
+txtutils: GNU textutils-1.22
+txtutils:
+txtutils: These are the GNU text file (actually, file contents) processing
+txtutils: utilities.  Most of these programs have significant advantages over
+txtutils: their Unix counterparts, such as greater speed, additional options,
+txtutils: and fewer arbitrary limits.
+txtutils:
+txtutils: The programs in this package are: cat, cksum, comm, csplit, cut, 
+txtutils: expand, fold, head, join, md5sum, nl, od, paste, pr, sort, split,
+txtutils: sum, tac, tail, tr, unexpand, uniq, and wc.
+txtutils:
+
+PACKAGE NAME:  umsprogs.tgz
+PACKAGE LOCATION:  ./slakware/a1
+PACKAGE SIZE (compressed):  11 K
+PACKAGE SIZE (uncompressed):  30 K
+PACKAGE DESCRIPTION:
+umsprogs: umsdos_progs 0.9
+umsprogs: 
+umsprogs: Various utilities needed by Jacques Gelinas' UMSDOS filesystem.
+umsprogs: 
+
+PACKAGE NAME:  util.tgz
+PACKAGE LOCATION:  ./slakware/a15
+PACKAGE SIZE (compressed):  495 K
+PACKAGE SIZE (uncompressed):  1160 K
+PACKAGE DESCRIPTION:
+util:     util-linux 2.9i - A huge collection of essential utilities
+util:
+util:     agetty arch banner cal cfdisk clear clock col colcrt colrm column
+util:     ctrlaltdel cytune ddate dmesg fdformat fdisk fsck.minix getopt hexdump
+util:     hostname hwclock ipcrm ipcs jaztool kbdrate last logger look
+util:     losetup mcookie mesg mkfs mkfs.minix mkswap more mount namei rdev
+util:     readprofile renice reset rev script setfdprm setserial setsid setterm
+util:     sfdisk sln strings swapon tsort tunelp ul umount update wall whereis
+util:     write ziptool
+util:
+
+PACKAGE NAME:  uucp.tgz
+PACKAGE LOCATION:  ./slakware/n10
+PACKAGE SIZE (compressed):  525 K
+PACKAGE SIZE (uncompressed):  1040 K
+PACKAGE DESCRIPTION:
+uucp:     Taylor UUCP version 1.06.1
+uucp:
+uucp:     Ian Taylor's Unix to Unix copy: mail and news over modem lines. 
+uucp:     This is the standard UUCP package of the Free Software Foundation.
+uucp:
+uucp:     Configured to use HoneyDanBer and/or Taylor configuration files.
+uucp:
+
+PACKAGE NAME:  vim.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  969 K
+PACKAGE SIZE (uncompressed):  2710 K
+PACKAGE DESCRIPTION:
+vim:      Version 5.1 of Vim: Vi IMproved
+vim:
+vim:      Vim is an almost compatible version of the UNIX editor vi.  Only the
+vim:      'Q' command is missing (you don't need it).  Many new features have
+vim:      been added: multi level undo, command line history, filename 
+vim:      completion, block operations, etc.
+vim:
+
+PACKAGE NAME:  wget.tgz
+PACKAGE LOCATION:  ./slakware/n7
+PACKAGE SIZE (compressed):  154 K
+PACKAGE SIZE (uncompressed):  380 K
+PACKAGE DESCRIPTION:
+wget:     wget-1.5.3
+wget:
+wget:     GNU Wget is a free network utility to retrieve files from the 
+wget:     World Wide Web using HTTP and FTP, the two most widely used Internet
+wget:     protocols.  It works non-interactively, thus enabling work in the
+wget:     background after having logged off.
+wget:
+wget:     The author of Wget is Hrvoje Niksic <hniksic@srce.hr>.
+wget:
+
+PACKAGE NAME:  workbone.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  12 K
+PACKAGE SIZE (uncompressed):  30 K
+PACKAGE DESCRIPTION:
+workbone: Workbone 2.31
+workbone:
+workbone: Text-based audio CD player.
+workbone:
+
+PACKAGE NAME:  workman.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  64 K
+PACKAGE SIZE (uncompressed):  150 K
+PACKAGE DESCRIPTION:
+workman:  WorkMan-1.2.2a
+workman:
+workman:  A graphical tool for playing audio compact discs in a CD-ROM drive.
+workman:  It has most of the features available on standalone CD players, such
+workman:  as a shuffle mode, programmable  playlists, and elapsed/remaining 
+workman:  timers.  Extra features include the ability to store information about
+workman:  CDs in a database and then automatically extract that information when
+workman:  the CD is inserted later.
+workman:
+
+PACKAGE NAME:  x3270.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  311 K
+PACKAGE SIZE (uncompressed):  600 K
+PACKAGE DESCRIPTION:
+x3270:    x3270 3.1.0.5 - IBM host access tool.
+x3270:
+x3270:    x3270 opens a telnet connection to an IBM host in an X window.  Since
+x3270:    the window created by x3270 can use its own font for displaying
+x3270:    characters, is a fairly accurate representation of an IBM 3278.  It is
+x3270:    similar to tn3270(1) except that it is X-based, not curses-based.
+x3270:
+
+PACKAGE NAME:  x3dl.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  835 K
+PACKAGE SIZE (uncompressed):  2070 K
+PACKAGE DESCRIPTION:
+x3dl:     An accelerated server for 3DLabs chipsets.
+x3dl:
+x3dl:     This server supports the GLINT 500TX with IBM RGB526 RAMDAC,
+x3dl:     GLINT MX with IBM RGB526 and IBM RGB640 RAMDAC,
+x3dl:     Permedia with IBM RGB526 RAMDAC,
+x3dl:     Permedia 2 (classic, 2a, 2v).
+x3dl:
+x3dl:     Installing this package will create a link in /usr/X11R6/bin from
+x3dl:     XF86_3DLabs to X, setting this server as the default.
+x3dl:
+
+PACKAGE NAME:  x8514.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  664 K
+PACKAGE SIZE (uncompressed):  1610 K
+PACKAGE DESCRIPTION:
+x8514:    An accelerated server for cards using IBM8514 chips.
+x8514: 
+x8514:    Installing this package will create a link in /usr/X11R6/bin from
+x8514:    XF86_8514 to X, setting this server as the default.
+x8514: 
+
+PACKAGE NAME:  xagx.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  736 K
+PACKAGE SIZE (uncompressed):  1790 K
+PACKAGE DESCRIPTION:
+xagx:     An accelerated server for IIT AGX chipsets.
+xagx:
+xagx:     This server supports the IIT AGX-016, AGX-015, AGX-014 and XGA-2
+xagx:     chipsets.  There's also untested support for the XGA-1 and AGX-010
+xagx:     chipsets.
+xagx:
+xagx:     Installing this package will create a link in /usr/X11R6/bin from
+xagx:     XF86_AGX to X, setting this server as the default.
+xagx:
+
+PACKAGE NAME:  xaw3d.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  177 K
+PACKAGE SIZE (uncompressed):  690 K
+PACKAGE DESCRIPTION:
+xaw3d:    Xaw3d-1.4
+xaw3d:
+xaw3d:    This is Release 1.4 (21 April, 1998) of a set of 3-D widgets by Kaleb
+xaw3d:    S. Keithley based on the R6.3 Athena Widget set.  The Three-D Athena
+xaw3d:    may be used as a replacement for the Athena (Xaw) Widget set -- you
+xaw3d:    may relink almost any Athena Widget based application and obtain a
+xaw3d:    three dimensional appearance on some of the widgets.  You can also
+xaw3d:    replace your shared libXaw with libXaw3d and obtain the three
+xaw3d:    dimensional appearance without even relinking.
+xaw3d:
+
+PACKAGE NAME:  xbin.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  2623 K
+PACKAGE SIZE (uncompressed):  6750 K
+PACKAGE DESCRIPTION:
+xbin:     Basic client binaries required for XFree86 3.3.3.1.
+xbin:
+xbin:     Installs the basic set of programs needed to run X in your 
+xbin:     /usr/X11R6/bin directory.
+xbin:
+
+PACKAGE NAME:  xcfg.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  4 K
+PACKAGE SIZE (uncompressed):  30 K
+PACKAGE DESCRIPTION:
+xcfg:     Configuration files for XFree86 3.3.3.1.
+xcfg:
+xcfg:     Configuration files needed by X and xdm.
+xcfg:
+
+PACKAGE NAME:  xdoc.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  302 K
+PACKAGE SIZE (uncompressed):  1110 K
+PACKAGE DESCRIPTION:
+xdoc:     Documentation and release notes for XFree86 3.3.3.1.
+xdoc:
+
+PACKAGE NAME:  xf100.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1213 K
+PACKAGE SIZE (uncompressed):  1380 K
+PACKAGE DESCRIPTION:
+xf100:    100-dpi screen fonts.
+xf100:
+xf100:    These fonts are compressed to reduce disk usage.
+xf100:
+
+PACKAGE NAME:  xfb.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  770 K
+PACKAGE SIZE (uncompressed):  1900 K
+PACKAGE DESCRIPTION:
+xfb:      Frame buffer X server.
+xfb:
+xfb:      This X server uses the Linux frame buffer device available with Linux
+xfb:      2.1.x to provide a general X server for bitmapped, unaccelerated video
+xfb:      hardware.  See /var/X11R6/lib/doc/README.fbdev for more information.
+xfb:
+
+PACKAGE NAME:  xfcyr.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  294 K
+PACKAGE SIZE (uncompressed):  360 K
+PACKAGE DESCRIPTION:
+xfcyr:    Cyrillic fonts for XFree86 3.3.3.1.
+xfcyr:
+
+PACKAGE NAME:  xfig.tgz
+PACKAGE LOCATION:  ./slakware/t1
+PACKAGE SIZE (compressed):  1565 K
+PACKAGE SIZE (uncompressed):  3980 K
+PACKAGE DESCRIPTION:
+xfig:     xfig 3.2.2.
+xfig:
+xfig:     This package contains the binary for xfig, an interactive drawing tool
+xfig:     under X.  Xfig can create fig, epsf, and LaTeX files with various
+xfig:     options.  You also have to install the transfig package (transfig.tgz)
+xfig:     so that xfig can export fig files as epsf and LaTeX files.  This
+xfig:     package also contains a set of basic examples of fig files in the
+xfig:     directory /usr/doc/xfig/Examples.
+xfig:
+
+PACKAGE NAME:  xfileman.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  77 K
+PACKAGE SIZE (uncompressed):  290 K
+PACKAGE DESCRIPTION:
+xfileman: xfilemanager 0.5
+xfileman:
+xfileman: Ove Kalkan's xfilemanager - one of the file managers for X included
+xfileman: with the Slackware release.  xfilemanager is an X11 based Unix
+xfileman: file manager with Drag'n Drop abilities, full color displays, and a
+xfileman: slackful logo.
+xfileman:
+
+PACKAGE NAME:  xfm.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  140 K
+PACKAGE SIZE (uncompressed):  840 K
+PACKAGE DESCRIPTION:
+xfm:      xfm 1.3.2, a file manager for X.
+xfm:
+xfm:      This is a powerful file and applications manager program written using
+xfm:      the X toolkit.  It contains virtually all of the features that you
+xfm:      would expect in a file manager -- move around your directory tree in
+xfm:      multiple windows, and move, copy or delete files with simple mouse
+xfm:      operations.  The integrated application manager allows you to load 
+xfm:      files into your favorite applications from the file manager by 
+xfm:      dragging icons.  xfm was originally written by Simon Marlow, and was
+xfm:      improved by Albert Graef.
+xfm:
+
+PACKAGE NAME:  xfnon.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  2167 K
+PACKAGE SIZE (uncompressed):  2450 K
+PACKAGE DESCRIPTION:
+xfnon:    Some large X fonts.
+xfnon:
+xfnon:    These fonts are compressed to reduce disk usage.
+xfnon:
+xfnon:    Fonts included:  gb16fs.pcf.gz gb16st.pcf.gz gb24st.pcf.gz
+xfnon:                     hanglg16.pcf.gz hanglm16.pcf.gz hanglm24.pcf.gz
+xfnon:                     heb6x13.pcf.gz heb8x13.pcf.gz jiskan16.pcf.gz
+xfnon:                     jiskan24.pcf.gz k14.pcf.gz
+xfnon:
+
+PACKAGE NAME:  xfnts.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1260 K
+PACKAGE SIZE (uncompressed):  1520 K
+PACKAGE DESCRIPTION:
+xfnts:    Fonts for the X window system.
+xfnts:
+xfnts:    This is the minimal set of fonts needed to run XFree86 3.3.3.1.
+xfnts:
+xfnts:    These fonts are compressed to reduce disk usage.
+xfnts:
+
+PACKAGE NAME:  xfract.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  567 K
+PACKAGE SIZE (uncompressed):  1440 K
+PACKAGE DESCRIPTION:
+xfract:   xfractint-3.04
+xfract:
+xfract:   Xfractint draws a wide variety of fractals. Xfractint is a port of
+xfract:   the DOS program Fractint.  The primary original authors of Fractint
+xfract:   are Bert Tyler, Timothy Wegner, Mark Peterson, and Pieter 
+xfract:   Branderhorst.  The Xfractint port is by Ken Shirriff.
+xfract:
+
+PACKAGE NAME:  xfscl.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1097 K
+PACKAGE SIZE (uncompressed):  1630 K
+PACKAGE DESCRIPTION:
+xfscl:    Scaled fonts.
+xfscl:
+xfscl:    Speedo and Type 1 scalable fonts for XFree86 3.3.3.1.
+xfscl:
+
+PACKAGE NAME:  xfsrv.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  148 K
+PACKAGE SIZE (uncompressed):  320 K
+PACKAGE DESCRIPTION:
+xfsrv:    xfs (X font server)
+xfsrv:
+xfsrv:    Xfs is the X Window System font server.  It supplies fonts to X Window
+xfsrv:    System display servers.
+xfsrv:
+
+PACKAGE NAME:  xgames.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  133 K
+PACKAGE SIZE (uncompressed):  300 K
+PACKAGE DESCRIPTION:
+xgames:   A collection of games for X:
+xgames:
+xgames:   maze spider xlander xmahjongg xmenu xroach xsnow xvier
+xgames:
+
+PACKAGE NAME:  xhtml.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  326 K
+PACKAGE SIZE (uncompressed):  1870 K
+PACKAGE DESCRIPTION:
+xhtml:    Docs for XFree86 in HTML format.
+xhtml:
+xhtml:    A set of documentation for XFree86, in a format readable with web
+xhtml:    browsing tools such as Netscape or Lynx.
+xhtml:
+
+PACKAGE NAME:  xi128.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  826 K
+PACKAGE SIZE (uncompressed):  2040 K
+PACKAGE DESCRIPTION:
+xi128:    A server for the Number Nine Imagine 128.
+xi128:
+xi128:    This server supports the Number Nine Imagine 128. (series I and II)
+xi128:    Installing this package will create a link in /usr/X11R6/bin from
+xi128:    XF86_I128 to X, setting this server as the default.
+xi128:
+
+PACKAGE NAME:  xjdoc.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  115 K
+PACKAGE SIZE (uncompressed):  390 K
+PACKAGE DESCRIPTION:
+xjdoc:    Japanese documentation and release notes for XFree86 3.3.3.1.
+xjdoc:
+
+PACKAGE NAME:  xjset.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  640 K
+PACKAGE SIZE (uncompressed):  1910 K
+PACKAGE DESCRIPTION:
+xjset:    Japanese configuration utility for XFree86.
+xjset:
+xjset:    A Japanese version of the XFree86 graphical configuration utility.
+xjset:    Produces an initial XF86Config file or tunes the existing one.  Runs
+xjset:    on the X desktop using TCL (this also requires the vg16 X server) or
+xjset:    runs on the Linux console (using the dialog utility).
+xjset:
+
+PACKAGE NAME:  xlib.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  348 K
+PACKAGE SIZE (uncompressed):  1750 K
+PACKAGE DESCRIPTION:
+xlib:     Various library files for XFree86 3.3.3.1.
+xlib:
+xlib:     Files needed by X:  bitmaps, locale files, and other configuration
+xlib:     files found under /var/X11R6/lib.
+xlib:
+
+PACKAGE NAME:  xlkit.tgz
+PACKAGE LOCATION:  ./slakware/xd1
+PACKAGE SIZE (compressed):  4128 K
+PACKAGE SIZE (uncompressed):  15310 K
+PACKAGE DESCRIPTION:
+xlkit:    XFree86 3.3.3.1 server linkkit.
+xlkit: 
+xlkit:    If you want or need to rebuild an XFree86 3.3.3.1 server you need this
+xlkit:    package in addition to the base configuration and the programmers kit.
+xlkit:    It is not needed for other X program development.
+xlkit:
+xlkit:    When rebuilding all the servers you will typically need an additional
+xlkit:    38MB of disk space.  If you are building just a single server you will
+xlkit:    need 5MB of space.
+xlkit: 
+
+PACKAGE NAME:  xlock.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  473 K
+PACKAGE SIZE (uncompressed):  1460 K
+PACKAGE DESCRIPTION:
+xlock:    xlockmore-4.12
+xlock:
+xlock:    Patrick J. Naughton's xlock screensaver/locker for X, with many
+xlock:    more modes added by David A. Bagley.  
+xlock:
+xlock:    The 'Bob' bitmap has been included especially for Slackware, as well
+xlock:    as a Linux penguin logo.
+xlock:
+
+PACKAGE NAME:  xma32.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  722 K
+PACKAGE SIZE (uncompressed):  1750 K
+PACKAGE DESCRIPTION:
+xma32:    An accelerated server for cards using Mach32 chips.
+xma32:
+xma32:    Installing this package will create a link in /usr/X11R6/bin from
+xma32:    XF86_Mach32 to X, setting this server as the default.
+xma32:
+
+PACKAGE NAME:  xma64.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  767 K
+PACKAGE SIZE (uncompressed):  1870 K
+PACKAGE DESCRIPTION:
+xma64:    An accelerated server for cards using the Mach64 chipset.
+xma64:
+xma64:    The Mach64 server will now correctly recognise some of the newer ATI
+xma64:    chip revisions, including the 3D Rage, 3D Rage II, 3D Rage IIC, 
+xma64:    3D Rage II+DVD, Rage Pro, and Rage LT Pro.
+xma64:
+xma64:    Installing this package will create a link in /usr/X11R6/bin from
+xma64:    XF86_Mach64 to X, setting this server as the default.
+xma64:
+
+PACKAGE NAME:  xma8.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  667 K
+PACKAGE SIZE (uncompressed):  1620 K
+PACKAGE DESCRIPTION:
+xma8:     An accelerated server for cards using Mach8 chips.
+xma8:
+xma8:     Installing this package will create a link in /usr/X11R6/bin from
+xma8:     XF86_Mach8 to X, setting this server as the default.
+xma8:
+
+PACKAGE NAME:  xman.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1239 K
+PACKAGE SIZE (uncompressed):  2210 K
+PACKAGE DESCRIPTION:
+xman:     Man pages for XFree86 3.3.3.1.
+xman:
+
+PACKAGE NAME:  xmono.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  731 K
+PACKAGE SIZE (uncompressed):  1910 K
+PACKAGE DESCRIPTION:
+xmono:    A Monochrome server.
+xmono:
+xmono:    Installing this package will create a link in /usr/X11R6/bin from
+xmono:    XF86_Mono to X, setting this server as the default.
+xmono:
+
+PACKAGE NAME:  xnest.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  918 K
+PACKAGE SIZE (uncompressed):  2390 K
+PACKAGE DESCRIPTION:
+xnest:    Xnest - a nested X server.
+xnest:
+xnest:    An experimental nested server for X.
+xnest:
+xnest:    Xnest is a client and a server.  Xnest is a client of the real server
+xnest:    which manages windows and graphics requests on its behalf.  Xnest is a
+xnest:    server to its own clients.  Xnest manages windows and graphics 
+xnest:    requests on their behalf.  To these clients Xnest appears to be a 
+xnest:    conventional server.
+xnest:
+
+PACKAGE NAME:  xp9k.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  744 K
+PACKAGE SIZE (uncompressed):  1810 K
+PACKAGE DESCRIPTION:
+xp9k:     An accelerated server for cards using the P9000 chipset.
+xp9k:
+xp9k:     Some of the cards this server will work with are the Diamond Viper
+xp9k:     VLB, Diamond Viper PCI, Orchid P9000 (and some other clones, such as
+xp9k:     the STAR 2000).  Viper Pro and other P9100 and P9130 cards are NOT
+xp9k:     supported, but are supported in the p9x00 driver of the SVGA server. 
+xp9k:
+xp9k:     Installing this package will create a link in /usr/X11R6/bin from
+xp9k:     XF86_P9000 to X, setting this server as the default.
+xp9k:
+
+PACKAGE NAME:  xpaint.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  307 K
+PACKAGE SIZE (uncompressed):  840 K
+PACKAGE DESCRIPTION:
+xpaint:   XPaint 2.4.9.
+xpaint:
+xpaint:   XPaint is a bitmap/pixmap editing tool.  These are some of the 
+xpaint:   features of xpaint:
+xpaint:
+xpaint:   Usual paint operations:
+xpaint:     Brushes, Spray paint, Pencil, Lines, Arcs, Pattern Fill, Text,
+xpaint:     Boxes, Circles, Polygons.
+xpaint:   Works on multiple images simultaneously. Cut/Copy/Paste between all
+xpaint:   active images. Fatbits/Zoom on the image windows.
+xpaint:
+
+PACKAGE NAME:  xpdf.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  312 K
+PACKAGE SIZE (uncompressed):  780 K
+PACKAGE DESCRIPTION:
+xpdf:     xpdf-0.7a
+xpdf:
+xpdf:     Xpdf is a viewer for Portable Document Format (PDF) files.
+xpdf:
+xpdf:     Also includes two PDF conversion utilities:  pdftops and pdftotext.
+xpdf:
+
+PACKAGE NAME:  xpm.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  131 K
+PACKAGE SIZE (uncompressed):  260 K
+PACKAGE DESCRIPTION:
+xpm:      The Xpm shared and static libraries, v. 3.4k (with libXpm.so.4.11)
+xpm:
+xpm:      These libraries provide a means for X programs to store and retrieve
+xpm:      bitmaps.  The shared libraries are needed to run programs compiled
+xpm:      with Xpm, such as fvwm.
+xpm:
+
+PACKAGE NAME:  xprog.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1414 K
+PACKAGE SIZE (uncompressed):  5820 K
+PACKAGE DESCRIPTION:
+xprog:    Libraries, include files, and configuration files for X programming.
+xprog:
+xprog:    This is a set of include files (found in /usr/X11R6/include), static
+xprog:    libraries (found in /usr/X11R6/lib/*.a) and configuration files 
+xprog:    (found in /var/X11R6/lib/config) needed to compile X programs under
+xprog:    Linux.
+xprog:
+
+PACKAGE NAME:  xprt.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1144 K
+PACKAGE SIZE (uncompressed):  2920 K
+PACKAGE DESCRIPTION:
+xprt:     Print-only server (Xprt) for XFree86 3.3.3.1.
+xprt:
+
+PACKAGE NAME:  xps.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  609 K
+PACKAGE SIZE (uncompressed):  2060 K
+PACKAGE DESCRIPTION:
+xps:      XFree86 documentation in PostScript format.
+xps:
+xps:      PostScript versions of the documentation for XFree86 3.3.3.1.  This is
+xps:      the same in content as the test-based versions, but formatted nicely
+xps:      for printing on a PostScript printer or viewing with ghostview. 
+xps:      These documents take up quite a bit of space, so if you don't need
+xps:      PostScript format you may want to skip this package.
+xps:
+
+PACKAGE NAME:  xs3.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  917 K
+PACKAGE SIZE (uncompressed):  2290 K
+PACKAGE DESCRIPTION:
+xs3:      An accelerated server for cards using S3 chips.
+xs3:
+xs3:      The current S3 Server supports all available S3 chipsets: 911, 924,
+xs3:      801/805, 928, 732 (Trio32), 764, 765, 775, 785 (Trio64*), 864, 868,
+xs3:      964, 968 and M65 (Aurora64V+).  However, this does not mean that all
+xs3:      S3 boards will work -- see the XFree86 docs for complete information.
+xs3:      The S3 server will also recognise the 866, but it has not been tested
+xs3:      with this chipset.  Installing this package will create a link in
+xs3:      /usr/X11R6/bin from XF86_S3 to X, setting this server as the default.
+xs3:
+
+PACKAGE NAME:  xs3v.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  821 K
+PACKAGE SIZE (uncompressed):  2020 K
+PACKAGE DESCRIPTION:
+xs3v:     An accelerated server for cards using S3 ViRGE chips.
+xs3v:
+xs3v:     The current XF86_S3V server supports the S3 ViRGE (86C325), the
+xs3v:     ViRGE/DX (86C375), ViRGE/GX (86C385) and the ViRGE/VX (86C988) chips.
+xs3v:     It has been tested with ViRGE cards with 2 and 4MB DRAM, ViRGE/DX 4M,
+xs3v:     ViRGE/VX 8M (4M VRAM/4M DRAM), and with a 220MHz ViRGE/VX card with
+xs3v:     2MB VRAM up to 1600x1200 with 8/15/16bpp.  Note that the XF86_SVGA
+xs3v:     server also supports these chipsets (and others).  It's recommended to
+xs3v:     try using that first.  Installing this package will create a link in
+xs3v:     /usr/X11R6/bin from XF86_S3V to X, setting this server as the default.
+xs3v:
+
+PACKAGE NAME:  xset.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  537 K
+PACKAGE SIZE (uncompressed):  1440 K
+PACKAGE DESCRIPTION:
+xset:     Graphical configuration utility for XFree86.
+xset:
+xset:     A graphical configuration utility.  Produces an initial XF86Config
+xset:     file, or tunes the existing one.  Runs on the X desktop using TCL
+xset:     (this also requires the vg16 X server) or runs on the Linux console
+xset:     (using the dialog utility).
+xset:
+
+PACKAGE NAME:  xspread.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  202 K
+PACKAGE SIZE (uncompressed):  620 K
+PACKAGE DESCRIPTION:
+xspread:  xspread-2.1
+xspread:
+xspread:  A basic spreadsheet for X.
+xspread:
+
+PACKAGE NAME:  xsvga.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1188 K
+PACKAGE SIZE (uncompressed):  2970 K
+PACKAGE DESCRIPTION:
+xsvga:    A server for many SuperVGA video cards.
+xsvga:
+xsvga:    Installing this package will create a link in /usr/X11R6/bin from
+xsvga:    XF86_SVGA to X, setting this server as the default.
+xsvga:
+
+PACKAGE NAME:  xv.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  1129 K
+PACKAGE SIZE (uncompressed):  1820 K
+PACKAGE DESCRIPTION:
+xv:       John Bradley's XV 3.10a GIF/TIFF/JPEG/PostScript image viewer.
+xv:
+xv:       NOTICE:  This program is unregistered shareware.  Please read the 
+xv:       license information included.
+xv:
+
+PACKAGE NAME:  xv32_a.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  647 K
+PACKAGE SIZE (uncompressed):  1880 K
+PACKAGE DESCRIPTION:
+xv32_a:   Static libraries for xview3.2p1-X11R6.LinuxELF.2
+xv32_a:
+xv32_a:   Libraries for compiling statically linked Xview applications. Only
+xv32_a:   needed if you are planning to debug Xview applications, or compile
+xv32_a:   them with the -g or -static flags.
+xv32_a:
+
+PACKAGE NAME:  xv32_so.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  551 K
+PACKAGE SIZE (uncompressed):  1220 K
+PACKAGE DESCRIPTION:
+xv32_so:  ELF shared libraries for xview3.2p1-X11R6.LinuxELF.2
+xv32_so:
+xv32_so:  XView provides a set of pre-built, user-interface objects such as
+xv32_so:  canvases, scrollbars, menus, and control panels.  The appearance and
+xv32_so:  functionality of these objects follow the OPEN LOOK Graphical User
+xv32_so:  Interface (GUI) specification.
+xv32_so:
+
+PACKAGE NAME:  xv32exmp.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  223 K
+PACKAGE SIZE (uncompressed):  1630 K
+PACKAGE DESCRIPTION:
+xv32exmp: Sample code for XView
+xv32exmp:
+xv32exmp: Sample code that comes with the XView distribution.  Useful as 
+xv32exmp: examples to learn XView programming from, but probably won't
+xv32exmp: compile under Linux without some porting work.
+xv32exmp:
+
+PACKAGE NAME:  xvfb.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  1119 K
+PACKAGE SIZE (uncompressed):  2880 K
+PACKAGE DESCRIPTION:
+xvfb:     Virtual framebuffer X server.
+xvfb:
+xvfb:     Xvfb is an X server that can run on machines with no display hardware
+xvfb:     and no physical input devices.  It emulates a dumb framebuffer using 
+xvfb:     virtual memory.  The primary use of this server is intended to be 
+xvfb:     server testing.  The mfb or cfb code for any depth can be exercised
+xvfb:     with this server without the need for real hardware that supports the
+xvfb:     desired depths.  A secondary use is testing clients against unusual
+xvfb:     depths and screen configurations.
+xvfb:
+
+PACKAGE NAME:  xvg16.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  739 K
+PACKAGE SIZE (uncompressed):  1830 K
+PACKAGE DESCRIPTION:
+xvg16:    A server for 16 color EGA/VGA graphics modes.
+xvg16:
+xvg16:    This is a server that uses standard generic video modes -- it works
+xvg16:    with nearly all video hardware (but with only 16 colors).  Installing
+xvg16:    this package will create a link in /usr/X11R6/bin from XF86_VGA16 to
+xvg16:    X, setting this server as the default.
+xvg16:
+
+PACKAGE NAME:  xvinc32.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  247 K
+PACKAGE SIZE (uncompressed):  1560 K
+PACKAGE DESCRIPTION:
+xvinc32:  Include files for xview3.2p1-X11R6.LinuxELF.2
+xvinc32:
+xvinc32:  Include files needed for Xview programming.
+xvinc32:
+
+PACKAGE NAME:  xvmenus.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  5 K
+PACKAGE SIZE (uncompressed):  40 K
+PACKAGE DESCRIPTION:
+xvmenus:  Menus and help files for the OpenLook Window Manager.
+xvmenus:
+
+PACKAGE NAME:  xvol32.tgz
+PACKAGE LOCATION:  ./slakware/xv1
+PACKAGE SIZE (compressed):  769 K
+PACKAGE SIZE (uncompressed):  3170 K
+PACKAGE DESCRIPTION:
+xvol32:   Binaries for xview3.2p1-X11R6.LinuxELF.2
+xvol32:
+xvol32:   Configuration files, programs, and documentation for xview3.2p1-X11R6.
+xvol32:
+xvol32:   Includes these programs: xgettext msgfmt olwm svenv toolwait winsysck
+xvol32:   owplaces openwin xcenter clock cmdtool olwmslave props textedit olvwm
+xvol32:
+
+PACKAGE NAME:  xw32.tgz
+PACKAGE LOCATION:  ./slakware/x1
+PACKAGE SIZE (compressed):  679 K
+PACKAGE SIZE (uncompressed):  1660 K
+PACKAGE DESCRIPTION:
+xw32:     A server for chipsets in the ET4000/W32 series.
+xw32:
+xw32:     This server currently supports the w32, w32i, w32p and et6000 chips.
+xw32:     XF86_W32 gets phased out, now that the SVGA server with XAA 
+xw32:     acceleration is at least as fast as the W32 server but supports more
+xw32:     cards and higher color depths.  Use this server if the SVGA server
+xw32:     fails to work/accelerate for you.
+xw32:
+xw32:     Installing this package will create a link in /usr/X11R6/bin from
+xw32:     XF86_W32 to X, setting this server as the default.
+xw32:
+
+PACKAGE NAME:  xxgdb.tgz
+PACKAGE LOCATION:  ./slakware/xap1
+PACKAGE SIZE (compressed):  39 K
+PACKAGE SIZE (uncompressed):  100 K
+PACKAGE DESCRIPTION:
+xxgdb:    xxgdb-1.12.
+xxgdb:
+xxgdb:    Xxgdb is a graphical user interface to the gdb debugger under the X
+xxgdb:    Window System.  It provides visual feedback and mouse input for the
+xxgdb:    user to control program execution through breakpoints, to examine and
+xxgdb:    traverse the function call stack, and to display values of variables
+xxgdb:    and data structures.
+xxgdb:
+
+PACKAGE NAME:  zoneinfo.tgz
+PACKAGE LOCATION:  ./slakware/a15
+PACKAGE SIZE (compressed):  124 K
+PACKAGE SIZE (uncompressed):  660 K
+PACKAGE DESCRIPTION:
+zoneinfo: tzcode/data1999b - time zone utilities and database
+zoneinfo:
+zoneinfo: This package allows you to configure your time zone.
+zoneinfo:
+zoneinfo: Includes zic, zdump, yearistype, and the time zone database in
+zoneinfo: /usr/share/zoneinfo.  Use the timeconfig utility to set your local
+zoneinfo: time zone.
+zoneinfo:
+
+PACKAGE NAME:  zsh.tgz
+PACKAGE LOCATION:  ./slakware/ap1
+PACKAGE SIZE (compressed):  343 K
+PACKAGE SIZE (uncompressed):  580 K
+PACKAGE DESCRIPTION:
+zsh:      zsh version 3.0.3
+zsh:
+zsh:      Zsh is a UNIX command interpreter (shell) which of the standard shells
+zsh:      most resembles the Korn shell (ksh), although it is not completely
+zsh:      compatible.  It includes enhancements of many types, notably in the
+zsh:      command-line editor, options for customizing its behavior, filename
+zsh:      globbing, features to make C-shell (csh) users feel more at home and
+zsh:      extra features drawn from tcsh (another 'custom' shell).  Zsh was 
+zsh:      written by Paul Falstad.
+zsh:
+
+

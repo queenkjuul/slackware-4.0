@@ -1,0 +1,20 @@
+Begin3
+Title:		instmon
+Version:	1.5
+Entered-date:	24APR99
+Description:	instmon is a shell script that monitors installations
+		and detects the files that were added or modified. It
+		can be very helpful for packages that only come in
+		source form. It can be used by system administrators
+		and simple users alike.
+Keywords:	install monitor admin package source shell script
+Author:		vvasaitis@hal.csd.auth.gr (Vasilis Vasaitis)
+Maintained-by:	vvasaitis@hal.csd.auth.gr (Vasilis Vasaitis)
+Primary-site:	metalab.unc.edu	/pub/Linux/system/admin/
+		16k	instmon-1.5.tar.gz
+		1k	instmon.lsm
+Alternate-site:	hal.csd.auth.gr	/pub/Linux/instmon/
+Original-site:
+Platforms:
+Copying-policy:	GPL
+End

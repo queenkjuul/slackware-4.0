@@ -1,0 +1,18 @@
+Begin2
+Title        = Notebook power utilities
+Version      = 1.1
+Desc1        = monitors the power status of the certain notebooks
+Desc2        = sets/clears some options on the same kind of notebook  
+Desc3        = (speed,inverse video,serial port,backlight,hdtimeout)
+Author       = Pieter Verhaeghe
+AuthorEmail  = pive@ruca.ua.ac.be
+Maintainer   = Pieter Verhaeghe
+MaintEmail   = pive@ruca.ua.ac.be
+Required1    = Linux 99.14/1.1.18/1.1.38 (probably older and newer also)
+Required2    = notebook (Veridata ExecuLite) or compatible, see README
+Required3    = for some hints
+CopyPolicy1  = drop me a note if you use it
+Keywords     = power management, notebook, laptop
+EnteredBy    = Pieter Verhaeghe
+CheckedEmail = pive@ruca.ua.ac.be
+End

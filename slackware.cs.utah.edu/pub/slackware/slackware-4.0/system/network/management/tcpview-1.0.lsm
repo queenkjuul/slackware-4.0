@@ -1,0 +1,21 @@
+Begin3
+Title:		tcpview
+Version:	1.0
+Entered-date:	18MAY95
+Description:	A Motif-based TCP/IP protocol analyzer
+Keywords:	ethernet tcpdump Motif
+Author: 	martinh@cac.washington.edu (Martin Hunt)
+		tcpdump@ee.lbl.gov (Steve McCann)
+Maintained-by:	fillod@iutserveur.univ-lyon1.fr (Stephane FILLOD)
+Primary-site:	iutserveur.univ-lyon1.fr /pub/linux/tcpview
+		291kB tcpview-1.0.tar.gz
+		756   tcpview-1.0.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network/management
+Original-site:	ftp.cac.washington.edu /pub/noc-tools/tcpview
+		484kB tcpview-1.0.tar.Z
+		3kB   tcpview-1.0.tar.readme
+		1.3MB tcpview-1.0.dec.tar.Z
+		1.8MB tcpview-1.0.sun.tar.Z
+Platforms:	Sun/OS, Ultrix, BSD, Linux, Motif required !
+Copying-policy:	BSD, University of Washington
+End

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/docs/linux-2.2.6/networking</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/docs/linux-2.2.6/networking</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/docs/linux-2.2.6/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">2.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-13 23:01  </td><td align="right">554 </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="ip_masq/">ip_masq/</a></td><td align="right">1999-05-13 22:59  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="de4x5.txt">de4x5.txt</a></td><td align="right">1999-01-07 16:41  </td><td align="right">8.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="cops.txt">cops.txt</a></td><td align="right">1999-01-07 16:41  </td><td align="right">2.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="arcnet-hardware.txt">arcnet-hardware.txt</a></td><td align="right">1999-01-07 16:41  </td><td align="right">110K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="6pack.txt">6pack.txt</a></td><td align="right">1999-01-07 16:41  </td><td align="right">7.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ip-sysctl.txt">ip-sysctl.txt</a></td><td align="right">1999-01-04 23:31  </td><td align="right">6.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="irda.txt">irda.txt</a></td><td align="right">1998-12-17 17:01  </td><td align="right">608 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ltpc.txt">ltpc.txt</a></td><td align="right">1998-11-13 18:29  </td><td align="right">4.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="arcnet.txt">arcnet.txt</a></td><td align="right">1998-09-14 18:32  </td><td align="right"> 23K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="cs89x0.txt">cs89x0.txt</a></td><td align="right">1998-09-11 18:21  </td><td align="right"> 22K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="wavelan.txt">wavelan.txt</a></td><td align="right">1998-08-28 17:45  </td><td align="right">1.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="tlan.txt">tlan.txt</a></td><td align="right">1998-07-24 18:15  </td><td align="right">4.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="framerelay.txt">framerelay.txt</a></td><td align="right">1998-06-24 21:34  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="sktr.txt">sktr.txt</a></td><td align="right">1998-06-24 21:26  </td><td align="right">6.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="baycom.txt">baycom.txt</a></td><td align="right">1998-06-07 18:13  </td><td align="right">6.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="multicast.txt">multicast.txt</a></td><td align="right">1998-06-05 05:53  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="filter.txt">filter.txt</a></td><td align="right">1998-06-05 05:53  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="z8530drv.txt">z8530drv.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="wan-router.txt">wan-router.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">8.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="tulip.txt">tulip.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">4.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="soundmodem.txt">soundmodem.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">3.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="lapb-module.txt">lapb-module.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">9.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ewrk3.txt">ewrk3.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ethertap.txt">ethertap.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="eql.txt">eql.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="dgrs.txt">dgrs.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">2.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="PLIP.txt">PLIP.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">5.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="DLINK.txt">DLINK.txt</a></td><td align="right">1998-05-21 01:54  </td><td align="right">7.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00-INDEX">00-INDEX</a></td><td align="right">1998-05-21 01:54  </td><td align="right">2.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="routing.txt">routing.txt</a></td><td align="right">1998-05-14 17:26  </td><td align="right">1.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="policy-routing.txt">policy-routing.txt</a></td><td align="right">1998-05-14 17:26  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="x25.txt">x25.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="x25-iface.txt">x25-iface.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="wanpipe.txt">wanpipe.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">5.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="shaper.txt">shaper.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">1.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="pt.txt">pt.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">2.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="net-modules.txt">net-modules.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">9.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ipddp.txt">ipddp.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">3.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="alias.txt">alias.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ppp.txt">ppp.txt</a></td><td align="right">1998-04-04 01:48  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ip_dynaddr.txt">ip_dynaddr.txt</a></td><td align="right">1998-04-04 01:48  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="depca.txt">depca.txt</a></td><td align="right">1998-01-04 04:49  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="smc9.txt">smc9.txt</a></td><td align="right">1997-11-29 18:33  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Configurable">Configurable</a></td><td align="right">1997-09-04 20:25  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ax25.txt">ax25.txt</a></td><td align="right">1997-07-07 15:19  </td><td align="right">706 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="3c505.txt">3c505.txt</a></td><td align="right">1996-10-15 16:42  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ncsa-telnet">ncsa-telnet</a></td><td align="right">1996-04-30 09:42  </td><td align="right">832 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="tcp.txt">tcp.txt</a></td><td align="right">1996-04-12 06:49  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="vortex.txt">vortex.txt</a></td><td align="right">1996-01-22 20:52  </td><td align="right">1.1K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

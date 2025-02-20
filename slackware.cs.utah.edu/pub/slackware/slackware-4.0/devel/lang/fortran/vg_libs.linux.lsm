@@ -1,0 +1,18 @@
+
+Begin3
+Title:          vg_libs.linux
+Version:        Nov.94
+Entered-date:   1997/Dec/15
+Description:    Source for graphical libraries used in Fortran programs.
+                Graphic output supported, among others, to X-windows,
+                Tektronix terminal and Postcript devices.
+Keywords:       Fortran, graphics
+Author:         anderson@eeel.nist.gov (W. Anderson)
+Maintained-by:  michal@ellpspace.math.ualberta.ca (Michal Jaegermann)
+Primary-site:   sunsite.unc.edu /pub/Linux/science/visualization/plotting
+                  120 kB vg_libs.Nov.94.linux.tar.gz
+Alternate-site: 
+Original-site:  unavailable
+Platforms:      
+Copying-policy: freely distributable
+End

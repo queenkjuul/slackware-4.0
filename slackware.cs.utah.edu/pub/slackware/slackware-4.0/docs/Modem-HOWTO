@@ -1,0 +1,3498 @@
+  umpregs v0.01 Jan. 1999 link to mgetty site, added -g to
+  setserial /dev/ttyS*, shared serial interrupts in Linux2.2,
+  pnpdump doesn't show config warn about Winmodems being mis­
+  labeled. Use some of 20 items Bill Staehle emailed to me.
+  Link to voice-mail site.  PCMCIA-HOWTO. Added: Problems
+  Explained section.  Int. doesn't overrun.  /proc/pci signa­
+  ture ??  v0.00 Dec. 1998 --> Modem-HOWTO
+  David S.Lawyer    <mailto:bf347@lafn.org> Contains much info
+  from Serial-HOWTO by Greg Hankins
+  v0.02, March 1999
+
+  Help with selecting, connecting, configuring, trouble-shooting, and
+  understanding modems for a PC.  See Serial-HOWTO for multiport serial
+  boards.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  1. Introduction
+
+     1.1 Copyright, Trademarks, Disclaimer, & Credits
+        1.1.1 Copyright
+        1.1.2 Trademarks
+        1.1.3 Disclaimer
+        1.1.4 Credits
+     1.2 Future Plans, You Can Help
+     1.3 New Versions of this HOWTO
+     1.4 What is a Modem ?
+     1.5 Quick Install
+        1.5.1 External Modem Install
+        1.5.2 Internal Modems (on ISA bus)
+        1.5.3 All Modems
+
+  2. Modem & Serial Port Basics
+
+     2.1 Modem Converts Digital to Analog (and conversely)
+     2.2 What is a Serial Port ?
+        2.2.1 Intro to Serial
+        2.2.2 Pins and Wires
+        2.2.3 Internal Modem Contains Serial Port
+     2.3 I/O Address & IRQ
+     2.4 Interrupts
+     2.5 Data Compression (by the Modem)
+     2.6 Error Correction
+     2.7 Data Flow (Speeds)
+     2.8 Flow Control
+        2.8.1 Flow Control Explained by an Example
+        2.8.2 Symptoms of No Flow Control
+        2.8.3 Hardware vs. Software Flow Control
+        2.8.4 Modem-to-Modem Flow Control
+     2.9 Data Flow Path; Buffers
+     2.10 Complex Flow Control Example
+     2.11 Modem Commands
+
+  3. Configuring Modems (including the serial port)
+
+     3.1 Configuring Overview
+     3.2 Configuring the IRQ and IO-Address of the Serial Port
+        3.2.1 Plug-and-Play
+        3.2.2 Using a PnP BIOS to I0-IRQ Configure
+        3.2.3 External Modem Configure
+        3.2.4 If More Than 2 Serial Ports
+        3.2.5 Methods for Setting I/O Addresses and IRQs
+        3.2.6 Avoiding I/O Address Conflicts of IBM 8514 Video Board
+     3.3 What is the current I/O address and IRQ of my Serial Port ?
+        3.3.1 What does the device driver think?
+        3.3.2 What is set in my serial port hardware?
+     3.4 Other Configuring
+        3.4.1 Configuring Hardware Flow Control (RTS/CTS)
+     3.5 Modem Configuration (excluding serial port)
+        3.5.1 AT Commands
+        3.5.2 The Init String
+        3.5.3 Other Modem Commands
+
+  4. Modems for a Linux PC
+
+     4.1 External vs. Internal
+     4.2 External Modems
+        4.2.1 PnP External Modems
+        4.2.2 Cabling & Installation
+        4.2.3 What the Lights (LED's) Mean
+     4.3 Internal Modems
+     4.4 Internal Modems You Must Avoid (winmodems, etc.)
+     4.5 Which Internal Modems are Best to Avoid ?
+        4.5.1 MWave and DSP Modems
+        4.5.2 Rockwell (RPI) Drivers
+        4.5.3 PCI Modems
+
+  5. Serial Port Devices
+
+     5.1 Serial Port Device Names & Numbers
+     5.2 Creating Devices In the /dev directory
+     5.3 Link ttySN to /dev/modem ?
+     5.4 The cua Device
+
+  6. Interesting Programs You Should Know About
+
+     6.1 What is getty?
+        6.1.1 About mgetty
+        6.1.2 About getty_ps
+        6.1.3 About agetty and mingetty
+     6.2 What is Setserial ?
+        6.2.1 Intro to Setserial
+        6.2.2 Probing
+        6.2.3 Boot-time Configuration
+        6.2.4 IRQs
+     6.3 What is isapnp ?
+
+  7. Trying Out Your Modem (Dialing Out)
+
+     7.1 Are You Ready to Dial Out ?
+     7.2 Dialing Out with Minicom
+     7.3 Dialing Out with Kermit
+
+  8. Uugetty for Dial-In (from the old Serial-HOWTO)
+
+     8.1 Installing getty_ps
+     8.2 Setting up uugetty
+        8.2.1 Modern Modems
+        8.2.2 Old slow modems
+        8.2.3 Login Banner
+     8.3 Customizing uugetty
+
+  9. What Speed Should I Use with My Modem?
+
+     9.1 Speed and Data Compression
+     9.2 Where do I Set Speed ?
+     9.3 Can't Set a High Enough Speed
+     9.4 Speed Table
+
+  10. Communications Programs And Utilities
+
+     10.1 Minicom vs. Kermit
+     10.2 Lists of Programs
+        10.2.1 Least Popular Dialout
+        10.2.2 Most Popular Dialout
+        10.2.3 Fax
+        10.2.4 Voicemail
+        10.2.5 Dial-in (uses getty)
+        10.2.6 Other
+     10.3 (TT
+
+  11. What Are UARTs?  How Do They Affect Performance?
+
+  12. Troubleshooting
+
+     12.1 Software
+     12.2 My Modem is Physically There but Can't be Found
+     12.3 "Operation not supported by device" (error message) for ttySx
+     12.4 Slow. Text appears on the screen slowly after long delays
+     12.5 Uploading (downloading) files is broken/slow
+     12.6 For Dial-in I Keep Getting "line NNN of inittab invalid"
+     12.7 When I Try To Dial Out, It Says "/dev/ttySN: Device or resource busy"
+     12.8 I Keep Getting "Getty respawning too fast: disabled for 5 minutes"
+     12.9 My Modem is Hosed after Someone Hangs Up, or uugetty doesn't respawn
+     12.10 uugetty Still Doesn't Work
+
+  13. Flash Upgrades
+
+  14. Problems Explained
+
+     14.1 Interrupt Mis-set
+     14.2 Interrupt Conflicts
+
+  15. Other Sources of Information
+
+     15.1 Misc
+     15.2 Books
+     15.3 HOWTOs
+     15.4 Usenet newsgroups
+     15.5 Web Sites
+
+  16. Appendix A:  How Modems Work (technical) (unfinished)
+
+     16.1 Modulation Details
+        16.1.1 Intro to Modulation
+        16.1.2 Frequency Modulation
+        16.1.3 Amplitude Modulation
+        16.1.4 Phase Modulation
+        16.1.5 Combination Modulation
+        16.1.6 56k Modems (v.90)
+
+  17. Appendix B:  "baud" vs. "bps"
+
+     17.1 A simple example
+     17.2 Real examples
+
+  18. Appendix C:  Terminal Server Connection
+
+  19. Appendix D:  Other Types of Modems
+
+     19.1 Digital-to-Digital "Modems"
+     19.2 ISDN "Modems"
+     19.3 Digital Subscriber Line (DSL)
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  This covers conventional modems for PC's, mainly modems on the ISA bus
+  (although much of this should also apply to the PCI bus).  For modems
+  on the PCMCIA bus see the PCMCIA-HOWTO: PCMCIA serial and modem
+  devices.
+
+
+  1.1.  Copyright, Trademarks, Disclaimer, & Credits
+
+  1.1.1.  Copyright
+
+  Copyright (c) 1998 by David S. Lawyer and Greg Hankins.  Please freely
+  copy and distribute (sell or give away) this document.  You may create
+  derivative works and distribute them provided you:
+
+  I. For the case of minor changes and corrections where there exists a
+  current maintainer:
+  Send your proposed changes to the current maintainer first.  You may
+  distribute (per II. below) only if the current maintainer neglects to
+  incorporate your changes in a timely manner.  If the changes are only
+  to correct typos, you need not wait for a reply from the maintainer
+  before you distribute.
+
+  II. In all other cases:
+
+  1. Make a good faith effort to insure that a copy of the derivative
+     work (including any master copy) gets on the Internet at a well-
+     known (and mirrored) site for free downloading.
+
+  2. If you change the license, license the work in the spirit of this
+     license, or use GPL (Free Software Foundation).
+
+  3. The major authors become the copyright owners (not to exceed 3).
+     Minor contributions do not make you an author.
+
+  4. Make a good faith effort to contact the maintainer (or principal
+     copyright owners if there is no maintainer) to let them know what
+     you have done.  If the changes are extensive, then you should also
+     attempt to make more such contacts (including prior to your
+     project).
+
+  5. Give full credit to significant previous authors and contributors
+     although the credits section need not exceed 1% of the length of
+     the document.
+
+
+  1.1.2.  Trademarks
+
+  If certain words are trademarks, the context should make it clear to
+  whom they belong.  For example "MS Windows" (or just "Windows")
+  implies that "Windows" belongs to Microsoft (MS).  "Hayes" is a
+  trademark of Microcomputer Products Inc.  I use "winmodem" to mean any
+  modem which requires MS-Windows and not in the trademark sense.
+
+
+  1.1.3.  Disclaimer
+
+  Much of the info in this HOWTO was obtained from the previous Serial-
+  HOWTO, the Internet, etc. and may be unreliable.  While I haven't
+  intentionally tried to mislead you, there are likely a number of
+  errors in this document.  Please let me know about them.  Since this
+  is free documentation, it should be obvious that neither I nor
+  previous authors can be held legally responsible for any errors.
+
+
+  1.1.4.  Credits
+
+  The following is only a rough approximation of how this document was
+  created:  About 1/3 of the material here was lifted directly from
+  Serial-HOWTO v. 1.11 by Greg Hankins.   <mailto:gregh@cc.gatech.edu>
+  (with his permission).  About another 1/3 was taken from that Serial-
+  HOWTO and revised.  The remaining 1/3 is newly created by the author:
+  David S. Lawyer  <mailto:bf347@lafn.org>.
+
+
+  1.2.  Future Plans, You Can Help
+
+  An explanation of how to set up modems for dial-in is lacking in this
+  version but should be included in the next.  Please let me know of any
+  errors in facts, opinions, logic, spelling, grammar, clarity, links,
+  etc.  But first, if the date is over a months old, check to see that
+  you have the latest version.  Please send me any other info that you
+  think belongs in this document.  The French "Modems-HOWTO" needs to be
+  somehow merged with this document (but I don't know French).
+
+
+  1.3.  New Versions of this HOWTO
+
+  New versions of this Modem-HOWTO come out every month or so since
+  modem situation is rapidly changing (and since I'm still learning).
+  Your problem might be solved in the latest version.  It will be
+  available to browse and/or download at LDP mirror sites.  For a list
+  of such sites see:  <http://sunsite.unc.edu/LDP/mirrors.html> If you
+  only want to quickly check the date of the latest version you may not
+  want to use a mirror site so check out:
+  <http://sunsite.unc.edu/LDP/HOWTO/Modem-HOWTO.html>.
+
+
+  1.4.  What is a Modem ?
+
+  A modem is a device that lets one send digital signals over ordinary
+  telephone lines not designed for digital signals.  If telephone lines
+  were all digital then you wouldn't need a modem.  It permits your
+  computer to connect to and communicate with the rest of the world.
+  When you use a modem, you normally use a communication program or web
+  browser (which includes such a program) to utilize the modem and dial-
+  out on a telephone line.  Advanced modem users can set things up so
+  that others may phone in to them and use their computer.  This is
+  called "dial-in".
+
+  There are two basic types of modems for a PC: external and internal.
+  The external sets on your desk outside the PC while the internal is
+  not visible since it's inside the PC.  The external modem plugs into a
+  connector on the back of the PC known as a "serial port".  The
+  internal modem is a card that is inserted inside the computer and has
+  an (invisible) serial port built into it.  For a more detailed
+  comparison see ``External vs. Internal''.  Thus when you get an
+  internal modem, you also get a dedicated serial port (which can only
+  be used with the modem and not with anything else such as another
+  modem or a printer).  In Linux, the serial ports are named ttyS0,
+  ttyS1, etc. (corresponding respectively to COM1, COM2, etc. in
+  Dos/Windows).
+
+  The serial port is not to be confused with the "Universal Serial Bus"
+  (USB) which uses a special modular connector and may be used with
+  modems in the future.  See ``Modem & Serial Port Basics'' for more
+  details on modems and serial ports.
+
+
+  1.5.  Quick Install
+
+  1.5.1.  External Modem Install
+
+  With a straight-thru or modem cable, connect the modem to an unused
+  serial port on the PC.  Make sure you know the name of the serial
+  port: COM1 is ttyS0, COM2 is ttyS1.  You may need to check the BIOS to
+  determine this.  Plug in the power cord to provide power to the modem.
+  See ``All Modems'' for further instructions.
+
+
+  1.5.2.  Internal Modems (on ISA bus)
+
+  (See ``PCI Modems'' for the PCI bus) If the modem says it will only
+  work under MS Windows, you are out of luck.  If you already have 2
+  serial ports, make this the 3rd serial port (ttyS2 = COM3).  Find an
+  unused IRQ number to use.  An unused one is often IRQ5 for the 2nd
+  parallel port or a sound card (which you may not have).  Then set the
+  jumpers (or the like) on the internal modem to the unused IRQ and I/O
+  address 3E8 (ttyS2) .
+  "Or the like" (in the previous sentence) may be a bit tricky.  If the
+  modem is a Plug and Play (PnP) for the ISA bus, the equivalent
+  probably can be done using the "isapnp" program which comes with
+  "isapnptools".  See "man isapnp".  Another possible alternate way to
+  set the IRQ and 3E8 is (if possible) to configure it under Windows.
+  If you have a PnP BIOS, then configuring under Windows should put the
+  configuration into the PnP BIOS so that it will be used at boot-time
+  for Linux (provided you tell CMOS that you don't have a PnP operating
+  system when you use Linux).  For Windows 3.x use the ICU utility.
+  There may even be a way to disable PnP using software that came with
+  the modem.
+
+  Finally you must also find the file where "setserial" is run and add a
+  line something like: "setserial /dev/ttyS2 irq5".  See ``All Modems''
+  for further instructions.
+
+
+  1.5.3.  All Modems
+
+  Plug the modem into a telephone line.  Then start up a communication
+  program such as minicom and go to the configuration menu for the
+  serial port.  Assign it a high baud rate a few times higher than the
+  bit rate of your modem.  See ``Speed Table'' for the "best" speeds to
+  use.  Tell it the full name of your serial port such as /dev/ttyS1.
+  Set hardware flow control (RTS/CTS).  Now you need to save these
+  settings and exit minicom.  Then start minicom again, type AT to see
+  if your modem is there and responds with OK.  Then go to the dial
+  directory (or menu) and dial a number.
+
+
+  2.  Modem & Serial Port Basics
+
+  You don't have to understand the basics to use and install a modem.
+  But understanding it may help to determine what is wrong if you run
+  into problems.  After reading this section, if you want to understand
+  it even better you may want to see ``How Modems Work'' in this
+  document (not yet complete).  A future version of Serial-HOWTO
+  (expected by Feb. 1999).  should cover more on the serial port itself.
+
+
+  2.1.  Modem Converts Digital to Analog (and conversely)
+
+  Most all telephone main lines are digital already but the lines
+  leading to your house (or business) are usually analog which means
+  that they were designed to transmit a voltage wave which is an exact
+  replica of the sound wave coming out of your mouth.  Such a voltage
+  wave is called "analog".  If viewed on an oscilloscope it looks like a
+  sine wave of varying frequency and amplitude.  A digital signal is
+  like a square wave.  For example 3 v (volts) might be a 1-bit and 0 v
+  could be a 0-bit.  For most serial ports (used by external modems) +12
+  v is a 0-bit and -12 v is a 1-bit (some are + or - 5 v).
+
+  To send data from your computer over the phone line, the modem takes
+  the digital signal from your computer and converts it to "analog".  It
+  does this by both creating an analog sine wave and then "MODulating"
+  it.  Since the result still represents digital data, it could also be
+  called a digital signal instead of analog.  But it looks something
+  like an analog signal and almost everyone calls it analog.  At the
+  other end of the phone line another modem "DEModulates" this signal
+  and the pure digital signal is recovered.  Put together the "mod" and
+  "dem" parts of the two words above and you get "modem" (if you drop
+  one of the two d's).  A "modem" is thus a MODulator-DEModulator.  Just
+  what modulation is may be found in the section ``Modulation Details''.
+
+
+
+  2.2.  What is a Serial Port ?
+
+  2.2.1.  Intro to Serial
+
+  Since modems have a serial port between them and the computer, it's
+  necessary to understand the serial port as well as the modem.  The
+  serial port is an I/O (Input/Output) device.  Most PC's have one or
+  two serial ports.  Each has a 9-pin connector (sometimes 25-pin) on
+  the back of the computer.  Computer programs can send data (bytes) to
+  the transmit pin (output) and receive bytes from the receive pin
+  (input).  The other pins are for control purposes and ground.
+
+  The serial port is much more than just a connector.  It converts the
+  data from parallel to serial and changes the electrical representation
+  of the data.  Inside the computer, data bits flow in parallel (using
+  many wires at the same time).  Serial flow is a stream of bits over a
+  single wire (such as on the transmit or receive pin of the serial
+  connector).  For the serial port to create such a flow, it must
+  convert data from parallel (inside the computer) to serial on the
+  transmit pin (and conversely).
+
+  Most of the electronics of the serial port is found in a computer chip
+  (or a section of a chip) known as a UART.  For more details on UARTs
+  see the section ``What Are UARTs?  How Do They Affect Performance?''.
+  But you may want to finish this section first so that you will
+  hopefully understand how the UART fits into the overall scheme of
+  things.
+
+
+  2.2.2.  Pins and Wires
+
+  Old PC's used 25 pin connectors but only about 9 pins were actually
+  used, so today most connectors are only 9-pin.  Each of the 9 pins
+  connects to a wire.  Besides the two wires used for transmitting and
+  receiving data, another pin (wire) is signal ground.  The voltage on
+  any wire is measured with respect to this ground.  There are still
+  more wires which are for control purposes (signalling) only and not
+  for sending bytes.  All of these signals could have been sent on a
+  single wire, but instead, there is a separate dedicated wire for every
+  type of signal.  Some (or all) these control wires are called "modem
+  control lines".  These control wires are either in the asserted state
+  (on) of +12 volts or in the negated state (off) of -12 volts.  There
+  is a wire to signal the computer to stop sending bytes to the modem.
+  Conversely, another wire signals the modem to stop sending bytes to
+  the computer.  Other wires may tell the modem to hang up the telephone
+  line or tell the computer that a connection has been made or that the
+  telephone line is ringing (someone is attempting to call in).
+
+
+  2.2.3.  Internal Modem Contains Serial Port
+
+  For an internal modem there is no 9-pin connector but the behavior is
+  exactly as if the above mentioned cable wires existed.  Instead of a a
+  12 volt signal in a wire giving the state of a modem control line, the
+  internal modem may just use a status bit in its own memory (a
+  register) to determine the state of this non-existent "wire".  The
+  internal modem's serial port looks just like a real serial port to the
+  computer.  It even includes the speed limits that one may set at
+  ordinary serial ports such as 115200 bits/sec.  Unfortunately today,
+  many internal modems don't work exactly this way but instead use MS
+  Windows software to help do their job and will not work under Linux.
+  See ``Avoid: winmodems''.
+
+
+
+
+  2.3.  I/O Address & IRQ
+
+  Since the computer needs to communicate with each serial port, the
+  operating system (OS) must know that the serial port exists, where it
+  is (its I/O address) and what wire (IRQ number) the serial port is to
+  use to request service from the computer's CPU.  Thus every serial
+  port device must store in its non-volatile memory both its I/O address
+  and its Interrupt ReQuest number: IRQ.  The IRQ determines what wire
+  is used to request service using interrupt signals.  See
+  ``Interrupts''.
+
+  The serial ports are labeled ttyS0, ttyS1, etc. (corresponding to
+  COM1, COM2, etc. in DOS).  There is also an obsolete set of names:
+  cua0, cua1, etc which are almost the same as ttyS0, ttyS1, etc.  See
+  ``The cua Device''.  Which one of these names refers to certain
+  physical serial port is determined (in part) by the I/O address stored
+  inside the hardware chip of the physical port.  This mapping of names
+  (such as ttyS1) to I/O addresses and IRQ's may be set by the
+  "setserial" command.  ``What is Setserial''.  This does not set the
+  I/O address and IRQ on the hardware itself (which is set by jumpers or
+  by plug-and-play).
+
+
+  2.4.  Interrupts
+
+  Bytes come in over the phone line to the modem, are converted from
+  analog to digital by the modem and passed along to the serial port on
+  their way to their destination inside your computer.  When the serial
+  port gets say 8 bytes from the modem (may be set to 1, 4, 8, or 14) it
+  signals the CPU to fetch them by sending an electrical signal known as
+  an interrupt on a dedicated conductor.  Old serial ports would always
+  send an interrupt for every byte received.
+
+  Each interrupt conductor (inside the computer) has a number (IRQ) and
+  the serial port must know which conductor to use to signal on.  For
+  example, ttyS0 normally uses IRQ number 4 known as IRQ4 (or IRQ 4).  A
+  list of them and more will be found in "man setserial" (search for
+  "Configuring Serial Ports").  Interrupts are issued whenever the
+  serial port needs to get the CPU's attention.  It's important to do
+  this in a timely manner since the buffer inside the serial port can
+  hold only 16 (1 in old modems) incoming bytes.  If the CPU fails to
+  remove such received bytes promptly, then there will not be any space
+  left for any more incoming bytes and the small buffer may overflow
+  (overrun).  Bytes will be lost.  For an external modem, there is no
+  way to stop the flow rapidly enough to prevent this.  For an internal
+  modem the 16-byte buffer is on the same card and a good modem will not
+  write to it if it's full.  Thus a good internal modem will not overrun
+  the 16-byte buffers and this is one advantage of an internal modem.
+
+  Interrupts are also issued when the serial port has just sent out all
+  16 of it bytes from its small transmit buffer to the modem.  It then
+  has space for 16 more outgoing bytes.  The interrupt is to notify the
+  CPU of that fact so that it may put more bytes in the small transmit
+  buffer to be transmitted.  Also, when a modem control line changes
+  state an interrupt is issued.
+
+  The buffers mentioned above are all hardware buffers.  The serial port
+  also has large buffers in main memory.  This will be explained later
+
+  Interrupts convey a lot of information but only indirectly.  The
+  interrupt itself just tells a chip called the interrupt controller
+  that a certain serial port needs attention.  The interrupt controller
+  then signals the CPU.  The CPU runs a special program to service the
+  serial port.  That program is called an interrupt service routine
+  (part of the serial driver software).  It tries to find out what has
+  happened at the serial port and then deals with the problem such a
+  transferring bytes from (or to) the serial port's hardware buffer.
+  This program can easily find out what has happened since the serial
+  port has registers at I/O addresses known to the the serial driver
+  software.  These registers contain status information about the serial
+  port.  The software reads these registers and by inspecting the
+  contents, finds out what has happened and takes appropriate action.
+
+
+  2.5.  Data Compression (by the Modem)
+
+  Before continuing with the basics of the serial port, one needs to
+  understand about something done by the modem: data compression.  In
+  some cases this task is actually done by software run on the
+  computer's CPU but unfortunately at present, such software only works
+  for MS Windows.  The discussion here will be for the case where the
+  modem itself does the compression since this is what must happen in
+  order for the modem to work under Linux.
+
+  In order to send data faster over the phone line, one may compress
+  (encode it) using a custom encoding scheme which itself depends on the
+  data.  The encoded data is smaller than the original (less bytes) and
+  can be sent over the Internet in less time.  This process is called
+  "data compression".
+
+  If you download files from the Internet, they are likely already
+  compressed and it is not feasible for the modem to try to compress
+  them further.  Your modem may sense that what is passing thru has
+  already been compressed and refrain from trying a compress it any
+  more.  If you are receiving data which has been compressed by the
+  other modem, your modem will decompress it and create many more bytes
+  than were sent over the phone line.  Thus the flow of data from your
+  modem into your computer will be higher than the flow over the phone
+  line to you.  The ratio of this flow is called the compression ratio.
+  Compression ratios as high as 4 are possible, but not very likely.
+
+
+  2.6.  Error Correction
+
+  Similar to data compression, modems may be set to do error correction.
+  While there is some overhead cost involved which slows down the
+  byte/sec flow rate, the fact that error correction strips off start
+  and stop bits actually increases the data byte/sec flow rate.
+
+  For the serial port's interface with the external world, each 8-bit
+  byte has 2 extra bits added to it: a start-bit and a stop-bit.
+  Without error correction, these extra stop and stop bits usually go
+  right thru the modem and out over the phone lines.  But when error
+  correction is enabled, these extra bits are stripped off and the 8-bit
+  bytes are put into packets.  This is more efficient and results in
+  higher byte/sec flow in spite of the fact that there are a few more
+  bytes added for packet headers and error correction purposes.
+
+
+  2.7.  Data Flow (Speeds)
+
+  Data (bytes representing letters, pictures, etc.) flows from your
+  computer to your modem and then out on the telephone line (and
+  conversely).  Flow rates (such as 56k (56000) bits/sec) are
+  (incorrectly) called "speed".  But almost everyone says "speed"
+  instead of "flow rate".  If there were no data compression the flow
+  rate from the computer to the modem would be about the same as the
+  flow rate over the telephone line.
+
+  Actually there are two different speeds to consider at your end of the
+  phone line:
+
+  ·  The speed on the phone line itself (DCE speed) modem-to-modem
+
+  ·  The speed from your computer's serial port to your modem (DTE
+     speed)
+
+  When you dial out and connect to another modem on the other end of the
+  phone line, your modem often sends you a message like "CONNECT 28800"
+  or "CONNECT 115200".  What do these mean?  Well, its either the DCE
+  speed or the DTE speed. If it's higher than the advertised modem speed
+  it must be the DTE modem-to-computer speed.  This is the case for the
+  115200 speed shown above.  The 28800 must be a DCE (modem-to-modem)
+  speed since the serial port has no such speed.  One may configure the
+  modem to report either speed.  Some modems report both speeds and
+  report the modem-to-modem speed as (for example): CARRIER 28800.
+
+  If you have an internal modem you would not expect that there would be
+  any speed limit on the DTE speed from your modem to your computer
+  since you modem is inside your computer and is almost part of your
+  computer.  But there is since the modem contains a dedicated serial
+  port within it.
+
+  It's important to understand that the average speed is often less than
+  the specified speed, especially on the short DTE computer-to-modem
+  line.  Waits (or idle time) result in a lower average speed.  These
+  waits may include long waits of perhaps a second due to ``Flow
+  Control''.  At the other extreme there may be very short waits (idle
+  time) of several micro-seconds separating the end of one byte and the
+  start of the next byte.  In addition, modems will fallback to lower
+  speeds if the telephone line conditions are less than pristine.
+
+  For a discussion of what DTE speed is best to use see section ``What
+  Speed Should I Use''.
+
+
+  2.8.  Flow Control
+
+  Flow control means the ability to stop the flow of bytes in a wire.
+  It also includes provisions to restart the flow without any loss of
+  bytes.  Flow control is needed for modems to allow a jump in flow
+  rates.
+
+
+  2.8.1.  Flow Control Explained by an Example
+
+  For example, consider the case where your 33.6k modem is not doing any
+  data compression or error correction.  You have set the serial port
+  speed to 115,200 bits/sec (bps).  You are sending data from your
+  computer to the phone line.  Then the flow from the your computer to
+  your modem is at 115.2k bps.  However the flow from your modem out the
+  phone line is at best only 33.6k bps.  Since a faster flow (115.2k) is
+  going into your modem than is coming out of it, the modem is storing
+  the excess flow (115.2k -33.6k = 81.6k) in one of its buffers.  This
+  buffer would eventually overrun (run out of storage space) unless the
+  115.2k flow is stopped.
+
+  But now flow control comes to the rescue.  When the modem's buffer is
+  almost full, the modem sends a stop signal to the serial port.  The
+  serial port passes on the stop signal to the device driver and the
+  115.2k bps flow is halted.  Then the modem continues to send out data
+  at 33.6k bps drawing on the data it previous accumulated in its
+  buffer.  Since nothing is coming into the buffer, the level of bytes
+  in it starts to drop.  When almost no bytes are left in the buffer,
+  the modem sends a start signal to the serial port and the 115.2k flow
+  from the computer to the modem resumes.  In effect, flow control
+  creates an average flow rate (in this case 33.6k) which is
+  significantly less than the "on" flow rate of 115.2k bps.  This is
+  "start-stop" flow control.
+
+  The above is an example of flow control for flow from the computer to
+  the modem , but there is also flow control which is used for the
+  opposite direction of flow: from a modem to a computer.  You don't
+  often need it in this direction (for flow from a modem to PC), but a
+  for complex example of a case where it's needed see ``Complex Flow
+  Control Example''.  But if you don't have a high enough speed set
+  between the modem and the computer (serial port speed) then you do
+  need to slow down the flow from the modem to the PC.  To do this you
+  must stop the incoming flow of bytes over the telephone line.   Your
+  modem must tell the other modem to stop sending.  See ``Modem-to-Modem
+  Flow Control''   More details on flow control may eventually be put
+  into the Serial-HOWTO.
+
+
+  2.8.2.  Symptoms of No Flow Control
+
+  Understanding flow-control theory can be of practical use.  For
+  example I used my modem to access the Internet and it seemed to work
+  fine.  But after a few months I tried to send long files from my PC to
+  an ISP and a huge amount of retries and errors resulted (but
+  eventually Kermit could send a long file after many retries).
+  Receiving in the other direction (from my ISP to me) worked fine.  The
+  problem turned out to be a hardware defect in my modem that had
+  resulted in disabling flow control.  My modem's buffer was overflowing
+  (overrunning) on long outgoing files since no "stop" signal was ever
+  sent to the computer to halt sending to the modem.  There was no
+  problem in the direction from the modem to my computer since the
+  capacity (say 115.2k) was always higher than the flow over the
+  telephone line.  The fix was to enable flow control by putting an
+  enable-flow-control command for the modem last in the init string.
+
+
+  2.8.3.  Hardware vs. Software Flow Control
+
+  For modems, it's best to use "hardware" flow control that uses two
+  dedicated "modem control" wires to send the "stop" and "start"
+  signals.  Software flow control uses the main receive and transmit
+  wires to send the start and stop signals.  It uses the ASCII control
+  characters DC1 (start) and DC3 (stop) for this purpose.  They are just
+  inserted into the regular stream of data.  Software flow control is
+  not only slower in reacting but also does not allow the sending of
+  binary data thru the modem unless special precautions are taken.
+  Since binary data will likely contain DC1 and DC3, special means must
+  be taken to distinguish between a DC3 that means a flow control stop
+  and a DC3 that is part of the binary code.  Likewise for DC1.  To get
+  software flow control to work for binary data requires both modem
+  (hardware) and software support.
+
+
+  2.8.4.  Modem-to-Modem Flow Control
+
+  This is the flow control of the data sent over the telephone lines
+  between two modems.  Practically speaking, it only exists when you
+  have error correction set.  Actually, even without error correction
+  it's possible to enable software flow control between modems but it
+  may interfere with sending binary data so it's not often used.
+
+
+  2.9.  Data Flow Path; Buffers
+
+  Although much has been explained about this including flow control, a
+  pair of 16-byte serial port buffers (in the hardware), and a pair of
+  larger buffers inside the modem, there is still another pair of
+  buffers.  These are large buffers (perhaps 8k) in main memory also
+  known as serial port buffers.  When an application program sends bytes
+  to the serial port (and modem), they first get stashed in the the
+  transmit serial port buffer in main memory.  The pair consists of both
+  this transmit buffer and a receive buffer for the opposite direction
+  of byte-flow.
+
+  The serial device driver takes out say 16 bytes from this transmit
+  buffer, one byte at a time and puts them into the 16-byte transmit
+  buffer in the serial hardware for transmission.  Once in that transmit
+  buffer, there is no way to stop them from being transmitted.  They are
+  then transmitted to the modem which also has a fair sized (say 1k)
+  buffer.  When the device driver (on orders from flow control) stops
+  the flow of outgoing bytes from the computer, what it actually stops
+  is the flow of outgoing bytes from the large transmit buffer in main
+  memory.  Even after this has happened and the flow to the modem has
+  stopped, an application program may keep sending bytes to the 8k
+  transmit buffer until it becomes fill.  When it gets fill, the
+  application program can't send any more bytes to it (a "write"
+  statement in a C_program blocks) and the application program
+  temporarily stops running and waits until some buffer space becomes
+  available.  Thus a flow control "stop" is ultimately able to stop the
+  program that is sending the bytes.  Even though this program stops,
+  the computer does not necessarily stop computing.  It may switch to
+  running other processes while it's waiting at a flow control stop.
+  The above was a little oversimplified since there is another
+  alternative of having the application program itself do something else
+  while it is waiting to "write".
+
+
+  2.10.  Complex Flow Control Example
+
+  For many situations, there is a transmit path involving several links,
+  each with its own flow control.  For example, I type at a text-
+  terminal connected to a PC.  Inside the PC is a modem to access a BBS.
+  For this I use the application program "minicom" which deals with 2
+  serial ports: one connected to the modem and another connected to the
+  text-terminal.  What I type at the text terminal goes into the first
+  serial port to minicom, then from minicom out the second serial port
+  to the modem, and then onto the telephone line to the BBS.  The text-
+  terminal has a limit to the speed at which bytes can be displayed on
+  its screen and issues a flow control "stop" from time to time to slow
+  down the flow.  What happens when such a "stop" is issued?  Let's
+  consider a case where the "stop" is long enough to get thru to the BBS
+  and stop the program at the BBS which is sending out the bytes.
+
+  Let's trace out the flow of this "stop" (which may be "hardware" on
+  some links and "software" on others).  First, suppose I'm "capturing"
+  a long file from the BBS which is being sent simultaneously to both my
+  text-terminal and a to file on my hard-disk.  The bytes are coming in
+  faster than the terminal can handle them so it sends a "stop" out its
+  serial port to the first serial port on my PC.  The device driver
+  detects it and stops sending bytes from the 8k serial buffer (in main
+  memory) to the terminal.  Now minicom still keeps sending out bytes
+  for the terminal into this 8k buffer.
+
+  When this 8k transmit buffer (on the first serial port) is full,
+  minicom must stop writing to it.  Minicom stops and waits.  But this
+  also causes minicom to stop reading from the 8k receive buffer on the
+  2nd serial port connected to the modem.  Flow from the modem continues
+  until this 8k buffer too fills up and sends a different "stop" to the
+  modem.  Now the modem's buffer ceases to send to the serial port and
+  also fills up.  The modem (assuming error correction is enabled) sends
+  a "stop signal" to the other modem at the BBS.  This modem stops
+  sending bytes out of its buffer and when its buffer gets fill, another
+  stop signal is sent to the serial port of the BBS.  At the BBS, the
+  8-k (or whatever) buffer fills up and the program at the BBS can't
+  write to it anymore and thus temporarily halts.
+
+  Thus a stop signal from a text terminal has halted a programs on a BBS
+  computer.  What a Rube Goldberg (complex) sequence of events!  Note
+  that the stop signal passed thru 4 serial ports, 2 modems, and one
+  application program (minicom).  This counts the serial port attached
+  to the terminal.  Each serial port has 2 buffers (in one direction of
+  flow): the 8k one and the hardware 16-byte one.  The application
+  program may have a buffer in main memory as specified in its C-code.
+  This adds up to 11 different buffers the data is passing thru.  Note
+  that the small serial hardware buffers do not participate directly in
+  flow control.
+
+  If the terminal speed limitation is the bottleneck in the flow from
+  the BBS to the terminal, then its flow control "stop" is actually
+  stopping the program that is sending from the BBS as explained above.
+  But you may ask, how can a "stop" last so long that 11 buffers (some
+  of them large) all get filled up?   It can actually happen this way if
+  all the buffers were near their upper limits when the terminal sent
+  out the "stop".
+
+  But if you were to run a simulation on it you would discover that it's
+  usually more complicated than this.  At an instant of time some links
+  are flowing and others are stopped (due to flow control).  A "stop"
+  from the terminal seldom propagates back to the BBS neatly as
+  described above.  It may take a few "stops" from the terminal to
+  result in a "stop" at the BBS.  To understand what is going on you
+  really need to observe a simulation which can be done for a simple
+  case with coins on a table.  Use only a few buffers and set the upper
+  level for each buffer at only a few coins.
+
+  Does one really need to understand all this?  Well, understanding this
+  explained to me why capturing text from a BBS was loosing text.  The
+  situation was exactly the above example but modem-to-modem flow
+  control was disabled.  Chunks of captured text that were supposed to
+  get to the hard-disk never got there because of an overflow (overrun)
+  at the modem buffer due to flow control "stops" from the terminal.
+  Even though the BBS had a flow path to the hard-disk without
+  bottlenecks, the overflow due to the terminal happened on this path
+  and chunks of text were lost.
+
+
+  2.11.  Modem Commands
+
+  Commands to the modem are sent to it from the communication software
+  over the same conductor as used to send data.  The commands are short
+  ASCII strings.  Examples are "AT&K3" for enabling hardware flow
+  control (RTS/CTS) between your computer and modem; and "ATDT5393401
+  for Dialing the number 5393401.  Note all commands are prefaced by
+  "AT".   Some commands such as enabling flow control help configure the
+  modem.  Other commands such as dialing a number actually do something.
+  There are about a hundred or so different possible commands.  When
+  your communication software starts running, it first sends an "init"
+  string of commands to the modem to configure it.  All commands are
+  sent on the ordinary data line before the modem dials (or receives a
+  call).
+
+  Once the modem is connected to another modem (on-line mode),
+  everything that is sent from your computer to your modem goes directly
+  to the other modem and is not interpreted by the modem as a command.
+  There is a way to "escape" from this mode of operation and go back to
+  command mode where everything sent to the modem will be interpreted as
+  a command.  The computer just sends "+++" with a specified time
+  spacing before and after it.  If this time spacing is correct, the
+  modem reverts to command mode.  Another way to do this is by a signal
+  on a certain modem control line.
+  There are a number of lists of modem commands on the Internet.  The
+  section ``Web Sites'' has links to a couple of such web-sites.
+  Different models and brands of modems do not use exactly the same set
+  of such commands.  So what works for one modem might not work for
+  another.  Some common command (not guaranteed to work on all modems)
+  are listed in this HOWTO in the section ``Modem Configuration''
+
+
+  3.  Configuring Modems (including the serial port)
+
+  If you want to use a modem only for MS Windows/Dos, then you can just
+  install almost any modem and it will work OK.  With a Linux PC it's
+  not usually this easy unless you use an external modem.  All external
+  modems should work OK (even if they are labeled "Plug and Play")  But
+  most new internal modems are Plug-and-Play (PnP) and have PnP serial
+  ports.  You may need to use the Linux "isapnp" program to configure
+  these PnP serial ports.  See the Plug-and-Play-HOWTO for more
+  information.
+
+
+  3.1.  Configuring Overview
+
+  Since each modem has an associated serial port there are two parts to
+  configuring a modem:
+
+
+  ·  Configuring the modem itself: Done by the communication program
+
+  ·  Configuring the modem's serial port: Done only partly by the
+     communication program
+
+  Most of the above configuring (but not necessarily most of the effort)
+  is done by the communication program that you use with the modem such
+  as minicom or seyon, or by the PPP part of your Web Browser.  If you
+  use the modem for dial-in, then the getty program which you use to
+  present outsiders with a login-prompt, will help configure.  Thus to
+  configure the modem (and much of the serial port) you need to
+  configure the communication program (or PPP or getty).  The
+  documentation for these programs and/or the PPP-HOWTO should be
+  helpful.
+
+  But note that not all of the configuration of the serial port is done
+  by the communication program (or getty).  The remaining configuring is
+  simple to state (but sometimes difficult to do).  It mainly consists
+  of setting the I/O address of the port and its IRQ number.  In fact,
+  plug-and-play could set these without you doing a thing.  But there's
+  a serious problem: Linux (as of early 1999) doesn't support plug-and-
+  play very well.  This may create a difficult problem for you.
+
+
+  3.2.  Configuring the IRQ and IO-Address of the Serial Port
+
+  Prior to firing up (and configuring) your communication program, you
+  must do the configuring that your communication program can't do.
+  Oversimplified, this consists only of identifying the serial port on
+  which the modem resides:  Is it ttyS2 (=COM3) or ttyS1 (=COM2) etc.?
+  If you know the answer for sure (and there are no IRQ conflicts), then
+  there is nothing to do and you may start your communication program .
+
+  Otherwise, you must establish the serial port identification and
+  assign it an IRQ number.  This is done by putting two values (an IRQ
+  number and I/O address) into two places:
+
+  1. A memory register of the serial port hardware itself
+
+
+  2. the device driver (often by running "setserial" at boot-time)
+
+  Both of the above are supposed to by done by a plug-and-play operating
+  system (OS).  For item 1. setting these numbers in a modem card (or
+  for the serial port in the case of an external modem) was formerly
+  done by jumpers.  Today it's supposed to be done at boot-time by plug-
+  and-play (PnP).
+
+  For item 2. if you accept the default settings there is no need to use
+  setserial.  But if you use "setserial" the IRQ and IO address you tell
+  it must be exactly the same as what is set inside the serial port
+  hardware (or will be set via PnP).  We might call all of this "io-irq"
+  configuring for short.  In the Wintel world, the I/O address and IRQ
+  are called "resources" and we are thus configuring certain resources.
+
+
+  3.2.1.  Plug-and-Play
+
+  Plug-and-Play was designed to automate this io-irq configuring, but
+  for Linux at present, it has made life more complicated.  The standard
+  kernels for Linux don't support plug-and-play very well.  If you use a
+  patch to the Linux kernel to covert it to a plug-and-play operating
+  system, then all of the above should be handled automatically by the
+  OS.  But when you want to use this to automate configuring devices
+  other that the serial port, you may find that you'll still have to
+  configure the drivers manually since many Linux drivers are not
+  written to support a Linux PnP OS.  If you use isapnptools or the BIOS
+  for configuring plug-and-play this will only put the two values into
+  the registers of the serial port section of the modem card and you
+  will likely still need to set up setserial.  None of this is easy or
+  very well documented as of early 1999.  See Plug-and-Play-HOWTO and
+  the isapnptools FAQ.
+
+
+  3.2.2.  Using a PnP BIOS to I0-IRQ Configure
+
+  While the explanation of how to use a PnP OS or isapnp for io-irq
+  configuring should come with such software, this is not the case if
+  you want to let a PnP BIOS do such configuring.  The BIOS usually has
+  a CMOS menu for setting up the first two serial ports.  There is often
+  little to choose from.  Unless otherwise indicated in menus, the
+  standard I/O addresses and IRQ's should be used by the BIOS.  See
+  ``Serial Port Device Names & Numbers''
+
+  Whether you like it or not, when you start up a PC the PnP BIOS starts
+  to do PnP (io-irq) configuring of hardware devices.  It may do the job
+  partially and turn the rest over to a PnP OS (which you don't have) or
+  if thinks you don't have a PnP OS it may fully configure all the PnP
+  devices but not configure the device drivers.  This is what you want
+  but it's not always easy to figure out exactly what the PnP BIOS has
+  done.
+
+  If you tell the BIOS that you don't have a PnP OS, then the PnP BIOS
+  should do the configuring of all PnP serial ports --not just the first
+  two.  If you have MS Windows on the same PC, the BIOS should have
+  saved the io-irq configuration used for MS Windows in its non-volatile
+  memory and use the same configuration for Linux.  In this case if you
+  can find out how MS Windows has set up io-irq then it should be the
+  same under Linux.
+
+  If you add a new PnP device, the BIOS should change its PnP
+  configuration to accommodate it.  It could even change the io-irq of
+  existing devices if required to avoid any conflicts.  For this
+  purpose, it keeps a list of non-PnP devices provided that you have
+  told the BIOS how these non-PnP devices are io-irq configured.  One
+  way to tell the BIOS this is by running a program called ICU under MS
+  Windows.
+
+  But how do you find out what the BIOS has done so that you set up the
+  device drivers with this info?  It would be nice the the BIOS's CMOS
+  menus provided this info but they probably don't (except for COM1 and
+  COM2).  So it may be quite a hassle to find out.  See ``What is set in
+  my serial port hardware?''
+
+  3.2.3.  External Modem Configure
+
+  If you use an external modem and plug it into say the ttyS1 connector,
+  then there's (usually) no io-irq configuring to do since ttyS1 has
+  likely already been io-irq configured.  Your CMOS BIOS may have a menu
+  to do this for COM1 and COM2.
+
+
+  3.2.4.  If More Than 2 Serial Ports
+
+  Normally you don't need to configure the first two serial ports that
+  your computer comes with since the default configuration works fine.
+  The Linux distribution you get probably has these defaults built into
+  it so you have nothing to do.  Everything is different when you want
+  to add a third serial port.  The io-irq configuring of it uses the
+  same principles as for the first two serial ports but this time
+  (unless you use a plug-and-play operating system) you have to do it
+  yourself.  To do this (as already mentioned) you'll need to run
+  setserial: ``What is Setserial'' and also set the io-irq data into the
+  modem card by PnP methods (or by physical jumpers or switches on old
+  cards).
+
+
+  3.2.5.  Methods for Setting I/O Addresses and IRQs
+
+  Here's a summary of what was just discussed (and more).  The modem is
+  entirely configured by sending commands to it from the computer (via
+  the communication program) as is much of the serial port (such as the
+  baud rate and hardware flow control).  For more details on the PnP
+  options see Plug-and-Play-HOWTO.  You configure the io-irq of the
+  serial port by:
+
+
+  1. Setting the IRQ number and the I/O address in the port hardware
+     (io-irq) by doing one of the following:
+
+  ·  Doing nothing for an external modem where the existing io-irq is OK
+
+  ·  Using a PnP BIOS CMOS setup menu for an external modem (usually
+     only for ttyS0 (Com1) and ttyS1 (Com2))
+
+  ·  Doing nothing if you have both a PnP internal modem and a PnP Linux
+     operating system.
+
+  ·  Setting jumpers (if they exist) on an internal modem, old serial
+     card, or old motherboard
+
+  ·  Using isapnp for a PnP internal modem (non-PCI)
+
+  ·  Letting a PnP BIOS automatically configure a PnP internal modem
+     (but it may be difficult to determine just what that configuration
+     is).  See ``Using a PnP BIOS to I0-IRQ Configure''
+
+  ·  Using a setup program which comes with the modem (run under MS
+     Windows) that disables PnP
+
+  2. Run "setserial": Assigns say ttyS2 to an I/O address and IRQ
+     number.  Except that you probably don't need to run it if you have
+     only 1 or 2 serial ports total or if you use a PnP operating
+     system.
+
+
+  3.2.6.  Avoiding I/O Address Conflicts of IBM 8514 Video Board
+
+  The I/O address of the IBM 8514 video board (and it's clones) is
+  allegedly 0x2e8, the same as the I/O address of ttyS3.  That is bad
+  news if you try to use ttyS3 at this I/O address.
+
+
+  3.3.  What is the current I/O address and IRQ of my Serial Port ?
+
+  There are two answers to this question: 1. What the device driver
+  thinks has been set (This is what setserial "sets").  2. What is
+  actually set in the hardware.  They both should be the same.  If
+  you're having trouble (including communication programs that can't
+  communicate) it may mean that these two items are not set the same.
+  In other words, this means that the driver has incorrect info on the
+  serial port.  If the driver has the wrong I/O address it will try to
+  send data to a non-existing serial port --or even worse, to an actual
+  device that is not a serial port.  If it has the wrong IRQ it will not
+  get interrupt service requests from the serial port, resulting in the
+  possible overflow of the serial port's buffer and in very slow
+  response (due to fallback to very slow "polling" methods instead of
+  interrupts).  If it has the wrong model of UART there is also apt to
+  be trouble.
+
+
+  3.3.1.  What does the device driver think?
+
+  How do you insure that the device driver has the correct info?  Well,
+  if everything seems OK then there's no need to look into this.  But
+  otherwise, it's easy to see what the device driver thinks.  One way is
+  to just type "setserial -g /dev/ttyS*".  At boot-time, a message on
+  the console should show this.  You may look at /proc/ioports but it
+  only shows the same I/O address which setserial has "set" but are not
+  necessarily the way its actually set in the hardware.  To see the IRQs
+  used by currently running processes (that have devices open) look at
+  /proc/interrupts.  It also shows how many actual interrupts have been
+  issued (often thousands).  None of the above tests show what is
+  actually set in the device.  But if everything works fine, the devices
+  are likely actually set up that way in the hardware.
+
+
+  3.3.2.  What is set in my serial port hardware?
+
+  But how do you find out what I/O address and IRQ are actually set in
+  the device hardware?  For Plug-and-Play (PnP) modems (or PnP serial
+  ports) on the ISA bus one may try the pnpdump program (part of
+  isapnptools).  If you use the --dumpregs option then it should tell
+  you the actual I/O address and IRQ set in the modem card.  The address
+  it "trys" is not the device's I/O address, but a special read-port
+  used only for PnP purposes.
+
+  For an older card, the jumper setting may tell you how its set.  If
+  the modem is PCI look at /proc/pci or /proc/bus/pci/devices.  One
+  crude method is try probing with setserial using the "autoconfig"
+  option.  You'll need to guess the addresses to probe at.  See ``What
+  is Setserial''.
+
+  Another approach is to see how it's configured under MS-Windows (if
+  you have it on the same machine).  How it's configured under MS-
+  Windows may not be the same as for Linux, but it's likely the same if
+  you let a PnP BIOS automatically do the configuring when you start
+  Linux (and have told the BIOS that you don't have a PnP operating
+  system when running Linux).
+
+
+  3.4.  Other Configuring
+
+  3.4.1.  Configuring Hardware Flow Control (RTS/CTS)
+
+  See ``Flow Control'' for an explanation of it.  You should always use
+  hardware flow control if possible.  Your communication program or
+  "getty" should have an option for setting it (and if you're in luck it
+  might be enabled by default).  It needs to be set both inside your
+  modem (by an init string or default) and in the device driver.  Your
+  communication program should set both of these (if you configure it
+  right).
+
+  If none of the above will fully enable hardware flow control.  Then
+  you must do it yourself.  For the modem, make sure that it's either
+  done by the init string or is on by default.  If you need to tell the
+  device driver to do it is best done on startup by putting a file that
+  runs at boot-time.  See the subsection ``Boot-time Configuration'' You
+  need to add the following to such a file for each serial port (example
+  is ttyS2) you want to enable hardware flow control on:
+
+
+
+
+       stty crtscts < /dev/ttyS2
+
+
+
+
+  If you want to see if flow control is enabled do the following:  In
+  minicom (or the like) type AT&V to see how the modem is configured and
+  look for &K3 which means hardware flow control.  Then see if the
+  device driver knows about it by typing: stty -a < /dev/ttyS2  Look for
+  "crtscts" (without a disabling minus sign).
+
+
+  3.5.  Modem Configuration (excluding serial port)
+
+  3.5.1.  AT Commands
+
+  While the serial port on which a modem resides requires configuring,
+  so does the modem itself.  The modem is configured by sending AT
+  commands (or the like) to it on the same serial line that is used to
+  send data.
+
+  Most modems use an AT command set.  These are cryptic and short ASCII
+  commands where all command strings are prefaced by the letters AT.
+  For example: ATZ&K3  There are two commands here Z and &K3.
+  Unfortunately there are many different variations of the AT command
+  set so that what works for one modem may or may not work for another
+  modem.  Thus there is no guarantee that the AT commands given in this
+  section will work on your modem.  Another point is that to get the
+  modem to act on the AT command string, a return character must be sent
+  at the end of the string.  Sometimes the AT is prefaced by a return
+  character and sometimes there are symbols added to the string (such as
+   ) which only tell the communication program to pause for a tiny
+  interval of time at that point.
+
+  If you have a manual for your modem you can likely look up the AT
+  command set in it.  Otherwise, you may try to find it on the Internet.
+  One may use a search engine and include some actual commands in the
+  search terms to avoid finding sites that just talk about such commands
+  but fail to list them.  You might also try a few of the sites listed
+  in the subsection ``Web Sites''
+  3.5.2.  The Init String
+
+  The examples given in this subsection are from the Hayes AT modem
+  command set.  All command strings must be prefaced by the two letters
+  AT.  When a modem is powered on, it automatically configures itself
+  with one of the configurations it has stored in its non-volatile
+  memory.  If this configuration is satisfactory there is nothing
+  further to do.
+
+  If it's not satisfactory, then one may either alter it or reconfigure
+  the modem by sending it a string of commands known as an "init string"
+  (= initialization string).  Most of the time, an init string is
+  automatically sent to the modem when you start up a communication
+  program (will depend on how you configured the program or what script
+  you wrote for it if you use Kermit).  You can usually edit the init
+  string and change it to whatever you want.  Sometimes the
+  communications program will let you select the model of your modem and
+  then use an init string that it thinks is best for that modem.
+
+  So there is both a default "string" (called a profile) stored inside
+  the modem and another (the init string) that the communications
+  program sends it.  The modem will wind up configured like the default
+  set it except that it will be modified by the commands included in the
+  init string.  If the init string is empty then it will of course use
+  the default configuration.
+
+  Actually there is more than one "default" configuration (or profile)
+  stored in the modem's non-volatile memory (it's still there when you
+  turn it off).  In my modem there are two factory profiles (0 and 1,
+  neither of which can be changed) and two user defined profiles (0 and
+  1) that the user may set and store.  Your modem may have more.  Which
+  one of these user-defined profiles is used at power-up depends on
+  another item stored in the profile.  If the command &Y0 is given then
+  in the future profile 0 will be used at power-on.  If it's a 1 instead
+  of a 0 then profile 1 will be used at power-on.
+
+  There are also commands to recall (use it now) any of the 4 stored
+  profiles.  One may put such a command in an init string.  Of course if
+  it recalls the same profile as was automatically loaded at power-up,
+  nothing is changed (unless the init string is sent after the modem has
+  been in use for a while and had it's configuration changed by
+  software, etc.) It's a good idea to use some kind of an init string so
+  that it may be reset by sending it the init string after it's been in
+  use for a while (and may have had it's initial configuration
+  modified).
+
+  Recalling a saved profile (use 1 instead of 0 for profile 1):
+  Z0 recalls user-defined profile 0 and resets (hangs up, etc.)
+  &F0 recalls factory profile 0
+
+  Once you have sent commands to the modem to configure it the way you
+  want (including recalling a factory profile and modifying it a little)
+  you may save this as a user-defined profile:
+  &W0 saves the current configuration to user-profile 0
+
+  Many people don't bother saving a good configuration in their modem,
+  but instead, send the modem a longer init string each time the modem
+  is used.  Another method is to restore the factory default at the
+  start of the init string and then modify it a little by adding a few
+  other commands to the end of the init string.  This way no one can
+  cause problems by modifying the user-defined profile which is loaded
+  at power-on.
+
+  You may pick an init string supplied by someone else that they think
+  is right for your modem.  Some communication programs have a library
+  of init strings to select from.  The most difficult method (and one
+  which will teach you the most about modems) is to study the modem
+  manual and write one yourself.  You could save this configuration
+  inside the modem so that you don't need an init string.  A third
+  alternative is to start with an init string someone else wrote, but
+  improve on it a little yourself.
+
+
+  3.5.3.  Other Modem Commands
+
+  Future editions of Modem-HOWTO may contain more AT commands but the
+  rest of this section is what was in the old Serial-HOWTO.  All strings
+  must start with AT.  Here's a few Hayes AT codes that should be in the
+  string (if they are not set by using a factory default or by a saved
+  configuration).
+
+
+
+       E1       command echo ON
+       Q0       result codes are reported
+       V1       verbose ON
+       S0=0     never answer (uugetty does this with the WAITFOR option)
+
+
+
+
+  Here's some more codes concerning modem control lines DCD and DSR:
+
+
+       &C1     DCD is on after connect only
+       &S0     DSR is always on
+
+
+
+
+  These affect what your modem does when calls start and end.  What DTR
+  does may also be set up but it's more complicated.
+
+
+  If your modem does not support a stored profile, you can set these
+  through the INIT string in a config file (or the like).  Some older
+  modems come with DIP switches that affect register settings.  Be sure
+  these are set correctly, too.
+
+
+  Greg Hankins has a collection of modem setups for different types of
+  modems.  If you would like to send him your working configuration,
+  please do so:  <mailto:gregh@cc.gatech.edu> You can get these setups
+  at ftp://ftp.cc.gatech.edu/pub/people/gregh/modem-configs.
+
+
+  Note: to get his USR Courier V.34 modem to reset correctly when DTR
+  drops, Greg Hankins had to set &D2 and S13=1 (this sets bit 0 of
+  register S13).  This has been confirmed to work on USR Sportster V.34
+  modems as well.
+
+
+  Note: some Supra modems treat DCD differently than other modems.  If
+  you are using a Supra, try setting &C0 and not &C1.  You must also set
+  &D2 to handle DTR correctly.
+
+
+  4.  Modems for a Linux PC
+
+
+
+
+  4.1.  External vs. Internal
+
+  A modem for a PC may be either internal or external.  The internal one
+  is installed inside of your PC (you must remove screws, etc. to
+  install it) and the external one just plugs into a serial port
+  connector on a PC.  Internal modems are less expensive, are less
+  likely to overrun, usually use less electricity, and use up no space
+  on your desk.  External modems are much easier to install, require
+  less configuration, and have lights which may give you a clue as to
+  what is happening.  External modems are easy to move to another
+  computer.  Most external modems have no switch to turn off the power
+  supply when not in use and thus are likely to consume a little
+  electricity even when turned off (unless you unplug the power supply
+  from the wall).  Each watt they draw costs you about $1/yr.  Another
+  possible disadvantage of an external is that you will be forced to use
+  an existing serial port which may not support a speed of over 115,200
+  k (although as of late 1998 most new internal modems don't either
+  --but some do).  If a new internal modem had a 16650 UART it would put
+  less load on the CPU (but almost none do as of late 1998).
+
+  Internal modems present a special problem for Linux, but will work
+  just as well as external modems provided you avoid the high percentage
+  of them that will work only for MS Windows, and also provided that you
+  spend time (sometimes a lot of time) to configure them correctly.
+  Some of the modems which will work only under MS Windows are,
+  unfortunately, not labeled as such.  If you buy a new one, make sure
+  that you can return it for a refund if it will not work under Linux.
+
+  While most new modems are plug-and-play you have various ways to deal
+  with them:
+
+  ·  Use the "isapnp" program
+
+  ·  Have a PnP BIOS do the configuring
+
+  ·  Patch the kernel to create a PnP Linux
+
+     Each of the above has shortcomings.  Isapnp documentation is
+     difficult to understand although reading the Plug-and-Play-HOWTO
+     (at present incomplete) will aid in understanding it.  If you want
+     the PnP BIOS to do the configuring, all you need to do is to make
+     sure that it knows you don't have a PnP operating system.  But you
+     may have trouble trying to determine how it set things up.  See
+     ``What is set in my serial port hardware?''.   Patching the kernel
+     can be complicated too.  There are a lot of device drivers that
+     don't cooperate with the patch (so you will need to manually
+     configure them).
+
+  There are many Linux users that say that it's a lot simpler just to
+  get an external modem and plug it in.  But since new peripherals are
+  all PnP today, you may eventually need to deal with it, so why not
+  now?  It may be easier to deal with PnP under Linux in the future but
+  pioneers are needed to lead the way today in spite of the old adage
+  that "Pioneering doesn't pay".
+
+
+  4.2.  External Modems
+
+  4.2.1.  PnP External Modems
+
+  Many external modems are labeled "Plug and Play" (PnP) but they should
+  all work fine as non-PnP modems.  Since you usually plug the modem
+  into a serial port which has its own IRQ number and I/O address, the
+  modem needs no PnP features to set these up.  However, the serial port
+  itself may need to be configured (IRQ number and I/O address) unless
+  the default configuration is OK.
+  How can an external modem be called PnP since it can't be configured
+  by PnP?   Well, it has a special PnP identification built into it that
+  can be read (thru the serial port) by a PnP operating system.  Such an
+  operating system would then know that you have a modem on a certain
+  port and would also know the model number.  Then you might not need to
+  configure application programs by telling them what port the modem is
+  on (such as /dev/ttyS2 or COM3).  But if you don't have such a PnP
+  operating system you will need to configure your application program
+  manually by giving it the /dev id (such as /dev/ttyS2).
+
+
+  4.2.2.  Cabling & Installation
+
+  Connecting an external modem is simple compared to connecting most
+  other devices to a serial port that require various types of "null
+  modem" cables.  Modems use straight through cable, with no pins
+  crossed over.  Most computer stores should have these.  Make sure you
+  get the correct gender.  If you are using the DB9 or DB25 serial port
+  at your computer, it will always be male which means that the
+  connector on the cable should be female.  Hook up your modem to one of
+  your serial ports.  If you are willing to accept the default IRQ and
+  I/O address of the port you connect it to, then you are ready to start
+  your communication program and configure the modem itself.
+
+
+  4.2.3.  What the Lights (LED's) Mean
+
+
+  ·  TM Test Modem
+
+  ·  AA Auto Answer (If on, your modem will answer an incoming call)
+
+  ·  RD Receive Data line = RxD
+
+  ·  SD Send Data line = TxD
+
+  ·  TR data Terminal Ready = DTR (set by your PC)
+
+  ·  RI Ring Indicator (If on, someone is "ringing" your modem)
+
+  ·  OH Off Hook (If off, your modem has hung up the phone line)
+
+  ·  MR Modem Ready = DSR ??
+
+  ·  EC Error Correction
+
+  ·  DC Data Compression
+
+  ·  HS High Speed (for this modem)
+
+
+  4.3.  Internal Modems
+
+  An internal modem is installed in a PC by taking off the cover of the
+  PC and inserting the modem card into a vacant slot on the motherboard.
+  There are modems for the ISA slots and others for the PCI slots.
+  While external modems plug into the serial port (via a short cable)
+  the internal modems have the serial port built into the modem.  In
+  other words, the modem card is both a serial port and a modem.
+
+  Setting the I/O address and IRQ for a serial port was formerly done by
+  jumpers on the card.  These are little black rectangular "cubes" about
+  5x4x2 mm in size which push in over pins on the card.  Plug-and-Play
+  modems (actually the serial port part of the modems) don't use jumpers
+  for setting these but instead are configured by sending configuration
+  commands to them (via I/O address space on the ISA bus inside the
+  computer).  Such configuration commands can be sent by a PnP BIOS, the
+  isapnp program (for the ISA bus only) or by a PnP operating system.
+  The configuring of them is built into Windows 95/98 OS.  Under Linux
+  you have a choice of ways (none of which is always easy) to io-irq
+  configure them:
+
+
+  1. Use "isapnp" which may be run automatically at every boot-time
+
+  2. Use a PnP BIOS alone (which runs at every boot-time)
+
+  3. Patch Linux to make it a PnP operating system
+
+
+  4.4.  Internal Modems You Must Avoid (winmodems, etc.)
+
+  A majority of internal modems made after about mid-1998 don't work
+  with Linux since they are "winmodems" or the like.   Names used
+  include: HSP, HCF, and soft-... modem.  Such modems turn over much (or
+  even almost all) of the work of the modem to the main processor (CPU)
+  chip of your computer (such as a Pentium chip).  Since only Windows
+  (and not Linux) software is provided to do this, it will not work
+  under Linux.  A list of modems which do and don't work under Linux is
+  at Linux modem list <http://www.o2.net/~gromitkc/winmodem.html>
+
+  A better term for "winmodem" might be "software modem" or "soft-
+  modem".  But since this software is only for MS Windows, the term
+  "winmodem" is now a good one since it also implies it's "Windows-
+  only".   The term "Winmodem" is a trademark for a certain type of
+  "winmodem".  Here is some more precise terminology regarding
+  "winmodems":
+
+  HSP (Host Signal Processor) means that the host processor (your CPU
+  chip) creates the code needed to produce the electrical signal on the
+  phone line.  The modem itself just creates whatever electrical
+  waveshape the CPU tells it to.  In contrast to this, a
+  "controllerless" modem can create the waveshapes on its own (but can't
+  control the modem).  It contains no facilities to deal with bytes
+  being sent and received.  It can't compress strings of bytes; it can't
+  check for errors; it can't put them into packets.  In other words it
+  can't control the modem but instead has the CPU do all this work using
+  a program for Windows.  The Rockwell HCF (stands for ??) scheme does
+  this.  If the software that does all this could be ported to Linux and
+  then there wouldn't be this problem.  Besides the above, a modem which
+  doesn't simulate a serial port will not work under Linux.
+
+  How do you determine if an internal modem will work under Linux?  If
+  you don't know the model of the modem and you also have Windows on
+  your Linux PC, click on the "Modem" icon in the "Control Panel".
+  First check out the modem list on the Web mentioned 3 paragraphs
+  above.  If that doesn't work (or isn't feasible),  you can look at the
+  package it came in (or a manual) find the section on the package that
+  says something like "Minimum System Requirements" or just "System
+  Requirements".  It may be in fine print.  Read it closely.  If Windows
+  is listed as one of the requirements then it will likely not work
+  under Linux.
+
+  Otherwise, it may work under Linux if it fails to state explicitly
+  that you must have Windows.  By saying it's "designed for Windows" it
+  may only mean that it fully supports Microsoft's plug-and-play which
+  is OK since Linux uses the same plug-and-play specs (but doesn't
+  support them very well as yet).  Being "designed for Windows" thus
+  gives no clue as to whether or not it will work under Linux.  You
+  might check the Website of the manufacturer or inquire via email.  I
+  once saw a web-page that specifically stated that one model worked
+  under Linux while implying that another model didn't.
+  As far as the author knows, there is no effort currently underway to
+  support winmodems in Linux.  You might request that modem
+  manufacturers port their code to Linux (or the like).
+
+
+  4.5.  Which Internal Modems are Best to Avoid ?
+
+
+
+  ·  ``Avoid: winmodems'' or the like.  They will NOT work at all
+
+  ·  ``PCI Modems'' often don't work under Linux
+
+  ·  ``MWave and DSP Modems'' might work, but only if you first start
+     Windows/Dos each time you power on your PC
+
+  ·  Modems with ``RPI (Rockwell)'' drivers work but with reduced
+     performance
+
+
+  4.5.1.  MWave and DSP Modems
+
+  Such modems use DSP's (Digital Signal Processors) which are programmed
+  by algorithms which must be downloaded from the hard disk to the DSP's
+  memory just before using the modem.  Unfortunately, the downloading is
+  done by Dos/Windows programs so one can't do it from Linux.  Ordinary
+  modems that work with Linux often have a DSP too (and may mention this
+  on the packaging), but the program that runs it is stored inside the
+  modem.  This is not a "DSP modem" in the sense of this section and
+  should work OK under Linux.
+
+  If a DSP modem modem simulates a serial port, then it is usable with
+  Linux which communicates with modems via the serial port.  If you also
+  have Dos/Windows on the same PC you may be able to use the modem:
+  First start Dos/Windows (make sure the modem gets initialized) and
+  then without turning off the computer, go into Linux.  One way to do
+  this may be to press CTRL-ALT-DEL.  An example of a DSP modem is IBM's
+  Aptiva MWAVE.
+
+
+  4.5.2.  Rockwell (RPI) Drivers
+
+  Modems that require Rockwell RPI drivers are not fully usable since
+  the driver software doesn't work on Linux.  The RPI does compression
+  and error correction using MS Windows software on your computer's CPU.
+  If you are willing to operate the modem without using the RPI (and
+  have no compression nor error correction) then you may easily disable
+  RPI by sending the modem (via the initialization string) a command to
+  do so each time you power on your modem.  On my modem this command is
+  +H0.  Not having data compression available may not be much of a
+  handicap since most long files which you download from the Internet
+  are already compressed and attempts at further compression may only
+  slow things down a bit.
+
+
+  4.5.3.  PCI Modems
+
+  A PCI modem card is one which inserts into a PCI-bus slot on the
+  motherboard of a PC.  Unfortunately, it seems that most PCI modems
+  will not work under Linux.  But since some people have gotten PCI
+  modems to work under Linux it seems that a small minority of such
+  modems will work under Linux.
+
+  After you install a PCI modem, look at /proc/pci.   If you see a high
+  main memory address (like 0xfebfff00), it probably works by shared
+  memory which is not supported by Linux.  If there is no such high
+  memory address and the only address you see is an I/O address under
+  0xffff ??, then it might work OK.  I'm not really sure of the
+  /proc/pci signature to look for to determine whether or not the modem
+  will work under Linux.  If this request is still in the latest version
+  of this HOWTO, please send me info on what /proc/pci looks like for
+  PCI modems that work under Linux or let me know what signatures to
+  look for in /proc/pci to determine whether or not the modem will work
+  with Linux.
+
+
+  5.  Serial Port Devices /dev/ttySN
+
+  5.1.  Serial Port Device Names & Numbers
+
+  Devices in Linux have major and minor numbers.  Each serial port may
+  have 4 possible names, only 2 of which are official and found in the
+  /dev directory: ttyS and cua.   The cua name is deprecated and may not
+  be used in the future.  See ``The cua Device''.  Dos/Windows use the
+  COM name while the setserial program uses tty00, tty01, etc.  Don't
+  confuse dev/tty0, dev/tty1, etc. which are used for the console (your
+  PC monitor) but are not serial ports.
+
+
+
+              set-                                              I/O
+       dos   serial          major minor         major minor  address
+       COM1  tty00  /dev/ttyS0  4,  64;  /dev/cua0  5,  64      3F8
+       COM2  tty01  /dev/ttyS1  4,  65;  /dev/cua1  5,  65      2F8
+       COM3  tty02  /dev/ttyS2  4,  66;  /dev/cua2  5,  66      3E8
+       COM4  tty03  /dev/ttyS3  4,  67;  /dev/cua3  5,  67      2E8
+
+
+
+
+  Note that all distributions should come with ttyS devices (and cua
+  devices until cua is finally abolished) already made correctly.  You
+  can verify this by typing:
+
+
+
+       linux% ls -l /dev/cua*
+       linux% ls -l /dev/ttyS*
+
+
+
+
+
+  5.2.  Creating Devices In the /dev directory
+
+  If you don't have a device, you will have to create it with the mknod
+  command.  Example, suppose you needed to create devices for ttyS0:
+
+
+       linux# mknod -m 666 /dev/cua0 c 5 64
+       linux# mknod -m 666 /dev/ttyS0 c 5 64
+
+
+
+
+  You can use the MAKEDEV script, which lives in /dev.  See the man page
+  for it.  This simplifies the making of devices.  For example, if you
+  needed to make the devices for ttyS0 you would type:
+
+
+
+
+  linux# cd /dev
+  linux# ./MAKEDEV ttyS0
+
+
+
+
+  This handles the devices creation and should set the correct permis­
+  sions.
+
+
+  5.3.  Link ttySN to /dev/modem ?
+
+  On some installations, two extra devices will be created, /dev/modem
+  for your modem and /dev/mouse for your mouse.  Both of these are
+  symbolic links to the appropriate device in /dev which you specified
+  during the installation (unless you have a bus mouse, then /dev/mouse
+  will point to the bus mouse device).
+
+  There has been some discussion on the merits of /dev/mouse and
+  /dev/modem.  The use of these links is discouraged.  In particular, if
+  you are planning on using your modem for dialin you may run into
+  problems because the lock files may not work correctly if you use
+  /dev/modem. Use them if you like, but be sure they point to the right
+  device.  However, if you change or remove this link, some applications
+  might need reconfiguration.
+
+
+  5.4.  The cua Device
+
+  Each ttyS device has a corresponding cua device.  It is planned to
+  eventually abolish cua so it's best to use ttyS (unless cua is
+  required).  There is a difference between cua and ttyS but a savvy
+  programmer can make a ttyS port behave just like a cua port so there
+  is no real need for the cua anymore.  Except some older programs may
+  need to use the cua.
+
+  What's the difference?  The  main difference between cua and ttyS has
+  to do with what happens in a C-program when an ordinary "open" command
+  tries to open the port. If a cua port has been set to check modem
+  control signals, the port can be opened even if the DCD modem control
+  signal says not to.  Astute programming (by adding additional lines to
+  the program) can force a ttyS port to behave this way also.  But a cua
+  port can be more easily programmed to open for dialing out on a modem
+  even when the modem fails to assert DCD (since no one has called into
+  it and there's no carrier).  That's why cua was once used for dial-out
+  and ttyS used for dial-in.
+
+  Starting with Linux kernel 2.2, a warning message will be put in the
+  kernel log when one uses cua.  This is an omen that cua will sometime
+  disappear.
+
+
+  6.  Interesting Programs You Should Know About
+
+  6.1.  What is getty?
+
+  "getty" is a program that handles the login process when you log into
+  a Linux box.  You will need to use some type of "getty" if you want
+  others to be able to dial in to your Linux PC with a modem.  You do
+  not need to use getty if you only want to dial out with your modem.
+  There are three getty versions that modems may use with Linux: mgetty,
+  getty_ps, and agetty.  agetty is the simplest (and weakest) of the
+  three and some consider it mainly for text-terminals.  The syntax for
+  these programs differs, so be sure to check that you are using the
+  correct syntax for whatever getty you use.  If this sentence appears
+  in the latest version of this howto, then if you can write a few
+  paragraphs comparing mgetty with getty_ps, etc. please submit it so
+  that it can be included here.  Mgetty is only a few years old and
+  seems to be more popular for new installations than the older
+  getty_ps.
+
+
+  6.1.1.  About mgetty
+
+  mgetty is a version of getty mainly for use with modems.  It may be
+  used for hard-wired terminals but the documentation is about 99%
+  related to modems.  In addition to allowing dialup logins, mgetty also
+  provides FAX support and auto PPP detection.  There is a supplemental
+  program called vgetty which handles voicemail for some modems.  mgetty
+  documentation (supplied in texinfo format) is good, and does not need
+  supplementing.  Please refer to it for installation instructions.  You
+  can find the latest information on mgetty at
+  http://www.leo.org/~doering/mgetty/ and
+  <http://alpha.greenie.net/mgetty>
+
+
+  6.1.2.  About getty_ps
+
+
+  getty_ps  contains two programs: getty is used for console and
+  terminal devices, and uugetty for modems.  Greg Hankins (former author
+  of Serial-HOWTO) used uugetty so his writings about it are included
+  here.  See ``Uugetty''.  The other gettys are well covered by the
+  documentation that comes with them.
+
+
+  6.1.3.  About agetty and mingetty
+
+  agetty is the third variation of getty. It's a simple, completely
+  functional implementation of getty which is best suited for virtual
+  consoles or terminals rather than modems.  But it works fine with
+  modems under favorable conditions.
+
+  mingetty is a small getty that will work only for consoles (monitors).
+  While the previous 3 variations of getty will work for both real
+  terminals and dial-in modems, mingetty will not do this.
+
+
+  6.2.  What is Setserial ?
+
+  6.2.1.  Intro to Setserial
+
+  setserial is a program which allows you to tell the device driver
+  software the I/O address of the serial port, which IRQ is set in the
+  port's hardware, etc.  With appropriate options, it can also probe (at
+  a given I/O address) for a serial port but you must guess the I/O
+  address (or it may use whatever address the driver thinks your
+  /dev/ttySx is at).  Setserial does not set either IRQ's nor I/O
+  addresses in the serial port hardware itself.  You must tell setserial
+  the identical values that have been set in the hardware.  It's set in
+  the hardware either by jumpers or by plug-and-play.  Do not just
+  invent some values that you think would be nice to use.  However, if
+  you know the I/O address but don't know the IRQ you may command
+  setserial to attempt to determine it.
+
+  You can see a list of possible commands to use (but not the one-letter
+  options such as -v for verbose --which you should normally use when
+  troubleshooting) by typing setserial with no arguments.  Note that
+  setserial calls an I/O address a "port".  If the argument to setserial
+  is for example just /dev/ttyS1, then you'll see some info about how
+  that device driver is configured for that port.  But this doesn't tell
+  you if the hardware actually has these values set in it.  If fact, you
+  can run setserial and assign a purely fictitious I/O address, any IRQ,
+  and whatever uart type you would like to have.  Then the next time you
+  type "setserial ..." it will display these bogus values without
+  complaint.  Note that assignments made by setserial are lost when the
+  PC is powered down so it is usually run automatically somewhere each
+  time that Linux is booted.
+
+
+  6.2.2.  Probing
+
+  In order to try to find out if you have a certain piece of serial
+  hardware you must first know its I/O address (or the device driver
+  must have an I/O address for it, likely previously set by setserial).
+  To try to detect the physical hardware use the -v (verbose) and
+  autoconfig command to setserial.  If the resulting message shows a
+  uart type such as 16550A, then you're OK.  If instead it shows
+  "unknown" for the uart type, then there is likely no serial port at
+  all at that I/O address.  Some cheap serial ports don't identify
+  themselves correctly so if you see "unknown" you still might have
+  something there.  See the file in which "setserial" is run at boot-
+  time.  Besides auto-probing for uart type, setserial can auto-probe
+  for IRQ's but this doesn't always work right either.
+
+
+  6.2.3.  Boot-time Configuration
+
+  There is usually a file somewhere that runs setserial at boot-time.
+  If it's not run at boot-time then your Linux system will automatically
+  configure only ttyS{0-3} using the default IRQs of 4 and 3 (with the
+  default IRQ conflicts).  In 1998 it was (temporarily ?) changed to
+  only ttyS{0-1}.  So if you have more than 2 serial ports, or want to
+  have control over how the ports are configured you should configure
+  using setserial.  In fact, your distribution may have set things up so
+  that the setserial program runs automatically at boot-time.
+
+  The file that runs setserial at boot-time is likely somewhere in the
+  /etc directory-tree.  You might use "locate" to find a file named:
+  rc.serial, or 0setserial (Debian), etc.  This supplied file which runs
+  setserial at start-up may contain a number of commented-out examples.
+  By uncommenting some of these and/or modifying them, you may be able
+  to set things up correctly or run some tests.  You could copy a few of
+  them to another file and then execute it as a shell script but don't
+  forget to also copy any capitalized definitions needed such as
+  SETSERIAL=/bin/setserial.
+
+  If you use setserial you could test it on the command line first, and
+  then when you have it working, put it into the file which runs it at
+  boot-time: /etc/rc.d/rc.serial or /etc/rc.boot/0setserial so that it
+  is run at startup.  If those files don't exist try /etc/rc.d/rc.local
+  (someone reported that with one kernel, rc.local was executed too late
+  after the serial port had already been opened).  Or you could just
+  edit one of the above files and cross your fingers.  Make sure that
+  you are using a valid path for setserial, and a valid device name.
+
+
+  6.2.4.  IRQs
+
+  By default, both ttyS0 and ttyS2 share IRQ 4, while ttyS0 and ttyS3
+  share IRQ 3.  But sharing serial interrupts is not permitted unless
+  you have kernel 2.2 or better.  If you don't have this modern kernel
+  but only have two serial ports ttyS0 and ttyS1 you're still OK since
+  IRQ sharing conflicts don't exist for non-existent devices.
+
+  But if you do have more than 2 serial ports, then for kernels < 2.2
+  such sharing may be dangerous if the two devices with the same IRQ are
+  being used at the same time.  If you add an internal modem and retain
+  ttyS0 and ttyS1, then you should attempt to find an unused IRQ and set
+  it both on your modem card (or serial port) and then use setserial to
+  assign it to your device driver.  If IRQ 5 is not being used for a
+  sound card, this may be one you can use for a modem.  To set the IRQ
+  in hardware you may need to use isapnp, a PnP BIOS (See ``Using a PnP
+  BIOS to I0-IRQ Configure'') or patch Linux to make it PnP.  To help
+  you determine which spare IRQ's you might have, type "man setserial"
+  and search for say: "IRQ 11".
+
+
+  6.3.  What is isapnp ?
+
+  isapnp is a program to configure Plug-and-Play (PnP) devices on the
+  ISA bus including internal modems.  It comes in a package called
+  "isapnptools" and includes another program, "pnpdump" which finds all
+  your ISA PnP devices and shows you options for configuring them in a
+  format which may be added to the PnP configuration file:
+  /etc/isapnp.conf.  It may also be used with the --dumpregs option to
+  show the current I/O address and IRQ of the modem's serial port.  The
+  isapnp command may be put into a startup file so that it runs each
+  time you start the computer and thus will configure ISA PnP devices.
+  It is able to do this even if your BIOS doesn't support PnP.  See
+  Plug-and-Play-HOWTO.
+
+
+  7.  Trying Out Your Modem (Dialing Out)
+
+  7.1.  Are You Ready to Dial Out ?
+
+  Once you've plugged in your modem and know which serial port it's on
+  you're ready to try using it.  Before you try to get the Internet on
+  it or have people call in to you, first try something simpler like
+  dialing out to some number to see if your modem is working OK.  Find a
+  phone number that is connected to a modem.  It you don't know what
+  number to call, ask at computer stores for such phone numbers of
+  bulletin boards, etc. or see if a local library has a phone number for
+  their on-line catalog.
+
+  Then make sure you are ready to phone.  Do you know what serial port
+  (such as ttyS2) your modem is on?  You should have found this out when
+  you io-irq configured your serial ports.  Have you decided what speed
+  you are going to use for this port?  See ``Speed Table'' for a quick
+  selection or ``What Speed Should I Use'' for more details.  If you
+  have no idea what speed to set, just set it a few times faster than
+  the advertised speed of your modem.  Also remember that if you see a
+  menu where an option is "hardware flow control" and/or "RTS/CTS" or
+  the like, select it.  Is a live telephone cable plugged in to your
+  modem?  You may want to connect the cable to a real telephone to make
+  sure that it can produce a dial tone.
+
+  Now you need to select a communication (dialing) program to use to
+  dial out.  Dialing programs include: minicom, seyon (X-windows), and
+  kermit.  See section ``Communications Programs'' about some
+  communications programs.  Two examples are presented next: ``Dialing
+  Out with Minicom'' and ``Dialing Out with Kermit''
+
+
+
+  7.2.  Dialing Out with Minicom
+
+  Minicom comes with most Linux distributions.  To configure it you
+  should be the root user.  Type "minicom -s" to configure.  This will
+  take you directly to the configuration (set-up) menus.  Alternatively
+  you could just run "minicom" and then type ^A to see the bottom status
+  line.  This shows to type ^A Z for help (you've already typed the ^A
+  so just type z).  From the help menu go to the Configuration menu.
+  Most of the options don't need to be set for just simply dialing out.
+  To configure you have to supply a few basic items: the name of the
+  serial port your modem is on such as /dev/ttyS2 and the speed such as
+  115200.  These are set at the serial port menu.  Go to it and set
+  them.  Also (if possible) set hardware flow control (RTS/CTS).  Then
+  save them.  When typing in the speed, you should also see something
+  like "8N1" which you should leave alone.  It means: 8-bit bytes, No
+  parity, 1 stop-bit appended to each byte.  If you can't find the speed
+  you want, a lower speed will always work for a test.   Exit (hit
+  return) when done and save the configuration as default (dfl) using
+  the menu.  You may want to exit minicom and start it again so it can
+  now find the serial port and initialize the modem, or you could go to
+  help and tell minicom to initialize the modem.
+
+  Now you are ready to dial.  But first at the main screen you get after
+  you first type "minicom" make sure there's a modem there by typing AT
+  and then hit the "enter/return" key.  It should display OK.  If it
+  doesn't something is wrong and there is no point of trying to dial.
+
+  If you got the "OK" go back to help and select the dialing directory.
+  You may edit it and type in a phone number, etc. into the directory
+  and then select "dial" to dial it.  Alternatively, you may just dial
+  manually (by selecting "manual" and then type the number at the
+  keyboard).  If it doesn't work, carefully note any error messages and
+  try to figure out what went wrong.
+
+
+  7.3.  Dialing Out with Kermit
+
+  You can find the latest version of kermit at
+  http://www.columbia.edu/kermit/.  For example, say your modem was on
+  ttyS3, and it's speed was 115200 bps.  You would do the following:
+
+
+       linux# kermit
+       C-Kermit 6.0.192, 6 Sep 96, for Linux
+        Copyright (C) 1985, 1996,
+         Trustees of Columbia University in the City of New York.
+       Default file-transfer mode is BINARY
+       Type ? or HELP for help.
+       C-Kermit>set line /dev/ttyS3
+       C-Kermit>set carrier-watch off
+       C-Kermit>set speed 115200
+       /dev/ttyS3, 115200 bps
+       C-Kermit>c
+       Connecting to /dev/ttyS3, speed 115200.
+       The escape character is Ctrl-\ (ASCII 28, FS)
+       Type the escape character followed by C to get back,
+       or followed by ? to see other options.
+       ATE1Q0V1                           ; you type this and then the Enter key
+       OK                                 ; modem should respond with this
+
+
+
+
+  If your modem responds to AT commands, you can assume your modem is
+  working correctly on the Linux side.  Now try calling another modem by
+  typing:
+
+
+       ATDT7654321
+
+
+
+
+  where 7654321 is a phone number.  Use ATDP instead of ATDT if you have
+  a pulse line.  If the call goes through, your modem is working.
+
+  To get back to the kermit prompt, hold down the Ctrl key, press the
+  backslash key, then let go of the Ctrl key, then press the C key:
+
+
+       Ctrl-\-C
+       (Back at linux)
+       C-Kermit>quit
+       linux#
+
+
+
+
+  This was just a test using the primitive "by-hand" dialing method.
+  The normal method is to let kermit do the dialing for you with its
+  built-in modem database and automatic dialing features, for example
+  using a US Robotics (USR) modem:
+
+
+       linux# kermit
+       C-Kermit 6.0.192, 6 Sep 1997, for Linux
+        Copyright (C) 1985, 1996,
+         Trustees of Columbia University in the City of New York.
+       Default file-transfer mode is BINARY
+       Type ? or HELP for help
+       C-Kermit>set modem type usr        ; Select modem type
+       C-Kermit>set line /dev/ttyS3       ; Select communication device
+       C-Kermit>set speed 115200          ; Set the dialing speed
+       C-Kermit>dial 7654321              ; Dial
+        Number: 7654321
+        Device=/dev/ttyS3, modem=usr, speed=115200
+        Call completed.<BEEP>
+       Connecting to /dev/ttyS3, speed 115200
+       The escape character is Ctrl-\ (ASCII 28, FS).
+       Type the escape character followed by C to get back,
+       or followed by ? to see other options.
+
+       Welcome to ...
+
+       login:
+
+
+
+
+
+  8.  Uugetty for Dial-In (from the old Serial-HOWTO)
+
+  8.1.  Installing getty_ps
+
+  Since uugetty is part of getty_ps you'll first have to install
+  getty_ps.  If you don't have it, get the latest version from
+  sunsite.unc.edu:/pub/Linux/system/serial.  In particular, if you want
+  to use high speeds (57600 and 115200 bps), you must get version 2.0.7j
+  or later.  You must also have libc 5.x or greater.
+
+
+  By default, getty_ps will be configured to be Linux FSSTND (File
+  System Standard) compliant, which means that the binaries will be in
+  /sbin, and the config files will be named /etc/conf.{uu}getty.ttySN.
+  This is not apparent from the documentation!  It will also expect lock
+  files to go in /var/lock.  Make sure you have the /var/lock directory.
+
+  If you don't want FSSTND compliance, binaries will go in /etc, config
+  files will go in /etc/default/{uu}getty.ttySN, and lock files will go
+  in /usr/spool/uucp.  I recommend doing things this way if you are
+  using UUCP, because UUCP will have problems if you move the lock files
+  to where it isn't looking for them.
+
+
+  getty_ps can also use syslogd to log messages.  See the man pages for
+  syslogd(1) and syslog.conf(5) for setting up syslogd, if you don't
+  have it running already.  Messages are logged with priority LOG_AUTH,
+  errors use LOG_ERR, and debugging uses LOG_DEBUG.  If you don't want
+  to use syslogd you can edit tune.h in the getty_ps source files to use
+  a log file for messages instead, namely /var/adm/getty.log by default.
+
+
+  Decide on if you want FSSTND compliance and syslog capability.  You
+  can also choose a combination of the two.  Edit the Makefile, tune.h
+  and config.h to reflect your decisions.  Then compile and install
+  according to the instructions included with the package.
+
+  >From this point on, all references to getty will refer to getty_ps.
+  References to uugetty will refer to the uugetty that comes with the
+  getty_ps package.  These instructions will not work for mgetty or
+  agetty.
+
+
+  8.2.  Setting up uugetty
+
+  Make sure that you have an outgoing and incoming device for the serial
+  port your modem is on.  If you have your modem on ttyS3 you
+  will need the /dev/cua3, and /dev/ttyS3 devices.  If you don't have
+  the correct devices, see section ``Creating Devices In <tt>/dev</tt>''
+  on how to create devices, and create the devices.  If you want to be
+  able to dial out with your modem while uugetty is watching the port
+  for logins, use the /dev/cuaN device instead of the /dev/ttySN device
+  [One wouldn't need cua if the software was written to avoid it.]
+
+
+  uugetty does important lock file checking.  Update /etc/gettydefs to
+  include an entry for your modem.  When you are done editing
+  /etc/gettydefs, you can verify that the syntax is correct by doing:
+
+
+       linux# getty -c /etc/gettydefs
+
+
+
+
+
+  8.2.1.  Modern Modems
+
+  If you have a 9600 bps or faster modem with data compression, you can
+  lock your serial port to one speed.  For example:
+
+
+       # 115200 fixed speed
+       F115200# B115200 CS8 # B115200 SANE -ISTRIP HUPCL #@S @L @B login: #F115200
+
+
+
+
+
+  If you have your modem set up to do RTS/CTS hardware flow control, you
+  can add CRTSCTS to the entries:
+
+
+       # 115200 fixed speed with hardware flow control
+       F115200# B115200 CS8 CRTSCTS # B115200 SANE -ISTRIP HUPCL CRTSCTS #@S @L @B login: #F115200
+
+  8.2.2.  Old slow modems
+
+  If you have a slow modem (under 9600 bps) Then, instead of one line
+  for a single speed, your need several lines to try a number of speeds.
+  Note the these lines are linked to each other by the last "word" in
+  the line such as #38400.  Blank lines are needed between each entry.
+
+
+
+       # Modem entries
+       115200# B115200 CS8 # B115200 SANE -ISTRIP HUPCL #@S @L @B login: #57600
+
+       57600# B57600 CS8 # B57600 SANE -ISTRIP HUPCL #@S @L @B login: #38400
+
+       38400# B38400 CS8 # B38400 SANE -ISTRIP HUPCL #@S @L @B login: #19200
+
+       19200# B19200 CS8 # B19200 SANE -ISTRIP HUPCL #@S @L @B login: #9600
+
+       9600# B9600 CS8 # B9600 SANE -ISTRIP HUPCL #@S @L @B login: #2400
+
+       2400# B2400 CS8 # B2400 SANE -ISTRIP HUPCL #@S @L @B login: #115200
+
+
+
+
+
+  8.2.3.  Login Banner
+
+  If you want, you can make uugetty print interesting things in the
+  login banner.  In Greg's  examples, he has the system name, the serial
+  line, and the current bps rate.  You can add other things:
+
+
+
+              @B    The current (evaluated at the time the @B is seen) bps rate.
+              @D    The current date, in MM/DD/YY.
+              @L    The serial line to which getty is attached.
+              @S    The system name.
+              @T    The current time, in HH:MM:SS (24-hour).
+              @U    The number of currently signed-on users.  This is  a
+                    count of the number of entries in the /etc/utmp file
+                    that have a non-null ut_name field.
+              @V    The value of VERSION, as given in the defaults file.
+              To display a single '@' character, use either '\@' or '@@'.
+
+
+
+
+
+  8.3.  Customizing uugetty
+
+  There are lots of parameters you can tweak for each port you have.
+  These are implemented in separate config files for each port.  The
+  file /etc/conf.uugetty will be used by all instances of uugetty, and
+  /etc/conf.uugetty.ttySN will only be used by that one port.  Sample
+  default config files can be found with the getty_ps source files,
+  which come with most Linux distributions.  Due to space concerns, they
+  are not listed here.  Note that if you are using older versions of
+  getty (older than 2.0.7e), or aren't using FSSTND, then the default
+  file will be /etc/default/uugetty.ttySN.  Greg's
+  /etc/conf.uugetty.ttyS3 looked like this:
+
+
+
+
+
+  # sample uugetty configuration file for a Hayes compatible modem to allow
+  # incoming modem connections
+  #
+  # alternate lock file to check... if this lock file exists, then uugetty is
+  # restarted so that the modem is re-initialized
+  ALTLOCK=cua3
+  ALTLINE=cua3
+  # line to initialize
+  INITLINE=cua3
+  # timeout to disconnect if idle...
+  TIMEOUT=60
+  # modem initialization string...
+  # format: <expect> <send> ... (chat sequence)
+  INIT="" AT\r OK\r\n
+  WAITFOR=RING
+  CONNECT="" ATA\r CONNECT\s\A
+  # this line sets the time to delay before sending the login banner
+  DELAY=1
+  #DEBUG=010
+
+
+
+
+  Add the following line to your /etc/inittab, so that uugetty is run on
+  your serial port (substituting in the correct information for your
+  environment - config file location, port, speed, and default terminal
+  type):
+
+
+       S3:456:respawn:/sbin/uugetty -d /etc/default/uugetty.ttyS3 ttyS3 F115200 vt100
+
+
+
+
+  Restart init:
+
+
+       linux# init q
+
+
+
+
+  For the speed parameter in your /etc/inittab, you want to use the
+  highest bps rate that your modem supports.
+
+  Now Linux will be watching your serial port for connections.  Dial in
+  from another machine and login to you Linux system.
+
+  uugetty has a lot more options, see the man page for getty(1m) for a
+  full description.  Among other things there is a scheduling feature,
+  and a ringback feature.
+
+
+  9.  What Speed Should I Use with My Modem?
+
+  By "speed" we really mean the "data flow rate" but almost everybody
+  incorrectly calls it speed.  For all modern modems you have no choice
+  of the speed that the modem uses on the telephone line since it will
+  automatically choose the highest possible speed that is possible under
+  the circumstances.  But you do have a choice as to what speed will be
+  used between your modem and your computer.  This is sometimes called
+  "DTE speed" where "DTE" stands for Data Terminal Equipment (Your
+  computer is a DTE.)  You need to set this speed high enough so this
+  part of the signal path will not be a bottleneck.  The setting for the
+  DTE speed is the maximum speed of this link.  Most of the time it will
+  likely operate at lower speeds.
+  For an external modem, DTE speed is the speed (in bits/sec) of the
+  flow over the cable between you modem and PC.  For an internal modem,
+  it's the same idea since the modem also emulates a serial port.  It
+  may seem ridiculous having a speed limit on communication between a
+  computer and a modem card that is directly connected inside the
+  computer to a much higher speed bus.  But it's that way since the
+  modem card probably includes a dedicated serial port which does have
+  speed limits (and settable speeds).
+
+
+  9.1.  Speed and Data Compression
+
+  What speed do you choose?  If it were not for "data compression" one
+  might try to choose a DTE speed exactly the same as the modem speed.
+  Data compression takes the bytes sent to the modem from your computer
+  and encodes them into a fewer number of bytes.  For example, if the
+  flow (speed) from the PC to the modem was 20,000 bytes/sec (bps) and
+  the compression ratio was 2 to 1, then only 10,000 bytes/sec would
+  flow over the telephone line.  Thus for a 2:1 compression ratio you
+  need to set the speed double the maximum modem speed on the phone
+  line.  If the compression ratio is 3 to 1 you need to set it 3 times
+  faster.
+
+
+  9.2.  Where do I Set Speed ?
+
+  This DTE speed is normally set by a menu in your communications
+  program or by an option given to the getty command if someone is
+  dialing in.  You can't set the DCE modem-to-modem speed.
+
+
+  9.3.  Can't Set a High Enough Speed
+
+  You need to find out the highest speed supported by your hardware.  As
+  of late 1998 most hardware only supported speeds up to 115.2K bps.  A
+  few 56K internal modems support 230.4K bps.  If you  have a
+  communications programs that doesn't show high enough speeds in its
+  menu, then there are some options you can give to the setserial
+  command so that a low speed command from the communication program
+  will actually result in a higher speed.  With these options, when you
+  set the speed for 38400 the actual speed will be much higher.  See the
+  man page for "setserial" and search for spd_hi, spd_vhi, spd_cust,
+  baud_base, and divisor.  Note that you must set baud_base to the
+  actual maximum speed of the hardware.  This speed is usually lower
+  than the frequency of the crystal oscillator in the hardware since the
+  crystal frequency is often divided by 16 in the hardware to get the
+  actual top speed.  The reason the crystal frequency needs to be higher
+  is so that this high crystal speed can be used to take a number of
+  samples of each  bit to determine if it's a 1 or a 0.  To get a speed
+  of 230400 (if this is what your serial port hardware supports --few
+  do) on ttyS2 you could use:
+
+  setserial /dev/ttyS2 spd_cust baud_base 230400 divisor 1
+  In some cases this works when "stty 230400" doesn't.  If you've used
+  spd_cust you'll have to claim the speed is 38400 somewhere else to
+  obtain the actual speed of 230400.  This method of setting speed is
+  sort of a hack and when applications catch up to higher speeds it
+  might not be needed anymore.
+
+
+  9.4.  Speed Table
+
+  It's best to have at least a 16650 UART for a 56K modem but few modems
+  support it.  Second best is a 16550 that has been tweaked to give
+  230,400 bps.  Here are some suggested speeds to set your serial line
+  if your modem speed is:
+  ·  56K (V.90) use 115200 bps or 230400 bps (a few % faster ?)
+
+  ·  28.8K (V.34), 33.6K (V.34) use 115200 bps
+
+  ·  14400 bps (V.32bis), with V.42bis data compression, use 57600 bps
+
+  ·  9600 bps (V.32), with V.42bis data compression, use 38400 bps
+
+  ·  slower than a 9600 bps (V.32) modem, set your speed to the highest
+     speed your modem supports.
+
+
+  10.  Communications Programs And Utilities
+
+  PPP is by far the most widely used.  It's used for Internet access.
+  For dialing out to public libraries, bulletin boards, etc.  minicom is
+  the most popular followed by Seyon (X-Windows only) and Kermit.
+
+
+  10.1.  Minicom vs. Kermit
+
+  Minicom is only a communications program while Kermit is both a
+  communications program and a file transfer protocol.  But one may use
+  the Kermit protocol from within Minicom (provided one has Kermit
+  installed on one's PC) .  Minicom is menu based while Kermit is
+  command line based (interactive at the special Kermit prompt).  While
+  the Kermit program is free software, the documentation is not all
+  free.  There is no detailed manual supplied and it is suggested that
+  you purchase a book as the manual.  However Kermit has interactive
+  online help which tells all but lacks tutorial explanations for the
+  beginner.  Commands may be put in a script file so you don't have to
+  type them over again each time.  Kermit (as a communications program)
+  is more powerful than Minicom.
+
+  Although all Minicom documentation is free, it's not as extensive as
+  Kermit's.  Since permission is required to include Kermit in a
+  commercial distribution, and since the documentation is not entirely
+  free, some distributions don't include Kermit.  In my opinion it's
+  easier to set up Minicom and there is less to learn.
+
+
+  10.2.  Lists of Programs
+
+  Here is a list of some communication software you can choose from,
+  available via FTP, if they didn't come with your distribution.  I
+  would like comparative comments on the dialout programs.  Are the
+  least popular ones obsolete?
+
+
+  10.2.1.  Least Popular Dialout
+
+
+
+  ·  ecu - a communications program
+
+  ·  pcomm - procomm-like communications program with zmodem
+
+  ·  xc - xcomm communication package
+
+
+  10.2.2.  Most Popular Dialout
+
+
+
+  ·  minicom - telix-like communications program.  Supports scripts,
+     zmodem, kermit
+  ·  C-Kermit <http://www.columbia.edu/kermit/> - portable, scriptable,
+     serial and TCP/IP communications including file transfer,
+     character-set translation, and zmodem support
+
+  ·  seyon - X based communication program
+
+
+  10.2.3.  Fax
+
+
+
+  ·  efax a small fax program
+
+  ·  hylafax a large fax program based on the client-server model.
+
+  ·  mgetty+fax handles fax stuff and login for dial-ins
+
+
+  10.2.4.  Voicemail
+
+
+
+  ·  mvm <http://www-internal.alphanet.ch/~schafer/mvm> is a Minimal
+     VoiceMail for Linux
+
+  ·  vgetty is an extension to mgetty that handles voicemail for some
+     modems.  It should come with recent releases of mgetty.
+
+
+  10.2.5.  Dial-in (uses getty)
+
+
+
+  ·  mgetty+fax is for modems and is well documented.  It also handles
+     fax stuff and provides an alternative to uugetty.  It's
+     incorporating callback and voicemail (using vgetty) features.  See
+     ``About mgetty''
+
+  ·  uugetty is for modems.  It comes as a part of the ps_getty package.
+     See ``About getty_ps''
+
+
+  10.2.6.  Other
+
+
+
+  ·  callback is where you dial out to a remote modem and then that
+     modem hangs up and calls you back (to save on phone bills).
+
+  ·  SLiRP and term provide a PPP-like service that you can run in user
+     space on a remote computer with a shell account.  See ``term and
+     SLiRP'' for more details
+
+  ·  ZyXEL is a control program for ZyXEL U-1496 modems.  It handles
+     dialin, dialout, dial back security, FAXing, and voice mailbox
+     functions.
+
+  ·  SLIP and PPP software can be found at
+      ftp://sunsite.unc.edu/pub/Linux/system/network/serial.
+
+  ·  Other things can be found on
+     ftp://sunsite.unc.edu/pub/Linux/system/serial and
+     ftp://sunsite.unc.edu/pub/Linux/apps/serialcomm or one of the many
+     mirrors.  These are the directories where serial programs are kept.
+
+
+  10.3.  SLiRP  and term
+
+  SLiRP and term are programs which are of use if you only have a dial-
+  up shell account on a Unix-like machine and want to get the equivalent
+  of a PPP account (or the like) without being authorized to have it
+  (possibly because you don't want to pay extra for it, etc.).  SLiRP is
+  more popular than term which is almost obsolete.
+
+  To use SLiRP you install it in your shell account on the remote
+  computer.  Then you dial up the account and run SLiRP on the remote
+  and PPP on your local PC.  You now have a PPP connection over which
+  you may run a web browser on your local PC such as Netscape, etc.
+  There may be some problems as SLiRP is not as good as a real PPP
+  account.  Some accounts may provide SLiRP since it saves on IP
+  addresses (You have no IP address while using SLiRP).
+
+  term is something like SLiRP only you need to run term on both the
+  local and remote computer.  There is no PPP on the phone line since
+  term uses its own protocol.  To use term from your PC you need to use
+  a term-aware version of ftp to do ftp, etc.  Thus it's easier to use
+  SLiRP since the ordinary version of ftp works fine with SLiRP.  There
+  is an unmaintained Term HOWTO.
+
+
+  11.  What Are UARTs?  How Do They Affect Performance?
+
+  UARTs (Universal Asynchronous Receiver Transmitter) are serial chips
+  on your PC motherboard (or on an internal modem card).   The UART
+  function may also be done on a chip that does other things as well.
+  On older computers like many 486's, the chips were on the disk I/O
+  controller card.  Still older computer have dedicated serial boards.
+
+  The UART's purpose is to convert bytes from the PC's parallel bus to a
+  serial bit-stream.  The cable going out of the serial port is serial
+  and has only one wire for each direction of flow.  The serial port
+  sends out a stream of bits, one bit at a time.  Conversely, the bit
+  stream that enters the serial port via the external cable is converted
+  to parallel bytes that the computer can understand.  UARTs deal with
+  data in byte sized pieces, which is conveniently also the size of
+  ASCII characters.
+
+  Say you have a terminal hooked up to your PC.  When you type a
+  character, the terminal gives that character to it's transmitter (also
+  a UART).  The transmitter sends that byte out onto the serial line,
+  one bit at a time, at a specific rate.  On the PC end, the receiving
+  UART takes all the bits and rebuilds the (parallel) byte and puts it
+  in a buffer.
+
+  There are two basic types of UARTs: dumb UARTS and FIFO UARTS.  Dumb
+  UARTs are the 8250, 16450, early 16550, and early 16650.  They are
+  obsolete but if you understand how they work it's easy to understand
+  how the modern ones work with FIFO UARTS ( late 16550, 16550A, 16c552,
+  late 16650, 16750, and 16C950).
+
+  There is some confusion regarding 16550.  Early models had a bug and
+  worked properly only as 16450's.  Later models with the bug fixed were
+  named 16550A but many manufacturers did not accept the name change and
+  continued calling it a 16550.  Most all 16550's in use today are like
+  16550A's.  Linux will report it as being a 16550A even though your
+  hardware manual (or a label note) says it's a 16550.  A similar
+  situation exists for the 16650 (only it's worse since the manufacturer
+  allegedly didn't admit anything was wrong).  Linux will report a late
+  16650 as being a 16650V2.  If it reports it as 16650 it is bad news
+  and only is used as if it had a one-byte buffer.
+
+
+  To understand the differences between dumb and FIFO (First In, First
+  Out queue discipline) first let's examine what happens when a UART has
+  sent or received a byte.  The UART itself can't do anything with the
+  data passing thru it, it just receives and sends it.  For the original
+  dumb UARTS, the CPU gets an interrupt from the serial device every
+  time a byte has been sent or received.  The CPU then moves the
+  received byte out of the UART's buffer and into memory somewhere, or
+  gives the UART another byte to send.  The 8250 and 16450 UARTs only
+  have a 1 byte buffer.  That means, that every time 1 byte is sent or
+  received, the CPU is interrupted.  At low transfer rates, this is OK.
+  But, at high transfer rates, the CPU gets so busy dealing with the
+  UART, that is doesn't have time to adequately tend to other tasks.  In
+  some cases, the CPU does not get around to servicing the interrupt in
+  time, and the byte is overwritten, because they are coming in so fast.
+  This is called an "overrun" or "overflow".
+
+  That's where the FIFO UARTs are useful.  The 16550A (or 16550) FIFO
+  chip comes with 16 byte FIFO buffers.  This means that it can receive
+  up to 14 bytes (or send 16 bytes) before it has to interrupt the CPU.
+  Not only can it wait for more bytes, but the CPU then can transfer all
+  14 (or more) bytes at a time.  Although the interrupt threshold
+  (trigger level) may be set at 8 instead of 14, this is still a
+  significant advantage over the other UARTs, which only have 1 byte
+  buffers.  The CPU receives less interrupts, and is free to do other
+  things.  Data is not lost, and everyone is happy.
+
+  While most PC's only have a 16550 with 16-byte buffers, better UARTS
+  have even larger buffers.  Note that the interrupt is issued slightly
+  before the buffer get full (at say a "trigger level" of 14 bytes for a
+  16-byte buffer).  This allows room for a few more bytes to be received
+  during the time that the interrupt is being serviced.  The trigger
+  level may be set to various permitted values by kernel software.  A
+  trigger level of 1 will be almost like a dumb UART (except that it
+  still has room for 15 more bytes after it issues the interrupt).
+
+  If you type something while visiting a BBS, the characters you type go
+  out thru the serial port.  Your typed characters that you see on the
+  screen are what was echoed back thru the telephone line thru your
+  modem and then thru your serial port to the screen.  If you had a
+  16-byte buffer on the serial port which held back characters until it
+  had 14 of them, you would need to type many characters before you
+  could see what you typed (before they appeared on the screen).  This
+  would be very confusing but there is a "timeout" to prevent this.
+  Thus you normally see a character on the screen just as soon as you
+  type it.
+
+  The "timeout" works like this for the receive UART buffer: If
+  characters arrive one after another, then an interrupt is issued only
+  when say the 14th character reaches the buffer.  But if a character
+  arrives and the next character doesn't arrive soon thereafter, then an
+  interrupt is issued.  This happens even though there are not 14
+  characters in the buffer (there may only be one character in it).
+  Thus when what you type goes thru this buffer, it acts almost like a
+  1-byte buffer even though it is actually a 16-byte buffer (unless your
+  typing speed is a hundred times faster than normal).  There is also
+  "timeout" for the transmit buffer as well.
+
+  Here's a list of UARTs.  TL is Trigger Level
+
+  ·  8250, 16450, early 16550: Obsolete with 1-byte buffers
+
+  ·  16550, 16550A, 16c552: 16-byte buffers, TL=1,4,8,14
+
+  ·  16650:  32-byte buffers. Speed up to 460.8 Kbps
+
+
+  ·  16750:  64-byte buffer for send, 56-byte for receive.  Speed up to
+     921.6 Kbps
+
+  ·  Hayes ESP: 1K-byte buffers.
+
+  The obsolete ones are only good for modems no higher than 14.4k (DTE
+  speeds up to 38400 bps).  For modern modems you need at least a 16550
+  (and not an early 16550).  For V.90 56k modems, it may be a several
+  percent faster with a 16650 (especially if you are downloading
+  uncompressed files).  The main advantage of the 16650 is its larger
+  buffer size as the extra speed isn't needed unless the modem
+  compression ratio is high.  Some 56k internal modems may come with a
+  16650 ??
+
+  Non-UART, and intelligent multiport boards use DSP chips to do
+  additional buffering and control, thus relieving the CPU even more.
+  For example, the Cyclades Cyclom, and Stallion EasyIO boards use a
+  Cirrus Logic CD1400 RISC UART, and many boards use 80186 CPUs or even
+  special RISC CPUs, to handle the serial I/O.
+
+  Most newer PC's (486's, Pentiums, or better) come with 16550A's
+  (usually called just 16550's).  If you have something really old the
+  chip may unplug so that you may be able to upgrade by buying a 16550A
+  chip and replacing your existing 16450 UART.  If the functionality has
+  been put on another type of chip, you are out of luck.  If the UART is
+  socketed, then upgrading is easy (if you can find a replacement).  The
+  new and old are pin-to-pin compatible.  It may be more feasible to
+  just buy a new serial board on the Internet (few retail stores stock
+  them today).
+
+
+  12.  Troubleshooting
+
+  12.1.  Software
+
+
+
+  ·  modemstat and statserial show the current state of various modem
+     signal lines (such as DTR, CTS, etc.)
+
+  ·  irqtune will give serial port interrupts higher priority to improve
+     performance.
+
+  ·  hdparm for hard-disk tuning may help some more.
+
+
+  12.2.  My Modem is Physically There but Can't be Found
+
+  For the PCI bus look at /proc/pci.  Otherwise see ``What is the
+  current I/O address and IRQ of my Serial Port ?''
+
+  Here are some common mistakes people make:
+
+  ·  setserial: They run it (without the "autoconfig" option) or see it
+     displayed on the screen at boot-time, and erroneously think that
+     the result shows how their hardware is actually configured.
+
+  ·  /proc/interrupts: When their modem isn't in use they don't see
+     their modem's interrupt there, and erroneously conclude that their
+     modem can't be found (or doesn't have an interrupt set).
+
+  ·  /proc/ioports: People think this shows the hardware configuration
+     when it only shows about the same data (possibly erroneous) as
+     setserial.
+
+
+  You may probe for the modem's serial port using "setserial" with the
+  "autoconfig" argument at the I/O address you think the modem is at.
+  If it shows "unknown" for UART type there may be nothing there.  See
+  ``What is setserial''.  Your problem could be due to a winmodem (or
+  the like) which can't be used with Linux.  See ``Avoid: winmodems''.
+
+
+  12.3.  "Operation not supported by device" (error message) for ttySx
+
+  This means that an operation requested by setserial, stty, etc.
+  couldn't be done because the kernel doesn't support doing it.  A
+  common reason is that the "serial" module wasn't loaded at the time.
+  "lsmod" will show you if it's now loaded but it sometimes is
+  automatically loaded when needed so it may be loaded now but wasn't
+  loaded when you got the error message.  The "serial" module should be
+  listed in the file: /etc/modules.conf.  The actual module should
+  reside in: /lib/modules/.../misc/serial.o.
+
+
+  12.4.  Slow. Text appears on the screen slowly after long delays
+
+  This will happen from the very start of using the modem.  One symptom
+  happens when you are manually typing to your modem: You type but the
+  screen remains blank (until after several seconds when you finally
+  might see what you typed).   Another symptom is that only a few words
+  at a time appear on the screen (possibly with missing text).
+
+  This may be due to a mis-set IRQ.  This means that the IRQ used by the
+  device driver does not correspond to the IRQ set in hardware (IRQ mis-
+  set).  With a mis-set IRQ you may loose received data and get "input
+  overrun" error messages (or find them in logs).  See ``Interrupt Mis-
+  set'' for more details.
+
+  It could also be an interrupt conflict. See ``Interrupt Conflicts''
+  Make sure there are no IRQs being shared.  Check all your boards
+  (serial, ethernet, SCSI, etc...).  Make sure the jumper (or PnP)
+  settings, and the setserial parameters are correct for all your serial
+  devices.  Also check /proc/ioports and /proc/interrupts and /proc/pci
+  for conflicts.
+
+
+  12.5.  Uploading (downloading) files is broken/slow
+
+  Flow control (both at your PC and/or modem) may not be enabled.  If
+  you have set a high DTE speed (like 115.2K) then flow from your modem
+  to your PC may work OK but a lot of flow in the other direction will
+  not all get thru due to the telephone line bottleneck.  This will
+  result in many errors and the resending of packets.  It may thus take
+  far too long to send a file.  In some cases, files don't make it thru
+  at all.  If you're downloading long uncompressed files or web pages
+  (and your modem uses data compression) or you've set a low DTE speed,
+  then downloading may also be broken due to no flow control.
+
+
+  12.6.  For Dial-in I Keep Getting "line NNN of inittab invalid"
+
+  Make sure you are using the correct syntax for your version of init.
+  The different init's that are out there use different syntax in the
+  /etc/inittab file.  Make sure you are using the correct syntax for
+  your version of getty.
+
+
+  12.7.  When I Try To Dial Out, It Says "/dev/ttySN: Device or resource
+  busy"
+
+
+  This problem can arise when DCD or DTR are not implemented correctly.
+  DCD should only be on (asserted) when there is an actual connection
+  (ie someone has dialed in), not when getty is watching the port.
+  Check to make sure that your modem is configured to only assert DCD
+  when there is a connection.  DTR should be on (asserted)  whenever
+  something is using, or watching the line, like getty, kermit, or some
+  other comm program.
+
+  Another common cause of ``device busy'' errors, is that you set up
+  your serial port with an interrupt already taken by something else.
+  As each device initializes, it asks Linux for permission to use its
+  hardware interrupt.  Linux keeps track of which interrupt is assigned
+  to whom, and if your interrupt is already taken, your device won't be
+  able to initialize properly.  The device really doesn't have much of
+  any way to tell you that this happened, except that when you try to
+  use it, it will return a ``device-busy'' error.  Check the interrupts
+  on all of your boards (serial, ethernet, SCSI, etc.).  Look for IRQ
+  conflicts.
+
+
+  12.8.  I Keep Getting "Getty respawning too fast: disabled for 5 min­
+  utes"
+
+  Make sure your modem is configured correctly.  Look at registers E and
+  Q.  This can occur when your modem is chatting with getty.
+
+  Make sure you are calling getty correctly from your /etc/inittab.
+  Using the wrong syntax or device names will cause serious problems.
+
+  For uugetty, verify that your /etc/gettydefs syntax is correct by
+  doing the following:
+
+
+       linux# getty -c /etc/gettydefs
+
+
+
+
+
+  This can also happen when the uugetty initialization is failing.  See
+  section ``uugetty Still Doesn't Work''.
+
+
+
+  12.9.  My Modem is Hosed after Someone Hangs Up, or uugetty doesn't
+  respawn
+
+
+  This can happen when your modem doesn't reset when DTR is dropped.
+  Greg Hankins saw his RD and SD LEDs go crazy when this happened.  You
+  need to have your modem reset.  Most Hayes compatible modems do this
+  with &D3, but on his USR Courier, he had to set &D2 and S13=1.  Check
+  your modem manual (if you have one).
+
+
+  12.10.  uugetty Still Doesn't Work
+
+  There is a DEBUG option that comes with getty_ps.  Edit your config
+  file /etc/conf.{uu}getty.ttySN and add DEBUG=NNN.  Where NNN is one of
+  the following combination of numbers according to what you are trying
+  to debug:
+
+
+
+
+
+  D_OPT   001            option settings
+  D_DEF   002            defaults file processing
+  D_UTMP  004            utmp/wtmp processing
+  D_INIT  010            line initialization (INIT)
+  D_GTAB  020            gettytab file processing
+  D_RUN   040            other runtime diagnostics
+  D_RB    100            ringback debugging
+  D_LOCK  200            uugetty lockfile processing
+  D_SCH   400            schedule processing
+  D_ALL   777            everything
+
+
+
+
+  Setting DEBUG=010 is a good place to start.
+
+  If you are running syslogd, debugging info will appear in your log
+  files.  If you aren't running syslogd info will appear in
+  /tmp/getty:ttySN for debugging getty and /tmp/uugetty:ttySN for
+  uugetty, and in /var/adm/getty.log.  Look at the debugging info and
+  see what is going on.  Most likely, you will need to tune some of the
+  parameters in your config file, and reconfigure your modem.
+
+  You could also try mgetty.  Some people have better luck with it.
+
+
+  13.  Flash Upgrades
+
+  Many modems can be upgraded by reprogramming their flash memories with
+  an upgrade program which you get from the Internet.  By sending this
+  "program" via the serial port to the modem, the modem will store this
+  program in its non-volatile memory (it's still there when the power is
+  turned off).  The instructions on installing it are usually on how to
+  do in under Windows so you'll need to figure out how to do the
+  equivalent under Linux (unless you want to install the upgrade under
+  Windows).
+
+  If the latest version of this HOWTO still contains this request (see
+  ``New Versions of this HOWTO'') please send me your experiences with
+  installing such upgrades that will be helpful to others.
+
+  If you need to send a file (program) to your modem, how do you do it?
+  First, there may be a command that you need to send your modem to tell
+  it that what follows is a flash ROM upgrade.  In one case this was
+  AT**  Next, you need to send the file directly to the modem.
+  Communication programs often use zmodem or kermit to send files to the
+  modem (and beyond) but these put the file into packets which append
+  headers and you want the exact file, not a modified one.  But the
+  kermit program has a "transmit" command that will send the file
+  directly (without using the kermit packets) so this is one way to send
+  a file directly.  Another way would be to escape from the
+  communication program to the shell (in minicom this is ^aj) and then:
+  cat upgrade_file_name > /dev/ttyS2 .  Then go back to the
+  communication program (type fg at the command line prompt in minicom)
+  to see what happened.
+
+
+  14.  Problems Explained
+
+  While the section ``Troubleshooting'' lists problems by symptom, this
+  section explains what will happen if something is set incorrectly.
+  This section helps you understand what caused the symptom and what
+  other symptoms might be due to the same problem.
+
+
+
+  14.1.  Interrupt Mis-set
+
+  If you don't understand what an interrupt does see ``Interrupts''.  If
+  a serial port has one IRQ set in the hardware but a different one set
+  in the device driver, the device driver will not receive any
+  interrupts sent by the serial port.  Since the serial port uses
+  interrupts to tell its driver when it needs service (fetching bytes
+  from it's 16-byte receive buffer or putting another 16-bytes in its
+  transmit buffer) one might expect that the serial port would not work
+  at all.
+
+  But it still may work anyway --sort of.  Why?  Well, besides the
+  interrupt method of servicing the port there's a polling method that
+  doesn't need interrupts.  The way it works is that every so often the
+  device driver checks the serial port to see if it needs anything such
+  as if it has some bytes that need fetching from its receive buffer.
+  If interrupts don't work, the serial driver falls back to this polling
+  method.  But this polling method was not intended to be used a
+  substitute for interrupts.   It's so slow that it's not practical to
+  use and may cause buffer overruns.  Its purpose may have been to get
+  things going again if just one interrupt is lost or fails to do the
+  right thing.  It's also useful in showing you that interrupts have
+  failed.
+
+  For the 16-byte transmit buffer, 16 bytes will be transmitted and then
+  it will wait until the next polling takes place (several seconds
+  later) before the next 16 bytes is sent out.  Thus transmission is
+  very slow and in small chunks.  Receiving is slow too since bytes that
+  are received by the receive buffer are likely to remain there for
+  several seconds until it is polled.
+
+  This explains why it takes so long before you see what you typed.
+  When you type say AT to the modem, the AT goes out the serial port to
+  the modem.  The modem then echos the AT back thru the serial port to
+  the screen.  Thus the AT characters had to pass twice thru the serial
+  port.  Normally this happens so fast that AT seems to appear on the
+  screen at the same time that you hit the keys on the keyboard.  With
+  polling delays thru the serial port, you don't see what you typed
+  until many seconds later.
+
+  What about overruns of the 16-byte receive buffer?  This will happen
+  with an external modem since the modem just sends to the serial port
+  at high speed which is likely to overrun the 16-byte buffer.  But for
+  an internal modem, the serial port is on the same card and it's likely
+  to check that this receive buffer has room for more bytes before
+  putting received bytes into it.  In this case there will be no overrun
+  of this receive buffer, but text will just appear on your screen in
+  16-byte chunks at intervals of several seconds.
+
+  Even with an external modem you might not get overruns.  If just a few
+  characters (under 16) are sent you don't get overruns since the buffer
+  likely has room for them.  But attempts to send a larger number of
+  bytes from your modem to your screen may result in overruns.  However,
+  more than 16 (with no gaps) can get thru OK if the timing is right.
+  For example, if 32 bytes were received (and no more bytes followed),
+  the polling might just happen after the first 16 bytes had been
+  received.  Then there would be space for the next 16 bytes so that 32
+  bytes gets thru OK.  Similar conditions might pass between 16 to 31
+  bytes thru OK.  But it's also likely that only an occasional 16-byte
+  chunk will get thru and huge gaps of missing data will be lost.
+
+  If you have an obsolete serial port with only a 1-byte buffer (or it's
+  been incorrectly set to work like a 1-byte buffer) then the situation
+  will be much worse than described above and only one character will
+  occasionally make it thru the port.  This character is likely to be
+  just a line-feed since this is often the last character to be
+  transmitted in a burst of characters sent to your screen.  Thus you
+  may type AT to the modem but never see AT on the screen.  All you see
+  several seconds later is that the cursor drops down one line.  This
+  has happened to me even with a 16-byte buffer that was somehow
+  behaving like a 1-byte buffer.
+
+  When a communication program starts up, it expects interrupts to be
+  working.  It's not geared to using this slow polling-like mode of
+  operation.  Thus all sorts of mistakes may be made such as setting up
+  the serial port and/or modem incorrectly.  It may fail to realize when
+  a connection has been made.  If a script is being used for login, it
+  may fail (caused by timeout) due to the polling delays.
+
+
+  14.2.  Interrupt Conflicts
+
+  When two devices have the same IRQ number it's called sharing
+  interrupts.  Under some conditions this sharing works out OK.
+  Starting with kernel version 2.2, serial ports may share interrupts
+  with other serial ports.  Devices on the PCI bus may share the same
+  IRQ interrupt with other devices on the PCI bus.  In other cases where
+  there is potential for conflict, there should be no problem if no two
+  devices with the same IRQ are ever "in use" at the same time.   More
+  precisely, "in use" really means "open" (in programmer jargon).  In
+  cases other than the exceptions mentioned above (unless special
+  software permits sharing), sharing is not allowed and conflicts arise
+  if sharing is attempted.
+
+  Even if two processes with conflicting IRQs run at the same time, one
+  of the devices will likely have its interrupts sent to its device
+  driver and will work OK.  The other device will not have its
+  interrupts sent to the correct driver and will likely behave just like
+  a process with mis-set interrupts.  See ``Interrupt Mis-set'' for more
+  details.
+
+
+  15.  Other Sources of Information
+
+  15.1.  Misc
+
+
+  ·  man pages for: agetty(8), getty(1m), gettydefs(5), init(1),
+     isapnp(8), login(1), mgetty(8), setserial(8)
+
+  ·  Your modem manual (if it exists).  Some modems come without
+     manuals.
+
+  ·  The Linux serial mailing list.  To join, send email to
+     majordomo@vger.rutgers.edu, with ``subscribe linux-serial'' in the
+     message body.  If you send ``help'' in the message body, you get a
+     help message.  The server also serves many other Linux lists.  Send
+     the ``lists'' command for a list of mailing lists.
+
+
+  15.2.  Books
+
+  I've been unable to find a good up-to-date book on modems.
+
+  ·  The Complete Modem Reference by Gilbert Held, 1997.  Contains too
+     much info about obsolete topics.  More up-to-date info may be found
+     on the Internet.
+
+  ·  Modems For Dummies by Tina Rathbone, 1996.  (Have never seen it.)
+
+
+
+  15.3.  HOWTOs
+
+
+
+  ·  Cable-Modem mini-howto
+
+  ·  ISDN Howto (not a LDP Howto)
+     <http://www.suse.de/Support/sdb_e/isdn.html>: drivers for ISDN
+     "Modems"; Much related info on this is in German
+
+  ·  Modems-HOWTO: In French (Not used in creating this Modem-HOWTO)
+
+  ·  NET-3-HOWTO: all about networking, including SLIP, CSLIP, and PPP
+
+  ·  PPP-HOWTO: help with PPP including modem set-up
+
+  ·  Serial-HOWTO has info on Multiport Serial Cards used for both
+     terminals and banks of modems.  Technical info on the serial port
+     will appear in the next revision of it.
+
+  ·  Serial-Programming-HOWTO: for some aspects of serial-port
+     programming
+
+  ·  Text-Terminal-HOWTO: (including connecting up with modems)
+
+  ·  UUCP-HOWTO: for information on setting up UUCP
+
+
+  15.4.  Usenet newsgroups
+
+
+
+  ·  comp.os.linux.answers FAQs, How-To's, READMEs, etc. about Linux.
+
+  ·  comp.os.linux.hardware Hardware compatibility with the Linux
+     operating system.
+
+  ·  comp.os.linux.setup Linux installation and system administration.
+
+  ·  comp.dcom.modems Modems for all OS's
+
+
+  15.5.  Web Sites
+
+
+
+  ·  Hayes AT modem commands Technical Reference for Hayes (tm) Modem
+     Users <http://www.hayes.com/TechSupport/techref/>
+
+  ·  Rockwell-based modem commands
+     <http://www.rss.rockwell.com/techinfo/>
+
+  ·  A white paper discussing serial communications and multiport serial
+     boards is available from Cyclades at http://www.cyclades.com.
+
+  ·  Modem FAQs:
+     Navas 28800 Modem FAQ
+     <http://web.aimnet.com/~jnavas/modem/faq.html>
+
+  ·  Curt's High Speed Modem Page
+     <http://www.teleport.com/~curt/modems.html>
+
+  ·  Much info on 56k modems 56k Modem = v.Unreliable
+     <http://808hi.com/56k/>
+
+
+  ·  Links to modem manufacturers
+     <http://www.56k.com/links/Modem_Manufacturers/>
+
+  ·  Identifying modems by FCC ID
+     <http://www.sbsdirect.com/fccenter.html>
+
+  ·  Partial list of  modems which work/don't_work under Linux modem
+     list <http://www.o2.net/~gromitkc/winmodem.html>
+
+
+  16.  Appendix A:  How Modems Work (technical) (unfinished)
+
+  16.1.  Modulation Details
+
+  16.1.1.  Intro to Modulation
+
+  Modulation is the conversion of a digital signal represented by binary
+  bits (0 or 1) into an analog signal something like a sine wave.  The
+  modulated signal consists pure sine wave "carrier" signal which is
+  modified to convey information.  A pure carrier sine wave, unchanging
+  in frequency and voltage, provides no flow of information at all
+  (except that a carrier is present).  To make it convey information we
+  modify (or modulate) this carrier.  There are 3 basic types of
+  modulation: frequency, amplitude, and phase.  They will be explained
+  next.
+
+
+  16.1.2.  Frequency Modulation
+
+  The simplest modulation method is frequency modulation.  Frequency is
+  measured in cycles per second (of a sine wave).  It's the count of the
+  number of times the sine wave shape repeats itself in a second.  This
+  is the same as the number of times it reaches it peak value in a
+  second.  The word "Hertz" (abbreviated Hz) is used to mean "cycles per
+  second".
+
+  A simple example of frequency modulation is where one frequency means
+  a 0 and another means a 1.  For example, for some obsolete 300 baud
+  modems 1070 Hz meant a binary 0 while 1270 Hz meant a binary 1.  This
+  was called "frequency shift keying".  Instead of just two possible
+  frequencies, more could be used to allow more information to be
+  transmitted.  If we had 4 different frequencies (call them A, B, C,
+  and D) then each frequency could stand for a pair of bits.  For
+  example, to send 00 one would use frequency A.  To send 01, use
+  frequency B; for 10 use C; for 11 use D.  In like manner, by using 8
+  different frequencies we could send 3 bits with each shift in
+  frequency.  Each time we double the number of possible frequencies we
+  increase the number of bits it can represent by 1.
+
+
+  16.1.3.  Amplitude Modulation
+
+  Once one understands frequency modulation example above including the
+  possibilities of representing a few bits by a single shift in
+  frequency, it's easier to understand both amplitude modulation and
+  phase modulation.  For amplitude modulation, one just changes the
+  height (voltage) of the sine wave analogous to changing the frequency
+  of the sine wave.  For a simple case there could only be 2 allowed
+  amplitude levels, one representing a 0-bit and another representing a
+  1-bit.  As explained for the case of frequency modulation, having more
+  possible amplitudes will result in more information being transmitted.
+
+
+
+
+
+  16.1.4.  Phase Modulation
+
+  To change the phase of a sine wave at a certain instant of time, we
+  stop sending this old sine wave and immediately begin sending a new
+  sine wave of the same frequency and amplitude.  If we started sending
+  the new sine wave at the same voltage level (and slope) as existed
+  when we stopped sending the old sine wave, there would be no change in
+  phase (and no detectable change at all).  But suppose that we started
+  up the new sine wave at a different point on the sine wave curve.
+  Then there would likely be a sudden voltage jump at the point in time
+  where the old sine wave stopped and the new sine wave began.  This is
+  a phase shift and it's measured in degrees (deg.)  A 0 deg. (or a 360
+  deg.) phase shift means no change at all while a 180 deg. phase shift
+  just reverses the voltage (and slope) of the sine wave.  Put another
+  way, a 180 deg. phase shift just skips over a half-period (180 deg.)
+  at the point of transition.  Of course we could just skip over say 90
+  deg. or 135 deg. etc.  As in the example for frequency modulation, the
+  more possible phase shifts, the more bits a single shift in phase can
+  represent.
+
+
+  16.1.5.  Combination Modulation
+
+  Instead of just selecting either frequency, amplitude, or phase
+  modulation, we may chose to combine modulation methods.  Suppose that
+  we have 256 possible frequencies and thus can send a byte (8 bits) for
+  each shift in frequency (since 2 to the 8 power is 256).  Suppose also
+  that we have another 256 different amplitudes so that each shift in
+  amplitude represents a byte.  Also suppose there are 256 possible
+  phase shifts.  Then a certain points in time we may make a shift in
+  all 3 things: frequency, amplitude and phase.  This would send out 3
+  bytes for each such transition.
+
+  No modulation method in use today actually does this.  It's not
+  practical due to the relatively long time it would take to detect all
+  3 types of changes.  But what is quite common is the simultaneous
+  change in both phase and amplitude.  This is called phase-amplitude
+  modulation (sometimes also called quadrature amplitude modulation =
+  QAM).  This method is used for the common modem speeds of 14.4k,
+  28.8k, and 33.6k.  The only significant case where this modulation
+  method is not used today is for 56k modems.  But even 56k modems
+  exclusively use QAM (phase-amplitude modulation) in the direction from
+  your PC out the telephone line.  Sometimes even the other direction
+  will also fall back to QAM when line conditions are not good enough.
+  Thus QAM (phase-amplitude modulation) still remains the most widely
+  used method on ordinary telephone lines.
+
+
+  16.1.6.  56k Modems (v.90)
+
+  The modulation method used above 33.6k is entirely different than the
+  common phase-amplitude modulation.  The details of exactly how it
+  works seem to be obscure and I couldn't find them on the Internet as
+  of late 1998.  But the basic idea behind it is easy to understand.
+  Since ordinary telephone calls are converted to digital signals at the
+  local offices of the telephone company, the fastest speed that you can
+  send digital data by an ordinary telephone call is the same speed that
+  the telephone company uses over its digital portion of the phone call
+  transmission.  What is this speed?  Well, in the USA it's exactly 56k!
+  In other countries it may be slightly higher.
+
+  Thus in the USA 56k is the absolute top speed possible for an ordinary
+  telephone call using the digital portion of the circuit that was
+  designed to send digital encodings of the human voice.  In order to
+  use 56k, the modem must know exactly how the telephone company is
+  doing its digital encoding of the analog signals.  This task is far
+  too complicated if both sides of a telephone call have only an analog
+  interface to the telephone company.  But if one side has a digital
+  interface, then it's possible (at least in one direction).  Thus if
+  your ISP has a digital interface to the phone company, the ISP may
+  send out a certain digital signal over the phone lines toward your PC.
+  The digital signal from the ISP gets converted to analog at the local
+  telephone office near your PC's location (perhaps near your home).
+  Then it's your modem's task to try to figure out exactly what that
+  digital signal was.  If it can do this then transmission at 56k (the
+  speed of the telephone company's digital signal) is possible in this
+  direction.
+
+  What method does the telephone company use to digitally encode analog
+  signals?  It uses a method of sampling the amplitude of the analog
+  signal at a rate of 8000 samples per second.  Each sample amplitude is
+  encoded as a 7-bit (ASCII-like) byte.  (Note: 7 x 8000 = 56k)  This is
+  called "Pulse Code Modulation" = PCM.  These bytes are then sent
+  digitally on the telephone company's digital circuits where many calls
+  share a single circuit using a time-sharing scheme known as "time
+  division multiplexing".  Then finally at the local telephone office
+  near your home, the digital signal is de-multiplexed resulting in the
+  same digital signal as was originally created by PCM.  This signal is
+  then converted back to analog and sent to your home.  Each 7-bit byte
+  creates a certain amplitude of the analog signal.  Your modem's task
+  is to determine just what that PCM 7-bit byte was based on the
+  amplitude it detects.
+
+  This is (sort of) "amplitude demodulation" but not really.  It's not
+  amplitude demodulation because there is no carrier.  Actually, it's
+  called "modulus conversion" which is the inverse of PCM.  In order to
+  determine the digital codes the telephone Co. used to create the
+  analog signal, the modem must sample this analog signal amplitude at
+  exactly the same points in time the phone Co. used when it created the
+  analog signal.  In order to get the modem to do this correctly the
+  modem must go thru "training" periods where the ISP's modem sends out
+  known digital signals and the modem trains itself to recognize those
+  signals.  (At least that's the way I think it works ??)
+
+  Note that the digital part of the telephone network is bi-directional.
+  Two such circuits are used for a phone call, one in each direction.
+  Also, while 7-bit bytes are used to encode the amplitude, the bytes
+  sent are 8-bit ones with the extra bit used by the telephone company
+  for its signalling purposes.  The telephone users have no control over
+  this extra bit.  This means that while the digital signal is actually
+  64k bits/sec, only 56k can be controlled by the user.
+
+
+  17.  Appendix B:  "baud" vs. "bps"
+
+  17.1.  A simple example
+
+  ``baud'' and ``bps'' are perhaps one of the most misused terms in the
+  computing and telecommunications field.  Many people use these terms
+  interchangeably, when in fact they are not!  bps is simply the number
+  of bits transmitted per second.  The baud rate is a measure of how
+  many times per second a signal changes (or could change).  For a
+  typical serial port a 1-bit is -12 volts and a 0-bit is +12 v (volts).
+  If the bps is 38,400 a sequence of 010101... would also be 38,400 baud
+  since the voltage shifts back and forth from positive to negative to
+  positive ... and there are 38,400 shifts per second.  For another
+  sequence say 111000111... there will be fewer shifts of voltage since
+  for three 1's in sequence the voltage just stays at -12 volts yet we
+  say that its still 38,400 baud since there is a possibility that the
+  number of changes per second will be that high.
+
+
+  Looked at another way, put an imaginary tic mark separating each bit
+  (even thought the voltage may not change).  38,400 baud then means
+  38,400 tic marks per second.  The tic marks at at the instants of
+  permitted change and are actually marked by a synchronized clock
+  signal generated in the hardware but not sent over the external cable.
+
+  Suppose that a "change" may have more than the two possible outcomes
+  of the previous example (of +- 12 v).  Suppose it has 4 possible
+  outcomes, each represented by a unique voltage level.  Each level may
+  represent a pair of bits (such as 01).  For example, -12v could be 00,
+  -6v 01, +6v 10 and +12v 11.  Here the bit rate is double the baud
+  rate.  For example, 3000 changes per second will generate 2 bits for
+  each change resulting in 6000 bits per second (bps).  In other words
+  3000 baud results in 6000 bps.
+
+
+  17.2.  Real examples
+
+  The above example is overly simple.  Real examples are more
+  complicated but based on the same idea.  This explains how a modem
+  running at 2400 baud, can send 14400 bps (or higher).  The modem
+  achieves a bps rate greater than baud rate by encoding many bits in
+  each signal change (or transition).  Thus, when 2 or more bits are
+  encoded per baud, the bps rate exceeds the baud rate. If your modem-
+  to-modem connection is at 14400 bps, it's going to be sending 6 bits
+  per signal transition at 2400 baud.  A speed of 28800 bps is obtained
+  by 3200 baud at 9 bits/baud.  When people misuse the word baud, they
+  may mean the modem speed (such as 33.6K).
+
+  Common modem bps rates were formerly  50, 75, 110, 300, 1200, 2400,
+  9600.  These were also the bps rates over the serial_port-to-modem
+  cables.  Today the bps modem-to-modem rates are 14.4K, 28.8K, 33.6K,
+  and 56K, but the rates over the serialPort-to-modem cables are not the
+  same but are: 19.2K, 38.4K, 57.6K and 115.2K).  Using modems with
+  V.42bis compression (max 4:1 compression), rates up to 115.2K bps are
+  possible for 33.6K modems (230.4K is possible for 56K modems).
+
+  Except for the 56k modems, most modems run at 2400, 3000, or 3200
+  baud.  Because of the bandwidth limitations on voice-grade phone
+  lines, baud rates greater than 2400 are harder to achieve, and only
+  work under conditions of pristine phone line quality.
+
+  How did this confusion between bps and baud start?  Well, back when
+  antique low speed modems were high speed modems, the bps rate actually
+  did equal the baud rate.  One bit would be encoded per phase change.
+  People would use bps and baud interchangeably, because they were the
+  same number.  For example, a 300 bps modem also had a baud rate of
+  300. This all changed when faster modems came around, and the bit rate
+  exceeded the baud rate.  ``baud'' is named after Emile Baudot, the
+  inventor of the asynchronous telegraph printer.
+
+
+  18.  Appendix C:  Terminal Server Connection
+
+  This section was adapted from Text-Terminal-HOWTO.
+
+  A terminal server is something like an intelligent switch that can
+  connect many modems (or terminals) to one or more computers.  It's not
+  a mechanical switch so it may change the speeds and protocols of the
+  streams of data that go thru it.  A number of companies make terminal
+  servers: Xyplex, Cisco, 3Com, Computone, Livingston, etc.  There are
+  many different types and capabilities.  Another HOWTO is needed to
+  compare and describe them (including the possibility of creating your
+  own terminal server with a Linux PC).  Most are used for modem
+  connections rather than directly connected terminals.
+
+  One use for them is to connect many modems (or terminals) to a high
+  speed network which connects to host computers.  Of course the
+  terminal server must have the computing power and software to run
+  network protocols so it is in some ways like a computer.  The terminal
+  server may interact with the user and ask what computer to connect to,
+  etc. or it may connect without asking.  One may sometimes send jobs to
+  a printer thru a terminal server.
+
+  A PC today has enough computing power to act like a terminal server
+  except that each serial port should have its own hardware interrupt.
+  PC's only have a few spare interrupts for this purpose and since they
+  are hard-wired you can't create more by software.  A solution is to
+  use an advanced multiport serial card which has its own system of
+  interrupts (or on lower cost models, shares one of the PC's interrupts
+  between a number of ports).  See Serial-HOWTO for more info.  If such
+  a PC runs Linux with getty running on many serial ports it might be
+  thought of as a terminal server.  It is in effect a terminal server if
+  it's linked to other PC's over a network and if its job is mainly to
+  pass thru data and handle the serial port interrupts every 14 (or so)
+  bytes.  Software called "radius" is sometimes used.
+
+  Today real terminal servers serve more than just terminals.  They also
+  serve PC's which emulate terminals, and are sometimes connected to a
+  bank of modems connected to phone lines.  Some even include built-in
+  modems.  If a terminal (or PC emulating one) is connected directly to
+  a modem, the modem at the other end of the line could be connected to
+  a terminal server.  In some cases the terminal server by default
+  expects the callers to use PPP packets, something that real text
+  terminals don't generate.
+
+
+  19.  Appendix D:  Other Types of Modems
+
+  This HOWTO currently only deals with the common type of modem used to
+  connect PC's to ordinary analog telephone lines.  There are various
+  other types of modems, including devices called modems that are not
+  really modems.
+
+
+  19.1.  Digital-to-Digital "Modems"
+
+  The standard definition of a modem is sometimes broadened to include
+  "digital" modems.  Today direct digital service is now being provided
+  to many homes and offices so a computer there sends out digital
+  signals directly (well almost) into the telephone lines.  But a device
+  is still needed to convert the computer digital signal into type
+  allowed on telephone circuits and this device is sometimes called a
+  modem.  The next 2 sections: ISDN and DSL concern digital-to-digital
+  "modems".
+
+
+  19.2.  ISDN "Modems"
+
+  The "modem" is  really a Terminal Adapter (TA).  A Debian package
+  "isdnutils" is available.  There is a ISDN Howto in German with an
+  English translation:  <http://www.suse.de/Support/sdb_e/isdn.html>.
+  It's put out by the SuSE distribution of Linux and likely is about
+  drivers available in that distribution.  There is an isdn4linux
+  package and a newsgroup: de.alt.comm.isdn4linux.  Many of the postings
+  are in German.  You might try using a search engine (such as DejaNews)
+  to find "isdn4linux".
+
+
+
+
+
+  19.3.  Digital Subscriber Line (DSL)
+
+  DSL uses the existing twisted pair line from your home (etc.) to the
+  local telephone office.  This can be used if your telephone line can
+  accept higher speeds than an ordinary modem (say 56k) sends over it.
+  It replaces the analog-to-digital converter at the local telephone
+  office with a converter which can accept a much faster flow of data
+  (in a different format of course).  The device which converts the
+  digital signals from your computer to the signal used to represent
+  digital data on the local telephone line is also called a modem.  This
+  document presently does not cover the special aspects of these modems.
+
+  END OF Modem-HOWTO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

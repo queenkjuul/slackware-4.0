@@ -1,0 +1,17 @@
+Begin3
+Title:          kuser
+Version:        0.8.0
+Entered-date:   07.02.99
+Description:    User-Administration-Tool for Shadow-Password-System
+		with Quota-Support
+Keywords:       KDE X11 Qt Shadow Quota
+Author:         Klaus-Dieter Moeller <kdm@coppernicus.se.sh.schule.de>
+Maintained-by:  Klaus-Dieter Moeller <kdm@coppernicus.se.sh.schule.de>
+Primary-site:   http://kdm.linuxbox.com
+       		101kB	kuser-0.7.0.tar.gz
+		614	kuser.lsm
+Alternate-site: ftp://ftp.kde.org/pub/kde/stable/1.1/apps/utils
+Original-site:  
+Platform:       Linux with shadow passwords, needs Qt 1.41 and kde-libs
+Copying-policy: GPL
+End

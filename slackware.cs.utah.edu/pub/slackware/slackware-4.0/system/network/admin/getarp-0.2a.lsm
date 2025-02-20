@@ -1,0 +1,21 @@
+Begin2
+Title        = GetARP
+Version      = 0.2a
+Desc1        = A simple script to get the ARPa (ethernet) address for a 
+Desc2        = given IP address; it shows the hostname in both numeric
+Desc3        = and man-readable form, and the ethernet address in the
+Desc4        = 6 hex number format.
+Author       = Carlos Moreno (Karlitos)
+AuthorEmail  = cmoreno@imim.es
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming (It will change later)
+File1        = getarp-0.2a.tar.gz
+FileSize1    = 951
+Required1    = An UNIX environment with network capabilities.
+Required2    = gnu awk, nslookup, arp, gnu grep.
+CopyPolicy1  = GetARP may be freely distibuted and modified.
+Keywords     = linux, arp, ethernet, network.
+Entered      = 12MAY95
+EnteredBy    = Carlos Moreno
+CheckedEmail = cmoreno@imim.es
+End

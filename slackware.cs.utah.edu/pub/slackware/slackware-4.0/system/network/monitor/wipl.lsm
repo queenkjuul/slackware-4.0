@@ -1,0 +1,24 @@
+Begin3
+Title:            wipl
+Version:          990221
+Entered-date:     21FEB99
+Description:      The wipl program package is able to make statistics about
+                  which network cards transfer how much on a LAN segment or
+		  through certain routers or servers.
+
+		  The program package contains a daemon program which collects
+		  the information. For each packet seen on the LAN the daemon
+		  executes a small user defined program makeing it possible to
+		  make almost any kind of statistics.
+
+		  Severel client programs are available to retreview the
+		  information collected by the daemon. One of them is able to
+		  write html files to easy publication from web pages.
+Keywords:         monitor network statistics log ethernet
+Author:           worm@diku.dk (Christian Worm Mortensen)
+Maintained-by:    worm@diku.dk (Christian Worm Mortensen)
+Primary-site:     sunsite.unc.edu /pub/Linux/system/network/monitor
+                  63kB wipl-990221.src.tar.gz
+Platforms:        The pcap library distributed with tcpdump
+Copying-policy:   GPL
+End

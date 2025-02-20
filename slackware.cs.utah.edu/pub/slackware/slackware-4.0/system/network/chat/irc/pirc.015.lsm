@@ -1,0 +1,29 @@
+Begin
+Title:          pirc
+Version:        0.015
+Entered-date:   Thu Nov 14 13:27:56 GMT-0100 1996
+Description:    A simple irc client for with ANSI COLOR for Linux.
+		This client can display and send text in any color the user
+		wants.
+		Has many commands, very flexible setup file, will run
+		in a Linux console or color xterm.
+		Nice command line editing, easy to use, page back with
+		automatic hold, etc.
+		Automatic coloring of last addressed nick. (handy in a busy
+		channel).
+                To install;
+	        Copy pirc.015.tgz your home directory
+                tar -zxvf pirc.015.tgz <ENTER>
+                cd pirc.015 <ENTER>
+                Follow instructions in INSTALL	
+Keywords:       irc client, color, ANSI, linux, X.
+Author:         pante@epsilon.nl (panteltje)
+Maintained-by:  This is a pre release, maybe I will add more features later.
+		pante@epsilon.nl
+Primary-site:   sunsite.unc.edu 
+		/pub/Linux/incoming
+		/pub/Linux/?
+		pirc.015.tgz (189218 Bytes)
+Platform:       LINUX
+Copying-policy: GPL, but not free software, pirc.015 cost 1 USD, see README.
+End

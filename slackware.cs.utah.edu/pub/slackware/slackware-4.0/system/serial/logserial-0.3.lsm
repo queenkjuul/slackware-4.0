@@ -1,0 +1,15 @@
+Begin3
+Title:          logserial
+Version:        0.3
+Entered-date:   Sat Mar 20 1999
+Description:    Package for loging incoming bytes on asynchronous serial ports.
+                It was written for loging calls on our telephone central, but
+                you can use it for any devices connected to serial ports.
+Keywords:       serial,log,port,com,/dev/ttyS,/dev/cua
+Author:         sinko@szarvas.hu (Zoltan Sinkovics)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/serial
+                7.9 kB logserial-0.3.tar.gz
+                622    logserial-0.3.lsm
+Platforms:      intel based PCs
+Copying-policy: GPL
+End

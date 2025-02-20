@@ -1,0 +1,26 @@
+LibGTop 0.26.2 has been released:
+--------------------------------
+
+This is the latest "official" release of LibGTop that should be used
+with GNOME 0.30 - binary RPMS of gnome-core and gnome-utils linked
+against it are in the /pub/gnome directory.
+
+All bugs that were reported during the last week should be fixed in
+this release, however I don't want to call it 0.30 until GTop 0.30
+is released.
+
+Tarballs:
+
+	libgtop-0.26.2.tar.gz
+
+Source RPM:
+
+	libgtop-0.26.2-SNAP.src.rpm
+
+Binary RPMS:
+
+	libgtop-0.26.2-SNAP.i386.rpm
+	libgtop-devel-0.26.2-SNAP.i386.rpm
+	libgtop-examples-0.26.2-SNAP.i386.rpm
+
+Martin <martin@home-of-linux.org>

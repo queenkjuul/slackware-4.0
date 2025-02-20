@@ -1,0 +1,15 @@
+Begin3
+Title:		menu
+Version:	Beta-1
+Entered-date:	11APR95
+Description:	Menu shell and supporting utilities for VU BBS.  Can be used
+		to build stand-alone or VU BBS menu environments.  Run as
+		login shell and/or utility.
+Keywords:	BBS, VU, menu, shell
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/BBS/vubbs
+		menu-b1.tar.gz
+Platforms:	All Linux kernels 1.1.3x and above.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

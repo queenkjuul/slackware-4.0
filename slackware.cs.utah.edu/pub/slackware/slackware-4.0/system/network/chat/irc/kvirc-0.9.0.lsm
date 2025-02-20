@@ -1,0 +1,14 @@
+Begin3
+Title:kvirc
+Version:0.9.0
+Entered-date:25JAN99
+Description:Irc client with MDI interface,Scripting,Popup , aliases and events editor,DCC (SEND CHAT VOICE AND RESUME),SOCKSV4 & V5 support,more...
+Keywords:KDE Qt Linux Irc KVirc irc kde kvirc talk DCC VOICE RESUME
+Author:Szymon Stefanek <kvirc@tin.it>
+Maintained-by:Szymon Stefanek <kvirc@tin.it>
+Primary-site:http://www.kvirc.org
+Alternate-site:ftp://ftp.kde.org/pub/kde/stable/1.1/apps/network/
+Original-site:http://www.kvirc.org
+Platforms:Linux KDE 1.0 Qt1.40
+Copying-policy:GPL
+End

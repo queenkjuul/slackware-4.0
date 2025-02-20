@@ -1,0 +1,19 @@
+Begin3
+Title:          netkit-routed
+Version:        0.12
+Entered-date:   Aug 26 1998
+Description:    Update of netkit-routed-0.10
+                Basic network tools, fixed and ported from BSD code.
+                This version supersedes netkit-routed-0.10. 
+                Contains: routed routed-query routed-trace
+Keywords:       daemons network tools netkit security
+Author:         various
+Maintained-by:  bryce@zen.btc.uwe.ac.uk
+Maintained-by:  dholland@hcs.harvard.edu (David A. Holland)
+Primary-site:   ftp.uk.linux.org /pub/linux/Networking/tools
+                    netkit-routed-0.12.tar.gz 40353
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network
+Original-site:  
+Platform:       Portable; intended for Linux
+Copying-policy: BSD
+End

@@ -1,0 +1,22 @@
+Begin3
+Title:          elk
+Version:        3.0p2
+Entered-date:   17JUL96
+Description:    Elk is an implementation of the Scheme programming language.
+                In contrast to existing, stand-alone Scheme systems Elk has
+                been designed specifically as an embeddable, reusable
+                extension language subsystem for applications written in C
+                or C++.
+                The linux_config file should replace the
+                config/i486-linux-gcc file and was contributed by an elk user
+                (see the web page).
+                See also: http://www.informatik.uni-bremen.de/~net/elk
+Author:         net@cs.tu-berlin.de (Olivier Laumann)
+Primary-site:   ftp.uni-bremen.de /pub/programming/languages/scheme/elk
+                761951 elk-3.0.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/lisp
+                761961 elk-3.0p2.tgz
+                  3977 elk-3.0.linux_config.gz
+Platforms:      X11, Motif 1.2 optional
+Copying-policy: Free, no warranty
+End

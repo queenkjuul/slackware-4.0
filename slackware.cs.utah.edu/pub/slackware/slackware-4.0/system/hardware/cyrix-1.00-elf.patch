@@ -1,0 +1,47 @@
+This patch created September 1st, 1996 04:00 by Jason Burrell
+<jburrell@crl.com>.
+
+Applying this patch should correct the problem with the Cyrix utility that
+prevents it from compiling as an ELF executable. The original Cyrix 1.00
+distribution was created before the big push for ELF really took hold.
+
+The actual program distribution from Paul is available at 
+ftp://sunsite.unc.edu/pub/Linux/system/Misc/cyrix-1.00.tar.gz
+
+
+*** cx486dlc/src/cyrix.c	Sat Aug 27 01:58:33 1994
+--- cx486dlc/src/cyrix.c	Sun Sep  1 03:54:17 1996
+***************
+*** 61,67 ****
+  
+  /* The 4 assembly routines: probe.S, state.S, enable.S, disable.S */
+  
+! extern int	cx_iscyrix(void);
+  /*
+  extern int	cx_i486cachemode(void);
+  extern void	cx_i486cacheon(void);
+--- 61,67 ----
+  
+  /* The 4 assembly routines: probe.S, state.S, enable.S, disable.S */
+  
+! extern int	_cx_iscyrix(void);
+  /*
+  extern int	cx_i486cachemode(void);
+  extern void	cx_i486cacheon(void);
+***************
+*** 535,541 ****
+  /* ********************************************************************* */
+  
+  if (!override) {
+! 	if (!cx_iscyrix()) {
+  		fprintf(stderr,"\n\aThis does *not* look like a DLC/SLC chip -- exiting!\n\n");
+  		exit(1);
+  	}
+--- 535,541 ----
+  /* ********************************************************************* */
+  
+  if (!override) {
+! 	if (!_cx_iscyrix()) {
+  		fprintf(stderr,"\n\aThis does *not* look like a DLC/SLC chip -- exiting!\n\n");
+  		exit(1);
+  	}

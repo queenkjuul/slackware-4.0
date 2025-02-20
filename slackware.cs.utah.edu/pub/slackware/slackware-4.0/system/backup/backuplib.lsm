@@ -1,0 +1,14 @@
+Begin3
+Title:          backuplib
+Version:        0.2
+Entered-date:   6/7/1998
+Description:    A perl module and some scripts to automate system backups.
+Keywords:	backup perl SCSI tape
+Author:         Robert Snell (rob@xania.demon.co.uk)
+Maintained-by:  Robert Snell
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/backup
+Alternate-site: http://www.xania.demon.co.uk
+Original-site:  ftp://sunsite.unc.edu/pub/Linux/system/backup
+Platforms:      Linux, UNIX, perl, SCSI
+Copying-policy: GPL
+End

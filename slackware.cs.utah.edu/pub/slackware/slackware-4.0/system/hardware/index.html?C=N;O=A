@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/hardware</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/hardware</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">3.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">908 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="CDspindown-1.0b.lsm">CDspindown-1.0b.lsm</a></td><td align="right">1996-05-22 07:00  </td><td align="right">409 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="CDspindown-1.0b.tar.gz">CDspindown-1.0b.tar.gz</a></td><td align="right">1996-05-22 07:00  </td><td align="right">3.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">8.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:55  </td><td align="right">101 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SiS471_bus.lsm">SiS471_bus.lsm</a></td><td align="right">1996-06-29 07:00  </td><td align="right">485 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="SiS471_bus.tar.gz">SiS471_bus.tar.gz</a></td><td align="right">1996-06-29 07:00  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="adidrv.taz">adidrv.taz</a></td><td align="right">1993-06-06 07:00  </td><td align="right">4.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cachectl-1.0.lsm">cachectl-1.0.lsm</a></td><td align="right">1996-12-15 21:36  </td><td align="right">559 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cachectl-1.0.tar.gz">cachectl-1.0.tar.gz</a></td><td align="right">1996-12-15 21:36  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="cyrix-1.00-elf.patch">cyrix-1.00-elf.patch</a></td><td align="right">1996-09-01 16:19  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cyrix-1.00.lsm">cyrix-1.00.lsm</a></td><td align="right">1995-02-15 08:00  </td><td align="right">681 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cyrix-1.00.tar.gz">cyrix-1.00.tar.gz</a></td><td align="right">1995-02-15 08:00  </td><td align="right"> 29K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="dram-1.00.lsm">dram-1.00.lsm</a></td><td align="right">1994-09-02 07:00  </td><td align="right">718 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="dram-1.00.tar.gz">dram-1.00.tar.gz</a></td><td align="right">1994-09-02 07:00  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f6x86-1.0.tgz">f6x86-1.0.tgz</a></td><td align="right">1996-08-28 07:00  </td><td align="right"> 21K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="f6x86.lsm">f6x86.lsm</a></td><td align="right">1996-08-28 07:00  </td><td align="right">719 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gatoff.lsm">gatoff.lsm</a></td><td align="right">1995-07-17 07:00  </td><td align="right">488 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gatoff.tar.gz">gatoff.tar.gz</a></td><td align="right">1995-07-17 07:00  </td><td align="right">871 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="hdparm-3.5.lsm">hdparm-3.5.lsm</a></td><td align="right">1998-11-06 23:08  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="hdparm-3.5.tar.gz">hdparm-3.5.tar.gz</a></td><td align="right">1998-11-06 23:08  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="hdparm.lsm">hdparm.lsm</a></td><td align="right">1997-03-01 08:23  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="hwclock-2.7.tar.gz">hwclock-2.7.tar.gz</a></td><td align="right">1999-05-03 21:40  </td><td align="right"> 64K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="hwclock.lsm">hwclock.lsm</a></td><td align="right">1999-05-03 21:40  </td><td align="right">868 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="isapnptools-1.18.bin.tgz">isapnptools-1.18.bin.tgz</a></td><td align="right">1999-02-15 07:33  </td><td align="right">223K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="isapnptools-1.18.lsm">isapnptools-1.18.lsm</a></td><td align="right">1999-02-15 07:22  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="isapnptools-1.18.tgz">isapnptools-1.18.tgz</a></td><td align="right">1999-02-15 07:27  </td><td align="right"> 87K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lcdpanel-0.50.lsm">lcdpanel-0.50.lsm</a></td><td align="right">1995-07-30 07:00  </td><td align="right">706 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lcdpanel-0.50.tar.gz">lcdpanel-0.50.tar.gz</a></td><td align="right">1995-07-30 07:00  </td><td align="right">7.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="memtest86-1.4a.lsm">memtest86-1.4a.lsm</a></td><td align="right">1998-06-18 04:20  </td><td align="right">515 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="memtest86-1.4a.tar.gz">memtest86-1.4a.tar.gz</a></td><td align="right">1998-06-18 04:20  </td><td align="right"> 27K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pnpkitv210.lsm">pnpkitv210.lsm</a></td><td align="right">1999-04-28 17:56  </td><td align="right">409 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pnpkitv210.tgz">pnpkitv210.tgz</a></td><td align="right">1999-04-28 17:56  </td><td align="right">290K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="ps2mouse-emul.c">ps2mouse-emul.c</a></td><td align="right">1992-10-21 07:00  </td><td align="right">5.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pwrm-1.0.tar.Z">pwrm-1.0.tar.Z</a></td><td align="right">1993-01-29 08:00  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pwrm.iafa">pwrm.iafa</a></td><td align="right">1993-01-29 08:00  </td><td align="right">548 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="rdev.c">rdev.c</a></td><td align="right">1992-12-01 08:00  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="scanport.lsm">scanport.lsm</a></td><td align="right">1996-09-25 07:00  </td><td align="right">574 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="scanport.tar.gz">scanport.tar.gz</a></td><td align="right">1996-09-25 07:00  </td><td align="right"> 23K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="scsi-idle-2.0.34.tar.gz">scsi-idle-2.0.34.tar.gz</a></td><td align="right">1998-06-18 15:35  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="scsi-idle.lsm">scsi-idle.lsm</a></td><td align="right">1998-06-17 04:32  </td><td align="right">680 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="scsifmt.c">scsifmt.c</a></td><td align="right">1997-02-08 20:11  </td><td align="right">5.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="scsifmt.lsm">scsifmt.lsm</a></td><td align="right">1997-02-08 20:11  </td><td align="right">668 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="scsistop-0.3.3.c">scsistop-0.3.3.c</a></td><td align="right">1998-10-15 13:47  </td><td align="right">5.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="scsistop-0.3.3.lsm">scsistop-0.3.3.lsm</a></td><td align="right">1998-10-15 13:47  </td><td align="right">658 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="set6x86-1.3.tar.gz">set6x86-1.3.tar.gz</a></td><td align="right">1997-09-30 06:08  </td><td align="right"> 52K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="set6x86.lsm">set6x86.lsm</a></td><td align="right">1997-09-30 06:08  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="shastakit.lsm">shastakit.lsm</a></td><td align="right">1995-06-08 07:00  </td><td align="right">577 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shastakit.tar.gz">shastakit.tar.gz</a></td><td align="right">1995-06-06 07:00  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tosh_fan-1.1.lsm">tosh_fan-1.1.lsm</a></td><td align="right">1998-08-08 04:14  </td><td align="right">758 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tosh_fan-1.1.tar.gz">tosh_fan-1.1.tar.gz</a></td><td align="right">1998-08-08 04:14  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="update-1.3-spindown-patch.gz">update-1.3-spindown-patch.gz</a></td><td align="right">1998-06-09 06:10  </td><td align="right">4.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="update-1.3-spindown-patch.lsm">update-1.3-spindown-patch.lsm</a></td><td align="right">1998-06-09 06:10  </td><td align="right">544 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="veridata.lsm">veridata.lsm</a></td><td align="right">1995-04-13 07:00  </td><td align="right">759 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="veridata.zip">veridata.zip</a></td><td align="right">1995-04-13 07:00  </td><td align="right">7.7K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

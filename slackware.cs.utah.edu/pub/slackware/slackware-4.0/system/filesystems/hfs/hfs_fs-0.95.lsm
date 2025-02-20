@@ -1,0 +1,15 @@
+Begin3
+Title:		hfs_fs
+Version:	0.95
+Entered-date:	28APR97
+Description:	Source for a kernel loadable module implementing the
+		Macintosh HFS filesystem for kernels 2.0.1 and newer.
+		This is not an AppleShare client.
+Author:		hargrove@sccm.Stanford.EDU (Paul H. Hargrove)
+Primary-site:	http://www-sccm.Stanford.EDU/~hargrove/HFS/
+		159942 bytes hfs_fs-0.95.tar.gz
+Alternate-site:	ftp://sunsite.unc.edu/pub/Linux/system/filesystems/hfs/
+		159942 bytes hfs_fs-0.95.tar.gz
+Copying-policy:	GPL
+Keywords:	HFS macintosh filesystem kernel module
+End

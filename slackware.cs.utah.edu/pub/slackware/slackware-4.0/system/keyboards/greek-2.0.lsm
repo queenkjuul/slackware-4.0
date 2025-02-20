@@ -1,0 +1,18 @@
+Begin3
+Title:          Greek Support
+Version:        2.0 (December 21 1997)
+Entered-date:   Sun Dec 21 18:50:40 EET 1997
+Description:    A package to enable the user to see and type in Greek
+                on the Linux console. Contains fonts, keymaps and
+                a script to easy installation. Includes support for
+                both ISO-8859-7 and the traditional, near-obsolete
+                437G (which will require a kernel patch to work
+                properly).
+Keywords:       console fonts keymap national greek iso 437g
+Author:         alexios@vennea.demon.co.uk (Alexios Chouchoulas)
+Maintained-by:  alexios@vennea.demon.co.uk (Alexios Chouchoulas)
+Primary-site:   sunsite.ubc.edu /pub/Linux/system/keyboards/
+                39k greek-2.0.tar.gz
+Platform:	i386
+Copying-policy: GPL
+End

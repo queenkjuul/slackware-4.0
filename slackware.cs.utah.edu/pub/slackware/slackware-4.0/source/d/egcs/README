@@ -1,0 +1,48 @@
+			EGCS Releases
+
+EGCS releases are available in both gzip and bzip2 formats.  bzip2 generally
+gives better compression, but isn't as widely available.  We've placed a copy
+of bzip2 on our server in the infrastructure directory.
+
+
+  * egcs-1.1.2.tar.gz		--  Full distribution in gzip format
+  * egcs-1.1.2.tar.bz2		--  Full distribution in bzip2 format
+
+  * egcs-core-1.1.2.tar.gz	--  C compiler only in gzip format.
+  * egcs-core-1.1.2.tar.bz2	--  C compiler only in bzip2 format.
+
+  * egcs-g++-1.1.2.tar.gz	--  G++ compiler and C++ runtime libraries
+				    in gzip format.
+  * egcs-g++-1.1.2.tar.bz2	--  G++ compiler and C++ runtime libraries
+				    in bzip2 format.
+
+  * egcs-g77-1.1.2.tar.gz	--  G77 compiler and runtime libraries
+				    in gzip format
+  * egcs-g77-1.1.2.tar.bz2	--  G77 compiler and runtime libraries
+				    in bzip2 format
+
+  * egcs-objc-1.1.2.tar.gz	--  Objective C compiler and runtime libraries
+				    in gzip format
+  * egcs-objc-1.1.2.tar.bz2	--  Objective C compiler and runtime libraries
+				    in bzip2 format
+
+  * egcs-tests-1.1.2.tar.gz	--  C & C++ testsuites in gzip format
+  * egcs-tests-1.1.2.tar.bz2	--  C & C++ testsuites in bzip2 format
+
+  * egcs-g++-testsuite-1.1.2.tar.gz -- C++ testsuite only in gzip format
+  * egcs-g++-testsuite-1.1.2.tar.bz2 -- C++ testsuite only in bzip2 format
+
+  * egcs-g77-testsuite-1.1.2.tar.gz -- G77 testsuite only in gzip format
+  * egcs-g77-testsuite-1.1.2.tar.bz2 -- G77 testsuite only in bzip2 format
+
+
+  Diffs to update from 1.1.1 to 1.1.2 are available in both gzip and
+  bzip formats as 
+
+  egcs-1.1.1-1.1.2.diff.{gz,bz2} 		-- Diffs for the entire
+						   distribution.
+
+  egcs-<component>-1.1.1-1.1.2.diff.{gz,bz2}	-- Diffs for a particular
+						   component (g++, g77, etc).
+
+

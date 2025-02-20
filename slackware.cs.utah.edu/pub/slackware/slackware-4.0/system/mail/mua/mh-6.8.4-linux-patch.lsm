@@ -1,0 +1,32 @@
+Begin3
+Title:          mh-6.8.4-linux-patch.gz
+Version:        0.1
+Entered-date:   January 30th 1997
+Description:    See the file `mh-6.8.4-linux-patch.README' that can be found
+		at the top of the diff file.
+		This is a patch to bring the official mh-6.8.3 sources up to
+		version 6.8.4 for linux.  It is based on the patches
+		distributed in the RedHat mh-6.8.3-13.rpm and the MH.6.8.4.Z
+		upgrade patch.
+		MH is a very powerful and highly flexible MIME-capable mail
+		management system which uses individual shell-level commands
+		to manage various aspects of mail maintenance.  These commands
+		can be used as is, or combined via shell scripts to allow
+		arbitrary mail manipulation.  User interfaces such as xmh,
+		exmh and mh-e can easily be implemented on top of its commands.
+		The original mh-6.8.3 sources can be found at:
+		ftp://ftp.ics.uci.edu/pub/mh/tar/mh-6.8.3.tar.Z
+		ftp://sunsite.unc.edu/pub/Linux/system/Mail/readers/mh-6.8.3-src.tar.gz
+		It makes obselete and replaces the file:
+		ftp://sunsite.unc.edu/pub/Linux/system/Mail/readers/mh-6.8.3-diff.tgz
+Keywords:       mail mailreader MH UCI MIME
+Author:         Tony Nugent <T.Nugent@sct.gu.edu.au> (this patch only)
+Maintained-by:  Tony Nugent <T.Nugent@sct.gu.edu.au> (this patch only)
+Primary-site:	ftp://ftp.gw.com/pub/unix/mail/mh/patches/linux/
+		mh-6.8.4-linux-patch.gz		44,444 bytes
+		mh-6.8.4-linux-patch.lsm	1521 bytes
+Alternate-site:	ftp://sunsite.unc.edu/pub/Linux/system/Mail/readers/
+Alternate-site: ftp://tsx-11.mit.edu/pub/linux/
+Platform:       linux (elf, most architectures)
+Copying-policy: As per the original mh source (or GNU GPL).
+End

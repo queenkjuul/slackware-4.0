@@ -1,0 +1,19 @@
+Begin3
+Title:          survey
+Version:        0.5
+Entered-date:   06APR99
+Description:    Survey is a nearly  complete list of your system files.
+Description:    If you have ever had a busted install or OS upgrade,
+Description:    or a hardware crash, you have no way to get Linux
+Description:    booted so as to print out system information.
+Description:    This script is invaluable when Linux cannot be upgraded.
+Keywords:       survey, configuration, resources, msd, regedit, upgrade
+Author:         everett@roanoke.infi.net (Everett Holland)
+Maintained-by:  everett@roanoke.infi.net (Everett Holland)
+Primary-site:   metalab.unc.edu:/pub/Linux/system/Shells/survey-0.5.tar.gz
+			 12kb	survey-0.5.tar.gz
+			 1Kb		survey-0.5.lsm
+Original-site:  
+Platforms:      Written in bash, runs on Linux systems 
+Copying-policy: Freely Redistributable GPL (See COPYING)
+End

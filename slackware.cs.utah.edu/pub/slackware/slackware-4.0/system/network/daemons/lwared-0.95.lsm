@@ -1,0 +1,16 @@
+Begin3
+Title:          LinWare
+Version:        0.95 beta
+Entered-date:   Nov 7, 1995
+Description:    Novell NetWare like fileserver for Linux
+		IPX utilities and router daemons included
+Keywords:       fileserver IPX NCP Novell NetWare Linux
+Author:         Ales Dryak <A.Dryak@sh.cvut.cz>
+Maintained-by:  Ales Dryak <A.Dryak@sh.cvut.cz>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/daemons
+		80 k lwared-0.95.tar.gz
+Original-site:  klokan.sh.cvut.cz /pub/linux
+		80 k lwared-0.95.tar.gz
+Platform:       Linux 1.3.x
+Copying-policy: GPL
+End

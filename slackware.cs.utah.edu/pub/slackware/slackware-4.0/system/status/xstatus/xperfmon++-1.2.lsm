@@ -1,0 +1,21 @@
+Begin3
+Title:          xperfmon++
+Version:        1.2
+Entered-date:   15DEC98
+Description:    A performance monitor for Linux with X Window System and /proc.
+                Shows selected machine load statistics, and can show
+                warnings when statistics go above or below settings.
+                Should work with Linux kernels 2.0.x, 2.1.x, and 2.2.x.
+                This version uses /proc.
+Keywords:       xperfmon, performance, statistics, load, linux.
+Author:         tom@meepmeep.pcs.com
+                rsmith@proteus.arc.nasa.gov
+                scoffin@netcom.com
+                Touched by many others.
+Maintained-by:  scoffin@netcom.com
+Primary-site:   sunsite.unc.edu
+					 35K /pub/Linux/system/status/xstatus/xperfmon++-1.2.tar.gz
+Alternate-site: sunsite mirrors.
+Original-site:  
+Copying-policy: GPL
+End

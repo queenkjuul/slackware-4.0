@@ -1,0 +1,21 @@
+Begin3
+Title:		xnew
+Version:	0.4a
+Entered-date:	02MAR98
+Description:	Xnew is a highly configurable and modular set of programs that
+                was written to be a portable and easily maintainable method
+                for people to request, (or automatically create), accounts on
+                a *NIX system.  There are undoubetly other tasks for which
+                could be used.
+Keywords:	newuser account create
+Author:		Karyl F. Stein <xenon@xenos.net>
+Maintained-by:	Karyl F. Stein <xenon@xenos.net>
+Primary-site:	http://www.xenos.net/~xenon/software/xnew/
+                37616 xnew-0.4a.tar.gz
+                58467 xnew-0.4a.tar.Z
+                730   xnew-0.4a.lsm
+Alternate-site: 
+Original-site:
+Platforms:	Linux
+Copying-policy:	GPL
+End

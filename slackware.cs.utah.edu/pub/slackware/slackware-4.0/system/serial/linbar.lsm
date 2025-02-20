@@ -1,0 +1,18 @@
+Begin3
+Title:		linbar
+Version:    	0.4
+Entered-date:   24APR99
+Description:    The linbar utility reads from a specified serial port
+                and puts the characters to the curent console keyboard
+                buffer. It's primary usage is for serial barcode readers.
+		As far as I know, it works only on Linux console.
+Keywords:       serial barcode reader console
+Author:         roryt@hol.gr (Ioannis Ioannou)
+Maintained-by:  roryt@hol.gr (Ioannis Ioannou)
+Primary-site:   argeas.cs-net.gr /Linux/linbar                
+		22kB  linbar-0.4.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/serial
+		22kB  linbar-0.4.tar.gz
+Original-site:  
+Copying-policy:	GPL
+End

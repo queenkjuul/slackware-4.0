@@ -1,0 +1,21 @@
+Begin3
+Title:          Accounting system for Linux
+Version:        1.2.0
+Entered-date:   09JUL95
+Description:    All utils to make use of the accounting system.
+		Mostly ports of BSD commands and some new programs.
+Keywords:       process accounting
+Author:         Marco van Wieringen, Juha Virtanen
+Maintained-by:  Juha Virtanen
+Primary-site:   ftp.funet.fi /pub/Linux/tools
+		11669 acct-1.2.0.tar.gz
+		741 acct-1.2.0.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Admin
+		11669 acct-1.2.0.tar.gz
+		741 acct-1.2.0.lsm
+Original-site:  iguana.hut.fi /pub/linux/Kernel/process_accouting
+		11669 acct-1.2.0.tar.gz
+		741 acct-1.2.0.lsm
+Platform:       Linux
+Copying-policy: GNU Copyleft and BSD copyright for the ported BSD commands
+End

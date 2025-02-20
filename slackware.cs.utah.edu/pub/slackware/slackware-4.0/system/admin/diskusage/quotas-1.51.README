@@ -1,0 +1,11 @@
+quotas-1.51-tar.gz is the latest release of quotas for linux.  The home site
+is ftp://ftp.funet.fi/pub/Linux/PEOPLE/Linus/subsystems/quota/all.tar.gz,
+and this will compile just fine (at least on 1.3.x systems) after you copy
+its mntent.h over /usr/include/mntent.h
+
+chris ricker
+gt1355b@prism.gatech.edu
+4/26/96
+
+Please note:  I don't maintain this or anything, I'm just uploading it since
+people might need it ;-).

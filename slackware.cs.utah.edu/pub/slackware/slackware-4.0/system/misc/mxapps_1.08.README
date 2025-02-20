@@ -1,0 +1,60 @@
+mxMail/mxFtp
+============
+
+mxMail and mxFtp are applications designed for operating on UNIX platforms.
+They use X/Motif and are written in C++. They have been designed for Linux but
+*should* run with little or no modifications on other UNIX OS's (the only
+part that will require significant work is the akSound class in the class
+library that comes with the applications - it is Linux-specific).
+
+Description of directories
+--------------------------
+app-defaults - contains the resource files for 'mxmail' and 'mxftp'.
+AppKit       - contains the code for the AppKit class library.
+src          - contains the code for the 'mxmail' and 'mxftp' applications.
+lib          - where the libAppKit.a is stored when it is built.
+bin          - where the 'mxmail' and 'mxftp' binaries are stored when built.
+doc	     - (limited) documentation for 'mxmail' and 'mxftp'.
+sounds       - audio sounds used by 'mxmail' and 'mxftp'.
+
+Building the applications
+-------------------------
+To build mxMail/mxFtp you WILL require the following :-
+a). C++ compiler (e.g g++) and STL implementation (e.g libstdc++)
+b). X window system (X11R6 ideally, but X11R5 should be OK)
+c). Motif (version 2.0 or greater).
+
+
+To build mxMail and mxFtp, do the following :-
+
+a). build the AppKit class library. On Linux this is achieved by cd'ing to the
+    AppKit directory and typing 'make'. This creates libAppKit.a in the lib
+    directory.
+b). build the applications. On Linux this is achieved by cd'ing to the src
+    directory and typing 'make'. This creates 'mxmail' and 'mxftp' in the bin
+    directory.
+
+Installing the applications
+---------------------------
+Refer to the file INSTALL.
+
+
+Running the applications
+------------------------
+To run 'mxMail' you also require 'sendmail' on your system.
+To run 'mxFtp' you also require 'ftp' on your system.
+
+
+Customising the audio sounds used by mxmail/mxftp
+-------------------------------------------------
+Simply go into the sounds directory and replace the provided sounds with your
+own WAV or VOC files (the provided sounds are all WAV format).
+
+
+
+
+Hope you find it useful.
+
+
+Andy Jefferson (andy@ajsoft.demon.co.uk)
+28/07/97

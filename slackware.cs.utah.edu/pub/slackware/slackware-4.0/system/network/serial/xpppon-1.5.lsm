@@ -1,0 +1,15 @@
+Begin3
+Title:          xpppon, a GUI front-end to the ppp-on and ppp-off scripts.
+Version:        1.5
+Entered-date:   30NOV97
+Description:    xpppon is a simple GUI front-end to the ppp-on and
+		ppp-off shell scripts used to initiate and close ppp
+		connections on Linux systems. It does not alter these
+		scripts in any way. xpppon requires the EZ Widget and
+		Graphics Library. Details in file INSTALL.
+Keywords:       ppp ppp-on ppp-off dialer
+Author:	        jbailie@wwdc.com (James Bailie)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+                      9722 xpppon-1.4.tar.gz
+Copying-policy:	GPL
+End

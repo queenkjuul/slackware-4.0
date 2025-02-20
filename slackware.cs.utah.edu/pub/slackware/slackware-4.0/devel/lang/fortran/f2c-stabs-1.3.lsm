@@ -1,0 +1,48 @@
+Begin3
+Title:          f2c-stabs - f2c support for gdb via emacs
+Version:        1.3
+Entered-date:   20Jan97
+Description:    f2c does name mangling, auto array referencing,
+                pointer passing, and parameter realization when
+                compiling Fortran code to C code.  This makes
+                debugging f2c code from within gdb very difficult.
+                This package, when used in conjunction with running
+                gdb from within emacs, solves alot of this problem.
+                It allows emacs to take fortran expressions, convert
+                them to the f2c mangled version, and pass them to gdb
+                for evaluation.  For example, if one has:
+
+                REAL FOO(2:3,1:2)
+                common /BAR_NONE/ FOO
+
+                one can do C-cC-v foo(3,2) in emacs to get the value
+                of FOO(3,2).  Emacs will automatically translate this
+                to bar_none__.foo[4], and pass it to gdb for
+                evaluation.
+
+                This package include the above emacs elisp code, a
+                fortran parser, and other miscellaneous utilities.
+
+                With additional work, it would be suitable as a
+                workaround for any language/debugger combination where
+                the debugger doesn't quite understand the language.
+
+                NEW - Fully automatic usage!!!!  Just requires emacs,
+                gawk, and bash!!!!
+
+Keywords:       f2c, symbol tables, gdb, fortran, debug
+Author:         abel@netvision.net.il (Harvey J. Stein)
+                hjstein@netvision.net.il (Harvey J. Stein)
+Maintained-by:  
+Primary-site:   ftp.netvision.net.il /home/a/abel/f2c-stabs
+                41kb f2c-stabs-1.3.tar.gz
+                2kb  f2c-stabs-1.3.lsm
+                
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/fortran
+                41kb f2c-stabs-1.3.tar.gz
+                2kb  f2c-stabs-1.3.lsm
+                
+Original-site:  
+Platforms:      Requires emacs 19, gawk, and bash.
+Copying-policy: GPL
+End

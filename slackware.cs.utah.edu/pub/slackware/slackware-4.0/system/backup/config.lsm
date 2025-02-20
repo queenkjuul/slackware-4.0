@@ -1,0 +1,16 @@
+Begin3
+Title:		config
+Version:	1.0
+Entered-date:	26JAN1996
+Description:	Allow root to save files and directories easly
+		It's a script shell using dialog
+		You can save your directories and files on a disk or on 
+		your HD.
+Keywords:	save backup configuration 
+Author:		martinez@iutserveur.univ-lyon1.fr
+Primary-site:	iutserveur.univ-lyon1.fr /pub/linux/utils
+		52kb config.tgz (English and French version)
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Backup
+Platform:	dialog (LINUX)
+Copying-Policy:	GPL
+End

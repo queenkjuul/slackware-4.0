@@ -1,0 +1,2 @@
+( cd usr/bin ; rm -rf cat )
+( cd usr/bin ; ln -sf  /bin/cat cat )

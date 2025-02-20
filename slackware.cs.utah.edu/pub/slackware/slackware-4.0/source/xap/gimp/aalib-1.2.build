@@ -1,0 +1,11 @@
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/aalib-1.2.tar.gz
+cd aalib-1.2
+./configure --prefix=/usr
+make
+make install
+mkdir -p /usr/doc/aalib-1.2
+cp -a ANNOUNCE AUTHORS COPYING NEWS README /usr/doc/aalib-1.2
+chown root.root /usr/doc/aalib-1.2/*
+chmod 644 /usr/doc/aalib-1.2/*

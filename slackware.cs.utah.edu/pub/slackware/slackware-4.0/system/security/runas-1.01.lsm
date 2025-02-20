@@ -1,0 +1,18 @@
+Begin3
+Title:          Runas
+Version:        1.01
+Entered-date:   1/26/95
+Description:    Utility similar to 'su' to allow the super-user to run a
+		program as if another user ran it. Includes numerous useful
+		options. Primarily designed to allow user-maintained
+		software to be safely executed from 'rc' scripts.
+Keywords:       Utility Security su
+Author:         Joel Katz <Stimpson@Panix.COM>
+Maintained-by:  Joel Katz <Stimpson@Panix.COM>
+Primary-site:   ftp.epinet.com//pub/linux/sources/sbin/runas-1.01.tar.gz
+Alternate-site: sunsite.unc.edu//pub/Linux/Incoming/runas-1.01.tar.gz
+		hopefully soon to be in /pub/Linux/sources/sbin
+Original-site:  ftp.epinet.com
+Platform:       Linux, versions 0.99 and up
+Copying-policy: Copyrighted but freely distributable
+End

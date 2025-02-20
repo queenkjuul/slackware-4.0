@@ -1,0 +1,15 @@
+Begin3
+Title:          smbfs
+Version:        beta-0.1
+Entered-date:   11. July 1995
+Description:    This package is a beta of modification of msdos file 
+                system in linux, that support long file name, compatible
+                with lfn in FAT on Windows 95 and Windows NT 3.5x
+Keywords:       filesystem msdos msdosls fat lfn
+Author:         100144.2636@compuserve.com (Gilles Vollant)
+Maintained-by:  100144.2636@compuserve.com (Gilles Vollant)
+Primary-site:   sunsite.unc.edu
+                doslfn01.tgz 16213
+                doslfn01.tgz 586
+Copying-policy: GPL
+End

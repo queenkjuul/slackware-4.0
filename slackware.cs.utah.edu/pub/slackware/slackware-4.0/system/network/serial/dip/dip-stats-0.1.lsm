@@ -1,0 +1,19 @@
+Begin3
+Title:          dip-stats-0.1
+Version:        0.1
+Entered-date:   02NOV95
+Description:    Maintain usage stats of internet dial-up. Requires kernel
+		with IP accounting and dip-3.3.7n with patch. Has been
+		modified from some scripts found in the diald package. Any
+		bugs are my own fault
+Keywords:       dip dip-uri dip-uri-3.3.7n statistics
+Author:         pje120@cs.usask.ca (Colten D. Edwards)
+Maintained-by:  author
+Original-by:	Brian Edmonds <edmonds@cs.ubc.ca>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/serial
+		5.9kB   dip-stats-0.1.tar.gz
+		1kB	dip-stats-0.1.lsm
+Alternate-site: None
+Original-site:  None
+Copying-policy: GPL
+End

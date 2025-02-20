@@ -1,0 +1,71 @@
+This is Linux 2.0.22 resque boot+root disk.
+Contains 2.0.22 kernel compiled with
+support for
+(E)IDE HD
+(E)IDE CDROM
+FLOPPY
+SCSI AHA1542
+SCSI AIC7XXX
+SCSI_U14_34F
+SCSI_BUSLOGIC
+SCSI_FUTURE_DOMAIN
+SCSI_SEAGATE
+EXT2
+MINIX
+MSDOS
+ELF/AOUT
+RAMDISK
+
+The following modules are also included:
+isofs.o ftape.o vfat.o mcd.o mcdx.o
+aztcd.o cdrom.o cdu31a.o hpfs.o sonycd535.o
+
+The compressed root image starts at block 350
+and contains some basic libraries and utilities
+for restoring from a backup or repairing Linux
+partitions:
+afio, cpio, tar, gzip, vi,
+e2fsck, fsck, fdisk, debugfs, lde (cool! ), etc.
+
+To use the resque_disk do
+1. gunzip resque_disk-2.0.22.tar.gz
+2. tar xf resque_disk-2.0.22.tar
+3. cd resque
+4. insert a formatted for 1440kB floppy into a floppy drive
+5. dd if=resque_disk-2.0.22 of=/dev/fd0
+6. reboot and enjoy.
+
+the root's password is "username"
+
+Please send your comments to:
+Sergei Viznyuk <dfly@infinet.com>
+
+-------------------------------------------------------------
+Changes resque_disk.2.0.18  -->  resque_disk.2.0.22
+
+1. upgraded e2fsck+fsck+debugfs+tune2fs to 1.06
+2. included "lde" disk editor - a cool thing to poke
+   around filesystem, can even restore erased files.
+3. upgraded libc.so.5 to libc.so.5.4.7 - compiled
+   so it takes less space.
+4. included support for SCSI_SEAGATE into the kernel.
+5. got rid of some modules which anyone can compile into
+   the kernel whenever needed.
+6. changed /etc/boot script so it does not spawn agetty
+   on /dev/cua2 (which worked for me since I have VT220
+   terminal hooked to that port, but it popped error
+   messages for others). Also changed /etc/boot script to
+   spawn gpm with default "Microsoft mouse".
+
+-------------------------------------------------------------
+Changes resque_disk.2.0.6  -->  resque_disk.2.0.18
+
+1. fixed the problem of kerneld not autoloading
+   modules by demand
+2. upgraded sysvinit to 2.64
+3. upgraded e2fsck to 1.05
+4. included some more drivers into the kernel
+   plus some more modules (see above)
+5. included "debugfs" and "free" utilities
+6. included "minicom" dial-out program 
+

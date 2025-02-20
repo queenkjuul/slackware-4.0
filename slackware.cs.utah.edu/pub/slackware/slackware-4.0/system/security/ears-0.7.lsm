@@ -1,0 +1,21 @@
+Begin3
+Title: EARS (Emergency Audit Response System)        
+Version: 0.7       
+Entered-date: 09JAN99   
+Description: EARS is a console tool designed to detect, monitor and
+	respond to annomalies (such as intrusions) in real time. 
+	It offers complete control of the process table, filesystem(s)
+	and network interface(s) maintained by the operating system.	
+	Autonomous functionality is optional as a separate module.
+Keywords: /proc distributed tishina tiger SATAN security 
+          firewall CERT COPS tcpdump sniffit ISS      
+Author: tishina@innocent.com <Stas Lanford>         
+Maintained-by: tishina@innocent.com <Tishina Syndicate> 
+Primary-site:  http://tishina.cjb.net/projects/ears/src 
+		30kB ears-0.7.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/security 
+		30kB ears-0.7.tar.gz
+Original-site: NA 
+Platforms:     Linux 
+Copying-policy: "Freeware" See LICENSE. 
+End

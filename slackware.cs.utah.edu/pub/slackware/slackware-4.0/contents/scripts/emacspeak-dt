@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+# original config file was missing the `$' characters on the variable names
+# insert them if necessary
+if [ -f /etc/emacspeak.conf ]; then
+    sed 's/^if  *\[  *"DTK/if \[ "$DTK/' /etc/emacspeak.conf >/etc/tmp.$$
+    mv /etc/tmp.$$ /etc/emacspeak.conf
+    if grep 'export' /etc/emacspeak.conf >/dev/null; then
+	true;
+    else
+	cat >>/etc/emacspeak.conf <<\EOF
+export DTK_PROGRAM DTK_PORT DTK_TCL
+EOF
+    fi
+fi
+

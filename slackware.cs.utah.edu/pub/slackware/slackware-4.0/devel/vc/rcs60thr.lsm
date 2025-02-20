@@ -1,0 +1,29 @@
+Begin3
+Title:          RCS with Threads
+Version:        6.0Thr
+Entered-date:   03APR96
+Description:    Last year I made several feature additions to RCS 5.7.
+                These include a precedence based version checkout mechanism
+                for retrieving sets of related source files, a release
+                mechanism that prevents unauthorized tampering with revisions,
+                enhanced checkout target specification, a means of setting
+                the state of revision symbols in addition to revision
+                numbers, a new "SymbolList" keyword for keyword substitution,
+                auto-binary file detection to avoid munging files that have
+                not had keyword substitution disabled.  Man pages have been
+                updated to reflect the changes, and a more detailed
+                description than this is available in rcs60thr.txt.
+                The package is dubbed RCS 6.0Thr (or RCS with Threads), but
+                this may change if I hear back from Paul Eggert (the RCS
+                maintainer).
+Keywords:       RCS, CM, version
+Author:         Enhancements to RCS by Terry Tompkins
+Maintained-by:  above modifications maintained by tompkins@biddeford.com
+                general RCS questions directed to rcs-bugs@cs.purdue.edu
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/...
+                419068 rcsthred.uue
+                also on tsx-11.mit.edu/incoming as:
+                299083 rcs60thr.tgz
+Platform:       SunOS, HP-UX, Linux, other unices, *possibly* WinNT
+Copying-policy: GPL
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          rungetty
+Version:        1.2
+Entered-date:   04FEB99
+Description:    a minimal getty that can run any program, not just login
+Keywords:       getty virtual console
+Author:         jake@nodomainname.net (Jakob 'sparky' Kaivo)
+Maintained-by:  jake@nodomainname.net (Jakob 'sparky' Kaivo)
+Primary-site:   ftp.nodomainname.net /pub/rungetty
+		17 k	rungetty-1.2.tar.gz
+		522	rungetty-1.2.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Linux with virtual consoles turned on
+Copying-policy: GPL
+End

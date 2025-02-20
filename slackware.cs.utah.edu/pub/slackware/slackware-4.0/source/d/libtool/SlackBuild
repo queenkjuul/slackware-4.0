@@ -1,0 +1,94 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-libtool
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_libtool.tar.gz
+
+# Find the size of a file:
+filesize() {
+ SIZE=`ls -l -d -G $1 | cut -b23-32`
+ echo -n $SIZE
+}
+
+echo "+=============+"
+echo "| libtool-1.3 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/libtool-1.3.tar.gz
+cd libtool-1.3
+./configure --prefix=/usr
+make
+cat libtool > $PKG/usr/bin/libtool
+cat libtoolize > $PKG/usr/bin/libtoolize
+mkdir -p $PKG/usr/share/libtool
+cat config.guess > $PKG/usr/share/libtool/config.guess
+cat config.sub > $PKG/usr/share/libtool/config.sub
+cat ltconfig > $PKG/usr/share/libtool/ltconfig
+mkdir -p $PKG/usr/share/aclocal
+cat libtool.m4 > $PKG/usr/share/aclocal/libtool.m4
+mkdir -p $PKG/usr/share/libtool
+cat ltmain.sh > $PKG/usr/share/libtool/ltmain.sh
+( cd libltdl && make distdir distdir=$PKG/usr/share/libtool/libltdl )
+( cd $PKG/usr/share/libtool/libltdl
+  mkdir tmp
+  cp -a * tmp
+  cd tmp
+  mv * ..
+  cd ..
+  rm -r tmp
+  chmod 755 .
+  chown root.root * )
+cd libltdl
+mkdir -p $PKG/usr/lib
+cat .libs/libltdl.so.0.1.1 > $PKG/usr/lib/libltdl.so.0.1.1
+chmod 755 $PKG/usr/lib/libltdl.so.0.1.1
+(cd $PKG/usr/lib && rm -f libltdl.so.0 && ln -s libltdl.so.0.1.1 libltdl.so.0)
+(cd $PKG/usr/lib && rm -f libltdl.so && ln -s libltdl.so.0.1.1 libltdl.so)
+cat .libs/libltdl.lai > $PKG/usr/lib/libltdl.la
+cat .libs/libltdl.a > $PKG/usr/lib/libltdl.a
+ranlib $PKG/usr/lib/libltdl.a
+chmod 644 $PKG/usr/lib/libltdl.a
+mkdir -p $PKG/usr/include
+cat ltdl.h > $PKG/usr/include/ltdl.h
+cd ../doc
+mkdir -p $PKG/usr/info
+for file in *.info* ; do
+ cat $file | gzip -9c > $PKG/usr/info/$file.gz
+done
+cd ..
+mkdir -p $PKG/usr/doc/libtool-1.3
+cp -a AUTHORS COPYING INSTALL NEWS README THANKS TODO $PKG/usr/doc/libtool-1.3
+chown root.root $PKG/usr/doc/libtool-1.3/*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/libtool.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/libtool-1.3
+  rm -rf $PKG
+fi

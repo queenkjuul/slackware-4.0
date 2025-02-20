@@ -1,0 +1,16 @@
+Begin3
+Title: the zen linux modifications
+Version: 0.1b
+Entered-date: 11NOV98
+Description: the zen linux modifications are a bunch of
+bash and perl scripts to make linux just a little bit
+prettier than normal.  so far, it has color schemes, prompt
+schemes, and a formatted vhost table. 0.1b includes the
+bashrc and global bash profiles that i said i would include
+in version 0.1.
+Keywords: linux, zen, perl, bash, scripts
+Author:	tperkins@neuroitc.org (Tim Perkins)
+Primary-site: ftp.neurotic.org /pub/linux/zen
+Secondary-site:	ftp.inetarena.com /pub/linux/zen
+Copying-policy:	GPL 2.0
+End

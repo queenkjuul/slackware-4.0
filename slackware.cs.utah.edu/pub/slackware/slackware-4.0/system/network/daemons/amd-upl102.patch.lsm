@@ -1,0 +1,23 @@
+Begin3
+Title:		amd-upl102.patch.gz          
+Version:        5.2.2.2 (unofficial patchlevel 102)
+Entered-date:   Wed Sep 27 11:49:52 MET 1995
+Description:    Patch against amd-upl102:
+		linux-specific hacks for the 4.4 BSD Automount-Daemon;
+		host-specific fs-types (like "msdos" or "iso9660") or
+		nfs volumes can be mounted automatically 
+Keywords:	mount admin daemon amd       
+Author:         Jan-Simon Pendry <jsp@doc.ic.ac.uk>,
+		Erez Zadok <ezk@cs.columbia.edu>
+Maintained-by:  Hannes Reinecke <hare@mathi.uni-heidelberg.de>
+Primary-site:   ftp.zarquon.mathi.uni-heidelberg.de:/pub/Linux/Net
+		amd-upl102.linux-aout.tar.gz
+		amd-upl102.linux.patch.gz
+		amd-upl102.tar.gz
+Alternate-site:	sunsite.unc.edu:/pub/Incoming
+		amd-upl102.patch.gz
+Original-site:	src.doc.ic.ac.uk:/pub/computing/systems/unix/amd
+		ftp.cs.columbia.edu:/pub/amd
+Platform:       Lots, including Linux, *BSD*, ...
+Copying-policy: BSD
+End

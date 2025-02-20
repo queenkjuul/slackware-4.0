@@ -1,0 +1,190 @@
+  The Linux Public Web Browser mini-HOWTO
+  Donald B. Marti Jr., dmarti@best.com
+  v0.3, 5 January 1998
+
+  The basic idea here is to give web access to people who wander by,
+  while limiting their ability to mess anything up.
+
+  1.  Copyright and Disclaimer
+
+  Copyright 1997 Donald B. Marti Jr.  This document may be redistributed
+  under the terms of the Linux Documentation Project license.
+
+  This document currently contains information for Netscape Navigator
+  only, but I plan to add notes for other browsers too as I get the
+  necessary information.  If you try this with a different browser,
+  please let me know.
+
+  2.  Introduction
+
+  The basic idea here is to give web access to people who wander by,
+  while limiting their ability to mess anything up.
+
+  This setup was originally intended for trade shows, but it might be
+  applicable other places you want to have a web browser going without
+  having to babysit a computer.
+
+  Following these instructions does not make your system bulletproof or
+  idiot-proof.
+
+  3.  Before you begin
+
+  3.1.  You need a graphical browser
+
+  This document assumes that you already have a running graphical web
+  browser, such as Netscape Navigator, on your system.  You should have
+  permission to use your graphical web browser.  If you want to use
+  Netscape Navigator in a commercial setting, you can buy a copy with
+  appropriate license through Caldera.
+
+  3.2.  You need to be able to add an account
+
+  If you don't have the right to be root, get the system administrator
+  to add the ``guest'' account and give you ownership of guest's home
+  directory.  Skip to the ``Create or edit the following files'' step
+  (``Create or edit the following files in /home/guest'') when he or she
+  is done.
+
+  3.3.  You need httpd for a stand-alone web browsing station
+
+  If you are setting up a web browsing station to run stand-alone,
+  without a network connection, you should have httpd working and the
+  web documents installed.  To tell if this is the case, enter:
+
+       lynx -dump http://localhost/
+
+  You should get the text of the home page on your system.
+
+  4.  Add the guest account
+
+  As root, run adduser to add a user named guest.  Then enter
+
+  passwd guest
+
+  to set the password for the guest account.  This should be something
+  easy to remember, like ``guest''.  You will be telling people this
+  password.  Don't make it the same as your own password.
+
+  Then make guest's home directory owned by you.  Enter
+
+       chown me.mygroup /home/guest
+
+  Replace ``me'' with your regular username and ``mygroup'' with your
+  group name.  (On Red Hat Linux, these will be the same, since every
+  user has his or her own group.)
+
+  You should now exit and do the rest of the steps as yourself, not
+  root.
+
+  5.  Create or edit the following files in /home/guest
+
+  5.1.  File name: .bash_login
+
+       ______________________________________________________________________
+       exec startx
+       ______________________________________________________________________
+
+  This means that when guest logs in, the login shell will start up the
+  X Window System right away.
+
+  5.2.  File name: .Xclients
+
+       ______________________________________________________________________
+       netscape
+       ______________________________________________________________________
+
+  This means that when X starts, guest just gets the web browser, no
+  window manager. If you prefer another web browser, do something else.
+
+  The file .Xclients should be executable by guest.  Enter
+
+       chmod 755 /home/guest/.Xclients
+
+  to make it so.
+
+  5.3.  File name: .xsession
+
+       ______________________________________________________________________
+       #!/bin/sh
+       netscape
+       ______________________________________________________________________
+
+  If you use xdm(1) to log people in, this file should make guest get
+  the web browser as if he or she had logged in normally.  The file
+  .xsession should be executable by guest.  Enter
+
+       chmod 755 /home/guest/.xsession
+
+  to make it so.
+
+  5.4.  File name: .Xdefaults
+
+       ______________________________________________________________________
+       ! Disable drag-to-select.
+       *hysteresis:                            3000
+
+       ! Make visited and unvisited links the same color by default
+       *linkForeground:                        #0000EE
+       *vlinkForeground:                       #0000EE
+
+       Netscape.Navigator.geometry: =NETSCAPE_GEOMETRY
+
+       ! Disable some of the keyboard commands.
+       *globalTranslations:
+
+       ! Mouse bindings: make all mouse buttons do the same thing.
+       *drawingArea.translations:              #replace                        \
+       <Btn1Down>:                     ArmLink()                       \n\
+       <Btn2Down>:                     ArmLink()                       \n\
+       <Btn3Down>:                     ArmLink()                       \n\
+       ~Shift<Btn1Up>:                 ActivateLink()                  \
+                                       DisarmLink()                    \n\
+       ~Shift<Btn2Up>:                 ActivateLink()                  \
+                                       DisarmLink()                    \n\
+       ~Shift<Btn3Up>:                 ActivateLink()                  \
+                                       DisarmLink()                    \n\
+       Shift<Btn1Up>:                  ActivateLink()                  \
+                                       DisarmLink()                    \n\
+       Shift<Btn2Up>:                  ActivateLink()                  \
+                                       DisarmLink()                    \n\
+       Shift<Btn3Up>:                  ActivateLink()                  \
+                                       DisarmLink()                    \n\
+       <Btn1Motion>:                   DisarmLinkIfMoved()             \n\
+       <Btn2Motion>:                   DisarmLinkIfMoved()             \n\
+       <Btn3Motion>:                   DisarmLinkIfMoved()             \n\
+       <Motion>:                       DescribeLink()                  \n\
+       ______________________________________________________________________
+
+  This file disables blink tags, drag-to-select, and some of the key­
+  board commands.  It also makes all mouse buttons do the same thing,
+  hides the menu bar, and makes visited and unvisited links the same
+  colour, so each visitor gets nice clean blue links, not ones that
+  other people have been thumbing through and staining purple.
+
+  You should replace the NETSCAPE_GEOMETRY in this file with an X
+  geometry that looks like this: XxY+0-0, where X is the width of your
+  screen and Y is the height of your screen + 32.  This will position
+  the Netscape menu bar off the top of the screen, so the user won't be
+  distracted.  For example, if your screen is 800x600, the geometry
+  should be 800x632+0-0.
+
+  6.  Make a .netscape directory for guest
+
+  Enter
+
+       mkdir /home/guest/.netscape
+       chmod 777 /home/guest/.netscape
+
+  to create guest's .netscape directory and make it world-writable.
+
+  7.  Try it
+
+  Log out, then log in as guest.
+
+  8.  Changing preferences
+
+  Since you won't be able to use the menu bar as guest, you should edit
+  guest's preferences manually if you need to change them, or change
+  your own preferences to what you want guest's to be and copy the
+  preferences file.
+

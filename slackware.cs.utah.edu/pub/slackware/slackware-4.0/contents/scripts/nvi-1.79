@@ -1,0 +1,8 @@
+( cd usr/bin ; rm -rf nex )
+( cd usr/bin ; ln -sf nvi nex )
+( cd usr/bin ; rm -rf ex )
+( cd usr/bin ; ln -sf nvi ex )
+( cd usr/bin ; rm -rf vi )
+( cd usr/bin ; ln -sf nvi vi )
+( cd usr/bin ; rm -rf view )
+( cd usr/bin ; ln -sf nvi view )

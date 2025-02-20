@@ -1,0 +1,15 @@
+Begin3
+Title:          WebCit
+Version:        1.41
+Entered-date:	Tue Jan 26 22:22:20 EST 1999
+Description:    Allows users to access the Citadel/UX system from
+		any web browser.
+Keywords:       Citadel Citadel/UX UNIX POSIX room-based BBS IGnet IGnet/Open
+Author:         Art Cancro <ajc@uncnsrd.mt-kisco.ny.us>
+Maintained-by:  Art Cancro <ajc@uncnsrd.mt-kisco.ny.us>
+Primary-site:	uncnsrd.mt-kisco.ny.us
+Alternate-site:	ftp.tux.org
+Original-site:	uncnsrd.mt-kisco.ny.us
+Platform:	Any reasonably compliant POSIX (Unix, Linux, etc.) system.
+Copying-Policy: GPL
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          silent routing daemon, alternative to Berkeley routed (ALPHA)
+Version:        0.1pl1 (ALPHA)
+Entered-date:   February 22, 1995
+Description:    Silent routing daemon.  This is a partial replacement
+		for the Berkeley "routed" (the current Linux port of
+		which seems buggy).  "srouted" listens for RIP
+		broadcasts and updates kernel routing tables but does
+		not advertise routes.  This is still ALPHA software.
+Keywords:       route daemon routed RIP
+Author:         buhr@stat.wisc.edu (Kevin Buhr)
+Maintained-by:  buhr@stat.wisc.edu (Kevin Buhr)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/daemons
+		28778 srouted-0.1pl1.tar.gz
+Copying-policy: GPL (plus one BSD-protected header)
+End

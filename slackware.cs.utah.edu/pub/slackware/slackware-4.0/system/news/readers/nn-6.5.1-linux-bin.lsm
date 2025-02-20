@@ -1,0 +1,16 @@
+Begin3
+Title:          nn
+Version:        6.5.1
+Entered-date:   28-Aug-96
+Description:    Linux binary build of nn newsreader for nntp/nov environment.
+Keywords:       news newsreader 
+Author:         mtpins@isca.uiowa.edu (Mike Pins)
+Maintained-by:  ddb@ddb.com (David Dyer-Bennet)
+Primary-site:   ftp.ddb.com /pub/nn
+		332kb nn-6.5.1-linux-bin.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/News/readers
+Original-site:  ftp.isca.uiowa.edu /unix/newsreaders
+		764kb nn-6.5.1.tar.Z
+Platform:       
+Copying-policy: copyrighted freeware
+End

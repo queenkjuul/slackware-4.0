@@ -1,0 +1,3545 @@
+These are patches against PP 6.0.
+
+As with my ISODE patches much of this is to do with building a shared
+library consisting of libpp.a. This is not elegant but probably
+requires less twiddling during building than the shared libisode.a.
+The memory space used by this shared library is the top half of that
+registered for ISODE. I should perhaps split it and register the
+PP half seperately.
+
+  There are also some fixes in here to avoid doing stupid things like
+freeing malloced memory multiple times, trying to fclose(NULL) etc.
+
+  Note that I am not in a position to test the X.400 channels in any
+real way however the utility channels and SMTP appear fully working.
+Offers of sponsorship are welcome :-).
+
+  As with the ISODE stuff precompiled binaries should be in the same
+place you found this. If you aren't using the Purple Distribution's
+package manager you will need to read the .../PKG/map files in each
+archive to figure out where things go. You *will* need to get the
+documentation for PP if you expect to set it up at all. I won't upload
+it myself but the archive maintainer may have put it in the same
+directory as this. If not it can be found on src.doc.ic.ac.uk under
+/packages/isode/pp among other places.
+
+	Mike Jagdis <jaggy@purplet.demon.co.uk>
+
+
+diff -u --recursive --new-file pp-6.0/Chans/822-local/loc_child.c pp-6.0-linux/Chans/822-local/loc_child.c
+--- pp-6.0/Chans/822-local/loc_child.c	Wed Dec 18 20:04:36 1991
++++ pp-6.0-linux/Chans/822-local/loc_child.c	Wed Sep  1 17:00:15 1993
+@@ -13,6 +13,9 @@
+  *
+  */
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ #include "util.h"
+ #include "qmgr.h"
+diff -u --recursive --new-file pp-6.0/Chans/822-local/make pp-6.0-linux/Chans/822-local/make
+--- pp-6.0/Chans/822-local/make	Wed Aug 21 07:52:59 1991
++++ pp-6.0-linux/Chans/822-local/make	Tue Aug 31 09:48:04 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/decnet/de_wtmail.c pp-6.0-linux/Chans/decnet/de_wtmail.c
+--- pp-6.0/Chans/decnet/de_wtmail.c	Wed Dec 18 20:06:36 1991
++++ pp-6.0-linux/Chans/decnet/de_wtmail.c	Wed Jul 13 09:29:14 1994
+@@ -41,7 +41,9 @@
+ extern int cc_ok;
+ extern int map_space;
+ extern char space_char;
++#ifndef __linux__
+ extern char toupper();
++#endif
+ char de_status_text[BUFSIZ];
+ 
+ /* Internals */
+diff -u --recursive --new-file pp-6.0/Chans/decnet/decnet.c pp-6.0-linux/Chans/decnet/decnet.c
+--- pp-6.0/Chans/decnet/decnet.c	Wed Dec 18 20:06:37 1991
++++ pp-6.0-linux/Chans/decnet/decnet.c	Wed Jul 13 09:28:00 1994
+@@ -24,6 +24,9 @@
+ #include "dr.h"
+ #include "qmgr.h"
+ #include <sys/stat.h>
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ /* Externs */
+ extern  char    *quedfldir;
+diff -u --recursive --new-file pp-6.0/Chans/decnet/make pp-6.0-linux/Chans/decnet/make
+--- pp-6.0/Chans/decnet/make	Wed Aug 21 07:52:53 1991
++++ pp-6.0-linux/Chans/decnet/make	Tue Aug 31 09:49:43 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/dr2rfc/make pp-6.0-linux/Chans/dr2rfc/make
+--- pp-6.0/Chans/dr2rfc/make	Wed Aug 21 07:52:59 1991
++++ pp-6.0-linux/Chans/dr2rfc/make	Tue Aug 31 09:48:11 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/fax/dexNet200/make pp-6.0-linux/Chans/fax/dexNet200/make
+--- pp-6.0/Chans/fax/dexNet200/make	Tue Oct 29 10:33:56 1991
++++ pp-6.0-linux/Chans/fax/dexNet200/make	Tue Aug 31 09:48:36 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/fax/make pp-6.0-linux/Chans/fax/make
+--- pp-6.0/Chans/fax/make	Mon Oct 28 16:23:39 1991
++++ pp-6.0-linux/Chans/fax/make	Tue Aug 31 09:48:51 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/fax/ps250/make pp-6.0-linux/Chans/fax/ps250/make
+--- pp-6.0/Chans/fax/ps250/make	Wed Oct 30 11:07:18 1991
++++ pp-6.0-linux/Chans/fax/ps250/make	Tue Aug 31 09:48:45 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/fax/ps250/tools/make pp-6.0-linux/Chans/fax/ps250/tools/make
+--- pp-6.0/Chans/fax/ps250/tools/make	Fri Nov  1 14:17:00 1991
++++ pp-6.0-linux/Chans/fax/ps250/tools/make	Tue Aug 31 09:48:41 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/filtercontrol/make pp-6.0-linux/Chans/filtercontrol/make
+--- pp-6.0/Chans/filtercontrol/make	Wed Aug 21 07:52:56 1991
++++ pp-6.0-linux/Chans/filtercontrol/make	Tue Aug 31 09:49:00 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/grey/make pp-6.0-linux/Chans/grey/make
+--- pp-6.0/Chans/grey/make	Wed Aug 21 07:52:57 1991
++++ pp-6.0-linux/Chans/grey/make	Tue Aug 31 09:48:31 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/lists/list.c pp-6.0-linux/Chans/lists/list.c
+--- pp-6.0/Chans/lists/list.c	Wed Dec 18 20:10:49 1991
++++ pp-6.0-linux/Chans/lists/list.c	Thu Sep  2 09:50:53 1993
+@@ -14,6 +14,9 @@
+  */
+ 
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ #include "util.h"
+ #include "head.h"
+diff -u --recursive --new-file pp-6.0/Chans/lists/make pp-6.0-linux/Chans/lists/make
+--- pp-6.0/Chans/lists/make	Wed Aug 21 07:52:54 1991
++++ pp-6.0-linux/Chans/lists/make	Tue Aug 31 09:49:34 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/make pp-6.0-linux/Chans/make
+--- pp-6.0/Chans/make	Wed Aug 21 07:52:52 1991
++++ pp-6.0-linux/Chans/make	Tue Aug 31 09:49:51 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/msg-clean/make pp-6.0-linux/Chans/msg-clean/make
+--- pp-6.0/Chans/msg-clean/make	Wed Aug 21 07:52:55 1991
++++ pp-6.0-linux/Chans/msg-clean/make	Tue Aug 31 09:49:20 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/qmgr-load/make pp-6.0-linux/Chans/qmgr-load/make
+--- pp-6.0/Chans/qmgr-load/make	Wed Aug 21 07:52:55 1991
++++ pp-6.0-linux/Chans/qmgr-load/make	Tue Aug 31 09:49:16 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/shell/make pp-6.0-linux/Chans/shell/make
+--- pp-6.0/Chans/shell/make	Wed Aug 21 07:52:58 1991
++++ pp-6.0-linux/Chans/shell/make	Tue Aug 31 09:48:16 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/shell/shell.c pp-6.0-linux/Chans/shell/shell.c
+--- pp-6.0/Chans/shell/shell.c	Wed Dec 18 20:11:53 1991
++++ pp-6.0-linux/Chans/shell/shell.c	Wed Sep  1 16:56:07 1993
+@@ -14,6 +14,9 @@
+  */
+ 
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ #include "util.h"
+ #include "expand.h"
+diff -u --recursive --new-file pp-6.0/Chans/slocal/loc_proto.c pp-6.0-linux/Chans/slocal/loc_proto.c
+--- pp-6.0/Chans/slocal/loc_proto.c	Wed Dec 18 20:12:10 1991
++++ pp-6.0-linux/Chans/slocal/loc_proto.c	Thu Sep  2 09:58:10 1993
+@@ -22,7 +22,7 @@
+ #include "loc_user.h"
+ #include <isode/usr.dirent.h>
+ #include <sys/stat.h>
+-#ifdef masscomp
++#if defined(masscomp) || defined(__linux__)
+ #include <sys/file.h>
+ #endif
+ 
+diff -u --recursive --new-file pp-6.0/Chans/slocal/make pp-6.0-linux/Chans/slocal/make
+--- pp-6.0/Chans/slocal/make	Wed Aug 21 07:52:55 1991
++++ pp-6.0-linux/Chans/slocal/make	Tue Aug 31 09:49:25 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/smtp/make pp-6.0-linux/Chans/smtp/make
+--- pp-6.0/Chans/smtp/make	Wed Aug 21 07:52:59 1991
++++ pp-6.0-linux/Chans/smtp/make	Tue Aug 31 09:47:58 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/smtp/smtp.c pp-6.0-linux/Chans/smtp/smtp.c
+--- pp-6.0/Chans/smtp/smtp.c	Wed Dec 18 20:12:21 1991
++++ pp-6.0-linux/Chans/smtp/smtp.c	Thu Sep  2 09:59:49 1993
+@@ -14,7 +14,6 @@
+  */
+ 
+ 
+-
+ #include "head.h"
+ #include "chan.h"
+ #include "prm.h"
+@@ -25,7 +24,7 @@
+ #include "sys.file.h"
+ #include <signal.h>
+ #include <isode/internet.h>
+-#ifdef SYS5
++#if defined(SYS5) || defined(__linux__)
+ #include <sys/time.h>
+ #endif
+ 
+diff -u --recursive --new-file pp-6.0/Chans/smtp/smtpd.c pp-6.0-linux/Chans/smtp/smtpd.c
+--- pp-6.0/Chans/smtp/smtpd.c	Wed Dec 18 20:12:21 1991
++++ pp-6.0-linux/Chans/smtp/smtpd.c	Thu Sep  2 10:09:15 1993
+@@ -29,6 +29,9 @@
+ #endif
+ #include <unistd.h>
+ #endif
++#ifdef __linux__
++#include <unistd.h>
++#endif
+ #include <sys/signal.h>
+ #include <isode/internet.h>
+ #include <sys/wait.h>
+diff -u --recursive --new-file pp-6.0/Chans/smtp/smtpsrvr.c pp-6.0-linux/Chans/smtp/smtpsrvr.c
+--- pp-6.0/Chans/smtp/smtpsrvr.c	Wed Dec 18 20:12:22 1991
++++ pp-6.0-linux/Chans/smtp/smtpsrvr.c	Thu Sep  2 10:07:14 1993
+@@ -14,6 +14,9 @@
+  */
+ 
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ #include "head.h"
+ #include "prm.h"
+diff -u --recursive --new-file pp-6.0/Chans/splitter/make pp-6.0-linux/Chans/splitter/make
+--- pp-6.0/Chans/splitter/make	Wed Aug 21 07:52:53 1991
++++ pp-6.0-linux/Chans/splitter/make	Tue Aug 31 09:49:47 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/splitter/splitter.c pp-6.0-linux/Chans/splitter/splitter.c
+--- pp-6.0/Chans/splitter/splitter.c	Wed Dec 18 20:12:37 1991
++++ pp-6.0-linux/Chans/splitter/splitter.c	Wed Sep  1 16:53:38 1993
+@@ -13,6 +13,9 @@
+  *
+  */
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ #include "util.h"
+ #include "qmgr.h"
+diff -u --recursive --new-file pp-6.0/Chans/testchan/make pp-6.0-linux/Chans/testchan/make
+--- pp-6.0/Chans/testchan/make	Wed Aug 21 07:52:54 1991
++++ pp-6.0-linux/Chans/testchan/make	Tue Aug 31 09:49:29 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/timeout/make pp-6.0-linux/Chans/timeout/make
+--- pp-6.0/Chans/timeout/make	Wed Aug 21 07:52:56 1991
++++ pp-6.0-linux/Chans/timeout/make	Tue Aug 31 09:49:06 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/trashman/make pp-6.0-linux/Chans/trashman/make
+--- pp-6.0/Chans/trashman/make	Wed Aug 21 07:52:55 1991
++++ pp-6.0-linux/Chans/trashman/make	Tue Aug 31 09:49:11 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/uucp/make pp-6.0-linux/Chans/uucp/make
+--- pp-6.0/Chans/uucp/make	Wed Aug 21 07:52:56 1991
++++ pp-6.0-linux/Chans/uucp/make	Tue Aug 31 09:48:56 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/warnings/make pp-6.0-linux/Chans/warnings/make
+--- pp-6.0/Chans/warnings/make	Wed Aug 21 07:52:53 1991
++++ pp-6.0-linux/Chans/warnings/make	Tue Aug 31 09:49:38 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/x40084/make pp-6.0-linux/Chans/x40084/make
+--- pp-6.0/Chans/x40084/make	Wed Aug 21 07:52:58 1991
++++ pp-6.0-linux/Chans/x40084/make	Tue Aug 31 09:48:21 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/x40084/x400in84.c pp-6.0-linux/Chans/x40084/x400in84.c
+--- pp-6.0/Chans/x40084/x400in84.c	Wed Dec 18 20:13:54 1991
++++ pp-6.0-linux/Chans/x40084/x400in84.c	Wed Sep  1 16:51:19 1993
+@@ -14,6 +14,9 @@
+  */
+ 
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ #include "head.h"
+ #include "prm.h"
+diff -u --recursive --new-file pp-6.0/Chans/x40084/x400out84.c pp-6.0-linux/Chans/x40084/x400out84.c
+--- pp-6.0/Chans/x40084/x400out84.c	Wed Dec 18 20:13:55 1991
++++ pp-6.0-linux/Chans/x40084/x400out84.c	Thu Sep  2 09:34:17 1993
+@@ -14,6 +14,9 @@
+  */
+ 
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
+ 
+ #include "head.h"
+ #include <sys/param.h>
+diff -u --recursive --new-file pp-6.0/Chans/x40088/make pp-6.0-linux/Chans/x40088/make
+--- pp-6.0/Chans/x40088/make	Wed Aug 21 07:52:57 1991
++++ pp-6.0-linux/Chans/x40088/make	Tue Aug 31 09:48:26 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Chans/x40088/x400out88.c pp-6.0-linux/Chans/x40088/x400out88.c
+--- pp-6.0/Chans/x40088/x400out88.c	Wed Dec 18 20:14:34 1991
++++ pp-6.0-linux/Chans/x40088/x400out88.c	Thu Sep  2 10:10:52 1993
+@@ -14,6 +14,10 @@
+  */
+ 
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
++
+ #include "Trans-types.h"
+ #include "head.h"
+ #include "prm.h"
+diff -u --recursive --new-file pp-6.0/Format/ascii2fax/make pp-6.0-linux/Format/ascii2fax/make
+--- pp-6.0/Format/ascii2fax/make	Wed Aug 21 07:52:37 1991
++++ pp-6.0-linux/Format/ascii2fax/make	Tue Aug 31 09:54:25 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/asn/Makefile pp-6.0-linux/Format/asn/Makefile
+--- pp-6.0/Format/asn/Makefile	Wed Dec 18 20:15:44 1991
++++ pp-6.0-linux/Format/asn/Makefile	Thu Jul 14 13:47:30 1994
+@@ -31,8 +31,8 @@
+ LIBASN1		= asn1/libasn1.a
+ LIBASN1-MADE	= asn1/asn1-made
+ 
+-CFLAGS          = $(CCOPTIONS) -g $(LCF) -I$(HEADERS)
+-LDFLAGS         = $(LDOPTIONS) -g $(LLF)
++CFLAGS          = $(CCOPTIONS) $(LCF) -I$(HEADERS)
++LDFLAGS         = $(LDOPTIONS) $(LLF)
+ 
+ LLFLAGS         = $(LINTFLAGS) -I$(HEADERS)
+ LINTLIBS        = ../../Lib/llib-lpp.ln $(LINTISODE)
+diff -u --recursive --new-file pp-6.0/Format/asn/asn1/make pp-6.0-linux/Format/asn/asn1/make
+--- pp-6.0/Format/asn/asn1/make	Wed Nov  6 14:47:57 1991
++++ pp-6.0-linux/Format/asn/asn1/make	Tue Aug 31 09:54:16 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/asn/make pp-6.0-linux/Format/asn/make
+--- pp-6.0/Format/asn/make	Wed Nov  6 14:47:59 1991
++++ pp-6.0-linux/Format/asn/make	Tue Aug 31 09:54:21 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/charset/make pp-6.0-linux/Format/charset/make
+--- pp-6.0/Format/charset/make	Wed Aug 21 07:52:36 1991
++++ pp-6.0-linux/Format/charset/make	Tue Aug 31 09:54:34 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f ../../Lib/charset/Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f ../../Lib/charset/Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/charset/test/progs/make pp-6.0-linux/Format/charset/test/progs/make
+--- pp-6.0/Format/charset/test/progs/make	Wed Aug 21 07:52:37 1991
++++ pp-6.0-linux/Format/charset/test/progs/make	Tue Aug 31 09:54:29 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/make pp-6.0-linux/Format/make
+--- pp-6.0/Format/make	Wed Aug 21 07:52:35 1991
++++ pp-6.0-linux/Format/make	Tue Aug 31 09:54:42 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/p2explode/make pp-6.0-linux/Format/p2explode/make
+--- pp-6.0/Format/p2explode/make	Wed Aug 21 07:52:40 1991
++++ pp-6.0-linux/Format/p2explode/make	Tue Aug 31 09:54:12 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/p2flatten/make pp-6.0-linux/Format/p2flatten/make
+--- pp-6.0/Format/p2flatten/make	Wed Aug 21 07:52:40 1991
++++ pp-6.0-linux/Format/p2flatten/make	Tue Aug 31 09:54:04 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/p2norm/make pp-6.0-linux/Format/p2norm/make
+--- pp-6.0/Format/p2norm/make	Wed Aug 21 07:52:36 1991
++++ pp-6.0-linux/Format/p2norm/make	Tue Aug 31 09:54:38 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/rfc1148/make pp-6.0-linux/Format/rfc1148/make
+--- pp-6.0/Format/rfc1148/make	Wed Aug 21 07:52:40 1991
++++ pp-6.0-linux/Format/rfc1148/make	Tue Aug 31 09:54:08 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/rfc822norm/make pp-6.0-linux/Format/rfc822norm/make
+--- pp-6.0/Format/rfc822norm/make	Wed Aug 21 07:52:41 1991
++++ pp-6.0-linux/Format/rfc822norm/make	Tue Aug 31 09:53:54 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Format/rfc822norm/rfc822norm.c pp-6.0-linux/Format/rfc822norm/rfc822norm.c
+--- pp-6.0/Format/rfc822norm/rfc822norm.c	Wed Dec 18 20:20:55 1991
++++ pp-6.0-linux/Format/rfc822norm/rfc822norm.c	Thu Sep  2 10:19:18 1993
+@@ -24,6 +24,10 @@
+ #include	"retcode.h"
+ #include	"adr.h"
+ 
++#ifdef isblank
++#undef isblank
++#endif
++
+ #define	OPT_822		1
+ #define OPT_733		2	
+ #define	OPT_JNT		3
+diff -u --recursive --new-file pp-6.0/Format/rfc934/make pp-6.0-linux/Format/rfc934/make
+--- pp-6.0/Format/rfc934/make	Wed Aug 21 07:52:41 1991
++++ pp-6.0-linux/Format/rfc934/make	Tue Aug 31 09:54:00 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/Makefile pp-6.0-linux/Lib/Makefile
+--- pp-6.0/Lib/Makefile	Wed Dec 18 20:26:15 1991
++++ pp-6.0-linux/Lib/Makefile	Fri Jul  8 14:12:06 1994
+@@ -33,6 +33,21 @@
+ 	@for x in ${SUBDIRS} ; \
+ 	do (echo "cd $$x; $(MAKE)"; cd $$x ; $(MAKE) ) ; done
+ 
++linux-lib:
++	@for x in ${SUBDIRS} ; \
++	do (echo "cd $$x; $(MAKE) linux-lib"; \
++		cd $$x; \
++		JUMP_DIR=../../jump JUMP_LIB=libpp JUMP_OPT=-B/usr/dll/jump/ \
++		$(MAKE) linux-lib) ; done
++	@JUMP_DIR=../jump JUMP_LIB=libpp JUMP_OPT=-B/usr/dll/jump/ \
++		$(MAKE) linuxlib.o
++	$(AR) r$(ARFLAGS) $(LIB) linuxlib.o
++	@JUMP_DIR=../jump JUMP_LIB=libpp JUMP_OPT=-B/usr/dll/jump/ \
++		$(MAKE) ppversion.o
++	$(AR) r$(ARFLAGS) $(LIB) ppversion.o
++	$(RANLIB) ${LIB}
++	mv -f ${LIB} ../jump/.
++
+ ${SHADOW}: $(LIB)
+ 	@$(MAKE) ppversion.o
+ 	$(AR) r$(ARFLAGS) $(LIB) ppversion.o
+diff -u --recursive --new-file pp-6.0/Lib/addr/Makefile pp-6.0-linux/Lib/addr/Makefile
+--- pp-6.0/Lib/addr/Makefile	Wed Dec 18 20:21:24 1991
++++ pp-6.0-linux/Lib/addr/Makefile	Fri Jul  8 09:23:01 1994
+@@ -52,6 +52,8 @@
+ 
+ default: $(SHADOW)
+ 
++linux-lib: $(SHADOW)
++
+ $(SHADOW): $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/addr/ap_ut.c pp-6.0-linux/Lib/addr/ap_ut.c
+--- pp-6.0/Lib/addr/ap_ut.c	Wed Dec 18 20:21:30 1991
++++ pp-6.0-linux/Lib/addr/ap_ut.c	Thu Sep  2 12:39:51 1993
+@@ -44,7 +44,7 @@
+ 
+ 
+ int                             (*ap_gfunc)(); /* -- ptr to char get fn -- */
+-int                             ap_peek; /* -- basic parse state info -- */
++extern int                      ap_peek; /* -- basic parse state info -- */
+ extern int                      ap_perlev;
+ extern int                      ap_grplev;
+ AP_ptr                          ap_pstrt,
+diff -u --recursive --new-file pp-6.0/Lib/addr/make pp-6.0-linux/Lib/addr/make
+--- pp-6.0/Lib/addr/make	Wed Aug 21 07:52:52 1991
++++ pp-6.0-linux/Lib/addr/make	Tue Aug 31 09:50:06 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/charset/Makefile pp-6.0-linux/Lib/charset/Makefile
+--- pp-6.0/Lib/charset/Makefile	Wed Dec 18 20:21:39 1991
++++ pp-6.0-linux/Lib/charset/Makefile	Fri Jul  8 09:18:53 1994
+@@ -54,6 +54,8 @@
+ 
+ default: ${SHADOW} xgc
+ 
++linux-lib: $(SHADOW)
++
+ ${SHADOW}: $(LIBOBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/charset/make pp-6.0-linux/Lib/charset/make
+--- pp-6.0/Lib/charset/make	Wed Aug 21 07:52:48 1991
++++ pp-6.0-linux/Lib/charset/make	Tue Aug 31 09:50:53 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f ./Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f ./Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/format/Makefile pp-6.0-linux/Lib/format/Makefile
+--- pp-6.0/Lib/format/Makefile	Wed Dec 18 20:22:06 1991
++++ pp-6.0-linux/Lib/format/Makefile	Fri Jul  8 09:23:16 1994
+@@ -53,6 +53,8 @@
+ 
+ default: $(SHADOW)
+ 
++linux-lib: $(SHADOW)
++
+ $(SHADOW): $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/format/UTC2rfc.c pp-6.0-linux/Lib/format/UTC2rfc.c
+--- pp-6.0/Lib/format/UTC2rfc.c	Wed Dec 18 20:22:07 1991
++++ pp-6.0-linux/Lib/format/UTC2rfc.c	Wed Sep  1 13:29:55 1993
+@@ -37,8 +37,12 @@
+ 
+ extern int dmsize[];
+ extern CMD_TABLE        tbl_month[];
++
++#ifndef _POSIX_SOURCE
+ extern time_t time ();
+ extern	int abs ();
++#endif
++
+ static int makewkday ();
+ 
+ 
+diff -u --recursive --new-file pp-6.0/Lib/format/make pp-6.0-linux/Lib/format/make
+--- pp-6.0/Lib/format/make	Wed Aug 21 07:52:49 1991
++++ pp-6.0-linux/Lib/format/make	Tue Aug 31 09:50:36 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/format/rfc2msgid.c pp-6.0-linux/Lib/format/rfc2msgid.c
+--- pp-6.0/Lib/format/rfc2msgid.c	Wed Dec 18 20:22:11 1991
++++ pp-6.0-linux/Lib/format/rfc2msgid.c	Thu Jul  7 15:12:42 1994
+@@ -59,7 +59,8 @@
+ 	/* put in loc dom and string */
+ 	if ((int) strlen(str) > UB_LOCAL_ID_LENGTH) {
+ 		char tbuf[UB_LOCAL_ID_LENGTH + 1];
+-		(void) strncap (tbuf, str, UB_LOCAL_ID_LENGTH);
++/*		(void) strncap (tbuf, str, UB_LOCAL_ID_LENGTH); */
++		(void) strncpy (tbuf, str, UB_LOCAL_ID_LENGTH);
+ 		tbuf[UB_LOCAL_ID_LENGTH] = 0;
+ 		mp->mpduid_string = strdup (tbuf);
+ 	}
+diff -u --recursive --new-file pp-6.0/Lib/io/Makefile pp-6.0-linux/Lib/io/Makefile
+--- pp-6.0/Lib/io/Makefile	Wed Dec 18 20:22:27 1991
++++ pp-6.0-linux/Lib/io/Makefile	Fri Jul  8 09:23:23 1994
+@@ -49,6 +49,8 @@
+ 
+ default: $(SHADOW)
+ 
++linux-lib: $(SHADOW)
++
+ $(SHADOW): $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/io/io_lib.c pp-6.0-linux/Lib/io/io_lib.c
+--- pp-6.0/Lib/io/io_lib.c	Wed Dec 18 20:22:27 1991
++++ pp-6.0-linux/Lib/io/io_lib.c	Wed Mar  9 16:03:15 1994
+@@ -610,9 +610,9 @@
+ 
+ 	if (io_wfp == NULLFILE || io_rfp == NULLFILE)
+ 	{	int was = errno;
+-		if (io_wfp == NULLFILE)
++		if (io_wfp != NULLFILE)
+ 			(void) fclose(io_wfp);
+-		if (io_rfp == NULLFILE)
++		if (io_rfp != NULLFILE)
+ 			(void) fclose(io_rfp);
+ 		(void) close(sd);
+ 		errno = was;
+diff -u --recursive --new-file pp-6.0/Lib/io/make pp-6.0-linux/Lib/io/make
+--- pp-6.0/Lib/io/make	Wed Aug 21 07:52:51 1991
++++ pp-6.0-linux/Lib/io/make	Tue Aug 31 09:50:15 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/linuxlib.c pp-6.0-linux/Lib/linuxlib.c
+--- pp-6.0/Lib/linuxlib.c	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/Lib/linuxlib.c	Tue Jul 12 11:17:57 1994
+@@ -0,0 +1,27 @@
++/* The following stubs are for the Linux shared library. Normally they
++ * are overridden from the application code.
++ */
++
++#include "../h/head.h"
++#include "../h/util.h"
++#include "../h/chan.h"
++#include "../h/auth.h"
++#include "../h/list_rchan.h"
++#include "../h/adr.h"
++#include <isode/cmd_srch.h>
++#include "../h/dr.h"
++
++
++CMD_TABLE        drtbl_rep[] = { {0, 0} };
++
++CHAN		*ch_inbound = 0;
++
++
++adios()
++{
++}
++
++void
++advise()
++{
++}
+diff -u --recursive --new-file pp-6.0/Lib/make pp-6.0-linux/Lib/make
+--- pp-6.0/Lib/make	Wed Aug 21 07:52:48 1991
++++ pp-6.0-linux/Lib/make	Tue Aug 31 09:50:58 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/or/Makefile pp-6.0-linux/Lib/or/Makefile
+--- pp-6.0/Lib/or/Makefile	Wed Dec 18 20:23:09 1991
++++ pp-6.0-linux/Lib/or/Makefile	Fri Jul  8 09:23:35 1994
+@@ -66,6 +66,8 @@
+ 
+ default: $(SHADOW)
+ 
++linux-lib: $(SHADOW)
++
+ 
+ 
+ $(SHADOW): $(OBJS)
+diff -u --recursive --new-file pp-6.0/Lib/or/make pp-6.0-linux/Lib/or/make
+--- pp-6.0/Lib/or/make	Wed Aug 21 07:52:50 1991
++++ pp-6.0-linux/Lib/or/make	Tue Aug 31 09:50:28 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/parse/Makefile pp-6.0-linux/Lib/parse/Makefile
+--- pp-6.0/Lib/parse/Makefile	Wed Dec 18 20:23:41 1991
++++ pp-6.0-linux/Lib/parse/Makefile	Fri Jul  8 09:23:44 1994
+@@ -54,6 +54,8 @@
+ 
+ default: $(SHADOW)
+ 
++linux-lib: $(SHADOW)
++
+ $(SHADOW): $(OBJS)
+ 	   $(AR) r$(ARFLAGS) $(LIBPP) $?
+ 	   touch $@
+diff -u --recursive --new-file pp-6.0/Lib/parse/make pp-6.0-linux/Lib/parse/make
+--- pp-6.0/Lib/parse/make	Wed Aug 21 07:52:49 1991
++++ pp-6.0-linux/Lib/parse/make	Tue Aug 31 09:50:44 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/pp/Makefile pp-6.0-linux/Lib/pp/Makefile
+--- pp-6.0/Lib/pp/Makefile	Wed Dec 18 20:49:16 1991
++++ pp-6.0-linux/Lib/pp/Makefile	Fri Jul  8 09:23:53 1994
+@@ -64,6 +64,8 @@
+ 
+ default: ${SHADOW}
+ 
++linux-lib: $(SHADOW)
++
+ ${SHADOW}: $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/pp/make pp-6.0-linux/Lib/pp/make
+--- pp-6.0/Lib/pp/make	Wed Aug 21 07:52:51 1991
++++ pp-6.0-linux/Lib/pp/make	Tue Aug 31 09:50:19 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/ppversion.c pp-6.0-linux/Lib/ppversion.c
+--- pp-6.0/Lib/ppversion.c	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/Lib/ppversion.c	Fri Jul  8 17:29:05 1994
+@@ -0,0 +1 @@
++char *ppversion = "pp 6.0 #64 (purplet) of Fri Jul  8 17:29:05 BST 1994";
+diff -u --recursive --new-file pp-6.0/Lib/qmgr/Makefile pp-6.0-linux/Lib/qmgr/Makefile
+--- pp-6.0/Lib/qmgr/Makefile	Wed Dec 18 20:23:58 1991
++++ pp-6.0-linux/Lib/qmgr/Makefile	Fri Jul  8 09:23:59 1994
+@@ -54,6 +54,8 @@
+ 
+ default: $(SHADOW)
+ 
++linux-lib: $(SHADOW)
++
+ $(SHADOW): $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/qmgr/make pp-6.0-linux/Lib/qmgr/make
+--- pp-6.0/Lib/qmgr/make	Wed Aug 21 07:52:50 1991
++++ pp-6.0-linux/Lib/qmgr/make	Tue Aug 31 09:50:32 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/table/Makefile pp-6.0-linux/Lib/table/Makefile
+--- pp-6.0/Lib/table/Makefile	Wed Dec 18 20:24:28 1991
++++ pp-6.0-linux/Lib/table/Makefile	Fri Jul  8 09:24:05 1994
+@@ -51,6 +51,8 @@
+ 
+ default: ${SHADOW}
+ 
++linux-lib: $(SHADOW)
++
+ ${SHADOW}: $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/table/make pp-6.0-linux/Lib/table/make
+--- pp-6.0/Lib/table/make	Wed Aug 21 07:52:51 1991
++++ pp-6.0-linux/Lib/table/make	Tue Aug 31 09:50:10 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/table/tb_getauth.c pp-6.0-linux/Lib/table/tb_getauth.c
+--- pp-6.0/Lib/table/tb_getauth.c	Wed Dec 18 20:24:31 1991
++++ pp-6.0-linux/Lib/table/tb_getauth.c	Wed Sep  1 14:33:31 1993
+@@ -95,7 +95,10 @@
+ extern char			*mta_auth_tbl;
+ extern char			*user_auth_tbl;
+ extern char			*ad_getlocal();
++
++#ifndef _POSIX_SOURCE
+ extern long			atol ();
++#endif
+ 
+ 
+ /* -- local routines */
+diff -u --recursive --new-file pp-6.0/Lib/tai/Makefile pp-6.0-linux/Lib/tai/Makefile
+--- pp-6.0/Lib/tai/Makefile	Wed Dec 18 20:25:00 1991
++++ pp-6.0-linux/Lib/tai/Makefile	Fri Jul  8 09:24:11 1994
+@@ -50,6 +50,8 @@
+ 
+ default: ${SHADOW}
+ 
++linux-lib: $(SHADOW)
++
+ ${SHADOW}: $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/tai/init_tai.c pp-6.0-linux/Lib/tai/init_tai.c
+--- pp-6.0/Lib/tai/init_tai.c	Wed Dec 18 20:25:01 1991
++++ pp-6.0-linux/Lib/tai/init_tai.c	Tue Jul  5 12:38:14 1994
+@@ -331,8 +331,12 @@
+ 	struct logpairs *lp;
+ 
+ 	for (lp = logpairs; lp -> name; lp ++) {
+-		if (flags & TAI_LOGS)
++		if (flags & TAI_LOGS) {
+ 			**(lp -> isode_log) = *pp_log_norm;
++			if ((*(lp->isode_log))->ll_dhdr)
++				(*(lp->isode_log))->ll_dhdr
++					= strdup((*(lp->isode_log))->ll_dhdr);
++		}
+ 		*(lp -> isode_save) = *(lp -> isode_log);
+ 		if (flags & TAI_LOGS)
+ 			*(lp -> isode_log) = dummy;
+diff -u --recursive --new-file pp-6.0/Lib/tai/make pp-6.0-linux/Lib/tai/make
+--- pp-6.0/Lib/tai/make	Wed Aug 21 07:52:50 1991
++++ pp-6.0-linux/Lib/tai/make	Tue Aug 31 09:50:23 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/util/Makefile pp-6.0-linux/Lib/util/Makefile
+--- pp-6.0/Lib/util/Makefile	Wed Dec 18 20:25:18 1991
++++ pp-6.0-linux/Lib/util/Makefile	Fri Jul  8 09:24:19 1994
+@@ -56,6 +56,8 @@
+ 
+ default: ${SHADOW}
+ 
++linux-lib: $(SHADOW)
++
+ ${SHADOW}: $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+ 	touch $@
+diff -u --recursive --new-file pp-6.0/Lib/util/lock.c pp-6.0-linux/Lib/util/lock.c
+--- pp-6.0/Lib/util/lock.c	Wed Dec 18 20:25:22 1991
++++ pp-6.0-linux/Lib/util/lock.c	Wed Sep 15 16:41:55 1993
+@@ -102,7 +102,7 @@
+ 		}
+ 		break;
+ 	}
+-	PP_OPER (NULLCP, ("Specified styple of locking (%d) not supported",
++	PP_OPER (NULLCP, ("Specified style of locking (%d) not supported",
+ 			  lockstyle));
+ 	return NULL;
+ }
+diff -u --recursive --new-file pp-6.0/Lib/util/make pp-6.0-linux/Lib/util/make
+--- pp-6.0/Lib/util/make	Wed Aug 21 07:52:52 1991
++++ pp-6.0-linux/Lib/util/make	Tue Aug 31 09:50:02 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Lib/util/recrm.c pp-6.0-linux/Lib/util/recrm.c
+--- pp-6.0/Lib/util/recrm.c	Wed Dec 18 20:25:24 1991
++++ pp-6.0-linux/Lib/util/recrm.c	Thu Jul 14 15:49:43 1994
+@@ -13,6 +13,7 @@
+  *
+  */
+ 
++#include <stdio.h> /* XXXXXXXXXXX */
+ #include "util.h"
+ #include <isode/usr.dirent.h>
+ #include <sys/stat.h>
+@@ -63,7 +64,8 @@
+ 	(void) strcpy (currentdir, dir); /* for rmFiles use */
+ 	cdp = buf + strlen(buf);
+ 
+-	noOfSubdirs = _scandir(buf, &namelist, rmFiles, NULLIFP);
++	namelist = NULL;
++	noOfSubdirs = scandir(buf, &namelist, rmFiles, NULLIFP);
+ 
+ 	for (i = 0, ix = namelist; i++ < noOfSubdirs && *ix; ix++) {
+ 		*cdp ++ = '/';
+diff -u --recursive --new-file pp-6.0/Lib/util/siginit.c pp-6.0-linux/Lib/util/siginit.c
+--- pp-6.0/Lib/util/siginit.c	Wed Dec 18 20:25:26 1991
++++ pp-6.0-linux/Lib/util/siginit.c	Wed Sep  1 14:52:46 1993
+@@ -30,15 +30,23 @@
+ 
+ 	mask = sigblock (sigmask(SIGILL) |
+ 			 sigmask(SIGFPE) |
++#ifdef SIGBUS
+ 			 sigmask(SIGBUS) |
++#endif
+ 			 sigmask(SIGSEGV) |
++#ifdef SIGSYS
+ 			 sigmask(SIGSYS) |
++#endif
+ 			 sigmask(SIGPIPE) );
+ 	(void) signal (SIGILL, onsig);
+ 	(void) signal (SIGFPE, onsig);
++#ifdef SIGBUS
+ 	(void) signal (SIGBUS, onsig);
++#endif
+ 	(void) signal (SIGSEGV, onsig);
++#ifdef SIGSYS
+ 	(void) signal (SIGSYS, onsig);
++#endif
+ 	(void) signal (SIGPIPE, onsig);
+ 	(void) sigsetmask (mask);
+ }
+diff -u --recursive --new-file pp-6.0/Lib/version.sh pp-6.0-linux/Lib/version.sh
+--- pp-6.0/Lib/version.sh	Wed Dec 18 20:26:15 1991
++++ pp-6.0-linux/Lib/version.sh	Mon Jul  4 15:34:18 1994
+@@ -1,7 +1,6 @@
+ : run this script through /bin/sh
+ 
+ : this hacks past a bug in make...
+-exec 3<&- 4<&- 5<&- 6<&- 7<&-
+ 
+ OFS="$IFS" IFS=:
+ 
+diff -u --recursive --new-file pp-6.0/Lib/x400/Makefile pp-6.0-linux/Lib/x400/Makefile
+--- pp-6.0/Lib/x400/Makefile	Wed Dec 18 20:25:37 1991
++++ pp-6.0-linux/Lib/x400/Makefile	Fri Jul  8 09:24:27 1994
+@@ -56,6 +56,8 @@
+ 
+ default: ${SHADOW}
+ 
++linux-lib: $(SHADOW)
++
+ 
+ ${SHADOW}: $(OBJS)
+ 	$(AR) r$(ARFLAGS) ../libpp.a $?
+diff -u --recursive --new-file pp-6.0/Lib/x400/make pp-6.0-linux/Lib/x400/make
+--- pp-6.0/Lib/x400/make	Wed Aug 21 07:52:49 1991
++++ pp-6.0-linux/Lib/x400/make	Tue Aug 31 09:50:48 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Src/LINEconsole/badness.c pp-6.0-linux/Src/LINEconsole/badness.c
+--- pp-6.0/Src/LINEconsole/badness.c	Wed Dec 18 20:26:31 1991
++++ pp-6.0-linux/Src/LINEconsole/badness.c	Wed Sep  1 16:52:14 1993
+@@ -20,7 +20,9 @@
+ #define	DEFAULT_TOTAL_NUMBER	10000.0
+ #define DEFAULT_TOTAL_VOLUME	1000000.0
+ static struct tailor	*tailors = NULL;
++#ifndef atof
+ extern double 	atof();
++#endif
+ extern char	tailorfile[];
+ extern int	max_vert_lines;
+ extern time_t   currentTime;
+diff -u --recursive --new-file pp-6.0/Src/LINEconsole/make pp-6.0-linux/Src/LINEconsole/make
+--- pp-6.0/Src/LINEconsole/make	Wed Aug 21 07:52:47 1991
++++ pp-6.0-linux/Src/LINEconsole/make	Tue Aug 31 09:51:25 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Src/MTAconsole/badness.c pp-6.0-linux/Src/MTAconsole/badness.c
+--- pp-6.0/Src/MTAconsole/badness.c	Wed Dec 18 20:26:52 1991
++++ pp-6.0-linux/Src/MTAconsole/badness.c	Wed Sep  1 15:14:09 1993
+@@ -20,7 +20,9 @@
+ #define	DEFAULT_TOTAL_NUMBER	10000.0
+ #define DEFAULT_TOTAL_VOLUME	1000000.0
+ struct tailor	*tailors = NULL;
++#ifndef atof
+ extern double 	atof();
++#endif
+ extern char	tailorfile[];
+ extern int	max_vert_lines;
+ extern time_t   currentTime;
+diff -u --recursive --new-file pp-6.0/Src/MTAconsole/make pp-6.0-linux/Src/MTAconsole/make
+--- pp-6.0/Src/MTAconsole/make	Wed Aug 21 07:52:47 1991
++++ pp-6.0-linux/Src/MTAconsole/make	Tue Aug 31 09:51:11 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Src/MTAconsole/parse.c pp-6.0-linux/Src/MTAconsole/parse.c
+--- pp-6.0/Src/MTAconsole/parse.c	Wed Dec 18 20:26:58 1991
++++ pp-6.0-linux/Src/MTAconsole/parse.c	Wed Sep  1 16:47:25 1993
+@@ -15,6 +15,10 @@
+ 
+ 
+ 
++#ifdef __linux__
++#include <sys/time.h>
++#endif
++
+ #include 	"console.h"
+ 
+ /* convert a given string to time */
+diff -u --recursive --new-file pp-6.0/Src/lconsole/make pp-6.0-linux/Src/lconsole/make
+--- pp-6.0/Src/lconsole/make	Fri Sep 13 10:28:54 1991
++++ pp-6.0-linux/Src/lconsole/make	Tue Aug 31 09:51:34 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Src/make pp-6.0-linux/Src/make
+--- pp-6.0/Src/make	Wed Aug 21 07:52:46 1991
++++ pp-6.0-linux/Src/make	Tue Aug 31 09:51:30 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Src/pptsapd/make pp-6.0-linux/Src/pptsapd/make
+--- pp-6.0/Src/pptsapd/make	Wed Aug 21 07:52:48 1991
++++ pp-6.0-linux/Src/pptsapd/make	Tue Aug 31 09:51:06 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Src/pptsapd/pptsapd.c pp-6.0-linux/Src/pptsapd/pptsapd.c
+--- pp-6.0/Src/pptsapd/pptsapd.c	Wed Dec 18 20:27:32 1991
++++ pp-6.0-linux/Src/pptsapd/pptsapd.c	Wed Sep 15 14:46:00 1993
+@@ -99,11 +99,13 @@
+ 			    sel2str (na -> na_pid, na -> na_pidlen, 1));
+ 		    break;
+ 
++#ifdef NA_BRG
+ 		case NA_BRG:
+ 		    advise (LLOG_NOTICE, NULLCP,
+ 			    "listening on X.25 (BRIDGE) %s %s", na2str (na),
+ 			    sel2str (na -> na_pid, na -> na_pidlen, 1));
+ 		    break;
++#endif
+ 
+ 		case NA_NSAP:
+ 		    advise (LLOG_NOTICE, NULLCP, "listening on NS %s",
+@@ -285,7 +287,7 @@
+ 		    pptailor = optarg;
+ 		    break;
+ 		default:
+-		    adios (NULLCP, "Usage %s [-t tailor] [-c address]");
++		    adios (NULLCP, "Usage %s [-t tailor] [-c address]", argv[0]);
+ 		    break;
+ 	    }
+     }
+@@ -328,6 +330,9 @@
+ 	(void) dup2 (0, 1);
+ 	(void) dup2 (0, 2);
+ 
++#ifdef _POSIX_SOURCE
++	setsid();
++#else
+ #ifdef  TIOCNOTTY
+ 	if ((sd = open ("/dev/tty", O_RDWR)) != NOTOK) {
+ 	    (void) ioctl (sd, TIOCNOTTY, NULLCP);
+@@ -338,6 +343,7 @@
+ 	(void) setpgrp ();
+ 	(void) signal (SIGINT, SIG_IGN);
+ 	(void) signal (SIGQUIT, SIG_IGN);
++#endif
+ #endif
+ #endif
+     }
+diff -u --recursive --new-file pp-6.0/Src/qmgr/chans.c pp-6.0-linux/Src/qmgr/chans.c
+--- pp-6.0/Src/qmgr/chans.c	Wed Dec 18 20:27:40 1991
++++ pp-6.0-linux/Src/qmgr/chans.c	Thu Mar 10 09:25:42 1994
+@@ -159,12 +159,13 @@
+ 
+ 	PP_TRACE (("create_chan (%s)", chan -> ch_name));
+ 
+-	if (nchanlist == 0)
++	if (nchanlist == 0) {
+ 		chan_list = (Chanlist **) malloc (sizeof (Chanlist *));
+-	else
++	} else {
+ 		chan_list = (Chanlist **) realloc ((char *)chan_list,
+ 						   (unsigned)(nchanlist + 1)
+ 						   * sizeof (Chanlist *));
++	}
+ 	chan_list[nchanlist] = clp = (Chanlist *) calloc (1, sizeof (Chanlist));
+ 	clp -> channame = chan -> ch_name;
+ 	clp -> chan = chan;
+@@ -205,8 +206,9 @@
+ 	if (chan -> ch_sort[0] != CH_SORT_NONE)
+ 		clp -> mta_hash = (Mtalist **)
+ 			calloc (MTA_HASHSIZE, sizeof (*clp->mta_hash));
+-	if (clp -> chan_special)
++	if (clp -> chan_special) {
+ 		addtorunq (clp);
++	}
+ 	nchanlist ++;
+ }
+ 
+@@ -482,7 +484,7 @@
+ 	n = getdtablesize ();
+ 
+ 	i = (isatty(2) ? 3 : 0);
+-	for (; i <= n; i++)
++	for (; i < n; i++)
+ 		(void) close (i);
+ #ifdef notdef
+ 	for (i = 0; i < NSIG; i++)
+diff -u --recursive --new-file pp-6.0/Src/qmgr/make pp-6.0-linux/Src/qmgr/make
+--- pp-6.0/Src/qmgr/make	Wed Aug 21 07:52:47 1991
++++ pp-6.0-linux/Src/qmgr/make	Tue Aug 31 09:51:18 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Src/qmgr/ryresponder.c pp-6.0-linux/Src/qmgr/ryresponder.c
+--- pp-6.0/Src/qmgr/ryresponder.c	Wed Dec 18 20:27:42 1991
++++ pp-6.0-linux/Src/qmgr/ryresponder.c	Thu Jul 14 15:54:56 1994
+@@ -99,7 +99,7 @@
+ 
+ #ifdef	SETSID
+ 	(void) setsid ();
+-#endif
++#else
+ #ifdef	TIOCNOTTY
+ 	if ((i = open ("/dev/tty", O_RDWR)) != NOTOK) {
+ 		(void) ioctl (i, TIOCNOTTY, NULLCP);
+@@ -112,7 +112,8 @@
+ 	(void) signal (SIGQUIT, SIG_IGN);
+ #endif
+ #endif
+-	isodexport (NULLCP);	/* re-initialize logfiles */
++#endif
++	isodexport (NULLCP);	 /* re-initialize logfiles */
+ }
+ 
+ /*    RESPONDER */
+diff -u --recursive --new-file pp-6.0/Src/submit/make pp-6.0-linux/Src/submit/make
+--- pp-6.0/Src/submit/make	Wed Aug 21 07:52:48 1991
++++ pp-6.0-linux/Src/submit/make	Tue Aug 31 09:51:02 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/bin2ascii/make pp-6.0-linux/Tools/bin2ascii/make
+--- pp-6.0/Tools/bin2ascii/make	Wed Aug 21 07:52:30 1991
++++ pp-6.0-linux/Tools/bin2ascii/make	Tue Aug 31 09:55:40 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/bin2hex/make pp-6.0-linux/Tools/bin2hex/make
+--- pp-6.0/Tools/bin2hex/make	Wed Aug 21 07:52:26 1991
++++ pp-6.0-linux/Tools/bin2hex/make	Tue Aug 31 09:56:49 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ckadr/make pp-6.0-linux/Tools/ckadr/make
+--- pp-6.0/Tools/ckadr/make	Wed Aug 21 07:52:32 1991
++++ pp-6.0-linux/Tools/ckadr/make	Tue Aug 31 09:55:16 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ckchan/make pp-6.0-linux/Tools/ckchan/make
+--- pp-6.0/Tools/ckchan/make	Wed Aug 21 07:52:30 1991
++++ pp-6.0-linux/Tools/ckchan/make	Tue Aug 31 09:55:45 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ckconfig/make pp-6.0-linux/Tools/ckconfig/make
+--- pp-6.0/Tools/ckconfig/make	Wed Aug 21 07:52:32 1991
++++ pp-6.0-linux/Tools/ckconfig/make	Tue Aug 31 09:55:20 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ckmail/ckmail.c pp-6.0-linux/Tools/ckmail/ckmail.c
+--- pp-6.0/Tools/ckmail/ckmail.c	Wed Dec 18 20:29:16 1991
++++ pp-6.0-linux/Tools/ckmail/ckmail.c	Thu Jul  7 14:26:29 1994
+@@ -186,7 +186,7 @@
+ 	}
+ 	fillinaddr();
+ 	if (verbose == TRUE) {
+-		printf("Please wait while attempt to connect to %s....",qhost);
++		printf("Please wait while attempting to connect to %s....",qhost);
+ 		fflush(stdout);
+ 	}
+ 	if (do_loop == TRUE) {
+diff -u --recursive --new-file pp-6.0/Tools/ckmail/make pp-6.0-linux/Tools/ckmail/make
+--- pp-6.0/Tools/ckmail/make	Wed Aug 21 07:52:34 1991
++++ pp-6.0-linux/Tools/ckmail/make	Tue Aug 31 09:54:59 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ckor/make pp-6.0-linux/Tools/ckor/make
+--- pp-6.0/Tools/ckor/make	Wed Aug 21 07:52:33 1991
++++ pp-6.0-linux/Tools/ckor/make	Tue Aug 31 09:55:07 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/dbmbuild/make pp-6.0-linux/Tools/dbmbuild/make
+--- pp-6.0/Tools/dbmbuild/make	Wed Aug 21 07:52:34 1991
++++ pp-6.0-linux/Tools/dbmbuild/make	Tue Aug 31 09:55:03 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/dbmedit/make pp-6.0-linux/Tools/dbmedit/make
+--- pp-6.0/Tools/dbmedit/make	Wed Aug 21 07:52:34 1991
++++ pp-6.0-linux/Tools/dbmedit/make	Tue Aug 31 09:54:54 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/dbmunbuild/make pp-6.0-linux/Tools/dbmunbuild/make
+--- pp-6.0/Tools/dbmunbuild/make	Mon Dec  2 12:49:35 1991
++++ pp-6.0-linux/Tools/dbmunbuild/make	Tue Aug 31 09:55:24 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ean2real/make pp-6.0-linux/Tools/ean2real/make
+--- pp-6.0/Tools/ean2real/make	Wed Aug 21 07:52:26 1991
++++ pp-6.0-linux/Tools/ean2real/make	Tue Aug 31 09:56:58 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/hex2bin/make pp-6.0-linux/Tools/hex2bin/make
+--- pp-6.0/Tools/hex2bin/make	Wed Aug 21 07:52:30 1991
++++ pp-6.0-linux/Tools/hex2bin/make	Tue Aug 31 09:55:49 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/make pp-6.0-linux/Tools/make
+--- pp-6.0/Tools/make	Wed Aug 21 07:52:26 1991
++++ pp-6.0-linux/Tools/make	Tue Aug 31 09:57:02 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/make-lists/make pp-6.0-linux/Tools/make-lists/make
+--- pp-6.0/Tools/make-lists/make	Wed Aug 21 07:52:26 1991
++++ pp-6.0-linux/Tools/make-lists/make	Tue Aug 31 09:56:54 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/misc/make pp-6.0-linux/Tools/misc/make
+--- pp-6.0/Tools/misc/make	Wed Aug 21 07:52:33 1991
++++ pp-6.0-linux/Tools/misc/make	Tue Aug 31 09:55:12 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/mkpasswd/make pp-6.0-linux/Tools/mkpasswd/make
+--- pp-6.0/Tools/mkpasswd/make	Wed Aug 21 07:52:31 1991
++++ pp-6.0-linux/Tools/mkpasswd/make	Tue Aug 31 09:55:36 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/mlist/make pp-6.0-linux/Tools/mlist/make
+--- pp-6.0/Tools/mlist/make	Wed Aug 21 07:52:35 1991
++++ pp-6.0-linux/Tools/mlist/make	Tue Aug 31 09:54:46 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/mpp84/make pp-6.0-linux/Tools/mpp84/make
+--- pp-6.0/Tools/mpp84/make	Wed Aug 21 07:52:27 1991
++++ pp-6.0-linux/Tools/mpp84/make	Tue Aug 31 09:56:37 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/mpp88/make pp-6.0-linux/Tools/mpp88/make
+--- pp-6.0/Tools/mpp88/make	Wed Aug 21 07:52:27 1991
++++ pp-6.0-linux/Tools/mpp88/make	Tue Aug 31 09:56:41 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/mu/make pp-6.0-linux/Tools/mu/make
+--- pp-6.0/Tools/mu/make	Wed Aug 21 07:52:34 1991
++++ pp-6.0-linux/Tools/mu/make	Tue Aug 31 09:54:50 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/nsapexpand/make pp-6.0-linux/Tools/nsapexpand/make
+--- pp-6.0/Tools/nsapexpand/make	Wed Aug 21 07:52:28 1991
++++ pp-6.0-linux/Tools/nsapexpand/make	Tue Aug 31 09:56:23 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ntail/make pp-6.0-linux/Tools/ntail/make
+--- pp-6.0/Tools/ntail/make	Wed Aug 21 07:52:31 1991
++++ pp-6.0-linux/Tools/ntail/make	Tue Aug 31 09:55:28 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ppbm/make pp-6.0-linux/Tools/ppbm/make
+--- pp-6.0/Tools/ppbm/make	Mon Nov 25 11:46:23 1991
++++ pp-6.0-linux/Tools/ppbm/make	Tue Aug 31 09:57:11 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/ppls/make pp-6.0-linux/Tools/ppls/make
+--- pp-6.0/Tools/ppls/make	Wed Aug 21 07:52:25 1991
++++ pp-6.0-linux/Tools/ppls/make	Tue Aug 31 09:57:06 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/probe/make pp-6.0-linux/Tools/probe/make
+--- pp-6.0/Tools/probe/make	Wed Aug 21 07:52:28 1991
++++ pp-6.0-linux/Tools/probe/make	Tue Aug 31 09:56:27 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/splat/make pp-6.0-linux/Tools/splat/make
+--- pp-6.0/Tools/splat/make	Wed Aug 21 07:52:31 1991
++++ pp-6.0-linux/Tools/splat/make	Tue Aug 31 09:55:32 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/statgen/make pp-6.0-linux/Tools/statgen/make
+--- pp-6.0/Tools/statgen/make	Wed Aug 21 07:52:27 1991
++++ pp-6.0-linux/Tools/statgen/make	Tue Aug 31 09:56:32 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/tables/abbrev/make pp-6.0-linux/Tools/tables/abbrev/make
+--- pp-6.0/Tools/tables/abbrev/make	Wed Aug 21 07:52:30 1991
++++ pp-6.0-linux/Tools/tables/abbrev/make	Tue Aug 31 09:55:53 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/tables/compat/make pp-6.0-linux/Tools/tables/compat/make
+--- pp-6.0/Tools/tables/compat/make	Wed Aug 21 07:52:28 1991
++++ pp-6.0-linux/Tools/tables/compat/make	Tue Aug 31 09:56:05 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/tables/domain/make pp-6.0-linux/Tools/tables/domain/make
+--- pp-6.0/Tools/tables/domain/make	Tue Sep 10 15:39:41 1991
++++ pp-6.0-linux/Tools/tables/domain/make	Tue Aug 31 09:56:18 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/tables/make pp-6.0-linux/Tools/tables/make
+--- pp-6.0/Tools/tables/make	Wed Aug 21 07:52:28 1991
++++ pp-6.0-linux/Tools/tables/make	Tue Aug 31 09:56:14 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/tables/pp-rfc987/make pp-6.0-linux/Tools/tables/pp-rfc987/make
+--- pp-6.0/Tools/tables/pp-rfc987/make	Wed Aug 21 07:52:29 1991
++++ pp-6.0-linux/Tools/tables/pp-rfc987/make	Tue Aug 31 09:55:57 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/tables/rfc987-pp/make pp-6.0-linux/Tools/tables/rfc987-pp/make
+--- pp-6.0/Tools/tables/rfc987-pp/make	Wed Aug 21 07:52:29 1991
++++ pp-6.0-linux/Tools/tables/rfc987-pp/make	Tue Aug 31 09:56:09 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Tools/tables/tjoin/make pp-6.0-linux/Tools/tables/tjoin/make
+--- pp-6.0/Tools/tables/tjoin/make	Wed Aug 21 07:52:29 1991
++++ pp-6.0-linux/Tools/tables/tjoin/make	Tue Aug 31 09:56:01 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Uip/mail/make pp-6.0-linux/Uip/mail/make
+--- pp-6.0/Uip/mail/make	Wed Aug 21 07:52:45 1991
++++ pp-6.0-linux/Uip/mail/make	Tue Aug 31 09:51:44 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Uip/make pp-6.0-linux/Uip/make
+--- pp-6.0/Uip/make	Wed Aug 21 07:52:44 1991
++++ pp-6.0-linux/Uip/make	Tue Aug 31 09:52:24 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Uip/misc/make pp-6.0-linux/Uip/misc/make
+--- pp-6.0/Uip/misc/make	Wed Aug 21 07:52:44 1991
++++ pp-6.0-linux/Uip/misc/make	Tue Aug 31 09:52:17 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Uip/rcvalert/make pp-6.0-linux/Uip/rcvalert/make
+--- pp-6.0/Uip/rcvalert/make	Wed Aug 21 07:52:45 1991
++++ pp-6.0-linux/Uip/rcvalert/make	Tue Aug 31 09:51:49 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Uip/rcvtrip/make pp-6.0-linux/Uip/rcvtrip/make
+--- pp-6.0/Uip/rcvtrip/make	Wed Aug 21 07:52:45 1991
++++ pp-6.0-linux/Uip/rcvtrip/make	Tue Aug 31 09:51:39 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Uip/resend/make pp-6.0-linux/Uip/resend/make
+--- pp-6.0/Uip/resend/make	Wed Aug 21 07:52:44 1991
++++ pp-6.0-linux/Uip/resend/make	Tue Aug 31 09:52:04 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/Uip/sendmail/make pp-6.0-linux/Uip/sendmail/make
+--- pp-6.0/Uip/sendmail/make	Wed Aug 21 07:52:44 1991
++++ pp-6.0-linux/Uip/sendmail/make	Tue Aug 31 09:51:54 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/config/linux.h pp-6.0-linux/config/linux.h
+--- pp-6.0/config/linux.h	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/config/linux.h	Wed Jan  5 16:21:03 1994
+@@ -0,0 +1,34 @@
++#ifndef _H_CONFIG
++#define _H_CONFIG
++
++#ifndef __linux__
++#define         __linux__            /* No, we shouldn't have to do this! */
++#endif
++
++/* We have GNU DBM. Plus everything is compiled with gcc so we don't
++ * need to worry about pcc structure return compatibility hacks.
++ */
++#define         GDBM
++#define		GCC_DBM_OK
++
++/* define the following if you require BIND nameserver support for SMTP */
++#define NAMESERVER
++
++#define PP_DEBUG_ALL    2
++#define PP_DEBUG_SOME   1
++#define PP_DEBUG_NONE   0
++
++#define PP_DEBUG PP_DEBUG_ALL
++
++#define HAS_FSYNC
++#define VAT
++#define SETSID
++
++
++/*
++ * define the following if  you require user tools to use uk domain ordering 
++ * by default
++ * #define UKORDER
++ */
++
++#endif
+diff -u --recursive --new-file pp-6.0/config/linux.make pp-6.0-linux/config/linux.make
+--- pp-6.0/config/linux.make	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/config/linux.make	Thu Jul 14 15:58:54 1994
+@@ -0,0 +1,181 @@
++# Default Configuration values for other Makefiles
++#
++# You should look through all of them, but in particular lines the first
++# too sections.
++#	Tailor this		May need to be tailored to your system
++#	Check this		Ensure that this is OK
++#
++# NOTE: SUN MAKE AND SOME NEWER MAKES TOO TAKE OF TRAILING SPACES IN A
++#  MACRO DEFINITION. HENCE YOU SHOULD EITHER REMOVE THE TRAILING COMMENTS
++#  OR MAKE SURE THE COMMENT STARTS DIRECTLY AFTER THE DEFINITION FOR THOSE
++#  MACROS WHERE THIS IS IMPORTANT (e.g pathnames).
++#
++############################################################
++#
++# @(#) $Header: /cs/research/pp/hubris/pp-beta/config/RCS/Make.defs.dist,v 5.0 90/09/20 16:35:18 pp Exp Locker: pp $
++#
++# $Log:	Make.defs.dist,v $
++# Revision 5.0  90/09/20  16:35:18  pp
++# rcsforce : 5.0 public release
++# 
++#
++############################################################
++#
++
++############################################################
++#
++# Things you really should tailor
++#
++############################################################
++
++# List of channels that you may require. Choose from those in the
++# Chans/ directory. Each should be a directory name within Chans.
++OPTIONALCHANS	= shell lists 822-local slocal smtp uucp x40084 x40088
++# If fax defined - give type
++#FAXDRIVERS = dexNet200 # or ps250 ...
++#size of page to produce when converting to g3fax encoding
++#not defined produces US size pages 216 mm by 273 mm (width, height)
++#-DA4 produces A4 size pages 210mm by 297mm
++FAXPAGESIZE = -DA4
++
++# Optional filters
++OPTIONALFILTERS =
++
++# This is the external libraries required by all programs. 
++# Should include isode at the least. dbm maybe also.
++LIBSYS          = -L/usr/Isode/lib -lpatch -ldsap -lisode -lshadow -ldbm -lm # -ldxmalloc
++# For SYS5 also need -lsocket -lnsl -lgen
++
++
++# Compilation things.
++# C compiler, cc or gcc.
++CC              = cc $(JUMP_OPT)
++# suns cc if using gcc on sparc
++OLDCC		= $(CC)
++CCOPTIONS       = -O6 -m486 -pipe -fwritable-strings -D_scandir=scandir
++LIBCCOPTIONS	= $(CCOPTIONS)
++LDOPTIONS       = -s -Wl,-qmagic
++
++
++############################################################
++#
++# These things may need changing
++#
++############################################################
++
++# The PP base directory from private binaries et al.
++PPDIR		= /usr/lib/pp
++
++
++# A private directory for host specific files - set to PPDIR if you
++# are not sharing things.
++PRIDIR		= $(PPDIR)
++
++
++# The spool directory for mail.
++SPLDIR		= /usr/spool/pp
++
++
++# The base directory for Manual pages /usr/man or /usr/local/man or similar
++MANDIR          = /usr/man
++# options for installing manual pages...
++# includes -bsd42 -bsd44 -ros -sys5 -aix -local -l -hpux
++# see script man/inst-man.sh for more details
++MANOPTS		= -bsd42
++
++# The public access binary directory.
++USRBINDIR	= /usr/local/bin
++
++
++# The username to install PP binaries under
++PPUSER		= mail
++
++
++# Do you have X11 installed? Leave blank otherwise
++X11		= true
++#The X libraries. May need -lXext for X11R4
++LIBX		= -L/usr/X386/lib -lXaw -lXmu -lXext -lXt -lX11
++# The applications default directory
++APPDEFAULTS     = /usr/X386/lib/X11/app-defaults
++
++
++# SMTP DNS support - either empty or the resolver library
++LIBRESOLV	=
++
++# Photo support
++#LIBPHOTO	= /usr/local/lib/libphoto.a
++
++
++# These commands have a habit of moving around
++CHOWN		= chown
++CHMOD		= chmod
++
++
++
++# If grey book is defined - these need to be correct - otherwise ignore
++# Niftp src directory - niftp should be built beforehand.
++NIFTPSRC	= /usr/src/local/niftp
++# The niftp interface in use.
++NIFTPINTERFACE	= sun
++
++############################################################
++#
++# These things are probably OK as they are...
++#
++############################################################
++
++MAKE		= ./make
++SHELL		= /bin/sh
++
++TXTDIR		= $(PPDIR)
++PRIDIR		= $(PPDIR)
++#
++#  These are all sub dirs
++TAILOR		= $(PRIDIR)/tailor
++BINDIR          = $(PPDIR)/bin
++CMDDIR          = $(PPDIR)/cmds
++TBLDIR          = $(TXTDIR)/tables
++LOGDIR          = $(SPLDIR)/logs
++QUEDIR		= $(SPLDIR)/queues
++CHANDIR         = $(CMDDIR)/chans
++FORMDIR         = $(CMDDIR)/format
++TOOLDIR		= $(CMDDIR)/tools
++
++# ISODE dependencies
++PEPY            = pepy
++PYFLAGS         =
++ROSY		= rosy
++RYFLAGS		=
++POSY		= posy
++POFLAGS		=
++PEPSY		= pepsy
++PEPSYHDRS	= /usr/Isode/include/isode/pepsy
++# Other Libraries and programs
++
++# Archive Configuration
++AR              = ar
++ARFLAGS         =
++RANLIB          = ranlib
++# SYS5 has no ranlib - replace with echo
++
++# Lint Config
++LINT            = lint
++LINTFLAGS       = -haxbc
++
++# program protections?
++PGMPROT         = 755
++ROOTUSER	= root
++
++# Other things
++BACKUP		= cp
++INSTALL		= cp
++
++# Documentation support
++LATEX           = latex
++TGRIND          = tgrind
++GRINDEFS        = grindefs
++WEAVE           = weave
++DVI2PS          = dvi2ps
++DVIIMP          = dviimp
++DVISP           = dvisp
++DFLAGS          =
+diff -u --recursive --new-file pp-6.0/doc/funet91/make pp-6.0-linux/doc/funet91/make
+--- pp-6.0/doc/funet91/make	Wed Sep 18 08:34:37 1991
++++ pp-6.0-linux/doc/funet91/make	Fri Aug 27 15:12:24 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/doc/ifip6.5-88/make pp-6.0-linux/doc/ifip6.5-88/make
+--- pp-6.0/doc/ifip6.5-88/make	Wed Aug 21 07:52:43 1991
++++ pp-6.0-linux/doc/ifip6.5-88/make	Fri Aug 27 15:12:30 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/doc/make pp-6.0-linux/doc/make
+--- pp-6.0/doc/make	Wed Aug 21 07:52:42 1991
++++ pp-6.0-linux/doc/make	Fri Aug 27 15:12:05 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/doc/manual/Makefile pp-6.0-linux/doc/manual/Makefile
+--- pp-6.0/doc/manual/Makefile	Tue Dec 17 16:14:35 1991
++++ pp-6.0-linux/doc/manual/Makefile	Fri Aug 27 15:11:05 1993
+@@ -32,6 +32,6 @@
+ 		do (echo "cd $$x; $(MAKE) $@"; cd $$x ; $(MAKE) $@ ); done
+ 		rm -f core *.old *.BAK
+ 
+-define depend lint install:;
++xdefine depend lint install:;
+ 
+ true:
+diff -u --recursive --new-file pp-6.0/doc/manual/make pp-6.0-linux/doc/manual/make
+--- pp-6.0/doc/manual/make	Wed Aug 21 07:52:43 1991
++++ pp-6.0-linux/doc/manual/make	Fri Aug 27 15:12:40 1993
+@@ -1,10 +1,8 @@
+ #! /bin/sh
+ if [ -f ../../Make.defs ]
+ then
+-	PATH=/usr/ucb:/bin:/usr/bin \
+ 	exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+ else
+-	PATH=/usr/ucb:/bin:/usr/bin \
+ 	exec ${MAKECMD-make} -f Make.defs -f Makefile ${1+"$@"}
+ fi
+ 
+Binary files pp-6.0/doc/manual/volume0/COVER-LETTER.dvi and pp-6.0-linux/doc/manual/volume0/COVER-LETTER.dvi differ
+diff -u --recursive --new-file pp-6.0/doc/manual/volume0/make pp-6.0-linux/doc/manual/volume0/make
+--- pp-6.0/doc/manual/volume0/make	Tue Sep 11 11:38:05 1990
++++ pp-6.0-linux/doc/manual/volume0/make	Fri Aug 27 15:13:38 1993
+@@ -2,10 +2,8 @@
+ 
+ if [ -f ../../../Make.defs ]
+ then
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../../../Make.defs -f Makefile ${1+"$@"}
+ else
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../Make.defs -f Makefile ${1+"$@"}
+ fi
+ 
+diff -u --recursive --new-file pp-6.0/doc/manual/volume1/make pp-6.0-linux/doc/manual/volume1/make
+--- pp-6.0/doc/manual/volume1/make	Thu Nov 23 14:23:35 1989
++++ pp-6.0-linux/doc/manual/volume1/make	Fri Aug 27 15:13:47 1993
+@@ -2,10 +2,8 @@
+ 
+ if [ -f ../../../Make.defs ]
+ then
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../../../Make.defs -f Makefile ${1+"$@"}
+ else
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../Make.defs -f Makefile ${1+"$@"}
+ fi
+ 
+diff -u --recursive --new-file pp-6.0/doc/manual/volume2/make pp-6.0-linux/doc/manual/volume2/make
+--- pp-6.0/doc/manual/volume2/make	Thu Nov 23 14:46:32 1989
++++ pp-6.0-linux/doc/manual/volume2/make	Fri Aug 27 15:13:51 1993
+@@ -2,10 +2,8 @@
+ 
+ if [ -f ../../../Make.defs ]
+ then
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../../../Make.defs -f Makefile ${1+"$@"}
+ else
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../Make.defs -f Makefile ${1+"$@"}
+ fi
+ 
+diff -u --recursive --new-file pp-6.0/doc/manual/volume3/make pp-6.0-linux/doc/manual/volume3/make
+--- pp-6.0/doc/manual/volume3/make	Thu Nov 23 14:24:01 1989
++++ pp-6.0-linux/doc/manual/volume3/make	Fri Aug 27 15:13:55 1993
+@@ -2,10 +2,8 @@
+ 
+ if [ -f ../../../Make.defs ]
+ then
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../../../Make.defs -f Makefile ${1+"$@"}
+ else
+-	PATH=/usr/ucb:/bin:/usr/bin exec \
+ 		make -f ../Make.defs -f Makefile ${1+"$@"}
+ fi
+ 
+diff -u --recursive --new-file pp-6.0/doc/nordunet/make pp-6.0-linux/doc/nordunet/make
+--- pp-6.0/doc/nordunet/make	Wed Sep 18 08:34:45 1991
++++ pp-6.0-linux/doc/nordunet/make	Fri Aug 27 15:12:46 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/doc/sun-89/make pp-6.0-linux/doc/sun-89/make
+--- pp-6.0/doc/sun-89/make	Wed Sep 18 08:34:48 1991
++++ pp-6.0-linux/doc/sun-89/make	Fri Aug 27 15:12:53 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/doc/tailor/make pp-6.0-linux/doc/tailor/make
+--- pp-6.0/doc/tailor/make	Wed Aug 21 07:52:43 1991
++++ pp-6.0-linux/doc/tailor/make	Fri Aug 27 15:12:58 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/doc/uknet90/make pp-6.0-linux/doc/uknet90/make
+--- pp-6.0/doc/uknet90/make	Wed Sep 18 08:34:51 1991
++++ pp-6.0-linux/doc/uknet90/make	Fri Aug 27 15:13:03 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/doc/unix-niftp/make pp-6.0-linux/doc/unix-niftp/make
+--- pp-6.0/doc/unix-niftp/make	Thu Sep 19 13:27:39 1991
++++ pp-6.0-linux/doc/unix-niftp/make	Fri Aug 27 15:13:09 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/examples/INTERNET/make pp-6.0-linux/examples/INTERNET/make
+--- pp-6.0/examples/INTERNET/make	Wed Aug 21 07:52:24 1991
++++ pp-6.0-linux/examples/INTERNET/make	Tue Aug 31 09:57:33 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/examples/JANET/make pp-6.0-linux/examples/JANET/make
+--- pp-6.0/examples/JANET/make	Wed Aug 21 07:52:24 1991
++++ pp-6.0-linux/examples/JANET/make	Tue Aug 31 09:57:29 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/examples/LOCALSMTP/make pp-6.0-linux/examples/LOCALSMTP/make
+--- pp-6.0/examples/LOCALSMTP/make	Wed Aug 21 07:52:24 1991
++++ pp-6.0-linux/examples/LOCALSMTP/make	Tue Aug 31 09:57:24 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/examples/make pp-6.0-linux/examples/make
+--- pp-6.0/examples/make	Wed Aug 21 07:52:24 1991
++++ pp-6.0-linux/examples/make	Tue Aug 31 09:57:38 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/examples/master/make pp-6.0-linux/examples/master/make
+--- pp-6.0/examples/master/make	Wed Aug 21 07:52:25 1991
++++ pp-6.0-linux/examples/master/make	Tue Aug 31 09:57:15 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/examples/xtel/make pp-6.0-linux/examples/xtel/make
+--- pp-6.0/examples/xtel/make	Wed Aug 21 07:52:25 1991
++++ pp-6.0-linux/examples/xtel/make	Tue Aug 31 09:57:20 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/h/sys.file.h pp-6.0-linux/h/sys.file.h
+--- pp-6.0/h/sys.file.h	Wed Dec 18 20:42:57 1991
++++ pp-6.0-linux/h/sys.file.h	Wed Sep 15 17:12:18 1993
+@@ -29,9 +29,9 @@
+ #include <sys/ioctl.h>
+ #endif
+ 
+-#ifdef  BSD42
++#if defined(BSD42) || defined(__linux__)
+ #include <sys/file.h>
+-#else    
++#else
+ #ifdef  SYS5
+ #include <fcntl.h>
+ #else
+diff -u --recursive --new-file pp-6.0/jump/Makefile pp-6.0-linux/jump/Makefile
+--- pp-6.0/jump/Makefile	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/jump/Makefile	Fri Jul  8 14:01:46 1994
+@@ -0,0 +1,26 @@
++IMAGE=		libpp
++VERSION=	6.0
++ADDRESS=	0x64000000
++JUMPSIZE=	0x4000
++GOTSIZE=	0x1000
++
++
++all:		image stubs
++
++install:
++		ln -f libpp.sa ../Lib/libpp.a
++
++image:
++		/usr/dll/bin/mkimage -l $(IMAGE) -v $(VERSION) \
++			-a $(ADDRESS) -j $(JUMPSIZE) -g $(GOTSIZE) \
++			-- \
++			libpp.a \
++			-L/usr/Isode/lib \
++			-lftam -ldsap -lisode \
++			-lcurses -ltermcap -ldbm -lc -lm `gcc --print` -lc
++
++stubs:
++		/usr/dll/bin/mkstubs -l $(IMAGE) -v $(VERSION) \
++			-a $(ADDRESS) -j $(JUMPSIZE) -g $(GOTSIZE) \
++			-- \
++			libpp
+diff -u --recursive --new-file pp-6.0/jump/jump.funcs pp-6.0-linux/jump/jump.funcs
+--- pp-6.0/jump/jump.funcs	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/jump/jump.funcs	Fri Jul  8 16:59:07 1994
+@@ -0,0 +1,502 @@
++00000000 T _channel_control     libpp          chan_control
++00000000 T _debug_channel_control libpp          chan_debug
++00000000 T _qinit               libpp          qstruct2qmgr
++00000000 T _qstruct2qmgr        libpp          qstruct2qmgr
++00000000 T _delivery_setstate   libpp          recipstate
++00000000 T _delivery_init       libpp          recipstate
++00000000 T _delivery_setallstate libpp          recipstate
++00000000 T _delivery_resetDRs   libpp          recipstate
++00000000 T _qmgr_start          libpp          submit2qmgr
++00000000 T _qmgr_retry          libpp          submit2qmgr
++00000000 T _qmgr_end            libpp          submit2qmgr
++00000000 T _message_send        libpp          submit2qmgr
++00000000 T _initiate_op         libpp          comms
++00000000 T _result_op           libpp          comms
++00000000 T _free_BindResult     libpp          comms
++00000000 T _init_connect        libpp          comms
++00000000 T _retry_connect       libpp          comms
++00000000 T _release_connect     libpp          comms
++00000000 T _newcopblk           libpp          consblk
++00000000 T _find_copblk         libpp          consblk
++00000000 T _free_copblk         libpp          consblk
++00000000 T _convert_time        libpp          cons-misc
++00000000 T _convert_ProcStatus  libpp          cons-misc
++00000000 T _parseUnitStr        libpp          cons-misc
++00000000 T _unparseUnitStr      libpp          cons-misc
++00000000 T _mystrtotime         libpp          cons-misc
++00000000 T _time_t2RFC          libpp          cons-misc
++00000000 T _arg_channelread     libpp          op_chan
++00000000 T _res_channelread     libpp          op_chan
++00000000 T _arg_channelcontrol  libpp          op_chan
++00000000 T _res_channelcontrol  libpp          op_chan
++00000000 T _free_ChannelInfo    libpp          op_chan
++00000000 T _arg_readchannelmtamessage libpp          op_msg
++00000000 T _res_readchannelmtamessage libpp          op_msg
++00000000 T _arg_msgcontrol      libpp          op_msg
++00000000 T _res_msgcontrol      libpp          op_msg
++00000000 T _free_MsgList        libpp          op_msg
++00000000 T _free_Strlist        libpp          op_msg
++00000000 T _free_MsgInfo        libpp          op_msg
++00000000 T _free_PerMessageInfo libpp          op_msg
++00000000 T _free_RecipInfo      libpp          op_msg
++00000000 T _arg_mtaread         libpp          op_mta
++00000000 T _res_mtaread         libpp          op_mta
++00000000 T _arg_mtacontrol      libpp          op_mta
++00000000 T _res_mtacontrol      libpp          op_mta
++00000000 T _free_MtaInfo        libpp          op_mta
++00000000 T _arg_quecontrol      libpp          op_que
++00000000 T _res_quecontrol      libpp          op_que
++00000000 T _res_qmgrStatus      libpp          op_que
++00000000 T _measure_Channel     libpp          order
++00000000 T _measure_Mta         libpp          order
++00000000 T _measure_Msg         libpp          order
++00000000 T _arg_filter          libpp          op_filter
++00000000 T _enctypes2mem        libpp          enctypes2mem
++00000000 T _x400_fixorig        libpp          fixorig
++00000000 T _asn_init            libpp          rasn
++00000000 T _ap_1adr             libpp          ap_1adr
++00000000 T _ap_7to8             libpp          ap_1adr
++00000000 T _ap_dmflip           libpp          ap_dmflip
++00000000 T _ap_ppush            libpp          ap_file
++00000000 T _ap_ppop             libpp          ap_file
++00000000 T _ap_flget            libpp          ap_file
++00000000 T _ap_fpush            libpp          ap_file
++00000000 T _ap_fpop             libpp          ap_file
++00000000 T _ap_use_percent      libpp          ap_lex
++00000000 T _ap_lex              libpp          ap_lex
++00000000 T _ap_norm_all_domains libpp          ap_norm
++00000000 T _ap_norm_first_domain libpp          ap_norm
++00000000 T _ap_normalize        libpp          ap_norm
++00000000 T _ap_dmnormalize      libpp          ap_norm
++00000000 T _ap_locnormalize     libpp          ap_norm
++00000000 T _ap_p2s              libpp          ap_p2s
++00000000 T _ap_p2s_nc           libpp          ap_p2s
++00000000 T _ap_s2p              libpp          ap_s2p
++00000000 T _ap_s2t              libpp          ap_s2t
++00000000 T _ap_t2p              libpp          ap_t2p
++00000000 T _ap_t2s              libpp          ap_t2s
++00000000 T _ap_alloc            libpp          ap_ut
++00000000 T _ap_ninit            libpp          ap_ut
++00000000 T _ap_free             libpp          ap_ut
++00000000 T _ap_fllnode          libpp          ap_ut
++00000000 T _ap_new              libpp          ap_ut
++00000000 T _ap_insert           libpp          ap_ut
++00000000 T _ap_sqinsert         libpp          ap_ut
++00000000 T _ap_delete           libpp          ap_ut
++00000000 T _ap_append           libpp          ap_ut
++00000000 T _ap_add              libpp          ap_ut
++00000000 T _ap_sqdelete         libpp          ap_ut
++00000000 T _ap_1delete          libpp          ap_ut
++00000000 T _ap_sqtfix           libpp          ap_ut
++00000000 T _ap_move             libpp          ap_ut
++00000000 T _ap_sqmove           libpp          ap_ut
++00000000 T _ap_iinit            libpp          ap_ut
++00000000 T _ap_clear            libpp          ap_ut
++00000000 T _ap_pinit            libpp          ap_ut
++00000000 T _ap_palloc           libpp          ap_ut
++00000000 T _ap_pfill            libpp          ap_ut
++00000000 T _ap_pnsrt            libpp          ap_ut
++00000000 T _ap_pappend          libpp          ap_ut
++00000000 T _ap_padd             libpp          ap_ut
++00000000 T _ap_val2str          libpp          ap_val2str
++00000000 T _ap_s2s              libpp          ap_s2s
++00000000 T _ap_equ              libpp          ap_equ
++00000000 T _UTC2rfc             libpp          UTC2rfc
++00000000 T _adr2rfc             libpp          adr2rfc
++00000000 T _adr2comments        libpp          adr2rfc
++00000000 T _domsinfo2rfc        libpp          domsinfo2rfc
++00000000 T _globalid2rfc        libpp          globalid2rfc
++00000000 T _msgid2rfc           libpp          msgid2rfc
++00000000 T _msgid2rfc_aux       libpp          msgid2rfc
++00000000 T _reprecip2rfc        libpp          reprecip2rfc
++00000000 T _rfc2UTC             libpp          rfc2UTC
++00000000 T _rfc2domsinfo        libpp          rfc2domsinfo
++00000000 T _rfc2encinfo         libpp          rfc2encinfo
++00000000 T _rfc2x400globalid    libpp          rfc2globalid
++00000000 T _rfc2globalid        libpp          rfc2globalid
++00000000 T _rfc2msgid           libpp          rfc2msgid
++00000000 T _rfc2reprecip        libpp          rfc2reprecip
++00000000 T _rfc2trace           libpp          rfc2trace
++00000000 T _rfctxtfold          libpp          rfctxtfold
++00000000 T _trace2rfc           libpp          trace2rfc
++00000000 T _x400eits2rfc        libpp          x400trc2rfc
++00000000 T _x400trace2rfc       libpp          x400trc2rfc
++00000000 T _rfc2x400trace       libpp          rfc2x400trc
++00000000 T _io_init             libpp          io_lib
++00000000 T _io_wprm             libpp          io_lib
++00000000 T _io_wrq              libpp          io_lib
++00000000 T _io_wdr              libpp          io_lib
++00000000 T _io_wadr             libpp          io_lib
++00000000 T _io_adend            libpp          io_lib
++00000000 T _io_tinit            libpp          io_lib
++00000000 T _io_tpart            libpp          io_lib
++00000000 T _io_tdata            libpp          io_lib
++00000000 T _io_tdend            libpp          io_lib
++00000000 T _io_tend             libpp          io_lib
++00000000 T _io_end              libpp          io_lib
++00000000 T _rd_adr              libpp          rd_adr
++00000000 T _txt2buf             libpp          rd_buf
++00000000 T _rd_dr               libpp          rd_dr
++00000000 T _rd_msg_file         libpp          rd_msg
++00000000 T _rd_end              libpp          rd_msg
++00000000 T _wr_ad_status        libpp          rd_msg
++00000000 T _wr_ad_rcntno        libpp          rd_msg
++00000000 T _wr_q_nwarns         libpp          rd_msg
++00000000 T _rd_prm              libpp          rd_prm
++00000000 T _rd_q                libpp          rd_q
++00000000 T _wr_adr              libpp          wr_adr
++00000000 T _wr_dr               libpp          wr_dr
++00000000 T _wr_prm              libpp          wr_prm
++00000000 T _wr_q                libpp          wr_q
++00000000 T _wr_q2dr             libpp          wr_q2drfile
++00000000 T _wr_q2drfile         libpp          wr_q2drfile
++00000000 T _or2pe               libpp          or2pe
++00000000 T _build_OR_ORName     libpp          or2pe
++00000000 T _build_OR_StandardAttributeList libpp          or2pe
++00000000 T _build_OR_DomainDefinedAttributeList libpp          or2pe
++00000000 T _build_OR_DomainDefinedAttribute libpp          or2pe
++00000000 T _build_OR_CountryName libpp          or2pe
++00000000 T _build_OR_AdministrationDomainName libpp          or2pe
++00000000 T _build_OR_PrivateDomainIdentifier libpp          or2pe
++00000000 T _build_OR_X121Address libpp          or2pe
++00000000 T _build_OR_TerminalID libpp          or2pe
++00000000 T _build_OR_OrganizationName libpp          or2pe
++00000000 T _build_OR_UniqueUAIdentifier libpp          or2pe
++00000000 T _build_OR_PersonalName libpp          or2pe
++00000000 T _build_OR_OrganizationalUnit libpp          or2pe
++00000000 T _build_OR_PrivateDomainName libpp          or2pe
++00000000 T _or_add              libpp          or_add
++00000000 T _or_add_t61          libpp          or_add
++00000000 T _or_t61encode        libpp          or_add
++00000000 T _or_t61decode        libpp          or_add
++00000000 T _or_asc2ps           libpp          or_asc2ps
++00000000 T _or_new              libpp          or_basic
++00000000 T _or_new_aux          libpp          or_basic
++00000000 T _or_dup              libpp          or_basic
++00000000 T _or_tdup             libpp          or_basic
++00000000 T _or_free             libpp          or_basic
++00000000 T _or_blank            libpp          or_blank
++00000000 T _or_buildpn          libpp          or_buildpn
++00000000 T _or_check            libpp          or_check
++00000000 T _or_form_type        libpp          or_default
++00000000 T _or_default          libpp          or_default
++00000000 T _or_default_aux      libpp          or_default
++00000000 T _or_dmn2or           libpp          or_dmn2or
++00000000 T _or_getpn            libpp          or_getpn
++00000000 T _or_myinit           libpp          or_init
++00000000 T _or_init             libpp          or_misc
++00000000 T _or_isdomsyntax      libpp          or_misc
++00000000 T _or_ddname_chk       libpp          or_misc
++00000000 T _rfc_space           libpp          or_misc
++00000000 T _or_lose             libpp          or_misc
++00000000 T _fixup_space         libpp          or_or2dmn
++00000000 T _or_or2dmn           libpp          or_or2dmn
++00000000 T _or_or2rbits         libpp          or_or2rbits
++00000000 T _or_or2rfc_aux       libpp          or_or2rfc
++00000000 T _or_or2std           libpp          or_or2std
++00000000 T _or_ps2asc           libpp          or_ps2asc
++00000000 T _or_domain2or        libpp          or_rbits2or
++00000000 T _or_local2or         libpp          or_rbits2or
++00000000 T _or_rfc2or_aux       libpp          or_rfc2or
++00000000 T _or_lastpart         libpp          or_search
++00000000 T _or_find             libpp          or_search
++00000000 T _or_cmp              libpp          or_search
++00000000 T _or_locate           libpp          or_search
++00000000 T _or_value            libpp          or_search
++00000000 T _or_add_atsigns      libpp          or_search
++00000000 T _or_delete_atsigns   libpp          or_search
++00000000 T _or_std2or           libpp          or_std2or
++00000000 T _or_type2name        libpp          or_util
++00000000 T _or_name2type        libpp          or_util
++00000000 T _dstrcat             libpp          or_util
++00000000 T _qstrcat             libpp          or_util
++00000000 T _or_gettoken         libpp          or_util
++00000000 T _or_ddvalid_chk      libpp          or_util
++00000000 T _or_str_isps         libpp          or_util
++00000000 T _or_str_isns         libpp          or_util
++00000000 T _or_type2charset84   libpp          or_util
++00000000 T _or_type2charset     libpp          or_util
++00000000 T _or_checktypes       libpp          or_util
++00000000 T _or_chk_admd         libpp          or_util
++00000000 T _pe2orname           libpp          orn-dec
++00000000 T _orname2orn          libpp          orn-dec
++00000000 T _pe2orn              libpp          orn-dec
++00000000 T _pe2oradr            libpp          orn-dec
++00000000 T _oradr2ora           libpp          orn-dec
++00000000 T _pe2ora              libpp          orn-dec
++00000000 T _orn2orname          libpp          orn-enc
++00000000 T _orname2pe           libpp          orn-enc
++00000000 T _orn2pe              libpp          orn-enc
++00000000 T _ora2oradr           libpp          orn-enc
++00000000 T _oradr2pe            libpp          orn-enc
++00000000 T _ora2pe              libpp          orn-enc
++00000000 T _ORName_free         libpp          orn-util
++00000000 T _or_append           libpp          orn-util
++00000000 T _or_getttx           libpp          orn-util
++00000000 T _or_getps            libpp          orn-util
++00000000 T _pe2or               libpp          pe2or
++00000000 T _decode_OR_ORName    libpp          pe2or
++00000000 T _decode_OR_StandardAttributeList libpp          pe2or
++00000000 T _decode_OR_DomainDefinedAttributeList libpp          pe2or
++00000000 T _decode_OR_DomainDefinedAttribute libpp          pe2or
++00000000 T _decode_OR_CountryName libpp          pe2or
++00000000 T _decode_OR_AdministrationDomainName libpp          pe2or
++00000000 T _decode_OR_PrivateDomainIdentifier libpp          pe2or
++00000000 T _decode_OR_X121Address libpp          pe2or
++00000000 T _decode_OR_TerminalID libpp          pe2or
++00000000 T _decode_OR_OrganizationName libpp          pe2or
++00000000 T _decode_OR_UniqueUAIdentifier libpp          pe2or
++00000000 T _decode_OR_PersonalName libpp          pe2or
++00000000 T _decode_OR_OrganizationalUnit libpp          pe2or
++00000000 T _decode_OR_PrivateDomainName libpp          pe2or
++00000000 T _or_downgrade        libpp          or_downgrade
++00000000 T _or_check_upper      libpp          or_up_bnds
++00000000 T _or_chk_ubs          libpp          or_up_bnds
++00000000 T _or_valid_or         libpp          or_valid
++00000000 T _ad_local            libpp          ad_local
++00000000 T _alias2adr           libpp          ad_local
++00000000 T _ad_fullparse        libpp          ad_parse
++00000000 T _ad_parse            libpp          ad_parse
++00000000 T _ad_parse_aux        libpp          ad_parse
++00000000 T _set_error           libpp          ad_parse
++00000000 T _parselose           libpp          ad_parse
++00000000 T _ad_getlocal         libpp          ad_getlocal
++00000000 T _rfc822_getlocal     libpp          ad_getlocal
++00000000 T _x400_getlocal       libpp          ad_getlocal
++00000000 T _rfc822_norm_dmn     libpp          rfc822_dnorm
++00000000 T _rfc822_parse        libpp          rfc822_parse
++00000000 T _rfc822_x400         libpp          rfc822_x400
++00000000 T _x400_add            libpp          rfc822_x400
++00000000 T _rfc822_validate     libpp          rfc822_val
++00000000 T _fillin_822_str      libpp          rfc822_val
++00000000 T _x400_parse          libpp          x400_parse
++00000000 T _x400_rfc822         libpp          x400_rfc822
++00000000 T _rfc822_add          libpp          x400_rfc822
++00000000 T _x400_validate       libpp          x400_val
++00000000 T _fillin_400_str      libpp          x400_val
++00000000 T _aparse_norm         libpp          aparse_norm
++00000000 T _merge_new           libpp          aparse_norm
++00000000 T _adr2txt             libpp          adr2txt
++00000000 T _no2txt3             libpp          adr2txt
++00000000 T _chan_acheck         libpp          chan_acheck
++00000000 T _dchan_acheck        libpp          dchan_acheck
++00000000 T _dr2txt              libpp          dr2txt
++00000000 T _get_dr              libpp          get_dr
++00000000 T _lchan_acheck        libpp          lchan_acheck
++00000000 T _list_bpt_new        libpp          list_bpt
++00000000 T _list_bpt_dup        libpp          list_bpt
++00000000 T _list_bpt_add        libpp          list_bpt
++00000000 T _list_bpt_find       libpp          list_bpt
++00000000 T _list_bpt_nfind      libpp          list_bpt
++00000000 T _list_bpt_free       libpp          list_bpt
++00000000 T _list_rchan_new      libpp          list_rchan
++00000000 T _list_rchan_schan    libpp          list_rchan
++00000000 T _list_rchan_ssite    libpp          list_rchan
++00000000 T _list_rchan_add      libpp          list_rchan
++00000000 T _list_rchan_free     libpp          list_rchan
++00000000 T _mpduid2txt          libpp          mta2txt
++00000000 T _globaldomid2txt     libpp          mta2txt
++00000000 T _domsinfo2txt        libpp          mta2txt
++00000000 T _action2txt          libpp          mta2txt
++00000000 T _encodedinfo2txt     libpp          mta2txt
++00000000 T _listbpt2txt         libpp          mta2txt
++00000000 T _trace2txt           libpp          mta2txt
++00000000 T _repreq2txt          libpp          mta2txt
++00000000 T _time2txt            libpp          mta2txt
++00000000 T _int2txt             libpp          mta2txt
++00000000 T _qb2hex              libpp          mta2txt
++00000000 T _dlexp2txt           libpp          mta2txt
++00000000 T _fname2txt           libpp          mta2txt
++00000000 T _extension2txt       libpp          mta2txt
++00000000 T _p32txt              libpp          p32txt
++00000000 T _pps_init            libpp          pps_mail
++00000000 T _pps_adr             libpp          pps_mail
++00000000 T _pps_aend            libpp          pps_mail
++00000000 T _pps_tinit           libpp          pps_mail
++00000000 T _pps_txt             libpp          pps_mail
++00000000 T _pps_file            libpp          pps_mail
++00000000 T _pps_end             libpp          pps_mail
++00000000 T _pps_to              libpp          pps_mail
++00000000 T _pps_cc              libpp          pps_mail
++00000000 T _pps_hdr             libpp          pps_mail
++00000000 T _pps_1adr            libpp          pps_mail
++00000000 T _prm2txt             libpp          prm2txt
++00000000 T _q2txt               libpp          q2txt
++00000000 T _set_all_dr          libpp          set_1dr
++00000000 T _set_1dr             libpp          set_1dr
++00000000 T _wr_dr_stat_log      libpp          set_1dr
++00000000 T _txt2adr             libpp          txt2adr
++00000000 T _A_txt2extension     libpp          txt2adr
++00000000 T _txt2dr              libpp          txt2dr
++00000000 T _rr2txt              libpp          txt2dr
++00000000 T _txt2redir           libpp          txt2dr
++00000000 T _txt2trace           libpp          txt2mta
++00000000 T _txt2globaldomid     libpp          txt2mta
++00000000 T _txt2domsinfo        libpp          txt2mta
++00000000 T _txt2encodedinfo     libpp          txt2mta
++00000000 T _txt2listbpt         libpp          txt2mta
++00000000 T _txthdr2listbpt      libpp          txt2mta
++00000000 T _txt2mpduid          libpp          txt2mta
++00000000 T _txt2repreq          libpp          txt2mta
++00000000 T _P1_txt2resp         libpp          txt2mta
++00000000 T _P1_txt2mtarreq      libpp          txt2mta
++00000000 T _P1_txt2usrreq       libpp          txt2mta
++00000000 T _txt2time            libpp          txt2mta
++00000000 T _txt2extension       libpp          txt2mta
++00000000 T _txt2p3prm           libpp          txt2p3
++00000000 T _txt2prm             libpp          txt2prm
++00000000 T _txt2q               libpp          txt2q
++00000000 T _hex2qb              libpp          txt2q
++00000000 T _txt2fname           libpp          txt2q
++00000000 T _txt2dlexp           libpp          txt2q
++00000000 T _adr_new             libpp          ut_a
++00000000 T _adr_init            libpp          ut_a
++00000000 T _adr_add             libpp          ut_a
++00000000 T _adr_tfree           libpp          ut_a
++00000000 T _adr_free            libpp          ut_a
++00000000 T _Bf_put              libpp          ut_com
++00000000 T _argv2fp             libpp          ut_com
++00000000 T _genreset            libpp          ut_com
++00000000 T _genstore            libpp          ut_com
++00000000 T _dlh_new             libpp          ut_dlh
++00000000 T _dlh_add             libpp          ut_dlh
++00000000 T _dlh_dup             libpp          ut_dlh
++00000000 T _dlh_free            libpp          ut_dlh
++00000000 T _dr_init             libpp          ut_dr
++00000000 T _dr_free             libpp          ut_dr
++00000000 T _rrinfo_free         libpp          ut_dr
++00000000 T _fn_new              libpp          ut_fn
++00000000 T _fn_free             libpp          ut_fn
++00000000 T _fn_dup              libpp          ut_fn
++00000000 T _encodedinfo_free    libpp          ut_free
++00000000 T _DomSupInfo_free     libpp          ut_free
++00000000 T _redirection_free    libpp          ut_free
++00000000 T _extensions_free     libpp          ut_free
++00000000 T _GlobalDomId_new     libpp          ut_gldm
++00000000 T _GlobalDomId_free    libpp          ut_gldm
++00000000 T _mem2prf             libpp          ut_mm2p1
++00000000 T _MPDUid_new          libpp          ut_mpduid
++00000000 T _MPDUid_free         libpp          ut_mpduid
++00000000 T _msg_rinit           libpp          ut_msg
++00000000 T _msg_rfile           libpp          ut_msg
++00000000 T _msg_rend            libpp          ut_msg
++00000000 T _prf2mem             libpp          ut_p12mm
++00000000 T _new_GlobalDomId     libpp          ut_p1_st
++00000000 T _GlobalDomId_dup     libpp          ut_p1_st
++00000000 T _new_MPDUid          libpp          ut_p1_st
++00000000 T _new_Trace_add       libpp          ut_p1_st
++00000000 T _prm_init            libpp          ut_prm
++00000000 T _prm_free            libpp          ut_prm
++00000000 T _q_init              libpp          ut_q
++00000000 T _q_free              libpp          ut_q
++00000000 T _eit_dup             libpp          ut_q
++00000000 T _q_almost_dup        libpp          ut_q
++00000000 T _qid2dir             libpp          ut_qid
++00000000 T _trace_new           libpp          ut_trace
++00000000 T _trace_dup           libpp          ut_trace
++00000000 T _trace_add           libpp          ut_trace
++00000000 T _trace_free          libpp          ut_trace
++00000000 T _trace_equ           libpp          ut_trace
++00000000 T _wr_stat             libpp          wr_stat
++00000000 T _aparse_new          libpp          ut_aparse
++00000000 T _aparse_free         libpp          ut_aparse
++00000000 T _aparse_rewindx400   libpp          ut_aparse
++00000000 T _aparse_rewindr822   libpp          ut_aparse
++00000000 T _aparse_rewindlocal  libpp          ut_aparse
++00000000 T _aparse_copy_for_recursion libpp          ut_aparse
++00000000 T _aparse_freeAliasList libpp          ut_aparse
++00000000 T _aparse_addToAliasList libpp          ut_aparse
++00000000 T _aparse_inAliasList  libpp          ut_aparse
++00000000 T _aparse_aliasDup     libpp          ut_aparse
++00000000 T _getpostmaster       libpp          ut_postie
++00000000 T _getadmin_Req_Alt    libpp          ut_postie
++00000000 T _redirect_new        libpp          ut_redirect
++00000000 T _redirect_add        libpp          ut_redirect
++00000000 T _redirect_free       libpp          ut_redirect
++00000000 T _redirect_rewind     libpp          ut_redirect
++00000000 T _redirect_before     libpp          ut_redirect
++00000000 T _ch_nm2struct        libpp          ch_nm2struct
++00000000 T _ch_mta2struct       libpp          ch_nm2struct
++00000000 T _tb_get1148gate      libpp          tb_1148gate
++00000000 T _tb_checkauth        libpp          tb_checkauth
++00000000 T _tb_dbmk2val         libpp          tb_dbm
++00000000 T _tb_getalias         libpp          tb_getalias
++00000000 T _tb_getauthchan      libpp          tb_getauth
++00000000 T _tb_parse_authchan   libpp          tb_getauth
++00000000 T _tb_getauthmta       libpp          tb_getauth
++00000000 T _tb_getauthusr       libpp          tb_getauth
++00000000 T _tb_getchan          libpp          tb_getchan
++00000000 T _tb_getdl            libpp          tb_getdl
++00000000 T _new_Name            libpp          tb_getdl
++00000000 T _tb_getModerator     libpp          tb_getdl
++00000000 T _name_free           libpp          tb_getdl
++00000000 T _dl_free             libpp          tb_getdl
++00000000 T _tb_getdomain        libpp          tb_getdomain
++00000000 T _tb_getdomain_table  libpp          tb_getdomain
++00000000 T _tb_getdomain_aux    libpp          tb_getdomain
++00000000 T _reconstruct_dom     libpp          tb_getdomain
++00000000 T _bits2str            libpp          tb_getdomain
++00000000 T _str2bits            libpp          tb_getdomain
++00000000 T _tb_getlocal         libpp          tb_getlocal
++00000000 T _free_loc_user       libpp          tb_getlocal
++00000000 T _tb_getuser          libpp          tb_getuser
++00000000 T _tb_k2val            libpp          tb_k2val
++00000000 T _tab_fetch           libpp          tb_k2val
++00000000 T _tb_nm2struct        libpp          tb_nm2struct
++00000000 T _tb_rtsparams        libpp          tb_rtsparams
++00000000 T _RPfree              libpp          tb_rtsparams
++00000000 T _chan_init           libpp          init_chan
++00000000 T _sys_init            libpp          init_tai
++00000000 T _pp_initialise       libpp          init_tai
++00000000 T _tai_seterrorhandler libpp          init_tai
++00000000 T _tai_error           libpp          init_tai
++00000000 T _pp_setlog           libpp          init_tai
++00000000 T _uip_init            libpp          init_uip
++00000000 T _pp_setuserid        libpp          pp_setuserid
++00000000 T _chan_tai            libpp          tai_chan
++00000000 T _sys_tai             libpp          tai_sys
++00000000 T _tbl_tai             libpp          tai_tb
++00000000 T _strcnv              libpp          strcnv
++00000000 T _strncnv             libpp          strcnv
++00000000 T _getchset            libpp          strcnv
++00000000 T _arg2vstr            libpp          arg2str
++00000000 T _compress            libpp          compress
++00000000 T _err_abrt            libpp          err_abrt
++00000000 T _expand_dyn          libpp          expand
++00000000 T _expand              libpp          expand
++00000000 T _getfpath            libpp          getfpath
++00000000 T _dupfpath            libpp          getfpath
++00000000 T _flckopen            libpp          lock
++00000000 T _flckclose           libpp          lock
++00000000 T _multcat             libpp          multcat
++00000000 T _multcpy             libpp          multcpy
++00000000 T _pe_fragment         libpp          pe_fragment
++00000000 T _prefix              libpp          prefix
++00000000 T _rename_log          libpp          rename_log
++00000000 T _rp_valstr           libpp          rp_valstr
++00000000 T _siginit             libpp          siginit
++00000000 T _str2arg             libpp          str2arg
++00000000 T __tcatch             libpp          timeout
++00000000 T __timeout            libpp          timeout
++00000000 T _timer_start         libpp          timer
++00000000 T _timer_end           libpp          timer
++00000000 T _tryfork             libpp          tryfork
++00000000 T _time_t2utc          libpp          utctime
++00000000 T _utclocalise         libpp          utctime
++00000000 T _utcdup              libpp          utctime
++00000000 T _utc2time_t          libpp          utctime
++00000000 T _utcnow              libpp          utctime
++00000000 T _utcequ              libpp          utctime
++00000000 T _check_close         libpp          check_close
++00000000 T _flip_bits           libpp          flip_bits
++00000000 T _sys5_regex_stub     libpp          sys5_regex
++00000000 T _cmdbsrch            libpp          cmdbsrch
++00000000 T _free_hier           libpp          hier_scanQ
++00000000 T _hier_scanQ          libpp          hier_scanQ
++00000000 T _oid2lstr            libpp          oid2lstr
++00000000 T _lstr2oid            libpp          lstr2oid
++00000000 T _rmFiles             libpp          recrm
++00000000 T _recrm               libpp          recrm
++00000000 T _fdiskfull           libpp          diskfull
++00000000 T _adios               libpp          linuxlib
++00000000 T _advise              libpp          linuxlib
+diff -u --recursive --new-file pp-6.0/jump/jump.import pp-6.0-linux/jump/jump.import
+--- pp-6.0/jump/jump.import	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/jump/jump.import	Fri Jul  8 14:05:58 1994
+@@ -0,0 +1,917 @@
++/usr/lib/libc.sa(__libc.o):00001000 a __GOT_SIZE
++/usr/lib/libc.sa(__libc.o):6008f0b0 A _AL
++/usr/lib/libc.sa(__libc.o):6008f198 A _AL_PARM
++/usr/lib/libc.sa(__libc.o):6008f060 A _AM
++/usr/lib/libc.sa(__libc.o):6008f0b4 A _BC
++/usr/lib/libc.sa(__libc.o):6008f064 A _BS
++/usr/lib/libc.sa(__libc.o):6008f0bc A _BT
++/usr/lib/libc.sa(__libc.o):6008f068 A _CA
++/usr/lib/libc.sa(__libc.o):6008f0c0 A _CD
++/usr/lib/libc.sa(__libc.o):6008f0c4 A _CE
++/usr/lib/libc.sa(__libc.o):6008f0c8 A _CL
++/usr/lib/libc.sa(__libc.o):6008f0cc A _CM
++/usr/lib/libc.sa(__libc.o):6008f048 A _COLS
++/usr/lib/libc.sa(__libc.o):6008f0d0 A _CR
++/usr/lib/libc.sa(__libc.o):6008f0d4 A _CS
++/usr/lib/libc.sa(__libc.o):6008f06c A _DA
++/usr/lib/libc.sa(__libc.o):6008f070 A _DB
++/usr/lib/libc.sa(__libc.o):6008f0d8 A _DC
++/usr/lib/libc.sa(__libc.o):6008f0dc A _DL
++/usr/lib/libc.sa(__libc.o):6008f19c A _DL_PARM
++/usr/lib/libc.sa(__libc.o):6008f0e0 A _DM
++/usr/lib/libc.sa(__libc.o):6008f0e4 A _DO
++/usr/lib/libc.sa(__libc.o):6008f1a4 A _DOWN_PARM
++/usr/lib/libc.sa(__libc.o):6008f03c A _Def_term
++/usr/lib/libc.sa(__libc.o):6008f0e8 A _ED
++/usr/lib/libc.sa(__libc.o):6008f0ec A _EI
++/usr/lib/libc.sa(__libc.o):6008f074 A _EO
++/usr/lib/libc.sa(__libc.o):6008f1b8 A _GT
++/usr/lib/libc.sa(__libc.o):6008f078 A _HC
++/usr/lib/libc.sa(__libc.o):6008f118 A _HO
++/usr/lib/libc.sa(__libc.o):6008f07c A _HZ
++/usr/lib/libc.sa(__libc.o):6008f11c A _IC
++/usr/lib/libc.sa(__libc.o):6008f120 A _IM
++/usr/lib/libc.sa(__libc.o):6008f080 A _IN
++/usr/lib/libc.sa(__libc.o):6008f124 A _IP
++/usr/lib/libc.sa(__libc.o):6008f0f0 A _K0
++/usr/lib/libc.sa(__libc.o):6008f0f4 A _K1
++/usr/lib/libc.sa(__libc.o):6008f0f8 A _K2
++/usr/lib/libc.sa(__libc.o):6008f0fc A _K3
++/usr/lib/libc.sa(__libc.o):6008f100 A _K4
++/usr/lib/libc.sa(__libc.o):6008f104 A _K5
++/usr/lib/libc.sa(__libc.o):6008f108 A _K6
++/usr/lib/libc.sa(__libc.o):6008f10c A _K7
++/usr/lib/libc.sa(__libc.o):6008f110 A _K8
++/usr/lib/libc.sa(__libc.o):6008f114 A _K9
++/usr/lib/libc.sa(__libc.o):6008f128 A _KD
++/usr/lib/libc.sa(__libc.o):6008f12c A _KE
++/usr/lib/libc.sa(__libc.o):6008f130 A _KH
++/usr/lib/libc.sa(__libc.o):6008f134 A _KL
++/usr/lib/libc.sa(__libc.o):6008f138 A _KR
++/usr/lib/libc.sa(__libc.o):6008f13c A _KS
++/usr/lib/libc.sa(__libc.o):6008f140 A _KU
++/usr/lib/libc.sa(__libc.o):6008f1a8 A _LEFT_PARM
++/usr/lib/libc.sa(__libc.o):6008f044 A _LINES
++/usr/lib/libc.sa(__libc.o):6008f144 A _LL
++/usr/lib/libc.sa(__libc.o):6008f148 A _MA
++/usr/lib/libc.sa(__libc.o):6008f084 A _MI
++/usr/lib/libc.sa(__libc.o):6008f088 A _MS
++/usr/lib/libc.sa(__libc.o):6008f030 A _My_term
++/usr/lib/libc.sa(__libc.o):6008f08c A _NC
++/usr/lib/libc.sa(__libc.o):6008f14c A _ND
++/usr/lib/libc.sa(__libc.o):6008f150 A _NL
++/usr/lib/libc.sa(__libc.o):6008f1bc A _NONL
++/usr/lib/libc.sa(__libc.o):6008f090 A _NS
++/usr/lib/libc.sa(__libc.o):6008f094 A _OS
++/usr/lib/libc.sa(__libc.o):6008f1b0 A _PC
++/usr/lib/libc.sa(__libc.o):6008f154 A _RC
++/usr/lib/libc.sa(__libc.o):6008f1ac A _RIGHT_PARM
++/usr/lib/libc.sa(__libc.o):6008f158 A _SC
++/usr/lib/libc.sa(__libc.o):6008f15c A _SE
++/usr/lib/libc.sa(__libc.o):6008f160 A _SF
++/usr/lib/libc.sa(__libc.o):6008f164 A _SO
++/usr/lib/libc.sa(__libc.o):6008f168 A _SR
++/usr/lib/libc.sa(__libc.o):6008f16c A _TA
++/usr/lib/libc.sa(__libc.o):6008f170 A _TE
++/usr/lib/libc.sa(__libc.o):6008f174 A _TI
++/usr/lib/libc.sa(__libc.o):6008f178 A _UC
++/usr/lib/libc.sa(__libc.o):6008f17c A _UE
++/usr/lib/libc.sa(__libc.o):6008f098 A _UL
++/usr/lib/libc.sa(__libc.o):6008f180 A _UP
++/usr/lib/libc.sa(__libc.o):6008f1c0 A _UPPERCASE
++/usr/lib/libc.sa(__libc.o):6008f1a0 A _UP_PARM
++/usr/lib/libc.sa(__libc.o):6008f188 A _US
++/usr/lib/libc.sa(__libc.o):6008f18c A _VB
++/usr/lib/libc.sa(__libc.o):6008f194 A _VE
++/usr/lib/libc.sa(__libc.o):6008f190 A _VS
++/usr/lib/libc.sa(__libc.o):6008f09c A _XB
++/usr/lib/libc.sa(__libc.o):6008f0a0 A _XN
++/usr/lib/libc.sa(__libc.o):6008f0a8 A _XS
++/usr/lib/libc.sa(__libc.o):6008f0a4 A _XT
++/usr/lib/libc.sa(__libc.o):6008f0ac A _XX
++/usr/lib/libc.sa(__libc.o):6008f1f4 A __9streambuf$_list_all
++/usr/lib/libc.sa(__libc.o):6008f214 A ____brk_addr
++/usr/lib/libc.sa(__libc.o):6008f01c A ___ctype_b
++/usr/lib/libc.sa(__libc.o):6008f020 A ___ctype_tolower
++/usr/lib/libc.sa(__libc.o):6008f024 A ___ctype_toupper
++/usr/lib/libc.sa(__libc.o):6008f1fc A ___environ
++/usr/lib/libc.sa(__libc.o):6008f250 A ___exit_funcs
++/usr/lib/libc.sa(__libc.o):6008f2f0 A ___glob_closedir_hook
++/usr/lib/libc.sa(__libc.o):6008f2f4 A ___glob_opendir_hook
++/usr/lib/libc.sa(__libc.o):6008f2f8 A ___glob_readdir_hook
++/usr/lib/libc.sa(__libc.o):6008f018 A ___new_handler
++/usr/lib/libc.sa(__libc.o):6008f1e4 A ___std_filebuf_0
++/usr/lib/libc.sa(__libc.o):6008f1e8 A ___std_filebuf_1
++/usr/lib/libc.sa(__libc.o):6008f1ec A ___std_filebuf_2
++/usr/lib/libc.sa(__libc.o):6008f278 A ___ttyname
++/usr/lib/libc.sa(__libc.o):6008f238 A __collate_info
++/usr/lib/libc.sa(__libc.o):6008f23c A __ctype_info
++/usr/lib/libc.sa(__libc.o):6008f028 A __echoit
++/usr/lib/libc.sa(__libc.o):6008f034 A __endwin
++/usr/lib/libc.sa(__libc.o):6008f288 A __gdbm_fetch_val
++/usr/lib/libc.sa(__libc.o):6008f280 A __gdbm_file
++/usr/lib/libc.sa(__libc.o):6008f284 A __gdbm_memory
++/usr/lib/libc.sa(__libc.o):6008f1f8 A __iob
++/usr/lib/libc.sa(__libc.o):6008f240 A __monetary_info
++/usr/lib/libc.sa(__libc.o):6008f234 A __null_auth
++/usr/lib/libc.sa(__libc.o):6008f244 A __numeric_info
++/usr/lib/libc.sa(__libc.o):6008f2ec A __obstack
++/usr/lib/libc.sa(__libc.o):6008f1c8 A __pfast
++/usr/lib/libc.sa(__libc.o):6008f02c A __rawmode
++/usr/lib/libc.sa(__libc.o):6008f1dc A __res
++/usr/lib/libc.sa(__libc.o):6008f04c A __res_iflg
++/usr/lib/libc.sa(__libc.o):6008f050 A __res_lflg
++/usr/lib/libc.sa(__libc.o):6008f270 A __res_opcodes
++/usr/lib/libc.sa(__libc.o):6008f274 A __res_resultcodes
++/usr/lib/libc.sa(__libc.o):6008f248 A __response_info
++/usr/lib/libc.sa(__libc.o):6008f2fc A __sigintr
++/usr/lib/libc.sa(__libc.o):6008f00c A __sys_errlist
++/usr/lib/libc.sa(__libc.o):6008f010 A __sys_nerr
++/usr/lib/libc.sa(__libc.o):6008f014 A __sys_siglist
++/usr/lib/libc.sa(__libc.o):6008f24c A __time_info
++/usr/lib/libc.sa(__libc.o):6008f05c A __tty
++/usr/lib/libc.sa(__libc.o):6008f040 A __tty_ch
++/usr/lib/libc.sa(__libc.o):6008f1cc A __unctrl
++/usr/lib/libc.sa(__libc.o):6008f2c8 A __vt$10istrstream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2c4 A __vt$10ostrstream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2e0 A __vt$11fstreambase$3ios
++/usr/lib/libc.sa(__libc.o):6008f2cc A __vt$13strstreambase$3ios
++/usr/lib/libc.sa(__libc.o):6008f2d4 A __vt$7fstream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2ac A __vt$7ostream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2dc A __vt$8ifstream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2a4 A __vt$8iostream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2d8 A __vt$8ofstream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2c0 A __vt$9strstream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2b4 A __vt$backupbuf
++/usr/lib/libc.sa(__libc.o):6008f2b0 A __vt$filebuf
++/usr/lib/libc.sa(__libc.o):6008f2bc A __vt$ios
++/usr/lib/libc.sa(__libc.o):6008f2a8 A __vt$istream$3ios
++/usr/lib/libc.sa(__libc.o):6008f2b8 A __vt$streambuf
++/usr/lib/libc.sa(__libc.o):6008f2d0 A __vt$strstreambuf
++/usr/lib/libc.sa(__libc.o):6008f27c A __win
++/usr/lib/libc.sa(__libc.o):6008f294 A _cerr
++/usr/lib/libc.sa(__libc.o):6008f298 A _cin
++/usr/lib/libc.sa(__libc.o):6008f29c A _clog
++/usr/lib/libc.sa(__libc.o):6008f290 A _cout
++/usr/lib/libc.sa(__libc.o):6008f058 A _curscr
++/usr/lib/libc.sa(__libc.o):6008f228 A _daylight
++/usr/lib/libc.sa(__libc.o):6008f200 A _errno
++/usr/lib/libc.sa(__libc.o):6008f1d0 A _gdbm_errno
++/usr/lib/libc.sa(__libc.o):6008f28c A _gdbm_version
++/usr/lib/libc.sa(__libc.o):6008f008 A _h_errlist
++/usr/lib/libc.sa(__libc.o):6008f1d8 A _h_errno
++/usr/lib/libc.sa(__libc.o):6008f2a0 A _h_nerr
++/usr/lib/libc.sa(__libc.o):6008f1c4 A _normtty
++/usr/lib/libc.sa(__libc.o):6008f1f0 A _not_open_filebuf
++/usr/lib/libc.sa(__libc.o):6008f204 A _optarg
++/usr/lib/libc.sa(__libc.o):6008f20c A _opterr
++/usr/lib/libc.sa(__libc.o):6008f208 A _optind
++/usr/lib/libc.sa(__libc.o):6008f2e4 A _optopt
++/usr/lib/libc.sa(__libc.o):6008f218 A _ospeed
++/usr/lib/libc.sa(__libc.o):6008f26c A _re_max_failures
++/usr/lib/libc.sa(__libc.o):6008f210 A _re_syntax_options
++/usr/lib/libc.sa(__libc.o):6008f1e0 A _rexecoptions
++/usr/lib/libc.sa(__libc.o):6008f230 A _rpc_createerr
++/usr/lib/libc.sa(__libc.o):6008f25c A _stderr
++/usr/lib/libc.sa(__libc.o):6008f254 A _stdin
++/usr/lib/libc.sa(__libc.o):6008f258 A _stdout
++/usr/lib/libc.sa(__libc.o):6008f054 A _stdscr
++/usr/lib/libc.sa(__libc.o):6008f2e8 A _svc_fdset
++/usr/lib/libc.sa(__libc.o):6008f224 A _timezone
++/usr/lib/libc.sa(__libc.o):6008f21c A _tputs_baud_rate
++/usr/lib/libc.sa(__libc.o):6008f038 A _ttytype
++/usr/lib/libc.sa(__libc.o):6008f220 A _tzname
++/usr/lib/libcurses.sa(__libc.o):00001000 a __GOT_SIZE
++/usr/lib/libcurses.sa(__libc.o):6008f0b0 A _AL
++/usr/lib/libcurses.sa(__libc.o):6008f198 A _AL_PARM
++/usr/lib/libcurses.sa(__libc.o):6008f060 A _AM
++/usr/lib/libcurses.sa(__libc.o):6008f0b4 A _BC
++/usr/lib/libcurses.sa(__libc.o):6008f064 A _BS
++/usr/lib/libcurses.sa(__libc.o):6008f0bc A _BT
++/usr/lib/libcurses.sa(__libc.o):6008f068 A _CA
++/usr/lib/libcurses.sa(__libc.o):6008f0c0 A _CD
++/usr/lib/libcurses.sa(__libc.o):6008f0c4 A _CE
++/usr/lib/libcurses.sa(__libc.o):6008f0c8 A _CL
++/usr/lib/libcurses.sa(__libc.o):6008f0cc A _CM
++/usr/lib/libcurses.sa(__libc.o):6008f048 A _COLS
++/usr/lib/libcurses.sa(__libc.o):6008f0d0 A _CR
++/usr/lib/libcurses.sa(__libc.o):6008f0d4 A _CS
++/usr/lib/libcurses.sa(__libc.o):6008f06c A _DA
++/usr/lib/libcurses.sa(__libc.o):6008f070 A _DB
++/usr/lib/libcurses.sa(__libc.o):6008f0d8 A _DC
++/usr/lib/libcurses.sa(__libc.o):6008f0dc A _DL
++/usr/lib/libcurses.sa(__libc.o):6008f19c A _DL_PARM
++/usr/lib/libcurses.sa(__libc.o):6008f0e0 A _DM
++/usr/lib/libcurses.sa(__libc.o):6008f0e4 A _DO
++/usr/lib/libcurses.sa(__libc.o):6008f1a4 A _DOWN_PARM
++/usr/lib/libcurses.sa(__libc.o):6008f03c A _Def_term
++/usr/lib/libcurses.sa(__libc.o):6008f0e8 A _ED
++/usr/lib/libcurses.sa(__libc.o):6008f0ec A _EI
++/usr/lib/libcurses.sa(__libc.o):6008f074 A _EO
++/usr/lib/libcurses.sa(__libc.o):6008f1b8 A _GT
++/usr/lib/libcurses.sa(__libc.o):6008f078 A _HC
++/usr/lib/libcurses.sa(__libc.o):6008f118 A _HO
++/usr/lib/libcurses.sa(__libc.o):6008f07c A _HZ
++/usr/lib/libcurses.sa(__libc.o):6008f11c A _IC
++/usr/lib/libcurses.sa(__libc.o):6008f120 A _IM
++/usr/lib/libcurses.sa(__libc.o):6008f080 A _IN
++/usr/lib/libcurses.sa(__libc.o):6008f124 A _IP
++/usr/lib/libcurses.sa(__libc.o):6008f0f0 A _K0
++/usr/lib/libcurses.sa(__libc.o):6008f0f4 A _K1
++/usr/lib/libcurses.sa(__libc.o):6008f0f8 A _K2
++/usr/lib/libcurses.sa(__libc.o):6008f0fc A _K3
++/usr/lib/libcurses.sa(__libc.o):6008f100 A _K4
++/usr/lib/libcurses.sa(__libc.o):6008f104 A _K5
++/usr/lib/libcurses.sa(__libc.o):6008f108 A _K6
++/usr/lib/libcurses.sa(__libc.o):6008f10c A _K7
++/usr/lib/libcurses.sa(__libc.o):6008f110 A _K8
++/usr/lib/libcurses.sa(__libc.o):6008f114 A _K9
++/usr/lib/libcurses.sa(__libc.o):6008f128 A _KD
++/usr/lib/libcurses.sa(__libc.o):6008f12c A _KE
++/usr/lib/libcurses.sa(__libc.o):6008f130 A _KH
++/usr/lib/libcurses.sa(__libc.o):6008f134 A _KL
++/usr/lib/libcurses.sa(__libc.o):6008f138 A _KR
++/usr/lib/libcurses.sa(__libc.o):6008f13c A _KS
++/usr/lib/libcurses.sa(__libc.o):6008f140 A _KU
++/usr/lib/libcurses.sa(__libc.o):6008f1a8 A _LEFT_PARM
++/usr/lib/libcurses.sa(__libc.o):6008f044 A _LINES
++/usr/lib/libcurses.sa(__libc.o):6008f144 A _LL
++/usr/lib/libcurses.sa(__libc.o):6008f148 A _MA
++/usr/lib/libcurses.sa(__libc.o):6008f084 A _MI
++/usr/lib/libcurses.sa(__libc.o):6008f088 A _MS
++/usr/lib/libcurses.sa(__libc.o):6008f030 A _My_term
++/usr/lib/libcurses.sa(__libc.o):6008f08c A _NC
++/usr/lib/libcurses.sa(__libc.o):6008f14c A _ND
++/usr/lib/libcurses.sa(__libc.o):6008f150 A _NL
++/usr/lib/libcurses.sa(__libc.o):6008f1bc A _NONL
++/usr/lib/libcurses.sa(__libc.o):6008f090 A _NS
++/usr/lib/libcurses.sa(__libc.o):6008f094 A _OS
++/usr/lib/libcurses.sa(__libc.o):6008f1b0 A _PC
++/usr/lib/libcurses.sa(__libc.o):6008f154 A _RC
++/usr/lib/libcurses.sa(__libc.o):6008f1ac A _RIGHT_PARM
++/usr/lib/libcurses.sa(__libc.o):6008f158 A _SC
++/usr/lib/libcurses.sa(__libc.o):6008f15c A _SE
++/usr/lib/libcurses.sa(__libc.o):6008f160 A _SF
++/usr/lib/libcurses.sa(__libc.o):6008f164 A _SO
++/usr/lib/libcurses.sa(__libc.o):6008f168 A _SR
++/usr/lib/libcurses.sa(__libc.o):6008f16c A _TA
++/usr/lib/libcurses.sa(__libc.o):6008f170 A _TE
++/usr/lib/libcurses.sa(__libc.o):6008f174 A _TI
++/usr/lib/libcurses.sa(__libc.o):6008f178 A _UC
++/usr/lib/libcurses.sa(__libc.o):6008f17c A _UE
++/usr/lib/libcurses.sa(__libc.o):6008f098 A _UL
++/usr/lib/libcurses.sa(__libc.o):6008f180 A _UP
++/usr/lib/libcurses.sa(__libc.o):6008f1c0 A _UPPERCASE
++/usr/lib/libcurses.sa(__libc.o):6008f1a0 A _UP_PARM
++/usr/lib/libcurses.sa(__libc.o):6008f188 A _US
++/usr/lib/libcurses.sa(__libc.o):6008f18c A _VB
++/usr/lib/libcurses.sa(__libc.o):6008f194 A _VE
++/usr/lib/libcurses.sa(__libc.o):6008f190 A _VS
++/usr/lib/libcurses.sa(__libc.o):6008f09c A _XB
++/usr/lib/libcurses.sa(__libc.o):6008f0a0 A _XN
++/usr/lib/libcurses.sa(__libc.o):6008f0a8 A _XS
++/usr/lib/libcurses.sa(__libc.o):6008f0a4 A _XT
++/usr/lib/libcurses.sa(__libc.o):6008f0ac A _XX
++/usr/lib/libcurses.sa(__libc.o):6008f1f4 A __9streambuf$_list_all
++/usr/lib/libcurses.sa(__libc.o):6008f214 A ____brk_addr
++/usr/lib/libcurses.sa(__libc.o):6008f01c A ___ctype_b
++/usr/lib/libcurses.sa(__libc.o):6008f020 A ___ctype_tolower
++/usr/lib/libcurses.sa(__libc.o):6008f024 A ___ctype_toupper
++/usr/lib/libcurses.sa(__libc.o):6008f1fc A ___environ
++/usr/lib/libcurses.sa(__libc.o):6008f250 A ___exit_funcs
++/usr/lib/libcurses.sa(__libc.o):6008f2f0 A ___glob_closedir_hook
++/usr/lib/libcurses.sa(__libc.o):6008f2f4 A ___glob_opendir_hook
++/usr/lib/libcurses.sa(__libc.o):6008f2f8 A ___glob_readdir_hook
++/usr/lib/libcurses.sa(__libc.o):6008f018 A ___new_handler
++/usr/lib/libcurses.sa(__libc.o):6008f1e4 A ___std_filebuf_0
++/usr/lib/libcurses.sa(__libc.o):6008f1e8 A ___std_filebuf_1
++/usr/lib/libcurses.sa(__libc.o):6008f1ec A ___std_filebuf_2
++/usr/lib/libcurses.sa(__libc.o):6008f278 A ___ttyname
++/usr/lib/libcurses.sa(__libc.o):6008f238 A __collate_info
++/usr/lib/libcurses.sa(__libc.o):6008f23c A __ctype_info
++/usr/lib/libcurses.sa(__libc.o):6008f028 A __echoit
++/usr/lib/libcurses.sa(__libc.o):6008f034 A __endwin
++/usr/lib/libcurses.sa(__libc.o):6008f288 A __gdbm_fetch_val
++/usr/lib/libcurses.sa(__libc.o):6008f280 A __gdbm_file
++/usr/lib/libcurses.sa(__libc.o):6008f284 A __gdbm_memory
++/usr/lib/libcurses.sa(__libc.o):6008f1f8 A __iob
++/usr/lib/libcurses.sa(__libc.o):6008f240 A __monetary_info
++/usr/lib/libcurses.sa(__libc.o):6008f234 A __null_auth
++/usr/lib/libcurses.sa(__libc.o):6008f244 A __numeric_info
++/usr/lib/libcurses.sa(__libc.o):6008f2ec A __obstack
++/usr/lib/libcurses.sa(__libc.o):6008f1c8 A __pfast
++/usr/lib/libcurses.sa(__libc.o):6008f02c A __rawmode
++/usr/lib/libcurses.sa(__libc.o):6008f1dc A __res
++/usr/lib/libcurses.sa(__libc.o):6008f04c A __res_iflg
++/usr/lib/libcurses.sa(__libc.o):6008f050 A __res_lflg
++/usr/lib/libcurses.sa(__libc.o):6008f270 A __res_opcodes
++/usr/lib/libcurses.sa(__libc.o):6008f274 A __res_resultcodes
++/usr/lib/libcurses.sa(__libc.o):6008f248 A __response_info
++/usr/lib/libcurses.sa(__libc.o):6008f2fc A __sigintr
++/usr/lib/libcurses.sa(__libc.o):6008f00c A __sys_errlist
++/usr/lib/libcurses.sa(__libc.o):6008f010 A __sys_nerr
++/usr/lib/libcurses.sa(__libc.o):6008f014 A __sys_siglist
++/usr/lib/libcurses.sa(__libc.o):6008f24c A __time_info
++/usr/lib/libcurses.sa(__libc.o):6008f05c A __tty
++/usr/lib/libcurses.sa(__libc.o):6008f040 A __tty_ch
++/usr/lib/libcurses.sa(__libc.o):6008f1cc A __unctrl
++/usr/lib/libcurses.sa(__libc.o):6008f2c8 A __vt$10istrstream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2c4 A __vt$10ostrstream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2e0 A __vt$11fstreambase$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2cc A __vt$13strstreambase$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2d4 A __vt$7fstream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2ac A __vt$7ostream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2dc A __vt$8ifstream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2a4 A __vt$8iostream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2d8 A __vt$8ofstream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2c0 A __vt$9strstream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2b4 A __vt$backupbuf
++/usr/lib/libcurses.sa(__libc.o):6008f2b0 A __vt$filebuf
++/usr/lib/libcurses.sa(__libc.o):6008f2bc A __vt$ios
++/usr/lib/libcurses.sa(__libc.o):6008f2a8 A __vt$istream$3ios
++/usr/lib/libcurses.sa(__libc.o):6008f2b8 A __vt$streambuf
++/usr/lib/libcurses.sa(__libc.o):6008f2d0 A __vt$strstreambuf
++/usr/lib/libcurses.sa(__libc.o):6008f27c A __win
++/usr/lib/libcurses.sa(__libc.o):6008f294 A _cerr
++/usr/lib/libcurses.sa(__libc.o):6008f298 A _cin
++/usr/lib/libcurses.sa(__libc.o):6008f29c A _clog
++/usr/lib/libcurses.sa(__libc.o):6008f290 A _cout
++/usr/lib/libcurses.sa(__libc.o):6008f058 A _curscr
++/usr/lib/libcurses.sa(__libc.o):6008f228 A _daylight
++/usr/lib/libcurses.sa(__libc.o):6008f200 A _errno
++/usr/lib/libcurses.sa(__libc.o):6008f1d0 A _gdbm_errno
++/usr/lib/libcurses.sa(__libc.o):6008f28c A _gdbm_version
++/usr/lib/libcurses.sa(__libc.o):6008f008 A _h_errlist
++/usr/lib/libcurses.sa(__libc.o):6008f1d8 A _h_errno
++/usr/lib/libcurses.sa(__libc.o):6008f2a0 A _h_nerr
++/usr/lib/libcurses.sa(__libc.o):6008f1c4 A _normtty
++/usr/lib/libcurses.sa(__libc.o):6008f1f0 A _not_open_filebuf
++/usr/lib/libcurses.sa(__libc.o):6008f204 A _optarg
++/usr/lib/libcurses.sa(__libc.o):6008f20c A _opterr
++/usr/lib/libcurses.sa(__libc.o):6008f208 A _optind
++/usr/lib/libcurses.sa(__libc.o):6008f2e4 A _optopt
++/usr/lib/libcurses.sa(__libc.o):6008f218 A _ospeed
++/usr/lib/libcurses.sa(__libc.o):6008f26c A _re_max_failures
++/usr/lib/libcurses.sa(__libc.o):6008f210 A _re_syntax_options
++/usr/lib/libcurses.sa(__libc.o):6008f1e0 A _rexecoptions
++/usr/lib/libcurses.sa(__libc.o):6008f230 A _rpc_createerr
++/usr/lib/libcurses.sa(__libc.o):6008f25c A _stderr
++/usr/lib/libcurses.sa(__libc.o):6008f254 A _stdin
++/usr/lib/libcurses.sa(__libc.o):6008f258 A _stdout
++/usr/lib/libcurses.sa(__libc.o):6008f054 A _stdscr
++/usr/lib/libcurses.sa(__libc.o):6008f2e8 A _svc_fdset
++/usr/lib/libcurses.sa(__libc.o):6008f224 A _timezone
++/usr/lib/libcurses.sa(__libc.o):6008f21c A _tputs_baud_rate
++/usr/lib/libcurses.sa(__libc.o):6008f038 A _ttytype
++/usr/lib/libcurses.sa(__libc.o):6008f220 A _tzname
++/usr/lib/libdbm.sa(__libc.o):00001000 a __GOT_SIZE
++/usr/lib/libdbm.sa(__libc.o):6008f0b0 A _AL
++/usr/lib/libdbm.sa(__libc.o):6008f198 A _AL_PARM
++/usr/lib/libdbm.sa(__libc.o):6008f060 A _AM
++/usr/lib/libdbm.sa(__libc.o):6008f0b4 A _BC
++/usr/lib/libdbm.sa(__libc.o):6008f064 A _BS
++/usr/lib/libdbm.sa(__libc.o):6008f0bc A _BT
++/usr/lib/libdbm.sa(__libc.o):6008f068 A _CA
++/usr/lib/libdbm.sa(__libc.o):6008f0c0 A _CD
++/usr/lib/libdbm.sa(__libc.o):6008f0c4 A _CE
++/usr/lib/libdbm.sa(__libc.o):6008f0c8 A _CL
++/usr/lib/libdbm.sa(__libc.o):6008f0cc A _CM
++/usr/lib/libdbm.sa(__libc.o):6008f048 A _COLS
++/usr/lib/libdbm.sa(__libc.o):6008f0d0 A _CR
++/usr/lib/libdbm.sa(__libc.o):6008f0d4 A _CS
++/usr/lib/libdbm.sa(__libc.o):6008f06c A _DA
++/usr/lib/libdbm.sa(__libc.o):6008f070 A _DB
++/usr/lib/libdbm.sa(__libc.o):6008f0d8 A _DC
++/usr/lib/libdbm.sa(__libc.o):6008f0dc A _DL
++/usr/lib/libdbm.sa(__libc.o):6008f19c A _DL_PARM
++/usr/lib/libdbm.sa(__libc.o):6008f0e0 A _DM
++/usr/lib/libdbm.sa(__libc.o):6008f0e4 A _DO
++/usr/lib/libdbm.sa(__libc.o):6008f1a4 A _DOWN_PARM
++/usr/lib/libdbm.sa(__libc.o):6008f03c A _Def_term
++/usr/lib/libdbm.sa(__libc.o):6008f0e8 A _ED
++/usr/lib/libdbm.sa(__libc.o):6008f0ec A _EI
++/usr/lib/libdbm.sa(__libc.o):6008f074 A _EO
++/usr/lib/libdbm.sa(__libc.o):6008f1b8 A _GT
++/usr/lib/libdbm.sa(__libc.o):6008f078 A _HC
++/usr/lib/libdbm.sa(__libc.o):6008f118 A _HO
++/usr/lib/libdbm.sa(__libc.o):6008f07c A _HZ
++/usr/lib/libdbm.sa(__libc.o):6008f11c A _IC
++/usr/lib/libdbm.sa(__libc.o):6008f120 A _IM
++/usr/lib/libdbm.sa(__libc.o):6008f080 A _IN
++/usr/lib/libdbm.sa(__libc.o):6008f124 A _IP
++/usr/lib/libdbm.sa(__libc.o):6008f0f0 A _K0
++/usr/lib/libdbm.sa(__libc.o):6008f0f4 A _K1
++/usr/lib/libdbm.sa(__libc.o):6008f0f8 A _K2
++/usr/lib/libdbm.sa(__libc.o):6008f0fc A _K3
++/usr/lib/libdbm.sa(__libc.o):6008f100 A _K4
++/usr/lib/libdbm.sa(__libc.o):6008f104 A _K5
++/usr/lib/libdbm.sa(__libc.o):6008f108 A _K6
++/usr/lib/libdbm.sa(__libc.o):6008f10c A _K7
++/usr/lib/libdbm.sa(__libc.o):6008f110 A _K8
++/usr/lib/libdbm.sa(__libc.o):6008f114 A _K9
++/usr/lib/libdbm.sa(__libc.o):6008f128 A _KD
++/usr/lib/libdbm.sa(__libc.o):6008f12c A _KE
++/usr/lib/libdbm.sa(__libc.o):6008f130 A _KH
++/usr/lib/libdbm.sa(__libc.o):6008f134 A _KL
++/usr/lib/libdbm.sa(__libc.o):6008f138 A _KR
++/usr/lib/libdbm.sa(__libc.o):6008f13c A _KS
++/usr/lib/libdbm.sa(__libc.o):6008f140 A _KU
++/usr/lib/libdbm.sa(__libc.o):6008f1a8 A _LEFT_PARM
++/usr/lib/libdbm.sa(__libc.o):6008f044 A _LINES
++/usr/lib/libdbm.sa(__libc.o):6008f144 A _LL
++/usr/lib/libdbm.sa(__libc.o):6008f148 A _MA
++/usr/lib/libdbm.sa(__libc.o):6008f084 A _MI
++/usr/lib/libdbm.sa(__libc.o):6008f088 A _MS
++/usr/lib/libdbm.sa(__libc.o):6008f030 A _My_term
++/usr/lib/libdbm.sa(__libc.o):6008f08c A _NC
++/usr/lib/libdbm.sa(__libc.o):6008f14c A _ND
++/usr/lib/libdbm.sa(__libc.o):6008f150 A _NL
++/usr/lib/libdbm.sa(__libc.o):6008f1bc A _NONL
++/usr/lib/libdbm.sa(__libc.o):6008f090 A _NS
++/usr/lib/libdbm.sa(__libc.o):6008f094 A _OS
++/usr/lib/libdbm.sa(__libc.o):6008f1b0 A _PC
++/usr/lib/libdbm.sa(__libc.o):6008f154 A _RC
++/usr/lib/libdbm.sa(__libc.o):6008f1ac A _RIGHT_PARM
++/usr/lib/libdbm.sa(__libc.o):6008f158 A _SC
++/usr/lib/libdbm.sa(__libc.o):6008f15c A _SE
++/usr/lib/libdbm.sa(__libc.o):6008f160 A _SF
++/usr/lib/libdbm.sa(__libc.o):6008f164 A _SO
++/usr/lib/libdbm.sa(__libc.o):6008f168 A _SR
++/usr/lib/libdbm.sa(__libc.o):6008f16c A _TA
++/usr/lib/libdbm.sa(__libc.o):6008f170 A _TE
++/usr/lib/libdbm.sa(__libc.o):6008f174 A _TI
++/usr/lib/libdbm.sa(__libc.o):6008f178 A _UC
++/usr/lib/libdbm.sa(__libc.o):6008f17c A _UE
++/usr/lib/libdbm.sa(__libc.o):6008f098 A _UL
++/usr/lib/libdbm.sa(__libc.o):6008f180 A _UP
++/usr/lib/libdbm.sa(__libc.o):6008f1c0 A _UPPERCASE
++/usr/lib/libdbm.sa(__libc.o):6008f1a0 A _UP_PARM
++/usr/lib/libdbm.sa(__libc.o):6008f188 A _US
++/usr/lib/libdbm.sa(__libc.o):6008f18c A _VB
++/usr/lib/libdbm.sa(__libc.o):6008f194 A _VE
++/usr/lib/libdbm.sa(__libc.o):6008f190 A _VS
++/usr/lib/libdbm.sa(__libc.o):6008f09c A _XB
++/usr/lib/libdbm.sa(__libc.o):6008f0a0 A _XN
++/usr/lib/libdbm.sa(__libc.o):6008f0a8 A _XS
++/usr/lib/libdbm.sa(__libc.o):6008f0a4 A _XT
++/usr/lib/libdbm.sa(__libc.o):6008f0ac A _XX
++/usr/lib/libdbm.sa(__libc.o):6008f1f4 A __9streambuf$_list_all
++/usr/lib/libdbm.sa(__libc.o):6008f214 A ____brk_addr
++/usr/lib/libdbm.sa(__libc.o):6008f01c A ___ctype_b
++/usr/lib/libdbm.sa(__libc.o):6008f020 A ___ctype_tolower
++/usr/lib/libdbm.sa(__libc.o):6008f024 A ___ctype_toupper
++/usr/lib/libdbm.sa(__libc.o):6008f1fc A ___environ
++/usr/lib/libdbm.sa(__libc.o):6008f250 A ___exit_funcs
++/usr/lib/libdbm.sa(__libc.o):6008f2f0 A ___glob_closedir_hook
++/usr/lib/libdbm.sa(__libc.o):6008f2f4 A ___glob_opendir_hook
++/usr/lib/libdbm.sa(__libc.o):6008f2f8 A ___glob_readdir_hook
++/usr/lib/libdbm.sa(__libc.o):6008f018 A ___new_handler
++/usr/lib/libdbm.sa(__libc.o):6008f1e4 A ___std_filebuf_0
++/usr/lib/libdbm.sa(__libc.o):6008f1e8 A ___std_filebuf_1
++/usr/lib/libdbm.sa(__libc.o):6008f1ec A ___std_filebuf_2
++/usr/lib/libdbm.sa(__libc.o):6008f278 A ___ttyname
++/usr/lib/libdbm.sa(__libc.o):6008f238 A __collate_info
++/usr/lib/libdbm.sa(__libc.o):6008f23c A __ctype_info
++/usr/lib/libdbm.sa(__libc.o):6008f028 A __echoit
++/usr/lib/libdbm.sa(__libc.o):6008f034 A __endwin
++/usr/lib/libdbm.sa(__libc.o):6008f288 A __gdbm_fetch_val
++/usr/lib/libdbm.sa(__libc.o):6008f280 A __gdbm_file
++/usr/lib/libdbm.sa(__libc.o):6008f284 A __gdbm_memory
++/usr/lib/libdbm.sa(__libc.o):6008f1f8 A __iob
++/usr/lib/libdbm.sa(__libc.o):6008f240 A __monetary_info
++/usr/lib/libdbm.sa(__libc.o):6008f234 A __null_auth
++/usr/lib/libdbm.sa(__libc.o):6008f244 A __numeric_info
++/usr/lib/libdbm.sa(__libc.o):6008f2ec A __obstack
++/usr/lib/libdbm.sa(__libc.o):6008f1c8 A __pfast
++/usr/lib/libdbm.sa(__libc.o):6008f02c A __rawmode
++/usr/lib/libdbm.sa(__libc.o):6008f1dc A __res
++/usr/lib/libdbm.sa(__libc.o):6008f04c A __res_iflg
++/usr/lib/libdbm.sa(__libc.o):6008f050 A __res_lflg
++/usr/lib/libdbm.sa(__libc.o):6008f270 A __res_opcodes
++/usr/lib/libdbm.sa(__libc.o):6008f274 A __res_resultcodes
++/usr/lib/libdbm.sa(__libc.o):6008f248 A __response_info
++/usr/lib/libdbm.sa(__libc.o):6008f2fc A __sigintr
++/usr/lib/libdbm.sa(__libc.o):6008f00c A __sys_errlist
++/usr/lib/libdbm.sa(__libc.o):6008f010 A __sys_nerr
++/usr/lib/libdbm.sa(__libc.o):6008f014 A __sys_siglist
++/usr/lib/libdbm.sa(__libc.o):6008f24c A __time_info
++/usr/lib/libdbm.sa(__libc.o):6008f05c A __tty
++/usr/lib/libdbm.sa(__libc.o):6008f040 A __tty_ch
++/usr/lib/libdbm.sa(__libc.o):6008f1cc A __unctrl
++/usr/lib/libdbm.sa(__libc.o):6008f2c8 A __vt$10istrstream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2c4 A __vt$10ostrstream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2e0 A __vt$11fstreambase$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2cc A __vt$13strstreambase$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2d4 A __vt$7fstream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2ac A __vt$7ostream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2dc A __vt$8ifstream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2a4 A __vt$8iostream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2d8 A __vt$8ofstream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2c0 A __vt$9strstream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2b4 A __vt$backupbuf
++/usr/lib/libdbm.sa(__libc.o):6008f2b0 A __vt$filebuf
++/usr/lib/libdbm.sa(__libc.o):6008f2bc A __vt$ios
++/usr/lib/libdbm.sa(__libc.o):6008f2a8 A __vt$istream$3ios
++/usr/lib/libdbm.sa(__libc.o):6008f2b8 A __vt$streambuf
++/usr/lib/libdbm.sa(__libc.o):6008f2d0 A __vt$strstreambuf
++/usr/lib/libdbm.sa(__libc.o):6008f27c A __win
++/usr/lib/libdbm.sa(__libc.o):6008f294 A _cerr
++/usr/lib/libdbm.sa(__libc.o):6008f298 A _cin
++/usr/lib/libdbm.sa(__libc.o):6008f29c A _clog
++/usr/lib/libdbm.sa(__libc.o):6008f290 A _cout
++/usr/lib/libdbm.sa(__libc.o):6008f058 A _curscr
++/usr/lib/libdbm.sa(__libc.o):6008f228 A _daylight
++/usr/lib/libdbm.sa(__libc.o):6008f200 A _errno
++/usr/lib/libdbm.sa(__libc.o):6008f1d0 A _gdbm_errno
++/usr/lib/libdbm.sa(__libc.o):6008f28c A _gdbm_version
++/usr/lib/libdbm.sa(__libc.o):6008f008 A _h_errlist
++/usr/lib/libdbm.sa(__libc.o):6008f1d8 A _h_errno
++/usr/lib/libdbm.sa(__libc.o):6008f2a0 A _h_nerr
++/usr/lib/libdbm.sa(__libc.o):6008f1c4 A _normtty
++/usr/lib/libdbm.sa(__libc.o):6008f1f0 A _not_open_filebuf
++/usr/lib/libdbm.sa(__libc.o):6008f204 A _optarg
++/usr/lib/libdbm.sa(__libc.o):6008f20c A _opterr
++/usr/lib/libdbm.sa(__libc.o):6008f208 A _optind
++/usr/lib/libdbm.sa(__libc.o):6008f2e4 A _optopt
++/usr/lib/libdbm.sa(__libc.o):6008f218 A _ospeed
++/usr/lib/libdbm.sa(__libc.o):6008f26c A _re_max_failures
++/usr/lib/libdbm.sa(__libc.o):6008f210 A _re_syntax_options
++/usr/lib/libdbm.sa(__libc.o):6008f1e0 A _rexecoptions
++/usr/lib/libdbm.sa(__libc.o):6008f230 A _rpc_createerr
++/usr/lib/libdbm.sa(__libc.o):6008f25c A _stderr
++/usr/lib/libdbm.sa(__libc.o):6008f254 A _stdin
++/usr/lib/libdbm.sa(__libc.o):6008f258 A _stdout
++/usr/lib/libdbm.sa(__libc.o):6008f054 A _stdscr
++/usr/lib/libdbm.sa(__libc.o):6008f2e8 A _svc_fdset
++/usr/lib/libdbm.sa(__libc.o):6008f224 A _timezone
++/usr/lib/libdbm.sa(__libc.o):6008f21c A _tputs_baud_rate
++/usr/lib/libdbm.sa(__libc.o):6008f038 A _ttytype
++/usr/lib/libdbm.sa(__libc.o):6008f220 A _tzname
++/usr/lib/libgcc.sa(__libc.o):00001000 a __GOT_SIZE
++/usr/lib/libgcc.sa(__libc.o):6008f0b0 A _AL
++/usr/lib/libgcc.sa(__libc.o):6008f198 A _AL_PARM
++/usr/lib/libgcc.sa(__libc.o):6008f060 A _AM
++/usr/lib/libgcc.sa(__libc.o):6008f0b4 A _BC
++/usr/lib/libgcc.sa(__libc.o):6008f064 A _BS
++/usr/lib/libgcc.sa(__libc.o):6008f0bc A _BT
++/usr/lib/libgcc.sa(__libc.o):6008f068 A _CA
++/usr/lib/libgcc.sa(__libc.o):6008f0c0 A _CD
++/usr/lib/libgcc.sa(__libc.o):6008f0c4 A _CE
++/usr/lib/libgcc.sa(__libc.o):6008f0c8 A _CL
++/usr/lib/libgcc.sa(__libc.o):6008f0cc A _CM
++/usr/lib/libgcc.sa(__libc.o):6008f048 A _COLS
++/usr/lib/libgcc.sa(__libc.o):6008f0d0 A _CR
++/usr/lib/libgcc.sa(__libc.o):6008f0d4 A _CS
++/usr/lib/libgcc.sa(__libc.o):6008f06c A _DA
++/usr/lib/libgcc.sa(__libc.o):6008f070 A _DB
++/usr/lib/libgcc.sa(__libc.o):6008f0d8 A _DC
++/usr/lib/libgcc.sa(__libc.o):6008f0dc A _DL
++/usr/lib/libgcc.sa(__libc.o):6008f19c A _DL_PARM
++/usr/lib/libgcc.sa(__libc.o):6008f0e0 A _DM
++/usr/lib/libgcc.sa(__libc.o):6008f0e4 A _DO
++/usr/lib/libgcc.sa(__libc.o):6008f1a4 A _DOWN_PARM
++/usr/lib/libgcc.sa(__libc.o):6008f03c A _Def_term
++/usr/lib/libgcc.sa(__libc.o):6008f0e8 A _ED
++/usr/lib/libgcc.sa(__libc.o):6008f0ec A _EI
++/usr/lib/libgcc.sa(__libc.o):6008f074 A _EO
++/usr/lib/libgcc.sa(__libc.o):6008f1b8 A _GT
++/usr/lib/libgcc.sa(__libc.o):6008f078 A _HC
++/usr/lib/libgcc.sa(__libc.o):6008f118 A _HO
++/usr/lib/libgcc.sa(__libc.o):6008f07c A _HZ
++/usr/lib/libgcc.sa(__libc.o):6008f11c A _IC
++/usr/lib/libgcc.sa(__libc.o):6008f120 A _IM
++/usr/lib/libgcc.sa(__libc.o):6008f080 A _IN
++/usr/lib/libgcc.sa(__libc.o):6008f124 A _IP
++/usr/lib/libgcc.sa(__libc.o):6008f0f0 A _K0
++/usr/lib/libgcc.sa(__libc.o):6008f0f4 A _K1
++/usr/lib/libgcc.sa(__libc.o):6008f0f8 A _K2
++/usr/lib/libgcc.sa(__libc.o):6008f0fc A _K3
++/usr/lib/libgcc.sa(__libc.o):6008f100 A _K4
++/usr/lib/libgcc.sa(__libc.o):6008f104 A _K5
++/usr/lib/libgcc.sa(__libc.o):6008f108 A _K6
++/usr/lib/libgcc.sa(__libc.o):6008f10c A _K7
++/usr/lib/libgcc.sa(__libc.o):6008f110 A _K8
++/usr/lib/libgcc.sa(__libc.o):6008f114 A _K9
++/usr/lib/libgcc.sa(__libc.o):6008f128 A _KD
++/usr/lib/libgcc.sa(__libc.o):6008f12c A _KE
++/usr/lib/libgcc.sa(__libc.o):6008f130 A _KH
++/usr/lib/libgcc.sa(__libc.o):6008f134 A _KL
++/usr/lib/libgcc.sa(__libc.o):6008f138 A _KR
++/usr/lib/libgcc.sa(__libc.o):6008f13c A _KS
++/usr/lib/libgcc.sa(__libc.o):6008f140 A _KU
++/usr/lib/libgcc.sa(__libc.o):6008f1a8 A _LEFT_PARM
++/usr/lib/libgcc.sa(__libc.o):6008f044 A _LINES
++/usr/lib/libgcc.sa(__libc.o):6008f144 A _LL
++/usr/lib/libgcc.sa(__libc.o):6008f148 A _MA
++/usr/lib/libgcc.sa(__libc.o):6008f084 A _MI
++/usr/lib/libgcc.sa(__libc.o):6008f088 A _MS
++/usr/lib/libgcc.sa(__libc.o):6008f030 A _My_term
++/usr/lib/libgcc.sa(__libc.o):6008f08c A _NC
++/usr/lib/libgcc.sa(__libc.o):6008f14c A _ND
++/usr/lib/libgcc.sa(__libc.o):6008f150 A _NL
++/usr/lib/libgcc.sa(__libc.o):6008f1bc A _NONL
++/usr/lib/libgcc.sa(__libc.o):6008f090 A _NS
++/usr/lib/libgcc.sa(__libc.o):6008f094 A _OS
++/usr/lib/libgcc.sa(__libc.o):6008f1b0 A _PC
++/usr/lib/libgcc.sa(__libc.o):6008f154 A _RC
++/usr/lib/libgcc.sa(__libc.o):6008f1ac A _RIGHT_PARM
++/usr/lib/libgcc.sa(__libc.o):6008f158 A _SC
++/usr/lib/libgcc.sa(__libc.o):6008f15c A _SE
++/usr/lib/libgcc.sa(__libc.o):6008f160 A _SF
++/usr/lib/libgcc.sa(__libc.o):6008f164 A _SO
++/usr/lib/libgcc.sa(__libc.o):6008f168 A _SR
++/usr/lib/libgcc.sa(__libc.o):6008f16c A _TA
++/usr/lib/libgcc.sa(__libc.o):6008f170 A _TE
++/usr/lib/libgcc.sa(__libc.o):6008f174 A _TI
++/usr/lib/libgcc.sa(__libc.o):6008f178 A _UC
++/usr/lib/libgcc.sa(__libc.o):6008f17c A _UE
++/usr/lib/libgcc.sa(__libc.o):6008f098 A _UL
++/usr/lib/libgcc.sa(__libc.o):6008f180 A _UP
++/usr/lib/libgcc.sa(__libc.o):6008f1c0 A _UPPERCASE
++/usr/lib/libgcc.sa(__libc.o):6008f1a0 A _UP_PARM
++/usr/lib/libgcc.sa(__libc.o):6008f188 A _US
++/usr/lib/libgcc.sa(__libc.o):6008f18c A _VB
++/usr/lib/libgcc.sa(__libc.o):6008f194 A _VE
++/usr/lib/libgcc.sa(__libc.o):6008f190 A _VS
++/usr/lib/libgcc.sa(__libc.o):6008f09c A _XB
++/usr/lib/libgcc.sa(__libc.o):6008f0a0 A _XN
++/usr/lib/libgcc.sa(__libc.o):6008f0a8 A _XS
++/usr/lib/libgcc.sa(__libc.o):6008f0a4 A _XT
++/usr/lib/libgcc.sa(__libc.o):6008f0ac A _XX
++/usr/lib/libgcc.sa(__libc.o):6008f1f4 A __9streambuf$_list_all
++/usr/lib/libgcc.sa(__libc.o):6008f214 A ____brk_addr
++/usr/lib/libgcc.sa(__libc.o):6008f01c A ___ctype_b
++/usr/lib/libgcc.sa(__libc.o):6008f020 A ___ctype_tolower
++/usr/lib/libgcc.sa(__libc.o):6008f024 A ___ctype_toupper
++/usr/lib/libgcc.sa(__libc.o):6008f1fc A ___environ
++/usr/lib/libgcc.sa(__libc.o):6008f250 A ___exit_funcs
++/usr/lib/libgcc.sa(__libc.o):6008f2f0 A ___glob_closedir_hook
++/usr/lib/libgcc.sa(__libc.o):6008f2f4 A ___glob_opendir_hook
++/usr/lib/libgcc.sa(__libc.o):6008f2f8 A ___glob_readdir_hook
++/usr/lib/libgcc.sa(__libc.o):6008f018 A ___new_handler
++/usr/lib/libgcc.sa(__libc.o):6008f1e4 A ___std_filebuf_0
++/usr/lib/libgcc.sa(__libc.o):6008f1e8 A ___std_filebuf_1
++/usr/lib/libgcc.sa(__libc.o):6008f1ec A ___std_filebuf_2
++/usr/lib/libgcc.sa(__libc.o):6008f278 A ___ttyname
++/usr/lib/libgcc.sa(__libc.o):6008f238 A __collate_info
++/usr/lib/libgcc.sa(__libc.o):6008f23c A __ctype_info
++/usr/lib/libgcc.sa(__libc.o):6008f028 A __echoit
++/usr/lib/libgcc.sa(__libc.o):6008f034 A __endwin
++/usr/lib/libgcc.sa(__libc.o):6008f288 A __gdbm_fetch_val
++/usr/lib/libgcc.sa(__libc.o):6008f280 A __gdbm_file
++/usr/lib/libgcc.sa(__libc.o):6008f284 A __gdbm_memory
++/usr/lib/libgcc.sa(__libc.o):6008f1f8 A __iob
++/usr/lib/libgcc.sa(__libc.o):6008f240 A __monetary_info
++/usr/lib/libgcc.sa(__libc.o):6008f234 A __null_auth
++/usr/lib/libgcc.sa(__libc.o):6008f244 A __numeric_info
++/usr/lib/libgcc.sa(__libc.o):6008f2ec A __obstack
++/usr/lib/libgcc.sa(__libc.o):6008f1c8 A __pfast
++/usr/lib/libgcc.sa(__libc.o):6008f02c A __rawmode
++/usr/lib/libgcc.sa(__libc.o):6008f1dc A __res
++/usr/lib/libgcc.sa(__libc.o):6008f04c A __res_iflg
++/usr/lib/libgcc.sa(__libc.o):6008f050 A __res_lflg
++/usr/lib/libgcc.sa(__libc.o):6008f270 A __res_opcodes
++/usr/lib/libgcc.sa(__libc.o):6008f274 A __res_resultcodes
++/usr/lib/libgcc.sa(__libc.o):6008f248 A __response_info
++/usr/lib/libgcc.sa(__libc.o):6008f2fc A __sigintr
++/usr/lib/libgcc.sa(__libc.o):6008f00c A __sys_errlist
++/usr/lib/libgcc.sa(__libc.o):6008f010 A __sys_nerr
++/usr/lib/libgcc.sa(__libc.o):6008f014 A __sys_siglist
++/usr/lib/libgcc.sa(__libc.o):6008f24c A __time_info
++/usr/lib/libgcc.sa(__libc.o):6008f05c A __tty
++/usr/lib/libgcc.sa(__libc.o):6008f040 A __tty_ch
++/usr/lib/libgcc.sa(__libc.o):6008f1cc A __unctrl
++/usr/lib/libgcc.sa(__libc.o):6008f2c8 A __vt$10istrstream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2c4 A __vt$10ostrstream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2e0 A __vt$11fstreambase$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2cc A __vt$13strstreambase$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2d4 A __vt$7fstream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2ac A __vt$7ostream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2dc A __vt$8ifstream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2a4 A __vt$8iostream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2d8 A __vt$8ofstream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2c0 A __vt$9strstream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2b4 A __vt$backupbuf
++/usr/lib/libgcc.sa(__libc.o):6008f2b0 A __vt$filebuf
++/usr/lib/libgcc.sa(__libc.o):6008f2bc A __vt$ios
++/usr/lib/libgcc.sa(__libc.o):6008f2a8 A __vt$istream$3ios
++/usr/lib/libgcc.sa(__libc.o):6008f2b8 A __vt$streambuf
++/usr/lib/libgcc.sa(__libc.o):6008f2d0 A __vt$strstreambuf
++/usr/lib/libgcc.sa(__libc.o):6008f27c A __win
++/usr/lib/libgcc.sa(__libc.o):6008f294 A _cerr
++/usr/lib/libgcc.sa(__libc.o):6008f298 A _cin
++/usr/lib/libgcc.sa(__libc.o):6008f29c A _clog
++/usr/lib/libgcc.sa(__libc.o):6008f290 A _cout
++/usr/lib/libgcc.sa(__libc.o):6008f058 A _curscr
++/usr/lib/libgcc.sa(__libc.o):6008f228 A _daylight
++/usr/lib/libgcc.sa(__libc.o):6008f200 A _errno
++/usr/lib/libgcc.sa(__libc.o):6008f1d0 A _gdbm_errno
++/usr/lib/libgcc.sa(__libc.o):6008f28c A _gdbm_version
++/usr/lib/libgcc.sa(__libc.o):6008f008 A _h_errlist
++/usr/lib/libgcc.sa(__libc.o):6008f1d8 A _h_errno
++/usr/lib/libgcc.sa(__libc.o):6008f2a0 A _h_nerr
++/usr/lib/libgcc.sa(__libc.o):6008f1c4 A _normtty
++/usr/lib/libgcc.sa(__libc.o):6008f1f0 A _not_open_filebuf
++/usr/lib/libgcc.sa(__libc.o):6008f204 A _optarg
++/usr/lib/libgcc.sa(__libc.o):6008f20c A _opterr
++/usr/lib/libgcc.sa(__libc.o):6008f208 A _optind
++/usr/lib/libgcc.sa(__libc.o):6008f2e4 A _optopt
++/usr/lib/libgcc.sa(__libc.o):6008f218 A _ospeed
++/usr/lib/libgcc.sa(__libc.o):6008f26c A _re_max_failures
++/usr/lib/libgcc.sa(__libc.o):6008f210 A _re_syntax_options
++/usr/lib/libgcc.sa(__libc.o):6008f1e0 A _rexecoptions
++/usr/lib/libgcc.sa(__libc.o):6008f230 A _rpc_createerr
++/usr/lib/libgcc.sa(__libc.o):6008f25c A _stderr
++/usr/lib/libgcc.sa(__libc.o):6008f254 A _stdin
++/usr/lib/libgcc.sa(__libc.o):6008f258 A _stdout
++/usr/lib/libgcc.sa(__libc.o):6008f054 A _stdscr
++/usr/lib/libgcc.sa(__libc.o):6008f2e8 A _svc_fdset
++/usr/lib/libgcc.sa(__libc.o):6008f224 A _timezone
++/usr/lib/libgcc.sa(__libc.o):6008f21c A _tputs_baud_rate
++/usr/lib/libgcc.sa(__libc.o):6008f038 A _ttytype
++/usr/lib/libgcc.sa(__libc.o):6008f220 A _tzname
++/usr/lib/libm.sa(__libm.o):00000100 a __GOT_SIZE
++/usr/lib/libm.sa(__libm.o):600f7f08 A _signgam
++/usr/lib/libtermcap.sa(__libc.o):00001000 a __GOT_SIZE
++/usr/lib/libtermcap.sa(__libc.o):6008f0b0 A _AL
++/usr/lib/libtermcap.sa(__libc.o):6008f198 A _AL_PARM
++/usr/lib/libtermcap.sa(__libc.o):6008f060 A _AM
++/usr/lib/libtermcap.sa(__libc.o):6008f0b4 A _BC
++/usr/lib/libtermcap.sa(__libc.o):6008f064 A _BS
++/usr/lib/libtermcap.sa(__libc.o):6008f0bc A _BT
++/usr/lib/libtermcap.sa(__libc.o):6008f068 A _CA
++/usr/lib/libtermcap.sa(__libc.o):6008f0c0 A _CD
++/usr/lib/libtermcap.sa(__libc.o):6008f0c4 A _CE
++/usr/lib/libtermcap.sa(__libc.o):6008f0c8 A _CL
++/usr/lib/libtermcap.sa(__libc.o):6008f0cc A _CM
++/usr/lib/libtermcap.sa(__libc.o):6008f048 A _COLS
++/usr/lib/libtermcap.sa(__libc.o):6008f0d0 A _CR
++/usr/lib/libtermcap.sa(__libc.o):6008f0d4 A _CS
++/usr/lib/libtermcap.sa(__libc.o):6008f06c A _DA
++/usr/lib/libtermcap.sa(__libc.o):6008f070 A _DB
++/usr/lib/libtermcap.sa(__libc.o):6008f0d8 A _DC
++/usr/lib/libtermcap.sa(__libc.o):6008f0dc A _DL
++/usr/lib/libtermcap.sa(__libc.o):6008f19c A _DL_PARM
++/usr/lib/libtermcap.sa(__libc.o):6008f0e0 A _DM
++/usr/lib/libtermcap.sa(__libc.o):6008f0e4 A _DO
++/usr/lib/libtermcap.sa(__libc.o):6008f1a4 A _DOWN_PARM
++/usr/lib/libtermcap.sa(__libc.o):6008f03c A _Def_term
++/usr/lib/libtermcap.sa(__libc.o):6008f0e8 A _ED
++/usr/lib/libtermcap.sa(__libc.o):6008f0ec A _EI
++/usr/lib/libtermcap.sa(__libc.o):6008f074 A _EO
++/usr/lib/libtermcap.sa(__libc.o):6008f1b8 A _GT
++/usr/lib/libtermcap.sa(__libc.o):6008f078 A _HC
++/usr/lib/libtermcap.sa(__libc.o):6008f118 A _HO
++/usr/lib/libtermcap.sa(__libc.o):6008f07c A _HZ
++/usr/lib/libtermcap.sa(__libc.o):6008f11c A _IC
++/usr/lib/libtermcap.sa(__libc.o):6008f120 A _IM
++/usr/lib/libtermcap.sa(__libc.o):6008f080 A _IN
++/usr/lib/libtermcap.sa(__libc.o):6008f124 A _IP
++/usr/lib/libtermcap.sa(__libc.o):6008f0f0 A _K0
++/usr/lib/libtermcap.sa(__libc.o):6008f0f4 A _K1
++/usr/lib/libtermcap.sa(__libc.o):6008f0f8 A _K2
++/usr/lib/libtermcap.sa(__libc.o):6008f0fc A _K3
++/usr/lib/libtermcap.sa(__libc.o):6008f100 A _K4
++/usr/lib/libtermcap.sa(__libc.o):6008f104 A _K5
++/usr/lib/libtermcap.sa(__libc.o):6008f108 A _K6
++/usr/lib/libtermcap.sa(__libc.o):6008f10c A _K7
++/usr/lib/libtermcap.sa(__libc.o):6008f110 A _K8
++/usr/lib/libtermcap.sa(__libc.o):6008f114 A _K9
++/usr/lib/libtermcap.sa(__libc.o):6008f128 A _KD
++/usr/lib/libtermcap.sa(__libc.o):6008f12c A _KE
++/usr/lib/libtermcap.sa(__libc.o):6008f130 A _KH
++/usr/lib/libtermcap.sa(__libc.o):6008f134 A _KL
++/usr/lib/libtermcap.sa(__libc.o):6008f138 A _KR
++/usr/lib/libtermcap.sa(__libc.o):6008f13c A _KS
++/usr/lib/libtermcap.sa(__libc.o):6008f140 A _KU
++/usr/lib/libtermcap.sa(__libc.o):6008f1a8 A _LEFT_PARM
++/usr/lib/libtermcap.sa(__libc.o):6008f044 A _LINES
++/usr/lib/libtermcap.sa(__libc.o):6008f144 A _LL
++/usr/lib/libtermcap.sa(__libc.o):6008f148 A _MA
++/usr/lib/libtermcap.sa(__libc.o):6008f084 A _MI
++/usr/lib/libtermcap.sa(__libc.o):6008f088 A _MS
++/usr/lib/libtermcap.sa(__libc.o):6008f030 A _My_term
++/usr/lib/libtermcap.sa(__libc.o):6008f08c A _NC
++/usr/lib/libtermcap.sa(__libc.o):6008f14c A _ND
++/usr/lib/libtermcap.sa(__libc.o):6008f150 A _NL
++/usr/lib/libtermcap.sa(__libc.o):6008f1bc A _NONL
++/usr/lib/libtermcap.sa(__libc.o):6008f090 A _NS
++/usr/lib/libtermcap.sa(__libc.o):6008f094 A _OS
++/usr/lib/libtermcap.sa(__libc.o):6008f1b0 A _PC
++/usr/lib/libtermcap.sa(__libc.o):6008f154 A _RC
++/usr/lib/libtermcap.sa(__libc.o):6008f1ac A _RIGHT_PARM
++/usr/lib/libtermcap.sa(__libc.o):6008f158 A _SC
++/usr/lib/libtermcap.sa(__libc.o):6008f15c A _SE
++/usr/lib/libtermcap.sa(__libc.o):6008f160 A _SF
++/usr/lib/libtermcap.sa(__libc.o):6008f164 A _SO
++/usr/lib/libtermcap.sa(__libc.o):6008f168 A _SR
++/usr/lib/libtermcap.sa(__libc.o):6008f16c A _TA
++/usr/lib/libtermcap.sa(__libc.o):6008f170 A _TE
++/usr/lib/libtermcap.sa(__libc.o):6008f174 A _TI
++/usr/lib/libtermcap.sa(__libc.o):6008f178 A _UC
++/usr/lib/libtermcap.sa(__libc.o):6008f17c A _UE
++/usr/lib/libtermcap.sa(__libc.o):6008f098 A _UL
++/usr/lib/libtermcap.sa(__libc.o):6008f180 A _UP
++/usr/lib/libtermcap.sa(__libc.o):6008f1c0 A _UPPERCASE
++/usr/lib/libtermcap.sa(__libc.o):6008f1a0 A _UP_PARM
++/usr/lib/libtermcap.sa(__libc.o):6008f188 A _US
++/usr/lib/libtermcap.sa(__libc.o):6008f18c A _VB
++/usr/lib/libtermcap.sa(__libc.o):6008f194 A _VE
++/usr/lib/libtermcap.sa(__libc.o):6008f190 A _VS
++/usr/lib/libtermcap.sa(__libc.o):6008f09c A _XB
++/usr/lib/libtermcap.sa(__libc.o):6008f0a0 A _XN
++/usr/lib/libtermcap.sa(__libc.o):6008f0a8 A _XS
++/usr/lib/libtermcap.sa(__libc.o):6008f0a4 A _XT
++/usr/lib/libtermcap.sa(__libc.o):6008f0ac A _XX
++/usr/lib/libtermcap.sa(__libc.o):6008f1f4 A __9streambuf$_list_all
++/usr/lib/libtermcap.sa(__libc.o):6008f214 A ____brk_addr
++/usr/lib/libtermcap.sa(__libc.o):6008f01c A ___ctype_b
++/usr/lib/libtermcap.sa(__libc.o):6008f020 A ___ctype_tolower
++/usr/lib/libtermcap.sa(__libc.o):6008f024 A ___ctype_toupper
++/usr/lib/libtermcap.sa(__libc.o):6008f1fc A ___environ
++/usr/lib/libtermcap.sa(__libc.o):6008f250 A ___exit_funcs
++/usr/lib/libtermcap.sa(__libc.o):6008f2f0 A ___glob_closedir_hook
++/usr/lib/libtermcap.sa(__libc.o):6008f2f4 A ___glob_opendir_hook
++/usr/lib/libtermcap.sa(__libc.o):6008f2f8 A ___glob_readdir_hook
++/usr/lib/libtermcap.sa(__libc.o):6008f018 A ___new_handler
++/usr/lib/libtermcap.sa(__libc.o):6008f1e4 A ___std_filebuf_0
++/usr/lib/libtermcap.sa(__libc.o):6008f1e8 A ___std_filebuf_1
++/usr/lib/libtermcap.sa(__libc.o):6008f1ec A ___std_filebuf_2
++/usr/lib/libtermcap.sa(__libc.o):6008f278 A ___ttyname
++/usr/lib/libtermcap.sa(__libc.o):6008f238 A __collate_info
++/usr/lib/libtermcap.sa(__libc.o):6008f23c A __ctype_info
++/usr/lib/libtermcap.sa(__libc.o):6008f028 A __echoit
++/usr/lib/libtermcap.sa(__libc.o):6008f034 A __endwin
++/usr/lib/libtermcap.sa(__libc.o):6008f288 A __gdbm_fetch_val
++/usr/lib/libtermcap.sa(__libc.o):6008f280 A __gdbm_file
++/usr/lib/libtermcap.sa(__libc.o):6008f284 A __gdbm_memory
++/usr/lib/libtermcap.sa(__libc.o):6008f1f8 A __iob
++/usr/lib/libtermcap.sa(__libc.o):6008f240 A __monetary_info
++/usr/lib/libtermcap.sa(__libc.o):6008f234 A __null_auth
++/usr/lib/libtermcap.sa(__libc.o):6008f244 A __numeric_info
++/usr/lib/libtermcap.sa(__libc.o):6008f2ec A __obstack
++/usr/lib/libtermcap.sa(__libc.o):6008f1c8 A __pfast
++/usr/lib/libtermcap.sa(__libc.o):6008f02c A __rawmode
++/usr/lib/libtermcap.sa(__libc.o):6008f1dc A __res
++/usr/lib/libtermcap.sa(__libc.o):6008f04c A __res_iflg
++/usr/lib/libtermcap.sa(__libc.o):6008f050 A __res_lflg
++/usr/lib/libtermcap.sa(__libc.o):6008f270 A __res_opcodes
++/usr/lib/libtermcap.sa(__libc.o):6008f274 A __res_resultcodes
++/usr/lib/libtermcap.sa(__libc.o):6008f248 A __response_info
++/usr/lib/libtermcap.sa(__libc.o):6008f2fc A __sigintr
++/usr/lib/libtermcap.sa(__libc.o):6008f00c A __sys_errlist
++/usr/lib/libtermcap.sa(__libc.o):6008f010 A __sys_nerr
++/usr/lib/libtermcap.sa(__libc.o):6008f014 A __sys_siglist
++/usr/lib/libtermcap.sa(__libc.o):6008f24c A __time_info
++/usr/lib/libtermcap.sa(__libc.o):6008f05c A __tty
++/usr/lib/libtermcap.sa(__libc.o):6008f040 A __tty_ch
++/usr/lib/libtermcap.sa(__libc.o):6008f1cc A __unctrl
++/usr/lib/libtermcap.sa(__libc.o):6008f2c8 A __vt$10istrstream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2c4 A __vt$10ostrstream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2e0 A __vt$11fstreambase$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2cc A __vt$13strstreambase$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2d4 A __vt$7fstream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2ac A __vt$7ostream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2dc A __vt$8ifstream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2a4 A __vt$8iostream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2d8 A __vt$8ofstream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2c0 A __vt$9strstream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2b4 A __vt$backupbuf
++/usr/lib/libtermcap.sa(__libc.o):6008f2b0 A __vt$filebuf
++/usr/lib/libtermcap.sa(__libc.o):6008f2bc A __vt$ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2a8 A __vt$istream$3ios
++/usr/lib/libtermcap.sa(__libc.o):6008f2b8 A __vt$streambuf
++/usr/lib/libtermcap.sa(__libc.o):6008f2d0 A __vt$strstreambuf
++/usr/lib/libtermcap.sa(__libc.o):6008f27c A __win
++/usr/lib/libtermcap.sa(__libc.o):6008f294 A _cerr
++/usr/lib/libtermcap.sa(__libc.o):6008f298 A _cin
++/usr/lib/libtermcap.sa(__libc.o):6008f29c A _clog
++/usr/lib/libtermcap.sa(__libc.o):6008f290 A _cout
++/usr/lib/libtermcap.sa(__libc.o):6008f058 A _curscr
++/usr/lib/libtermcap.sa(__libc.o):6008f228 A _daylight
++/usr/lib/libtermcap.sa(__libc.o):6008f200 A _errno
++/usr/lib/libtermcap.sa(__libc.o):6008f1d0 A _gdbm_errno
++/usr/lib/libtermcap.sa(__libc.o):6008f28c A _gdbm_version
++/usr/lib/libtermcap.sa(__libc.o):6008f008 A _h_errlist
++/usr/lib/libtermcap.sa(__libc.o):6008f1d8 A _h_errno
++/usr/lib/libtermcap.sa(__libc.o):6008f2a0 A _h_nerr
++/usr/lib/libtermcap.sa(__libc.o):6008f1c4 A _normtty
++/usr/lib/libtermcap.sa(__libc.o):6008f1f0 A _not_open_filebuf
++/usr/lib/libtermcap.sa(__libc.o):6008f204 A _optarg
++/usr/lib/libtermcap.sa(__libc.o):6008f20c A _opterr
++/usr/lib/libtermcap.sa(__libc.o):6008f208 A _optind
++/usr/lib/libtermcap.sa(__libc.o):6008f2e4 A _optopt
++/usr/lib/libtermcap.sa(__libc.o):6008f218 A _ospeed
++/usr/lib/libtermcap.sa(__libc.o):6008f26c A _re_max_failures
++/usr/lib/libtermcap.sa(__libc.o):6008f210 A _re_syntax_options
++/usr/lib/libtermcap.sa(__libc.o):6008f1e0 A _rexecoptions
++/usr/lib/libtermcap.sa(__libc.o):6008f230 A _rpc_createerr
++/usr/lib/libtermcap.sa(__libc.o):6008f25c A _stderr
++/usr/lib/libtermcap.sa(__libc.o):6008f254 A _stdin
++/usr/lib/libtermcap.sa(__libc.o):6008f258 A _stdout
++/usr/lib/libtermcap.sa(__libc.o):6008f054 A _stdscr
++/usr/lib/libtermcap.sa(__libc.o):6008f2e8 A _svc_fdset
++/usr/lib/libtermcap.sa(__libc.o):6008f224 A _timezone
++/usr/lib/libtermcap.sa(__libc.o):6008f21c A _tputs_baud_rate
++/usr/lib/libtermcap.sa(__libc.o):6008f038 A _ttytype
++/usr/lib/libtermcap.sa(__libc.o):6008f220 A _tzname
+diff -u --recursive --new-file pp-6.0/jump/jump.vars pp-6.0-linux/jump/jump.vars
+--- pp-6.0/jump/jump.vars	Thu Jan  1 01:00:00 1970
++++ pp-6.0-linux/jump/jump.vars	Fri Jul  8 17:33:00 1994
+@@ -0,0 +1,197 @@
++00000240 D _table_Qmgr_Operations libpp          Qmgr-ops
++00000070 D _table_Qmgr_Errors   libpp          Qmgr-ops
++00000004 C _fatal_errors        libpp          qstruct2qmgr
++00000004 C _deliverystate       libpp          recipstate
++00000254 D __ZptrtabQmgr        libpp          Qmgr_tables
++00000024 D __ZQmgr_mod          libpp          Qmgr_tables
++00000160 D _client_dispatches   libpp          comms
++00000400 C _errBuf              libpp          comms
++000000c8 D __ZptrtabToks        libpp          Toks_tables
++00000024 D __ZToks_mod          libpp          Toks_tables
++0000053c D __ZptrtabMTA         libpp          MTA_tables
++00000024 D __ZMTA_mod           libpp          MTA_tables
++00000100 D _table_MTA_Operations libpp          MTA-ops
++000000d0 D _table_MTA_Errors    libpp          MTA-ops
++000002d8 D __ZptrtabIOB         libpp          IOB_tables
++00000024 D __ZIOB_mod           libpp          IOB_tables
++00000094 D __ZptrtabAuth        libpp          Auth_tables
++00000024 D __ZAuth_mod          libpp          Auth_tables
++0000022c D __ZptrtabExt         libpp          Ext_tables
++00000024 D __ZExt_mod           libpp          Ext_tables
++00000044 D __ZptrtabTrans       libpp          Trans_tables
++00000024 D __ZTrans_mod         libpp          Trans_tables
++0000000c D __ZptrtabRTS84       libpp          RTS84_tables
++00000024 D __ZRTS84_mod         libpp          RTS84_tables
++00000004 D _asn_procfnx         libpp          rasn
++00000004 D _ap_intype           libpp          ap_1adr
++00000004 D _ap_outtype          libpp          ap_1adr
++00000004 D _ap_grplev           libpp          ap_1adr
++00000004 D _ap_perlev           libpp          ap_1adr
++00000004 D _ap_debug            libpp          ap_1adr
++00000038 D _statnam             libpp          ap_1adr
++00000034 D _typtab              libpp          ap_1adr
++00000004 C _ap_routing          libpp          ap_1adr
++00000004 D _ap_peek             libpp          ap_lex
++00000030 D _namtab              libpp          ap_lex
++00000004 D _ap_lex_percent      libpp          ap_lex
++00000004 C _ap_llex             libpp          ap_lex
++00000080 D _ap_lxtable_per      libpp          ap_lex_tb
++00000080 D _ap_lxtable          libpp          ap_lex_tb
++00000004 D _all_domain_norm     libpp          ap_norm
++00000004 C _ap_pcur             libpp          ap_ut
++00000004 C _ap_pstrt            libpp          ap_ut
++00000004 C _ap_gfunc            libpp          ap_ut
++00000004 D _remote_submit       libpp          io_lib
++00000008 D _submit_port         libpp          io_lib
++00000004 C _sigpipe             libpp          io_lib
++00000004 D _protocol_mode       libpp          rd_buf
++00000004 C _ad_count            libpp          rd_msg
++00000004 D _real987             libpp          or_asc2ps
++00000400 D _or_error            libpp          or_check
++0000000c C _Myglobalname        libpp          or_init
++00000004 C _loc_ortree          libpp          or_misc
++00000028 D _ortbl_rfc822ddas    libpp          or_or2rfc
++000000e4 D _typetab             libpp          or_tables
++0000021c D _typetab88           libpp          or_tables
++00000080 D __pstable            libpp          or_tables
++00000048 D _ortbl_ddvalid       libpp          or_tables
++00000130 D _ortbl_88_ubs        libpp          or_tables
++00000088 D _ortbl_84_ubs        libpp          or_tables
++00000004 D _pptailor            libpp          conf
++00000004 D _cmddfldir           libpp          conf
++00000004 D _logdfldir           libpp          conf
++00000004 D _quedfldir           libpp          conf
++00000004 D _tbldfldir           libpp          conf
++00000004 D _niftpquedir         libpp          conf
++00000004 D _niftpcpf            libpp          conf
++00000004 D _bodies_all          libpp          static
++00000004 D _headers_all         libpp          static
++00000004 D _aquefile            libpp          static
++00000004 D _bquedir             libpp          static
++00000004 D _chndfldir           libpp          static
++00000004 D _formdfldir          libpp          static
++00000004 D _loc_dom_mta         libpp          static
++00000004 D _loc_dom_site        libpp          static
++00000004 D _loc_or              libpp          static
++00000004 D _postmaster          libpp          static
++00000004 D _adminstration_req_alt libpp          static
++00000004 D _ppdbm               libpp          static
++00000004 D _pplogin             libpp          static
++00000004 D _pptsapd_addr        libpp          static
++00000004 D _delim1              libpp          static
++00000004 D _delim2              libpp          static
++00000004 D _mboxname            libpp          static
++00000004 D _qmgr_hostname       libpp          static
++00000004 D _authchannel         libpp          static
++00000004 D _authloglevel        libpp          static
++00000004 D _wrndfldir           libpp          static
++00000004 D _wrnfile             libpp          static
++00000004 D _x400_mta            libpp          static
++00000004 D _return_interval_norm libpp          static
++00000004 D _return_interval_high libpp          static
++00000004 D _return_interval_low libpp          static
++00000004 D _warn_interval       libpp          static
++00000004 D _warn_number         libpp          static
++00000004 D _max_hops            libpp          static
++00000004 D _max_loops           libpp          static
++00000004 D _queue_fanout        libpp          static
++00000004 D _queue_depth         libpp          static
++00000004 D _use_fsync           libpp          static
++00000004 D _disk_percent        libpp          static
++00000004 D _disk_blocks         libpp          static
++00000004 D _submit_prog         libpp          static
++00000004 D _dr_file             libpp          static
++00000004 D _uucpin_chan         libpp          static
++00000004 D _local_822_chan      libpp          static
++00000004 D _alias_tbl           libpp          static
++00000004 D _channel_tbl         libpp          static
++00000004 D _list_tbl            libpp          static
++00000004 D _user_tbl            libpp          static
++00000004 D _or_tbl              libpp          static
++00000004 D _or2rfc_tbl          libpp          static
++00000004 D _rfc2or_tbl          libpp          static
++00000004 D _rfc1148gateway_tbl  libpp          static
++00000004 D _chan_auth_tbl       libpp          static
++00000004 D _mta_auth_tbl        libpp          static
++00000004 D _user_auth_tbl       libpp          static
++00000004 D _hdr_prefix          libpp          static
++00000004 D _hdr_822_bp          libpp          static
++00000004 D _hdr_p2_bp           libpp          static
++00000004 D _hdr_p22_bp          libpp          static
++00000004 D _hdr_ipn_bp          libpp          static
++00000004 D _ia5_bp              libpp          static
++00000004 D _qmgr_auth_tbl       libpp          static
++00000004 D _cont_822            libpp          static
++00000004 D _cont_p2             libpp          static
++00000004 D _cont_p22            libpp          static
++00000004 D _mailfilter          libpp          static
++00000004 D _sysmailfilter       libpp          static
++00000004 D _submit_addr         libpp          static
++00000004 D _dap_user            libpp          static
++00000004 D _dap_passwd          libpp          static
++00000004 D _loc_dist_prefix     libpp          static
++00000004 D _list_tbl_comment    libpp          static
++00000004 D _lockdir             libpp          static
++00000004 D _lockstyle           libpp          static
++00000004 D _lock_break_time     libpp          static
++00000004 D _pp_log_norm         libpp          static
++00000004 D _pp_log_oper         libpp          static
++00000004 D _pp_log_stat         libpp          static
++00000004 C _tb_all              libpp          static
++00000004 C _ch_all              libpp          static
++00000018 D _atbl_ctrl_addrs     libpp          tb_a
++00000198 D _atbl_addr           libpp          tb_a
++00000004 D _n_atbl_addr         libpp          tb_a
++00000030 D _atbl_status         libpp          tb_a
++00000028 D _atbl_mtarreq        libpp          tb_a
++00000028 D _atbl_usrreq         libpp          tb_a
++00000098 D _atbl_expconversion  libpp          tb_a
++00000004 D _n_atbl_expconversion libpp          tb_a
++00000020 D _atbl_types          libpp          tb_a
++00000030 D _atbl_subtypes       libpp          tb_a
++00000020 D _atbl_reg_mail       libpp          tb_a
++00000048 D _atbl_pd_modes       libpp          tb_a
++00000004 D _n_atbl_pd_modes     libpp          tb_a
++00000050 D _atbl_rdm            libpp          tb_a
++00000004 D _n_atbl_rdm          libpp          tb_a
++00000098 D _bptbl_body_parts84  libpp          tb_bpt84
++000000b8 D _bptbl_body_parts88  libpp          tb_bpt88
++00000070 D _drtbl               libpp          tb_dr
++00000004 D _n_drtbl             libpp          tb_dr
++00000080 D _rrtbl               libpp          tb_dr
++00000004 D _n_rrtbl             libpp          tb_dr
++00000040 D _rr_tcode            libpp          tb_dr
++00000040 D _rr_rcode            libpp          tb_dr
++00000004 D _n_rr_rcode          libpp          tb_dr
++00000188 D _rr_dcode            libpp          tb_dr
++00000004 D _n_rr_dcode          libpp          tb_dr
++00000028 D _tbl_bool            libpp          tb_misc
++00000068 D _tbl_month           libpp          tb_misc
++00000010 D _p1tbl_mpduid        libpp          tb_p1
++00000020 D _p1tbl_trace         libpp          tb_p1
++00000020 D _p1tbl_globaldomid   libpp          tb_p1
++00000030 D _p1tbl_domsinfo      libpp          tb_p1
++00000018 D _p1tbl_action        libpp          tb_p1
++00000028 D _p1tbl_encinfoset    libpp          tb_p1
++00000028 D _tbl_crit            libpp          tb_p1
++00000020 D _tbl_redir           libpp          tb_p1
++00000038 D _p3prm_tbl           libpp          tb_p3prm
++00000030 D _prmtbl_ln           libpp          tb_prm
++00000018 D _prmtbl_opts         libpp          tb_prm
++00000138 D _qtbl_que            libpp          tb_q
++00000004 D _n_qtbl_que          libpp          tb_q
++00000020 D _qtbl_mt_type        libpp          tb_q
++00000020 D _qtbl_priority       libpp          tb_q
++00000030 D _authtbl_rights      libpp          tb_getauth
++00000004 C _namefile            libpp          tb_getdl
++00000080 D _rts_tbl             libpp          tb_rtsparams
++00000018 D _rts_info            libpp          tb_rtsparams
++00000004 D _charset_dir         libpp          charset_conf
++00000004 D _charset_sets        libpp          charset_conf
++00000004 D _charset_defs        libpp          charset_conf
++00000004 D _charset_map         libpp          charset_conf
++00000004 D _charset_mnem        libpp          charset_conf
++00000018 C __timeobuf           libpp          timeout
++00000008 D _drtbl_rep           libpp          linuxlib
++00000004 D _ch_inbound          libpp          linuxlib
++00000004 D _ppversion           libpp          ppversion
+diff -u --recursive --new-file pp-6.0/make pp-6.0-linux/make
+--- pp-6.0/make	Wed Aug 21 07:52:12 1991
++++ pp-6.0-linux/make	Tue Aug 31 09:57:42 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/man/make pp-6.0-linux/man/make
+--- pp-6.0/man/make	Wed Aug 21 07:52:41 1991
++++ pp-6.0-linux/man/make	Tue Aug 31 09:53:50 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/man/man1/make pp-6.0-linux/man/man1/make
+--- pp-6.0/man/man1/make	Wed Aug 21 07:52:42 1991
++++ pp-6.0-linux/man/man1/make	Tue Aug 31 09:57:52 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/man/man3/make pp-6.0-linux/man/man3/make
+--- pp-6.0/man/man3/make	Wed Aug 21 07:52:42 1991
++++ pp-6.0-linux/man/man3/make	Tue Aug 31 09:53:37 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+diff -u --recursive --new-file pp-6.0/man/man8/make pp-6.0-linux/man/man8/make
+--- pp-6.0/man/man8/make	Wed Aug 21 07:52:41 1991
++++ pp-6.0-linux/man/man8/make	Tue Aug 31 09:53:45 1993
+@@ -1,2 +1,2 @@
+ #! /bin/sh
+-PATH=/usr/ucb:/bin:/usr/bin exec ${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
++${MAKECMD-make} -f ../../Make.defs -f Makefile ${1+"$@"}
+
+END OF PATCH
+

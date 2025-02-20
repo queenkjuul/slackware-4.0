@@ -1,0 +1,16 @@
+Begin3
+Title:             dip  
+Version:           337o-LCK
+Entered-date:      05JUL96       
+Description:       Dip is a program used to establish a slip/ppp connection.
+                   This modification of dip337o-uri, doesn't check for or
+                   create lock files.
+                   It has no additional features over.> (dip337o-uri)
+                   It is compiled in the elf format, no source.
+Keywords:          README-FIRST 
+Maintained-by:
+Primary-site:      ftp.sunsite.unc.edu /pub/Linux/system/Network/serial/dip
+Original-site:
+Platforms:         linux-elf system.
+Copying-policy:
+End

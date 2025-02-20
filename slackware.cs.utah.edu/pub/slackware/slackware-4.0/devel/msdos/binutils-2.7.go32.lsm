@@ -1,0 +1,15 @@
+Begin3
+Title:          Linux -> MS-DOS cross-binutils
+Version:        2.7
+Entered-date:   19AUG96
+Description:    Binutils configured with MS-DOS as target.
+		Combined with a cross-compiler (gcc-2.7.2.go32.tar.gz)
+		and an MS-DOS C-library (djdev200.go32.tar.gz), they allow
+		development of MS-DOS executables with Linux.
+		The compiler-toolchain is compatible with djgpp V2.0
+Keywords:       binutils msdos djgpp crosscompiler
+Maintained-by:  j.j.vanderheijden@student.utwente.nl (J.J. van der Heijden)
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/msdos
+		525819 binutils-2.7.go32.tar.gz
+Copying-policy: GPL
+End

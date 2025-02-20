@@ -1,0 +1,15 @@
+Begin3
+Title:          xtell
+Version:        0.7
+Entered-date:   14MAR99
+Description:    Simple messaging xlient and server, sort of networked 
+		write
+Keywords:       xtell, xtelld, message, write
+Author:         garabik@fmph.uniba.sk (Radovan Garabik)
+Maintained-by:  garabik@fmph.uniba.sk (Radovan Garabik)
+Primary-site:   sunsite.unc.edu 
+Alternate-site: 
+Original-site:  http://melkor.dnp.fmph.uniba.sk/~garabik/xtell.html
+Platforms:      Linux
+Copying-policy: GPL
+End

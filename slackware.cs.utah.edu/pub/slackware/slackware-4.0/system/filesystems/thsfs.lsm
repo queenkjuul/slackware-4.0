@@ -1,0 +1,23 @@
+Begin2
+Title        = Linux Filesystem for DoubleSpace (readonly)
+Version      = 1.1
+Desc1        = With this kernel module Linux is able to read
+Desc2        = a DoubleSpace compressed Filesystem.
+Author       = Thomas Scheuermann
+AuthorEmail  = ths@ai-lab.fh-furtwangen.de
+Maintainer   = Thomas Scheuermann
+MaintEmail   = ths@ai-lab.fh-furtwangen.de
+Site1        = ftp.ai-lab.fh-furtwangen.de
+Path1        = /pub/os/linux/local/
+File1        = thsfs.tgz
+FileSize1    = 12076
+Required1    = kernel 1.1.12 or newer with changes
+CopyPolicy1  = See copyright on files. Basically free
+Keywords     = Filesystem DoubleSpace
+Comment1     = First version
+Comment2     = Try it :-)
+Entered      = 04OCT94
+EnteredBy    = Thomas Scheuermann
+CheckedEmail = ths@ai-lab.fh-furtwangen.de
+End
+

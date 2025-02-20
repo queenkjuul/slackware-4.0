@@ -1,0 +1,15 @@
+Begin3
+Title:		 ND
+Version:	.0B
+Entered-date:	4/7/98
+Description:	This is a newuser database that creates a file and doesn't add
+                but doesn't add the user for security reasons.
+Keywords:	newuser, adduser, ND, user
+Author:         vortex@bbs.qconline.com (Dustin Ward)
+Maintained-by:	vortex@bbs.qconline.com (Dustin Ward)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/admin/accounts
+                1303 ND-0b.tgz 
+		508  ND-0b.lsm  
+Platforms:	Only tested Linux
+Copying-policy:	Freeware
+End

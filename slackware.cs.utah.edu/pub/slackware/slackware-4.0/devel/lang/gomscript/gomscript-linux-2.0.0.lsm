@@ -1,0 +1,23 @@
+Begin3
+Title:          GOMscript
+Version:        0.7
+Entered-date:   21AUG96
+Description:    GOMscript is an object-oriented C++-like interpreter. It
+                allows users to extend it with new functions and classes.
+                An extension is available for 'roaming agents': 
+                it allows code and state to be sent around to different
+                machines. The AIX version (c.f. below) has an extension
+                for manipulation of CORBA (DSOM) instances.
+Keywords:       GOMscript, interpreter, CORBA, DSOM, agent
+Author:         bba@zurich.ibm.com (Bela Ban)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/gomscript
+                324207 gomscript-linux-2.0.0.tar.gz
+Alternate-site: ftp.zurich.ibm.com/pub/bba/www
+                324207 gomscript-linux-2.0.0.tar.gz
+Original-site:  ftp.zurich.ibm.com/pub/bba/www
+                324207 gomscript-linux-2.0.0.tar.gz
+Platforms:      Linux ELF. Tested on 1.3.53, 2.0.0. Version for AIX (3.2.5,
+                4.1.X) provided at 
+                http://www.zurich.ibm.com/~bba/dsom_interpreter.html
+Copying-policy: Only binaries are provided.
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:		cold
+Version:	1.0.9
+Entered-date:	17SEP98
+Description:	A network sniffer with support for lots of devices and protocols
+Keywords:	sniffer ethernet LAN WAN tcp udp ip arp bpdu llc dlc token ring analysis network bridge
+Author: 	g.peritore@panservice.it (Giuliano Peritore)
+Maintained-by:	g.peritore@panservice.it (Giuliano Peritore)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/management
+                83kB cold-1.0.9.tgz
+Alternate-site: ftp.panservice.it /pub/cold
+                83kB cold-1.0.9.tgz
+Original-site:
+Platforms:      Linux
+Copying-policy:	GPL
+End

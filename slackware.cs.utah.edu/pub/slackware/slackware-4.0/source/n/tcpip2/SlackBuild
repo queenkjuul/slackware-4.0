@@ -1,0 +1,443 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+
+PKG=$TMP/package-tcpip2
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_tcpip2.tar.gz
+
+# Find the size of a file:
+filesize() {
+ SIZE=`ls -l -d -G $1 | cut -b23-32`
+ echo -n $SIZE
+}
+
+echo "+==============+"
+echo "| autofs-3.1.3 |"
+echo "+==============+"
+cd $TMP
+tar xzvf $CWD/autofs-3.1.3.tar.gz
+cd autofs-3.1.3
+mkdir -p $PKG/usr/doc/autofs-3.1.3
+cp -a COPYING COPYRIGHT NEWS README README.options TODO \
+  multiserver_mount.patch samples $PKG/usr/doc/autofs-3.1.3
+chown -R root.root $PKG/usr/doc/autofs-3.1.3
+./configure --prefix=/usr
+make
+cd daemon
+cat automount > $PKG/usr/sbin/automount
+chown root.bin $PKG/usr/sbin/automount
+chmod 755 $PKG/usr/sbin/automount
+cd ../modules
+mkdir -p $PKG/usr/lib/autofs
+for file in *.so ; do
+  cat $file > $PKG/usr/lib/autofs/$file
+done
+cd ../man
+for file in *.5 ; do
+  cat $file | gzip -9c > $PKG/usr/man/man5/$file.gz
+done
+for file in *.8 ; do
+  cat $file | gzip -9c > $PKG/usr/man/man8/$file.gz
+done
+
+echo "+===============+"
+echo "| bootp-DD2.4.3 |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/bootp-DD2.4.3.tar.gz
+cd bootp-DD2.4.3
+zcat $CWD/bootp-DD2.4.3.diff.gz | patch
+make
+strip bootpd bootpef bootpgw bootptest
+for file in bootpd bootpef bootpgw bootptest ; do
+  cat $file > $PKG/usr/sbin/$file
+done
+gzip -9c bootptab.5 > $PKG/usr/man/man5/bootptab.5.gz
+for file in bootpd.8 bootpef.8 bootptest.8 ; do
+  gzip -9c $file > $PKG/usr/man/man8/$file.gz
+done
+
+echo "+================+"
+echo "| dhcp-2.0b1pl18 |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/dhcp-2.0b1pl18.tar.gz
+cd dhcp-2.0b1pl18
+./configure linux-2.1
+make
+mkdir -p $PKG/usr/doc/dhcp-2.0b1pl18
+cp -a CHANGES README RELNOTES TODO $PKG/usr/doc/dhcp-2.0b1pl18
+mkdir -p $PKG/usr/doc/dhcp-2.0b1pl18/examples
+cp -a client/dhclient.conf server/dhcpd.conf \
+  $PKG/usr/doc/dhcp-2.0b1pl18/examples
+chown -R root.root $PKG/usr/doc/dhcp-2.0b1pl18
+cat << EOF > $PKG/etc-incoming/dhcpd.conf
+# dhcpd.conf
+#
+# Configuration file for ISC dhcpd (see 'man dhcpd.conf')
+#
+EOF
+cat << EOF > $PKG/etc-incoming/dhclient.conf
+# dhclient.conf
+#
+# Configuration file for ISC dhclient (see 'man dhclient.conf')
+#
+EOF
+cat client/scripts/linux > $PKG/etc-incoming/dhclient-script
+chmod 700 $PKG/etc-incoming/dhclient-script
+strip server/dhcpd client/dhclient relay/dhcrelay
+cat server/dhcpd > $PKG/usr/sbin/dhcpd
+cat relay/dhcrelay > $PKG/usr/sbin/dhcrelay
+cat client/dhclient > $PKG/sbin/dhclient
+mkdir -p $PKG/usr/man/man5
+mkdir -p $PKG/usr/man/man8
+for dir in client server relay ; do
+  cd $dir
+  for file in *.5 ; do
+    cat $file | sed -e "s#ETCDIR#/etc#g" -e "s#DBDIR#/var/db#g" \
+      -e "s#RUNDIR#/var/run#g" | gzip -9c > $PKG/usr/man/man5/$file.gz
+  done
+  for file in *.8 ; do
+    cat $file | sed -e "s#ETCDIR#/etc#g" -e "s#DBDIR#/var/db#g" \
+      -e "s#RUNDIR#/var/run#g" | gzip -9c > $PKG/usr/man/man8/$file.gz
+  done
+  cd ..
+done
+
+echo "+===================+"
+echo "| dhcpcd-1.3.17-pl5 |"
+echo "+===================+"
+cd $TMP
+tar xzvf $CWD/dhcpcd-1.3.17-pl5.tar.gz
+cd dhcpcd-1.3.17-pl5
+cat dhcpcd > $PKG/sbin/dhcpcd
+cat dhcpcd.8 | gzip -9c > $PKG/usr/man/man8/dhcpcd.8.gz
+cat << EOF > $PKG/etc/dhcpc/dhcpcd-eth0.exe
+#!/bin/sh
+echo "(dhcpcd)  IP address changed to \$1" | logger
+EOF
+chmod 750 $PKG/etc/dhcpc/dhcpcd-eth0.exe
+mkdir -p $PKG/usr/doc/dhcpcd-1.3.17-pl5
+cp -a pcmcia $PKG/usr/doc/dhcpcd-1.3.17-pl5
+cp -a Changes README dhcpcd-1.3.17.lsm $PKG/usr/doc/dhcpcd-1.3.17-pl5
+chown -R root.root $PKG/usr/doc/dhcpcd-1.3.17-pl5
+
+echo "+=================+"
+echo "| fetchmail-4.6.3 |"
+echo "+=================+"
+cd $TMP
+tar xzvf $CWD/fetchmail-4.6.3.tar.gz
+cd fetchmail-4.6.3
+./configure --prefix=/usr
+make CFLAGS=-O2 LDFLAGS=-s
+strip fetchmail
+cat fetchmail > $PKG/usr/bin/fetchmail
+#cat fetchmailconf > $PKG/usr/bin/fetchmailconf
+cat fetchmail.man | gzip -9c > $PKG/usr/man/man1/fetchmail.1.gz
+mkdir $PKG/usr/doc/fetchmail-4.6.3
+cp -a COPYING FAQ FEATURES README NEWS NOTES $PKG/usr/doc/fetchmail-4.6.3
+
+echo "+===============+"
+echo "| netwatch-0.7a |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/netwatch0.7a.src.tar.gz
+cd netwatch
+tar xzvf $CWD/netwatch0.7a.includes.tar.gz
+zcat $CWD/netwatch0.7a.diff.gz | patch
+make CFLAGS="-I/usr/include/ncurses -I."
+strip netresolv netwatch
+cat netresolv > $PKG/usr/sbin/netresolv
+chown root.bin $PKG/usr/sbin/netresolv
+chmod 755 $PKG/usr/sbin/netresolv
+cat netwatch > $PKG/usr/sbin/netwatch
+chown root.bin $PKG/usr/sbin/netwatch
+chmod 755 $PKG/usr/sbin/netwatch
+cat netwatch.1 | gzip -9c > $PKG/usr/man/man1/netwatch.1.gz
+mkdir -p $PKG/usr/doc/netwatch
+cp -a BUGS CHANGES README README.performance TODO netwatch0.7a.lsm \
+  $PKG/usr/doc/netwatch
+chown root.root $PKG/usr/doc/netwatch/*
+chmod 644 $PKG/usr/doc/netwatch/*
+
+echo "+================+"
+echo "| slattach-1.2.0 |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/slattach-1.2.0.tar.gz
+cd slattach-1.2.0
+make
+strip slattach
+cat slattach > $PKG/usr/sbin/slattach
+cat man/en_US.88591/slattach.8 | gzip -9c > $PKG/usr/man/man8/slattach.8.gz
+
+echo "+=================+"
+echo "| sliplogin-2.1.0 |"
+echo "+=================+"
+cd $TMP
+tar xzvf $CWD/sliplogin-2.1.0.tar.gz
+cd sliplogin-2.1.0
+zcat $CWD/sliplogin-2.1.0.diff.gz | patch -p1
+zcat $CWD/sliplogin-2.1.0.linuxincludes.diff.gz | patch -p1
+make
+strip sliplogin
+cat sliplogin > $PKG/usr/sbin/sliplogin
+cat sliplogin.8 | gzip -9c > $PKG/usr/man/man8/sliplogin.8.gz
+mkdir -p $PKG/etc-incoming/slip
+cp -a slip.login slip.hosts slip.route slip.passwd $PKG/etc-incoming/slip
+chown root.root $PKG/etc-incoming/slip/*
+chmod 640 $PKG/etc-incoming/slip/*
+
+echo "+======================+"
+echo "| ipfwadm-2.3.0.tar.gz |"
+echo "+======================+"
+cd $TMP
+tar xzvf $CWD/ipfwadm-2.3.0.tar.gz
+cd ipfwadm-2.3.0
+zcat $CWD/ipfwadm-2.3.0.diff.gz | patch -p1
+mkdir -p $PKG/usr/doc/ipfwadm-2.3.0
+cp -a COPYING ChangeLog README ipfwadm.lsm $PKG/usr/doc/ipfwadm-2.3.0
+chmod 644 $PKG/usr/doc/ipfwadm-2.3.0/*
+chown root.root $PKG/usr/doc/ipfwadm-2.3.0/*
+make
+strip ipfwadm
+cat ipfwadm > $PKG/sbin/ipfwadm-2.3.0
+cat ipfwadm.8 | gzip -9c > $PKG/usr/man/man8/ipfwadm.8.gz
+cat ipfw.4 | gzip -9c > $PKG/usr/man/man4/ipfw.4.gz
+
+echo "+=======================+"
+echo "| ipchains-1.3.8.tar.gz |"
+echo "+=======================+"
+cd $TMP
+tar xzvf $CWD/ipchains-1.3.8.tar.gz
+cd ipchains-1.3.8
+make
+strip ipchains
+cat ipchains > $PKG/sbin/ipchains
+cat ipchains.8 | gzip -9c > $PKG/usr/man/man8/ipchains.8.gz
+cat ipfw.4 | gzip -9c > $PKG/usr/man/man4/ipfw.4.gz
+mkdir -p $PKG/usr/doc/ipchains-1.3.8
+cp -a COPYING HOWTO.txt README $PKG/usr/doc/ipchains-1.3.8
+chmod 644 $PKG/usr/doc/ipchains-1.3.8/*
+chown root.root $PKG/usr/doc/ipchains-1.3.8/*
+
+echo "+===============================+"
+echo "| ipchains-scripts-1.1.1.tar.gz |"
+echo "+===============================+"
+cd $TMP
+tar xzvf $CWD/ipchains-scripts-1.1.1.tar.gz
+cd ipchains-scripts-1.1.1
+zcat $CWD/ipchains-scripts-1.1.1.diff.gz | patch
+for file in ipchains-restore ipchains-save ipfwadm-wrapper ; do
+  cat $file > $PKG/sbin/$file
+  chmod 755 $PKG/sbin/$file
+  chown root.bin $PKG/sbin/$file
+  cat $file.8 | gzip -9c > $PKG/usr/man/man8/$file.8.gz
+done
+
+echo "+========================+"
+echo "| ipmasqadm-0.4.2.tar.gz |"
+echo "+========================+"
+cd $TMP
+tar xzvf $CWD/ipmasqadm-0.4.2.tar.gz
+cd ipmasqadm-0.4.2
+make KSRC=/usr/src/linux
+cp modules/*.so $PKG/usr/lib/ipmasqadm
+strip ipmasqadm/ipmasqadm
+cat ipmasqadm/ipmasqadm > $PKG/usr/sbin/ipmasqadm
+cat man/ipmasqadm.8 | gzip -9c > $PKG/usr/man/man8/ipmasqadm.8.gz
+
+echo "+==============+"
+echo "| yp-tools-2.2 |"
+echo "+==============+"
+cd $TMP
+# Make sure we have a working etc/nsswitch.conf:
+zcat $CWD/nsswitch.conf.gz > $PKG/etc-incoming/nsswitch.conf
+tar xzvf $CWD/yp-tools-2.2.tar.gz
+cd yp-tools-2.2
+mkdir -p $PKG/usr/doc/yp-tools-2.2
+cp -a ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS TODO \
+  $PKG/usr/doc/yp-tools-2.2
+chown root.root $PKG/usr/doc/yp-tools-2.2/*
+chmod 644 $PKG/usr/doc/yp-tools-2.2/*
+./configure --prefix=/usr --disable-domainname
+make CFLAGS=-O2
+cat etc/nicknames > $PKG/var/yp/nicknames
+cat po/de.gmo > $PKG/usr/share/locale/de/LC_MESSAGES/yp-tools.mo
+cd src
+strip ypcat ypmatch yppasswd yppoll ypset ypwhich
+cat ypcat > $PKG/usr/bin/ypcat
+cat ypmatch > $PKG/usr/bin/ypmatch
+cat yppasswd > $PKG/usr/bin/yppasswd
+cat ypwhich > $PKG/usr/bin/ypwhich
+cat yppoll > $PKG/usr/sbin/yppoll
+cat ypset > $PKG/usr/sbin/ypset
+cd ../man
+cat nicknames.5 | gzip -9c > $PKG/usr/man/man5/nicknames.5.gz
+for file in *.1 ; do
+  cat $file | gzip -9c > $PKG/usr/man/man1/$file.gz
+done
+for file in *.8 ; do
+  cat $file | gzip -9c > $PKG/usr/man/man8/$file.gz
+done
+
+echo "+============+"
+echo "| ypbind-3.3 |"
+echo "+============+"
+cd $TMP
+tar xzvf $CWD/ypbind-3.3.tar.gz
+cd ypbind-3.3
+./configure
+make
+mkdir -p $PKG/usr/doc/ypbind-3.3
+cp -a COPYING INSTALL README TODO yp.conf.example $PKG/usr/doc/ypbind-3.3
+chown root.root $PKG/usr/doc/ypbind-3.3/*
+chmod 644 $PKG/usr/doc/ypbind-3.3/*
+cat ypbind > $PKG/usr/sbin/ypbind
+cat ypbind.8 | gzip -9c > $PKG/usr/man/man8/ypbind.8.gz
+
+echo "+==============+"
+echo "| ypserv-1.3.6 |"
+echo "+==============+"
+cd $TMP
+tar xzvf $CWD/ypserv-1.3.6.tar.gz
+cd ypserv-1.3.6
+mkdir -p $PKG/usr/doc/ypserv-1.3.6
+cp -a BUGS COPYING ChangeLog INSTALL NEWS README README.secure \
+    TODO $PKG/usr/doc/ypserv-1.3.6
+chmod 644 $PKG/usr/doc/ypserv-1.3.6/*
+chown root.root $PKG/usr/doc/ypserv-1.3.6/*
+./configure
+make
+mkdir -p $PKG/usr/include/rpcsvc
+cp -a ypxfrd.x $PKG/usr/include/rpcsvc
+chown root.root $PKG/usr/include/rpcsvc/ypxfrd.x
+chmod 644 $PKG/usr/include/rpcsvc/ypxfrd.x
+strip makedbm mknetid revnetgroup ypxfr ypserv rpc.ypxfrd yppush rpc.yppasswdd
+for file in makedbm mknetid pwupdate revnetgroup ypinit ypxfr \
+  ypxfr_1perday ypxfr_1perhour ypxfr_2perday ; do
+  cat $file > $PKG/usr/lib/yp/$file
+done
+for file in ypserv rpc.yppasswdd rpc.ypxfrd yppush ; do
+  cat $file > $PKG/usr/sbin/$file
+done
+cat ypMakefile > $PKG/var/yp/Makefile
+cat etc/securenets > $PKG/var/yp/securenets
+echo "# This file is part of the YP server package -- see 'man netgroup'" \
+ > $PKG/etc-incoming/netgroup
+cat etc/netgroup >> $PKG/etc-incoming/netgroup
+for file in netgroup.5 ypserv.conf.5 ; do
+  gzip -9c $file > $PKG/usr/man/man5/$file.gz
+done
+for file in makedbm.8 mknetid.8 pwupdate.8 revnetgroup.8 \
+  rpc.yppasswdd.8 rpc.ypxfrd.8 ypinit.8 yppasswdd.8 yppush.8 \
+  ypserv.8 ypxfr.8 ypxfrd.8 ; do
+  gzip -9c $file > $PKG/usr/man/man8/$file.gz
+done
+
+echo "+==============+"
+echo "| telnetsnoopd |"
+echo "+==============+"
+cd $TMP
+mkdir telnetsnoopd
+cd telnetsnoopd
+tar xzvf $CWD/telnetsnoopd-fixed.tar.gz
+make
+strip telnetsnoopd/telnetd
+cat telnetsnoopd/telnetd > $PKG/usr/sbin/in.telnetsnoopd
+
+echo "+================+"
+echo "| ttysnoop-0.12c |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/ttysnoop-0.12c.tar.gz
+cd ttysnoop-0.12c
+zcat $CWD/ttysnoop-0.12c.diff.gz | patch
+mkdir -p $PKG/usr/doc/ttysnoop-0.12c
+cp -a README* $PKG/usr/doc/ttysnoop-0.12c
+chmod 644 $PKG/usr/doc/ttysnoop-0.12c/*
+chown root.root $PKG/usr/doc/ttysnoop-0.12c/*
+make
+strip ttysnoop ttysnoops
+cat ttysnoops > $PKG/bin/ttysnoops
+cat ttysnoop > $PKG/usr/sbin/ttysnoop
+cat ttysnoop.8 | gzip -9c > $PKG/usr/man/man8/ttysnoop.8.gz
+
+echo "+===============+"
+echo "| nntp-1.5.12.1 |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/nntp-1.5.12.1.tar.gz
+cd nntp-1.5.12.1
+zcat $CWD/nntp-1.5.12.1.diff.gz | patch
+cp conf.h.dist conf.h
+make server
+cd server
+strip nntpd
+cat nntpd > $PKG/usr/sbin/in.nntpd
+cat ../doc/nntpd.8c | gzip -9c > $PKG/usr/man/man8/in.nntpd.8.gz
+
+echo "+=============+"
+echo "| ncftp-2.4.3 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/ncftp-2.4.3.tar.gz
+cd ncftp-2.4.3
+zcat $CWD/ncftp-2.4.3.diff.gz | patch
+./configure --prefix=/usr --enable-readline
+make CFLAGS=-O2 LDFLAGS=-s
+strip ncftp
+cat ncftp > $PKG/usr/bin/ncftp
+cat ncftp.1 | gzip -9c > $PKG/usr/man/man1/ncftp.1.gz
+
+echo "+=============+"
+echo "| ytalk-3.0.2 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/ytalk-3.0.2.tar.gz
+cd ytalk-3.0.2
+make
+strip ytalk
+cat ytalk > $PKG/usr/bin/ytalk
+cat ytalk.1 | gzip -9c > $PKG/usr/man/man1/ytalk.1.gz
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/tcpip2.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+ for dir in bootp-DD2.4.3 fetchmail-4.4.1 ipfwadm-2.3.0 \
+  dhcpcd-1.3.17-pl5 \
+  ipchains-1.3.8.tar.gz ipchains-scripts-1.1.1 \
+  ncftp-2.4.3 nntp-1.5.12.1 package-tcpip2 slattach-1.2.0 \
+  sliplogin-2.1.0 telnetsnoopd ttysnoop-0.12c \
+  ypserv-1.3.6 yp-tools-2.2 ypbind-3.3 \
+  ytalk-3.0.2 netwatch dhcp-2.0b1pl18 ipmasqadm-0.4.2 ; do
+  rm -rf $TMP/$dir
+ done
+ rm -rf $PKG
+fi

@@ -1,0 +1,20 @@
+Begin3
+Title:			Backnet
+Version:		0.2
+Entered-date:	01 Feb 1996
+Description:	C++-class library for simulating neural networks, 
+				currently Backpropagation- and Autoassociator-Paradigms are 
+				supported. Support for distributed application is worked on, 
+				support for parallel architectures as well.
+Keywords:		neural network, pattern recognition, networking, parallel,
+				library
+Author: 		mme@pub.th-zwickau.de (Marko Meyer)
+				rsc@pub.th-zwickau.de (Ralf Schmidt)
+Maintained-by:	mme@pub.th-zwickau.de (Marko Meyer)
+Primary-site:	linux2.hrz.th-zwickau.de /informatik/neuro/backnet-0.2.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/apps/devel/c++/backnet-0.2.tar.gz
+Original-site:	
+Platforms:		Linux, but should work with UNIXes as well. 
+				(Although this is not tested too much :-)
+Copying-policy:	LGPL
+End

@@ -1,0 +1,14 @@
+if [ -f usr/include/pthread.h -a ! -f usr/include/pthread.h.libc5 ]; then
+  mv usr/include/pthread.h usr/include/pthread.h.libc5
+fi
+if [ -f usr/include/sched.h -a ! -f usr/include/sched.h.libc5 ]; then
+  mv usr/include/sched.h usr/include/sched.h.libc5
+fi
+# Leave copies:
+( cd usr/include ; cp -a pthread.h.lthreads pthread.h )
+( cd usr/include ; cp -a sched.h.lthreads sched.h )
+( cd lib ; rm -rf libpthread.so.0 )
+( cd lib ; ln -sf libpthread.so.0.7 libpthread.so.0 )
+( cd lib ; rm -rf libpthread.so )
+( cd lib ; ln -sf libpthread.so.0 libpthread.so )
+

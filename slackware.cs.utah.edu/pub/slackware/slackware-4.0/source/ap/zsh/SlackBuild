@@ -1,0 +1,64 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-zsh
+SRC=/devel/manpagesrc
+INFO=$PKG/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_zsh.tar.gz
+
+echo "+===========+"
+echo "| zsh-3.0.5 |"
+echo "+===========+"
+cd $TMP
+tar xzvf $CWD/zsh-3.0.5.tar.gz
+cd zsh-3.0.5
+configure --prefix=/usr
+make
+strip Src/zsh
+cat Src/zsh > $PKG/bin/zsh
+cd Doc
+for file in zsh*.1 ; do
+  gzip -9c $file > $PKG/usr/man/man1/$file.gz
+done
+mkdir -p $INFO
+for file in zsh.info* ; do
+  gzip -9c $file > $INFO/$file.gz
+done
+cd ../Etc
+mkdir -p $PKG/usr/doc/zsh-3.0.5
+cp -a * $PKG/usr/doc/zsh-3.0.5
+rm -f $PKG/usr/doc/zsh-3.0.5/Makefile*
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/zsh.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/zsh-3.0.5
+  rm -rf $PKG
+fi

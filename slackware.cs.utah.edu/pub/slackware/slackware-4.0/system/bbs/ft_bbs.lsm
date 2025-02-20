@@ -1,0 +1,21 @@
+Begin3
+Title:          ft_bbs
+Version:        1.4.1
+Entered-date:   26/04/98
+Description:    'ft_bbs' (File-Transfer-BBS) is a program for UNIX to offer
+	        files for downloading (and uploading) by modems (ttys) in an
+		easy and secure manner in addition with some BBS features.
+		Main operations:
+		listing and changing directories, reading, down- and
+		uploading files, online talk, reading/sending mail and netnews.
+		It wants 'sz', 'rz' and 'kermit' to work.
+Keywords:       BBS filetransfer reading/sending mail/netnews.
+Author:         eilts@tor.muc.de (Hinrich Eilts)
+Maintained-by:  eilts@tor.muc.de (Hinrich Eilts)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/bbs
+		130 kB ft_bbs-1.4.1.tar.gz
+Alternate-site: -
+Original-site:  -
+Platform:       
+Copying-policy: GPL
+End

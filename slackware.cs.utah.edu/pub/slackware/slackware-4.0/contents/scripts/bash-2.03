@@ -1,0 +1,9 @@
+if [ -r bin/bash2 ]; then
+ mv bin/bash2 bin/bash2.old
+fi
+mv bin/bash2.new bin/bash2
+if fgrep bash2 etc/shells 1> /dev/null 2> /dev/null ; then
+ GOOD=true
+else
+ echo "/bin/bash2" >> etc/shells
+fi

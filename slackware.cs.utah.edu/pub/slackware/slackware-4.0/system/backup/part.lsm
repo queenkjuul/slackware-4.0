@@ -1,0 +1,16 @@
+Begin3
+Title:          part
+Version:        1.0.2
+Entered-date:   07SNov96
+Description:    Utility for backup on 3-1/2-Inch Floppies
+		Splits a large file into 1.44MB pieces with desired filename
+		+ self created Suffix
+Keywords:       split	backup	part
+Author:         Jens.Nie@physik.uni-osnabrueck.de <Jens Nie>
+Maintained-by:  Jens.Nie@physik.uni-osnabrueck.de
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Backup/ 
+Alternate-site: 
+Original-site:  
+Platform:       LINUX 
+Copying-policy: GPL
+End

@@ -1,0 +1,78 @@
+#!/bin/sh
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+add() {
+  for package in $* ; do
+    echo "$package: ADD" >> $TMP/SeTnewtag
+  done
+}
+skip() {
+  for package in $* ; do
+    echo "$package: SKP" >> $TMP/SeTnewtag
+  done
+}
+#item   ####description                                      ###on off ###
+cat /dev/null > $TMP/SeTnewtag
+dialog --title "SELECTING SOFTWARE FROM SERIES AP (APPLICATIONS)" \
+       --checklist "Please select the system components you wish to install \
+from series AP. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the items you wish to install. Recommended items have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 22 70 11 \
+"apsfilt" "APSfilter - very useful printer utility" "on" \
+"ispell" "The International version of ispell" "off" \
+"jove" "Jonathan's Own Version of Emacs text editor" "off" \
+"manpages" "man pages (online docs -- requires groff)" "on" \
+"groff" "GNU troff document formatting system" "on" \
+"diff" "GNU diffutils" "on" \
+"sudo" "Allow special users limited root access" "off" \
+"ghostscr" "GNU Ghostscript version 5.10" "on" \
+"enscript" "A text to PostScript utility" "off" \
+"jed" "JED programmer's editor" "on" \
+"joe" "joe text editor, version 2.8" "on" \
+"jpeg6" "JPEG image compression utilities" "on" \
+"bc" "GNU bc - arbitrary precision math language" "off" \
+"cdutils" "CD-R mastering/burning tools" "off" \
+"workbone" "a text-based audio CD player" "on" \
+"mc" "The Midnight Commander file manager" "on" \
+"md" "MD (RAID) utilities" "on" \
+"mt_st" "mt ported from BSD - controls tape drive" "on" \
+"quota" "User disk quota utilities" "off" \
+"sc" "The 'sc' spreadsheet" "off" \
+"seejpeg" "An SVGAlib image viewer" "on" \
+"sox" "Sound utilities" "on" \
+"texinfo" "GNU texinfo documentation system" "on" \
+"vim" "Improved vi clone" "on" \
+"ash" "A small /bin/sh type shell - 62K" "off" \
+"zsh" "Zsh - a custom *nix shell" "on" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ > $TMP/SeTnewtag
+ for pkg in ash bc diff ghostscr gsfonts joe mt_st quota sudo groff ispell \
+  jpeg6 workbone jove jed manpages mc sc texinfo vim zsh sox seejpeg \
+  md cdutils enscript apsfilt ; do
+  echo "$pkg: SKP" >> $TMP/SeTnewtag
+ done
+ exit
+fi
+cat /dev/null > $TMP/SeTnewtag
+if fgrep \"ghostscr\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  add ghostscr gsfonts
+else
+  skip ghostscr gsfonts
+fi
+for PACKAGE in ispell jove manpages bc \
+groff sc workbone joe md seejpeg cdutils enscript apsfilt \
+quota mc jpeg6 ash jed mt_st texinfo vim sudo diff zsh sox ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+rm -f $TMP/SeTpkgs

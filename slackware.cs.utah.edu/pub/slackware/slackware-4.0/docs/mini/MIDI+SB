@@ -1,0 +1,62 @@
+
+MIDI Keyboard on Sound Blaster HOWTO 1.0
+
+1. Copyright
+2. Introduction
+3. Requirements
+4. Adding supports of your kernel
+5. Installing software
+
+1. Copyright
+This document is written by Hideki Saito.  Reposting is
+allowed, but please do not modify this.  Please ask before
+publishing this document.
+
+You can contact me via E-mail at hideki@eskimo.com
+
+2. Introduction
+Some people may wonder how to use a MIDI keyboard with Sound Blaster.  
+Actually, this is not as easy as just connecting the MIDI keyboard to a 
+15-pin MIDI in-out port (the Sound Blaster MIDI in-out port often works 
+as a joystick port.)
+
+3. Requirements
+Of course you need a MIDI keyboard.  Please take a little time to check 
+to see if you have a MIDI in-out port on the back of your sound card.  If 
+you see a port that has 15 little holes, you have a MIDI in-out port. 
+Some of the Sound Blaster clones may not have a MIDI in-out port.  In
+This case, you may want to consider buying a new sound card, or MIDI 
+interface card.  You can adopt things in this document if the MIDI 
+interface card that you are planning to buy, other-wise this document 
+will not help, since it is out of your range.  You will need am 
+SB-to-MIDI cable (this will cost about $15-$40, depending on length, and  
+quality of the cable).  Remember to connect one end of the MIDI out cable 
+into the MIDI-in port on your MIDI keyboard, and other end of the MIDI-in 
+cable into the MIDI out port on your MIDI keyboard.  Connect other side 
+of keyboard into the 15-pin MIDI in-out board on your sound card.  After 
+that, you need to check if your joystick/MIDI is enabled, other-wise this 
+will not work.  There are two types of sound cards.  If your sound card 
+uses hardware configuration, you need to open your computer and change 
+the switchs (this maybe jumpers) to enable.  If you have a sound card 
+that is software configurable, you can run a program to change it.  You 
+might need to boot DOS if your configure program is on DOS.
+
+4. Adding supports of your kernel
+Of course your kernel must support sounds.  Have your sound card manual 
+and check each configuration.  Then run a kernel configuring program. You 
+need Sound Blaster support (this varies, but most Sound Blaster clones 
+will work fine with this setting).  According to my settings, you need to add
+MPU-401 support, and MIDI interface support in addition. Make sure 
+addresses are correct, otherwise there will be conflicts.  Read your 
+manual and check each base address,IRQ (on many sound cards, the default is 330, IRQ 7).  Make
+sure that you set so both two MPU-401 I/O correctly (those numbers must 
+be same).  Menu configuration of the kernel would help this.  After you 
+configured them, you need to rebuild the kernel and image.
+
+5. Installing software
+After this, you can install your favorite MIDI sequencing programs.  I 
+will not discuss them in here.  If you have no ideas, use the program 
+JAZZ!, which is an excellent MIDI sequencing program.  You can find it at 
+SunSite and a lot of other sites.  Also installing PlayMidi is 
+recommended. After all, everything should work fine.
+

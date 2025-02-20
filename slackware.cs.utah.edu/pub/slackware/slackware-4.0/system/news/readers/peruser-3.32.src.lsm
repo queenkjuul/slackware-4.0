@@ -1,0 +1,16 @@
+Begin3
+Title:          News Peruser, an offline newsreader for Linux.
+Version:        3.32
+Entered-date:   22OCT98
+Description:    News Peruser is a simple, X-based, offline newsreader
+                for single-user Linux systems with dial-up access to
+                the internet. Features include header retrieval, true
+                threading by references, support for en/decoding binary
+                attachments, an integrated image viewer, and regular 
+                expression filtering.
+Keywords:       news newsreader offline peruser Peruser 
+Author:         jbailie@wwdc.com (James Bailie)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/news/readers
+                     564397  peruser-3.32.src.tar.gz
+Copying-policy: GPL
+End

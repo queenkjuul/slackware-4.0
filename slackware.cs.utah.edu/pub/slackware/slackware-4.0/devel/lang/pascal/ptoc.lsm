@@ -1,0 +1,16 @@
+Begin3
+Title: ptoc          
+Version: 3.34       
+Entered-date: 28AUG98   
+Description: ANSI/Borland Pascal to C/C++ converter together with
+Description: BGI graphics library emulation for X-Windows/Windows-NT/95.
+Keywords: converter turbo borland object pascal BGI  
+Author: konstantin.knizhnik@digital.com      
+Maintained-by: konstantin.knizhnik@digital.com          
+Primary-site: sunsite.unc.edu pub/Linux/devel/lang/pascal
+	      252 kB pub/Linux/devel/lang/pascal/ptoc_3.34.tar.gz
+Alternate-site: 
+Original-site: sunsite.unc.edu 
+Platforms: Linux, Digital Unix, Solaris, Windows-NT/95  
+Copying-policy: freeware
+End

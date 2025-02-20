@@ -1,0 +1,18 @@
+Begin3
+Title:          ALEC64, The ALE C64 Emulator
+Version:        1.13 (last version written)
+Entered-date:   01OCT96
+Description:    Commodore C64 Emulator for X Windowing System or Linux Console.
+		Provides complete emulation of the hardware and builtin machine
+		language monitor. Includes the full emulation of the 1541.
+		I maintain or write for this project no longer.
+Keywords:       Commodore CBM C64 emulation 6502 6510 SID VIC 1541
+Author:         Andreas Arens, Lutz Sammer and Edgar Törnig.
+Maintained-by:  Lutz Sammer <johns98@gmx.net>
+Primary-site:   ftp://metalab.unc.edu/pub/Linux/system/Emulators
+		alec64-1.13.tar.gz (445k)
+Alternate-site: ftp://ftp.funet.fi/pub/cbm/c64/emulation/alec
+Original-site:  http://user.exit.de/johns 
+Platforms:      Needs X11 or svgalib and the original Commodore ROM images.
+Copying-policy: Copyright protected, Freely redistributal.
+End

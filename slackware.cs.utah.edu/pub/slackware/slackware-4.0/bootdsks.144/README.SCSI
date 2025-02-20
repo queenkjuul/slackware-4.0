@@ -1,0 +1,11 @@
+
+If you need SCSI controller support during your installation, select one of
+the bootdisk images with a name ending in '.s'.
+
+NOTE:  Just because your machine has a SCSI controller in it doesn't
+necessarily mean that you need to install with a SCSI bootdisk!  If your
+Linux partition is on an IDE drive, and you're not installing from a SCSI
+CD-ROM drive, you should probably use an IDE bootdisk like "bare.i".  Once
+the installed machine is up and running, you can edit /etc/rc.d/rc.modules
+to load the kernel module to support your SCSI card.
+

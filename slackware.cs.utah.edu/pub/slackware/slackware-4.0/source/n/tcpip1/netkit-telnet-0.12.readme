@@ -1,0 +1,8 @@
+This is the src distribution for telnet patched, rehack, broken, fixed
+with more bugs than ever....
+Actually there are a number of good fixes in here for things like OPOST
+and additionally you'll find the behaviour of telnetd to have been changed
+observe your ps aux listings
+
+Phil
+=--=

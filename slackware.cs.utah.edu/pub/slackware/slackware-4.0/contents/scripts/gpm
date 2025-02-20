@@ -1,0 +1,4 @@
+( cd usr/lib ; rm -rf libgpm.so.1 )
+( cd usr/lib ; ln -sf libgpm.so.1.14 libgpm.so.1 )
+( cd usr/lib ; rm -rf libgpm.so )
+( cd usr/lib ; ln -sf libgpm.so.1 libgpm.so )

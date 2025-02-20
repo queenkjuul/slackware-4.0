@@ -1,0 +1,17 @@
+Begin3
+Title:          sirc, a perl IRC client
+Version:        2.2
+Entered-date:   12JUN97
+Description:    a small IRC client programmed and programmable in perl
+		with an interface close to ircII's and most of its
+		features in one form or another.
+Keywords:       IRC, perl
+Author:         Roger Espel Llima <espel@pobox.com>
+Maintained-by:  Roger Espel Llima <espel@pobox.com>
+Primary-site:   ftp://esane.eboai.org/pub/orabidoo/sirc/
+Alternate-site: http://www.pobox.com/~espel/sirc/
+		ftp://monarch.mcs.csuhayward.edu/pub/u/espel/sirc/
+Original-site:  
+Platforms:      Unix, Linux
+Copying-policy: GPL
+End

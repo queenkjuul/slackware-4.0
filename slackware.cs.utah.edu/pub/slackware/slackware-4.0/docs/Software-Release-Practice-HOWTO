@@ -1,0 +1,528 @@
+  Software Release Practice HOWTO
+  Eric S. Raymond <esr@thyrsus.com>
+  1.0, 21 November 1998
+
+  This HOWTO describes good release practices for Linux open-source pro­
+  jects.  By following these practices, you will make it as easy as pos­
+  sible for users to build your code and use it, and for other develop­
+  ers to understand your code and cooperate with you to improve. This
+  document is a must-read for novice developers.  Experienced developers
+  should review it when they are about to release a new project.  It
+  will be revised periodically to reflect the evolution of good-practice
+  standards.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+     1.1 Why this document?
+     1.2 New versions of this document
+
+  2. Good project- and archive- naming practice
+
+     2.1 Use GNU-style names with a stem and major.minor.patch numbering.
+     2.2 Try hard to choose a name prefix that is unique and easy to type
+
+  3. Good development practice
+
+     3.1 Write either pure ANSI C or a portable scripting language
+     3.2 Follow good C portability practices
+     3.3 Use autoconf/automake/autoheader
+     3.4 Sanity-check your code before release
+
+  4. Good distribution-making practice
+
+     4.1 Make sure tarballs always unpack into a single new directory
+     4.2 Have a README
+     4.3 Respect and follow standard file naming practices
+
+  5. Good communication practice
+
+     5.1 Announce to c.o.l.a
+     5.2 Announce to a relevant topic newsgroup
+     5.3 Have a website
+     5.4 Host project mailing lists
+     5.5 Release to major archives
+     5.6 Provide RPMs
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+
+  1.1.  Why this document?
+
+  There is a large body of good-practice traditions for open-source code
+  that helps other people port, use, and cooperate with developing it.
+  Some of these conventions are traditional in the Unix world and
+  predate Linux; others have developed recently in response to
+  particular new tools and technologies such as the World Wide Web.
+
+  This document will help you learn good practice.  It is organized into
+  topic sections, each containing a series of checklist items.  Think of
+  these as a pre-flight checklist for your distribution.
+  1.2.  New versions of this document
+
+  This document will be posted monthly to the newsgroups
+  comp.os.linux.answers . The document is archived on a number of Linux
+  FTP sites, including sunsite.unc.edu in pub/Linux/docs/HOWTO.
+
+  You can also view the latest version of this HOWTO on the World Wide
+  Web via the URL  <http://sunsite.unc.edu/LDP/HOWTO/Software-Release-
+  Practice.html>.
+
+  Feel free to mail any questions or comments about this HOWTO to Eric
+  S. Raymond, esr@snark.thyrsus.com <mailto:esr@snark.thyrsus.com>.
+
+
+  2.  Good project- and archive- naming practice
+
+  As the load on maintainers of archives like Sunsite, the PSA site and
+  CPAN increases, there is an increasing trend for submissions to be
+  processed partly or wholly by programs (rather than entirely by a
+  human).
+
+  This makes it more important for project and archive-file names to fit
+  regular patterns that computer programs can parse and understand.
+
+
+  2.1.  Use GNU-style names with a stem and major.minor.patch numbering.
+
+  It's helpful to everybody if your archive files all have GNU-like
+  names -- all-lower-case alphanumeric stem prefix, followed by a dash,
+  followed by a version number, extension, and other suffixes.
+
+  Let's suppose you have a project you call `foobar' at version 1,
+  release 2, level 3.  If it's got just one archive part (presumably the
+  sources), here's what its names should look
+
+
+     foobar-1.2.3.tar.gz
+        The source archive
+
+
+     foobar.lsm
+        The LSM file (asuming you're submitting to Sunsite).
+
+
+  Please don't use these:
+
+
+     foobar123.tar.gz
+        This looks to many programs like an archive for a project
+        called`foobar123' with no version number.
+
+
+     foobar1.2.3.tar.gz
+        This looks to many programs like an archive for a project called
+        `foobar1' at version 2.3.
+
+
+     foobar-v1.2.3.tar.gz
+        Many programs think this goes with a project called `foobar-v1'.
+
+
+     foo_bar-1.2.3.tar.gz
+        The underscore is hard for people to speak, type, and remember
+
+
+
+     FooBar-1.2.3.tar.gz
+        Unless you like looking like a marketing weenie.  This is also
+        hard for people to speak, type, and remember.
+
+  If you have to differentiate between source and binary archives, or
+  between different kinds of binary, or express some kind of build
+  option in the file name, please treat that as a file extension to go
+  after the version number. That is, please do this:
+
+
+     foobar-1.2.3.src.tar.gz
+        sources
+
+
+     foobar-1.2.3.bin.tar.gz
+        binaries, type not specified
+
+
+     foobar-1.2.3.bin.ELF.tar.gz
+        ELF binaries
+
+
+     foobar-1.2.3.bin.ELF.static.tar.gz
+        ELF binaries statically linked
+
+
+     foobar-1.2.3.bin.SPARC.tar.gz
+        SPARC binaries
+
+  Please don't use names like `foobar-ELF-1.2.3.tar.gz', because
+  programs have a hard time telling type infixes (like `-ELF') fromn the
+  stem.
+
+  A good general form of name has these parts in order:
+
+
+  1. project prefix
+
+  2. dash
+
+  3. version number
+
+  4. dot
+
+  5. "src" or "bin" (optional)
+
+  6. dot or dash (dot preferred)
+
+  7. binary type and options (optional)
+
+  8. archiving and compression extensions
+
+
+  2.2.  Try hard to choose a name prefix that is unique and easy to type
+
+  The stem prefix should be common to all a project's files, and it
+  should be easy to read, type, and remember.  So please don't use
+  underscores.  And don't capitalize or BiCapitalize without extremely
+  good reason -- it messes up the natural human-eyeball search order and
+  looks like some marketing weenie trying to be clever.
+
+  It confuses people whe twon different projects have the same stem
+  name.  So try to check for collisions before your first release.  A
+  good place to check is the index file of Sunsite
+  <http://sunsite.unc.edu/pub/Linux>.
+
+  3.  Good development practice
+
+  Most of these are concerned with ensuring portability, not only across
+  Linuxes but to other Unixes as well.  Being portable to other Unixes
+  is not just a worthy form of professionalism and hackerly politeness,
+  it's valuable insurance against future changes in Linux itself.
+
+  Finally, other people will try to build your code on non-Linux
+  systems; portability minimizes the number of annoying perplexed email
+  messages you will get.
+
+
+  3.1.  Write either pure ANSI C or a portable scripting language
+
+  For portability and stability, you should write either in ANSI C or a
+  scripting language that is guaranteed portable because it has just one
+  cross-platform implementation.
+
+  Scripting languages that qualify include Python, Perl, Tcl, and Emacs
+  Lisp.  Plain old shell does not qualify; there are too many different
+  implementations with subtle idiosyncracies, and the shell environment
+  is subject to disruption by user customizations such as shell aliases.
+
+  Java holds promise as a portable language, but the Linux-available
+  implementations are still scratchy and poorly integrated with Linux.
+  Java is still a bleeding-edge choice, though one likely to become more
+  popular as it matures.
+
+
+  3.2.  Follow good C portability practices
+
+  If you are writing C, do feel free to use the full ANSI features --
+  including function prototypes, which will help you spot cross-module
+  inconsistancies.  The old-style K&R compilers are history.
+
+  On the other hand, do not assume that GCC-specific features such as
+  the `-pipe' option or nested functions are available.  These will come
+  around and bite you the second somebody ports to a non-Linux, non-GCC
+  system.
+
+
+  3.3.  Use autoconf/automake/autoheader
+
+  If you're writing C, use autoconf/automake/autoheader to handle
+  portability issues, do system-configuration probes, and tailor your
+  makefiles.  People building from sources today expect to be able to
+  type "configure; make" and get a clean build -- and rightly so.
+
+
+  3.4.  Sanity-check your code before release
+
+  If you're writing C, test-compile with -Wall and clean up the errors
+  at least once before each release.  This catches a surprising number
+  of errors.  For real thoroughness, compile with -pedantic as well.
+
+  If you're writing Perl, check your code with perl -c, perl -w, and
+  perl -T before each release (see the Perl documentation for
+  discussion).
+
+
+  4.  Good distribution-making practice
+
+  These guidelines describe how your distribution should look when
+  someone downloads, retrieves and unpacks it.
+
+
+  4.1.  Make sure tarballs always unpack into a single new directory
+
+  The single most annoying mistake newbie developers make is to build
+  tarballs that unpack the files and directories in the distribution
+  into the current directory, potentially stepping on files already
+  located there.  Never do this!
+
+  Instead, make sure your archive files all have a common directory part
+  named after the project, so they will unpack into a single top-level
+  directory directly beneath the current one.
+
+  Here's a makefile trick that, assuming your distribution directory is
+  named `foobar' and SRC contains a list of your distribution files,
+  accomplishes this.  It requires GNU tar 1.13
+
+
+  VERS=1.0
+  foobar-$(VERS).tar.gz:
+          tar --name-prefix='foobar-$(VERS)/' -czf foobar-$(VERS).tar.gz $(SRC)
+
+
+
+  If you have an older tar program, do something like this:
+
+
+  foobar-$(VERS).tar.gz:
+          @ls $(SRC) | sed s:^:foobar-$(VERS)/: >MANIFEST
+          @(cd ..; ln -s foobar foobar-$(VERS))
+          (cd ..; tar -czvf foobar/foobar-$(VERS).tar.gz `cat foobar/MANIFEST`)
+          @(cd ..; rm foobar-$(VERS))
+
+
+
+
+  4.2.  Have a README
+
+  Have a file called README or READ.ME that is a roadmap of your source
+  distribution.  By ancient convention, this is the first file intrepid
+  explorers will read after unpacking the source.
+
+  Good things to have in the README include:
+
+
+  ·  A brief description of the project.
+
+  ·  A pointer to the project website (if it has one)
+
+  ·  Notes on the developer's build environment and potential
+     portability problems.
+
+  ·  A roadmap describing important files and subdirectories.
+
+  ·  Either build/installation instructions or a pointer to a file
+     containing same (usually INSTALL).
+
+  ·  Either a maintainers/credits list or a pointer to a file containing
+     same (usually CREDITS).
+
+  ·  Either recent project news or a pointer to a file containing same
+     (usually NEWS).
+
+
+  4.3.  Respect and follow standard file naming practices
+
+  Before even looking at the README, your intrepid explorer will have
+  scanned the filenames in the top-level directory of your unpacked
+  distribution.  Those names can themselves convey information.  By
+  adhering to certain standard naming practices, you can give the
+  explorer valuable clues about what to look in next.
+
+  Here are some standard top-level file names and what they mean.  Not
+  every distribution needs all of these.
+
+
+     README or READ.ME
+        the roadmap file, to be read first
+
+
+     INSTALL
+        configuration, build, and installation instructions
+
+
+     CREDITS
+        list of project contributers
+
+
+     NEWS
+        recent project news
+
+
+     HISTORY
+        project history
+
+
+     COPYING
+        project license terms (GNU convention)
+
+
+     LICENSE
+        project license terms
+
+
+     MANIFEST
+        list of files in the distribution
+
+
+     FAQ
+        plain-text Frequently-Asked-Questions document for the project
+
+
+     TAGS
+        generated tag file for use by Emacs or vi
+
+  Note the overall convention that filenames with all-caps names are
+  human-readable metainformation about the package, rather than build
+  components.
+
+
+  5.  Good communication practice
+
+  Your software won't do the world much good if nobody but you knows it
+  exists.  Also, developing a visible presence for the project on the
+  Internet will assist you in recruiting users and co-developers.  Here
+  are the standard ways to do that.
+
+
+  5.1.  Announce to c.o.l.a
+
+  Announce new releases to comp.os.linux.announce
+  <news:comp.os.linux.announce>.  Besides being widely read itself, this
+  group is a major feeder for web-based what's-new sites like Freshmeat
+  <http://www.freshmeat.net>.
+  5.2.  Announce to a relevant topic newsgroup
+
+  Find USENET topics group directly relevant to your application, and
+  announce there as well.  Post only where the function of the code is
+  relevant, and exercise restraint.
+
+  If (for example) you are releasing program written in Perl that
+  queries IMAP servers, you should certainly post to comp.mail.imap.
+  But you should probably not post to comp.lang.perl unless the program
+  is also an instructive example of cutting-edge Perl techniques.
+
+  Your announcement should include the URL of a project website.
+
+
+  5.3.  Have a website
+
+  If you intend try to build any substantial user or developer community
+  around your project, it should have a website.  Standard things to
+  have on the website include:
+
+  ·  The project charter (why it exists, who the audience is, etc).
+
+  ·  Download links for the project sources.
+
+  ·  Instructions on how to join the project mailing list(s).
+
+  ·  A FAQ (Frequently Asked Questions) list.
+
+  ·  HTMLized versions of the project documentation
+
+  ·  Links to related and/or competing projects.
+
+  Some project sites even have URLs for anonymous access to the master
+  source tree.
+
+
+  5.4.  Host project mailing lists
+
+  It's standard practice to have a private development list through
+  which project collaborators can communicate and exchange patches.  You
+  may also want to have an announcements list for people who want to be
+  kept informed of the project's process
+
+
+  5.5.  Release to major archives
+
+  For the last several years, the Sunsite archive
+  <http://www.sunsite/unc.edu/pub/Linux/> has been the most important
+  interchange location for Linux software.
+
+  Other important locations include:
+
+
+  ·  the Python Software Activity <http://www.python.org> site (for
+     software written in Python).
+
+  ·  the CPAN <http://language.perl.com/CPAN>, the Comprehensive Perl
+     Archive Network, (for software written in Perl).
+
+
+  5.6.  Provide RPMs
+
+  The de-facto standard format for installable binary packages is that
+  used by the Red Hat Package manager, RPM.  It's featured in the most
+  popular Linux distribution, and supported by effectively all other
+  Linux distributions (except Debian a Slackware).
+  Accordingly, it's a good idea for your project site to provide
+  installable RPMs as well as source tarballs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

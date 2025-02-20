@@ -1,0 +1,43 @@
+Begin3
+Title:		apcupsd
+Version:	v3.5.8
+Entered-date:	Wed Apr 7 11:06:41 CDT 1999
+Description:	UPS power management under Linux for APCC Products.
+		BackUPS, BackUPS Pro, SmartUPS V/S, and SmartUPS(NET/RM)
+		success. MatrixUPS and ShareUPS testing stage.
+		SmartUPS V/S is untested, but should be okay.
+		It allows your computer/server to run during power problems
+		for a specified length of time or the life of the batteries
+		in your BackUPS, BackUPS Pro, SmartUPS v/s, or SmartUPS, and
+		then properly executes a controlled shutdown during an
+		extended power failure.
+		The following APC cables are supported fully:
+		940-0020B, 940-0024B, 940-0024C, 940-0095A, 940-0095C(maybe),
+		940-0023A(Last resort, please pick another.)
+		Successful tests on BackUPS 400/600, BackUPS Pro 420/650/1400,
+		SmartUPS v/s, and SmartUPS SU700RM/SU1250/SU1400RM w/ SMNP
+		PowerNET card. Current testing with ShareUPS/SU3000 Matrix.
+		EtherUPS or NetUPS is clean and works but needs slave
+		disconnect/reconnect polish.
+		APCaccess is the IPC management tool for "apcupsd".
+		APCaccess is used to manage slaves locally.
+Keywords:	power, ups, BackUPS, BackUPS Pro, SmartUPS V/S, SmartUPS,
+		MatrixUPS, PowerNET, ShareUPS, (EtherUPS or NetUPS) (C)
+Required:	Any UNIX O/S, possible.
+		Linux 2.0.X, gcc 2.7.2
+		Linux 2.0.33, gcc 2.7.2.3, [ libc6|libc.so.2.0.6|glibc2 ]
+Portablity:	Unlimited.
+Author:		Andre Hedrick <hedrick@astro.dyer.vanderbilt.edu>
+Maintained-by:	Andre Hedrick
+Linux Flavors:	Slackware 3.X, S.u.S.e 5.X, UNIFIX Linux 2.0,
+		RedHat [3|4|5].X, Debian 1.X.X
+Primary-site:	http://www.brisse.dk/site/apcupsd/
+Alternate-site:	metalab.unc.edu/pub/Linux/system/ups
+		apcupsd-3.5.8.src.tar.gz
+Copying-policy:	GPL2.
+Copyright:	Andre M. Hedrick <hedrick@astro.dyer.vanderbilt.edu>
+Platform:	Linux and other UNIXes
+Other:		S.u.S.e 5.0 distribution donated by S.u.S.e U.S.A.
+		ASA Computers, Inc. donated a BackUPS Pro 650 PnP
+		<http://www.asacomputers.com/> <kedar@asacomputers.com>
+End

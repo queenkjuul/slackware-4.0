@@ -1,0 +1,20 @@
+Begin3
+Title: 		FW CONFIG         
+Version:        7/1/98 Version 1.2	
+Entered-date:   20JUL98
+Description:    Linux application that is used for configuring a Linux 
+		firewall with ipfwadm. It's a GUI application (via netscape) 
+		that creates a shell script to be used as the firewall. It 
+		can then install the firewall, uninstall, check status, check 
+		current connections (IP Masquerade).
+Keywords:       Firewall / ipfwadm configuration utility.
+Author:         sparlin@openpro.org (Sonny Parlin)
+Maintained-by:  sparlin@openpro.org (Sonny Parlin)
+Primary-site:   www.openpro.org/fwconfig
+		33731 fwconfig-1.2.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, a kernel that supports firewalling/IP maaquerade/
+		Firewall logging.
+Copying-policy: GPL
+End

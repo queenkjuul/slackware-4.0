@@ -1,0 +1,34 @@
+Begin2
+Title        = renice program for linux
+Version      = 1.00
+Desc1        = An implementation of a SysVish renice command with the ability
+Desc2        = to renice pid's, pgrp's, and users
+Desc3        =
+Desc4        =
+Desc5        =
+Author       = Matthew Dillon
+AuthorEmail  = dillon@apollo.west.oic.com
+Maintainer   = dillon@apollo.west.oic.com
+MaintEmail   = dillon@apollo.west.oic.com
+Site1        = sunsite.unc.edu
+Path1        = /bin
+File1        = renice100.tgz
+FileSize1    =
+Required1    = libc-4.5.8 or better
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  = GNU Public License
+CopyPolicy2  =
+Keywords     = process renice priority nice
+Comment1     = Provided as is, but bug reports and reasonable enhancements
+Comment2     = welcome.
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = 23Feb94
+EnteredBy    = Matthew Dillon
+CheckedEmail = dillon@apollo.west.oic.com
+End

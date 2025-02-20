@@ -1,0 +1,16 @@
+Begin3
+Title:          c-archie
+Version:        1.4.1
+Entered-date:   8 apr 1995
+Description:    A working archie, fixes select() quirk ("Dirsend timeout")
+                Includes manpage, binary and patch to the original source.
+Keywords:       archie prospero
+Author:         bcn@isi.edu (Clifford Neuman)
+Maintained-by:  A.W.R.Hubert@ET.TUDelft.NL (bert hubert)
+Primary-site:   sunsite.unc.edu /pub/Linux/Incoming
+                24 kB archie-1.4.1.linux.tar.gz
+Alternate-site:
+Original-site:  archie.mcgill.ca /pub/archie-clients
+Platform:
+Copying-policy: copyrighted freeware
+End

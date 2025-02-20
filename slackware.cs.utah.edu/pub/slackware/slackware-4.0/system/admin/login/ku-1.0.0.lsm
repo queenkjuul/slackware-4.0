@@ -1,0 +1,15 @@
+Begin3
+Title:          ku
+Version:        1.0.0
+Entered-date:   31AUG98
+Description:    utility for maintaining shell logins, based on anything
+                from idle time, tty, user name, user group, user GID, if
+                they are telnetted in, and more.
+Keywords:       shell, admin, utmp, login
+Author:         Nathan Benson (size_t@hotmail.com)
+Maintained-by:  Nathan Benson (size_t@hotmail.com
+Primary-site:   sunsite.unc.edu/pub/Linux/system/admin/login
+		38kb ku-1.0.0.tar.gz
+Platforms:      Linux (tested 2.0.3x, possibly much earlier)
+Copying-policy: GNU Public License
+End

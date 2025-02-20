@@ -1,0 +1,20 @@
+Begin3
+Title:          SML/NJ
+Version:        107
+Entered-date:   23FEB95
+Description:    SML/NJ is an implementation of Standard ML by AT&T.
+		Version 107 is a development release (read: beta
+		version) for use by "brave souls" as they put it.
+		Unpack the .tar.gz file from / and sml will appear
+		in /usr/local/sml. (You'll need about 6 megs of disk
+		space.)
+		I got the sources from src.doc.ic.ac.uk in
+		/computing/programing/languages/ml/sml/working.
+		There's also some documentation there, but not much.
+Keywords:       languages interpreters standard ML
+Author:         AT&T (no single email address given)
+Maintained-by:  mr216@gre.ac.uk (Russell Marks) [this binary package only]
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/ml
+		1338602 smlnj107.tar.gz
+Copying-policy: Free but copyright
+End

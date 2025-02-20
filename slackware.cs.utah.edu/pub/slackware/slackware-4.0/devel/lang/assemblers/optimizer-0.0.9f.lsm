@@ -1,0 +1,17 @@
+Begin3
+Title:          optimizer 
+Version:        0.0.9f
+Entered-date:   09 February 97 
+Description:   	Optimizes "as" assembler files produced by gcc/g++
+		with Pentium/PentiumMMX/Pentium Pro or Pentium II 
+		instructions using "as" or "nasm".
+Keywords:       optimizer, gcc, as, nasm, compiler    
+Author:         jews@imada.ou.dk (Jesper Pedersen)
+Maintained-by:  jews@imada.ou.dk (Jesper Pedersen)
+Primary-site:  	http://www.imada.ou.dk/~jews/optimizer/
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/assemblers/
+		44 kB optimizer-0.0.9d.tar.gz 
+Platforms:      Linux x86, Solaris x86
+Copying-policy: GPL
+End
+

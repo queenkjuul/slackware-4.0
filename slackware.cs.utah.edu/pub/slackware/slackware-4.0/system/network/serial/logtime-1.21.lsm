@@ -1,0 +1,28 @@
+Begin3
+Title:          LOGTIME
+Version:        1.21
+Entered-date:   5OCT96
+Description:    LOGTIME allows users to keep track of the amount of
+		time and charges accumulated when logged into an
+		Internet Service Provider via SLIP/PPP. It is able to
+		differentiate between peak and non-peak hours if required.
+		LOGTIME also allows users to maintain one set of
+		log files for connections made in Linux and in Windows.
+		Both Linux (ELF and a.out) and Windows versions binaries,
+		along with the complete online manuals, are included.
+		Sources are not included.
+Keywords:       logtime, usage log, PPP, SLIP, connection charges,
+		clock time, usage time, usage charges
+Author:         ChristopherHeng@pobox.org.sg (Christopher S L Heng)
+		cyfheng@singnet.com.sg (Christopher S L Heng)
+		http://www.singnet.com.sg/~cyfheng/
+Maintained-by:
+Primary-site:	ftp.simtel.net /pub/simtelnet/win3/telecomm/
+		lt121.zip
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Serial/
+		logtime-1.21.tar.gz
+Original-site:
+Platforms:      Linux and Windows 3.1 (and above)
+Copying-policy: Freeware
+End
+

@@ -1,0 +1,16 @@
+Begin3
+Title:          Wheel of Falken
+Version:        1.05
+Entered-date:   1/29/99 
+Description:    A Wheel of Fortune clone for Falken BBS
+Keywords:       games falken bbs door wheel of fortune
+Author:         Eric Kilfoil <eric@ipass.net>
+Maintained-by:  Eric Kilfoil <eric@ipass.net>
+Primary-site:   ftp.falkenbbs.com /pub/FalkenBBS/rds/wofalken 
+                wofalken-1.05.src.tar.gz
+                wofalken-1.05.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/bbs/falken
+Original-site:  
+Platforms:      Falken BBS for Linux, DOSEMU
+Copying-policy: GPL
+End

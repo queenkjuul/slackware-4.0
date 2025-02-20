@@ -1,0 +1,19 @@
+Begin3
+Title:          proxy routed daemon for Linux Systems
+Version:        0.90
+Entered-date:   September 10, 1996
+Description:    This is little daemon that make linux box ethernet 
+                proxy router. It is very easy and simple program.
+                This package include man and HOWTO documentation.
+Keywords:       proxy router, linux, ethernet, network, HOWTO, man
+Author:         delian@wfpa.acad.bg (Delian Delchev)
+Maintained-by:  delian@wfpa.acad.bg (Delian Delchev)
+Primary-site:   ftp.wfpa.acad.bg /private/delian/linux/proxyrouted
+			8 kb proxyrouted-0.90.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/Incoming
+			8 kb proxyrouted-0.90.tar.gz 
+Original-site:  ftp.wfpa.acad.bg /private/delian/linux/proxyrouted
+			8 kb proxyrouted-0.90.tar.gz
+Platform:       Linux
+Copying-policy: Freeware
+End

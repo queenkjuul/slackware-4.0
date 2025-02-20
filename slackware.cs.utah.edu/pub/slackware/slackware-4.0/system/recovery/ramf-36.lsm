@@ -1,0 +1,51 @@
+Begin3
+Title:           RamFloppy
+Version:         3.6
+Entered-date:    04MAY99 
+Description:     Small ram linux system for the purpose of system booting
+                 or repairing, a boot-rescue system.     
+                 You can put this system on a 1.44 floppy disk and use 
+		 it to mount other partitions.
+		 It has support for these filesystems.
+                 ext2    <Linux OS filesystem, read-write>
+                 iso9660 <Cdrom filesystem + joliet extensions, read-only>
+                 msdos   <Dos OS filesystem, read-write>
+                 ntfs    <Windows NT filesystem (read-write) this is 
+                          experimental so procede with caution>
+                 ufs     <FreeBSD, NetBSD, OpenBSD, Sun/Solaris, filesystems, 
+		          read-write>
+                 vfat    <Win95/98 OS filesystem fat16 and 32, read-write>
+		 The kernel is version: 2.2.7-ac1
+		 It's a Libc6 system.
+		 You need at least 8 megabytes of ram = memory to boot
+		 RamFloppy.
+		 You need at least a 386 cpu to boot RamFloppy.
+		 You can extract it like this: C:\ ramf-36.exe
+		 It's a rar archive, if you want to extract it on
+		 a linux system do this: unrar x ramf-36.exe
+		 Read: C:\ramflop\README     
+                 ramf-36.exe 1460Kb
+Keywords:        Small Floppy Boot-Rescue System
+Author:          krobot@erols.com (Kent Robotti) 
+Maintained-by:   
+Primary-site:    ftp://metalab.unc.edu/pub/Linux/system/recovery
+Alternate-site:  
+Platforms:       System with floppy drive 
+Copying-policy:  GPL
+End
+
+============================================================================
+P.S: This little system includes the program 'fsresize', you can use
+it to resize a fat16 or FAT32 DOS/WIN95/98 partition.
+
+For example if you had a WIN98 FAT32 system on /dev/hda1 you wanted
+to reduce in size to 500 megabytes.
+
+# fsresize /dev/hda1 500m
+
+There's more info on 'fsresize' etc. when you boot the little floppy 
+system.
+
+The only rescue system you'll ever need, but probably not the only one
+you'll ever want.
+============================================================================

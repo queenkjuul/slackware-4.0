@@ -1,0 +1,27 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+
+Begin3
+Title:          at
+Version:        2.9b
+Entered-date: Mon Oct 30 21:43:04 MET 1995
+Description:    At is an implementation of at(1) for running commands at
+		a specified time.  It features time specifications such as
+		at now + 10 minutes or at tomorrow 3:00 pm.
+Keywords:       cron at batch
+Author:         ig25@rz.uni-karlsruhe.de (Thomas Koenig)
+Primary-site:   sunsite.unc.edu	/pub/Linux/system/Daemons
+		at-2.9b.tgz 30763
+		MD5-Checksum: 88d795db648913282c0e7f2ddf2e7f15  at-2.9b.tgz
+		at-2.9b.lsm 
+Copying-policy: GPL
+End
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.6.2i
+
+iQCVAwUBMJU5TvBu+cbJcKCVAQFuygP+ITrMb6rdHG5KPmVwhy+hYaW4L4u6FRKB
+GFUhlQGKWh7N3YrHMiK0hOVM1QIoeVCNV048IbjzHGZMVr5FB++Y6y8Lzsub2gZU
+T3ZWUQ5Zt7VoX1Z31eP1XHFv50vUB7rjihG72oyHXqUOm/fO9EYSWM/rg2SPu9hy
+SrsuCu5M3hw=
+=qMZU
+-----END PGP SIGNATURE-----

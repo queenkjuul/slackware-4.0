@@ -1,0 +1,12 @@
+drwxr-xr-x root/root         0 1995-08-06 22:06 ./
+drwxr-xr-x root/root         0 1995-08-06 22:06 usr/
+drwxr-xr-x root/bin          0 1993-12-03 17:58 usr/bin/
+-rwxr-xr-x root/bin     127864 1998-10-19 22:48 usr/bin/sc
+-rwxr-xr-x root/bin      21972 1998-10-19 22:48 usr/bin/scqref
+-rwxr-xr-x root/bin       9634 1998-10-19 22:48 usr/bin/psc
+drwxr-xr-x root/root         0 1993-12-03 17:58 usr/lib/
+drwxr-xr-x root/root         0 1993-12-03 17:58 usr/lib/sc/
+-rw-r--r-- root/root      4523 1993-12-03 17:58 usr/lib/sc/tutorial.sc
+drwxr-xr-x root/root         0 1995-08-06 22:06 usr/man/
+drwxr-xr-x root/root         0 1998-10-19 22:48 usr/man/man1/
+-rw-r--r-- root/root     17969 1998-10-19 22:48 usr/man/man1/sc.1.gz

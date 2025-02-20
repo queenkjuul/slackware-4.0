@@ -1,0 +1,15 @@
+Begin3
+Title:		etftp
+Version:	1.1.3
+Entered-Date:	26MAR99
+Description:	etftp client and server program a la rfc-1986
+Keywords:	etftp, etftpd, rfc-1986
+Author:		Sweden's Defence Research Establishment
+Maintained-By:  chj@lin.foa.se (Christian Joensson FOA 72)
+Primary-Site:	sunsite.unc.edu /pub/Linux/system/network/file-transfer
+		75086 etftp-1.1.3.tar.gz
+Alternate-site:	ftp.foa.se /pub/Projects/FOA7/FOA72/Network/ETFTP
+		75086 etftp-1.1.3.tar.gz
+Platforms:	Solaris-2.x/SPARC, Linux-2.x/ix86, Linux-2.x/SPARC
+Copying-Policy: GPL
+End

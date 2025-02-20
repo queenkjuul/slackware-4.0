@@ -1,0 +1,16 @@
+Begin3
+Title:		PPP connection handling (script)
+Version:	0.1.2
+Entered-date:
+Description:	A small script to handle multiple PPP connection easily. It
+		uses the dialog utility and the chat program.
+Keywords:	ppp chat connect
+Author: 	orsoni@programmers.net (Piero Orsoni)
+Maintained-by:
+Primary-site:	sunsite.unc.edu pub/linux/system/Network/serial/ppp
+		pppconnhandle-0.1.2.tgz
+Alternate-site:
+Original-site:
+Platforms:	it works on linux but probably on other platforms too.
+Copying-policy: GPL 2.0
+End

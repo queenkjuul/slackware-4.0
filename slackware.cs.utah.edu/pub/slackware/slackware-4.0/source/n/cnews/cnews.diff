@@ -1,0 +1,15 @@
+--- SlackBuild.orig	Wed Jul 12 13:22:46 1995
++++ SlackBuild	Wed Jul 12 13:26:29 1995
+@@ -114,6 +114,12 @@
+ man2gz postnews.1 $PKG/usr/man/preformat/cat1/postnews.1.gz $SRC/usr/man/man1/postnews.1
+ man2gz relaynews.8 $PKG/usr/man/preformat/cat8/relaynews.8.gz $SRC/usr/man/man8/relaynews.8
+ man2gz rnews.8 $PKG/usr/man/preformat/cat8/rnews.8.gz $SRC/usr/man/man8/rnews.8
++cd ../conf
++make setnewsids
++strip setnewsids
++cp setnewsids $PKG/usr/lib/newsbin
++chown root.news $PKG/usr/lib/newsbin/setnewsids
++chmod 4711 $PKG/usr/lib/newsbin/setnewsids
+ 
+ # Build the package:
+ cd $PKG

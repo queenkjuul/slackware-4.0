@@ -1,0 +1,13 @@
+Begin3
+Title:          Lilo-colors 
+Version:        1.21.1 
+Entered-date:   4APR99 
+Description:    Patch to Lilo 21 for colorfull bootmessages
+Keywords:       Linux, boot loader, color, lilo, bootmessage
+Author: 	Ron Bessems <R.E.M.W.Bessems@stud.tue.nl>
+Maintained-by:	Ron Bessems <R.E.M.W.Bessems@stud.tue.nl>
+Primary-site:   http://www.stack.nl/~stilgar/lilo/
+Alternate-site: sunsite.unc.edu /pub/Linux/system/boot/lilo
+Platforms:      Linux 0.99pl12 or newer, gcc and as86 needed to compile.
+Copying-policy: GPL
+End

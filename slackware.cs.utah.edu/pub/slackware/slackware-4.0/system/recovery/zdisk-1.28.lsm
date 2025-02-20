@@ -1,0 +1,39 @@
+Begin3
+Title:           Zdisk
+Version:         1.28
+Entered-date:    04MAY99 
+Description:     The purpose of 'zdisk' is to have a kernel and a rescue 
+                 system on one floppy disk, there's a 'make zdisk' option 
+		 for the kernel that just copies the kernel to a floppy.
+                 Zdisk copies a kernel of your choice to a floppy and puts 
+		 a little rescue system on the same floppy, creating a 
+		 boot-rescue floppy.
+		 The kernel can't be more than 720 Kb in size.
+                 zdisk-1.28.tar.gz 1049Kb
+Keywords:        Create Boot-Rescue Floppy 
+Author:          krobot@erols.com (Kent Robotti) 
+Maintained-by:   
+Primary-site:    ftp://metalab.unc.edu/pub/Linux/system/recovery
+Alternate-site:  
+Platforms:       Linux system with floppy drive 
+Copying-policy:  GPL
+End
+
+============================================================================
+P.S: This little system includes the program 'fsresize', you can use
+it to resize a fat16 or FAT32 DOS/WIN95/98 partition.
+
+For example if you had a WIN98 FAT32 system on /dev/hda1 you wanted
+to reduce in size to 500 megabytes.
+
+# fsresize /dev/hda1 500m
+
+There's more info on 'fsresize' etc. when you boot the little floppy 
+system.
+
+There's also a step by step guide to how zdisk was created, included
+in the README.
+
+The only rescue system you'll ever need, but probably not the only one
+you'll ever want.
+============================================================================

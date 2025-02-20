@@ -1,0 +1,30 @@
+Begin2
+Title        = umstools.zip 
+Version      = 0.2 for Umsdos 0.2
+Desc1        = This is a package of UMSDOS related tools that run under Msdos
+Desc2        = It contain Msdos version of "ls" and "umsmanifest" that are
+Desc3        =  awarde of Umsdos File Systeme.
+Desc4        = These program fake their original under Linux.
+Desc5        = Distributed (source and binary) under zip info format.
+Author       = Glaude David [Glu]
+AuthorEmail  = dglaude@ulb.ac.be
+Maintainer   = Glaude David [Glu]
+MaintEmail   = dglaude@ulb.ac.be
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/ALPHA/umsdos/???
+File1        = umstools.zip
+FileSize1    = 60K
+Required1    = Umsdos 0.2 by Jacques Gelinas jacques@solucorp.qc.ca      :-)
+Required2    = Linux 0.99pl15 (or 1) by Linus.
+Required3    = Msdos (or compatible operating systeme)                   :-(
+CopyPolicy1  = GNU public license
+CopyPolicy2  = Since I am inspired by GNU lib and source.
+Keywords     = UMSDOS file system utilities for Msdos
+Comment1     = ls.exe is not yet full featured but have one bug less.
+Comment2     = manifest.exe seems to work well.
+RelFiles1    = ls.exe manifest.exe
+Entered      = 10AVR94
+EnteredBy    = Glaude David [Glu]
+CheckedEmail = dglaude@ulb.ac.be
+End
+

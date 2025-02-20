@@ -1,0 +1,26 @@
+Begin3
+Title:		Graphic Lisp 
+Version:	2.8.0
+Entered-date:	19 Oct 1996   
+Description:	Portable Common Lisp language written in ANSI-C.
+		For UNIX, LINUX, WINDOWS, MSDOS 
+		with graphic features for MSDOS & WINDOWS. Version: 2.8.0
+		Full source code and documentation for all function
+		included. Linux binary included.
+Keywords: 	lisp, language, ai, arificial intelligence, lambda
+Author: 	Andrea Michele Zoia
+		azoia@novanet.it
+Maintained-by: 	Andrea Michele Zoia
+		azoia@novanet.it
+Primary-site: 	sunsite.unc.edu /pub/Linux/devel/lang/lisp/glisp
+		337k glisp-2.8.0.tgz
+		  1k glisp-2.8.0.lsm
+Alternate-site:	tsx-11.mit.edu  /pub/Linux/ 
+		337k glisp-2.8.0.tgz
+		  1k glisp-2.8.0.lsm
+Original-site: 	sunsite.unc.edu /pub/Linux/devel/lang/lisp/glisp
+		337k glisp-2.8.0.tgz
+		  1k glisp-2.8.0.lsm
+Platform: 	MSDOS, WINDOWS, UNIX, LINUX 
+Copying-policy: GPL 
+End

@@ -1,0 +1,17 @@
+Begin3
+Title:		deluser+shadow
+Version:	1.1
+Entered-date:	March 22, 1997
+Description:	A simple utility which deletes users from a system, including 
+                exhisting home and maildirectories.  This also supports shadowed
+                passwd entries.
+Keywords:	user shadow admin delete  
+Author:		user987@pacbell.net (hf)
+Maintained-by:	user987@pacbell.net (hf)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/admin/accounts
+Alternate-site:	
+Original-site:	
+Platform:	Linux
+Copying-policy:	GPL
+End
+

@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf rtin )
+( cd usr/bin ; ln -sf tin rtin )
+( cd usr/lib/news ; rm -rf tinrc )
+( cd usr/lib/news ; ln -sf /etc/tin/tinrc tinrc )

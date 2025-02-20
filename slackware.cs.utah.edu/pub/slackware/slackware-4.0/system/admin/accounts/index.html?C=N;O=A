@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/admin/accounts</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/admin/accounts</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/admin/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">3.8K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:50  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:50  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:50  </td><td align="right">3.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ND-0a.lsm">ND-0a.lsm</a></td><td align="right">1998-04-08 04:49  </td><td align="right">508 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ND-0a.tgz">ND-0a.tgz</a></td><td align="right">1998-04-08 04:49  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ND-0b.lsm">ND-0b.lsm</a></td><td align="right">1998-04-08 04:54  </td><td align="right">508 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ND-0b.tgz">ND-0b.tgz</a></td><td align="right">1998-04-08 04:54  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:54  </td><td align="right"> 95 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="UserScripts.lsm">UserScripts.lsm</a></td><td align="right">1998-11-16 06:24  </td><td align="right">608 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="UserScripts.tar.gz">UserScripts.tar.gz</a></td><td align="right">1998-11-16 06:24  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acct-1.2.0.lsm">acct-1.2.0.lsm</a></td><td align="right">1995-07-24 07:00  </td><td align="right">741 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="acct-1.2.0.tar.gz">acct-1.2.0.tar.gz</a></td><td align="right">1995-07-24 07:00  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acct-1.3.73.lsm">acct-1.3.73.lsm</a></td><td align="right">1996-03-12 08:00  </td><td align="right">769 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="acct-1.3.73.tar.gz">acct-1.3.73.tar.gz</a></td><td align="right">1996-03-12 08:00  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="addbashv2.lsm">addbashv2.lsm</a></td><td align="right">1997-11-04 19:09  </td><td align="right">608 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="addbashv2.tar.gz">addbashv2.tar.gz</a></td><td align="right">1997-11-04 19:09  </td><td align="right">2.4K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="adduser-1.1-noshadow.tar.gz">adduser-1.1-noshadow.tar.gz</a></td><td align="right">1998-11-14 01:42  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="adduser-1.1.lsm">adduser-1.1.lsm</a></td><td align="right">1998-11-14 01:42  </td><td align="right">941 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="adduser-ncurses.lsm">adduser-ncurses.lsm</a></td><td align="right">1998-11-13 13:00  </td><td align="right">537 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="adduser-ncurses.tar.gz">adduser-ncurses.tar.gz</a></td><td align="right">1998-11-13 13:00  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="adduser-shadow-1.6.lsm">adduser-shadow-1.6.lsm</a></td><td align="right">1997-04-27 14:05  </td><td align="right">437 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="adduser-shadow-1.6.tar.gz">adduser-shadow-1.6.tar.gz</a></td><td align="right">1997-04-27 14:05  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="adduser.README">adduser.README</a></td><td align="right">1993-09-28 07:00  </td><td align="right">2.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="admin-shells-0.1.lsm">admin-shells-0.1.lsm</a></td><td align="right">1993-10-24 07:00  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="admin-shells-0.1.tar.gz">admin-shells-0.1.tar.gz</a></td><td align="right">1993-10-24 07:00  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="admin-v1.2.lsm">admin-v1.2.lsm</a></td><td align="right">1995-05-22 07:00  </td><td align="right">643 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="admin-v1.2.tgz">admin-v1.2.tgz</a></td><td align="right">1995-05-22 07:00  </td><td align="right">326K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="checkusers.1.0.lsm">checkusers.1.0.lsm</a></td><td align="right">1995-02-01 08:00  </td><td align="right">769 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="checkusers.1.0.tar.gz">checkusers.1.0.tar.gz</a></td><td align="right">1995-02-01 08:00  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="chpd-1.0.lsm">chpd-1.0.lsm</a></td><td align="right">1996-07-21 07:00  </td><td align="right">589 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="chpd-1.0.tar.gz">chpd-1.0.tar.gz</a></td><td align="right">1996-07-21 07:00  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="deluser+shadow-1.1.gz">deluser+shadow-1.1.gz</a></td><td align="right">1997-04-04 10:15  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="deluser+shadow-1.1.lsm">deluser+shadow-1.1.lsm</a></td><td align="right">1997-04-04 10:15  </td><td align="right">509 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kuser-0.8.0.tar.gz">kuser-0.8.0.tar.gz</a></td><td align="right">1999-02-13 05:15  </td><td align="right">100K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kuser.lsm">kuser.lsm</a></td><td align="right">1999-02-13 05:15  </td><td align="right">614 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="l2nis+-0.1.binary.tar.gz">l2nis+-0.1.binary.tar.gz</a></td><td align="right">1995-05-08 07:00  </td><td align="right">1.8M</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="l2nis+-0.1.patch.tar.gz">l2nis+-0.1.patch.tar.gz</a></td><td align="right">1995-05-08 07:00  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="l2nis+.lsm">l2nis+.lsm</a></td><td align="right">1995-05-08 07:00  </td><td align="right">650 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lsa-1.5b.TAR.gz">lsa-1.5b.TAR.gz</a></td><td align="right">1997-06-01 02:25  </td><td align="right">6.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lsa-1.5b.lsm">lsa-1.5b.lsm</a></td><td align="right">1997-06-01 02:25  </td><td align="right">436 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="metash-0.3.lsm">metash-0.3.lsm</a></td><td align="right">1997-11-30 22:47  </td><td align="right">744 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="metash-0.3.tar.gz">metash-0.3.tar.gz</a></td><td align="right">1997-11-30 22:47  </td><td align="right">3.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="newuser-1.0.lsm">newuser-1.0.lsm</a></td><td align="right">1998-03-07 04:12  </td><td align="right">542 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="newuser-1.0.tar.gz">newuser-1.0.tar.gz</a></td><td align="right">1998-03-07 04:11  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/script.gif" alt="[   ]"></td><td><a href="nls-lib.shar">nls-lib.shar</a></td><td align="right">1994-02-28 08:00  </td><td align="right"> 32K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="npasswd_boulder+l-bin.lsm">npasswd_boulder+l-bin.lsm</a></td><td align="right">1995-05-01 07:00  </td><td align="right">554 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="npasswd_boulder+l-bin.tar.gz">npasswd_boulder+l-bin.tar.gz</a></td><td align="right">1995-05-01 07:00  </td><td align="right">2.0M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="npasswd_boulder+l-src.lsm">npasswd_boulder+l-src.lsm</a></td><td align="right">1995-05-01 07:00  </td><td align="right">598 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="npasswd_boulder+l-src.tar.gz">npasswd_boulder+l-src.tar.gz</a></td><td align="right">1995-05-01 07:00  </td><td align="right">1.9M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nys-0.27.4.lsm">nys-0.27.4.lsm</a></td><td align="right">1995-05-08 07:00  </td><td align="right">447 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="nys-0.27.4.tar.gz">nys-0.27.4.tar.gz</a></td><td align="right">1995-05-08 07:00  </td><td align="right">212K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="shadaut-331df3.lsm">shadaut-331df3.lsm</a></td><td align="right">1995-07-12 07:00  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shadaut-331df3.tgz">shadaut-331df3.tgz</a></td><td align="right">1995-07-12 07:00  </td><td align="right"> 68K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="umaint10.lsm">umaint10.lsm</a></td><td align="right">1997-08-29 16:59  </td><td align="right">806 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="umaint10.tgz">umaint10.tgz</a></td><td align="right">1997-08-29 17:00  </td><td align="right">9.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="userstuff-1.1.lsm">userstuff-1.1.lsm</a></td><td align="right">1997-04-28 20:05  </td><td align="right">292 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="userstuff-1.1.tgz">userstuff-1.1.tgz</a></td><td align="right">1997-04-28 20:06  </td><td align="right">6.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="usrconfig-0.02.lsm">usrconfig-0.02.lsm</a></td><td align="right">1997-09-26 09:17  </td><td align="right">641 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="usrconfig-0.02.tar.gz">usrconfig-0.02.tar.gz</a></td><td align="right">1997-09-26 09:17  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="wwwadduser-0.1.tar.gz">wwwadduser-0.1.tar.gz</a></td><td align="right">1997-02-11 08:00  </td><td align="right">6.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="wwwadduser.lsm">wwwadduser.lsm</a></td><td align="right">1997-02-11 08:00  </td><td align="right">401 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xnew-0.4a.lsm">xnew-0.4a.lsm</a></td><td align="right">1998-03-03 11:27  </td><td align="right">758 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xnew-0.4a.tar.gz">xnew-0.4a.tar.gz</a></td><td align="right">1998-03-03 11:28  </td><td align="right"> 37K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xuser-1.00.lsm">xuser-1.00.lsm</a></td><td align="right">1995-09-14 07:00  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xuser-1.00.tar.gz">xuser-1.00.tar.gz</a></td><td align="right">1995-09-14 07:00  </td><td align="right">193K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xusermgr.lsm">xusermgr.lsm</a></td><td align="right">1995-09-02 07:00  </td><td align="right">645 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xusermgr1.0.tar.gz">xusermgr1.0.tar.gz</a></td><td align="right">1995-09-02 07:00  </td><td align="right">937K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xusermgr_xforms.1.0.tar.gz">xusermgr_xforms.1.0.tar.gz</a></td><td align="right">1995-09-10 07:00  </td><td align="right"> 98K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xusermgr_xforms.lsm">xusermgr_xforms.lsm</a></td><td align="right">1995-09-10 07:00  </td><td align="right">656 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ya-deluser-1.1.tgz">ya-deluser-1.1.tgz</a></td><td align="right">1997-08-21 01:44  </td><td align="right">2.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ya-deluser.lsm">ya-deluser.lsm</a></td><td align="right">1997-08-20 16:27  </td><td align="right">627 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

@@ -1,0 +1,13 @@
+TMP=/var/log/setup/tmp
+if [ -r var/X11R6/lib/xinit/xinitrc -a \
+     ! -L var/X11R6/lib/xinit/xinitrc ]; then
+#       echo "Moving your old xinitrc to /var/X11R6/lib/xinit/xinitrc.backup..."
+        mv var/X11R6/lib/xinit/xinitrc var/X11R6/lib/xinit/xinitrc.backup
+fi
+if [ ! -r $TMP/SeTcolor -a ! "$COLOR" = "on" ]; then
+ echo "  Installing FVWM as your default window manager (start with 'startx')"
+ echo "  --> cd /var/X11R6/lib/xinit"
+ echo "  --> ln -sf xinitrc.fvwm2 xinitrc"
+fi
+( cd var/X11R6/lib/xinit ; rm -rf xinitrc )
+( cd var/X11R6/lib/xinit ; ln -sf  xinitrc.fvwm2 xinitrc )

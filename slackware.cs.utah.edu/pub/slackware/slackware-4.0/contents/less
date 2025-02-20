@@ -1,0 +1,17 @@
+drwxr-xr-x root/root         0 1998-10-25 20:53 ./
+drwxr-xr-x root/root         0 1997-02-01 15:51 usr/
+drwxr-xr-x root/root         0 1994-10-05 22:41 usr/bin/
+-rwxr-xr-x root/bin      73232 1998-10-25 20:55 usr/bin/less
+-rwxr-xr-x root/bin       7780 1998-10-25 20:55 usr/bin/lesskey
+-rwxr-xr-x root/bin       2293 1998-10-25 20:53 usr/bin/lesspipe.sh
+drwxr-xr-x root/root         0 1998-10-25 20:55 usr/doc/
+drwxr-xr-x root/root         0 1998-10-25 20:55 usr/doc/less-332/
+-rw-r--r-- root/root      8192 1997-04-22 18:36 usr/doc/less-332/README
+-rw-r--r-- root/root     11957 1997-04-22 18:36 usr/doc/less-332/NEWS
+drwxr-xr-x root/root         0 1995-08-06 17:56 usr/man/
+drwxr-xr-x root/root         0 1998-10-25 20:55 usr/man/man1/
+-rw-r--r-- root/root     14834 1998-10-25 20:55 usr/man/man1/less.1.gz
+-rw-r--r-- root/root      3118 1998-10-25 20:55 usr/man/man1/lesskey.1.gz
+drwx--x--- root/root         0 1997-02-12 19:24 root/
+-rw-r--r-- root/root        48 1996-09-10 21:52 root/.less
+-rw-r--r-- root/root       114 1993-05-07 21:36 root/.lesskey

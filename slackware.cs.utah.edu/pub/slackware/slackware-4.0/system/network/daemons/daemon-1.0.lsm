@@ -1,0 +1,19 @@
+Begin3
+Title: Message Daemon         
+Version: 1.0       
+Entered-date: 5 Apr 96   
+Description: A daemon that waits on a port and sends a message to anyone 
+             who connects.  
+Keywords: daemon message network      
+Author: hartlw@rpi.edu (Matt Hartley)
+        sammy@freenet.akron.oh.us (Sam Creasy -- Original Author)  
+Maintained-by: hartlw@rpi.edu (Matt Hartley)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Network/daemons
+              daemon-1.0.tar.gz
+              daemon-1.0.lsm
+Alternate-site: http://www.rpi.edu/~hartlw/linux/index.html
+Platforms: any unix with a compiler should work 
+           (tested on a pentium with linux and on an IBM RS/6000 with AIX)
+Copying-policy: GPL
+End
+

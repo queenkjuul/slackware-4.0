@@ -1,0 +1,17 @@
+Begin
+Title:          Pico-Crypt
+
+Version:        1.0
+
+Description:    This is a little interface from slrn to pgp. It signs you
+                public messages wihtm your secret key.
+
+Keywords:       pgp slrn interface
+
+Author:         road@runner.swb.de (Lutz Oberst)
+
+Platform:       It should work on nearly every platform. It's only
+                a little shell script
+
+Copying-policy: GPL
+End

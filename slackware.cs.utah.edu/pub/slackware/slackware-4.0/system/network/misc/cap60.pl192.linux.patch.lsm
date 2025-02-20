@@ -1,0 +1,28 @@
+Begin2
+Title        = cap60.pl192 patch for linux IPTalk
+Version      = 1.0
+Desc1        = This a patch to the regular CAP (Columbia Appletalk Package)
+Desc2        = version 6.0pl192, to make it compile cleanly under Linux v1.0
+Desc3        = Currently for IPTalk mode only, hence it's name.
+Author       = Eduardo Kaftanski
+AuthorEmail  = ekaftan@ing.puc.cl
+Maintainer   = Eduardo Kaftanski
+MaintEmail   = ekaftan@ing.puc.cl
+Site1        = ing.puc.cl
+Path1        = /pub/unix/net/appletalk/
+File1        = cap60.pl192.linux.patch.1.0.gz
+FileSize1    = 1740 bytees
+Site2        = sunsite.unc.edu
+Path2        = Not known yet.
+File2        = cap60.pl192.linux.patch.1.0.gz
+FileSize2    = 11740 bytes
+Required1    = The CAP distribution patched to level 192.
+Required2    = The main distribution point for it if munnari.oz.au
+CopyPolicy1  = Copyleft
+Comment1     = I have the idea of updating the patch for native Ethertalk and/or
+Comment2     = direct Localtalk support but lack necesary info. If you can help,
+Comment3     = please contact me directly.
+Entered      = April 20, 1994
+EnteredBy    = Eduardo Kaftanski
+CheckedEmail = ekaftan@ing.puc.cl
+

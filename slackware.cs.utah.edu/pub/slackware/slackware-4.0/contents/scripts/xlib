@@ -1,0 +1,8 @@
+( cd var/X11R6/lib/rstart/commands ; rm -rf x11 )
+( cd var/X11R6/lib/rstart/commands ; ln -sf x11r6 x11 )
+( cd var/X11R6/lib/rstart/commands ; rm -rf x )
+( cd var/X11R6/lib/rstart/commands ; ln -sf x11r6 x )
+( cd var/X11R6/lib/rstart/contexts ; rm -rf x11 )
+( cd var/X11R6/lib/rstart/contexts ; ln -sf x11r6 x11 )
+( cd var/X11R6/lib/rstart/contexts ; rm -rf x )
+( cd var/X11R6/lib/rstart/contexts ; ln -sf x11r6 x )

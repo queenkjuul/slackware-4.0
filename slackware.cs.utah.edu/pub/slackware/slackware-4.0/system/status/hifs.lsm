@@ -1,0 +1,19 @@
+Begin3
+Title:          hifs
+Version:        1.4
+Entered-date:   12NOV97
+Description:    Hifs -- Handy Information For Sysadmins -- is an interactive
+                system monitoring tool. It displays a lot of info about the
+                running processes and the system in general in a 26x24
+                window. In cases of abuse, hifs lets you kill or renice
+                processes of write messages to that user. Very usefull in a
+                26x24 xterm.
+Keywords:       hifs xhifs system monitor ncurses kill nice write process proc
+Author:         geertj@stack.nl (Geert Jansen)
+Maintained-by:  geertj@stack.nl (Geert Jansen)
+Primary-site:   skynet.stack.nl /pub/linux/hifs
+                49Kb hifs-1.4.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/status
+Platforms:      Linux
+Copying-policy: GPL
+End

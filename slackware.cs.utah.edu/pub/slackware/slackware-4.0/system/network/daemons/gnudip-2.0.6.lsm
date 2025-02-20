@@ -1,0 +1,22 @@
+Begin3
+Title:                  GnuDIP
+Version:                2.0.6
+Entered-date:           10MAR99
+Description:            Gives users the ability to have a static FQDN (fully
+                        qualified domain name) with a dynamically assigned
+                        IP address. This archive includes all files
+                        necessary to setup a gnudip server.
+                        Web administration and user tool is also included. 
+                        This new version now has a multi-threaded server
+                        and supports client authentication notification.
+Keywords:               dynamic IP DNS hostname ISP gnudip dyndns
+Author:                 Mike Machado <mike@innercite.com>
+                        Ryan Wahle <wahle@innercite.com>
+Maintained-by:          Mike Machado <mike@innercite.com>
+                        Ryan Wahle <wahle@innercite.com>
+Primary-site:           gnudip.cheapnet.net
+Alternate-site:         sunsite.unc.edu/pub/Linux/system/network/daemons
+Original-site:
+Platforms:              Any platform that supports perl and a DBI database
+Copying-policy:         GPL      
+End

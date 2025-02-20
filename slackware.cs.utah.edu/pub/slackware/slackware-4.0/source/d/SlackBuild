@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo
+echo "+=================================+"
+echo "| Building development series (D) |"
+echo "+=================================+"
+echo
+echo
+
+for subdir in * ; do
+  if [ ! -d $subdir ]; then continue ; fi
+  if [ -r $subdir/SlackBuild ]; then
+    ( cd $subdir ; SlackBuild $* )
+  fi
+done

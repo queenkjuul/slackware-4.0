@@ -1,0 +1,16 @@
+Begin3
+Title:          pstream
+Version:        0.0.3
+Entered-date:   970828
+Description:    Persistent object stream library.  Read and write C++
+                class objects to a stream.
+Keywords:       persistent object stream library C++
+Author:         Joshua Rowe  jrow@eksystems.com
+Maintained-by:  Joshua Rowe
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/c++/
+                17KB pstream-0.0.1.tgz
+Alternate-site: 
+Original-site:  
+Platform:       Linux g++
+Copying-policy: GPL
+End

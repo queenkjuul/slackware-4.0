@@ -1,0 +1,2 @@
+( cd usr/bin ; rm -rf jove )
+( cd usr/bin ; ln -sf  xjove jove )

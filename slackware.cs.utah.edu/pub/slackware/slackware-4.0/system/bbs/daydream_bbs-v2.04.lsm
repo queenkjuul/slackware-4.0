@@ -1,0 +1,16 @@
+Begin3
+Title:		DayDream BBS
+Version:	2.04
+Entered-date:	Tue Aug 12 14:07:01     1997
+Description:	AmiExpress-like BBS program for Linux. Includes file_id.diz,
+		fidonet, smodem/hydra, QWK etc support. Outlook 100%
+		configurable. SysOp is able to view what the user is doing.
+		Includes library for easy programming of add-ons.
+Keywords:	bbs daydream fidonet qwk smodem
+Author: 	hydra@pato.vaala.fi (Antti Häyrynen)
+Maintained-by:	hydra@pato.vaala.fi (Antti Häyrynen)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/bbs/bbs/
+		daydream_bbs-v2.04.tar.gz
+Platform:	Linux.
+Copying-policy:	Freely distributable.
+End

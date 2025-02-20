@@ -1,0 +1,13 @@
+Begin3
+Title: Qmail From: Wrapper
+Version: 1.0
+Entered-date: 11 Aug 1996
+Description: A From: header dynamic modifier for qmail
+Keywords: qmail wrapper
+Author: emanuele@debian.org (Emanuele Pucciarelli)
+Maintained-by: emanuele@debian.org (Emanuele Pucciarelli)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Mail
+	      3k qfw-1.0.tar.gz
+Copying-policy: GPL
+End
+

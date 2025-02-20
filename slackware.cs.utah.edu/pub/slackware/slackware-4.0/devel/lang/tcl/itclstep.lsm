@@ -1,0 +1,14 @@
+Begin3
+Title:          TkSTEPforitcl2.1
+Version:        0.1 
+Entered-date:   24JUL1996 
+Description:    Set of patches to make itcl2.1 widgets look 
+                like NEXTSTEP(tm) based on tkstep 0.3b3 
+Keywords:       tcl tk afterstep bowman nextstep gnustep widgets
+Author:         seiferth@netcom.com (Justin Seiferth) 
+Maintained-by:  seiferth@netcom.com
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/tcl 
+                17k itcldiffs.for.tkstep.tgz
+Platforms:      itcl2.1 
+Copying-policy: Freely distributable
+End

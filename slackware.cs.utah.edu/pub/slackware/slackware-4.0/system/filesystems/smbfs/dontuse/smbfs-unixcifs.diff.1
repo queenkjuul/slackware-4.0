@@ -1,0 +1,1381 @@
+diff -urN 2.0.28/fs/smbfs/Makefile 2.0.28-unix/fs/smbfs/Makefile
+--- 2.0.28/fs/smbfs/Makefile	Wed Sep 18 16:41:46 1996
++++ 2.0.28-unix/fs/smbfs/Makefile	Fri Feb 21 17:45:55 1997
+@@ -8,7 +8,7 @@
+ # Note 2! The CFLAGS definitions are now in the main makefile...
+ 
+ O_TARGET := smbfs.o
+-O_OBJS   := proc.o sock.o inode.o file.o dir.o ioctl.o mmap.o
++O_OBJS   := proc.o sock.o inode.o file.o dir.o ioctl.o mmap.o symlink.o
+ M_OBJS   := $(O_TARGET)
+ 
+ # If you want debugging output, please uncomment the following line
+diff -urN 2.0.28/fs/smbfs/dir.c 2.0.28-unix/fs/smbfs/dir.c
+--- 2.0.28/fs/smbfs/dir.c	Thu Dec  5 16:48:16 1996
++++ 2.0.28-unix/fs/smbfs/dir.c	Mon Feb 24 16:58:12 1997
+@@ -3,6 +3,9 @@
+  *
+  *  Copyright (C) 1995, 1996 by Paal-Kr. Engstad and Volker Lendecke
+  *
++ *  UN*X-Extensions by Linux-Team of the University of Regensburg
++ *       1997
++ *
+  */
+ 
+ #include <linux/sched.h>
+@@ -39,9 +42,16 @@
+  smb_mkdir(struct inode *dir, const char *name, int len, int mode);
+ 
+ static int
++ smb_mknod(struct inode *dir, const char *name, int len, int mode, int rdev);
++
++static int
+  smb_rmdir(struct inode *dir, const char *name, int len);
+ 
+ static int
++ smb_symlink(struct inode *dir, const char *name, int len,
++	     const char *symname);
++
++static int
+  smb_unlink(struct inode *dir, const char *name, int len);
+ 
+ static int
+@@ -70,10 +80,10 @@
+ 	smb_lookup,		/* lookup */
+ 	NULL,			/* link */
+ 	smb_unlink,		/* unlink */
+-	NULL,			/* symlink */
++	smb_symlink,		/* symlink */
+ 	smb_mkdir,		/* mkdir */
+ 	smb_rmdir,		/* rmdir */
+-	NULL,			/* mknod */
++	smb_mknod,		/* mknod */
+ 	smb_rename,		/* rename */
+ 	NULL,			/* readlink */
+ 	NULL,			/* follow_link */
+@@ -723,14 +733,72 @@
+ 		iput(dir);
+ 		return error;
+ 	}
++	if (SMB_SERVER(dir)->blkmode & CAP_UNIX)
++	{
++		entry.f_mode = (entry.f_mode & 0xfe00) | (mode & 0x1ff);
++		if ((error = smb_proc_setattr(SMB_SERVER(dir), SMB_INOP(dir),
++					      name, len, &entry)) < 0)
++		{
++			iput(dir);
++			return error;
++		} else
++		{
++			(*result)->i_mode = entry.f_mode;
++		}
++	}
+ 	iput(dir);
+ 	return 0;
+ }
+ 
+ static int
++smb_mknod(struct inode *dir, const char *name, int len, int mode, int rdev)
++{
++#if 1
++	return -EPERM;
++#else
++	struct smb_dirent entry;
++	int error;
++	char *path = NULL;
++
++	if (SMB_SERVER(dir)->protocol < PROTOCOL_LINUX1)
++	{
++		return -EPERM;
++	}
++	if (!dir || !S_ISDIR(dir->i_mode))
++	{
++		printk("smb_mknod: inode is NULL or not a directory\n");
++		iput(dir);
++		return -ENOENT;
++	}
++	if (len > SMB_MAXNAMELEN)
++	{
++		iput(dir);
++		return -ENAMETOOLONG;
++	}
++	/* Now we will have to build up an SMB filename. */
++	if ((error = get_pname(dir, name, len, &path, &len)) < 0)
++	{
++		iput(dir);
++		return error;
++	}
++	entry.perm = mode;
++	entry.uid = entry.gid = (unsigned) -1;
++	entry.size = (unsigned) -1;
++	error = smb_proc_mknod(SMB_SERVER(dir), path, len, &entry);
++	put_pname(path);
++	iput(dir);
++	printk("smb_mknod: error=%i\n", error);
++	return error;
++#endif
++}
++
++static int
+ smb_mkdir(struct inode *dir, const char *name, int len, int mode)
+ {
+ 	int error;
++	struct smb_dirent entry;
++
++
+ 
+ 	if (!dir || !S_ISDIR(dir->i_mode))
+ 	{
+@@ -741,6 +809,21 @@
+ 	{
+ 		smb_invalid_dir_cache(dir->i_ino);
+ 	}
++	if (SMB_SERVER(dir)->blkmode & CAP_UNIX)
++	{
++		if ((error = smb_proc_getattr(dir, name, len, &entry)) < 0)
++		{
++			iput(dir);
++			return error;
++		}
++		entry.f_mode = (entry.f_mode & 0xfe00) | (mode & 0x1ff);
++		if ((error = smb_proc_setattr(SMB_SERVER(dir), SMB_INOP(dir),
++					      name, len, &entry)) < 0)
++		{
++			iput(dir);
++			return error;
++		}
++	}
+ 	iput(dir);
+ 	return error;
+ }
+@@ -769,6 +852,38 @@
+ 	iput(dir);
+ 	return error;
+ }
++
++static int
++smb_symlink(struct inode *dir, const char *name, int len,
++	    const char *symname)
++{
++	struct smb_dirent sattr;
++	int error;
++
++	if (!dir || !S_ISDIR(dir->i_mode))
++	{
++		printk("nfs_symlink: inode is NULL or not a directory\n");
++		iput(dir);
++		return -ENOENT;
++	}
++	if (len > SMB_MAXNAMELEN)
++	{
++		iput(dir);
++		return -ENAMETOOLONG;
++	}
++	if (strlen(symname) > SMB_MAXPATHLEN)
++	{
++		iput(dir);
++		return -ENAMETOOLONG;
++	}
++	sattr.f_mode = S_IFLNK | S_IRWXUGO;	/* SunOS 4.1.2 crashes without this! */
++	sattr.f_uid = sattr.f_gid = sattr.f_size = (unsigned) -1;
++	sattr.f_atime = sattr.f_mtime = (unsigned) -1;
++	error = smb_proc_symlink(dir, name, symname, &sattr);
++	iput(dir);
++	return error;
++}
++
+ 
+ static int
+ smb_unlink(struct inode *dir, const char *name, int len)
+diff -urN 2.0.28/fs/smbfs/inode.c 2.0.28-unix/fs/smbfs/inode.c
+--- 2.0.28/fs/smbfs/inode.c	Thu Dec  5 16:48:16 1996
++++ 2.0.28-unix/fs/smbfs/inode.c	Mon Feb 24 16:58:12 1997
+@@ -3,6 +3,9 @@
+  *
+  *  Copyright (C) 1995, 1996 by Paal-Kr. Engstad and Volker Lendecke
+  *
++ *  UN*X-Extensions by Linux-Team of the University of Regensburg
++ *       1997
++ *
+  */
+ 
+ #include <linux/module.h>
+@@ -83,6 +86,18 @@
+ 	} else if (S_ISDIR(inode->i_mode))
+ 	{
+ 		inode->i_op = &smb_dir_inode_operations;
++	} else if (S_ISLNK(inode->i_mode))
++	{
++		inode->i_op = &smb_symlink_inode_operations;
++	} else if (S_ISCHR(inode->i_mode))
++	{
++		inode->i_op = &chrdev_inode_operations;
++	} else if (S_ISBLK(inode->i_mode))
++	{
++		inode->i_op = &blkdev_inode_operations;
++	} else if (S_ISFIFO(inode->i_mode))
++	{
++		init_fifo(inode);
+ 	} else
+ 	{
+ 		inode->i_op = NULL;
+@@ -102,7 +117,13 @@
+ 	}
+ 	if (finfo->opened != 0)
+ 	{
+-		if (smb_proc_close(server, finfo->fileid, inode->i_mtime))
++		__u32 mtime = inode->i_mtime;
++
++		if (finfo->access == O_RDONLY)
++		{
++			mtime = 0xffffffff;
++		}
++		if (smb_proc_close(server, finfo->fileid, mtime))
+ 		{
+ 			/* We can't do anything but complain. */
+ 			DPRINTK("smb_put_inode: could not close\n");
+@@ -309,9 +330,11 @@
+ 		goto fail;
+ 	}
+ 	MOD_INC_USE_COUNT;
++
+ 	return sb;
+ 
+       fail:
++	printk("smb_read_super: failed\n");
+ 	if (server->packet != NULL)
+ 	{
+ 		smb_vfree(server->packet);
+@@ -353,22 +376,27 @@
+ smb_notify_change(struct inode *inode, struct iattr *attr)
+ {
+ 	int error = 0;
++	struct smb_server *server = SMB_SERVER(inode);
++
+ 
+ 	if ((error = inode_change_ok(inode, attr)) < 0)
+ 		return error;
+ 
+-	if (((attr->ia_valid & ATTR_UID) &&
+-	     (attr->ia_uid != SMB_SERVER(inode)->m.uid)))
+-		return -EPERM;
+-
+-	if (((attr->ia_valid & ATTR_GID) &&
+-	     (attr->ia_uid != SMB_SERVER(inode)->m.gid)))
+-		return -EPERM;
+-
+-	if (((attr->ia_valid & ATTR_MODE) &&
+-	(attr->ia_mode & ~(S_IFREG | S_IFDIR | S_IRWXU | S_IRWXG | S_IRWXO))))
+-		return -EPERM;
+-
++	if (!(server->blkmode & CAP_UNIX))
++	{
++		if (((attr->ia_valid & ATTR_UID) &&
++		     (attr->ia_uid != SMB_SERVER(inode)->m.uid)))
++			return -EPERM;
++
++		if (((attr->ia_valid & ATTR_GID) &&
++		     (attr->ia_gid != SMB_SERVER(inode)->m.gid)))
++			return -EPERM;
++
++		if (((attr->ia_valid & ATTR_MODE) &&
++		     (attr->ia_mode &
++		      ~(S_IFREG | S_IFDIR | S_IRWXU | S_IRWXG | S_IRWXO))))
++			return -EPERM;
++	}
+ 	if ((attr->ia_valid & ATTR_SIZE) != 0)
+ 	{
+ 
+@@ -381,41 +409,104 @@
+ 			goto fail;
+ 
+ 	}
+-	if ((attr->ia_valid & (ATTR_CTIME | ATTR_MTIME | ATTR_ATIME)) != 0)
++	if (!(server->blkmode & CAP_UNIX))
+ 	{
++		if ((attr->ia_valid &
++		     (ATTR_CTIME | ATTR_MTIME | ATTR_ATIME)) != 0)
++		{
+ 
+-		struct smb_dirent finfo;
+-
+-		finfo.attr = 0;
+-		finfo.f_size = inode->i_size;
+-		finfo.f_blksize = inode->i_blksize;
+-
+-		if ((attr->ia_valid & ATTR_CTIME) != 0)
+-			finfo.f_ctime = attr->ia_ctime;
+-		else
+-			finfo.f_ctime = inode->i_ctime;
++			struct smb_dirent finfo;
+ 
+-		if ((attr->ia_valid & ATTR_MTIME) != 0)
+-			finfo.f_mtime = attr->ia_mtime;
+-		else
+-			finfo.f_mtime = inode->i_mtime;
++			finfo.attr = 0;
++			finfo.f_size = inode->i_size;
++			finfo.f_blksize = inode->i_blksize;
++
++			if ((attr->ia_valid & ATTR_CTIME) != 0)
++				finfo.f_ctime = attr->ia_ctime;
++			else
++				finfo.f_ctime = inode->i_ctime;
++
++			if ((attr->ia_valid & ATTR_MTIME) != 0)
++				finfo.f_mtime = attr->ia_mtime;
++			else
++				finfo.f_mtime = inode->i_mtime;
++
++			if ((attr->ia_valid & ATTR_ATIME) != 0)
++				finfo.f_atime = attr->ia_atime;
++			else
++				finfo.f_atime = inode->i_atime;
++			printk("smb_notify_change: vor smb_proc_setattr\n");
++			if ((error = smb_proc_setattr(SMB_SERVER(inode),
++						      SMB_INOP(inode)->dir,
++						  SMB_INOP(inode)->finfo.name,
++						   SMB_INOP(inode)->finfo.len,
++						      &finfo)) >= 0)
++			{
++				inode->i_ctime = finfo.f_ctime;
++				inode->i_mtime = finfo.f_mtime;
++				inode->i_atime = finfo.f_atime;
++			}
++		}
++	} else
++	{
++		if ((attr->ia_valid &
++		     (ATTR_CTIME | ATTR_MTIME | ATTR_ATIME | ATTR_UID |
++		      ATTR_GID | ATTR_MODE)) != 0)
++		{
+ 
+-		if ((attr->ia_valid & ATTR_ATIME) != 0)
+-			finfo.f_atime = attr->ia_atime;
+-		else
+-			finfo.f_atime = inode->i_atime;
++			struct smb_dirent finfo;
+ 
+-		if ((error = smb_proc_setattr(SMB_SERVER(inode),
+-					      inode, &finfo)) >= 0)
+-		{
+-			inode->i_ctime = finfo.f_ctime;
+-			inode->i_mtime = finfo.f_mtime;
+-			inode->i_atime = finfo.f_atime;
++			finfo.attr = 0;
++			finfo.f_size = inode->i_size;
++			finfo.f_blksize = inode->i_blksize;
++
++			if ((attr->ia_valid & ATTR_MODE) != 0)
++				finfo.f_mode = attr->ia_mode;
++			else
++				finfo.f_mode = inode->i_mode;
++
++			if ((attr->ia_valid & ATTR_GID) != 0)
++				finfo.f_gid = attr->ia_gid;
++			else
++				finfo.f_gid = inode->i_gid;
++
++			if ((attr->ia_valid & ATTR_UID) != 0)
++				finfo.f_uid = attr->ia_uid;
++			else
++				finfo.f_uid = inode->i_uid;
++
++			if ((attr->ia_valid & ATTR_CTIME) != 0)
++				finfo.f_ctime = attr->ia_ctime;
++			else
++				finfo.f_ctime = inode->i_ctime;
++
++			if ((attr->ia_valid & ATTR_MTIME) != 0)
++				finfo.f_mtime = attr->ia_mtime;
++			else
++				finfo.f_mtime = inode->i_mtime;
++
++			if ((attr->ia_valid & ATTR_ATIME) != 0)
++				finfo.f_atime = attr->ia_atime;
++			else
++				finfo.f_atime = inode->i_atime;
++
++			if ((error = smb_proc_setattr(SMB_SERVER(inode),
++						      SMB_INOP(inode)->dir,
++						  SMB_INOP(inode)->finfo.name,
++						   SMB_INOP(inode)->finfo.len,
++						      &finfo)) >= 0)
++			{
++				inode->i_ctime = finfo.f_ctime;
++				inode->i_mtime = finfo.f_mtime;
++				inode->i_atime = finfo.f_atime;
++				inode->i_uid = finfo.f_uid;
++				inode->i_gid = finfo.f_gid;
++				inode->i_mode = finfo.f_mode;
++			}
+ 		}
+ 	}
+       fail:
+ 	smb_invalid_dir_cache(smb_info_ino(SMB_INOP(inode)->dir));
+-
+ 	return error;
+ }
+ 
+diff -urN 2.0.28/fs/smbfs/proc.c 2.0.28-unix/fs/smbfs/proc.c
+--- 2.0.28/fs/smbfs/proc.c	Tue Jan 14 18:25:44 1997
++++ 2.0.28-unix/fs/smbfs/proc.c	Mon Feb 24 19:35:35 1997
+@@ -4,6 +4,10 @@
+  *  Copyright (C) 1995, 1996 by Paal-Kr. Engstad and Volker Lendecke
+  *
+  *  28/06/96 - Fixed long file name support (smb_proc_readdir_long) by Yuri Per
++ *
++ *  UN*X-Extensions by Linux-Team of the University of Regensburg
++ *       1997
++ *
+  */
+ 
+ #include <linux/config.h>
+@@ -17,6 +21,7 @@
+ #include <linux/fcntl.h>
+ #include <asm/segment.h>
+ #include <asm/string.h>
++#include <sys/sysmacros.h>
+ 
+ #define SMB_VWV(packet)  ((packet) + SMB_HEADER_LEN)
+ #define SMB_CMD(packet)  (BVAL(packet,8))
+@@ -202,12 +207,14 @@
+ 
+ extern struct timezone sys_tz;
+ 
++
+ static int
+ utc2local(int time)
+ {
+ 	return time - sys_tz.tz_minuteswest * 60;
+ }
+ 
++
+ static int
+ local2utc(int time)
+ {
+@@ -262,13 +269,98 @@
+ 	     nl_day - day_n[month - 1] + 1 + (month << 5) + (year << 9));
+ }
+ 
++#if 0
++#define TIME_FIXUP_CONSTANT (369.0*365.25*24*60*60-(3.0*24*60*60+6.0*60*60)) 
++#else
++#define TIME_FIXUP_CONSTANT (11644473600ULL)
++#endif
+ 
++/****************************************************************************
++interpret an 8 byte "filetime" structure to a time_t
++It's originally in "100ns units since jan 1st 1601"
++We do not have floating point in the kernel, but we have 64 bit ints!!!
++****************************************************************************/
++static time_t
++interpret_long_date(char *p)
++{
++	unsigned long long d;
++	time_t ret;
++	u32 tlow, thigh;
++	tlow = DVAL(p, 0);
++	thigh = DVAL(p, 4);
+ 
+-/*****************************************************************************/
+-/*                                                                           */
+-/*  Support section.                                                         */
+-/*                                                                           */
+-/*****************************************************************************/
++	if (thigh == 0)
++	{
++		return 0;
++	}
++
++	d = thigh;
++	d <<= 32;
++	d += (tlow & 0xFFF00000);
++
++	/* Ok, we have to divide by 10^7 by right shift and multiplication. */
++	d >>= 7;
++	/* 5^7 is left */
++	d = ((d * 107ULL) >> 23) + ((d * 95ULL) >> 31) + ((d * 101ULL) >> 38)
++		+ ((d * 106ULL) >> 47) + ((d * 121ULL) >> 54);
++
++	/* now adjust by 369 years to make the secs since 1970 */
++	d -= TIME_FIXUP_CONSTANT;
++
++	ret = (time_t) d;
++
++	/* this takes us from kludge-GMT to real GMT */
++	/*  ret -= serverzone;
++	   ret += LocTimeDiff(ret); *//* DART  muss handangepasst werden */
++
++	return (ret);
++}
++
++
++/****************************************************************************
++put a 8 byte filetime from a time_t
++This takes real GMT as input and converts to kludge-GMT
++****************************************************************************/
++static void
++put_long_date(char *p, time_t t)
++{
++	unsigned long long d;
++
++	if (t == 0)
++	{
++		DSET(p, 0, 0);
++		DSET(p, 4, 0);
++		return;
++	}
++	/* this converts GMT to kludge-GMT */
++	/*  t -= TimeDiff(t) - serverzone;  DART hier auch Handanpassung
++	 */
++	d = ((unsigned long long) t) + TIME_FIXUP_CONSTANT;
++	d *= 10000000ULL;
++
++	DSET(p, 0, d & (0xffffffffULL));
++	DSET(p, 4, d >> 32);
++}
++
++/****************************************************************************
++  change a unix mode to a dos mode
++****************************************************************************/
++static int
++dos_mode(umode_t mode)
++{
++	int result = 0;
++
++	if ((mode & S_IWUSR) == 0)
++		result |= aRONLY;
++
++	if ((mode & S_IXUSR) != 0)
++		result |= aARCH;
++
++	if (S_ISDIR(mode))
++		result = aDIR | (result & aRONLY);
++
++	return (result);
++}
+ 
+ dword
+ smb_len(byte * p)
+@@ -644,11 +736,17 @@
+ 	       __u16 fileid, __u32 mtime)
+ {
+ 	char *buf;
++	__u32 send_mtime = mtime;
+ 
++	if ((mtime != 0) && (mtime != 0xffffffff))
++	{
++		/* 0 and 0xffffffff mean: do not set mtime */
++		send_mtime = utc2local(mtime);
++	}
+ 	smb_setup_header_exclusive(server, SMBclose, 3, 0);
+ 	buf = server->packet;
+ 	WSET(buf, smb_vwv0, fileid);
+-	DSET(buf, smb_vwv1, utc2local(mtime));
++	DSET(buf, smb_vwv1, send_mtime);
+ 
+ 	return smb_request_ok_unlock(server, SMBclose, 0, 0);
+ }
+@@ -817,6 +915,73 @@
+ }
+ 
+ int
++smb_proc_symlink(struct inode *dir, const char *name, const char *symname,
++		 struct smb_dirent *sattr)
++{
++	struct smb_server *server = SMB_SERVER(dir);
++	char param[SMB_MAXPATHLEN + 20];
++	char data[SMB_MAXPATHLEN + 20];
++
++	unsigned char *resp_data = NULL;
++	unsigned char *resp_param = NULL;
++	int data_len;
++	int resp_data_len = 0;
++	int resp_param_len = 0;
++
++	int result;
++	char *p;
++
++	if (!(server->blkmode & CAP_UNIX))
++	{
++		return -EPERM;
++	}
++	WSET(param, 0, SMB_SET_FILE_UNIX_LINK);
++	DSET(param, 2, 0);
++
++	p = smb_encode_path(server, param + 6,
++			    SMB_INOP(dir), name, strlen(name));
++
++	data_len = strlen(symname);
++
++	if (data_len > SMB_MAXPATHLEN)
++	{
++		data_len = SMB_MAXPATHLEN;
++	}
++	strncpy(data, symname, data_len);
++
++	data[data_len] = 0;
++	data_len++;
++
++	smb_lock_server(server);
++      retry:
++	result = smb_trans2_request(server, TRANSACT2_SETPATHINFO,
++				    data_len, data,
++				    p - param, param,
++				    &resp_data_len, &resp_data,
++				    &resp_param_len, &resp_param);
++
++	if (server->rcls != 0)
++	{
++		/*
++		   printk ("smb_proc_setattr_trans2: rcls=%d, err=%d\n", 
++		   server->rcls, server->err);
++		 */
++		smb_unlock_server(server);
++		return -smb_errno(server->rcls, server->err);
++	}
++	if (result < 0)
++	{
++		if (smb_retry(server))
++		{
++			goto retry;
++		}
++	}
++	smb_unlock_server(server);
++	return 0;
++}
++
++
++int
+ smb_proc_rmdir(struct inode *dir, const char *name, const int len)
+ {
+ 	char *p;
+@@ -842,6 +1007,8 @@
+ 	return result;
+ }
+ 
++
++
+ int
+ smb_proc_unlink(struct inode *dir, const char *name, const int len)
+ {
+@@ -903,7 +1070,6 @@
+ smb_init_dirent(struct smb_server *server, struct smb_dirent *entry)
+ {
+ 	memset(entry, 0, sizeof(struct smb_dirent));
+-
+ 	entry->f_nlink = 1;
+ 	entry->f_uid = server->m.uid;
+ 	entry->f_gid = server->m.gid;
+@@ -913,15 +1079,17 @@
+ static void
+ smb_finish_dirent(struct smb_server *server, struct smb_dirent *entry)
+ {
+-	if ((entry->attr & aDIR) != 0)
+-	{
+-		entry->f_mode = server->m.dir_mode;
+-		entry->f_size = 512;
+-	} else
++	if (!(server->blkmode & CAP_UNIX))
+ 	{
+-		entry->f_mode = server->m.file_mode;
++		if ((entry->attr & aDIR) != 0)
++		{
++			entry->f_mode = server->m.dir_mode;
++			entry->f_size = 512;
++		} else
++		{
++			entry->f_mode = server->m.file_mode;
++		}
+ 	}
+-
+ 	if ((entry->f_blksize != 0) && (entry->f_size != 0))
+ 	{
+ 		entry->f_blocks =
+@@ -936,9 +1104,40 @@
+ void
+ smb_init_root_dirent(struct smb_server *server, struct smb_dirent *entry)
+ {
++	struct inode *dir;
++	struct super_block *sb;
++
++	while ((dir = smb_kmalloc(sizeof(struct inode), GFP_KERNEL)) == NULL)
++	{
++		printk("smb_init_root_dirent: dir=NULL\n");
++		schedule();
++	}
++
++
++	while ((sb = smb_kmalloc(sizeof(struct super_block), GFP_KERNEL)) == NULL)
++	{
++		printk("smb_init_root_dirent: sb=NULL\n");
++		schedule();
++	}
++
+ 	smb_init_dirent(server, entry);
+-	entry->attr = aDIR;
+-	entry->f_ino = 1;
++
++	if (server->blkmode & CAP_UNIX)
++	{
++		dir->u.generic_ip = NULL;
++		dir->i_sb = sb;
++		sb->u.generic_sbp = server;
++		smb_proc_getattr(dir, "/", 1, entry);
++	} else
++	{
++		entry->f_mode = server->m.dir_mode;
++		entry->f_size = 512;
++		entry->attr = aDIR;
++		entry->f_ino = 1;
++	}
++	smb_kfree_s(dir, sizeof(struct inode));
++	smb_kfree_s(sb, sizeof(struct super_block));
++
+ 	smb_finish_dirent(server, entry);
+ }
+ 
+@@ -1125,12 +1324,48 @@
+ smb_decode_long_dirent(struct smb_server *server, char *p,
+ 		       struct smb_dirent *entry, int level)
+ {
++	const unsigned int file_flags[6] =
++	{S_IFREG, S_IFDIR, S_IFLNK,
++	 S_IFCHR, S_IFBLK, S_IFIFO};
++
+ 	char *result;
++	u32 nxt_entr;
++
+ 
+ 	smb_init_dirent(server, entry);
+ 
+ 	switch (level)
+ 	{
++	case SMB_FIND_FILE_UNIX:
++		nxt_entr = DVAL(p, 0);
++		entry->len = nxt_entr - 76;
++		strncpy(entry->name, p + 76, entry->len);
++
++		entry->name[entry->len] = '\0';
++		entry->len = strlen(entry->name);
++		entry->f_size = DVAL(p, 8);
++
++		entry->f_ctime = interpret_long_date(p + 16);
++		entry->f_atime = interpret_long_date(p + 24);
++		entry->f_mtime = interpret_long_date(p + 32);
++		entry->f_uid = DVAL(p, 40);
++		entry->f_gid = DVAL(p, 44);
++		entry->f_mode = (DVAL(p, 48) <= 5 ? file_flags[DVAL(p, 48)] :
++				 file_flags[0]) | (DVAL(p, 68) & 0xfff);
++		if (S_ISCHR(entry->f_mode) || S_ISBLK(entry->f_mode))
++			entry->f_rdev = ((DVAL(p, 52) & 0xff) << 8) |
++			    (DVAL(p, 56) & 0xff);
++/*              printk ("smb_decode_long_dirent: VAL(48)=%d, VAL(68)=%xh," 
++   "f_mode=%o\n", DVAL (p, 48), DVAL (p, 68), entry->f_mode);
++ */
++		entry->f_nlink = DVAL(p, 72);
++
++		entry->attr = dos_mode(entry->f_mode);
++
++		result = p + nxt_entr;
++		break;
++
++
+ 		/* We might add more levels later... */
+ 	case 1:
+ 		entry->len = BVAL(p, 26);
+@@ -1171,7 +1406,7 @@
+ 		      int cache_size, struct smb_dirent *cache)
+ {
+ 	/* NT uses 260, OS/2 uses 2. Both accept 1. */
+-	const int info_level = 1;
++	int info_level;
+ 	const int max_matches = 512;
+ 
+ 	char *p;
+@@ -1200,6 +1435,8 @@
+ 	int mask_len;
+ 	unsigned char *mask = &(param[12]);
+ 
++	info_level = ((server->blkmode & CAP_UNIX) ? SMB_FIND_FILE_UNIX : 1);
++
+ 	mask_len = smb_encode_path(server, mask,
+ 				   SMB_INOP(dir), "*", 1) - mask;
+ 
+@@ -1306,6 +1543,11 @@
+ 		{
+ 			switch (info_level)
+ 			{
++			case SMB_FIND_FILE_UNIX:
++				lastname = p + ff_lastname;
++				lastname_len = resp_data_len - ff_lastname;
++				ff_resume_key = 0;
++				break;
+ 			case 260:
+ 				lastname = p + ff_lastname;
+ 				lastname_len = resp_data_len - ff_lastname;
+@@ -1327,7 +1569,6 @@
+ 		for (i = 0; i < ff_searchcount; i++)
+ 		{
+ 			struct smb_dirent *entry = &(cache[entries]);
+-
+ 			p = smb_decode_long_dirent(server, p,
+ 						   entry, info_level);
+ 
+@@ -1418,17 +1659,23 @@
+ smb_proc_getattr_trans2(struct inode *dir, const char *name, int len,
+ 			struct smb_dirent *entry)
+ {
++	const unsigned int file_flags[6] =
++	{S_IFREG, S_IFDIR, S_IFLNK,
++	 S_IFCHR, S_IFBLK, S_IFIFO};
++
+ 	struct smb_server *server = SMB_SERVER(dir);
+ 	char param[SMB_MAXPATHLEN + 20];
+ 	char *p;
+-	int result;
++	int result, info;
+ 
+ 	unsigned char *resp_data = NULL;
+ 	unsigned char *resp_param = NULL;
+ 	int resp_data_len = 0;
+ 	int resp_param_len = 0;
+ 
+-	WSET(param, 0, 1);	/* Info level SMB_INFO_STANDARD */
++
++	info = (server->blkmode & CAP_UNIX ? SMB_QUERY_FILE_UNIX_BASIC : 1);
++	WSET(param, 0, info);	/* Info level SMB_INFO_STANDARD */
+ 	DSET(param, 2, 0);
+ 	p = smb_encode_path(server, param + 6, SMB_INOP(dir), name, len);
+ 
+@@ -1458,16 +1705,46 @@
+ 		smb_unlock_server(server);
+ 		return -ENOENT;
+ 	}
+-	entry->f_ctime = date_dos2unix(WVAL(resp_data, 2),
+-				       WVAL(resp_data, 0));
+-	entry->f_atime = date_dos2unix(WVAL(resp_data, 6),
+-				       WVAL(resp_data, 4));
+-	entry->f_mtime = date_dos2unix(WVAL(resp_data, 10),
+-				       WVAL(resp_data, 8));
+-	entry->f_size = DVAL(resp_data, 12);
+-	entry->attr = WVAL(resp_data, 20);
+-	smb_unlock_server(server);
++	switch (info)
++	{
++	case 1:
++		entry->f_ctime = date_dos2unix(WVAL(resp_data, 2),
++					       WVAL(resp_data, 0));
++		entry->f_atime = date_dos2unix(WVAL(resp_data, 6),
++					       WVAL(resp_data, 4));
++		entry->f_mtime = date_dos2unix(WVAL(resp_data, 10),
++					       WVAL(resp_data, 8));
++		entry->f_size = DVAL(resp_data, 12);
++		entry->attr = WVAL(resp_data, 20);
++		break;
++
++	case SMB_QUERY_FILE_UNIX_BASIC:
++		entry->f_size = DVAL(resp_data, 0);
++
++		entry->f_ctime = interpret_long_date(resp_data + 8);
++		entry->f_atime = interpret_long_date(resp_data + 16);
++		entry->f_mtime = interpret_long_date(resp_data + 24);
++		entry->f_uid = DVAL(resp_data, 32);
++		entry->f_gid = DVAL(resp_data, 36);
++		entry->f_mode = (DVAL(resp_data, 40) <= 5 ?
++				 file_flags[DVAL(resp_data, 40)] :
++			       file_flags[0]) | (DVAL(resp_data, 60) & 0xfff);
++		if (S_ISCHR(entry->f_mode) || S_ISBLK(entry->f_mode))
++		{
++			entry->f_rdev = ((DVAL(resp_data, 44) & 0xff) << 8) |
++			    (DVAL(resp_data, 48) & 0xff);
++		}
++
++		entry->f_nlink = DVAL(resp_data, 64);
++		entry->attr = dos_mode(entry->f_mode);
++		break;
++
++	default:
++		break;
++	}
++
+ 
++	smb_unlock_server(server);
+ 	return 0;
+ }
+ 
+@@ -1498,11 +1775,82 @@
+ }
+ 
+ 
++int
++smb_proc_readlink(struct inode *inode, int **p0, char **string,
++		  unsigned int *len, unsigned int maxlen)
++{
++	struct smb_server *server = SMB_SERVER(inode);
++	char param[SMB_MAXPATHLEN + 20];
++	char *p;
++	int result;
++
++	unsigned char *resp_data = NULL;
++	unsigned char *resp_param = NULL;
++	int resp_data_len = 0;
++	int resp_param_len = 0;
++
++	while (!(*p0 = (int *) kmalloc(maxlen, GFP_KERNEL)))
++	{
++		schedule();
++	}
++
++	*string = (char *) *p0;
++
++	WSET(param, 0, SMB_QUERY_FILE_UNIX_LINK);	/* Info level */
++	DSET(param, 2, 0);
++	p = smb_encode_path(server, param + 6, SMB_INOP(inode)->dir,
++			    SMB_FINFO(inode)->name,
++			    strlen(SMB_FINFO(inode)->name));
++
++	smb_lock_server(server);
++      retry:
++	result = smb_trans2_request(server, TRANSACT2_QPATHINFO,
++				    0, NULL,
++				    p - param, param,
++				    &resp_data_len, &resp_data,
++				    &resp_param_len, &resp_param);
++	if (server->rcls != 0)
++	{
++		smb_unlock_server(server);
++	}
++	if (result < 0)
++	{
++		if (smb_retry(server))
++		{
++			goto retry;
++		}
++		smb_unlock_server(server);
++		return result;
++	}
++#if 0
++	if (resp_data_len < 22)
++	{
++		smb_unlock_server(server);
++		return -ENOENT;
++	}
++#endif
++
++	*len = resp_data_len;
++	if (*len > maxlen - 1)
++	{
++		*len = maxlen - 1;
++	}
++	strncpy(*string, resp_data, *len);
++	*(*string + *len) = 0;
++
++	smb_unlock_server(server);
++
++	return 0;
++}
++
++
++
+ /* In core protocol, there is only 1 time to be set, we use
+    entry->f_mtime, to make touch work. */
+ static int
+ smb_proc_setattr_core(struct smb_server *server,
+-		      struct inode *i, struct smb_dirent *new_finfo)
++		      struct smb_inode_info *dir_info, const char *name,
++		      int len, struct smb_dirent *new_finfo)
+ {
+ 	char *p;
+ 	char *buf;
+@@ -1516,9 +1864,7 @@
+ 	WSET(buf, smb_vwv0, new_finfo->attr);
+ 	DSET(buf, smb_vwv1, utc2local(new_finfo->f_mtime));
+ 	*p++ = 4;
+-	p = smb_encode_path(server, p,
+-			    SMB_INOP(i)->dir, SMB_INOP(i)->finfo.name,
+-			    SMB_INOP(i)->finfo.len);
++	p = smb_encode_path(server, p, dir_info, name, len);
+ 	p = smb_encode_ascii(p, "", 0);
+ 
+ 	smb_setup_bcc(server, p);
+@@ -1535,41 +1881,79 @@
+ 
+ static int
+ smb_proc_setattr_trans2(struct smb_server *server,
+-			struct inode *i, struct smb_dirent *new_finfo)
++			struct smb_inode_info *dir_info, const char *name,
++			int len, struct smb_dirent *new_finfo)
+ {
+ 	char param[SMB_MAXPATHLEN + 20];
+-	char data[26];
++	char data[68];
+ 	char *p;
+-	int result;
++	int result, info_level;
+ 
+ 	unsigned char *resp_data = NULL;
+ 	unsigned char *resp_param = NULL;
+ 	int resp_data_len = 0;
+ 	int resp_param_len = 0;
+ 
+-	WSET(param, 0, 1);	/* Info level SMB_INFO_STANDARD */
++
++	info_level = (server->blkmode & CAP_UNIX ?
++		      SMB_QUERY_FILE_UNIX_BASIC : 1);
++	WSET(param, 0, info_level);	/* Info level SMB_INFO_STANDARD */
+ 	DSET(param, 2, 0);
+-	p = smb_encode_path(server, param + 6,
+-			    SMB_INOP(i)->dir, SMB_INOP(i)->finfo.name,
+-			    SMB_INOP(i)->finfo.len);
++	p = smb_encode_path(server, param + 6, dir_info, name, len);
++
++	if (server->blkmode & CAP_UNIX)
++	{
++		DSET(data, 0, new_finfo->f_size);
++		DSET(data, 4, 0);
++		put_long_date(data + 8, new_finfo->f_ctime);
++		put_long_date(data + 16, new_finfo->f_atime);
++		put_long_date(data + 24, new_finfo->f_mtime);
++		DSET(data, 32, new_finfo->f_uid);
++		DSET(data, 36, new_finfo->f_gid);
++		if (S_ISREG(new_finfo->f_mode))
++			DSET(data, 40, 0);	/* File */
++		else if (S_ISDIR(new_finfo->f_mode))
++			DSET(data, 40, 1);	/* Dir */
++		else if (S_ISLNK(new_finfo->f_mode))
++			DSET(data, 40, 2);	/* Symbolic link */
++		else if (S_ISCHR(new_finfo->f_mode))
++			DSET(data, 40, 3);	/* Character device */
++		else if (S_ISBLK(new_finfo->f_mode))
++			DSET(data, 40, 4);	/* Block device */
++		else if (S_ISFIFO(new_finfo->f_mode))
++			DSET(data, 40, 5);	/* FIFO (named pipe) */
++		else
++			printk("setattr_trans2: unknown filetype %d\n", new_finfo->f_mode);
++
++		DSET(data, 44, major(new_finfo->f_rdev));
++		DSET(data, 48, minor(new_finfo->f_rdev));
++		DSET(data, 60, new_finfo->f_mode & 0xfff);
++		DSET(data, 64, new_finfo->f_nlink);
++	} else
++	{
++		date_unix2dos(new_finfo->f_ctime, &(data[0]), &(data[2]));
++		date_unix2dos(new_finfo->f_atime, &(data[4]), &(data[6]));
++		date_unix2dos(new_finfo->f_mtime, &(data[8]), &(data[10]));
++		DSET(data, 12, new_finfo->f_size);
++		DSET(data, 16, new_finfo->f_blksize);
++		WSET(data, 20, new_finfo->attr);
++		WSET(data, 22, 0);
++	}
+ 
+-	date_unix2dos(new_finfo->f_ctime, &(data[0]), &(data[2]));
+-	date_unix2dos(new_finfo->f_atime, &(data[4]), &(data[6]));
+-	date_unix2dos(new_finfo->f_mtime, &(data[8]), &(data[10]));
+-	DSET(data, 12, new_finfo->f_size);
+-	DSET(data, 16, new_finfo->f_blksize);
+-	WSET(data, 20, new_finfo->attr);
+-	WSET(data, 22, 0);
+ 
+ 	smb_lock_server(server);
+       retry:
+ 	result = smb_trans2_request(server, TRANSACT2_SETPATHINFO,
+-				    26, data, p - param, param,
++				    (info_level == 1 ? 26 : 68),
++				    data, p - param, param,
+ 				    &resp_data_len, &resp_data,
+ 				    &resp_param_len, &resp_param);
+ 
+ 	if (server->rcls != 0)
+ 	{
++		/*            printk ("smb_proc_setattr_trans2: rcls=%d, err=%d\n", 
++		   server->rcls, server->err);
++		 */
+ 		smb_unlock_server(server);
+ 		return -smb_errno(server->rcls, server->err);
+ 	}
+@@ -1585,18 +1969,20 @@
+ }
+ 
+ int
+-smb_proc_setattr(struct smb_server *server, struct inode *inode,
+-		 struct smb_dirent *new_finfo)
++smb_proc_setattr(struct smb_server *server, struct smb_inode_info *dir_info,
++		 const char *name, int len, struct smb_dirent *new_finfo)
+ {
+ 	int result;
+ 
+ 	if (server->protocol >= PROTOCOL_LANMAN2)
+ 	{
+-		result = smb_proc_setattr_trans2(server, inode, new_finfo);
++		result = smb_proc_setattr_trans2(server, dir_info, name,
++						 len, new_finfo);
+ 	}
+-	if ((server->protocol < PROTOCOL_LANMAN2) || (result < 0))
++	if ((server->protocol < PROTOCOL_LANMAN2) ||
++	    ((result < 0) && !(server->blkmode & CAP_UNIX)))
+ 	{
+-		result = smb_proc_setattr_core(server, inode, new_finfo);
++		result = smb_proc_setattr_core(server, dir_info, name, len, new_finfo);
+ 	}
+ 	return result;
+ }
+@@ -1790,6 +2176,7 @@
+ 			server->maxvcs = WVAL(server->packet, smb_vwv2 + 1);
+ 			server->blkmode = DVAL(server->packet, smb_vwv9 + 1);
+ 			server->sesskey = DVAL(server->packet, smb_vwv7 + 1);
++
+ 		} else
+ 		{
+ 			server->max_xmit = WVAL(server->packet, smb_vwv2);
+diff -urN 2.0.28/fs/smbfs/sock.c 2.0.28-unix/fs/smbfs/sock.c
+--- 2.0.28/fs/smbfs/sock.c	Tue Jan 14 18:25:44 1997
++++ 2.0.28-unix/fs/smbfs/sock.c	Mon Feb 24 16:58:12 1997
+@@ -373,7 +373,6 @@
+ 	int total_data = 0;
+ 	int total_param = 0;
+ 	int result;
+-	unsigned char *inbuf = server->packet;
+ 	unsigned char *rcv_buf;
+ 	int buf_len;
+ 	int data_len = 0;
+@@ -389,8 +388,8 @@
+ 		*ldata = *lparam = 0;
+ 		return 0;
+ 	}
+-	total_data = WVAL(inbuf, smb_tdrcnt);
+-	total_param = WVAL(inbuf, smb_tprcnt);
++	total_data = WVAL(server->packet, smb_tdrcnt);
++	total_param = WVAL(server->packet, smb_tprcnt);
+ 
+ 	DDPRINTK("smb_receive_trans2: td=%d,tp=%d\n", total_data, total_param);
+ 
+@@ -415,6 +414,8 @@
+ 
+ 	while (1)
+ 	{
++		unsigned char *inbuf = server->packet;
++
+ 		if (WVAL(inbuf, smb_prdisp) + WVAL(inbuf, smb_prcnt)
+ 		    > total_param)
+ 		{
+diff -urN 2.0.28/fs/smbfs/symlink.c 2.0.28-unix/fs/smbfs/symlink.c
+--- 2.0.28/fs/smbfs/symlink.c	Thu Jan  1 01:00:00 1970
++++ 2.0.28-unix/fs/smbfs/symlink.c	Mon Feb 24 16:58:12 1997
+@@ -0,0 +1,130 @@
++/*
++ *  linux/fs/smbfs/symlink.c
++ *
++ *  Copyright (C) 1992  Rick Sladkey
++ *
++ *  Optimization changes Copyright (C) 1994 Florian La Roche
++ *
++ *  Adapted nfs symlink handling code for smbfs
++ *   by Linux-Team of the University of Regensburg 1997
++ *
++ */
++
++#include <linux/sched.h>
++#include <linux/errno.h>
++#include <linux/smb_fs.h>
++#include <linux/stat.h>
++#include <linux/mm.h>
++#include <linux/malloc.h>
++#include <linux/string.h>
++
++#include <asm/segment.h>
++
++static int smb_readlink(struct inode *, char *, int);
++static int smb_follow_link(struct inode *, struct inode *, int, int,
++			   struct inode **);
++
++/*
++ * symlinks can't do much...
++ */
++struct inode_operations smb_symlink_inode_operations =
++{
++	NULL,			/* no file-operations */
++	NULL,			/* create */
++	NULL,			/* lookup */
++	NULL,			/* link */
++	NULL,			/* unlink */
++	NULL,			/* symlink */
++	NULL,			/* mkdir */
++	NULL,			/* rmdir */
++	NULL,			/* mknod */
++	NULL,			/* rename */
++	smb_readlink,		/* readlink */
++	smb_follow_link,	/* follow_link */
++	NULL,			/* readpage */
++	NULL,			/* writepage */
++	NULL,			/* bmap */
++	NULL,			/* truncate */
++	NULL			/* permission */
++};
++
++static int
++smb_follow_link(struct inode *dir, struct inode *inode,
++		int flag, int mode, struct inode **res_inode)
++{
++	int error, *mem;
++	unsigned int len;
++	char *res, *res2;
++
++	*res_inode = NULL;
++	if (!dir)
++	{
++		dir = current->fs->root;
++		dir->i_count++;
++	}
++	if (!inode)
++	{
++		iput(dir);
++		return -ENOENT;
++	}
++	if (!S_ISLNK(inode->i_mode))
++	{
++		iput(dir);
++		*res_inode = inode;
++		return 0;
++	}
++	if (current->link_count > 5)
++	{
++		iput(inode);
++		iput(dir);
++		return -ELOOP;
++	}
++	error = smb_proc_readlink(inode, &mem, &res, &len, SMB_MAXPATHLEN);
++	if (error)
++	{
++		iput(inode);
++		iput(dir);
++		kfree(mem);
++		return error;
++	}
++	while ((res2 = (char *) kmalloc(SMB_MAXPATHLEN + 1, GFP_NFS)) == NULL)
++	{
++		schedule();
++	}
++	memcpy(res2, res, len);
++	res2[len] = '\0';
++	kfree(mem);
++	iput(inode);
++	current->link_count++;
++	error = open_namei(res2, flag, mode, res_inode, dir);
++	current->link_count--;
++	kfree_s(res2, SMB_MAXPATHLEN + 1);
++	return error;
++}
++
++static int
++smb_readlink(struct inode *inode, char *buffer, int buflen)
++{
++	int error, *mem;
++	unsigned int len;
++	char *res;
++
++	if (!S_ISLNK(inode->i_mode))
++	{
++		iput(inode);
++		return -EINVAL;
++	}
++	if (buflen > SMB_MAXPATHLEN)
++		buflen = SMB_MAXPATHLEN;
++	error = smb_proc_readlink(inode, &mem, &res, &len, buflen);
++
++	iput(inode);
++	if (!error)
++	{
++		memcpy_tofs(buffer, res, len);
++		put_user('\0', buffer + len);
++		error = len;
++	}
++	kfree(mem);
++	return error;
++}
+diff -urN 2.0.28/include/linux/smb.h 2.0.28-unix/include/linux/smb.h
+--- 2.0.28/include/linux/smb.h	Thu Dec  5 16:48:16 1996
++++ 2.0.28-unix/include/linux/smb.h	Fri Feb 21 17:45:55 1997
+@@ -3,6 +3,9 @@
+  *
+  *  Copyright (C) 1995 by Paal-Kr. Engstad and Volker Lendecke
+  *
++ *  UN*X-Extensions by Linux-Team of the University of Regensburg
++ *       1997
++ *
+  */
+ 
+ #ifndef _LINUX_SMB_H
+@@ -78,6 +81,8 @@
+ #define LANMAN1
+ #define LANMAN2
+ #define NT1
++
++#define CAP_UNIX 0x8000
+ 
+ enum smb_protocol { 
+ 	PROTOCOL_NONE, 
+diff -urN 2.0.28/include/linux/smb_fs.h 2.0.28-unix/include/linux/smb_fs.h
+--- 2.0.28/include/linux/smb_fs.h	Thu Dec  5 16:48:16 1996
++++ 2.0.28-unix/include/linux/smb_fs.h	Mon Feb 24 16:48:59 1997
+@@ -3,6 +3,9 @@
+  *
+  *  Copyright (C) 1995 by Paal-Kr. Engstad and Volker Lendecke
+  *
++ *  UN*X-Extensions by Linux-Team of the University of Regensburg
++ *       1997
++ *
+  */
+ 
+ #ifndef _LINUX_SMB_FS_H
+@@ -140,6 +143,10 @@
+ void smb_invalidate_all_inodes(struct smb_server *server);
+ void smb_free_dir_cache(void);
+ 
++/* linux/fs/smbfs/symlink.c */
++
++extern struct inode_operations smb_symlink_inode_operations;
++
+ /* linux/fs/smbfs/ioctl.c */
+ int smb_ioctl (struct inode * inode, struct file * filp,
+                unsigned int cmd, unsigned long arg);
+@@ -177,15 +184,19 @@
+ 		struct inode *ndir, const char *nname, const int nlen);
+ int smb_proc_mkdir(struct inode *dir, const char *name, const int len);
+ int smb_proc_rmdir(struct inode *dir, const char *name, const int len);
++int smb_proc_symlink(struct inode *dir, const char *name, 
++                     const char *symname, struct smb_dirent *sattr);
+ int smb_proc_unlink(struct inode *dir, const char *name, const int len);
+ int smb_proc_readdir(struct smb_server *server, struct inode *dir,
+                      int fpos, int cache_size, 
+ 		     struct smb_dirent *entry);
+ int smb_proc_getattr(struct inode *dir, const char *name, int len,
+ 		     struct smb_dirent *entry);
+-int smb_proc_setattr(struct smb_server *server,
+-                     struct inode *ino,
+-                     struct smb_dirent *new_finfo);
++int smb_proc_readlink(struct inode *inode, int **p0, char **string, 
++		      unsigned int *len, unsigned int maxlen);
++int smb_proc_setattr(struct smb_server *server, 
++		     struct smb_inode_info *dir_info, 
++		     const char *name, int len, struct smb_dirent *new_finfo);
+ int smb_proc_chkpath(struct smb_server *server, char *path, int len,
+                      int *result);
+ int smb_proc_dskattr(struct super_block *super, struct smb_dskattr *attr);
+diff -urN 2.0.28/include/linux/smbno.h 2.0.28-unix/include/linux/smbno.h
+--- 2.0.28/include/linux/smbno.h	Wed Sep 18 16:41:49 1996
++++ 2.0.28-unix/include/linux/smbno.h	Fri Feb 21 17:45:55 1997
+@@ -266,4 +266,12 @@
+ #define TRANSACT2_FINDNOTIFYNEXT  12
+ #define TRANSACT2_MKDIR           13
+ 
++/* INFO_LEVELS */
++
++#define SMB_SET_FILE_UNIX_BASIC       	0x200
++#define SMB_QUERY_FILE_UNIX_BASIC       0x200
++#define SMB_SET_FILE_UNIX_LINK		0x201
++#define SMB_QUERY_FILE_UNIX_LINK        0x201
++#define SMB_FIND_FILE_UNIX              0x202
++
+ #endif /* _SMBNO_H_ */

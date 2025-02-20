@@ -1,0 +1,24 @@
+Begin3
+Title:          dialmon
+Version:        0.7
+Entered-date:   01-Mar-98
+Description:    Dialmon is a monitor daemon for diald which allows
+		clients on remote machines to display the current
+		status of diald, and to optionally bring the link up,
+		take the link down, and restart diald. Clients for
+		Linux (tcl/tk), Win31 and Win95/NT4 are included. The
+		windows clients also show transmission and reception#
+                data; the Win95/NT4 version can display the diald
+                packet queue and connection logging.
+Keywords:       diald windows
+Author:         mike@quaking.demon.co.uk
+Maintained-by:  mike@quaking.demon.co.uk
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/daemons/dialmon-0.7.tgz
+		205kB dialmon-0.7.tgz
+		1kB   dialmon-0.7.lsm
+Alternate-site: ftp://195.92.31.34/pub/dialmon-0.7/
+                http://www.quaking.demon.co.uk/dialmon.html
+Original-site:  
+Platforms:      WfWG3.11+TCP/IP, Win95, Win98, WinNT4, Linux/X11
+Copying-policy: GPL
+End

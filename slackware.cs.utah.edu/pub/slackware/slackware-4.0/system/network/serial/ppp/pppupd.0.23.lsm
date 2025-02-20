@@ -1,0 +1,19 @@
+Begin3
+Title:		pppupd
+Version:	0.23
+Entered-date:	Sun Feb  4 12:02:56 EST 1996
+Description:	pppupd, is a small daemon package, which maintains, and logs
+		a dialup ppp connection. It does things such as re-dialing
+		upon connection drop, periodic pinging to aviod idle
+		disconnects, and some other stuff.
+Keywords:	ppp, serial, redial, log
+Author:		swarthy@thetasys.com (Jake V. Bouvrie)
+Maintained-by:	swarthy@thetasys.com (Jake V. Bouvrie)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/serial
+		6.0kb	pppupd.0.22.tar.gz
+		671	pppupd.0.22.lsm
+Alternate-site:	ftp.thetasys.com /pub/pppupd/
+		6.0kb	pppupd.0.22.tar.gz
+		671	pppupd.0.22.lsm
+Copying-policy: GPL
+

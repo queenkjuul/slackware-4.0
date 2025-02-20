@@ -1,0 +1,24 @@
+Begin3
+Title:  	cflow        
+Version:        2.0 
+Entered-date:   3/05/95
+Description:     show C call structure
+		two small programs and a script	
+Keywords:       flow C  callgraph
+Author:         lots  (for the last decade)
+	Andrew Moore
+	Steve Kirkendall
+	Tony Hansen
+	Kevin Szbo
+	Aleixs Szabo
+	Alexis Kwan
+	M.M.Taylor
+	Marty Leisner
+
+Maintained-by:  leisner@sdsp.mc.xerox.com (Marty Leisner)
+Primary-site:   sunsite.unc.edu:/devel/C
+Alternate-site: 
+Original-site:  
+Platform:       Linux, sunos, works with gcc and bash
+Copying-policy: 
+End

@@ -1,0 +1,24 @@
+Begin3
+Title:          devinfo.tar.gz
+Version:        1.0
+Entered-date:   15OCT94
+Description:    A set of utility programs which will work with scripts and
+		aid in determining various parameters for network devices.
+		It is useful for the ppp 'ip-up' script to aid in automating
+		things such as sending pending mail to the remote when the
+		remote connects to the Linux PPP server.
+
+		devinfo	- Obtain device information, such as IP address
+			  for the name of a device, its netmask, MTU, etc.
+		gethost	- Translate an IP address to a name and a name
+			  to an IP address.
+		netmath	- Do math with dotted IP address, such as
+		          192.112.246.254 & 255.255.255.0 => 192.112.246.0
+		
+Keywords:       network, scripts, utility
+Author:         Al Longyear (longyear@netcom.com)
+Maintained-by:  Al Longyear (longyear@netcom.com)
+Primary-site:   sunsite.unc.edu
+		118 kB
+Copying-policy: public domain
+End

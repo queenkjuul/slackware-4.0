@@ -1,0 +1,25 @@
+
+Hi, I uploaded a package to metalab.unc.edu/Incoming/Linux, here's 
+my best attempt at the LSM entry:
+
+
+Begin3
+Title:          WebMacro Servlet Framework
+Version:        0.89.1
+Entered-date:   9 May 1999
+Description:    Java servlet development framework, including an HTML/XML
+	template script, and extensible component model. Keeps HTML/XML
+	out of your servlet code; and Java out of your HTML/XML template.
+Keywords:       webmacro java JSDK servlet HTML XML framework script library
+Author:         info@webmacro.org (Semiotek Inc.)
+Maintained-by:  info@webmacro.org (Semiotek Inc.)
+Primary-site:   metalab.unc.edu /pub/Linux/devel/
+		439 kB webmacro.0.89.1.tgz
+Alternate-site: 
+Original-site:  http://webmacro.org
+Platforms:     	Servlet enabled webserver such as Apache-JServ, JRun, etc. 
+Copying-policy: GPL
+End
+
+Justin
+

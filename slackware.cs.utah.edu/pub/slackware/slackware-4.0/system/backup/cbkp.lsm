@@ -1,0 +1,19 @@
+Title:		Cbkp
+Version:	0.1.2
+Entered-date:	29JUN96
+Description:	Cbkp is intended to be a friendly shell interface, using
+		dialog, for backingup and archiving. It's main purpose is to
+		create archives compatible with CLI archivers without 
+		burden the user and to allow for a fast recovery after a 
+                total crash. It supports advanced options for
+		knowledgeable users who don't want to type long
+		commands.
+Keywords:	backup, archive, tape
+Author:		Ryurick Hristev physrmh@phys.canterbury.ac.nz
+Maitained-by:	Ryurick Hristev physrmh@phys.canterbury.ac.nz
+Primary-site:	sunsite.unc.edu/pub/Linux/system/Backup/cbkp-0.1.2.tar.gz
+Platforms:	should work on any UNIX platform 
+                but currently supports only files, floppies and 
+                floppytapes as devices
+		needs: bash, grep, awk, tar or afio, mt
+Copying-policy: GPL2

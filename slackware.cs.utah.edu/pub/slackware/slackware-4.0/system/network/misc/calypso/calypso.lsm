@@ -1,0 +1,35 @@
+Begin3
+Title:    	Calypso for Linux      
+
+Version:        1.0 (June 15, 1997)
+
+Entered-date:   June 15, 1997
+
+Description: Parallel processing on network of workstations.  Distributed
+             shared memory (user-level) on loosely-coupled memory machines;
+             transparent load-balancing and fault-masking.
+
+Keywords: parallel, distributed, shared memory, DSM, VDSM,
+          metacomputing, load-balancing, fault-tolerant,
+          Calypso, MILAN
+
+Author: baratloo@cs.nyu.edu (Arash Baratloo)
+
+Maintained-by: baratloo@cs.nyu.edu (Arash Baratloo)
+
+Primary-site: milan.milan.cs.nyu.edu /pub/calypso
+		270k calypsobin-v1.0.tar.gz
+		182k calypsodoc-v1.0.tar.gz
+        (http://milan.milan.cs.nyu.edu/milan)
+
+Alternate-site: cs.nyu.edu /pub/calypso
+		270k calypsobin-v1.0.tar.gz
+		182k calypsodoc-v1.0.tar.gz
+
+Platforms: Linux,
+           Solaris, (contact me baratloo@cs.nyu.edu)
+           Win NT (www.eas.asu.edu/~calypso)
+
+Copying-policy: free, however no source code (yet).
+End
+

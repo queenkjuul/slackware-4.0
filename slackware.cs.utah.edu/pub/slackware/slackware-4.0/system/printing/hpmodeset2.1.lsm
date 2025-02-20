@@ -1,0 +1,23 @@
+Begin3
+Title:		hpmodeset
+Version:	2.1
+Entered-date:	18 January 1996
+Description:	Hpmodeset is a configurable utility that provides the ability
+		to encapsulate print files within arbitrary printer control statements
+		such as PJL for HP printers.  The tool can be configured to support
+		all printer control statements that your printer understands.
+		Configuration files for most HP printers is included.
+Keywords:	pjl pcl escp postscript printing lpr
+Author:		glennm@insect.sd.monash.edu.au (Glenn Maughan)
+Maintained-by:  glennm@insect.sd.monash.edu.au (Glenn Maughan)
+Primary-site:   hornet.sd.monash.edu.au /pub/hpmodeset
+		64kb hpmodeset-2_1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Printing
+Original-site:
+Platform:	Linux
+Copying-policy: This software is provided "AS IS" without any warranty.  The author
+		takes no responsibility as to the use or misuse of this software.  The	
+		software can be freely distributed provided the supporting
+		documentation is distributed also.  All copyright notices should
+		remain unchanged within the executable and supporting documentation.
+End          

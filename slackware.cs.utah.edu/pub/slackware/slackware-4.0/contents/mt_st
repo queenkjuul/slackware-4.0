@@ -1,0 +1,13 @@
+drwxr-xr-x root/root         0 1996-05-24 15:56 ./
+drwxr-xr-x root/root         0 1994-05-01 18:38 bin/
+-rwxr-xr-x root/bin      12368 1996-05-24 16:54 bin/mt-st
+drwxr-xr-x root/root         0 1995-08-06 22:05 usr/
+drwxr-xr-x root/root         0 1994-03-28 16:24 usr/doc/
+drwxr-xr-x root/root         0 1996-05-24 15:55 usr/doc/mt-st/
+-rw-r--r-- root/root      1192 1996-05-24 15:55 usr/doc/mt-st/README
+-rw-r--r-- root/root       718 1996-05-24 15:55 usr/doc/mt-st/mt-st-0.4.lsm
+drwxr-xr-x root/root         0 1995-08-06 22:05 usr/man/
+drwxr-xr-x root/root         0 1996-05-24 16:54 usr/man/man1/
+-rw-r--r-- root/root      2612 1996-05-24 16:54 usr/man/man1/mt-st.1.gz
+drwxr-xr-x root/root         0 1994-05-01 18:38 install/
+-rw-r--r-- root/root        53 1994-05-01 18:38 install/doinst.sh

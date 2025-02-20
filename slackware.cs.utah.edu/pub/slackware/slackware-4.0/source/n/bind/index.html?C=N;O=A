@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/source/n/bind</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/source/n/bind</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/source/n/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1997-02-06 07:00  </td><td align="right"> 67 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild">SlackBuild</a></td><td align="right">1998-05-23 06:00  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="_bind.tar.gz">_bind.tar.gz</a></td><td align="right">1998-04-09 06:00  </td><td align="right"> 50K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bind-8.1.2-contrib.tar.gz">bind-8.1.2-contrib.tar.gz</a></td><td align="right">1998-05-11 06:00  </td><td align="right">575K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bind-8.1.2-contrib.tar.gz.asc">bind-8.1.2-contrib.tar.gz.asc</a></td><td align="right">1998-05-11 06:00  </td><td align="right">284 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bind-8.1.2-doc.tar.gz">bind-8.1.2-doc.tar.gz</a></td><td align="right">1998-05-11 06:00  </td><td align="right">1.1M</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bind-8.1.2-doc.tar.gz.asc">bind-8.1.2-doc.tar.gz.asc</a></td><td align="right">1998-05-11 06:00  </td><td align="right">284 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bind-8.1.2-src.tar.gz">bind-8.1.2-src.tar.gz</a></td><td align="right">1998-05-11 06:00  </td><td align="right">660K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bind-8.1.2-src.tar.gz.asc">bind-8.1.2-src.tar.gz.asc</a></td><td align="right">1998-05-11 06:00  </td><td align="right">284 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="named-bootconf.pl">named-bootconf.pl</a></td><td align="right">1998-04-08 06:00  </td><td align="right">8.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="named.conf.sample">named.conf.sample</a></td><td align="right">1998-03-23 07:00  </td><td align="right">586 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="named.reload">named.reload</a></td><td align="right">1998-04-09 06:00  </td><td align="right">147 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="named.restart">named.restart</a></td><td align="right">1998-04-09 06:00  </td><td align="right">150 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

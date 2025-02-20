@@ -1,0 +1,19 @@
+Begin3
+Title:          ppplogin.c
+Version:        2.1
+Entered-date:   24/02/97
+Description:    C login wrapper for ppp clients.  Uses sliplogin's config
+		files and provides the static, pseudodynamic and truly
+		dynamic (up, down, random) addressing using SYSV IPC.
+		Look in the source for info.  Tested on Linux only.
+Keywords:       ppp, slip, sliplogin, ppplogin, dynamic, static
+Author:         btv@odin.net (Fitos Imre) - perl version
+Maintained-by:  rzm@pdi.net (Rafal Maszkowski) - C version, dynamic PPP
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/serial/ppp
+				5 KB ppplogin-2.1.c.gz
+Alternate-site: ftp.torun.pdi.net /pub/ppplogin
+				5 KB ppplogin-2.1.c.gz
+Original-site:  
+Platform:       
+Copying-policy: Public Domain
+End

@@ -1,0 +1,25 @@
+==============================================================================
+PKGNAME:    emx-gcc                             
+TITLE:      Cross-Compiler Linux => OS/2, DOS   
+VERSION:    -                         
+DESC1:      With emx-gcc, you can produce ready-to-run a.out files for        
+DESC2:      OS/2 and DOS with the emx-extender (Eberhard Mattes, emTeX)       
+DESC3:                                                                        
+AUTHOR:     Michael Bischoff                                                  
+MAINTBY:    no one                                                            
+MAINTAT1:   sunsite.unc.edu                                                   
+PATHFILE1:  Linux/(somewhere)                                                
+MAINTAT2:                   
+PATHFILE2:                                     
+REQUIRED1:  Linux, gcc-2.5.8, binutils-1.0, libc-4.5.21 or newer              
+REQUIRED2:  Some emx packages for libs, includes, etc. (see comment)          
+REQUIRED3:  EMXRT.ZIP on the DOS or OS/2 side                                
+COPYPOLICY: GNU copyleft        
+KEYWORDS:   C-crosscompiler, DOS-Extender, OS/2 emx                           
+APPROXSIZE: 100 KB          
+LAST3REL:   (none)                                                          
+COMMENT1:   emx-gcc uses cc1 from Linux and libs/includes from the original 
+COMMENT2:   emx distribution. The only new binary is the linker, used to      
+COMMENT3:   produce the emx a.out format.                                     
+CHECKEDBY:                                 
+DATE:       03/28/94 

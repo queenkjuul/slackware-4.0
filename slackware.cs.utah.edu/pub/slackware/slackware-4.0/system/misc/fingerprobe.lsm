@@ -1,0 +1,22 @@
+Begin3
+Title: Fingerprobe
+Version:  1.0
+Entered-date:  April 15th 1998
+Description:   Uses the finger command to audit user usage.  Usage
+information will be collected by host, by user, by date, and by time.
+                            Works across a network of workstations.
+                            Keeps track of uptime by host.
+                            Writes output in human readable format or HTML.
+                            Maintains a database of past usage history.
+                            Very easy to set up and use.
+                            Was published in the Linux Gazette
+Keywords:       Accounting, usage
+Author:         Randy Appleton    (randy@euclid.nmu.edu)
+Maintained-by:  Randy Appleton (randy@euclid.nmu.edu)
+Primary-site:   http://euclid.nmu.edu/~`randy/Research
+Alternate-site:
+Original-site:
+Platforms:  Any UNIX platform with perl
+Copying-policy:  Feel free, but let me know and please offer credit
+where due.
+End

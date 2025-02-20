@@ -1,0 +1,17 @@
+Begin3
+Title:          Tk95
+Version:        0.99
+Entered-date:   26 Aug 1998
+Description:    Give Tk a Win95 look'n'feel with minimal source file
+		changes.
+Keywords:       tk, tcl
+Author:         antonio@hp720.icqem.pi.cnr.it (Antonio Tozzi)
+Maintained-by:  antonio@hp720.icqem.pi.cnr.it (Antonio Tozzi)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/tcl
+		45960 tk95_099.tgz
+		  525 tk95_099.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Linux (other unixes?), Tcl/Tk 8.0p2 or 8.1a2
+Copying-policy: LGPL
+End

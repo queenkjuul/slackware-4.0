@@ -1,0 +1,11 @@
+Package-Name:   mdm2.06.tar.Z
+Title:          MDM
+Version:        2.06
+Description:    Linux Modem Server (Better than uugetty)
+Author:         Anthony Rumble <arumble@extro.ucc.su.oz.au>
+Maintained-by:  Anthony Rumble <arumble@extro.ucc.su.oz.au>
+Maintained-at:  looking for a FTP site, all else fails sunsite.unc.edu
+Platforms:      Written for Linux 0.99pl7/8 in c.
+Copying-policy: GNU copyleft
+Keywords:       LINUX MODEM UUGETTY
+

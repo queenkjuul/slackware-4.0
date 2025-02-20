@@ -1,0 +1,23 @@
+Begin3
+Title:          tagline plugin for PINE
+Version:        1.0
+Entered-date:   JUL97
+Description:    I belive you will know what I am talking about
+		if I recognize you of the BBS era and conferencing
+		on fidonet (and other nets:). Most of you use(d) the qwk
+		pakets to transfer them home and read mail locally.
+		We sure remember those funny quotes that came with our
+		readers. So now we are all writing email and those
+		are not incorporated in our mailers :(. This is a 
+		"plugin" for PINE which enables you to insert a tagline
+		in your email. You can even run it from crontab so it is not
+		nevesary to use pine.
+Keywords:       tagline, PINE, crontab, singature, bbs, email
+Author:         andrej.bagon@guest.arnes.si (Andrej Bagon)
+Maintained-by:  Andrej Bagon
+Primary-site:   http://xopy.rulz.ml.org/linux/tagline1.0.tar.gz
+                16k
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/mail/misc/
+		tagline1.0.tar.gz 16k 
+Copying-policy: GPL :)
+end3

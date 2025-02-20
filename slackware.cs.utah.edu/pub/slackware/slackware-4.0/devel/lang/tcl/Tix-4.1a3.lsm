@@ -1,0 +1,22 @@
+Begin3
+Title:          tix
+Version:        4.1a3
+Entered-date:   17SEP96
+Description:    The Tix library is an extension to the Tk toolkit that
+                contains over 20 new widgets for Tk.
+                See also http://www.xpi.com/tix/./tix.html
+Keywords:       tix, tcl, tk, x11, widgets
+Author:         ioi@graphics.cis.upenn.edu (Ioi Kim Lam)
+Primary-site:   ftp.xpi.com /pub
+                  6725 Tix4.1a3.README
+                587615 Tix4.1a3.tar.gz
+                217183 TixManPages4.1a3.ps.gz
+                  8951 TixManTitle4.1a3.ps.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/libs/tcl
+                  6725 Tix-4.1a3.README
+                587615 Tix-4.1a3.tar.gz
+                217183 Tix-4.1a3.ManPages.ps.gz
+                  8951 Tix-4.1a3.ManTitle.ps.gz
+Platforms:      X11 Linux, Tcl/Tk
+Copying-policy: Copyrighted; free :)
+End

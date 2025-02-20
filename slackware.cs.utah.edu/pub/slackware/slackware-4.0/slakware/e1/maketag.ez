@@ -1,0 +1,41 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+cat /dev/null > $TMP/SeTnewtag
+dialog --title "SELECTING PACKAGES FROM SERIES E (GNU EMACS)" \
+       --checklist "Please select the packages you wish to install \
+from series E.  Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install.  Recommended packages have \
+already been selected for you, but you may unselect them if you wish.  \
+Please note that there is an extra Emacs binary available that does not \
+require X11 libraries.  If you are not installing X, be sure to check \
+the 'emac_nox' box. \
+Press ENTER when you are \
+done." 19 70 5 \
+"emacsbin" "The base GNU Emacs system" "on" \
+"emacmisc" "Miscellaneous files for Emacs 20.3" "on" \
+"elisp" "Lisp source files for Emacs 20.3" "off" \
+"emacinfo" "Info (documentation) files for Emacs" "on" \
+"emac_nox" "An emacs binary that does not require X" "off" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ > $TMP/SeTnewtag
+ for pkg in emacsbin emacmisc elisp emacinfo emac_nox ; do
+  echo "$pkg: SKP" >> $TMP/SeTnewtag
+ done
+ exit
+fi
+cat /dev/null > $TMP/SeTnewtag
+for PACKAGE in emacsbin emacmisc elisp emacinfo emac_nox ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+rm -f $TMP/SeTpkgs

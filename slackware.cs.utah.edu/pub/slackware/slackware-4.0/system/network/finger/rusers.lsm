@@ -1,0 +1,15 @@
+Begin3
+Title:          rusers (protocol version 2 & 3)
+Version:        1.0
+Entered-date:   06JUN96
+Description:    This package implements the rusers program with protocol
+		version 2 and 3. (It didn't seg.fault like the DEBIAN
+		version)
+Keywords:       rusers rpc.rusersd
+Author:        	kukuk@uni-paderborn.de (Thorsten Kukuk)
+Maintained-by:  kukuk@uni-paderborn.de (Thorsten Kukuk)
+Primary-site:   sunsite.unc.edu
+Alternate-site: http://www-vt.uni-paderborn.de/~kukuk/linux/
+		12682 rusers-1.0.tar.gz
+Copying-policy: GNU public license
+End

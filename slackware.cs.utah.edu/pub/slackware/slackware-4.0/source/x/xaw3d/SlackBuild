@@ -1,0 +1,72 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-xaw3d
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_xaw3d.tar.gz
+
+echo "+===========+"
+echo "| Xaw3d-1.5 |"
+echo "+===========+"
+cd $TMP
+tar xzvf $CWD/Xaw3d-1.5.tar.gz
+cd xc/lib/Xaw3d
+mkdir X11
+( cd X11 ; ln -sf ../../Xaw3d Xaw3d )
+zcat $CWD/Xaw3d.slack.diff.gz | patch
+xmkmf
+make
+mkdir -p $PKG/usr/X11R6/lib
+cp libXaw3d.so.6.1 $PKG/usr/X11R6/lib/libXaw3d.so.6.1
+mkdir -p $PKG/usr/doc/Xaw3d
+cp -a README.XAW3D $PKG/usr/doc/Xaw3d
+chown root.root $PKG/usr/doc/Xaw3d/README.XAW3D
+chmod 644 $PKG/usr/doc/Xaw3d/README.XAW3D
+mkdir -p $PKG/usr/X11R6/include/X11/Xaw3d
+for header in AllWidgets.h AsciiSink.h AsciiSinkP.h AsciiSrc.h AsciiSrcP.h \
+AsciiText.h AsciiTextP.h Box.h BoxP.h Cardinals.h Command.h CommandP.h \
+Dialog.h DialogP.h Form.h FormP.h Grip.h GripP.h Label.h LabelP.h Layout.h \
+LayoutP.h List.h ListP.h MenuButton.h MenuButtoP.h MultiSrc.h MultiSrcP.h \
+MultiSink.h MultiSinkP.h Paned.h PanedP.h Panner.h PannerP.h Porthole.h \
+PortholeP.h Repeater.h RepeaterP.h Reports.h Scrollbar.h ScrollbarP.h \
+Simple.h SimpleP.h SimpleMenu.h SimpleMenP.h Sme.h SmeP.h SmeBSB.h SmeBSBP.h \
+SmeLine.h SmeLineP.h SmeThreeD.h SmeThreeDP.h StripChart.h StripCharP.h \
+Template.c Template.h TemplateP.h Text.h TextP.h TextSink.h TextSinkP.h \
+TextSrc.h TextSrcP.h ThreeD.h ThreeDP.h Toggle.h ToggleP.h Tree.h \
+TreeP.h VendorEP.h Viewport.h ViewportP.h XawImP.h XawInit.h ; do
+ cp -a $header $PKG/usr/X11R6/include/X11/Xaw3d/$header
+ chown root.root $PKG/usr/X11R6/include/X11/Xaw3d/$header
+ chmod 644 $PKG/usr/X11R6/include/X11/Xaw3d/$header
+done
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/xaw3d.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/xc
+  rm -rf $PKG
+fi

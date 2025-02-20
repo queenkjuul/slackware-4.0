@@ -1,0 +1,9 @@
+F 00_INDEX.TXT                      	00_index.txt
+D DONTUSE                           	dontuse
+F INDEX                             	INDEX
+F SECURITY                          	security-patch
+L SMBFS.TGZ                         	smbfs.tgz	smbfs-2.0.2.tgz
+F SMBFS-0_.TGZ                      	smbfs-0.10.tgz
+F SMBFS-2_.LSM                      	smbfs-2.0.2.lsm
+F SMBFS-2_.TGZ                      	smbfs-2.0.2.tgz
+F SMBMOUNT.GZ                       	smbmount-1.3.tar.gz

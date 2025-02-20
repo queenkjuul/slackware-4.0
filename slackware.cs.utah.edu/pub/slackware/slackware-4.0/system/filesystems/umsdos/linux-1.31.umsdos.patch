@@ -1,0 +1,110 @@
+From mday@park.uvsc.edu Tue Jul 19 21:51:47 EDT 1994
+Article: 12364 of comp.os.linux.development
+Newsgroups: comp.os.linux.development
+Path: bigblue.oit.unc.edu!concert!gatech!newsxfer.itd.umich.edu!sol.ctr.columbia.edu!news.kei.com!news.byu.edu!hamblin.math.byu.edu!park.uvsc.edu!mday
+From: mday@park.uvsc.edu (Matt Day)
+Subject: Re: Patchlevel 31 breaks UMSDOS [FIX]
+Organization: Utah Valley State College, Orem, Utah
+Date: Wed, 20 Jul 1994 03:23:09 GMT
+Message-ID: <Ct7yqo.3H1@park.uvsc.edu>
+References: <Ct7AE9.Fn7@ucdavis.edu>
+Lines: 96
+
+In article <Ct7AE9.Fn7@ucdavis.edu> slouken@cs.ucdavis.edu (Sam Oscar Lantinga) writes:
+>	The file linux/fs/msdos/mmap.c from the UMSDOS distribution
+>contains references to share_map(), which no longer exists in patchlevel 31.
+>It should be an easy fix, but I don't know where to start.
+
+This patch gets UMSDOS 3.0 running on Linux 1.1.31:
+
+--- fs/msdos/mmap.c-	Tue Jul 19 16:13:06 1994
++++ fs/msdos/mmap.c	Tue Jul 19 17:36:14 1994
+@@ -19,13 +19,6 @@
+ #include <asm/system.h>
+ #include <linux/msdos_fs.h>
+ 
+-extern int share_page(struct vm_area_struct * area, struct task_struct * tsk,
+-	struct inode * inode, unsigned long address, unsigned long error_code,
+-	unsigned long newpage);
+-
+-extern unsigned long put_page(struct task_struct * tsk,unsigned long page,
+-	unsigned long address,int prot);
+-
+ extern void file_mmap_free(struct vm_area_struct * area);
+ extern int file_mmap_share(struct vm_area_struct * from, struct vm_area_struct * to,
+ 				unsigned long address);
+@@ -33,33 +26,20 @@
+ /*
+ 	Perform the mapping of an adresse in memory
+ */
+-static void msdos_file_mmap_nopage(
+-	int error_code,
++static unsigned long msdos_file_mmap_nopage(
+ 	struct vm_area_struct * area,
+-	unsigned long address)
++	unsigned long address,
++	unsigned long page,
++	int error_code)
+ {
+ 	struct inode * inode = area->vm_inode;
+ 	unsigned int clear;
+-	unsigned long page;
+ 	int pos;
+ 	long gap;	/* distance from eof to pos */
+ 
+ 	address &= PAGE_MASK;
+ 	pos = address - area->vm_start + area->vm_offset;
+ 
+-	page = __get_free_page(GFP_KERNEL);
+-	if (share_page(area, area->vm_task, inode, address, error_code, page)) {
+-		++area->vm_task->mm->min_flt;
+-		return;
+-	}
+-
+-	++area->vm_task->mm->maj_flt;
+-	if (!page) {
+-		oom(current);
+-		put_page(area->vm_task, BAD_PAGE, address, PAGE_PRIVATE);
+-		return;
+-	}
+-
+ 	clear = 0;
+ 	gap = inode->i_size - pos;
+ 	if (gap <= 0){
+@@ -78,30 +58,19 @@
+ 		if (cur_read != need_read){
+ 			printk ("MSDOS: Error while reading an mmap file %d <> %d\n"
+ 				,cur_read,need_read);
+-			free_page (page);
+-			oom(current);
+-			put_page(area->vm_task, BAD_PAGE, address, PAGE_PRIVATE);
+-			return;
+ 		}
+ 	}
+-	if (!(error_code & PAGE_RW)) {
+-		if (share_page(area, area->vm_task, inode, address, error_code, page))
+-			return;
+-	}
+ 	if (clear > 0){
+-		#if 1
++#if 1
+ 			memset ((char*)page+PAGE_SIZE-clear,0,clear);
+-		#else
++#else
+ 			unsigned long tmp = page + PAGE_SIZE;
+ 			while (clear--) {
+ 				*(char *)--tmp = 0;
+ 			}
+-		#endif
++#endif
+ 	}
+-	if (put_page(area->vm_task,page,address,area->vm_page_prot))
+-		return;
+-	free_page(page);
+-	oom(current);
++	return page;
+ }
+ struct vm_operations_struct msdos_file_mmap = {
+ 	NULL,			/* open */
+
+

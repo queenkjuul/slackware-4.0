@@ -1,0 +1,6 @@
+drwxr-xr-x root/root         0 1998-06-06 18:08 ./
+drwxr-xr-x root/root         0 1998-04-02 16:47 usr/
+drwxr-xr-x root/root         0 1998-04-02 17:39 usr/X11R6/
+drwxr-xr-x root/root         0 1998-04-02 17:40 usr/X11R6/lib/
+-rw-r--r-- root/root     64676 1998-06-05 16:07 usr/X11R6/lib/libMrm.a
+-rw-r--r-- root/root   1173580 1998-06-05 16:07 usr/X11R6/lib/libXm.a

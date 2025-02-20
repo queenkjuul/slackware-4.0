@@ -1,0 +1,20 @@
+Here is the 3.1.29 release of smail, released on 1 November, 1994.
+
+There are 4 files:-
+
+smail-3.1.28-29.patch
+	The patch file from 3.1.28 to 3.1.29 
+	Needs a clean 3.1.28 to patch to.
+	This is big since all the version headers were changed
+
+smail-3.1.29.tar.gz
+	The source in tar/gzip formay
+
+smail-linuxbin-3.1.29.tar.gz
+	A linux binary distribution.
+	No sample configs are included.
+	Compiled on Slackware 2.0.1, config files go in /etc/smail
+
+smail-psdocs-3.1.29.tar.gz
+	Smail 3.1 documentation in PS format for A4 paper.
+

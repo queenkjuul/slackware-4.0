@@ -1,0 +1,32 @@
+Begin3
+Title:          ACE
+Version:        4.0.31
+Entered-date:   24SEP96
+Description:    The ADAPTIVE Communication Environment (ACE) is a
+                freely available Object-Oriented network programming
+                toolkit targeted for developers of high-performance
+                concurrent network applications and services.  ACE
+                encapsulates the following user-level UNIX and Win32
+                (Windows NT and Windows '95) OS facilities via
+                portable, type-secure, C++ interfaces:
+                . IPC mechanisms
+                . Event multiplexing
+                . Multi-threading and synchronization
+                . Explicit dynamic linking
+                . Memory-mapped files and shared memory management
+                . System V IPC 
+                . Sun RPC 
+
+                See also:
+                http://www.cs.wustl.edu/~schmidt/ACE.html
+Keywords:       ace, object oriented, concurrency, network, applications,
+                programming, c++
+Author:         schmidt@cs.wustl.edu (Douglas C. Schmidt)
+Primary-site:   http://www.cs.wustl.edu/~schmidt/
+                1746027 ACE-4.0.31.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/c++
+                1746027 ACE-4.0.31.tar.gz
+Platforms:      UNIX, Windows NT, Windows '95
+Copying-policy: Copyrighted but free of use/distribution
+                (out of rpc++ which is GPLed)
+End

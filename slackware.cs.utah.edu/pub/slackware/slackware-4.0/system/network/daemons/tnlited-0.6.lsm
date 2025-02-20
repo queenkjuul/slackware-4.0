@@ -1,0 +1,17 @@
+
+Begin3
+Title: 		tnlited
+Version:        0.6
+Entered-date:   7AUG98
+Description:    Very lightweight telnetd that runs as a single process.  
+		Extremely lacking in features.
+Keywords:       telnetd 
+Author:         sammy@users.qual.net (Sam Creasey)
+Maintained-by:  sammy@users.qual.net (Sam Creasey)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/daemons
+		28507 tnlited-0.5.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:     Linux 
+Copying-policy: GPL
+End

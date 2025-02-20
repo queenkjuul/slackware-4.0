@@ -1,0 +1,97 @@
+From vixie@vix.com  Tue Jul 26 09:39:47 1994
+Received: from gw.home.vix.com by hermes.rz.uni-sb.de via SMTP (931110.SGI/930601.USB)
+	for flla id AA26678; Tue, 26 Jul 94 09:39:47 +0200
+Received: by gw.home.vix.com id AA29993; Mon, 25 Jul 94 20:49:32 -0700
+X-Btw: vix.com is also gw.home.vix.com and vixie.sf.ca.us
+Received: by gw.home.vix.com id AA29989; Mon, 25 Jul 94 20:49:31 -0700
+Date: Mon, 25 Jul 94 20:49:31 -0700
+From: paul@vix.com (Paul Vixie)
+Message-Id: <9407260349.AA29989@gw.home.vix.com>
+To: bind-workers@vix.com
+Subject: BIND 4.9.3 BETA9 PATCH1 -- please apply
+Status: RO
+
+*** 4.9.1.35	1994/07/24 01:00:59
+--- CHANGES	1994/07/26 03:37:20
+***************
+*** 1,4 ****
+--- 1,14 ----
+  $Id: CHANGES,v 4.9.1.35 1994/07/24 01:00:59 vixie Exp vixie $
+  
++ 	--- 4.9.3-beta9-patch1 released ---
++ 
++ 209. installed marka's patch to CRED that fixes BETA9's flaw.
++ 
++ 208. added comment to README about -l44bsd and inet_aton().
++ 
++ 207. new directory: contrib/multizdb.  highly nonrecommended.
++ 
++ 206. small NextStep change in Makefile.
++ 
+  	--- 4.9.3-beta9 released ---
+  
+*** 4.9.1.39	1994/07/24 00:59:36
+--- Makefile	1994/07/26 03:18:58
+***************
+*** 276,280 ****
+  
+  #(NeXTstep 2.1 and 3.0)
+- # Also, you will want the c-news libfake/putenv.c, minus the libc.h include.
+  #CC = cc -Dpid_t=int
+  #LIBS = -ll
+--- 276,279 ----
+*** 4.9.1.13	1994/07/22 08:42:23
+--- README	1994/07/26 03:29:48
+***************
+*** 15,18 ****
+--- 15,22 ----
+  	rather than SIGHUP ("named.reload") when making changes of this kind.
+  
++ Also, you may find that your utilitiesw will not link with this -lresolv
++ unless you also install lib44bsd.a and link with -lresolv -l44bsd.  This
++ is because older systems do not include inet_aton() and other functions.
++ 
+  ----- 4.9.3 BETA6 release - June, 1994 - paul@vix.com
+  
+*** 4.9.1.19	1994/07/23 23:23:56
+--- named/db_update.c	1994/07/26 03:31:53
+***************
+*** 344,348 ****
+  				 * the same class that isn't as credable
+  				 */
+! 				if (newdp->d_cred >= DB_C_AUTH && 
+  				    newdp->d_cred > dp->d_cred)
+  					/* better credibility and the old datum
+--- 344,348 ----
+  				 * the same class that isn't as credable
+  				 */
+! 				if (newdp->d_cred == DB_C_ZONE && 
+  				    newdp->d_cred > dp->d_cred)
+  					/* better credibility and the old datum
+***************
+*** 355,359 ****
+  				 * node, don't add in other data.
+  				 */
+! 				if (dp->d_cred >= DB_C_AUTH &&
+  				    newdp->d_cred < dp->d_cred)
+  					return (AUTH);
+--- 355,359 ----
+  				 * node, don't add in other data.
+  				 */
+! 				if (dp->d_cred == DB_C_ZONE &&
+  				    newdp->d_cred < dp->d_cred)
+  					return (AUTH);
+***************
+*** 362,366 ****
+  				 * but isn't as credible, reject it.
+  				 */
+! 				if (newdp->d_cred >= DB_C_AUTH && 
+  				    newdp->d_cred == dp->d_cred &&
+  				    newdp->d_clev < dp->d_clev)
+--- 362,366 ----
+  				 * but isn't as credible, reject it.
+  				 */
+! 				if (newdp->d_cred == DB_C_ZONE && 
+  				    newdp->d_cred == dp->d_cred &&
+  				    newdp->d_clev < dp->d_clev)
+

@@ -1,0 +1,23 @@
+Begin3
+Title:          webble
+Version:        0.1
+Entered-date:   01MAR98
+Description:    Ncurses front-end to command-line programs that use
+		the syntax:
+		<program> <options> <target>
+		where <program> is any executable, and <target> is one
+		in a list of options.
+		It was created to work with videogame emulators, 
+		but it is generic enough to be used with any kind of program.
+		Webble reads its configuration from a resource file.
+Keywords:       ncurses front-end launcher generic emulator games
+Author:         rubens_ramos@yahoo.com (Rubens Ramos)
+Maintained-by:  rubens_ramos@yahoo.com (Rubens Ramos)
+Primary-site:   sunsite.unc.edu/pub/Linux/
+		120kB webble-0.1.tgz
+Alternate-site: tsx-11.mit.edu/pub/Linux/sources/usr.bin/
+		120kB webble-0.1.tgz
+Original-site:  
+Platforms:      Linux, libshhopt, ncurses
+Copying-policy: GPL
+End

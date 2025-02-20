@@ -1,0 +1,19 @@
+
+
+
+Begin3
+Title:                redial          
+Version:              1.0
+Entered-date:         3-12-1999
+Description:          A script file and instructions to redial your ISP
+                      when it drops the ppp offline. Works great for this
+                      one purpose. IS NOT a dial on demand program.  
+Keywords:             script ppp slackware dial internet isp redial redialer
+Author:               larrywyb@larry.dhis.org  (Larry L Wyble)
+Maintained-by:        larrywyb@larry.dhis.org  (Larry L Wyble)
+Primary-site:         ftp://larry.dhis.org/pub/linux/redial
+Alternate-site:       ftp://sunsite.unc.edu/pub/Linux/system/network/serial/
+Original-site:        
+Platforms:            
+Copying-policy:       Freeware
+End

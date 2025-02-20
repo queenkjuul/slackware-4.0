@@ -1,0 +1,58 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+
+/*
+ * This is version 2 of this document.
+ */
+
+NetKit 0.09 was the last NetKit to be released as a complete package.
+
+NetKit, if you wish to call it that, consists of the following
+packages:
+
+   		biff+comsat-0.10
+   		bsd-finger-0.10
+   		(linux-ftpd-0.10) (*)
+   		netkit-base-0.10
+   		netkit-bootparamd-0.10
+   		netkit-ftp-0.10
+   		netkit-ntalk-0.10
+   		netkit-routed-0.10
+   		netkit-rsh-0.10
+   		netkit-rusers-0.11
+   		netkit-rwall-0.10
+   		netkit-rwho-0.10
+   		netkit-telnet-0.10
+   		netkit-tftp-0.10
+   		netkit-timed-0.10
+   		netwrite-0.10
+
+Recent changes to this list:
+   		netkit-rusers-0.10 -> 0.11	(02-Aug-1997)
+
+
+These may all be downloaded separately. If some or all of these have
+been updated since this document was written, be sure to always get
+the latest versions.
+
+Please don't install packages you don't need; also please be sure to
+remove any binaries of out-of-date versions of anything you choose not
+to install.
+
+(*) linux-ftpd hasn't ever really been part of NetKit and it isn't
+packaged quite the same way as the others. This will probably change
+in the future.
+
+If you have questions please mail me: 
+
+David A. Holland
+dholland@hcs.harvard.edu
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.6.2
+
+iQCVAwUBM+NkzTx1dyEHyT51AQGeUAP+OWBpuZaY7St5niwQY3kr3lbZhHMd2cZj
+OU1HTqqzGibZciioF5e6l4iayq3su6AiX6yPLkXCXzevPyhsfJXRzD0vshTab6oh
+DOLeuSagYB2amNX/pA/0PSwiYQc390QcGZCSC85uBxenDMvdcpS4cDugHZp9EAkf
+TrnZc0wR2oQ=
+=26OH
+-----END PGP SIGNATURE-----

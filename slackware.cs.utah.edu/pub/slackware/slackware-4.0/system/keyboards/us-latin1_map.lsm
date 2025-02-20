@@ -1,0 +1,14 @@
+Begin3
+Title:		us-latin1_map
+Version:	26FEB99
+Entered-date:	26FEB99
+Description:	Keymap definition file for United States keyboards and
+                Latin 1 character set (with dead accents)
+Keywords:	loadkeys keyboard keymap
+Author:		true_mind@hotmail.com (Paulo Oliveira Filho)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/keyboards
+                2KB   us-latin1_map.tgz
+                462   us-latin1_map.lsm
+Platforms:	Linux
+Copying-policy:	GPL
+End

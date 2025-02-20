@@ -1,0 +1,24 @@
+Begin3
+Title:          xesep (Xwindow Evolution Scheduling and Evolving Processes)
+Version:        1.3 
+Entered-date:   28DEC97
+Description:    Xesep is a graphical user interface to the esep 
+                (Evolution Scheduling and Evolving Processes). 
+                It's intended to show users how to start, play, and observe 
+                the Evolution Scheduling and Evolving Processes, including 
+                sub-programs to display system status, evolving process status,
+                queue status, and evolution scheduling status periodically 
+                in as small a time as one milli-second. All the commands and 
+                messages appear on a status bar. It requires the Motif library 
+                and the esep package, which can be found on Sunsite as well. 
+Keywords:       Evolving Processes, Evolution Scheduling, Genetic Algorithms,
+                Evolutionary Programming, Concurrent Programming, Real-Time
+                Systems 
+Author:         linjinl@charlie.cns.iit.edu 
+Maintained-by:  linjinl@charlie.cns.iit.edu 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status
+                11,658 xesep-1.3.tgz
+Original-site:  http://www.iit.edu/~linjinl/xesep.html 
+Platforms:      Linux-2.0.33(SMP), or later, Motif, and esep 
+Copying-policy: GPL
+End

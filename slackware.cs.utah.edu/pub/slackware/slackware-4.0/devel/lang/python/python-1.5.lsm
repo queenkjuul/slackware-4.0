@@ -1,0 +1,20 @@
+Begin3
+Title:          Python
+Version:        1.5
+Entered-date:   01JAN98
+Description:    Python is an interpreted, interactive, object-oriented
+                programming language.  It has modules, classes,
+                exceptions, very high level dynamic data types, and
+                dynamic typing. There are interfaces to many system
+                calls and libraries, as well as to various windowing
+                systems (X11, Motif, Tk, Mac, MFC). New built-in
+                modules are easily written in C or C++. Python is
+                also usable as an extension language for applications
+                that need a programmable interface.  
+		URL: http://www.python.org/
+Keywords:       python scripting interpreter programming language
+Author:         Guido van Rossum (guido@python.org)
+Primary-site:   ftp.python.org /pub/python/src/
+                2.9M  python1.5.tar.gz
+Copying-policy: MIT
+End

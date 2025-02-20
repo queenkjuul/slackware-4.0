@@ -1,0 +1,21 @@
+Begin3
+Title:          pppbutton
+Version:        0.51
+Entered-date:   28DEC1996
+Description:   	pppbutton is a tcl/TK-script which creates a button, 
+		from which you can start and shut down a ppp-connection.
+		It has redial function, and monitors the activities on the
+		interface and shows status by coloring the putton.
+Keywords:       ppp X11 tcl/TK swedish
+Author:         (peter.antman@abc.se) Peter Antman
+Maintained-by:  (peter.antman@abc.se) Peter Antman
+Primary-site:   ftp.mc.hik.se/pub/users/mia95anp/
+		www.abc.se/~m9339/linux/pb-en.html for english
+		www.abc.se/~m9339/linux/pb.html for swedish
+Alternate-site: 
+Original-site: 
+Platforms:     Linux
+Required:	tcl/TK, ppp-up and ppp-down scripts, pppd, chat, netstat, tail
+		grep, ifconfig. 
+Copying-policy: (c) Peter Antman, GPL licencing.
+End

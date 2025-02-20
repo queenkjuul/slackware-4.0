@@ -1,0 +1,12 @@
+CONTENTS: samba       
+samba:    Samba 2.0.3
+samba:
+samba:    Samba is a Unix based SMB file and print server.  This allows a Unix
+samba:    host to act as a file and print server for SMB clients.  This includes
+samba:    Lan-Manager compatible clients such as LanManager for DOS, Windows95,
+samba:    Windows NT, OS/2, Pathworks and many more.  If you have any PCs 
+samba:    running SMB clients, such as a PC running Windows95, then you can 
+samba:    mount file space or printers from a Linux host, so that directories,
+samba:    files and printers on the Linux host are available on the Windows PC.
+samba:
+samba:

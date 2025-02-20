@@ -1,0 +1,20 @@
+
+Begin3
+Title:          SmartUPS
+Version:        1.1
+Entered-date:   July 14 1997
+Description:    A powerd and an X11 graphing utility which shows you the
+		voltages, frequencies, load percentage and battery level in
+		realtime. The protocol that the "Safeware" software uses,
+                and "Tripplite" UPSs are supported. Source + ELF binaries.
+Keywords:       UPS powerd graph smartups
+Author:         Nic Roets (geo@pta.lia.net)
+Maintained-by:  Nic Roets (ups@geo.co.za)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/ups
+		43k smartups.tgz
+		1k smartups.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Linux
+Copying-policy: GPL 2
+End

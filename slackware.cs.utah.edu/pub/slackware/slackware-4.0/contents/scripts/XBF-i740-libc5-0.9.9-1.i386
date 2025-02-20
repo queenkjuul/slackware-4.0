@@ -1,0 +1,4 @@
+( cd usr/X11R6/bin ; rm -rf X )
+( cd usr/X11R6/bin ; ln -sf /var/X11R6/bin/X X )
+( cd var/X11R6/bin ; rm -rf X )
+( cd var/X11R6/bin ; ln -sf /usr/X11R6/bin/XBF_i740 X )

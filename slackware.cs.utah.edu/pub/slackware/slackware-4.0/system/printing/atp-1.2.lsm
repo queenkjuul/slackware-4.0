@@ -1,0 +1,20 @@
+
+Begin3
+Title: 		atp  (ASCII to PostScript converter)
+Version:	1.2        
+Entered-date:	February 6, 1995   
+Description:    atp is an ASCII to PostScript converter, almost a clone
+		of enscript. It produces a special output for C/C++ source 
+		files, highlighting comments and function definitions
+		headers, and allows the possibility to modify the fonts
+		with a PostScript transformation matrix.
+Keywords:       postscript
+Author:         lendl@dist.dist.unige.it (Paolo Severini)
+Maintained-by:  lendl@dist.dist.unige.it (Paolo Severini)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Printing
+		22k  atp-1.2.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: freeware
+End

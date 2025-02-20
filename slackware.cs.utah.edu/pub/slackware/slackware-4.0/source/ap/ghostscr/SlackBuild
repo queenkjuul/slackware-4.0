@@ -1,0 +1,139 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG1=$TMP/package-ghostscr
+PKG2=$TMP/package-gs_x11
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+for dir in $PKG1 $PKG2 ; do
+  if [ ! -d $dir ]; then
+    mkdir -p $dir # place for the package to be built
+  fi
+done
+
+# Explode the package framework:
+cd $PKG1
+explodepkg $CWD/_ghostscr.tar.gz
+cd $PKG2
+explodepkg $CWD/_gs_x11.tar.gz
+
+echo "+==================+"
+echo "| ghostscript-5.10 |"
+echo "+==================+"
+cd $TMP
+tar xzvf $CWD/ghostscript-5.10.tar.gz
+cd gs5.10
+tar xzvf $CWD/ghostscript-5.10jpeg.tar.gz
+ln -sf jpeg-6a jpeg
+tar xzvf $CWD/ghostscript-5.10libpng.tar.gz
+ln -sf libpng-0.96 libpng
+tar xzvf $CWD/ghostscript-5.10zlib.tar.gz
+ln -sf zlib-1.1.3 zlib
+zcat $CWD/ghostscript-5.10-gdevl256.diff.gz | patch
+zcat $CWD/ghostscript-5.10-makefile.diff.gz | patch
+zcat $CWD/ghostscript-5.10-makefile-devs.diff.gz | patch
+# Add HP670, HP690, HP850, HP855 HP870, HP890, HP1100 and
+# HP1600 color printer support:
+tar xzvf $CWD/hp8xxs13-slack.tgz
+# In addition to the patch below, you'll want to be sure 
+# ghostscript-x.xx-makefile-devs.diff.gz adds the drivers for these...
+zcat $CWD/hp8xxs13.devs.mak.diff.gz | patch
+# Build the full X11 version of gs:
+make
+strip gs
+mv gs gs-x11
+cat gs-x11 > $PKG2/usr/bin/gs
+# Now, we need to make the /usr/bin/gs with no X11 support:
+zcat $CWD/ghostscript-5.10-nox11.diff.gz | patch
+make clean
+tar xzvf $CWD/hp8xxs13-slack.tgz
+make
+strip gs
+cat gs > $PKG1/usr/bin/gs
+for file in bdftops font2c gsbj gsdj gsdj500 gslj gslp gsnd pdf2dsc \
+ pdf2ps printafm ps2ascii ps2epsi ps2pdf wftopfa ; do
+ strip $file
+ cat $file > $PKG1/usr/bin/$file
+ chmod 755 $PKG1/usr/bin/$file
+ chown root.bin $PKG1/usr/bin/$file
+done
+for file in gs pdf2dsc pdf2ps ps2ascii ps2epsi ps2pdf ; do
+ cat $file.1 | gzip -9c > $PKG1/usr/man/man1/$file.1.gz
+done
+for file in Fontmap acctest.ps align.ps bdftops.ps bjc610a0.upp \
+ bjc610a1.upp bjc610a2.upp bjc610a3.upp bjc610a4.upp bjc610a5.upp \
+ bjc610a6.upp bjc610a7.upp bjc610a8.upp bjc610b1.upp bjc610b2.upp \
+ bjc610b3.upp bjc610b4.upp bjc610b6.upp bjc610b7.upp bjc610b8.upp \
+ caption.ps cbjc600.ppd cbjc800.ppd cdj550.upp decrypt.ps docie.ps \
+ font2c.ps gs_btokn.ps gs_ccfnt.ps gs_cff.ps gs_cidfn.ps gs_cmap.ps \
+ gs_dbt_e.ps gs_diskf.ps gs_dpnxt.ps gs_dps.ps gs_dps1.ps gs_dps2.ps \
+ gs_epsf.ps gs_fonts.ps gs_init.ps gs_iso_e.ps gs_kanji.ps gs_ksb_e.ps \
+ gs_l2img.ps gs_lev2.ps gs_mex_e.ps gs_mro_e.ps gs_pdf.ps gs_pdf_e.ps \
+ gs_pdfwr.ps gs_pfile.ps gs_res.ps gs_setpd.ps gs_statd.ps gs_std_e.ps \
+ gs_sym_e.ps gs_ttf.ps gs_typ42.ps gs_type1.ps gs_wan_e.ps gslp.ps \
+ impath.ps landscap.ps level1.ps lines.ps markhint.ps markpath.ps \
+ necp2x.upp necp2x6.upp packfile.ps pcharstr.ps pdf2dsc.ps pdf_2ps.ps \
+ pdf_base.ps pdf_draw.ps pdf_font.ps pdf_main.ps pdf_sec.ps pfbtogs.ps \
+ ppath.ps prfont.ps printafm.ps ps2ai.ps ps2ascii.ps ps2epsi.ps \
+ ps2image.ps quit.ps ras1.upp ras24.upp ras3.upp ras32.upp ras4.upp \
+ ras8m.upp showchar.ps showpage.ps stc.upp stc1520h.upp stc2.upp stc2_h.upp \
+ stc2s_h.upp stc500p.upp stc500ph.upp stc600ih.upp stc600p.upp stc600pl.upp \
+ stc800ih.upp stc800p.upp stc800pl.upp stc_h.upp stc_l.upp stcany.upp \
+ stcinfo.ps stcolor.ps traceimg.ps traceop.ps type1enc.ps type1ops.ps \
+ uninfo.ps unprot.ps viewcmyk.ps viewgif.ps viewjpeg.ps viewpbm.ps viewpcx.ps \
+ viewps2a.ps wftopfa.ps winmaps.ps wrfont.ps zeroline.ps ; do
+ cp -a $file $PKG1/usr/share/ghostscript/5.10/$file
+ chmod 644 $PKG1/usr/share/ghostscript/5.10/$file
+ chown root.root $PKG1/usr/share/ghostscript/5.10/$file
+done
+for file in COPYING NEWS README bug-form.txt c-style.txt current.txt \
+ devices.txt drivers.txt fonts.txt helpers.txt hershey.txt history1.txt \
+ history2.txt history3.txt humor.txt install.txt language.txt lib.txt \
+ make.txt new-user.txt ps2epsi.txt ps2pdf.txt psfiles.txt public.txt \
+ unix-lpr.txt use.txt xfonts.txt ; do
+ cp -a $file $PKG1/usr/share/ghostscript/doc/$file
+ chmod 644 $PKG1/usr/share/ghostscript/doc/$file
+ chown root.root $PKG1/usr/share/ghostscript/doc/$file
+done
+for file in alphabet.ps cheq.ps chess.ps colorcir.ps escher.ps golfer.ps \
+ grayalph.ps ridt91.eps snowflak.ps tiger.ps waterfal.ps ; do
+ cp -a $file $PKG1/usr/share/ghostscript/examples/$file
+ chmod 644 $PKG1/usr/share/ghostscript/examples/$file
+ chown root.root $PKG1/usr/share/ghostscript/examples/$file
+done
+
+# Build the packages:
+cd $PKG2
+tar czvf $TMP/gs_x11.tgz .
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+cd $PKG1
+tar czvf $TMP/ghostscr.tgz .
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/gs5.10
+  rm -rf $PKG1
+  rm -rf $PKG2
+fi

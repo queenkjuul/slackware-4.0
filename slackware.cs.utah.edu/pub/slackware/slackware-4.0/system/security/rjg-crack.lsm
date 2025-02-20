@@ -1,0 +1,15 @@
+Begin3
+Title:          A Fast Brute-Force Password Cracker
+Version:        1.02
+Entered-date:   Mon, 19 Aug 1996 01:30:48 GMT
+Description:    This password cracker uses a table to speed up the generation
+                of trial-strings. The table can be set with any collating
+                sequence desired. One important feature is the periodic writing
+                of a check-point file that can be used to restart cracking
+                after a crash or system shutdown. I estimate a maximum of 39
+                years to crack a "good" password on a 100 MHz i486.
+Keywords:       password cracker passwd crack
+Author:         rgerharz@erols.com (Reinhold J. Gerharz)
+Primary-site:   sunsite.unc.edu
+Copying-policy: GPL
+End

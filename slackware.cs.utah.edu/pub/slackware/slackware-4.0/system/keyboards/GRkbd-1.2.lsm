@@ -1,0 +1,13 @@
+Begin3
+Title:          Greek Keyboard
+Version:        1.2 (June 1998)
+Description:	A program for greek keyboard support under the
+		X-window system in Linux. Supports ISO-8859-7.
+Keywords:       keymap keyboard greek window X11
+Author:         Yannis Tsakiris (yannis@palamida.math.uch.gr)
+Maintained-by:  Yannis Tsakiris (yannis@palamida.math.uch.gr)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/keyboards/
+		GRkbd-1.2.tar.gz
+Platform:	Linux
+Copying-policy: GPL
+End

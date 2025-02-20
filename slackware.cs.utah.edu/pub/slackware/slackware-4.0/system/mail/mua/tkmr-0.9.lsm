@@ -1,0 +1,18 @@
+Begin3
+Title:          tkmr
+Version:        0.9
+Entered-date:   2/13/95
+Description:    read-only, graphical mail file browser, with search
+		and sort capability. Can load multiple mail files at once.
+		Uses tk3.6, tcl7.3.
+Keywords:       tcl tk mail 
+Author:         andy@dina.erie.ge.com (Andrew Tefft)
+Maintained-by:  andy@dina.erie.ge.com (Andrew Tefft)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xapps
+		43K tkmr-0.9.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       tk3.6, tcl7.3 required. Tested on Linux 1.0, 
+		sunos 4.1.3, solaris 2.3, HPUX 9.0x
+Copying-policy: Freely distributable
+End

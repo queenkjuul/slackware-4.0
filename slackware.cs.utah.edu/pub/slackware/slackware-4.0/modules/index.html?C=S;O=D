@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/modules</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/modules</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="insmod">insmod</a></td><td align="right">1999-03-22 04:22  </td><td align="right">145K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="depmod">depmod</a></td><td align="right">1999-03-22 04:22  </td><td align="right">138K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rmmod">rmmod</a></td><td align="right">1999-03-22 04:35  </td><td align="right">135K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="modprobe">modprobe</a></td><td align="right">1999-03-22 04:22  </td><td align="right">134K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lsmod">lsmod</a></td><td align="right">1999-03-22 04:36  </td><td align="right">106K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="depmod.txt">depmod.txt</a></td><td align="right">1999-03-22 04:23  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="net-modules.txt">net-modules.txt</a></td><td align="right">1998-04-28 21:22  </td><td align="right">9.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="depmod.1">depmod.1</a></td><td align="right">1999-03-22 04:22  </td><td align="right">9.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="modules.txt">modules.txt</a></td><td align="right">1998-03-10 22:43  </td><td align="right">8.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="insmod.txt">insmod.txt</a></td><td align="right">1999-03-22 04:24  </td><td align="right">4.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="insmod.1">insmod.1</a></td><td align="right">1999-03-22 04:22  </td><td align="right">3.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="MODHELP.TXT">MODHELP.TXT</a></td><td align="right">1999-04-18 19:15  </td><td align="right">1.8K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-03-22 04:20  </td><td align="right">1.6K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="rmmod.txt">rmmod.txt</a></td><td align="right">1999-03-22 04:39  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rmmod.1">rmmod.1</a></td><td align="right">1999-03-22 04:38  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="lsmod.txt">lsmod.txt</a></td><td align="right">1999-03-22 04:39  </td><td align="right">955 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lsmod.1">lsmod.1</a></td><td align="right">1999-03-22 04:38  </td><td align="right">928 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">830 </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="2.2.6/">2.2.6/</a></td><td align="right">1999-03-31 01:07  </td><td align="right">  - </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

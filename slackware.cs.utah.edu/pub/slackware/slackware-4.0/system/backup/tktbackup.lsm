@@ -1,0 +1,31 @@
+To: hm@seneca.ix.de
+Subject: Re: Linux Projects-FAQ
+Newsgroups: comp.os.linux.misc,comp.os.linux.help
+In-Reply-To: <CrFHLA.4op@seneca.ix.de>
+Organization: njsb computing centre
+Cc: 
+Bcc: 
+Reply-To: jonboy@neuromancer.ucr.edu
+here's my updated entry:
+---------
+
+Field          Description
+-----------        ------------------------------------------------------
+Title:          "Xtbackup"
+Desc1:          a tcl/tk interface to Koen Holtman's tbackup 
+Desc2:          floppy & tape backup software. 
+Author:         Jon Madison writing the tcl/tk interface
+AuthorEmail:    jonboy@neuromancer.ucr.edu
+InfoSources1:	  just email me.
+InfoSources2:   http://indyunix.iupui.edu/~jmmadiso/tktbackup.html
+Assistance:     assistance not required really.
+CurrentStat:    coding is going on as you read. it looks kinda pretty. :)
+ETA:            I'd give it until about September before ALPHA but...
+Remarks1:       i put up a copy of what's here so far (hardly ANYTHING works!)
+Remarks2:       so that people could email me on what they'd like to see.
+Remarks3:       the actual name of the program is tktbackup now. 
+Remarks4:       try it please & tell me whatcha think! 
+Remarks5:       try neuromancer.ucr.edu:/pub/linux and
+:emarks6:      	somewhere @sunsite (Incoming or backup-utils or Xapps)
+End:
+11 Aug 1994

@@ -1,0 +1,22 @@
+LIBGTOP
+=======
+
+1.0	- The "Release without any Announcement":
+
+	  The tarball in this directory is distributed together
+	  with GNOME 1.0.
+
+0.100.0 - pre-release of LibGTop 1.0.0 that will be released together
+          with GNOME 1.0.
+
+0.25	- LibGTop 0.25 stable release, use this one for GTop 0.28.
+
+0.26.2	- Latest "official" release representing current (9/27/98) CVS,
+	  all bugs reported last week should be fixed.
+
+	  Use this version for GNOME 0.30 - binary RPMS of gnome-core
+	  and gnome-utils are in the /pub/gnome directory.
+
+0.25    - LibGTop 0.25 stable release, use this one for GTop 0.28.
+
+Martin <martin@home-of-linux.org>

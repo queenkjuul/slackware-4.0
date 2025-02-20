@@ -1,0 +1,2 @@
+( cd usr/lib/setup/bin ; rm -rf setfont )
+( cd usr/lib/setup/bin ; ln -sf ../../../bin/setfont setfont )

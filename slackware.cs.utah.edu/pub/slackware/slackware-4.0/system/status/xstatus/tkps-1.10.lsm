@@ -1,0 +1,23 @@
+Begin3
+Title:		tkps
+Version:	1.10
+Entered-date:   13JUL97
+Description:    tkps is X11 based visual process status manager,
+		a real cool graphical interface to 'ps'.
+		It allows you to control what process is running in
+		Tcl/Tk graphical user interface.
+		It can send various signal to process.
+Keywords:       X11 Tcl/Tk ps status process manager
+Author:		hqm@ai.mit.edu     (Henry Minsky)
+                epetron@leba.net   (Ed Petron) 
+		kidong@shinbiro.com (Kidong Lee)
+Maintained-by:  epetron@leba.net (Ed Petron)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status/xstatus
+		12kB tkps_1.10.tar.gz
+Alternate-site: 
+Original-site:  ftp://transit.ai.mit.edu/pub/tkutils
+Platforms:	Linux with Tcl 7.6, Tk 4.2 (can be used other Unix although
+                some functions require /proc filesystem and will require
+                rewrite for use with /dev/mem and /dev/kmem)
+Copying-policy: GPL
+End

@@ -1,0 +1,25 @@
+# If a custom aliases file exists, we don't want to overwrite it, but
+# we'll leave the new standard aliases file in /etc so maybe the sysadmin
+# will notice it. :^)
+if [ -r etc/aliases ]; then
+  if [ "`cat etc/aliases`" = "# Put any sendmail aliases in here" ]; then
+    mv etc/aliases.new etc/aliases
+  fi
+else
+  mv etc/aliases.new etc/aliases
+fi
+if [ ! -r etc/aliases.db ]; then
+  mv etc/aliases.db.new etc/aliases.db
+else
+  rm etc/aliases.db.new
+fi
+rm -f usr/sbin/sendmail
+mv usr/sbin/sendmail.new usr/sbin/sendmail
+( cd usr/bin ; rm -rf newaliases )
+( cd usr/bin ; ln -sf /usr/sbin/sendmail newaliases )
+( cd usr/bin ; rm -rf mailq )
+( cd usr/bin ; ln -sf /usr/sbin/sendmail mailq )
+( cd usr/lib ; rm -rf sendmail )
+( cd usr/lib ; ln -sf /usr/sbin/sendmail sendmail )
+( cd usr/bin ; rm -rf sendmail )
+( cd usr/bin ; ln -sf /usr/sbin/sendmail sendmail )

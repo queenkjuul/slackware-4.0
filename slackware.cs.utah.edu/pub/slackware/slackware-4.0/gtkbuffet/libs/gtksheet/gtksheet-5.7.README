@@ -1,0 +1,147 @@
+GtkSheet-5.7
+============
+
+Function added by Steven Rostedt:
+
+gint
+gtk_sheet_get_state (GtkSheet *sheet) 
+
+Resizing rows and columns improved.
+
+Bug fixes, including two bugs causing crash when the widget is destroyed 
+(style bug patched in part by Steve)
+
+ANNOUNCE: GtkSheet is moving to Gtk+-1.2 
+
+GtkSheet-5.6
+============
+
+GtkSheet now allows font handling with
+gtk_sheet_range_set_font (GtkSheet *sheet, GtkSheetRange range, GdkFont *font)
+
+Problems with Solaris have been fixed. 
+
+Steven Rostedt <steven.rostedt@lmco.com> fixed a bug when adding 
+rows/columns.
+
+Some little changes in the demo to show the new features and to avoid the
+redraw in the example 1.
+
+Other bugs fixed.
+
+GtkSheet-5.5
+============
+
+Many bugs fixed, mainly reported by Mario Motta. 
+
+All warnings fixed. 
+
+Signals: 
+"changed" is emited when typing into the active cell, changing its contents. 
+"set_cell" is emited when pressing when changing current cell's position. 
+"activate_cell" is emited when the new cell is activated.
+
+NOTE: gtksheet crashes on Solaris. I couldn't fix this, yet.
+
+GtkSheet-5.4
+============
+
+Following Mario Motta's suggestions <mmotta@guest.net> I added a new feature:
+
+You can hide/show row and/or column titles (see Example 2 in the demo program)
+
+and I patched gtksheet.h for C++ compatibility.
+
+I fixed a couple of bugs:
+multiple emission of the "activate_cell" signal;
+problems when selecting a row/column and moving with the cursor keys. 
+ 
+NOTE: All versions of GtkSheet compile fine with gtk+-1.0.6
+Any of the "bugs" reported in the gtk-list has been verified. 
+
+Please, if you have problems I suggest you to verify if you have gtk+-1.1 
+intead of gtk+-1.0 installed. If you can't compile, edit the Makefile file. 
+
+I aknowledge to all of you on the list who are using gtksheet and reporting 
+problems and bugs. Please, give me your suggestions.
+ 
+GtkSheet-5.3
+============
+
+The graphic interface is nicer and more friendly. 
+The appeareance is more familiar and I added some new features:
+
+You can make a selection and move it dragging the border.
+
+You can resize the selection dragging the bottom-right corner.
+
+You can store the selection on the clipboard. 
+
+(All this functions emit a signal. You can cutomize your application
+ connecting a signal handler in order to do the desired action. See
+ the example 1 in the demo program) 
+
+NOTE: the selection handler has not been implemented yet.
+The demo program is an application which includes an external entry 
+connected with the sheet's entry. The external entry does not belong to the 
+widget, the widget has its own entry and the text is edited interactivelly
+and "on the site". 
+You can download it from my ftp site:
+  ftp://ripley.ifir.edu.ar/pub/gtk/gtksheet/gtksheet-5.3.tar.gz
+I'm uploading the new version to gtk.org
+I hope it will be included in future releases of gtk.
+
+--------------------------------------------------------------------------
+
+GtkSheet is a Matrix/Table widget for Gtk+
+Originally, it was a variant of GtkClist widget (by Jay Painter) but
+it became more than I expected, and actually it has almost nothing to do 
+with it.
+
+This distribution includes a demo program where you can see many of the
+widget's features.
+
+You can download it from my ftp site:
+  ftp://ripley.ifir.edu.ar/pub/gtk/gtksheet/gtksheet-5.3.tar.gz
+
+BRIEF DESCRIPTION
+=================
+
+GtkSheet is a matrix where you can allocate cells of text.
+
+Cell contents can be edited interactively with an specially designed
+entry, based on GtkEntry (so it has the same features).
+
+You can parse text connecting a parser to the "set cell" signal.
+(See example 2 in the demo program)
+
+You can change width, height, background color, foreground color, border
+color, border style, and many other attributes of the cells.
+(see examples in the demo program)
+
+You can use the matrix as a browser with gtk_sheet_new_browser, and the
+cell contents could not be edited.
+
+** READ THE HEADERS FOR MORE INFORMATION **
+
+TO DEVELOPERS
+==============
+
+GtkSheet is a composite widget: scrollbars, entry, and a button.
+
+I realized that I can gain a lot of time and memory replacing button
+widgets with button emulating gadgets. This is one of the main differences
+with GtkClist GUI, and I don't use windows to resize rows/columns. 
+
+To allocate memory, I used an array of pointers. I could used a linked
+list or a hash table, but I was originally inspired in SC (I wanted to do
+a Gtk port for it), so memory allocation routines are inspired on SC's.
+
+I didn't take advantage of the use of glibs, maybe many features could be
+ optimized in this way.
+
+GtkSheetEntry is based on the gtk+-0.99.3 realease of GtkEntry, so many
+bugs must be fixed, and features must be updated.
+
+I have no experience on XFonts, so I left this part of the attributes
+setting to be done by anyone who wants to.

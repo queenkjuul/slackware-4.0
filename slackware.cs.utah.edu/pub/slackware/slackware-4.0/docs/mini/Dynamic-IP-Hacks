@@ -1,0 +1,2038 @@
+
+Dynamic-IP-Hacks Mini-HowTo Version 2.1.3
+
+Maintained by:         Michael Driscoll <fenris@lightspeed.net>
+
+Featuring hacks from: Michael Driscoll <fenris@lightspeed.net>
+                      Ryan R. Klems <rklems@primenet.com>
+                      Matthew Driver <mdriver@cfmeu.asn.au>
+                      Matthew Nuckolls <mnuck@umr.edu>
+                      Justin Cragin <beyond@lightspeed.net>
+                      Brad Baker <bpb@mlb.cca.rockwell.com>
+                      Justin (Gus) Hurwitz <ghurwitz@dyndns.com>
+                      Jeremy D. Impson <jdimpson@camelot.syr.edu>
+                      Steve Przepiora <gearhead@dreamscape.com>
+                      Artur Skawina <skawina@usa.net>
+                      Dale Jolliff <taftbbs@e-tex.com>
+
+Created        Mon Apr 22 16:24:33 PST 1996
+Last Updated   Sun May 25 16:37:41 PDT 1997
+
+If you just want to see the hacks skip down to section 2.0.
+
+0.0 Table of Contents
+1.0 Legalities, Definitions, &c.
+ 1.1 Where to get the latest version of this HowTo
+ 1.2 Feedback
+ 1.3 Why this HowTo?
+ 1.4 What is dynamic IP addressing and why do I have to put up with it?
+ 1.5 Can you help me set up {pppd,telnetd,sendmail,&c.}?
+ 1.6 Hey, what about SLIP?
+ 1.7 Copyright
+ 1.8 A Warning
+2.0 Intro to Hacks #1-#3
+3.0 Hack #1: Keeping your system up and accessable 24/7 method #1
+    by Steve Przepiora <gearhead@dreamscape.com>
+ 3.1 What you'll need
+ 3.2 ip-up and ip-down scripts
+4.0 Hack #2: Keeping your system up and accessable 24/7 method #2
+    by Michael Driscoll <fenris@lightspeed.net>
+ 4.1 What you'll need
+ 4.2 Setting up keepalive.sh
+  4.2.1 Using diald instead of a crontab entry
+5.0 Hack #3: Keeping your system up and accessable 24/7 method #3
+    by Michael Driscoll <fenris@lightspeed.net>
+ 5.1 What you'll need
+ 5.2 Fun with runlevels
+6.0 Hack #4: IP publishing via mail
+    by Michael Driscoll <fenris@lightspeed.net>
+ 6.1 Setting up your ip-up and ip-down
+ 6.2 How to find out your new IP address from another computer
+  6.2.1 Telnetting to a POP3 server
+7.0 Hack #5: Dynamically changing /etc/hosts
+    by Michael Driscoll <fenris@lightspeed.net>
+ 7.1 What you'll need
+ 7.2 Creating your template host files
+ 7.3 More fun with ip-up and ip-down!
+8.0 Hacks #6-8: Various hacks 
+    by Ryan R. Klems <rklems@primenet.com>
+ 8.1 mail.c
+ 8.2 pppdm.c
+ 8.3 portmsg.c
+9.0 Dynamic DNS entries 
+10.0 Hack #9: Updating your .plan 
+     by Matthew Nuckolls <mnuck@umr.edu>
+11.0 Hack #10: A simple procmail recipe for finding your new IP
+     by Justin Cragin <beyond@lightspeed.net>
+12.0 Hack #11: Dynamic Home Page via ftp 
+     by Michael Driscoll <fenris@lightspeed.net>
+ 12.1 Why would I want to do this?
+ 12.2 Setting up your page
+ 12.2.1 A note on redirects
+        by Artur Skawina <skawina@usa.net>
+ 12.3 Using ncftp to automate page updates
+  12.3.1 ncftp versions 1.x.x
+  12.3.2 ncftp versions 2.x.x
+ 12.4 A simple search and replace sed rule
+13.0 Hack #12: Paging yourself with your new IP address
+     by Michael Driscoll <fenris@lightspeed.net>
+ 13.1 The paging program
+ 13.2 Calling it from ip-up
+14.0 Hack #13: xterm logins through a firewall
+     by Brad Baker <bpb@mlb.cca.rockwell.com>
+15.0 Hack #14: Dynamic Home Page via cgi
+     by Michael Driscoll <fenris@lightspeed.net>
+ 15.1 Overview of what we'll try to do
+ 15.2 The script (dynip.pl)
+ 15.3 Accessing the CGI when our link goes up
+16.0 Hack #15: Suggestion for rc.*
+     by Jeremy D. Impson <jdimpson@camelot.syr.edu>
+17.0 Hack #16: Defeating local and ISP-imposed timeouts with ping
+     by Artur Skawina <skawina@usa.net>
+18.0 Hack #17: Using SSI's for dynamic IP publishing
+     by Dale Jolliff <taftbbs@e-tex.com>
+
+Appendix A: We need more hacks!
+Appendix B: CREDITS
+
+
+________
+1.0 Legalities, Definitions, &c.
+	by Michael Driscoll <fenris@lightspeed.net>
+
+Section 1.1: Where to get the latest version of this HowTo
+
+The absolute latest version can always be found at
+<URL:http://frob.base.org/howto.txt>.
+
+The canonical place to get the HowTo is
+<URL:ftp://sunsite.unc.edu/pub/Linux/docs/howto/mini/Dynamic-IP-Hacks>,
+though you should use a mirror of the LDP site if you know of any.
+
+Section 1.2: Feedback
+
+Feedback concerning this mini-HowTo should be addressed to Michael
+Driscoll <fenris@lightspeed.net>.
+
+Section 1.3: Why this HowTo?
+
+The problem is, Linux just isn't as happy as it could be with dynamic IP
+addressing.  It's the Unix equivalent of waking every morning to find
+that your postal address has changed and that all of your stationary is
+out of date.  Unfortunately, ISP's are moving more and more towards this
+kind of addressing these days, and anyone who can't shell out more bucks
+for a stable IP address is just kinda stuck with this.  The purpose of
+this HowTo, therefore, is to make your Linux box happier and more
+comfortable with dynamic IP addressing, which in turn should make you a
+bit happier and more comfortable.
+
+Section 1.4: What is dynamic IP addressing and why do I have to put up
+with it?
+
+An IP address is a set of four numbers, each from 0 to 255, and each
+separated by a dot.  An example would be 198.41.0.8.  Each computer on
+the Internet has a unique IP address.  The human-readable addresses that
+you probably use, like sunsite.unc.edu and bak2.lightspeed.net, are just
+semi-arbitrary names that are translated into their IP addresses by a
+DNS server whenever you try to access them.
+
+Dynamic IP addressing is something used by an ISP to cut down on the
+number of IP addresses that they need to "own".  The way it works is,
+when you dial up your ISP, they simply give you the next IP number in
+their queue.  This way, they don't need an IP address for every single
+customer they have, they just need one for every customer that might be
+online at any given time.  Usually an ISP only has about a tenth as many
+IP addresses as it has customers, although this of course varies.
+
+Why do they do this?  Well, the simple way of explaining it is to say
+that there just aren't enough IP addresses in the current scheme.  The
+more complex answer is that we have plenty of addresses, it's just that
+as more and more of them are used, the routing tables used by the
+backbone routers start to look as fragmented as a ten year old MS-DOS
+filesystem :-)  By using so many addresses, we lose efficiency in
+routing lookups.  The current routing system is expected to blow up
+sometime between the years 2000 and 2010.  Hopefully we'll all be
+switched over to IPv6 by then anyways, in which case we'll all get our
+own stable IP's anyways making this whole HowTo moot :-)
+
+Section 1.5: Can you help me set up {pppd,telnetd,sendmail,&c.}?
+
+No.  Figure it out yourself.  Builds character :-)
+
+Actually, it would be pretty pointless for me to reinvent the wheel by
+helping you set these up, as many documents already exist to help you
+out.  Start by trying these:
+
+the pppd man page
+the chat man page
+the in.telnetd man page
+the inetd man page
+the PPP-HOWTO
+the NET-2-HOWTO 
+   (Available at HowTo sites such as 
+    <URL:ftp://sunsite.unc.edu/pub/Linux/docs/howto>)
+the NAG
+   (Network Administrator's Guide by Olaf Kirch,
+    available at fine LDP sites everywhere, such as 
+    <URL:ftp://sunsite.unc.edu/pub/Linux/docs/LDP>)
+
+Section 1.6: Hey, what about SLIP?
+
+To tell you the truth, I didn't write about it here because I don't know
+a thing about working with it.
+
+Luckily, this shouldn't be too much of a problem as PPP seems to be the
+emerging standard, especially for dynamic IP addressing.
+
+Sorry if you're that .3% out there that has dynamic IP addressing with
+SLIP, but maybe you can glean a bit out of this HowTo and make your own
+setup (if you do then be sure to see Appendix A to get your hack included
+in this HowTo!)
+
+Section 1.7: Copyright
+
+Unless otherwise stated, Linux HowTo documents are copyrighted by their
+respective authors. Linux HowTo documents may be reproduced and
+distributed in whole or in part, in any medium physical or electronic,
+as long as this copyright notice is retained on all copies. Commercial
+redistribution is allowed and encouraged; however, the author would like
+to be notified of any such distributions.
+
+All translations, derivative works, or aggregate works incorporating any
+Linux HowTo documents must be covered under this copyright notice. That
+is, you may not produce a derivative work from a HowTo and impose
+additional restrictions on its distribution. Exceptions to these rules
+may be granted under certain conditions; please contact the Linux HowTo
+coordinator at the address given below.
+
+In short, we wish to promote dissemination of this information through
+as many channels as possible. However, we do wish to retain copyright on
+the HowTo documents, and would like to be notified of any plans to
+redistribute the HowTos.
+
+If you have questions, please contact Greg Hankins, the Linux HowTo
+coordinator, at gregh@sunsite.unc.edu via email.
+
+Section 1.8: A Warning
+
+This should go without saying, but I should say it anyways to cover
+things.
+
+I'm not sure all of this is the canonical way to do things, and if
+something I've done is just too weird let me know how to fix it.  There
+might be security risks in all of this, but I don't know of them yet.
+This works on my machine, and I don't think it'll break yours too badly
+:-)  Either way, you should take care when doing this stuff and make
+sure you understand at least a bit about what this stuff is doing so you
+can fix it if it goes haywire.
+
+As the name implies, this document is about system *hacks*.  Hacks, by
+definition, are a pretty weird way of setting up a system, though
+sometimes they may be the only way.  Many times I could have made these
+hacks more elegant and crafty, at the cost of simplicity.  I have not
+done this, however, because it is my intention that the person who sets
+these up on their own machine understand the hacks so that they can
+rebuild and recreate them to fit their own specific needs.
+
+Also, when reading this Howto keep in mind this quote from the DNS-HOWTO
+by Nicolai Langfeldt <janl@math.uio.nl>:
+
+    In this document I state flatly a couple of things that are
+    not completely true (they are at least half truths though).
+    All in the interest of simplification.  Things will probably
+    work if you believe what I say.  
+
+*****************************
+*The good stuff starts here!*
+*****************************
+
+
+________
+2.0 Intro to Hacks #1-#3
+	by Michael Driscoll <fenris@lightspeed.net>
+
+The first three hacks in this howto involve maintaining a constant PPP
+connection by restarting pppd when the link goes down.  I thought up the
+second of these hacks back when I first ran Linux, but have since moved
+onto the third of the hacks, which is a lot more efficient (and,
+unfortunately, more difficult to set up).  The first hack was not done
+by me, but by Steve Przepiora <gearhead@dreamscape.com>, and is actually
+better and more efficient than the second hack (which I thought up), and
+is still just as easy to set up.
+
+These three hacks work well with Hack #4, which will automatically put
+your IP number in an accessible place (your mail spool on your ISP's
+POP3 server) whenever your connection goes up.  With these two hacks
+working together (automatic reconnect + IP publishing via mail) you
+can easily find the dynamic IP of your machine from anywhere on the
+network and be able to telnet, ftp, etc. to it.
+
+Methods #1 and #2 are the two that are easy to implement, since they
+are set up in 'recipe' form and all you have to do is follow directions
+and fill in the blanks.  Method #3 is not in 'recipe' form, since it
+deals with runlevels and init which vary greatly from distribution to
+distribution and which can easily leave your computer in a screwed up
+state if they themselves are screwed up.
+
+So which method to use?  I suggest #1, it is easy and rather efficient,
+or if you are a little more knowledgable, look at #3 to see if you can
+figure out how to implement it, since it is the most efficient.  #2 is
+only there because it was the first one that I wrote, and is the only
+one "tested" so far in this HowTo (the other two are recent additions
+which should soon replace #2 altogether).
+
+If you don't like either three of the methods, write your own and send
+me a line, I'll probably include it if it is something usable by others.
+
+Anyways, we now continue with your regularly scheduled hacks:
+
+
+________
+3.0 Hack #1: Keeping your system up and accessible 24/7 method #1
+	by Steve Przepiora <gearhead@dreamscape.com>
+
+Section 3.1: What you'll need
+
+A working PPP setup.
+
+Section 3.2: ip-up, ip-down, and other assorted scripts
+
+Well, here's how I do it;
+
+1). Fire up vi and make a file called /etc/ppp/ppp-check.dat. Don't put
+anything in it just save it.
+
+2). Put this at the top of /usr/sbin/ppp-on :
+echo on > /etc/ppp/ppp-check.dat
+this will put the word `on' in in /etc/ppp/ppp-check.dat
+
+3). Put this in /usr/sbin/ppp-off:
+echo off > /etc/ppp/ppp-check.dat
+
+4). Change the name of your /etc/ppp/ip-down file to
+/etc/ppp/ppp-off-final
+
+5). Finally, save this script to /etc/ppp/ip-down:
+-----------------------------CUT HERE-------------------------------------
+
+#!/bin/sh
+
+export LOGGING="yes" ## Change this to no if you dont want to log it.
+export LOG_STRING=""
+export PPP_CHECK=""
+
+
+##-----------------------Basic setup stuff--------------------------------
+PPP_CHECK=`cat /etc/ppp/ppp-check.dat`
+##-------------------------PPP was disconnected log it----------------------
+if [ "$LOGGING" = "yes" ]
+ then
+   logger -i -p local0.notice -t ppp-check  PPP- Disconnected
+fi
+##-------------------------Now see how we were called---------------------
+if  [ "$PPP_CHECK" = "off" ]
+  then
+   if [ "$LOGGING" = "yes" ]
+     then
+     logger -i -p local0.notice -t ppp-check  PPP- Legal disconnect
+     logger -i -p local0.notice -t ppp-check  PPP- Turning off NET \
+subsystem
+     /etc/ppp/ppp-off-final
+   fi
+   exit
+fi
+##----------------------------------------------------------------------
+## If were were just disconnected then  redial
+if [ "$LOGGING" = "yes" ]
+  then
+   logger -i -p local0.notice -t ppp-check  PPP- Illegal disconnect
+   logger -i -p local0.notice -t ppp-check  PPP- Attempting to reconnect
+fi
+/etc/ppp/ppp-off-final
+while test -e /var/run/ppp0.pid && test -e /var/lock/LCK..ttyS3
+ do
+  sleep 1
+done
+  /usr/sbin/ppp-on
+
+---------------------------------END------------------------------------
+
+Steps 2, and 3 will let the script figure out how the connection was
+brought down.
+
+
+________
+4.0 Hack #2: Keeping your system up and accessible 24/7 method #2
+	by Michael Driscoll <fenris@lightspeed.net>
+
+First see the notes about this hack in chapter 2.0.
+
+Section 4.1: What you'll need
+
+Not too much.  A working PPP setup.  A working cron.
+
+Section 4.2: Setting up keepalive.sh
+
+(note: This section can be probably be better with diald, see section 4.2.1)
+
+cron is a daemon that starts programs at specified times.  You can look
+at your crontab by running "crontab -e".  We'll be using crontab to run
+a shell program that will keep our PPP connection up.
+
+Run "crontab -e" as root and add this line:
+
+#*/2 * * * * /etc/ppp/keepalive.sh
+
+What this does is call the /etc/ppp/keepalive.sh script every two minutes.
+(The '#` comments out the entry so it won't start running the script until
+ we are ready).
+
+Then put the following script named keepalive.sh in /etc/ppp:
+-------------------------------------------------------------------------
+#!/bin/sh
+if [ -f /var/run/ppp0.pid ] ; then
+ ping -c8 -l3 <your nameserver> 2>&1 | grep "0 packets" > /dev/null && \
+ { /usr/sbin/ppp-off > /dev/null 2>&1 ; sleep 2 ; /usr/sbin/pppd }
+else
+ /usr/sbin/pppd
+fi
+------------------------------------------------------------------------
+
+Now type "chmod 700 /etc/ppp/keepalive.sh" as root to make it an executable
+script.
+
+/* Hint1: Check those paths!  For pppd and ppp-off insert whatever it is
+ *        that you use to start/stop your connection.
+ * Hint2: I use your ISP's DNS server because I figure that if that's
+ *        down, your net connection is screwed anyways :-)
+ * Hint3: Be sure to use your DNS server's numeric IP address, otherwise
+ *        ping returns a different message and the "grep" won't work.
+ */
+
+Now whenever you want your connection to stay up, you can just run
+crontab -e and take out that "#" to uncomment the entry...and when you
+want your connection to stay down, run crontab -e and put the "#" back
+in, then kill your connection with ppp-off or whatever it is that you
+use.
+
+Section 4.2.1: Using diald instead of a crontab entry 
+	by Divya Mahajan <vmahajan@giasdl01.vsnl.net.in>
+
+The crontab entry that we just made can also be done (and probably a lot
+more elegantly) by other programs, such as diald.  This section
+demonstrates how to set up diald for this purpose, should you decide to
+take that route instead.  I have left the crontab section in for
+reference and because it doesn't require an extra package, but you might
+want to try diald out instead.
+
+1: Get the latest diald (should be somewhere near
+	<URL:ftp://sunsite.unc.edu/pub/Linux/system/Network/serial/>)
+
+2: Compile the stuff. (Actually you could probably get a precompiled diald
+        package too from the Slackware sites)
+
+3: After you have installed diald, you must modify /etc/diald.conf
+   Add the following lines to the end:
+
+> restrict 06:00 19:00 * * *
+> up
+   (This would force the link to be up between 6am to 7pm everyday.
+    If you want 24hrs + 7days remove the restrict.)
+> device /dev/modem
+   (Use the correct device;)
+> dynamic
+> reroute
+> connect-timeout 120
+   (Modify this if your dialer takes a longer or shorter time to connect
+    to your ISP)
+> redial-timeout 10
+   (Interval between 2 redials)
+> defaultroute
+> accounting-log /var/adm/diald.log
+   (Keep track of how much time you are using)
+>connect /path_to_myscript
+   (You must use a dialing script so add the above line.  When diald
+    calls this script both standard input and standard output are
+    redirected to /dev/modem (or whatever you chose above) so ensure
+    that your dialer script doesn't print any garbage. I personally use
+    "/usr/sbin/dip mydipfile.dip >> /var/adm/dip.log 2>
+    /var/adm/dip.err" which logs the dial attempts. Initially you may
+    want to run dip with the -v option to debug the dip file, i.e #dip
+    -v mydipfile.dip.  Remember to put the line "mode ppp" after you
+    have logged in and started your PPP services at the ISP (Use
+    dip-3.3.7n-uri). Also store all PPP settings in /etc/ppp/options
+    rather than relying on the commandline.  Once your DIP file is
+    debugged and ready, its time to roll.  Start up diald
+    /usr/sbin/diald, if everything went fine it should start dialing and
+    connect you to the ISP.  When PPP shutsdown due to modem HUP, diald
+    will automatically retry.  Once you are confident, just put
+    /usr/sbin/diald into your /etc/rc.d/rc.local)
+
+Now you have a 24hr PPP.
+
+diald is also good for a lot of other things, like demand dialing per
+port, etc.  Look at the diald homepage
+<URL:http://www.dna.lth.se/~erics/diald.html> for some examples.
+
+
+________
+5.0 Hack #3: Keeping your system up and accessable 24/7 method #3
+	by Michael Driscoll <fenris@lightspeed.net>
+
+First see the notes about this hack in Chapter 2.0.
+
+Here's the third method for keeping your PPP connection up, which
+is also the one I use.  I wouldn't suggest trying it unless you
+actually understand everything that I say in here.  If you don't
+understand some of it, here's some resources I'd suggest:
+
+man init
+man inittab
+Essential System Administration, by AEleen Frisch
+  (not really necessary, but good for comprehensive knowledge on things
+   like runlevels.  I suppose any resource which included a discussion
+   on runlevels would be fine.)
+
+Section 5.1: What you'll need
+
+A working PPP setup.  A working 'init' (I'm pretty sure you have this,
+since it is the program which starts all user processes under Unix).
+
+Section 5.2: Fun with runlevels
+
+Here's how I set this one up.  First, I overhauled my inittab and
+rc scripts.  I really hadn't messed with these much since I had
+last installed Slackware 3.0, so they looked like the following:
+
+0) Halt
+1) Some kind of broken single-user setup
+2) Empty
+3) Empty
+4) xdm (X)
+5) Normal multi-user (default runlevel)
+6) Reboot
+
+I cleaned these out and redid them, so that they were like the following:
+
+0) Halt
+1) Initiate single-user mode
+2) Normal multi-user    # These two will be explained later
+3) Normal multi-user (default runlevel)
+4) Empty
+5) Empty
+6) Reboot
+
+Then I put the following line in /etc/inittab:
+
+pu:3:respawn:/usr/sbin/pppd -detach
+
+What this does is respawn pppd when my system is in runlevel 3, thus
+keeping my connection redialing when it dies, and kill the connection
+when I change the runlevel to 2.  Then when I want my connection back,
+I change the runlevel back to 3 and it is in redial mode again.
+
+The -detach on the respawn line keeps pppd from going to background, and
+making init think it died (otherwise init will restart pppd a dozen times
+and puke).
+
+For those interested in my exact setup, I have tarred my /etc/inittab and
+/etc/rc.d/* and put them on my web site as
+<URL:http://frob.base.org/rc.tar.gz>.
+
+
+________
+6.0 Hack #4: IP Publishing via mail
+	by Michael Driscoll <fenris@lightspeed.net>
+
+This hack works very well with the previous scripts, because it
+automatically publishes your IP when it changes so that you can
+find the new address of your machine from anywhere else on the
+network after your connection has dropped and restarted.
+
+Other hacks which can accomplish this same thing (automatic IP 
+publishing) using different means are #6, #8, #9, #10, #11, #12,
+and #14 (almost half of them, come to think of it :-).
+
+Section 6.1: What you will need
+
+Just a working PPP setup, really.  This hack works well with the
+automated PPP connection hacks discussed earlier, because it lets you
+easily find your machine again after it has automatically reconnected
+and had an address change.
+
+Section 6.2: Setting up your ip-up and ip-down
+
+This hack makes your new IP address available to you from practically
+any machine on the net.  To achieve this we use the two scripts
+/etc/ppp/ip-up and /etc/ppp/ip-down, which are automatically called by
+pppd when your connection goes up or down, respectively.
+
+Create a file (if it doesn't already exist) as root called
+/etc/ppp/ip-up.  Put this in it:
+
+#!/bin/sh 
+# $4 is our new ip address passed by pppd 
+# /var/run/add will hold our address 
+echo $4 > /var/run/add
+# mail our address to our ISP's mail server, with the subject "new ip
+# address"
+mail -s "New IP address" yourname@your_internet_address < /var/run/add
+
+Then create /etc/ppp/ip-down and put this in it:
+
+#!/bin/sh 
+rm /var/run/add
+
+Then run "chmod 700 /etc/ppp/ip-up /etc/ppp/ip-down" to make them
+executable.
+
+Voila!  Now every time pppd is started your address will be mailed to
+your ISP's mail server.  We retreive it in the next section.
+
+Section 6.3: How to find out your new IP address from another computer
+
+Well, this calls for some resourcefulness on your part.  I really can't
+walk you through it, as it depends on which kind of machine you're
+trying to get it from.  In Windows, you can try to set up an email
+program to retrieve mail from your ISP's mail server, and if you're in
+Unix see if there's a program called "popclient", or "fetchmail", or
+somesuch.  If all else fails, you can always use telnet (see the next
+section).
+
+Section 6.3.1: Telnetting to a POP3 server
+
+This is how I retrieve my IP address, as I am usually showing off when I
+do all of this anyways, and it really impresses all of the GUI users I
+show it to :-)  Hopefully your ISP uses a POP3 server for mail (most
+likely), otherwise you'll just have to figure this out yourself by
+looking up the RFC for the protocol you need and figure out how to do it
+by telnet.
+
+Anyways, first you want to telnet to port 110 of your ISP's mail server.
+In Unix you do this with "telnet your.mail.server.net 110", on VAX/VMS
+you might need to do "telnet your.mail.server.net/port=110", and in a
+Web browser you should use "telnet://your.mail.server.net:110".
+Hopefully you can figure it out.
+
+Once you are connected, you should see something like this:
+
+>Connected to new-ls.lightspeed.net.  
+>Escape character is '^]'.  
+
+>+OK QUALCOMM Pop server derived from UCB (version 2.1.4-R3) at
+>new-ls.lightspeed.net starting.
+
+type "user your_username" to login.
+
+>+OK Password required for fenris.
+
+now type "pass your_password"
+
+>+OK fenris has 2 message(s) (3030 octets).
+
+type "list" to look at a list of your messages.
+
+>+OK 2 messages (3030 octets) 
+>1 2400 
+>2 630 
+>.
+
+See that message with size 630?  That's my IP address!  How do I know?
+Because it's always that size :-)
+
+Now type "retr message_number" to retrieve the message you want.
+
+>+OK 630 octets 
+>Received: from ulfheim.lightspeed.net (avatar@bak2-pp-ls.lightspeed.net
+>[204.216.66.74]) by new-ls.lightspeed.net (8.6.12/8.6.12) with ESMTP id
+>TAA12048 for <fenris@lightspeed.net>; Mon, 22 Apr 1996 19:15:37 -0700
+>Received: (from avatar@localhost) by ulfheim.lightspeed.net (8.7/8.6.9)
+>TAA00594 for fenris@lightspeed.net; Mon, 22 Apr 1996 19:15:29
+>Date: Mon, 22 Apr 1996 19:15:29 -0700
+>From: Deus In Machina <avatar@ulfheim.lightspeed.net>
+>Message-Id: <199604230215.TAA00594@ulfheim.lightspeed.net>
+>To: fenris@lightspeed.net
+>Subject: New IP address 
+> 
+>204.216.66.74
+>
+>.
+
+And there it is!  Use "dele message_number" to get rid of it or just
+"quit" to leave it there and quit.  Now just telnet to your machine at
+that address and have fun!
+
+If any of this is just not working for you, then check out RFC 1225,
+which describes the POP3 protocol in full detail.
+
+By the way, if this part of the hack doesn't work for you because you
+have cron automatically downloading your mail, then check out hack #10
+which uses procmail to send your new IP address to any email address you
+want upon request.
+
+
+________
+7.0 Hack #5: Dynamically changing /etc/hosts
+	by Michael Driscoll <fenris@lightspeed.net>
+
+As I said before, Linux isn't completely happy with dynamic IP
+addressing.  For example, sometimes talkd won't work with kludgy values
+in /etc/hosts.  However, the following hack makes up for a lot of that
+by changing /etc/hosts according to the IP address we receive when we
+call up our ISP.
+
+For me this fixed problems with "hostname" and "ntalk".
+
+Section 7.1: What you'll need.
+
+Nothing but a working PPP setup, really.
+
+This hack is really very easy, all you have to do is read the directions
+and fill in the blanks.
+
+Section 7.2: Creating your template host files
+
+***NOTE***  First, make a backup of /etc/hosts, just in case this 
+***NOTE***  screws up anything.  Just "cp /etc/hosts /etc/hosts.backup"
+
+First we'll make our template host files.  The first file will be named
+/etc/hosts-down and will contain the following line:
+
+------------------------------------------------------------------------
+127.0.0.1 myhostname.mydomain.net localhost myhostname
+------------------------------------------------------------------------
+
+Substitute *your* hostname and domain names in for these values.
+This hosts file will be the one used when your PPP connection is
+down.
+
+The second file will be named /etc/hosts-up and will contain at least 
+the following lines: 
+
+------------------------------------------------------------------------
+127.0.0.1 localhost
+--IP-- myhostname.mydomain.net myhostname
+------------------------------------------------------------------------
+
+Do the substitutions for "myhostname", "mydomain", etc as before (but
+do not put anything in for the value "--IP--", that word is an anchor
+that we will use in our script to substitute in a new IP address every
+time it changes.  If you have no idea what I just said, don't worry, just
+know that you *are* supposed to leave that word "--IP--" in there).
+
+You can build a bigger /etc/hosts-up file if you want, that can contain
+the IP addresses of frequently accessed machines and any nicknames that
+you might want to use for them.  For example, my /etc/hosts-up looks like
+this:
+
+------------------------------------------------------------------------
+127.0.0.1 localhost
+--IP-- ulfheim.lightspeed.net ulfheim
+136.168.201.9 ultrix6.cs.csubak.edu ultrix ultrix6
+128.214.48.39 linux.cs.helsinki.fi linux
+152.2.254.81 sunsite.unc.edu sunsite
+136.168.1.4 academic.csubak.edu academic
+128.214.248.6 nic.funet.fi ftp.funet.fi funet
+------------------------------------------------------------------------
+
+Section 7.3: More fun with ip-up and ip-down
+
+Add the following lines to /etc/ppp/ip-up:
+
+------------------------------------------------------------------------ 
+cat /etc/hosts-up | sed -e s/--IP--/$4/g > /etc/hosts
+------------------------------------------------------------------------ 
+
+This puts the hosts-up file through a sed script which substitutes
+the word '--IP--' with $4, the variable which contains our
+new IP address.
+
+Then add the following line to /etc/ppp/ip-down:
+
+------------------------------------------------------------------------ 
+cp /etc/hosts-down /etc/hosts
+------------------------------------------------------------------------
+
+This copies the hosts-down template to /etc/hosts.
+
+
+________
+8.0 Hacks #6-8: Various hacks
+	intro written by Michael Driscoll <fenris@lightspeed.net>
+	code straight from Ryan R. Klems <rklems@primenet.com>
+
+Here's some C code sent to me from Ryan R. Klems <rklems@primenet.com>.
+
+There are three programs, the first, mail.c, is a CGI that scans
+through your mail spool for your new IP address as set up by Hack #1.
+It then uses the IP address to set up a page containing a link to this
+IP address.
+
+The second, pppdm.c, can probably take the place of hack #1, as it looks
+for a PPP connection, restarts pppd if it is down, and mails your new ip
+address to your ISP's mailserver.
+
+The third, portmsg.c, sits on a specified port and waits for a telnet
+connection.  Upon connection, it will pull grep your mail spool for your
+newest IP and output a message containing that.
+
+These sources will need a bit of customization, so you probably
+shouldn't mess with them unless you know what they are doing.
+
+Oh yes, and Ryan has written to tell me that he wouldn't mind helping
+you set up the code to meet your needs, as long as you ask nicely :-)
+
+Section 8.1: mail.c
+
+/*
+ * mail.c written by Ryan R. Klems (rklems@primenet.com)
+ * Copyright 1996, Author releases this source freely, allowing
+ * copying and modification, so long as the original copyright notice
+ * is maintained.
+ *
+ * I request that if you use this file you mail me... Thats all I ask =)
+ *
+ * A CGI for reading through your mailfile and finding an IP
+ * address that you had your computer mail to you.
+ *
+ * Compiling:
+ *    gcc mail.c -o mail.cgi
+ *
+ * Make sure to 'chmod +s mail.cgi' afterwards...must run with set uid
+ * bit on to be able to open the mail file.
+ */
+
+#include <stdio.h>
+#include <string.h>
+#define MAILFILE "/var/mail/rklems" /* your mailfile */
+
+main(void)
+{
+  FILE *mail;	/* file pointer for mail file */
+  char bob[80], location[80];
+
+  printf("Content-type: text/html\n\n");
+  printf("<HTML><HEAD><TITLE>IP Address</TITLE></HEAD>\n");
+  printf("<BODY><BASEFONT SIZE=4>\n");
+  printf("<H1>IP Address</H1>\n");
+  strcpy(bob, "42.**");
+  if((mail = fopen(MAILFILE, "r")) == NULL)
+    printf("Mail file is empty or does not exist.\n");
+  else
+  {
+    /* 
+     * loop continues till end of file because you want most recent IP
+     * 198.68. is the domain of my ISP, change to yours...
+     */
+    while(!feof(mail)) /* until reaching EOF, do this */
+    {
+      fgets(location, 80, mail); /* Grab a line, from mail */
+      sscanf(location, "198.68.%s", bob); /* look for domain */
+    }
+    strcpy(location, "198.68.");
+    strcat(location, bob);
+    printf("The IP Address of your computer is: %s\n", location);
+  }
+  printf("</BODY></HTML>\n");
+}
+
+Section 8.2: pppdm.c
+
+/*
+ * pppdm.c created by Ryan R. Klems (rklems@primenet.com)
+ *   Released freely by the author to use/modify/copy/reditribute
+ *   My only request is that if you use it...mail me and let me know =)
+ *
+ * This program keeps your link dialed up to an ISP and mails you
+ * the newest IP address.  Useful for people with Dynamically allocated 
+ * IP addresses
+ * uses the following files...
+ * /root/ip        :   Outputs the IP to this file
+ * /root/log       :   If logging is defined
+ * /root/pppchat   :   The chat file set up for chat.
+ *     My chat file looks like:
+ *       ""  ATDT7917777 CONNECT "" "ogin:" "rklems" "assword:" "<password>"
+ *  <password> is YOUR password of course (like I'm gonna give you mine ;)
+ *  *NOTE* for silent dialing do ATMDT
+ *
+ *  Compiling...
+ *    gcc pppdm.c -o pdm
+ *  *NOTE* Don't call it anything like pppdm b/c it looks for pppd
+ *  might accidentally kill itself off ;)
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <time.h>
+#define DOLOG
+
+void main(void)
+{
+  FILE *fin,		/* multiuse file pointer */
+       *popen();	/* proto of popen() */
+#ifdef DOLOG
+  FILE *log;		/* log file pointer */
+#endif
+  char line[80],	/* a line of a file */
+       bah[80],		/* just stuff, also used for holding IP addr */
+       crap[80],	/* just stuff */
+       bob;		/* single char placeholder, not used for anything */
+  int j,		/* flag for if a link was found */
+      k,		/* flag for if this is a new link */
+      pid;		/* pid of pppd process to kill off */
+#ifdef DOLOG
+  time_t now;		/* thing for time logging */
+#endif
+
+  for(;;) /* Loop forever... */
+  {
+    /* look at ifconfig for IP addr */
+    if ((fin = popen("ifconfig", "r")) != NULL)
+      while(fgets(line, 80, fin) != NULL)
+        if(sscanf(line, "ppp0 %s", bah))
+        {
+          fgets(line, 80, fin);
+          sscanf(line, "          inet addr:%15s", bah);
+          j=1;
+        }
+    fclose(fin);
+    if (!j) /* no link */
+    {
+      if((fin = popen("ps -a -x", "r")) == NULL)
+      {
+        fprintf(stderr, "PPPdm error: cannot open file.\n");
+        exit(1);
+      }
+      /* scan through processes & kill off any zombie pppd processes */
+      while(fgets(line, 80, fin) != NULL)
+        if (sscanf(line, "%d  ?  %c     %4s pppd%s", &pid, &bob, crap, bah) == 4)
+          kill(pid, SIGKILL);
+      fclose(fin);
+      k=0; /* new dial attempt */
+      system("pppd connect 'chat -v -f /root/pppchat'"); /* try again */
+#ifdef DOLOG
+      now = time(NULL);
+      if ((log = fopen("/root/log", "a")) == NULL)
+      {
+        fprintf(stderr, "Error in opening log file.\n");
+        exit(1);
+      }
+      fprintf(log, "Initiating ppp-link. %s\n", ctime(&now));
+      fclose(log);
+#endif
+      sleep(60); /* wait 1 min and check again */
+    }
+    if(j && !k) /* first time with new address */
+    {
+      if ((fin = fopen("/root/ip", "w")) == NULL)
+      {
+        fprintf(stderr, "Error in opening output file.\n");
+        exit(1);
+      }
+      fprintf(fin, "%s\n", bah); /* write out addr */
+      fclose(fin);
+      /* mail it to yourself */
+      system("mail -s IP joker@your.moma.com < /root/ip");
+      k=1;
+    }
+    else /* take a nap and check again when we wake up */
+    {
+      j = 0;
+      sleep(300); /* wait 5 minutes to check again */
+    }
+  }
+}
+
+Section 8.3: portmsg.c
+
+/*
+ * Portmsg.c written by Ryan R. Klems (rklems@primenet.com)
+ * Copyright 1996, Author releases this source freely, allowing
+ * copying and modification, so long as the original copyright notice
+ * is maintained.
+ *
+ * I request that if you use this program that you mail me.  Thats
+ * all I ask.
+ *
+ * This program sets up a port on a server to accept telnets.  Upon
+ * accepting a telnet, the program outputs a message, and then closes
+ * the connection.
+ *
+ * address of message would be xxx.xxx.xxx.xxx yyyy where the x's
+ * s the IP number or IP name, and yyyy is the port number set up
+ * within this program.
+ *
+ * Compiling instructions:
+ *	Linux : gcc portmsg_gen.c -o <your_file_name>
+ *      SunOS : gcc portmsg_gen.c -lsocket -lnsl -o <your_file_name>
+ * ***Note***
+ *  I don't have access to any other operating systems, so if you
+ *  compile this program on an OS I don't have listed, and use 
+ *  compiler options I didn't mention...please email me =)
+ */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/uio.h>
+#include <errno.h>
+#include <netinet/in.h>
+#include <strings.h>
+#include <netdb.h>
+#include <unistd.h>
+#define HOSTNAME "ares" /* hostname of computer */
+#define PORT 3000	/* tcp port to bind to */
+/* #define GETHOSTNAME */ /* uncomment if your server has gethostname() */
+
+void get_location(void);	/* proto of my mail reading function */
+char location[80];		/* The IP address */
+
+void main(void)
+{
+  struct in_addr host_ip_number;
+  struct sockaddr_in host_ip_addr;
+  struct sockaddr_in addr;
+  char host_name[100];
+  struct hostent *hp;
+  int s, new_sock;
+  int tmp, length;
+
+  /* 
+   * The server I wrote this for doesn't have gethostname()
+   * so, I put in a little fix...
+   */
+#ifdef GETHOSTNAME
+  gethostname(host_name, sizeof(host_name));
+#else
+  strcpy(host_name, HOSTNAME); 
+#endif
+  hp = gethostbyname(host_name);
+  bzero((char *)&host_ip_addr, sizeof(host_ip_addr));
+  memcpy((char *)&host_ip_addr.sin_addr, hp->h_addr, hp->h_length);
+  host_ip_addr.sin_family = hp->h_addrtype;
+  host_ip_number = host_ip_addr.sin_addr;
+  host_ip_addr.sin_port = htons(PORT);
+  host_ip_addr.sin_addr.s_addr = INADDR_ANY;
+  /* open a socket s */
+  s = socket(host_ip_addr.sin_family, SOCK_STREAM, 0);
+  if ((int)s==-1)
+  {
+    fprintf(stderr, "Error in opening socket.\n");
+    exit(1);
+  }
+  tmp = 1;
+  if(setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (char *)&tmp, sizeof(tmp))<0)
+  {
+    fprintf(stderr, "Error in setsockopt.\n");
+    exit(1);
+  }
+  /* bind the socket to the server */
+  if (bind(s, (struct sockaddr *)&host_ip_addr, sizeof(host_ip_addr))  == -1)
+  {
+    if(errno == EADDRINUSE)
+    {
+      fprintf(stderr, "Socket already bound!\n");
+      exit(1);
+    }
+    else
+    {
+      fprintf(stderr, "Other error binding socket.\n");
+      exit(1);
+    }
+  }
+  /* tell the server to listen to the port */
+  if (listen(s, 1) == -1)
+/* 1 is the maximum size of the connection queue */
+  {
+    fprintf(stderr, "Error in listen.\n");
+    exit(1);
+  }  
+ while(1) /* just keep looping */
+ {
+   length = sizeof(addr);
+   /*
+    * port has been opened with socket(), bound with bind(), and set
+    * active with listen(), now accept() watches the port for 
+    * connections, it will wait here until it has one...
+    * new_sock is the file descriptor for the new socket
+    */
+   new_sock = accept(s, (struct sockaddr *)&addr, &length);
+/*
+ * The function get_location() and the send()'s are what I did to
+ * suit my particular needs.  Put your own messages in here...
+ */
+   get_location();
+   /* send just sends a string foo of length strlen(foo) with flags */
+   send(new_sock, "Location:\n", 11, 0);
+   send(new_sock, location, strlen(location), 0);
+   close(new_sock); /* Close connection after message printed */
+ }
+}
+
+void get_location(void)
+{
+  FILE *mail;	/* file pointer for mail file */
+  char a[80];	/* char array for holding ip addr */
+
+/* 
+ * FYI, this just opens my mail file, looks for a line with
+ * 198.68.(the domain of my ISP), takes the last part, puts
+ * the 198.68. in location, then cats the rest on the end
+ */
+  strcpy(a, "42.**");
+  /* open /var/mail/ryan for read, and check to see there is a file */
+  if((mail = fopen("/var/mail/ryan", "r")) == NULL)
+  {
+    strcpy(location, "Error in obtaining information.\n");
+    return;
+  }
+  else
+  {
+    while(!feof(mail)) /* until reaching EOF, do this */
+    {
+      fgets(location, 80, mail); /* Grab a line, from mail */
+      sscanf(location, "198.68.%s", a); /* look for domain */
+    }
+    strcpy(location, "198.68.");
+    strcat(location, a);
+    /* loops continues till end of file because I want most recent IP */
+  }
+}
+
+
+________
+9.0 Dynamic DNS entries
+
+If you're interested in setting up a hack involving Dynamic DNS
+entries (DNS entries that change to point to your computer when
+its IP address changes) then you might want to check out these
+URLs:
+
+1) <URL:http://www.cfmeu.asn.au/matthew/virtualip.html>
+Check it out, Matthew got it working and is asking for other people to
+try it to iron out the fine details.  The hack involves already having
+control of a DNS at a static IP.
+
+2) <URL:ftp://ietf.org/internet-drafts/draft-ietf-dnsind-dynDNS-11.txt>
+The IETF is the Internet Engineering Task Force, the people who
+basically lay out the future protocols and systems to be used by the
+Internet.  This URL is the IETF's draft for dynamic DNS and should be
+read by anyone who might be thinking of attempting something in this
+direction.
+
+For those who don't {want to,cant} mess with the details, but just want
+a dynamic name set up without the fuss, check out DynDNS.com.  Quite a
+few people have mailed me regarding their happiness with their service,
+so you might want to check it out.  Their site is at
+<URL:http://www.dyndns.com/>, and you can e-mail Gus Hurwitz
+<info@dyndns.com> for more details.  Another service that has just come
+to my attention is dynip.com, which you can check out at
+<URL:http://www.dynip.com/>.
+
+[From Artur Skawina <skawina@usa.net>]:
+Another dynamic DNS project exist at <URL:http://www.ml.org/>.  It has
+been operational since january 1997; while it is still in beta tests, it
+works quite well.
+
+It's very easy to use: you only have to register a hostname once,
+then you can run a special "client" every time your IP changes (There
+exists several linux clients, eg.
+<URL:http://skawina.home.ml.org/mlddc.html>).  For more details on this
+service go to <URL:http://www.ml.org/dyndns/>.
+
+  [Editors note: If you do use the services of ml.org, please consider
+  making a donation to them in order to help pay them back for the blood,
+  sweat, and tears that they've poured into these projects.  After all,
+  they're still a garage-based organization that do things for the
+  internet community that the InterNIC would normally charge $100 a pop
+  for -- MCD]
+
+
+________
+10.0 Hack #9: Updating your .plan 
+	by Matthew Nuckolls <mnuck@umr.edu>
+
+This pair of scripts allows one to put their current IP number in their 
+.plan file on a remote server. I use it so friends and family can see if 
+I'm dialed in, and where to send ytalk requests to.
+
+Put something like
+
+/etc/ppp/putip "None, the link is down"
+
+as the first line in your ppp-off script.
+
+You need a valid $HOME/.netrc file for putip to work. mine looks like:
+
+machine rocket
+login mnuck
+password <mypassword>
+
+and is chmod 600
+
+-Matthew Nuckolls
+ mnuck@umr.edu
+
+ip-up:
+------------------------------------------------------------------------
+#!/bin/sh
+#
+# make sure this is chmod 711, since your password is stored in the clear
+
+PLANLOC = /home/mnuck/.plan
+REMOTE_USER_NAME = mnuck
+REMOTE_PASSWORD =
+REMOTE_PLANLOC = /afs/umr.edu/users/mnuck/pub/.plan
+REMOTE_SERVER = rocket
+
+echo "My dynamic IP is: " $4 > /tmp/ip.myip
+
+cat $PLANLOC /tmp/ip.myip > /tmp/plan
+
+echo $REMOTE_USER_NAME > /tmp/ip.script
+echo $REMOTE_PASSWORD >> /tmp/ip.script
+echo "put /tmp/plan" $REMOTE_PLANLOC >> /tmp/ip.script
+echo "quit" >> /tmp/ip.script
+
+ftp $REMOTE_SERVER < /tmp/ip.script &> /dev/null
+
+rm -f /tmp/ip.myip
+rm -f /tmp/ip.script
+rm -f /tmp/plan
+------------------------------------------------------------------------
+end ip-up
+
+putip:
+------------------------------------------------------------------------
+#!/bin/sh
+#
+# This script relies on a vaild .netrc file
+#  -see ftp man page for details
+
+PLANLOC = /home/mnuck/.plan
+REMOTE_PLANLOC = /afs/umr.edu/users/mnuck/pub/.plan
+REMOTE_SERVER = rocket
+
+echo "My dynamic IP is: " $1 > /tmp/ip.myip
+
+cat $PLANLOC /tmp/ip.myip > /tmp/plan
+
+echo "put /tmp/plan" $REMOTE_PLANLOC > /tmp/ip.script
+echo "quit" >> /tmp/ip.script
+
+ftp $REMOTE_SERVER < /tmp/ip.script &> /dev/null
+
+rm -f /tmp/ip.myip
+rm -f /tmp/ip.script
+rm -f /tmp/plan
+------------------------------------------------------------------------
+end putip
+
+
+________
+11.0 Hack #10: A simple procmail recipe for finding your new IP
+	by Justin Cragin <beyond@lightspeed.net>
+	written by Michael Driscoll <fenris@lightspeed.net>
+
+Here's an easy one, assuming you already have procmail set up.  This
+hack requires that you have a spare shell/email account somewhere on the
+internet where you can temporarily stick an email and is useful when
+you can't use the mailing trick in hack four to get your new IP address
+because you have a cron job regularly downloading your mail.
+
+host.bogus.net will be the name of the machine where you have the
+shell account to mail your new IP address to.
+
+In your .procmailrc, simply add the following recipe:
+
+:0:
+* ^Subject:.*sendmeip
+|mail -s "Your new IP" other.mail.address@host.bogus.net < /var/run/add
+
+For the email address use a shell account whose mail is not being
+regularly downloaded by a cronjob to your local machine (what, doesn't
+anybody else collect shell accounts?  I only have five so far ;)
+
+/var/run/add is of course the file containing your IP address that we
+set up in hack one.  If you haven't done that hack, then do something
+like the following in /etc/ppp/ip-up:
+
+------------------------------------------------------------------------
+echo $4 > /var/run/add
+------------------------------------------------------------------------
+
+Now to use this, just mail your normal mail account from any place on
+the 'net with a subject containing the word "sendmeip", and then telnet
+to the shell account and wait for the cronjob on your machine at home to
+download that mail and automatically send you a reply to the shell
+account with your new IP in it!
+
+Was that too complex?  Lemme know if I should be clearer on that bit.
+
+
+________
+12.0 Hack #11: Dynamic Home Page via ftp 
+	by Michael Driscoll <fenris@lightspeed.net>
+
+This is a simple and easy hack for putting your new IP address on a
+home page on your ISP's http server.  It requires:
+
+o ncftp (though you could kludge up a script that could use normal ftp) 
+o ftp access to your IPS's web server.
+
+You can see this hack in action at <URL:http://frob.base.org/>.
+
+(I also have scripts from <shadow@indirect.com> for another hack that
+accomplishes the same thing that this does, though they use normal ftp
+and are more complex.  You can find these scripts at my home page, as
+<URL:http://frob.base.org/contrib.tar.gz>).
+
+Note: an alternative to this hack (using CGI) is present in hack #14.
+It is useful for those without ftp access to their ISP's http servers.
+
+Section 12.1: Why would I want to do this?
+
+1: Because it's a neat hack.
+2: So that all of your friends and family can easily find your new IP
+   address (Ok, maybe that's not a good thing :-)
+3: So that you can run your own httpd, with your own CGI's (Merely put
+   an http:// pointer to your new IP address which will access your
+   own httpd)
+4: When have we needed a reason to do something?
+
+Section 12.2: Setting up your page
+
+First, you're going to want to write up some HTML to go onto the pointer
+page.  It is beyond the scope of this HowTo to teach you HTML, so you'll
+have to learn that bit yourself.  Try some sites like
+<URL:http://w3.org> and <URL:http://hoohoo.ncsa.uiuc.edu>, they have
+good HTML primers online.  However, when you write the page, in place of
+the address in any pointers to your machine instead put a recognizable
+anchor (I will use the word '--IP--' in this example) so that we can use
+a script to replace that anchor with our IP address.  For example, a
+simple template page would look like this:
+
+<HTML>
+<HEAD>
+<TITLE>This is Mike Driscoll's Dynamic IP Dynamic Home Page</TITLE>
+</HEAD>
+
+<BODY>
+<P>Last known IP of ulfheim.lightspeed.net:
+<P><a href=telnet://--IP-->--IP--</a>
+</BODY>
+</HTML>
+
+Notice that the href and the link name use '--IP--', which the script
+will fill in with our IP address before it uploads the page to the
+server.
+
+For this example, I'll assume that you've named this template page
+/etc/ppp/index.html.
+
+Section 12.2.1: A note on redirects
+	by Artur Skawina <skawina@usa.net>
+
+Instead of only uploading a page with the current IP it's possible to
+upload a page that will directly transfer anybody who loads it into
+their browser to your dynamic host (eg. add a tag like this one to the
+HEAD section of the page:
+<META HTTP-EQUIV="refresh" CONTENT="3; URL=http://--IP--/page"> )
+
+Section 12.3: Using ncftp to automate page updates.
+
+Before we do this part we'll have to figure out which version of ncftp
+you are running.  To do this, just start ncftp.
+
+Here are two examples:
+
+fenris@ulfheim:~$ ncftp
+1.9.5 (October 29, 1995)
+ncftp>_
+
+mdriscol@ultrix6:/usr/stu/mdriscol$ ncftp
+NcFTP 2.0.5 (May 1, 1995), by Mike Gleason, NCEMRSoft.
+NcFTP> _
+
+Depending on the version number listed when you start ncftp, we will
+do this section in one of two ways.  If the version number is 1.x.x
+(ie. mine is 1.9.5), then use the first method, if the version number
+is 2.x.x (ie. the one in my ultrix account at school is 2.0.5) then
+use the second method.
+
+Section 12.3.1: ncftp 1.x.x
+
+Now we'll add some stuff to root's .ncftprc.  In mine, I have the
+following: 
+----------
+#set auto-binary on
+#set recent-list off
+
+machine your.isp's.web.server
+        user yourusername
+        password yourpassword
+        macdef init
+		cd /to/your/home/directory
+                put /tmp/index.html index.html
+                quit
+----------
+The auto-binary insures that we'll be in binary mode, the recent-list
+bit stops a .ncrecent file from being created (I just don't like them,
+you can have one if you want), and the machine entry defines my
+password, username, and default actions (you might not need the cd bit,
+at least I don't, since when I ftp to my ISP's server it automatically
+puts me in the right directory).
+
+Section 12.3.2: ncftp 2.x.x
+	by Tomas Jamate <tvj@miser.umass.edu>
+
+[Editors note:  I changed Tomas's script a bit before including it in
+ in the HowTo, if I broke it please tell me! -- MCD]
+
+Here's the setup files I used for getting ncftp v2.x.x to work with 
+Hack #8. Note that ncftp ver 2.x.x keeps all setup files under ~/.ncftp.
+I make no guaruntees, but this setup works for me.  Look at the man
+pages if you want to use other options for ncftp.
+
+First manually connect to your web service provider using ncftp.
+
+$ ncftp -u service.provider.com
+
+The -u means force prompt for user name and password.  Once connected cd
+into your web directory.  This creates a bookmark entry for
+service.provider.com.  (I'm not crazy about the bookmark setup, but hey,
+it works).  Exit ncftp.
+
+Edit ~/.ncftp/bookmarks.  You'll see the site entry with your username,
+you need to put your password right after the username.  It should look
+something like this:
+
+NcFTP bookmark-file version: 6
+Number of entries: 1
+service,service.provider.com,Username,Password,,/dir/of/your/web/page,[etc]
+
+Now create and edit ~/.ncftp/macros, It should look like this:
+
+macro .open.example
+put /tmp/index.html index.html
+exit
+end
+
+Now you can automatically upload the index.html with:
+        "ncftp -L example"  -L means go to line mode style
+-or-
+        "ncftp -Lf example"  -the -f means force overwrite of existing
+                              file, for the paranoid ;-)
+
+Section 12.4: A simple search and replace sed rule
+
+Now we write the sed rule.  Just put the following in 
+/etc/ppp/ip-up:
+
+# Begin dynamic IP stuff
+if [ -e /tmp/index.html ]; then
+	mv /tmp/index.html /tmp/index.html-`date +%s`
+fi
+cat /etc/ppp/index.html | sed -e s/--IP--/$4/g > /tmp/index.html
+ncftp your.isps.web.server >/dev/null 2>&1
+
+First we check for pre-existance of /tmp/index.html.  A cracker could
+be trying to exploit our usage of this to wipe out any file he pleases
+in the filesystem by linking /tmp/index.html to it and waiting until
+the script is run.  If it already exists, the file is harmlessly moved
+out of the way until you look at it, foiling any nefarious plans.
+
+Then we run our sed script.  This substitutes all occurances of our
+anchor string '--IP--' with our new IP address and dumps the new
+index.html in /tmp.  ncftp is then run to upload the new /tmp/index.html
+which has the current IP address in it.
+
+Congratulations, it's done, you now have a dynamic home page that you
+can use to point to your home machine!  Have fun customizing it!  Just
+edit /etc/ppp/index.html, and it should be updated the next time you
+dial up your ISP with pppd.
+
+
+________
+13.0 Hack #12: Paging yourself with your new IP address
+	by Michael Driscoll <fenris@lightspeed.net>
+
+Here's a neat hack that I don't know anyone will use.  It involves using
+a modem-dialing program to page oneself with one's new IP address.  It
+requires:
+
+o modem (speed doesn't matter since we're just going to use it to dial
+  [aren't you glad you kept your 300bps modem? :-) ])
+o extra phone line (doesn't need to be dedicated to this, as hopefully
+  you have a modem that will gracefully give up if a voice call is
+  already in progress (I guess that's something you should check, some
+  modems are rather brutal about this)).
+o An ordinary numeric pager
+o A dialing program
+
+Section 13.1: The paging program
+
+For this hack you will need some program that has the ability to dial a
+modem from the command line.  For the following examples, I will use the
+program 'modem-stats' by Kenneth J. Hendrickson <kjh@usc.edu>, which can
+be found at
+<URL:ftp://sunsite.unc.edu/pub/Linux/apps/comm/modem-stats.tar.gz>.
+
+I imagine that other dialing programs can easily be adapted to this
+examples.
+
+Section 13.2: Calling it from ip-up
+
+We will put the following lines in /etc/ppp/ip-up:
+
+#Separate $4 (IP address) into four parts
+part1=`echo $4 | cut -f1 -d.`
+part2=`echo $4 | cut -f2 -d.`
+part3=`echo $4 | cut -f3 -d.`
+part4=`echo $4 | cut -f4 -d.`
+#Run dialing program
+/usr/sbin/modem-stats -c 'atz' /dev/cua2
+/usr/sbin/modem-stats -c 'ats7=15' /dev/cua2
+/usr/sbin/modem-stats \
+ -c 'atdt6384658,,,'${part1}'*'${part2}'*'${part3}'*'${part4} /dev/cua2
+
+Explanations:
+
+The atz resets the modem to sane defaults, the ats7=15 sets the time to
+wait for a carrier, the ','s are pauses, and the '*'s are used to
+signify dashes (at least they do on my pager, hopefully they will on
+yours).
+
+Oh yes, and you might have better results if you put your own pager
+number in place of 638-4658, as that is my pager number :-)  Also,
+replace /dev/cua2 with the device name for your modem.
+
+Congratulations.  You're done!
+
+
+________
+14.0 Hack #13: xterm logins through a firewall
+	by Brad Baker <bpb@mlb.cca.rockwell.com>
+
+ [Editor's note:
+  As the author of this hack notes, this hack may have inherent security
+  problems, such as the possibility of password capture and the breach of
+  your firewall's security inherent in handing out logins to sites outside
+  your localnet.  This hack is being included more for its hack value than
+  its general usefulness.  I wouldn't suggest doing this one unless you
+  are the netadmin for that network or are on very good terms with him or
+  her :-) -- MCD]
+
+Here's another hack for you to try. This one works, and I'm not sure of
+the security risks yet, but it is amusing.
+
+It would be nice to be able to get access to my work machine (Sun) from
+home, and vice versa, yet telnet is firewalled at work. Here's a way
+around it.
+
+For purposes of this explanation I'll give the method for gaining access
+to my work machine from my home Linux machine, with a dial-up PPP
+connection to my ISP and dynamic IP assignment.
+
+>From home, when I want access to my work machine, I dial-in and fire up
+X, set "xhost +", determine my dynamic IP, and email my dynamic IP to my
+work machine in a mail message with a particular format. On my work
+machine I have a procmail recipe/script setup that parses the body of a
+message whose subject matches a target, say "X-W". If the body of that
+message meets certain requirements then it extracts the IP from the
+message and spawns an xterm with the display directed to my home dynamic
+IP like this:
+
+     xterm -display my.ip.i.sent:0.0 -e login
+
+Voila! In about 30 secs to a minute, an xterm login shell appears on my
+home machine! I haven't tried going the other direction yet because my
+home machine isn't on full time, but using the other methods of
+determining the dynamic IP from a remote machine it should work the same
+way.
+
+I'm quite concerned about security issues though and so I've got it
+disabled until I find out more. When the xterm shows up at home it gives
+a login prompt, and Secure Keyboard can be used to avoid capture of the
+password (I'm not sure how secure this feature is in xterm). Still, I'm
+not real sure at this time what the security features of X are. I'm most
+concerned about my xterm popping up on the wrong IP, or to an IP that I
+had before my line connection got dropped just now, though, most users
+are using Windows and the X access request will not succeed.
+
+Further required security procedures are to encrypt the IP in the email
+message with PGP or common key encryption and to restrict the dynamic
+IPs to a range, though my ISP won't divulge the range of their dynamic
+IPs to me.
+
+Here's the .procmailrc rule, script file, and sample email message that
+I used to test it (say 111.222.333.444 is the dynamic ip).
+
+-- rule set in ~/.procmailrc --
+:
+^Subject: X-W
+| cat | $HOME/scripts/send_xterm
+-- end --
+
+-- ~/scripts/send_xterm --
+#!/bin/sh
+XX=`cat $1 | grep "^IP: .*" | sed "s/IP: \(.*\)/\1/"`
+XX=`echo $XX | perl -e '$_ = <>; s/[^0123456789.]//g; print'`
+xterm -display $XX -e login &
+-- end --
+
+-- sample email message --
+To: bpb@my.machine.com
+Subject: X-W
+
+IP: 111.222.333.444:0.0
+-- end --
+
+You can try it out on your own machine by mailing it to yourself
+(after you've setup .procmailrc and send_xterm locally of course).
+
+
+________
+15.0 Hack #14: Dynamic Home Page via CGI
+	by Michael Driscoll <fenris@lightspeed.net>
+
+This hack is similar to hack #11, but differs in method.  While hack #11
+involves using ftp access to your ISP's http server to update a page
+containing a link to your new IP, this one accesses a .cgi script on
+your ISP's http server which sets up our new page by itself.
+
+To use this script you'll have to convince your ISP's sysadmin to put
+this CGI on their http server.  It is not unreasonable for them to charge
+you money to check the script for security since it takes them time and
+is a bit of insurance for the risk of them putting it on the server in
+the first place (although I'll try my best to make this one 'secure').
+For example, my ISP (lightspeed.net) charges $50 per script to check it.
+
+***Warning*** Not only is this script new and (largely) untested, but
+I'm writing it at 02:52 PDT to avoid doing my Philosophy mid-term.  If
+you don't know anything about CGI and how to make it secure, then I'd
+suggest you wait until any bugs are worked out before you try foisting
+this upon a poor sysadmin.
+
+***Note***
+Well, it's been two months since I wrote that warning and I've heard
+nothing about the security of this CGI, for or against.  Either it
+*is* secure and nobody has let me know, or nobody uses it :-)  Either
+way, I still urge caution.
+
+Section 15.1: Overview of what we'll try to do.
+
+Basically, all you'll need to do is take the following script and do
+a little interpretation in filling in the values.
+
+In the script we'll try to do the following:
+
+* Parse a newip= parameter, making sure it is a legitimate IP
+* Parse a password= parameter as a *very* loose security to make sure
+  some hoodlums can't easily screw with your script to fill in their own
+  IP values (Note: I know this won't be 100% foolproof but the
+  ramifications if it fail shouldn't be *too* bad, and at least a
+  failure should be non-destructive and there will be server logs noting
+  who the perpitrator is).
+* Check the cgi's $REMOTE_HOST and $REMOTE_ADDR environment variables
+  against your domain name to make sure that it's at least a local
+  request.
+* Finally, if everything checks out, set up the page.
+  
+Section 15.2: The script (dynip.pl)
+
+#!/usr/bin/perl
+# Written by Michael Driscoll <fenris@lightspeed.net>
+# Suggestions very welcome
+
+require 5; # Require perl5
+use CGI; # This is the CGI.pm module, available at CPAN sites everywhere like
+         # <URL:ftp://ftp.cdrom.com/pub/perl/CPAN/modules/by-module/CGI>
+
+# Fill in these values
+$givendomain = "domain.net";               # Put in your ISP's domain name
+                                           # (Actually the last two parts of
+                                           # the domain, although this can
+                                           # be changed below at the split())
+$givenpassword = "potrzebie";              # Fill in a password to use
+$filename = "/some/path/to/my/index.html"; # Get your sysadmin to fill this
+                                           # in (User's page to update).
+                                           # Note to sysadmin: the file
+                                           # indicated will have to give
+                                           # write perms to the userid of
+                                           # httpd, unless you use Apache's
+                                           # suid method or something (not
+                                           # recommended)
+
+# The followings deal with IP numbers using the scheme aaa.bbb.ccc.ddd
+$higha = "255"; # Fill in the highest range of the aaa part of your
+                # ISP's IP block.
+$lowa = "0";    # Same for the low range of the aaa part.  Probably the
+                # same as $higha since most ISP's don't span more than one 
+                # class A network :-)
+$highb = "255"; # Fill in the highest range for bbb
+$lowb = "0";    # Lowest range for bbb
+$highc = "255"; # You get the point.
+$lowc = "0";    #
+$highd = "255"; #
+$lowd = "0";    #
+
+# link $query to the cgi.pm module
+$query = new CGI;
+
+# $newip is our new IP via the newip variable
+$newip = $query->param("newip");
+
+# $trypassword is the tentative password to check against $givenpassword
+$trypassword = $query->param("password");
+
+# $hostname is the name of the host this is coming from to check against
+# $givendomain
+$hostname = $query->remote_host;
+
+# Check the password first of all
+unless ("$trypassword" eq "$givenpassword") {
+	print "Content-type: text/plain\n\n";
+	print "Sorry, wrong password\n";
+	exit;
+}
+
+# Break up the IP into @IP
+# substitute out any non-numerics except for '.'
+# splice() it to take out anything after the first dotted quad
+# (How did that get there??  Anyways, I'm trying to take as few
+# chances against crackability as possible).
+$newip =~ s/[^\d\.]//g;
+@IP = split /\./, $newip;
+splice(@IP, 4);
+
+# Check the IP to make sure it's within bounds
+unless (($lowa <= $IP[0]) &&
+	($lowb <= $IP[1]) &&
+	($lowc <= $IP[2]) &&
+	($lowd <= $IP[3]) &&
+	($higha >= $IP[0]) &&
+	($highb >= $IP[1]) &&
+	($highc >= $IP[2]) &&
+	($highd >= $IP[3])) {
+	print "Content-type: text/plain\n\n";
+	print "Sorry, that IP address doesn't seem to be within bounds\n";
+	exit;
+}
+
+# Now let's check the hostname
+# Break it up into parts of @hostnamearray
+@hostnamearray = split /\./, $hostname;
+$dompart2 = pop @hostnamearray;
+$dompart1 = pop @hostnamearray;
+
+# Check it
+unless (("$dompart1"."\.$dompart2" eq "$givendomain") || 
+	("$hostname" eq "localhost")) {
+# Print an error
+	print "Content-type: text/plain\n\n";
+	print "Sorry, you don't seem to have the right domain\n";
+	exit;
+}
+
+# Things seem to check out, let's set up the page
+# Make sure to escape out things like #, \, $, @, %, and '
+
+open(FILE, ">$filename") || 
+	die "dynip.pl cannot open $filename to write: $!";
+flock(FILE, 2);
+
+# Start html here.  $newip is our new IP address.
+print FILE "<html><head><title>Title etc.</title></head>\n\n";
+
+print FILE "<body><h1>body here</h1><hr>\n";
+print FILE "<p>blah blah blah\n";
+
+print FILE "<p>And <a href=telnet://$newip>here</a> is a link to my ";
+print FILE "current IP address.\n";
+
+print FILE "</body></html>\n";
+flock(FILE, 8);
+close(FILE);
+
+# Send an ok to our accessing program
+print "Content-type: text/plain\n\n";
+
+print "Setup was successful\n";
+
+# End
+
+Section 15.3: Accessing the CGI when our link goes up
+
+Now all we do is access it with lynx in our /etc/ppp/ip-up.
+The following line should do it, using the /etc/ppp/ip-up usage of
+$4 for the new IP value: 
+
+lynx -dump \
+'http://www.ispserver.net/cgi-bin/dynip.pl?newip=$4&password=potrzebie' \
+>> /etc/ppp/lynxlog
+
+Put the password you chose in the place of 'potrzebie', of course.  And
+be sure to chmod 700 /etc/ppp/ip-up when you're done, now that it has
+sensitive information in it.
+
+(BTW, the \'s are just used so that I can fit the command under 80 columns.
+what they do is escape out the newline so that it is considered one command)
+
+Also be sure to periodically reduce /etc/ppp/lynxlog as it will grow to
+be somewhat big after a while :-)
+
+There you go...hopefully you're done!
+
+
+________
+16.0 Hack #15: Suggestion for rc.*
+	by Jeremy D. Impson <jdimpson@camelot.syr.edu>
+	written by Michael Driscoll <fenris@lightspeed.net>
+
+Previously, this HowTo had various bits of instruction scattered
+throughout which basically copied various parts of /etc/ppp/ip-down in
+the rc.* files, to be run in case of a crash of the system while the PPP
+connection was still up.  Jeremy mailed me with the suggestion of simply
+running the /etc/ppp/ip-down file itself at bootup, instead of tediously
+adding most of it bit by bit to the rc.* files.  Therefore, providing
+that the commands in /etc/ppp/ip-down make sense at bootup and don't
+rely on options passed by pppd (if the latter is true, you can always
+hack up a fake command line), you can simply add the following to the rc
+file of your choice:
+
+# Run /etc/ppp/ip-down if pppd wasn't shut down cleanly
+if [ -f /var/run/ppp?.pid ]; then
+	/etc/ppp/ip-down
+fi
+
+Words from Jeremy:  This little trick won't be relevant in every
+situation, but it is in mine, and I thought maybe you'd appreciate it.
+
+Thanks Jeremy!
+
+
+________
+17.0 Hack #16: Defeating local and ISP-imposed timeouts with ping
+	by Artur Skawina <skawina@usa.net>
+
+[Editors note: As Artur notes, this one can be taken too far and
+ can really have an impact on your ISP if they are short on lines
+ or something.  If you do this, and your ISP pointedly asks you
+ to knock it off, then you should seriously consider shelling out
+ the extra money for a dedicated modem on their side or something,
+ which will often get you a dedicated IP anyways, thus making this
+ HowTo moot :-) -- MCD]
+
+In order to keep a dialup connection open it is sometimes necessary to
+ensure that the link is not idle for long periods of time. Some ISP's
+automatically disconnect a link if there's no traffic, and many modems
+also have the ability to terminate an idle connection. While it is easy
+to alter the local modem settings, it may be impossible to convince your
+ISP to do the same (they may not like people using their resources for
+24h/day).
+
+The solution? Add the following line to the ip-up script:
+
+ping <some_host> -i 180 &
+
+where <some_host> can be your ISP's main DNS, terminal server etc.
+
+To change the modems 'Disconnect Inactivity Timer' you have to check the
+modems manual. For example on CirrusLogic chipset based modems it can be
+ATS90=0
+
+
+________
+18.0 Hack #17: Using SSI's for dynamic IP publishing
+	by Dale Jolliff <taftbbs@e-tex.com>
+
+
+This isn't specifically for Linux, but for anything, and you don't have
+to worry about changing anything.  It does require that your ISP allow
+Server Side Includes in your home page.
+
+Here's what's visible at 
+<URL:http://www.e-tex.com/personal/taftbbs/onlinecheck.shtml>.
+Check it out ... ;>
+
+You have to know a couple of things about your ISP --
+ The name (or IP#) of the router that you dial into
+ The "gateway" and your own "userid"
+  you can get this in Linux from the "ifconfig" command, it's the
+  IP# there that isn't your machine.... for Windows lusers Trumpet
+  Winsock has a "default gateway", and in Win95, it's in the TCP/IP
+  setup area.
+
+The critical part of this is that your ISP let you have your own "home 
+page" -- almost required as a "give away" from small providers these 
+days.  If they aren't sharp enough to limit SSI and CGI execution, even 
+better.... mine allows SSI, but not CGI execution (however, if you can 
+do SSI, you can do CGI's.... they just have to be called differently)
+
+I'm cutting all the extraneous stuff out, and just leaving the critical
+portions to make the thing work here....
+
+Stick these lines in a SSI page (usually a file that ends in ".shtml"
+for most servers):
+
+david5.e-tex.com is the router I dial into when I connect to my ISP...
+taftbbs is my userid on thier system...
+this produces a simple one line out put on the page....
+
+<pre>
+<!--#exec cmd="finger @david5.e-tex.com | grep taftbbs"-->
+</pre>
+
+
+<a href="http://<!--#exec cmd="finger @david5.e-tex.com | grep taftbbs | 
+cut -c '66-'"-->">Click here to see if you can see anything!</a>
+
+The line above will produce a link that will display on the page....
+Finger your router, and look at the output.  The "cut -c '66" part will be 
+dependant upon the make of your router...I have accounts on a couple of 
+providers, and they all seem to use different routers, and each one has
+it's own 'format' when you finger them.
+
+simple explanation of what happens here:
+
+<a href="http://   <--open a standard HTML reference anchor...
+
+<!--#exec cmd=" <-- This is a Server Side Include command.  This 
+means this gets parsed and executed prior to being sent from the server 
+to the client -- the client being your browser.  So, even if you look at the 
+page "source" in your browser, you won't see this, only the output of the 
+command about to be executed on the web server at your ISP.
+
+finger @david5.e-tex.com | grep taftbbs | cut -c '66-' 
+
+This is actually what gets executed.  We finger the router, grep for my 
+userid, and cut everything out except the IP#, which on my ISP's router 
+starts in column 66, and is on the end of the line.... may be radically 
+different for other folks.
+
+"--> 
+
+make sure you close your SSI command properly, or it won't work...
+DO be careful how you use single and double quotes in your 
+commands... it's easy to get the thing all messed up, play with it a bit.
+
+
+">Click here to see if you can see anything!</a>
+
+and of course close the link anchor, and stick in your "clickable" text.
+
+[end of hacks]
+
+
+________
+Appendix A: We need more hacks!
+
+If you have a dynamic IP hack that you would like to contribute to this
+HowTo, then let me know.  Be warned that if you do so that it will have
+to be covered under the copyright notice in Section 1.7, for reasons of
+CD publishing and whatnot.
+
+If you {liked this HowTo, didn't like this HowTo, thought this HowTo was
+too confusing, found something in this HowTo that doesn't work and/or is
+just plain wrong, want to send me email, don't want to send me email,
+found a security problem in this HowTo, etc} then please mail me at
+<fenris@lightspeed.net>.  I mean it, I really would appreciate *any*
+feedback on this HowTo, even if you just mailed me to say that you read
+it!
+
+Really!  Just e-mail me for anything!  I *really do* love getting e-mail!
+
+Flames will *not* go to /dev/null.  I think if you feel that strongly
+about it, I should listen.
+
+If you write up a chapter for this HowTo not only will you be helping
+the Linux community, but you will receive full credit for your hack,
+your name will go into the credits at the end of this HowTo, you will be
+acknowledged as a contributor in the beginning of this HowTo, your idea
+will be archived with almost every CD Linux distribution in the world,
+you'll be the envy of all of your peers, etc.
+
+
+________
+Appendix B: CREDITS
+
+(in order of appearance)
+
+Michael Driscoll <fenris@lightspeed.net> 
+  is the HowTo maintainer and the author of a few of the hacks.
+Christian G. Warden <cwarden@loop.com>
+  helped debug the keepalive.sh script used in hack two, now the thing
+  will work in (hopefully) all cases, including those when the connection
+  goes down but pppd does not.
+Justin Cragin <beyond@lightspeed.net>
+  gave me the idea for hacks two and four, and then got mad when he
+  found out I stole them.  I also stole the message that my answering
+  machine uses from him, so I guess I owe him this one.  He also
+  recently thought up a nice hack that has become hack ten, so he is now
+  thrice credited.  And he has now helped think of the idea of hack
+  twelve, so he is once again credited.  Furrfu.  Oh well, I guess I
+  owe it to him to make him the new maintainer when I move away to
+  CSM this summer and get my stable IP.
+<shadow@indirect.com> 
+  gave me copies of some real neat scripts of his, see 12.0 for details.
+  I seem to have lost his name, hopefully he'll send it to me again :-)
+Ajit Deshpande <adeshpan@ddt.eng.uc.edu> 
+  wanted to be in the credits.
+Divya Mahajan <vmahajan@giasdl01.vsnl.net.in>
+  sent me the info on diald, which should probably end up replacing the
+  crontab entry in hack two.
+Ryan Klems <rklems@primenet.com>
+  sent me a bunch of his own hacks, see 8.x for details.
+Matthew Driver <mdriver@cfmeu.asn.au>
+  gave me a pointer to his page on dynamic DNS entries.  Check out
+  chapter 9.0 for the URL.
+Matthew Nuckolls <mnuck@umr.edu>
+  gave me hack nine, which updates a .plan containing your new IP address
+  on a remote server via ftp.
+Scott Johnston <sj@odin.iac.net>
+  showed me a better way to set up hack two (took out long and confusing
+  crontab entry and put it in script called by cron instead), and gave me
+  various other pointers.
+Brad Baker <bpb@mlb.cca.rockwell.com>
+  wrote the really neat hack thirteen.
+Christian Hardmeier <101502.1521@CompuServe.COM>
+  got me motivated to write hack fourteen.
+Justin (Gus) Hurwitz <hurwitz@dyndns.com>
+  let me know about his new service providing dynamic DNS entries for
+  hosts with dynamic IP.  Check out the pointer in chapter 9.0.
+Tomas Jamate <tvj@miser.umass.edu>
+  reminded me about ncftp 2.x.x and was even kind enough to send me his
+  own script for inclusion in the HowTo (thanks Tomas!).  He goes to
+  umass but unfortunately doesn't listen to the Pixies.  Oh well.
+Jeremy D. Impson <jdimpson@camelot.syr.edu>
+  wrote me the suggestion that turned into hack fifteen.
+Steve Przepiora <gearhead@dreamscape.com>
+  wrote hack one, and really got the ball rolling for me with the
+  reorganization of this howto that made v2.0.0.
+Whit Blauvelt <whit@transpect.com>
+  gets many thanks for giving me lots of feedback on the HowTo, and
+  especially for fixing hack one.
+Paul C. Richard <pcricha@cs.concordia.ca>
+  also gets thanks for his help fixing up hack one.
+Per Sjoholm <Soile.Kaasila@sth.frontec.se>
+  kept me up to date with the new location of the diald home page.
+Bill Duncan <bduncan@beachnet.org>
+  also notified me that the diald home page had moved.
+Artur Skawina <skawina@usa.net>
+  did a lot, such as hack sixteen, additional material for chapter nine,
+  and the new section 12.2.1.
+Scott Dier - DiEMaN <sdier@isd.net>
+  also told me about ML.org's dyndns project.
+Dale Jolliff <taftbbs@e-tex.com>
+  sent in hack seventeen.
+Bryan Rittmeyer <bryanr@flash.net>
+  debugged hack two and mentioned ML.org's dyndns project.
+Marek Kubita <kubitovi@mbox.lantanet.cz>
+  fixed a gaping hole in hack thirteen.
+--
+Michael Driscoll <fenris@lightspeed.net>
+

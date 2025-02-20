@@ -1,0 +1,15 @@
+Begin3
+Title:		ksermon
+Version:	0.2.2
+Entered-date:	070298
+Description:	Serial line monitor utility with modem led emulation
+Keywords:	serial line monitor, Qt, KDE, sermon
+Author: 	Bernhard Kuhn <kuhn@lpr.e-technik.tu-muenchen.de>
+Maintained-by:	Bernhard Kuhn <kuhn@lpr.e-technik.tu-muenchen.de>
+Primary-site:	ftp://ftp.kde.org/pub/kde/unstable/apps/comm/ksermon-0.2.2.tgz
+File1:		ksermon-0.2.2.tgz
+Home-page:	http://www.lpr.e-technik.tu-muenchen.de/~kuhn/ksermon/index.html
+Original-site:	http://www.lpr.e-technik.tu-muenchen.de/~kuhn/ksermon/ksermon-0.2.2.tgz
+Platforms:	Linux 2.0.33 with GCC-2.7.2, Qt-1.32, KDE-Beta3 and sermon-0.20
+Copying-policy:	GPL
+End

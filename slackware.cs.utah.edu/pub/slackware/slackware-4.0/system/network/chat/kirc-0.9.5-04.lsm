@@ -1,0 +1,14 @@
+Begin3
+Title: kIRC
+Version: 0.9.5+pl4
+Entered-date: Apr 15 1998
+Description: A kde irc client, with many of mIRC's features.
+Keywords: irc kde x11 qt
+Author: Aaron Granick <parallax@ucsd.edu>
+Maintained-by: Alex Zepeda <garbanzo@hooked.net>
+Primary-site: ftp://upload.kde.org/pub/kde/Incoming/kirc-0.9.5.tar.bz2
+Original-site: http://www.wenet.net/~garbanzo/kde/kirc-0.9.5.tar.bz2
+Platforms: Unixish OSes
+Help-channel:#Oblivion@UnderNet
+Copying-policy: GPL
+End

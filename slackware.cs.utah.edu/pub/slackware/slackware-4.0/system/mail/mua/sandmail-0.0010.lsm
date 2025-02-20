@@ -1,0 +1,16 @@
+Begin3
+Title:          Sandmail
+Version:        0.0010
+Entered-date:   20DEC98
+Description:    Sandmail is a mime-compliant user mail agent, currently
+                in early development stages.
+Keywords:       mail, User mail agent, mail client, Gtk
+Author:         disq@iname.com (Kemal Hadimli)
+Maintained-by:  disq@iname.com (Kemal Hadimli)
+Primary-site:   http://disq.bir.net.tr /sandmail
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Mail/mua
+Original-site:  http://disq.bir.net.tr /sandmail
+Platforms:      Linux (Gtk+ 1.1.2 or higher required)
+Copying-policy: GPL
+End
+

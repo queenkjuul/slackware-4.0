@@ -1,0 +1,20 @@
+Begin3
+Title:		Distribute
+Version:	1.1
+Entered-date:	26JAN98
+Description:	A script for farming out a list of commands to multiple
+		networked machines in order to complete the list in as
+		little real-world time as possible. Allows builds using
+		"make" across multiple networked machines.
+Keywords:       distributed computing
+Author:		neufeld@physics.utoronto.ca (Christopher Neufeld)
+Maintained-by:  neufeld@physics.utoronto.ca (Christopher Neufeld)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/misc
+		15 kB distribute-1.1.tar.gz
+Alternate-site: caliban.physics.utoronto.ca /pub/linux
+Original-site:  
+Platforms:      Networked cluster with Perl5 and IO::Select package.
+		Must support fcntl() and sockets. Heterogeneous
+		architectures are allowed.
+Copying-policy: GPL
+End

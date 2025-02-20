@@ -1,0 +1,15 @@
+Begin3
+Title:		root
+Version:	1.2
+Entered-date:	15apr97
+Description:	A sudo clone, that allows temporary root access to users as
+		describe in a file containing numerical uid's. Logs all
+		accesses to a file.
+Keywords:	sudo root uid setuid getuid
+Author: 	irq@stepahead.net (interrupt request)
+Maintained-by:	irq@stepahead.net (interrupt request)
+Primary-site:	Primary-site: ftp.stepahead.net /pub/irq/root1.2.tar.gz
+				      9kb root1.2.tar.gz
+				      481    root1.2.lsm
+Copying-policy: GPL
+End

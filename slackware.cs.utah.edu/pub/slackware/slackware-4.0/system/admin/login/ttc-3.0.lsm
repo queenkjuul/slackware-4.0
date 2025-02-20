@@ -1,0 +1,22 @@
+Begin3
+Title:          ttc
+Version:        3.0
+Entered-date:   23APR99
+Description:    Ttc - Terminal Type Control -program, controls the logins
+                on those terminal types, given as argument for the ttc.
+                You can deny any terminal type you want and/or you can
+                set timing for any terminal type you want. Both, deny and
+                timing has authorization check. Timing has also time bank
+                system. New features: login limit, deny access option, new
+                configuration file, usage of wildcards in names of tty's.
+                This new package includes also new ttc PAM module that
+                replaces ttc -client entirely.
+Keywords:       tty, login, deny, timing, access, PAM
+Author:         priikone@poseidon.pspt.fi Pekka Riikonen
+Primary-site:   poseidon.pspt.fi /pub/linux/sources
+                32Kb ttc-3.0.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/admin/login
+                32Kb ttc-3.0.tar.gz
+Platforms:      Linux, gcc
+Copying-policy: GNU GPL
+End                             

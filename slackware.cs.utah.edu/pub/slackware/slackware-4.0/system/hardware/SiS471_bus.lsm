@@ -1,0 +1,15 @@
+Begin3
+Title:          SiS471_bus
+Version:        1.00
+Entered-date:   29JUN96
+Description:    Utility to set ISA bus speed on SiS 85c471 486 chipset
+Keywords:       ISA bus speed MHz SiS 471 chipset
+Author:         paul.gortmaker@anu.edu.au (Paul Gortmaker)
+Maintained-by:  nobody@nowhere.org (Mr. Dev Null)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc
+		4kB SiS471_bus.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      SiS 85c471 486 chipset
+Copying-policy: GPL
+End

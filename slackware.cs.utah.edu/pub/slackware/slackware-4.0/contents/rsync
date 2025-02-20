@@ -1,0 +1,14 @@
+drwxr-xr-x root/root         0 1998-12-07 18:08 ./
+drwxr-xr-x root/root         0 1995-08-28 17:51 usr/
+drwxr-xr-x root/root         0 1999-04-07 19:45 usr/doc/
+drwxr-xr-x root/root         0 1999-04-07 19:45 usr/doc/rsync-2.3.1/
+-rw-r--r-- root/root      7002 1999-03-15 15:23 usr/doc/rsync-2.3.1/README
+-rw-r--r-- root/root     17982 1996-06-22 00:04 usr/doc/rsync-2.3.1/COPYING
+-rw-r--r-- root/root     14675 1998-11-25 10:24 usr/doc/rsync-2.3.1/tech_report.tex
+drwxr-xr-x root/bin          0 1998-12-07 18:08 usr/bin/
+-rwxr-xr-x root/bin     131440 1999-04-07 19:45 usr/bin/rsync
+drwxr-xr-x root/root         0 1998-12-07 18:08 usr/man/
+drwxr-xr-x root/root         0 1999-04-07 19:45 usr/man/man1/
+-rw-r--r-- root/root     11288 1999-04-07 19:45 usr/man/man1/rsync.1.gz
+drwxr-xr-x root/root         0 1999-04-07 19:45 usr/man/man5/
+-rw-r--r-- root/root      6555 1999-04-07 19:45 usr/man/man5/rsyncd.conf.5.gz

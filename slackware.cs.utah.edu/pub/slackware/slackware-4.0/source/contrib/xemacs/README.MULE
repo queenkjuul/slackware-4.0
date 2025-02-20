@@ -1,0 +1,23 @@
+Japanese Emacs resources.
+
+MULE X11 fonts.
+	ftp://etlport.etl.go.jp/pub/mule/fonts/
+	ftp://sh.wide.ad.jp/JAPAN/mule/fonts
+	ftp://ftp.xemacs.org/pub/aux/fonts/
+	ftp://ftp.jaist.ac.jp/pub/GNU/mule/fonts/
+	ftp://ftp.jaist.ac.jp/pub/misc/character/fonts/
+
+Libcanna (input method library)  No English documentation available at
+the present time.
+
+	ftp://ftp.nec.co.jp/pub/packages/Canna32
+	ftp://ftp.csce.kyushu-u.ac.jp/pub/Misc/Canna/Canna32
+
+Libwnn (input method library)
+
+	ftp://ftp.wg.omron.co.jp/pub/Wnn
+	ftp://ftp.csce.kyushu-u.ac.jp/pub/Misc/Wnn
+
+MULE fonts (Japanese, Chinese, etc.) may be found in /pub/aux/fonts.
+
+The source to kterm (Kanji Xterm) is in /pub/aux/kterm.

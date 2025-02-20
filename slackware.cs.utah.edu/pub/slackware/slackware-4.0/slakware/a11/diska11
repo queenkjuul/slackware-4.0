@@ -1,0 +1,56 @@
+CONTENTS: modutils pcmcia pnp procps sysvinit       
+modutils: modutils-2.1.121
+modutils:
+modutils: Utilities to use kernel modules.  These tools are used for loading
+modutils: and unloading chunks of kernel code on the fly, to add support for a
+modutils: CD-ROM drive or ethernet card, for instance.
+modutils:
+modutils: Many Linux drivers are provided as kernel modules, and some packages
+modutils: (like the PCMCIA package) require the module utilities to work, so you
+modutils: probably want to install these.
+modutils:
+modutils:
+pcmcia:   pcmcia-cs-3.0.9
+pcmcia:
+pcmcia:   Card Services for Linux is a complete PCMCIA support package.  It
+pcmcia:   includes a set of loadable kernel modules that implement a version of
+pcmcia:   the PCMCIA Card Services applications program interface, a set of
+pcmcia:   client drivers for specific cards, and a card manager daemon that can
+pcmcia:   respond to card insertion and removal events, loading and unloading
+pcmcia:   drivers on demand.  It supports ``hot swapping'' of PCMCIA cards, so
+pcmcia:   cards can be inserted and ejected at any time.
+pcmcia:
+pcmcia:
+pnp:      isapnptools-1.18
+pnp:
+pnp:      These programs allow ISA Plug-And-Play devices to be
+pnp:      configured on a Linux machine.  See the documentation in 
+pnp:      /usr/doc/isapnptools-1.18.
+pnp:
+pnp:
+pnp:
+pnp:
+pnp:
+pnp:
+procps:   procps-2.0.2, psmisc-18, procinfo-16
+procps:
+procps:   Utilities for displaying process and memory information written by
+procps:   Michael K. Johnson, Werner Almesberger, Charles Blake, Branko 
+procps:   Lankester, Robert Nation, David Engel, Larry Greenfield, Roger Binns,
+procps:   Sander van Malssen, and Brian Edmonds.
+procps:
+procps:
+procps:
+procps:
+procps:
+sysvinit: sysvinit-2.76-3
+sysvinit:
+sysvinit: System V style init programs by Miquel van Smoorenburg that control
+sysvinit: the booting and shutdown of your system. These support a number of
+sysvinit: system runlevels, each with a specific set of utilities spawned. For
+sysvinit: example, the normal system runlevel is 3, which starts agetty on
+sysvinit: virtual consoles tty1 - tty6. Runlevel 4 starts xdm. Runlevel 0 shuts
+sysvinit: the system down. See the documentation in /usr/doc/sysvinit and the
+sysvinit: scripts in /etc/rc.d for more information.
+sysvinit:
+sysvinit:

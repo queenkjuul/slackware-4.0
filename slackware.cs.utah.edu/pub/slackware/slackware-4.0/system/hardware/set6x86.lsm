@@ -1,0 +1,24 @@
+Begin3
+Title: Cyrix/IBM/SGS-Thomson/... 5x86/6x86 CPU configuration tool
+Version: 1.3
+Entered-date: 14SEP97
+Description: Allows one to modify the internal configuration registers in
+             the 5x86 and 6x86 CPU. These include specifying non-cacheable
+             memory areas (important for e.g. graphics cards), I/O delays,
+             cache write policy (WB/WT), write-gathering, and also enable an
+             automatic standby mode where a CPU "halt" instruction cuts down
+             power by a factor of 70 (from 20 Watts to 0.3 Watts for the
+             6x86 P133+) when the CPU is idle. Especially the CPU power
+             reduction cuts down on most temperature-related problems on
+             many motherboards. Linux and DOS executables included. Also
+             includes a program to display memory range configuration.
+Keywords: Cyrix IBM SGS-Thomson 6x86 5x86 CPU
+Author: koen.gadeyne@barco.com (Koen Gadeyne)
+Maintained-by: koen.gadeyne@barco.com (Koen Gadeyne)
+Primary-site: tsx-11.mit.edu pub/linux/sources/sbin
+              52KB set6x86-1.3.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Misc
+Original-site:
+Platforms: Linux or DOS machine with 5x86 or 6x86 CPU.
+Copying-policy: GPL
+End

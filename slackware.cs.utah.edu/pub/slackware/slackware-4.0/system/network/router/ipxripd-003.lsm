@@ -1,0 +1,15 @@
+Begin3
+Title:		ipxripd
+Version:	Beta v0.03b
+Entered-date:	06JAN95
+Description:    IPX Routing and SAP protocol daemons.  Turns your Linux
+		box into a IPX router (and SAP agent).
+		Includes a kernel patch to fix a problem with IPX routing.
+Keywords:       IPX, router, RIP, SAP, Netware
+Author:         labrat@unitrx.com (Alex Liu)
+Maintained-by:  labrat@unitrx.com (Alex Liu)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/router
+		67kB ipxripd-003.tar.gz
+Platforms:      Kernel with IPX support compiled in.
+Copying-policy: Public domain
+End

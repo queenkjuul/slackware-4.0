@@ -1,0 +1,40 @@
+.\" Copyright (c) 1996 Free Software Foundation, Inc.
+.\" This program is distributed according to the Gnu General Public License.
+.\" See the file COPYING in the kernel source directory
+.\" $Id: rmmod.1,v 1.1 1997/09/10 22:18:33 rth Exp $
+.\"
+.TH RMMOD 1 "26 Dec 1996" Linux "Linux Module Support"
+.SH NAME
+rmmod \- unload loadable modules
+.SH SYNOPSIS
+.B rmmod
+[ \-as ] module ...
+.SH DESCRIPTION
+.B Rmmod
+unloads loadable modules from the running kernel.
+.PP
+.B Rmmod
+tries to unload a set of modules from the kernel, with the restriction
+that they are not in use and that they are not referred to by other modules.
+.PP
+If more than one module is named on the command line, the modules
+will be removed simultansously.  This supports unloading of stacked modules.
+.SS OPTIONS
+.TP
+.I \-a
+Remove all unused modules.
+.TP
+.I \-s
+Output everything to \fBsyslog\fP(3) instead of the terminal.
+.SH SEE ALSO
+insmod(1), lsmod(1), ksyms(1), modules(2)
+.SH HISTORY
+Module support was first concieved by Anonymous
+.br
+Initial Linux version by Bas Laarhoven <bas@vimec.nl>
+.br
+Version 0.99.14 by Jon Tombs <jon@gtex02.us.es>
+.br
+Extended by Bjorn Ekwall <bj0rn@blox.se>
+.br
+Updated for 2.1.17 by Richard Henderson <rth@tamu.edu>

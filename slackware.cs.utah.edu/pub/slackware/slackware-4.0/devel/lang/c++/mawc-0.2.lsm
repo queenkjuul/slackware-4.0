@@ -1,0 +1,14 @@
+Begin3
+Title:          MAWC
+Version:        0.2
+Entered-date:   Jan 27 1998
+Description1:   MAWC Aids Widget Construction. A Widget layout system and the 
+Description2:	beginnings of a complete IDE
+Keywords:       KDE C++ IDE QT
+Author:         Frugal (frugal@fysh.org)
+Maintained-by:	Frugal (frugal@fysh.org)
+Primary-site:   ftp://ftp.softcare.co.uk/pub/staff/frugal/
+Alternate-site: ftp://ftp.kde.org/pub/kde/apps/ide
+Platforms:      Unix, (Only tested on Linux 1386)
+Copying-policy: GNU Public License
+End

@@ -1,0 +1,61 @@
+From: Ian Jackson <ijackson@nyx.cs.du.edu>
+To: linux-announce@tc.cornell.edu
+Cc: Scott Adkins <sadkins@ohiou.edu>, Vince Skahan <vince@victrola.sea.wa.us>,
+    linux-adm@nic.funet.fi (Arl), Erik Troan <ewt@sunsite.unc.edu>
+Bcc: ijackson@nyx.cs.du.edu
+Subject: Setgid mailx is insecure - new version uploaded
+--text follows this line--
+-----BEGIN PGP SIGNED MESSAGE-----
+
+Do NOT install the mailx in mailx-5.3a.tar.gz setgid mail as was
+recently recommended in the UUCP/News/Mail FAQ.
+
+It takes none of the special precautions that a setgid program should.
+If you install it setgid mail any user will be able to interfere with
+the mail system, up to and beyond reading and deleting other users'
+mail.
+
+I have made alterations to it that I think should solve this problem,
+by setting the gids to the real gid at the start of main() and only
+switching it back when necessary to do the locking in /usr/spool/mail.
+
+I have uploaded the changed version, which includes both a statically
+and a dynamically linked binary (both against libc.so.4.3.3) in the
+tarfile to sunsite and funet, as mailx-5.3b.tar.gz.
+
+The context diffs and my digital signature of the gzipped tarfile are
+available with the tarfile.
+
+If you do not want to or are unable to install the new version
+immediately, but still need the functionality which is missing, you
+can try the BSD approach:
+  $ chmod 755 /bin/mail           [ or whatever you've called it ]
+  $ chmod 1777 /usr/spool/mail
+This sets /usr/spool/mail to be world-writeable but sticky-bitted,
+like /tmp.  That means anybody can create files but users can only
+delete files that they themselves own (e.g. their own mailbox or
+lockfiles).  This is certainly sub-optimal, but it means that users
+will be unable to mess things about /too/ much in the meantime.
+
+The copyright notices on some of the files appeared to have become
+detached.  May I take this opportunity to remind people: If you mess
+around with a program, *preserve the copyright notices*.
+
+Finally, I think I have ensured that it isn't now a security hole, and
+I've just installed it on my system, but don't hold me responsible if
+it goes wrong !
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.2
+
+iQCVAgUBLDDi4sMWjroj9a3bAQE3lgP+LWbJCBiD4+Amc0SBlufIH4oVIQxn0YNt
+07FVdLZ+r0JG3i7CwUdXNbokO9sU4Y0R5+bF2+SXi6kCdRHEB1fx0BY/+Xu44ZgP
+0GNWjrDxdRUVFIrhfsk1gA6Emb9rsD3H70a3T9O2rJ8YMWE2Y/wJOqZKblZd2j04
+FGmQMbCz2pw=
+=D0P6
+-----END PGP SIGNATURE-----
+--
+Ian Jackson  <ijackson@nyx.cs.du.edu> (non urgent email only - see below)
+home: 35 Molewood Close, Cambridge, CB4 3SR, England; phone: +44 223 327029
+work & urgent email: <iwj@cam-orl.co.uk> Olivetti Research Ltd; +44 223 343398
+PGP2 public key on request; fingerprint = 5906F687 BD03ACAD 0D8E602E FCF37657

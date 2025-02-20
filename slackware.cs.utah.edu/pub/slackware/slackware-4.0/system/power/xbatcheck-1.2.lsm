@@ -1,0 +1,18 @@
+Begin3
+Title:          xbatcheck.tcl
+Version:        1.2
+Entered-date:   20AUG97
+Description:    Battery and AC-line monitor for portables with critical power alarm.
+Keywords:       portable, laptop, battery, power, apm, linux, tcl, tk, X11
+Author:         stefan@irdeto.nl (Stefan Sinnige)
+Maintained-by:  stefan@irdeto.nl (Stefan Sinnige)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/power
+		618 xbatcheck.lsm
+		5k xbatcheck-1.2.tar.gz
+Alternate-site: ftp.funet.fi /pub/Linux/util/X11
+		618 xbatcheck.lsm
+		5k xbatcheck-1.2.tar.gz
+Original-site:  
+Platforms:      linux with APM support
+Copying-policy: GPL
+End

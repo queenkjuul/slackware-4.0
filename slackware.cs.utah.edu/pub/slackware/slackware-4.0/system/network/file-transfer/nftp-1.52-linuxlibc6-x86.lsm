@@ -1,0 +1,20 @@
+Begin3
+Title:		nftp
+Version:	1.52
+Entered-date:   10APR99
+Description:	Powerful ftp client with bookmarking, fully scrollable
+		remote directory view, tagging, caching remote dirs, 
+		descriptions, one-key viewing remote files, sorting by 
+		date/name/size, transfer progress indicator, firewall 
+		support, history and more. Translated into 19 languages.
+Keywords:	ftp client, networking
+Author: 	asv@ayukov.com (Sergey Ayukov)
+Maintained-by:	asv@ayukov.com (Sergey Ayukov)
+Primary-site:	ftp.ayukov.com /pub/nftp
+		500k nftp-1.52-linuxlibc6-x86.tar.gz
+Alternate-site: crydee.sai.msu.ru /pub/comp/software/asv/nftp
+Original-site:	
+Platforms:	Linux x86 ELF. Also available for IBM OS/2 and Win32,
+		FreeBSD, Solaris (SPARC, Intel), BeOS (Intel), DEC OSF/1
+Copying-policy:	shareware
+End

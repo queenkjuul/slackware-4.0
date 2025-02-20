@@ -1,0 +1,2376 @@
+  Linux IR HOWTO
+  Werner Heuser, < wehe@snafu.de >
+  v2.4, 9 February 1999
+
+  An introduction to Linux and infrared devices and how to use the soft­
+  ware provided by the Linux/IrDA project. This package uses IrDA(TM)
+  compliant standards. IrDA(TM) is an industrial standard for infrared
+  wireless communication, and most laptops made after January 1996 are
+  equipped with an IrDA(TM) compliant infrared transceiver. Infrared
+  ports let you communicate with printers, modems, fax machines, LANs,
+  and other laptops. Speed ranges from 2400bps to 4Mbps. The Linux/IrDA
+  stack supports IrLAP, IrLMP, IrIAS, IrIAP, IrLPT, IrCOMM, IrOBEX, and
+  IrLAN. Several of the protocols are implemented as both clients and
+  servers. There is also support for multiple IrLAP connections, via
+  several IrDA(TM) devices at once. The Linux/IrDA project started at
+  the end of 1997 and its status is still experimental, so please don't
+  expect every feature working straight. AFAIK Linux/IrDA is the _only_
+  open source IrDA implementation currently available. Remote Control
+  (RC) via infrared is not the aim of the project, though partly treated
+  in this HOWTO.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  1. Introduction
+
+  2. Prerequisites
+
+  3. Kernel
+
+     3.1 General Parameters
+     3.2 IrDA Specific Parameters
+        3.2.1 IrDA subsystem support
+           3.2.1.1 IrDA protocols
+           3.2.1.2 IrDA protocol options
+           3.2.1.3 IrDA compressors
+        3.2.2 Infrared-port device drivers
+           3.2.2.1 IrTTY (uses serial driver)
+           3.2.2.2 Dongle support
+           3.2.2.3 FIR support
+
+  4. Linux/IrDA-Utils
+
+  5. Configuration
+
+     5.1 General Configuration
+     5.2 IrManager
+     5.3 Low Level Drivers
+        5.3.1 SIR
+        5.3.2 Dongle Connection - Infrared Adapters for the Serial Port
+        5.3.3 Dongle Connection - Infrared Motherboard Adapter
+        5.3.4 Fast InfraRed (FIR)
+
+  6. Specific Connections and Protocols
+
+     6.1 Printer Connection - IrLPT
+     6.2 LAN Connection - IrLAN
+     6.3 Palm III Connection - IrOBEX
+     6.4 Cellular Phone Connection
+     6.5 Digital Camera Connection
+     6.6 Window$95 and Linux/IrDA
+     6.7 Linux to Linux Connection
+        6.7.1 Connection Methods
+        6.7.2 Compression
+     6.8 Multiple Instances
+
+  7. Hardware Supported by Linux/IrDA
+
+     7.1 Obtaining Information about the Infrared Port in Laptops
+        7.1.1 SIR
+        7.1.2 FIR
+     7.2 Hardware Overviews
+
+  8. GUI
+
+  9. Power Saving
+
+  10. Troubleshooting, Mailing List
+
+     10.1 General Information
+     10.2 Troubleshooting Techniques
+
+  11. Known Bugs
+
+  12. FAQ
+
+  13. Infrared Remote Control
+
+     13.1 Resources
+     13.2 Infrared Remote Control - IrDA
+  14. Infrared and Eye Safety
+
+  15. Credits
+
+  16. Revision History
+
+  17. Copyright and Disclaimer
+
+
+
+  ______________________________________________________________________
+
+
+  1.  Introduction
+
+                              Better red, than dead. - Unknown AuthorEss
+
+  Since 2.1.131 and 2.2.0 Linux/IrDA is part of the kernel. Please note
+  that the status of the project is still experimental. If you need
+  information about Linux/IrDA support for 2.0.x kernels please look
+  into the former version of this HOWTO at
+  http://www.snafu.de/~wehe/index_li.html. But AFAIK this package is no
+  longer maintained.
+
+  Companies and developers which are interested in joining these efforts
+  should contact the Linux/IrDA project at
+  http://www.cs.uit.no/~dagb/irda  or me at < wehe@snafu.de >.
+
+  Some history about Linux/IrDA. The project started at the end of 1997
+  with the name Linux/IrDA. Due to some troubles with the name IrDA,
+  which is trademarked by the Infrared Data Association IrDA
+  http://www.irda.org/, the name was changed to Linux/IR. At the end of
+  1998 the the relationship between both became better and the name was
+  changed to Linux/IrDA again.
+
+  This document is based on the "How to use" part of the Linux/IrDA
+  project homepage http://www.cs.uit.no/~dagb/irda/howto.html. I also
+  included material provided by the Linux/IrDA core team, the Linux/IrDA
+  mailing list and other sources.
+
+  The document is included in the LINUX DOCUMENTATION PROJECT
+  http://metalab.unc.edu/LDP.
+
+  The latest version of this document is available at
+  http://www.snafu.de/~wehe/index_li.html
+
+  I tried to check all information but I don't have all the necessary
+  infrared hardware yet, so if something doesn't work for you, please
+  don't blame me.
+
+  Please feel free to contact me for comments or questions. I know this
+  material is not finished or perfect, but I hope you find it useful
+  anyway.
+
+  <Werner Heuser>
+
+
+  2.  Prerequisites
+
+
+  ·  BIOS
+
+     - Make sure your infrared port is enabled in the BIOS and check
+     what interrupt and port address it uses.
+
+
+  ·  Infrared Controller Chip
+
+     - Make sure your infrared port is detected by the Linux kernel. For
+     detailed information see the "Hardware Overview" section below.
+
+
+  ·  modutils
+
+     - Make sure you use modutils 2.1.x by insmod --version. I use
+     version 2.1.121.
+
+
+  ·  Shared Library
+
+     - The shared library libc.so.5 and the loader ld-linux.so.1 has to
+     be available.
+
+     - But glibc2 aka libc6 should work also.
+
+     - I am not sure wether you need the zlib library if you use the
+     data compression features.
+
+
+  ·  GUI
+
+     Currently there are two GraphicalUserInterface's for Linux/IrDA
+     under development:
+
+  ·  GNOBEX A GNOME application developed by Dag Brattli
+     http://www.cs.uit.no/~dagb/irda/irda.html with support for drag'n
+     drop from the GNOME file manager (gmc). It will also show the
+     progress of the file transfer and give some better error messages
+     when something goes wrong. The GUI isn't finished yet, but if you
+     want to try the GUI you will need the Perl-GTK+ module.
+
+  ·  KDE A KDE application developed by Thomas Davis. Look at his page
+     http://www.jps.net/tadavis/irda.
+
+     For all you lurkers out - here's your chance to contribute! Both
+     GUI's need some icons. Any icons need to be: a) set size  (48x48
+     pixels seems to be a common size, I think) b) large & mini (ask
+     about size for that; mini's are for docking and such) c) 16 colors
+     d) free for use.  e) please, don't blatently copy MS icons!  Please
+     contact the developers.
+
+  ·  Security
+
+     - Most important, you must sync your disks!!! Maybe you have to
+     reboot your machine. Have you read the disclaimer?
+
+
+  ·  Miscellaneous
+
+     - Other useful progs: APSFILTER, EZ-Magic, MagicFilter or something
+     similar for the printer configuration.
+
+
+  3.  Kernel
+
+  Please read the Kernel-HOWTO to get more information about the
+  compilation process. You'll find the Linux/IrDA code in:
+
+  /usr/src/linux/net/irda (protocol stuff)
+
+  /usr/src/linux/drivers/net/irda (device drivers)
+
+  /usr/src/linux/include/net/irda (header files)
+
+
+
+  3.1.  General Parameters
+
+  - Make sure you use kernel 2.2.x sources. If unsure about your kernel
+  version try uname -r.
+
+  - Get the latest kernel patch from the Linux/IrDA project
+  http://www.cs.uit.no/~dagb/irda/snapshots/. Put it into /usr/src or
+  where else your kernel sources live and apply something like (replace
+  patch-2_2.0-irdaXXX  with the actual file name):
+
+  ______________________________________________________________________
+  cd /usr/src
+  tar xvzf patch-2_2.0-irdaXXX.tar.gz
+  cd linux
+  patch -p1 -l < ./patch-2_2.0-irdaXXX
+  ______________________________________________________________________
+
+
+
+  - Experimental support has to be enabled (CONFIG_EXPERIMENTAL).
+
+  - Enable sysctl in "General Setup" (CONFIG_SYSCTL).
+
+  - You should have proc file system support (CONFIG_PROC_FS).
+
+  - Also serial support for the SIR features (CONFIG_SERIAL).
+
+  - I am not sure wether there has to be printer support for using a
+  printer with Linux/IrDA (CONFIG_PRINTER). But I assume this feature is
+  not necessary.
+
+  - Networking support must be enabled (CONFIG_NET).
+
+  - Make sure you have module support (CONFIG_MODULES) in your kernel!
+  Test it e.g. with lsmod.
+
+  - Also kerneld support is recommended (CONFIG_KERNELD). But kmod
+  (CONFIG_KMOD) also works. A monolithic kernel seems to work, too.
+
+  - Matt Francis wrote: "I notice that some of the modules appear to
+  want not only module support (as noted on the webpage), but also misc
+  user device support." (CONFIG_UMISC).
+
+  If you only apply the Linux/IrDA patch, you should not have to do a
+  make clean, so that should save you some time. I suggest you do
+  something like this:
+
+  ______________________________________________________________________
+  make dep && make all && make modules && make install && make modules_install
+  ______________________________________________________________________
+
+
+  If you get really strange errors, then try to rebuild from scratch
+  after a make clean.
+
+  3.2.  IrDA Specific Parameters
+
+  The following is my suggestion for
+  ../linux-2.2.x/Documentation/Configure.help, parts are from Dag
+  Brattli and Andreas Butz:
+
+
+  3.2.1.  IrDA subsystem support
+
+  CONFIG_IRDA
+
+  IrDA(TM) is an industrial standard for infrared wireless
+  communication. Infrared ports let you communicate with printers,
+  modems, fax machines, LANs, and laptops. Speed ranges from 2400bps to
+  4Mbps. To use this features you need the irda_utils provided by the
+  Linux/IrDA project http://www.cs.uit.no/ dagb/irda/ Further
+  information you may find there and in the Linux/IR-HOWTO at
+  http://www.snafu.de/ wehe/index_li.html Currently it is recommended to
+  build IrDA support as modules only.  Please see
+  Documentation/modules.txt. Please note the status of Linux/IrDA is
+  still experimental.
+
+
+  3.2.1.1.  IrDA protocols
+
+
+  ·  IrLAN protocol
+
+     CONFIG_IRLAN
+
+     Builds the IrDA network device. Use ``ifconfig eth0 <IP-NUMBER>''
+     to configure it. - Just say Y
+
+
+  ·  IrLAN client support
+
+     CONFIG_IRLAN_CLIENT
+
+     If you connect to infrared devices via IrLAN one has to be the
+     server and the other the client. You can use both the client and
+     the server at the same time. The first one to connect becomes the
+     client. - Just say Y Note: The latest patch includes peer-to-peer
+     support instead.
+
+  ·  IrLAN server support
+
+     CONFIG_IRLAN_SERVER
+
+     If you connect to infrared devices via IrLAN one has to be the
+     server and the other the client. You can use both the client and
+     the server at the same time. The first one to connect becomes the
+     client. - Just say Y Note: The latest patch includes peer-to-peer
+     support instead.
+
+
+  ·  IrOBEX protocol
+
+     CONFIG_IROBEX
+
+     IrOBEX is a protocol for exchanging objects (files, vcards, etc.)
+     over an infrared connection. You can use it to exchange files
+     between linux and a PALM III. IrOBEX can also be used between two
+     Linux boxes, Linux and Windows95, etc. - Just say Y
+
+
+  ·  IrCOMM protocol
+
+     CONFIG_IRCOMM
+
+     Over IrCOMM you may communicate with cellular phones, etc. To use
+     this service you have to build a new device with ``mknod
+     /dev/irnine c 60 64'', which works like /dev/ttySx. - Just say Y
+     ..Note: major and minor number are still not the official ones yet.
+     For latest improvements (IrSocket is on the way!), please look at
+     the page of Takahide Higuchi
+     http://www.pluto.dti.ne.jp/ thiguchi/irda/
+
+     ..Note: At the moment IrCOMM seems to crash your kernel easily, you
+     should probably wait for the next patch.
+
+
+  ·  IrLPT client support
+
+     CONFIG_IRLPT_CLIENT
+
+     Say Y here if you want to build support for the IrLPT client
+     protocol. If you want to compile it as a module, say M here and
+     read Documentation/modules.txt. The IrLPT client protocol can be
+     used to print documents to IrDA compatible printers like the
+     HP-5MP, or IrLPT printer adapters like the ACTiSYS IR-100M. - Just
+     say Y
+
+
+  ·  IrLPT server support
+
+     CONFIG_IRLPT_SERVER
+
+     Say Y here if you want to build support for the IrLPT server
+     protocol. If you want to compile it as a module, say M here and
+     read Documentation/modules.txt. The IrLPT server protocol makes it
+     possible to use a Linux machine as an infrared printer server for
+     other laptops. So if your Linux machine has a cable connection to a
+     printer, then other laptops can use the Linux machine to print out
+     documents using infrared communication. - Just say Y
+
+
+
+  3.2.1.2.  IrDA protocol options
+
+  CONFIG_IRDA_OPTIONS
+
+  You may define some IrDA protocol options.
+
+  ·  Cache last
+
+     LSAP CONFIG_IRDA_CACHE_LAST_LSAP
+
+     Say Y here if you want IrLMP to cache the last LSAP used. This
+     makes sense since most frames will be sent/received on the same
+     connection. Enabling this option will save a hash-lookup per frame.
+     If unsure, say Y.
+
+
+  ·  FAST RRs
+
+     CONFIG_IRDA_FAST_RR
+
+     Use this option if you want to send faster RR (Receive Ready)
+     frames if the transmit queue is empty. This will give you much
+     better latencies but will consume more power, because of the
+     bouncing RR frame.
+
+
+  ·  Recycle RRs
+
+     CONFIG_IRDA_RECYCLE_RR
+
+     In the normal life of the IrLAP protocol, it sends a lot of small
+     RR (Receive Ready) frames over the link (at least when it has
+     nothing else to do). Saying Y to this option will make IrLAP
+     recycle these frames thus avoiding many alloc_skb's and
+     kfree_skb's. To do this it will only buffer one of these frame
+     which is enough for the usual case.
+
+
+  ·  Debug information
+
+     CONFIG_IRDA_DEBUG
+
+     Say Y here if you want the IrDA subsystem to write debug
+     information to your syslog. You can change the debug level in
+     /proc/sys/net/irda/debug.  If unsure, say Y (since it makes it
+     easier to find the bugs).
+
+
+  3.2.1.3.  IrDA compressors
+
+  CONFIG_IRDA_COMPRESSION
+
+  You may use the compression methods BZIP2 and BSD. These are not IrDA
+  standard. This will allow two linux boxes to handshake compression. It
+  should be compatible with other IrDA devices, although communication
+  will not be compressed then.
+
+  ·  Deflate compression (experimental)
+
+     CONFIG_IRDA_DEFLATE
+
+     Say Y here if you want to build support for the Deflate compression
+     protocol. If you want to compile it as a module, say M here and
+     read Documentation/modules.txt. The deflate compression (GZIP) is
+     exactly the same as used by the PPP protocol. Enabling this option
+     will build a module called irda_deflate.o.
+
+
+  ·  BZIP2 compression
+
+     CONFIG_IRDA_BZIP2
+
+     Help not available yet.
+
+
+  ·  BSD compression
+
+     CONFIG_IRDA_BSD
+
+     Help not available yet.
+
+
+
+  3.2.2.  Infrared-port device drivers
+
+  Three sorts of low level infrared drivers are available: serial,
+  dongle and FIR.  They will show up in /proc/net/dev (irda0) after
+  initialisation.
+
+
+
+  3.2.2.1.  IrTTY (uses serial driver)
+
+  Most IrDA chips support StandardInfraRed (SIR), which works up to
+  115200bps and emulates a serial port (16550A UART). On many laptops
+  this port is detected by the serial support of the kernel, see
+  ``dmesg''. IrTTY connects the Linux/IrDA services to this port. - You
+  should say Y here.
+  ·  Serial dongle support
+
+     CONFIG_IRTTY_SIR
+
+     Say Y here if you want to build support for the IrTTY line
+     discipline. If you want to compile it as a module, say M here and
+     read Documentation/modules.txt. IrTTY makes it possible to use
+     Linux's own serial driver for all IrDA ports that are 16550
+     compatible. Most IrDA chips are 16550 compatible so you should
+     probably say Y to this option. Using IrTTY will however limit the
+     speed of the connection to 115200 bps (IrDA SIR mode).  If unsure,
+     say Y.
+
+  3.2.2.2.  Dongle support
+
+  CONFIG_DONGLE
+
+  Currently four dongles (infrared adapters for the serial port) are
+  supported. The dongle is an infrared device which may be connected to
+  serial port, if you don't have built-in infrared support for your
+  machine. If you use a dongle together with a laptop you maybe have to
+  disable the IrDA support in the BIOS.
+
+  ·  ESI JetEye PC dongle
+
+     CONFIG_ESI_DONGLE
+
+     Say Y here if you want to build support for the Extended Systems
+     JetEye PC dongle. If you want to compile it as a module, say M here
+     and read Documentation/modules.txt. The ESI dongle attaches to the
+     normal 9-pin serial port connector, and can currently only be used
+     by IrTTY. To activate support for ESI dongles you will have to
+     insert ``irattach -d esi'' in the /etc/irda/drivers script.
+     http://www.extendsys.com/support/ftp/infrared.html
+
+  ·  ACTiSYS IR-220L and IR220L+ dongle
+
+     CONFIG_ACTISYS_DONGLE
+
+     Say Y here if you want to build support for the ACTiSYS IR-220L and
+     IR220L+ dongles. If you want to compile it as a module, say M here
+     and read Documentation/modules.txt. The ACTiSYS dongles attaches to
+     the normal 9-pin serial port connector, and can currently only be
+     used by IrTTY. To activate support for ACTiSYS dongles you will
+     have to insert ``irattach -d actisys'' or ``irattach -d
+     actisys_plus'' in the/etc/irda/drivers script.
+     http://www.actisys.com
+
+
+  ·  Tekram IrMate 210B dongle
+
+     CONFIG_TEKRAM_DONGLE
+
+     Say Y here if you want to build support for the Tekram IrMate 210B
+     dongle. If you want to compile it as a module, say M here and read
+     Documentation/modules.txt. The Tekram dongle attaches to the normal
+     9-pin serial port connector, and can currently only be used by
+     IrTTY. To activate support for Tekram dongles you will have to
+     insert ``irattach -d tekram'' in the /etc/irda/drivers script.
+     http://www.tekram.de/
+
+
+  ·
+
+     CONFIG_GIRBIL_DONGLE
+
+     Say Y here if you want to build support for the Greenwich
+     Instruments GirBIL dongle. If you want to compile it as a module,
+     say M here and read Documentation/modules.txt. The Greenwich dongle
+     attaches to the normal 9-pin serial port connector, and can
+     currently only be used by IrTTY. To activate support for Greenwich
+     dongles you will have to insert ``irattach -d girbil'' in the
+     /etc/irda/drivers script.  http://www.greenwichinst.com/
+
+
+
+  3.2.2.3.  FIR support
+
+  FastInfraredSupport (FIR) needs a specific controller chip, which
+  supports up to 4Mps. - Just say Y
+
+  ·  NSC PC87108
+
+     CONFIG_NSC_FIR
+
+     NationalSemiConductor NSC PC87108 FIR chip e.g. used in the IBM
+     Thinkpad 560X and ACTiSYS IR2000 dongle. Probably the NSC PC87338
+     FIR chip is also supported. The driver supports SIR, MIR and FIR
+     (4Mbps) speeds. - Just say Y
+
+
+  ·  Winbond W83977AF (IR)
+
+     CONFIG_WINBOND_FIR
+
+     Winbond W83977AF (IR) FIR chip e.g. used in the Corel Netwinder PC.
+     The driver supports SIR, MIR and FIR (4Mbps) speeds. - Just say Y
+
+
+  ·  Sharp UIRCC
+
+     CONFIG_SHARP_FIR
+
+     Say Y here if you want to build support for the Sharp UIRCC IrDA
+     chipset. If you want to compile it as a module, say M here and read
+     Documentation/modules.txt. This chipset is used by the Toshiba
+     Tecra laptops.
+
+
+
+
+  4.  Linux/IrDA-Utils
+
+
+  ·  Use the latest source snapshot of irda-utils available at
+     http://www.cs.uit.no/~dagb/irda/irda-utils/
+
+  ·  Untar the package with tar xvzf irda-utils<VERSION>. I recommend to
+     do this in /usr/src.
+
+  ·  Do a make depend.
+
+  ·  Do a make clean (not necessary if you compile the package for the
+     first time).
+
+  ·  Do a make all to build the binaries.
+
+  ·  Do a make install, this brings irattach and irmanager into the
+     right place and installs some config files in /etc/irda.
+
+  A recommendation from Bjoern Hansson <Bjorn.Hansson@signal.uu.se>: If
+  make depend fails on stdef.h and stdarg.h just add -I/usr/lib/gcc-
+  lib/i586-linux/egcs-2.90.29/include/ or the according path for your
+  system to the SYS_INCLUDES line in Makefile.
+
+
+  5.  Configuration
+
+
+  5.1.  General Configuration
+
+
+  ·  First you should put your IR devices in range. Though it might be
+     possible that the Linux/IrDA service detects every new device
+     automagically I only have good experience with the devices in range
+     during the configuration process.
+
+  ·  Keep your infrared devices together in a range below one meter and
+     an angle of 30 degree. There has to be a direct line of sight
+     between them. If this is not possible, you may use a mirror (an
+     unused M$ CD should work quite good).
+
+  ·  Add the following lines to your /etc/conf.modules file:
+
+     ___________________________________________________________________
+     alias tty-ldisc-11 irtty          #
+     alias char-major-60 ircomm_tty    # if you want IrCOMM support
+     ___________________________________________________________________
+
+
+  I'm really not sure about those parameters anymore. There is conflict­
+  ing information on Dag Brattli's pages and on the list. Though they
+  had to be used with former versions of the Linux/IrDA package, this
+  behaviour probably changed with the version for 2.2.x kernels.
+
+  ·  Have a look into the files in /etc/irda. They are similar to the
+     files in /etc/pcmcia. Edit /etc/irda/drivers to reflect your setup.
+     Most people will use irattach from that file. The files are:
+
+     ___________________________________________________________________
+     Makefile
+     network*
+     network.redhat*
+     serial
+     drivers
+     network.opts
+     obex
+     printer
+     ___________________________________________________________________
+
+
+
+  ·  Run depmod -a.
+
+
+  5.2.  IrManager
+
+  Dag Brattli wrote: " IrManager [...].is a user-space daemon that is
+  inspired and quite similar to the cardmgr used in the PCMCIA
+  distribution.
+
+  The IrManager will receive events from the kernel level side of the
+  protocol stack. When the IrManager receives an event it can execute
+  shell commands and scripts, so I have added the /etc/irda directory
+  which will contain such scripts. [...]
+
+  For example, if IrLMP discovers a remote device with IrLAN provider
+  capabilities and no local IrLAN client has registered, then IrLMP will
+  send an event to the IrManager and make it "modprobe" the module
+  required. [...]
+
+  When application level clients are ready for communication and user-
+  space configuration, they can also notify IrManager about this, so
+  that it can execute the right script. For example IrLAN will send the
+  event EVENT_IRLAN_START when the data channel is ready for exchanging
+  Ethernet frames. When IrManager receives this event, it will execute
+  /etc/irda/network start <devname> to configure the network interface.
+  This network script is actually the same as used by the PCMCIA code
+  and since I'm using the Redhat variant of it, it will in turn execute
+  /sbin/ifup <devname>.
+
+  So by using the IrManager, I "only" have to do this when I start the
+  stack:
+
+  ______________________________________________________________________
+  irattach /dev/ttyS2 &
+  irmanager -d 1           # -d 1 means: start discovery process
+  ______________________________________________________________________
+
+
+  and then when my laptop discovers the IrLAN provider (HP Netbeamer in
+  my case) it will ask IrManager to load the module irlan_client. When
+  the connection is up and ready, it will ask it to execute
+  /etc/irda/network start eth0. When the connection is broken, it will
+  again ask it to take down the interface using /etc/irda/network stop
+  eth0.[...]
+
+  That's all to get it working if you are using Redhat. If you are using
+  some other distribution which doesn't have /sbin/ifup, then you better
+  copy /etc/pcmcia/network.opts to /etc/irda/network.opts or configure
+  the file yourself.
+
+  If you want to use the IrLAN server, you will still have to modprobe
+  irlan_server before you start the irmanager _without_ -d 1.
+
+  And just like the cardmgr, you will (if you want to) get the beeps
+  when the connection is up and running and when it is disconnected!!!
+
+  I hope that we can add such scripts for all the other clients/services
+  that need user level configuration. It would be really cool to have a
+  /etc/irda/printer script for configuring IrDA(TM) capable printers. So
+  if you get in range of an IrDA(TM) capable printer, then IrManager
+  should load the irlpt_client module, and also configure the other
+  stuff that needs to be done for using this printer.
+
+  I also hope that we can use the config file for configuring IrDA(TM)
+  ports and device drivers. Something like:
+
+  ______________________________________________________________________
+  Device Drivers
+    module "irtty" script="irattach /dev/ttyS2"
+    module "smc_ircc" irq=11 port=0x34f
+  ______________________________________________________________________
+
+
+  So that IrManager can load and start all these when it is executed. In
+  this way we would only have to start IrManager in
+  /etc/rc.d/init.d/irda and the rest would be plug and play. There would
+  be no need for manually starting programs and configuring devices.
+  When irmanager receives the following events for a device <dev> it
+  will currently do:
+
+  EVENT_IRLAN_START, start and configure the device using /sbin/ifup
+  <dev>
+  EVENT_IRLAN_STOP, close the device using /sbin/ifdown <dev>
+
+  This can however be easily changed by the user, if this is not what is
+  the prefered behaviour.
+
+  5.3.  Low Level Drivers
+
+  There are three sorts of low level drivers: SIR, dongle and FIR. If
+  the right driver is detected by the kernel you get a message like:
+
+  ______________________________________________________________________
+  IrDA irda_device irda0 registered.
+  ______________________________________________________________________
+
+
+
+
+  5.3.1.  SIR
+
+
+  ·  Try to find out which serial port is used by the IR device. You may
+     do so by watching the output of dmesg. If serial support is
+     modularized do an insmod serial first. Look for an entry like:
+
+     ___________________________________________________________________
+     Serial driver version 4.25 with no serial options enabled
+     ttyS00 at 0x03f8 (irq = 4) is a 16550A     #first serial port /dev/ttyS0
+     ttyS01 at 0x3000 (irq = 10) is a 16550A    #e.g. infrared port
+     ttyS02 at 0x0300 (irq = 3) is a 16550A     #e.g. PCMCIA modem port
+     ___________________________________________________________________
+
+
+  If this is not the case, you either don't have infrared support
+  enabled in the BIOS or your infrared device is not detected by the
+  kernel. Currently I know only two laptop models with this effect, the
+  HP OmniBook 800 and the Toshiba Libretto models. I am not sure whether
+  PnP support effects the detection of the IR port. If you are unsure
+  try it out and let me know the results.
+
+  ·  In some situations you may have to use setserial /dev/ttyS<0-2>
+     port 0xNNNN irq M to set the values for your infrared serial port,
+     especially if the infrared port is a separate serial line. You
+     usually don't need to change the values! For further information
+     look into the FAQ section below.
+
+  ·  If you don't use kerneld or kmod insert the irda module with
+     modprobe irda.
+
+  ·  Do lsmod. It should show the modules irda and irtty now.
+
+  ·  A look into /var/log/messages should show the entry "Serial
+     connection established" now.
+
+  ·  Say irmanager -d1, which will start the necessary programs, such as
+     irattach.
+
+  ·  Give irattach some time, e.g. seven seconds, to detect other IR
+     devices. Then watch the output from the kernel that you will
+     hopefully get in /var/log/messages. It should look like the
+     following (I removed some lines, which were not related to
+     Linux/IrDA):
+
+
+
+
+
+     Jan  2 12:57:26 japh kernel: ttyS00 at 0x03f8 (irq = 4) is a 16550A
+     Jan  2 12:57:26 japh kernel: ttyS02 at 0x03e8 (irq = 4) is a 16550A
+     Jan  2 12:57:26 japh kernel: Linux Support for the IrDA (tm) protocols (Dag Brattli)
+     Jan  2 12:59:09 japh syslog: executing: 'echo 1 > /proc/sys/net/irda/discovery'
+     Jan  2 12:59:09 japh syslog: Setting discovery to 1 exited with status 1
+     Jan  2 12:59:09 japh syslog: + 0.1 Fri Jul 25 11:45:26 1997 Dag Brattli
+     Jan  2 12:59:09 japh syslog: + 0.1 Fri Jul 25 11:45:26 1997 Dag Brattli
+     Jan  2 12:59:09 japh syslog: Serial connection established.
+     Jan  2 12:59:09 japh kernel: IrDA irda_device irda0 registered.
+     Jan  2 13:01:22 japh syslog: executing: './drivers start '
+     Jan  2 13:01:22 japh syslog: Serial connection established.
+     Jan  2 13:01:42 japh syslogd: Printing partial message
+     Jan  2 13:01:42 japh 0.1 Fri Jul 25 11:45:26 1997 Dag Brattli
+     Jan  2 13:02:49 japh kernel: IrDA Discovered: japh
+     Jan  2 13:02:49 japh kernel:     Services: Computer
+
+
+
+
+  5.3.2.  Dongle Connection - Infrared Adapters for the Serial Port
+
+  The currently supported dongles are the Extended Systems Inc. ESI-9680
+  JetEye, the Tekram IRmate 210B, the ACTiSYS IR220L and 220L+, the
+  Greenwich GIrBIL.  dongle.
+
+  Dag Brattli wrote (modified by wh): "To use dongles you have to do
+  something like this:
+
+  ______________________________________________________________________
+  modprobe tekram         # or esi or actisys
+  irmanager -d 1          #
+  irattach -d tekram      # or -d esi or -d actisys
+  ______________________________________________________________________
+
+
+  As you can see, you must still use the -d option with irattach since
+  it is possible to have two serial ports using different dongles at the
+  same time (so the tty you are binding must know which dongle it is
+  supposed to use). So if you have two dongles and two serial ports, you
+  could do something like this:
+
+  ______________________________________________________________________
+  modprobe tekram
+  modprobe esi
+  irattach /dev/ttyS0 -d esi &
+  irattach /dev/ttyS1 -d tekram &
+  ______________________________________________________________________
+
+
+  PS: I would not try to turn the two dongles against each other, since
+  I really don't know how the stack would react :-) ...  Since I don't
+  have any of these new ACTiSYS 220L+ dongles, I'm not able to test it.
+  Since the new dongle has support for one extra speed (38400bps), you
+  must specify the dongles differently with irattach so that the kernel
+  knows which dongle you are using (and what QoS can be used):
+
+  ______________________________________________________________________
+  irattach /dev/ttyS0 -d actisys     # for the 220L dongle
+  irattach /dev/ttyS0 -d actisys+    # for the 220L+ dongle
+  ______________________________________________________________________
+
+
+  The current implementation of dongle support does not have any state
+  associated with it, so its not possible to use both ACTiSYS dongles
+  (220L and 220L+) at the same time (connected to two serial ports) for
+  now. If someone needs to be able to do so, please mail me (Dag
+  Brattli) and I will think about it!"
+
+  Note: When I tried to use an infrared modem (Swissmod 56Ki,
+  manufactured by Telelink AG) connected to my laptop (IrDA works with
+  Window$95 only, due to non standard hardware) I had to remove the
+  infrared support in the BIOS to get it working!
+
+
+
+  5.3.3.  Dongle Connection - Infrared Motherboard Adapter
+
+  Support for the ACTiSYS IR2000 dongle has been implemented in a file
+  called pc87108 which you can either compile into the kernel or
+  insmod/modprobe to insert the module:
+
+  ______________________________________________________________________
+  irmanager -d 1
+  modprobe pc87108
+  ______________________________________________________________________
+
+
+  or insert modprobe pc87108 into the /etc/irda/drivers file (I think).
+
+
+  5.3.4.  Fast InfraRed (FIR)
+
+  The IrDA(TM) standard knows three kinds of speeds:
+
+
+  1. SIR = Standard IrDA, up to 115kbps IrDA,
+
+  2. MIR = Medium Speed IrDA,
+
+  3. FIR = Fast IrDA (4Mbps),
+
+  4. VFIR = Very Fast IrDA(16Mbps), seems to become a future standard
+
+     Up to 115.200bps many infrared controllers work like a serial port.
+     Up to 4Mbps they work in "FIR mode". Currently there are two chips
+     supported: NationalSemiConductor NSC PC87108 e.g. used in IBM
+     Thinkpad 560X and Winbond W83977AF (IR) FIR chip e.g. used in the
+     Corel Netwinder PC. You may start the FIR service by loading the
+     according module. Linux/IrDA will probe your hardware then.
+
+
+
+  6.  Specific Connections and Protocols
+
+
+  6.1.  Printer Connection - IrLPT
+
+  IrLPT is under heavy construction at the moment. The client side
+  should work, but the server side may crash.
+
+  ·  Remove any current print jobs with lprm "*".
+
+  ·  If you don't use kerneld do a modprobe irtty.
+
+  ·  Do a modprobe irlpt_client.
+
+  ·  Check the modules with lsmod. This should show: irda, irtty and
+     irlpt_client
+
+  ·  cat /proc/misc. Gives you the minor device-number . It is the first
+     number in the line with irlpt0.
+
+  ·  su to root, and do mknod /dev/irlpt0 c 10 <minor device-number>.
+     Note: Something like ./MAKEDEV irlpt0 is not possible yet. But
+     maybe load_misc irlpt works, though I couldn't test this yet.
+
+  ·  Try to write a small file to /dev/irlpt0 by cat FILE >/dev/irlpt0
+     (do not wonder about a bad format this is just a first check). For
+     me this didn't always work, but I couldn't find out why not.
+
+  ·  The better way is to change your /etc/printcap to use /dev/irlpt0
+     in addition or instead of /dev/lp1. See Printing-HOWTO for detailed
+     information.
+
+  ·  For easy printer setup you may use a printing software like
+     APSFILTER, MagicFilter EZ-Magic (with RedHat there should also be a
+     GUI for this purpose). Make a copy of /etc/printcap before.
+
+  ·  Example for APSFILTER with a HP 6P (non-postscript, HP 6MP is with
+     postscript). The two relevant questions are:
+
+     "Do you have a (s)serial or a (p)arallel printer interface?"
+     Answer "p"
+
+     "What's the device name for your parallel printer interface?"
+     Answer "/dev/irlpt0"
+
+
+  ·  Restart the print daemon with kill -HUP <PID of lpd>. If you use
+     another print daemon choose the according command.
+
+  ·  Watch whether the connection indicator of your printer shows
+     activity, e.g. the green light above the IR port of a HP 6P/MP
+     comes on (lower left hand corner, near the paper tray).
+
+  ·  I couldn't get to manage printjobs larger than approximately 10
+     pages yet. But maybe this depends on the memory size of my
+     hardware, which is 16MB. There seems to be a problem with the
+     software too, Thomas Davis wrote: "I will ... limit the irlpt, so
+     it won't eat memory when you send a large print file.".
+
+  Takahide Higuchi reported: " I have been debugging IrCOMM with a
+  printer ( Canon BJC-80v ) with IrDA port and IrCOMM protocol (not
+  IrLPT). I can print a short e-mail text though, it easily causes dead
+  lock when I try to print a postscript with gs."
+
+  From the page of Thomas Davis http://www.jps.net/tadavis/irda : To use
+  the IrLPT server, you need to perform the following steps:
+
+  ______________________________________________________________________
+  /sbin/insmod irlpt_server
+  /sbin/mknod /dev/irlptd c 10 `grep irlptd /proc/misc|cut -f 1`
+  ______________________________________________________________________
+
+
+  At this point, the IrLPT server is ready to recieve print jobs; now;
+  all you need is this simple shell script
+
+  ______________________________________________________________________
+  #/bin/sh
+  #
+  while (true)
+  do
+  cat /dev/irlptd | lpr
+  done
+  ______________________________________________________________________
+
+
+  6.2.  LAN Connection - IrLAN
+
+
+  ·  You might connect your Linux box using IrLAN to another network
+     device such as a Linux box with IrLAn, a HP NetBeamer or a
+     Window$95 box with Inrared Network Device support.
+
+
+  ·  Dag Brattli wrote: "If you want to use IrLAN you must modprobe
+     irlan_client before ifup eth0. I had to remove the request_module()
+     stuff since that needed a process context which I don't have in the
+     kernel. "
+
+
+  ·  Run ifconfig eth0 up <ip_address> netmask <ip_netmask> to configure
+     it with IP-address and other parameters. If the protocol is still
+     running you may start communicating. It is possible to use RedHat's
+     netcfg to do this, since it makes it very easy. Next time you only
+     need to do /sbin/ifup eth0.
+
+
+  ·  Test the network device by pinging to it. For detailed information
+     about further setup see the NET3-HOWTO.
+
+
+  ·  Do not forget to add a route, e.g. route add default gw
+     <ip_gateway> or route add -host <target host> dev eth0.
+
+
+  ·  Ping to another IP now, to test the connection.
+
+
+  ·  For testing reasons I recommend only to use one laptop and one IR
+     ethernet device in the same room. If there are problems look which
+     different modes for the IR ethernet device are possible. Try them.
+
+  For an ACTiSYS FIR board and dongle you may do:
+
+
+  ______________________________________________________________________
+  irmanager -d1
+  /sbin/modprobe pc87108  # remove irattach from /etc/irda/drivers, or
+                          # substitute irattach with the modprobe!
+  ______________________________________________________________________
+
+
+
+  On machine 1:
+
+  ______________________________________________________________________
+  modprobe irlan_client # not really necessary since irmanager should do this!
+  ______________________________________________________________________
+
+
+  On machine 2 (if you don't have an access-point)
+
+  ______________________________________________________________________
+  modprobe irlan_server
+  ______________________________________________________________________
+
+
+
+  Do not compile irlan_server into the kernel, since it currently does
+  not like that! You should have configured /etc/sysconfig/network-
+  scripts/ircfg-eth0 with a proper ad-hoc network if you are using two
+  machines. If you have an access-point, then the normal setup should be
+  fine.
+
+  Notice that in the latest patch (2.2.0-irda1) irlan_client will call
+  the device irlan0 by default, but you can change this by giving eth=1
+  as an option to irlan_client (modprobe irlan_client eth=1 or options
+  irlan_client eth=1 in /etc/conf.modules).  The next release of IrLAN
+  will be only one module, so you don't need to think about if you need
+  to have the client and/or the server installed.
+
+  It's possible to do ifconfig irlan0 -broadcast to stop the AP from
+  flooding you with broadcast frames! That can be a problem if you are
+  connected to a very large Ethernet segment. The only problem is that
+  your machine will then have to initiate all communications and can
+  therefore not function as a server (well, you could probably make a
+  stationary machine somewhere answer ARP requestes on your behalf).
+
+
+
+  6.3.  Palm III Connection - IrOBEX
+
+  The IrOBEX stuff seems under rapidly improving changing development.
+  So the applications change too. Therefore I just can't give quite
+  exact information. Please see also the report by Dag Brattli at
+  http://www.cdpubs.com/hhsys/archives/66/10brattl.pdf .
+
+  The /etc/irda script is really only good for configuration of the
+  devices, making the right mknod for /dev/irobex etc, not for starting
+  applications.
+
+
+  ·  Palm III -> Linux
+
+     1) Terminal 1> irattach /dev/ttyS<x>
+
+     2) Terminal 2> load_misc irobex
+
+     3) Terminal 3> Start irobex_app in the irobex directory. I suppose
+     irobex_app is not working anymore. Now you should use the
+     gtk/irobex program instead! You need to have the gtk library
+     installed to use this program. A command line frontend should be
+     programmed by someone. Maybe the programm to use is irobex_receive.
+
+     4) Beam something from your Palm III.
+
+     5) If everything is successful, you can take a look at a new file
+     that has been created in the directory in which you started
+     irobex_app (or in /tmp for irobex_receive). This file will be named
+     after the object you just transfered.
+
+
+  ·  Linux -> Palm III
+
+     This should also be possible, but I don't have any further
+     information right now.
+
+
+  ·  PPP
+
+     Rui Oliveira wrote: "This is just to let you know that with the
+     latest IrCOMM patch (050998) of Takahide Higuchi, I managed to
+     HotSync and establish a PPP connection between my Palm III and my
+     Linux box. I'm using IRLink (from IsComplete) to redirect the
+     serial port to ir. Communication with pilot-xfer works flawlessly.
+     Although I was able to establish a PPP connection, I'm still unable
+     to fetch mail and do Web browsing. This is probably due to
+     connection time-outs. I am checking this out.". Please see the PPP-
+     HOWTO for further information about PPP.
+
+  ·  IrCOMM
+
+     Jon Howell wrote: "I thought I'd try IrCOMM, since the Palm III can
+     be made to reroute serial info to the IR port (using IrLink from
+     IS/Complete, available at www.palmcentral.com), and then you can
+     run a terminal program (like "PalmTelnet" in serial mode) over
+     IrDA. I can only assume it's using the IrCOMM protocol. I've tested
+     this configuration between two palm pilots, but of course I can't
+     know what the protocol running over the IR is.
+
+     I couldn't figure out what to do with the IrCOMM code. I see from
+     the status page that there's "Client support (should start to get
+     usable), " but I can't find any docs that indicate how it has to be
+     used. "
+
+
+
+  6.4.  Cellular Phone Connection
+
+  As far as I know some cellular phones use the IrCOMM standard, e.g.
+  Ericsson SH888 and NOKIA 8110. Benny Amorsen wrote: "I have used
+  minicom with the SH888, and I actually got it to establish a
+  connection in minicom (CONNECT 9600...). I could not get it to do
+  anything after that, and hanging up by dropping carrier does not work.
+  +++ worked, so I could hang up that way. I would say that the SH888 is
+  very close to working with linux-irda., and actually it might work in
+  2.0.x kernels. I only use 2.1 kernels.".
+
+  Maybe other cellular phones use the IrOBEX standard, see the Palm III
+  section for information about setting up a connection.
+
+  Carlos Vidal wrote: Correct me if I'm wrong, but it seems to me that
+  Nokia telephones do not contain a genuine hardware modem, but
+  something which is similar in principle to WinModems for PC. Whenever
+  Nokia writes about modem communication, they use the name "Windows
+  software modem" (or something similar). Which is actually backed up by
+  the need to use special Nokia software for Windows (called Nokia
+  Cellular Data Suite).
+
+  Joonas Lehtinen wrote: This is true with 61xx models. Models: 8810,
+  9000(i) and 9110 should work fine. (They have inbuilt modem). My N9000
+  reports IrCOMM with linux.
+
+  To start a communication session with /dev/irnine, for instance, say:
+
+  ______________________________________________________________________
+  dip -t
+  > port irnine
+  > term
+  ______________________________________________________________________
+
+
+  Probably you may use cu instead of dip, too. There are also reports
+  about some efforts with the Ericsson GF768 and IR Modem DI 27.
+
+  Benny Amorsen wrote: The SH888 emulates an IRDA-port when you connect
+  it using the serial cable. Why someone would think up something weird
+  like that is beyond me, but that is the way you get it to work in
+  Windows. Not that I ever managed to make it work in Windows, though.
+
+
+
+
+
+  6.5.  Digital Camera Connection
+
+  Markus Schill wrote: "Great that there are also other people who are
+  interested in using the SONY DSC-F1 IR adapter under linux. Up to now
+  I have only toyed around with the linux-irda software and the serial
+  IR adapter from PuMa Technologies that came with the camera. This is
+  the status. I am using linux 2.0.33 and the latest linux-irda...  If I
+  use:
+
+  ______________________________________________________________________
+  insmod irda
+  insmod irtty
+  irattach /dev/cua0
+  ______________________________________________________________________
+
+
+  the adapter starts talking to the camera. /var/log/messages says that
+  SONY-DSC-F1 was found, but no service is started. (Please note, this
+  probably doesn't apply to the 2.2.x kernel versions of Linux/IrDA,
+  wh).
+
+  There are two programs for linux available that can be used for the
+  communication with the camera via cable: (1) chotplay and (2)
+  stillgrab. They both take a tty as commandline option, so I guess that
+  they should work if the irtty layer of the protocol stack works
+  correctly ... I have not looked at anything in the linux-irda code,
+  yet!). I am not sure whether I understand the stack but shouldn't the
+  irtty make the thing look like a normal tty? What service should be
+  started. "
+
+  Dag Brattli wrote: "I'm not sure which application level protocol the
+  camera uses, but it is possible that it implements the IrDA(TM)
+  Infrared Transfer Picture Specification (IrTran-P). If you take a look
+  at http://www.irda.org/standards/pubs/IrTran-P_10.pdf, you will see
+  that it is a protocol which is implemented above IrCOMM (not IrTTY!).
+  IrTTY is something we use just to be able to talk to the Linux serial
+  driver. "
+
+
+  6.6.  Window$95 and Linux/IrDA
+
+  Introduction
+
+  Why this? Unfortunately Linux users are not always supported with the
+  necessary hardware information. Sometimes it is possible to look at
+  this informations in Window$95.
+
+  Where to get it from? At
+  http://www.microsoft.com/windows95/info/irda.htm you will find a
+  support pack "Infrared Transfer 2.0". It is a self-extracting archive
+  W95IR.EXE with 331KB.
+
+  With some machines e.g. a HP Omnibook 800 it is necessary to use a
+  vendor specific version of this package (e.g. for the HP Omnibook 800
+  you may find it on the recovery CD).
+
+  Especially the ..\windows\inf\*.inf files and the device manager are
+  of interest to look for configuration details.
+
+  As far as I know Window$NT doesn't support IrDA(TM). About Window$98 I
+  have heard there is no IrDA(TM) support yet.
+
+  There are also some non M$ products available. Note: Some of them use
+  proprietary infrared protocols:
+
+
+  ·  CounterPoint: QuickBeam 1.15
+
+  ·  LapLink 7.5
+
+  ·  CarbonCopy 32 4.0
+
+  ·  pc ANYWHERE 7.5
+
+  ·  Puma Technology: TRANXIT pro 4.0
+
+  Connection between Linux/IrDA and Window$95 IrDA(TM)
+
+  I suppose there are three ways to connect Linux/IrDA and Window$95:
+
+  A network connection between two PC's. If you have set up Infrared
+  Transfer 2.0, you will find an IrDA(TM) network device in the <Network
+  Device Section>. But I couldn't get a working connection yet.
+
+  Maybe it is also possible to use the IrOBEX protocol. But I don't know
+  which software to use and where to get it. I supposed the necessary
+  software comes with a Palm III, but this seems not to be true.
+
+  Takahide Higuchi <thiguchi@pluto.dti.ne.jp> provided IrCOMM support.
+  From his page at http://www.pluto.dti.ne.jp/~thiguchi/irda/ I have
+  taken the following description (I have modified it at little): "With
+  IrCOMM support you can send or receive short messages between a linux
+  box and a terminal program on a win95 laptop! Please add this line to
+  /etc/conf.modules:
+
+  ______________________________________________________________________
+  alias char-major-60 ircomm_tty
+  ______________________________________________________________________
+
+
+  Next, make a device file mknod /dev/irnine c 60 64. Now Linux/IrDA
+  services can be started as usual with irattach /dev/ttyS? &.
+  /dev/irnine can be used as a serial device. ircomm and ircomm_tty mod­
+  ules will be loaded automatically by kerneld/kmod when a program uses
+  /dev/irnine. NOTE: I think "setserial" utility will not work on
+  /dev/irnine. Tips:
+
+  ·  To accept login via IrCOMM, use this as a root: First, please
+     enable IrDA and IrCOMM. Then edit /etc/inittab and add a line like
+     this:
+
+     ___________________________________________________________________
+     T1:23:respawn:/sbin/getty -L -w irnine 38400 vt100
+     ___________________________________________________________________
+
+
+  and do this as a root: init q. And init will start waiting for incom­
+  ing IrCOMM connection. You will see your favorite Linux's login prompt
+  from terminal emulator on Win95!
+
+  ·  If you try pppd, please consider the -crtscts option to disable
+     flow-control. I implemented some flow-control emulation but it is
+     not tested.
+
+  ·  Now my patch reports what kind of features is needed by the peer
+     infrared device. Messages like this will be written in syslog:
+
+     Sep 4 10:01:02 monolith kernel: parse_control:instruction(0x12)
+     Sep 4 10:01:02 monolith kernel: data:03
+
+
+
+  ·  I especially want to know what message SH888 (or other infrared
+     devices except for win95 PC) says. So please mail me your syslog
+     generated during IrCOMM connection! If you have a copy of the
+     IrCOMM specification written by IrDA(TM), please see page 34 or 38,
+     and you will know what these messages mean."
+
+
+  6.7.  Linux to Linux Connection
+
+
+  6.7.1.  Connection Methods
+
+  There should be three ways to get two Linux machines connected via
+  Linux/IrDA.
+
+  ·  Dag Brattli wrote about the IrOBEX support: "The awakened reader
+     may wonder what prevents the beaming of files from Linux to Linux?
+     Well, nothing!! (but I haven't tried that yet). This means that we
+     now have a "simple" way of beaming files between Linux laptops. I
+     think that this may be the "killer app" we all have been waiting
+     for!" Try to "load_misc irobex at both ends, and then try
+     iroabex_app get on one of the machines and irobex put <file> on the
+     other.".
+
+  ·  Via Linux/IrDA network connection. I suppose you have to load the
+     module irlan_client at one machine and irlan_server at the other
+     one.
+
+  ·  With IrCOMM support, in other words over a serial line, which could
+     mean minicom, pppd, etc.
+
+
+  6.7.2.  Compression
+
+  Please note this feature is still quite experimental! Dag Brattli
+  wrote: "Just wanted you to know I have just added COMPRESSION support
+  to IrLAP! As you may know, this is _not_ part of the IrDA(TM)
+  standard, but Linux can now negotiate with its peer and check if it
+  has the same compression capabilities). So obviously if you are
+  talking to Win95, Palm III or whatever, you will _not_ get
+  compression!!! This is something which is exclusive for Linux as far
+  as I know! The IrDA(TM) standard says that devices should ignore
+  unknown field in the negotiation header, so we are still "compatible"
+  with IrDA(TM) (have just borrowed an unused header value).
+
+  If you want to try using the compression code (Linux <-> Linux) you
+  will have to insert the irda_deflate module some time before you
+  actually make the connection. I do it before irattach.
+
+  The compression standard I have added is the deflate format used by
+  the zlib library which is described by RFCs (Request for Comments)
+  1950 to 1952 in the files ftp://ds.internic.net/rfc/rfc1950.txt (zlib
+  format), rfc1951.txt (deflate format) and rfc1952.txt (gzip format).
+
+  The compression interface is similar to PPP, so you can add as many
+  different compressors as you want. Currently there is only support for
+  GZIP, but BSD compression will be added later."
+
+
+
+  6.8.  Multiple Instances
+
+  Dag Brattli wrote: "The IrLAP layer has been enhanced to allow more
+  than one instance (so I can use IrLAN on my built-in ir-port, and
+  communicate with the Pilot over the IrDA dongle at the same time) ...
+  So how do you make two Linux/IrDA connections? Well, you just fire up
+  irattach for each of the IR ports you have like this: "
+
+  ______________________________________________________________________
+  irattach /dev/ttyS0 &    (my ESI dongle)
+  irattach /dev/ttyS2 &    (my builtin IrDA port)
+
+  insmod irlan_client
+  insmod irobex
+  ______________________________________________________________________
+
+
+
+
+
+  7.  Hardware Supported by Linux/IrDA
+
+
+  7.1.  Obtaining Information about the Infrared Port in Laptops
+
+  To get the IrDA port of your laptop working with Linux/IrDA you may
+  use StandardInfraRed (SIR) or FastInfraRed (FIR).
+
+  7.1.1.  SIR
+
+  Up to 115.200bps the infrared port emulates a serial port like the
+  16550A UART. This will be detected by the kernel serial driver at boot
+  time or when you load the serial module. If infrared support is
+  enabled in the BIOS, for most laptops you will get a kernel message
+  like:
+
+  ______________________________________________________________________
+  Serial driver version 4.25 with no serial options enabled
+  ttyS00 at 0x03f8 (irq = 4) is a 16550A     #first serial port /dev/ttyS0
+  ttyS01 at 0x3000 (irq = 10) is a 16550A    #e.g. infrared port
+  ttyS02 at 0x0300 (irq = 3) is a 16550A     #e.g. PCMCIA modem port
+  ______________________________________________________________________
+
+
+
+  7.1.2.  FIR
+
+  If you want to use up to 4Mbps, your machine has to be equipped with a
+  certain FIR chip. You need a certain Linux/IrDA driver to support this
+  chip. Therefore you need exact information about your FIR chip. You
+  may get this information in one of the following ways:
+
+
+  1. Read the specification of your machine, though it is very rare that
+     you will find enough information there.
+
+  2. Do a cat /proc/pci, though often the PCI information is incomplete.
+     You may find the latest information about PCI device and vendor
+     numbers at the page of Craig Hart
+     http://members.hyperlink.net.au/~chart . From kernel 2.1.82 on, you
+     may use lspci from the pci-utils package, too. The according files
+     for 2.2.x kernels are in /proc/bus/pci.
+
+  3. If you have installed the Linux/IrDA software load the FIR modules
+     and watch the output of dmesg, wether FIR is detected or not.
+
+  4. Though I didn't use them for this purpose yet the isapnp tools,
+     could be useful.
+
+  5. Another way how to figure it out explained by Thomas Davis: "Dig
+     through the FTP site (of the vendor, wh), find the FIR drivers, and
+     they have (for a SMC chip, wh):
+     ___________________________________________________________________
+     -rw-rw-r--   1 ratbert  ratbert       743 Apr  3  1997 smcirlap.inf
+     -rw-rw-r--   1 ratbert  ratbert     17021 Mar 24  1997 smcirlap.vxd
+     -rw-rw-r--   1 ratbert  ratbert      1903 Jul 18  1997 smcser.inf
+     -rw-rw-r--   1 ratbert  ratbert     31350 Jun  7  1997 smcser.vxd
+     ___________________________________________________________________
+
+
+  If in doubt, always look for the .inf/.vxd drivers for Win95; Win95
+  doesn't ship with _ANY_ FIR drivers. (they are all third party, mostly
+  from Counterpoint, who was assimilated by ESI)."
+
+  6. Use the DOS tool CTPCI330.EXE provided in ZIP format by the german
+     computer magazine CT  http://www.heise.de . The information
+     provided by this program is sometimes better than with the Linux
+     tools.
+
+  7. There is also a small DOS utility made by SMC, called "FindChip".
+     The package also includes a "FirSetup" utility that is supposed to
+     be able to set all values except the chip address. Look at
+     http://www.smsc.com/ftppub/chips/appnote/ir_utils.zip
+
+     Warning: The package is not intended for the end user, and some of
+     the utilities could be harmful. The only documentation in the
+     package is in M$ Word format. Linux users may read this with
+     catdoc, available at http://www.fe.msk.ru/~vitus/catdoc/ .
+
+  8. Use the Device Manager of Window$95/98/NT.
+
+  9. You may also use the hardware overviews mentioned below.
+
+
+  7.2.  Hardware Overviews
+
+  There are some overviews about Linux and infrared capable devices in
+  the WWW:
+
+  ·  The Linux/IrDA Project - Hardware Survey at
+     http://www.cs.uit.no/~dagb/irda/hardware.html
+
+  ·  Takahide Higuchi at
+     http://www.pluto.dti.ne.jp/~thiguchi/ir/product.html.This page is
+     in japanese.
+
+  ·  I have also set up a hardware overview at
+     http://www.snafu.de/~wehe/index_li.html. This list also contains
+     information about infrared capable devices which are not mentioned
+     here (mice, printers, remote control, transceivers, etc.).
+
+     To make this hardware overview list more valuable it is necessary
+     to collect more information about the infrared devices in different
+     hardware. You can help by sending me a short e-mail containing the
+     exact name of the hardware you have and which type of infrared
+     controller is used.
+
+     Please let me also know how well Linux/IrDA worked, at which tty,
+     port and interrupt it works and the corresponding infrared device
+     (e.g. printer, cellular phone) you use.
+
+     You can also help by contributing detailed technological
+     information about some infrared devices, which is necessary to
+     develope an according driver for Linux.
+
+
+
+
+  8.  GUI
+
+  If you want to try out a little GUI, you can try to run ircp.pl. You
+  will need the Perl-GTK+ module ( http://www.gnome.org) to make it run.
+  The GUI is far from finished, so don't expect too much :-)
+
+
+  9.  Power Saving
+
+  In the specifications of my HP OmniBook 800 it is recommended to turn
+  off the IR port, if it is not in use, because it may consume up to 10
+  percent of the battery time.
+
+  If necessary, you may also try to disable the Fast RRs feature in the
+  IrDA section of the kernel. This option will give you much better
+  latencies but will consume more power.
+
+
+  10.  Troubleshooting, Mailing List
+
+
+  10.1.  General Information
+
+  If you encounter problems. Try the following:
+
+
+  ·  Read the FAQ section below.
+
+  ·  Look at /var/log/messages and/or /var/log/kern.
+
+  ·  Do a dmesg.
+
+  ·  Look at the different files in /proc/irda.
+
+  ·  Look at the mailing list archiv at
+     http://www.ita.chalmers.se/~svinto/hypermail/irda/, whether your
+     problem is already known.
+
+  ·  Ask in the Linux/IrDA mailing list. To join the Linux-IrDA mailing
+     list, send a mail to linux-irda-request@list.uit.no with
+     "subscribe" in the email body. Use linux-irda@list.uit.no to post a
+     message. You are welcome to use this mailing list for posting
+     questions, answers, bug-reports, patches, suggestions and comments.
+     To avoid spam, the list is now moderated, so there may be some time
+     before your posting is distributed to the other list members.
+
+
+  10.2.  Troubleshooting Techniques
+
+  Although I'm not much of a hacker I collected some tricks to track
+  errors or bugs in the Linux/IrDA software.
+
+  ·  You may set the debug level in /proc/sys/net/irda/debug to 1, 2, 3,
+     4.
+
+  ·  Use the files in /proc/sys/net/irda to try different parameters
+     like echo 0 > /proc/sys/net/irda/discovery.
+
+     The /proc/*/irda files are:
+
+
+
+
+
+
+
+     ___________________________________________________________________
+     root@duckman:~# ls /proc/sys/net/irda/* /proc/net/irda/*
+     /proc/net/irda/discovery        /proc/net/irda/irlmp            /proc/sys/net/irda/devname
+     /proc/net/irda/irda_device      /proc/net/irda/irttp            /proc/sys/net/irda/discovery
+     /proc/net/irda/irias            /proc/sys/net/irda/compression
+     /proc/net/irda/irlap            /proc/sys/net/irda/debug
+     ___________________________________________________________________
+
+
+
+  ·  It is also possible to debug the code. But I don't know how to do
+     this. If you want to use SKB debug code, you may edit irda.h and
+     change /include/linux/skbuff.h (see revision history of snapshot
+     10-2-98).
+
+  ·  For problems with the irda module a utility from the modules
+     package kdstat might be helpful. But I was not able to try this.
+
+  ·  "You can now alter the number of discovery packets used (1, 6, 8 or
+     16) and the timeout between sending them (2-8 * 10 ms) in
+     /proc/sys/net/irda. Please experiment if you have problems
+     discovering your device. My Palm III seems to like 16
+     discovery_slots and 8 (*10 ms) for slot_timeout. " ... "The
+     absolute minimum for reliable discovery of the IR-610 seems to be
+     9."
+
+  ·  If anybody gets a kernel Oops, then please feed it to the
+     ../linux/scripts/ksymoops/ksymoops program, so that we can find out
+     where it went wrong. Just cut out the Oops lines from the syslog,
+     save them to a file, and then run ksymoops <file>
+
+  ·  Dag Brattli wrote: I found out that the cs4232 sound card was
+     giving me several hundred interrupts per second! I removed the
+     sound stuff from my kernel, and the machine is now generally about
+     4 times faster!
+
+     Linux/IrDA may get problems if you are running the esound server
+     (esd) on your machine. Both my machines, a 166Mhz Pentium laptop
+     and a 200Mhz Pentium Pro cannot run Linux/IrDA when esd is running.
+     The reason is that esd makes the soundcard give interrups over 300
+     times/second which makes the serial driver overrun when receiving.
+     This is because the serial driver now uses slow interrupts in
+     Linux-2.2 (everything is slow interrupts in 2.2), so the interrupt-
+     handler schedules on its way out. The good thing about slow
+     interrupts is that packets are delivered much faster, since you
+     don't need to wait for the next timer-tick. The only exception for
+     this is the pc87108 driver which works fine since it uses DMA and
+     will only give a couple of interrupts per packet.
+
+  11.  Known Bugs
+
+  If you find a bug, please send a bug report to the mailing list,
+  including dmesg output, and which Linux version, and hardware you are
+  using. Thank you!
+
+  Sometimes IrCOMM fails to connect (especially when both devices
+  discover each other. You can disable discovering with echo 0
+  >/proc/sys/net/irda/discovery)
+
+  A CR (carriage return) character cannot be transfered between two
+  linux boxes via IrCOMM with cat file >/dev/irnine and cat /dev/irnine.
+  It causes a strange thing and freezes your Linux box.  Compiling the
+  pc87108 device driver non modular crashes the kernel on boot.
+  Temporary solution: compile the driver as a module
+
+
+  IrOBEX may eat some data on receive. The bug is most probably in the
+  user-space side of IrOBEX.
+
+
+  12.  FAQ
+
+
+  ·  Q1 - Question: I do not know anything about ports and irqs. What
+     should I do?
+
+  ·  Answer:
+
+
+     PART A: Hardware settings
+
+     - 1  Have a look at your hardware specs!!! If not available look at
+     the support page of your vendor, or contact the support hotline.
+     You might also find the information in one of the hardware
+     overviews mentioned above.
+
+     - 2  Use a current BIOS. Usually available at the support page of
+     your vendor.
+
+     - 3  Try setserial /dev/ttyS? -g -a | egrep 16550A. One of the
+     shown devices is probably the one you are looking for. Usually it
+     is the second one, but with no guarantee.
+
+     - 4  Note: What seems like an UART is physically the IrDA
+     controller. For my HP Omnibook 800 this is the VLSI VL82C147 PCI -
+     IrDA controller. These controllers should behave up to 115 200 bps
+     like UART's. But sometimes it is very difficult to get the right
+     configuration.
+
+     PART B: How to tell the kernel about the hardware settings
+
+     -4  cat /dev/ioports to see which ports are already in use.
+
+     -5  cat /dev/interrupts to see which interrupts are already in use.
+
+     -6  Make ports and interrupts available for use with the IR device,
+     e.g. stop the pcmcia service or include a line like this in
+     /etc/sysconfig/pcmcia: PCIC_OPTS="irq_list=3,4,5,7,9,10,12,14,15"
+
+     -7  Now try to guess what the right interrupt and port is. Use
+     setserial /dev/ttySx irq M port 0xNNNN to tell the kernel. If there
+     is more then one possible chance try them all (Note: As mentioned
+     in the Serial-HOWTO you should not try irq 0, 1, 6, 8, 13, 14).
+
+     -8  If you were successful please send the useful parameters to the
+     author, because I would like to include them in the hardware
+     overview.
+
+     -9  Good luck.
+
+     It might also be necessary to fine tune the IR serial port with
+     setserial, e.g., setserial /dev/ttyS0 spd_vhi (speed rate 115200).
+
+
+
+  ·  Q2 - Question: For me, irattach hangs, but recognizes the printer.
+     /var/log/messages shows that irattach found my HP LaserJet 6P.
+
+  ·  Answer: The "hang" is normal for irattach. Everything is working
+     right if you see the HP Laserjet show up in the log. "hang" means
+     irattach is polling the IrDA-Devices for incoming connections. If
+     you kill it with <CTRL C> the irattach program crashes and
+     /dev/ttySx does not work anymore. The problem is within the irda
+     module, and not with the irattach program. Rebooting is the only
+     thing to do! Next time put irattach in the background by using
+     irattach &. Stop it if necessary with killall irattach.
+     Recommendation by Andreas Butz: To my knowledge, <CTRL Z> bg should
+     work, too, but I haven't tried it in this specific case. Normally
+     it has the exact same effect as appending & to a command.
+
+
+
+  ·  Q3 - Question: I get a message like tcsetattr read/write error in
+     /var/log/messages.
+
+  ·  Answer: Caused probably by wrong /dev/ttyS* or wrong irq or port.
+
+
+  ·  Q4 - Question: Every setting seems alright, because I get the
+     appropriate messages. But it still does not work.
+
+  ·  Answer: Move the devices to within 0.5 meter (1.5 feet). Check that
+     only one application is using the infrared port. Check that both
+     devices are using the same protocol, such as IrOBEX or IrCOMM.
+
+
+  ·  Q5 - Question: I have downloaded the latest snapshot, and compiled
+     it successfully under Linux 2.0.33 running on an IBM Thinkpad 560E.
+     In the absence of any other IrDA machines to test with, is it safe
+     to assume that once the module has been inserted and the syslog
+     reports "irattach: Serial connection established.", is the IR
+     really working, and will it start to respond once there is another
+     machine with which to talk?
+
+  ·  Answer by Dag Brattli: Sorry, this only means that irattach has
+     done its part of the job, which is just to start the irda-tty.
+     Maybe the message should have been different, but as I said, it
+     tells that the serial connection between the irda-chip and the
+     irda-driver is established.
+
+     Note: Support for IrDA on 2.0.x kernels has been discontinued. You
+     are encouraged to switch to 2.2.x kernels and use the newest IrDA
+     patches available at http://www.cs.uit.no/~dagb/irda/snapshots/.
+
+
+  ·  Q6 - Question: At startup modprobe -a checks /lib/modules/<KERNEL-
+     VERSION>/net/irda.o and causes the messages: "IrLAP; Missing IrTTY
+     /IrLMP Error no IrLAP connection" (in /var/log/messages and on the
+     console).
+
+  ·  Answer by Werner Heuser: Workaround for SYSTEM V style systems: Put
+     a script named for example "ir_rmmod" containing
+
+
+       ______________________________________________________________________
+       #!/bin/sh
+       echo "$0 : remove irda module"
+       rmmod irport.o
+       rmmod irtty.o
+       rmmod irda.o
+       ______________________________________________________________________
+
+
+
+
+  in the startup process (/etc/init.d and a symbolic link name for exam­
+  ple "S100ir_rmmod" in /etc/rc3.d to "ir_rmmod"). (Verify the path for
+  "sh"). For BSD style systems try the corresponding approach.
+  ·  Q7 - Question by Ho Chin Keong: Is there other way of setting up
+     communication between the 2 laptops besides setting up a LAN route
+     between the two?
+
+  ·  Answer by Dag Brattli: Yes and no! One of the IrDA standard, IrCOMM
+     permits you to emulate a serial cable between two laptops, so you
+     can use any application written for serial ports (terminals, PPP,
+     slip, etc.). This is however not yet implemented in Linux/IrDA. The
+     IrLPT (printer) support is actually a subset of IrCOMM, so some of
+     it is working!
+
+
+  ·  Q8 - Question by Ho Chin Keong: If I block the infrared path
+     deliberately for more than 10 seconds, the connection could not re-
+     establish. I have to kill the irattach and restart the whole
+     procedure to start the infrared route. The connection could be
+     maintained, however, if the blocking is less than 10 seconds. Is
+     this part of the design or a bug? Is there any way whereby we can
+     lengthen this time limit from 10 s to longer or infinitely?
+
+  ·  Answer by Thomas Davis: This seems to be a bug in the primary side
+     of the IrLAP/IrLMP code. It appears not to send the
+     reset/disconnect notice all the way back up the stack. You'll
+     notice it when IrLPT gets stuck in the query mode while you were
+     trying to talk to a printer, and disconnected/interrupted it when
+     it was handshaking. (and now, it shows up in the IrLAN portion)
+
+
+  ·  Q9 - Pierre-Guillaume Raverdy asked: Should I update to IR lib on
+     my palm and update the system to version 3.0.2?
+
+  ·  Answer by Dag Brattli: You should not need to update your Pilot,
+     but it should not do any harm to do so. It is however required if
+     you want to use the IrCOMM library from IsComplete
+
+
+  ·  Q10 - Pierre-Guillaume Raverdy asked: Also any simple source code
+     (especially on the palm side) would be greatly appreciated.
+
+  ·  Answer by Dag Brattli: Get the Pilot SDK from Palm. Unzip the
+     examples.zip and take a look at the beamer application.
+
+
+  ·  Q11 - Kai Poehlmann wrote: I have a gsm-phone from Ericsson SH 888
+     and a linux-computer without an irda-port. I have heard that
+     Ericsson wants to talk with the phone the IrDA-protocol also when
+     using the serial cable... :-/ Is it now possible to use this phone
+     with this IrDA-port for linux and the cable?
+
+  ·  Answer by Matthias Lemke: Yes its possible. I tried it 6 weeks ago.
+     But i had same problems like with real-irda. I can connect my
+     phone. i can reset it by ATZ but after ATDT  nothing happens. Same
+     with cable or without. But i think you should test newer versions
+     of the port.
+
+
+  ·  Q12 - Jonah Peskin wrote: Has anyone had any success extending the
+     range of an IrDA transceiver? I'm using a Dell Inspiron 7000
+     notebook, and it seems to have a receiving range of about 1 meter.
+     I realize this fits the IrDA spec, but are there any laptops or
+     devices that can do better than a meter? Why not just get a 1 meter
+     cable?
+
+  ·  Answer by tzeruch@ceddec.com:Because manual connection (until
+     things like the Palm Cradle) is cumbersome and time consuming and
+     often creates problems (accessing the back side of my desktop
+     requires contortions).
+
+     The main problem is that you generally have to make the receiver
+     more sensitive. Basic physics has the inverse square law: the
+     intensity drops with the SQUARE of the distance, so going from 1 to
+     5 meters requires 25x the power (and battery drain on a portable
+     device), or 25x the sensitivity (and dynamic range - it still has
+     to be able to work at 3 inches).  And if you want to do it on the
+     other end, it doesn't simply have to be 25x more sensitive, it must
+     pick up the tiny IrDA pulse needle in a haystack of florescent
+     lights, screen savers, moving shadows...
+
+     Someone tried it with a Palm III upgrade board:  http://home.t-
+     online.de/home/PSPilot/ppppiii.htm
+
+
+  13.  Infrared Remote Control
+
+
+  13.1.  Resources
+
+  Remote control via infrared is not the aim of the Linux/IrDA project
+  but is included in this HOWTO to cover "Linux and Infrared" more
+  completely. I found three projects which worked on this topic. You may
+  find some links to current information at http://
+  www.snafu.de/~wehe/index_li.html.
+
+  ·  LIRC LInux Remote Control
+
+     LIRC is a package that supports receiving and sending IR signals of
+     the most common IR remote controls. It contains a device driver for
+     hardware connected to the serial port, a daemon that decodes and
+     sends IR signals using this device driver, a mouse daemon that
+     translates IR signals to mouse movements and a couple of user
+     programs that allow to control your computer with a remote control.
+     Takahide Higuchi wrote about LIRC: "It's great, and it seems almost
+     complete solution, but it seems there is almost nothing supporting
+     hardware on the market (or need to solder some special circuit ...
+     it is hard work for many people to do so). I believe that LIRC will
+     be more popular if consumer IR support is implemented in FastIR
+     drivers and some common API (for example, a raw IrSocket and common
+     ioctls) is made!". You may find LIRC at http://www.thp.uni-
+     koeln.de/~rjkm/lirc/
+
+
+  ·  Serial Infrared Remote Controller
+
+     This is a simple, cheap device that can be connected to any serial
+     port to control most components that have infrared remote controls.
+     It was designed and built on a solderless breadboard and is finally
+     designed as a PC board. You may find this package at
+     http://www.armory.com/~spcecdt/remote/remote.html
+
+
+  ·  Infrared Tools for the COREL Netwinder PC
+
+     Ryan Shillington wrote some tools to control the COREL Netwinder
+     via infrared, for example:
+
+     Server Side for the Corel Palm Administrator (deamon). It depends
+     on having ir-simple installed and up and running. With this you can
+     check and change IP addresses, Gateway addresses, setup eth1, etc.
+     You can also run simple commands AND you can check the Temperature,
+     Memory, Load averages, etc.
+
+     Client Side for the Corel Palm Administrator. You can also run
+     simple commands AND you can check the Temperature, Memory, Load
+     averages, etc.
+
+     A very basic Infra Red device driver. This does not support IrDA
+     (only unreliable transfers). It looks specifically for Remote
+     Control signals (and Keyboard, etc.). It blocks and passes data up
+     very differently.
+
+     You may find the tools at http://www.netwinder.org/~ryansh/
+
+
+  13.2.  Infrared Remote Control - IrDA
+
+  Two of the above mentioned projects use some kind of selfmade dongle
+  for infrared remote control. There is also a description to build a
+  serial IrDA dongle by yourself in the german ELEKTOR 5/97 p. 28
+  magazine. Maybe someone can merge these two kind of dongles together.
+
+  For a discussion of the relation between Infrared Remote Control and
+  IrDA I quote from the Linux/IrDA mailing list (shortend and modified
+  by wh):
+
+  Ryan Shillington wrote: "Remote IR and ASK-IR are very different from
+  FIR or MIR or SIR.
+
+  Remote IR and ASK-IR are very low speed and low frequency (but very
+  long range) uses for IR. They operate around 2400 baud.
+
+  SIR operates at higher rates, and is meant for long range transmission
+  where you need more than a few characters pass through (unlike a
+  remote control).
+
+  MIR is a little faster (less range), but with speeds up to 1.15 Mbps,
+  and FIR (where the devices have to be practically touching) is 4Mbps.
+  The range is inversely proportional to the speed you can send data at.
+
+  I'm working on drivers for Remote-IR, but you should know that your IR
+  stuff has to support it. Look for protocols like NEC, RC-5 or RC-0
+  (those are the most common ones).
+
+  You can use SIR to receive Remote Control signals. Set your baud rate
+  nice and low and data will come through. BUT, from my experience, it's
+  not the RIGHT data. It's not being analyzed in the right way, and as
+  such, you can't compute the checksums or check it with its complement.
+
+  I have managed to get data in (using SIR) with remote controls.  I
+  have been told that SIR will read the remote control stuff differently
+  depending on temperature (although I have never had that experience).
+  "
+
+  Lichen Wang <lwang1@ix.netcom.com> wrote in response: "The so-called
+  ASKIR in most laptops etc. is not meant for remote IR devices. ASKIR
+  is meant for Sharp Wizard and Zauaus PDAs and some of Sharp's notebook
+  PCs. Sharp stated this long before IrDA was established and is still
+  supporting it to maintain backward compatibility. Apple's Newton had
+  this capability at one time, too.
+
+  Briefly, ASKIR uses 9.6 Kbps (19.2 and 38.4 Kbps are also possible)
+  asynchronous data format of 8 data bits, 1 stop bit, and odd parity.
+  The "start" bit as well as all 0 bit in data/parity are transmitted as
+  IR square wave at 500 KHz (DASK sub-carrier). The "stop" bit as well
+  as all 1 bit in data/parity are represented by the absence of any IR
+  transmission.
+
+  As you can see, this is totally incompatible with exiting IR remote
+  control.
+  [..]
+
+  True. Not only can you use SIR hardware to receive, you can transmit,
+  too. Of course, there are some limitations.
+
+  Most IR remote controls use 38 KHz sub-carrier. 3 times 38 is 114,
+  very close to 115.2. You can set the UART to operate at 115.2 Kbps, 7
+  data bits, no parity, and 1 stop bit - a total of 9 bits. Each 3
+  cycles of the 38 KHz sub-carrier can be received or transmitted as a
+  byte of 0x5B.
+
+  There are some physical limitations in addition to the fact that the
+  sub-carrier must be 38 KHz. The SIR receiver is not as sensitive to 38
+  KHz as the IR remote receiver designed for that. The SIR transmitter
+  has a much lower duty cycle and thus can not emit a strong sub-carrier
+  either.
+
+  IR remote encodes the control signal by turning on and off the sub-
+  carrier at certain specific patterns. Now that you can transmit and
+  receive the sub-carrier, what remains is all in timing.
+
+  For transmit, you have to know how many consecutive bytes of 0x5B to
+  send for each burst of the sub-carrier, and how long to be quiet
+  between the bursts.
+
+  For receive, you have to know how many of the 0x5Bs you received are
+  consecutive, and how long the gaps were between these groups of
+  consecutive bytes.
+
+  [..]
+
+  My experience with the IrDA link distance of SIR, MIR and FIR is
+  somewhat different from what Ryan said.
+
+  [..]
+
+  SIR, MIR and FIR should all work from 0 to 100 cm but in practice:
+
+  (a) Some devices may have problems at LONG distances.
+
+  When possible, place the two communicating devices no more than 50 cm
+  apart. Low power devices, such as Pagers, Phones, etc. may have even
+  shorter ranges despite the fact that they use SIR instead of MIR or
+  FIR.
+
+  (b) Some devices may have problems at SHORT distances.
+
+  Place the two devices at least a few cm apart. Putting the two devices
+  too close to each other can cause troubles.
+
+  It is somewhat intuitive that when the link is not reliable we put the
+  two devices closer together. But it is counterintuitive that too close
+  is not good either. The reason is that the light intensity at 1 cm is
+  10.000 times brighter than that at 100 cm. At 0.5 cm, it is 40.000
+  times, etc. The IR receiver manufacturers have difficulties to cover
+  this huge dynamic range. We all have problems reading under a 10 W
+  light bulb, but imagine how it feels under a 100.000 W light!
+
+  [..]
+
+  The IrDA Physical Layer is totally incompatible with the DASK
+  modulation used in IR remote controls. Thus it is not possible to use
+  the same controller function for both FIR and remote control. However,
+  practically all FIR controller chips do include some additional
+  functions to support remote control. National, SMC, and Winbond (just
+  to name a few) all have such I/O chips.
+  The IR transmitter for FIR and remote control are very similar. I have
+  tried a standard FIR transmitter. It can reach 10 meters for remote
+  control purpose. Thus it performs just as good as transmitters
+  designed for remote control.
+
+  The IR receiver for FIR and remote control are somewhat different. A
+  FIR receiver can receive remote control signals but can reach only 1
+  meter whereas receivers designed for remote control typically can
+  reach 10 meters.
+
+  I have an ISA bus adapter with a National I/O chip that supports both
+  FIR and remote control. I also have IR Dongles that include both FIR
+  and remote control receivers. (Plus a transmitter for both modes.) I
+  cannot find any software to support remote control functions. I did my
+  own experiments in DOS (I cannot run Linux yet.) Anybody interest in
+  this? "
+
+  Benny Amorsen wrote: "I have a laptop that is supposed to support
+  ASKIR. The mode of the infrared port can be switched to ASKIR in the
+  BIOS. Having to reboot to switch the mode in the BIOS makes it
+  useless, though, so someone would have to find a way to switch on the
+  fly. "
+
+  Dag Brattli wrote: It should be possible to use IrControl (formerly
+  IrBus) for IrDA compliant remote controls. I currently don't know
+  about any remote controls using IrControl standard, but there should
+  be some out there (anyone else who knows better?). You should go to
+  the IrDA site (http://www.irda.org) and get the physical layer
+  standard (which includes IrControl I think).
+
+  "Normal" IrDA (using IrLAP) is _not_ well suited for remote control
+  because of the connection oriented nature (and just supports 9600bps
+  for connectionless use). The reason for the limited range is eye-
+  safety they say (but I currently don't know why CIR works better using
+  the same power). I have however seen laptops connect at 4-5 meters
+  (but I don't think that any high speed communication would be
+  possible).
+
+  Most IrDA chipsets are capable of CIR operation, and it is quite easy
+  to modify the drivers so they talk CIR. Takahide Higuchi has started
+  to look at IrSockets and it would be great if we could open a "raw"
+  Ir(DA) socket which then could send and receive CIR packets. Then all
+  the CIR applications could live in userspace.
+
+  I know that Corel is interested in using CIR for controlling the
+  NetWinder (and they actually have running code). Take a look at
+  http://www.slashdot.org/articles/98/12/05/0916216.shtml or
+  http://www.netwinder.org/~ryansh
+
+
+  14.  Infrared and Eye Safety
+
+  This section summarizes some ideas and thoughts that were exchanged on
+  the Linux/IrDA mailing list. It is not medically wellfounded, and
+  whoever has better evidence or some more wellfounded source of
+  information is encouraged to contribute it to this HOWTO.
+
+  The IrDA spec says that the range of IrDA devices has been limited to
+  1m for reasons of eye safety. Another plausible assumption is that
+  power consumption and IR pollution/crosstalk were reasons for this
+  limitation. In principle there could be danger for the eye, because
+  infrared light is not registered by the eye, and thus the pupil won't
+  close in order to protect the retina from bright IR light sources.
+  This is the same situation as with UV light, which will cause snow
+  blindness eventually, but in contrast to UV light, IR light contains
+  much less harmful energy due to its longer wavelength.
+  The only legal restrictions and medical advices we were able to find
+  on the web were concerned with infrared emissions of heat lamps or in
+  the welding process. This suggests that IR light as emitted by IrDA
+  devices will be harmless, since even the peak power emitted by strong
+  IR LEDs (ca. 300mW) is several orders of magnitude below the power
+  emitted by medical IR heat lamps (up to 500W). For these, however, you
+  are supposed to wear protective goggles, so maybe if you are looking
+  straight into 1.000 infrared LEDs flashing at once, you should do so,
+  too. The effect of infrared light is mostly heat, though, and not an
+  alteration or destruction of the biological cell structure, such as
+  caused by UV light. Though in the specs for the HP OmniBook 800
+  Hewlett-Packard recommends not to look directly into the IR LED.
+
+  As stated above, this discussion is only based on guesswork and common
+  sense assumptions about the data found in IR LED and heat lamp specs.
+  If anybody with a better medical knowledge can comment on this, please
+  do so!!!
+
+
+  15.  Credits
+
+  Thanks to:
+
+  ·  Dag Brattli - Linux/IrDA core team
+
+  ·  Thomas Davis - Linux/IrDA core team
+
+  ·  Takahide Higuchi - Linux/IrDA core team
+
+  ·  Ralf Zabka
+
+  ·  Benny Amorsen
+
+  ·  Lichen Wang
+
+  ·  Ryan Shillington
+
+  ·  Richard Titmuss
+
+  ·  Fons Botman
+
+  ·  Rui Oliveira
+
+  ·  Jon Howell
+
+  ·  Carlos Vidal
+
+  ·  Joonas Lehtinen
+
+  ·  Markus Schill
+
+  ·  Bjoern Hansson
+
+  ·  Pawel Machek
+
+  ·  Ho Chin Keong
+
+  ·  Bjoern Mork
+
+  ·  Andreas Butz
+
+  ·  Tang Ning
+
+  ·  The members of the Linux/IrDA mailing list.
+
+
+  ·  The writers of the other HOWTOs which gave me many inspirations.
+
+  ·  The developers of the SGML-Tools which provided some means to write
+     a HOWTO.
+
+     Sorry I didn't start to follow the credits when starting the HOWTO,
+     so probably I forgot somebody.
+
+
+  16.  Revision History
+
+
+  ·  v0.1 to v0.4a, 19 March 1998 to 4 August 1998, drafts, not included
+     in the LDP
+
+  ·  v1.0, 14 August 1998, release to the LDP
+
+  ·  v1.1, 18 August 1998, added info about IrCOMM patch by Takahide
+     Higuchi, minor changes
+
+  ·  v1.2, 24 August 1998, updated to linux-irda-1998-08-20 snapshot,
+     added FIR section and revision history, minor changes
+
+  ·  v1.3, 27 September 1998, added sections about multiple instances,
+     cellular phones, digital cameras,Linux to Linux connection, the
+     cutting edge - CVS, power saving; some changes in general
+     configuration section, changes in hardware overview section, minor
+     changes
+
+  ·  v1.4, 11 October 1998, better description of IrCOMM support,
+     changes in dongle connection section, changes in Palm III section,
+     minor changes
+
+  ·  v1.5, 12 October 1998, minor changes
+
+  ·  v1.6, 26 October 1998, section about IrManager added, updated to
+     the linux-irda-1998-10-21 snapshot, changed dongle connection
+     section, minor changes
+
+  ·  v1.7, 1 November 1998, added remote control section, changed dongle
+     connection section, minor changes
+
+  ·  v2.0, 9 January 1999, nearly complete rewrite and rearrangement
+     according to the new structure of Linux/IR which is included into
+     the kernel since 2.1.131, added info about BIOS support into dongle
+     connection section, configuration tool section and CVS section
+     removed
+
+  ·  v2.1, 13 January 1999, minor changes
+
+  ·  v2.2, 26 January 1999, project name changed from Linux/IR to
+     Linux/IrDA, extended the Troubleshooting chapter, changed the order
+     of the Known Bugs chapter after the Troubleshooting chapter,
+     removed some lint
+
+  ·  v2.3, 4 February 1999, added chapter about Eye Safety written by
+     Andreas Butz; spell checking, reworking of Kernel Parameters
+     chapter and additional information by Andreas Butz; minor changes
+
+  ·  v2.4, 9 February 1999, changed information about applying a patch
+     file
+
+
+
+
+
+  17.  Copyright and Disclaimer
+
+  Copyright © 1998, 1999 by Werner Heuser. This document may be
+  distributed under the terms set forth in the LDP license at
+  http://metalab.unc.edu/LDP/COPYRIGHT.html.
+
+  The information in this document is correct to the best of my
+  knowledge, but there's a always a chance I've made some mistakes, so
+  don't follow everything too blindly, especially if it seems wrong.
+  Nothing here should have a detrimental effect on your computer, but
+  just in case I take no responsibility for any damages incurred from
+  the use of the information contained herein.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

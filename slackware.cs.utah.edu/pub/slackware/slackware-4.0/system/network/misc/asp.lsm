@@ -1,0 +1,25 @@
+Begin3
+Title:		asp
+Version:	1.7
+Entered-date:	21FEB98
+Description:	Asp finds the IP address of an host connected to  Internet
+		knowing  the  host name and its possible IP addresses. The
+		use of asp is suggested when the nameserver of the  looked
+		for  host  does not provide information about its address:
+		this is a common case for hosts connected via ppp or  slip
+		with  dynamic  IP allocation.  With asp you can let others
+		to find your host when it is  on-line  independently  from
+		your  ISP;  this  result is obtained running a server (you
+		can choose between the standalone server or the inetd ver-
+		sion) on your host. See also:
+		http://www.dsi.unive.it/~stebrune/asp/asp.html
+Keywords:	address search dynamic IP ppp slip
+Author:		Stenio Brunetta <brunetta@tin.it>
+Maintained-by:	Stenio Brunetta <brunetta@tin.it>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/misc
+		40268	asp-1.6.tar.gz
+		120	asp-1.6.tar.gz.sig
+		1009	asp.lsm
+Platforms:	Linux, AIX, OSF/1
+Copying-policy:	GPL
+End

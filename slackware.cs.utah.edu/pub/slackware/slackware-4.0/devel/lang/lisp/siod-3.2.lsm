@@ -1,0 +1,20 @@
+Begin3
+Title: siod
+Version: 3.2
+Entered-date: 12JUN96
+Description: Siod is a scheme interpreter with general purpose unix and
+             database application programming support, including executable
+             scripts. Drivers for Oracle, Sybase, RDB, MSQL, NDBM are included.
+             Support for regular expressions, TCP/IP, and specific network
+             protocols such as ftp, smtp, and http. Some cgi web support.
+             Alternative (infix) syntax and fast loading/saving file formats.
+Keywords: scheme, lisp, unix, sql, oracle, sybase, ftp, http, smtp, cgi.
+Author: gjc@world.std.com (George J. Carrette)
+Maintained-by: gjc@world.std.com (George J. Carrette)
+Primary-site: ftp.std.com /pub/gjc
+              siod_tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/lisp
+                siod-3.2.tar.gz
+Platforms: Linux, VMS, OSF/1, SGI, SUN, WINDOWS NT, WINDOWS 95, MSDOS, MAC.
+Copying-policy: Free, no warranty
+End

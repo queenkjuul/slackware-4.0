@@ -1,0 +1,15 @@
+
+Begin3
+Title:		ru_win.map
+Version:	1.1
+Entered-date:	March 08, 1998
+Description:	A cp1251 (Windows Cyrillic) keyboard layout for the
+		kbd package
+Keywords:	keyboard,console,cp1251,windows,cyrillic
+Author: 	abel@bfr.co.il (Alexander L. Belikoff)
+Maintained-by:	abel@bfr.co.il (Alexander L. Belikoff)
+Primary-site:	ftp://sunsite.unc.edu/pub/Linux/system/keyboards
+		9690
+Platforms:	kbd
+Copying-policy:	GPL
+End

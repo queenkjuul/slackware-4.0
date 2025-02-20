@@ -1,0 +1,16 @@
+Begin3
+Title:          Bdflush
+Version:        1.6.2
+Entered-date:   23JUN98
+Description:    This deamon writes unsaved data to disk in
+		regular intervals. This (or less advanced 
+		equivalent called update) is needed on all 
+		linux systems.
+Keywords:       update daemon notebook Linux source
+Author:         pavel@ucw.cz (Pavel Machek)
+Maintained-by:  pavel@ucw.cz (Pavel Machek)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Daemons
+		20k	bdflush-1.6.2.tar.gz
+		1k	bdflush-1.6.2.lsm
+Copying-policy: GPL
+End

@@ -1,0 +1,19 @@
+Begin3
+Title:		miplog
+Version:	1.2
+Entered-date:	25FEB99
+Description:	Logs tcp, icmp and udp packets incoming to your 
+		linux box.
+		This is a little hack of Mike Edulla's iplogger.
+		No more than a little fun, but it can be useful
+		in some cases.
+Keywords:	iplogger security logger icmp tcp udp network logging
+Author: 	munehiro@iname.com (Stefano Borini)
+		stu2528@student.unife.it
+Maintained-by:	munehiro@iname.com (Stefano Borini)
+		stu2528@student.unife.it
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/
+		17703   miplog-1.2.tgz
+Platforms:	Linux
+Copying-policy:	GPL
+End

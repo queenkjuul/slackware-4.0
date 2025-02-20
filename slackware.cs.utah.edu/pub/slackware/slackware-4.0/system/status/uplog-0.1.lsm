@@ -1,0 +1,14 @@
+Begin3
+Title:		uplog
+Version:	0.1
+Entered-date:	May 5, 1998
+Description:	*very* simple logging utility for system uptimes
+Keywords:	log, uptime
+Author:		Jake Kuntz (jake@underworld.net)
+Maintained-by:	Jake Kuntz (jake@underworld.net)
+Primary-site:	http://www.underworld.net/~jake/uplog/
+Alternate-site:	unknown
+Original-site:	unknown
+Platform:	should work on any unix-like system without to much trouble
+Copying-policy:	GPL
+End

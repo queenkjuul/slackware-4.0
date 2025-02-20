@@ -1,0 +1,25 @@
+
+  GNU   ,-----.
+ +------|      \     gEDA
+        |       |--------+
+ +------|      /
+  EDA   `-----'
+         7408
+
+GNU Electronic Design Automation
+------------------------------------------------------------------------------
+
+This the ftp dist directory for gEDA.  Here you will find latest releases
+and any files related to gEDA.
+
+Homepage: http://www.geda.seul.org
+Ftp site: ftp://ftp.geda.seul.org/pub/geda
+
+************************* IMPORTANT *************************
+
+Please note, gEDA works best with gtk+ 1.0.x
+NEW: There is ALPHA support for gtk+ 1.1.x, be sure to e-mail 
+ahvezda@geda.seul.org with any gtk+/gEDA problems 
+
+************************* IMPORTANT *************************
+

@@ -1,0 +1,19 @@
+Begin3
+Title:		Apple2/Linux
+Version:	0.06
+Entered-date:	31AUG98
+Description:	Apple II+, //e emulator for X86 Linux.  Uses SVGAlib and
+		X11 (MITSHM) for graphics display.  Reads/writes standard
+		.dsk and .nib format disk images.  ROMs not included!
+Keywords:	Apple, Apple2, Emulator, SVGA
+Author:		d91a1bo@meryl.csd.uu.se (Alexander Jean-Claude Bottema)
+Maintained-by:	aculline@bbn.com (Aaron Culliney)
+Primary-site:	tsx-11.mit.edu /pub/linux/sources/usr.bin
+		190k apple2-emul-v005-linux.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/emulators
+		190k apple2-emul-v005-linux.tar.gz
+Alternate-site: ftp.apple.asimov.net /pub/apple_II/emulators/apple2-emu-linux
+		190k apple2-emul-v005-linux.tar.gz
+Platforms:	X86 Linux 2.0.x, svgalib 1.2.10+, X11R6 MITSHM
+Copying-policy:	GPL
+End

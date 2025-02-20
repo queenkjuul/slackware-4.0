@@ -1,0 +1,39 @@
+Begin3
+Title:          Resource Standard Metrics
+Version:        4.02
+Entered-date:   August 20, 1998
+
+Description:    RSM performs metrics and quality checks on C, C++ and
+    Java source code.  RSM creates reports in HTML format for ease of
+    reading on any browser for any operating system.  File names are
+    hyper-linked for simple code browsing when an error is found.
+    RSM's portability allows a company to standardize their metrics
+    collection across operating systems and languages.
+    
+    RSM performs metrics differentials between code base lines and
+    identifies which files have change (code line percent), removed
+    added and remained the same.  RSM provides productivity measures
+    for project estimation.
+
+    The product enforces style, checks for errors that compilers miss
+    and determines metrics such as Lines of Code, effective lines of
+    code, complexity, comment content, key word content, C to C++
+    compatibility.  RSM checks over 50 common problems with code that
+    compilers never identify.
+        
+    Available on any UNIX platform, Win95, NT, DOS and OS2.
+
+Keywords:       C C++ Java Source Code Quality Metrics
+Author:         m2tech@tqnet.com.com (M Squared Technologies)
+Maintained-by:  m2tech@tqnet.com
+
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/c++
+		rsm_402_1.tar.gz
+Alternate-site: http/www.tqnet.com/m2tech
+		rsm.tar.gz
+
+Platform:       Any UNIX operating system, Win95, NT, DOS, OS2
+                Any gcc compatible system
+	
+Copying-policy: Shareware Licensed Distribution
+End

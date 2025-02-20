@@ -1,0 +1,6 @@
+( cd bin ; rm -rf Mail )
+( cd bin ; ln -sf  /usr/bin/Mail Mail )
+( cd bin ; rm -rf mail )
+( cd bin ; ln -sf  /usr/bin/Mail mail )
+( cd bin ; rm -rf mailx )
+( cd bin ; ln -sf  /usr/bin/Mail mailx )

@@ -1,0 +1,20 @@
+Begin3
+Title:          tkfirewall
+Version:        0.9.0
+Entered-date:   26MAR99
+Description:    A general-purpose, category-based IP-filter configuration GUI.
+                It creates scripts containing filter configuratio lines with
+                the ipfwadm utility. Ipfwchains is _not yet_ supported (but
+                fairly simple to add). It comes with the scanner
+                "tkfirewallscan" that creates default filter configuration
+                lists by scanning the interface and routing setups. Use of the
+                scanner is optional.
+Keywords:       firewall, IP filter, ipfwadm, GUI, category, scanner
+Author:         1dabrunz@informatik.uni-hamburg.de (Olaf Dabrunz)
+Maintained-by:  1dabrunz@informatik.uni-hamburg.de (Olaf Dabrunz)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/admin/
+                52 k  tkfirewall-0.9.0.tar.gz
+                994   tkfirewall.lsm
+Platforms:      requires Tcl 8.0 and Tk 8.0 or later
+Copying-policy: GPL
+End

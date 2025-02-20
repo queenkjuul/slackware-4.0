@@ -1,0 +1,15 @@
+Begin3
+Title:            pppserver.tgz          
+Version:          0.99        
+Entered-date:     06-18-95   
+Description:      a dynamic ppp server (must have pppd)
+Keywords:         admin ISP ppp pppd dynamic ip tcp/ip
+Author:           jake@ghetto.evvinet.net (Jacob Conner) 
+Maintained-by:    jake@ghetto.evvinet.net (Jacob Conner)  
+Primary-site:     sunsite.unc.edu /pub/Linux/system/Network
+                  427.7kb pppserver.tgz
+Alternate-site:   ftp.evvinet.net /pub/ppp/pppserver.tgz
+Original-site:  
+Platform:         linux, SVR4, AIX, Solaris, SUN/OS, *NIX       
+Copying-policy:   GPL 
+End

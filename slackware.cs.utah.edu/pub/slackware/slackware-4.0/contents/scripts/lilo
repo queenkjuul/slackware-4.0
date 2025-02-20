@@ -1,0 +1,2 @@
+( cd usr/doc ; rm -rf lilo )
+( cd usr/doc ; ln -sf ../lib/lilo lilo )

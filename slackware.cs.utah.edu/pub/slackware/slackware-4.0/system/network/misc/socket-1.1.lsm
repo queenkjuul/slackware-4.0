@@ -1,0 +1,21 @@
+Begin3
+Title:			socket(1) -- TCP socketeur at shell level          
+Version:        	1.1
+Entered-date:   	19950802
+Description:		Socket is a handy utility that lets you use TCP 
+			sockets from your favorite shell by connecting stdin/
+			stdout to programs. E.g., use socket to run servers 
+			that would normally be run with inetd(8).
+
+			This is a `port' by the author for Linux, but should
+			compile on any you-nicks platform. Linux binary
+			included.
+Keywords:       	networking socket shell ip 
+Author:         	nickel@cs.tu-berlin.de (Juergen Nickelsen)
+Maintained-by:  	mark@eskimo.com (Mark R. Lindsey)
+Primary-site:   	sunsite.unc.edu /pub/Linux/system/Network/misc
+			28k	socket-1.1.tar.gz
+			1k	socket-1.1.lsm
+Platform:       	TCP/IP support on Unix
+Copying-policy: 	GNU GPL-esque
+End

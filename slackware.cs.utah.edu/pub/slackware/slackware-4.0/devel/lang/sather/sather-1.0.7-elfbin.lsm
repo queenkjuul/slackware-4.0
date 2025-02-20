@@ -1,0 +1,21 @@
+Begin3
+Title:          Sather compiler
+Version:        1.0.7
+Entered-date:   13Sep95
+Description:    This is the sather 1.0.7 compiler compiled for elf with
+                a few modifications done by me.
+Keywords:       sather elf compiler 
+Author:         David Stoutamire
+                International Computer Science Institute
+                1947 Center St., Suite 600
+                Berkeley, CA  94704
+                USA     
+Maintained-by:  Not me.  Him.  I'm just providing a compiled version
+                because it takes ~40megs of virtual memory to compile
+                the compiler.
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/devel/lang/sather
+Original-site:  ftp://icsi.berkeley.edu/pub/sather
+Platform:       linux elf
+Copying-policy: Sather Library General Public License
+                Seems to be a modified LGPL.
+End     

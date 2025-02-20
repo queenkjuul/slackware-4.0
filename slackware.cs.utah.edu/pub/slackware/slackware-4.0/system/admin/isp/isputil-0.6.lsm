@@ -1,0 +1,20 @@
+Begin3
+Title:		ISPutil
+Version:        0.6
+Entered-date:   15Sep96
+Description:	Internet Service Provider utilities.
+		Provides purchase and sale of online months and hours,
+		uses ACUA package (v1.14) to enforce timelimits,
+		requires WWWutil package for related web stuff, also
+		QDDB for Clients database.
+Keywords:       ISP, Service Provider, Admin, User, User Admin
+Author:         markm@knotwork.com (Mark Metson)
+Maintained-by:  isputil@knotwork.com (ISPutil mailing list)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Admin
+		125K isputil-0.6.tgz
+		/pub/Linux/system/Admin/isputil-0.6.tgz
+Alternate-site: 
+Original-site:  people.kayhay.com/pub/linux/distrib/kip?/isputil.tgz
+		125K isputil.tgz
+Copying-policy: GPL
+End

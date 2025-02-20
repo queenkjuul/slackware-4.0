@@ -1,0 +1,4356 @@
+  Linux Hardware Compatibility HOWTO
+  Patrick Reijnen, <antispam.patrickr@antispam.bart.nl (remove
+  "antispam")>
+  v98.3, 30 July 1998
+
+  This document lists most of the hardware supported by Linux and helps
+  you locate any necessary drivers.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  1. Introduction
+
+     1.1 Welcome
+     1.2 Copyright
+     1.3 System architectures
+
+  2. Computers/Motherboards/BIOS
+
+     2.1 Specific systems
+     2.2 Unsupported
+
+  3. Laptops
+
+     3.1 Specific laptops
+     3.2 PCMCIA
+
+  4. CPU/FPU
+
+  5. Memory
+
+  6. Video cards
+
+     6.1 Diamond video cards
+     6.2 SVGALIB (graphics for console)
+     6.3 XFree86 3.3.2
+        6.3.1 Accelerated
+        6.3.2 Unaccelerated
+        6.3.3 Monochrome
+        6.3.4 Others
+     6.4 S.u.S.E. X-Server
+     6.5 Commercial X servers
+        6.5.1 Xi Graphics, Inc
+        6.5.2 Metro-X 4.3
+
+  7. Controllers (hard drive)
+
+  8. Controllers (SCSI)
+
+     8.1 Supported
+     8.2 Others
+     8.3 Unsupported
+
+  9. Controllers (I/O)
+
+  10. Controllers (multiport)
+
+     10.1 Non-intelligent cards
+        10.1.1 Supported
+     10.2 Intelligent cards
+        10.2.1 Supported
+        10.2.2 Others
+
+  11. Network adapters
+
+     11.1 Supported
+        11.1.1 Ethernet
+        11.1.2 ISDN
+        11.1.3 Pocket and portable adapters
+        11.1.4 Slotless
+        11.1.5 ARCnet
+        11.1.6 TokenRing
+        11.1.7 FDDI
+        11.1.8 Amateur radio (AX.25)
+        11.1.9 PCMCIA cards
+     11.2 Others
+        11.2.1 Ethernet
+        11.2.2 ISDN
+        11.2.3 ATM
+        11.2.4 Frame Relay
+        11.2.5 Wireless
+     11.3 Unsupported
+
+  12. Sound cards
+
+     12.1 Supported
+     12.2 Others
+     12.3 Unsupported
+
+  13. Hard drives
+
+     13.1 Unsupported
+
+  14. Tape drives
+
+     14.1 Supported
+     14.2 Others
+     14.3 Unsupported
+
+  15. CD-ROM drives
+
+     15.1 Supported
+     15.2 Others
+     15.3 Notes
+
+  16. CD-Writers
+
+  17. Removable drives
+
+  18. Mice
+
+     18.1 Supported
+     18.2 Others
+     18.3 Notes
+
+  19. Modems
+
+  20. Printers/Plotters
+
+     20.1 Ghostscript
+        20.1.1 Ghostscript supported printers
+        20.1.2 Others
+
+  21. Scanners
+
+     21.1 Supported
+     21.2 Others
+     21.3 Unsupported
+
+  22. Other hardware
+
+     22.1 Amateur Radio
+     22.2 VESA Power Savings Protocol (DPMS) monitors
+     22.3 Touch screens
+     22.4 Terminals on serial port
+     22.5 Joysticks
+     22.6 Video capture boards / Frame Grabbers / TV tuner
+     22.7 Digital Camera
+     22.8 UPS
+     22.9 Multifunction boards
+     22.10 Data acquisition
+     22.11 Watchdog timer interfaces
+     22.12 Miscellaneous
+  23. Related sources of information
+
+  24. Acknowledgments
+
+  25. Appendix A. S3 cards supported by XFree86 3.3.1.
+
+  26. Appendix B. Supported PCMCIA cards
+
+     26.1 Ethernet cards
+     26.2 Fast Ethernet (10/100baseT) adapters
+     26.3 Token-ring adapters
+     26.4 Wireless network adapters
+     26.5 ISDN
+     26.6 Modem and serial cards
+     26.7 Memory cards
+     26.8 SCSI adapters
+     26.9 ATA/IDE CD-ROM adapters
+     26.10 Multifunction cards
+     26.11 ATA/IDE card drives
+     26.12 Miscellaneous cards
+     26.13 Cards with separately distributed drivers
+     26.14 Working on ...
+     26.15 Unsupported
+
+  27. Appendix C. Plug and Play devices
+
+  28. Appendix D. Linux incompatible Hardware
+
+  29. Glossary
+
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+
+  NOTE: Great news: HP Deskjet 720, 820 and 1000 series printers are
+  supported under Linux. Have a look at
+  <http://www.rpi.edu/~normat/technical/ppa>
+
+
+  1.1.  Welcome
+
+  Welcome to the Linux Hardware Compatibility HOWTO. This document lists
+  most of the hardware components (not computers with components build
+  in) supported by Linux, so reading through this document you can
+  choose the components for your own Linux computer. As the list of
+  components supported by Linux is growing rapidly, this document will
+  never be complete. So, when components are not mentioned in this
+  HOWTO, the only reason will be that I don't know they are supported. I
+  simply have not found support for the component and/or nobody has told
+  me about support.
+
+  Subsections titled Others list hardware with alpha or beta drivers in
+  varying degrees of usability or other drivers that aren't included in
+  standard kernels. Note that some drivers only exist in alpha kernels,
+  so if you see something listed as supported but isn't in your version
+  of the Linux kernel, upgrade.
+
+  The latest version of this document can be found on
+  <http://users.bart.nl/~patrickr/hardware-howto/Hardware-HOWTO.html>,
+  SunSite and all the usual mirror sites. Translations of this and other
+  Linux HOWTO's can be found at
+  <http://sunsite.unc.edu/pub/Linux/docs/HOWTO/translations> and
+  <ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO/translations>.
+  If you know of any Linux hardware (in)compatibilities not listed here
+  please let me know, just send mail.
+
+  Still need some help selecting components after reading this document?
+  Check the "Build Your Own PC" site at  <http://www.verinet.com/pc/>.
+
+
+
+  1.2.  Copyright
+
+  Copyright 1997, 1998 Patrick Reijnen
+
+  This HOWTO is free documentation; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License as
+  published by the Free software Foundation; either version 2 of the
+  license, or (at your option) any later version.
+
+  This document is distributed in the hope that it will be useful, but
+  without any warranty; without even the implied warranty of
+  merchantability or fitness for a particular purpose. See the GNU
+  General Public License for more details.  You can obtain a copy of the
+  GNU General Public License by writing to the Free Software
+  Foundation,, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+  If you use this or any other Linux HOWTO's in a commercial
+  distribution, it would be nice to send the authors a complimentary
+  copy of your product.
+
+
+  1.3.  System architectures
+
+  This document only deals with Linux for Intel platforms, for other
+  platforms check the following:
+
+  ·  ARM Linux
+     <http://www.arm.uk.linux.org/~rmk92/armlinux.html>
+
+  ·  Linux/68k
+
+  ·  Linux/8086
+     <http://www.linux.org.uk/Linux8086.html>
+
+  ·  Linux/Alpha
+     <http://www.azstarnet.com/~axplinux/>
+
+  ·  Linux/MIPS
+     <http://www.fnet.fr/linux-mips/>
+
+  ·  Linux/PowerPC
+     <http://www.linuxppc.org/>
+
+  ·  Linux for Acorn
+     <http://www.ph.kcl.ac.uk/~amb/linux.html>
+
+  ·  Linux for PowerMac
+     <http://ftp.sunet.se/pub/os/Linux/mklinux/mkarchive/info/index.html>
+
+
+  2.  Computers/Motherboards/BIOS
+
+  ISA, VLB, EISA, and PCI buses are all supported.
+
+  PS/2 and Microchannel (MCA) is supported in the standard kernel 2.0.7.
+  There is support for MCA in kernel 2.1.16 and newer, but this code is
+  still a little buggy. For more information you can always look at the
+  Micro Channel Linux Home Page ( <http://glycerine.itsmm.uni.edu/mca/>)
+  2.1.  Specific systems
+
+
+  ·  IBM PS/2 MCA systems
+     <ftp://ftp.dcrl.nd.edu/pub/misc/linux/>
+
+  ·  EFA E5TX-AT motherboard has a solvable problem with RedHat Linux
+     5.0 and possibly other versions of Linux. It spontaneously reboots
+     while probing hardware. To solve, update BIOS to version 1.01. Get
+     the BIOS update at
+     <http://www.efacorp.com/download/Motherboard/e5tx101.exe>.
+
+  Many new PCI boards are causing a couple of failure messages during
+  boot time when "Probing PCI Hardware". The procedure presents the
+  folowing message
+
+
+      Warning : Unknown PCI device (8086:7100).  Please read include/linux/pci.h
+
+
+
+  It tells you to read the pci.h file. From this file is the following
+  quote
+
+
+           PROCEDURE TO REPORT NEW PCI DEVICES
+      We are trying to collect information on new PCI devices, using
+      the standard PCI identification procedure. If some warning is
+      displayed at boot time, please report
+           - /proc/pci
+           - your exact hardware description. Try to find out
+             which device is unknown. It may be you mainboard chipset.
+             PCI-CPU bridge or PCI-ISA bridge.
+           - If you can't find the actual information in your hardware
+             booklet, try to read the references of the chip on the board.
+           - Send all that to linux-pcisupport@cao-vlsi.ibp.fr,
+             and I'll add your device to the list as soon as possible
+
+      BEFORE you send a mail, please check the latest linux releases
+      to be sure it has not been recently added.
+
+             Thanks
+                   Frederic Potter.
+
+
+
+  Normally spoken you motherboard and the unknown PCI devices will
+  function correctly.
+
+
+  2.2.  Unsupported
+
+
+  ·  Supermicro P5MMA with BIOS versions 1.36, 1.37 and 1.4. Linux will
+     not boot on this motherboard. A new (beta) release of the BIOS
+     which makes Linux boot, is available at
+     <ftp.supermicro.com/mma9051.zip>
+
+  ·  Supermicro P5MMA98. Linux will not boot on this motherboard. A new
+     (beta) release of the BIOS which makes Linux boot, is available at
+     <ftp.supermicro.com/a98905.zip>?
+
+  ·  DataExpert Corp. ExpertColor TX531 V1.0 motherboard with chipset
+     ACER M1531 (Date: 9729, TS6) and ACER M1543 (Date: 9732 TS6) seems
+     not reproducible segmentations faults, kernel oops and kernel hangs
+     under heavy load and tape access. The problem seems to be the PCI-
+     bus, respectively the ACER chipset.
+
+
+  3.  Laptops
+
+  For more information about Linux and laptops, the following site is a
+  good starting point.
+
+  ·  Linux Laptop Homepage
+     <http://www.cs.utexas.edu/users/kharker/linux-laptop/>
+
+  Other information related to laptops can be found at the following
+  sites:
+
+
+  ·  Avanced Power Management
+     <ftp://ftp.cs.unc.edu/pub/users/faith/linux/>
+
+  ·  Notebook battery status
+     <ftp://sunsite.unc.edu/pub/Linux/system/power/>
+
+  ·  non-blinking cursor
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/console/noblink-1.7.tar.gz>
+
+  ·  other general info
+     <ftp://tsx-11.mit.edu/pub/linux/packages/laptops/>
+
+
+  3.1.  Specific laptops
+
+
+  ·  Compaq Concerto (pen driver)
+     <http://www.cs.nmsu.edu/~pfeiffer/>
+
+  ·  Compaq Contura Aero
+     <http://domen.uninett.no/~hta/linux/aero-faq.html>
+
+  ·  IBM ThinkPad
+     <http://peipa.essex.ac.uk/tp-linux/tp-linux.html>
+
+  ·  NEC Versa M and P
+     <http://www.santafe.edu:80/~nelson/versa-linux/>
+
+  ·  Tadpole P1000
+     <http://www.tadpole.com/Support/linux.html>
+
+  ·  Tadpole P1000 (another one)
+
+  ·  TI TravelMate 4000M
+     <ftp://ftp.biomath.jussieu.fr/pub/linux/TM4000M-mini-HOWTO.txt.Z>
+
+  ·  TI TravelMate 5100
+
+  ·  Toshiba Satellite Pro 400CDT
+     <http://terra.mpikg-teltow.mpg.de/~burger/T400CDT-Linux.html>
+
+
+  3.2.  PCMCIA
+
+
+  ·  PCMCIA
+     <http://hyper.stanford.edu/HyperNews/get/pcmcia/home.html>
+
+  PCMCIA drivers currently support all common PCMCIA controllers,
+  including Databook TCIC/2, Intel i82365SL, Cirrus PD67xx, and Vadem
+  VG-468 chipsets.  Motorola 6AHC05GA controller used in some Hyundai
+  laptops is not supported.  See Appendix B for a list of supported
+  PCMCIA cards.
+
+
+
+  4.  CPU/FPU
+
+  Intel/AMD/Cyrix 386SX/DX/SL/DXL/SLC, 486SX/DX/SL/SX2/DX2/DX4 are
+  supported. Intel Pentium, Pentium Pro and Pentium II (basically it's a
+  Pentium Pro with MMX) also work. AMD K5 and K6 work good, although
+  older versions of K6 should be avoided as they are buggy. Setting
+  "internal cache" disabled in bios setup can be a workaround.
+
+  Also IDT Winchip C6-PSME2006A processors are supported under Linux.
+
+  Linux has built-in FPU emulation if you don't have a math coprocessor.
+
+  Experimental SMP (multiple CPU) support is included in kernel 1.3.31
+  and newer. Check the Linux/SMP Project page for details and updates.
+
+  ·  Linux/SMP Project
+     <http://www.linux.org.uk/SMP/title.html>
+
+  A few very early AMD 486DX's may hang in some special situations. All
+  current chips should be okay and getting a chip swap for old CPU's
+  should not be a problem.
+
+  ULSI Math*Co series has a bug in the FSAVE and FRSTOR instructions
+  that causes problems with all protected mode operating systems. Some
+  older IIT and Cyrix chips may also have this problem.
+
+  There are problems with TLB flushing in UMC U5S chips in very old
+  kernels. (1.1.x)
+
+
+  ·  enable cache on Cyrix processors
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/CxPatch030.tar.z>
+
+  ·  Cyrix software cache control
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/linux.cxpatch>
+
+  ·  Cyrix 5x86 CPU register settings
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/cx5x86mod_1.0c.tgz>
+
+
+  5.  Memory
+
+  All memory like DRAM, EDO and SDRAM can be used with Linux. There is
+  one thing you have to look at: normally the kernel is not supporting
+  more than 64 Mb of memory. When you add more than 64 Mb of memory you
+  have to add the following line to your LILO configuration file.
+
+
+     append="mem=<number of Mb>M"
+
+
+
+  So, when you have 96 Mb of memory this should become
+
+
+     append="mem=96M"
+
+
+
+  Don't type a number higher than the number Mb you really have. This
+  can present unpredictable crashes.
+  6.  Video cards
+
+  Linux will work with all video cards in text mode, VGA cards not
+  listed below probably will still work with mono VGA and/or standard
+  VGA drivers.
+
+  If you're looking into buying a cheap video card to run X, keep in
+  mind that accelerated cards (ATI Mach, ET4000/W32p, S3) are MUCH
+  faster than unaccelerated or partially accelerated (Cirrus, WD) cards.
+
+  ``32 bpp'' is actually 24 bit color aligned on 32 bit boundaries. It
+  does NOT mean the cards are capable of 32 bit color, they still
+  display 24 bit color (16,777,216 colors). 24 bit packed pixels modes
+  are not supported in XFree86, so cards that can do 24 bit modes to get
+  higher resolutions in other OS's are not able to do this in X using
+  XFree86. These cards include Mach32, Cirrus 542x, S3 801/805/868/968,
+  ET4000, and others.
+
+  AGP (Accelerated Graphics Port) support is growing fast. Most of the
+  X-servers (both freely available and commercial versions) have more or
+  less support for AGP.
+
+
+  6.1.  Diamond video cards
+
+  Most currently available Diamond cards ARE supported by the current
+  release of XFree86. Early Diamond cards may not be officially
+  supported by XFree86, but there are ways of getting them to work.
+  Diamond is now actively supporting the XFree86 Project.
+
+
+  6.2.  SVGALIB (graphics for console)
+
+
+  ·  VGA
+
+  ·  EGA
+
+  ·  ARK Logic ARK1000PV/2000PV
+
+  ·  ATI VGA Wonder
+
+  ·  ATI Mach32
+
+  ·  Cirrus 542x, 543x
+
+  ·  OAK OTI-037/67/77/87
+
+  ·  S3 (limited support)
+
+  ·  Trident TVGA8900/9000
+
+  ·  Tseng ET3000/ET4000/W32
+
+
+  6.3.  XFree86 3.3.2
+
+
+
+  6.3.1.  Accelerated
+
+
+  ·  ARK Logic ARK1000PV/VL, ARK2000PV/MT
+
+  ·  ATI Mach8
+
+  ·  ATI Mach32 (16 bpp supported for cards with RAMDAC ATI68875,
+     AT&T20C49x, BT481 and 2Mb video ram)
+
+  ·  ATI Mach64 (16/32 bpp supported for cards with RAMDAC ATI68860,
+     ATI68875, CH8398, STG1702, STG1703, AT&T20C408, 3D Rage II,
+     internal, IBM RGB514)
+
+  ·  Chips & Technologies 64200, 64300, 65520, 65525, 65530, 65535,
+     65540, 65545, 65546, 65548, 65550, 65554
+
+  ·  Cirrus Logic 5420, 542x/5430 (16 bpp), 5434 (16/32 bpp), 5436,
+     544x, 546x, 5480, 62x5, 754x
+
+  ·  Diamond Viper 330
+
+  ·  Gemini P1 (ET6000 chip)
+
+  ·  IBM 8514/A
+
+  ·  IBM XGA-I, XGA-II
+
+  ·  IIT AGX-010/014/015/016 (16 bpp)
+
+  ·  Matrox MGA2064W (Millennium)
+
+  ·  Matrox MGA1064SG (Mystique)
+
+  ·  Number Nine Imagine I128
+
+  ·  Oak OTI-087
+
+  ·  S3 732 (Trio32), 764 (Trio64), Trio64V+, 801, 805, 864, 866, 868,
+     86C325 (ViRGE), 86C375 (ViRGE/DX), 86C385 (ViRGE/GX), 86C988
+     (ViRGE/VX), 911, 924, 928, 964, 968
+
+  ·  see Appendix A for list of supported S3 cards
+
+  ·  SiS 86c201, 86c202, 86c205
+
+  ·  Trident 9440, 96xx, Cyber938x
+
+  ·  Tseng ET4000/W32/W32i/W32p, ET6000
+
+  ·  Weitek P9000 (16/32 bpp)
+
+  ·  Diamond Viper VLB/PCI
+
+  ·  Orchid P9000
+
+  ·  Western Digital WD90C24/24A/24A2/31/33
+
+
+  6.3.2.  Unaccelerated
+
+
+  ·  Alliance AP6422, AT24
+
+  ·  ATI VGA Wonder series
+
+  ·  Avance Logic AL2101/2228/2301/2302/2308/2401
+
+  ·  Cirrus Logic 6420/6440, 7555
+
+  ·  Compaq AVGA
+
+
+  ·  DEC 21030
+
+  ·  Genoa GVGA
+
+  ·  MCGA (320x200)
+
+  ·  MX MX68000/MX68010
+
+  ·  NCR 77C22, 77C22E, 77C22E+
+
+  ·  NVidia NV1
+
+  ·  Oak OTI-037C, OTI-067, OTI-077
+
+  ·  RealTek RTG3106
+
+  ·  SGS-Thomson STG2000
+
+  ·  Trident 8800CS, 8200LX, 8900x, 9000, 9000i, 9100B, 9200CXr,
+     9320LCD, 9400CXi, 9420, 9420DGi, 9430DGi
+
+  ·  Tseng ET3000, ET4000AX
+
+  ·  VGA (standard VGA, 4 bit, slow)
+
+  ·  Video 7 / Headland Technologies HT216-32
+
+  ·  Western Digital/Paradise PVGA1, WD90C00/10/11/30
+
+
+  6.3.3.  Monochrome
+
+
+  ·  Hercules mono
+
+  ·  Hyundai HGC-1280
+
+  ·  Sigma LaserView PLUS
+
+  ·  VGA mono
+
+
+  6.3.4.  Others
+
+
+  ·  EGA (ancient, from c. 1992)
+     <ftp://ftp.funet.fi/pub/Linux/BETA/Xega/>
+
+
+  6.4.  S.u.S.E. X-Server
+
+  S.u.S.E. is building a serie of X-servers based on the XFree-86 code.
+  These X-servers support new video cards and are bug fixe releases for
+  XFree86 X-servers. S.u.S.E is building these X-servers together with
+  The XFree86 Project, Inc. These X-Servers will be in the next XFree86
+  version. These X-servers can be found at
+  <http://www.suse.de/index.html>. At this moment S.u.S.E. X-Servers are
+  available for the following video cards.
+
+
+  ·  XSuSE Elsa GLoria X-Server
+
+  ·  ELSA GLoria L, GLoria L/MX, Gloria S
+
+  ·  Video cards with the Alliance Semiconductor AT3D (also AT25) Chip
+
+  ·  Hercules Stingray 128 3D
+
+  ·  XSuSE NVidia X-Server (PCI and AGP support, NV1 chipset and
+     Riva128)
+
+  ·  ASUS 3Dexplorer
+
+  ·  Diamond Viper 330
+
+  ·  ELSA VICTORY Erazor
+
+  ·  STB Velocity 128
+
+  ·  XSuSE Matrox. Support for Mystique, Millennium, Millennium II and
+     Millennium II AGP
+
+  ·  XSuSE Trident. Support for the 9685 (including ClearTV) and the
+     latest Cyber chipset
+
+  ·  XSuSE Tseng. W32, W32i ET6100 and ET6300 support.
+
+
+  6.5.  Commercial X servers
+
+  Commercial X servers provide support for cards not supported by
+  XFree86, and might give better performances for cards that are
+  supported by XFree86. In general they support many more cards than
+  XFree86, so I'll onlys list cards that aren't supported by XFree86
+  here. Contact the vendors directly or check the Commercial HOWTO for
+  more info.
+
+
+  6.5.1.  Xi Graphics, Inc
+
+
+  Xi Graphics, Inc  <http://www.xig.com> (formerly known as X Inside,
+  Inc) is selling three X server products (cards supported are sorted by
+  manufacturer):
+
+
+  ·  Accelerated-X Display Server
+
+  ·  3Dlabs
+
+  ·  300SX
+
+  ·  500TX Glint
+
+  ·  500MX Glint
+
+  ·  Permedia 4MB/8MB
+
+  ·  Permedia II 4MB/8MB
+
+  ·  Actix
+
+  ·  GE32plus 1MB/2MB
+
+  ·  GE32ultra 2MB
+
+  ·  GraphicsENGINE 64 1MB/2MB
+
+  ·  ProSTAR 64 1MB/2MB
+
+  ·  Alliance
+
+  ·  ProMotion-3210 1MB/2MB
+
+  ·  ProMotion-6410 1MB/2MB
+
+  ·  ProMotion-6422 1MB/2MB
+
+  ·  ARK Logic
+
+  ·  ARK1000PV 1MB/2MB
+
+  ·  ARK1000VL 1MB/2MB
+
+  ·  ARK2000PV 1MB/2MB
+
+  ·  AST
+
+  ·  Manhattan 5090P (GD5424) 512KB
+
+  ·  ATI
+
+  ·  3D Xpression 1MB/2MB
+
+  ·  3D Pro Turbo PC2TV 4MB/8MB
+
+  ·  3D Pro Turbo PC2TV 6144
+
+  ·  3D Xpression+ PC2TV 2MB/4MB
+
+  ·  3D Xpression+ 2MB/4MB
+
+  ·  ALL-IN-WONDER 4MB/8MB
+
+  ·  ALL-IN-WONDER PRO 4MB/8MB
+
+  ·  Graphics Ultra (Mach8) 1MB
+
+  ·  Graphics Pro Turbo (Mach64/VRAM) 2MB/4MB
+
+  ·  Graphics Pro Turbo 1600 (Mach64/VRAM) 2MB/4MB
+
+  ·  Graphics Ultra Plus (Mach32) 2MB
+
+  ·  8514/Ultra (Mach8) 1MB
+
+  ·  Graphics Ultra Pro (Mach32) 1MB2MB
+
+  ·  Graphics Vantage (Mach8) 1MB
+
+  ·  VGA Wonder Plus 512KB
+
+  ·  VGA Wonder XL 1MB
+
+  ·  Video Xpression 1MB
+
+  ·  XPERT@Play 4MB/6MB/8MB
+
+  ·  XPERT@Work 4MB/6Mb/8MB
+
+  ·  Video Xpression 2MB
+
+  ·  WinBoost (Mach64/DRAM) 2MB
+
+  ·  WinTurbo (Mach64/VRAM) 2MB
+
+  ·  Graphics Wonder (Mach32) 1MB
+
+  ·  Graphics Xpression 1MB/2MB
+
+  ·  Rage II (SGRAM) 2MB/4MB/8MB
+
+  ·  Rage II+ (SGRAM) 2MB/4MB/8MB
+
+  ·  Rage Pro 2MB/4MB/8MB
+
+  ·  Avance Logic
+
+  ·  ALG2101 1MB
+
+  ·  ALG2228 1MB/2MB
+
+  ·  ALG2301 1MB/2MB
+
+  ·  Boca
+
+  ·  Voyager 1MB/2MB
+
+  ·  Vortek-VL 1MB/2MB
+
+  ·  Colorgraphic
+
+  ·  Dual Lightning 2MB
+
+  ·  Pro Lightning Accelerator 2MB
+
+  ·  Quad Pro Lightning Accelerator 2MB
+
+  ·  Twin Turbo Accelerator 1MB/2MB
+
+  ·  Chips & Technology
+
+  ·  64300 1MB/2MB
+
+  ·  64310 1MB/2MB
+
+  ·  65510 512KB
+
+  ·  65520 1MB
+
+  ·  65530 1MB
+
+  ·  65535 1MB
+
+  ·  65540 1MB
+
+  ·  65545 1MB
+
+  ·  65550 2MB
+
+  ·  82C450 512KB
+
+  ·  82C451 256KB
+
+  ·  82C452 512KB
+
+  ·  82C453 1MB
+
+  ·  82C480 1MB/2MB
+
+  ·  82C481 1MB/2MB
+
+  ·  Cirrus Logic
+
+  ·  GD5402 512KB
+
+  ·  GD5420 1MB
+
+  ·  GD5422 1MB
+
+  ·  GD5424 1MB
+
+  ·  GD5426 1MB/2MB
+
+  ·  GD5428 1MB/2MB
+
+  ·  GD5429 1MB/2MB
+
+  ·  GD5430 1MB/2MB
+
+  ·  GD5434 1MB/2MB
+
+  ·  GD5436 1MB/2MB
+
+  ·  GD5440 1MB/2MB
+
+  ·  GD5446 1MB/2MB
+
+  ·  GD5462 2MB/4MB PCI and AGP
+
+  ·  GD5464 2MB/4MB PCI and AGP
+
+  ·  GD5465 2MB/4MB PCI and AGP
+
+  ·  GD54M30 1MB/2MB
+
+  ·  GD54M40 1MB/2MB
+
+  ·  Compaq
+
+  ·  ProLiant Series 512KB
+
+  ·  ProSignia Series 512KB
+
+  ·  QVision 1024 1MB
+
+  ·  QVision 1280 1MB/2MB
+
+  ·  QVision 2000+ 2MB
+
+  ·  QVision 2000 2MB
+
+  ·  DEC
+
+  ·  DECpc XL 590 (GD5428) 512KB
+
+  ·  Dell
+
+  ·  466/M & 466/ME (S3 805) 1MB
+
+  ·  OnBoard ET4000 1MB
+
+  ·  DGX (JAWS) 2MB
+
+  ·  OptiPlex XMT 590 (Vision864) 2MB
+
+  ·  Diamond
+
+  ·  Fire GL 1000 Pro 4MB/8MB
+
+  ·  Fire GL 1000 4MB/8Mb
+
+  ·  Stealth 3D 2000 2MB/4MB
+
+  ·  Stealth 3D 3000XL 2MB/4MB
+
+  ·  Stealth 64 Graphics 2001 1MB/2MB
+
+  ·  Stealth 64 Graphics 2121XL 1MB/2MB
+
+  ·  Stealth 64 Graphics 2201XL 2MB
+
+  ·  SpeedStar 1MB
+
+  ·  SpeedStar 64 Graphics 2000 1MB/2MB
+
+  ·  SpeedStar 24 1MB
+
+  ·  SpeedStar 24X 1MB
+
+  ·  SpeedStar 64 1MB/2MB
+
+  ·  SpeedStar Hicolor 1MB
+
+  ·  SpeedStar PCI 1MB
+
+  ·  SpeedStar Pro 1MB
+
+  ·  SpeedStar Pro SE 1MB/2MB
+
+  ·  Stealth 1MB
+
+  ·  Stealth 24 1MB
+
+  ·  Stealth 32 1MB/2MB
+
+  ·  Stealth 64 VRAM 2MB/4MB
+
+  ·  Stealth 64 DRAM 1MB/2MB
+
+  ·  Stealth 64 Video VRAM (175MHz) 2MB/4MB
+
+  ·  Stealth 64 Video DRAM 1MB/2MB
+
+  ·  Stealth 64 Video VRAM (220MHz) 2MB/4MB
+
+  ·  Stealth Hicolor 1MB
+
+  ·  Stealth Pro 1MB/2MB
+
+  ·  Stealth SE 1MB/2MB
+
+  ·  Stealth 64 Video 2001TV 2MB
+
+  ·  Stealth 64 Video 2121 1MB/2MB
+
+  ·  Stealth 64 Video 2121TV 1MB/2MB
+
+  ·  Stealth 64 Video 2201 2MB
+
+  ·  Stealth 64 Video 2201TV 2MB
+
+  ·  Stealth 64 Video 3200 2MB
+
+  ·  Stealth 64 Video 3240 2MB/4MB
+
+  ·  Stealth 64 Video 3400 4MB
+
+  ·  Viper 1MB/2MB
+
+  ·  Viper Pro 2MB
+
+  ·  Viper Pro Video 2MB/4MB
+
+  ·  Viper SE 2MB/4MB
+
+  ·  ELSA
+
+  ·  VICTORY 3D 2MB/4MB
+
+  ·  WINNER 1000 1MB/2MB
+
+  ·  WINNER 1000AVI 1MB/2MB
+
+  ·  WINNER 1000ISA 1MB/2MB
+
+  ·  WINNER 1000PRO 1MB/2MB
+
+  ·  WINNER 1000TRIO 1MB/2MB
+
+  ·  WINNER 1000TRIO/V 1MB/2MB
+
+  ·  WINNER 100VL 1MB
+
+  ·  WINNER 2000 2MB/4MB
+
+  ·  WINNER 2000AVI 2MB/4MB
+
+  ·  WINNER 2000AVI/3D 2MB/4MB
+
+  ·  WINNER 2000PRO 2MB/4MB
+
+  ·  WINNER 2000PRO/X 2MB/4MB/8MB
+
+  ·  WINNER3000-L 4MB
+
+  ·  WINNER3000-M 2MB
+
+  ·  WINNER3000-S 2MB
+
+  ·  WINNER 1024 1MB
+
+  ·  WINNER 1280, TLC34075 Palette 2MB
+
+  ·  WINNER 1280, TLC34076 Palette 2MB
+
+  ·  Gloria-XL
+
+  ·  Gloria-MX
+
+  ·  Gloria-L
+
+  ·  Synergy
+
+  ·  Everex
+
+  ·  ViewPoint 64P 1MB/2MB
+
+  ·  VGA Trio 64P 1MB/2MB
+
+  ·  Gateway
+
+  ·  Mach64 Accelerator (Mach64/VRAM) 2MB
+
+  ·  Genoa
+
+  ·  5400 512KB
+
+  ·  8500/8500VL 1MB
+
+  ·  Phantom 32i 8900 2MB
+
+  ·  Phantom 64 2MB
+
+  ·  Hercules
+
+  ·  Dynamite 1MB
+
+  ·  Dynamite Pro 1MB/2MB
+
+  ·  Dynamite Power 2MB
+
+  ·  Dynamite 3D / GL
+
+  ·  Graphite 1MB
+
+  ·  Stingray 64 1MB/2MB
+
+  ·  Stingray Pro 1MB/2MB
+
+  ·  Stringray 1MB
+
+  ·  Terminator 3D 2MB/4MB
+
+  ·  Terminator 64/Video 2MB
+
+  ·  Graphite Terminator Pro 2MB/4MB
+
+  ·  HP
+
+  ·  NetServer LF/LC/LE (TVGA9000i) 512KB
+
+  ·  Vectra VL2 (GD5428) 1MB
+
+  ·  Vectra XM2i (Vision864) 1MB/2MB
+
+  ·  Vectra XU (Vision864) 1MB/2MB
+
+  ·  IBM
+
+  ·  8514/A 1MB
+
+  ·  PC 300 Series (GD5430) 1MB
+
+  ·  PC 300 Series (Vision864) 1MB/2MB
+
+  ·  PC 700 Series (Vision864) 1MB/2MB
+
+  ·  PS/ValuePoint Performance Series (Vision864) 1MB/2MB
+
+  ·  VC550 1MB
+
+  ·  VGA 256KB
+
+  ·  XGA-NI 1MB
+
+  ·  XGA 1MB
+
+  ·  IIT
+
+  ·  AGX014 1MB
+
+  ·  AGX015 1MB/2MB
+
+  ·  Integral
+
+  ·  FlashPoint 1MB/2MB
+
+  ·  Leadtek
+
+  ·  WinFast L2300 4MB/8MB
+
+  ·  Matrox
+
+  ·  Comet 2MB
+
+  ·  Marvel II 2MB
+
+  ·  Impression (MGA-IMP/3/A/H, MGA-IMP/3/V/H, MGA-IMP/3/M/H) 3MB
+
+  ·  Impression Lite (MGA-IMP+/LTE/P) 2MB
+
+  ·  Impression Plus Lite (MGA-IMP+/LTE/V) 2MB
+
+  ·  Millennium (MGA-MIL) 2MB/4MB/8MB
+
+  ·  Millennium 220 (MGA-MIL) 2MB/4Mb/8MB
+
+  ·  Millennium PowerDoc (WRAM) 2MB/4MB/8MB
+
+  ·  Millennium II (WRAM) 2MB/4MB/8MB PCI and AGP
+
+  ·  Mystique (MGA-MYS) 2MB/4MB
+
+  ·  Mystique 220
+
+  ·  Matrox (con.t)
+
+  ·  Impression Plus (MGA-IMP+/P, MGA-IMP+/A) 2MB/4MB
+
+  ·  Impression Plus 220 (MGA-IMP+/P/H, MGA-IMP+/A/H) 2MB/4MB
+
+  ·  Impression Pro (MGA-PRO/4.5/V) 4.5MB
+
+  ·  Ultima Plus (MGA-PCI/2+, MGA-VLB/2+) 2MB/4MB
+
+  ·  Ultima (MGA-ULT/2/A, MGA-PCI/2, MGA-VLB/2) 2MB
+
+  ·  Ultima (MGA-ULT/2/A/H, MGA-ULT_2/M/H) 2MB
+
+  ·  Ultima Plus 200 (MGA-PCI/4/200, MGA-VLB/4/200) 4MB
+
+  ·  MaxVision
+
+  ·  VideoMax 2000 2MB/4MB
+
+  ·  Metheus
+
+  ·  Premier 801 1MB
+
+  ·  Premier 928-1M 1MB
+
+  ·  Premier 928-2M 2MB
+
+  ·  Premier 928-4M 4MB
+
+  ·  Micronics
+
+  ·  Mpower 4 Plus (Mach64) 1MB
+
+  ·  MIRO
+
+  ·  miroCRYSTAL 10AD 1MB
+
+  ·  miroCRYSTAL 12SD 1MB
+
+  ·  miroCRYSTAL 12SD 2MB
+
+  ·  miroCRYSTAL 20PV 2MB
+
+  ·  miroCRYSTAL 20SD 2MB
+
+  ·  miroCRYSTAL 20SV 2MB
+
+  ·  miroCRYSTAL 22SD 2MB
+
+  ·  miroCRYSTAL 40SV 4MB
+
+  ·  miroCRYSTAL VR2000 2MB/4MB
+
+  ·  miroMAGIC 40PV 4MB
+
+  ·  miroMAGIC plus 2MB
+
+  ·  miroVIDEO 12PD 1MB/2MB
+
+  ·  miroVIDEO 20SD 2MB
+
+  ·  miroVIDEO 20SV 2MB
+
+  ·  miroVIDEO 20TD 2MB
+
+  ·  miroVIDEO 22SD 2MB
+
+  ·  miroVIDEO 40SV 4MB
+
+  ·  NEC
+
+  ·  Versa P Series 1MB
+
+  ·  Nth Graphics
+
+  ·  Engine/150 2MB
+
+  ·  Engine/250 2MB
+
+  ·  Number Nine
+
+  ·  GXE Level 10, AT&T 20C491 Palette 1MB
+
+  ·  GXE Level 10, Bt485 or AT&T20C505 Palette 1MB
+
+  ·  GXE Level 11 2MB
+
+  ·  GXE Level 12 3MB
+
+  ·  GXE Level 14 4MB
+
+  ·  GXE Level 16 4MB
+
+  ·  GXE64 1MB/2MB
+
+  ·  GXE64pro 2MB/4Mb
+
+  ·  GXE64pro (-1600) 2MB/4MB
+
+  ·  Imagine 128 2MB
+
+  ·  Image 128 (-1280) 4MB
+
+  ·  Image 128 Series 2 (DRAM) 2MB/4Mb
+
+  ·  Image 128 Pro (-1600) 4MB/8MB
+
+  ·  Image 128 Series 2 (VRAM) 2MB/4MB/8MB
+
+  ·  Image 128 Series III (Revolution 3D) (WRAM) 8MB/16MB PCI and AGP
+
+  ·  Revolution 3D "Ticket to Ride" (WRAM) 8MB/16MB PCI and AGP
+
+  ·  9FX Motion331 1MB/2MB
+
+  ·  9FX Motion531 1MB/2MB
+
+  ·  9FX Motion771 2MB/4MB
+
+  ·  9FX Reality332 2MB
+
+  ·  9FX Reality772 2MB/4MB
+
+  ·  9FX Reality 334 PCI and AGP
+
+  ·  9FX Vision330 1MB/2MB
+
+  ·  Oak Technology
+
+  ·  OTI-067 512KB
+
+  ·  OTI-077 1MB
+
+  ·  OTI-087 1MB
+
+  ·  OTI-107 1MB/2MB
+
+  ·  OTI-111 1MB/2MB
+
+  ·  Orchid
+
+  ·  Farenheit 1280 Plus, ATT20C491 Palette 1MB
+
+  ·  Farenheit 1280 1MB
+
+  ·  Farenheit 1280 Plus, SC15025 Palette 1MB
+
+  ·  Farenheit ProVideo 64 2MB/4MB
+
+  ·  Farenheit Video 3D 2MB
+
+  ·  Kelvin 64 1MB/2MB
+
+  ·  Kelvin Video64 1MB/2MB
+
+  ·  P9000 2MB
+
+  ·  Packard Bell
+
+  ·  Series 5000 Motherboard 1MB
+
+  ·  Paradise
+
+  ·  8514/A 1MB
+
+  ·  Accelerator 24 1MB
+
+  ·  Accelerator Value card 1MB
+
+  ·  Bahamas 64 1MB/2MB
+
+  ·  Bali 32 1MB/2MB
+
+  ·  VGA 1024 512KB
+
+  ·  VGA Professional 512KB
+
+  ·  Pixelworks
+
+  ·  WhrilWIN WL1280 (110MHz) 2MB
+
+  ·  WhrilWIN WL1280 (135MHz) 2MB
+
+  ·  WhirlWIN WW1280 (110MHz) 2MB
+
+  ·  WhirlWIN WW1280 (135MHz) 2MB
+
+  ·  WhrilWIN WW1600 1MB
+
+     Radius
+
+  ·  XGA-2 1MB
+
+  ·  Reveal
+
+  ·  VC200 1MB
+
+  ·  VC300 1MB
+
+  ·  VC700 1MB
+
+  ·  S3
+
+  ·  ViRGE 2MB/4MB
+
+  ·  ViRGE/DX  2MB/4MB
+
+  ·  ViRGE/GX  2MB/4MB
+
+  ·  ViRGE/GX /2 2MB/4MB
+
+  ·  ViRGE/VX  2MB/4MB
+
+  ·  Trio32 1MB/2MB
+
+  ·  Trio64 1MB/2MB
+
+  ·  Trio64V+ 1MB/2MB
+
+  ·  Trio64V2/DX 1MB/2MB
+
+  ·  Trio64V2/GX 1MB/2MB
+
+  ·  801 1MB/2MB
+
+  ·  805 1MB/2MB
+
+  ·  Vision864 1MB/2MB
+
+  ·  Vision866 1MB/2MB
+
+  ·  Vision868 1MB/2MB
+
+  ·  911 1MB
+
+  ·  924 1MB
+
+  ·  928 1MB
+
+  ·  928 2MB/4MB
+
+  ·  Sierra
+
+  ·  Falcon/64 1MB/2MB
+
+  ·  Sigma
+
+  ·  Legend 1MB
+
+  ·  SPEA/V7
+
+  ·  Mercury P64 2MB
+
+  ·  Storm Pro 4MB
+
+  ·  ShowTime Plus 2MB
+
+  ·  STB
+
+  ·  Evolution VGA 1MB
+
+  ·  Horizon Plus 1MB
+
+  ·  Horizon VGA 1MB
+
+  ·  Horizon 64 1MB/2MB
+
+  ·  Horizon 64 Video 1MB/2MB
+
+  ·  Horizon Video 1MB
+
+  ·  LightSpeed 2MB
+
+  ·  LightSpeed 128 2MB
+
+  ·  Nitro 3D 2MB/4MB
+
+  ·  Nitro 64 1MB/2MB
+
+  ·  Nitro 64 Video 1MB/2MB
+
+  ·  PowerGraph VL-24 1MB
+
+  ·  PowerGraph X-24 1MB
+
+  ·  PowerGraph 64 3D 2MB
+
+  ·  PowerGraph 64 1MB/2MB
+
+  ·  PowerGraph 64 Video 1MB/2MB
+
+  ·  PowerGraph Pro 2MB
+
+  ·  Velocity 3D 4MB
+
+  ·  Velocity 64V 2MB/4MB
+
+  ·  Toshiba
+
+  ·  T4900CT 1MB
+
+  ·  Trident
+
+  ·  TGUI9400CXi 1MB/2MB
+
+  ·  TGUI9420DGi 1MB/2MB
+
+  ·  TGUI9440 1MB/2MB
+
+  ·  TGUI9660 1MB/2MB
+
+  ·  TGUI9680 1MB/2MB
+
+  ·  TVGA8900B 1MB
+
+  ·  TVGA8900C 1MB
+
+  ·  TVGA8900CL 1MB
+
+  ·  TVGA8900D 1MB
+
+  ·  TVGA9000 512KB
+
+  ·  TVGA9000i 512KB
+
+  ·  TVGA9200CXr 1MB/2MB
+
+  ·  Tseng Labs
+
+  ·  ET3000 512KB
+
+  ·  ET4000 1MB
+
+  ·  ET6000 2MB/4MB
+
+  ·  VGA/16 (ISA) 1MB
+
+  ·  VGA/16 (VLB) 1MB/2MB
+
+  ·  VGA/32 1MB/2MB
+
+  ·  ET4000/W32 1MB
+
+  ·  ET4000/W32i 1MB/2MB
+
+  ·  ET4000/W32p 1MB/2MB
+
+  ·  VLSI
+
+  ·  VL82C975 (AT&T RAMDAC) 2MB
+
+  ·  VL82C975 (BrookTree RAMDAC) 2MB
+
+  ·  VL82C976 (Internal RAMDAC) 2MB
+
+  ·  Western Digital
+
+  ·  WD90C00 512KB
+
+  ·  WD90C11 512KB
+
+  ·  WD90C24 1MB
+
+  ·  WD90C26 512KB
+
+  ·  WD90C30 1MB
+
+  ·  WD90C31 1MB
+
+  ·  WD90C33 1MB
+
+  ·  WD9510-AT 1MB
+
+  ·  Weitek
+
+  ·  P9100 2MB
+
+  ·  P9000 2MB
+
+  ·  W5186 1MB
+
+  ·  W5286 1MB
+
+
+  ·  Laptop Accelerated-X Display Server
+
+  ·  Broadax
+
+  ·  NP8700 (Cyber 9385)
+
+  ·  Chips & Technology
+
+  ·  65510 512KB
+
+  ·  65520 1MB
+
+  ·  65530 1MB
+
+  ·  65535 1MB
+
+  ·  65540 1MB
+
+  ·  65545 1MB
+
+  ·  65554 2MB/4MB
+
+  ·  65555 2MB
+
+  ·  Cirrus Logic
+
+  ·  GD7541 1MB/2MB
+
+  ·  GD7543 1MB/2MB
+
+  ·  GD7548 2MB
+
+  ·  Compaq
+
+  ·  LTE 5400 (Cirrus Logic CL5478)
+
+  ·  Presario 1090ES (NM 2093)
+
+
+  ·  Dell
+
+  ·  Latitude XPi 896 (NeoMagic 2070)
+
+  ·  Latitude XPi (NM 2070)
+
+  ·  Latitude XPi CD 1MB (NM 2090)
+
+  ·  Latitude LM (NM 2160)
+
+  ·  Latitude CP (NM 2160)
+
+  ·  Inspiron 3000 (NM 2160)
+
+  ·  Digital (DEC)
+
+  ·  HiNote VP (NeoMagic 2090)
+
+  ·  Fujitsu
+
+  ·  Lifebook 435DX (NeoMagic 2093)
+
+  ·  Gateway 2000
+
+  ·  Solo 2300 (NeoMagic 2160)
+
+  ·  Solo 2300 SE (NM 2160)
+
+  ·  Solo 9100 (C&T 65554)
+
+  ·  Solo 9100XL (C&T 65555)
+
+  ·  Hewlett Packard
+
+  ·  OmniBook 800 (NM 2093)
+
+  ·  Hitachi
+
+  ·  Notebook E133T (NeoMagic 2070)
+
+  ·  IBM
+
+  ·  VGA 256KB
+
+  ·  Thinkpad 380D (NeoMagic 2090)*
+
+  ·  Thinkpad 385ED (NeoMagic 2090)*
+
+  ·  Thinkpad 560E (Cyber 9382)
+
+  ·  Thinkpad 760XD (Cyber 9385)
+
+  ·  Thinkpad 770 (Cyber 9397)
+
+  ·  Micron
+
+  ·  TransPort XKE (NeoMagic 2160)
+
+  ·  Millenia Transport (Cirrus Logic GD7548)
+
+  ·  NEC
+
+  ·  Versa P Series 1MB
+
+  ·  Versa 6230 2MB (NeoMagic 2160)
+
+  ·  NeoMagic
+
+  ·  MagicGraph128 / NM2070 896
+
+  ·  MagicGraph128 / NM2070
+
+  ·  MagicGraph128V / NM2090
+
+  ·  MagicGraph128V+ / NM2097
+
+  ·  MagicGraph128ZV / NM2093
+
+  ·  MagicGraph128XD / NM2160
+
+  ·  Sony
+
+  ·  VAIO PCG-505 (NeoMagic 2097)
+
+  ·  Toshiba
+
+  ·  T4900CT 1MB
+
+  ·  Tecra 740CDT (C&T 65554)
+
+  ·  Trident
+
+  ·  Cyber 9397
+
+  ·  Cyber 9385
+
+  ·  Cyber 9382
+
+  ·  Twinhead
+
+  ·  Slimnote 9166TH (Cyber 9385)
+
+     * Numerous XiG customers have comfirmed support.
+
+  ·  Multi-head Accelerated-X Display Server
+
+
+  6.5.2.  Metro-X 4.3
+
+  Metro Link <sales@metrolink.com>
+
+  Supported Cards:
+
+
+  7.  Controllers (hard drive)
+
+  Linux will work with standard IDE, MFM and RLL controllers. When using
+  MFM/RLL controllers it is important to use ext2fs and the bad block
+  checking options when formatting the disk.
+
+  Enhanced IDE (EIDE) interfaces are supported. With up to two IDE
+  interfaces and up to four hard drives and/or CD-ROM drives. Linux will
+  detect these EIDE interfaces:
+
+
+  ·  CMD-640
+
+  ·  DTC 2278D
+
+  ·  FGI/Holtek HT-6560B
+
+
+
+  Graphics                                    Card Chipset
+  ATI 3D RAGE                                 3D RAGE
+  ATI 3D RAGE II                              3D RAGE II
+  ATI ALL-IN-WONDER PRO AGP                   3D RAGE PRO
+  ATI ALL-IN-WONDER PRO PCI                   3D RAGE PRO
+  ATI Graphics Pro Turbo                      Mach64
+  ATI Graphics Ultra                          Mach8
+  ATI Graphics Xpression                      Mach64
+  ATI Mach32                                  Mach32
+  ATI Mach64                                  Mach64
+  ATI VGA STEREO-F/X                          ATI 28800
+  ATI Winturbo PCI                            Mach64
+  ATI XPERT@Play                              3D RAGE PRO
+  ATI XPERT@Play AGP                          3D RAGE PRO
+  ATI XPERT@Work                              3D RAGE PRO
+  ATI XPERT@Work AGP                          3D RAGE PRO
+  Diamond Fire GL 1000Pro                     PERMEDIA 2
+  Diamond SpeedStar 24X                       Western Digital 90C31
+  Diamond SpeedStar Pro SE                    Cirrus 5430
+  Diamond Stealth 24                          S3 801
+  Diamond Stealth 32                          ET4000/W32p
+  Diamond Stealth 3D 2000                     S3 ViRGE
+  Diamond Stealth 64                          S3 964, Bt485KPJ135
+  Diamond Stealth 64 DRAM                     S3 Trio64
+  Diamond Stealth 64 DRAM (SDAC)              S3 864, S3 SDAC
+  Diamond Stealth 64 Graphics 2000 Series     S3 864, S3 SDAC
+  Diamond Stealth 64 Graphics 2200            S3 Trio64
+  Diamond Stealth 64 VRAM                     S3 968, IBM RGB526CF22
+  Diamond Stealth 64 Video 3000 Series        S3 968, TI 3026-175
+  Diamond Stealth 64 Video VRAM               S3 968, TI 3026-175
+  Diamond Stealth Video (SDAC)                S3 868, S3 SDAC
+  Diamond Stealth Video 2000 Series           S3 868, S3 SDAC
+  Diamond Viper (110 MHz RAMDAC)              P9000
+  Diamond Viper (135 MHz RAMDAC)              P9000
+  ELSA GLoria Synergy                         PERMEDIA 2
+  ELSA Victory 3D                             S3 ViRGE
+  ELSA WINNER 2000 Office AGP                 PERMEDIA 2
+  ELSA Winner 1000 TRIO/V                     S3 Trio64V+
+  ELSA Winner 2000 AVI                        S3 968, TI 3026-175
+  ELSA Winner 2000 PRO/X-2, -4                S3 968, TI 3026-220
+  ELSA Winner 2000 PRO/X-8                    S3 968, IBM RGB528CF25
+  EPS Apex L-200                              C&T 65550
+  Generic                                     ATI 28800
+  Generic                                     Alliance ProMotion
+  Generic                                     Ark 2000
+  Generic                                     Avance Logic 22xx/23xx/24xx
+  Generic                                     Chips & Technologies
+  Generic                                     Cirrus 5420
+  Generic                                     Cirrus 5422/5424
+  Generic                                     Cirrus 5426/5428
+  Generic                                     Cirrus 5429
+  Generic                                     Cirrus 5430
+  Generic                                     Cirrus 5434
+  Generic                                     Cirrus 5436
+  Generic                                     Cirrus 5446
+  Generic                                     Cirrus 5462
+  Generic                                     Cirrus 5462/5465
+  Generic                                     Cirrus 5480
+  Generic                                     Cirrus 62x5
+  Generic                                     Cirrus 6410/6412/6420/6440
+  Generic                                     Cirrus 754x
+  Generic                                     ET3000
+  Generic                                     ET4000/W32P
+  Generic                                     ET4000AX
+  Generic                                     ET6000
+  Generic                                     Mach32
+  Generic                                     Mach64
+  Generic                                     Mach8
+  Generic                                     P9000
+  Generic                                     PERMEDIA 2
+  Generic                                     S3 864/868/924/928/964
+  Generic                                     S3 968
+  Generic                                     S3 Trio64
+  Generic                                     S3 Trio64V+
+  Generic                                     S3 ViRGE
+  Generic                                     S3 ViRGE/GX/DX
+  Generic                                     SiS 86c201/86c202/86c205
+  Generic Trident                             TGUI9440
+  Generic Trident                             TGUI96xx
+  Generic                                     Trident8900
+  Generic                                     VGA
+  Generic                                     Western Digital SVGA
+  Genoa Phantom 64                            S3 Trio64V+
+  Genoa WindowsVGA 8500VL                     Cirrus 5426
+  Hercules Dynamite 128/Video                 ET6000
+  Hercules Dynamite 3D/GL                     PERMEDIA 2
+  Hercules Dynamite 3D/GL AGP                 PERMEDIA 2
+  Hercules Stingray                           Avance Logic 2301
+  Hercules Stingray 128/3D                    Alliance ProMotion AT3D
+  Hercules Stingray 64                        Ark 2000
+  Hercules Terminator 3D                      S3 ViRGE/DX
+  IBM VGA
+  Matrox Marvel                               ET4000
+  Matrox Marvel II                            ET4000
+  Matrox Millennium                           MGA Storm
+  Matrox Millennium II AGP                    MGA 2164, TI 3026-250
+  Matrox Millennium II PCI (220 MHz)          MGA 2164, TI 3026-220
+  Matrox Millennium II PCI (250 MHz)          MGA 2164, TI 3026-250
+  Matrox Mystique                             MGA 1064
+  Matrox Mystique 220                         MGA 1164
+  Number Nine GXE64                           S3 864
+  Number Nine Imagine 128                     Imagine 128
+  Number Nine Imagine 128 Series 2            Imagine 128 Series 2
+  Number Nine Motion 531                      S3 868
+  Number Nine Motion 771                      S3 968
+  Number Nine Revolution 3D                   Ticket to Ride
+  Number Nine Vision 330                      S3 Trio64
+  Orchid Kelvin 64                            Cirrus 5434
+  SPEA Mirage Video                           S3 Trio64V+
+  STB NITRO 3D                                S3 ViRGE/GX
+  STB/Symmetric GLyder MAX-2                  PERMEDIA 2
+  Sigma Designs VGA Legend                    ET4000
+  Tech Source Raptor                          Imagine 128 Series 2
+  Trident 64-Bit Providia 9685
+  Trident 8900                                Trident 8900
+  Trident 9440                                TGUI9440-2
+  V PCI-53                                    Cirrus 5434
+
+  ·  RZ1000
+
+  ·  Triton I (82371FB) (with busmaster DMA)
+
+  ·  Triton II (82371SB) (with busmaster DMA)
+
+  ESDI controllers that emulate the ST-506 (MFM/RLL/IDE) interface will
+  also work. The bad block checking comment also applies to these
+  controllers.
+
+  Generic 8 bit XT controllers also work.
+
+
+  Starting with pre-patch-2.0.31-3 IDE/ATAPI is provided.
+
+  Other Controllers Supported:
+
+  ·  Tekram D690CD IDE PCI Cache Controller (with RAID level 1 Mirroring
+     and caching)
+
+
+  8.  Controllers (SCSI)
+
+  It is important to pick a SCSI controller carefully. Many cheap ISA
+  SCSI controllers are designed to drive CD-ROM's rather than anything
+  else. Such low end SCSI controllers are no better than IDE. See the
+  SCSI HOWTO and look at performance figures before buying a SCSI card.
+
+
+  8.1.  Supported
+
+
+  ·  AMI Fast Disk VLB/EISA (BusLogic compatible)
+
+  ·  Adaptec AVA-1502E (ISA/VLB) (AIC-6360). Use the AHA-152x driver
+
+  ·  Adaptec AVA-1505/1515 (ISA) (Adaptec AHA-152x compatible)
+
+  ·  Adaptec AHA-1510/152x (ISA/VLB) (AIC-6260/6360)
+
+  ·  Adaptec AHA-154x (ISA) (all models)
+
+  ·  Adaptec AHA-174x (EISA) (in enhanced mode)
+
+  ·  Adaptec AHA-274x (EISA) (AIC-7771)
+
+  ·  Adaptec AHA-284x (VLB) (AIC-7770)
+
+  ·  Adaptec AHA-2920 (PCI). Use the Future Domain driver. LILO
+     parameters are needed when used for hard disks.
+
+  ·  Adaptec AHA-2940AU (PCI) (AIC-7861)
+
+  ·  Adaptec AHA-294x/U/W/UW/D/WD (AIC-7871, AIC-7844, AIC-7881,
+     AIC-7884)
+
+  ·  Adaptec AHA-3940/U/W (PCI) (AIC-7872, AIC-7882) (since 1.3.6)
+
+  ·  Adaptec AHA-398x/U/W (PCI) (AIC-7873, AIC-7883)
+
+  ·  Adaptec PCI controllers with AIC-7850, AIC-7855, AIC-7860
+
+  ·  Adaptec on board controllers with AIC-777x (EISA), AIC-785x,
+     AIC-787x (PCI), AIC-788x (PCI)
+
+  ·  Advansys 5140 (ISA)
+     <http://advansys.com/5140o.htm> for information.
+
+  ·  Always IN2000
+
+  ·  BusLogic (ISA/EISA/VLB/PCI) (all models)
+
+  ·  DPT PM2001, PM2012A (EATA-PIO)
+
+  ·  DPT Smartcache/SmartRAID Plus,III,IV families (ISA/EISA/PCI)
+     Take a look at  <http://www.uni-mainz.de/~neuffer/scsi/dpt/>(EATA-
+     DMA)
+     Cards in these families are PM2011, PM2021, PM2041, PM3021,
+     PM2012B, PM2022, PM2122, PM2322, PM2042, PM3122, PM3222, PM3332,
+     PM2024, PM2124, PM2044, PM2144, PM3224, PM3334
+
+  ·  DTC 329x (EISA) (Adaptec 154x compatible)
+
+  ·  Future Domain TMC-16x0, TMC-3260 (PCI)
+
+  ·  Future Domain TMC-8xx, TMC-950
+
+  ·  Future Domain chips TMC-1800, TMC-18C50, TMC-18C30, TMC-36C70
+
+  ·  ICP-Vortex PCI-SCSI Disk Array Controllers (many RAID levels
+     supported)
+     Patches for Linux 1.2.13 and 2.0.29 are available at  <ftp://icp-
+     vortex.com/download/linux/>. The controllers GDT6111RP, GDT6121RP,
+     GDT6117RP, GDT6127RP, GDT6511RP, GDT6521RP, GDT6517RP, GDT6527RP,
+     GDT6537RP and GDT6557RP are supported. You can also use pre-
+     patch-2.0.31-4 to pre-patch-2.0.31-9.
+
+  ·  ICP-Vortex EISA-SCSI Controllers (many RAID levels supported)
+     Patches for Linux 1.2.13 and 2.0.29 are available at  <ftp://icp-
+     vortex.com/download/linux/>. The controllers GDT3000B, GDT3000A,
+     GDT3010A, GDT3020A and GDT3050A are supported. You can also use
+     pre-patch-2.0.31-4 to pre-patch-2.0.31-9.
+
+  ·  Media Vision Pro Audio Spectrum 16 SCSI (ISA)
+
+  ·  NCR 5380 generic cards
+
+  ·  NCR 53C400 (Trantor T130B) (use generic NCR 5380 SCSI support)
+
+  ·  NCR 53C406a (Acculogic ISApport / Media Vision Premium 3D SCSI)
+
+  ·  NCR chips 53C7x0
+
+  ·  NCR chips 53C810, 53C815, 53C820, 53C825, 53C860, 53C875, 53C895
+
+  ·  Qlogic / Control Concepts SCSI/IDE (FAS408) (ISA/VLB)
+
+  ·  Quantum ISA-200S, ISA-250MG
+
+  ·  Seagate ST-01/ST-02 (ISA)
+
+  ·  SoundBlaster 16 SCSI-2 (Adaptec 152x compatible) (ISA)
+
+  ·  Tekram DC-390, DC-390W/U/F
+
+  ·  Trantor T128/T128F/T228 (ISA)
+
+  ·  UltraStor 14F (ISA), 24F (EISA), 34F (VLB)
+
+  ·  Western Digital WD7000 SCSI
+
+
+  8.2.  Others
+
+
+  ·  AMD AM53C974, AM79C974 (PCI) (Compaq, HP, Zeos onboard SCSI)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/scsi/AM53C974-0.3.tgz>
+
+  ·  Adaptec ACB-40xx SCSI-MFM/RLL bridgeboard
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/scsi/adaptec-40XX.tar.gz>
+
+  ·  Always Technologies AL-500
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/scsi/al500-0.2.tar.gz>
+
+
+  ·  BusLogic (ISA/EISA/VLB/PCI) (new beta driver)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/scsi/BusLogic-1.3.0.tar.gz>
+
+  ·  Iomega PC2/2B
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/scsi/iomega_pc2-1.1.x.tar.gz>
+
+  ·  Qlogic (ISP1020) (PCI)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/scsi/isp1020-0.5.gz>
+
+  ·  Ricoh GSI-8
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scsi/gsi8.tar.gz>
+
+
+  8.3.  Unsupported
+
+
+  ·  Parallel port SCSI adapters
+
+  ·  Non Adaptec compatible DTC boards (327x, 328x)
+
+
+  9.  Controllers (I/O)
+
+  Any standard serial/parallel/joystick/combo cards. Linux supports
+  8250, 16450, 16550, and 16550A UART's. Cards that support non-standard
+  IRQ's (IRQ > 9) can be used.
+
+  See National Semiconductor's ``Application Note AN-493'' by Martin S.
+  Michael. Section 5.0 describes in detail the differences between the
+  NS16550 and NS16550A. Briefly, the NS16550 had bugs in the FIFO
+  circuits, but the NS16550A (and later) chips fixed those. However,
+  there were very few NS16550's produced by National, long ago, so these
+  should be very rare. And many of the ``16550'' parts in actual modern
+  boards are from the many manufacturers of compatible parts, which may
+  not use the National ``A'' suffix. Also, some multiport boards will
+  use 16552 or 16554 or various other multiport or multifunction chips
+  from National or other suppliers (generally in a dense package
+  soldered to the board, not a 40 pin DIP). Mostly, don't worry about it
+  unless you encounter a very old 40 pin DIP National ``NS16550'' (no A)
+  chip loose or in an old board, in which case treat it as a 16450 (no
+  FIFO) rather than a 16550A. - Zhahai Stewart <zstewart@hisys.com>
+
+
+  10.  Controllers (multiport)
+
+  10.1.  Non-intelligent cards
+
+  10.1.1.  Supported
+
+
+  ·  AST FourPort and clones (4 port)
+
+  ·  Accent Async-4 (4 port)
+
+  ·  Arnet Multiport-8 (8 port)
+
+  ·  Bell Technologies HUB6 (6 port)
+
+  ·  Boca BB-1004, 1008 (4, 8 port) - no DTR, DSR, and CD
+
+  ·  Boca BB-2016 (16 port)
+
+  ·  Boca IO/AT66 (6 port)
+
+  ·  Boca IO 2by4 (4 serial / 2 parallel, uses 5 IRQ's)
+
+  ·  Computone ValuePort (4, 6, 8 port) (AST FourPort compatible)
+
+  ·  DigiBoard PC/X, PC/Xem, PCI/Xem, EISA/Xem, PCI/Xr (4, 8, 16 port)
+
+  ·  Comtrol Hostess 550 (4, 8 port)
+
+  ·  PC-COMM 4-port (4 port)
+
+  ·  SIIG I/O Expander 4S (4 port, uses 4 IRQ's)
+
+  ·  STB 4-COM (4 port)
+
+  ·  Twincom ACI/550
+
+  ·  Usenet Serial Board II (4 port)
+
+  Non-intelligent cards usually come in two varieties, one using
+  standard com port addresses and use 4 IRQ's, and another that's AST
+  FourPort compatible and uses a selectable block of addresses and a
+  single IRQ. (Addresses and IRQ's are set using setserial.) If you're
+  getting one of these cards, be sure to check which standard it
+  conforms to, prices are no indication.
+
+
+  10.2.  Intelligent cards
+
+  10.2.1.  Supported
+
+
+  ·  Computone IntelliPort II (4/8/16 port)
+     <ftp://ftp.computone.com/pub/bbs/beta/ip2linux-1.0.2.tar.gz>
+
+  ·  Cyclades Cyclom-8Y/16Y (8, 16 port) (ISA/PCI)
+
+  ·  DigiBoard PC/Xe (ISA), PC/Xi (EISA) and PC/Xeve
+     <ftp://ftp.digibd.com/drivers/linux/>
+
+  ·  Equinox SST Intelligent serial I/O cards
+     <http://www.equinox.com>
+
+  ·  Hayes ESP 1, 2 and 8 port versions
+     Included in kernel since 2.1.15. The driver for kernel versions
+     2.0.x can be found at  <http://www.nyx.net/~arobinso>
+
+  ·  Stallion EasyIO (ISA) / EasyConnection 8/32 (ISA/MCA) /
+     EasyConnection 8/64 (PCI)
+     For DIP switch settings and configuration files check
+     <http://www.stallion.com>
+
+  ·  Stallion EasyConnection 8/64 (ISA/EISA) / ONboard (ISA/EISA/MCA) /
+     Brumby (ISA)
+     The latest driver can be found at
+     <ftp://ftp.stallion.com/drivers/ata5/Linux/v544.tar.gz>
+
+
+  10.2.2.  Others
+
+
+  ·  Comtrol RocketPort (8/16/32 port)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/serial/comtrol-1.04.tar.gz>
+
+  ·  DigiBoard COM/Xi
+     Contact Simon Park (si@wimpol.demon.co.uk) or Mark Hatle
+     (fray@krypton.mankato.msus.edu). NOTE: both email addresses seem
+     not to exist any longer.
+
+  ·  Moxa C102, C104, C168, C218 (8 port), C320 (8/16/24/32 expandable)
+     and C320T
+     <ftp://ftp.moxa.com.tw/drivers/linux/>
+
+  ·  RISCom/8
+
+  ·  Specialix SIO/XIO (modular, 4 to 32 ports)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/serial/sidrv.taz>
+
+  ·  Specialix IO8+
+     Contact devices@BitWizard.nl
+
+
+  11.  Network adapters
+
+  Ethernet adapters vary greatly in performance. In general the newer
+  the design the better. Some very old cards like the 3Com 3C501 are
+  only useful because they can be found in junk heaps for $5 a time. Be
+  careful with clones, not all are good clones and bad clones often
+  cause erratic lockups under Linux. Read the Ethernet HOWTO,
+  <http://sunsite.unc.edu/LDP/HOWTO/>, for detailed descriptions of
+  various cards.
+
+
+  11.1.  Supported
+
+  11.1.1.  Ethernet
+
+  For ethernet cards with the DECchip DC21x4x family the "Tulip" driver
+  is available. More information on this driver can be found at
+  <http://cesdis.gsfc.nasa.gov/linux/drivers/tulip.html>.
+
+
+  ·  3Com 3C501 - ``avoid like the plague''
+
+  ·  3Com 3C503, 3C505, 3C507, 3C509/3C509B (ISA) / 3C579 (EISA)
+
+  ·  3Com Etherlink III Vortex Ethercards (3C590, 3c592, 3C595, 3c597)
+     (PCI), 3Com Etherlink XL Boomerang Ethercards (3c900, 3c905) (PCI)
+     and 3Com Fast EtherLink Ethercard (3c515) (ISA)
+     Newer versions of this driver are available at
+     <http://cesdis.gsfc.nasa.gov/linux/drivers/vortex.html>
+     Avoid the 3c900 card when possible as the driver is not functioning
+     well for this card.
+
+  ·  AMD LANCE (79C960) / PCnet-ISA/PCI (AT1500, HP J2405A,
+     NE1500/NE2100)
+
+  ·  AT&T GIS WaveLAN
+
+  ·  Allied Telesis AT1700
+
+  ·  Allied Telesis LA100PCI-T
+
+  ·  Ansel Communications AC3200 EISA
+
+  ·  Apricot Xen-II / 82596
+
+  ·  Cabletron E21xx
+
+  ·  Cogent EM110
+
+  ·  Crystal Lan CS8920, Cs8900
+     <http://www.cirrus.com/private/drivers/ethernet/edrivers.html>
+
+
+  ·  Danpex EN-9400
+
+  ·  DEC DE425 (EISA) / DE434/DE435 (PCI) / DE450/DE500 (DE4x5 driver)
+
+  ·  DEC DE450/DE500-XA (Tulip driver)
+
+  ·  DEC DEPCA and EtherWORKS
+
+  ·  DEC EtherWORKS 3
+
+  ·  DEC QSilver's (Tulip driver)
+
+  ·  Fujitsu FMV-181/182/183/184
+
+  ·  HP PCLAN (27245 and 27xxx series)
+
+  ·  HP PCLAN PLUS (27247B and 27252A)
+
+  ·  HP 10/100VG PCLAN (J2577, J2573, 27248B, J2585) (ISA/EISA/PCI)
+     More information at
+     <http://cesdis1.gsfc.nasa.gov:80/linux/drivers/100vg.html>
+
+  ·  ICL EtherTeam 16i / 32 EISA
+
+  ·  Intel EtherExpress
+
+  ·  Intel EtherExpress Pro
+
+  ·  KTI ET16/P-D2, ET16/P-DC ISA (work jumperless and with hardware-
+     configuration options)
+
+  ·  NE2000/NE1000 (be careful with clones)
+
+  ·  Netgear FA-310TX (Tulip chip)
+
+  ·  New Media Ethernet
+
+  ·  PureData PDUC8028, PDI8023
+
+  ·  SEEQ 8005
+
+  ·  SMC Ultra / EtherEZ (ISA)
+
+  ·  SMC 9000 series
+
+  ·  SMC PCI EtherPower 10/100 (Tulip driver)
+
+  ·  SMC EtherPower II (epic100.c driver)
+
+  ·  Schneider & Koch G16
+
+  ·  Western Digital WD80x3
+
+  ·  Zenith Z-Note / IBM ThinkPad 300 built-in adapter
+
+  ·  Znyx 312 etherarray (Tulip driver)
+
+
+  11.1.2.  ISDN
+
+
+  ·  Linux ISDN WWW page
+     CHECKEN LINK !!  <http://www.ix.de/ix/linux/linux-isdn.html>
+
+  ·  ISDN4Linux tools are available from
+     <ftp://ftp.franken.de/pub/isdn4linux/v2.0>
+  ·  3Com Sonix Arpeggio
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/network/sonix.tgz>
+
+  ·  ASUSCOM Network Inc. ISDNLink 128K PC adapter (HiSax)
+
+  ·  AVM A1 (HiSax)
+
+  ·  Combinet EVERYWARE 1000 ISDN
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/network/combinet1000isdn-1.02.tar.gz>
+
+  ·  Compaq ISDN S0 (ISA) (HiSax)
+
+  ·  Creatix PnP S0 (HiSax)
+
+  ·  Dr. Neuhaus Niccy PnP/PCI (HiSax)
+
+  ·  Dynalink IS64PH (HiSax)
+
+  ·  Eicon.Diehl Diva 2.0 ISA and PCI (S0 and U interface, no PRO
+     version) (HiSax)
+
+  ·  Eicon.Diehl Diva Piccola (HiSax)
+
+  ·  Elsa Microlink PCC-16, PCF, PCF-Pro, PCC-8 (HiSax)
+
+  ·  ELSA QuickStep 1000/1000PCI/3000 (HiSax)
+
+  ·  HFC-2BS0 based cards (HiSax)
+
+  ·  IBM Active 2000 (ISA) (act2000)
+
+  ·  ICN ISDN cards (icn)
+
+  ·  Ith Kommunikationstechnik GmbH MIC 16 (ISA) (HiSax)
+
+  ·  ITK ix1-micro Rev.2 (HiSax)
+
+  ·  Octal PCBIT (pcbit)
+
+  ·  Sedlbauer Speed Card (HiSax)
+
+  ·  Teles 8.0/16.0/16.3 and compatible ones (HiSax)
+
+  ·  Teles 16.3c (HiSax)
+
+  ·  Teles S0 (HiSax)
+
+  ·  Traverse Technologie NETjet PCI S0 (HiSax)
+
+  ·  USR Sportster internal TA (HiSax)
+
+     ISDN cards that emulate standard modems or common Ethernet adapters
+     don't need any special drivers to work.
+
+
+  11.1.3.  Pocket and portable adapters
+
+  For more information on Linux and use of the parallel port, go to the
+  Linux Parallel Port Home Page  <http://www.torque.net/linux-pp.html>
+
+
+  ·  Accton parallel port ethernet adapter
+     <http://paradigm.uor.edu/~harshman/linux/accton.html>
+
+  ·  AT-Lan-Tec/RealTek parallel port adapter
+
+  ·  D-Link DE600/DE620 parallel port adapter
+
+
+  11.1.4.  Slotless
+
+
+  ·  SLIP/CSLIP/PPP (serial port)
+
+  ·  EQL (serial IP load balancing)
+
+  ·  PLIP (parallel port) - using ``LapLink cable'' or bi-directional
+     cable
+
+
+  11.1.5.  ARCnet
+
+
+  ·  Works with all ARCnet cards
+
+
+  11.1.6.  TokenRing
+
+
+  ·  Any IBM tokenring card not using DMA
+
+  ·  IBM Tropic chipset cards
+
+  ·  Madge TokenRing OCI 16/4 Mk2
+
+
+  11.1.7.  FDDI
+
+
+  ·  DEC DEFEA (EISA) / DEFPA (PCI) (kernel 2.0.24 and later)
+
+
+  11.1.8.  Amateur radio (AX.25)
+
+
+  ·  Gracilis PackeTwin
+
+  ·  Ottawa PI/PI2
+
+  ·  Most generic 8530 based HDLC boards
+
+
+  11.1.9.  PCMCIA cards
+
+
+  ·  See Appendix B for complete list
+
+
+  11.2.  Others
+
+  11.2.1.  Ethernet
+
+
+  ·  Racal-Interlan NI5210 (i82586 Ethernet chip). Avoid this card. It
+     is not functioning properly with the current driver.
+
+  ·  Racal-Interlan NI6510 (am7990 lance chip). Starting with kernel
+     1.3.66 more than 16Mb Ram is supported.
+
+  ·  Racal-Interlan PCI card (AMD PC net chip 97c970) ??
+
+
+  11.2.2.  ISDN
+
+
+  ·  SpellCaster's Datacomute/BRI, Telecomute/BRI (ISA) (sc)
+
+
+  11.2.3.  ATM
+
+
+  ·  Efficient Networks ENI155P-MF 155 Mbps ATM adapter (PCI)
+     <http://lrcwww.epfl.ch/linux-atm/>
+
+
+  11.2.4.  Frame Relay
+
+
+  ·  Sangoma S502 56K Frame Relay card
+     <ftp://ftp.sovereign.org/pub/wan/fr/>
+
+
+  11.2.5.  Wireless
+
+
+  ·  Proxim RangeLan2 7100 (ISA) / 630x (OEM mini-ISA)
+     <http://www.komacke.com/distribution.html>
+
+
+  11.3.  Unsupported
+
+
+  ·  Xircom adapters (PCMCIA and parallel port)
+
+  ·  IBM PCI Token Ring cards (all of them)
+
+  ·  Sysconnect / Schneider & Koch Token Ring cards (all of them)
+
+
+  12.  Sound cards
+
+  12.1.  Supported
+
+
+  ·  6850 UART MIDI
+
+  ·  Adlib (OPL2)
+
+  ·  Audio Excell DSP16
+
+  ·  Aztech Sound Galaxy NX Pro
+
+  ·  Crystal CS4232/CS4236 (PnP) based cards
+
+  ·  ECHO-PSS cards (Orchid SoundWave32, Cardinal DSP16)
+
+  ·  Ensoniq SoundScape
+
+  ·  Gravis Ultrasound
+
+  ·  Gravis Ultrasound 16-bit sampling daughterboard
+
+  ·  Gravis Ultrasound MAX
+
+  ·  Gravis Ultrasound ACE (No MIDI port and audio recording)
+
+  ·  Gravis Ultrasound PnP (with RAM)
+
+  ·  Logitech SoundMan Games (SBPro, 44kHz stereo support)
+
+  ·  Logitech SoundMan Wave (Jazz16/OPL4)
+
+  ·  Logitech SoundMan 16 (PAS-16 compatible)
+
+  ·  MediaTriX AudioTriX Pro
+
+  ·  Media Vision Premium 3D (Jazz16)
+
+  ·  Media Vision Pro Sonic 16 (Jazz)
+
+  ·  Media Vision Pro Audio Spectrum 16
+
+  ·  Media Vision Pro Audio Studio 16
+
+  ·  Microsoft Sound System (AD1848)
+
+  ·  OAK OTI-601D cards (Mozart)
+
+  ·  OPTi 82C924/82C925 cards. Use the MSS driver and the isapnp tools
+
+  ·  OPTi 82C928/82C929 cards (MAD16/MAD16 Pro/ISP16/Mozart)
+
+  ·  OPTi 82C931 cards. See  <http://oto.dyn.ml.org/~drees/opti931.html>
+
+  ·  Sound Blaster
+
+  ·  Sound Blaster Pro
+
+  ·  Sound Blaster 16
+
+  ·  Sound Blaster 32/64/AWE (Configure like Sound Blaster 16)
+
+  ·  Sound Blaster AWE63/Gold and 16/32/AWE PnP cards need to be
+     activated using isapnptools
+
+  ·  Turtle Beach Wavefront cards (Maui, Tropez)
+
+  ·  Wave Blaster (and other daughterboards)
+
+  ·  Cards based on the ESS Technologies AudioDrive chips (688, 1688)
+
+
+  ·  AWE32/64 supports is started in kernel series 2.1.x (check the
+     SoundBlaster AWE mini-HOWTO by Marcus Brinkmann for installation
+     details)
+
+  ·  MPU-401 MIDI
+
+
+  12.2.  Others
+
+
+  ·  MPU-401 MIDI (intelligent mode)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/sound/mpu401-0.2.tar.gz>
+
+  ·  PC speaker / Parallel port DAC
+     <ftp://ftp.informatik.hu-berlin.de/pub/os/linux/hu-sound/>
+
+  ·  Turtle Beach MultiSound/Tahiti/Monterey
+     <ftp://ftp.cs.colorado.edu/users/mccreary/archive/tbeach/multisound/>
+
+
+
+
+  12.3.  Unsupported
+
+  The ASP chip on Sound Blaster 16 series is not supported. AWE32's
+  onboard E-mu MIDI synthesizer is not supported.
+
+  Nathan Laredo <laredo@gnu.ai.mit.edu> is willing to write AWE32
+  drivers if you send him a complimentary card. He is also willing to
+  write drivers for almost any hardware if you send him free samples of
+  your hardware.
+
+  Sound Blaster 16's with DSP 4.11 and 4.12 have a hardware bug that
+  causes hung/stuck notes when playing MIDI and digital audio at the
+  same time. The problem can happen with either Wave Blaster
+  daughterboards or MIDI devices attached to the MIDI port. There is no
+  known fix.
+
+
+  13.  Hard drives
+
+  All hard drives should work if the controller is supported.
+
+  (From the SCSI HOWTO) All direct access SCSI devices with a block size
+  of 256, 512, or 1024 bytes should work. Other block sizes will not
+  work (Note that this can often be fixed by changing the block and/or
+  sector sizes using the MODE SELECT SCSI command).
+
+  Large IDE (EIDE) drives work fine with newer kernels. The boot
+  partition must lie in the first 1024 cylinders due to PC BIOS
+  limitations.
+
+  Some Conner CFP1060S drives may have problems with Linux and ext2fs.
+  The symptoms are inode errors during e2fsck and corrupt file systems.
+  Conner has released a firmware upgrade to fix this problem, contact
+  Conner at 1-800-4CONNER (US) or +44-1294-315333 (Europe). Have the
+  microcode version (found on the drive label, 9WA1.6x) handy when you
+  call.
+
+  Certain Micropolis drives have problems with Adaptec and BusLogic
+  cards, contact the drive manufacturers for firmware upgrades if you
+  suspect problems.
+
+
+  ·  Multiple device driver (RAID-0, RAID-1)
+     <ftp://sweet-smoke.ufr-info-p7.ibp.fr/public/Linux/>
+
+
+  13.1.  Unsupported
+
+  The following hard drives are mentioned as not supported by Linux.
+  Read the bug report available.
+
+
+  ·  NEC D3817, D3827, D3847
+     "These drives are slightly non-SCSI-2 compliant in the values
+     reported in Mode Sense Page 3. In Mode Sense Page 3 all NEC D38x7
+     drives report their sector size as zero. The NEC drives are the
+     first brand of drive we have ever encountered that reported the
+     sector size as zero. Unfortunately, that field in Mode Sense Page 3
+     is not modifiable and there is no way to update the firmware on the
+     D38x7 drives to correct this problem."
+
+
+  14.  Tape drives
+
+
+
+  14.1.  Supported
+
+
+  ·  SCSI tape drives
+     (From the SCSI HOWTO) Drives using both fixed and variable length
+     blocks smaller than the driver buffer length (set to 32k in the
+     distribution sources) are supported. Virtually all drives should
+     work. (Send mail if you know of any incompatible drives.)
+
+  ·  Seagate Sidewinder 50 AIT (on ICP 6527 RAID-controller)
+
+  ·  QIC-02 drives
+
+  ·  Iomega DITTO internal (ftape 3.04c and newer)
+
+
+  14.2.  Others
+
+
+  ·  QIC-117, QIC-40/80, QIC-3010/3020 (QIC-WIDE) drives
+     Most tape drives using the floppy controller should work. Various
+     dedicated controllers (Colorado FC-10/FC-20, Mountain Mach-2,
+     Iomega Tape Controller II) are also supported
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/tapes>
+
+  ·  ATAPI tape drives
+     For these an alpha driver (ide-tape.c) is available in the kernel.
+     ATAPI tape drives supported are
+
+  ·  Seagate TapeStor 8000
+
+  ·  Conner CTMA 4000 IDE ATAPI Streaming tape drive
+
+
+  14.3.  Unsupported
+
+
+  ·  Emerald and Tecmar QIC-02 tape controller cards - Chris Ulrich
+     <insom@math.ucr.edu>
+
+  ·  Drives that connect to the parallel port (eg: Colorado Trakker)
+
+  ·  Some high speed tape controllers (Colorado TC-15)
+
+  ·  Irwin AX250L/Accutrak 250 (not QIC-80)
+
+  ·  IBM Internal Tape Backup Unit (not QIC-80)
+
+  ·  COREtape Light
+
+
+  15.  CD-ROM drives
+
+  For more information on CD-ROM drives check the CDROM-HOWTO at
+  <http://sunsite.unc.edu/LDP/HOWTO/>.
+
+
+  15.1.  Supported
+
+
+  Common CD-ROM drives
+
+  ·  SCSI CD-ROM drives
+     (From the CD-ROM HOWTO) Any SCSI CD-ROM drive with a block size of
+     512 or 2048 bytes should work under Linux; this includes the vast
+     majority of CD-ROM drives on the market.
+  ·  EIDE (ATAPI) CD-ROM drives (IDECD)
+     Almost all double, quad and six speed drives are supported,
+     including
+
+  ·  Mitsumi FX400
+
+  ·  Nec-260
+
+  ·  Sony 55E
+
+  Proprietary CD-ROM drives
+
+  ·  Aztech CDA268-01A, Orchid CDS-3110, Okano/Wearnes CDD-110, Conrad
+     TXC, CyCDROM CR520ie/CR540ie/CR940ie (AZTCD)
+
+  ·  Creative Labs CD-200(F) (SBPCD)
+
+  ·  Funai E2550UA/MK4015 (SBPCD)
+
+  ·  GoldStar R420 (GSCD)
+
+  ·  IBM External ISA (SBPCD)
+
+  ·  Kotobuki (SBPCD)
+
+  ·  Lasermate CR328A (OPTCD)
+
+  ·  LMS Philips CM 206 (CM206)
+
+  ·  Longshine LCS-7260 (SBPCD)
+
+  ·  Matsushita/Panasonic CR-521/522/523/562/563 (SBPCD)
+
+  ·  MicroSolutions Backpack parallel portdrive (BPCD)
+
+  ·  Mitsumi CR DC LU05S (MCD/MCDX)
+
+  ·  Mitsumi FX001D/F (MCD/MCDX)
+
+  ·  Optics Storage Dolphin 8000AT (OPTCD)
+
+  ·  Sanyo CDR-H94A (SJCD)
+
+  ·  Sony CDU31A/CDU33A (CDU31A)
+
+  ·  Sony CDU-510/CDU-515 (SOMYCD535)
+
+  ·  Sony CDU-535/CDU-531 (SONYCD535)
+
+  ·  Teac CD-55A SuperQuad (SBPCD)
+
+
+  15.2.  Others
+
+
+  ·  LMS/Philips CM 205/225/202
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/cdrom/lmscd0.4.tar.gz>
+
+  ·  NEC CDR-35D (old)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/cdrom/linux-
+     neccdr35d.patch>
+
+  ·  Sony SCSI multisession CD-XA
+     <ftp://tsx-11.mit.edu/pub/linux/patches/sony-multi-0.00.tar.gz>
+
+
+  ·  Parallel Port Driver
+     <http://www.torque.net/linux-pp.html>
+
+
+
+  15.3.  Notes
+
+  All CD-ROM drives should work similarly for reading data. There are
+  various compatibility problems with audio CD playing utilities.
+  (Especially with newer low-end NEC drives.) Some alpha drivers may not
+  have audio support yet.
+
+  Early (single speed) NEC CD-ROM drives may have trouble with currently
+  available SCSI controllers.
+
+  PhotoCD (XA) is supported. The hpcdtoppm program by Hadmut Danisch
+  converts PhotoCD files to the portable pixmap format. The program can
+  be obtained from  <ftp://ftp.gwdg.de/pub/linux/hpcdtoppm> or as part
+  of the PBM utilities.
+
+  Also, reading video CD is supported in kernel series 2.1.3x and later.
+  A patch is available for kernel 2.0.30.
+
+  Finally, most IDE CD-ROM Changers are supported.
+
+
+  16.  CD-Writers
+
+  Many CD-Writers are supported by Linux now. For an up to date list of
+  CD-Writers supported check the CD-Writing mini-HOWTO at
+  <http://sunsite.unc.edu/LDP/HOWTO/mini/CD-Writing>, check
+  <http://www.shop.de/cgi-bin/winni/lsc.pl> or check
+  <http://www.guug.de/cgi-bin/winni/lsc.pl>. Cdwrite
+  <ftp://sunsite.unc.edu/pub/Linux/utils/disk-management/> and cdrecord
+  <http://www.fokus.gmd.de/nthp/employees/schilling/cdrecord.html> can
+  be used for writing CD's. The X-CD-Roast package for Linux is a
+  graphical front-end for using CD writers. The package can be found at
+  <ftp://sunsite.unc.edu/pub/Linux/utils/disk-
+  management/xcdroast-0.96b.tar.gz>.
+
+
+  ·  Grundig CDR 100 IPW
+
+  ·  HP CD-Writer+ 7100
+
+  ·  HP SureStore 4020i
+
+  ·  HP SureStore 6020es/i
+
+  ·  JVC XR-W2010
+
+  ·  Mitsubishi CDRW-225
+
+  ·  Mitsumi CR-2600TE
+
+  ·  Olympus CDS 620E
+
+  ·  Philips CDD-522/2000/2600/3610
+
+  ·  Pinnacle Micro RCD-5020/5040
+
+  ·  Plextor CDR PX-24CS
+
+  ·  Ricoh MP 1420C
+
+
+  ·  Ricoh MP 6200S/6201S
+
+  ·  Sanyo CRD-R24S
+
+  ·  Smart and Friendly Internal 2006 Plus 2.05
+
+  ·  Sony CDU 920S/924/926S
+
+  ·  Taiyo Yuden EW-50
+
+  ·  TEAC CD-R50S
+
+  ·  WPI(Wearnes) CDR-632P
+
+  ·  WPI(Wearnes) CDRW-622
+
+  ·  Yamaha CDR-100
+
+  ·  Yamaha CDR-200/200t/200tx
+
+  ·  Yamaha CDR-400t/400tx
+
+
+  17.  Removable drives
+
+  All SCSI drives should work if the controller is supported, including
+  optical (MO), WORM, floptical, Bernoulli, Zip, Jaz, SyQuest, PD, and
+  others.
+
+
+  ·  Panasonic MO (combines a CD-ROM drive and an optical removable
+     disk). You have to set a switch when configuring the kernel to get
+     both part work at the same time.
+
+  ·  Parallel port Zip drives
+     <ftp://gear.torque.net/pub/>
+
+  ·  Parallel port Avatar Shark-250
+     <http://www.torque.net/shark.html>
+
+  Removable drives work like hard disks and floppies, just fdisk/mkfs
+  and mount the disks. Linux provides drive locking if your drives
+  support it.  mtools can also be used if the disks are in MS-DOS
+  format.
+
+  CD-R drives require special software to work. Read the CD-R Mini-
+  HOWTO.
+
+  Linux supports both 512 and 1024 bytes/sector disks. Starting with
+  kernel 2.1.32 Linux also supports 2048 bytes/sector. A patch to kernel
+  2.0.30 is available at <http://liniere.gen.u-tokyo.ac.jp/2048.html>.
+
+  The 2048 bytes/sector support is needed for
+
+  ·  Fujitsu magneto-optical disk drives M2513
+
+  Starting with pre-patch-2.0.31-3 IDE/ATAPI internal Zip drives,
+  flopticals and PD's are supported.
+
+  ·  LS-120 floptical
+
+  ·  PD-CD
+
+
+
+
+  18.  Mice
+
+  18.1.  Supported
+
+
+  ·  Microsoft serial mouse
+
+  ·  Mouse Systems serial mouse
+
+  ·  Logitech Mouseman serial mouse
+
+  ·  Logitech serial mouse
+
+  ·  ATI XL Inport busmouse
+
+  ·  C&T 82C710 (QuickPort) (Toshiba, TI Travelmate)
+
+  ·  Microsoft busmouse
+
+  ·  Logitech busmouse
+
+  ·  PS/2 (auxiliary device) mouse
+
+
+  18.2.  Others
+
+
+  ·  Sejin J-mouse
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/console/jmouse.1.1.70-jmouse.tar.gz>
+
+  ·  MultiMouse - use multiple mouse devices as single mouse
+     <ftp://sunsite.unc.edu/pub/Linux/system/misc/MultiMouse-1.0.tgz>
+
+  ·  Microsoft Intellimouse
+
+
+
+  18.3.  Notes
+
+  Touchpad devices like Alps Glidepoint also work, so long they're
+  compatible with another mouse protocol.
+
+  Newer Logitech mice (except the Mouseman) use the Microsoft protocol
+  and all three buttons do work. Eventhough Microsoft's mice have only
+  two buttons, the protocol allows three buttons.
+
+  The mouse port on the ATI Graphics Ultra and Ultra Pro use the
+  Logitech busmouse protocol.  (See the Busmouse HOWTO for details.)
+
+
+  19.  Modems
+
+  All internal modems or external modems connected to the serial port
+  should work. Alas, some manufactures have created Windows 95 only
+  modems. Check Appendix D for Linux incompatible hardware.
+
+  A small number of modems come with DOS software that downloads the
+  control program at runtime. These can normally be used by loading the
+  program under DOS and doing a warm boot. Such modems are probably best
+  avoided as you won't be able to use them with non PC hardware in the
+  future.
+
+  All PCMCIA modems should work with the PCMCIA drivers.
+
+  Fax modems need appropriated fax software to operate. Also be sure
+  that the fax part of the modem supports Class 2 or Class 2.0. It seems
+  to be generally true for any fax software on unix that support for
+  Class 1.0 is not available.
+
+  ·  Digicom Connection 96+/14.4+ - DSP code downloading program
+     <ftp://sunsite.unc.edu/pub/Linux/apps/serialcomm/smdl-
+     linux.1.02.tar.gz>
+
+  ·  Motorola ModemSURFR internal 56K. Add a couple of line to RC.SERIAL
+     to account for IRQ and ports if they are non-standard.
+
+  ·  ZyXEL U-1496 series - ZyXEL 1.4, modem/fax/voice control program
+     <http://www.pe1chl.demon.nl/ZyXEL/ZyXEL-1.6.tar.gz>
+
+  ·  ZyXEL Elite 2864 series - modem/fax/voice control program
+     <http://www.pe1chl.demon.nl/ZyXEL/ZyXEL-1.6.tar.gz>
+
+  ·  ZyXEL Omni TA 128 - modem/fax/voice control program
+     <http://www.pe1chl.demon.nl/ZyXEL/ZyXEL-1.6.tar.gz>
+
+  Also multimodem cards are supported by Linux.
+
+  ·  Moreton Bay RAStel multimodem card
+     Check  <http://www.moreton.com.au/linux.htm> for Linux drivers.
+
+
+  20.  Printers/Plotters
+
+  All printers and plotters connected to the parallel or serial port
+  should work. Alas, some manufacturers have created Windows 95 only
+  printers. Check Appendix D for Linux incompatible hardware.
+
+  ·  HP LaserJet 4 series - free-lj4, printing modes control program
+     <ftp://sunsite.unc.edu/pub/Linux/system/printing/free-
+     lj4-1.1p1.tar.gz>
+
+  ·  BiTronics parallel port interface
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/misc/bt-
+     ALPHA-0.0.1.module.patch.gz>
+
+
+  20.1.  Ghostscript
+
+  Many Linux programs output PostScript files. Non-PostScript printers
+  can emulate PostScript Level 2 using Ghostscript.
+
+  ·  Ghostscript
+     <ftp://ftp.cs.wisc.edu/pub/ghost/aladdin/>
+
+
+  20.1.1.  Ghostscript supported printers
+
+
+  ·  Apple Imagewriter
+
+  ·  C. Itoh M8510
+
+  ·  Canon BubbleJet BJ10e (bj10e)
+
+  ·  Canon BubbleJet BJ200, BJC-210 (B/W only), BJC-240 (B/W only)
+     (bj200)
+
+  ·  Canon BubbleJet BJC-600, BJC-610, BJC-4000, BJC-4100, BJC-450,
+     MultiPASS C2500, BJC-240, BJC-70 (bjc600)
+
+  ·  Canon BubbleJet BJC-800 (bjc800)
+
+  ·  Canon LBP-8II, LIPS III
+
+  ·  DEC LA50/70/75/75plus
+
+  ·  DEC LN03, LJ250
+
+  ·  Epson 9 pin, 24 pin, LQ series, AP3250
+
+  ·  Epson Stylus Color/Color II/500/800 (stcolor)
+
+  ·  HP 2563B
+
+  ·  HP DesignJet 650C
+
+  ·  HP DeskJet, Deskjet Plus (deskjet)
+
+  ·  HP Deskjet 500, Deskjet Portable (djet500)
+
+  ·  HP DeskJet 400/500C/540C/690C/693C (cdj500)
+
+  ·  HP DeskJet 550C/560C/600/660C/682C/683C/693C/850/870Cse (cdj550)
+
+  ·  HP DeskJet 850/870Cse/870Cxi/680 (cdj850)
+
+  ·  HP DeskJet 500C/510/520/5540C/693C printing black only (cdjmono)
+
+  ·  HP DeskJet 600 (lj4dith)
+
+  ·  HP DeskJet 600/870Cse, LaserJet 5/5L (ljet4)
+
+  ·  HP Deskjet 500/500C/510/520/540/550C/560C/850C/855C
+     <ftp:ftp.pdb.sni.de/pub/utilities/misc/hpdj-2.1.tar.gz>
+
+  ·  HP Deskjet 720, 820 and 1000 series
+     <http://www.rpi.edu/~normat/technical/ppa>
+
+  ·  HP PaintJet XL300, Deskjet 600/1200C/1600C (pjxl300)
+
+  ·  HP LaserJet/Plus/II/III/4
+
+  ·  HP PaintJet/XL
+
+  ·  IBM Jetprinter color
+
+  ·  IBM Proprinter
+
+  ·  Imagen ImPress
+
+  ·  Mitsubishi CP50 color
+
+  ·  NEC P6/P6+/P60
+
+  ·  Oki OL410ex LED (ljet4)
+
+  ·  Okidata MicroLine 182
+
+  ·  Ricoh 4081/6000 (r4081)
+
+  ·  SPARCprinter
+
+  ·  StarJet 48 inkjet printer
+
+  ·  Tektronix 4693d color 2/4/8 bit
+
+  ·  Tektronix 4695/4696 inkjet plotter
+
+  ·  Xerox XES printers (2700, 3700, 4045, etc.)
+
+
+  20.1.2.  Others
+
+
+  ·  Canon BJC600/800 color printers
+     <ftp://petole.imag.fr/pub/postscript/ghostscript/bjc600/>
+
+
+  21.  Scanners
+
+  For scanner support there is the package SANE (Scanner Access Now
+  Easy). Information can be found at  <http://www.mostang.com/sane/>. It
+  can be downloaded from  <ftp://ftp.mostang.com/pub/sane/>. This is a
+  universal scanner interface. It comes complete with documentation and
+  several frontends and backends.
+
+  More information on handheld scanners can be found at  <http://swt-
+  www.informatik.uni-hamburg.de/~1willamo/scanner.html>
+
+
+  21.1.  Supported
+
+
+  ·  A4 Tech AC 4096 / AS 8000P
+     <ftp://ftp.informatik.hu-
+     berlin.de/pub/local/linux/a4scan/a4scan.tgz>
+
+  ·  Adara Image Star I
+     <http://fb4-1112.uni-muenster.de/ffwd/>
+     <ftp://fb4-1112.uni-muenster.de/pub/ffwd/mtekscan-0.2.tar.gz>
+
+  ·  Conrad Personal Scanner 64, P105 handheld scanners
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/scan-
+     driver-0.1.8.tar.gz>
+
+  ·  Epson GT6000
+     <ftp://sunsite.unc.edu/pub/Linux/apps/graphics/capture/ppic0.5.tar.gz>
+
+  ·  Fujitsu SCSI-2 scanners
+     contact Dr. G.W. Wettstein <greg%wind.UUCP@plains.nodak.edu>
+
+  ·  Genius ColorPage-SP2
+     <http://fb4-1112.uni-muenster.de/ffwd/>
+     <ftp://fb4-1112.uni-muenster.de/pub/ffwd/mtekscan-0.2.tar.gz>
+
+  ·  Genius GS-B105G handheld scanner
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/gs105-0.0.1.tar.gz>
+
+  ·  Genius GeniScan GS4500, GS4500A handheld scanners
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/gs4500-2.0.tar.gz>
+
+  ·  HighScreen Greyscan 256 handheld scanner
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/gs4500-2.0.tar.gz>
+
+  ·  HP ScanJet II series SCSI
+     <ftp://sunsite.unc.edu/pub/Linux/apps/graphics/capture/hpscanpbm-0.3a.tar.gz>
+
+  ·  HP ScanJet IIc, IIcx, IIp, 3c, 4c, 4p, 5p, 5pse, plus
+     <http://www.tummy.com/xvscan/>
+
+  ·  Logitech Scanman+, Scanman 32, Scanman 256 handheld scanners
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/logiscan-0.0.4.tar.gz>
+
+
+  ·  Microtek ScanMaker E3, E6, II, IIXE, III and 35t models
+     <http://fb4-1112.uni-muenster.de/ffwd/>
+     <ftp://fb4-1112.uni-muenster.de/pub/ffwd/mtekscan-0.2.tar.gz>
+
+  ·  Mustek M105 handheld scanner
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/scan-
+     driver-0.1.8.tar.gz>
+
+  ·  Mustek HT800 Turbo, Matador 105, Matador 256 handheld scanners
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/scan-
+     driver-0.1.8.tar.gz>
+
+  ·  Mustek Paragon 6000CX
+     <ftp://sunsite.unc.edu/pub/Linux/apps/graphics/capture/muscan-2.0.6.taz>
+
+  ·  Nikon Coolscan SCSI 35mm film scanner
+     <ftp://sunsite.unc.edu/pub/Linux/apps/graphics/capture/coolscan-0.2.tgz>
+
+  ·  Pearl 256 handheld scanner
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/scan-
+     driver-0.1.8.tar.gz>
+
+  ·  UMAX SCSI scanners
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/umax-0.5.5.tar.gz>
+
+  The Mustek drivers work only with GI1904 interface cards. Eric Chang
+  eric.chang@chrysalis.org has created a patch to use them with IF960
+  interface cards.
+
+
+  21.2.  Others
+
+
+  ·  Genius GS-4000, ScanMate/32, ScanMate/GS handheld scanners
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/gs4500-2.0.tar.gz>
+
+  ·  Mustek HT105, M800 handheld scanners
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/scan-
+     driver-0.1.8.tar.gz>
+
+  ·  Voelkner Personal Scanner 64 handheld scanner
+     <ftp://tsx-11.mit.edu/pub/linux/ALPHA/scanner/scan-
+     driver-0.1.8.tar.gz>
+
+
+  21.3.  Unsupported
+
+
+  ·  Acer scanners. Acer is not releasing any programming information.
+
+  ·  Escom 256 (Primax Lector Premier 256) handheld scanner
+
+  ·  Genius ScanMate/256, EasyScan handheld scanners
+
+  ·  Mustek CG8000 handheld scanner
+
+  ·  Trust Ami Scan handheld scanner
+
+
+  22.  Other hardware
+
+  22.1.  Amateur Radio
+
+  The following cards etc. are supported:
+
+
+  ·  KISS based Terminal Node Controllers
+
+  ·  Ottawa PI card
+
+  ·  Gracilis PacketTwin card
+
+  ·  Other Z8530 SCC based cards
+
+  ·  Parallel and serial port Baycom modems
+
+  ·  Soundblaster cards
+
+  ·  Soundcards based on the Crystal chipset
+
+
+  22.2.  VESA Power Savings Protocol (DPMS) monitors
+
+  Support for power savings is included in the Linux kernel. Just use
+  setterm to enable support.
+
+
+  22.3.  Touch screens
+
+  The Metro-X X-server is supporting the following touch screen
+  controllers:
+
+  ·  Carrol Touch serial touch screen
+     <http://www.carrolltouch.com>
+
+  ·  EloGraphics
+
+  ·  Lucas Deeco
+
+  ·  MicroTouch
+
+
+  22.4.  Terminals on serial port
+
+  Old terminals can easily be used under Linux by connecting them to the
+  serial port of your system. At least the following terminals will be
+  supported:
+
+
+  ·  VT52
+
+  ·  VT100
+
+  ·  VT220
+
+  ·  VT320
+
+  ·  VT420
+
+
+  22.5.  Joysticks
+
+  Joystick support is in the latest XFree86 distributions (3.3.x) and in
+  kernel versions 2.1.xx. For older kernels the links below are usefull.
+
+
+  ·  Joystick driver
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/console/joystick-1.0.6.tar.gz>
+
+  ·  Joystick driver (module)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/patches/console/joyfixed.tgz>
+
+  22.6.  Video capture boards / Frame Grabbers / TV tuner
+
+  A couple of programs are available that support TV tuners. These are:
+
+  ·  BTTV  <http://www.thp.Uni-Koeln.DE/~rjkm/linux/bttv.html>
+
+  ·  Xawtv
+
+  ·  Xtvscreen
+
+
+  ·  CMOS Video Conferencing Kit. The video capture card has a BT849
+     chipset. It comes with a CCD camera.
+
+  ·  Data Translation DT2803
+
+  ·  Data Translation DT2851 Frame Grabber
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/dt2851-2.01.tar.gz>
+
+  ·  Data Translation DT3155
+     <http://krusty.eecs.umich.edu/people/ncowan/linux/welcome.html>
+
+  ·  Diamond DTV2000 (based on BT848)
+
+  ·  Dipix XPG1000/FPG/PPMAPA (based on TI C40 DSP). Most add-on cards
+     are supported.
+     <http://www.thp.Uni-Koeln.DE/~rjkm/linux/bttv.html>
+
+  ·  Epix SVM
+
+  ·  Epix Silicon Video MUX series of video frame grabbing boards
+     <http://www.ssc.com/lj/issue13/npc13c.html>
+
+  ·  FAST Screen Machine II
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/ScreenMachineII.2.0.tgz>
+
+  ·  Hauppage Wincast TV PCI (based on BT848)
+     <http://www.thp.Uni-Koeln.DE/~rjkm/linux/bttv.html>
+
+  ·  Imaging Technology ITI/IC-PCI
+     <ftp://ftp.gom-online.de/pub/IC-PCI/icpci-0.3.2.tar.gz>
+
+  ·  ImageNation Cortex I
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/cortex.drv.1.1.tgz>
+
+  ·  ImageNation CX100
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/cxdrv-0.86.tar.gz>
+
+  ·  ImageNation PX500 (being worked on). Ask for current status
+     rubini@linux.it
+
+  ·  Imaging Technology Inc. IC-PCI frame grabber board
+     <ftp://gandalf.expmech.ing.tu-bs.de/pub/driver/icpci-0.2.0.tar.gz>
+
+  ·  Matrox Meteor
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/meteor-1.4a.tgz>
+
+  ·  Matrox PIP-1024
+     <http://www.powerup.com.au/~sobeyp/pip_tar.gz>
+
+  ·  MaxiTV/PCI (based on ZR36120)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/misc-
+     cards/zr36120-971127.tgz>
+
+  ·  Miro PCTV (based on BT848)
+     <http://www.thp.Uni-Koeln.DE/~rjkm/linux/bttv.html>
+  ·  MuTech MV1000 PCI
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/mv1000drv-0.33.tgz>
+
+  ·  MuTech MV200
+     <http://www.powerup.com.au/~sobeyp/mu_tar.gz>
+
+  ·  Philips PCA10TV (not in production anymore)
+     <ftp://ftp.il.ft.hse.nl/pub/tv1000/pctv1000.02.tgz>
+
+  ·  Pro Movie Studio
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/PMS-grabber.3.0.tgz>
+
+  ·  Quanta WinVision B&W video capture card
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/fgrabber-1.0.tgz>
+
+  ·  Quickcam
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/qcam-0.7c-5.tar.gz>
+
+  ·  Sensus 700
+     <http://www.robots.com/s700.htm>
+
+  ·  Smart Video Recoder III (based on BT848)
+     <http://www.thp.Uni-Koeln.DE/~rjkm/linux/bttv.html>
+
+  ·  STB TV PCI Television Tuner (based on BT848)
+     <http://www.thp.Uni-Koeln.DE/~rjkm/linux/bttv.html>
+
+  ·  Tekram C210 (based on ZR36120)
+     <ftp://sunsite.unc.edu/pub/Linux/kernel/misc-
+     cards/zr36120-971127.tgz>
+
+  ·  Video Blaster, Rombo Media Pro+
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/vid_src-0.6.tgz>
+
+  ·  VT1500 TV cards
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/vt1500-1.0.9.tar.gz>
+
+
+  22.7.  Digital Camera
+
+
+  ·  HP Photo Smart Digital Camera ??
+     <ftp://ftp.itojun.org/pub/digi-cam/>
+
+
+  22.8.  UPS
+
+  Various other UPS's are supported, read the UPS HOWTO
+
+
+  ·  APC SmartUPS
+     <http://www.dyer.vanderbilt.edu/server/apcupsd>
+
+  ·  APC-BackUPS 400/600, APC-SmartUPS SU700/1400RM
+     <http://www.dyer.vanderbilt.edu/server/apcupsd>
+
+  ·  UPS's with RS-232 monitoring port (genpower package)
+     <ftp://sunsite.unc.edu/pub/Linux/system/ups/genpower-1.0.1.tgz>
+
+  ·  MGE UPS's
+     <http://www.mgeups.com/download/softlib.htm> and
+     <http://www.mgeups.com/download/software/linux/upsp.tgz>
+
+  ·  A daemon to shut down and up computers connected to ups's. It's
+     network aware and allows server- and client-mode
+     <ftp://sunsite.unc.edu/pub/Linux/system/ups/powerd-2.0.tar.gz>
+  22.9.  Multifunction boards
+
+
+
+  ·  Pro Audio Spectrum 16 SCSI / Sound interface card
+
+
+  22.10.  Data acquisition
+
+  The Linux Lab Project site collects drivers for hardware dealing with
+  data acquisition, they also maintain some mailing lists dealing with
+  the subject. I have no experience with data acquisition so please
+  check the site for more details.
+
+
+  ·  Linux Lab Project
+     <http://www.llp.fu-berlin.de/>
+
+
+  ·  CED 1401
+
+  ·  DBCC CAMAC
+
+  ·  IEEE-488 (GPIB, HPIB) boards
+
+  ·  Keithley DAS-1200
+
+  ·  National Instruments AT-MIO-16F / Lab-PC+
+
+
+  ·  Analog Devices RTI-800/815 ADC/DAC board
+     contact Paul Gortmaker <gpg109@anu.edu.au>
+
+
+  22.11.  Watchdog timer interfaces
+
+
+  ·  Berkshire Products PC Watchdog Card (ISA cards rev. A and C)
+     Check  <ftp://ftp.bitgate.com/pub/bitgate/pcwd> for the PC Watchdog
+     program. A driver is included in recent kernels. More information
+     on this product can be found at  <http://www.berkprod.com/wdog.htm>
+
+  ·  ICS WDT500-P (
+     <http://www.indcomp.src.com/products/data/html/wdt500-p.html>)
+
+  ·  ICS WDT501-P (with and without fan tachometer) (
+     <http://www.indcomp.src.com/products/data/html/wdt500-p.html>)
+
+
+  22.12.  Miscellaneous
+
+
+  ·  Mattel Powerglove
+
+  ·  AIMS Labs RadioTrack FM radio card
+     <ftp://sunsite.unc.edu/pub/Linux/apps/sound/radio/radiotrack-1.1.tgz>
+
+  ·  Reveal FM Radio card
+     <ftp://magoo.uwsuper.edu/docs/radio.html>
+
+  ·  Videotext cards
+     <ftp://sunsite.unc.edu/pub/Linux/apps/video/videoteXt-0.6.tar.gz>
+
+
+
+
+  23.  Related sources of information
+
+
+  ·  Cameron Spitzer's hardware FAQ archive (??)
+     <ftp://ftp.rahul.net/pub/cameron/PC-info/>
+
+  ·  Guide to Computer Vendors
+     <http://guide.sbanetweb.com/>
+
+  ·  System Optimization Information
+     <http://www.dfw.net/~sdw/>
+
+
+  24.  Acknowledgments
+
+  Thanks to all the authors and contributors of other HOWTO's, many
+  things here are shamelessly stolen from their works; to FRiC, Zane
+  Healy and Ed Carp, the original authors of this HOWTO; and to everyone
+  else who sent in updates and feedbacks. Special thanks to Eric Boerner
+  and lilo (the person, not the program) for the sanity checks. And
+  thanks to Dan Quinlan for the original SGML conversion.
+
+
+  25.  Appendix A. S3 cards supported by XFree86 3.3.1.
+
+
+
+
+
+  NOTE: for the ViRGE/VX,DX,GX,GX2 chipsets you need XFree86 3.3.1. You
+  should use the XF86_SVGA server.
+
+
+  26.  Appendix B. Supported PCMCIA cards
+
+
+  These cards are supported by David Hinds' PCMCIA package and this list
+  is taken from his web page.
+
+
+
+  26.1.  Ethernet cards
+
+
+  ·  SMC, Megahertz and Ositech cards use the smc91c92_cs driver
+
+  ·  3Com and Farallon cards use the 3c589_cs driver
+
+  ·  Fujitsu, TDK, RATOC, CONTEC, Eagle and Nextcom cards use the
+     fmvj18x_cs driver
+
+     All other cards use the pcnet_cs driver. Other NE2000-compatible
+     cards that are not on the list are also likely to work with
+     pcnet_cs.
+
+
+
+  ·  3Com 3c589, 3c589B, 3c589C, 3c589D
+
+  ·  Accton EN2212, EN2216 EtherCard
+
+  ·  Allied Telesis CentreCOM CE6001, LA-PCM
+
+  ·  Asante FriendlyNet
+
+
+
+  CHIPSET   RAMDAC            CLOCKCHIP   BPP   CARD
+
+  801/805   AT&T 20C490                    16    Actix GE 32 / 32+ 2Mb
+                                                 Orchid Fahrenheit 1280(+)
+  801/805   AT&T 20C490       ICD2061A     16    STB PowerGraph X.24
+  801/805                                        Del S3 805
+                                                 Miro Crystal 8S
+                                                 Orchid Fahrenheit VA
+                                                 VL-41
+  805       S3 GENDAC                      16    Miro 10SD VLB/PCI
+                                                 SPEA Mirage VLB
+  801/805   SS2410            ICD2061A     8     Diamond Stealth 24 VLB/ISA
+  801/805   AT&T 20C490       Ch8391       16    JAX 8231/8241, SPEA Mirage
+  801/805   S3 GENDAC                            Miro Crystal 10SD
+  805i                                           Actix GE 32i
+                                                 ELSA Winner 1000 ISA
+  928       AT&T 20C490                    16    Actix Ultra
+  928       Sierra SC15025    ICD2061A     32    ELSA Winner 1000 ISA/VLB/EISA
+  928       Bt485             ICD2061A     32    STB Pegasus VL
+  928       Bt485             SC11412      16    SPEA(/V7) Mercury VLB
+  928       Bt485             ICD2061A     32    #9 GXE Level 10/11/12
+  928       Ti3020            ICD2061A     32    #9 GXE Level 14/16
+  928                                            928Movie
+                                                 Diamond Stealth Pro
+                                                 ELSA Winner 1000TwinBus
+                                                 ELSA Winner 1000VL
+                                                 ELSA Winner 2000
+                                                 Miro Crystal 16S
+  864                         ICD2061A           Miro Crystal 20SD (BIOS 2.xx)
+  864       AT&T 20C498       ICS2494      32    Miro (Crystal) 20SD (BIOS 1.xx)
+  864       AT&T 20C498/      ICD2061A/    32    ELSA Winner 1000 PRO VLB/PCI
+  864       STG1700           ICS9161            MIRO 20SD (BIOS 2.x)
+                                                 ELAS Winner 1000 PRO
+  864       STG1700           ICD2061A     32    Actix GE 64 VLB
+  864       AT&T 20C498/      ICS2595      16    SPEA(/V7) Mirage P64 DRAM (BIOS 3.x)
+            AT&T 21C498
+  864       S3 86C716 SDAC                 32    ELSA Winner 1000 PRO
+                                                 Miro 20SD (BIOS 3.x)
+                                                 SPEA Mirage P64 DRAM (BIOS 4.x)
+                                                 Diamond Stealth 64 DRAM
+                                                 Genoa Phantom 64i
+                                                 Miro Crystal 20SD VLB (BIOS 3.xx)
+  864       ICS5342           ICS5342      32    Diamond Stealth 64 DRAM (some)
+  864       SDAC                                 Diamond Stealth 64 Graphics 2001
+  864       AT&T 20C498-13    ICD2061A     32    #9 GXE64 PCI
+  864                                            ASUS Video Magic PCI V864
+                                                 VidTech FastMax P20
+
+  ·  AST 1082 Ethernet
+
+  ·  CeLAN EPCMCIA
+
+  ·  CNet CN30BC, CN40BC Ethernet
+
+  ·  Compex/ReadyLINK Ethernet Combo
+
+  ·  Compex Linkport Ethernet
+
+  ·  Connectware LANdingGear Adapter
+
+  ·  CONTEC C-NET(PC)C
+
+  ·  Danpex EN-6200P2 Ethernet
+
+
+
+  CHIPSET   RAMDAC            CLOCKCHIP   BPP   CARD
+
+  964                                            ELSA Winner 2000 PRO-2,4
+                                                 spider Tarantula 64
+  964       AT&T 20C505       ICD2061A     32    Miro Crystal 20SV PCI/40SV
+  964       Bt485             ICD2061A     32    Diamond Stealth 64
+  964       Bt9485            ICS9161A     32    SPEA Mercury 64
+  964       Ti3020            ICD2061A     8     ELSA Winner 2000 PRO PCI
+  964       Ti3025            Ti3025       32    #9 GXE64 Pro VLB/PCI
+                                                 Miro Crystal 40SV
+  964       IBM RGB                        32    Hercules Graphite Terminator 64
+  868       S3 86C716 SDAC                 32    ELSA Winner 1000AVI
+                                                 Miro Crystal 20SD PCI
+  868       AT&T 29C409                          ELSA Winner 1000AVI
+  868                                            Diamond Stealth Video DRAM
+                                                 Diamond Stealth 64 Video 2120/2200
+                                                 ELSA Winner 1000PRO/X
+                                                 #9 FX Motion 531
+                                                 VideoLogic GrafixStar 500
+  968                                            Diamond Stealth 64 Video 3200
+                                                 ELSA Gloria-4/8
+                                                 ELSA Winner 2000AVI
+                                                 ELSA Winner 2000PRO/X-2/X-4/X-8
+                                                 Genoa VideoBlitz III AV
+                                                 Hercules Graphite Terminator Pro 64
+                                                 LeadTek WinFast S430
+                                                 LeadTek WinFast S510
+                                                 Miro Crystal 80SV
+                                                 Miro Crystal 20SV
+                                                 #9 FX Motion 771
+                                                 VideoLogic GrafixStar 700
+                                                 WinFast S430/S510
+  968       TVP3026                        32    ELSA Winner 2000PRO/X
+                                                 Diamond Stealth 64 Video VRAM
+  968       IBM RGB                        32    Genoa VideoBlitz III AVI
+                                                 Hercules Terminator Pro 64
+                                                 STB Velocity 64 Video
+                                                 #9 FX Motion 771
+                                                 Diamond Stealth 64 Video 3240/3400
+  968       TI RAMDAC                            Diamond Stealth 64 Video 3240/3400
+  732       (Trio32)                       32    Diamond Stealth 64 DRAM SE
+                                                 (all Trio32 based cards)
+  764       (Trio64)                       32    SPEA Mirage P64 (BIOS 5.x)
+                                                 Diamond Stealth 64 DRAM
+                                                 Diamond Stealth 64 Graphics 2xx0
+                                                 #9 FX Vision 330
+                                                 STB PowerGraph 64
+                                                 (all Trio64 based cards)
+
+  ·  Datatrek NetCard
+
+  ·  Dayna Communications CommuniCard E
+
+  ·  Digital DEPCM-AA Ethernet
+
+  ·  Digital EtherWORKS Turbo Ethernet
+
+  ·  D-Link DE-650, DE-660
+
+  ·  Eagle NE200 Ethernet
+
+  ·  Edimax Technology Ethernet Combo
+
+  ·  EFA InfoExpress 205, 207 Combo
+
+
+  CHIPSET   RAMDAC        CLOCKCHIP   BPP   CARD
+
+            (Trio64V+)                       DSV3326
+                                             Diamond Stealth 64 Video 2001
+                                             DataExpert DSV3365
+                                             ExpertColor DSV3365
+                                             MAXColor S3 Trio64V+
+                                             ELSA Winner 1000TRIO/V
+                                             Hercules Terminator 64/Video
+                                             #9 FX Motion 331
+                                             STB Powergraph 64 Video
+                                             VideoLogic GrafixStar 400
+            (Trio64V2)                       ELSA Winner 1000/T2D
+            (ViRGE)                          Canopus Co. Power Window 3DV
+                                             DSV3325
+                                             DataExpert DSV3325
+                                             Diamond Multimedia Stealth 3D 2000
+                                             Diamond Multimedia Stealth 3D 2000 PRO
+                                             Diamond Stealth 3D 2000
+                                             Diamond Stealth 3D 2000 PRO
+                                             Diamond Stealth 3D 3000
+                                             ELSA Victory 3D
+                                             ELSA Victory 3DX
+                                             ELSA Winner 3000-S
+                                             Expertcolor DSV3325
+                                             Hercules Terminator 64/3D
+                                             LeadTek WinFast 3D S600
+                                             MELCO WGP-VG4S
+                                             #9 FX Motion 332
+                                             Orchid Tech. Fahrenheit Video 3D
+                                             STB systems Powergraph 3D
+                                             WinFast 3D S600
+            (ViRGE/DX)                       Hercules Terminator 3D/DX
+            (ViRGE/GX)                       STB Nitro 3D
+            (ViRGE/VX)                       ELSA Winner 2000AVI/3D
+                                             ELSA Winner 3000
+                                             ELSA Winner 3000-L-42/-M-22
+                                             MELCO WGP-VX8
+                                             STB Systems Velocity 3D
+  911/924                                    Diamond Stealth VRAM
+  924       SC1148 DAC
+
+  ·  Eiger Labs EPX-ET10T2 Combo
+
+  ·  ELECOM Laneed LD-CDWA, LD-CDX, LD-CDNIA, LD-CDY
+
+  ·  EP-210 Ethernet
+
+  ·  Epson Ethernet
+
+  ·  EtherPRIME Ethernet
+
+  ·  Explorer NE-10000 Ethernet
+
+  ·  EZLink 4109 Ethernet
+
+  ·  Farallon Etherwave
+
+  ·  Fiberline FL-4680
+
+  ·  Fujitsu FMV-J181, FMV-J182, FMV-J182A
+
+  ·  Fujitsu Towa LA501
+
+
+  ·  Gateway 2000 Ethernet
+
+  ·  Genius ME3000II Ethernet
+
+  ·  Grey Cell Ethernet
+
+  ·  GVC NIC-2000P Ethernet Combo
+
+  ·  Hitachi HT-4840-11 EtherCard
+
+  ·  Hypertec HyperEnet
+
+  ·  IBM CreditCard Ethernet Adapter
+
+  ·  IC-Card Ethernet
+
+  ·  Infotel IN650ct Ethernet
+
+  ·  I-O Data PCLA/T
+
+  ·  Katron PE-520 Ethernet
+
+  ·  Kingston KNE-PCM/M, KNE-PC2
+
+  ·  LANEED Ethernet
+
+  ·  LanPro EP4000A
+
+  ·  Lantech Ethernet
+
+  ·  Linksys EtherCard
+
+  ·  Logitec LPM-LN10T, LPM-LN10BA Ethernet
+
+  ·  Longshine Ethernet
+
+  ·  Macnica ME-1 Ethernet
+
+  ·  Maxtech PCN2000 Ethernet
+
+  ·  Megahertz XJ10BT, XJ10BC, CC10BT Ethernet
+
+  ·  Melco LPC-TJ, LPC-TS
+
+  ·  Micronet Etherfast Adapter
+
+  ·  NDC Instant-Link
+
+  ·  Network General ``Sniffer''
+
+  ·  New Media EthernetLAN
+
+  ·  New Media LiveWir (NOT the LiveWire+)
+
+  ·  New Media BASICS Ethernet
+
+  ·  NextCom NC5310
+
+  ·  Novell/National NE4100 InfoMover
+
+  ·  Ositech Four of Diamonds
+
+  ·  Panasonic CF-VEL211P-B
+
+  ·  Planet SmartCom 2000, 3500
+
+  ·  PreMax PE-200 Ethernet
+
+  ·  Proteon Ethernet
+
+  ·  Ratoc REX-9822, REX-5588A/W
+
+  ·  Relia RE2408T Ethernet
+
+  ·  RPTI EP400, EP401 Ethernet
+
+  ·  SCM Ethernet
+
+  ·  SMC 8020BT EtherEZ (not the EliteCard)
+
+  ·  Socket Communications Socket EA LAN Adapter
+
+  ·  SuperSocket RE450T
+
+  ·  Surecom Ethernet
+
+  ·  SVEC PN605C
+
+  ·  TDK LAC-CD02x, LAK-CD021, LAK-CD022A, LAK-CD021AX Ethernet
+
+  ·  Thomas-Conrad Ethernet
+
+  ·  Trust Ethernet Combo
+
+  ·  Volktek NPL-402CT Ethernet
+
+  ·  Xircom CreditCard CE2
+
+
+  26.2.  Fast Ethernet (10/100baseT) adapters
+
+
+  ·  Linksys EtherFast 10/100
+
+  ·  Xircom CreditCard CE3
+
+
+  26.3.  Token-ring adapters
+
+  You should at least have kernel 1.3.72
+
+
+  ·  IBM Token ring Adapter
+
+  ·  3Com 3c689 TokenLink III
+
+
+  26.4.  Wireless network adapters
+
+
+  ·  AT&T GIS / NCR WaveLAN version 2.0
+
+  ·  DEC RoamAbout/DS
+
+  ·  Xircom CreditCard Netwave
+
+
+  26.5.  ISDN
+
+
+  ·  ELSA PCMCIA
+
+  ·  Sedlbauer Speed Star
+
+  ·  Teles S0/PCMCIA
+
+
+  26.6.  Modem and serial cards
+
+  Virtually all modem cards, simple serial port cards, and digital
+  cellular modems should work. Also ISDN modems that emulate a standard
+  UART are supported.
+
+
+  ·  Advantech COMpad-32/85 dual serial
+
+  ·  Quatech, IOTech dual RS-232 cards
+
+  ·  Quatech quad RS-232 card
+
+  ·  Socket Communications dual RS-232 card
+
+
+  26.7.  Memory cards
+
+  All SRAM cards should work. Unsupported flash cards can be read but
+  not written.
+
+
+  ·  Epson 2MB SRAM
+
+  ·  IBM 8MB Flash
+
+  ·  Intel Series 2 and Series 2+ Flash
+
+  ·  Maxtor MobileMax 16MB Flash
+
+  ·  New Media SRAM
+
+  ·  TDK Flash Memory SFM20W/C 20MB
+
+
+  26.8.  SCSI adapters
+
+  Be careful. Many vendors, particularly CD-ROM vendors, seem to switch
+  controller chips at will. Generally, They will use a different product
+  code, but not always: older (supported) New Media Bus Toaster cards
+  are not easily distinguishable from the current (unsupported) Bus
+  Toaster cards.
+
+
+  ·  Adaptec APA-1460, APA-1460A, APA-1450A SlimSCSI
+
+  ·  Digital SCSI II adapter
+
+  ·  Eiger Labs SCSI (Not the Eiger SS-1000)
+
+  ·  Future Domain SCSI2GO
+
+  ·  IBM SCSI
+
+  ·  Iomega ZIP Card
+
+  ·  IO-DATA PCSC-II, PCSC-II-L
+
+  ·  IO-DATA CDG-PX44/PCSC CD-ROM
+
+
+  ·  Logitec LPM-SCSI2
+
+  ·  Logitec LCD-601 CD-ROM
+
+  ·  MACNICA mPS110, mPS110-LP SCSI
+
+  ·  Melco IFC-SC2, IFC-DC
+
+  ·  NEC PC-9801N-J03R
+
+  ·  New Media Bus Toaster SCSI (older cards only)
+
+  ·  New Media Toast 'n Jam (SCSI only)
+
+  ·  Panasonic KXL-D740, KXL-DN740A, KXL-DN740A-NB 4X CD-ROM
+
+  ·  Pioneer PCP-PR1W CD-ROM
+
+  ·  Qlogic FastSCSI
+
+  ·  Raven CD-Note 4X
+
+  ·  RATOC REX-9530 SCSI-2
+
+  ·  Simple Technologies SCSI
+
+  ·  Sony CD-ROM Discman PRD-250
+
+  ·  Taxan ICD-400PN
+
+  ·  Toshiba NWB0107ABK, SCSC200B
+
+
+  26.9.  ATA/IDE CD-ROM adapters
+
+  You should at least have kernel 1.3.72
+
+
+
+  ·  Argosy EIDE CD-ROM
+
+  ·  Caravelle CD-36N
+
+  ·  Creative Technology CD-ROM
+
+  ·  Digital Mobile Media CD-ROM q
+
+  ·  EXP CD940 CD-ROM
+
+  ·  IO-DATA CDP-TX4/PCIDE, CDP-TX6/PCIDE, CDP-TX10/PCIDE, CDV-
+     HDN6/PCIDE, MOP-230/PCIDE
+
+  ·  H45 Technologies Quick 2x CD-ROM
+
+
+  26.10.  Multifunction cards
+
+  You should at least have kernel 1.3.73
+
+
+  ·  3Com 3c562, 3c562B/C/D, 3c563B/C/D
+
+  ·  ActionTec Comnet EF336 modem 28.8 + ethernet 10Mb (only modem part
+     works)
+
+
+  ·  IBM Home and Away Card
+
+  ·  Linksys LANmodem 28.8, 33.6
+
+  ·  Megahertz/U.S. Robotics EM1144, EM3288, EM3336
+
+  ·  Motorola Mariner
+
+  ·  Motorola Marquis
+
+  ·  Ositech Jack of Diamonds
+
+  ·  Xircom CreditCard CEM28, CEM33, CEM56
+
+
+  26.11.  ATA/IDE card drives
+
+  These card drives are supported starting with kernel 1.3.72. Both
+  Flash-ATA cards and rotating-media cards are supported.
+
+
+  26.12.  Miscellaneous cards
+
+
+  ·  Trimble Mobile GPS (uses serial/modem driver)
+
+
+  26.13.  Cards with separately distributed drivers
+
+
+  ·  IBM Smart Capture (Koji Okamura oka@nanotsu.kobe-u.ac.jp)
+
+
+  26.14.  Working on ...
+
+  People are working on the following cards:
+
+  ·  Nat'l Inst DAQCard (Eric Gonzalez root@colomsat.net.co)
+
+  ·  Roland SCP-55 MIDI (Toshiaki Nakatsu ir9k-nkt@asahi.net.or.jp)
+
+  ·  CyberRom CD-ROM (David Rowntree rowntree@dircon.co.uk)
+
+  ·  IO DATA PCSC-II (Katayama Nobuhiro kata-n@po.iijnet.or.jp)
+
+  ·  Macnica mPS-1x0 (Katayama Nobuhiro kata-n@po.iijnet.or.jp)
+
+  ·  FORTEZZA encryption
+
+  ·  Harris PRISM/AM79C930 (Mark Mathews mark@mail.absoval.com)
+
+  ·  IBM Etherjet (Danilo Beuche danili@cs.tu-berlin.de). The driver can
+     be found at  <http://www.first.gmd.de/~danilo/pc-driver>
+
+  ·  Teles
+
+  ·  Hayes ESP
+     contact Dennis Boylan <dennis@lan.com>
+
+  ·  Hayes ESP
+     contact Dennis Boylan <dennis@lan.com> PCMCIA
+
+  ·  Xircom CE3 (Werner Koch werner.koch@guug.de)
+
+
+
+  26.15.  Unsupported
+
+
+  ·  ActionTec Comnet EF336 modem 28.8 + ethernet 10Mb (ethernet part
+     not supported)
+
+  ·  Adaptec/Trantor APA-460 SlimSCSI
+
+  ·  CanonCompaq PCMCIA floppy drive
+
+  ·  New Media .WAVjammer and all other sound cards
+
+  ·  All 100baseT ethernet adapters
+
+  ·  Panasonic KXL-D720, KXL-D745
+
+  ·  SMC 8016 EliteCard
+
+  ·  Telxon/Aironet wireless adapter
+
+  ·  Xircom CE II Ethernet/Modem
+
+  ·  Xircom CE-10BT Ethernet
+
+
+
+  27.  Appendix C. Plug and Play devices
+
+  For people having trouble getting Plug and Play devices to work, the
+  ISA PnP utilities written by Peter Fox are available. Quote from the
+  README:
+
+
+  These programs allow ISA Plug-And-Play devices to be configured
+  on a Linux machine.
+
+  This program is suitable for all systems, whether or not they
+  include a PnP BIOS.
+
+
+
+  Commands have been taken from the Plug and Play ISA specification
+  Version 1.0a. ( <ftp://ftp.redhat.com/pub/pnp/docs/>)
+
+  More information on ISA PnP utilities can be found on the website of
+  Peter Fox:  <http://www.roestock.demon.co.uk/isapnptools/>
+
+  Please let me know about hardware (not normally supported under Linux)
+  which can be put to work with the aid of these utilities. A list of
+  this hardware will be put in this appendix.
+
+
+  28.  Appendix D. Linux incompatible Hardware
+
+  Some hardware manufacturers have created devices which are compatible
+  with MS-Dos and Windows 95 only. They seem to emulate part of the
+  normally available hardware in the devices by software packages sold
+  together with the device. Specification on these devices are not
+  presented to the world so it is almost impossible to write drivers for
+  these devices. Below a list of devices reported as being Linux
+  incompatible will be given.
+
+  Simply put, it is best to avoid hardware which states things like
+  "Needs Windows" or "Windows only".
+
+
+  ·  Canon LBP-465 printer
+
+  ·  Lexmark 1000 inkjet printer
+
+  ·  Sharp JX-9210 printer
+
+  ·  Epson stylus color 400
+
+  ·  Boca Research 28.8 internal modem (model MV34AI)
+
+  ·  Boca Research 33.6 internal modem (Joe Harjung has succeeded in
+     configuring the modem under Win95 and then soft booting into Linux
+     with the modem still working)
+
+  ·  HP Fastmodem D4810B
+
+  ·  IBM Mwave ("Dolphin") card. This card is a combination of sound,
+     modem, fax, voice control and dictation. Software should be loaded
+     to get things working.
+
+  ·  Multiwave Innovation CommWave V.34 modem (
+     <http://www.multiwave.com/>)
+
+  ·  US Robotics WinModem series
+
+  ·  Zoltrix 33.6 Win HSP Voice/Speaker Phone modem
+
+  ·  Compaq 192 PCMCIA modem/serial card
+
+  ·  New Media Winsurfer PCMCIA modem/serial card
+
+
+  29.  Glossary
+
+
+     AGP
+        Accelerated Graphics Port. A bus interconnect mechanism designed
+        to improve performance of 3D graphics applications. AGP is a
+        dedicated bus from the graphics subsystem to the core-logic
+        chipset.
+        <http://www.euro.dell.com/intl/euro/r+d/r+dnews/vectors/vect_2-1/v2-1_agp.htm>
+
+     ATAPI
+        AT Attachment Packet Interface. A new protocol for controlling
+        mass storage devices similar to SCSI protocols. It builds on the
+        ATA (AT Attachment) interface, the official ANSI Standard name
+        for the IDE interface developed for hard disk drives. ATAPI is
+        commonly used for hard disks, CD-ROM drives, tape drives, and
+        other devices.
+
+     ATM
+        Asynchronous Transfer Mode
+
+     CDDA
+        ?? Capability of CD-ROM/Writer to read out audio tracks.
+
+     DMA
+        Direct Memory Access
+
+     EGA
+        Enhanced Graphics Adapter
+
+     EIDE
+        Enhanced IDE
+
+
+     EISA
+        Extended Industry System Architecture
+
+     FDDI
+        Fiber Distributed Data Interface. High-speed ring local area
+        network.
+
+     IDE
+        Integrated Drive Electronics. Each drive has a built-in
+        controller.
+
+     ISA
+        Industry System Architecture
+
+     ISDN
+        Integrated Services Digital Network
+
+     MCA
+        MicroChannel Architecture
+
+     MFM
+        Modified Frequency Modulation
+
+     MMX
+        Multimedia Extensions. Added to the newest generation of Intel
+        Pentium Processors. It offers better audio and video quality
+
+     PCI
+        Pheripheral Component Interconnect. 32-bit bus designed by
+        Intel. information can be found on  <http://www.pcisig.com> and
+        <http://infoserver.ee.siue.edu/~jbutter/EE580_1.html>.
+
+     RAID
+        Redudant Arrays of Inexpensive Disks. The basic idea of RAID is
+        to combinr multiple small, inexpensive disk drives into an array
+        of disk drives which yields performance exceeding that of a
+        single large expensive drive. There are five type of redundant
+        array Architectures; RAID-1 through RAID-5. A non-redudant array
+        of disk drives is referred to as RAID-0.
+        <http://www.uni-mainz.de/~neuffer/scsi/what_is_raid.html>
+
+     RLL
+        Run Length Limited
+
+     SCSI
+        Small Computer Systems Interface. A standerd interface defined
+        for all devices in a computer. It make it possible to use a
+        single adapter for all devices.
+        <http://www.uni-mainz.de/~neuffer/scsi/what_is_scsi.html>
+
+     SVGA
+        Super Video Graphics Adapter
+
+     UART
+        Universal Asynchronous Receiver Transmitter
+
+     VGA
+        Video Graphics Adapter
+
+     VLB
+        VESA Local Bus
+
+     WORM
+        Write Once Read Many
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

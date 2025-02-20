@@ -1,0 +1,792 @@
+  The Loadlin+Win95 mini-HOWTO
+  Authored by: Chris Fischer, protek@brigadoon.com
+  v1.4.6, 13 March 1999
+
+  This document describes how to use Loadlin with Windows 95 to boot to
+  Linux.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+     1.1 Copyright
+     1.2 New Versions Of This Document and Windows 98
+     1.3 Feedback
+     1.4 Disclaimer
+
+  2. IMPORTANT: Preliminary Information and Setup
+
+     2.1 WARNING! for Windows95 OSR2 (version 4.00.950b) users:
+     2.2 Things that are assumed:
+     2.3 Items you need before you start:
+
+  3. Getting started:
+
+     3.1 Determine what version of Windows 95 you have.
+     3.2 Determine if you are using the FAT32 file system.
+     3.3 Make sure filename extensions are visible in Windows Explorer.
+     3.4 Rename your system files.
+     3.5 Important Warning.
+     3.6 Edit your system files.
+
+  4. *** Use this section ONLY if you are using a DOS 6.x boot disk.***
+
+     4.1 Edit and Rename your DOS 6.x system files.
+
+  5. Final Steps
+
+     5.1 Almost Finished
+     5.2 You are finished!
+     5.3 How it works.
+
+  6. Alternate Methods for Auto-Booting Linux, Especially for Users With a FAT32 File System.
+
+     6.1 Method 1.
+     6.2 Method 2.
+
+  7. Frequently Asked Questions:
+
+     7.1 Where can I find more information on using Loadlin?
+     7.2 I am not sure what partition Linux is installed on. How do I find out?
+     7.3 Where do I find the kernel image file and how do I copy it to my MS-DOS partition?
+     7.4 Does it matter if I install Linux or Windows 95 first?
+     7.5 I currently have LILO installed, but I want to use Loadlin instead. How do I remove LILO?
+     7.6 What if I already dual boot between Windows 95 and Windows 3.x, and I want to boot to Linux using this method?
+     7.7 Is it possible to initiate Linux from the Windows 95 desktop?
+     7.8 Where can I get a plain text version of this document?
+
+  8. Credits
+
+
+
+  ______________________________________________________________________
+
+
+  1.  Introduction
+
+  This document describes how to easily use a combination of Windows
+  95's Boot Menu and Loadlin.exe to autoboot Linux using the F4 Function
+  Key. This procedure should work with Windows 95 versions 4.00.950,
+  4.00.950a, and 4.00.95b with FAT16, and all versions of Linux that
+  support Loadlin. If you prefer to use the LILO boot manager, please
+  consult the Linux+Win95 Mini-HOWTO.
+
+  There are also two alternate methods for dual booting between Linux
+  and Windows 95 using Loadlin for users using FAT32 with Windows 95
+  version 4.00.950b.
+
+
+  1.1.  Copyright
+
+  The Loadlin+Win95 mini-HOWTO is copyright (C) 1997- 1998 by Protek
+  Computer Solutions. This document may be reproduced and distributed in
+  whole or in part, in any medium physical or electronic, as long as
+  this copyright notice is retained on all copies. Commercial
+  redistribution is allowed and encouraged; however, the author would
+  like to be notified of any such distributions.
+
+
+  1.2.  New Versions Of This Document and Windows 98
+
+  This mini-HOWTO is posted first at The Linux+Windows 95  Reference
+  Page <http://www.eskimo.com/~praxis>, so check there to make sure you
+  have the most recent revision of this mini-HOWTO. You will also find a
+  link there for dual booting with Windows 98. The next revision of this
+  mini-HOWTO will be a major revision and will include information on
+  dual booting with Windows 98.
+
+
+  1.3.  Feedback
+
+  Questions, comments, and suggestions are welcome. I am always looking
+  for ways to improve and expand this mini-HOWTO. I rely heavily on
+  feedback to make improvements, and will do my best to be prompt with a
+  helpful response. I can be reached at protek@brigadoon.com.
+
+
+  1.4.  Disclaimer
+
+  Every attempt has been made to ensure that the information presented
+  in this mini-HOWTO is safe and accurate. However, this information is
+  given without any warranty, either expressed or implied, as to its
+  suitability for a particular use. It is generally considered a
+  GoodThing(TM) to make backups of your system files before changing
+  system configurations and/or files. I suggest you take this precaution
+  "just in case".
+
+
+  2.  IMPORTANT: Preliminary Information and Setup
+
+
+  2.1.  WARNING! for Windows95 OSR2 (version 4.00.950b) users:
+
+  Do NOT attempt dual booting with Windows 95 without first consulting
+  the Windows 95 OSR2 FAQ. The FAQ also contains a great deal of
+  information regarding FAT32. In a nutshell, if you have OSR2 and are
+  using a FAT16 file system, you can still dual boot using the F4
+  Function Key.
+
+  NOTE: If you have Windows 95 OSR2, and are using a FAT32 file system,
+  then the dual booting methods in this  mini-HOWTO using the F4
+  Function Key will not work and should not be attempted.
+
+  However, there are a couple of alternate methods you can use  to
+  automate booting Linux at startup, which are discussed in ``Section
+  6''.
+
+
+  2.2.  Things that are assumed:
+
+
+  ·  You have successfully installed Windows 95.
+
+  ·  Windows 95 is installed on Drive C.
+
+  ·  You have successfully installed Linux.
+
+  ·  You know what partition Linux is installed on.
+
+  ·  LILO is NOT installed on your hard drive.
+
+  ·  If you are using Windows 95 OSR2 (version 4.00.950b), you have
+     carefully read the Windows95 OSR2 FAQ.
+
+
+  2.3.  Items you need before you start:
+
+
+  ·  A bootable floppy disk with DOS 5.0 or DOS 6.x system files
+     (io.sys, msdos.sys, command.com) and a config.sys file. If you are
+     using a DOS 5.0 boot disk, you will also need an autoexec.bat file.
+     If you are using Windows 95 OSR2 (version 4.00.950b), you will also
+     need to create a file called Winboot.sys with a text editor and
+     place it in the root directory of Drive C.  Winboot.sys can be an
+     empty file, just  so long as you have the file.
+
+  NOTE: If your hard drive already contains the autoexec.dos,
+  config.dos, io.dos, msdos.dos, and command.dos files, then you will
+  not need the floppy. You can check by typing: dir and dir /ah at the
+  root of Drive C.  Also, if you installed the upgrade version of
+  Windows 95, then it is likely that you have them.
+
+
+  ·  The Loadlin.exe program file
+
+  ·  Your kernel image file,usually zImage or vmlinuz. (See the ``FAQ''
+     for info).
+
+  ·  A simple text editor, such as Notepad.
+
+
+  3.  Getting started:
+
+
+  3.1.  Determine what version of Windows 95 you have.
+
+  Boot your computer to Windows 95 and right click on the My computer
+  icon. Now left click on Properties. On the General Tab, look under the
+  "System:" line. There you will see the version number.
+
+
+  3.2.  Determine if you are using the FAT32 file system.
+
+  NOTE: If you have Windows 95 version 4.00.950b, make certain you are
+  not using the FAT32 file system. Double click the My Computer  icon,
+  then right click the Drive C icon. Left click on Properties. On the
+  General tab, the "Type:" line will indicate whether or not you have a
+  FAT32 file system. If you are using the FAT32 file system, then go
+  directly to ``Section 6'' . Otherwise, continue with Section 3.3.
+
+
+  3.3.  Make sure filename extensions are visible in Windows Explorer.
+
+
+  ·  Run the Windows Explorer file manager program.
+
+  ·  On the Menu Bar, click on View, then click on Options.  On the View
+     Tab, make sure that the "Show all files" radio button is marked.
+     Also, make sure that the line with "Hide MS-DOS file extensions for
+     file types that are registered" is unchecked.  Click on the OK
+     button.
+
+  NOTE: If your hard drive already contains the *.dos files mentioned in
+  the ``NOTE: of Section 2.3'', then skip to the next ``NOTE:''.
+  Otherwise, continue with Section 3.4.
+
+
+  3.4.  Rename your system files.
+
+
+  ·  Insert the DOS 5.0 or DOS 6.x bootable floppy into Drive A. Click
+     on the Drive A icon so you can see the contents on the floppy disk.
+
+  ·  Rename each file to a .dos file extension. You can do this by
+     single clicking on a file, pressing the F2 function key, and typing
+     in the new name. Do not worry if you need the bootable floppy to
+     work properly, just rename the files back after you are finished
+     with this procedure.
+
+
+  3.5.  Important Warning.
+
+
+  ·  EXTREMELY IMPORTANT: Make sure you rename the files on the floppy
+     BEFORE you copy them to Drive C. Otherwise you will overwrite your
+     Windows 95 system files. You have been warned.  Now, copy all files
+     to the root directory of Drive C. One method is to click on the
+     Drive A icon, press CTRL+A, press CTRL+C, click on the Drive C
+     icon, and press CTRL+V.
+
+  NOTE: If you do not have Windows 95 OSR2 (version 4.00.950b), please
+  skip to ``Section 3.6''.
+
+
+  ·  If (and only if) you have Windows95 version 4.00.950b, make sure
+     you have a file named Winboot.sys in the root directory of Drive C,
+     as stated in ``Section 2.3'' above. Failure to have Winboot.sys in
+     the root directory of Drive C will result in a system lockup should
+     you attempt to boot to an earlier version of DOS.
+
+  NOTE: If you are using a  DOS 6.x boot disk skip to ``Section 4'',
+  otherwise continue with the next step.
+
+
+  3.6.  Edit your system files.
+
+
+  ·  Open Notepad. On the Menu Bar, click on Open. Change "Files of
+     type" to "All files (*.*)". Change "Look in:" from Desktop to Drive
+     C. Now open Config.dos by double clicking on the filename. Delete
+     all the contents. This will create a 0K file...I will explain
+     later. Save the file.
+
+  ·  Use Notepad to open and edit Autoexec.dos and type in the Loadlin
+     command. The Loadlin command must be in the following syntax:
+
+
+
+       ______________________________________________________________________
+
+        Loadlin DriveLetter:\LinuxKernelFile root=/dev/LinuxBootPartition ro
+       ______________________________________________________________________
+
+
+
+
+  Here is my Autoexec.dos file as an example:
+
+
+
+       ______________________________________________________________________
+
+        Loadlin f:\vmlinuz root=/dev/hdc2 ro
+       ______________________________________________________________________
+
+
+
+
+  NOTE: The kernel, as well as the Loadlin.exe, file may be anywhere on
+  your hard drive as long as you reference the correct path. For
+  example, if your kernel file was located in  the directory
+  e:\linux\kernels and Loadlin.exe was located in the directory
+  c:\utils, you would use:
+
+
+
+       ______________________________________________________________________
+
+        c:\utils\loadlin e:\linux\kernels\vmlinuz root=/dev/hdc2 ro
+       ______________________________________________________________________
+
+
+
+
+
+  ·  Save the file.
+
+
+  4.  *** Use this section ONLY if you are using a DOS 6.x boot disk.***
+
+
+  4.1.  Edit and Rename your DOS 6.x system files.
+
+
+  ·  Open Notepad. On the Menu Bar, click on Open. Change "Files of
+     type" to "All files (*.*)". Change "Look in:" from Desktop to Drive
+     C. Now open Config.dos by double clicking on the filename. Delete
+     all the contents. Now, you will need to enter the shell command
+     with the following syntax:
+
+
+
+       ______________________________________________________________________
+
+        shell=loadlin.exe LinuxKernelFile root=/dev/LinuxBootPartition ro
+       ______________________________________________________________________
+
+
+
+  Here is my Config.dos file as an example:
+
+
+
+       ______________________________________________________________________
+
+        shell=f:\loadlin.exe f:\vmlinuz root=/dev/hdc2 ro
+       ______________________________________________________________________
+
+
+
+
+  NOTE: The Loadlin and kernel file may be  anywhere on your hard drive
+  as long as you reference the correct path. For example, if your
+  Loadlin file was in the directory f:\utils and the kernel file was
+  located in the directory e:\linux\kernels you would use:
+
+
+
+       ______________________________________________________________________
+
+        shell=f:\utils\loadlin.exe e:\linux\kernels\vmlinuz root=/dev/hdc2 ro
+       ______________________________________________________________________
+
+
+
+
+
+  ·  Save the file.
+
+
+  5.  Final Steps
+
+
+  5.1.  Almost Finished
+
+
+  ·  One last file to edit and then you are finished. Use Notepad to
+     open and edit Msdos.sys. Goto the "Options" section. Look for a
+     line that has BootMulti=. If you do not find one then add it and
+     set the value to 1. It should look something like:
+
+
+
+       ______________________________________________________________________
+
+        [Options]
+        BootMulti=1
+       ______________________________________________________________________
+
+
+
+
+
+  ·  There may be other items listed. Just leave them. Now save the
+     file.
+
+
+  5.2.  You are finished!
+
+  Now all you have to do is reboot (Don't forget to remove the floppy
+  disk). When you see "Starting Windows 95...", press the F4 Function
+  Key and Linux should boot right up.
+
+
+
+  5.3.  How it works.
+
+  Windows 95 has a built in Boot Menu. By default you do not see it at
+  startup (although you can change that if you wish), but you can get to
+  it by pressing the F8 Function Key when you see "Starting Windows
+  95...". On the menu you will see several options. The last option is
+  "Previous version of  MS-DOS". Instead of pressing F8 and then
+  selecting "Previous version of MS-DOS", you can use the F4 shortcut by
+  pressing F4 when "Starting Windows 95..."  appears on the screen. When
+  Windows 95 boots to the previous  version of MS-DOS, it uses the files
+  that end in the .dos file extension. This is why it is important to
+  have a 0K Config.dos file if you are initiating Linux from the
+  Autoexec.dos file. If Windows 95 does not find the files with a .dos
+  extension while trying to boot the previous operating system, it will
+  load the Windows 95 startup files.  Therefore, if you do not have a
+  Config.dos file, Windows 95 will load all the drivers in your
+  Config.sys file. While this will not prevent Linux from loading, it
+  will take longer. Having a 0K Config.dos file prevents Windows 95 from
+  reading your Config.sys file while booting to the previous version of
+  MS-DOS.
+
+
+  6.  Alternate Methods for Auto-Booting Linux, Especially for Users
+  With a FAT32 File System.
+
+  This section will work for all versions of Windows 95 to date,
+  regardless of whether you have a FAT32 file system. There are two
+  methods I will discuss in this section. First, I'll start with  the
+  simplest.
+
+
+  6.1.  Method 1.
+
+  This method uses the Autoexec.bat file to call (or execute) another
+  batch file named Linux.bat, during boot up.
+
+
+  ·  Creat a Linux.bat file using a simple text editor such as EDIT or
+     Notepad. The contents should be similar to the following:
+
+
+
+       ______________________________________________________________________
+
+        @echo off
+        cls
+        echo.
+        echo.
+        echo.
+        echo.
+        choice /t:y,5 "Do you wish to boot Linux? "
+        if errorlevel 2 goto End
+        c:\loadlin c:\vmlinuz root=/dev/hdc2 ro
+        :End
+       ______________________________________________________________________
+
+
+
+
+  This batch file script clears the screen, adds four blank lines,
+  displays the text in quotes + [Y,N], then waits 5 seconds for you to
+  press a key. If you do not press a key within 5 seconds, it defaults
+  to Y and runs Linux. If you select Y or N, the batch file determines
+  what option you selected, then executes the selected option.  For
+  example, if you select 'N' then the batch file terminates and
+  continues to process your Autoexec.bat file, which loads Windows 95.
+  If you select Y, then of course Linux will load.
+
+  If you do not want four blank lines before the text, modify the number
+  of lines with echo. If you do not want the screen to clear, then
+  remove the line with cls. The /t switch tells the choice command to
+  wait 5 seconds and, if no key is pressed, to default to Y. Change the
+  y to an n if you want Windows 95 to boot after the 5 second timeout:
+  choice /t:n,5.  Also, you can change the amount of time to wait from 0
+  to 99 seconds.  For more information on the choice command, change to
+  the c:\windows\command directory and type: choice /? at the command
+  prompt.
+
+  NOTE: You will have to modify the line that boots Linux to match your
+  configuration. Please see ``Section 3.6'' for examples of how to
+  configure Loadlin to boot to Linux.
+
+
+  ·  Next, create an Autoexec.bat file (if you don't already have one)
+     with a simple text editor. Then, on the first line, add the
+     following:
+
+
+
+       ______________________________________________________________________
+
+               call c:\linux
+       ______________________________________________________________________
+
+
+
+
+  If Linux.bat is in another directory you will have to reference the
+  correct path. For example if Linux.bat is in a directory called
+  C:\batch, you would add:
+
+
+
+       ______________________________________________________________________
+
+               call c:\batch\linux
+       ______________________________________________________________________
+
+
+
+
+  to the first line of your Autoexec.bat file. Save and exit the file.
+  Now all you need to do is reboot. You should be prompted on whether
+  you want to boot Linux.
+
+
+  6.2.  Method 2.
+
+  This method is a bit more involved, but offers the greatest
+  flexibility. What this method does it create your own custom boot
+  menu, though it does not replace the Windows 95 boot menu. You will
+  need a Config.sys and an Autoexec.bat file.
+
+
+  ·  First you will need to define a Startup Menu in Config.sys
+     (mycomments to you are in parenthesis):
+
+
+
+
+
+
+  ______________________________________________________________________
+
+   [menu]
+   menuitem=Linux, Boot to Linux  (This defines a Menu Block and gives it a description).
+   menuitem=Win95, Boot to Windows 95
+   menucolor=15,1  (This gives a blue background with bright white text)
+   menudefault=Linux, 15  (This sets the default menuitem and waits up to 15 seconds for input).
+
+   [linux]
+   shell=f:\loadlin.exe f:\vmlinuz root=/dev/hdc2 ro (Please see Section 4 for examples and syntax).
+
+   [win95]
+   (Include the normal contents of your config.sys file here. If you did
+   not have a config.sys file before now, then leave this section blank).
+  ______________________________________________________________________
+
+
+
+
+
+  ·  Save and exit your Config.sys file. If you want, you can use this
+     Config.sys template to get started.
+
+
+  ·  Next, edit your Autoexec.bat file (my comments to you are in
+     parenthesis):
+
+
+
+       ______________________________________________________________________
+
+        goto %config%
+
+        :win95
+        (Include the normal contents of your autoexec.bat file here. If you did
+        not have an autoexec.bat file before now, then leave this section blank).
+       ______________________________________________________________________
+
+
+
+
+
+  ·  Save and exit your Autoexec.bat file. If you want, you can use this
+     Autoexec.bat template to get started. That should do it. The next
+     time you reboot, you should get a Start Up menu with the option to
+     boot to Linux or Windows 95.
+
+
+  7.  Frequently Asked Questions:
+
+
+  7.1.  Where can I find more information on using Loadlin?
+
+
+  ·  Slackware versions 3.2 and 3.5 contain a file named "loadlin.tgz"
+     in the \slakware\A5 directory, Slackware versions 3.3 and 3.4 have
+     loadlin.tgz in the \slakware\A4 directory. Slackware version 3.6
+     has loadlin.tgz in the \slackware\A8 directory. Unarchive the file
+     and look in the \docs directory for a file named manual.txt. I do
+     not know about earlier versions of Slackware.
+
+
+  ·  RedHat versions 4.2 through 5.2 contain a file named
+     "loadlin16.tgz" in  the \dosutils directory. Unarchive the file and
+     look in the \docs directory for a file named manual.txt. RedHat 4.1
+     does not seem to have this archive. The manual.txt is also
+     available for download at:
+
+
+       ftp://ftp.eskimo.com/u/p/praxis/manual.txt
+
+
+
+  ·  Additional information is available at:
+
+
+       http://metalab.unc.edu/LDP/HOWTO/BootPrompt-HOWTO-2.html#ss2.2
+
+
+
+  7.2.  I am not sure what partition Linux is installed on. How do I
+  find out?
+
+
+  ·  At a Linux shell prompt, run the fdisk utility and press "p". From
+     there you should be able to tell. If you need additional help using
+     fdisk, please consult the man pages.
+
+
+  7.3.  Where do I find the kernel image file and how do I copy it to my
+  MS-DOS partition?
+
+
+  ·  To find your linux kernel file type:
+
+
+
+       ______________________________________________________________________
+
+               find / -name vmlinuz
+       ______________________________________________________________________
+
+
+
+
+
+  at a Linux shell prompt. This will search all Linux partitions for the
+  vmlinuz file. If you have multiple vmlinuz files, then make sure you
+  use the correct one. If you are not sure, then the safest bet would be
+  to use the most recent one.
+
+  To copy your linux kernel file to your DOS partition, you need to make
+  your DOS partition visible to Linux, then mount the partition if it is
+  not already. Generally, this should have been set up when you
+  installed Linux. All you need to do next is change to the directory
+  the vmlinuz file is in and copy it over to DOS using the cp command.
+
+  However, if Linux was not set up to recognize your DOS partition, then
+  copy vmlinuz to a floppy. Take any DOS formatted floppy (with enough
+  disk space to hold your kernel image file) and insert it into your
+  floppy drive. Type:
+
+
+
+       ______________________________________________________________________
+
+               mount /dev/fd0 /tmp
+       ______________________________________________________________________
+
+
+
+
+  at a Linux shell prompt. Then change to the directory your kernel
+  image file is in and type:
+
+
+
+       ______________________________________________________________________
+
+               cp vmlinuz /tmp
+       ______________________________________________________________________
+
+
+
+
+  This will copy vmlinuz to your floppy disk and it will be readable by
+  DOS. Shutdown Linux, boot to DOS, then copy vmlinuz to whichever
+  directory you choose. If you recompile your kernel, do not forget to
+  copy the new kernel image file to your DOS partition. This will
+  overwrite your old file, so it might be a good idea to rename the old
+  file first just in case the new one does not work properly.
+
+
+  7.4.  Does it matter if I install Linux or Windows 95 first?
+
+
+  ·  Technically no. However, it would be much simpler to install Win95
+     first. That way it is easier to setup Linux to recognize your DOS
+     partition(s) as you can usually do this during the Linux
+     installation.
+
+
+  7.5.  I currently have LILO installed, but I want to use Loadlin
+  instead. How do I remove LILO?
+
+
+  ·  You will need to restore the Win95 MBR (Master Boot Record) that
+     LILO overwrote when you installed LILO. At a DOS prompt type:
+
+
+
+       ______________________________________________________________________
+
+               fdisk /mbr
+       ______________________________________________________________________
+
+
+
+
+
+  7.6.  What if I already dual boot between Windows 95 and Windows 3.x,
+  and I want to boot to Linux using this method?
+
+
+  ·  Frankly, if you want to do this I would recommend using LILO.
+     However, if you really do not want to use LILO, you will have to
+     boot to Win 3.x first, then issue the Loadlin command. (Make sure
+     Windows 3.x is NOT running, but that you are in DOS 5.0 or 6.x).
+
+
+  7.7.  Is it possible to initiate Linux from the Windows 95 desktop?
+
+
+  ·  Yes. First, create a batch file called "linux.bat", for example.
+     Edit the file to contain a Loadlin command such as:
+
+
+
+  ______________________________________________________________________
+
+          loadlin f:\vmlinuz root=/dev/hdc2 ro
+  ______________________________________________________________________
+
+
+
+
+
+  Now save the file in the \windows\desktop directory. Next, right click
+  on the Linux.bat icon, then left click on Properties. Now click on the
+  Program tab, then click on the Advanced button. Click on the box next
+  to "MS-DOS mode" and make sure the box next to "Warn before entering
+  MS-DOS mode is checked". Click OK, then click on OK again. Now when
+  you double click on the Linux icon, a warning box will appear before
+  going into MS-DOS mode. If you click on "Yes" then Windows enters MS-
+  DOS mode and executes the Linux.bat file.
+
+  NOTE: You must be in MS-DOS mode in order to use Loadlin. Please see
+  the manual.txt file mentioned in ``Section 7.1'' of this ``FAQ'' for
+  more information.
+
+
+
+  7.8.  Where can I get a plain text version of this document?
+
+
+  ·  You can get a plain text version of this document at:
+
+       ftp://ftp.eskimo.com/u/p/praxis/loadlin.txt
+
+
+
+  8.  Credits
+
+  A special thanks toNorm Jacobowitz and Fred Harris for helping me sort
+  out the Windows 95 OSR2 issues and for helping me improve this mini-
+  HOWTO.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

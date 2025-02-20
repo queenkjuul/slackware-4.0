@@ -1,0 +1,22 @@
+Begin3
+Title:          "dialIP - Costs": Display time & costs for 
+			(C)SLIP & PPP sessions
+Version:        1.0 [26-Dec-96]
+Entered-date:   26DEC96
+Description:    A program to display online time and phone costs
+                of Internet sessions using DIP utility. Displays
+                time and costs for current session and for previous
+                sessions. Phone call prices hardcoded for croatian CARNet
+                and HPT, but should be easy to adapt to your phone
+                company. 
+                Source and ELF binaries.
+Keywords:       DIP dialup time costs internet SLIP CSLIP PPP
+Author:         Hrvoje Lucic <lucich@fly.cc.fer.hr>
+Maintained-by:  lucich@fly.cc.fer.hr
+Primary-site:   ftp.sunsite.unc.edu /pub/Linux/incoming
+                18K dialIP-costs-v1.0.tar.gz
+Alternate-site:
+Original-site:  
+Platforms:      Linux
+Copying-policy: GPL
+End 

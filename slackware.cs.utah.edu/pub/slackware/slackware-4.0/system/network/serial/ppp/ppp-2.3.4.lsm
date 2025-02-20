@@ -1,0 +1,37 @@
+Begin3
+Title:            ppp
+Version:          2.3.4
+Entered-date:     24APR98
+Description:      PPP Daemon for Linux, NeXT, bsd, cbcp, osf, sol2, sunos4,
+                  svr4, and ultrix.  This allows Unix machines to
+		  connect to the internet through dialup lines, using
+		  the PPP protocol, as a PPP server or client.  Works
+		  with 'chat', 'dip', and 'diald', among (many) others.
+		  Supports IP, TCP, UDP and (for Linux) IPX (Novell).
+Keywords:         PPP, internet, pppd, serial, networking, unix,
+		  protocol, point-to-point-protocol, PAP, CHAP,
+		  MSCHAP, IPX, Novell Netware, IP, TCP, UDP, ICMP,
+		  network, drivers
+Author:           Linux			Al Longyear <longyear@pobox.com>
+                  Digital Unix (OSF/1)	Farrell Woods <ftw@zk3.dec.com>
+                  NetBSD		Matthew Green <mrg@eterna.com.au
+                  FreeBSD		Peter Wemm <peter@haywire.DIALix.COM>
+                  NeXTStep		Steve Perkins <perkins@cps.msu.edu>
+                  Solaris 2	Paul Mackerras <Paul.Mackerras@cs.anu.edu.au>
+                  SunOS 4.x	Paul Mackerras <Paul.Mackerras@cs.anu.edu.au>
+                  System V Release 4  Matthias Apitz <Matthias.Apitz@SOFTCON.de>
+                  Ultrix 4.x	Paul Mackerras (for want of anybody better :-)
+Maintained-by:    Linux			Al Longyear <longyear@pobox.com>
+                  Digital Unix (OSF/1)	Farrell Woods <ftw@zk3.dec.com>
+                  NetBSD		Matthew Green <mrg@eterna.com.au
+                  FreeBSD		Peter Wemm <peter@haywire.DIALix.COM>
+                  NeXTStep		Steve Perkins <perkins@cps.msu.edu>
+                  Solaris 2	Paul Mackerras <Paul.Mackerras@cs.anu.edu.au>
+                  SunOS 4.x	Paul Mackerras <Paul.Mackerras@cs.anu.edu.au>
+                  System V Release 4  Matthias Apitz <Matthias.Apitz@SOFTCON.de>
+                  Ultrix 4.x	Paul Mackerras (for want of anybody better :-)
+Primary-site:     cs.anu.edu.au /pub/software/ppp/
+                  668k ppp-2.3.4.tar.gz
+Alternate-site:   sunsite.unc.edu /pub/Linux/system/network/serial/ppp/
+Copying-policy:   BSD
+End

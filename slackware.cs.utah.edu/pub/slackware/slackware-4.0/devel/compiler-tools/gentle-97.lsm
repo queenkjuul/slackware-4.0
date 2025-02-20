@@ -1,0 +1,23 @@
+Begin3
+Title:          gentle-97
+Version:        1997
+Entered-date:   20Aug98
+Description:    The Gentle Compiler Construction System supports
+                language recognition, definition of abstract syntax trees,
+                construction of tree walkers based on pattern-matching,
+                smart traversal, simple unparsing for source-to-source
+		translation, and optimal code selection for microprocessors.
+		See http://www.first.gmd.de/gentle/
+Keywords:	syntax analysis, trees, semantic analysis, code generation,
+                programming languages, domain specific languages,
+		compiler tools, compiler generators
+Author:         F.W.Schroeer@gmd.de (F.W. Schroeer)
+Maintained-by:  F.W.Schroeer@gmd.de (F.W. Schroeer)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/compiler-tools
+		453860 gentle-97.tar.gz
+Alternate-site: 
+Original-site:  www.first.gmd.de gentle
+		453860 gentle-97.tar.gz
+Platforms:      Platform independent C code, Unix installation script
+Copying-policy: FRS
+End

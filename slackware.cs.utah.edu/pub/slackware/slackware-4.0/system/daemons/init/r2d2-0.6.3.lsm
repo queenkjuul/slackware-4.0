@@ -1,0 +1,24 @@
+Begin3
+Title:          r2d2 - easy but powerful boot-concept (SysV compatible)
+Version:        0.6.3
+Entered-date:   29Nov97
+Description:    r2d2 is designed to replace the traditional shell-script
+		/etc/init.d/rc. Instead of messing around with several
+		hundred symbolic links in /etc/rcX.d, it reads a central
+		configuration file - which is much easier to survey and
+		better to understand.
+
+		These harmless improvements have an enormous impact
+		on system administration. See README-radical.
+		
+		r2d2 is fully compatible with SysV init.
+		
+Keywords:       SysV init rc sysvinit 
+Author:         Winfried Trümper <winni@xpilot.org>
+Maintained-by:  author
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/daemons/init/
+Alternate-site: 
+Original-site:  ftp://www.shop.de/linux/local/
+Platforms:      Unix
+Copying-policy: Use at your own risk. (c) 1997 W. Trümper. Licensed by GPL.
+End

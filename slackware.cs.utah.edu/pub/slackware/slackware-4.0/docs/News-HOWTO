@@ -1,0 +1,752 @@
+  The Linux News HOWTO
+  Vince Skahan, <vince@halcyon.com>
+  v1.4, 29 November 1995
+
+  This document describes the setup and care+feeding of USENET News
+  under Linux.  You need to read this if you plan to post or read USENET
+  news either locally on your site or between your site and other sites.
+  You probably do *not* need to read this document if don't plan to pro­
+  vide USENET news as a feature of your system.
+
+  1.  Introduction
+
+  The intent of this document is to answer some of the questions and
+  comments that appear to meet the definition of "frequently asked
+  questions" about USENET News software under Linux in general, and the
+  version in the Linux Slackware distribution in particular.
+
+  This document and the corresponding Mail and UUCP "HOWTO" documents
+  collectively supersede the UUCP-NEWS-MAIL-FAQ that has previously been
+  posted to comp.os.linux.announce.
+
+  1.1.  New versions of this document
+
+  New versions of this document will be periodically posted to
+  comp.os.linux.announce, comp.answers, and news.answers.  They will
+  also be added to the various anonymous ftp sites who archive such
+  information including sunsite.unc.edu:/pub/Linux/docs/HOWTO.
+
+  In addition, you should be generally able to find this document on the
+  Linux WorldWideWeb home page at http://sunsite.unc.edu/mdw/linux.html.
+
+  1.2.  Feedback
+
+  I am interested in any feedback, positive or negative, regarding the
+  content of this document via e-mail.  Definitely contact me if you
+  find errors or obvious omissions.
+
+  I read, but do not necessarily respond to, all e-mail I receive.
+  Requests for enhancements will be considered and acted upon based on
+  that day's combination of available time, merit of the request, and
+  daily blood pressure :-)
+
+  Flames will quietly go to /dev/null so don't bother.
+
+  In particular, the Linux filesystem standard for pathnames is an
+  evolving thing.  What's in this document is there for illustration
+  only based on the current standard at the time that part of the
+  document was written and in the paths used in the distributions or
+  'kits' I've personally seen.  Please consult your particular Linux
+  distribution(s) for the paths they use.
+
+  Feedback concerning the actual format of the document should go to the
+  HOWTO coordinator - Greg Hankins (gregh@sunsite.unc.edu).
+
+  1.3.  Copyright Information
+
+  The News-HOWTO is copyrighted (c)1994 Vince Skahan.
+
+  A verbatim copy may be reproduced or distributed in any medium
+  physical or electronic without permission of the author.  Translations
+  are similarly permitted without express permission if it includes a
+  notice on who translated it.
+  Short quotes may be used without prior consent by the author.
+  Derivative work and partial distributions of the News-HOWTO must be
+  accompanied with either a verbatim copy of this file or a pointer to
+  the verbatim copy.
+
+  Commercial redistribution is allowed and encouraged; however, the
+  author would appreciate being notified of any such distributions (as a
+  courtesy).
+
+  In short, we wish to promote dissemination of this information through
+  as many channels as possible. However, we do wish to retain copyright
+  on the HOWTO documents.
+
+  We further want that ALL information provided in the HOWTOS is
+  disseminated.  If you have questions, please contact Greg Hankins, the
+  Linux HOWTO coordinator, at gregh@sunsite.unc.edu.
+
+  1.4.  Standard Disclaimer
+
+  Of course, I disavow any potential liability for the contents of this
+  document.  Use of the concepts, examples, and/or other content of this
+  document is entirely at your own risk.
+
+  1.5.  Other sources of information
+
+  1.5.1.  USENET
+
+     news.admin.misc         General topics of network news administration.
+     news.admin.policy       Policy issues of USENET.
+     news.admin.technical    Maintaining network news. (Moderated)
+     news.software.b         Discussion about B-news-compatible software.
+     news.software.nn        Discussion about the "nn" news reader package.
+     news.software.nntp      The Network News Transfer Protocol.
+     news.software.readers   Software used to read network news.
+     news.sysadmin           Comments directed to system administrators.
+     news.announce.newusers  Explanatory postings for new users. (Moderated)
+     news.newusers.questions Q & A for users new to the Usenet.
+
+  1.5.2.  Books
+
+  The following is a non-inclusive set of books that will help
+
+  ·  "Managing UUCP and USENET" published by O'Reilly+Associates is in
+     my opinion the best book out there for figuring out the programs
+     and protocols involved in being a USENET site.
+
+  ·  "Unix Communications" published by The Waite Group contains a nice
+     description of all the pieces (and more) and how they fit together.
+
+  ·  "Practical Unix Security" published by O'Reilly+Associates has a
+     nice discussion of how to secure UUCP in general.
+
+  ·  "The Internet Complete Reference" from Osborne is a fine reference
+     book that explains the various services available on Internet and
+     is a great source for information on news, mail, and various other
+     Internet resources.
+
+  ·  "The Linux Networking Administrators' Guide" from Olaf Kirch of the
+     Linux DOC Project is available on the net and is also published by
+     (at least) O'Reilly and SSC.  It makes a fine one-stop shopping to
+     learn about everything you ever imagined you'd need to know about
+     Unix networking.
+
+  1.6.  Where NOT to look for help
+
+  There is nothing "special" about configuring and running USENET news
+  under Linux (any more).  Accordingly, you almost certainly do *NOT*
+  want to be posting generic news-related questions to the
+  comp.os.linux.* newsgroups.
+
+  Unless your posting is truly Linux-specific (ie, "please tell me what
+  patches are needed to run INN with the bash1.12 in SLS v1.03") you
+  should be asking your questions in the newsgroups mentioned above.
+
+  Let me repeat that.
+
+  There is virtually no reason to post anything news-related in the
+  comp.os.linux hierarchy any more.  There are existing newsgroups in
+  the news.*  hierarchy to handle *ALL* your questions.
+
+  IF YOU POST TO COMP.OS.LINUX.* FOR NON-LINUX-SPECIFIC QUESTIONS, YOU
+  ARE LOOKING IN THE WRONG PLACE FOR HELP.  THE USENET NEWS EXPERTS HANG
+  OUT IN THE PLACES INDICATED ABOVE AND GENERALLY DO NOT RUN LINUX.
+
+  POSTING TO THE LINUX HIERARCHY FOR NON-LINUX-SPECIFIC QUESTIONS WASTES
+  YOUR TIME AND EVERYONE ELSE'S AND IT FREQUENTLY DELAYS YOU FROM
+  GETTING THE ANSWER TO YOUR QUESTION.
+
+  2.  Hardware Requirements
+
+  There are no specific hardware requirements for USENET News under
+  Linux.  The only requirement of any type is sufficient disk space to
+  hold the software itself, the threads database(s), and the amount of
+  news you wish to keep on the system.  Figure on a minimum of 10 MB of
+  disk space for starters.
+
+  3.  Getting USENET News software
+
+  All the software referenced in this "HOWTO" is available on the usual
+  Internet anonymous ftp sites.
+
+  Looking in /networking/news on ftp.uu.net is usually a good way to
+  start.
+
+  The newspak-2.4.tar.z distribution contains config files and readme
+  files related to building uucp, news, and mail software under Linux
+  from the various freely-available sources.  It can usually be found in
+  sunsite.unc.edu:/pub/Linux/system/Mail/news.  If you can't find it on
+  sunsite, please send me mail and I'll make sure you get a copy of it.
+
+  4.  News Transport Software
+
+  There are two main sets of news "transport" software for *nix these
+  days, Cnews and INN.  The old "Bnews" has been declared officially
+  dead and unsupported by its authors.
+
+  News "transport" is defined here to be the software that works behind
+  the scenes to post and propagate the news articles as well as making
+  the articles available for the newsreaders to access.
+
+  You can set your paths to anything you like, as long as UUCP has the
+  absolute path to rnews in the Permissions file and as long as you have
+  your newsreaders configured so that they can find "inews" and "mail".
+
+  Important - you're asking for trouble if you try to intermix Cnews and
+  INN.  Pick one or the other.  It's ok to add the NNTP "Reference
+  Release" into Cnews since they're intended to play well together.
+
+  4.1.  Cnews Cleanup Release
+
+  The current de-facto standard news software is Cnews.  It has been
+  around for a number of years, I first saw it sometime around 1988.
+  The current version at this writing is called "Cnews Cleanup Release,
+  with patch CR.G".
+
+  Cnews's main benefit is its maturity.  It runs on about every *nix you
+  can find and there are literally thousands of systems running it
+  worldwide.
+
+  Its main disadvantage is that it seems to have been intended for uucp-
+  over-modem connections between sites and as such requires the addition
+  of NNTP software to handle realtime Internet feeds and reading.
+
+  Regardless, the beginning USENET admin should probably run Cnews first
+  since it's so stable, well documented, and has many thousands of
+  experienced administrators who can answer questions.
+
+  The 'Cleanup Release' claims that "Overview support has been fully
+  integrated and is faster than it used to be."  The result is that you
+  can do things like use Cnews NOV support rather than running external
+  threading packages for newsreaders such as nn, tin, and trn.
+
+  I haven't quite figured how to implement this part yet, since I
+  switched to INN at home long ago.  If anybody wants to clue me in to
+  update this document, please drop me a line via e-mail.
+
+  The newspak distribution on sunsite contains working config files for
+  the Cnews Cleanup Release under Linux as well as a couple line patch
+  you'll need to make to "doexplode" to get around some problems with
+  bash1.12.
+
+  Basically you run the new 'quiz' script and take the defaults.  You'll
+  have to refer to your /usr/include tree to answer a number of the
+  questions, but that's rather straightforward.
+
+  4.1.1.  Installing Cnews
+
+  Installing the Cleanup Release of Cnews is absolutely a "rtfm"
+  project.  Just grab the sources, extract them, and follow the
+  instructions.
+
+  The quiz.def in newspak was generated by running "quiz" the first time
+  and simply looking up the answers by checking out the /usr/include
+  files to get the right answers.
+
+  You'll need a recent 'bash' to have C-news pass its self-tests.   Try
+  'bash -version' to find which version you have.  Version 1.14.2 is
+  definitely no good.  The current (at this writing) version of 1.14.5
+  seems better.
+
+  Steve Robbins also has determined that the recent 'cleanup release' of
+  Cnews has found a bug in GNU 'join' from shellutils-1.9.  There are a
+  few patches needed to the sources for join to deal with the problem.
+  Steve's put them on sunsite as I recall.
+  4.1.2.  Configuring Cnews
+
+  At the very least, you need to edit or at least take a look at the
+  following files that all should be in /usr/local/lib/news:
+
+  active             - the active file
+  batchparms         - batch parameters
+  explist            - article expiration setup
+  mailname           - name in headers for mailed replies
+  mailpaths          - path to mail moderated postings to
+  organization       - your "org"
+  sys                - control what you take and feed
+  whoami             - your hostname for the Path: line
+
+  4.1.3.  Maintaining a Cnews Site
+
+  First, a significant rule of thumb is to not mess with files by hand
+  that have utilities that configure them. In particular don't set up
+  newsfeeds manually (run "addfeed" instead) and don't mess with your
+  active file (run "addgroup").  When in doubt, read and re-read the
+  docs in the source distribution.
+
+  Everything else can be done via cron.  My crontab for "news" looks
+  like the following:
+
+          # take the compressed batches that came in from other systems
+          # also, post (locally) articles that originated here
+          20 *       * * * /usenet/sw/news/bin/input/newsrun
+
+          # batch 'em up to go out
+          0 *        * * * /usenet/sw/news/bin/batch/sendbatches myfeedsite
+
+          # expire C-news
+          59 0       * * * /usenet/sw/news/bin/expire/doexpire
+
+          # monitor stuff and report if needed
+          10 5       * * * /usenet/sw/news/bin/newsdaily
+          00 5       * * * /usenet/sw/new/bin/newswatch
+
+          # turn processing of incoming news batches off 6:30AM - 4:00 PM
+          30 6       * * * /usenet/sw/news/bin/input/newsrunning off
+          00 16      * * * /usenet/sw/news/bin/input/newsrunning on
+
+  4.2.  InterNetNews (INN)
+
+  INN is the newcomer on the scene, but it's gaining popularity as it
+  matures.  Its main benefit is speed and the fact that it contains an
+  integrated nntp package.  Its main drawback is that it's new and that
+  it doesn't necessarily install and run flawlessly on the many
+  "standard *nixes" yet.  In addition, it operates by having a daemon
+  (the innd) always running plus potentially a overchan daemon to do
+  threading.  The tradeoff seems to be memory vs. speed.
+
+  I've run up to a 5 MB/night newsfeed incoming over UUCP with INN on a
+  8 MB 386-33 (no Xwindows running normally) over a 14.4 KB modem with
+  no problems at all.
+
+  New USENET admins should probably not try INN until they have
+  experience with either B-news or Cnews.  While it's fast and reliable
+  under Linux, it's virtually undocumented for the beginning news
+  administrator (though in practice it's rather simple to run once you
+  figure it out).
+
+  INN is very particular about its permissions.  Don't mess with them.
+
+  INN is also very particular about having a "quality" TCP/IP to work
+  with.  Linux is not necessarily all the way there at this time, so it
+  is recommended that you grab a Linux-specific INN distribution from
+  one of the usual Linux archive sites.
+
+  4.2.1.  Installing INN
+
+  ( from Arjan de Vet - devet@info.win.tue.nl )
+
+  I've made a patch + config kit for INN 1.4 to get it to run on Linux.
+  It can be found at:
+
+  ftp.win.tue.nl:/pub/linux/ports/inn-1.4-linux.tar.gz
+
+  INN depends heavily on a good /bin/sh substitute. I use a beta version
+  of bash 1.13 that is now available for Linux on the normal archive
+  sites.  bash 1.12 gives some small problems with newgroups not being
+  handled correctly (maybe some other problems too, I don't remember).
+
+  4.2.2.  Configuring INN
+
+  Basically follow Arjan's instructions and you'll be all set.  Here's
+  the summary of what to do:
+
+  ·  In config.data, make sure you have "HAVE_UNIX_DOMAIN DONT"
+
+  ·  Add the hostname of the system running innd to hosts.nntp For a
+     uucp-only site, that's your sitename.
+
+  ·  Make sure you do not have a line for nntp in /etc/inetd.conf
+
+  ·  Make sure that you have innshellvars say "HAVE_UUSTAT DO" rather
+     than the "DONT" in his example config.data if you have uustat from
+     the Taylor UUCP package installed.  If you have this defined wrong,
+     it'll result in no outgoing news getting batched.
+
+  ·  If you run INN, definitely define the recommended syslogd stuff
+     because it is very, very helpful.
+
+     There is a spectacular (!!!!) FAQ for INN that comes out monthly.
+     Look on rtfm.mit.edu:/pub/usenet-by-hierarchy/news for it.  You'll
+     be glad you did.
+
+  4.2.3.  Maintaining a INN Site
+
+  I've found that there's essentially zero care-and-feeding of a Linux
+  INN site other than having a working cron.  Basically you want a
+  crontab that looks something like the following:
+
+          # daily maint, also expire the .overview database and articles
+          1 0 * * * /usenet/sw/inn/bin/news.daily expireover delayrm < /dev/null
+
+          # send 'em out
+          5 * * * * /usenet/sw/inn/lib/send-uucp
+
+  ( if you switch to bash1.13, the "< /dev/null" above is not needed )
+
+  4.3.  Other News Transport Agents
+
+  The following is a non-inclusive list of other news transport software
+  known to work under Linux:
+
+  ·  dynafeed
+
+  ·  nntp1.5.11
+
+  ·  slurp1.05
+
+  5.  News Readers
+
+  There is no "one true newsreader".  As a result, there are many well-
+  known newsreaders that port easily to Linux in particular.  At this
+  writing, "tin", "trn", and "nn" are in most of the commonly available
+  distributions of Linux and in newspak.
+
+  When picking a newsreader, you basically want to find something that
+  is easy to use, very configurable by the user, with threading and kill
+  files (to select interesting articles or make the non-interesting ones
+  not appear at all).
+
+  You can set your paths to anything you like as long as all the
+  newsreaders can find "inews" from your Cnews or INN installation and a
+  "mail" program to send mail replies to posts.
+
+  This section will talk briefly about several of the most popular ones.
+  Before you ask, I use "nn" for lots of reasons :-)
+
+  5.1.  Tin
+
+  Tin is a threaded newsreader generally intended to be easy for new
+  users.  It supports kill files and NOV threading.  If you're running
+  INN, it will read NOV .overview files by default and not write index
+  files.
+
+  To compile Tin under linux, basically just edit the makefile to set
+  the locations of the software (especially the location of inews) and
+  type "make linux".  There are no patches required for tin under Linux.
+
+  For threading, you can basically just say "tin -u" to update the index
+  files.
+
+  To enable the ability to read via NNTP, compile with "NNTP_ABLE"
+  defined.  This will result in a file called "tin" for local and one
+  called "rtin" for NNTP reading.  "tin -r" will also get the same
+  behavior as "rtin".
+
+  Iain Lea recommends the following crontab entry and says that you need
+  to do a "make daemon" to make tind.
+
+          # thread the database
+          35 * * * * /usenet/bin/tind -u
+
+  I've run tin over a SLIP link as a NNTP-based newsreader.  If you're
+  connecting to a system that has a full newsfeed, you will grow
+  extremely old waiting for it to load up the "active" file.
+
+  5.2.  Trn/Mthreads
+
+  trn is a threaded derivative of the "rn" newsreader.  trn3.2 and newer
+  has the nice ability to select either the "mthreads" (trn's threading
+  package) or NOV (threader from INN) threading.
+
+  To compile it, just run Configure and take the calculated defaults.
+  You might need to have lib4.4.1 and bash-1.13 (there is a beta now
+  available on the various Linux archive sites) to successfully run
+  Configure.  You'll probably need both bash1.13 and libs4.4.1 to get
+  the new Configure to run properly.
+
+  The newspak distribution on sunsite contains working config files for
+  trn under Linux.
+
+  It's probably unwise to try to edit a trn config.sh by hand unless
+  you're doing something *VERY* simple like changing the paths to fit
+  your tastes.  If you do so, you'll need to run "Configure -S" before
+  you "make depend", "make", and "make install".
+
+  Although "Configure" fails generally under Linux with bash1.12,
+  "Configure -S" work fine so if you take the newspak config.sh as a
+  starting point, you'll be very close.
+
+  Compiling for NNTP reading is as simple as answering "yes" when
+  Configure asks you if you want to do so (assuming Configure runs ok on
+  your system).  A future release of newspak will include a config.sh
+  for NNTP reading as well as the existing one for local reading for
+  those of us who are still "bash-impaired" :-)
+
+  I've run trn over a SLIP link as a NNTP-based newsreader.  If you're
+  connecting to a system that has a full newsfeed, you will grow
+  extremely old waiting for it to load up the "active" file and to
+  thread the articles.
+
+  There are dozens of command line switches for trn to get all kinds of
+  behavior.  Read the "trn" man page for details.  I use a nice feature
+  to set all the switches easily:
+
+  ·  make a file with all the settings in a file called  /.trnrc
+
+  ·  export TRNINIT=" /.trnrc"
+
+  The current newspak has a copy of my .trnrc file as an example.
+
+  trn3.2 and above has support for NOV or mthreads threading that's
+  user-selectable.  Accordingly, I recommend building the software to
+  allow both threading mechanisms (it's a question in Configure).  To
+  pick one at runtime, try "trn -Zo" for NOV and "trn -Zt" for mthreads.
+  I do it my aliasing trn to the right thing.
+
+  To build the mthreads database, do something like the following in the
+  "news" crontab:
+
+          # thread the trn database
+          35 * * * * /usenet/bin/mthreads all
+
+  5.3.  NN
+
+  The newspak distribution on sunsite contains working config files for
+  nn6.4.18 that you can drop into place and type "make" under Linux.
+  They also work with the 6.5b3 beta of the coming nn6.5 update.
+
+  When you're done compiling, you need to do the following:
+
+  ·  - run the "inst" program to install things.  (install everything)
+
+  ·  - initialize the database
+
+  ·  - fire up nnmaster
+
+  See the nn docs for details.  Compiling, configuring, and running nn
+  under Linux is no different than running nn on any other *nix with the
+  exception that you may want to run nnmaster as a cron entry rather
+  than as a daemon.  If you run it as a daemon under linux, it may not
+  tend to wake up properly (the net effect of running it from cron is
+  the same anyway).
+
+  Support of "nn" is as simple as the following crontab entries:
+
+          # run nnmaster to collect "nn" stuff
+          # (not needed if you use NOV from INN in nn-6.5beta3)
+          25 * * * * /usenet/sw/nn/lib/nnmaster
+
+          # expire the nn database
+          # (not needed if you use NOV from INN in nn-6.5beta3)
+          0  4       * * * /usenet/sw/nn/bin/nnadmin =EYW
+
+          # stash a copy of the active file for "nngoback" and keep last 7
+          0 3 * * * /usenet/sw/nn/lib/back_act 7
+
+  I've experimented a little with running nn as a NNTP-based newsreader
+  over a SLIP connection.  In this case, you'll want to edit the
+  config.h file slightly.  See the comments in the file for details.
+  When running as a NNTP-based reader, nn runs a local copy of nnmaster
+  to keep the threads database on the local system so that article
+  selection is very fast (although you of course wait for the arcticle
+  text a little if you're running SLIP over a modem).
+
+  The new version (6.5.x) of nn has support for INN's NOV database which
+  makes it unnecessary for you to run nnmaster at all.  This
+  configuration is highly recommended, since as a result you won't have
+  to spend the cpu time to run nnmaster at all and you won't get its
+  database and the actual news articles available out of synch.
+
+  5.4.  Other newsreaders
+
+  The following is a non-inclusive list of newsreaders said to install
+  and run under Linux:
+
+  ·  tass
+
+  ·  xrn
+
+  ·  gnus
+
+  6.  Acknowledgements
+
+  The following people have helped in the assembly of the information
+  (and experience) that helped make this document possible:
+
+  Ed Carp, Steve Robbins, Ian Taylor, Greg Naber, Matt Welsh, Iain Lea,
+  Arjan de Vet
+
+  If I forgot anybody, my apologies.
+
+  7.  Frequently Asked Questions about USENET (in c.o.l.* anyway)
+
+  7.1.  Why can't I post to moderated groups ?
+
+  Probably because the newsreader is trying to call /bin/mail to send
+  the mail and it doesn't like it.  Replace the /bin/mail in old
+  versions of SLS with the port of mailx-5.5.tar.z from a modern
+  Slackware and use Slackware's pkgtool to install the kit and you'll be
+  all set.
+
+  Another possibility is that you have a moderated newsgroup set up on
+  your local system as not-moderated and somebody upstream is quietly
+  deleting the article (some system's software, not a person).  Make
+  sure you run a "checkgroups" every now and then when the checkgroups
+  article rolls by in news.admin every few weeks.
+
+  7.2.  Why do I have problems that appear to be permission-related ?
+
+  Because they are :-)
+
+  Check to see that your permissions are right and that you have a
+  "news" username and group in /etc/passwd and /etc/group that matches
+  the binary distribution you grabbed.  It seems that there is not yet a
+  Linux-standard for commonly available accounts.
+
+  All the stuff in /usr/local/lib/news should be news.news except
+  /usr/local/lib/news/setnewsids which should be setuid root.
+
+  You can use whatever UID and GID you want for "news".
+
+  7.3.  Why can I post articles locally, but they don't show up or get
+  fed downstream ?
+
+  Probably because you didn't call newsrun from cron.  Maybe because you
+  edited your sys file and messed it up.  Maybe because you don't have a
+  /usr/spool/news/out.going tree or something.   Maybe because you
+  grabbed a distribution that has the 'Performance' or 'Cleanup'
+  releases of Cnews, which batch things up and need 'newsrun' running
+  from cron to process them to feed the other sites and to have them
+  visible locally.
+
+  Do not create newsgroups or feeds by editing the active or sys files.
+  Use the utilities in /usr/local/lib/news/bin/maint to do it.
+
+  7.4.  Why doesn't my binary distribution have nntp ?
+
+  Because it's supposed to be plug-n-play under Linux and because I
+  didn't want to make SLS's news stuff doubly big by having to maintain
+  both nntp and non-nntp versions of the newsreaders and news transport
+  programs.  Also because it compiles in localized information that is
+  not overridable at runtime via a config file.
+
+  7.5.  Why does doexpire (or relaynews or) say "severe space shortage"
+  when there's lots of room ?
+
+  Because it can't read /etc/mtab.  Make it mode 644.  This happens when
+  you unmount a mounted filesystem by root with a umask that doesn't
+  permit world-read of files owned by root.
+
+  7.6.  Why does everything look normal, but posting doesn't happen ?
+
+  Older versions of Linux had a "broken" sed that Cnews was prone to
+  blow up.  In particular, if you've installed over an old SLS, be sure
+  to check /bin and /usr/bin to be certain you have only one copy of sed
+  and that it's a modern one.
+
+  Because as of the 'Performance Release' in about February 1993, you
+  have to have 'newsrun' run from cron periodically to process things.
+  That's a feature that apparently suprises some people.
+
+  7.7.  the various independent thread databases ?  Can I hook the new
+  news overview (NOV) stuff into trn/tin/nn to replace
+
+  Yes. trn, tin, and the beta of nn support it now.
+
+  You can hook it into the Performance and Cleanup Releases of Cnews and
+  various other readers as well.
+
+  The beta copy of nn6.5 I have here has NOV support and it works just
+  dandy under Linux.  I run it here and have nn running without having
+  to run nnmaster (!).  Look on uniwa.uwa.edu.au for a copy of it.
+
+  7.8.  Why can't we have a binary distribution of NNTP ?
+
+  Because significant local-only information is compiled-in and cannot
+  be determined auto-magically at runtime.  If you're that into things,
+  please grab INN rather than rolling your own with Cnews plus NNTP.
+
+  7.9.  storing any news articles or databases locally.  How do I set up
+  NNTP to allow read/post across the network while *not*
+
+  ( mdw@sunsite.unc.edu (Matt Welsh) )
+
+  ·  1) Grab the "reference implementation" of nntp and a copy or rn
+     from your local archive site.  If you connect to ftp.uu.net you'd
+     grab:
+
+     nntp.1.5.11.tar.Z from ftp.uu.net:/networking/news/nntp
+
+  ·  2) compile nntp as follows:
+
+     copy common/conf.h.dist to common/conf.h.
+
+     Edit common/conf.h to set certain options: The only ones I set
+     were:
+
+     DOMAIN: undefine it (i.e. change the line to #undef DOMAIN).
+
+     REALDOMAIN: Define this. It looks up the domain using the
+     libraries.
+     SERVER_FILE: Set this to the name of the file which will contain
+     the hostname of the news server (i.e. the machine you'll read and
+     post news through). I use "/usr/local/lib/news/server".
+
+     PASSFILE: If your news server requires authorization (i.e.  some
+     kind of username/password) to post, set this to the name of the
+     file which contains the username and password (described below).  I
+     use "/usr/local/lib/news/nntppass".
+
+     I decided to keep all of the other news stuff in
+     /usr/local/lib/news.  So I set all of the rest of the pathnames in
+     the file (i.e.  ACTIVE_FILE, NEWSGROUPS_FILE, etc.) to use
+     /usr/local/lib/news.  Many of these files are only used by the NNTP
+     server, not the client, but to be safe I changed them all to point
+     to the right directory. You can of course use the default
+     pathnames; just make sure you create the directory accordingly.
+
+     3) Create the user "usenet" if you haven't already. The inews
+     program runs as this user. All you need is a userid; you don't need
+     a home directory or shell or anything for the user. Just plop the
+     following line into your /etc/passwd:
+
+                                     usenet:*:13:1::/:
+
+  Make sure you set the userid ("13", above) to something unique. The
+  group can be anything; I use "daemon" (gid 1).
+
+  ·  4) Create the SERVER_FILE, above. For example, my news server is
+     "wonton.tc.cornell.edu", so I created the file
+     /usr/local/lib/news/server which contained one line:
+
+                      wonton.tc.cornell.edu
+
+  ·  5) Create the PASSFILE. This file contains lines of the form
+
+                     <server name> <username> <password>
+
+  Let's say that your news server (the one in SERVER_FILE, above) is
+  "shoop.vpizza.com", and to post on that machine you need to be autho­
+  rized as the user "news" with a password of "floof". Thus, in the
+  PASSFILE (I use /usr/local/lib/news/nntppass), you need the line
+
+                  shoop.vpizza.com news floof
+
+  ·  6) Make this file secure! The inews program runs as the user
+     "usenet", so make this news directory owned by that user and the
+     nntppass file as well.
+
+             chown usenet /usr/local/lib/news
+             chmod 755 /usr/local/lib/news
+             chown usenet /usr/local/lib/news/nntppass
+             chmod 600 /usr/local/lib/news/nntppass
+
+  So nobody else can read this file. No, the passwords in it are not
+  encrypted.
+
+  ·  7) Go back to the nntp.1.5.11 source directory; issue "make
+     client".  At this point you'll build the NNTP version of inews,
+     which is the only software used by the NNTP client.
+     When I built inews, there was a bug in the library which caused the
+     function uname() in uname.c to call itself eternally. This should
+     be gone now; however, if inews seems to hang and your system starts
+     slowing down *a lot* you should rename the function "uname()" in
+     uname.c to something like "my_uname()", and change the calls to it
+     (in inews.c) to call my_uname() instead. Mail me if you run into
+     this problem.
+
+                     (VDS note - this means mail to Matt-not me :-) )
+
+  ·  8) Issue "make install_client". This will install the inews stuff.
+     Also link /usr/local/lib/news/inews to /usr/local/bin/inews
+
+     Now you should be able to happily post (by hand). Try something
+     like the following:
+
+                     $ inews -h << EOF
+                     Newsgroups: misc.test
+                     From: me@foo.bar.com
+                     Subject: Testing
+                     Reply-To: my-real-address@wherever.edu
+
+                     This is a test.
+                     EOF
+
+  If this works, inews should post the article. You'll know because
+  test-responders on misc.test will reply to the address on the Reply-To
+  line, above. Please don't do test postings on real groups, like c.o.l.
+  :)
+

@@ -1,0 +1,21 @@
+
+Begin3
+Title:          tgdb_wish
+Version:        1.0
+Entered-date:   27OCT94
+Description:    tgdb_wish is an interpreter containing Tcl, Tk, TclX,
+                TkSteal, Expect and BLT. This interpreter is needed to
+                run tgdb, a graphical user interface (GUI) for gdb, the GNU
+                debugger. You can get the sources for tgdb from sunsite.unc\
+                .edu:/pub/Linux/devel/debuggers/tgdb-[version].src.tgz.
+                This package contains a statically and a dynamically linked
+                version of tgdb_wish. See file README.1ST for details.
+Keywords:       tgdb, GUI, debugger
+Author:         John Ousterhout and others
+Maintained-by:  tgdb@HighTec.saarlink.de (tgdb development)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/debuggers
+                654668 tgdb_wish-linux.tgz
+Platform:       Linux/x86 1.x, XFree86[tm] 2.x
+Copying-policy: BSD
+End
+

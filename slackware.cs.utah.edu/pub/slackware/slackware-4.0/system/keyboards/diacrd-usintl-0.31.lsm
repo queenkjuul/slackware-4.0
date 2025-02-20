@@ -1,0 +1,19 @@
+Begin3
+Title:		diacrd-usintl
+Version:	0.31
+Entered-date:	16July97
+Description:	transforms dead keys (diacritical) of US keyboard for X11
+		same as the US-International keyboard in Window$ 
+		(kernel patch + daemon "diacrd")
+Keywords:	keyboard, international, diacritical, dead keys
+Author: 	equeiroz@eecs.ukans.edu (Enéas Queiroz)
+Modified-by:	andrewbalsa@usa.net (André Balsa)
+Maintained-by:	andrewbalsa@usa.net (André Balsa)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Keyboards
+		50kB diacrd-usintl-0.31.tar.gz
+		651 diacrd-usintl-0.31.lsm
+Alternate-site: 
+Original-site:	
+Platforms:	Linux, X11R6, XFree86 3.2 & 3.3
+Copying-policy:	GNU/GPL
+End

@@ -1,0 +1,15 @@
+Begin3
+Title: gcc-2.7.2.1.axp.patch.gz         
+Version: 2.7.2.1       
+Entered-date: 17-10-96  
+Description: Patch to compile gcc-2.7.2.1 on the alpha platform   
+Keywords: gccaxp      
+Author: mvergall@double-barrel.be, Michael C. Vergallen        
+Maintained-by: ? 
+Primary-site: ftp.double-barrel.be:/pub/linux-alpa/ 
+	      51.5K gcc-2.7.2.1.axp.patch.gz   
+Alternate-site: sunsite.unc.edu:/pub/?
+Original-site: ftp.double-barrel.be 
+Platforms: Linux-Alpha     
+Copying-policy: GPL
+End

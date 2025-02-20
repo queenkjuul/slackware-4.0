@@ -1,0 +1,25 @@
+Begin3
+Title:          XPLog
+Version:        0.14
+Entered-date:   28-Feb-1999
+Description:    XPLog is an PPP-Dialer and Phonecost Program:
+		- Phonecost Calculation - Online and Offline Calculation
+		- Statistics about Phonecosts ( Max. 93 Days ) ( Phonebill )
+		- logfile creation about ppp-modem-connects
+		- logfile-viewer
+		- PPP-Dialer 
+		- three user defined startup-buttons for scripts 
+		  and programms
+		- comfortable preference gui
+		- Messages Logfile Import ( Root Only )
+Keywords:       Logfile,PPP Dialer,Phonebill,XForms,X11
+Author:         skraus@weserbergland.de (Stefan Kraus)
+Maintained-by:  skraus@weserbergland.de (Stefan Kraus)
+Primary-site:	http://www.weserbergland.de/privat/kraus/index.html
+Alternate-site:	metalab.unc.edu /pub/Linux/system/network/serial/ppp
+		77k xplog-0.14.tgz
+Platforms:      LINUX
+		needs XWindow
+                needs XForm
+Copying-policy: GPL
+End

@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf gcl.exe )
+( cd usr/bin ; ln -sf /usr/lib/gcl-2.2.2/unixport/saved_gcl gcl.exe )
+( cd usr/lib/gcl-2.2.2 ; rm -rf info )
+( cd usr/lib/gcl-2.2.2 ; ln -sf /usr/info info )

@@ -1,0 +1,16 @@
+Begin3
+Title:          dhcpd-interface-patch
+Version:        for 1.0.0
+Entered-date:   3/31/98
+Description:    Patch for ISC dhcpd 1.0.0 to add support for a single
+		interface selected out of two or more.  Under Linux, the
+		standard version fails to run if more than one Ethernet
+		interface is available.  This patch also enhances the 
+		entry format for lease-times.
+Keywords:       DHCP dhcpd ISC
+Author:         chris.gonnerman@usa.net (Chris Gonnerman)
+Maintained-by:  chris.gonnerman@usa.net (Chris Gonnerman)
+Primary-site:   sunsite.unc.edu
+Platforms:      Linux, any other which runs ISC dhcpd.
+Copying-policy: BSD-like
+End

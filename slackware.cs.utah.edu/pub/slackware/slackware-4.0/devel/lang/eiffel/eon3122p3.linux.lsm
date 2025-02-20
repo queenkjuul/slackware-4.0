@@ -1,0 +1,16 @@
+Title:		eon eiffel
+Version:	3122p3
+Entered-date:	30AUG95
+Description:	A shareware eiffel compiler, binary distribution.
+Keywords:	eiffel, language, compiler, eon
+Author: 	ian@eonsw.demon.co.uk <Ian Leonard>
+Maintained-by:	eon@eonsw.demon.co.uk <Ian Leonard>
+Primary-site:	ftp.demon.co.uk /pub/eiffel/eon-eiffel
+                538462 eon3122p3.linux.tgz
+                11042  eon.faq
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/lang/eiffel
+                538462 eon3122p3.linux.tgz
+                4454   eon.faq.gz
+Platforms:	Linux, C++ compiler, ELF
+Copying-policy:	shareware
+End

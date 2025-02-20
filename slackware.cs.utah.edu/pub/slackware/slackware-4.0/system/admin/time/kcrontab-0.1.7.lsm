@@ -1,0 +1,16 @@
+Begin3
+Title:		kcrontab
+Version:	0.1.7
+Entered-date:	20JUN98
+Description:	A crontab editor
+Keywords:	KDE, QT, cron, crontab
+Home-page:	Not avaiable yet
+Keywords:	KDE, QT, cron, crontab
+Authors:	Michael Bialas <michael@quinto.ruhr.de>
+Authors:	David Klemm <klemm@abacus.at>
+Maintained-by:	Michael Bialas <michael@quinto.ruhr.de>
+Primary-site:
+Alternate-site: ftp://ftp.kde.org/pub/kde/stable/Beta4/apps/admin/
+Platforms:	unix (only tested on Linux 2.x and FreeBSD 3.0)
+Copying-policy:	GPL
+End

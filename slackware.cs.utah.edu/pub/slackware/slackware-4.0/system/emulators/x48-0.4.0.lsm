@@ -1,0 +1,16 @@
+Begin3
+Title:          x48
+Version:        0.4.0
+Entered-date:   01.13.1995
+Description:    X11 based emulator of Hewlett-Packards HP48 S/SX, G/GX
+                x48 emulates the HP48 calculator's hardware, and runs an
+                original ROM from your calculator in an X window.
+Keywords:       x48 HP48
+Author:         ecd@dressler.de (Eddie C. Dost)
+Maintained-by:  ecd@dressler.de (Eddie C. Dost)
+Primary-site:   sunsite.unc.edu /pub/Linux/systems/Emulators
+		132kb x48-0.4.0.tar.gz
+Platform:       Needs the ROM of your original HP48 to run.
+                Needs X11.
+Copying-policy: GPL
+End

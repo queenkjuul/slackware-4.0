@@ -1,0 +1,21 @@
+Begin3
+Title:          termpkg
+Version:        2.04
+Entered-date:   22FEB97
+Description:    Terminal server daemon and simple telnet like client.
+		Allows access to one or more serial ports through the 
+		telnet protocol. Can be configured to connect in a one to 
+		one relation of telnet ports to serial ports or in a 
+		round-robin fashion where one telnet port serves many 
+		serial ports.
+Keywords:       telnet serial terminal server.
+Author:         jcroft@swbell.net (Joe Croft) (Formerly jcroft@unicomp.net)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+		88.6KB termpkg-2.04.tgz
+Alternate-site: ftp.funet.fi (Not sure where it will go, currently in 
+		/pub/Linux/incoming)
+Original-site:  
+Platforms:      Linux, SCO5, OSF/1 AIX FreeBSD
+Copying-policy: GPL
+End

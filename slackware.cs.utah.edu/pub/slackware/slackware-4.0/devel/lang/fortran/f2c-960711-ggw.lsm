@@ -1,0 +1,23 @@
+=============================================================================
+The LSM Entry Form
+=============================================================================
+
+Cut this out, fill it in, send it to lsm@osf-alpha.cs.helsinki.fi.
+
+Begin3
+Title:          F2C Fortran to C compiler adapted for Linux
+Version:        19960711
+Entered-date:   19Jul96
+Description:    Fortran 77 compiler/translator
+			This particular Makefile needs ELF support
+Keywords:       FORTRAN F77 translators
+Author:         dmg@research.att.com (David M. Gay)
+Maintained-by:  ggw@cds.duke.edu (Gregory G. Woodbury)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/fortran
+	395426	f2c-960711-ggw.tar.gz
+	821	f2c-960711-ggw.lsm
+Alternate-site: 
+Original-site:  netlib.att.com /netlib/f2c/
+Platforms:      
+Copying-policy: netlib
+End

@@ -1,0 +1,15 @@
+Begin3
+Title:		Apple2/Linux
+Version:	0.7.3
+Entered-date:	23JAN99
+Description:	Apple II+, //e emulator. Uses svgalib or X 
+Keywords:	apple2, emulator
+Author:		d91a1bo@meryl.csd.uu.se (Alexander Jean-Claude Bottema)
+		sl14@cornell.edu (Stephen Lee)
+		aculline@bbn.com (Aaron Culliney)
+Maintained-by:	michael@talamasca.wkpowerlink.com (Michael Deutschmann)
+Primary-site:	talamasca.wkpowerlink.com /pub/software/apple
+		245k apple2-emul-0.7.3.tar.gz
+Copying-policy:	GPL
+Platforms:	x86 CPU, either svgalib or X-windows 
+End

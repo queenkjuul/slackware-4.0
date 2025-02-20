@@ -1,0 +1,13 @@
+Begin3
+Title:          KSniffer
+Version:        0.1.5
+Entered-date:   10FEB99
+Description:    KDE Network Sniffer and Stats Collector
+Keywords:       KDE X11 NETWORK
+Author:         waboring@veracity.nu
+Maintained-by:  waboring@veracity.nu
+Home-page:	http://ksniffer.veracity.nu
+Primary-site:   http://ksniffer.veracity.nu
+Platforms:      Linux, Redhat 5.2, Qt 1.42, KDE, X11R6, i386
+Copying-policy: GPL
+End

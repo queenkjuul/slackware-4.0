@@ -1,0 +1,21 @@
+
+Begin3
+Title:          BRD - Brunnis Rescue Diskset
+Version:        1.0
+Entered-date:   02/26/1999
+Description:    Dialin via modem/ISDN (hisax,mgetty) for remote-rescue.
+                rz/sz included. Precompiled generic 2.0.36 kernel with
+                all SCSI/network-cards as module. Complete kernel-
+                documentation, Manpages, pico editor, Basic networking
+                (ifconfig,route,ftp) and all you need to repair your
+                system (hopefully :)
+Keywords:       rescue
+Author:         brunni@netestate.de (Michael Brunnbauer)
+Maintained-by:  brunni@netestate.de (Michael Brunnbauer)
+Primary-site:   sunsite.unc.edu
+		3123kB brd-1.0.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

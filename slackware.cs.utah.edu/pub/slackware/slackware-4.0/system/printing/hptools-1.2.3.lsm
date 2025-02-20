@@ -1,0 +1,16 @@
+Begin3
+Title:			HPTools
+Version:		1.2.3
+Entered-date:		27.4.1997
+Description:		Makes it easy to send commands like 'carriage return
+			on', 'print italic' to the HP560C Printer.
+			(should work with most HP Printers)
+Keywords:		"HP" "Printers" "ESC Codes" 
+Author:			michael.janson@stud.uni-karlsruhe.de (Michael Janson)
+Maintaind-by:		michael.janson@stud.uni-karlsruhe.de (Michael Janson)
+Primary-site:		sunsite.unc.edu /pub/Linux/system/printing
+Platforms:		Programming language is ANSI C
+			Platform is Linux but is possibly compiling on MSDOS
+			and on the Amiga.
+Copying-Policy:		Freely Redistributable
+End

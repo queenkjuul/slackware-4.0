@@ -1,0 +1,13 @@
+F IPIP.O                            	ipip.o
+F IP_GRE.O                          	ip_gre.o
+F IP_MASQ_.000                      	ip_masq_autofw.o
+F IP_MASQ_.001                      	ip_masq_cuseeme.o
+F IP_MASQ_.002                      	ip_masq_ftp.o
+F IP_MASQ_.003                      	ip_masq_irc.o
+F IP_MASQ_.004                      	ip_masq_mfw.o
+F IP_MASQ_.005                      	ip_masq_portfw.o
+F IP_MASQ_.006                      	ip_masq_quake.o
+F IP_MASQ_.007                      	ip_masq_raudio.o
+F IP_MASQ_.008                      	ip_masq_user.o
+F IP_MASQ_.O                        	ip_masq_vdolive.o
+F RARP.O                            	rarp.o

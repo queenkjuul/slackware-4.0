@@ -1,0 +1,14 @@
+Begin3
+Title:          mmon 
+Version:        0.2
+Entered-date:   23AUG98
+Description:    mmon allows monitoring a few system specific info
+		with the help of 8 leds connected on the parallel port
+Keywords:      	mmon, monitoring, leds, serial 
+Author:         andik@ns.upet.ro (Kovacs Andrei)
+Maintained-by:  andik@ns.upet.ro (Kovacs Andrei)
+Primary-site:   http://www.upet.ro /~andik/mmon
+		5482 mmon-0.2.src.tgz
+Platforms:      Linux
+Copying-policy: GPL 
+End

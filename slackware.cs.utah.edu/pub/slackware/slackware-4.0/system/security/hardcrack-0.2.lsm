@@ -1,0 +1,22 @@
+Begin
+35:PkgName    = hardcrack-0.2.tar.gz
+35:Title      = Hardcore Unix Password Cracker
+25:Version    = 0.2
+65:Desc1      = Password Finder for very fast computers
+65:Desc2      = It tries every possible password and
+65:Desc3      = needs about 2000 years on a P100 to hack 
+65:Desc4      = a password in the worst case
+65:Author     = Stefan Reinauer
+65:MaintBy    = Stefan Reinauer
+65:MaintAt1   = sunsite.unc.edu
+65:Required1  = very fast Unix System, much time
+65:CopyPolicy = GNU
+65:Keywords   = crypt fcrypt password hacker
+15:ApproxSize = 105K
+65:LastRel    = 0.2
+65:Comment1   = Do not use this software to do anything immoral.
+65:Comment2   = 
+65:Comment3   =
+30:CheckedBy  =
+ 8:Date       = 07/18/96
+End

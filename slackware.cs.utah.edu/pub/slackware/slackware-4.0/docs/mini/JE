@@ -1,0 +1,1474 @@
+  ---------JE-HOWTO(April 20 1995)------JE-HOWTO(April 20 1995)-------
+
+  JE(Japanese Extensions)-HOWTO
+
+  --------------------------------------------------------------------
+
+  JE-HOWTO explains the ins and outs of JE, Japanese Extensions for
+  Linux. It tells you what JE is, how to get info on it, where to 
+  get it and how to install it. If you want Japanese environment on
+  your Linux system, this is the first document yo should read.
+
+  This version deals with JE-0.9.5. For info on where to find the
+  latest version, please refer to B-0.
+
+  --
+
+  Authors:
+      Hironobu ABE       <hironobu@ap.isl.melco.co.jp>
+      Yasu Hiro YAMAZAKI <hiro@ice3.ori.u-tokyo.ac.jp>
+      
+  Translator/ Re-writer/ Distasteful Joker:
+      Hiroo Yamagata     <hiyori13@mailhost.net>      
+
+  --------------------------------------------------------------------
+
+  ======================== Table of Contents  ========================
+
+  A. Introduction
+     A-1: What is JE?
+     A-2: Contents of the JE Package
+     A-3: Requirements
+     A-4: What's New in v.0.9.5
+
+  B. Sources of Information
+     B-0: The Latest Version of This Document
+     B-1: Network News
+     B-2: Mailing Lists
+     B-3: Installation Guide
+     B-4: Feedback
+     B-5: Other Sources of Information
+
+  C. Getting JE
+     C-1: Anonymous ftp
+     C-2: CD-ROM
+
+  D. Installation
+     D-1: Getting Ready
+     D-2: Installing the installer (ezinst)
+     D-3: Installing the Real thing
+     D-4: Installation Tips
+
+  E. Contents of Each Disk Set
+     E-1: JE disk set
+     E-2: base  disk set
+     E-3: emacs disk set
+     E-4: doc disk set
+     E-5: wnn disk set
+     E-6: canna disk set
+     E-7: sj3 disk set
+     E-8: net disk set
+     E-9: text disk set
+     E-10: font disk set
+     E-11: xclt disk set
+     E-12: xsi disk set
+     E-13: iv disk set
+
+  F. Future Plans
+
+  G. JE Counter
+  
+  H. Legalese and Miscellaneous
+
+  ====================================================================
+
+
+  A. Introduction
+  ===============
+
+  A-1: What is JE?
+  ----------------
+
+  First, why do we even need JE? What's the big deal?
+
+  Well, the deal is, Japanese uses different characters than the
+  roman alphabet.  And unlike some puny languages that are content 
+  with less than a hundred characters, Japanese uses thousands of 
+  characters (Ha!). They borrowed a lot from China, added some of 
+  their own, and recently incorporated the Roman characters, too. 
+  Don't ask how they live with this mess, they just do. Since the 
+  number of characters is clearly more than can be assigned to a 
+  single byte code set, they use 2-byte code sets.
+
+  Obviously, to use any Japanese on Linux, extra fonts for Japanese 
+  characters are required.  And then, many existing software have 
+  never even dreamt of 2-byte character sets.  These need to be 
+  tweaked, or a Japanese-savvy equivalent must be developed.  Also, 
+  normal keyboards have only so many keys (like 101 or 106). 
+  Japanese need an input method that can input thousands of chars 
+  using only a hundred keys.
+
+  Amazingly, JE takes care of all these.
+
+  JE (Japanese Extensions for Linux) is a collection of free 
+  softwares to create a Japanese Language environment for standard 
+  distributions of the Linux system (ex. Slackware, SLS, Debian, 
+  with a heavy inclination toward Slackware). Most of the programs 
+  are ported or developed by members of the Japanese Linux Mailing 
+  List. They are available both as binaries and source codes, though 
+  the basic distribution only contains the binary.
+  
+  The binaries are tar+gzip'ed. They could be installed using 
+  standard installers like "pkgtool" or "sysinstall". However, to 
+  make life easier for you, JE has its own installer named "ezinst" 
+  which even takes care of some basic configuration.
+
+
+
+  A-2: Contents of the JE Package
+  -------------------------------
+  
+  JE consists of software to display, input, edit, format, and print 
+  Japanese characters and documents, as well as small but fancy 
+  made-in-Japan software, including;
+  
+  1) Japanese-savvy Consoles
+     "kon", "kterm", and "pxvt" will enable you to display exotic 
+     looking Japanese characters on your screen, giving it a distinct
+     oriental look-and-feel.
+     
+  2) Japanese Input Methods (or JIM for people in the know)
+     "Wnn", "Canna", "SKK" and "sj3" will convert an input string 
+     from standard 101/106 keyboards into Japanese characters, words, 
+     phrases or symbols.
+     
+  3) Japanese-savvy editors 
+     "jelvis" (Japanese vi clone), NEmacs (Japanese Emacs)and Mule 
+     (Multilingual Emacs).
+  
+  4) Japanese TeX system
+  
+  5) Others
+     "Oneko" is a cute mouse-cursor chaser for the X-window system. 
+     There are several mail and news handlers, character code set
+     converters and shells to handle Japanese characters in command 
+     line under Linux. See section E for details.
+
+  Binaries in JE use the EUC-J character code set as default. This 
+  code set is chosen because of its popularity among UNIX 
+  workstations. However, MS-DOS and other personal computers use 
+  SJIS or Shift-JIS code set.  And then there is the JIS code set, 
+  yet another encoding (sigh), which is widely used on the net to 
+  exchange Japanese information among computer systems.
+  
+  Yes, it is messy.  This diversity (or chaos) derives from 
+  historical and political reasons. There isn't much that developers 
+  can do at the moment. Most software in JE can handle all the code 
+  sets.  But, some require re-compilation to handle different code 
+  sets, while some are run-time configurable.  "nkf" will detect 
+  and convert among these three popular code sets.
+
+
+  A-3: Requirements
+  -----------------
+  
+  JE is designed to be installed over a standard distribution of 
+  Linux such as Slackware or SLS. The current version, JE-0.9.5, 
+  requires shared libraris libc-4.5.26 or newer and libX-3.1.0 or 
+  greater, both of which are included in the JE1 disk set.
+
+  As of version 0.9.5, JE no longer assumes shadow passwords.
+
+
+  A-4: What's New in 0.9.5
+  -----------------------
+  
+  The changes in 0.9.5 might be subtle in terms of content, but 
+  enormous in terms of form and organization.  If you are upgrading 
+  from previous versions, please be VERY careful.
+
+  - Reorganized disk sets
+  - Added a VGA only version of "gs"
+  - Added "temacs" packages (pre-dumped emacs)
+  - Added "je menu", "faqbro", Japanese FAQ/HOWTOs
+  - Upgraded Canna (to V3.2), XFree86j/Xsi (to V2.1.1)
+  - Added dviout/prt that support epsbox+gs
+  - Added new packages, such as Japanese VIM, mnews, prn
+  - Added "InterViews 3.1"
+  - Reorganized the directory structure to something more standard
+    + Changed NEmacs directory to default
+      (/usr/local/lib/emacs -> /usr/local/emacs)
+    + File/programs that are called from other programs are moved 
+      to more standard locations (especially Tcl/Tk and "sendmail" 
+      related files)
+    + Fonts are moved to /usr/share/fonts directory, to avoid 
+      cluttering of the TeX directory
+
+
+
+  B. Sources of Information
+  =========================
+
+  B-0: New version of JE-HOWTO
+  -------------------------------
+  
+  The latest version of JE-HOWTO should be available as a part of 
+  the latest JE distribution, and will also be posted on 
+  "fj.os.linux" and other newsgroups when it is updated.
+
+  Please note that due to translation overhead, the English JE-HOWTO 
+  may not be completely up-to-date.
+
+
+  B-1: Network News
+  -----------------
+  
+  The best place to adress general questions and discussions on JE 
+  is the "fj.os.linux" newsgroup. This newsgroup is very active on 
+  JE related topics. The only drawback (for you, maybe) is that the 
+  majority of posts are in Japanese. Postings in other languages, 
+  however, are quite welcome. English is quite OK, and you might 
+  even get away with Spanish, Swahili, Vietnamese or Atlantis. 
+  Mayans and Egiptian hieroglyphs require too many special fonts,
+  and thus should be avoided at the moment. This may change in the
+  future as JE evolves into a truely universal environment with 
+  built in inter-galactic translator (development code name Babel 
+  Fish).
+  As of 1995, chances of your getting replies would be greatest if 
+  you post either in English or in Japanese.
+
+
+  B-2: Mailing List
+  -----------------
+  
+  There is no mailing list specializing in JE at the moment. 
+  However, there is the Japanese Linux Mailing List, where JE 
+  related topics are actively discussed. In fact, JE is a direct 
+  offspring of this ML. In addition, you may get a beta version 
+  of JE by through occasional circulation in tapes or disk media.
+
+  To join the Japanese Linux ML, send e-mail as:
+
+       # Mail linux@colias.tutics.tut.ac.jp
+       X-Mn-Cmd: join
+
+  To obtain a brief guide about the ML, send e-mail to;
+
+       linux@colias.tutics.tut.ac.jp
+
+  with only "# guide" (without quotations) in its body.
+
+  A Mailing List in English was just born. It is called jewel-ML,
+  "The Mailing List of JE for the World in the English Language".
+  The e-mail address is,
+
+       jewel@colias.tutics.tut.ac.jp
+
+  and we, JE developers and coordinators, are waiting for you with 
+  a cup of coffee (or a mug of virtual beer) at hand. Please relax 
+  and join us.
+
+
+  B-3: Installation Guide
+  -----------------------
+  
+  JE comes with "The Guide", an installation guide written in 
+  Japanese. This explains the installation procedure step by step. 
+  The current version is somewhat outdated, but it will give you 
+  a very good idea of what's involved, IF you can read Japanese. 
+  There is no English edition, but we are certain that whoever
+  will create one should be rewarded with global praised and fame 
+  and fortune, rivaled only by that of Linus Torvalds himself.
+  Hmm... wonder if anybody out there might volunteer...(hint, hint!)
+
+
+  B-4: Feedback
+  -------------
+  
+  Bug reports and suggestions should be posted on the newsgroup 
+  "fj.os.linux" so that it can be shared faster among various 
+  interested parties.  If you don't have access, or prefer the 
+  privacy of e-mail, send them to je@Roy.dsl.tutics.ac.jp. 
+  Jewel-ML, mentioned in B-2, is also available for those of you
+  tender souls out there. 
+
+  Please don't send e-mail to the original developers of each 
+  program in JE when you find a problem, because your problem may 
+  be due to our composer's faults and we don't want to bother the 
+  authors.
+  
+  [Translator's Note: The above notice seems to be loaded with
+  the strange Japanese idea of politeness.  If you are REALLY REALLY 
+  sure that there is a bug, or if you have good suggestions, I don't 
+  see why you shouldn't let the original developers know about it.
+  What is actually implied here is that, don't treat them like some
+  sort of an on-line help or your personal slaves that you can push
+  around, press demands or nag at. This will annoy them, discourage 
+  further developments and enhancements.]
+
+
+  B-5: Other Sources of Information
+  ---------------------------------
+  
+  The following two documents are made public to explain Japanese 
+  Linux matters. Both are written in Japanese and, unfortunately, 
+  no English version is available.
+
+  "Linux Jouhou memo" 
+       by Y. Hiro Yamazaki <hiro@ice3.ori.u-tokyo.ac.jp>
+       
+  "JMETA-FAQ" by Tetsu Ono <ono@eiehost.gee.kyoto-u.ac.jp>
+
+  Both are included in the doc disk set of JE. They are occasionally
+  updated and posted on fj.os.linux and other BBSs in Japan.
+
+
+  There is a very good book in English which will help you 
+  understand how the  Japanese language is handled on computers, 
+  including the mind boggling issue of the character code sets.
+
+    Understanding Japanese Information Processing
+    Ken Lunde
+    O'Reilly & Associates Inc.
+    ISBN 1-56592-043-0
+
+  For other sources of Japanese processing in Unix/Linux environment,
+  look for the English manpages of mule, Canna, Wnn and kinput2.
+  texinfo manual of mule explains its difference from GNU Emacs, and
+  /mule/etc contains FAQs in various languages.
+
+
+  C. Getting JE
+  =============
+
+
+  C-1: Anonymous ftp
+  ------------------
+  
+  JE is available at the following anonymous ftp sites in Japan in 
+  binary form.  This is the standard distribution:
+  (sites info based on JMETA-FAQ 1.32 & Linux Joho Memo 12/1/94)
+
+    tutserver.tutcc.tut.ac.jp   133.15.64.6      /pub/linux/JE
+    ftp.kuis.kyoto-u.ac.jp      130.54.23.2      /Linux/JE
+    ftp.cs.keio.ac.jp      131.113.35.20    /pub/os/linux/Japanese/JE
+    etlport.etl.go.jp           192.31.197.99    /pub/linux/JE
+    ftp.huie.hokudai.ac.jp      133.50.16.80     /pub/system/Jlinux/JE
+    ftp.is.titech.ac.jp         131.112.40.1     /pub/linux/JE
+    ftp.ipc.chiba-u.ac.jp  133.82.241.128   /ftp.kyoto-u.ac.jp/.u6/JE
+    ftp.pu-toyama.ac.jp         133.55.2.15      /pub/Linux/JE
+    srawgw.sra.co.jp            133.137.4.3      /pub/os/linux/JE
+    ftp.iis.u-tokyo.ac.jp       157.82.96.67     /pub2/Linux/JE
+    wnoc-fuk.wide.ad.jp         133.4.14.3       /pub/Linux/JE
+    turbo.te.chiba-u.ac.jp      133.82.181.125   /pub/Linux/JE
+    ftp.astec.co.jp             133.147.2.254    /pub/Linux/JE
+    ftp.hitachi-sk.co.jp        133.107.1.2      /pub/pds/linux/JE
+    ftp.kddlabs.co.jp      192.26.91.15    /pub/os/linux/Japanese/JE
+    glaucomys.seino.tsukuba.ac.jp 
+                                130.158.208.193 /pub/Linux/pkg/JE/0.95
+
+  "tutserver" is the source of JE. However, use of other sites is 
+  strongly recommended since the connection to "tutserver" is rather 
+  thin.
+
+  The following sites outside Japan are known to mirror "tutserver" 
+  everyday:
+
+    sunsite.unc.edu             152.2.22.81       /pub/Linux/distributions/je
+    ftp.cdrom.com               192.153.46.2      /pub/linux/je
+
+  Source codes are available at the following sites:
+
+    tutserver.tutcc.tut.ac.jp  133.15.64.6      /pub/linux/je-sources
+    ftp.kuis.kyoto-u.ac.jp     130.54.23.2      /Linux/JE-sources
+    ftp.huie.hokudai.ac.jp      
+                      133.50.16.80      /pub/system/Jlinux/JE-sources
+    ftp.iis.u-tokyo.ac.jp      157.82.96.67    /pub2/Linux/je-sources
+    ftp.iij.ad.jp              192.244.176.50  /pub/linux-j/JE-sources
+    ftp.pu-toyama.ac.jp        133.55.2.15       /pub/Linux/JE-sources
+
+  Linux patches (if any) are separated from its original. So, when 
+  you get to the above sites, you may see something like the 
+  following;
+
+       oneko-1.1b.tar.Z            Original codes
+       oneko-1.1b+lx.diff.gz       Linux patch
+
+  The files with extensions "+lx", "+je" are the Linux patches. If 
+  there are any other patches, apply them before applying the 
+  Linux/JE patches.
+
+
+  C-2: CD-ROM
+  -----------
+
+  JE is also available in CD-ROM:
+
+       CD-ROM Shop Laser5
+       Big Office Plaza, Suite 203
+       2-652-8 Higashi Ikebukuro
+       Toshima-ku,
+       170 Tokyo Japan
+
+       Phone: +81-3-5952-4639
+       FAX:   +81-3-5952-7486
+
+  This CD-ROM contains JE with its source codes as well as 
+  Slackware and SLS distributions. The organizers are active 
+  members of Japanese Linux ML. So, the CD-ROM reflects the 
+  feedback from Japanese users quickly.
+
+  Unfortunately, this distributor does not accept overseas orders.
+
+
+  A number of other CD-ROMs include JE.  These include (but not
+  limited to):
+  
+        LINUX Developer's Resource 4 CD Set
+        Info Magic
+        P.O.Box 30370
+        Flagstaff, AZ 86003 USA
+        Tel: +1-602-526-9565  Fax: +1-602-526-9573
+        e-mail:info@infomagic.com
+        Web: http://www.infomagic.com
+        
+        LINUX Developers Kit 2 CD Set
+        Pacific Hi-Tech
+        3855 South 500 West, Suite B
+        Salt Lake City, UT 84115 USA
+        Tel: +1-801-261-1024  Fax: +1-801-261-0310
+        e-mail: info@pht.com
+        Web: http://www.pht.com/
+        
+        Linux Supplement #3
+        Trans-Ameritech Systems, Inc.
+        2342A Walsh Av
+        Santa Clara, CA 95051  USA
+        Tel: +1-408-727-3883   FAX   (408)727-3882
+        e-mail: info@trans-am.com
+
+
+  Unfortunately JE is not an indispensable component of the Linux
+  distribution (yet), and on each release, distributors include 
+  it or exclude it depending on capacities and whims. So check 
+  before you buy.
+  
+
+  D. Installation
+  ===============
+
+  This section explains the installation procedure of JE. Remember 
+  that you must have Linux already installed before you tamper 
+  with JE!
+
+  The custom installer called "ezinst" is in the JE disk set of JE. 
+  Use "pkgtool" of Slackware or "sysinstall" of SLS in your system 
+  to install ezinst itself.
+
+
+  D-1: Getting Ready
+  ------------------
+
+  1) Prepare Floppy Disks of JE.
+ 
+    Copy each directory to a disk. Each disk set of JE should fit 
+    on a High Density floppy disk, 5" or 3.5" 2HD. This step is 
+    not necessary if you install JE from HDD or CD-ROM, or via NFS.
+
+
+  2) Check the Version of the Libraries.
+ 
+    To do this, use the "ldconfig" command. The result should look 
+    something like this;
+
+
+        # ldconfig -p
+        9 libs found in cache `/etc/ld.so.cache' (version 1.4.3)
+                 1 - /lib/libvga.so.1.0.11
+                 2 - /usr/X11/lib/libtk.so.3.1
+                 3 - /usr/lib/libtcl.so.3.1
+                 4 - /lib/libm.so.4.5.24
+                 5 - /lib/libc.so.4.5.24
+                 6 - /usr/X11/lib/libXt.so.3.1.0
+                 7 - /lib/libXpm.so.3.3.0
+                 8 - /usr/X11/lib/libXaw.so.3.1.0
+                 9 - /usr/X11/lib/libX11.so.3.1.0
+
+    Write down the versions of #4,5,6,8,9 (libc.so, libm.so, 
+    libXt.so, libXaw.so, libX11.so). In the above case, these 
+    would be 4.5.24 and 3.1.0.
+
+
+
+  D-2: Installing the Installer (ezinst)
+  --------------------------------------
+
+  1) Installing from Floppy Disks
+ 
+     Stick the JE1 disk in the drive. Start "pkgtool" by typing:
+
+        # pkgtool
+
+     Your machine will ask you what you are installing from. Choose;
+ 
+        Floppy   Install packages from floppy disks
+
+    You'll be prompted for the disk type. Write down the device name 
+    of the disk that you assigned here.
+   
+    Next, you'll be prompted for a series name.  Answer "JE".  Now, 
+    proceed to 3).
+ 
+ 
+  2) Installing from Non-Floppies
+  
+     The source media must be recognized by Linux as a mounted 
+     directory.
+  
+  a. Installation from a Pre-mounted Directory
+  
+     cd to the JE1 directory. Now, start pkgtool;
+
+        # pkgtool
+
+     And then, select the following as the installation source:
+    
+        Current  Install packages from the current directory
+
+     Now, proceed to (3).
+
+  
+  b. Installing from an NFS Server
+  
+     Mount the NFS server disk.  For example, suppose JE1 is 
+     located on the /home1/ftp/Linux/JE directory on an NFS server 
+     named zephyrus.  You should type;
+
+        # mount zephyrus:/home1/ftp/Linux/JE /mnt
+
+     Then, you should find the directory /mnt/JE1. Move to this 
+     directory using cd. Now, start pkgtool;
+
+        # pkgtool
+
+     And then, select the following as the installation source:
+    
+        Current  Install packages from the current directory
+
+     Now, proceed to 3).
+
+
+  c. Installing from CD-ROM
+ 
+     Mount the CD-ROM.  If you installed Slackware and have already 
+     configured your CD-ROM drive, you should type as follows:
+
+        # mount -t iso9660 /dev/cdrom /mnt
+
+     If not, determine the device name to mount using the following 
+     list;
+ 
+        /dev/sr0   : SCSI CD-ROM
+        /dev/mcd   : Mitsumi CD-ROM
+        /dev/sbpcd : SB CD-ROM
+        /dev/cdu31a: CDU31A CD-ROM
+        /dev/sonycd: SONY CD-ROM
+
+
+     After mounting, you should find the directory /mnt/JE1. Move 
+     there using cd, and write down the device name that you used 
+     here. Now, start pkgtool;
+
+        # pkgtool
+
+     And then, select the following as the installation source:
+    
+        Current  Install packages from the current directory
+
+     Now, proceed to 3).
+
+  
+  
+  3) Installing JE1
+  
+     The JE1 disk contains the following packages:
+
+     ezinst:   Easy installer for JE
+     konbin:   KON to display Kanji on console
+     konfnt:   Fonts for kon (the same as those for Minix/V)
+     libc:     Linux standard shared libraries
+     libx:     XFree86 shared libraries (English version)
+
+     "libc" and "libx" included here are libc-4.5.26 and libX-3.1.0. 
+     Compare these with what you currently have (you wrote them down 
+     at D-1 2)!). If you have a newer version, fine.  Otherwise, 
+     copy and use the libraries included in this disk.
+
+     If you want Japanese messages during the installation, you 
+     need "kon" or any software that can display Japanese and is 
+     supported by the curses.
+
+     Now, your installer is ready and at your service.
+
+
+
+  D-3: Installing the Real Thing
+  ------------------------------
+
+  1) Run your terminal software, such as "kon" for console:
+
+        # kon
+
+     If your machine is the Toshiba J3100SX, you may use Kanji-term 
+     for J3100 as well as kon with j3100 option:
+
+        # kon j3100sx
+
+     The installer uses "/var/adm/mount" to temporary mount floppy 
+     disks or CD-ROMs. Thus, if you already have something mounted 
+     there, you should unmount it NOW.
+
+     If you want Japanese messages during installation, type:
+
+        # ezinst -j
+
+    If you'd rather have English messages, type:
+
+        # ezinst -e
+
+
+
+  2) Follow the instructions by ezinst.  The general procedure will 
+     be as follows;
+
+        (1) Choose which package to install
+        (2) Choose where to install from
+        (3) Let ezinst do the rest!
+
+     The actual menu will look like the follows, when you chose 
+     the -e option (for the menus in -j option, please refer to the 
+     Japanese version of this HOWTO).
+
+  (1) Choose the Packages
+  
+      Here, you will choose which packages to install. The most
+      crucial choice would be the choice of your input method and
+      your Emacs. Crucial, because it will largely determine your
+      psychosomatic relation with the system.
+      
+      The choice of Japanese input method is largely a matter of 
+      taste and religion. JE provides four flavors: SKK, Wnn, Canna, 
+      and sj3. You can't install Wnn, Canna, and sj3 together. They 
+      are mutually exclusive. Install the one that best suits your 
+      twisted perversions and/or worship. It is said that conservative 
+      Bhuddists tend to prefer Wnn, while VooDooist militant sects
+      favor canna, but heretics are everywhere.
+      
+      But seriously, their differences can be summarized as follows;
+      
+      Wnn: Has the largest user base. It can also handle Korean and 
+           Chinese.  Requires on the server resources.
+      Canna: Less demanding on the system, and easier to customize.
+             Better for stand-alone use.
+      sj3: Very compact. Suited for people with limited disk space.
+
+      The bogus size of JE is partly due to this diversity; each 
+      method (and even no method) requires a different set of Emacs! 
+      We just HAD o have 'em all.
+
+      The choice of Emacs is also a matter of taste. You need one of 
+      X or non-X version of Emacs that matches the input method of 
+      your choice. Mule (multi-lingual Emacs) has more features than 
+      NEmacs (Japanese Emac), but it takes up more disk space. 
+      So, a desktop PC user may reside in the nirvana of Canna-Mule 
+      on her X window system, while a laptop user may find solace in 
+      non-X NEmacs with SKK.
+
+      Anyway, once you make the major decisions, the installer will 
+      largely determine which packages to install (we call this "the
+      Standard Rule"), since it knows the dependency among packages 
+      to some extent.
+
+
+      (1a.1) Choose Using Standard Rules
+             Based on your general selection, the installer will 
+             take care of all the details.  For example, every input 
+             method (Wnn, Canna, sj3) need their own dictionary and 
+             tools. Installer knows this, and automatically installs 
+             them according to your choice.
+
+      (1a.2) Choose Manually
+             If you want to do some unusual or esoteric installation, 
+             this menu will allow you to taketotal control over the 
+             installation. You should know exactly what you're doing.
+             Instead of starting from scratch, we suggest that you 
+             first let the installer do the standard file selection, 
+             and then customize it using the manual option.
+     
+      (1b) Load Package List
+             Instead of choosing packages one by one, you can load a 
+             package list file (if you have one).
+
+
+  (2) Assign Installation Source
+      Tell the installer where you are installing from. If you've 
+      just installed JE1, and if you're not using floppies, you 
+      should find the subdirectory JE1 under /tmp. In this case, 
+      you can use method (2.2).
+
+      (2.1) Install from Floppy Disks
+             Type the device name of the floppy drive that you wrote 
+             down in D-2 1).
+
+      (2.2) Install from Mounted Directory
+             Type the directory that contains the JE1 subdirectory. 
+             For instance, if you have:
+     
+                 /mnt/JE/JE1 
+
+             you should type:
+
+                 /mnt/JE
+
+
+      (2.3) Mount an NFS Server and Install
+             Type the name of the NFS server, and the directory 
+             that contains the JE1 subdirectory. For instance, if 
+             you are installing from an NFS server named  zephyrus 
+             with the directory:
+
+                 /home1/ftp/Linux/JE/JE1
+ 
+             you should input:
+
+                 zephyrus
+                 /home1/ftp/Linux/JE
+
+      (2.4) Mount a Device (CD-ROM) and Install
+             Type the device name, file system type, and the 
+             directory that contains the JE1 subdirectory.
+              For CD-ROMs, the device name is what you wrote down 
+              at D-2 2) (c), and the file system type is iso9660.
+
+
+  (3) Installation Menu
+      Finally, we are ready to start the actual installation... but 
+      not quite.  Do yourself a favor and give it a final check.
+
+      (3.1) Check the Required Disks
+             When you choose this menu, the installer will give you 
+             a list of the required disks.  Do you have them all?
+
+      (3.2) Check Packages to Install
+             The installer will display what package it will install.
+
+      (3.3) Check Installation Source Directory
+             If you're not installing from floppy disks, Choose this 
+             menu. It will display the contents of the source 
+             directory.  Make sure that they are correct.
+
+      (3.4) Start Installation
+             Finally (finally!), choose this menu and you are going!
+             If you're using floppies, the installer will prompt you 
+             for the disks. Obey it. You can make up to 3 mistakes 
+             for each disk.
+
+
+  (4) Save Preference
+      Saves the current preferences (Language for the messages, and 
+      the installation source) to a file.
+
+
+
+  3) After the installation, when you quit ezinst, it will ask you:
+
+        Save selected list ? (y/n)
+
+     Choosing "y" will create a package list.  You can use this list 
+     to re-install JE at a later time. To do this, re-start 
+     ezinstall and choose the file at (1b).
+
+
+
+  D-4: Installation Tips
+  -------------------------
+  
+  ¥ If you're installing for the first time, getting all the files 
+    right manually can be quite cumbersome. Let the installer do 
+    the job, and then modify it.
+    
+  ¥ JE does not assume the use of shadow passwords anymore.
+  
+  ¥ If you are installing from floppy disks, you could minimize your 
+    labor (and the number of disks) by taking the following steps:
+
+    (1) Make ONLY the JE1 disk and install it.
+    (2) Start ezinst, and choose the packages.
+    (3) From the "Install Menu", choose "Check the Required Disks" 
+        and write down which disks you will be needing.
+    (4) Open another virtual console.  Or, close ezinst and save the 
+        package list.
+    (5) From the new console, create the necessary disks.
+    (6) Go back to the ezinst. Or, if you've closed ezinst, re-start 
+        it and load the package list.
+    (7) Go on with the installation.
+    
+    
+    This way, you won't have to make disks for packages that you 
+    are not going to use.
+
+  E. Contents of each disk set
+  ============================
+  
+  The current JE (v.0.9.5) consists of 55 disks, which are divided 
+  into 13 disk sets, as in the following list.
+
+    JE?:    disk set to install JE easily                 1 disk
+    base? : nkf, lha, Emacs related packages              4 disks
+    emacs?: Emacs package                                 8 disks
+    doc?:   Japanese documents mostly by JF project       1 disk
+    wnn?:   Wnn Input Method users' packages              5 disks
+    canna?: Canna Input Method users' packages            6 disks
+    sj3?:   sj3 Input Method users' packages              4 disks
+    net?:   Network software such as mailers, newsreaders 2 disks
+    tex?:   Japanese TeX packages                         3 disks
+    font?:  Font packages for TeX and XFree86             7 disks
+    xclt?:  XFree86 Japanese client packages              2 disks
+    jxsi?:  XFree86j (X11R5 with Xsi extensions)          6 disks
+    iv?:    Japanese InterViews                           6 disks
+
+
+
+  E-1: JE disk set
+  ----------------
+  
+  The JE disk set is compiled to help you install JE. It includes 
+  the following software;
+
+    ezinst:   Easy installer for JE
+    konbin:   Binary of KON to display Japanese on console
+    konfnt:   Fonts for kon (the same as those for Minix/V)
+    libc:     Linux standard shared libraries
+    libx:     XFree86 shared libraries (English version)
+
+  (1) ezinst is the installer for the rest of the JE distribution.
+      It works on kon (Kanji on console) and other Japanese 
+      terminals.
+
+  (2) libc and libx are shared libraries required by JE. JE-0.9.5 
+      includes libc-4.5.26 and libx-3.1.0. Don't install them if you 
+      already have something newer on your system.
+
+  (3) kon (kanji on console) displays Japanese characters on the 
+      console. The current version is 0.99.4.
+
+
+  E-2: base disk set
+  ---------------
+    jbase:    lha, nkf, ed, jhd, pwd, ish. pf and other basic tools
+    jless:    Japanese less (pager)
+    pcurses:  Pelican's curses (for Japanese)
+    jman:     Manpage system with Japanese nroff
+    dic:      CD-ROM dictionary reference tool
+    recjis:   Tool to recover damaged Japanese document
+    jelvis:   Japanese elvis (vi clone)
+    ng:       Japanese Micro GNU Emacs
+    bash:     Japanese bash  (mostly sh compatible)
+    zsh:      Enhanced shell
+    jgslx:    Japanese Ghostscript (binary, for VGA only)
+    jgslib:   Japanese Ghostscript (libraries)
+    jgsuty:   Japanese Ghostscript utilities
+    jgsgnt1:  Fonts for Japanese Ghostscript (part 1)
+    jgsfnt2:  Fonts for Japanese Ghostscript (part 2)
+    vflib:    VFlib library & Documents
+    prn:      Text formatter/Printing tool/ Japanese PS filter
+    jperbin:  Japanese Perl1.3(perl 4.019) binary
+    jperllib: jperl library
+    jperlman: jperl manual
+
+
+  (1) "jbase" is a package of basic tools: "lha" is an archiver 
+      widely used under MS-DOS especially in Japan, "pf" is a print 
+      tool for Japanese line printers.
+ 
+  (2) "jless" is a Japanese pager, which automatically detects the 
+      character code set in the document and converts it to the code
+      used in the display by refering to the environment variable 
+      LESSCHARSET. Most Japanese Linuxers set this variable as 
+      "japanese-ujis".
+
+  (3) "pcurses" is a curses with a Japanese handling feature.
+
+  (4) "jman" is a manpage system with Japanese nroff. It enables you 
+      to look up Japanese manpages.
+ 
+  (5) "dic" looks up dictionaries on 8cm CD-ROM, widely available 
+      in Japan for SONY "Data Discman" or for its compatibles. Also 
+      included is an e-lisp code to call "dic" from Emacs.
+
+  (6) "recjis" will recover damaged Japanese documents encoded in 
+      JIS, SJIS, or UJIS code set which might have lost some 
+      information through network transfers or by other accidents.
+
+  (7) "jelvis" is Japanese elvis (vi clone), while "ng" a subset of 
+      Japanese Emacs. Use them with "uum", "canuum" or "kinput2" to 
+      input Japanese characters.
+
+  (8) "bash" and "zsh" are enhanced shells. "bash" (bash-1.13.5j)
+      can handle 8-bit Japanese characters.
+
+  (9) "jgslx", "jgslib", "jgsuty", "jgsgnt1", and "jgsfnt2" are
+      components of the Japanese Ghostscript system. It is based on 
+      Ghostscript-2.6.1. The only allocated device in JE binary
+      kit is the VGA console.  If you want to use any other devices 
+      (such as bj10b), you must re-compile it from the source.
+    
+      To use Japanese ghostscript on X-Windows, install "jgsx11" 
+      (included in the xclt disc set) instead of jgslx.
+
+  (10) "vflib" is the library for using vector fonts.
+ 
+  (11) "prn" contains the text formatting/printing tool "prn" and 
+      the Text-to-Japanese PS filter "psconv".
+
+  (12) "jperbin", "jperllib", "jperlman" are components of the 
+       Japanese perl1.3 (perl 4.019).
+
+
+  E-3: emacs disk set
+  ---------------------
+
+    nemsup:   NEmacs(Nihongo[=Japanese] Emacs) support files
+    nemuty:   NEmacs utilities 
+    nemlisp:  LISP package for NEmacs
+    mulelisp: Mule (Multi Language Emacs) LISP package
+    mulesup:  Mule support files
+    muleuty:  Mule utilities
+    mulegnus: LISP for using GNUS (Emacs news reader) from Mule
+    nemgnus:  LISP for using GNUS (Emacs news reader) from NEmacs
+    mulelaps: LISP application for Mule
+    nemlaps:  LISP application for NEmacs
+    jshrc:    J-Shell documents and rcfile
+    muleskk:  SKK related LISP files for Mule
+    nemskk:   SKK related LISP files for NEmacs
+    skkbin:   SKK server binaries
+    skkdic:   SKK dictionary
+    vnem:     NEmacs without input method support
+    vmenx:    NEmacs without input method support for X
+    vmule:    Mule without input method support
+    vmulex:   Mule without input method support for X
+    mulelsrc: Mule LISP source
+    nemlsrc:  NEmacs LISP source
+    tvnem:    Dump kit of NEmacs without input method support
+    tvnemx:   Dump kit of NEmacs without input method support for X
+    tvmule:   Dump kit of Mule without input method support
+    tvmulex:  Dump kit of Mule without input method support for X
+ 
+
+  (1) "nemsup", "nemuty", and "nemLISP" are necessary to use NEmacs, 
+      the Japanese Emacs. The current JE contains NEmacs-3.3.2 based 
+      on Emacs-18.59.
+
+  (2) "mulelisp", "mulesup", and "muleuty" are necessary to use Mule, 
+      the Multilingual Emacs. The JE-0.9.5 includes Mule-1.1pl4 
+      (HAHAKIGI version).
+
+  (3) "mulegnus" and "nemgnus" are required to use the news reader 
+      "gnus". "mulegnus" enables you to use "gnus" from within 
+      Mule, and "nemgnus" enables you to use "gnus" from within 
+      NEmacs.
+
+  (4) "mulelaps", "nemlaps" are collections of various "e-lisp" 
+      applications, such as "jxw", "ange-ftp" and "J-Shell".
+
+  (5) "jshrc" contains rc files and documents for "J-Shell".
+
+  (6) "skkbin" and "skkdic" are SKK, a Japanese input method,
+      accessible by Mule with "muleskk" or NEmacs with "nemskk". 
+      JE-0.9.5 comes with SKK-7.17.
+    
+  (7) "vnem" and "vnemx" are naked NEmacs based on emacs-18.59 
+      without support of any input method, for the console and X 
+      respectively. You don't have to install these if you decide 
+      to use either Wnn, Canna or sj3.
+
+  (8) "vmule" and "vmulex" are naked Mule-1.1pl4 (HAHAKIGI version) 
+      without support of any input method, for the console and X 
+      respectively. You don't need these if you decide to use either 
+      Wnn, Canna or sj3.
+
+
+
+
+  E-4: doc disk set
+  ----------------
+
+    faqbro:   Browser for SGML-formatted FAQ (V.0.2)
+    je:       JE menu (contains dialog scripts to read various docs)
+    jfaq:     FAQ/HOWTOs Japanese version
+    jvimdoc:  Japanese VIM Documents
+    ki2doc:   Kinput2 Documents
+    mnewsdoc: mnews Documents
+    skkdoc:   SKK Documents
+
+  *doc series will continue to incorporate outputs from the JF 
+   project.  This JE-HOWTO will also become a part of this doc 
+   series.
+
+
+  E-5: wnn disk set
+  ----------------
+  
+  This disk set is necessary only if you decide to go with Wnn, 
+  which is the most popular Japanese input method.
+
+    wnnbin:   Wnn4.109p1 (binary)
+    wnndic:   Wnn4.109p1 (dictionary)
+    wnnsup:   Wnn4.109p1 (support files)
+    wnndoc:   Wnn4.109p1 (document)
+    wnnman:   Wnn4.109p1 (manual)
+    wnnprog:  Wnn4.109p1 (programmer's kit)
+    ki2wnn:   kinput2 for Wnn users
+    wnem:     NEmacs-3.3.2 with Wnn interface
+    wnemx:    NEmacs-3.3.2 with Wnn interface for X
+    wmule:    Mule-1.1pl4 with Wnn interface
+    wmulex:   Mule-1.1pl4 with Wnn interface for X
+    twnem:    Dump kit of NEmacs-3.3.2 with Wnn interface
+    twnemx:   Dump kit of NEmacs-3.3.2 with Wnn interface for X
+    twmule:  Dump kit of Mule-1.1pl4 with Wnn interface
+    twmulex: Dump kit of Mule-1.1pl4 with Wnn interface for X
+
+  (1) "wnnbin", "wnndic", "wnnman", and "wnnprog" are components of
+      Wnn-4.109, the most popular Japanese Input Method on Unices, 
+      which enables you to input Japanese words and phrases by 
+      regular keyboards such as English 101.
+
+  (2) "ki2wnn" is kinput2-fix6 for Wnn users. It enables the use
+      of kinput2 (another input method) through Wnn servers.
+
+
+
+  E-6: canna disk set
+  -------------------
+  
+  This disk set is necessary only if you decided to go with Canna. 
+  Canna is famous for its features and speed among Japanese input 
+  methods.
+
+    canbin:  Canna3.2 (binary)
+    canman:  Canna3.2 (manual)
+    canprog: Canna3.2 (programmer's kit)
+    cansup:  Canna3.2 (support files)
+    candic:  Canna3.2 (dictionary)
+    candoc:  Canna3.2 (Documents)
+    ki2can:  kinput2 for Canna users
+    cjvim:   Japanese VIM 2.0p + ONEW-2.2.8 for Canna users
+    cnem:    NEmacs-3.3.2 with Canna interface
+    cnemx:   NEmacs-3.3.2 with Canna interface for X
+    cmule:   Mule-1.1pl4 with Canna interface
+    cmulex:  Mule-1.1pl4 with Canna interface for X
+    tcnem:   Dump kit of NEmacs3.3.2 with Canna interface
+    tcnemx:  Dump kit of NEmacs3.3.2 with Canna interface for X
+    tcmule:  Dump kit of Mule1.1pl4 with Canna interface
+    tcmulex: Dump kit of Mule1.1pl4 with Canna interface for X
+
+  (1) "canbin", "candic", "canman", "canprog", "cansup" and "candoc"
+      are components of Canna-2.2pl4 system, an Input Method with 
+      nice features and speed, which converts your keyboard input 
+      into Japanese.
+
+  (2) "ki2can" is kinput2-fix6 for Canna users. It enables the use
+      of kinput2 (another input method) through Canna servers.
+
+
+
+  E-7: sj3 disk set
+  ----------------
+  
+  This disk set is necessary only for SKK users. This enables input 
+  of Japanese characters into some Japanese applications.
+
+    sj3bin:  sj3 (binary)
+    sj3prog: sj3 (programmer's kit)
+    ki2sj3:  kinput2 for sj3 user
+    snem:    NEmacs-3.3.2 with sj3 interface
+    snemx:   NEmacs-3.3.2 with sj3 interface for X
+    smule:   Mule-1.1pl4 with sj3 interface
+    smulex:  Mule-1.1pl4 with sj3 interface for X
+    tsnem:   Dump kit of NEmacs3.3.2 with sj3 interface
+    tsnemx:  Dump kit of NEmacs3.3.2 with sj3 interface for X
+    tsmule:  Dump kit of Mule1.1pl4 with sj3 interface
+    tsmulex: Dump kit of Mule1.1pl4 with sj3 interface for X
+    
+
+  (1) "sj3bin", and "sj3prog" are components of the sj3 input method 
+      system.
+
+  (2) "ki2sj3" is kinput2-fix6 for sj3 users.
+
+
+
+  E-8: net disk set
+  ----------------
+
+  This is the collection of network related software.
+
+    cf:       CF-3.3Wb7 (produces sendmail.cf)
+    sendmail: sendmail-8.6.9 for Japanese networks
+    mailx:    mailer (mail, Mail, rmail)
+    mhlib:    MH-6.8jp2c (library)
+    mhbin:    MH-6.8jp2c (binary)
+    mhman:    MH-6.8jp2c (manual)
+    nntpclt:  inews for NNTP
+    cnn:      cnn-1.4.2 (news checker)
+    ktin:     Japanese tin (newsreader)
+    mnews:    mnews1.18 (Japanese mini-news reader)
+    ncftp:    ftp user interface for NcFTP
+
+  (1) "cf" helps the configuration of sendmail by creating 
+      sendmail.cf.
+
+  (2) "sendmail" is the most popular mail handler in the Unix 
+      world. This binary has some extensions to be used over
+      Japanese networks, such as WIDE or TISN.
+
+  (3) "mailx" is one of the most popular mailers among Linuxers.
+
+  (4) "mhbin", "mhlib", and "mhman" are components of mh, a mail 
+      handling system with Japanese support.
+
+  (5) "nntpclt" is Japanese inews, which enables the exchange of 
+      Japanese e-mail.
+
+  (6) "cnn" checks if there are new articles posted on you favorite 
+      newsgroups via an NNTP connection.
+ 
+
+  E-9: TeX disk set
+  ----------------
+
+  This set contains all the necessary files for the TeX system 
+  except for fonts in the jf disk set, and xdvi in jx.
+
+    bptexbin: PTeX (Japanese big TeX binary)
+    bptexfmt: PTeX (Japanese big TeX format file)
+    sptexbin: pTeX (Japanese TeX binary)
+    sptexfmt: pTeX (Japanese TeX format file)
+    ptexlib:  Common resources for PTeX and pTeX
+    jbibtex:  Japanese BibTeX
+    dvi2tty:  DVI previewer for character terminals
+    dviout:   DVI previewer for VGA consoles
+    dviprt:   DVI printer driver
+    dvidoc:   Documents for dviout/dviprt
+    jdvi2kps: jdvi2kps4.0
+    4up:      Utility to shrink multi page docs into a single page
+    pl2bin:   plain2 binary file
+    pl2doc:   plain2 document
+    fntuty:   TeX font utility
+
+  (1) "bptexbin"+"bptexfmt" and "sptexbin"+"sptexfmt" are Japanese 
+      TeX systems developed by ASCII (a Japanese publisher & 
+      developer) based on the famous TeX system. PTeX (bptex) is 
+      for those of you who need to handle very large documents. 
+      The average user should be quite happy with pTeX (sptex), 
+      which is less demanding. Both are capable of handling 
+      English documents, too.
+
+  (2) "dviout" is a DVI previewer for VGA, while "dviprt" is a 
+      printer driver; both are ported from their DOS versions, 
+      which work under non-X environments. They are based on 
+      version 2.39 of dviout/prt. The lates release is psbox+gs
+      savvy.
+
+  (3) "jdvi2kps" converts DVI files into Japanese PostScript files.
+  
+  (4) "4up" is a filter that takes Japanese Postscript files, and 
+      shrinks 2 (or 4) pages into a single page.
+
+  (5) "pl2bin" is a Plain-text-to-TeX/roff filter. "pl2doc" is its
+      documentation.
+
+  (6) "fntuty" is a utility to convert between bitmap, PK, and 
+      vector fonts.
+
+  Note that DVI previewer for X environment is in the jx disk set 
+  for X applications.
+
+
+  E-10: font disk set
+  -------------------
+  
+  This disk set contains bitmap and vector fonts for Japanese TeX 
+  and the X window system. Note that Japanese PK fonts are NOT 
+  necessary if you decide to go with vector fonts.
+
+    cmf180:   180dpi-PK Computer Modern font for TeX
+    vmincho1: Zeit vector font in Mincho (JIS level 1 kanjis)
+    vmincho2: Zeit vector font in Mincho (JIS level 2 kanjis)
+    vasiya1:  Zeit vector font in Round Gothic (JIS L1 kanjis)
+    vasiya2:  Zeit vector font in Round Gothic (JIS L1 kanjis)
+    vhokuto:  Zeit vector font in Brush typeface
+    xfnt13:   13 dot alphabet and Kana font for X
+    xfnt16:   16 dot Japanese fonts for X
+    xfnt18:   18 dot Japanese fonts for X
+    xfnt24:   24 dot Japanese fonts for X
+    xfnt26:   26 dot Japanese fonts for X
+    xmarufnt: Round typeface Japanese font for X
+
+  (1) TeX requires Computer Modern fonts "cmf180". Depending on the 
+      resolution of your printer, other CM fonts might be needed. 
+      In that case, you have to find them on the net or create them 
+      yourself using the Metafont system.
+
+  (2) "vmincho1/2", "vasiya1/2", and "vhokuto" are Zeit compatible 
+      vector fonts for TeX (dviout/prt, xdvi) and Japanese 
+      Ghostscript. You can buy the original Zeit font from Zeit, 
+      or you can get free alternatives here in JE.
+
+  (3) "xfnt??" and "xmarufnt" are Japanese fonts for the X-window 
+     system. Make sure to execute mkfontdir in 
+     /usr/lib/X11/fonts/misc after you install any of them.
+
+  * As of JE-0.9.5, bitmap fonts for Japanese TeX are no longer 
+    supported.  Only vector fonts are supported.
+
+
+  E-11: xclt disk set
+  -----------------
+
+  This is a collection of X applications.
+
+    xfntali: fonts.alias for Kanji Fonts
+    k14:     the famous 14 dot Kanji fonts for X
+    kterm:   kterm-5.2.0, xterm with Kanji support
+    pxvt:    small Japanese terminal emulator for X, based on rxvt
+    xldimg:  image file viewer for X
+    oneko:   a cat chasing your mouse cursor
+    libtk:   Tcl7.3Tk3.6jp (library)
+    tkbin:   Tcl7.3Tk3.6jp (binary)
+    tkdemo:  Tcl7.3Tk3.6jp (demo)
+    tkman:   Tcl7.3Tk3.6jp (manual)
+    xdvi:    DVI previewer with Zeit vector font support
+    jgsx11:  Japanese Ghostscript for X11/VGA
+    gview:   ghostview-1.5 (X interface for Ghostscript)
+    tgif:    tgif-2.13.2.j ( a draw tool with Japanese support)
+    xklock:  screen lock with Kanji support
+
+  (1) "k14" is a set of Japanese fonts contributed to the X-window 
+      system. You may find it even on your English-only workstations 
+      in your office, since it is included in the core distribution 
+      of X.
+
+  (2) "xengine" is an application to evaluate the performance of an 
+      X server.
+
+  (3) "oneko" makes it easy to find your mouse cursor; a neko (a 
+      Japanese word for cat) chases your mouse on your screen. You 
+      can turn it into a dog chasing a bone.
+
+  (4) "tkbin", "libtk", "tkdemo", and "tkman" are components of
+      Japanese Tcl/Tk. GUI development with Japanese messages is a 
+      breeze with these tools.
+
+  (5) "tgif" is the drawing tool with kinput2 interface to 
+      input Japanese strings. It can handle EPS files as well as 
+      its proprietary  files.
+ 
+
+  E-12: xsi disk set
+  -------------------
+
+  This disk set contains internationalized XFree86-2.1.1 using the 
+  Xsi extension. Fonts not included.
+
+    xfs3.tgz:     S3 server
+    xfsvga.tgz:   SVGA server
+    xfvga16.tgz:  VGA16 server
+    xf8514.tgz:   8514 server
+    xfmach32.tgz: Mach32 server
+    xfmach8.tgz:  Mach8 server
+    xfmono.tgz:   VGA Mono server
+    fvwm:         Fast, compact and clean window manager
+    xfbin.tgz:    basic clients
+    xfprog.tgz:   programming kit
+    xflib.tgz:    shared libraries and other support files
+    xfxaklib:     Shared library for Internationalized Xaw, kinput2 
+                  version
+    xfxawlib:     Shared library for Internationalized Xaw, xwnmo 
+                  version (default)
+    xfxakprg:     Internationalized Xaw Programming Kit, kinput2 
+                  version
+    xfxawprg:     Internationalized Xaw Programming Kit, xwnmo 
+                  version (default)
+    xfwchprg:     Xwchar Programming Kit
+    xfxainc:      Include file for Internationalized Xaw
+    xwmno:        Japanese input system
+    xmh:          Interfaces for MH X version
+    xwkterm:      kterm for XWNMO
+    xinfo:        GNU info file viewer
+    xcal          Calendar & Scheduler application
+    xpbiff:       xbiff with pop-up animation
+    xgopher:      Japanese gopher client
+    
+  This disk set was prepared through the following steps.
+
+    - Based on XFree86-2.1.1
+    - Set Xsi, X_LOCALE, X_WCHAR and XML, and did "make World"
+    - Merged Xawk2 and Xwchar into Xaw-i18n (xfxaklib)
+
+  xfxawlib will enable the use of xwnmo (default) for Japanese 
+  input.  Xaw will be able to handle Japanese by installing 
+  xfxawlib.tgz.
+  
+  xaxaklib will enable the use of Japanese characters on 
+  internationalized clients such as xcal-i18n through kinput2. 
+  Xaw will be able to handle Japanese by installing xfxawlib.tgz.
+  
+  To summarize;
+    - xaw* -> xwnmo version (default)
+    - xak* -> kinput2 version
+  You need to pick one and install it. However, by switching the
+  shared library, you can go back and forth between xwnmo and 
+  kinput2.
+
+  "XFree86-j" is upward-compatible with the original XFree86. 
+  Non-internationalized clients will run without problem. Moreover,
+  the binaries might improve your X system, because XFree86-j 
+  includes the latest patches. 
+  
+  However, please note that this package is NOT complete. It does
+  not include the fonts and the manuals. You need to install it 
+  over the original XFree86.
+  
+  Xsi version of XFree86 still hasn't gone through intensive
+  tests. Thus, unknown problems might exist.
+
+
+  E-13: iv disk set
+  -----------------------
+  
+  This disk set contains the Japanese InterViews 3.1.  The shared 
+  library version still has problems, so this set is based on the 
+  static link version.
+
+    ivdevel:   Japanese InterViews 3.1 Include files etc.
+    ivlib1:    Japanese InterViews 3.1 Static Library
+    ivlib2:    Japanese InterViews 3.1 Class Library
+    ivman:     Japanese InterViews 3.1 manual
+    ivprog:    Development tools for Japanese InterViews 3.1
+    ivdemos:   Japanese InterViews 3.1 Demos
+    doc:       WYSIWYG TeX, DTP Tools
+    idraw:     Japanese InterViews 3.1 Draw tools
+    ibuild:    Japanese InterViews/Unidraw 3.1 Interface Builder
+    ibsample:  Samples for ibuild
+        
+
+
+  F. Future Plans
+  ==============
+  
+  We plan to improve the following aspects of JE.
+
+  1) More and better documentation:
+  
+      Works of JF (Japanese FAQ project: The Japanese version of
+      Linux Documentation Project) members will be made available 
+      in the doc disk set. 
+      Translation of major HOWTOs, Japanese FAQs and others are on
+      their way. (And of course, English documents, too..)
+
+
+  2) More Software Packages:
+
+      Various software packages will be included as they come.
+
+
+  3) XFree86 with Ximp extensions:
+ 
+     Some people prefer Ximp to Xsi, another implementation of 
+    internationalized X.
+
+
+  4) Migration to Other Platforms:
+  
+  
+  5) Kernel Source Packages
+  
+     106-Keyboard support, spc drivers, etc.
+
+
+  6)Evolution toward Multilingual Extensions:
+  
+   Give us your opinions! JE developers are not specialists in all 
+   languages.
+
+
+  JE was originally compiled as an extension of the SLS distribution 
+  of Linux, but the developers are leaning heavily toward Slackware
+  these days.
+
+
+
+  G. JE Counter
+  =============
+  
+  I am curious as to who uses JE for what, and who actually uses
+  this English How-To. Japanese speakers/writers in Japan will obviously
+  benefit from JE itself, but they won't need any English docs. So,
+  who needs this English JE HOWTO?
+  
+  If you use JE, or even just brousing through this document, could
+  you tell me where you are using/reading this, and what you are up
+  to with JE? I won't set any formats, because honestly, I'm not sure
+  what to expect. Please send your response to:
+  
+        Hiroo YAMAGATA     <hiyori13@interramp.com>
+
+  I'll try to include the results in the future versions of this
+  HOWTO. TNX!
+  
+  
+
+  H.  Legalese and Miscellaneous
+  ===============================
+  
+  Any trademark that appears in this document is owned by its owner.
+  This document is freely distributable, though it is copyrighted 
+  by the authors. There is no warranty on any information in this 
+  document.  
+
+  The authors express special thanks to the following people for 
+  their dedicated help.
+
+              Takashi MANABE <manaba@Roy.dsl.tutics.tut.ac.jp>
+              Nozomi YTOW <nozomi@yacca.cc.tsukuba.ac.jp>
+              Kuniko MIKI <kuniko@ori.u-tokyo.ac.jp>
+
+  Comments, suggestions, cheers or just greetings to the authors are 
+  quite welcome. They will be reached at the following addresses:
+
+      Hironobu ABE       <hironobu@ap.isl.melco.co.jp>
+
+      Yasu Hiro YAMAZAKI <hiro@ice3.ori.u-tokyo.ac.jp>
+      2696 Bloor St. W., Apt B3, Toronto Ontario, Canada M8X 1A5
+      
+      Hiroo YAMAGATA     <hiyori13@interramp.com>
+
+  
+  Unless otherwise stated, Linux HOWTO documents are copyrighted by 
+  their respective authors. Linux HOWTO documents may be reproduced 
+  and distributed in whole or in part, in any medium physical or 
+  electronic, as long as this copyright notice is retained on all 
+  copies. Commercial redistribution is allowed and encouraged; 
+  however, the author would like to be notified of any such 
+  distributions.
+
+  All translations, derivative works, or aggregate works 
+  incorporating any Linux HOWTO documents must be covered under 
+  this copyright notice. That is, you may not produce a derivative 
+  work from a HOWTO and impose additional restrictions on its 
+  distribution. Exceptions to these rules may be granted under 
+  certain conditions; please contact the Linux HOWTO coordinator 
+  at the address given below.
+
+  In short, we wish to promote dissemination of this information 
+  through as many channels as possible. However, we do wish to 
+  retain copyright on the HOWTO documents, and would like to be 
+  notified of any plans to redistribute the HOWTOs.
+
+  If you have questions, please contact Matt Welsh, the Linux 
+  Documentation Project coordinator, at mdw@sunsite.unc.edu. You 
+  may finger this address for phone number and additional contact 
+  information. 
+
+  --------JE-HOWTO(April 20 1995)------JE-HOWTO(April 20 1995)--------

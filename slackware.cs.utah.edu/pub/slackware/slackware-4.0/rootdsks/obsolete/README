@@ -1,0 +1,50 @@
+
+OBSOLETE ROOT-INSTALL FLOPPY IMAGES
+
+These are a.out 1.44 megabyte rootdisk images from Slackware 3.4.  For various
+reasons, these images are now considered obsolete and unsupported.  But, they
+still might be useful in some situations -- for example, they can fit on a 
+floppy disk uncompressed, which allows you to actually mount them as a root
+filesystem.  This saves a *lot* of memory as compared to the rootdisks used
+with Slackware 3.5 and later.
+
+Slackware supported installation on systems with only 4 megabytes for as long
+as it was really possible.  When it was discovered that the Linux kernel has
+grown to the point where the smallest one included with Slackware won't boot
+on a 4 meg machine, I decided that it was probably time to abandon that cause.
+All other Linux distributions require a minimum of 8 megabytes of RAM, and have
+been that way for quite a while.  And, using a larger ramdisk was a necessity
+for switching them to an ELF format (and later glibc).
+
+So, if you've got a machine with 4 megabytes and can't install, I apologize.
+
+If you get your hands on an old bootdisk or kernel (or maybe if you can find
+someone who will compile the smallest kernel they can for you) then maybe these
+rootdisks will help you install.  Otherwise, you might want to get some more
+RAM.
+
+Here's a description of the obsolete rootdisks available in this
+directory:
+
+color.gz: A root-install disk using an easy-to-use new full-screen color
+install program. NOTE: This version of the install system is not forgiving of
+extra keystrokes entered between screens, so type carefully.
+
+umsdos.gz: A version of the color install disk using UMSDOS - a filesystem
+that allows you to install Linux into a directory on an existing MS-DOS
+partition. Not as fast as ext2 or xiafs, but it works, and you don't have to
+repartition your drive. See README.UMS for more information.
+
+text.gz: A root-install that uses text-based install scripts.  This is actually
+preferred by some people since you can back up to look at error messages using
+Shift-PageUp.  In addition, all of the new keymaps should be supported.
+
+tape.gz: A semi-experimental disk designed to support installation from tape.
+See the file README_T.APE for more information about this disk.
+
+rescue.gz: An old rescue rootdisk.  About the only good thing about this
+rescue disk is that it's small... the utilities on it are pretty old, and
+they're all in a.out format and/or compressed.  Like most of the rootdisks
+here, if you've got the memory to load them you're much better off with
+the newer rootdisks that are located one level up.
+

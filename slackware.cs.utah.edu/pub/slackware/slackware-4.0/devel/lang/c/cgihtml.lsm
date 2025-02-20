@@ -1,0 +1,22 @@
+Begin3
+Title:          cgihtml
+Version:        1.66
+Entered-date:   February 3, 1997
+Description:    cgihtml is C library for writing Common Gateway
+                Interface (CGI) programs for use on the World Wide Web
+                (WWW).  It includes routines to perform form data
+                parsing and HTML output.  These routines greatly
+                simplify the task of writing CGI programs in C.
+                Includes example programs.  More info is available at:
+                <URL:http://www.eekim.com/software/cgihtml/>
+Keywords:       world wide web, cgi, C
+Author:         eekim@eekim.com (Eugene Eric Kim)
+Maintained-by:  eekim@eekim.com (Eugene Eric Kim)
+Primary-site:   ftp.eekim.com /users/eekim/cgihtml
+                        24 kb cgihtml-1.66.tar.gz
+Alternate-site: hcs.harvard.edu /pub/web/tools/cgihtml
+                        24 kb cgihtml-1.66.tar.gz
+Original-site:
+Platform:
+Copying-policy: E-mail-ware
+End

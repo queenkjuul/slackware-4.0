@@ -1,0 +1,20 @@
+Begin2
+Title        = WhatsNew
+Version      = 1.5
+Desc1        = generate lists of new stuff on your favorite sites
+Author       = Darren J Moffat
+AuthorEmail  = moffatd@dcs.gla.ac.uk
+Maintainer   = Darren J Moffat
+MaintEmail   = moffatd@dcs.gla.ac.uk
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Network/misc
+File1        = whatsnew.tgz
+FileSize1    = 4737
+Required1    = ftp, mail
+CopyPolicy1  = GPL
+Keywords     = whatsnew archives 
+Comment1     = Originally distributed via alt.sources.
+Comment2     = Since this was written under SunOS, you may have to change
+Comment3     = /usr/ucb/* to /usr/bin
+End
+

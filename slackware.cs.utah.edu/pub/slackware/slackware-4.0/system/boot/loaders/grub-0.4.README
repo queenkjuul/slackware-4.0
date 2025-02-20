@@ -1,0 +1,26 @@
+
+
+	GRUB -- GRand Unified Boot-loader
+
+		version 0.4
+
+	by Erich Boleyn  <erich@uruk.org>
+
+
+Intro
+
+  This is the public release of GRUB version 0.4, a bootloader for
+  PC-compatible machines.
+
+
+Installation, Building, and Other Information
+
+  The short of building is to look the help provided by configure via
+  "./configure --help".  Precompiled versions are included in "bin_std"
+  and "bin_debug" (the latter has debugging code enabled).
+
+  Pretty much all of the documentation and other helpful information is
+  in the "docs" directory mostly as HTML files, the root of which is
+  "index.html".
+
+

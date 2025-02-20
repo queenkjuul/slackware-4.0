@@ -1,0 +1,41 @@
+Begin3
+Title:          gr_monitor 
+Version:        0.55
+Entered-date:   June, 1998
+Description:    3D Graphical Process Monitor (Mesa/OpenGL)
+
+                Gr_Monitor displays information about processes 
+                resisdent on a UNIX system.  For each process it 
+                displays a 3D bar graph of CPU consumed, memory consumed, 
+                resident set size, and elapsed time. The processes
+                are grouped by username. Each username grouping sits on 
+                its own little plinth.
+		
+		Data gathering and display can be run on separate machines.
+		Controls for zooming, rotation, fog effects, ...
+
+		The graph viewier accepts any kind of input along the
+		the same theme.
+
+		Now uses code borrowed from the latest procps.
+		This prevent the gather process from crashing on some
+		Linux 2.0 machines.
+
+		This version is really just updates the procps code.
+
+		Preview at http://www.actrix.gen.nz/users/michael
+
+Keywords:       monitor, procps, graph, graphics, OpenGL, Mesa, GLUT
+Author:         michael@actrix.gen.nz (Michael Hamilton)
+Maintained-by:  michael@actrix.gen.nz (Michael Hamilton)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status
+		  2k gr_monitor-0.55.lsm
+		355k gr_monitor-0.55.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       The tar contains pre-built binaries statically linked
+		to the Mesa library (built on Linux 2.0.34, Caldera 1.2)
+		Procps source, Mesa, GLUT, and OpenGL libraries, are required
+		for building. Also works on SGI IRIX 5.2, 5.3, and 6.2.
+Copying-policy: GPL/BSD
+End

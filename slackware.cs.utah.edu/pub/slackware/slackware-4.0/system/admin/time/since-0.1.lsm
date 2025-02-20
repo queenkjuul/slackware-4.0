@@ -1,0 +1,12 @@
+
+Begin3
+Title:          since
+Version:        0.1
+Entered-date:   11JUL98
+Description:    Tail(1) with state, allowing user to 
+                view only the data appended to log files
+                since the last time.
+Keywords:	tail log viewer
+Platforms:      linux
+Copying-policy: GPL - Freely distributable.
+End

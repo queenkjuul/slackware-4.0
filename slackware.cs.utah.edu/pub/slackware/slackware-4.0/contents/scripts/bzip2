@@ -1,0 +1,2 @@
+( cd bin ; rm -rf bunzip2 )
+( cd bin ; ln -sf bzip2 bunzip2 )

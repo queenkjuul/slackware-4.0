@@ -1,0 +1,20 @@
+Begin3
+Title:          Network Job Control
+Version:        1.0
+Entered-date:   22SEP97
+Description:    Batch queue system for a network of Unix workstations. Network
+		    Job Control (NJC) allows to submit and run jobs on different
+                machines in a network while providing load balancing. Jobs
+                can be submitted at arbitrary times and will be queued until a
+                machines becomes available.
+Keywords:       batch queue, load balancing 
+Author:         jxh@msi.com (Joerg-Ruediger Hill)
+Maintained-by:  jxh@msi.com (Joerg-Ruediger Hill)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/daemons
+                36kB njc-1.0.tgz
+		    1kB njc-1.0.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

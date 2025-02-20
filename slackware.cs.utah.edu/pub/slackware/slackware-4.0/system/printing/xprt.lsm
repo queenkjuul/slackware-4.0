@@ -1,0 +1,19 @@
+Begin3
+Title:          xprt
+Version:        0.9.003
+Entered-date:   March 12, 1997
+Description:    xprt allows the usage of auxiliary printers attached
+                to terminals. It reads print-data from a named pipe and
+                multiplexes it with the normal terminal-data using
+                mandatory file locking.
+Keywords:       auxiliary printer, transparent printer
+Author:         cal@zls.de (Christian A. Lademann)
+Maintained-by:  cal@zls.de (Christian A. Lademann)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Printing
+			 12 kb xprt-0.9.003.tar.gz
+			  1 kb xprt.lsm
+Alternate-site: 
+Original-site:
+Platform:       
+Copying-policy: GPL
+End

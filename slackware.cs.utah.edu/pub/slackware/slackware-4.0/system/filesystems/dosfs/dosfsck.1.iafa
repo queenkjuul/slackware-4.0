@@ -1,0 +1,9 @@
+Package-Name:	dosfsck.1.tar.z
+Title:		PC/MS-DOS file system checker
+Version:	0.1 (ALPHA)
+Description:	Equivalent to CHKDSK for Linux.
+Author:		Werner Almesberger <almesber@bernina.ethz.ch>
+Maintained-by:	Werner Almesberger <almesber@bernina.ethz.ch>
+Platforms:	Linux with dosfs.9 or later
+Copying-Policy:	Freely redistributable
+Keywords:	Linux, MS-DOS, file system, dosfs, fsck, CHKDSK, dosfsck

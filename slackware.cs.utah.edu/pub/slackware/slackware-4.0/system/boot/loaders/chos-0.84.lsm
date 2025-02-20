@@ -1,0 +1,24 @@
+Begin3
+Title:		Choose-OS
+Version:	0.84
+Entered-Date:	15.10.98
+Description:	Choose-OS is a menu-based, fully configurable modular
+		boot loader for Linux. It has many nice and helpful 
+		features not found in other boot loaders including 
+		background image and fully configurable menus. 
+		Supports bzImages and initrd. Other features include MBR
+		rewrite (useful for hiding dos from winblows95).
+		"Single-shot autoboot" can be used, for example, by 
+		included "rebooter" to easily switch from linux to 
+		another operating system.
+		An easy-to-use configuration editor for X,
+		Visual Chos, included.
+		There are no new features in this release, only bugfixes.
+Keywords:	chos Choose-OS boot loader manager menu-based nice visual vchos rebooter reboot
+Author:		tuv1@freenet.hut.fi (Tuomo Valkonen)
+Maintained-by:	tuv1@freenet.hut.fi (Tuomo Valkonen)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/boot/loaders
+		352k chos-0.84.tar.gz
+Platforms:	linux/i386
+Copying-policy: FRS
+End

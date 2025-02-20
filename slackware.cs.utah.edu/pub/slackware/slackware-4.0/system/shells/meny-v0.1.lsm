@@ -1,0 +1,14 @@
+Begin3
+Title: meny         
+Version: v0.1       
+Entered-date: 14MAY1997  
+Description: simple menu system using dialog   
+Keywords: menu, shell, script, dialog, gui      
+Author: Luke Th. Bullock  (lucc@powertech.no)        
+Maintained-by: Luke Th. Bullock (lucc@powertech.no)
+Primary-site: http://home.powertech.no/lucc/linux/scripts  
+Alternate-site: sunsite.unc.edu /pub/Linux
+Original-site: http://home.powertech.no/lucc/linux/scripts
+Platforms: any UNIX with bash and dialog     
+Copying-policy: Freeware
+End

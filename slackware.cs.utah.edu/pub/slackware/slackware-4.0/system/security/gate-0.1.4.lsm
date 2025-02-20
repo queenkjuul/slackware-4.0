@@ -1,0 +1,21 @@
+Begin3
+Title:	       Gate
+Version:       Beta 1 May 1998 
+Entered-date:  04.23.98 
+Description:   Unix based network security scanner that incorporates the use
+	       of lxdialog to provide a range of tests on remote hosts     
+	       specified by either an ip range or a single system. 
+Keywords:      Security, sockets, exploits, scanner, hack
+Author:        stas@netsis.com (Stas Lanford) 
+Maintained-by: stas@netsis.com (Stas Lanford) 
+Primary-site:  http://tishina.home.ml.org /products/gate
+	       54kB gateBeta1.tar.gz
+	       17kB COPYING
+	       2kB  README 
+Alternate-site:http://209.67.81.132 /products/gate 
+	       same as previous
+Original-site: http://tishina.home.ml.org 
+	       same as previous 
+Platforms:     Ncurses library 
+Copying-policy:GPL  
+End

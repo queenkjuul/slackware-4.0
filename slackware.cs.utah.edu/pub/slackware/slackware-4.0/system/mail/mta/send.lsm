@@ -1,0 +1,20 @@
+
+lsm entry for sendmail5.67b+IDA1.5+mailx5.3b
+=============================================
+
+(sorry about the formatting...)
+
+this contains a binary distribution of sendmail+IDA
+with the most current patchlevel plus:
+	- mailx5.3b (from Ian Jackson's past posting)
+	- lmail local delivery agent (from Rich Braun's
+		past work on an older version of
+		sendmail+IDA).
+
+
+See the README in there for the nitty gritty...
+
+
+				Vince Skahan
+				vince@halcyon.com
+				vince@victrola.wa.com

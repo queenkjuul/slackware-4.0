@@ -1,0 +1,27 @@
+Begin3
+Title:          asppp - X interace to pppd
+Version:        0.4c BETA
+Entered-date:   Feb. 11, 1997
+Description:    Asppp displays the status of your ppp session by checking first for
+	/var/run/ppp0.pid (since only ppp0 can have the default route).  Failing that,
+	/proc/net/route is checked for a ppp entry every 10 (by default) seconds,
+
+        Based on the return status of the above checks, you have the option to
+	either dial/hangup (thru user defined commands in ~/.asppprc), display/undisplay
+	the current status of your ppp session (displayed by default on startup)
+
+        Assuming you have a 3 button mouse:
+	left click:  executes the current icons "function"  (dial/hup, status, exit)
+	right click:  cycle thru available options
+	middle click:  nothing yet (maybe invoke setup)
+
+Keywords:       X, X11, ppp, pppd
+Author:         Brad Hughes (bhughes@arn.net)
+Maintained-by:  Brad Hughes
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xapps
+			33307kb asppp-0.4c.tar.gz
+Alternate-site: 
+Original-site:  oak.sfasu.edu/pub/AfterStep/apps/asppp-0.1.1.tar.gz
+Platform:       Linux, X11R6, libXpm, libXaw3d
+Copying-policy: GNU GPL
+End

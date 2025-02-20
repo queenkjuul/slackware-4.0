@@ -1,0 +1,21 @@
+Begin3
+Title:		rh50joliet
+Version:	0.2 (beta-2)
+Entered-date:	1-24-98
+Description:	Modified Red Hat 5.0 boot floppy for installing Red Hat
+                Linux 5.0 from a Joliet-format CD (as created on Windows
+		95 or other non-Unix OS) or from FAT-32.  Includes
+		documentation in HTML format.
+Keywords:	RedHat install boot floppy joliet
+Author: 	rodsmith@fast.net (Rod Smith)
+Maintained-by:	rodsmith@fast.net
+Primary-site:	ftp.redhat.com /pub/contrib
+                1287MB rh50joliet-0.2.zip
+		1k     rh50joliet-0.2.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/install
+                1287MB rh50joliet-0.2.zip
+		1k     rh50joliet-0.2.lsm
+Original-site:	
+Platforms:	Red Hat Linux 5.0 on a Joliet-format CD
+Copying-policy:	GPL
+End

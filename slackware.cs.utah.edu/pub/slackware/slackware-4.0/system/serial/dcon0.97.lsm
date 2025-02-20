@@ -1,0 +1,20 @@
+Begin3
+Title:          dcon
+Version:        0.97
+Entered-date:   Thu Jan  2 20:36:31 EST 1997
+Description:    Script language interpreter to automate modem operations such
+Description:    as logging in to Internet service providers, BBS's, other
+Description:    systems, etc...  Is a better alternative to 'chat'.  Can call
+Description:    pppd, cu, seyon, kermit, sz, rz, etc...  Has simple BASIC-like
+Description:    syntax, multi-response waitfor, flow control, in-line text
+Description:    capture, multi-process control, and lots more.  Replaces
+Description:    dcon0.9* .  Has much more functionality than dcon0.96.
+Description:    Comes with script examples to easily setup PPP with ISP.
+Keywords:       ppp cu kermit modem script language chat
+Author:         Daniel.Chouinard@pwc.utc.com
+Maintained-by:  Daniel.Chouinard@pwc.utc.com
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Serial
+                31kB dcon0.97.tgz
+Platform:       Linux, most Unices
+Copying-policy: None, free.
+End

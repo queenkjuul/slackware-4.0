@@ -1,0 +1,10 @@
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/tclX8.0.4.tar.gz
+cd tclX8.0.4
+cd unix
+./configure --prefix=/usr --enable-tk=YES --enable-shared
+make install
+make clean
+./configure --prefix=/usr --enable-tk=YES
+make install

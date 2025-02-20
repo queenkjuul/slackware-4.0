@@ -1,0 +1,111 @@
+
+This is the official announcement of the release of gnuplot 3.7.
+(Version 3.6 was renamed to 3.7 to avoid confusion with the many
+BETA versions which are circulating within the Internet.)  The
+official date and time of this version is:
+        Date: Thu Jan 14 19:34:53 BST 1999
+        Version: 3.7, Patchlevel 0
+
+One of the most important changes in this release is the revised
+copyright statement. gnuplot can now be distributed in binary form
+even if the sources were modified, provided that the conditions
+in the copyright statement are satisfied.
+
+There are now two new official web sites for gnuplot:
+http://members.theglobe.com/gnuplot/ and
+http://www.geocities.com/SiliconValley/Foothills/6647/
+
+Please note that the official gnuplot FAQ at
+http://wwwfg.rz.uni-karlsruhe.de/~ig25/gnuplot-faq.html/
+is seriously out of date!
+
+By the time you receive this, copies of gnuplot-3.7.tar.gz
+should be at the official repositories. Binary versions for
+various non-Unix platforms will be made available in the same
+places. Please allow a couple of days for these distributions
+to appear.
+
+All distribution archives are signed with a public key, which is
+available from public key servers.  For more information, see the
+REAME and PGPKEYS file at the distribution sites.
+
+DISTRIBUTION SITES
+
+NORTH AMERICA
+
+     Anonymous ftp to ftp.gnuplot.vt.edu:
+     ftp://ftp.gnuplot.vt.edu/pub/gnuplot/gnuplot-3.7.tar.gz
+
+     Alternatively, you can use your web browser to get gnuplot
+     from the gnuplot web pages at
+
+     http://members.theglobe.com/gnuplot/gp37tar.gz
+     http://www.geocities.com/SiliconValley/Foothills/6647/gp37tar.gz
+
+     Anonymous ftp to ftp.dartmouth.edu. Please try the
+     other sites first!
+     ftp://ftp.dartmouth.edu/pub/gnuplot/gnuplot-3.7.tar.gz
+
+AUSTRALIA:
+
+     Anonymous ftp to ftp.cc.monash.edu.au:
+     ftp://ftp.cc.monash.edu.au/pub/gnuplot/gnuplot-3.7.tar.gz
+
+EUROPE:
+
+     Anonymous ftp to ftp.irisa.fr:
+     ftp://ftp.irisa.fr/pub/gnuplot/gnuplot-3.7.tar.gz
+
+     Anonymous ftp to ftp.ucc.ie:
+     ftp://ftp.ucc.ie/pub/gnuplot/gnuplot-3.7.tar.gz
+
+OTHER:
+
+     The Macintosh version will be available from
+
+     http://users.ece.gatech.edu/~schooley/gnuplot.html
+
+     Source and binary distributions for the Amiga will be available
+     on Aminet <URL:http://ftp.wustl.edu/~aminet/> and its mirrors.
+
+
+----
+
+ During the more than 5 years since the release of gnuplot version 3.5,
+ many new features have been added:
+
+ o integration of Carsten Grammes' gnufit extension
+ o support for Win32/NT, OS9
+ o new terminal drivers (eg. djsvga, emx, gif[1], HP 75550, Linux SVGA,
+   png[2], texdraw)
+ o dates and/or times, in various formats, can be used as input data
+ o multiplot mode to plot several plots on the same page, window, or screen
+ o greatly enhanced terminal drivers (X11, Amiga, OS/2, postscript, fig,
+   pslatex)
+ o new errorbar styles: boxerrorbars, financebars, candlesticks
+ o greatly improved (mostly automatic) configuration on Unix platforms
+ o greatly improved hidden3d algorithm
+ o better postscript documentation
+ o ... and a lot more
+
+ [1] the gif terminal driver requires third party software. The gd graphics
+     library version 1.3 or later can be downloaded from
+     http://www.boutell.com/gd/
+
+ [2] the png terminal driver requires third party software. The png graphics
+     library and zlib can be downloaded from
+     http://www.cdrom.com/pub/png/pngcode.html
+     and
+     http://www.cdrom.com/pub/infozip/zlib/
+     respectively.
+
+ The gnuplot team would like to thank everybody who has contributed
+ to this release through discussions, suggestions, bug reports, and patches,
+ on Usenet and mailing lists. Special thanks go to Alex Woo for setting
+ up and maintaining the new gnuplot web sites.
+ 
+                                        -Thomas Williams-
+                                        -Alex Woo-
+                                        -David Denholm-
+                                        -Lars Hecking-
+

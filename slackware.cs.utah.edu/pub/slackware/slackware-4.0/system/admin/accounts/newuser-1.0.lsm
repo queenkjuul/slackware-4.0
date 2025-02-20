@@ -1,0 +1,15 @@
+Begin3
+Title:		Newuser
+Version:	1.0 3-6-98
+Entered-date:   3-6-98
+Description:    Program to add users to *NIX / Linux system
+		Now for NIS (systems without shadow passwording).
+Keywords:	adduser newuser user tools account manager 
+Author:		awacs@livecam.com (Allen Kukucka)
+Maintained-by:	awacs@livecam.com (Allen Kukucka)
+Primary-site:   N/A But can be retrieved from:
+                ftp://sunsite.unc.edu/pub/Linux/system/admin/accounts
+
+Platforms:	Linux (Haven't tested it elsewhere)
+Copying-policy: Freeware. Just leave code as is.
+End

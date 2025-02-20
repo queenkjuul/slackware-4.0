@@ -1,0 +1,188 @@
+
+This is a patch to my port of xxgdb 1.08 to Linux.
+
+This patch allows you to build xxgdb under X11R6.
+(The X11R6 header files do not work on Linux when SYSV is defined, so this
+patch make xxgdb not define SYSV for Linux.)
+
+Have a nice day.
+-Sal Valente <svalente@mit.edu>
+
+diff -ur xxgdb-old/Imakefile xxgdb/Imakefile
+--- xxgdb-old/Imakefile	Sat Dec 17 04:11:21 1994
++++ xxgdb/Imakefile	Sat Dec  9 00:07:56 1995
+@@ -51,7 +51,7 @@
+ #endif
+ 
+ #ifdef LinuxArchitecture
+-DEFINES = -DSYSV $(DEFGDB)
++DEFINES = -DPOSIX $(DEFGDB)
+ #endif
+ 
+ mallocc = #malloc.c
+diff -ur xxgdb-old/command.c xxgdb/command.c
+--- xxgdb-old/command.c	Mon Jan 10 15:36:59 1994
++++ xxgdb/command.c	Sat Dec  9 00:09:26 1995
+@@ -383,24 +383,20 @@
+     XtPointer client_data;
+     XtPointer call_data;
+ {
+-#ifdef SYSV 
++#ifdef POSIX
+     int status;
+ #else
+     union wait status;
+-#endif /* SYSV */
++#endif
+ 
+     write_dbx("quit\n");
+     XtDestroyApplicationContext(app_context);
+     kill(dbxpid, SIGKILL);
+-#ifdef SYSV
+-#if 1 /* instead of ifdef SVR4 */
++#ifdef POSIX
+ 	status = waitpid(dbxpid, (int *)0, WNOHANG);	/* (MJH) */
+ #else
+-	waitpid(&status, NULL, WNOHANG);
+-#endif	/* SVR4 */
+-#else	/* not SYSV */
+     wait3(&status, WNOHANG, NULL);
+-#endif /* SYSV */
++#endif
+     exit(0);
+ }
+ 
+@@ -888,7 +884,7 @@
+ 					  parent, args, n);
+     CreateButtons(commandWindow);
+ #ifndef GDB /* (PW)12MAR93 : for gdb, use pwd command of gdb */
+-#ifndef SYSV 
++#ifndef POSIX
+     getwd(cwd);
+ #endif
+ #endif /* not GDB */
+diff -ur xxgdb-old/dialog.c xxgdb/dialog.c
+--- xxgdb-old/dialog.c	Mon Nov 29 21:15:48 1993
++++ xxgdb/dialog.c	Sat Dec  9 00:09:54 1995
+@@ -235,11 +235,11 @@
+ {
+ #ifndef GDB
+     FalseSignal = TRUE;
+-#ifdef SYSV /* (PW)13AUG92:  change SVR4 into SYSV */ /* (MJH) */
++#ifdef POSIX
+    kill(-(dbxpid), SIGINT);
+ #else
+    killpg(dbxpid, SIGINT);
+-#endif /* SYSV */
++#endif
+ #else      
+ 	write_dbx("\003");	/* (PW)18FEB91 : seems to work better */
+ #endif	/* GDB */
+@@ -282,7 +282,7 @@
+ {
+     FalseSignal = TRUE;
+ 
+-#ifdef SYSV /* (PW)13AUG92:  change SVR4 into SYSV */ /* (MJH) */
++#ifdef POSIX
+     kill(-(dbxpid), SIGQUIT);
+ #else
+     killpg(dbxpid, SIGQUIT);
+diff -ur xxgdb-old/filemenu.c xxgdb/filemenu.c
+--- xxgdb-old/filemenu.c	Thu Aug 25 23:46:39 1994
++++ xxgdb/filemenu.c	Sat Dec  9 00:10:27 1995
+@@ -81,7 +81,7 @@
+ #include <X11/Xos.h>
+ #include <sys/stat.h>
+ 
+-#ifdef SYSV 
++#ifdef POSIX
+ #include <stdio.h>
+ #include <sys/param.h>
+ #include <sys/types.h>
+@@ -94,7 +94,7 @@
+ #define	S_IEXEC	00100		/* execute/search permission, owner */
+ #endif
+ #endif	/* _POSIX_SOURCE */
+-#endif	/* SYSV */
++#endif
+ 
+ #ifdef SUNOS4
+ #include <dirent.h>
+diff -ur xxgdb-old/signals.c xxgdb/signals.c
+--- xxgdb-old/signals.c	Sun Aug 14 04:10:27 1994
++++ xxgdb/signals.c	Sat Dec  9 00:13:54 1995
+@@ -79,20 +79,20 @@
+ static void quit_handler()
+ {
+ 	int pid;
+-#ifdef SYSV 
++#ifdef POSIX
+     int status;
+ #else
+     union wait status;
+-#endif /* SYSV */
++#endif
+ 
+     /*  wait for the child to report its status; if the child has died, 
+      *  exit gracefully.
+      */
+-#ifdef SYSV 
++#ifdef POSIX
+ 	pid = waitpid((pid_t)-1, &status, WNOHANG|WUNTRACED);	/* (MJH) */
+ #else
+    pid =  wait3(&status, WNOHANG|WUNTRACED, NULL);
+-#endif /* SYSV */
++#endif
+ 
+ #ifdef EDIT_BUTTON
+     /* dont die if sub edit process dies */
+@@ -147,7 +147,7 @@
+     signal(SIGCHLD, quit_handler);	/* child status has changed */
+ }
+ 
+-#ifdef SYSV
++#ifdef POSIX
+ 
+ typedef void (*signal_proc_t)();
+ 
+@@ -160,7 +160,10 @@
+     act.sa_handler = proc;
+     sigemptyset (&act.sa_mask);
+     act.sa_flags = 0;
++#ifdef SA_RESTART
++    act.sa_flags |= SA_RESTART;
++#endif
+     return (sigaction (sig, &act, &oact) < 0 ? SIG_ERR : oact.sa_handler);
+ }
+ 
+-#endif /* SYSV */
++#endif
+diff -ur xxgdb-old/xdbx.c xxgdb/xdbx.c
+--- xxgdb-old/xdbx.c	Sat Dec 17 04:12:07 1994
++++ xxgdb/xdbx.c	Sat Dec  9 00:16:52 1995
+@@ -74,12 +74,11 @@
+ #define XGDBVERSION	"1.08"
+ #endif
+ 
+-#ifdef SYSV 
+-#   include <stdio.h>
+-#   include <stdlib.h>
+-#   include <sys/param.h>
++#include <stdio.h>
++#ifdef POSIX
++#include <stdlib.h>
+ #endif
+-
++#include <sys/param.h>
+ #include "global.h"
+ #include "bitmaps.h"
+ #include "patchlevel.h"
+@@ -476,7 +475,7 @@
+     progname = argv[0];			/* (MJH) */
+         
+ #ifndef GDB /* (PW)12MAR93 : for gdb, use pwd command of gdb */
+-#ifdef SYSV 
++#ifdef POSIX
+     getcwd((char *)cwd, MAXPATHLEN);
+ #endif
+ #endif /* not GDB */

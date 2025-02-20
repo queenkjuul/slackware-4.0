@@ -1,0 +1,257 @@
+
+PPP-over-minicom mini-HOWTO                  Winfried Trümper <winni@xpilot.org>
+---------------------------                  v0.0  09 December 1996
+
+You want a menu-driven tool for dealing with PPP? An easy but powerful
+database with telephone numbers of your ISP? Want to see what happens
+when logging in? Then this mini-HOWTO is for you!
+
+
+  1. Introduction
+
+        PPP has become the standard network protocol for hooking up
+        to the internet via dial-in connections. The associated
+        daemon "pppd" ships with a very primitive tool for dialing
+        which handles only very simple setups well.
+        I will describe an alternate solution on the basis of "minicom".
+
+        This document is a short version of the German "Internetanbindung
+        mit PPP" ("http://www.uni-koeln.de/themen/linux/ppp/")
+
+
+  1.1. The terminal program "minicom"
+
+        "minicom" is a very sophisticated tool for dialing into
+        other computers (ISPs or BBSs). It has a fancy colored menu,
+        a telephone database and a powerful scripting language. Thus
+        it is ideally suited for use in conjunction with "pppd".
+
+        BTW, if you run "/sbin/mgetty /dev/modem" everyone with a
+        valid account on your machine can dial in (e.g. using
+        "minicom"). But thats another story. Please see the docs of
+        "mgetty" for details.
+
+
+  1.2. Feedback
+
+        I'm only interested in feedback that improves this mini-HOWTO.
+        I won't answer general questions about Linux, PPP, SLIP or
+        networking.
+
+
+  1.3. Known bugs
+
+        At the time of writing, there seem to be some bugs in
+        "minicom", "runscript" and the method described below:
+
+              - "runscript" does not wait for external programs to
+                finish 
+
+                        print "blah"
+                        ! sleep 10
+                        print "blup"
+
+                This script exits immediatly (but not when straced
+                ...)
+
+              - "pppd" takes the serial device away from minicom
+                (when not fed via stdin)
+
+
+        It seems that Miquel van Smoorenburg (the author of minicom)
+        is too busy to get his fingers on the above. So volunteers
+        are welcome.
+
+
+
+  2.0. Dialing with minicom
+
+        Many guides on PPP recommend to leave minicom after it's been
+        used for dialing. But there is really no need to leave this
+        comfortable program ...
+
+
+  2.1. Configure minicom
+
+        Execute "minicom -s" and choose the menu item "Serial port
+        setup". The first entry should be "Serial Device" this is
+        the most important setting: the serial device your
+        modem is attached to. (Any volunteers to mess up minicom to
+        handle several serial devices at once?)
+        Press <return> to confirm and <esc> to exit to the initial
+        setup menu. Choose "Exit to minicom" and type "atdt99999".
+        Your modem should start to dial immediatly and you should
+        hear a click when the modem hooks up to the line. Of course
+        "99999" is no valid telephone number.
+
+
+  2.2. Starting PPP manually
+
+        Maybe you've already tried to dial the telephone number of
+        your ISP instead of "99999". Did you see funny characters
+        on the screen after login in (if not, type "ppp")? They
+        result from the "pppd" (or equivalent) started at the other
+        end of the line. If so you can try to start the
+        "pppd"-daemon on your side and evaluate the log-files
+        afterwards.
+
+        To start "pppd" inside minicom, you can define a new
+        upload method (figure out yourself) or re-define the
+        setting "kermit programm" from the configuration menu
+        "Filename and paths":
+
+                A - Download directory :
+                B -   Upload directory :
+                C -   Script directory :
+                D -     Script program : /usr/bin/runscript
+                E -     Kermit program : /usr/sbin/pppd file /etc/ppp/mini_options
+
+        Now if you see those funny characters next time you dial
+        to your ISP you can press <Alt-K> to start "pppd".
+
+        The rest of this mini-HOWTO deals with automating the task
+        of logging in and starting "pppd".
+
+
+  2.3. Evaluating logfiles
+
+        Although I do not want to explain how PPP is to be configured,
+        I give a short tip how to read the log-file. To extract the
+        essential information from the logfile "/var/log/debug" (or
+        alternative "/var/log/daemon.log") execute the commands
+
+                tail -n 40  /var/log/debug |\
+                        grep -E " pppd\[[0-9]*\]:" |\
+                        sed -e "s/^.*pppd\[/[/" 
+
+        You should see messages like
+
+                sent [LCP ConfReq id=0x1 <mru 296>]
+                rcvd [LCP ConfRej id=0x1 <mru 296>]
+
+        which indicate that we sent a config-request to set the maximum
+        recieve unit (mru) to 296. The other side refects this setting
+        ("configuration rejected"). In this case I just removed the
+        option "mru" from "/etc/ppp/options" (see below).
+
+
+  2.4. Configure a telephone number
+
+        If the above was successful you may want to store a telephone
+        number in minicoms database. Press <Alt-D> to pop up the
+        dialing menu and use the cursor keys to select "Edit":
+
+                A -  Name                : Xeno
+                B -  Number              : 022039697303
+                C -  Dial string #       : 1
+                D -  Local echo          : No
+                E -  Script              : /etc/ppp/login.script
+                F -  Username            : ppp-382
+                G -  Password            : top-secret
+                H -  Terminal Emulation  : VT102
+                I -  Backspace key sends : Delete
+                J -  Linewrap            : Off
+                K -  Line Settings       : Curr 8N1
+
+        This is a sample entry to dial to one of my ISPs. The script
+        "/etc/ppp/login.script" is shown below. Two special variables
+        are passed to this script: $(LOGIN) and $(PASS) which are
+        set to the values submitted as username (F) and password (G).
+        This feature makes minicom somewhat flexible because you
+        need only one script to automate your login to several ISPs.
+
+
+  2.5. A login script
+
+        "minicom" starts the login-script after it recieves the string
+        "CONNECT". To be precise, "minicom" does not execute the script
+        itself but calls the utility "runscript" as a sub-process for that.
+
+        Below is a example I use for my ISPs.
+
+                # v1.0, 20.08.96 Winfried Trümper <winni@xpilot.org>
+                print ""
+                print "Automatic login via /etc/ppp/login.script"
+        
+                ## uncomment if you need to press enter to get the prompt
+                #send ""
+        
+                expect {
+                        "ogin:"
+                        "ogin>"
+                        "sername:"
+                        "sername>"
+                        "NO CARRIER" exit 1
+                }
+                send "$(LOGIN)"
+                expect {
+                        "assword:"
+                        "assword>"
+                        timeout 20
+                }
+                send "$(PASS)"
+                expect {
+                        "port"  send "ppp"
+                        "Start your PPP now"
+                        "}!}!}"
+                        timeout 10
+                }
+                print ""
+                print "Now switching into ppp-mode ..."
+                print ""
+
+                ! /usr/sbin/pppd  file /etc/ppp/mini_options
+
+                print ""
+                print "the command   killall -TERM pppd   terminates pppd"
+
+
+        The ability of "runscript" to call external programs is used
+        to start "pppd". Copy your original options-file for ppp
+        to "/etc/ppp/options.ttyS1"  (where you have to replace "ttyS1"
+        with the device your modem is attached to) and delete  all
+        lines from /etc/ppp/options that are specific to your modem
+        (like "connect", "crtscts" or "modem").
+        Put the options that should be specific to the ppp-connection
+        via minicom in "/etc/ppp/mini_options". One of these options
+        should be
+
+                disconnect "chat '' '\d\d+++\d\dATH\r\c'"
+
+        This is a must because "pppd" is fed via stdin and can't hang
+        up the modem via "crtscts".
+
+
+  2.6. Automated dialing on startup
+
+        Use the option "-d" to dial a certain telephone number on
+        startup of minicom.
+        You may also try
+
+                open -sl -- minicom -d 1
+
+        To throw minicom at another console (see the Consoles-Many
+        mini-HOWTO for details).
+
+
+  2.7. Future extensions
+
+        Because "pppd" is a daemon it is not designed for
+        user-interaction or observation. Thats ok. After all, we're
+        using a unix-like os ...
+
+        The canonical solution is a backend. Any volunteers to hack
+        up minicom?
+        Fancy extensions would be:
+
+              - automatic generation of the login-script by watching
+                the user dialing in manually
+
+              - automatic evalutaion of the log-files with
+                correction of options
+
+              - extraction of messages like shown in 2.3.
+
+
+End of the PPP-via-minicom mini-HOWTO
+

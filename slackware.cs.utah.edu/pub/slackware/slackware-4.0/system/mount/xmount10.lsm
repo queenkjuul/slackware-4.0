@@ -1,0 +1,18 @@
+Begin3
+Title: 		xmount 
+Version: 	1.0
+Entered-date: 	10/11/96 
+Description: 	X11 based small utility for mounting devices.
+ 		It can do mount/umount filesystem by clicking button.
+		Although you are not a superuser, it can do mount/umount.
+Keywords: 	xmount mount X11 floppy cdrom
+Author:		kidong@nownuri.nowcom.co.kr <Kidong Lee>
+Maintained-by: 	kidong@nownuri.nowcom.co.kr <Kidong Lee>
+Primary-site: 	sunsite.unc.edu /pub/Linux/X11/xutils
+              	20kB xmount10.tgz
+Alternate-site:
+Original-site:
+Platform: 	Linux (tested Linux Kernel 2.0.0), 
+		but would work on Unix with ANSI C
+Copying-policy: GPL
+End

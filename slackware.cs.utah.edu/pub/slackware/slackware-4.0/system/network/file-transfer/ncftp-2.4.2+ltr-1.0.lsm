@@ -1,0 +1,15 @@
+Begin3
+Title:		ncftp+ltr patch
+Version:	2.4.2+1.0
+Entered-date:	31JAN98
+Description:    A patch for ncftp so it can throttle the transfer rate of
+		binary transfers, allowing better response for interactive
+		sessions such as rlogin and telnet when using a slow dial-up
+		SLIP/PPP connection.
+Keywords:	ncftp, FTP, limiting transfer rate, better response, SLIP/PPP
+Author:		steven@clark.net (Steven Myrtle)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/file-transfer
+		2552 ncftp-2.4.2+ltr-1.0.tgz
+Platforms:	Linux OS and others, ncftp 2.4.2, patch, gcc
+Copying-policy: GPL 
+End

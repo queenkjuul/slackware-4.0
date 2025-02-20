@@ -1,0 +1,29 @@
+Note that, although we used to distribute things via ftp, it is now more
+convenient to distribute via http.  Thus, the software listed below is only
+available via http at the primary site.
+
+Begin3
+Title:		TTL_PAPERS/TTL_VAPERS C Library
+Version:	950614
+Entered-date:	June 20, 1995
+Description:	Public domain C library for FINE-GRAIN PARALLEL
+		PROCESSING across multiple Linux systems using
+		TTL_PAPERS (TTL implementation of Purdue's Adapter
+		for Parallel Execution and Rapid Synchronization).
+		Package includes TTL_VAPERS software simulator.
+Keywords:	Parallel processing, Library, Parallel simulator.
+Author: 	hankd@ecn.purdue.edu (Prof. Hank Dietz)
+Maintained-by:	hankd@ecn.purdue.edu (Prof. Hank Dietz)
+Primary-site:	garage.ecn.purdue.edu http://garage.ecn.purdue.edu/~papers/
+		1k SOFTWARE/TTL_LIB.lsm
+		102k SOFTWARE/TTL_LIB_950614.tar.Z
+Alternate-site:
+Original-site:
+Platform:	TTL_VAPERS simulator needs only 1 Linux/UNIX system;
+		TTL_PAPERS version distributed assumes 4 Linux systems
+		connected by a TTL_PAPERS unit.  Details for construction
+		of a TTL_PAPERS unit are available from
+		http://garage.ecn.purdue.edu/~papers/Index.html,
+		and the full hardware design is public domain.
+Copying-policy:	Software and TTL_PAPERS design are public domain.
+End

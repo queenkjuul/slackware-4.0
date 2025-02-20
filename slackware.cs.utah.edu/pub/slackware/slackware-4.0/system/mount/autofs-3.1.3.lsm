@@ -1,0 +1,22 @@
+This is a bug fix release.
+
+Begin3
+Title:		autofs
+Version:	3.1.3
+Entered-date:	03NOV98
+Description:	autofs is a kernel-assisted automounter for Linux.  It
+		supports a variety of query methods, and is intended
+		to be compatible with the Solaris automounter
+		(although currently it still lacks some features.)
+		The kernel driver is included with the standard
+		kernel; this package contains the daemon.
+Keywords:	autofs automount amd yp nis nis+ hesiod
+Author:		hpa@zytor.com (H. Peter Anvin)
+Maintained-by:	hpa@zytor.com (H. Peter Anvin)
+Primary-site:	ftp.kernel.org /pub/linux/daemons/autofs
+		54306 autofs-3.1.3.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/mount
+Platforms:	Linux.  To support NIS+ or Hesiod, the appropriate
+		libraries are required.
+Copying-policy: GPL
+End

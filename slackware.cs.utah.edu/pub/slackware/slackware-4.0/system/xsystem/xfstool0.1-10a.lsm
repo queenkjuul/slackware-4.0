@@ -1,0 +1,20 @@
+Begin3
+Title:  xfstool       
+Version:  l0.1-10         
+Entered-date:  28-Sept-1994 
+Description:   xfstool is an X11 based tool to give users access to one
+     floppy disk (mount, umount, mkfs) and to shutdown the
+     system (good for standalone systems). These features are enabled
+     in a permissions-file. Filesystem type may be specified in Makefile.
+     Includes patch for sound effect using Sox 'play' command.
+     Patch by A.Daviel <advax@triumf.ca>
+Keywords:       
+Author:        Torsten Eichner <eichner@rhrk.uni-kl.de> 
+Maintained-by:  
+Primary-site:    
+Alternate-site: ftp://andrew.triumf.ca/pub/packages/xfstool0.1-10a.tar.gz
+Original-site:  ftp://saturn.mathematik.uni-kl.de/pub/Systems/linux/local/tools
+Platform: Linux      
+Copying-policy:     GPL
+End
+

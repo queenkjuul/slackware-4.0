@@ -1,0 +1,17 @@
+drwxr-xr-x root/root         0 1998-10-15 01:28 ./
+drwxr-xr-x root/root         0 1998-10-15 01:26 etc/
+-rw-r--r-- root/root      2279 1998-07-16 05:03 etc/XF86Config.libretto100ct
+-rw-r--r-- root/root      2393 1998-07-16 05:03 etc/XF86Config.neomagic
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/X11R6/
+drwxr-xr-x root/root         0 1998-10-15 01:28 usr/X11R6/bin/
+-rwxr-xr-x root/root   2118788 1998-10-07 09:54 usr/X11R6/bin/XFCom_NeoMagic
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/doc/
+drwxr-xr-x root/root         0 1998-10-15 01:24 usr/doc/XFCom-neomagic-libc5-2.0.0/
+-rw-r--r-- root/root      4044 1998-10-07 08:44 usr/doc/XFCom-neomagic-libc5-2.0.0/LICENSE.XBF
+-r--r--r-- root/root      4414 1998-10-07 09:54 usr/doc/XFCom-neomagic-libc5-2.0.0/README
+drwxr-xr-x root/root         0 1998-10-15 01:26 var/
+drwxr-xr-x root/root         0 1998-10-15 01:26 var/X11R6/
+drwxr-xr-x root/bin          0 1998-10-15 01:28 var/X11R6/bin/
+drwxr-xr-x root/root         0 1998-10-15 01:28 install/
+-rw-r--r-- root/root       175 1998-10-15 01:28 install/doinst.sh

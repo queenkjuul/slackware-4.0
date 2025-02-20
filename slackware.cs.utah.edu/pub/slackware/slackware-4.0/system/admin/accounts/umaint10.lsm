@@ -1,0 +1,19 @@
+Begin3
+Title: 		UserMaint      
+Version:        1.0
+Entered-date:   28AUG97  
+Description:    Usermaint is a program that allows you to maintain your
+		user database quickly and easily, with the minimum of
+		fuss. Quite simply, Usermaint relies on the dialog
+		program to provide you with a graphical interface
+		in which you can add and remove users and groups.  
+Keywords:       users, groups, usermaint, administration, tools
+Author:         mstrates@minkirri.apana.org.au (Michael Strates) 
+Maintained-by:  mstrates@minkirri.apana.org.au (Michael Strates)
+Primary-site:   sunsite.unc.edu /incoming/Linux
+Alternate-site: shadowfax.apana.org.au /pub/Linux
+                9.6kb umaint10.tgz 
+Original-site:  http://linloft.home.ml.org/usermaint/umaint10.tgz
+Platforms:      Linux
+Copying-policy: GPL
+End

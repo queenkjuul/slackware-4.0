@@ -1,0 +1,3 @@
+./configure --prefix=/usr --with-local-prefix=/usr/local \
+  --with-gxx-include-dir=/usr/include/g++ --enable-shared \
+  --enable-threads i386-pc-linux-gnulibc1

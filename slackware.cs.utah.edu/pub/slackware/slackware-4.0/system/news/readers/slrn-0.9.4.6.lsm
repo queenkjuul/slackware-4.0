@@ -1,0 +1,15 @@
+Begin3
+Title:          slrn
+Version:        0.9.4.6
+Entered-date:   11FEB98
+Description:    Fast Newsreader, perfect for a slip/ppp connection.
+                Also has offline newsreading capability with `slrnpull'.
+		Compiled elf, no source.  
+Keywords:       README.LINUX
+Author:         robotti@pop.erols.com (Kent Robotti)
+Primary-site:   ftp://space.mit.edu/pub/davis/slrn   <-Latest source.)
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/news/readers
+Platforms:      Linux libc5 elf system.
+Copying-policy: GNU GPL
+End
+

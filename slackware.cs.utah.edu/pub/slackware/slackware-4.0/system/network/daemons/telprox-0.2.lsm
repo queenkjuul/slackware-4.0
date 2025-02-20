@@ -1,0 +1,22 @@
+Begin3
+Title: telprox        
+Version: 0.2       
+Entered-date: May 5, 1997  
+Description: A simple telnet proxy daemon which takes incoming connections 
+             and routes	them to a host specified at run time. There are a 
+	     number of purposes, such as the ability to use it to bypass 
+	     netlag and reroute connections.
+Keywords:        telnet
+       		 proxy
+       		 networking
+       		 daemons   
+Author:      	faramir@drunken.scots.net   
+Maintained-by:  faramir@drunken.scots.net
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/daemons
+				telprox-0.2.tar.gz
+				telprox-0.2.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Linux (and other unices, probably requiring a couple of changes)
+Copying-policy: GPL
+End

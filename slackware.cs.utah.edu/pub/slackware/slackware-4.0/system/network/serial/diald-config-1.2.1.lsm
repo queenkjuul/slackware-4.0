@@ -1,0 +1,29 @@
+Begin3
+Title:          Configuration system for diald (demand dialing daemon)
+Version:        1.2.1
+Entered-date:   19JAN98
+Description:    A high level diald configuration system which allows
+                diald to be configured by editing files containing
+                environment variable assignments.  Configures diald so
+                that the X window based diald control program, dctrl,
+                can be used to control and monitor diald.  The
+                diald-config-unmetered and diald-config-metered are
+                companion packages which contain sample configurations
+                that can be used "out of the box" to configure diald
+                for management of ppp0.  Designed for use on RedHat
+                Linux, it may be adapted to other Unix platforms.
+Keywords:       demand dial, ppp, configuration, diald, networking
+Author:         kop@meme.com (Karl O. Pinc)
+Maintained-by:  kop@meme.com (Karl O. Pinc)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+                76759 diald-config-1.2.1.tar.gz
+                78473 diald-config-1.2.1-1.noarch.rpm
+                80553 diald-config-1.2.1-1.src.rpm
+                 1409 diald-config-1.2.1.lsm
+Alternate-site: 
+Original-site:  ftp.meme.com /pub/software/diald-config
+Platforms:      
+Copying-policy: GPL
+End
+
+MD5 checksum d765a5e54d9158ece80482ac340b40fd  diald-config-1.2.1.tar.gz

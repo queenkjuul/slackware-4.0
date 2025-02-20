@@ -1,0 +1,18 @@
+Begin3
+Title:		lde -- Linux disk editor.
+Version:	2.3.4
+Entered-date:	18NOV96
+Description:	This allows you to view some Linux fs's (a la Norton disk edit), hex block
+		and inode editing are now supported and you can use it to dump an erased file
+		to another partition with a little bit of work.  Supports ext2, minix,
+		and xiafs.  Includes: LaTeX Introduction to the Minix fs.
+Keywords:	unerase recover undelete Norton edit disk file restore
+Author:		sdh@po.cwru.edu (Scott D. Heavner)
+Maintained-by:
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Filesystems
+		292k lde-2.3.4.tar.gz
+Alternate-site:
+Original-site:
+Platforms:	to compile GUI requires ncurses -- tested with v1.9.9e
+Copying-policy:	GPL
+End

@@ -1,0 +1,100 @@
+
+ The Gnuplot Plotting Utility
+ ============================
+
+ This directory contains the source and binary distribution for
+ gnuplot, the interactive plotting utility. To learn more
+ about gnuplot, check out the following URLs.
+
+<URL:http://www.cs.dartmouth.edu/gnuplot_info.html>
+<URL:http://members.theglobe.com/gnuplot/>
+<URL:http://www.geocities.com/SiliconValley/Foothills/6647/>
+<URL:http://www.dfv.rwth-aachen.de/doc/gnu/gnuplot/gnuplot.html>
+<URL:http://www.delorie.com/gnu/docs/gnuplot/gplot_toc.html>
+<URL:http://www.usf.uni-osnabrueck.de/~breiter/tools/gnuplot/index.en.html>
+<URL:http://users.ece.gatech.edu/~schooley/gnuplot.html> (Macintosh)
+
+ Contents of this directory
+ ==========================
+
+ The binary archives generally come with platform specific documentation.
+ Some include even the demo files. All source and binary archives, except
+ those in the contrib directory, have been signed with PGP.
+
+ANNOUNCEMENT
+    The announcement which was posted to various Usenet groups.
+
+PGPKEYS
+    The public keys which have been used to sign all archives.
+
+README
+    This file
+
+contrib/
+    Contributed software, which is not supported by the gnuplot team.
+    See contrib/README for details.
+
+gnuplot-3.7.tar.gz
+gnuplot-3.7.tar.gz.sig
+    The source archive for gnuplot 3.7, plus signature.
+
+gnuplot3.7cyg.zip
+gnuplot3.7cyg.zip.sig
+    WIN32 archive, compiled with the CygWin compiler, plus signature.
+    This version includes GIF and PNG support. Contributed by W. Kirby.
+    Should run under Win95/98, NT, and probably Win2000.
+
+gp37mgw.zip
+gp37mgw.zip.sig
+    Another WIN32 archive, compiled with the MinGW32 compiler, plus signature.
+    (The MinGW32 compiler is part of the CygWin environment. There you go :)
+    This version includes GIF and PNG support. Contributed by H.-B. Broeker.
+
+gp37dj2.zip
+gp37dj2.zip.sig
+    DOS version, compiled with DJGPP v2.02, plus signature.
+    This version includes GIF and PNG support. Tested in DOS sessions
+    under Win95, MS-DOS 7.1, and partially with DOSEMU 0.99.5 running
+    under Linux 2.2.0pre6. Contributed by Andris Pavenis.
+
+gp37djg.zip
+gp37djg.zip.sig
+    Another DOS version, compiled with DJGPP v2.01, plus signature.
+    This version includes GIF and PNG support, and  the DPMI server
+    to run under plain DOS. Contributed by H.-B. Broeker.
+
+gp37dos.zip
+gp37dos.zip.sig
+    Another DOS version, compiled with BC3.1, plus signature.
+    No GIF and PNG support. Contributed by H.-B. Broeker.
+
+gp37os2.zip
+gp37os2.zip.sig
+gp37os2.zip.sig.fearick
+    Binary archive for OS/2, has GIF and PNG support. Contributed by
+    R. Fearick. The .sig file is a PGP v2 signature, the .sig.fearick
+    file is Roger's original PGP v5 signature.
+
+gp37w16.zip
+gp37w16.zip.sig
+    Binary archive for Win16 platforms (Win3.1, WfW 3.11), plus signature.
+    No support for GIF and PNG. Contributed by H.-B. Broeker.
+
+gpdoc.zip
+gpdoc.zip.sig
+    The gnuplot documentation in different formats, like html and ps.
+
+
+ Other platforms
+ ===============
+
+ A binary distribution for Amiga (m68k) will shortly be available
+ on Aminet <URL:http://ftp.wustl.edu/~aminet/>. The Macintosh version
+ will be available from <http://users.ece.gatech.edu/~schooley/gnuplot.html>.
+ Contributions for other platforms, especially Amiga/PPC, are welcome,
+ and volunteers should contact me at the email address below.
+
+Lars Hecking <gnuplot@ftp.ucc.ie>
+
+Cork, Ireland, January 1999
+

@@ -1,0 +1,15 @@
+
+Package-Name:	ping.tar.Z
+Title:		ping
+Version:	4.10
+Description:	Linux ping binary Allows user to check on status of
+		another machine and gather statics about rtt time.
+		Diffs included.
+Author:		Mike Muuss
+Maintained-by:	bir7@leland.stanford.edu
+Platforms:	Linux 0.98pl5 + tcp patches
+Copying-policy:	Freely Redistributable. Copyright held by UC Berkeley.
+Keywords:	ping linux socket raw rtt
+
+
+

@@ -1,0 +1,11 @@
+Begin3
+Title:          kmem-ps
+Version:        1.3.95+
+Entered-date:   May 3, 1996
+Description:    The kmem based process status suite of programs
+Keywords:       kmem
+Author:         Branko Lankester (branko@hacktic.hl), Rick Sladkey (jrs@world.std.com)
+Maintained-by:  (currently) Mitch DSouza <Mitch.DSouza@NetComm.IE>
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/Status/ps/kmem-ps-1.3.95+.tar.gz
+Copying-policy: PD
+End

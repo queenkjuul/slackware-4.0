@@ -1,0 +1,15 @@
+
+Solar Designer's secure Linux patch.
+
+These are the main features:
+
+ Non-executable user stack area
+ Restricted links in /tmp
+ Restricted pipes in /tmp
+ Restricted /proc
+ Special handling of fd 0, 1, and 2
+ Privileged IP aliases
+ ...and more.
+
+http://www.false.com/security/linux/
+

@@ -1,0 +1,10 @@
+D A                                 	a
+D AP                                	ap
+F CHECKSUM                          	CHECKSUMS
+F CHECKSUM.MD5                      	CHECKSUMS.md5
+D CONTRIB                           	contrib
+D KERNEL-S                          	kernel-source
+F MANIFEST.GZ                       	MANIFEST.gz
+F README                            	README
+D ROOTDISK                          	rootdisks
+F SLACKBUI                          	SlackBuild

@@ -1,0 +1,17 @@
+Begin3
+Title:          fgen
+Version:        0.3
+Entered-date:   08APR98
+Description:    Makefile and dependencies generator, plus
+                html source converter for fortran 77/90 code
+Keywords:       fortran f77 f90 make depend html
+Author:         ber@sma.ch (Beroud Jean-Marc)
+Maintained-by:  ber@sma.ch (Beroud Jean-Marc)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/fortran
+                38kB fgen-0.3.tgz
+	        548  fgen.lsm
+Alternate-site:
+Original-site:
+Platform:       UNIX Perl5 GNU Make
+Copying-policy: GPL
+End           

@@ -1,0 +1,1980 @@
+  Configuration HOWTO
+  By Guido Gonzato, guido@ibogeo.df.unibo.it
+  v1.2.6, 19 January 1999
+
+  This HOWTO aims at making the fine--tuning of your newly installed
+  Linux box quicker and easier. Here you will find a set of configura­
+  tions for the most common applications, so you can start to work with
+  a well-usable system.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+     1.1 Why This HOWTO
+     1.2 What We Will Be Configuring
+
+  2. General System Setup
+
+     2.1 Keyboard
+     2.2 Kernel Matters
+     2.3 Sendmail Lock
+     2.4 Hard Disk Performance
+     2.5 Parallel Port Zip Drive
+     2.6 Device Drivers
+     2.7 Login Messages
+     2.8 Hostname
+     2.9 Mouse
+     2.10 Mount Points
+     2.11 lilo(8) and LOADLIN.EXE
+        2.11.1 Security Tip
+     2.12 Mail Capabilities
+     2.13 Printer Configuration
+     2.14 SVGATextMode
+
+  3. Software Configuration
+
+     3.1 bash(1)
+     3.2 ls(1)
+     3.3 less(1)
+     3.4 emacs(1)
+     3.5 joe(1)
+     3.6 jed(1)
+     3.7 efax(1)
+     3.8 TeX and Friends
+     3.9 Avoid PPProblems!
+        3.9.1 A Quick Start with eznet
+     3.10 POP Client
+     3.11 X Window System (XFree86)
+        3.11.1 Setting Up the X Server
+        3.11.2 Keypad
+        3.11.3 Graphical Login with xdm
+        3.11.4 Window Manager
+     3.12 Users' Configurations
+     3.13 Upgrading
+
+  4. Configuration Software
+
+  5. The End
+
+     5.1 Copyright
+     5.2 Feedback
+     5.3 Disclaimer
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+
+
+  1.1.  Why This HOWTO
+
+
+  I have installed Linux on many PCs and noted that current
+  distributions are terrific but, annoyingly, lack some basic
+  configuration. Most applications will work out of the box, but others
+  won't. Moreover, I have noted that the same questions crop up on
+  c.o.l.setup over and over again.
+
+  To try and remedy this situation, and to have a memorandum for fresh
+  installations, I wrote a do--this--and--that list that I later
+  expanded to this HOWTO. Here you will find a handful of configuration
+  examples for the most common applications, programs, and services,
+  which should save you a fair amount of time and work.
+
+  A few of the examples outlined in this HOWTO depend somehow on the
+  distribution. I only have access to Red Hat, Caldera OpenLinux, and
+  S.u.S.E.  installations, so don't take any of my tips as gospel if you
+  have Slackware, Debian or other distributions. In any case, reading
+  documentation and the HOWTOs always pays off, so you're advised to do
+  so anyway. My reference distribution is Red Hat; to avoid repetitions,
+  ``AT2YD'' stands for ``Adapt This to Your Distribution''.
+
+  A final note: I hope that this HOWTO becomes obsolete as soon as
+  possible.  The current trend in Linux distributions is to provide
+  configuration tools rather than leave the sysadm alone with a pile of
+  docs. Therefore, whenever possible I'll point you to the right tool.
+
+  The most recent revision of this document, including some
+  translations, is available on  <http://sunsite.unc.edu/mdw/HOWTO>.
+
+
+
+  1.2.  What We Will Be Configuring
+
+
+  There can be endless hardware configurations for a PC, but in my
+  experience one is quite common: a PC fitted with a large HD split into
+  three partitions (one for DOS/Windows, one for Linux, one for the
+  swap), sound card, modem, CD--ROM drive, printer, mouse. A parallel
+  port Zip Drive is also very common.
+
+  This is the hardware I'll assume you want to configure, but it's easy
+  to adapt the following tips to different configurations. It's
+  implicitly assumed that you'll be root when editing/fixing/hacking.
+
+  And now, lads, sleeves up.
+
+
+
+  2.  General System Setup
+
+
+
+
+  2.1.  Keyboard
+
+
+  First of all, how to configure the keyboard. If you missed this step
+  during installation or have changed your keyboard, you'll have to:
+  ·  choose a suitable key table from /usr/lib/kbd/keytables/; for
+     example, it.map selects the Italian keyboard;
+
+  ·  edit the file /etc/sysconfig/keyboard so as it reads:
+     KEYTABLE="/usr/lib/kbd/keytables/it.map";
+
+  ·  to set up the keyboard repeat rate and delay time, add this line to
+     /etc/rc.d/rc.sysinit (Red Hat) or /etc/rc.d/rc.boot (Caldera) or
+     /etc/rc.d/boot (S.u.S.E.):
+
+
+
+       /sbin/kbdrate -s -r 16 -d 500  # or whatever you like
+
+
+
+
+
+  To load the key table, issue /etc/rc.d/init.d/keytable start (AT2YD).
+  Other special keys will be considered in the following sections.
+
+  To enable NumLock on by default, add these lines to
+  /etc/rc.d/rc.sysinit (AT2YD):
+
+
+
+       for tty in /dev/tty[1-9]*; do
+         setleds -D +num < $tty
+       done
+
+
+
+
+
+
+  2.2.  Kernel Matters
+
+
+  IMHO, the first thing to do next is build a kernel that best suits
+  your system. It's very simple to do but, in any case, refer to the
+  README file in /usr/src/linux/ or the Kernel HOWTO. Hints:
+
+
+  ·  consider carefully your needs. Choosing a kernel configuration,
+     applying the patches, and compiling it once and for all is more
+     productive than reconfiguring and recompiling each month; this is
+     especially true if your Linux box is a server. Don't forget to
+     include support for all the hardware you might likely add in the
+     future (e.g. SCSI, Zip, network cards, etc);
+
+  ·  if your PC is based on a Cyrix CPU that is not properly recognised
+     as such by the kernel, apply appropriate patches to improve its
+     performance. Information on
+     <http://www.linuxhq.com/patch/20-p0591.html> ;
+
+  ·  notebook users will want to improve their LCD screen legibility. I
+     used to suggest that a kernel patch should be applied, but
+     SVGATextMode (see Section ``SVGATextMode'') is probably the best
+     solution. Anyway, the Big Cursor kernel patch is on
+       <http://www.linuxhq.com/patch/20-p0239.html> ;
+
+  ·  again for notebook users, if you plan to use a PCMCIA modem/fax
+     don't compile serial support as a module; compile it in the kernel,
+     otherwise your PCMCIA modem won't work;
+
+
+  ·  if you use PCMCIA cards, remember to compile those modules as well;
+     also, don't forget to edit /etc/pcmcia/network.opts if you use a
+     PCMCIA network card;
+
+  ·  if you get those pesky messages from modprobe indicating that some
+     modules can't be located, that means that your /etc/conf.modules
+     needs mending. For instance, if you don't use the ipx and appletalk
+     modules, add these lines:
+
+
+
+       alias net-pf-4 off
+       alias net-pf-5 off
+
+
+
+
+
+  ·  to save time the next time you reconfigure and recompile the
+     kernel, it's a good idea to save your configuration on a file and
+     keep it in a safe place. Beware: if you upgrade your kernel this
+     config file is bound to be useless, because it doesn't contain the
+     features of the new kernel.
+
+
+
+  2.3.  Sendmail Lock
+
+
+  On some systems, sendmail hangs the machine for a couple of minutes at
+  boot time. There are two cases: 1) the machine is not directly
+  connected to the Internet, 2) the machine is connected, and has a
+  permanent IP address.
+
+  Quick fix for the first case: make sure your /etc/hosts contains a
+  line that reads
+
+
+
+       127.0.0.1   localhost
+
+
+
+
+  For the second case: the lock is caused by /etc/hosts containing a
+  line like
+
+
+
+       127.0.0.1   localhost   your_host_name
+
+
+
+
+  which you will split this way:
+
+
+
+       127.0.0.1    localhost
+       w.x.y.z      your_host_name
+
+
+
+
+  See also Section ``Hostname''.
+
+  2.4.  Hard Disk Performance
+
+
+  Your (E)IDE hard disk's performance can be greatly enhanced by
+  carefully using hdparm(8). If your Linux distribution doesn't include
+  it, you'll find on  <ftp://sunsite.unc.edu/pub/Linux/system/hardware>
+  ; look for a file called hdparm-X.Y.tar.gz.
+
+  Since many details depend on your hard disk and HD controller, I can't
+  give you a general recipe. As you risk to toast your filesystem,
+  please read the man page carefully before using some of the options.
+  At its simplest, you could add the following line to
+  /etc/rc.d/rc.sysinit:
+
+
+
+       /sbin/hdparm -c1 /dev/hda  # first IDE drive assumed
+
+
+
+
+  which enables (E)IDE 32-bit I/O support. As for the `-m' option, this
+  is what hdparm author Mark Lord emailed me:
+
+
+       (...) if your system uses components from the past couple of
+       years [< 1997], it will be fine. Older than that, there
+       *may* be a problem (unlikely). The really buggy chips were
+       the CMD0646 and RZ1000 chips, used *extensively* on 486 and
+       (early) 586 motherboards about 2-3 years ago.
+
+
+
+
+  2.5.  Parallel Port Zip Drive
+
+
+  To use the parallel port version of the Zip drive you can use the
+  default driver that comes with recent (2.x.x) kernels. During kernel
+  configuration, make sure that SCSI support and SCSI disk support are
+  enabled. Remember, there can be conflicts between the printer and the
+  Zip drive on the same parallel port, so you will want to use kernel
+  modules.
+
+  Zip disks are sold preformatted on partition /dev/sda4. To enable the
+  Zip, all you have to do is issue
+
+
+
+       #~ chmod 666 /dev/sda4  # everyone can access the Zip Drive
+       #~ insmod ppa
+
+
+
+
+  and the Zip can now be mounted as usual (better write the last line in
+  /etc/rc.d/rc.sysinit). You also access the Zip drive via mtools adding
+  this line to your /etc/mtools.conf:
+
+
+
+       drive z: file="/dev/sda4" exclusive
+
+
+
+
+  There's a better ppa driver than the standard one, though: have a look
+  at   <http://www.torque.net/~campbell> .
+
+
+
+  2.6.  Device Drivers
+
+
+  Devices in /dev (or better, links to the actual device drivers) may be
+  missing. Check what devices your mouse, modem, and CD--ROM drive
+  correspond to, then do what follows:
+
+
+
+       ~# cd /dev
+       /dev# ln -s ttyS0 mouse
+       /dev# ln -s ttyS1 modem
+       /dev# ln -s hdb cdrom
+
+
+
+
+  Tip: in some notebooks the mouse device is /dev/psaux: take this into
+  account when configuring X11.
+
+  If you want, do chmod 666 to such devices as /dev/cdrom, /dev/floppy,
+  /dev/modem, etc. to make them fully accessible by every user. Security
+  problems ahead! Alternatively, create the ``cdrom'' group, make
+  /dev/cdrom owned by root.cdrom, then add users to this group. A
+  similar procedure applies to other devices.
+
+
+
+  2.7.  Login Messages
+
+
+  If you want to customise the login messages, check whether your
+  /etc/rc.d/rc.local overwrites /etc/issue and /etc/motd. (RedHat does.)
+  If so, get on with your editor.
+
+
+
+  2.8.  Hostname
+
+
+  Issuing the command hostname new_host_name may not be enough. To avoid
+  the dreaded sendmail lock, follow these steps (only valid for a
+  stand--alone machine):
+
+
+  ·  edit /etc/sysconfig/network and change the hostname therein (e.g.
+     new_host_name.localdomain);
+
+  ·  edit /etc/HOSTNAME appropriately;
+
+  ·  append the new hostname in the line in /etc/hosts:
+
+
+       127.0.0.1       localhost  new_host_name.locadomain
+
+
+
+
+
+
+
+  2.9.  Mouse
+
+
+  gpm mouse services are useful to perform cut and paste in tty mode,
+  and to use the mouse in some applications. For Red Hat, check that you
+  have a file called /etc/sysconfig/mouse and that it reads:
+
+
+
+       MOUSETYPE="Microsoft"
+       XEMU3=yes
+
+
+
+
+  Moreover, you must have a file /etc/rc.d/init.d/gpm, where you'll put
+  additional command line parameters. Mine reads:
+
+
+
+       ...
+              daemon gpm -t $MOUSETYPE -d 2 -a 5 -B 132 # two-button mouse
+       ...
+
+
+
+
+  Obviously, make sure this configuration is right for your mouse type.
+  In most notebooks, MOUSETYPE is ``PS/2''.
+
+  For Caldera, all you have to do is append this line to
+  /etc/rc.d/rc.boot:
+
+
+
+       /usr/bin/gpm
+
+
+
+
+  On S.u.S.E., gpm options go in /etc/rc.config; on Debian, you'll edit
+  /etc/gpm.conf.
+
+  If you like to use menus in console with Ctrl-button, then configure
+  gpm-root.  Edit the default menu in /etc/gpm-root.conf , then launch
+  gpm-root from /etc/rc.d/rc.local (AT2YD).
+
+
+
+  2.10.  Mount Points
+
+
+  It's handy to have mount points for the floppy, other devices and NFS-
+  exported directories. For example, you can do the following:
+
+
+
+       ~# cd /mnt
+       /mnt# mkdir floppy; mkdir cdrom; mkdir win; mkdir zip ; mkdir server
+
+
+
+
+  This creates mount points for a DOS/Win floppy, an ext2 floppy, the
+  CD--ROM, the Windows partition, the parallel port Zip drive, and a NFS
+  directory.
+  Now edit the file /etc/fstab and add the following entries:
+
+
+
+       /dev/fd0        /mnt/floppy     vfat            user,noauto 0 1
+       /dev/cdrom      /mnt/cdrom      iso9660         ro,user,noauto 0 1
+       /dev/sda4       /mnt/zip        vfat            user,noauto,exec 0 1
+       /dev/hda1       /mnt/win        vfat            user,noauto 0 1
+       server:/export  /mnt/server     nfs             defaults
+
+
+
+
+  Obviously, you must use the correct device in the first field. Recent
+  kernels support fat32 partitions natively; for older ones, there's a
+  kernel patch on   <http://bmrc.berkeley.edu/people/chaffee/fat32.html>
+  .  man mount for further information.
+
+  You're strongly advised to install mtools for accessing DOS/Windows
+  floppies!
+
+
+
+  2.11.  lilo(8) and LOADLIN.EXE
+
+
+  Many users run both Linux and DOS/Windows on their PC, and want to
+  choose at boot time which os to use; this should be done at install
+  time, but in case, do what follows. Let's suppose that /dev/hda1
+  contains DOS/Windows and that /dev/hda2 contains Linux.
+
+
+
+       ~# fdisk
+       Using /dev/hda as default device!
+
+       Command (m for help):a
+       Partition number (1-4): 2
+
+       Command (m for help):w
+       ~#
+
+
+
+
+  This makes the Linux partition bootable. Then write this basic
+  /etc/lilo.conf file:
+
+
+
+       boot = /dev/hda2
+       compact
+       delay = 50
+       # message = /boot/bootmesg.txt  # write your own, if you will
+       root = current
+       image = /boot/vmlinuz  # boot linux by default as this entry comes first
+         label = linux
+         read-only
+       other = /dev/hda1
+         table = /dev/hda
+         label = dos
+
+
+
+
+
+  Now issue /sbin/lilo and you're done. Being lilo a crucial part of
+  your installation, you're strongly advised to read its documentation
+  anyway.
+
+  To boot Linux from DOS/Windows without resetting, put LOADLIN.EXE in a
+  directory (in the DOS partition!) included in the DOS path; then copy
+  your kernel to, say, C:\TEMP\VMLINUZ. The following simple .BAT file
+  will boot Linux:
+
+
+
+       rem   linux.bat
+       smartdrv /C
+       loadlin c:\temp\vmlinuz root=/dev/hda2 ro
+
+
+
+
+  If you use Windows 9x, set the properties of this .BAT so as it starts
+  in MS--DOS mode.
+
+
+
+  2.11.1.  Security Tip
+
+
+  Making a backup copy of your MBR before installing Linux is a safe
+  move.  Use restorrb (included in the FIPS package) before
+  installation, or a Linux rescue floppy to issue this command:
+
+
+
+       rescue:~# dd if=/dev/hda of=MBR bs=512 count=1
+
+
+
+
+  then make at least two copies of the file MBR on floppies. Should
+  disaster strike, you'll be able to restore your old MBR by issuing:
+
+
+
+       rescue:~# dd if=/mnt/MBR of=/dev/hda bs=446 count=1
+
+
+
+
+  assuming that a floppy containing MBR is mounted under /mnt.
+  Alternatively, use a DOS rescue floppy to issue FDISK /MBR.
+
+
+
+  2.12.  Mail Capabilities
+
+
+  You will want to be able to read mail messages written in HTML or
+  containing exotic file formats. Make sure you have two files:
+  /etc/mime.types and /etc/mailcap. The first one lists file types and
+  related extensions, like:
+
+
+
+       application/postscript          ps eps
+       image/jpeg                      jpe jpeg jpg
+       text/html                       html
+
+  while the second one tells the mail client how to display that file
+  type.
+
+  You may receive mail from people who use Microsoft Outlook, whose
+  messages are in multi--part MIME format. These two lines, put in
+  etc/mailcap, should let you read those messages:
+
+
+
+       text/plain; less %s; needsterminal
+       text/html; lynx -force_html %s; needsterminal
+
+
+
+
+
+
+  2.13.  Printer Configuration
+
+
+  All distributions I know have a configuration tool for setting up the
+  printer (printtool, yast, or magicfilter); if you don't have it, this
+  is a basic manual configuration.
+
+  Let's suppose you have a non--PostScript (non ``Windows-only'' too!)
+  printer you want to use to print raw text (e.g., C source files) and
+  PostScript files via Ghostscript, which is assumed to be already
+  installed.
+
+  Setting up the printer involves a few steps:
+
+
+  ·  find out which one the parallel print device is: try
+
+
+
+       ~# echo "hello, world" > /dev/lp0
+       ~# echo "hello, world" > /dev/lp1
+
+
+
+
+
+  and take note which one works.
+
+  ·  make two spool directories:
+
+
+
+       ~# cd /var/spool/lpd
+       /var/spool/lpd/# mkdir raw ; mkdir postscript
+
+
+
+
+
+  ·  if your printer exibits the ``staircase effect'' (most inkjets do),
+     you'll need a filter. Try to print two lines with
+
+
+
+       ~# echo "first line" > /dev/lp1 ; echo "second line" > /dev/lp1
+
+
+
+
+  if the output is like this:
+
+
+
+       first line
+                 second line
+
+
+
+
+
+  then save this script as /var/spool/lpd/raw/filter:
+
+
+
+       #!/bin/sh
+       # This filter does away with the "staircase effect"
+       awk '{print $0, "\r"}'
+
+
+
+
+
+  and make it executable with chmod 755 /var/spool/lpd/raw/filter.
+
+  ·  make a filter for PostScript emulation. Write the following filter
+     as /var/spool/lpd/postscript/filter:
+
+
+
+       #!/bin/sh
+
+       DEVICE=djet500
+       RESOLUTION=300x300
+       PAPERSIZE=a4
+       SENDEOF=
+
+       nenscript -TUS -ZB -p- |
+       if [ "$DEVICE" = "PostScript" ]; then
+               cat -
+       else
+               gs -q -sDEVICE=$DEVICE \
+                       -r$RESOLUTION \
+                       -sPAPERSIZE=$PAPERSIZE \
+                       -dNOPAUSE \
+                       -dSAFER \
+                       -sOutputFile=- -
+       fi
+
+       if [ "$SENDEOF" != "" ]; then
+               printf "\004"
+       fi
+
+
+
+
+
+  (in this example an HP DeskJet printer is assumed. Fix it to suit your
+  printer).
+
+  ·  finally, add the following entries in /etc/printcap:
+
+
+
+
+
+  # /etc/printcap
+  lp|ps|PS|PostScript|djps:\
+          :sd=/var/spool/lpd/postscript:\
+          :mx#0:\
+          :lp=/dev/lp1:\
+          :if=/var/spool/lpd/postscript/filter:\
+          :sh:
+  raw:\
+          :sd=/var/spool/lpd/raw:\
+          :mx#0:\
+          :lp=/dev/lp1:\
+          :if=/var/spool/lpd/raw/filter:\
+          :sh:
+
+
+
+
+
+  For more complex or exotic printing configurations, the Printing-HOWTO
+  awaits you.
+
+  If you use printtool, be aware that the GSDEVICE chosen by Printtool
+  will work, but not necessarily at its best for your printer. You may
+  consider fiddling a bit with the file postscript.cfg; for instance, I
+  changed GSDEVICE from cdj500 to djet500 and now my prints come out
+  much quicker.
+
+
+
+  2.14.  SVGATextMode
+
+
+  This utility, available on
+  <ftp://tsx-11.mit.edu/pub/linux/sources/sbin> , can be used to change
+  the console screen resolution, font, and cursor shape.  Users whose
+  language include accented characters will be able to use them in
+  console applications, while notebook users may change the cursor shape
+  to make it more visible.
+
+  Edit /etc/TextConfig or /etc/TextMode, starting with the default VGA
+  definition. Europeans should be happy with this ``LoadFont'' section:
+
+
+
+       Option "LoadFont"
+       FontProg "/usr/bin/setfont"
+       FontPath "/usr/lib/kbd/consolefonts"
+       FontSelect "lat1u-16.psf"   8x16 9x16 8x15 9x15
+       FontSelect "lat1u-14.psf"   8x14 9x14 8x13 9x13
+       FontSelect "lat1u-12.psf"   8x12 9x12 8x11 9x11
+       FontSelect "lat1u-08.psf"   8x8  9x8  8x7  9x7
+
+
+
+
+  Once you're done, try your configuration with a command like
+
+
+
+       ~# SVGATextMode "80x34x9"
+
+
+
+
+  and if everything appears to be working fine, remove the warnings from
+  /etc/TextMode and include this line in etc/rc.d/rc.sysinit (AT2YD):
+       # SVGATextMode
+       /usr/sbin/SVGATextMode "80x34x9"
+
+
+
+
+
+  Please note that the block cursor only works with some modes; on one
+  of my machines, "80x32x9".
+
+
+
+  3.  Software Configuration
+
+
+  These are the the configuration files we are going to custimise:
+  /etc/profile /etc/bashrc .bashrc .bashrc .bash_profile .bash_logout
+  .inputrc .less .lessrc .xinitrc .fvwmrc .fvwm2rc95 .Xmodmap
+  .Xmodmap.num .Xdefaults .jedrc .abbrevs.sl .joerc .emacs .  Don't add
+  users until you have completed your system configuration; you'll put
+  the dot files in /etc/skel.
+
+
+
+  3.1.  bash(1)
+
+
+  Arguably, the most important piece of software after the kernel. To
+  tailor bash's behaviour, these are the main files to edit:
+
+
+  ·  /etc/bashrc contains system wide aliases and functions;
+
+  ·  /etc/profile contains system wide environment stuff and startup
+     programs;
+
+  ·  $HOME/.bashrc contains user aliases and functions;
+
+  ·  $HOME/.bash_profile contains user environment stuff and startup
+     programs;
+
+  ·  $HOME/.inputrc contains key bindings and other bits.
+
+  Examples of these files are shown below. First, the most important:
+  /etc/profile. It's used to configure a lot of features in your Linux
+  box, as you will see in the following sections. Please look out for
+  reverse quotes!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ______________________________________________________________________
+  # /etc/profile
+
+  # System wide environment and startup programs
+  # Functions and aliases go in /etc/bashrc
+
+  # This file sets up the following features and programs:
+  #
+  #   o path
+  #   o prompts
+  #   o a few environment variables
+  #   o colour ls
+  #   o less
+  #   o rxvt
+  #
+  # Users can override these settings and/or add others in their
+  # $HOME/.bash_profile
+
+  # set a decent path (including Kde)
+  PATH="$PATH:/usr/X11R6/bin:/opt/kde/bin:$HOME/bin:."
+
+  # notify the user: login or non-login shell. If login, the prompt is
+  # coloured in blue; otherwise in magenta. Root's prompt is red.
+  # See the Colour-ls mini HOWTO for an explanation of the escape codes.
+  USER=`whoami`
+  if [ $LOGNAME = $USER ] ; then
+    COLOUR=44  # blue
+  else
+    COLOUR=45  # magenta
+  fi
+
+  if [ $USER = 'root' ] ; then
+    COLOUR=41  # red
+    PATH="$PATH:/usr/local/bin"
+  fi
+
+  ESC="\033"
+  STYLE=';1m' # bold; choose which one to use
+  # STYLE='m' # plain
+  PS1="\[$ESC[$COLOUR;37$STYLE\]$USER:\[$ESC[37;40$STYLE\]\w\\$ "
+  PS2="> "
+
+  # no core dumps, please
+  ulimit -c 0
+
+  # set umask
+  if [ `id -gn` = `id -un` -a `id -u` -gt 14 ]; then
+    umask 002
+  else
+    umask 022
+  fi
+
+  # a few variables
+  USER=`id -un`
+  LOGNAME=$USER
+  MAIL="/var/spool/mail/$USER"
+  NNTPSERVER=news.iol.it # put your own here
+  VISUAL=jed
+  EDITOR=jed
+  HOSTNAME=`/bin/hostname`
+  HISTSIZE=1000
+  HISTFILESIZE=1000
+  export PATH PS1 PS2 USER LOGNAME MAIL NNTPSERVER
+  export VISUAL EDITOR HOSTNAME HISTSIZE HISTFILESIZE
+
+  # enable colour ls
+  eval `dircolors /etc/DIR_COLORS -b`
+  export LS_OPTIONS='-s -F -T 0 --color=yes'
+
+  # customize less
+  LESS='-M-Q'
+  LESSEDIT="%E ?lt+%lt. %f"
+  LESSOPEN="| lesspipe.sh %s"
+  LESSCHARDEF=8bcccbcc13b.4b95.33b. # show colours in ls -l | less
+  export LESS LESSEDIT LESSOPEN VISUAL LESSCHARDEF
+
+  # fix the backspace key in rxvt
+  if [ "$COLORTERM" != "" ] ; then
+    stty erase ^H  # alternative: ^H
+  fi
+
+  for i in /etc/profile.d/*.sh ; do
+    if [ -x $i ]; then
+      . $i
+    fi
+  done
+
+  # call fortune, if available
+  if [ -x /usr/games/fortune ] ; then
+    echo ; /usr/games/fortune ; echo
+  fi
+  ______________________________________________________________________
+
+
+
+  This is a sample /etc/bashrc:
+
+
+  ______________________________________________________________________
+  # /etc/bashrc
+
+  # System wide functions and aliases
+  # Environment stuff goes in /etc/profile
+
+  # For some unknown reason bash refuses to inherit
+  # PS1 in some circumstances that I can't figure out.
+  # Putting PS1 here ensures that it gets loaded every time.
+
+  USER=`whoami`
+  if [ $LOGNAME = $USER ] ; then
+    COLOUR=44  # blue
+  else
+    COLOUR=45  # magenta
+  fi
+
+  if [ $USER = 'root' ] ; then
+    COLOUR=41  # red
+  fi
+
+  ESC="\033"
+  STYLE=';1m'  # bold
+  # STYLE='m'    # plain
+  export PS1="\[$ESC[$COLOUR;37$STYLE\]$USER:\[$ESC[37;40$STYLE\]\w\\$ "
+  export PS2="> "
+  export CDPATH="$CDPATH:~"
+
+  alias which="type -path"
+  alias ls="ls $LS_OPTIONS"
+  ______________________________________________________________________
+
+
+
+  This is a sample .bashrc:
+
+
+  ______________________________________________________________________
+  # $HOME/.bashrc
+  # Source global definitions
+
+  if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+  fi
+
+  # this is needed to notify the user that they are in non-login shell
+  if [ "$GET_PS1" = "" ] ; then
+    COLOUR=45; ESC="\033"; STYLE=';1m';  # STYLE='m'
+    USER=`whoami`
+    export PS1="\[$ESC[$COLOUR;37$STYLE\]$USER:\[$ESC[37;40$STYLE\]\w\\$ "
+  fi
+
+  # aliases
+  alias cp='cp -i'
+  alias l=less
+  alias lyx='lyx -width 900 -height 700'
+  alias mv='mv -i'
+  alias rm='rm -i'
+  alias x=startx
+
+  # A few useful functions
+
+  inst() # Install a .tar.gz archive in the current directory.
+  { tar -zxvf $1 }
+
+  cz() # List the contents of a .zip archive.
+  { unzip -l $* }
+
+  ctgz() # List the contents of a .tar.gz archive.
+  {
+    for file in $* ; do
+      tar -ztf ${file}
+    done
+  }
+
+  tgz() # Create a .tgz archive a la zip.
+  {
+    name=$1 ; tar -cvf $1 ; shift
+    tar -rf ${name} $*
+    gzip -S .tgz ${name}
+  }
+  ______________________________________________________________________
+
+
+
+  This is a sample .bash_profile:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ______________________________________________________________________
+  # $HOME/.bash_profile
+
+  # User specific environment and startup programs
+  # This file contains user-defined settings that override
+  # those in /etc/profile
+
+  # Get user aliases and functions
+  if [ -f ~/.bashrc ]; then
+    GET_PS1="NO"  # don't change the prompt colour
+    . ~/.bashrc
+  fi
+
+  # set a few `default' directories
+  export CDPATH="$CDPATH:$HOME:$HOME/text:$HOME/text/geology"
+  ______________________________________________________________________
+
+
+
+  This is a sample .inputrc:
+
+
+  ______________________________________________________________________
+  # $HOME/.inputrc
+
+  # key bindings
+  "\e[1~": beginning-of-line
+  "\e[3~": delete-char
+  "\e[4~": end-of-line
+  # (F1 .. F5) are "\e[[A" ... "\e[[E"
+  "\e[[A": "info \C-m"
+
+  set bell-style visible          # please don't beep
+  set meta-flag On                # allow 8-bit input (i.e, accented letters)
+  set convert-meta Off            # don't strip 8-bit characters
+  set output-meta On              # display 8-bit characters correctly
+  set horizontal-scroll-mode On   # scroll long command lines
+  set show-all-if-ambiguous On    # after TAB is pressed
+  ______________________________________________________________________
+
+
+
+  To make the backspace and delete keys work correctly in xterm and
+  other X11 applications, the following is also needed:
+
+
+  ·  put this in your .xinitrc:
+
+
+
+       usermodmap=$HOME/.Xmodmap
+       xmodmap $usermodmap
+
+
+
+
+
+  ·  then your .Xmodmap will contain:
+
+
+
+       keycode 22 = BackSpace
+       keycode 107 = Delete
+
+
+
+  this fixes the console. To fix xterm:
+
+  ·  put this in your .Xdefaults:
+
+
+
+       xterm*VT100.Translations: #override <Key>BackSpace: string(0x7F)\n\
+               <Key>Delete:        string(0x1b) string("[3~")\n\
+               <Key>Home:          string(0x1b) string("[1~")\n\
+               <Key>End:           string(0x1b) string("[4~")\n\
+               Ctrl<Key>Prior:     string(0x1b) string("[40~")\n\
+               Ctrl<Key>Next:      string(0x1b) string("[41~")
+
+       nxterm*VT100.Translations: #override <Key>BackSpace: string(0x7F)\n\
+               <Key>Delete:        string(0x1b) string("[3~")\n\
+               <Key>Home:          string(0x1b) string("[1~")\n\
+               <Key>End:           string(0x1b) string("[4~")\n\
+               Ctrl<Key>Prior:     string(0x1b) string("[40~")\n\
+               Ctrl<Key>Next:      string(0x1b) string("[41~")
+
+
+
+
+
+  rxvt is a wee bit more complicated, as some compile--time options
+  influence its behaviour. See the above /etc/profile.
+
+  More info in bash(1) and readline(3) man pages.
+
+  Don't expect every application to work correctly! If you run joe in
+  xterm, for instance, some keys won't work; the same holds for versions
+  of rxvt older than 2.4.5.
+
+
+
+  3.2.  ls(1)
+
+
+  ls can display directory listings using colours to highlight different
+  file types. To enable this feature, you just need a couple of lines in
+  /etc/profile as seen above. However, this won't work with rxvt older
+  than v. 2.21; use some flavour of xterm instead. It looks like rxvt
+  has a bug that prevents it from inheriting the environment correctly
+  in some circumstances. rxvt 2.4.5 upwards is OK.
+
+  Caldera's ls doesn't have colours, but there's an equivalent color-ls.
+  Add this in /etc/bashrc:
+
+
+
+       alias ls="color-ls $LS_OPTIONS"
+
+
+
+
+
+
+  3.3.  less(1)
+
+
+  With this excellent pager you can browse not only plain text files,
+  but also gzip compressed, tar and zip archives, man pages, and what
+  have you. Its configuration involves a few steps:
+
+
+
+  ·  to use it with the movement keys, have this plain ASCII file
+     .lesskey in your home directory:
+
+
+
+       ^[[A   back-line
+       ^[[B   forw-line
+       ^[[C   right-scroll
+       ^[[D   left-scroll
+       ^[OA   back-line
+       ^[OB   forw-line
+       ^[OC   right-scroll
+       ^[OD   left-scroll
+       ^[[6~  forw-scroll
+       ^[[5~  back-scroll
+       ^[[1~  goto-line
+       ^[[4~  goto-end
+       ^[[7~  goto-line
+       ^[[8~  goto-end
+
+
+
+
+
+  then run the command lesskey. (These are escape sequences for
+  vt100-like terminals.) This creates a binary file .less containing the
+  key bindings.
+
+
+  ·  write the following file as /usr/local/bin/lesspipe.sh:
+
+
+     ___________________________________________________________________
+     #!/bin/sh
+     # This is a preprocessor for 'less'.  It is used when this environment
+     # variable is set:   LESSOPEN="|lesspipe.sh %s"
+
+     lesspipe() {
+       case "$1" in
+       *.tar) tar tf $1 2>/dev/null ;; # View contents of .tar and .tgz files
+       *.tgz|*.tar.gz|*.tar.Z|*.tar.z) tar ztf $1 2>/dev/null ;;
+       *.Z|*.z|*.gz) gzip -dc $1  2>/dev/null ;; # View compressed files correctly
+       *.zip) unzip -l $1 2>/dev/null ;; # View archives
+       *.arj) unarj -l $1 2>/dev/null ;;
+       *.rpm) rpm -qpil $1 2>/dev/null ;;
+       *.cpio) cpio --list -F $1 2>/dev/null ;;
+       *.1|*.2|*.3|*.4|*.5|*.6|*.7|*.8|*.9|*.n|*.man) FILE=`file -L $1`
+         FILE=`echo $FILE | cut -d ' ' -f 2`
+         if [ "$FILE" = "troff" ]; then
+           groff -s -p -t -e -Tascii -mandoc $1
+         fi ;;
+       *) file $1 | grep text > /dev/null ;
+         if [ $? = 1 ] ; then # it's not some kind of text
+           strings $1
+         fi ;;
+       esac
+     }
+
+     lesspipe $1
+     ___________________________________________________________________
+
+
+
+  then make it executable with chmod 755 lesspipe.sh.
+
+
+  ·  put the necessary variables in /etc/profile as seen above.
+
+
+
+  3.4.  emacs(1)
+
+
+  I rarely use emacs, so I have only a couple of tips for you.  Some
+  emacs distributions don't come preconfigured for colours and syntax
+  highlighting. Put this in your .emacs:
+
+
+
+       (global-font-lock-mode t)
+       (setq font-lock-maximum-decoration t)
+
+
+
+
+  This only works in X11. Moreover, to enable accented characters you'll
+  add this line:
+
+
+
+       (standard-display-european 1)
+
+
+
+
+  I'll leave it to you to peruse all of emacs' documentation to find out
+  how to tailor it to your needs---potentially, it can take months of
+  hacking.  The Dotfile generator (Section ``Configuration Software'')
+  is a good helping hand.
+
+
+
+  3.5.  joe(1)
+
+
+  Some versions of joe don't work with colours in console, and some
+  special keys don't work either. To my knowledge, no one has found a
+  solution to these small nags. A quick and dirty (and inelegant)
+  solution to the former problem is this:
+
+
+
+       ~$ export TERM=vt100
+       ~$ joe myfile
+          (edit your file)
+       ~$ export TERM=linux
+
+
+
+
+  Configure joe editing .joerc, .jstarrc or your favourite emulation;
+  you can start from the system-wide config files in /usr/lib/joe.
+
+
+
+  3.6.  jed(1)
+
+
+  This is my favourite editor: it does what I need, it's lighter and
+  easier to configure than emacs, and emulates other editors quite well.
+  Many users at my university use jed to emulate EDT, VMS' system
+  editor.
+  jed's configuration files are .jedrc and /usr/lib/jed/lib/*; the
+  former can be adapted from jed.rc in the latter directory.
+
+
+  ·  to make jed use the special keys correctly, write the file
+     /usr/lib/jed/lib/defaults.sl whose only line reads:
+
+
+
+       () = evalfile("linux");
+
+
+
+
+
+  ·  if xjed apparently doesn't recognise the DEL key, add these lines
+     to your .jedrc:
+
+
+
+       #ifdef XWINDOWS
+         x_set_keysym (0xFFFF, 0, "\e[3~");
+         setkey (``delete_char_cmd'', "\e[3~");
+       #endif
+
+
+
+
+
+  ·  edit /usr/lib/jed/lib/linux.sl to specify Info_Directory =
+     "/usr/info"; and /bin/mail after /UCB_Mailer = "/bin/mail";;
+
+  ·  to make jed emulate EDT (or other editors) all you have to do is
+     edit a couple of lines in .jedrc. If you want the numeric keypad
+     `+' to delete words instead of a single character, add this in
+     .jedrc:
+
+
+
+       unsetkey("\eOl");
+       unsetkey("\eOP\eOl");
+       setkey("edt_wdel", "\eOl");
+       setkey("edt_uwdel", "\eOP\eOl");
+
+
+
+
+
+  after the line that reads () = evalfile("edt") (or similar);
+
+  ·  to make xjed use the numeric keypad for EDT emulation, insert the
+     following in .Xmodmap:
+
+
+
+       keycode 77  = KP_F1
+       keycode 112 = KP_F2
+       keycode 63  = KP_F3
+       keycode 82  = KP_F4
+       keycode 86  = KP_Separator
+
+
+
+
+
+
+  ·  colour customization for xjed is done adding lines like these in
+     .Xdefaults:
+
+
+
+       xjed*Geometry: 80x32+150+50
+       xjed*font: 10x20
+       xjed*background: midnight blue
+       # and so on...
+
+
+
+
+
+  ·  the ``abbreviation'' feature is an invaluable timesaver. Write a
+     file like the following as $HOME/.abbrevs.sl:
+
+
+
+       create_abbrev_table ("Global", "0-9A-Za-z");
+       define_abbrev ("Global", "GG", "Guido Gonzato");
+       create_abbrev_table ("TeX", "\\A-Za-z0-9");
+       define_abbrev ("TeX", "\\beq", "\\begin{equation}");
+       define_abbrev ("TeX", "\\eeq", "\\end{equation}");
+       % and so on...
+
+
+
+
+
+  and type ESC x abbrev_mode to enable it. To have the abbreviation
+  enabled by default, add entries like these to your .jedrc:
+
+
+
+       define text_mode_hook ()
+       {
+         set_abbrev_mode (1);
+       }
+       %
+       define fortran_hook ()
+       {
+         set_abbrev_mode (1);
+         use_abbrev_table ("Fortran");
+       }
+       % and so on...
+
+
+
+
+
+
+
+  3.7.  efax(1)
+
+
+  This package is probably the most convenient for simple
+  sending/receiving of faxes. You'll have to tailor the script
+  /usr/bin/fax; easy job, but a couple of quirks caused me quite an
+  headache:
+
+
+  ·  DIALPREFIX: chances are that simply putting `T' or `P' won't work
+     in some countries (in Italy, at least). Put `ATDT' or `ATDP'
+     instead;
+
+  ·  INIT and RESET: these strings contain the initialisers `-i' and
+     `-k', needed by efax. If you want to add an AT command, add it to
+     the appropriate string leaving out `AT' and preceding the rest with
+     either `-i' or `-k'. Example: to add the `ATX3' command to INIT,
+     you'll append `-iX3'.
+
+
+
+  3.8.  TeX and Friends
+
+
+  I'll assume you have the teTeX distribution. Just a couple of things
+  here:
+
+
+  ·  to configure the hyphenation pattern for your language, edit the
+     file /usr/lib/texmf/texmf/tex/generic/config/language.dat, then do:
+
+
+
+       ~# texconfig init ; texconfig hyphen
+
+
+
+
+
+  ·  if you add a LaTeX package, after adding the files under
+     /usr/lib/texmf/texmf/tex/latex/ run the command texhash so that
+     teTeX recognises the new package;
+
+  ·  to tailor dvips, the file to edit is
+     /usr/lib/texmf/texmf/dvips/config/config.ps. Be aware that the
+     fields regarding the default resolution also affect xdvi's
+     behaviour; if you experience annoying attempts to create fonts each
+     time you run it, put the line
+
+
+
+       XDvi*mfmode:
+
+
+
+
+
+  in .Xdefault. This should help.
+
+
+
+  3.9.  Avoid PPProblems!
+
+
+  I'll take it for granted that your kernel has PPP + TCP/IP support
+  compiled in, that loopback is enabled, and that you already have the
+  pppd package correctly installed and, if you will, suid root.
+  Obviously, your ISP must support PPP.
+
+  There are now two ways to get PPP to work: a) manual configuration,
+  and b) a configuration program that automagically sees to it.
+  Whichever option you choose, have the following information on hand:
+
+
+  ·  your ISP's telephone number;
+
+  ·  your ISP's name, mail and news server address;
+
+
+  ·  your ISP's domain;
+
+  ·  your username and password.
+
+  Manual configuration is a drudgery. It's about editing files and
+  writing scripts; not too much work, but it's easy to make mistakes and
+  newcomers are often intimidated. The PPP HOWTO is there for you.
+  Alternatively, there are tools that ask for the information above and
+  do all the work.
+
+  You'll be surely better off if get hold of one of the following nice
+  tools:
+
+
+  ·  an X11--based tool is EzPPP, whose home page is
+       <http://www.serv.net/~cameron/ezppp/index.html> .  Very easy to
+     use, almost self--explanatory, but requires you to write the
+     connection script;
+
+  ·  for tty--based connections, theere are tools available on
+       <ftp://sunsite.unc.edu/pub/Linux/system/network/serial/ppp>. One
+     of the finest is pppsetup-X.XX.tar.gz. Script required here;
+
+  ·  the simplest configuration tools to date are surely wvdial and
+     eznet. You feed them your ISP's phone number, your username, your
+     password, and you're in business. Their home pages are at
+      <http://www.worldvisions.ca/wvdial> and
+      <http://www.hwaci.com/sw/eznet>. My preference goes to the latter.
+
+
+  3.9.1.  A Quick Start with eznet
+
+
+  First of all, create an /etc/resolv.conf like this:
+
+
+
+       nameserver w.x.y.z
+
+
+
+
+  where you'll insert the address of your ISP's nameserver. To create an
+  account with eznet, issue the following command:
+
+
+
+       #~ eznet add service=YOUR_ISP user=NAME password=PASSWORD phone=PHONE
+
+
+
+
+  then try to dial your ISP with eznet up YOUR_ISP. If the modem waits
+  for the dial tone and won't connect, then try this command:
+
+
+
+       #~ eznet change YOUR_ISP init0=atx3
+
+
+
+
+  To hang up, the command is eznet down. That's all!
+
+
+
+  3.10.  POP Client
+
+
+  To retrieve your mail from a POP server, you use a POP client like
+  fetchpop or fetchmail. The latter is more advanced, and is probably
+  the only option if your ISP's PPP server can't deal with the command
+  LAST. They're available on
+  <ftp://sunsite.unc.edu/pub/Linux/system/mail/pop>.
+
+  To configure these clients:
+
+
+  ·  fetchpop: the first time you run it, you'll be prompted for some
+     information. Answer the questions and you're set.
+
+  ·  fetchmail: adapt this sample .fetchmailrc:
+
+
+
+       # $HOME/.fetchmailrc
+       poll mbox.myisp.com with protocol pop3;
+         user john there with password _Loo%ny is john here
+
+
+
+
+
+  One user reported that adding ``smtphost localhost'' to the second
+  line improved performance dramatically.
+
+  You must set the permissions to this file with the command chmod 600
+  .fetchmailrc, otherwise fetchmail will rightly refuse to start. This
+  example is very basic and assumes that you have a running sendmail;
+  there are endless possibilities of configuration. Check out on .
+
+
+
+  3.11.  X Window System (XFree86)
+
+
+
+  3.11.1.  Setting Up the X Server
+
+
+  Come on, it's not difficult as it used to be... All major
+  distributions include a tool for setting up X11 (e.g.  XConfigurator,
+  sax, XF86Setup, or at least xf86config).  X configuration is virtually
+  automatic these days, but a few video cards may refuse to work. Each
+  time I experience problems setting up X on a system, I resort to a
+  simple method that has always worked:
+
+
+  ·  make sure that the plain VGA server is installed;
+
+  ·  go to   <ftp://ftp.XFree86.org/pub/XFree86/current/binaries> , cd
+     to the proper Linux subdirectory, and download the archives
+     X_version_bin.tgz, X_version_set.tgz, and all the servers.  Amongst
+     other programs, the first one contains the most up-to-date
+     SuperProbe;
+
+  ·  unpack X_version_bin.tgz to a temporary directory, cd to it, and
+     run ./SuperProbe. If your video card is recognised, chances are
+     that you'll be able to set it up. Otherwise, hard luck;
+
+  ·  install the servers and X_version_set.tgz from /usr/X11R6/, then
+     run XF86Setup.
+  This has always worked for me, but your mileage may vary. Please note
+  that most times X11 won't configure because the specs you choose for
+  your monitor are too low! Start with conservative settings, i.e.
+  800x600 and 256 colours, then pump it up. Warning: these operations
+  are dangerous and your monitor might be damaged!
+
+
+
+  3.11.2.  Keypad
+
+
+  We have seen above how to make a few special keys work. The sample
+  file .Xmodmap works well if you want to use Xjed, but it makes the
+  keypad unusable. You'll then need another config file, which we'll
+  call .Xmodmap.num:
+
+
+
+       ! Definitions can be found in <X11/keysymdef.h>
+
+       keycode 77  = Num_Lock
+       keycode 112 = KP_Divide
+       keycode 63  = KP_Multiply
+       keycode 82  = KP_Subtract
+       keycode 86  = KP_Add
+       keycode 79  = KP_7
+       keycode 80  = KP_8
+       keycode 81  = KP_9
+       keycode 83  = KP_4
+       keycode 84  = KP_5
+       keycode 85  = KP_6
+       keycode 87  = KP_1
+       keycode 88  = KP_2
+       keycode 89  = KP_3
+       keycode 90  = KP_0
+       keycode 91  = KP_Decimal
+
+
+
+
+  Make sure that your /etc/X11/XF86Config does not contain these three
+  lines:
+
+
+
+         ServerNumLock
+         Xleds
+         XkbDisable
+
+
+
+
+  and in case, comment them out. To re-enable the keypad, you'll issue
+  the command xmodmap .Xmodmap.num.
+
+
+
+  3.11.3.  Graphical Login with xdm
+
+
+  To be greeted by a graphical login, edit the file /etc/inittab, which
+  should include a line like this:
+
+
+
+
+  x:5:respawn:/usr/bin/X11/xdm -nodaemon
+
+
+
+
+  where 5 is the runlevel corresponding to X11 (S.u.S.E. uses 4). Modify
+  the line that defines the default runlevel (usually 2 or 3), changing
+  it as above:
+
+
+
+       id:5:initdefault:
+
+
+
+
+  The number of colours is specified in /etc/X11/xdm/Xserver (AT2YD):
+
+
+
+       :0 local /usr/X11R6/bin/X -bpp 16  # 65k colours
+
+
+
+
+  If you already have .xinitrc, copy it to .xsession and make the latter
+  executable with chmod +x .xsession. Now issue the command telinit 5
+  and you're in business.
+
+
+
+  3.11.4.  Window Manager
+
+
+  Once you've managed to make X work, there are endless possibilities of
+  configuration; it depends on the window manager you use - there are
+  tens to choose from. Mostly, it's all down to editing one or more
+  ASCII files in your home directory; in other cases you don't have to
+  edit a thing, and use an applet or even a menu.
+
+  Some examples:
+
+
+  ·  the fvwm family: copy /etc/X11/fvwm/system.fvwmrc (or similar) to
+     your home using the appropriate name, browse it and start
+     experimenting. You may waste a lot of time before you get the
+     precise look and feel you like;
+
+  ·  WindowMaker: it has several config files that live under
+     $HOME/GNUstep, and a cool configuration applet;
+
+  ·  KDE: nothing to edit manually here: everything can be done via the
+     menu.
+
+  In short: if you don't mind editing config file, choose something like
+  icewm, fvwm*, blackbox etc; if you do mind, the choice is currently
+  restricted to KDE and WindowMaker.
+
+  It's important to have a good .xinitrc. An example:
+
+
+
+
+
+
+
+  #!/bin/sh
+  # $HOME/.xinitrc
+
+  usermodmap=$HOME/.Xmodmap
+  xmodmap $usermodmap
+
+  xset s noblank  # turn off the screen saver
+  xset s 300 2    # screen saver start after 5 min
+  xset m 10 5     # set mouse acceleration
+
+  rxvt -cr green -ls -bg black -fg white -fn 7x14 \
+    -geometry 80x30+57+0 &
+
+  if [ "$1" = "" ] ; then  # default
+    WINMGR=wmaker
+  else
+    WINMGR=$1
+  fi
+
+  $WINMGR
+
+
+
+
+  Although it doesn't appear to be strictly required, make it executable
+  with chmod +x .xinitrc.
+
+  This .xinitrc lets you choose the window manager: try
+
+
+       $ startx startkde # or other w.m.
+
+
+
+
+  (it doesn't work with some S.u.S.E. versions, though).
+
+
+
+  3.12.  Users' Configurations
+
+
+  When you're done editing the dot files, copy them to /etc/skel as seen
+  in Section ``Software Configuration''.  Note that .pinerc can't be
+  fully tailored; make sure that at least the fields user-domain, smtp-
+  server, and nntp-server are properly set up.
+
+
+
+  3.13.  Upgrading
+
+
+  If you upgrade your machine, do your backup as usual and remember to
+  save a few additional files. Some could be /etc/X11/XF86Config,
+  /usr/bin/fax, all the stuff in /usr/local, the kernel configuration,
+  the whole /etc, and all the mail in /var/spool/mail.
+
+
+
+  4.  Configuration Software
+
+
+  There are several programs that make Linux easy to setup and
+  configure. Some are becoming sort of standard: Red Hat, Caldera and
+  other distributions ship with apps like printtool, netcfg, usertool,
+  etc, while S.u.S.E. ships with a comprehensive configuration program
+  called YAST.  Other useful programs are:
+
+
+  ·  The Dotfile Generator: fine X app with modules to configure
+     packages like emacs, bash, procmail and more. Its page is on
+     <http://www.imada.ou.dk/~blackie/dotfile> ;
+
+  ·  Linuxconf: the ultimate configuration tool. It can do everything,
+     both in console and under X. Go to
+     <http://www.solucorp.qc.ca/linuxconf> at once.
+
+
+
+  5.  The End
+
+
+
+
+  5.1.  Copyright
+
+
+  Unless otherwise stated, Linux HOWTO documents are copyrighted by
+  their respective authors. Linux HOWTO documents may be reproduced and
+  distributed in whole or in part, in any medium physical or electronic,
+  as long as this copyright notice is retained on all copies. Commercial
+  redistribution is allowed and encouraged; however, the author would
+  like to be notified of any such distributions.
+
+  All translations, derivative works, or aggregate works incorporating
+  any Linux HOWTO documents must be covered under this copyright notice.
+  That is, you may not produce a derivative work from a HOWTO and impose
+  additional restrictions on its distribution. Exceptions to these rules
+  may be granted under certain conditions; please contact the Linux
+  HOWTO coordinator at the address given below.
+
+  In short, we wish to promote dissemination of this information through
+  as many channels as possible. However, we do wish to retain copyright
+  on the HOWTO documents, and would like to be notified of any plans to
+  redistribute the HOWTOs.
+
+  If you have questions, please contact Tim Bynum, the Linux HOWTO
+  coordinator, at tjbynum@sunsite.unc.edu via email.
+
+
+
+  5.2.  Feedback
+
+
+  Perhaps even more than other HOWTOs, this one needs and welcomes your
+  suggestions, criticisms, and contributions. Not only is feedback
+  welcome: it's necessary. If you think something is missing or wrong,
+  please email me.  If you have a distribution other than Red Hat or
+  Caldera and your config files are different or placed in other
+  directories, please tell me and I'll include your tips. My aim is
+  making life with Linux as easy as possible.
+
+  Linux has a huge number of packages, so it's impossible to include
+  directions for all of them. Please keep your requests/suggestions
+  pertinent to the ``most reasonable'' programs---I'll leave it to your
+  common sense.
+
+
+
+
+
+
+  5.3.  Disclaimer
+
+
+  ``Configuration HOWTO'' was written by Guido Gonzato,
+  guido@ibogeo.df.unibo.it.  Many thanks to all other HOWTO authors and
+  man pages writers/maintainers, whose work I've shamelessly pilfered;
+  and to all people who provided me with feedback.
+
+  This document is provided ``as is''. I put great effort into writing
+  it as accurately as I could, but you use the information contained in
+  it at your own risk. In no event shall I be liable for any damages
+  resulting from the use of this work.
+
+  I hope you'll find this work useful, though. Whenever I install a new
+  Linux box, I actually do...
+
+  Enjoy,
+
+  Guido   =8-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

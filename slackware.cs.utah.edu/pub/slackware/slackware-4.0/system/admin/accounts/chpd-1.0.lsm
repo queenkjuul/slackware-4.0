@@ -1,0 +1,16 @@
+Begin3
+Title: chpd
+Version: 1.0
+Entered-date: 21JUL96
+Description: chpd is a utility that notifies a user of any new entries in
+	     /etc/passwd. New entries are directed to a log file and the
+	     user is also notified of the addition by email. Works on most
+	     UNIX platform, source code is included.
+Keywords: passwd system util root user
+Author: Jawed Karim <kari0022@gold.tc.umn.edu>
+Maintained-by: Jawed Karim <kari0022@gold.tc.umn.edu>
+Primary-site: sunsite.unc.edu
+Alternate-site: http://umn.edu/~kari0022
+Platform: Any flavor of UNIX
+Copying-policy: Freely distributable
+End

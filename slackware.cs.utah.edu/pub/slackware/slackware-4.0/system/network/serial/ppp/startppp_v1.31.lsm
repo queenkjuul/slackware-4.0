@@ -1,0 +1,21 @@
+
+Begin3
+Title:          startppp         
+Version:        1.31       
+Entered-date:   16JANUAR1997  
+Description:    Tk-interface for pppd to start a ppp-connection
+		it can display your phone-units already spent
+                Preconfigured for Germany, but works fine for
+                other countries, too
+                Needs Tk 4.0 and Tcl 7.4 or higher  
+Keywords:       startppp tk pppd
+Author:         msott@cip.informatik.uni-erlangen.de
+		http://wwwcip.informatik.uni-erlangen.de/user/msott
+Maintained-by:  msott@cip.informatik.uni-erlangen.de
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/serial/ppp
+                70kb startppp_v1.0.tgz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: GPL
+End

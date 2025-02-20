@@ -1,0 +1,2 @@
+./configure --prefix=/usr --with-local-prefix=/usr/local \
+  --with-gxx-include-dir=/usr/include/g++

@@ -1,0 +1,20 @@
+Begin3
+Title:		seejpeg - another JPEG (+GIF+PPM+BMP+TARGA) viewer
+Version:	1.6.1
+Entered-date:	02NOV96
+Description:	A JPEG image viewer which uses svgalib to display images.
+		It works out the best video mode to use based on the video
+		card, image size and user options.  This can be overridden.
+		It contains GIF, PPM, BMP and TARGA viewing support, and can
+		show images in a slideshow.
+		This version primarily fixes a bug in displaying short, wide,
+		centred images.
+Keywords:	graphics JPEG GIF PPM BMP TARGA picture image viewer svgalib
+		slideshow
+Author:		evan@cs.mu.oz.au (Evan Harris)
+Primary-site:	sunsite.unc.edu /pub/Linux/apps/graphics/viewers
+		122610 seejpeg-1.6.tgz
+Platforms:	svgalib 0.91 (or greater, tested with 1.27)
+		libjpeg v6 (for ELF systems, an a.out libjpeg.a is supplied)
+Copying-policy:	Freely redistributable.
+End

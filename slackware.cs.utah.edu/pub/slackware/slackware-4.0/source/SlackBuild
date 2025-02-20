@@ -1,0 +1,15 @@
+#!/bin/sh
+echo "+==================================================+"
+echo "| Building entire Slackware(TM) Linux distribution |"
+echo "+==================================================+"
+echo
+echo
+
+DIRS="a d e n y"
+
+for subdir in $DIRS ; do
+  if [ -d $subdir ]; then
+    ( cd $subdir ; ./SlackBuild $* )
+  fi
+done
+

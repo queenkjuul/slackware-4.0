@@ -1,0 +1,16 @@
+Begin3
+Title:          coolmail
+Version:        1.3
+Entered-date:   15JAN96
+Description:    A mail notification utility with 3D animation for X Windows
+                and un*x.  It lets you know when you have mail, and can
+                launch your mail reader when you click on it. It can
+                also play a given sound.
+Keywords:       coolmail, email, mail, notification, biff,
+                xbiff, mailbox, xmailbox++
+Author:         darrah@kaiwan.com (Byron C. Darrah)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xapps
+                26809 coolmail-1.3.tgz
+Platforms:      X11, sound
+Copying-policy: GPL
+End

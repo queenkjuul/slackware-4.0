@@ -1,0 +1,14 @@
+Begin3
+Title:		CDspindown
+Version:	1.0b
+Entered-date:	23MAY96
+Description:	Utility to adjust the duration of the inactivity
+		interval before an ATAPI CDROM drive spins down.
+Keywords:	ATAPI,CDROM,spindown
+Author:		ciro@stud.unipg.it (Ciro Cattuto)
+Maintained-by:	ciro@stud.unipg.it (Ciro Cattuto)
+Primary-site:	-
+Alternate-site:	sunsite.unc.edu
+Platform:	Linux
+Copying-policy:	GNU General Public License
+End

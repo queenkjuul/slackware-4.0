@@ -1,0 +1,15 @@
+Begin3
+Title:		efs
+Version:        1.0
+Entered-date:   02MAY99
+Description:    Extent File System support (read-only)
+Keywords:       irix efs sgi filesystem
+Author:         Al.Smith@aeschi.ch.eu.org (Al Smith)
+Maintained-by:  Al.Smith@aeschi.ch.eu.org (Al Smith)
+Primary-site:   http://aeschi.ch.eu.org/efs/
+                21.6kB efs-1.0.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/filesystems/
+Platforms:      Linux 2.2
+Copying-policy: GPL
+End
+

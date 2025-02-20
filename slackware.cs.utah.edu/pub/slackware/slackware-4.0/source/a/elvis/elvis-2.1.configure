@@ -1,0 +1,16 @@
+tar xzvf elvis-2.1.tar.gz
+cd elvis-2.1
+./configure --with-x=no \
+            --bindir=/usr/bin \
+            --datadir=/usr/share/elvis-2.1 \
+            --verbose
+make install
+cp -a BUGS COPYING INSTALL README.html /usr/share/elvis-2.1
+cd lib
+# Let's not lose those original timestamps:
+cp -a * /usr/share/elvis-2.1
+chown root.root /usr/share/elvis-2.1/*
+chmod 644 /usr/share/elvis-2.1/*
+# Remove /var/man/cat?/ pages.
+# Add /usr/bin/ex and /usr/bin/vi symlinks.
+# Make symlink from /usr/share/elvis-2.1 to /usr/doc/elvis-2.1.

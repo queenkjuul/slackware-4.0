@@ -1,0 +1,19 @@
+Begin3
+Title:		wtmp/utmp util
+Version:	1.5	
+Entered-date:   March 23, 1997
+Description:    Selectively cleans out the 'wtmp' & 'utmp' files.
+		Program accepts date or number of days, as argument and
+		creates a new wtmp/utmp file containing the most recent
+		records based on argument criteria.
+Keywords:       wtmp, utmp
+Author:         marks@axess.com
+Maintained-by:  marks@axess.com
+Primary-site:   sunsite.unc.edu/pub/Linux/system/admin/
+		5k clnwtmp-1.5.tar.gz
+		1k clnwtmp.lsm
+Alternate-site: 
+Original-site:  
+Platforms:    	
+Copying-policy: GPL
+End

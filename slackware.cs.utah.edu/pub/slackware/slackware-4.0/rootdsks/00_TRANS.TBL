@@ -1,0 +1,17 @@
+F 00_INDEX.TXT                      	00_index.txt
+F COLOR.BAT                         	color.bat
+F COLOR.GZ                          	color.gz
+D OBSOLETE                          	obsolete
+F PCMCIA.BAT                        	pcmcia.bat
+F PCMCIA.GZ                         	pcmcia.gz
+F RAWRITE.EXE                       	RAWRITE.EXE
+L RAWRITE1.000                      	RAWRITE13.EXE	RAWRITE.EXE
+F RAWRITE1.DOC                      	RAWRITE12.DOC
+F RAWRITE1.EXE                      	RAWRITE12.EXE
+F README.TXT                        	README.TXT
+F RESCUE.BAT                        	rescue.bat
+F RESCUE.GZ                         	rescue.gz
+F TEXT.BAT                          	text.bat
+F TEXT.GZ                           	text.gz
+F UMSDOS.BAT                        	umsdos.bat
+F UMSDOS.GZ                         	umsdos.gz

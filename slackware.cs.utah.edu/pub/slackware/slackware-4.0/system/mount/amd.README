@@ -1,0 +1,59 @@
+
+Hi All,
+
+Announcing the third release of the AMD automounter for Linux.
+
+What is an automounter ?? Well briefly put, it allows you to dynamically nfs
+(or even minix/ext{2}/msdos...) mount file systems on demand - i.e it is
+able to mount a home directory from a nfs server when a user requires it,
+and unmount it after a user defined period of time after it is deemed
+inactive. This reduces load both on the client and server. There are
+numerous features far too many to mention in fact, so I will let you read
+the documentation included.
+
+The `amd' package _requires_ that you have the NFS option in your kernel
+when it was compiled. You do NOT need to run mountd or nfsd except if you
+require other machines to mount yours. You however _do_ need /etc/portmap
+running _before_ you start `amd'.
+
+This finally fixes ALL known bugs (I have discovered). Most notably the
+direct automounts. If you have had problems before with "direct" mounts,
+please try this version. Also there was a bug (whoops I meant "feature") in
+kernels prior to 0.99.12 which made "direct" mounts unmountable. This has now
+been fixed. If you do not use "direct" mounts this binary will still work as
+expected.
+
+It is also worth mentioning that as GNU's getopt() behavior has stumped
+quite a few people. You should use -- to stop getopt from incorrectly
+parsing some options.
+
+It is now on
+
+    sunsite.unc.edu:/pub/Linux/Incoming/amd920824upl67-linux.tar.gz
+
+but may be moved at some point in time to
+
+	/pub/Linux/system/Misc/mount/amd920824upl67-linux.tar.gz
+
+It is also on nic.funet.fi but it is hidden until the archive maintainer
+(Arl) moves it appropriately. It will be available under
+
+    nic.funet.fi:/pub/OS/Linux/tools/amd920824upl67-linux.tar.gz
+
+The old(er) postscript documentation I uploaded to sunsite and nic is still
+valid.
+
+I said this last time, but I will say it again :-)	
+
+This should be the final patches submitted to the AMD authors. (Actually
+this time was only 2 lines with *no* source code changes)
+
+Warning: You need a fs with > 30 char limit to extract/build the source.
+
+Due to popular demand I have included ready to run binaries. This should be
+sufficient for ANY type of file system you have compiled into your kernel,
+as I have made it possible to specify type=???? in the opts:= line in your
+maps.
+
+Mitch
+m.dsouza@mrc-apu.cam.ac.uk

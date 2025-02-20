@@ -1,0 +1,12 @@
+Release notes for hfs_fs version 0.95
+
+As of version 0.95 the HFS filessystem has been upgradeded from "ALPHA"
+status to "BETA".  Thanks to all the pople who've helped test it.
+
+Starting in version 0.8.3 partitions are now numbered from 0, rather than 1.
+
+Versions 0.8 and 0.8.1 contained a bug that may have caused the loss of blocks
+when files were deleted.  If you used these versions to delete files then you
+should run either Norton Utilities or Disk First Aid to recover any lost blocks.
+
+			-Paul Hargrove (hargrove@sccm.Stanford.EDU)

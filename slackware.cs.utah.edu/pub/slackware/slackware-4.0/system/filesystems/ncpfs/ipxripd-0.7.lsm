@@ -1,0 +1,15 @@
+Begin3
+Title:          ipxripd
+Version:        0.7
+Entered-date:   09. March 1996
+Description:    ipxripd is a RIP/SAP daemon program for Linux.
+                It makes your Linux computer act as an IPX router.
+Keywords:       ipx rip sap novell netware
+Author:         A.Dryak@sh.cvut.cz (Ales Dyrak)
+		lendecke@namu01.gwdg.de (Volker Lendecke)
+Maintained-by:  lendecke@namu01.gwdg.de (Volker Lendecke)
+Primary-site:   linux01.gwdg.de:/pub/ncpfs
+                   ~28k ipxripd-0.7.tgz
+                   ~ 1k ipxripd-0.7.lsm
+Copying-policy: GPL
+End

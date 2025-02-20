@@ -1,0 +1,19 @@
+Begin3
+Title:          snplog
+Version:        0.1
+Entered-date:   250498
+Description:    The snplog (Simple Network Protocol logger)
+                package consists of three daemon 
+                programs: icmplogd, tcplogd and udplogd. They log
+		incoming packets or connections to syslog.
+Keywords:	IP, TCP, UDP, ICMP, logging, daemon, auditing, security
+Author:         alex@gauss.franken.de (Alexander Much)
+Maintained-by:  alex@gauss.franken.de (Alexander Much)
+Primary-site:   ftp.franken.de /pub/people/alex
+		14kB snplog-0.1.tar.gz
+		700  lsm-template
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/daemons
+Original-site:
+Platforms:      Linux 2.0 or above
+Copying-policy: GPL
+End

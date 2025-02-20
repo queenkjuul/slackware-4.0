@@ -1,0 +1,18 @@
+Begin3
+Title:		xzx
+Version:	2.9.0
+Entered-date:	12May99
+Description:	An X11 based ZX Spectrum 48/128/+3 emulator
+Keywords:	X11 emulator ZX Spectrum Interface I Microdrive Multiface Betadisk +D
+Author:		Des Herriott
+		Erik Kunze <Erik.Kunze@fantasy.muc.de>
+Maintained-by:	Erik Kunze <Erik.Kunze@fantasy.muc.de>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/emulators/zx
+                338960 xzx-2.9.0.tar.gz
+Alternate-site: ftp.void.jump.org /pub/sinclair/emulators/unix
+		338960 xzx-2.9.0.tar.gz
+Original-site:	www.philosys.de /~kunze/xzx/files
+		338960 xzx-2.9.0.tar.gz
+Platforms:	X11
+Copying-policy:	shareware
+End

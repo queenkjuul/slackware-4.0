@@ -1,0 +1,13 @@
+Begin3
+Title:          kdict - The KDE Dict(ionary) Client
+Version:        0.1
+Entered-date:   16NOV98
+Description:    A client program for the dict server (dict.org).
+		Requires dict-1.4.9 (or any other version).
+Keywords:       dict, database, dictionary, websters
+Author:         Matthias Hölzer <hoelzer@kde.org>
+Maintained-by:  Matthias Hölzer <hoelzer@kde.org>
+Primary-site:   ftp://ftp.kde.org/pub/kde/stable/latest/apps/utiltities/kdict-0.1.tgz
+Platforms:      Unix, Linux, KDE
+Copying-policy: Artistic
+End

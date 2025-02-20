@@ -1,0 +1,758 @@
+/lib/modules/2.2.6/fs/nls_koi8-r.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-15.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-9.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-8.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-7.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-6.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-5.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-4.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-3.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-2.o:
+
+/lib/modules/2.2.6/fs/nls_iso8859-1.o:
+
+/lib/modules/2.2.6/fs/nls_cp874.o:
+
+/lib/modules/2.2.6/fs/nls_cp869.o:
+
+/lib/modules/2.2.6/fs/nls_cp866.o:
+
+/lib/modules/2.2.6/fs/nls_cp865.o:
+
+/lib/modules/2.2.6/fs/nls_cp864.o:
+
+/lib/modules/2.2.6/fs/nls_cp863.o:
+
+/lib/modules/2.2.6/fs/nls_cp862.o:
+
+/lib/modules/2.2.6/fs/nls_cp861.o:
+
+/lib/modules/2.2.6/fs/nls_cp860.o:
+
+/lib/modules/2.2.6/fs/nls_cp857.o:
+
+/lib/modules/2.2.6/fs/nls_cp855.o:
+
+/lib/modules/2.2.6/fs/nls_cp852.o:
+
+/lib/modules/2.2.6/fs/nls_cp850.o:
+
+/lib/modules/2.2.6/fs/nls_cp775.o:
+
+/lib/modules/2.2.6/fs/nls_cp737.o:
+
+/lib/modules/2.2.6/fs/nls_cp437.o:
+
+/lib/modules/2.2.6/fs/binfmt_misc.o:
+
+/lib/modules/2.2.6/fs/binfmt_java.o:
+
+/lib/modules/2.2.6/fs/binfmt_aout.o:
+
+/lib/modules/2.2.6/fs/binfmt_elf.o:
+
+/lib/modules/2.2.6/fs/adfs.o:
+
+/lib/modules/2.2.6/fs/autofs.o:
+
+/lib/modules/2.2.6/fs/qnx4.o:
+
+/lib/modules/2.2.6/fs/romfs.o:
+
+/lib/modules/2.2.6/fs/affs.o:
+
+/lib/modules/2.2.6/fs/ufs.o:
+
+/lib/modules/2.2.6/fs/ntfs.o:
+
+/lib/modules/2.2.6/fs/hpfs.o:
+
+/lib/modules/2.2.6/fs/ncpfs.o:
+
+/lib/modules/2.2.6/fs/smbfs.o:
+
+/lib/modules/2.2.6/fs/sysv.o:
+
+/lib/modules/2.2.6/fs/umsdos.o:
+
+/lib/modules/2.2.6/fs/nfsd.o:
+
+/lib/modules/2.2.6/fs/nfs.o:
+
+/lib/modules/2.2.6/fs/hfs.o:
+
+/lib/modules/2.2.6/fs/isofs.o:
+
+/lib/modules/2.2.6/fs/vfat.o:
+
+/lib/modules/2.2.6/fs/msdos.o: /lib/modules/2.2.6/fs/fat.o
+
+/lib/modules/2.2.6/fs/fat.o:
+
+/lib/modules/2.2.6/fs/ext2.o:
+
+/lib/modules/2.2.6/fs/minix.o:
+
+/lib/modules/2.2.6/fs/coda.o:
+
+/lib/modules/2.2.6/fs/lockd.o:
+
+/lib/modules/2.2.6/net/baycom_epp.o: /lib/modules/2.2.6/misc/ax25.o /lib/modules/2.2.6/misc/parport_pc.o /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/net/baycom_par.o: /lib/modules/2.2.6/net/hdlcdrv.o /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/net/baycom_ser_hdx.o: /lib/modules/2.2.6/net/hdlcdrv.o
+
+/lib/modules/2.2.6/net/baycom_ser_fdx.o: /lib/modules/2.2.6/net/hdlcdrv.o
+
+/lib/modules/2.2.6/net/bpqether.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/net/6pack.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/net/mkiss.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/net/scc.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/net/dmascc.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/net/hdlcdrv.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/net/soundmodem.o: /lib/modules/2.2.6/net/hdlcdrv.o
+
+/lib/modules/2.2.6/net/x25_asy.o: /lib/modules/2.2.6/misc/lapb.o
+
+/lib/modules/2.2.6/net/wanpipe.o: /lib/modules/2.2.6/net/sdla.o /lib/modules/2.2.6/net/sdladrv.o /lib/modules/2.2.6/misc/wanrouter.o
+
+/lib/modules/2.2.6/net/rcpci.o:
+
+/lib/modules/2.2.6/net/ipddp.o: /lib/modules/2.2.6/misc/appletalk.o
+
+/lib/modules/2.2.6/net/cops.o:
+
+/lib/modules/2.2.6/net/ltpc.o:
+
+/lib/modules/2.2.6/net/cs89x0.o:
+
+/lib/modules/2.2.6/net/dgrs.o:
+
+/lib/modules/2.2.6/net/dlci.o:
+
+/lib/modules/2.2.6/net/sdla.o: /lib/modules/2.2.6/net/dlci.o
+
+/lib/modules/2.2.6/net/eql.o:
+
+/lib/modules/2.2.6/net/82596.o:
+
+/lib/modules/2.2.6/net/cosa.o: /lib/modules/2.2.6/net/syncppp.o
+
+/lib/modules/2.2.6/net/hostess_sv11.o: /lib/modules/2.2.6/net/scc.o /lib/modules/2.2.6/net/syncppp.o /lib/modules/2.2.6/net/z85230.o
+
+/lib/modules/2.2.6/net/epic100.o:
+
+/lib/modules/2.2.6/net/lapbether.o: /lib/modules/2.2.6/misc/lapb.o
+
+/lib/modules/2.2.6/net/eth16i.o:
+
+/lib/modules/2.2.6/net/com20020.o: /lib/modules/2.2.6/net/arcnet.o
+
+/lib/modules/2.2.6/net/arc-rimi.o: /lib/modules/2.2.6/net/arcnet.o
+
+/lib/modules/2.2.6/net/com90io.o: /lib/modules/2.2.6/net/arcnet.o
+
+/lib/modules/2.2.6/net/com90xx.o: /lib/modules/2.2.6/net/arcnet.o
+
+/lib/modules/2.2.6/net/tulip.o:
+
+/lib/modules/2.2.6/net/ac3200.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/3c505.o:
+
+/lib/modules/2.2.6/net/ni65.o:
+
+/lib/modules/2.2.6/net/ni52.o:
+
+/lib/modules/2.2.6/net/ni5010.o:
+
+/lib/modules/2.2.6/net/de4x5.o:
+
+/lib/modules/2.2.6/net/ewrk3.o:
+
+/lib/modules/2.2.6/net/depca.o:
+
+/lib/modules/2.2.6/net/via-rhine.o:
+
+/lib/modules/2.2.6/net/tlan.o:
+
+/lib/modules/2.2.6/net/wavelan.o:
+
+/lib/modules/2.2.6/net/acenic.o:
+
+/lib/modules/2.2.6/net/yellowfin.o:
+
+/lib/modules/2.2.6/net/rtl8139.o:
+
+/lib/modules/2.2.6/net/eepro100.o:
+
+/lib/modules/2.2.6/net/eepro.o:
+
+/lib/modules/2.2.6/net/eexpress.o:
+
+/lib/modules/2.2.6/net/3c59x.o:
+
+/lib/modules/2.2.6/net/3c515.o:
+
+/lib/modules/2.2.6/net/3c509.o:
+
+/lib/modules/2.2.6/net/3c507.o:
+
+/lib/modules/2.2.6/net/3c501.o:
+
+/lib/modules/2.2.6/net/fmv18x.o:
+
+/lib/modules/2.2.6/net/at1700.o:
+
+/lib/modules/2.2.6/net/pcnet32.o:
+
+/lib/modules/2.2.6/net/lance.o:
+
+/lib/modules/2.2.6/net/de620.o:
+
+/lib/modules/2.2.6/net/de600.o:
+
+/lib/modules/2.2.6/net/dummy.o:
+
+/lib/modules/2.2.6/net/strip.o:
+
+/lib/modules/2.2.6/net/slip.o: /lib/modules/2.2.6/net/slhc.o
+
+/lib/modules/2.2.6/net/bsd_comp.o: /lib/modules/2.2.6/net/ppp.o
+
+/lib/modules/2.2.6/net/plip.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/net/ne3210.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/lne390.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/es3210.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/e2100.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/smc-ultra32.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/smc-ultra.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/hp-plus.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/hp.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/ne.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/ne2k-pci.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/3c503.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/wd.o: /lib/modules/2.2.6/net/8390.o
+
+/lib/modules/2.2.6/net/smc9194.o:
+
+/lib/modules/2.2.6/net/hp100.o:
+
+/lib/modules/2.2.6/net/shaper.o:
+
+/lib/modules/2.2.6/net/ethertap.o:
+
+/lib/modules/2.2.6/net/sktr.o:
+
+/lib/modules/2.2.6/net/ibmtr.o:
+
+/lib/modules/2.2.6/net/sdladrv.o:
+
+/lib/modules/2.2.6/net/8390.o:
+
+/lib/modules/2.2.6/net/ppp_deflate.o: /lib/modules/2.2.6/net/ppp.o
+
+/lib/modules/2.2.6/net/slhc.o:
+
+/lib/modules/2.2.6/net/z85230.o: /lib/modules/2.2.6/net/syncppp.o
+
+/lib/modules/2.2.6/net/syncppp.o:
+
+/lib/modules/2.2.6/net/arcnet.o:
+
+/lib/modules/2.2.6/net/ppp.o: /lib/modules/2.2.6/net/slhc.o
+
+/lib/modules/2.2.6/scsi/ide-scsi.o:
+
+/lib/modules/2.2.6/scsi/sym53c416.o:
+
+/lib/modules/2.2.6/scsi/megaraid.o:
+
+/lib/modules/2.2.6/scsi/NCR53c406a.o:
+
+/lib/modules/2.2.6/scsi/eata.o:
+
+/lib/modules/2.2.6/scsi/ultrastor.o:
+
+/lib/modules/2.2.6/scsi/dtc.o:
+
+/lib/modules/2.2.6/scsi/t128.o:
+
+/lib/modules/2.2.6/scsi/wd7000.o:
+
+/lib/modules/2.2.6/scsi/seagate.o:
+
+/lib/modules/2.2.6/scsi/pas16.o:
+
+/lib/modules/2.2.6/scsi/sym53c8xx.o:
+
+/lib/modules/2.2.6/scsi/ncr53c8xx.o:
+
+/lib/modules/2.2.6/scsi/53c7,8xx.o:
+
+/lib/modules/2.2.6/scsi/g_NCR5380.o:
+
+/lib/modules/2.2.6/scsi/in2000.o:
+
+/lib/modules/2.2.6/scsi/fdomain.o:
+
+/lib/modules/2.2.6/scsi/scsi_debug.o:
+
+/lib/modules/2.2.6/scsi/gdth.o:
+
+/lib/modules/2.2.6/scsi/u14-34f.o:
+
+/lib/modules/2.2.6/scsi/eata_pio.o:
+
+/lib/modules/2.2.6/scsi/eata_dma.o:
+
+/lib/modules/2.2.6/scsi/BusLogic.o:
+
+/lib/modules/2.2.6/scsi/AM53C974.o:
+
+/lib/modules/2.2.6/scsi/tmscsim.o:
+
+/lib/modules/2.2.6/scsi/aic7xxx.o:
+
+/lib/modules/2.2.6/scsi/aha1740.o:
+
+/lib/modules/2.2.6/scsi/aha1542.o:
+
+/lib/modules/2.2.6/scsi/aha152x.o:
+
+/lib/modules/2.2.6/scsi/qlogicfc.o:
+
+/lib/modules/2.2.6/scsi/a100u2w.o:
+
+/lib/modules/2.2.6/scsi/initio.o:
+
+/lib/modules/2.2.6/scsi/atp870u.o:
+
+/lib/modules/2.2.6/scsi/qlogicisp.o:
+
+/lib/modules/2.2.6/scsi/qlogicfas.o:
+
+/lib/modules/2.2.6/scsi/imm.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/scsi/ppa.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/scsi/psi240i.o:
+
+/lib/modules/2.2.6/scsi/pci2220i.o:
+
+/lib/modules/2.2.6/scsi/pci2000.o:
+
+/lib/modules/2.2.6/scsi/advansys.o:
+
+/lib/modules/2.2.6/scsi/sg.o:
+
+/lib/modules/2.2.6/scsi/sr_mod.o:
+
+/lib/modules/2.2.6/scsi/sd_mod.o:
+
+/lib/modules/2.2.6/scsi/st.o:
+
+/lib/modules/2.2.6/scsi/scsi_mod.o:
+
+/lib/modules/2.2.6/block/nbd.o:
+
+/lib/modules/2.2.6/block/raid5.o:
+
+/lib/modules/2.2.6/block/raid1.o:
+
+/lib/modules/2.2.6/block/raid0.o:
+
+/lib/modules/2.2.6/block/linear.o:
+
+/lib/modules/2.2.6/block/xd.o:
+
+/lib/modules/2.2.6/block/ide-floppy.o:
+
+/lib/modules/2.2.6/block/ide-tape.o:
+
+/lib/modules/2.2.6/block/ide-cd.o:
+
+/lib/modules/2.2.6/block/ide-disk.o:
+
+/lib/modules/2.2.6/block/ide-probe.o:
+
+/lib/modules/2.2.6/block/ide-mod.o:
+
+/lib/modules/2.2.6/block/rd.o:
+
+/lib/modules/2.2.6/block/floppy.o:
+
+/lib/modules/2.2.6/block/loop.o:
+
+/lib/modules/2.2.6/cdrom/sonycd535.o:
+
+/lib/modules/2.2.6/cdrom/sjcd.o:
+
+/lib/modules/2.2.6/cdrom/sbpcd.o:
+
+/lib/modules/2.2.6/cdrom/optcd.o:
+
+/lib/modules/2.2.6/cdrom/mcdx.o:
+
+/lib/modules/2.2.6/cdrom/mcd.o:
+
+/lib/modules/2.2.6/cdrom/isp16.o:
+
+/lib/modules/2.2.6/cdrom/gscd.o:
+
+/lib/modules/2.2.6/cdrom/cm206.o:
+
+/lib/modules/2.2.6/cdrom/cdu31a.o:
+
+/lib/modules/2.2.6/cdrom/aztcd.o:
+
+/lib/modules/2.2.6/cdrom/cdrom.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_cuseeme.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_vdolive.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_quake.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_raudio.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_irc.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_ftp.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_user.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_mfw.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_portfw.o:
+
+/lib/modules/2.2.6/ipv4/ip_masq_autofw.o:
+
+/lib/modules/2.2.6/ipv4/rarp.o:
+
+/lib/modules/2.2.6/ipv4/ip_gre.o:
+
+/lib/modules/2.2.6/ipv4/ipip.o:
+
+/lib/modules/2.2.6/ipv6/ipv6.o:
+
+/lib/modules/2.2.6/video/mdacon.o:
+
+/lib/modules/2.2.6/video/matroxfb.o: /lib/modules/2.2.6/video/fbcon-cfb4.o
+
+/lib/modules/2.2.6/video/vfb.o: /lib/modules/2.2.6/video/fbcon-mfb.o /lib/modules/2.2.6/video/fbcon-cfb4.o /lib/modules/2.2.6/video/fbcon-cfb2.o
+
+/lib/modules/2.2.6/video/fbcon-mfb.o:
+
+/lib/modules/2.2.6/video/fbcon-mac.o:
+
+/lib/modules/2.2.6/video/fbcon-cfb4.o:
+
+/lib/modules/2.2.6/video/fbcon-cfb2.o:
+
+/lib/modules/2.2.6/misc/zftape.o: /lib/modules/2.2.6/misc/ftape.o
+
+/lib/modules/2.2.6/misc/zft-compressor.o: /lib/modules/2.2.6/misc/zftape.o /lib/modules/2.2.6/misc/ftape.o
+
+/lib/modules/2.2.6/misc/x25.o:
+
+/lib/modules/2.2.6/misc/wdt.o:
+
+/lib/modules/2.2.6/misc/wavefront.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/wanrouter.o:
+
+/lib/modules/2.2.6/misc/videodev.o:
+
+/lib/modules/2.2.6/misc/v_midi.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/unix.o:
+
+/lib/modules/2.2.6/misc/uart6850.o:
+
+/lib/modules/2.2.6/misc/uart401.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/tuner.o: /lib/modules/2.2.6/misc/i2c.o
+
+/lib/modules/2.2.6/misc/trix.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/ad1848.o /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/uart401.o /lib/modules/2.2.6/misc/sb.o
+
+/lib/modules/2.2.6/misc/tpqic02.o:
+
+/lib/modules/2.2.6/misc/synclink.o:
+
+/lib/modules/2.2.6/misc/sunrpc.o:
+
+/lib/modules/2.2.6/misc/stallion.o:
+
+/lib/modules/2.2.6/misc/sscape.o: /lib/modules/2.2.6/misc/ad1848.o /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/mpu401.o
+
+/lib/modules/2.2.6/misc/specialix.o:
+
+/lib/modules/2.2.6/misc/soundlow.o:
+
+/lib/modules/2.2.6/misc/soundcore.o:
+
+/lib/modules/2.2.6/misc/sound.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/soundlow.o
+
+/lib/modules/2.2.6/misc/sonicvibes.o: /lib/modules/2.2.6/misc/soundcore.o
+
+/lib/modules/2.2.6/misc/softoss2.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/softdog.o:
+
+/lib/modules/2.2.6/misc/sgalaxy.o: /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/ad1848.o
+
+/lib/modules/2.2.6/misc/serial.o:
+
+/lib/modules/2.2.6/misc/sc.o: /lib/modules/2.2.6/misc/isdn.o
+
+/lib/modules/2.2.6/misc/sb.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/uart401.o /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/saa5249.o: /lib/modules/2.2.6/misc/videodev.o /lib/modules/2.2.6/misc/i2c.o
+
+/lib/modules/2.2.6/misc/rose.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/misc/rocket.o:
+
+/lib/modules/2.2.6/misc/riscom8.o:
+
+/lib/modules/2.2.6/misc/radio-zoltrix.o: /lib/modules/2.2.6/misc/videodev.o
+
+/lib/modules/2.2.6/misc/radio-sf16fmi.o: /lib/modules/2.2.6/misc/videodev.o
+
+/lib/modules/2.2.6/misc/radio-rtrack2.o: /lib/modules/2.2.6/misc/videodev.o
+
+/lib/modules/2.2.6/misc/radio-miropcm20.o: /lib/modules/2.2.6/misc/videodev.o /lib/modules/2.2.6/misc/aci.o
+
+/lib/modules/2.2.6/misc/radio-gemtek.o: /lib/modules/2.2.6/misc/videodev.o
+
+/lib/modules/2.2.6/misc/radio-aztech.o: /lib/modules/2.2.6/misc/videodev.o
+
+/lib/modules/2.2.6/misc/radio-aimslab.o: /lib/modules/2.2.6/misc/videodev.o
+
+/lib/modules/2.2.6/misc/qpmouse.o:
+
+/lib/modules/2.2.6/misc/pt.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/pss.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/mpu401.o /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/ad1848.o
+
+/lib/modules/2.2.6/misc/pms.o: /lib/modules/2.2.6/misc/videodev.o
+
+/lib/modules/2.2.6/misc/pg.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/pf.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/pd.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/pcwd.o:
+
+/lib/modules/2.2.6/misc/pcd.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/pcbit.o: /lib/modules/2.2.6/misc/isdn.o
+
+/lib/modules/2.2.6/misc/pc110pad.o:
+
+/lib/modules/2.2.6/misc/pas2.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/parport_probe.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/misc/parport_pc.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/misc/parport.o:
+
+/lib/modules/2.2.6/misc/paride.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/misc/opl3sa2.o: /lib/modules/2.2.6/misc/mpu401.o /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/ad1848.o
+
+/lib/modules/2.2.6/misc/opl3sa.o: /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/ad1848.o /lib/modules/2.2.6/misc/uart401.o
+
+/lib/modules/2.2.6/misc/opl3.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/on26.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/on20.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/nvram.o:
+
+/lib/modules/2.2.6/misc/netrom.o: /lib/modules/2.2.6/misc/ax25.o
+
+/lib/modules/2.2.6/misc/netlink_dev.o:
+
+/lib/modules/2.2.6/misc/n_hdlc.o:
+
+/lib/modules/2.2.6/misc/msp3400.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/i2c.o
+
+/lib/modules/2.2.6/misc/msnd_pinnacle.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/msnd.o
+
+/lib/modules/2.2.6/misc/msnd_classic.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/msnd.o
+
+/lib/modules/2.2.6/misc/msnd.o:
+
+/lib/modules/2.2.6/misc/msbusmouse.o:
+
+/lib/modules/2.2.6/misc/mpu401.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/maui.o: /lib/modules/2.2.6/misc/soundcore.o /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/mpu401.o
+
+/lib/modules/2.2.6/misc/mad16.o: /lib/modules/2.2.6/misc/ad1848.o /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/uart401.o
+
+/lib/modules/2.2.6/misc/lp.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/misc/lapb.o:
+
+/lib/modules/2.2.6/misc/ktti.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/kernelcapi.o: /lib/modules/2.2.6/misc/capiutil.o
+
+/lib/modules/2.2.6/misc/kbic.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/joystick.o:
+
+/lib/modules/2.2.6/misc/joy-turbografx.o: /lib/modules/2.2.6/misc/parport.o /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-thrustmaster.o: /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-sidewinder.o: /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-logitech.o: /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-lightning.o: /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-gravis.o: /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-db9.o: /lib/modules/2.2.6/misc/parport.o /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-console.o: /lib/modules/2.2.6/misc/parport.o /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-assasin.o: /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/joy-analog.o: /lib/modules/2.2.6/misc/joystick.o
+
+/lib/modules/2.2.6/misc/istallion.o:
+
+/lib/modules/2.2.6/misc/isicom.o:
+
+/lib/modules/2.2.6/misc/isdnloop.o: /lib/modules/2.2.6/misc/isdn.o
+
+/lib/modules/2.2.6/misc/isdn.o: /lib/modules/2.2.6/net/slhc.o
+
+/lib/modules/2.2.6/misc/ipx.o:
+
+/lib/modules/2.2.6/misc/icn.o: /lib/modules/2.2.6/misc/isdn.o
+
+/lib/modules/2.2.6/misc/i2c.o:
+
+/lib/modules/2.2.6/misc/hisax.o: /lib/modules/2.2.6/misc/isdn.o /lib/modules/2.2.6/net/ppp.o
+
+/lib/modules/2.2.6/misc/hfmodem.o: /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/misc/gus.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/ftape.o:
+
+/lib/modules/2.2.6/misc/frpw.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/friq.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/fit3.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/fit2.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/esp.o:
+
+/lib/modules/2.2.6/misc/es1371.o: /lib/modules/2.2.6/misc/soundcore.o
+
+/lib/modules/2.2.6/misc/es1370.o: /lib/modules/2.2.6/misc/soundcore.o
+
+/lib/modules/2.2.6/misc/epia.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/epca.o:
+
+/lib/modules/2.2.6/misc/epat.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/econet.o:
+
+/lib/modules/2.2.6/misc/dtlk.o:
+
+/lib/modules/2.2.6/misc/dstr.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/cyclades.o:
+
+/lib/modules/2.2.6/misc/cs4232.o: /lib/modules/2.2.6/misc/ad1848.o /lib/modules/2.2.6/misc/sound.o /lib/modules/2.2.6/misc/uart401.o
+
+/lib/modules/2.2.6/misc/comm.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/capiutil.o:
+
+/lib/modules/2.2.6/misc/capidrv.o: /lib/modules/2.2.6/misc/kernelcapi.o /lib/modules/2.2.6/misc/capiutil.o /lib/modules/2.2.6/misc/isdn.o
+
+/lib/modules/2.2.6/misc/capi.o: /lib/modules/2.2.6/misc/kernelcapi.o
+
+/lib/modules/2.2.6/misc/c-qcam.o: /lib/modules/2.2.6/misc/videodev.o /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/misc/bw-qcam.o: /lib/modules/2.2.6/misc/videodev.o /lib/modules/2.2.6/misc/parport.o
+
+/lib/modules/2.2.6/misc/busmouse.o:
+
+/lib/modules/2.2.6/misc/bttv.o: /lib/modules/2.2.6/misc/videodev.o /lib/modules/2.2.6/misc/i2c.o
+
+/lib/modules/2.2.6/misc/bpck.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/b1pci.o: /lib/modules/2.2.6/misc/kernelcapi.o
+
+/lib/modules/2.2.6/misc/ax25.o:
+
+/lib/modules/2.2.6/misc/awe_wave.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/atixlmouse.o:
+
+/lib/modules/2.2.6/misc/aten.o: /lib/modules/2.2.6/misc/paride.o
+
+/lib/modules/2.2.6/misc/appletalk.o:
+
+/lib/modules/2.2.6/misc/af_spx.o: /lib/modules/2.2.6/misc/ipx.o
+
+/lib/modules/2.2.6/misc/af_packet.o:
+
+/lib/modules/2.2.6/misc/aedsp16.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/adlib_card.o: /lib/modules/2.2.6/misc/opl3.o /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/ad1848.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/ad1816.o: /lib/modules/2.2.6/misc/sound.o
+
+/lib/modules/2.2.6/misc/act2000.o: /lib/modules/2.2.6/misc/isdn.o
+
+/lib/modules/2.2.6/misc/acquirewdt.o:
+
+/lib/modules/2.2.6/misc/aci.o: /lib/modules/2.2.6/misc/sound.o
+

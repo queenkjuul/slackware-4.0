@@ -1,0 +1,47 @@
+Begin2
+Title        = X File Manager
+Version      = 1.3
+Desc1        = An X file manager/application manager package
+Desc2        = supporting drag/drop, multiple windows, user-definable file
+Desc3        = types, color icons, recursive copying/deleting, and a
+Desc4        = trash can.
+Desc5        =
+Author       = Simon Marlow, Albert Graef
+AuthorEmail  = simonm@dcs.gla.ac.uk, ag@MuwiInfb.Geschichte.Uni-Mainz.DE
+Maintainer   = Albert Graef
+MaintEmail   = ag@muwiinfa.geschichte.uni-mainz.de
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/X11/xutils/managers
+File1        = xfm-1.3.tar.gz
+FileSize1    = 105545 bytes
+Site2        = ftp.x.org
+Path2        = /contrib/applications
+File2        = xfm-1.3.tar.gz
+FileSize2    = 105545 bytes
+Site3        = ftp.dcs.gla.ac.uk
+Path3        = pub/linux
+File3        = xfm-1.3.tar.gz
+FileSize3    = 105545 bytes
+Site4        =
+Path4        =
+File4        =
+FileSize4    =
+Required1    = Linux 0.99+, X11R5, (XPM 3.3 optional).
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  = (c) Simon Marlow, Albert Graef 1994
+CopyPolicy2  = GNU copyleft Version 2
+Keywords     = X file manager
+Comment1     =
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = 20 May 1994
+EnteredBy    = Simon Marlow
+CheckedEmail = simonm@dcs.gla.ac.uk
+End
+

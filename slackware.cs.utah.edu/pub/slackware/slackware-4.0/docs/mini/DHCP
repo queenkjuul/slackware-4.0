@@ -1,0 +1,1056 @@
+  DHCP mini-HOWTO (DHCPd/DHCPcd)
+  Vladimir Vuksan, vuksan@veus.hr
+  v2.8, 11 February 1998
+
+  This document attempts to answer basic questions on how to setup your
+  Linux box to serve as a DHCP server or a DHCP client.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+     1.1 Standard Disclaimer
+     1.2 New Versions of this Document
+     1.3 Feedback
+     1.4 Contributors
+     1.5 Copyright Information
+
+  2. DHCP protocol
+
+  3. Client Setup
+
+     3.1 Downloading Client Daemon
+     3.2 Slackware
+     3.3 RedHat 5.x
+     3.4 RedHat 4.x and Caldera OpenLinux 1.1/1.2
+     3.5 Debian
+     3.6 LinuxPPC and MkLinux
+     3.7 Token Ring networks
+     3.8 Tying it all together
+     3.9 Various notes
+     3.10 Troubleshooting
+
+  4. DHCP Server Setup
+
+     4.1 DHCP server for UNIX
+     4.2 Network Configuration.
+     4.3 Options for DHCPd
+     4.4 Starting the server
+
+
+  ______________________________________________________________________
+
+
+
+  1.  Introduction
+
+
+
+
+  1.1.  Standard Disclaimer
+
+  No liability for the contents of this documents can be accepted.  Use
+  the concepts, examples and other content at your own risk.  As this is
+  a new edition of this document, there may be errors and inaccuracies,
+  that may of course be damaging to your system.  Proceed with caution,
+  and although this is highly unlikely, I don't take any responsibility
+  for that.
+
+  Also bear in mind that this is NOT official information.  Much content
+  in this document are assumptions, which appear to work for people. Use
+  the information at your own risk.
+
+
+
+  1.2.  New Versions of this Document
+
+  New versions of this document will be periodically posted to
+  comp.os.linux.answers.  They will also be added to the various
+  anonymous FTP sites who archive such information, including:
+
+
+
+  In addition, you should generally be able to find this document on the
+  Linux Documentation Project page via:
+
+
+
+
+  1.3.  Feedback
+
+  Feedback is most certaintly welcome for this document.  Without your
+  submissions and input, this document wouldn't exist. So, please post
+  your additions, comments and criticisms to vuksan@veus.hr.
+
+
+
+  1.4.  Contributors
+
+  This document has been modified from the original version by Paul
+  Makeev.
+
+  The following people have contributed to this mini-HOWTO.
+
+  ·  Heiko Schlittermann
+
+  ·  Jonathan Smith
+
+  ·  Dan Khabaza
+
+  ·  Hal Sadofsky
+
+  ·  Henrik Stoerner
+
+  ·  Paul Rossington
+
+
+
+  1.5.  Copyright Information
+
+  This document is copyrighted (c)1998 Vladimir Vuksan and distributed
+  under the following terms:
+
+
+
+  ·  Linux HOWTO documents may be reproduced and distributed in whole or
+     in part, in any medium physical or electronic, as long as this
+     copyright notice is retained on all copies. Commercial
+     redistribution is allowed and encouraged; however, the author would
+     like to be notified of any such distributions.
+
+  ·  All translations, derivative works, or aggregate works
+     incorporating any Linux HOWTO documents must be covered under this
+     copyright notice.  That is, you may not produce a derivative work
+     from a HOWTO and impose additional restrictions on its
+     distribution. Exceptions to these rules may be granted under
+     certain conditions; please contact the Linux HOWTO coordinator at
+     the address given below.
+
+  ·  If you have questions, please contact the Linux HOWTO coordinator
+     at
+     linux-howto@sunsite.unc.edu
+
+
+
+
+  2.  DHCP protocol
+
+
+  DHCP is Dynamic Host Configuration Protocol. It is used to control
+  vital networking parameters of hosts (running clients) with the help
+  of a server. DHCP is backward compatible with BOOTP. For more
+  information see RFC 2131 (old RFC 1531) and other. (See Internet
+  Resources section at the end of the document). You can also read DHCP
+  FAQ (http://web.syr.edu/ jmwobus/comfaqs/dhcp.faq.html).
+
+
+  This mini-HOWTO covers both the DHCP _SERVER_ daemon as well as DHCP
+  _CLIENT_ daemon. Most people need the client daemon which is used by
+  workstations to obtain network information from a remote server. The
+  server daemon is used by system administrators to distribute network
+  information to clients so if you are just a regular user you need the
+  _CLIENT_ daemon.
+
+
+  3.  Client Setup
+
+  3.1.  Downloading Client Daemon
+
+
+  2.0.x kernels
+
+
+  No matter what distribution you are using you will need to download
+  the DHCP client daemon for Linux. The package you need to download is
+  called dhcpcd and the current version is 0.70. You can read the
+  description of the package here.
+  (ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/dhcpcd-0.70.lsm)
+
+
+
+  2.1.x kernels
+
+
+
+  Due to changes in ipv4 network package in 2.1.x kernels (e.g. way it
+  sets the defaults for several fields) dhcpcd doesn't work properly.
+  Most users don't run experimental kernels so this shouldn't be a
+  problem. If you do you should try dhcpcd 1.3.16  which is a modified
+  version that has been written by Sergei Viznyuk  sergei@phystech.com
+  in order to avoid mentioned problems. You can fetch it at:
+
+
+
+
+  ·
+
+  ·
+
+
+  3.2.  Slackware
+
+
+  You can download the latest copy of the DHCPcd from any Sunsite mirror
+  or following:
+
+
+  ·
+
+  ·
+
+  ·   (Primary site in Japan)
+
+
+
+  Download the latest version of dhcpcd.tar.gz
+
+
+  ·  Unpack it
+
+
+
+     tar -zxvf dhcpcd-0.70.tar.gz
+
+
+  ·  cd into the directory and make dhcpcd
+
+
+     cd dhcpcd-0.70
+
+     make
+
+
+  ·  Install it (you have to run the following command as root)
+
+
+     make install
+
+
+  This will create the directory /etc/dhcpc where DHCPcd will store the
+  DHCP information and dhcpcd file will be copied into /usr/sbin.
+
+  In order to make the system initialize using DHCP during boot type:
+
+  cd /etc/rc.d
+
+  mv rc.inet1 rc.inet1.OLD
+
+
+  This will move the old network initialization script into
+  rc.inet1.OLD.  You now need to create the new rc.inet1 script.
+  Following code is all you need:
+
+
+  ______________________________________________________________________
+  #!/bin/sh
+  #
+  # rc.inet1      This shell script boots up the base INET system.
+
+  HOSTNAME=`cat /etc/HOSTNAME` #This is probably not necessary but I
+                               #will leave it in anyways
+
+  # Attach the loopback device.
+  /sbin/ifconfig lo 127.0.0.1
+  /sbin/route add -net 127.0.0.0 netmask 255.0.0.0 lo
+
+  # IF YOU HAVE AN ETHERNET CONNECTION, use these lines below to configure the
+  # eth0 interface. If you're only using loopback or SLIP, don't include the
+  # rest of the lines in this file.
+
+  /usr/sbin/dhcpcd
+  ______________________________________________________________________
+
+  Save it and reboot your computer.
+
+
+
+  When you are finished go the ``last step''
+
+
+  3.3.  RedHat 5.x
+
+
+  DHCPcd configuration under RedHat 5.0+ is really easy. All you need to
+  do is start the Control Panel by typing
+
+
+
+  control-panel
+
+
+
+
+  ·  Select "Network Configuration"
+
+  ·  Click on Interfaces
+
+  ·  Click Add
+
+  ·  Select Ethernet
+
+  ·  In the Edit Ethernet/Bus Interface select "Activate interface at
+     boot time" as well as select DHCP as Interface configuration
+     protocol
+
+
+
+  When you are finished go the ``last step''
+
+
+
+  3.4.  RedHat 4.x and Caldera OpenLinux 1.1/1.2
+
+
+  DHCPcd is included in the standard RedHat distribution as an RPM and
+  you can find it on your distribution's CD-ROM in RPMS directory or you
+  can download it from:
+
+
+
+
+
+  and install it with
+
+  rpm -i dhcpcd-0.6-2.i386.rpm
+
+
+
+  Alternatively you can compile your own version by following the steps
+  outlined in the Slackware.
+
+
+
+  This information was provided to me by nothing nothing@cc.gatech.edu
+
+
+
+
+
+  ______________________________________________________________________
+  Removed my static ip and name from /etc/resolv.conf. However, I
+  did leave in the search line and my two nameserver lines (for some reason my
+  dhcpcd never creates a /etc/dhcpc/resolv.conf, so I have to use a static
+  /etc/resolv.conf).
+
+  In /etc/sysconfig/network I removed the HOSTNAME and GATEWAY
+  entries. I left the other entries as is
+  (NETWORKING, DOMAINNAME, GATEWAYDEV).
+
+  In /etc/sysconfig/network-scripts/ifcfg-eth0 I removed the IPADDR,
+  NETMASK, NETWORK, and BROADCAST entries. I left DEVICE and ONBOOT as is.
+  I changed the BOOTPROTO line to BOOTPROTO=dhcp.
+
+  Save the file. Reboot your computer.
+  ______________________________________________________________________
+
+
+
+  When you are finished go the ``last step''
+
+
+
+  3.5.  Debian
+
+
+  There is a deb package of DHCPcd at
+
+
+
+
+
+  or you can follow the Slackware installation instructions.  To unpack
+  the deb package type
+
+  dpkg -i /where/ever/your/debian/packages/are/dhcpd*deb
+
+
+
+  It appears that there isn't a need for any DHCPcd configuration
+  because:
+
+  From: Heiko Schlittermann (heiko@os.inf.tu-dresden.de)
+
+
+
+  The dhcpcd package installs it's startup script as usual for debian
+  packages in /etc/init.d/<package_name>, here as /etc/init.d/dhcpcd,
+  and links this to the various /etc/rc?.d/ directories.
+
+
+
+  The contents of the /etc/rc?.d/ dirs is then executed at boot time.
+
+
+
+  If you don't reboot after installing you should consider starting the
+  daemon manually:
+
+
+  /etc/init.d/dhcpcd start
+
+
+  When you are finished go the ``last step''
+
+
+  3.6.  LinuxPPC and MkLinux
+
+
+  Following section has been written by R. Shapiro
+
+
+
+  Versions 0.65 and 0.70 of Yoichi Hariguchi's dhcpcd should work
+  properly in MkLinux and in linuxppc kernel 2.1.24, with the following
+  caveats:
+
+
+
+  * If you want, or need, to build the executable from sources, note
+  that the ppc linux compilers assume that 'char' is 'unsigned char'
+  while the Hariguchi sources assume 'char' is 'signed char'. To build
+  from sources you must edit the Makefile so that CFLAGS includes the
+  option "-fsigned-char".
+
+
+
+  * The current stable release of linuxppc [aka linux-pmac] is 2.1.24
+  and requires the
+
+  2.1 patch (http://www.cro.net/ vuksan/dhcppatch).  Both the DR2.1 and
+  DR3.0 releases of MkLinux use a 2.0 kernel (2.0.33) and do not require
+  this patch, although it's harmless to apply it. Note that the dhcpcd
+  rpm on the linuxppc cd-rom does not include the 2.1 patch and
+  therefore will not work with the linux on that cd! It will work with
+  MkLinux however.
+
+
+  * In linuxppc 2.1.24, you'll see a router warning shortly after dhcpcd
+  starts up.  You can ignore this.
+
+
+
+  * The Hariguchi dhcpcd takes awhile, about 30 seconds, to make its
+  initial connection to the server and to set up routing.  In linuxppc
+  2.1.24, the warning mentioned above is an indication that the routing
+  is ready.
+
+
+
+  For later linuxppc kernels, no version of the Hariguchi dhcpcd will
+  work: you  must  use Sergei Viznyuk's version instead (current release
+  is 1.3.9: see above for url).  Unfortunately the Viznyuk dhcpcd is
+  written for glibc 2, which linuxppc 2.1.1xx isn't.  As a result,
+  compiling it is a bit tricky - contact me for details.  Once compiled,
+  however, it works fine on late kernels (and not at all in MkLinux or
+  linuxppc 2.1.24).
+
+
+
+  As far as Viznyuk's version of dhcpcd is concerned I have a Viznyuk
+  dhcpcd (v1.3.7) executable that works in recent linuxppc kernels:
+  2.1.102, 103, 115, and 119 have been tested.  It's possible to build
+  this from sources, but I don't know the details.  The Viznyuk dhcpcd
+  doesn't work in 2.1.24, but in that kernel the patched Hariguchi
+  dhcpcd works.  The Hariguchi dhcpcd can be built easily from sources.
+
+
+
+  Short summary:
+
+
+  ______________________________________________________________________
+  MkLinux:  Hariguchi: yes; Viznyuk, no
+  2.1.24:   Hariguchi: yes if patched (easy to build); Viznyuk: no
+  2.1.102+: Hariguchi: no; Viznyuk: yes (tricky to build)
+  ______________________________________________________________________
+
+
+
+
+
+  Note that the Viznyuk dhcpcd writes into /etc/resolv.conf directly
+  (after renaming the existing one), so there's no need to copy or link
+  it from /etc/dhcpc.  Also note that it's typically installed into
+  /sbin, not /usr/sbin, and that the command lines options are slightly
+  different from the Hariguchi version. These differences may require
+  small changes to ifup, if you're starting dhcpcd that way.
+
+
+
+
+  If you want a precompiled dhcpcd for linuxppc, send mail to
+
+
+
+  reshapiro@mediaone.net.
+
+  I've also made binary RPMs available in
+
+
+
+
+  Don't use dhcpcd-1.3.8-2.ppc.rpm in that directory, it's broken.  The
+  reliable versions here are dhcpcd-0.70-0.ppc.rpm (for linuxppc
+  2.1.24), and dhcpcd-1.3.8-3.ppc.rpm (linuxppc 2.1.102 and up). An rpm
+  for 1.3.9 should show up shortly.  I also have a modified 1.3.9 which
+  includes the -c command-file option, as in 0.65 and 0.70 (the standard
+  Viznyuk dhcpcd doesn't include this.)
+
+
+  3.7.  Token Ring networks
+
+
+  If you are trying to run dhcpcd on the Token Ring Network it will not
+  work.  This is the solution provided to me by Henrik Stoerner
+  (henrik_stoerner@olicom.dk)
+
+
+
+  The problem is that dhcpcd only knows about Ethernet cards. If it
+  finds a Token-Ring card, it refuses to do anything with it and reports
+  "interface is not ethernet".
+
+
+
+  The solution is to apply a simple patch to the dhcpcd sources. I have
+  put up a small web page with the patch, RedHat RPM-files and a
+  precompiled binary at
+
+
+
+  The patch has been sent to the dhcpcd maintainer, so hopefully it will
+  be included in a future release of dhcpcd.
+
+
+
+
+  3.8.  Tying it all together
+
+
+  After your machine reboots your network interface should be
+  configured.  Type:
+
+  ifconfig
+
+  You should get something like this
+
+
+  ______________________________________________________________________
+  lo        Link encap:Local Loopback
+            inet addr:127.0.0.1  Bcast:127.255.255.255  Mask:255.0.0.0
+            UP BROADCAST LOOPBACK RUNNING  MTU:3584  Metric:1
+            RX packets:302 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:302 errors:0 dropped:0 overruns:0 carrier:0 coll:0
+
+  eth0      Link encap:Ethernet  HWaddr 00:20:AF:EE:05:45
+            inet addr:24.128.53.102  Bcast:24.128.53.255  Mask:255.255.254.0
+            ^^^^^^^^^^^^^^^^^^^^^^^
+            UP BROADCAST NOTRAILERS RUNNING MULTICAST  MTU:1500  Metric:1
+            RX packets:24783 errors:1 dropped:1 overruns:0 frame:1
+            TX packets:11598 errors:0 dropped:0 overruns:0 carrier:0 coll:96
+            Interrupt:10 Base address:0x300
+  ______________________________________________________________________
+
+
+
+
+
+  If you have some normal number under inet. addr you are set. If you
+  see 0.0.0.0 don't despair, it is a temporary setting before dhcpcd
+  acquires the IP address. If even after few minutes you are seeing
+  0.0.0.0 please check out  ``troubleshooting''.  DHCPcd is a daemon and
+  will stay running as long as you have your machine on. Every three
+  hours it will contact the DHCP server and try to renew the IP address
+  lease. It will log all the messages in the syslog (on Slackware
+  /var/adm/syslog, RedHat/OpenLinux /var/log/syslog).
+
+  One final thing. You need to specify your nameservers. There are two
+  ways to do it, you can either ask your provider to provide you with
+  the addresses of your name server and then put those in the
+  /etc/resolv.conf or DHCPcd will obtain the list from the DHCP server
+  and will build a resolv.conf in /etc/dhcpc.  I decided to use DHCPcds
+  resolv.conf by doing the following:
+
+
+  Back up your old /etc/resolv.conf
+
+  mv /etc/resolv.conf /etc/resolv.conf.OLD
+
+  If directory /etc/dhcpc doesn't exist create it
+
+  mkdir /etc/dhcpc
+
+  Make a link from /etc/dhcpc/resolv.conf to /etc/resolv.conf
+
+  ln -s /etc/dhcpc/resolv.conf /etc/resolv.conf
+
+
+  If that doesn't work try this (fix suggested by nothing@cc.gatech.edu
+  with a little amendment by Henrik Stoerner)
+
+
+
+  This last step I had to perform only because my dhcpcd doesn't create
+  an /etc/dhcpc/resolv.conf.  In /etc/sysconfig/network-scripts/ifup I
+  made the following changes (which are a very poor hack, but they work
+  for me):
+
+
+
+
+
+  ______________________________________________________________________
+  elif [ "$BOOTPROTO" = dhcp -a "$ISALIAS" = no ]; then
+      echo -n "Using DHCP for ${DEVICE}... "
+      /sbin/dhcpcd -c /etc/sysconfig/network-scripts/ifdhcpc-done ${DEVICE}
+      echo "echo \$$ > /var/run/dhcp-wait-${DEVICE}.pid; exec sleep 30" | sh
+
+      if [ -f /var/run/dhcp-wait-${DEVICE}.pid ]; then
+          ^^^^
+          echo "failed."
+          exit 1
+  ______________________________________________________________________
+
+
+
+  I changed to:
+
+
+  ______________________________________________________________________
+  elif [ "$BOOTPROTO" = dhcp -a "$ISALIAS" = no ]; then
+      echo -n "Using DHCP for ${DEVICE}... "
+      /sbin/dhcpcd
+      echo "echo \$$ > /var/run/dhcp-wait-${DEVICE}.pid; exec sleep 30" | sh
+
+      if [ ! -f /var/run/dhcp-wait-${DEVICE}.pid ]; then
+          ^^^^^^
+         echo "failed."
+         exit 1
+  ______________________________________________________________________
+
+
+
+
+
+  Notice the ! (bang) in if [ ! -f /var/run/dhcp-wait-${DEVICE}.pid ];
+
+
+
+
+
+  Now sit back and enjoy :-).
+
+  3.9.  Various notes
+
+
+  Following step(s) are not necessary but might be useful to some people
+
+  a)  If you need network connectivity only occasionally you can start
+  dhcpcd from the command line (you have to be root to do this) with:
+
+
+  /usr/sbin/dhcpcd
+
+  When you need to down (turn off) the network type
+
+  /usr/sbin/dhcpcd -k
+
+
+  3.10.  Troubleshooting
+
+
+  If you have followed the steps outlined above and you are unable to
+  access the network there are several possible explanations:
+
+
+
+  I. Your network card is not configured properly.
+
+
+  During the boot up process your Linux will probe your network card and
+  should say something along these lines:
+
+
+  ______________________________________________________________________
+  eth0: 3c509 at 0x300 tag 1, 10baseT port, address  00 20 af ee 11 11, IRQ 10.
+  3c509.c:1.07 6/15/95 becker@cesdis.gsfc.nasa.gov
+  ______________________________________________________________________
+
+
+
+  If a message like this doesn't appear your ethernet card might not be
+  recognized by your Linux system. If you have a generic ethernet card
+  (a NE2000 clone) you should have received a disk with DOS utilities
+  that you can use to set up the card. Try playing with IRQs until Linux
+  recognizes your card (IRQ 9,10,12 are usually good).
+
+
+
+  II. Your DHCP server supports RFC 1541/My DHCP server is Windows NT
+
+
+  Try running dhcpcd by typing
+
+  dhcpcd -r
+
+  Use ifconfig to check if your network interface is configured (wait
+  few seconds for the configuration process, initally it will say
+  Inet.addr=0.0.0.0)
+
+  If this solves your problem add the "-r" flag to the boot up scripts
+  ie. instead of /sbin/dhcpcd you will have /sbin/dhcpcd -r
+
+
+
+  For example under RedHat edit script /etc/sysconfig/network-
+  scripts/ifup and change the following
+
+
+  ______________________________________________________________________
+          IFNAME=$[ {DEVICE} \
+          "/sbin/dhcpcd -r -c /etc/"- etc etc.
+  ______________________________________________________________________
+
+
+
+
+
+  III. During bootup I get error message "Using DHCP for eth0 ...
+  failed" but my system works fine.
+
+
+
+  You are most likely using RedHat and you haven't followed instructions
+  carefully :-). You are missing the ! (bang) in one of the if
+  statements.  Jump ``here'' and check how to fix it.
+
+
+
+  IV. My network works for few minutes and then stops responding
+
+
+
+  There are some reports of gated (gateway daemon) screwing up routing
+  on Linux boxes which results in problem described above. Check if
+  gated is running
+
+
+
+  ps -auxww | grep gate
+
+
+
+  If it is try removing it with RedHat's RPM manager or removing the
+  entry in /etc/rc.d/
+
+
+
+  V. My ethernet card is recognized during boot up but I still get "NO
+  DHCPOFFER" message in my logs. I also happen to have a PCMCIA ethernet
+  card.
+
+
+
+  You need to make sure that you have the 10BaseT port ("phone" plug) on
+  your network card activated. Best way to verify it is to check what
+  kind of connector your card is configured for during bootup e.g.
+
+
+  ______________________________________________________________________
+  eth0: 3c509 at 0x300 tag 1, 10baseT port, address  00 20 af ee 11 11, IRQ 10.
+                              ^^^^^^^^^^^^
+  3c509.c:1.07 6/15/95 becker@cesdis.gsfc.nasa.gov
+  ______________________________________________________________________
+
+
+
+
+
+  I have received reports of laptop users having this kind of problems
+  due to the PCMCIA utilities (specifically ifport) that would set the
+  connector type to 10Base2 (thinnet). You have to make sure you use
+  10BaseT for your connection. If you are not reconfigure the card and
+  restart the computer.
+
+
+
+  VI. My DHCP client broadcasts requests but no one answers (Contributed
+  by Peter Amstutz)
+
+
+
+  On some systems, you need to include some hostname for your machine as
+  part of the request.  With dhcpcd, do this with 'dhcpcd -h foohost'
+  Probably the hostname wanted will be your account username on the
+  network.
+
+
+
+  VII. I have followed all the steps but still my machine is not able to
+  connect
+  The cable modem will usually memorize the ethernet address of your
+  network card so if you connect a new computer or switch network cards
+  you will somehow have to "teach" your cable modem to recognize the new
+  computer/card. Usually you can turn of the modem and bring it back up
+  while computer is on or you will have to call tech support and tell
+  them that you have changed a network card in the computer.
+
+
+
+  You have firewall rules (ipfwadm rules) that disallow port 67/68
+  traffic used by DHCP to distribute configuration info. Check your
+  firewall rules carefully.
+
+
+
+  VIII. I have MediaOne Express service and I still can't connect.
+
+
+
+  It appears that MediaOne has been using adding some things to DHCP
+  that shouldn't be there. Supposedly this is not a problem anymore but
+  if you experience outages check for these things. If you are (un)lucky
+  to have Windows NT on your machine if you go into Event Viewer you
+  will see a warning like this.
+
+
+  DHCP received an unknown option 067 of length 005. The raw option data
+  is given  below.
+
+  0000: 62 61 73 69 63            basic
+
+
+  If this is the problem go to
+
+  and either download a binary or get the source for the change.
+
+
+
+
+
+
+
+
+
+  4.  DHCP Server Setup
+
+  4.1.  DHCP server for UNIX
+
+  There are several DHCP servers available for U*X-like OSes, both
+  commercial and free. One of the more popular free DHCP servers is Paul
+  Vixie/ISC DHCPd. Currently the latest version is 1.0 (suggested for
+  most users) but 2.0 is in beta testing.  You can get them from
+
+
+
+
+  After you download it you need to unpack it. After you do cd into the
+  distribution directory and type:
+
+  ./configure
+
+  It will take some time to configure the settings. After it is done
+  type:
+
+  make
+
+  and
+
+  make install
+
+
+
+
+  4.2.  Network Configuration.
+
+
+  When done with installation type ifconfig -a. You should see something
+  like this:
+
+
+
+
+  ______________________________________________________________________
+  eth0      Link encap:10Mbps Ethernet  HWaddr 00:C0:4F:D3:C4:62
+            inet addr:183.217.19.43  Bcast:183.217.19.255  Mask:255.255.255.0
+            UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+            RX packets:2875542 errors:0 dropped:0 overruns:0
+            TX packets:218647 errors:0 dropped:0 overruns:0
+            Interrupt:11 Base address:0x210
+  ______________________________________________________________________
+
+
+
+
+
+  If it doesn't say MULTICAST you should reconfigure your kernel and add
+  multicast support. On most systems you will not need to do this.
+
+
+
+  Next step is to add route for 255.255.255.255. Quoted from DHCPd
+  README:
+
+
+
+  "In order for dhcpd to work correctly with picky DHCP clients (e.g.,
+  Windows 95), it must be able to send packets with an IP destination
+  address of 255.255.255.255.  Unfortunately, Linux insists on changing
+  255.255.255.255 into the local subnet broadcast address (here, that's
+  192.5.5.223).  This results in a DHCP protocol violation, and while
+  many DHCP clients don't notice the problem, some (e.g., all Microsoft
+  DHCP clients) do.  Clients that have this problem will appear not to
+  see DHCPOFFER messages from the server."
+
+
+
+  Type:
+
+  route add -host 255.255.255.255 dev eth0
+
+  If you get a message
+
+  "255.255.255.255: Unknown host"
+
+  You should try adding the following entry to your /etc/hosts file:
+
+  255.255.255.255 all-ones
+
+  Then, try:
+
+  route add -host all-ones dev eth0
+
+  or
+
+  route add -net 255.255.255.0 dev eth0
+
+  eth0 is of course the name of the network device you are using.  If it
+  differs change appropriately.
+
+
+
+
+  4.3.  Options for DHCPd
+
+
+  Now you need to configure DHCPd. In order to do this you will have to
+  create or edit /etc/dhcpd.conf.
+
+
+
+  Most commonly what you want to do is assign IP addresses randomly.
+  This can be done with settings as follows
+
+
+
+
+  ______________________________________________________________________
+  default-lease-time 600;
+  max-lease-time 7200;
+  option subnet-mask 255.255.255.0;
+  option broadcast-address 192.168.1.255;
+  option routers 192.168.1.254;
+  option domain-name-servers 192.168.1.1, 192.168.1.2;
+  option domain-name "mydomain.org";
+
+  subnet 192.168.1.0 netmask 255.255.255.0 {
+     range 192.168.1.10 192.168.1.100;
+     range 192.168.1.150 192.168.1.200;
+  }
+  ______________________________________________________________________
+
+
+
+
+
+  This will result in DHCP server giving a client an IP address from the
+  range 192.168.1.10-192.168.1.100 or 192.168.1.150-192.168.1.200. It
+  will lease an IP address for 600 seconds if the client doesn't ask for
+  specific time frame. Otherwise the maximum (allowed) lease will be
+  7200 seconds. The server will also "advise" the client that it should
+  use 255.255.255.0 as its subnet mask,  192.168.1.255 as its broadcast
+  address, 192.168.1.254 as the router/gateway and 192.168.1.1 and
+  192.168.1.2 as its DNS servers.
+
+
+
+  You can also assign specific IP addresses based on clients ethernet
+  address e.g.
+
+
+  ______________________________________________________________________
+  host haagen {
+     hardware ethernet 08:00:2b:4c:59:23;
+     fixed-address 192.168.1.222;
+  }
+  ______________________________________________________________________
+
+
+  This will assign IP address 192.168.1.222 to a client with ethernet
+  address 08:00:2b:4c:59:23.
+
+
+
+  You can also mix and match e.g. you can have certain clients getting
+  "static" IP addresses (e.g. servers) and others being alloted dynamic
+  IPs (e.g. mobile users with laptops). There are a number of other
+  options e.g. wins server addresses, time server etc., if you need any
+  of those options please read the dhcpd.conf man page.
+
+
+
+
+  4.4.  Starting the server
+
+
+  You can now invoke the DHCP server. Simply type (or include in the
+  bootup scripts)
+
+  /usr/sbin/dhcpd
+
+  If you want to verify that everything is working fine you should first
+  turn on the debugging mode and put the server in foreground. You can
+  do this by typing
+
+  /usr/sbin/dhcpd -d -f
+
+  Then boot up one of your clients and check out the console of your
+  server.  You will see a number of debugging messages coming up.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

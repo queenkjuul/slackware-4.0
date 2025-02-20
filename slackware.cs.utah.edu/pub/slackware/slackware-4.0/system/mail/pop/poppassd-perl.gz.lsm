@@ -1,0 +1,15 @@
+Begin3
+Title:          poppassd-perl.gz
+Version:        1.3
+Entered-date:   06OCT94
+Description:    Daemon to permit remote clients to change the password
+		for their accounts when you use the MH mail handling
+		system. For the non-MH systems, you should use the
+		poppasswd-{src|bin}.tar.gz package.
+Keywords:       passwd, pop, eudora, nupop, MH
+Author:         A.Macpherson@bnr.co.uk (Andrew Macpherson)
+Maintained-by:  longyear@netcom.com (Al Longyear)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Daemons
+Original-site:  ftp.qualcomm.com
+Copying-policy: BSD
+End

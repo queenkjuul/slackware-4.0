@@ -1,0 +1,26 @@
+Begin
+35:PkgName    = chlib-1.0.tar.z
+35:Title      = Utility to change shared library links
+25:Version    = 1.0
+65:Desc1      = chlib is a simple utility which attempts to make
+65:Desc2      = updating the link to a shared library as foolproof
+65:Desc3      = as possible.
+65:Author     = David Engel (david@ods.com)
+65:MaintBy    = David Engel (david@ods.com)
+65:MaintAt1   = sunsite.unc.edu
+65:PathFile1  = /pub/Linux/*/chlib-1.0.tar.z
+65:MaintAt2   =
+65:PathFile2  =
+65:Required1  = Should work with any version of Linux.  The provided
+65:Required2  = binary was linked statically with libc-4.4.2.
+65:Required3  =
+65:CopyPolicy = Copyrighted but freely distributable
+65:Keywords   = shared library, symlink
+15:ApproxSize = 37k
+65:Last3Rel   = none
+65:Comment1   =
+65:Comment2   =
+65:Comment3   =
+30:CheckedBy  = David Engel (david@ods.com)
+ 8:Date       = 16AUG93
+End

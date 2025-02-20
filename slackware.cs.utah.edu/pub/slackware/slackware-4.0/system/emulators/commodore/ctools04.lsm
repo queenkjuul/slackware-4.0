@@ -1,0 +1,18 @@
+Begin3
+Title:          ctools
+Version:        0.4
+Entered-date:   21FEB97
+Description:    ctools is a program to allow Unix and MSDOS systems
+                to read, write and manipulate files on an c64/c128
+                CP/M disk image.
+Keywords:       c64, c128, CP/M
+Author:         1metzing@informatik.uni-hamburg.de (Jochen Metzinger)
+Maintained-by:  1metzing@informatik.uni-hamburg.de (Jochen Metzinger)
+Primary-site:   ftp.funet.fi /pub/cbm/crossplatform/converters/unix
+			149603	ctools04.zip
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Emulators
+			149603	ctools04.zip
+Platform:       Linux: binaries(ELF), source(g++)
+                MS-DOS: source(Symantec C compiler)
+Copying-policy: GPL
+End

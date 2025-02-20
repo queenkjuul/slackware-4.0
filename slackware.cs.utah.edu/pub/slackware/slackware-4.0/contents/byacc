@@ -1,0 +1,7 @@
+drwxr-xr-x root/root         0 1995-08-07 19:03 ./
+drwxr-xr-x root/root         0 1995-08-07 19:03 usr/
+drwxr-xr-x root/root         0 1993-12-02 12:05 usr/bin/
+-rwxr-xr-x root/bin      56392 1998-10-10 23:14 usr/bin/yacc
+drwxr-xr-x root/root         0 1995-08-07 19:03 usr/man/
+drwxr-xr-x root/root         0 1998-10-10 23:14 usr/man/man1/
+-rw-r--r-- root/root       963 1998-10-10 23:14 usr/man/man1/yacc.1.gz

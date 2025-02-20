@@ -1,0 +1,6 @@
+# Tagfile for emacs series
+emacsbin: ADD
+emacmisc: REC
+elisp:    OPT
+emac_nox: OPT
+emacinfo: REC

@@ -1,0 +1,82 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-zoneinfo
+SRC=/devel/manpagesrc
+INFO=$PKG/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_zoneinfo.tar.gz
+
+echo "+================+"
+echo "| timezone utils |"
+echo "+================+"
+cd $TMP
+mkdir build
+cd build
+tar xzvf $CWD/tzcode1999b.tar.gz
+tar xzvf $CWD/tzdata1999b.tar.gz
+zcat $CWD/tzcode.slack.diff.gz | patch
+make
+strip zic zdump
+cat zic > $PKG/usr/bin/zic
+cat zdump > $PKG/usr/bin/zdump
+cat yearistype > $PKG/usr/bin/yearistype
+# We don't want to replace our perfectly good 'date' manpage.  We don't even
+# use this version of 'date'. :^)
+#for file in *.1 ; do
+#  gzip -9c $file > $PKG/usr/man/man1/$file.gz  
+#done
+for file in *.3 ; do
+  gzip -9c $file > $PKG/usr/man/man3/$file.gz  
+done
+for file in *.5 ; do
+  gzip -9c $file > $PKG/usr/man/man5/$file.gz  
+done
+for file in *.8 ; do
+  gzip -9c $file > $PKG/usr/man/man8/$file.gz  
+done
+echo "+===================+"
+echo "| timezone database |"
+echo "+===================+"
+echo "OK, here's the deal.  This database has been pretty stable lately, so"
+echo "we're not going to bother building a special symlink zic and redoing"
+echo "all the symbolic links.  SO -- you'll have to do this to complete the"
+echo "package:  First, run install/doinst.sh.  Then, delete the install "
+echo "directory and doinst.sh script (you'll be rebuilding it anyway) and"
+echo "check for hard-linked files.  If you find any, figure out and make the"
+echo "symlinks.  If you find dangling symlinks, delete them.  Then, rebuild"
+echo "the zoneinfo.tgz package."
+echo
+echo "NOTE: This might not even be good enough.  I've lately taken to using"
+echo "an old-fashioned make install to build /usr/share/zoneinfo."
+echo
+echo "Press ENTER to proceed..."
+read junk;
+for file in africa antarctica asia australasia etcetera europe \
+factory northamerica pacificnew solar87 solar88 solar89 southamerica \
+systemv leapseconds backward ; do
+ ./zic -d $PKG/usr/share/zoneinfo $file
+done
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/zoneinfo.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/build
+  rm -rf $PKG
+fi

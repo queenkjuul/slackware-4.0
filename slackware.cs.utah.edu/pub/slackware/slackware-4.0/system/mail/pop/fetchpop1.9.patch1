@@ -1,0 +1,112 @@
+/*
+Fix of trivial typos that I found after releasing fetchpop1.9
+*/
+
+*** fetchpop1.9/fetchpop.c.orig	Thu Jun 27 02:44:51 1996
+--- fetchpop1.9/fetchpop.c	Thu Jun 27 04:26:46 1996
+***************
+*** 41,45 ****
+  int decryptit(char *to, char *from);
+  
+! #define VERSION "fetchpop 1.9 release"
+  #define DATE "Jun 1996"
+  
+--- 41,45 ----
+  int decryptit(char *to, char *from);
+  
+! #define VERSION "fetchpop 1.9pl1 release"
+  #define DATE "Jun 1996"
+  
+***************
+*** 154,160 ****
+        if (!flag1 && !flag2) {
+  	options->remove = 2;
+- 	if (!flag1)
+  	  ++flag1;
+- 	else
+  	  ++flag2;
+        } else
+--- 154,158 ----
+***************
+*** 315,319 ****
+    
+    if (iserror) {
+!     fprintf(stderr,"usage: fetchpop [-v] [-k | -q] [-d] [-r] [-x | -e msgID] [-c | -a | -g msg ID] [-h] [-t limit] [-f alternative rcfile] [-l log file] [");
+  #ifdef HAVEMDA
+      fprintf(stderr," -m | ");
+--- 313,317 ----
+    
+    if (iserror) {
+!     fprintf(stderr,"usage: fetchpop [-v] [-k | -q] [-d] [-b] [-r] [-x | -e msg ID] [-c | -a | -g msg ID] [-h] [-t limit] [-f alternative rcfile] [-l log file] [");
+  #ifdef HAVEMDA
+      fprintf(stderr," -m | ");
+***************
+*** 339,343 ****
+  #endif
+  #ifdef HAVEPROCMAIL
+!     fprintf(stderr,"  -p   : use procmail for mail delivery.\n");
+  #endif
+      fprintf(stderr,"  -o   : write the fetched message to user defined mail folder.\n");
+--- 337,341 ----
+  #endif
+  #ifdef HAVEPROCMAIL
+!     fprintf(stderr,"  -p   : use procmail(%s) for mail delivery.\n",FORMAIL);
+  #endif
+      fprintf(stderr,"  -o   : write the fetched message to user defined mail folder.\n");
+***************
+*** 518,522 ****
+  #define DEC(c) ((((c) - ' ') & 077) -2)
+  
+! void encryptit(char to[], char from[])
+  {
+    
+--- 516,520 ----
+  #define DEC(c) ((((c) - ' ') & 077) -2)
+  
+! void encryptit(char *to, char *from)
+  {
+    
+***************
+*** 543,547 ****
+  }
+  
+! int decryptit(char to[], char from[])
+  {
+    int ch,n;
+--- 541,545 ----
+  }
+  
+! int decryptit(char *to, char *from)
+  {
+    int ch,n;
+*** fetchpop1.9/Makefile.orig	Thu Jun 27 02:44:38 1996
+--- fetchpop1.9/Makefile	Thu Jun 27 04:33:22 1996
+***************
+*** 27,30 ****
+--- 27,32 ----
+  #                         Useful if you want to use biff or xmailbox
+  #                         with fetchpop.
++ # -DNODETAILLOG		- don't display delivery method at the end 
++ #     			  of retrieval
+  #--------------------------------------------------------------
+  # For example,
+***************
+*** 33,41 ****
+  #EXTRA_OPTION = -DHAVEMDA -DLogShowfrom 
+  #EXTRA_OPTION = -DHAVEPROCMAIL -DLogShowfrom 
+! EXTRA_OPTION = -DHAVEPROCMAIL -DHAVEMDA -DLogShowfrom -DLogOnlyNew 
+  #EXTRA_OPTION = -DHAVEPROCMAIL -DHAVEMDA -DLogShowfrom  
+  
+  LIBS=
+- 
+  # -------- No need to edit anything below here ---------------------------
+  DEFTARGET=notes
+--- 35,42 ----
+  #EXTRA_OPTION = -DHAVEMDA -DLogShowfrom 
+  #EXTRA_OPTION = -DHAVEPROCMAIL -DLogShowfrom 
+! EXTRA_OPTION = -DHAVEPROCMAIL -DHAVEMDA -DLogShowfrom -DLogOnlyNew -DNODETAILLOG 
+  #EXTRA_OPTION = -DHAVEPROCMAIL -DHAVEMDA -DLogShowfrom  
+  
+  LIBS=
+  # -------- No need to edit anything below here ---------------------------
+  DEFTARGET=notes

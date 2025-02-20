@@ -1,0 +1,95 @@
+.\" -*- nroff -*-
+.ds g \" empty
+.ds G \" empty
+.\" Like TP, but if specified indent is more than half
+.\" the current line-length - indent, use the default indent.
+.de Tp
+.ie \\n(.$=0:((0\\$1)*2u>(\\n(.lu-\\n(.iu)) .TP
+.el .TP "\\$1"
+..
+.TH INSTALLPKG 8 "26 Nov 1995" "Slackware Version 3.1.0"
+.SH NAME
+installpkg \- install Slackware packages.
+.SH SYNOPSIS
+.B installpkg
+[
+.B \-m
+]
+.BI packagename
+.LP
+.B installpkg
+[
+.B \-warn
+]
+.BI packagename
+.LP
+.B installpkg
+[
+.B \-r
+]
+.BI packagename
+.SH DESCRIPTION
+.B installpkg
+installs and creates *.tgz packages designed for use with the Slackware Linux
+distribution. When you call 
+.B installpkg
+with the
+.B \-r 
+option, it will assume that you have created the structure for the 
+package in the current directory (such as when you untar a package in a 
+directory by itself). It will create entries for the package in 
+/var/adm/packages and /var/adm/scripts, and will copy all the files from the
+current directory and its subdirectories onto your root directory. If you
+use the
+.B \-m
+option, it will not install the contents of the current directory, but will
+make a *.tgz package using the name you have provided. Do not append the *.tgz
+suffix to this name \-
+.B installpkg
+will do this for you automatically. The last, and probably most common use for
+.B installpkg
+is to install single or multiple Slackware compatible packages without having
+to use the pkgtool or setup programs. Don't use any options for this; just 
+provide
+.B installpkg
+with a list of packages to be installed.
+.SH OPTIONS
+.TP
+.B \-warn packagename
+Generate a report to the standard output about which files and directories
+would be removed or overwritten if you install the package, but do not
+actually install it.
+.TP
+.B \-m packagename
+Make the contents of the current and subdirectories into a package with
+the name <packagename>.tgz.
+.TP
+.B \-r packagename
+Install the contents of the current and subdirectories as a package with
+the name <packagename>.
+.SH " "
+It's possible to install to a directory other than root
+by supplying
+.B installpkg
+with a
+.B ROOT
+environment variable:
+.TP
+.B ROOT=/mnt installpkg package.tgz
+.SH BUGS
+The
+.B \-r
+,
+.B \-m
+and
+.B \-warn
+options cannot be used together.
+.SH AUTHOR
+Patrick J. Volkerding <volkerdi@ftp.cdrom.com>
+.SH "SEE ALSO"
+.BR makepkg(8),
+.BR removepkg(8),
+.BR explodepkg(8),
+.BR pkgtool(8), 
+.BR setup(8),
+.BR upgradepkg(8)

@@ -1,0 +1,17 @@
+Begin3
+Title: get-mail
+Version: 1.0
+Entered-date: 02-02-1998
+Description: a little mail collector for LinuX using the pop3-protocol
+Description:  
+Keywords: network mail pop3
+Author: Rajko Albrecht (rajko.albrecht@informatik.tu-chemnitz.de)
+Maintained-by: Rajko Albrecht (rajko.albrecht@informatik.tu-chemnitz.de)
+Primary-site: sunsite.unc.edu/pub/Linux/system/Mail/pop3
+		1k get-mail-1.0.lsm
+		13k get-mail-1.0.tar.gz
+Alternate-site:
+Original-site:
+Platform: a (LinuX) kernel supporting network
+Copying-policy: GPL
+End

@@ -1,0 +1,20 @@
+Begin3
+Title:          zircon
+Version:        1.17.4b37
+Entered-date:   17SEP96
+Description:    This is Zircon, an X11 interface to IRC.
+                The software is written in tcl/tk.
+                Suggestions for improvements to Zircon are welcome. I am
+                particularly interested in making the system useful for
+                those users in groups where JIPS and other national
+                character sets are used. This is a BETA version.
+                See also : http://catless.ncl.ac.uk/Programs/Zircon/
+Keywords:       zircon, irc, chat, tcl, tk
+Author:         zircon@catless.ncl.ac.uk (Lindsay F. Marshal)
+Primary-site:   catless.ncl.ac.uk /pub
+                203064 zircon-1.17p4b37.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network/chat
+                203064 zircon-1.17p4b37.tar.gz
+Platforms:      X11, tcl7.5 and tk 4.1
+Copying-policy: free
+End

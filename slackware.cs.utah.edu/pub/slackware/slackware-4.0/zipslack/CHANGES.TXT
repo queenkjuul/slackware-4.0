@@ -1,0 +1,35 @@
+Sat May  8 23:38:08 CDT 1999
+New ZipSlack 4.0 release:  ZipSlack rebuilt from Slackware 4.0 packages.  Now
+uses the Linux 2.2.6 kernel.  fourmeg.zip rebuilt for ZipSlack 4.0.
+----------------------------
+Wed Oct 28 04:01:07 CST 1998
+New ZipSlack 3.6 release:  ZipSlack rebuilt from Slackware 3.6 packages.
+fourmeg.zip rebuilt for ZipSlack 3.6.
+----------------------------
+Mon Oct 26 01:45:51 CST 1998
+Upgraded bootdisk.img to linux-2.0.35 for upcoming ZipSlack release.
+----------------------------
+Fri Aug 14 20:59:26 CDT 1998
+Added fourmeg.zip package.  This adds an 8 megabyte swap file to ZipSlack,
+allowing it to boot on machines with only 4 megabytes of RAM.  Hopefully this
+will help make some of those old 386 laptops useful again. :^)
+----------------------------
+Fri Jun  5 21:00:59 PDT 1998
+zipslack.zip rebuilt from the latest Slackware.
+Upgraded bootdisk.img to linux-2.0.34.
+----------------------------
+Wed May 27 02:25:45 CDT 1998
+Rebuilt zipslack.zip from current Slackware snapshot, added 'dip' package,
+      and added PCMCIA support.
+NOTE: This won't allow you to install to a drive connected through a PCMCIA
+      card, only to use PCMCIA devices.  Booting Linux on a PCMCIA device
+      would require using an initial ramdisk (initrd) with PCMCIA support, and
+      my tests here have shown that an initrd doesn't work with a UMSDOS Linux
+      system installed in \LINUX.
+----------------------------
+Tue May 12 23:57:28 CDT 1998
+Updated zipslack.zip archive to use new /vmlinuz, and set -R rdev flag to 0.
+----------------------------
+Fri May  8 22:24:37 CDT 1998
+Recompiled kernel on zipslack.img using newer NCR 53c8xx SCSI driver.  This
+is reported to work better with Diamond SCSI cards.

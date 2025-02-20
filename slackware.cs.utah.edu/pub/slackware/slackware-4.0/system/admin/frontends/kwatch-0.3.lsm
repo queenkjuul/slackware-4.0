@@ -1,0 +1,13 @@
+Begin3
+Title:          kwatch
+Version:        0.3
+Entered-Date:	3 Mar 1998
+Description:    KDE/Qt log file viewer
+Keywords:	KDE Qt X11 xwatch
+Author:         Ralph Weichert <Ralph.Weichert@physik.th-darmstadt.de>
+Maintained-by:  Ralph Weichert <Ralph.Weichert@physik.th-darmstadt.de>
+Primary-site:	ftp://ftp.kde.org/pub/kde/unstable/apps/utils/
+Alternate-site:	
+Original-site:  
+Platform:       KDE-enabled platforms (X11, UNIX, KDE and Qt libs)
+End

@@ -1,0 +1,57 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-sastroid
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+tar xzvf $CWD/_sastroid.tar.gz
+
+# Function to handle manpage source:
+man2gz () { # $1 is source page name, $2 is target name for preformatted
+            # output (full path && name) and $3 is the same, but for the
+            # source.
+  mkdir -p `dirname $2`
+  groff -Tascii -mandoc $1 | gzip -9c > $2
+  if [ ! "$3" = "" ]; then
+    mkdir -p `dirname $3`
+    cat $1 > $3 
+  fi 
+}
+
+echo "+=========+"
+echo "| sast1.5 |"
+echo "+=========+"
+cd $TMP
+tar xzvf $CWD/sast1.5-src.tar.gz
+cd sast1.5
+zcat $CWD/sast1.5-src.diff.gz | patch
+make
+strip sasteroids
+cat sasteroids > $PKG/usr/games/sasteroids
+cat sast.cf > $PKG/usr/games/sast.cf
+cat sastsound.cf > $PKG/usr/games/sastsound.cf
+man2gz sasteroids.6 $PKG/usr/man/preformat/cat6/sasteroids.6.gz $SRC/usr/man/man6/sasteroids.6
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/sastroid.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/sast1.5
+  rm -rf $PKG
+fi

@@ -1,0 +1,22 @@
+Begin
+Title:          Ethiopic Keyboard Package
+Version:        0.10
+Entered-date:   February 6, 1997
+Description:    The Ethiopic (aka Ge'ez, Fidel) Keyboard Package is a 
+                collection of fonts for using Ethiopic script under the UTF-8
+                and 512 character support in Linux kernels after version 
+                1.3.28.  References to other information on how to use Ethiopic
+                in Linux for NLS, Java, and web browsing with Lynx is also 
+                provided.
+Keywords:       ethiopic, fidel, ge'ez, fonts, unicode, utf, linux
+Author:         dmulholl@cs.indiana.edu (Daniel Yacob)
+Maintained-by:  dmulholl@cs.indiana.edu (Daniel Yacob)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/keyboard/
+                  25 kb ethiopic.tgz
+                   1 kb ethiopic.lsm
+Alternate-site: 
+Original-site:  ftp.cs.indiana.edu /pub/fidel/linux/
+                  25 kb ethiopic.tgz
+Platform:       linux
+Copying-policy: GNU GPL v2.0
+End

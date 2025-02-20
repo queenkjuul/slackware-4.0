@@ -1,0 +1,6 @@
+
+This package allows you to run from a CD-ROM with the least possible
+hard drive usage.  It creates a link from /usr to /cdrom/live/usr.  Most of
+the configurable files are in /var or /etc anyway, so you'll still be
+able to fully configure your machine.
+

@@ -1,0 +1,14 @@
+Title:          Idle Killer
+Version:        1.0
+Entered-date:   12/17/94
+Description:    Shell script to be run from root's crontab to kill
+                processes running under tty's of idle users, but not
+                those processes on active sessions of the same users.
+Keywords:       idle kill user
+Author:         Mark Luljak <fairlite@mtech.csd.uwm.edu>
+Maintained-by:  Same.
+Primary-site:   
+Alternate-site: 
+Original-site:  
+Platform:       Linux tcsh (written under 1.1.45)
+Copying-policy: Freeware...

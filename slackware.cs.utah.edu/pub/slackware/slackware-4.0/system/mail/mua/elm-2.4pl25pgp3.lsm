@@ -1,0 +1,18 @@
+Begin3
+Title: elm
+Version: 2.4pl25 pgp3
+Entered-date: 25-June-1996
+Description: Elm 2.4pl25 with builtin pgp support.  This version was modified
+             slightly to build against linux (tested on libc 5.3.12, kernel
+             2.0.0).  Pgp must be acquired separately and installed.
+Keywords: elm, mail, readers
+Author: elm@DSI.COM (elm team), kenc@viewlogic.com (Ken Cox)
+Maintained-by: grouchy@xsite.net (Brent Earl)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Mail/readers
+              839k elm-2.4pl25pgp3.tgz
+              1k   elm-2.4pl25pgp3.lsm
+Alternate-site:
+Original-site:
+Platform: gcc
+Copying-policy: ask Ken Cox or the Elm team, GPL
+End

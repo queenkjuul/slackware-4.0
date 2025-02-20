@@ -1,0 +1,59 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+cat /dev/null > $TMP/SeTnewtag
+dialog --title "SELECTING SOFTWARE FROM SERIES A (BASE LINUX SYSTEM)" \
+       --checklist "Please select the optional components you wish to install \
+from series A. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the items you wish to install. \
+(NOTE: The more important system packages are not listed here and will be installed \
+automatically) \
+Press ENTER when you are \
+done." 20 72 9 \
+"ide"  "Linux 2.2.6 no SCSI (YOU NEED 1 KERNEL)" "on" \
+"scsi"  "Linux 2.2.6 with SCSI (YOU NEED 1 KERNEL)" "on" \
+"bsdlpr" "BSD lpr - printer spooling system" "on" \
+"loadlin" "Boots Linux (UMSDOS too!) from MS-DOS" "on" \
+"ibcs2" "Runs SCO/SysVr4 binaries" "off" \
+"pcmcia" "PCMCIA card services support" "on" \
+"pnp" "Plug'n'Play configuration tool" "on" \
+"getty" "Getty_ps 2.0.7j - OPTIONAL" "off" \
+"aoutlibs" "a.out shared libraries - RECOMMENDED" "on" \
+"minicom" "Serial transfer and modem comm package" "on" \
+"cpio" "The GNU cpio backup/archiving utility" "on" \
+"kbd" "Change keyboard mappings and console fonts" "on" \
+"gpm" "Cut and paste text with your mouse" "on" \
+"zoneinfo" "Configures your time zone" "on" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ > $TMP/SeTnewtag
+ for pkg in aaa_base aoutlibs bash cpio devs etc grep bin gzip e2fsbn elflibs \
+  find getty gpm hdsetup ibcs2 ide kbd less ldso lilo loadlin bsdlpr pnp \
+  umsprogs minicom modules procps sysklogd pcmcia pciutils \
+  scsi sh_utils sysvinit scsimods fsmods fileutls glibc1 glibc2 \
+  shadow tar tcsh txtutils util zoneinfo bzip2 modutils elvis ; do
+  echo "$pkg: SKP" >> $TMP/SeTnewtag
+ done
+ exit
+fi
+cat /dev/null > $TMP/SeTnewtag
+for PACKAGE in aaa_base bash devs etc shadow hdsetup lilo umsprogs sysvinit \
+bin ldso less gzip procps elflibs util e2fsbn bsdlpr pciutils \
+find grep sh_utils sysklogd fileutls glibc1 glibc2 elvis \
+modules scsimods fsmods tar txtutils tcsh bzip2 modutils ; do
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+done
+for PACKAGE in ide scsi getty aoutlibs minicom cpio kbd \
+pnp gpm zoneinfo ibcs2 loadlin pcmcia ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+rm -f $TMP/SeTpkgs

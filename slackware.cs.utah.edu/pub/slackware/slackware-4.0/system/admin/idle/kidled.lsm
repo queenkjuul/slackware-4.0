@@ -1,0 +1,21 @@
+Begin3
+Title:          kidled -- kick idle users off the system
+Version:        $Id: kidled.lsm,v 1.3 1998/12/18 19:35:55 shalunov Exp $
+Entered-date:   Jul 2, 1998
+Description:	kidled is a Linux daemon that runs in the background,
+		looks for users who are idle for some time (20 minutes
+		by default, can be changed with an option), and logs
+		them off.
+		There are no config files for kidled, it doesn't
+		do anything silly (no mail sent anywhere, just a
+		message written on user's terminal, no coffee made, no
+		shutdown performed) and it's very simple and reliable.
+		All interesting and/or unusual events are logged to
+		syslogd.
+Keywords:       idle logout kidled idled linux
+Author:         shalunov@mccme.ru (stanislav shalunov)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/admin/idle
+		9K kidled-0.4.tar.gz
+Alternate-site: ftp.mccme.ru /pub/unix
+Copying-policy: GPL
+End

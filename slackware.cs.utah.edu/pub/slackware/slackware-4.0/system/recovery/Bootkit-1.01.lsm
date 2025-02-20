@@ -1,0 +1,17 @@
+Begin3
+Title:         The Linux Bootkit 
+Version:       1.01
+Entered-date:  03JUNE95
+Desc1:         The Linux Bootkit is a dialog driven package for
+Desc2:         creating and maintaining emergency boot, root, and
+Desc3:         utility diskettes.  Fixes a distribution problem
+Desc4:         in the original 1.0 release. :-)
+Keywords:      boot emergency disaster recovery bootkit
+Author:        scottb@intnet.net (B. Scott Burkett)
+Maintained-by: scottb@intnet.net (B. Scott Burkett) 
+Primary-site:  sunsite.unc.edu
+Alternate-site:
+Original-site: 
+Platform:
+Copying-policy:pd
+End

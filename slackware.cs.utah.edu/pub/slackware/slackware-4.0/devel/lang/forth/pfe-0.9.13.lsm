@@ -1,0 +1,13 @@
+Begin3
+Title: Portable Forth Environment
+Version: 0.9.12
+Description: Provides an interactive environment for development of Forth programs. Conforms to the ANSI standard for the programming language Forth, all word sets.
+Keywords: ANS Forth
+Author: duz@roxi.rz.fht-mannheim.de (Dirk Uwe Zoller)
+Maintained-by: duz@roxi.rz.fht-mannheim.de
+Primary-site: sunsite.unc.edu:/pub/Linux/devel/forth
+Size: 265924
+Entered: Jul 17 1995
+Archive: pfe-0.9.13.tar.gz
+Copying-policy: LGPL
+End

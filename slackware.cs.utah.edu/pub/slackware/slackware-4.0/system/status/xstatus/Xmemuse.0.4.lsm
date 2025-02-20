@@ -1,0 +1,15 @@
+Begin3
+Title:          Xmemuse
+Version:        0.4
+Entered-date:   17Apr96
+Description:    Shows free-used-buffers-shared/ram-swap in a chart (like xload).
+		uses /proc/meminfo (old or new format)
+Keywords:       xmem xload monitor status memory
+Author:         harm@chaos.es.ele.tue.nl (Harm Arts)
+Maintained-by:  harm@chaos.es.ele.tue.nl (Harm Arts)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xutils/status
+		4434 Xmemuse.tgz
+Alternate-site: ftp.es.ele.tue.nl:/pub/linux
+Copying-policy: GPL
+End
+

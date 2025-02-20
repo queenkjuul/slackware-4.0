@@ -1,0 +1,14 @@
+Begin3
+Title: konline
+Version: 0.1.1
+Entered-date: 10 Aug 1998
+Description: Client for the konserver program.
+Keywords: KDE, Qt, X11, konserver
+Author: <Christoph.Neerfeld@home.ivm.de> (Christoph Neerfeld)
+Maintained-by: <Christoph.Neerfeld@home.ivm.de> (Christoph Neerfeld)
+Primary-site: ftp://ftp.kde.org/pub/kde/unstable/apps/network
+Alternate-site:
+Original-site:
+Platform: Linux, needs Qt by Troll Tech Inc., KDE
+Copying-policy: GPL
+End

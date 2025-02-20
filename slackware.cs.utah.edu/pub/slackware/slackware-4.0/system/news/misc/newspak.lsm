@@ -1,0 +1,23 @@
+
+[....note - I uploaded this in December but have received complaints
+	that the .tgz file never appeared.  Here's the same thing again.
+	I think the path is ok
+					vince@halcyon.com ...]
+
+Begin3
+Title:          newspak
+Version:        2.5 
+Entered-date:   November 29, 1995
+Description:   config files for building the USENET news/mail/uucp software 
+		(trn/mthreads/tin/nn/inn/cnews/elm/sendmail+IDA/smail/uucp) 
+Keywords:      usenet news mail uucp 
+Author:        vince@halcyon.com (Vince Skahan) 
+Maintained-by: vince@halcyon.com (Vince Skahan) 
+Primary-site:  sunsite.unc.edu /pub/Linux/system/Mail/news 
+		187 kB newspak-2.5.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:      linux but can be modified for any *nix 
+Copying-policy: freely redistributable.  Please notify the author by mail 
+		if you use this to build a Linux distribution. (see README)
+End

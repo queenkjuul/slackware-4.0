@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/source/n/sendmail+procmail</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/source/n/sendmail+procmail</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/source/n/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sendmail.mc.diff.gz">sendmail.mc.diff.gz</a></td><td align="right">1998-05-22 06:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="sendmail.8.9.3.tar.sig">sendmail.8.9.3.tar.sig</a></td><td align="right">1999-02-05 07:00  </td><td align="right">285 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="sendmail.8.9.3.tar.gz">sendmail.8.9.3.tar.gz</a></td><td align="right">1999-02-05 07:00  </td><td align="right">1.0M</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="procmail.README">procmail.README</a></td><td align="right">1999-03-31 07:00  </td><td align="right">6.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="procmail.FEATURES">procmail.FEATURES</a></td><td align="right">1999-03-31 07:00  </td><td align="right">3.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="procmail-3.13.1.tar.gz.sig">procmail-3.13.1.tar.gz.sig</a></td><td align="right">1999-04-06 06:00  </td><td align="right">366 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="procmail-3.13.1.tar.gz">procmail-3.13.1.tar.gz</a></td><td align="right">1999-04-06 06:00  </td><td align="right">214K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="_sendmail.tar.gz">_sendmail.tar.gz</a></td><td align="right">1999-01-11 07:00  </td><td align="right">3.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="_procmail.tar.gz">_procmail.tar.gz</a></td><td align="right">1997-04-27 06:00  </td><td align="right">294 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild-smailcfg">SlackBuild-smailcfg</a></td><td align="right">1999-04-07 06:00  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild-sendmail">SlackBuild-sendmail</a></td><td align="right">1999-04-05 06:00  </td><td align="right">2.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild-procmail">SlackBuild-procmail</a></td><td align="right">1999-04-07 06:00  </td><td align="right">1.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild">SlackBuild</a></td><td align="right">1999-01-12 07:00  </td><td align="right"> 85 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

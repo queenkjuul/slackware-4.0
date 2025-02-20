@@ -1,0 +1,210 @@
+
+  Slackware SCSI bootdisks
+  ------------------------
+
+  This directory contains a collection of batch files used to create Slackware
+  bootdisks.  To create a disk, just put a formatted floppy disk in your drive
+  and choose one of the options listed below to make the disk.  Read all of the
+  choices carefully to pick the disk that best matches the hardware in your
+  machine.  NOTE:  Using the VIEW program to create the Slackware bootdisks
+  may not work under Windows.  If you're running Windows95 or 98, you should
+  restart your machine in MS-DOS mode before creating a bootdisk.
+
+  NOTE:  In addition to some sort of SCSI support, all of these disks contain
+         support for IDE hard drives and CDROM drives.  So, if you're running
+         a mixed IDE/SCSI system, the kernels on these disks will be able to
+         handle the situation just fine.  Look for the disk below containing
+         support for your SCSI controller card.  
+
+  Name        Additional driver support
+  ----        -------------------------
+
+7000fast.bat       Western Digital 7000FASST SCSI support.
+
+acard.bat          ACARD 870U/W SCSI host adapter support.
+
+advansys.bat       This bootdisk supports all AdvanSys SCSI controllers,
+                   including some SCSI cards included with HP CD-R/RW 
+                   drives, the Iomega Jaz Jet SCSI controller, and the 
+                   SCSI controller on the Iomega Buz multimedia adapter.
+
+aha152x.bat        Adaptec 152x SCSI support.  This supports the AHA-1510,
+                   AHA-1520, AHA-1522, and AHA-2825 SCSI host adapters.
+
+aha1542.bat        Adaptec 1542 SCSI support.
+
+aha1740.bat        Adaptec 1740 SCSI support.
+
+aic7xxx.bat        Adaptec AIC7xxx SCSI support.  These include the 274x
+                   EISA cards, 284x VLB cards, 294x PCI cards, 394x PCI 
+                   cards, 3985 PCI card, and several versions of the
+                   Adaptec built-in SCSI controllers on various PC
+                   motherboards.
+
+am53c974.bat       AM53/79C974 SCSI support.
+
+buslogic.bat       This supports BusLogic MultiMaster and FlashPoint SCSI
+                   controllers.
+
+dtc3280.bat        DTC (Data Technology Corp) 3180/3280 SCSI support.
+
+eata_dma.bat       DPT EATA-DMA SCSI support.  (Boards such as PM2011, 
+                   PM2021, PM2041, PM3021, PM2012B, PM2022, PM2122, PM2322,
+                   PM2042, PM3122, PM3222, PM3332, PM2024, PM2124, PM2044, 
+                   PM2144, PM3224, PM3334.)
+
+eata_isa.bat       DPT EATA-ISA/EISA SCSI support.  (Boards such as 
+                   PM2011B/9X, PM2021A/9X, PM2012A, PM2012B, PM2022A/9X,
+                   PM2122A/9X, PM2322A/9X)
+
+eata_pio.bat       DPT EATA-PIO SCSI support.  (PM2001 and PM2012A)
+
+fdomain.bat        This supports Future Domain's 16-bit SCSI host adapters
+                   (TMC-1660/1680, TMC-1650/1670, TMC-3260, 
+                   TMC-1610M/MER/MEX) and other adapters based on the
+                   Future Domain chipsets (Quantum ISA-200S, ISA-250MG;
+                   Adaptec AHA-2920; and at least one IBM board).
+
+gdt.bat            This is a bootdisk for all SCSI Disk Array Controllers
+                   (EISA/ISA/PCI) manufactured by ICP Vortex.
+
+ibmmca.bat         This is a bootdisk based on a development kernel which
+                   supports MicroChannel Architecture, found in some IBM 
+                   PS/2 machines and laptops. It is a bus system similar to
+                   PCI or ISA.  Support for most MCA SCSI, Ethernet, and
+                   Token Ring adapters is included.
+
+in2000.bat         Always IN2000 SCSI support.
+
+initio.bat         Supports the Initio 91XXU(W) and Initio 91XXU(W) SCSI
+                   host adapters.
+
+iomega.bat         IOMEGA parallel port SCSI support.  This supports
+                   the parallel-port Zip drives as a Linux SCSI device.
+                   This disk supports the older PPA parallel Zip drives
+                   as well as the newer ZipPlus drives that use the IMM
+                   driver.
+
+megaraid.bat       This bootdisk supports the AMI MegaRAID 428 and 438
+                   (and maybe 466) SCSI host adapters.
+
+n53c4xx.bat        NCR 53c406a and Symbios Logic sym53c416 SCSI support.
+
+n_5380.bat         NCR 5380 and 53c400 SCSI support.  This is the generic
+                   NCR family of SCSI controllers, not to be confused with
+                   the NCR 53c7 or 8xx controllers.  An example of a
+                   controller that uses the NCR53c400 chip is the Trantor
+                   T130B.
+
+n_53c7xx.bat       NCR 53c7xx, 53c8xx SCSI support.  (Most NCR PCI
+                   SCSI controllers use this driver, or the driver below)
+
+n_53c8xx.bat       This is the FreeBSD NCR driver adapted to Linux for
+                   the NCR53C8XX family of PCI-SCSI controllers. This
+                   driver supports parity checking, tagged command queuing,
+                   fast SCSI II transfer up to 10 MB/s with narrow SCSI
+                   devices and 20 MB/s with wide scsi devices.  It also
+                   supports Ultra SCSI data transfers with NCR53C860 and
+                   NCR53C875 controllers.  The following Symbios/NCR 
+                   chipsets are supported by the driver in this bootdisk:
+                   810 810A 815 825 825A 860 875 876 895 896
+
+no_kbd.bat         This version of scsi.s is a workaround for a problem:
+                   Some newer P2/Celeron systems have been known to
+                   reboot themselves as the kernel is starting up.  This
+                   seems to happen as the keyboard LEDs are reset.  The
+                   no_kbd.s does not reset the keyboard LEDs, and will
+                   boot correctly on most machines with this symptom.
+                   A BIOS upgrade from the motherboard manufacturer may
+                   fix the problem.
+
+no_pci.bat         If you're having problems with a hang during PCI
+                   probing, try this SCSI-supporting bootdisk without PCI
+                   BIOS support.  Some old PCI motherboards have BIOS
+                   bugs and may crash if "PCI bios support" is enabled,
+                   but they run fine without this option.  In many cases
+                   the BIOS can be fixed with a flash update from the
+                   motherboard manufacturer's web site.
+
+old_cd.bat         This disk is provided in the unlikely event that
+                   someone needs to install from an old CD-ROM drive on a
+                   proprietary (*not* SCSI or IDE/ATAPI) interface to a
+                   hard drive on a SCSI controller.  This disk supports
+                   most Linux supported SCSI controllers, plus the CD-ROM
+                   drives supported by these bootdisks:  aztech.i, cdu31a.i,
+                   cdu535.i, cm206.i, goldstar.i, isp16.i, mcd.i, mcdx.i,
+                   optics.i, sanyo.i, and sbpcd.i.
+                       
+pas16.bat          Pro Audio Spectrum/Studio 16 SCSI support.
+
+pci2000.bat        This bootdisk supports the PCI2000I, PCI2220i, and 
+                   PSI240i EIDE interface cards.  All of these act as
+                   SCSI host adapters.
+
+qlog_fas.bat       ISA/VLB/PCMCIA Qlogic FastSCSI! support.  (also 
+                   supports the Control Concepts SCSI cards based on the
+                   Qlogic FASXXX chip)
+
+qlog_isp.bat       Supports all Qlogic PCI SCSI controllers, except the
+                   PCI-basic, which is supported by the AMD SCSI driver
+                   found on the am53c974.s bootdisk.
+
+scsi.bat           A generic SCSI bootdisk, with support for most SCSI
+                   controllers that work under Linux.  (NOTE: This disk
+                   wastes a lot of memory, since it contains nearly *all*
+                   of the SCSI drivers.  If you know which SCSI controller
+                   your system has, it's *far* better to use the disk 
+                   designed especially for it.  But, if you don't know,
+                   then this generic disk might just work for you.)
+
+scsinet.bat        Supports most SCSI controllers, plus many of the most
+                   common ethernet cards.  Use this for installing over a
+                   network to a SCSI drive.  (Or you can also use the
+                   bootdisk for your SCSI controller plus the appropriate
+                   ethernet module.  See the README files in the ../modules
+                   directory if you want to try this approach)
+                   NOTE:  Don't be too surprised if scsinet.s causes your
+                   machine to hang.  It's loaded with nearly every SCSI
+                   and network driver for Linux, and unless your hardware
+                   is well behaved, the probing process can freeze your
+                   machine.  If that happens, don't panic, just use a
+                   disk with less drivers.  If you're not installing over
+                   the network, the disk designed for your SCSI controller
+                   is the right choice.  If you need network support, use
+                   the disk designed for your SCSI card, plus put 'insmod'
+                   and the required network modules on another floppy to
+                   load before running setup.  The README files in the
+                   ../modules directory explain this process in detail.
+
+seagate.bat        Seagate ST01/ST02, Future Domain TMC-885/950 SCSI
+                   support.
+
+sgivis.bat         This bootdisk supports the SGI Visual Workstation
+                   models 320 and 540.  The kernel also supports Adaptec
+                   aic7xxx SCSI cards, multiple CPUs, and the SGI DBE 
+                   video frame buffer graphics console.
+
+smp.bat            This disk is the same as the generic scsi.s bootdisk,
+                   but adds support for motherboards with multiple CPUs.
+                   (symmetric multiprocessing, or SMP)
+
+sym538xx.bat       This bootdisk contains enhanced support for Symbios/NCR
+                   SCSI chipsets in the SYM53C8XX family.  It drops support
+                   of some of the oldest chipsets in this family in order
+                   to use some new features, so older cards will need to
+                   use the n_53c7xx.s or n_53c8xx.s bootdisk images instead.
+                   The driver in this bootdisk supports the following
+                   Symbios/NCR chipsets: 810A 825A 860 875 876 895 896
+
+tekram.bat         This bootdisk supports the Tekram DC390(T) PCI SCSI
+                   Hostadapter with the Am53C974A chip, and perhaps other
+                   cards using the same chip.  It does _not_ support the
+                   DC390W/U/F adaptor with the NCR/Symbios chips -- for
+                   those cards, use the n_53c8xx.s bootdisk.
+
+trantor.bat        Trantor T128/T128F/T228 SCSI support.
+
+ultrastr.bat       UltraStor 14F, 24F, and 34F SCSI support.
+
+ustor14f.bat       UltraStor 14F and 34F SCSI support.
+

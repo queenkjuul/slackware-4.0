@@ -1,0 +1,15 @@
+Title:            finger (with port option)         
+Version:          1.0       
+Entered-date:     July 11, 1995  
+Description:      Modification of finger source to allow user to specify
+	          the remote port of the finger service.   
+Keywords:         finger       
+Author:           pfrommer@scus1.ctstateu.edu (Dave Pfrommer)        
+Maintained-by:    pfrommer@scus1.ctstateu.edu (Dave Pfrommer)
+Primary-site:     sunsite.unc.edu  /pub/Linux/system/Network/finger
+	          11K finger_with_port.tar.gz
+                  1K finger_with_port.lsm  
+Alternate-site:   None
+Original-site:    sunsite.unc.edu 
+Platform:         Linux       
+Copying-policy:   GPL 

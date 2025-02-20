@@ -1,0 +1,22 @@
+The binary-kits subdirectory
+(ftp://ftp.xemacs.org/pub/xemacs/xemacs-20.4/binary-kits/) 
+holds executables for XEmacs 20.4.  The binary-kits are in the form:
+ 
+xemacs-$VERSION-$ARCHITECTURE-$VENDOR-$OS-$FEATURE.tar.gz
+ 
+Each kit has an associated README file which contains detailed
+installation instructions, as well as information about how the kit
+was built and what features it contains.  Please view the README in
+it's entirety before downloading a particular kit to insure
+compatibility with your system.
+ 
+NOTE: 
+To use these binary-kits, you will also need the files in either:
+
+/pub/xemacs/xemacs-20.4/xemacs-20.4-common.tar.gz (for Non-Mule kits) OR
+/pub/xemacs/xemacs-20.4/xemacs-20.4-common-mule.tar.gz (for Mule kits)
+
+These are the architecture-independent parts of the installation tree
+(the `lisp', `etc', and `info' directories.)  Please see your kit's
+README file for more information.
+

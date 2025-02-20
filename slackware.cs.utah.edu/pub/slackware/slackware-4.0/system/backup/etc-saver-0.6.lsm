@@ -1,0 +1,19 @@
+Begin3
+Title:          etc-saver 
+Version:        0.6
+Entered-date:   December 19, 1998
+Description:    etc-saver creates a rolling archive of daily gzipped
+		tarballs of your /etc directory on your floppy drive.  
+		It is customizable and quick (but no real substitute
+		for a full backup :)
+Keywords:       linux, backup, floppy, script
+Author:         mdxi@collapsar.ml.org (Shawn Boyette)
+Maintained-by:  mdxi@collapsar.ml.org (Shawn Boyette)
+Primary-site:   metalab.unc.edu /pub/Linux/system/backup
+			  5 kB etc-saver-0.6.tar.gz
+			  1 kB etc-saver-0.6.lsm
+Original-site:  http://collapsar.ml.org/software/etc-saver/
+			  5 kB etc-saver-0.6.tar.gz
+Platform:	Linux bash script
+Copying-policy: Public Domain
+End

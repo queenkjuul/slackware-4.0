@@ -1,0 +1,9 @@
+tar xzvf gcl-2.2.2.tar.gz
+cd gcl-2.2.2
+[ this adds the /usr/info path, and selects dynamic compilation ]
+zcat gcl-2.2.2.diff.gz | patch 
+[ if the tclConfig.sh and tkConfig.sh are in /usr/lib on slackware add
+ a third argument to ./add-defs to give that directory... ]
+% ./add-defs 386-linux /usr/lib
+% make
+% make install "PREFIX_DIR=/usr"

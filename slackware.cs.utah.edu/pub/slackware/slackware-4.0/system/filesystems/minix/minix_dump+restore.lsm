@@ -1,0 +1,25 @@
+Begin2
+Title        = dump/restore level 0 for minix filesystem
+Version      = N/A (written just as demo)
+Desc1        = This set of utils will do the equivalent of dump 0
+Desc2        = and restore, but on a minix-fs
+Author       = Amit Margalit
+AuthorEmail  = amit@tavis.enet.dec.com
+Maintainer   = N/A (written just as demo)
+MaintEmail   = N/A
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming
+File1        = minix_dump+restore.tar.gz
+FileSize1    = 60k
+Required1    = Linux kernel v1.1.20
+Required2    = libc-4.5.26
+CopyPolicy1  = GPL
+Keywords     = backup, dump, restore, minix, filesystem
+Comment1     = This was written to demonstrate the idea. Not to be used
+Comment2     = seriously. This may save someone only if he is using minix
+Comment3     = fs - in which case the utils, thought highly untested are
+Comment4     = extremely efficient!
+Entered      = 31JUL94
+EnteredBy    = Amit Margalit
+End
+

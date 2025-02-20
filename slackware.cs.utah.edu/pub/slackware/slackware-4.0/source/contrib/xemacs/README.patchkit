@@ -1,0 +1,24 @@
+A patchkit is provided for patching up from a pure 20.3 XEmacs source tree
+to 20.4.  You must have a fairly recent version of patch (ie GNU patch 2.1
+or later) that understands unified diff format.  Also, if your version of
+patch doesn't handle missing files very well (like some versions of GNU
+patch 2.x) and you haven't installed the *20.3* XEmacs/Mule sources, you will
+wish to do so before applying the patch.
+
+Uncompress the patch kit and cd to the toplevel source directory of
+your XEmacs 20.3 sources.  Install the 20.3 XEmacs/Mule sources if you
+are at all unsure about your patch program.
+
+Execute the patch kit with /bin/sh.  There should be no errors or
+rejection files (.rej).
+
+Rerun configure with `./config.status --recheck' if you haven't cleaned out
+the source tree with `make distclean', otherwise build from scratch as usual.
+
+Note that this version of XEmacs will rebuild everything by default from
+a standard `make' command.
+
+Note also that when building the info documentation, it is best to have the
+latest version of makeinfo (1.68) from GNU texinfo 3.11.
+
+Report any problems to the comp.emacs.xemacs newsgroup and Good Luck!

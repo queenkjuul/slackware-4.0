@@ -1,0 +1,15 @@
+Begin3
+Title:          Update - an update daemon for Linux 2.0 or newer.
+Version:        2.01
+Entered-date:   09APR99
+Description:    The update daemon periodically flushes filesystem
+		buffers. This version does not spawn a bdflush
+		daemon, as this is now done by the kernel (kflushd).
+Keywords:       update daemon Linux source
+Author:         torsten@diku.dk (Torsten Poulin)
+Maintained-by:  torsten@diku.dk (Torsten Poulin)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Daemons
+		updated-2.01.tar.gz
+		updated-2.01.lsm
+Copying-policy: GPL
+End

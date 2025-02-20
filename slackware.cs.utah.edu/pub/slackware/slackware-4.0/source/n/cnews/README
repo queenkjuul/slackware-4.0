@@ -1,0 +1,12 @@
+
+Read the News-HOWTO (in /usr/doc/faq/howto) for details about compiling
+Cnews under Linux. In addition to the problems mentioned, the 'doit.bin'
+process bombed out whenever it attempted to use -ldbm. If you carefully 
+type in the offending command moving -ldbm to the end, it will work and
+you can then run 'doit.bin' again. (and again, and again, until it makes
+it all the way through...)
+
+I also applied the patch to 'doexplode' mentioned in the HOWTO.
+
+Pat
+

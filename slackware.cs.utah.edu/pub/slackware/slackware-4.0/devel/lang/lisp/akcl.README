@@ -1,0 +1,113 @@
+					Padova, 1993 Mar 9
+
+
+This directory contains the following files:
+
+akcl-1-615.tar.z  : AKCL from University of Texas, original file.
+          Compressed with gzip to save space.
+
+kcl.tar.z         : KCL, original file compressed with gzip.
+
+akcl-linux.tar.z  : Changes to compile akcl under linux. Works with 
+          linux 0.99pl2, gcc-2.3.3, libc-4.3.3 (and probably any other
+          version of linux)
+
+akcl-bin.tar.z    : Binaries of akcl-1-615, compiled with gcc-2.3.3,
+	  libc-4.3.3 and -m486 -O2.
+
+
+HOW TO USE THE BINARIES:
+------------------------
+
+Simply extract akcl-bin.tar.z in the root directory; it will create
+a script in /usr/local/bin and a directory /usr/local/akcl with
+the executable program and on-line documentation. Paths are hardwired,
+any change requires recompilation.
+
+HOW TO RECOMPILE THE SOURCES:
+-----------------------------
+
+First, make sure you have a lot of disk space (25Mb if you want
+to compile with -g, or 20Mb normal). 
+
+The installation process is complicated by the fact I wanted to
+keep all the original files, in order to easily port new versions
+of akcl to linux; the authors of akcl (who derived it from kcl)
+thought the same way, and so the sources are split in three parts:
+kcl, akcl and the linux stuff. Consequently, you must choose
+three paths which will also contain the installation:
+
+KCLDIR [ suggested /usr/local/kcl ] to keep the kcl sources.
+AKCLDIR [ suggested /usr/local/akcl ] to keep the akcl sources.
+LINUXDIR [ a temporary path, even /usr/tmp ] to keep the linux patches.
+
+Then
+
+mkdir $KCLDIR $AKCLDIR $LINUXDIR
+
+Extract kcl.tar.z in $KCLDIR, akcl-1-615.tar.z in $AKCLDIR and
+akcl-linux.tar.z in $LINUXDIR. Then
+
+cd $AKCLDIR
+cp -r $LINUXDIR/* .
+./add-defs linux $KCLDIR
+nohup make -f Smakefile &
+
+After a good amount of time (3-4 hours) and a lot of disk activity
+you should get a file $AKCLDIR/unixport/saved_kcl which can be stripped
+if you don't plan to use (si::faslink), which you probably shouldn't
+because it's implementation dependent. Please remark that CLX
+requires (si::faslink).
+saved_kcl is the main akcl executable, and contains the lisp interpreter
+and the compiler. The compiler produces C code, so you must also
+keep gcc installed if you want to use it. As root,
+
+make install
+
+will copy a script in /usr/local/bin which executes $AKCLDIR/unixport/saved_kcl,
+and some emacs files which will allow you to browse the documentation.
+
+
+WHAT TO DO IN CASE OF TROUBLE:
+------------------------------
+
+AKCL is a big program and it is not easy to find bugs; I tried to
+keep things as clean as possible, and used akcl on linux quite a lot
+getting even maxima compiled; so I am pretty convinced it runs
+very well. Despite this fact, if you encounter problems, please
+try to identify and solve them yourself: I really have not too
+much time to devote to maintain this software. Only if disperate,
+send mail to me. Anyway, I'll be glad to hear of any bugs
+or difficulties pertaining to akcl.
+
+FINAL CONSIDERATIONS:
+---------------------
+
+The compiler, compiled by an interpreted compiler, produces a slightly
+different code than the compiler compiled by a compiled copy of itself. 
+This fact is true also on the sparc version of AKCL (I tried it).
+Anybody knows why ?
+
+The directory $AKCLDIR/mp contains some multi-precision code derived
+from PARI-1.34. For some reason I could not realize, it does not work
+on linux --- the code contains some assembly parts which, even if
+386-specific, don't work. The bug is still there; I replaced the
+defective files with some code stolen from PARI-1.35, with permission
+of the author, Mr. Cohen. It is in the file mpi-linux.c .
+The new code is pure C, so I expect it to be slower than the original,
+if it worked; I heard from the author of PARI that a linux port
+of pari-1.37, higly optimized for the 386, exists. If anybody
+can spend some time in incorporating the new code in akcl, I'll
+like to get the fixes to release an improved version of the files.
+
+--------------------------------------
+Send comments, notes, bugs to
+
+Matteo Frigo
+Via A. Fusinato 27
+35137 PADOVA (PD)
+ITALY
+
+e-mail: Matteo.Frigo@dei.unipd.it
+
+

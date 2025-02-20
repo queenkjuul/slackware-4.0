@@ -1,0 +1,116 @@
+Linux and the SoundBlaster AWE64 PnP
+
+So you finally sprung for that bitchin SB AWE64 PNP?? Cool deal. Now
+you wanna configure it?! HAHAH GOOD LUCK!! Just kidding. 
+
+PnP Configuration
+
+First thing's first. We're going to take care of the PnP-ness (hhehe
+say that fast :) of the card. Inever had luck with the new PnP driver
+in Linux, so I'm not even going to talk about it here other than to
+say don't use it. Since we can't use the driver and we're too lazy to
+boot to DOS, blah, blah, we need to use isapnptools. Here's the URL: 
+
+      ftp://ftp.redhat.com/pub/pnp/utils/isapnptools-1.10.tgz 
+
+Got it? Good. Untar it, compile it, install it. READ ALL THE
+DOCUMENTATION!! Done? Good. Now do this: 
+
+      bash$ pnpdump > pnpconf 
+
+That will dump all of the possible settings for all of the ISA PnP
+cards in your system. Now you have to edit that file so that it
+identifies what devices you want to use. Now would be a good time to
+go back and READ ALL THE DOCUMENTATION!! if you didn't before. If you
+need a clue, here's what mine looks like, with all the comments removed: 
+
+(READPORT 0x0203)
+(ISOLATE)
+(IDENTIFY *)
+
+(CONFIGURE CTL009d/268451217 (LD 0
+(INT 0 (IRQ 5 (MODE +E)))
+(DMA 0 (CHANNEL 1))
+(DMA 1 (CHANNEL 5))
+(IO 0 (BASE 0x0220))
+(IO 1 (BASE 0x0330))
+(IO 2 (BASE 0x0388))
+(ACT Y)
+))
+
+(CONFIGURE CTL009d/268451217 (LD 1
+(IO 0 (BASE 0x0200))
+))
+
+(CONFIGURE CTL009d/268451217 (LD 2
+(IO 0 (BASE 0x0620))
+(IO 1 (BASE 0x0A20))
+(IO 2 (BASE 0x0E20))
+(ACT Y)
+))
+
+(CONFIGURE CTL009d/268451217 (LD 3
+))
+
+Looks real pretty, eh? Don't sweat it.
+
+LD 0 is the SoundBlaster. 
+
+      IRQ: 5 DMA: 1 16bit DMA: 5 PORT: 220 MIDI: 330. 
+
+LD 2 is the AWE synthesizer. 
+
+      PORT: 620. 
+
+LD 1 is the Game/Joystick Port and LD 3 is the IDE port on the card. 
+
+Now, move this file someplace handy. I put it in /etc/isapnp.conf. Now
+you can configure your PNP devices with isapnp. 
+
+      bash$ isapnp /etc/isapnp.conf 
+
+If you still need help my /etc/isapnp.conf is at
+http://www.i-plus.net/~nega/linux/isapnp.conf.
+
+Kernel Configuration
+
+AWE support in the stock soundblaster driver isn't very good, so we're
+going to go get a new one (AWE driver that is).
+ http://bahamut.mm.t.u-tokyo.ac.jp/~iwai/awedrv/ is the AWE driver
+homepage. Go there, because you're going to get really familiar with
+it. Get the driver. Here's the URL: 
+
+      http://bahamut.mm.t.u-tokyo.ac.jp/~iwai/awedrv/awedrv-0.4.0.tgz 
+
+Put it somewhere handy (I put it in /usr/src) and unarchive it. CD
+into its directory. Now, READ THE DOCUMENTATION!! Finished? Good. Run
+install.sh and answer any questions it asks you. 
+
+      bash$ sh install.sh 
+
+Now, all you have to do is rebuild your kernel and modules, and you're
+all set! Be sure you include "AWE synth" under "Low Level Drivers" of
+the "Sound Configuration" section. If you dont know how to rebuild
+your kernel, the go read the Kernel-HOWTO. In fact, read it a couple
+of times. 
+
+Hints and Further Help
+
+Put isapnp /etc/isapnp.conf into one of your boot files. (Mine is in
+/etc/rc.d/rc.local). Read everything on the AWE Driver Homepage and
+get your software and software patches rom there. Trust me. It will
+make the use of your card much more enjoyable.  
+
+If you still need help configuring your Soundblaster AWE64 PnP, or
+just want to talk about Linux stuff feel free to email me at
+nega@vt.edu. Alternativly, you can find me on EFnet IRC as tryst on
+#linux.  
+
+Disclaimer
+
+Standard disclaimer applies... if you broke it, it ain't my fault!! 
+
+
+Bucky LaDieu
+Last modified: Wed Jun 25 00:42:58 EDT 1997 with XEmacs
+Copyright 1997 Donald V LaDieu 

@@ -1,0 +1,32 @@
+Begin3
+Title:		CMU SNMP
+Version:	cmu-snmp-linux-3.4
+Entered-date:	28JUL97
+Description: 	Eighth release of the port of the CMU SNMP V1/V2usec agent
+		and applications to Linux, with enhancements to the
+		MIB-2 group (snmp, ipNetToMedia, udpEntry), the host
+		resources MIB and the ident MIB and enhancements to the
+  		management utilities.  It supports additional
+  		configurable settings and supports setable system
+  		group variables, the TU-BS Linux MIB, and some
+		more.  It is the fourth release based on SNMPV2usec
+		without support of the now historic party based
+		SNMPV2.  
+		URL: http://www.gaertner.de/snmp/
+Keywords:	SNMP, USEC, Linux, Network Management, Beck's Beer
+Author:		Carnegie Mellon University, Steve Waldbusser, gwaters@bnr.ca (Glenn Waters)
+Maintained-by:	schoenfr@gaertner.de (Erik Schoenfelder), schoenw@cs.utwente.nl (Juergen Schoenwaelder)
+Primary-site:	ftp.ibr.cs.tu-bs.de /pub/local/linux-cmu-snmp
+		209k cmu-snmp-linux-3.4-src.tar.gz
+		137k cmu-snmp-linux-3.4-bin.tar.gz
+		1k   cmu-snmp-linux-3.4.lsm		
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Network/admin
+Original-site:	Unknown. But a copy is avail at
+		ftp.cs.utwente.nl /pub/src/snmp/UT-ARCHIVE/cmu
+		125k cmu-snmp1.1b-v2usec.tar.gz
+Platforms:	Linux 2.0 or later and libc v5.2.18 or later; this 
+		release is for ELF only.
+		Please note: It may or may not compile with Linux 
+		v1.2.x, v1.3.x and libc v4.6.x or other.
+Copying-policy: BSD
+End

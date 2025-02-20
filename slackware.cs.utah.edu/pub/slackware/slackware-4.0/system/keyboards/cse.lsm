@@ -1,0 +1,18 @@
+
+Begin3
+Title:          cse
+Version:        1.0
+Entered-date:   09-Jul-1996
+Description:    Linux native console font editor
+		Mouse driven, supports psf and native formats
+		(8x16 size only)
+Keywords:       console font editor
+Author:         dthomas@rt66.com (David B. Thomas)
+Maintained-by:  dthomas@rt66.com (David B. Thomas)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Keyboards
+		18 kB cse.tar.gz
+Alternate-site: ftp.rt66.com /users/dthomas
+Original-site:  
+Platform:       svgalib, mouse, precompiled executable in ELF format
+Copying-policy: public domain
+End

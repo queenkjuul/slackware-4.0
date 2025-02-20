@@ -1,0 +1,13 @@
+Begin3
+Title:		ssmtp
+Version:	2.32
+Entered-date:	March 11, 1999
+Description:	Extremely simple MTA to get mail off the system to a Mailhub
+Keywords:	mta mail
+Author: 	hugo@via.ecp.fr (Hugo Haas)
+Maintained-by:	hugo@via.ecp.fr (Hugo Haas)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/mail/mta
+		30K ssmtp-2.32.tar.gz
+Platforms:	Linux (all Unix)
+Copying-policy:	GPL
+End

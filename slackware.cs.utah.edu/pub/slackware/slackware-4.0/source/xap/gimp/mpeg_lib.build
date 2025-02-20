@@ -1,0 +1,13 @@
+CWD=`pwd`
+cd /tmp
+tar xzvf $CWD/mpeg_lib-1.2.1-hacked-for-gimp.tar.gz
+cd mpeg_lib
+./configure --prefix=/usr
+make
+cp libmpeg.a /usr/lib
+cp mpeg.h /usr/include
+mkdir -p /usr/doc/libmpeg-1.2
+cp -a CHANGES README doc /usr/doc/libmpeg-1.2
+chown -R root.root /usr/doc/libmpeg-1.2
+chmod 644 /usr/doc/libmpeg-1.2/* /usr/doc/libmpeg-1.2/doc/*
+chmod 755 /usr/doc/libmpeg-1.2/doc

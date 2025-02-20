@@ -1,0 +1,21 @@
+Begin3
+Title: iprobe-suite          
+Version: 4.0        
+Entered-date: 1/6/99   
+Description:  Iprobe is a low-overhead toolsuite that uses the Alpha event 
+	      counters to find performance bottlenecks in kernel and user 
+	      space.
+Keywords:     performance profiling alpha axp 
+Author: Compaq High Performance Servers/Benchmark Performance Engineering 
+Maintained-by:  ezolt@perf.zko.dec.com
+		Phillip.Ezolt@compaq.com
+Primary-site:   metalab.unc.edu /pub/Linux/devel
+		      401kB iprobe_suite-4.0-1.alpha.rpm 
+		      718kB  iprobe_suite-4.0-1.src.rpm
+		      14kB iprobe_suite-4.0-driver.o.gz
+		      716kB iprobe_suite-4.0.tgz
+	
+Platforms:    Alpha/Linux Kernel Version 2.2.0pre1 and greater.   
+Copying-policy: GPL
+End
+

@@ -1,0 +1,25 @@
+Begin3
+Title:		UDP frame forwarder and compressor
+Version:	0.3alpha
+Entered-date:	3JAN98
+Description:	qw_mp forwards UDP frames from one host to another. Only one
+		port is supported. It is mainly designed to work in conjunction
+		with QuakeWorld as IP forwarder via modem instead of PPP or
+		SLIP. It also compress datastream using gzip's methods.
+		Compression rate is usually 50-40% of original size, so if you
+		connected to your provider at 28800 bps and your "rate"
+		parameter in QuakeWorld was set to "2400" you can safely set it
+		to "5000". It effectively improves gameplay quality. But your
+		provider must have connection to QW Server wide enough. Also I
+		noticed that "rate" "5000" not means 5000 chars-per-second, it
+		is really ~2000 cps. You also can improve pings by disabling of
+		V.42 compression (V.42 must be enabled thus internal qw_mp
+		protocol does not frame checking).
+Keywords:	qw_mp, quake
+Author:		valery@forthpick.kiev.ua (Valery Shchedrin)
+Maintained-by:	oleg@alkasoft.kiev.ua (Oleg Khoma)
+Primary-site:	ftp.cracksoft.kiev.ua /pub/linux/quake/
+Alternate-site: quake.demos.su /pub/unix/
+Platforms:	Linux (glibc2), Linux (libc5), BSD compatible systems
+Copying-policy:	Copyrighted, but freely distributable.
+End

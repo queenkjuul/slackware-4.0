@@ -1,0 +1,31 @@
+This is zircon, a wonderful X interface (motif look) for IRC.  This version
+is a very rough port of it, but it's mostly useable.  It works over term
+if you do tredir 6667 irc-server:6667 before running it.  However, dcc send
+and dcc get don't work.  The reason I'm uploading it in this state is so
+a certain friend of mine can grab it, install it, and fix the dcc over term
+and then we'll have a zircon+term.tgz to release for real.
+
+This archive contains the sources for tcl7.1, tk3.4, tc-dpv2.00, and
+zircon1.14.  To unpack it:
+cd /usr/src/X11 (this is where I keep my X11 sources)
+tar xzvfp zirc.tgz
+
+It makes links called tk and tcl to the tk3.4 and tcl7.1 subdirs.  First
+cd tcl, check the makefile, and do make install.
+Then cd ../tk and do the same.
+Then cd ../tcl-dp2.00 and do the same.
+
+Finally, cd ../zircon1.14 and check the makefile and readme.  Follow the
+instructions.  
+
+All the port issues are solved.  It would be nice to use shared libs for
+all this.  Yes, there's shared lib versions of tk and tcl on sunsite,
+but tcl-dp is REQUIRED for zircon and tcl-dp requires headers not in
+the .tgz files already on sunsite.  Perhaps this will be remedied in
+the near future, when I figure out how to make shared libs :-)
+
+That's it for now.  Enjoy this AWESOME program!
+
+mykes@shell.portal.com
+
+1.14

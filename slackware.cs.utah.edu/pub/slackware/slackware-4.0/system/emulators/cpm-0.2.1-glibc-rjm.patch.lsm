@@ -1,0 +1,14 @@
+Begin3
+Title:          cpm glibc patch
+Version:        0.2.1
+Entered-date:   18MAR99
+Description:    This is a patch to cpm 0.2.1 which patches it to work
+		on glibc-based (libc6) systems. (It otherwise doesn't
+		even compile. :-)) It also fixes some other problems,
+		and generally brings cpm back to its former glory.
+Keywords:       CP/M emulator cpm glibc libc6 patch
+Author:         rus@forfree.at (Russell Marks)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/emulators
+		6348	cpm-0.2.1-glibc-rjm.patch.gz
+Copying-policy: GPL
+End

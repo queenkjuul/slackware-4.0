@@ -1,0 +1,45 @@
+CONTENTS: glibc1 grep gzip hdsetup       
+glibc1:   glibc-2.0.7pre6 runtime support
+glibc1:
+glibc1:   This package contains the shared libraries, binaries, and support
+glibc1:   files required to run most Linux applications linked with glibc.
+glibc1:
+glibc1:
+glibc1:
+glibc1:
+glibc1:
+glibc1:
+glibc1:
+grep:     GNU grep 2.3
+grep:
+grep:     Grep searches the named input files (or standard input if no files are
+grep:     named, or the file name - is given) for lines containing a match to
+grep:     the given pattern.  This is the 'fastest grep in the west' (we hope).
+grep:
+grep:
+grep:
+grep:
+grep:
+grep:
+gzip:     GNU zip compression utilities. (v. 1.2.4a)
+gzip:
+gzip:     Gzip reduces the size of the named files using Lempel-Ziv coding
+gzip:     (LZ77).  Whenever possible, each file is replaced by one with the
+gzip:     extension .gz, while keeping the same ownership modes, access and
+gzip:     modification times.
+gzip:
+gzip:
+gzip:
+gzip:
+gzip:
+hdsetup:  The Slackware setup/package maintenance system v. 4.0.0
+hdsetup:
+hdsetup:  The full screen and tty versions of setup and pkgtool, two utilities
+hdsetup:  included with Slackware that allow you to easily install software 
+hdsetup:  packages, remove software packages, and review the installed software
+hdsetup:  packages.
+hdsetup:
+hdsetup:  Also contains the command line utilities 'installpkg', 'removepkg',
+hdsetup:  'makepkg', 'explodepkg', and 'upgradepkg' that install, remove, build,
+hdsetup:  examine, and upgrade software packages.  Man pages are included.
+hdsetup:

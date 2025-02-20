@@ -1,0 +1,14 @@
+Begin3
+Title:          ext2KIT
+Version:        1.10
+Entered-date:   04-14-99
+Description:    ext2 file system tools for win95/98/NT/DOS and linux.  A set
+                of programs for finding/repairing linux ext2-fs disk problems.
+Keywords:       ext2 disk-repairs disk-recovery
+Author:         Sekhar Bala (sekhar@alphaxsys.com)
+Maintained-by:  Sekhar Bala (sekhar@alphaxsys.com)
+Primary-site:   sunsite.unc.edu/pub/Linux
+Alternate-site: tsx-11.mit.edu/pub/Linux
+Platforms:      Linux 2.0+
+Copying-policy: GNU
+End

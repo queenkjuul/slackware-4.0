@@ -1,0 +1,35 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+
+Format: 1.5
+Date: Tue, 16 Mar 1999 13:12:11 +0100
+Source: libgtkimreg
+Binary: libgtkimreg-dev libgtkimreg
+Architecture: source i386
+Version: 0.0.9-1
+Distribution: unstable
+Urgency: low
+Maintainer: Andreas Tille <tille@physik.uni-halle.de>
+Description: 
+ libgtkimreg - GTK+ widget to select regions of GdkImages
+ libgtkimreg-dev - GTK+ widget to select regions of GdkImages
+Changes: 
+ libgtkimreg (0.0.9-1) unstable; urgency=low
+ .
+   * New upstream source with national language support
+Files: 
+ 7142265fa259e871f85282a68ad4b7bc 662 graphics optional libgtkimreg_0.0.9-1.dsc
+ 583f763c0314617e4e69e68b0b6c3ae9 159584 graphics optional libgtkimreg_0.0.9.orig.tar.gz
+ 58152d6436d954e12e9a57f98d5831d8 2509 graphics optional libgtkimreg_0.0.9-1.diff.gz
+ 8309d8ba4042ba8020dfb5eff73f2ba3 16544 graphics optional libgtkimreg_0.0.9-1_i386.deb
+ b21f8bf1c9eaf1163a6acb3d2c087e6b 42852 devel optional libgtkimreg-dev_0.0.9-1_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.6.3ia
+Charset: noconv
+
+iQCVAwUBNu6WQQiItV4+ngvdAQFhpwP/QeDSgSH5jItUalasS/ofAS5Q8+KfzIe9
+XX1UF7dfNW+r0woT2vmJ21R9D/50rbiPdDZn3QwZ0PNTsD0p8Z632lVo5ww0DkRd
+uMkkBLFZatnb3Kr581W3PUsY/3NDHKVxQmZRfOToZl9zmVtaYkmNECBEhFK7j34T
+TplxA+J+D8M=
+=jltT
+-----END PGP SIGNATURE-----

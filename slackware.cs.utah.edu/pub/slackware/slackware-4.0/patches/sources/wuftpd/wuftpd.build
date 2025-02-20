@@ -1,0 +1,36 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-tcpip1
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Find the size of a file:
+filesize() {
+ SIZE=`ls -l -d -G $1 | cut -b23-32`
+ echo -n $SIZE
+}
+
+echo "+===============+"
+echo "| wu-ftpd-2.6.1 |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/wu-ftpd-2.6.1.tar.gz
+cd wu-ftpd-2.6.1
+zcat $CWD/wu-ftpd-2.6.1.diff.gz | patch -p1 -E
+mkdir -p $PKG/usr/doc/wu-ftpd-2.6.1
+cp -a ANNOUNCE* ERRATA INSTALL \
+  README VIRTUAL.FTP.SUPPORT $PKG/usr/doc/wu-ftpd-2.6.1
+cp -a doc/examples $PKG/usr/doc/wu-ftpd-2.6.1
+chown root.root $PKG/usr/doc/wu-ftpd-2.6.1/* \
+                $PKG/usr/doc/wu-ftpd-2.6.1/examples/*
+./configure --prefix=/usr
+make install

@@ -1,0 +1,15 @@
+Begin3
+Title:          xinetd
+Version:        2.1.8.4
+Entered-date:   29/10/98
+Description:    inetd replacement
+Keywords:       xinetd inetd
+Author:         panos@cs.colorado.edu (Panagiotis Tsirigotis)
+Author:         bbraun@synack.net (Rob Braun)
+Maintained-by:  bbraun@synack.net (Rob Braun)
+Primary-site:   synack.net /pub/xinetd
+Alternate-site: http://sources.isc.org /network/daemon
+Original-site:  ftp.irisa.fr /pub/mirrors/xinetd
+Platforms:      Solaris 2.x, IRIX 5.x, IRIX 6.x, Linux 2.x
+Copying-policy: BSD
+End

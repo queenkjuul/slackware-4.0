@@ -1,0 +1,68 @@
+mailx-5.5-kw 5/30/95
+
+
+WHAT'S IN THIS PATCH
+
+There are a bunch of little features, common in System V and SunOS
+versions of mailx, that are missing from the NetBSD-based version
+distributed with Linux.  This patch attempts to fill in some of what's
+missing.
+
+Changes from debian mailx-5.5 include:
+
+5/4/95:
+
+-- interpret prompt variable
+-- interpret ~a and ~A tilde escapes
+-- updated tildehelp list
+-- changed mail.rc to ignore nothing (just my personal preference)
+-- accept From lines with times of the form hh:mm (formerly took only hh:mm:ss)
+
+5/7/95:
+
+-- Save (S) command saves to mailbox named after author
+-- take startup commands from file named by environment variable MAILRC
+
+5/30/95:
+
+-- -H switch for header summary only
+
+Still to be done:
+
+-- pipe ~p output through PAGER (see type1 in cmd1.c for an example)
+-- save (s) by default to MBOX (instead of "No file specified.")
+-- ~q should save to dead.letter, ~x is not known
+-- update man page
+-- allnet and showto ("showto" shows recipient instead of sender if sender
+   is current user)
+
+Possibly difficult:
+
+-- interpret editheaders variable as in SunOS version
+
+Bugs:
+
+-- ~a,~A tilde escapes leave an extra trailing blank on each line
+-- to conform to original style, I should really be using char *cp
+   instead of new variables sig and prompt to be looking up variables
+-- -H switch implementation is kind of gross.  grep for "hdronly" in
+   source files; much room for improvement!
+
+
+HOW TO INSTALL
+
+Apply Sal Valente's debian patch first, so:
+
+   tar xvfz mailx-5.5.tar.gz
+   cd mailx-5.5
+   zcat ../mailx-5.5.debian.diff.gz | patch -p1
+   zcat ../mailx-5.5-kw.diff.gz | patch -p1
+   make
+
+Or you may wish to just uncompress the diff file and pick and choose
+the changes that you like.
+
+
+AUTHOR
+
+Ken Whang  <Kenneth.C.Whang-1@umn.edu>

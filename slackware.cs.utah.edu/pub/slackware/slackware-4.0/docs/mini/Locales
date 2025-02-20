@@ -1,0 +1,484 @@
+  Locales mini-HOWTO
+  Peeter Joot, peeter_joot@vnet.ibm.com
+  v1.5, 21 July 1997
+
+  This document describes how to set up your Linux machine to use
+  locales.
+
+  1.  Introduction
+
+  This is really a description of what I had to do to get localedef
+  installed, compile some locales, and try them out.  I did this just
+  for fun, and thought that perhaps some people would be interested in
+  trying it out themselves.  Once it is set up you should be able to use
+  NLS enabled applications with the locale of your choice.  After a
+  while, locale support should be part of the standard distributions,
+  and most of this mini-HOWTO will be redundant.
+
+  2.  What is a "locale" anyhow?
+
+  Locales encapsulate some of the language/culture specific things that
+  you shouldn't hard code in your programs.
+
+  If you have various locales installed on your computer then you can
+  select via the following list of environment variables how a locale
+  sensitive program will behave.  The default locale is the C, or POSIX
+  locale which is hard coded in libc.
+
+     LANG
+        This sets the locale, but can be overridden with any other
+        LC_xxxx environment variables
+
+     LC_COLLATE
+        Sort order.
+
+     LC_CTYPE
+        Character definitions, uppercase, lowercase, ...  These are used
+        by the functions like toupper, tolower, islower, isdigit, ...
+
+     LC_MONETARY
+        Contains the information necessary to format money in the
+        fashion expected.  It has the definitions of things like the
+        thousands separator, decimal separator, and what the monetary
+        symbol is and how to position it.
+
+     LC_NUMERIC
+        Thousands, and decimal separators, and the numeric grouping
+        expected.
+
+     LC_TIME
+        How to specify the time, and date.  This has the things like the
+        days of the week, and months of the year in abbreviated, and non
+        abbreviated form.
+
+     LC_MESSAGES
+        Yes, and No expressions.
+
+     LC_ALL
+        This sets the locale, and overrides any other LC_xxxx
+        environment variables.
+
+  Here are some other locales, and there are lots more.
+
+     en_CA
+        English Canadian.
+
+     en_US
+        US English.
+
+     de_DE
+        Germany's German.
+
+     fr_FR
+        France's French.
+
+  If you are writing a program, and want to to be usable internationally
+  you should utilize locales.  The most glaring reason for this is that
+  not everybody is going to use the same character set/code page as you.
+
+  Make sure in your programs that you don't do things like:
+
+       /* check for alphabetic characters */
+       if ( (( c >= 'a') && ( c <= 'z' )) ||
+            (( c >= 'A') && ( c <= 'Z' )) ) { ... }
+
+  If you write that type of code your program assumes that the
+  user/file/... is ASCII and nothing but ASCII, and it does not respect
+  the code page definitions of the user's locale.  For example it
+  preludes characters such as a-umelaut which would be used in a German
+  environment.  What you should do instead is use the locale sensitive
+  functions like isalpha().  If your program does expliticly require use
+  of only US-ASCII alphabetics, you still use the isalpha() function,
+  but you must also either do setlocale(LC_CTYPE,"C") or set the LANG,
+  LC_CTYPE, or LC_ALL environment variables to "C".
+
+  Locales allow a large degree of flexibility and make certain
+  assumptions that a programmer may have made in ASCII based C programs
+  invalid.
+
+  For instance, you cannot assume the code positions of characters.
+  There is nothing stopping you from creating a charmap file that
+  defines the code position of 'A' to be 0xC1 rather than 0x41.  This is
+  in fact the code point mapping for 'A' in IBM code page 37, used on
+  mainframes, while the former is used for US-ASCII, iso8859-x, and
+  others.
+
+  The basic idea is different people speak different languages, expect
+  different sorting orders, use different code pages, and live in
+  different countries.  Locales and locale sensitive programs give one a
+  means to respect such things, and handle them accordingly.  It is not
+  really much extra work to do so, it just requires a slightly different
+  frame of mind when writing programs.
+
+  3.  Notes.
+
+  ·  In order to set up locales on my machine I had to upgrade a few
+     things.  Apparently ftp.tu-clausthal.de:/pub/linux/SLT/nls contains
+     a a.out version of locale and localedef (in the file
+     nlsutils-0.5.tar.gz), so if you don't have an ELF system, or don't
+     want one you can use the above.  There is probably a copy of the
+     nlsutils package some other place, but I have not looked for it.  I
+     hadn't known that there was a stand alone version of locale and
+     localedef, and kind of figured that you would have to have the
+     corresponding libc installed.  Because of this a lot of this HOWTO
+     is just a log of what I had to do to upgrade libc and family.  If
+     you do this, as I have you, will need to be running an ELF system,
+     or upgrade to one as you set up your locales.
+
+  ·  The sorts of system upgrades that I did are the same sort of
+     upgrades that have to be done to upgrade from a.out to ELF.  If you
+     haven't done this, or if you have upgraded to ELF by reinstalling
+     Linux then you should get the resent ELF HOWTO from a sunsite
+     mirror.  This is an excellent guide, and gives additional guidance
+     for installing libc, ld.so, and other ELF system upgrades.
+
+  ·  For anything that you install, read the appropriate release notes,
+     or README type files.  If you mess up your system by
+     misinterpreting something that I say here, or ( hopefully not ) by
+     doing something that I say in here, please don't blame me.
+
+  ·  Mis-installing a new libc, and ld.so, could leave you with an
+     unbootable system.  You probably ought to have a boot disk handy,
+     and make sure any critical, non-replaceable, data is backed up.
+
+  4.  What you need.
+
+  A few things need to be down loaded from various places.  Everything
+  here except for the locale source files can be obtained from
+  sunsite.unc.edu, tsx-11.mit.edu, or, preferably, a local mirror of
+  these sites.  When I did this originally I used libc-5.2.18, which is
+  now quite out of date.  As of now I have been told that the current
+  libc is 5.4.17, and this substitution has been made below.  However,
+  libc 5.4.17, will likely be old before you can blink, so just use the
+  lastest version when you do this.
+
+  You may want to consider using glibc (gnu libc) rather than Linux libc
+  5 for any internationalization work.  As of now glibc 2.0.4 (gnu libc)
+  is available but no distributions have started using it as the
+  standard libc yet (at least for Intel based Linux distributions).  As
+  well as being fully reentrant and having built in threading support,
+  glibc is fully internationalized and has excellent
+  internationalization support for programming.  What
+  internationalization has been done in libc 5 has been mostly taken
+  from glibc.  The locales and charmaps for glibc are bundled with the
+  the glibc locale add on.
+
+  If you opt for using glibc then you can ignore this mini-howto.
+  Including the locale add on in the glibc compilation and installation
+  is trivial, and is covered in the glibc installation documentation.
+  Be warned that a full upgrade is not a trivial job!  I am hoping that
+  redhat (which I use) will have a glibc based release soon, as I am not
+  inclined to recompile my entire system.
+
+  ·  locale, and charmap sources --- These are what you compile using
+     localedef.
+
+  ·  libc-5.4.17.bin.tar.gz --- the ELF shared libraries for the c and
+     math libraries.  Note that the precompiled program localedef for
+     libc.5.4.17 is apparently corrupt and creates LC_CTYPE with invalid
+     magic number.  This probably means that an older localedef got into
+     the binary distribution.
+
+  ·  libc-5.4.17.tar.gz --- the source code for the ELF shared
+     libraries.  You may need this to compile localedef.
+
+  ·  make-3.74.tar.gz --- you may need to compile make to incorporate a
+     patch to fix the dirent bug.
+
+  ·  release.libc-5.2.18 --- these release notes have the patch to make
+     make.  it's been a while since this make bug happened, and it is
+     likely that you don't have to worry about it.
+
+  ·  ld.so-1.7.12+ --- the dynamic linker.
+
+  ·  ELF gcc-2.7.2+ --- to compile things.
+
+  ·  an ELF kernel ( eg. 2.0.xx )  --- to compile things.
+
+  ·  binutils 2.6.0.2+ --- to compile things.
+
+  There are probably lots of places that you can get locale sources.  I
+  have found public domain locale and charmap sources at
+  dkuug.dk:/i18n/WG15-collection/locales
+  <ftp://dkuug.dk/i18n/WG15-collection/locales> and
+  dkuug.dk:/i18n/WG15-collection/charmaps
+  <ftp://dkuug.dk/i18n/WG15-collection/charmaps>  respectively.
+
+  5.  Installing everything.
+
+  This is what I did to install everything.  I already had an ELF system
+  ( compiler, kernel, ... ) installed before I did this.
+
+  1. First I installed the binutils package.  tar xzf
+     binutils-2.6.0.2.bin.tar.gz -C /
+
+  2. Next I installed the dynamic linker:
+
+       tar zxf ld.so-1.7.12.tar.gz -C /usr/src
+       cd /usr/src/ld.so-1.7.12
+       sh instldso.sh
+
+  3. Next I installed the libc binaries.  See release.libc-5.4.17 for
+     more instructions.
+
+       rm -f /usr/lib/libc.so /usr/lib/libm.so
+       rm -f /usr/include/iolibio.h /usr/include/iostdio.h
+       rm -f /usr/include/ld_so_config.h /usr/include/localeinfo.h
+       rm -rf /usr/include/netinet /usr/include/net /usr/include/pthread
+       tar -xzf libc-5.4.17.bin.tar.gz -C /
+
+  4. Now ldconfig must be run to locate the new shared libraries.
+     ldconfig -v.
+
+  5. There is a bug that was fixed in libc that breaks make, and some
+     other programs.  Here is what I did in order to rebuild and install
+     make.
+
+       tar zxf make-3.74.tar.gz -C /usr/src
+       cd /usr/src/make-3.74
+       patch < /whereever_you_put_it/release.libc-5.4.17
+       configure --prefix=/usr
+       sh build.sh
+        ./make install
+       cd ..
+       rm -rf make-2.74
+
+  6. Now localedef can be compiled and installed.
+
+       mkdir /usr/src/libc
+       tar zxf libc-5.4.17.tar.gz -C /usr/src/libc
+       cd /usr/src/libc
+       cd include
+       ln -s /usr/src/linux/include/asm .
+       ln -s /usr/src/linux/include/linux .
+       cd ../libc
+        ./configure
+       # I am not sure if these two makes are necessary, but just to be safe :
+       make clean ; make depend
+       cd locale
+       make programs
+       mv localedef /usr/local/bin
+       mv locale /usr/local/bin
+
+  7. Put the charmaps where localedef will find them.  This uses the
+     charmaps and locale sources which I down loaded from dkuug.dk ftp
+     site as charmaps.tar, and locales.tar respectively.  The older
+     localedef (5.2.18) looked in /usr/share/nls/charmap for charmap
+     sources, but now localedef looks in /usr/share/i18n/charmaps and
+     /usr/share/i18n/locales by default for the charmap and locale
+     sources:
+
+       mkdir /usr/share/i18n
+       mkdir /usr/share/i18n/charmaps
+       mkdir /usr/share/i18n/locales
+       tar xf charmaps.tar -C /usr/share/i18n/charmaps
+       tar xf locales.tar -C /usr/share/i18n/locales
+
+  The newer localedef (5.4.17) has been made smarter and will look for
+  other locale source files when handling the `copy' statement, whereas
+  the older localedef needed to have the locale objects already created
+  in order to handle the copy statement.  This list of commands has the
+  dependencies sorted out and can be used to generate all the locale
+  objects regardless of which libc version is being used, but you should
+  now be able to create only the ones that you wish.
+
+       localedef -ci en_DK -f ISO_8859-1:1987 en_DK
+       localedef -ci sv_SE -f ISO_8859-1:1987 sv_SE
+       localedef -ci fi_FI -f ISO_8859-1:1987 fi_FI
+       localedef -ci sv_FI -f ISO_8859-1:1987 sv_FI
+       localedef -ci ro_RO -f ISO_8859-1:1987 ro_RO
+       localedef -ci pt_PT -f ISO_8859-1:1987 pt_PT
+       localedef -ci no_NO -f ISO_8859-1:1987 no_NO
+       localedef -ci nl_NL -f ISO_8859-1:1987 nl_NL
+       localedef -ci fr_BE -f ISO_8859-1:1987 fr_BE
+       localedef -ci nl_BE -f ISO_8859-1:1987 nl_BE
+       localedef -ci da_DK -f ISO_8859-1:1987 da_DK
+       localedef -ci kl_GL -f ISO_8859-1:1987 kl_GL
+       localedef -ci it_IT -f ISO_8859-1:1987 it_IT
+       localedef -ci is_IS -f ISO_8859-1:1987 is_IS
+       localedef -ci fr_LU -f ISO_8859-1:1987 fr_LU
+       localedef -ci fr_FR -f ISO_8859-1:1987 fr_FR
+       localedef -ci de_DE -f ISO_8859-1:1987 de_DE
+       localedef -ci de_CH -f ISO_8859-1:1987 de_CH
+       localedef -ci fr_CH -f ISO_8859-1:1987 fr_CH
+       localedef -ci en_CA -f ISO_8859-1:1987 en_CA
+       localedef -ci fr_CA -f ISO_8859-1:1987 fr_CA
+       localedef -ci fo_FO -f ISO_8859-1:1987 fo_FO
+       localedef -ci et_EE -f ISO_8859-1:1987 et_EE
+       localedef -ci es_ES -f ISO_8859-1:1987 es_ES
+       localedef -ci en_US -f ISO_8859-1:1987 en_US
+       localedef -ci en_GB -f ISO_8859-1:1987 en_GB
+       localedef -ci en_IE -f ISO_8859-1:1987 en_IE
+       localedef -ci de_LU -f ISO_8859-1:1987 de_LU
+       localedef -ci de_BE -f ISO_8859-1:1987 de_BE
+       localedef -ci de_AT -f ISO_8859-1:1987 de_AT
+       localedef -ci sl_SI -f ISO_8859-2:1987 sl_SI
+       localedef -ci ru_RU -f ISO_8859-5:1988 ru_RU
+       localedef -ci pl_PL -f ISO_8859-2:1987 pl_PL
+       localedef -ci lv_LV -f BALTIC lv_LV
+       localedef -ci lt_LT -f BALTIC lt_LT
+       localedef -ci iw_IL -f ISO_8859-8:1988 iw_IL
+       localedef -ci hu_HU -f ISO_8859-2:1987 hu_HU
+       localedef -ci hr_HR -f ISO_8859-4:1988 hr_HR
+       localedef -ci gr_GR -f ISO_8859-7:1987 gr_GR
+
+  6.  Now what.
+
+  After doing all the stuff above you should now be able to use the
+  locales that have been created.  Here is a simple example program.
+
+  /* test.c : a simple test to see if the locales can be loaded, and
+   * used */
+  #include <locale.h>
+  #include <stdio.h>
+  #include <time.h>
+
+  main(){
+   time_t t;
+   struct tm * _t;
+   char buf[256];
+
+   time(&t);
+   _t = gmtime(&t);
+
+   setlocale(LC_TIME,"");
+   strftime(buf,256,"%c",_t);
+
+   printf("%s\n",buf);
+  }
+
+  You can use the locale program to see what your current locale
+  environment variable settings are.
+
+       $ # compile the simple test program above, and run it with
+       $ # some different locale settings
+       $ gcc -s -o Test test.c
+       $ # see what the current locale is :
+       $ locale
+       LANG=POSIX
+       LC_COLLATE="POSIX"
+       LC_CTYPE="POSIX"
+       LC_MONETARY="POSIX"
+       LC_NUMERIC="POSIX"
+       LC_TIME="POSIX"
+       LC_MESSAGES="POSIX"
+       LC_ALL=
+       $ # Ho, hum... we're using the boring C locale
+       $ # let's change to English Canadian:
+       $ export LC_TIME=en_CA
+       $ Test
+       Sat 23 Mar 1996 07:51:49 PM
+       $ # let's try French Canadian:
+       $ export LC_TIME=fr_CA
+       $ Test
+       sam 23 mar 1996 19:55:27
+
+  7.  catopen bug fix.
+
+  Installing the locales fixes a bug (feature ?)  that is in the catopen
+  command in Linux libc.  Say you create a program that uses message
+  catalogs, and you create an German catalog and put it in
+  /home/peeter/catalogs/de_DE.
+
+  Now upon doing the following, without the de_DE locale installed :
+
+  export LC_MESSAGES=de_DE
+  export NLSPATH=/home/peeter/catalogs/%L/%N.cat:$NLSPATH
+
+  the German message catalog does not get opened, and the default mes­
+  sages in the catgets calls are used.
+
+  This is because catopen does a setlocale call to get the right message
+  category, the setlocale fails even though the environment variable has
+  been set.  catopen then attempts to load the message catalog
+  substituting "C" for all the "%L"'s in the NLSPATH.
+
+  You can still use your message catalog without installing the locale,
+  but you would have to explicitly set the "%L" part of the NLSPATH like
+
+       export NLSPATH=/home/peeter/catalogs/de_DE/%N.cat:$NLSPATH
+
+  , but this defeats the whole purpose of the locale catagory environ­
+  ment variables.
+
+  8.  Questions and Answers.
+
+  This section could grow into a FAQ, but isn't really one yet.
+
+  8.1.  msgcat question
+
+  I am an user of LINUX, and have written the following test program:
+
+       --------------------------------------------------------------------
+       #include <stdio.h>
+       #include <locale.h>
+       #include <features.h>
+       #include <nl_types.h>
+
+       main(int argc, char ** argv)
+       {
+        nl_catd catd;
+
+        setlocale(LC_MESSAGES, "");
+        catd = catopen("msg", MCLoadBySet);
+        fprintf(stderr,catgets(catd, 1, 1, "locale message fail\n"));
+        catclose(catd);
+       }
+       --------------------------------------------------------------------
+       $ msg.m
+       $set 1
+
+       1 locale message pass\n
+       --------------------------------------------------------------------
+
+  If I use absolute path in catopen like
+  catopen("/etc/locale/msg.cat",MCLoadBySet); ,I got the right result.
+  But,if I use above example,catopen return -1 (failure).
+
+  8.2.  msgcat answer
+
+  This question is sort of answered in the previous section, but here is
+  some additional information.
+
+  There are a number of valid places where you can put your message
+  catalogs.  Even though you may not have NLSPATH explicitly defined in
+  your environment settings it is defined in libc as follows :
+
+       $ strings /lib/libc.so.5.4.17 | grep locale | grep %L
+       /etc/locale/%L/%N.cat:/usr/lib/locale/%L/%N.cat:/usr
+       /lib/locale/%N/%L:/usr/share/locale/%L/%N.cat:/usr/
+       local/share/locale/%L/%N.cat
+
+  so you if you have done one of :
+
+       $ export LC_MESSAGES=en_CA
+       $ export LC_ALL=en_CA
+       $ export LANG=en_CA
+
+  With the NLSPATH above and the specified environment , the
+  catopen("msg", MCLoadBySet); should work if your message catalog has
+  been copied to any one of :
+
+       /etc/locale/en_CA/msg.cat
+       /usr/lib/locale/en_CA/msg.cat
+       /usr/lib/locale/msg/en_CA
+       /usr/share/locale/en_CA/msg.cat
+       /usr/local/share/locale/en_CA/msg.cat
+
+  This, however, will not work if you don't have the en_CA locale
+  installed because the setlocale will fail, and "C" will be substituted
+  for "%L" in the catopen routine ( rather than "en_CA" ).
+
+  9.  More information.
+
+  Well that's it.  Hopefully this guide has been some help to you.
+  There are probably lots of places that you can look for additional
+  information on writing locale sensitive programs, and documents on
+  internationalization, and localization in general.  I'll bet that if
+  you browse the web a bit you will be able to find a lot of info.
+  Ulrich Drepper who implemented much of the gnu internationalization
+  code has some information about internationalization and localization
+  on his home page <http://i44www.info.uni-karlsruhe.de/~drepper>, and
+  you can look there to start.  There is also some information in the
+  info pages for libc, and of course, there are always man pages.
+

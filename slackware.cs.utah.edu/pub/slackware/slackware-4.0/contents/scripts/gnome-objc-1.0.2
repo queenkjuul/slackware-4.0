@@ -1,0 +1,8 @@
+( cd usr/lib ; rm -rf libobgtk.so.1 )
+( cd usr/lib ; ln -sf libobgtk.so.1.2.1 libobgtk.so.1 )
+( cd usr/lib ; rm -rf libobgtk.so )
+( cd usr/lib ; ln -sf libobgtk.so.1.2.1 libobgtk.so )
+( cd usr/lib ; rm -rf libobgnome.so.0 )
+( cd usr/lib ; ln -sf libobgnome.so.0.0.0 libobgnome.so.0 )
+( cd usr/lib ; rm -rf libobgnome.so )
+( cd usr/lib ; ln -sf libobgnome.so.0.0.0 libobgnome.so )

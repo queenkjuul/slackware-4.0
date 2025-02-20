@@ -1,0 +1,15 @@
+Begin3
+Title:          Cache Control
+Version:        1.0
+Entered-date:   Dec 12 1996
+Description:    Module(s) and/or system call that allow you to
+		turn on/off the level 1 cache on i486 (and up) systems.
+Keywords:       cache control system call module
+Author:         gpg109@rsphy1.anu.edu.au (Paul Gortmaker)
+Maintained-by:  devnull@nowhere.org (Mr. Dev Null)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc
+                4 kB cachectl-1.0.tar.gz
+                0.5 kB cachectl-1.0.lsm
+Platform:       i486 or better CPU
+Copying-policy: GPL
+End

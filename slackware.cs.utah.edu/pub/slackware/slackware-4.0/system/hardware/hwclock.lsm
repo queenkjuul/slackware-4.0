@@ -1,0 +1,20 @@
+Begin3
+Title:          hwclock: manipulate the Hardware Clock
+Version:        2.7
+Entered-date:   05MAY99
+Description:    Read and set the Hardware Clock (aka CMOS clock, real
+                time clock, rtc).  Use this in startup scripts to 
+                initialize your System Time.  Works on ISA (x86 PCs),
+                Alpha, M68K.  Optionally use /dev/rtc or not.  Run
+                at regular intervals to correct for systematic drift in
+                your clock.
+                
+Keywords:       Hardware Clock, CMOS clock, RTC, real time, /dev/rtc, 
+                system time
+Author:         bryanh@giraffe-data.com (Bryan Henderson)
+Maintained-by:  bryanh@giraffe-data.com (Bryan Henderson)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/hardware
+                hwclock-2.7.tar.gz
+                hwclock.lsm
+Copying-policy: public domain
+End

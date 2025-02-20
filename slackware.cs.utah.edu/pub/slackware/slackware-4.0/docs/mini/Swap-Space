@@ -1,0 +1,241 @@
+	   SHARING SWAP SPACES BETWEEN LINUX AND MS-WINDOWS
+
+			     A mini-HOWTO
+				  by
+			    H. Peter Anvin
+			 <hpa@yggdrasil.com>
+
+		Copyright © 1994, 1995 H. Peter Anvin
+
+VERSION: 1.3						Date: 19 Jun 1995
+
+0. ABSTRACT
+
+Many people use both Linux and MS-Windows.  The ability to do so is an
+important part of "the Linux revolution"; i.e. letting people
+experiment with (and get hooked on) Linux while still being able to
+run their off-the-shelf software.  Since both Linux and MS-Windows use
+virtual memory with swap to disk, a frequently occurring question in
+comp.os.linux.setup is how to share swap spaces, in order to reduce the
+amount of disk space needed.
+
+There are several methods for sharing swap spaces, the one described
+in this document is probably the most complicated one but is the only
+one I have encountered that allows maximum performance for both
+environments without the risk of trashing a disk partition.
+
+NOTE: If you have used a previous version of this document and have
+had problems with swap space not getting properly restored (Windows
+claims your permanent swapfile is corrupt), try the slighly revised
+shutdown script in this version.
+
+1. WHAT YOU NEED
+
+This procedure have a few requirements that need to be filled.  I
+strongly recommend that you fill these requirements *anyway*, as there
+are several problems with older versions.
+
+	* MS-DOS 5.0 or newer
+	* MS-Windows 3.1 or newer
+	* A shutdown/init that knows to run a file on shutdown.
+	  (The SysVinit-2.50 package can do this, for example.
+	  SysVinit-2.50 is available from sunsite.unc.edu in
+	  /pub/Linux/system/Daemons.  Almost all current distributions
+          use this init package.)
+          
+2. THE PROCEDURE
+  
+* Boot DOS.  Create a DOS partition (using FDISK) the size = the size
+  swap space you want.  It will be assigned a drive letter; use that
+  drive letter instead of X whenever these instructions lists a
+  command like "LABEL X:" or "COPY FOO X:DUMMY.DAT"
+
+* Format this partition using the DOS FORMAT command.
+	FORMAT X:
+
+* Set the volume label on this partition to "SWAP SPACE" using the DOS
+  LABEL command.  Verify it by the DIR command.  Please do this as a
+  separate step.  Some versions of FORMAT do not seem to put the
+  volume label in the boot sector as it should.  [Note: some people
+  has written me saying the volume label is stored in the root
+  directory.  Yes, but at least since DOS 5.0 it has also been in the
+  boot sector.]
+	LABEL X:
+	DIR X:
+
+* Start Windows.  Go to the Control Panel, select "386 Enhanced".
+  Select "Virtual Memory" and create a Windows Permanent swap file on
+  drive X: of maximum size (Windows will tell you the maximum size).
+  Windows may complain saying it will not use a swap file that big.
+  Ignore the message and create the file anyway.
+
+* Exit Windows.
+
+* Boot Linux, then log in as root.
+
+* Use the fdisk command to find the name of the partition and its size
+  in blocks.  Create a symbolic link from /dev/winswap to this
+  partition.  If the paritition is hda7, then type:
+	ln -s /dev/hda7 /dev/winswap
+
+  [NOTE TO PURISTS: Please use a symlink.  The name of this partition
+  is going to go into several configuration files and inconsistencies
+  could be fatal.]
+
+* The following is a uuencoded binary that analyzes the partition and
+  derives some special information; uudecode the following file,
+  gunzip it and run it as:
+
+	msinfo /dev/winswap
+
+begin 755 msinfo.gz
+M'XL(`$$YNRT"`Y557TQ;51@_MW]HZ0AM'"$U-.28W([..>84%1%D2QH>',9*
+M2S&VC);V=FV]T*;WWBD+1I)K'YH;DOJF#YH80GPR^J""D"R8-K('MS2;#Q*S
+M%Y,E-P&592A$V:[?.;?M"FP/?DG/G^_[?7_Z_3G7PL313TT(?8P0<J"CI':8
+M$5H^#:=5<KT^MQ`^UAQ1O*QUH0<.]B7S/FC[U!98Y;))]<*N^AG"^LB((J%E
+MAFIM[A9U0O`;%:*7N#[L%G!_-IH34V(J,WUZ.CK%O6I#N4DTE,E-144Q-7T)
+M>]_PX\M<3@!`'ZZ26[`-I7A.F!%$;JK.;21`!#.\-,5A/CK)\=B3FL:3F8PH
+M<#$QDSO91Q%^>L%"Z@KW*"-NR3;""5SN,A?'NI[0=P0Q=#[P&&$5@3UNZ3VW
+M=-(V`NYQ/)6CX)DC2F`KD!&C/!:R7"Q%]L-6`8'D+=]8T*^$V8@RR\;5\P9(
+M^;\&T:F]E`Q`EI,_6YHCZBT#BJ09M0VV9!:XVKLF]0NX%'Z4R];\W](3A-%J
+MI:`_&12!>@33QC0S'V8]?O5+0`;3UC23K)!"?@97N8R#:29MF/>R)PI>UJF)
+MK%/-4QR39OSJE8,8MHZ)UC#`?1ZX'N!ZU`L'X;@.?X["C<1DUT%,9QW32C''
+M"<98PQR#8#=(L'>96NQWR/4W1@>H3\'!OC3,MMN_"[,=A1OVK^XEH($[$S^H
+MY@28=MB78-$/`=8)(L=\P*$5*I_LS@)_G7!=\Z9V@F"``Y$XQM[T!T>(WHNU
+M/T9CH)YIZI("&9ZK32AR=DTN/QNZ."&7?27H_<(=_^=Q"U1N3Y.>!-E`$BY(
+M;(4ZG)/[\_0F_54HY7\5[<!33)\2M%:Y(.THX_N%K?%2L9&(O=4>8F^@IV9(
+M,<HEDU:17T'23M)GA#ANW-<F'J5-]>6!G2;BU+YN)@<RL.JBIFD4[:<###UG
+MO3Z77WO?L?O+@@G\+(-<"X&QT"&#_N7@_\2;JGAEF&U1`JR#ZCD/Z]7HJ'ZH
+M09_JNAZGJ^N?X5.39_AXMY!!?3@6G>X2,9^)QG%\!IZ@5`SSJ>EWN!SN>HCK
+MLJ%F08R*J5B4YV=T0-R&J#UYJW>4#"7/#D,0/GG`0ZI@__`;6->]K!>C[<GD
+M31/IQP>:!B]D?DT,*<;Y6=9Y]3:P][^W`?+>8F(1!*ZY7B1:BN=@D_XY9?0I
+M'?ZT0=V@BBWIIV$47#Y@7-,9Q>0<*=7;NMW-NS2>9#_X3V)8()?A$;!`ALRW
+M#&\%RO_^@9F6TP<]'M8J@'AFA"[JM]0(WCQ!`[.826!F&A@HG4JWU5R_KKL&
+M9GNQF$;J[?NZ\YUZ?B].C,OEWI*\94J`:6LB?U,RK^2.([0QRQK(W!D2[K5M
+M,G>&0B7A'K03F"'17*&L#9XU@+U2L9K4-GCIG(K(NE:SM,>SM,?;X,T:&U6,
+MT./E%NAUTNE_$,^E(A0M!B7K[D'>X6'\FC25Q3W=+V3YLR^CXJW.S0>#54*#
+M#ZE^AI+N-35^_>![U4!?@VQ%ET<L!BC>MC5"\GH->"T6'4/2NS>((N0,DT>_
+9K6^!S%65KRS`,`,UVB43\!]-BKG]B`<``#5"
+`
+end
+
+  Take note at the number saying "Total special sectors", and verify
+  that the volume label says "SWAP SPACE".  If it does not, reboot DOS
+  and re-do the LABEL command.  If it still does not work, please
+  inform me about which version of DOS you are running, and I will try
+  to help you out.
+
+* [Optional step] Windows may occationally leave some space on the
+  partition, even if it is told not to.  Don't attempt to use this
+  space, since it will be erased any time you run Linux.  If you want
+  to avoid accidentally using it (and lose data), you can create a
+  dummy file that fills that space by using the following commands:
+	mkdir /mnt
+	mount -t msdos /dev/winswap /mnt
+	dd if=/dev/zero of=/mnt/dummy.fil
+	umount /mnt  
+
+  The dd command will report "No space left on device".  This is
+  exactly what you want.
+
+* Check the name of the shutdown file.  For SysVinit this is the file
+  listed in the following line of /etc/inittab; add it if you don't
+  have it.
+
+	# Runlevel 0 means shut down the system
+	l0:0:wait:/etc/brc
+
+  For the remainder of this file, I will assume the filename was
+  /etc/brc.
+
+* Type:
+
+	dd if=/dev/winswap bs=512 count=XXX | gzip -9 > /etc/winswap.gz
+                                        ^^^
+                                        Replace
+  ... where XXX is replaced with the "Total special sectors" number.
+
+* Add the following piece of code to your /etc/rc file (or whatever
+  your init calls it), right before the command "swapon -a" (if there
+  is no such command, add it to your /etc/rc file right before any
+  mount commands). 
+
+  If you have a directory /etc/rc.d, the file you want to put this in
+  should be called "/etc/rc.d/rc.S" or "/etc/rc.d/rc.boot".
+
+  If your swapon is in /etc, replace /sbin/swapon with /etc/swapon.
+  If it is in /bin, replace with /bin/swapon.  Do the same for mkswap.
+
+  Replace XXXXX with the actual size of the partition in blocks, as
+  given by fdisk.
+ 
+---[BEGIN CODE SEGMENT]---
+#
+# Verify and initialize swap space
+#
+echo -n 'Verifying swap space... '
+if [ "`/bin/dd 2>/dev/null if=/dev/winswap bs=1 count=10 skip=4086`" \
+   = 'SWAP-SPACE' ]; then
+  echo 'Linux signature found'
+  /sbin/swapon /dev/winswap
+elif [ "`/bin/dd 2>/dev/null if=/dev/winswap bs=1 count=11 skip=43`" \
+   = 'SWAP SPACE ' ]; then
+  echo 'DOS signature found'
+  /sbin/mkswap /dev/winswap XXXXX
+  /sbin/swapon /dev/winswap
+else
+  echo 'No signature found'
+  echo 'ERROR: Will not swap'
+fi
+---[END CODE SEGMENT]---
+
+* Add the following piece of code to your /etc/brc file (or whatever
+  it is called -- it is /etc/rc.d/rc.0 or /etc/rc.d/rc.halt if you
+  have an /etc/rc.d directory); put this after any command that might
+  need swap to be in place.
+
+---[BEGIN CODE SEGMENT]---
+#
+# Terminate swapping and restore DOS/Windows swap info
+#
+/sbin/swapoff /dev/winswap
+if [ "`/bin/dd 2>/dev/null if=/dev/winswap bs=1 count=10 skip=4086`" \
+   = 'SWAP-SPACE' ]; then
+  echo 'Restoring DOS/Windows swap info'
+  /bin/zcat /etc/winswap.gz > /dev/winswap
+else
+  echo 'ERROR: /dev/winswap lacks swap signature, skipping restore'
+fi
+---[END CODE SEGMENT]---
+
+* Reboot Linux.  You should now have swapping on the new swap device.
+
+3. A COUPLE OF NOTES
+
+* There is no need to add /dev/winswap to your /etc/fstab file.  In
+  fact, it is probably wise not to do so (except possibly as a
+  comment).
+
+* If your Linux session crashes or otherwise exits without running
+  /etc/brc, you will need to reboot and exit Linux before swapping in
+  Windows will work.  It is also possible to FORMAT X: and re-create
+  the Windows swapfile.  The only way around this would be to put the
+  equivalent of the /etc/brc commands in the DOS AUTOEXEC.BAT file;
+  unfortunately I don't know of any way of doing that in DOS!
+
+* If DOS' FDISK reports the partition as a "logical DOS drive", it has
+  a number of 5 (as in /dev/hda5) or higher.  It is *NOT* the
+  partition labelled "extended" which has a number of 4 or less!!  If
+  your Linux fdisk does not display logical partitions, you have a
+  broken Linux fdisk (Slackware 2.2 included a broken fdisk, for
+  example.)  You can try "cfdisk" if your distribution has it, or you
+  will have to get a working fdisk.
+
+* If you get a floating point exception when running msinfo, you are
+  almost certainly running it on the wrong partition.  See the above
+  note.
+
+* Please do not mail me unless you have checked and re-checked that
+  you copied your scripts correctly.  More than half of the problems
+  reported with this Mini-HOWTO have been due to typos when copying
+  the scripts.  (Use cut-and-paste if you can!)

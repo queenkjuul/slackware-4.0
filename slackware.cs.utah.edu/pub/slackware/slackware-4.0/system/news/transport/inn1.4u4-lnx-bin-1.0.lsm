@@ -1,0 +1,21 @@
+Begin3
+Title:		INN
+Version:	1.4unoff4-1.0
+Entered-date:	25AUG96
+Description:	Binary distribution of INN 1.4unoff4 for Linux.  Includes
+		Alan Barrett's patch to chan.c and the perl-based innlog.
+		Configuration files modified to reduce installation
+		confusion.
+Keywords:	inn usenet news nntp
+Author: 	rsalz@nntp.com (Rich Salz)
+Maintained-by:	linux-inn@etext.org
+Primary-site:	sunsite.unc.edu /pub/Linux/system/News
+		inn1.4u4-lnx-bin-1.0.tgz
+Alternate-site: 
+Original-site:	ftp.math.psu.edu /pub/INN
+Platforms:	Requires ELF support and kernel with proper support
+		for Unix domain sockets.  Only tested on v2.0.14 kernel.
+		Probably will run on v1.3 kernels as well.  Will NOT run
+		on v1.2 kernels.  Requires perl.
+Copying-policy:	BSD
+End

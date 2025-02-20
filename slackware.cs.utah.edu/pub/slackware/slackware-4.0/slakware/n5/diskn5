@@ -1,0 +1,34 @@
+CONTENTS: netmods ppp rsync       
+netmods:  Network support modules for linux-2.2.6.
+netmods:
+netmods:  These modules can be loaded into the kernel to support many network
+netmods:  cards and protocols.
+netmods:
+netmods:
+netmods:
+netmods:
+netmods:
+netmods:
+netmods:
+ppp:      PPP for Linux, versions 2.2.0f and 2.3.7
+ppp:
+ppp:      PPP for Linux -- Michael Callahan's ppp.c kernel driver and the pppd
+ppp:      daemon (ported by Al Longyear).  Linux PPP support is included as a 
+ppp:      loadable module in the modules.tgz package.  This package also
+ppp:      contains pppsetup, an easy-to-use, user-friendly utility for setting
+ppp:      up your PPP daemon.
+ppp:
+ppp:
+ppp:
+ppp:
+rsync:    rsync-2.3.1
+rsync:
+rsync:    rsync is a replacement for rcp that has many more features.  It
+rsync:    uses the "rsync algorithm" which provides a very fast method for
+rsync:    bringing remote files into sync.  It does this by sending just the
+rsync:    differences in the files across the link, without requiring that both
+rsync:    sets of files are present at one of the ends of the link beforehand.
+rsync:
+rsync:    rsync was written by Andrew Tridgell and Paul Mackerras.
+rsync:
+rsync:

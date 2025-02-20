@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/filesystems</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/filesystems</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="thsfs.tgz">thsfs.tgz</a></td><td align="right">1994-10-05 07:00  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="thsfs.lsm">thsfs.lsm</a></td><td align="right">1994-10-10 07:00  </td><td align="right">780 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ifs-5.1a-module-for-1.1.88.gz">ifs-5.1a-module-for-1.1.88.gz</a></td><td align="right">1995-02-09 08:00  </td><td align="right">3.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="jb-affs-1.0.lsm">jb-affs-1.0.lsm</a></td><td align="right">1995-10-26 07:00  </td><td align="right">761 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="jb-affs-1.0.tar.gz">jb-affs-1.0.tar.gz</a></td><td align="right">1995-10-26 07:00  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="efsmod-0.6.tar.gz">efsmod-0.6.tar.gz</a></td><td align="right">1996-06-01 07:00  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="ntfs.README">ntfs.README</a></td><td align="right">1996-07-05 07:00  </td><td align="right">436 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ntfs.tar.gz">ntfs.tar.gz</a></td><td align="right">1996-07-05 07:00  </td><td align="right"> 31K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lde-2.3.4.lsm">lde-2.3.4.lsm</a></td><td align="right">1996-11-19 01:17  </td><td align="right">708 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lde-2.3.4.tar.gz">lde-2.3.4.tar.gz</a></td><td align="right">1996-11-19 01:17  </td><td align="right">286K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tcfs_2.0.pl5.lsm">tcfs_2.0.pl5.lsm</a></td><td align="right">1997-03-11 15:42  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcfs_2.0.pl5.tgz">tcfs_2.0.pl5.tgz</a></td><td align="right">1997-03-11 15:43  </td><td align="right">344K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="efsmod-0.6.lsm">efsmod-0.6.lsm</a></td><td align="right">1997-07-13 11:34  </td><td align="right">467 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="defrag-0.70.lsm">defrag-0.70.lsm</a></td><td align="right">1997-08-17 21:58  </td><td align="right">525 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="defrag-0.70.tar.gz">defrag-0.70.tar.gz</a></td><td align="right">1997-08-17 21:58  </td><td align="right"> 63K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ovlfs.lsm">ovlfs.lsm</a></td><td align="right">1998-03-12 11:03  </td><td align="right">758 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ovlfs1.0.src.tgz">ovlfs1.0.src.tgz</a></td><td align="right">1998-03-12 11:04  </td><td align="right">101K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cbmfs-0.3.tar.gz">cbmfs-0.3.tar.gz</a></td><td align="right">1998-05-13 10:06  </td><td align="right"> 44K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cbmfs-0.3.lsm">cbmfs-0.3.lsm</a></td><td align="right">1998-05-13 10:37  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="srm.lsm">srm.lsm</a></td><td align="right">1998-07-19 07:31  </td><td align="right">753 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="srm.tar.gz">srm.tar.gz</a></td><td align="right">1998-07-19 07:31  </td><td align="right">5.8K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lde-2.4.tar.gz">lde-2.4.tar.gz</a></td><td align="right">1998-08-11 14:34  </td><td align="right">351K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lde-2.4.lsm">lde-2.4.lsm</a></td><td align="right">1998-08-11 14:36  </td><td align="right">712 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kfsstatus-0.1.5.lsm">kfsstatus-0.1.5.lsm</a></td><td align="right">1998-10-14 21:33  </td><td align="right">410 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kfsstatus-0.1.5.tgz">kfsstatus-0.1.5.tgz</a></td><td align="right">1998-10-14 21:34  </td><td align="right"> 74K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gpart-0.1b.tar.gz">gpart-0.1b.tar.gz</a></td><td align="right">1999-01-12 01:30  </td><td align="right"> 41K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gpart.lsm">gpart.lsm</a></td><td align="right">1999-01-12 01:30  </td><td align="right">954 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="hpfs-0.98b.tar.gz">hpfs-0.98b.tar.gz</a></td><td align="right">1999-02-04 23:14  </td><td align="right"> 44K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="hpfs-1.93b.tar.gz">hpfs-1.93b.tar.gz</a></td><td align="right">1999-02-04 23:19  </td><td align="right"> 45K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="hpfs.readme">hpfs.readme</a></td><td align="right">1999-02-04 23:20  </td><td align="right">142 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:55  </td><td align="right"> 94 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="efs-1.0.lsm">efs-1.0.lsm</a></td><td align="right">1999-05-02 15:00  </td><td align="right">461 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="efs-1.0.tar.gz">efs-1.0.tar.gz</a></td><td align="right">1999-05-02 15:00  </td><td align="right"> 22K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="dosfs/">dosfs/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="ext/">ext/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="ext2/">ext2/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="hfs/">hfs/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="minix/">minix/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="ncpfs/">ncpfs/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="procfs/">procfs/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="smbfs/">smbfs/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="umsdos/">umsdos/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="xiafs/">xiafs/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">597 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">5.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">2.3K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

@@ -1,0 +1,19 @@
+Begin3
+Title:		webalias-1.0.1.tar.gz	
+Version:	1.0.1
+Entered-date:	9/17/97	
+Description:	Perl CGI script for manipulating the /etc/aliases file for 
+		sendmail.
+Keywords:	Perl, CGI, aliases, sendmail	
+Author: 	gary@avalanche.dyndns.com (Gary W. Houle)
+Maintained-by:	gary@avalanche.dyndns.com (Gary W. Houle)
+Primary-site:	avalanche.dyndns.com /pub/Linux/alias_project
+					alias.cgi
+					alias.shtml
+					README
+Alternate-site: sunsite.unc.edu
+
+Original-site:	avalanche.dyndns.com
+Platforms:	Linux, or any UNIX using sendmail.
+Copying-policy:	PD
+End

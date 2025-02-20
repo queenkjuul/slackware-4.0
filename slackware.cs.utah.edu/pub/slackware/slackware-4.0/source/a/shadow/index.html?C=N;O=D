@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/source/a/shadow</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/source/a/shadow</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/source/a/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shadow-19990307.tar.gz">shadow-19990307.tar.gz</a></td><td align="right">1999-03-07 19:48  </td><td align="right">597K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shadow-19990307.shadowconfig.diff.gz">shadow-19990307.shadowconfig.diff.gz</a></td><td align="right">1999-03-27 20:13  </td><td align="right">701 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shadow-19990307.login.defs.diff.gz">shadow-19990307.login.defs.diff.gz</a></td><td align="right">1999-03-27 20:29  </td><td align="right">632 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shadow-19990307.getpass.diff.gz">shadow-19990307.getpass.diff.gz</a></td><td align="right">1999-03-27 07:35  </td><td align="right">233 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shadow-19990307.configure.in.diff.gz">shadow-19990307.configure.in.diff.gz</a></td><td align="right">1999-03-27 07:38  </td><td align="right">269 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shadow-19990307.configure.diff.gz">shadow-19990307.configure.diff.gz</a></td><td align="right">1999-03-27 07:52  </td><td align="right">215 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="adduser">adduser</a></td><td align="right">1999-03-27 21:04  </td><td align="right">2.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="_shadow.tar.gz">_shadow.tar.gz</a></td><td align="right">1999-03-27 20:46  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SlackBuild">SlackBuild</a></td><td align="right">1999-03-27 20:47  </td><td align="right">3.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-21 04:26  </td><td align="right">565 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

@@ -1,0 +1,19 @@
+
+Begin3
+Title:          Super
+Version:        3.7.2
+Entered-date:   29Aug95
+Description:    Super(1) is a setuid-root program that offers
+                restricted setuid-root access to executables, adjustable
+                on a per-program and per-user basis; a relatively secure
+                environment for scripts, so that well-written
+                scripts can be run as root (or some other uid/gid), without
+                unduly compromising security. 
+Keywords:       setuid, security, sudo
+Author:         will@nfra.nl (William Deich)
+Maintained-by:  apharris@onShore.com (A. P. Harris)
+Primary-site:   comp.sources.misc
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/Admin
+	        260kB super-3.7.3.linux.tar.gz
+Copying-policy: GPL v.1 and Artistic License
+End

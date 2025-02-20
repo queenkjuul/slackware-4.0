@@ -1,0 +1,18 @@
+Begin3
+Title:		gFTP
+Version:	0.1
+Entered-date:	27DEC98
+Description:	A multithreaded FTP program for X Windows written in GTK+ 1.1.
+                It supports multiple downloads, a highly configurable 
+		connection manager, queued transfers, restarting of
+		interrupted file transfers, security (prevents buffer 
+		overflows from malicious ftp sites), and many more features.
+Keywords:	ftp x windows gtk
+Author: 	masneyb@newwave.net (Brian Masney)
+Maintained-by:	masneyb@newwave.net (Brian Masney)
+Primary-site:	http://www.newwave.net/~masneyb
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/network/file-transfer
+Original-site:	http://www.newwave.net/~masneyb
+Platforms:	GTK, X Windows
+Copying-policy:	GPL
+End

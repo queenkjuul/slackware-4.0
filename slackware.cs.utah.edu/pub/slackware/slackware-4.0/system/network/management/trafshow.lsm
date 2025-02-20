@@ -1,0 +1,15 @@
+Begin3
+Title:		trafshow
+Version:	1.3
+Entered-date:	12AUG1997
+Description:	Ncurses based IP traffic monitoring software.
+Keywords:	traffic monitoring
+Author: 	begemot@bgm.rosprint.net (Dmitry Gorodchanin)
+Maintained-by:	begemot@bgm.rosprint.net (Dmitry Gorodchanin)
+Primary-site:	sunsite.unc.edu /pub/Linux/Incoming
+                18k trafshow-1.3.tgz
+Alternate-site: NA
+Original-site:	NA
+Platforms:	Linux 2.0.0+.
+Copying-policy:	GPL 
+End

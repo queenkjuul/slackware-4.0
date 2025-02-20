@@ -1,0 +1,16 @@
+Begin3
+Title:          wmrxtx
+Version:        1.0.0
+Entered-date:   11-10-97
+Description:    wmrxtx is a Dock/Wharf applet that simulates the rx, tx
+		and collision lights of an ethernet card.
+Keywords:       rx tx leds windowmaker afterstep
+Author:         andrewk@mail.utexas.edu (Andrew Kieschnick)
+Maintained-by:  andrewk@mail.utexas.edu (Andrew Kieschnick)
+Primary-site:   sunsite.unc.edu /pub/Linux/desktop
+		8kB wmrxtx-1.0.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux X11 ethernet windowmaker afterstep
+Copying-policy: GPL
+End

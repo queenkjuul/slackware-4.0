@@ -1,0 +1,5 @@
+./configure --prefix=/usr --enable-kde --enable-gnome
+
+# Then, be sure to edit WindowMaker file, since the paths will be set up
+# for /usr/local.
+

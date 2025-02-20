@@ -1,0 +1,2 @@
+( cd usr/X11R6/include ; rm -rf bitmaps )
+( cd usr/X11R6/include ; ln -sf X11/bitmaps bitmaps )

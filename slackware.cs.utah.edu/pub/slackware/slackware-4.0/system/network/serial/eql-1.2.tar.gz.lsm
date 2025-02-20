@@ -1,0 +1,18 @@
+Begin3
+Title: EQL Driver: Load Balancing for Serial Network Connections
+Version: 1.2
+Entered-date: 28APR95
+Description: Load Balancing Driver for Serial Network Connections,
+	     double, triple, quadruple your network bandwidth with multiple
+	     point-to-point links. Works with PPP or SLIP.
+Keywords: PPP SLIP load balancing networking speed reliability redundancy
+Author: simon@ncm.com (Simon Janes)
+Maintained-by: simon@ncm.com (Simon Janes)
+Primary-site: slaughter.ncm.com /pub/Linux/LOAD_BALANCING
+	      20kB eql-1.2.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Networking/serial
+	        20kB eql-1.2.tar.gz
+Original-site:  
+Platform: Linux
+Copying-policy: GPL 
+End

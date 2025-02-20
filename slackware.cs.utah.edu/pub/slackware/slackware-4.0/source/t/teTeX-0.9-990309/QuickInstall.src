@@ -1,0 +1,23 @@
+=============================================================================
+        Quick-Install
+=============================================================================
+
+  mkdir -p /usr/local/teTeX/share/texmf
+  gzip -dc teTeX-texmf-0.9.tar.gz | (umask 0; cd /usr/local/teTeX/share/texmf; tar xvf -)
+  gzip -dc teTeX-src-0.9.tar.gz | tar xvf -
+  cd teTeX-0.9
+  ./configure --prefix=/usr/local/teTeX
+  make world >& world.log
+
+Now, make sure to put the newly created binaries into your PATH, e.g.
+  PATH=/usr/local/teTeX/bin/i586-pc-linux-gnu; export PATH
+or
+  setenv PATH /usr/local/teTeX/bin/i586-pc-linux-gnu:$PATH
+
+and run
+  texconfig confall
+and check if all the output looks ok and then run
+  texconfig
+to configure what you need.
+
+Thomas

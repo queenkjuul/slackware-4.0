@@ -1,0 +1,17 @@
+Begin3
+Title:          kexpress
+Version:        0.1.2
+Entered-date:   15NOV98
+Description:    A News Reader for the KDE-Project
+Keywords:       Newsreader, QT, KDE, Linux
+Author:         peter.wichert@t-online.de (Peter Wichert)
+Maintained-by:  peter.wichert@t-online.de (Peter Wichert)
+Primary-site:   ftp.kde.org /pub/kde/unstable/apps/network
+                150KB kexpress-0.1.2.tar.gz
+                589   kexpress-0.1.2.lsm
+Alternate-site:
+Home-Page:      http://home.t-online.de/home/peter.wichert
+Original-site:
+Platforms:      Linux, X11, QT 1.4, KDE 1.0
+Copying-policy: GPL
+End

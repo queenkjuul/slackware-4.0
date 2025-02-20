@@ -1,0 +1,61 @@
+
+				    K I S S
+
+This is the generic README file for Kiss: Karel's Interactive Simple Shell (or
+Incredibly Stupid Shell, if you like). I wrote Kiss as a replacement of David
+I. Bell's "sash" (Stand-Alone Shell), which I used in my Search-And-Rescue
+package to create bootable rescue disks. I found that Sash lacked features
+which I absolutely needed: piping, command substitution and such. So here's
+Kiss.
+
+Kiss is basically a simple shell interpreter, like Bash or Tcsh, except that
+it lacks a good deal of the sophistication of a good shell. E.g. you'll find
+that Kiss sometimes doesn't parse its input the way you want it, or that
+programs aren't started correctly. So beware. However, most times Kiss will do
+what you intend it to do. What Kiss does have over Bash or Tcsh, is a good
+deal of built-in programs. E.g. "ls" or "mount" are built-ins, which means
+that Kiss is ideal as a shell interpreter on rescue disks. Just create a
+bootable disk, put Kiss on it as your login shell interpreter, and you're all
+set. No need to put "ls", "cat", "more" or other programs on the disk. Which
+means that you can put other important files on the rescue diskette.
+
+For those who are interested in the workings of Kiss, read the files
+technotes.txt and so on. For the usage of Kiss, read userguide.txt. The text
+files are contained int the subdirectory doc/. The binary versions of Kiss in
+this archive are: src/bkiss, src/gkiss and src/rkiss. The first is a `bare'
+version, lacking line editing (but yielding a smaller executable). The second
+has getline support, offering command line editing. The last one was linked
+with GNU's Readline support: it has line editing and filename completion like,
+e.g., bash, but is bigger.
+
+I am always interested in feedback! Keep in mind that Kiss is meant as a
+rescue disk shell interpreter, so don't expect too much functionality. Though
+if you think that relevant programs for a rescue disk should be in Kiss, write
+me.
+
+    "Kiss is distributed without charge. As with everything that's free,
+    there's no warranty. If you like Kiss, tell your friends about it. If you
+    _really_ like Kiss, send me a postcard from a far-away place. If you don't
+    like it, tough."
+
+Oh, one more thing. I am distributing Kiss under the GPL `copyleft'
+conditions. See the file COPYING. However, if you have changes / improvements
+/ bug fixes, don't hack the sources to re-distribute your version. Rather mail
+your submissions to me.  I'd like to have the latest version of Kiss too!
+
+					Karel Kubat
+					e-mail: karel@icce.rug.nl
+					Westerhaven 16
+					9718 AW  Groningen
+					The Netherlands
+
+As of Sep. 1997 Kiss is not longer maintained by Karel Kubat.
+Please do not send changes / improvements / bug fixes to him, but send them 
+to the new maintainer. Thanks!
+The new maintainer is:
+			Sven Van Den Steene
+			e-mail: kiss@skynet.be
+			        kiss@skynet.be
+				Gebr. de Smet straat 47
+				9000 Gent
+				Belgium

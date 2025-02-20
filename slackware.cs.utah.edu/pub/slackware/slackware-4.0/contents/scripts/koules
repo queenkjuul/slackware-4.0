@@ -1,0 +1,4 @@
+( cd usr/games ; rm -rf koules )
+( cd usr/games ; ln -sf koules.svga koules )
+( cd usr/man/man6 ; rm -rf koules.6.gz )
+( cd usr/man/man6 ; ln -sf koules.svga.6.gz koules.6.gz )

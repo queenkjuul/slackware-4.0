@@ -1,0 +1,14 @@
+Begin3
+Title:          tcpdump
+Version:        3.3
+Entered-date:   20FEB97
+Description:    A network traffic filter.  Dumps raw network info.
+Keywords:       tcpdump ethernet
+Author:         mccann@ee.lbl.gov (Steve McCann)
+Maintained-by:
+Primary-site:   ftp.ee.lbl.gov /tcpdump-3.3.tar.Z
+Alternate-site: 
+Original-site:
+Platforms:      libpcap (ftp://ftp.ee.lbl.gov/libpcap.tar.Z)
+Copying-policy: ????
+End

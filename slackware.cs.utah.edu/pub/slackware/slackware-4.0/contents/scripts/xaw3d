@@ -1,0 +1,4 @@
+( cd usr/X11R6/lib ; rm -rf libXaw3d.so.6 )
+( cd usr/X11R6/lib ; ln -sf libXaw3d.so.6.1 libXaw3d.so.6 )
+( cd usr/X11R6/lib ; rm -rf libXaw3d.so )
+( cd usr/X11R6/lib ; ln -sf libXaw3d.so.6 libXaw3d.so )

@@ -1,0 +1,28 @@
+Begin3
+Title:          autodep - Dependency Rule Generator for C/C++ Makefile
+Version:        1.1.1
+Entered-date:   01AUG98
+Description:    autodep automates Makefile generation for C/C++ compilation 
+		and linking process.  Makefile are created by using a rule 
+		file `ad.rule' and several text files you specified.  autodep 
+		looks for all include files used by your program to produce 
+		correct dependencies and rules in Makefile.  Makefile can be 
+		regenerated as often as you want by reruning this program.  
+
+		It is designed to work with or without GNU Autoconf 
+		configuration script.
+
+		URL: http://www-scf.usc.edu/~lerdsuwa/util
+
+Keywords:       autodep, make, makefile, Makefile, dependency, rule
+Author:         lerdsuwa@scf.usc.edu (Kriang Lerdsuwanakij)
+Maintained-by:  lerdsuwa@scf.usc.edu (Kriang Lerdsuwanakij)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/make
+		68kb autodep-1.1.1.tar.gz
+		2kb  autodep-1.1.1.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Perl 5
+Copying-policy: GNU GPL with exceptions apply to generated Makefiles and
+		examples.
+End

@@ -1,0 +1,28 @@
+Begin3
+Title:          xitalk X "Talk Interceptor"
+Version:        1.1.11
+Entered-date:   30APR98
+Description:    xitalk is an X program that intercepts stuff like talk and 
+                write requests and allows predefined responses (such as a 
+                talk reply) at the touch of a button. stops you getting your 
+                xterms filled with garbage when you dont want to have
+                your xterm obscured. You can click on respond and avoid 
+                having to manually open another window and run talk or write 
+                or close down whatever you're running to respond to the 
+                talk/write request. Also it can be set up to automatically 
+                reply to messages, allowing you to respond automagically
+                to write etc requests while you're gone. It can monitor
+                files as well and function as a mail notification program.
+Keywords:       x,talk,intercept,write,wall,mesg,xtalk,xwall,xwrite,xmesg,
+                xwho,who,xbiff,coolmail,mail notification,file watch,
+                tty manager
+Author:         Caolan.McNamara@ul.ie (Caolan McNamara)
+Maintained-by:  Caolan.McNamara@ul.ie (Caolan McNamara)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/chat
+                xitalk-1.1.11.tar.gz
+Alternate-site: skynet.csn.ul.ie /pub/linux/x/utils
+                xitalk-1.1.11.tar.gz
+Original-site:  skynet.csn.ul.ie /pub/linux/x/utils
+                xitalk-1.1.11.tar.gz
+Copying-policy: GNU
+End

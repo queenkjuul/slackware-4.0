@@ -1,0 +1,14 @@
+Begin3
+Title        = kdebindings
+Version      = 0.1
+EnteredDate  = 13JUN1998
+Desc1        = Qt & KDE bindings for Python
+Desc2        = kdebindings is a set of wrappers to use the Qt and KDE
+Desc3        = libraries with the Python language.
+Author       = Matthias Hoelzer
+AuthorEmail  = hoelzer@kde.org
+Required1    = Qt, KDE, Python, SWIG
+CopyPolicy1  = GPL
+CopyPolicy2  =
+Keywords     = KDE, Qt, Python, SWIG
+End

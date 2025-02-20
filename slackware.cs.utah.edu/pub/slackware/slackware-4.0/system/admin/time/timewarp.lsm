@@ -1,0 +1,26 @@
+Begin3
+Title:			timewarp
+Version:		0.1
+Entered-date:		12JUL98
+Description:            timewarp fools a program into thinking that the
+                        current time is something other than it really is.
+			This allows you to continue running binary software
+			that has 'expired' without having to reset the
+			time of the entire system.  (A program has 'expired'
+			when it has a logical 'time bomb' that prevents
+ 			use of the program after a certain date, like 
+			'rvplayer' from Real Networks.)
+			It is implemented as a loadable kernel module and 
+			it effects the time on a per-program basis.  That
+			is, it only effects certain user-specified programs.
+Keywords:		time, date, kernel module, system call, expire
+Author:			jdimpson@acm.org (Jeremy D. Impson)
+Maintained-by:		jdimpson@acm.org (Jeremy D. Impson)
+Primary-site:		sunsite.unc.edu:/pub/Linux/???
+				   21 kb timewarp-0.1.tgz
+Alternate-site:		http://source.syr.edu/~jdimpson/proj/timewarp-0.1.tgz
+Original-site:		http://source.syr.edu/~jdimpson/proj/timewarp-0.1.tgz
+
+Platforms:		Linux (ia32, possible others)
+Copying-policy:		GPL
+End

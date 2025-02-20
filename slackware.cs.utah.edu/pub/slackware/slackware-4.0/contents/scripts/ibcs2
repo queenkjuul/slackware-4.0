@@ -1,0 +1,4 @@
+( cd usr/lib ; rm -rf libc.so.1 )
+( cd usr/lib ; ln -sf /usr/i486-sysv4/lib/libc.so.1 libc.so.1 )
+( cd usr/lib ; rm -rf ld.so.1 )
+( cd usr/lib ; ln -sf /usr/i486-sysv4/lib/ld.so.1 ld.so.1 )

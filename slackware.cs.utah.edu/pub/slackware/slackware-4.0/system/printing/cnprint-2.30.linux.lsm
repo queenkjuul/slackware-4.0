@@ -1,0 +1,31 @@
+Begin2
+Title        = cnprint
+Version      = 2.30
+Desc1        = chinese GB/HZ/Big5 -> PS printing program
+Author       =
+AuthorEmail  =
+Maintainer   =
+MaintEmail   =
+Site1        = sunsite.unc.edu
+Path1        =
+File1        = cnprint-2.30.linux.tar.gz
+FileSize1    =
+Required1    =
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  =
+CopyPolicy2  =
+Keywords     = cnprint chinese printing postscript
+Comment1     =
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    = 3 HBF fonts, source
+RelFiles3    =
+Entered      = April 10, 1994
+EnteredBy    = Eric Lin
+CheckedEmail = umlin000@cc.umanitoba.ca
+End
+

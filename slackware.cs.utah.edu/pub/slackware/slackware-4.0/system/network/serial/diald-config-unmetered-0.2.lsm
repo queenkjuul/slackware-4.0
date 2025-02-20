@@ -1,0 +1,24 @@
+Begin3
+Title:          Sample unmetered config for diald (demand dialing daemon)
+Version:        0.2
+Entered-date:   07JAN98
+Description:    Configuration files for use with the diald-config
+                package which configure diald to automatically start
+                and stop the ppp0 interface.  These files assume you
+                are using an unmetered phone service, a single charge
+                to make the phone call and no charges thereafter.
+Keywords:       demand dial, ppp, configuration, diald, networking
+Author:         kop@meme.com (Karl O. Pinc)
+Maintained-by:  kop@meme.com (Karl O. Pinc)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+                11586 diald-config-unmetered-0.2.tar.gz
+                13753 diald-config-unmetered-0.2-2.noarch.rpm
+                14227 diald-config-unmetered-0.2-2.src.rpm
+                 1110 diald-config-unmetered-0.2.lsm
+Alternate-site: 
+Original-site:  ftp.meme.com /pub/software/diald-config
+Platforms:      
+Copying-policy: GPL
+End
+
+MD5 checksum 8ae20ac898e1c027c0a6bdd869d316e9 diald-config-unmetered-0.2.tar.gz

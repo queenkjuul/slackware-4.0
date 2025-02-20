@@ -1,0 +1,16 @@
+Begin3
+Title:          chkconfig
+Version:        0.3c
+Entered-date:   18Sep97
+Description:    IRIX-like chkconfig - allows start-up of daemons and other
+		init-executed programs based on a simple {on|off} flag in
+		the /etc/config directory
+Keywords:       chkconfig, SYSV init, configuration checker
+Author:         marc@bard.org.il (Marc A. Volovic)
+Maintained-by:  marc@bard.org.il (Marc A. Volovic)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/boot/init
+		4KB chkconfig-0.3c.tar.gz
+		571 chkconfig-0.3c.lsm
+Platforms:      Linux, IRIX, Un*x
+Copying-policy: GPL
+End

@@ -1,0 +1,63 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-trn
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_trn.tar.gz
+
+echo "+=============================+"
+echo "| trn-3.6 for /var/spool/news |"
+echo "+=============================+"
+cd $TMP
+tar xzvf $CWD/trn-3.6.tar.gz
+cd trn-3.6
+zcat $CWD/trn-3.6.spool.diff.gz | patch -p1
+make clean
+make
+cat Pnews > $PKG/usr/bin/Pnews
+cat Rnmail >$PKG/usr/bin/Rnmail
+cat newsetup >$PKG/usr/bin/newsetup
+cat newsgroups >$PKG/usr/bin/newsgroups
+cat trn >$PKG/usr/bin/trn
+cat trn-artchk >$PKG/usr/bin/trn-artchk
+cat trn > $PKG/usr/bin/trn
+cat Pnews.1 | gzip -9c > $PKG/usr/man/man1/Pnews.1.gz
+cat Rnmail.1 | gzip -9c > $PKG/usr/man/man1/Rnmail.1.gz
+cat newsetup.1 | gzip -9c > $PKG/usr/man/man1/newsetup.1.gz
+cat newsgroups.1 | gzip -9c > $PKG/usr/man/man1/newsgroups.1.gz
+cat trn.1 | gzip -9c > $PKG/usr/man/man1/trn.1.gz
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/trn.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/trn-3.6
+  rm -rf $PKG
+fi

@@ -1,0 +1,20 @@
+Begin3
+Title: xtop          
+Version: 1.1.2    
+Entered-date: 09.03.1997  
+Description:  xtop is an X based process monitor for Linux derived 
+	from the top program of the procps package. An arbitrary number of
+	processes can be selected and reniced or send signals to 
+	simultaneously. Summary information about cpu and memory usage is
+	displayed in two pie charts.
+Keywords: proc process signal renice top X X11 monitor
+Author: abangert@ix.urz.uni-heidelberg.de        
+Maintained-by: abangert@ix.urz.uni-heidelberg.de
+Primary-site: sunsite.unc.edu /pub/Linux/system/status/
+	108kB xtop-1.1.2.tar.gz
+        747 xtop-1.1.lsm  
+Alternate-site: tsx-11.mit.edu /pub/linux/sources/usr.bin.X11/
+Original-site:  
+Platforms:     
+Copying-policy: GPL
+End

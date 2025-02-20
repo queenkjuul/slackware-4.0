@@ -1,0 +1,25 @@
+Begin3
+Title:          TCP send expect chat
+Version:        1.2
+Entered-date:   14DEC96
+Description:    tcpsendexpect is a program that connects to a TCP port of a
+                host and make a chat. You can use it to automatize some
+                operation on remote servers, for example I use it to emulate a
+                connection via telnet to a Cisco terminal server for killing
+                users that are not allowed. You can use it to retrieve
+                e-mail or news from your host or to make some remote
+                operations, sending commands directly to a login session. You
+                can use to write simple clients for some internet protocols,
+                for example a single line WWW page retriever (I use it
+                to retrieve meteo maps via crontab) or a simple pop client
+                writted in shell language.
+Keywords:       chat tcp socket www html
+Author:         beppe@profuso.com (Giuseppe Zanetti)
+Maintained-by:  beppe@profuso.com (Giuseppe Zanetti)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/misc
+                9k tcpsendexpect.1.2.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       Linux
+Copying-policy: GNU GPL
+End

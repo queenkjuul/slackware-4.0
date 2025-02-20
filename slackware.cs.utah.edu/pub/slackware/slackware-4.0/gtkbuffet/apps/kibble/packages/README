@@ -1,0 +1,33 @@
+This is Kibble, a knowledge base program. It is used to organize seemingly
+discursive thoughts into a cohesive engine. Basically, it is used it to
+keep track of random ideas that may prove useful. It is released under
+the GNU General Public License and is Open Source software.
+
+Kibble requires GTK to compile. It may not work with early 1.0.x
+releases, YMMV. Statically linked binaries for i386 Linux are available
+at ftp://wish.student.harvard.edu/pub/kibble/binaries/.
+
+Kibble has a page on the web.  See:
+
+	http://wish.student.harvard.edu/kibble/
+
+New versions of Kibble can be downloaded from:
+
+	ftp://wish.student.harvard.edu/pub/kibble/
+
+Read the FAQ for documentation. The latest version of the FAQ is on
+the web:
+
+	http://wish.student.harvard.edu/kibble/faq/
+
+Mail suggestions and bug reports to kibble@wish.student.harvard.edu.
+
+Kibble currently has an incomplete French translation. If you know
+a foreign language, perhaps you could do translate some strings. It
+should take no more that ten minutes and it would mean a whole lot to
+many users! There are only thirty-five strings that need translation,
+and most are duplicates or single words.
+
+Similar programs seem to exist:
+http://www.aportis.com/products/BrainForest/benefits.html
+http://www.duke.edu/~pat4/think/

@@ -1,0 +1,17 @@
+Begin3
+Title:          tin
+Version:        pre-1.4-980226
+Entered-date:   26FEB98
+Description:    Newsreader local & remote with color and pgp 5 support, 
+                also includes the program 'urlview' for connecting to  
+		URLS while in tin.
+                Compiled elf, no source.
+Keywords:       README.linux       
+Author:         robotti@erols.com (Kent Robotti)
+Primary-site:   ftp://ftp.tin.org/pub/news/clients/tin <-Latest Tin Source.)
+                ftp://ftp.cs.hmc.edu/pub/me <-Latest Urlview Source.)
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/News/readers
+Platforms:      Linux libc5 elf System.
+Copying-policy: GPL
+End
+

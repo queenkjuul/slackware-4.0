@@ -1,0 +1,19 @@
+
+Begin3
+Title:		Onyx Sidewinder Bulletin Board System (OS BBS)
+Version:	0.10 Alpha       
+Entered-date:   28.Feb.1999
+Description: 	OS BBS is a BBS system developed from original BB BBS, it suports
+		direct telnet, modem, ANSI, ASCII, hotkey menus, menu scripting
+		language, time limits, Internet mail, bbs mail, file transfer
+		protocols, doors etc.   
+Keywords:	bbs telnet modem system ansi doors
+Author:		Sten Pôldma aka Exile (exile@chamber.ee)
+Maintained-by:	Sten Pôldma aka Exile (exile@chamber.ee)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/bbs
+		74K osbbs0_10a.tar.gz
+Alternate-site:	http://www.chamber.ee/os
+Original-site:	http://www.chamber.ee/os 
+Platforms:	Linux     
+Copying-policy:	Modified GPL (can't distribute after modification)
+End

@@ -1,0 +1,107 @@
+Using Autoconf to Configure Python Extensions
+=============================================
+Author: James Henstridge <james@daa.com.au>
+
+
+Autoconf is a tool to build flexible automatic configuration scripts
+for just about any unix program.  Often they can find out a lot more
+than an interactive script that asks the user for the equivalent
+information.  One of the most important things autoconf does is give a
+standard method to build programs (ie. run "./configure" and then run
+"make")
+
+Python also has a standard method for building extensions.
+Unfortunately (IMHO) it is not quite so elegant (I find "./configure"
+much easier to remember than "make -f Makefile.pre.in boot").  For
+this reason, I wrote this package.  It allows you to configure your
+extension with autoconf while keeping all the benefits of the old
+system (ie. platform independant building of shared libraries), and do
+just about anything you couldwith autoconf.
+
+
+Problems With the old "Universal Unix Makefile"
+===============================================
+
+The biggest problem with the old system was that it was not
+extendable.  Basically it would gather enough information from the
+local Python installation to know how to build and extension.  It also
+makes a config.h file containing a lot of information you might get
+from a configure script.
+
+This is fine, butyou can't do some things like, maybe finding where
+the X libraries are stored, if the system is slightly non standard
+system.
+
+Also, the use of VPATH is not handled automatically by the
+configuration process (it requires editing the Makefile, or adding
+some parameters to make).
+
+
+Using Autoconf to Configure a Python Extension
+==============================================
+
+When you use this system, copy the file Makefile.pre.in from this
+distribution to your extension's build directory (the file is a hacked
+up version of the normal universal makefile).
+
+Next you must create a Setup.in file.  This file has the same format
+as that used by the older configuration system, except that it can
+also contain @varname@ expansions.  During configuration, this file is
+parsed for those expressions, and the output is put in the file Setup.
+For this reason, you shoudn't edit the file Setup directly.
+
+Now you need a configure file.  You will need the package of extra
+macros that is included in this distribution.  To do this, just copy
+the file aclocal.m4 from this districution to your build directory.
+
+Now you should write a configure.in file.  At the very least it should
+contain these lines:
+
+  AC_INIT(foomodule.c) dnl some file that is unique to this distribution
+  PY_INIT
+
+  dnl Any extra checks should go in here
+  
+  PY_OUTPUT(Makefile, Setup)
+
+Now run autoconf in your build directory to make a configure script.
+
+
+An Example
+==========
+
+In one of my extensions, I needed to link my extension with the X
+libraries.  In order to do this, I wrote a configure.in file that
+looked like this:
+  
+  AC_INIT(gtkmodule.c)
+  PY_INIT
+  AC_PATH_X
+  XLIBS="$x_libraries"
+  AC_SUBST(XLIBS)
+  PY_OUTPUT(Makefile, Setup)
+
+My Setup.in file looked like this:
+  *shared
+  gtk gtkmodule.c -lgtk -lgdk -lglib -L@XLIBS@ -lXext -lX11
+
+This is just a simple example of what can be done with this system.
+
+For a larger example, see my pygtk and pygnome packages.
+
+What if I am too lazy to create my own configure script?
+========================================================
+
+I have also included a pregenerated configure script that contains
+only the functionality you would find in the old configuration system.
+To use this pre generated configure script, just copy the files
+configure and Makefile.pre.in to your build directory.  This should
+let you use the Setup.in file you were using previously.
+
+
+Contacting the Author
+=====================
+
+If you can think of any additions to this package, or have found bugs,
+please feel free to contact me at <james@daa.com.au>
+

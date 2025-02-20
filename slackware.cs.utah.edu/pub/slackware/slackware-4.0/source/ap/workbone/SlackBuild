@@ -1,0 +1,48 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-workbone
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+echo "+===============+"
+echo "| WorkBone-2.31 |"
+echo "+===============+"
+cd $TMP
+tar xzvf $CWD/workbone_2.31.orig.tar.gz
+cd workbone-2.31.orig
+zcat $CWD/workbone_2.31-5.diff.gz | patch -p1
+# Revert from broken (meant for glibc?) patch:
+mv hardware.c.orig hardware.c
+make
+mkdir -p $PKG/usr/bin
+mkdir -p $PKG/usr/doc/WorkBone-2.31
+cat workbone > $PKG/usr/bin/workbone
+chmod 755 $PKG/usr/bin/workbone
+chown root.bin $PKG/usr/bin/workbone
+mkdir -p $PKG/usr/man/man1
+cat workbone.1 | gzip -9c > $PKG/usr/man/man1/workbone.1.gz
+cat README > $PKG/usr/doc/WorkBone-2.31/README
+chmod 644 $PKG/usr/doc/WorkBone-2.31/README
+chown root.bin $PKG/usr/doc/WorkBone-2.31/README
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/workbone.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/workbone-2.31.orig
+  rm -rf $PKG
+fi

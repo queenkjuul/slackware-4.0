@@ -1,0 +1,356 @@
+The Linux Bibliography
+By Jim Haynes <haynes@cats.ucsc.edu>
+
+The following is not meant to be a comprehensive Unix
+bibliography.  For that, see the Unix book list posted periodically
+to misc.books.technical and to several comp.unix newsgroups.  This
+list is meant to be supplemental, containing items of special interest
+and importance for Linux workers (or 386BSD people - whatever turns you on).
+
+Comments not in quotes below are mine.  Comments sent in by others are
+in quotes, and have the name of the commentor in square brackets.
+[except when they don't.  Some comments in quotes are from the publisher's
+catalog.]
+
+Please send additions, corrections, and comments to haynes@cats.ucsc.edu.
+Jim Haynes, Computer Center, University of California, Santa Cruz, CA  95064
+
+
+I. Hardware
+
+   Upgrading and Repairing PCs; Mueller, Scott; Que Corp.; ISBN 0-88022-856-3;
+   1298pp; 1992; $34.95 (USA).  This is a book I bought when I was struggling
+   with an AT-clone.  It is best on XTs and ATs and IBM PS/2s.  Still, there
+   is a wealth of information common to all models.  EISA and VESA are
+   mentioned only in the glossary.
+
+   80386 Hardware Reference Manual; Intel Corp.; ISBN 1-55512-024-5; ?pp.;
+   1986; $?.  Pin connections, timing, waveforms, block diagrams, voltages,
+   all that kind of stuff.
+
+   The Indispensable PC Hardware Book; Messmer, Hans-Peter; Addison-
+   Wesley; ISBN 0-201-62424-9; 1000 pp; 1993.  Covers the more recent
+   stuff like EIDE and PCI.
+
+II. Processor architecture and programming
+
+    80386 Programmer's Reference Manual; Intel Corp.; ISBN 1-55512-022-9;
+    ?pp.; 1986; $?.  Part I. Applications Programming, data types, memory
+    model, instruction set.  Part II. Systems Programming, architecture,
+    memory management, protection, multitasking, I/O, exceptions and
+    interrupts, initialization, coprocessing and multiprocessing. Part III.
+    Compatibility (with earlier x86 machines).  Part IV. Instruction Set.
+
+    80386 System Software Writer's Guide; Intel Corp.; ISBN 1-55512-023-7;
+    ?pp.; 1987; $?.  This explains the 386 features for operating system
+    writers.  It includes a chapter on Unix implementation.  A lot of the
+    80386 architecture seems to have been designed with Multics in mind;
+    the features are not used by DOS or by Unix.
+
+    Programming the 80386; Crawford, John H., and Gelsinger, Patrick P.;
+    Sybex; ISBN 0-89588-381-3; 774pp.; $26.95 (USA).  This is the book the
+    Jolitzes used when they ported BSD to the 386 architecture.
+
+    Pentium Processor User's Manual: Volume 3, Architecture and Programming
+    Manual; Intel Corp.; ISBN 1-55512-195-0; ?pp.; 1993; $?.  Pretty much
+    the Pentium version of the 80386 Programmer's manual listed above.
+
+
+III. Unix Kernel Implementation
+
+     The Design of the Unix Operating System; Bach, Maurice J.; Prentice-
+     Hall; ISBN 0-13-201799-7; 470pp.; $60 (USA).  The book that got Linus
+     started.
+
+     The Design and Implementation of the 4.3BSD Unix Operating System;
+     Leffler, Samuel J., McKusick, Marshall Kirk, Karels, Michael J., and
+     Quarterman, John S.; Addison-Wesley; ISBN 0-201-06196-1; 471 pp.;
+     1989, 1990; $44.95 (USA).  So, it's not about Linux, but can you
+     afford to ignore it?
+
+     Linux Kernel Hacker's Guide; Johnson, Michael K.; Linux Documentation
+     Project; FTP sites (see end of document); 1993.
+
+     Linux kernel programming; about six authors; Addison-Wesley.
+
+     Operating Systems, Design and Implementation; Tanenbaum, Andrew S.;
+     Prentice-Hall; 1987.  [sugg. by Alan Cox]
+
+     Porting Unix to the 386; Jolitz, William F., and Jolitz, Lynne G.;
+     Dr. Dobb's Journal; Jan 1991-July 1992.
+     
+IV. System Calls
+
+    The Posix.1 Standard: A Programmer's Guide; Zlotnick, Fred; Benjamin/
+    Cummings; ISBN 0-8053-9605-5; 379pp.; 1991; $35.95 (USA).  When I
+    complained about the lack of Section 2 man pages in Linux, somebody
+    told me just to get a POSIX book, because that's what Linux does.
+    I like this book because I'm not a professional programmer and the
+    author gives copious explanations and examples.  
+
+
+V. Networking
+
+   Unix Network Programming; Stevens, W. Richard; PTR Prentice Hall;
+   ISBN 0-13-949876-1; 772 pp.; $54 (USA).  Everything you might want to
+   know about the subject, and some things you probably don't want to
+   know (really, XNS!?).
+
+   Linux Networking Guide; Kirch, Olaf; Linux Documentation Project; FTP
+   sites (see end of this document); 1993.
+
+   TCP/IP Network Adminstration; Hunt, Craig; O'Reilly Associates;
+   ISBN 0-937175-82-X; 1992. [sugg. by Kurt M. Hockenbury]
+
+   Internetworking With TCP/IP: Volume 1, Principles, Protocols, and
+   Architecture; Comer, E. Douglas; Prentice-Hall; ISBN 0-13-474321-0;
+   2nd ed. [sugg. by Phil Packer]  [Alan Cox suggests all 3 volumes
+   in this series] [Somebody else thought the Stevens book was better.]
+
+   Computer Networks (2nd Edition); Tanenbaum, Andrew S.; Prentice Hall;
+   1988.  [sugg. by Alan Cox]
+
+   Sendmail; Costales, Bryan, with Allman, Eric & Rickert, Neil; O'Reilly;
+   ISBN 1-56592-056-2; 1993; 830 pp; $32.95
+
+   DNS and BIND; Albitz, Paul, and Liu, Cricket; O'Reilly; ISBN 1-56592-010-4;
+   1992; 418 pp; $29.95.   But note that the BIND Operations Guide included
+   in the latest release of BIND obsoletes some of this material.
+
+   Firewalls & Internet Security; Cheswick, William R. & Bellovin, Steven M.;
+   Addison-Wesley; ISBN 0-201-63357-4.
+
+   TCP/IP Illustrated. Vol. 1; Stevens, W. Richard.
+
+VI.a  General Unix (or hard-to-classify)
+
+   Unix in a Nutshell; Gilly, Daniel et al.; O'Reilly Assoc.; 2nd Ed. 1992;
+   ISBN 1-56592-001-5; 444 pp. $9.95.  "...a complete reference containing
+   all commands and options, along with generous descriptions and examples..."
+
+   Bell System Technical Journal, July-August 1978, Vol. 57, No. 6, part 2;
+   AT&T; 416 pp.  Many papers on Unix, including Ritchie & Thompson,
+   "The UNIX Time Sharing System"; Thompson, "UNIX Implementation";
+   Ritchie, "A Retrospective"; Bourne, "The UNIX Shell"...
+
+   The UNIX-haters Handbook, complete with barf bag.  I was going to omit this,
+   but since Olaf Kirch suggested it, ...
+
+   Linux from PC to Workstation; Springer Verlag. [said to be available in
+   German and English]
+   Linux, Unleashing the Workstation in Your PC; Strobel, Stefan, & Uhl,
+   Thomas; Springer-Verlag; 1994. [might be the same book as the above]
+
+   Linux Users Handbook; Mueller, Martin & Hetze, Sebastian; ftp sites.
+
+   The Linux Primer - the Latest UNIX Environment for PCs; Hiroshi, Koyama,
+   Yasushi, Saito, Hiroshi, Sasaka, and Tomoyuki, Nakagome; Addison Wesley
+   Japan; ISBN 4-7952-9652-9; 1995; 415 pp; Y4,800.  With CD-ROM.
+
+   UNIX for the Impatient; Abrahams & Larson.
+
+   UNIX System V Release 4, An Introduction - For New and Experienced Users;
+   Osborne; Mc-Graw Hill; ISBN 0-07-881552-5.
+   
+   Running Linux; Welsh, Matt, & Kaufman, Lar; O'Reilly; ISBN 1-56592-100-3;
+   1995; 600pp; $24.95.  "Everything you need in order to understand, install,
+   and use the Linux operating system."
+
+VI.b  General (or hard-to-classify) (non-Unix)
+
+   The Mythical Man Month, Essays on Software Engineering; Brooks, Frederick
+   P.; Addison Wesley;  1975.  "This I'd recommend not for its technical
+   value but for its application of common sense and reality to computing
+   projects." [Alan Cox] (Ah, yes.  What if Linus had been given 200
+   programmers and had been told to produce Linux in 3 months!)
+   
+VII. System Installation
+
+     Linux Installation and Getting Started; Welsh, Matt; Linux Documentation
+     Project; FTP sites (see end of this document); 175 pp.; 1994.
+
+     Using Linux; QUE; ISBN 0-7897-0100-6; 1995
+
+VIII. System Administration
+
+     Linux System Administrator's Guide; Wirzenius, Lars;  Linux
+     Documentation Project; FTP sites (see end of document); 1993.
+
+     Essential System Administration; Frisch, Aileen; O'Reilly Associates;
+     ISBN 0-937175-80-3; 2nd ed, 1995; 788 pp; $32.95.
+
+     Unix System Administration Handbook; Nemeth et al; Prentice-Hall
+
+     Linux Anwender Handbuch; Hetze, S. et al; Lunetix. [German language]
+
+IX. Security
+
+    Practical Unix Security; Garfinkel, Simpson, and Spafford, Gene;
+    O'Reilly Associates; ISBN 0-937175-72-2; 1991. [sugg. by Kurt M. 
+    Hockenbury and Ronald P. Miller] "Some overlap with Essential System
+    Admin., but all in all a solid book on security, especially for those
+    aspiring to allow multiple-user, dial-up/net access to their Linux boxes."
+    [Miller]
+
+
+X.  Programming and Programming Languages
+
+    The Unix Programming Environment; Kernighan, Brian, and Pike, Rob;
+    Prentice-Hall; ISBN 0-13-937681-X; 1984. [sugg. by Kurt M.
+    Hockenbury]
+
+    The C Programming Language; Kernighan, Brian, and Ritchie, Dennis;
+    Prentice-Hall; ISBN 0-13-110362-8; 2nd ed. 1988.  [sugg. by Kurt M.
+    Hockenbury]
+
+    sed & awk; Doughterty, Dale; O'Reilly; ISBN 0-937175-59; 1990; 414pp.;
+    $27.95.
+
+    lex & yacc; Levine, John, Mason, Tony, & Brown, Doug; O'Reilly;
+    ISBN 1-56592-000-7; 2nd ed 1992; 366 pp; $29.95 [This edition also
+    covers bison and flex.]
+
+    Programming Perl; Wall, Larry, & Schwartz, Randal L.; O'Reilly;
+    ISBN 0-937175-64-1; 1991; 482 pp; $29.95.
+
+    Learning Perl; Schwartz, Randal L.; O'Reilly; ISBN 1-56592-042-2;
+    1993; 274 pp; $24.95
+
+    Advanced Programming in the UNIX Environment; Stevens, W. Richard;
+    Addison-Wesley;
+
+    POSIX Programmer's Guide; Lewine, Donald; O'Reilly; ISBN 0-937175-73-0;
+    640 pp; $34.95
+
+    C++ Primer; Lippman; Addison-Wesley
+
+    Effective C++; Myers, Scott; Addison-Wesley
+
+    Deep C Secrets [or something like that]; Libes, Don
+
+    Object-Oriented Programming, An Evolutionary Approach; Cox, Brad J., &
+    Novobilski, Andrew J.; Addison-Wesley; ISBN 0-201-54834-8.  [The standard
+    book for Objective-C.]
+
+    Advanced Programming in the Unix Environment.
+
+    The C Companion; Holub, Allan.
+XI. Text Formatting and Typesetting
+
+    The TeXbook, Volume A of Computers and Typesetting; Knuth, Donald A.;
+    Addison-Wesley; 1986.  "The definitive user's guide and complete
+    reference manual for TeX.  Probably not needed for casual LaTeX use,
+    but a fascinating book nonetheless." [Bruce Thompson]
+
+    The METAFONT book, Volume C of Computers and Typesetting; Knuth, Donald
+    A.; Addison-Wesley; 1986. "The definitive user's guide and reference
+    manual for METAFONT, the companion program to TeX for designing fonts.
+    An excellent work if you're planning to design your own fonts for use
+    in TeX and LaTeX.  METAFONT is included with the normal TeX/LaTeX
+    distribution." [Bruce Thompson]
+
+    LaTeX, A Document Preparation System, User's Guide and Reference
+    Manual; Lamport, Leslie; Addison-Wesley; 1985.  "The ultimate
+    reference on LaTeX 2.09 by its author.  A new edition covering
+    LaTeX2e (the version included in the current TeX/LaTeX distribution)
+    is in preparation.  LaTeX 2.09 is fully supported by LaTeX2e.  A
+    must for anyone wanting to use LaTeX.  Provides a gentle introduction
+    to document preparation and the various tools that LaTeX provides
+    for producing professional quality documents.  Lots of examples."
+    [Bruce Thompson]
+
+    The LaTeX Companion; Goossens, Michael, Mittlebach, Frank, and Samarin,
+    Alexander; Addison-Wesley; ISBN 0-201-54199-8; 530pp.; 1994. "'If you
+    are one of those users who would like to know how LaTeX can be
+    extended to create the nicest documents possible without becoming a
+    (La)TeX guru, then this book is for you' --- from the Preface.  A
+    very nice book providing a lot of information about the new
+    extensions to LaTeX, provides a large number of examples showing
+    precisely how your document's layout can be manipulated" [Bruce
+    Thompson]
+
+XII. Graphics
+
+    Tck/Tk; Ousterhout, John K.
+
+    The X Window System in a Nutshell; Cutler, Ellie, Gilly, Daniel, & O'Reilly,
+    Tim, eds.; O'Reilly; ISBN 1-56592-017-1; 2nd ed. 1992; 424 pp; $19.95.
+    [but X changes rapidly, so this may be fairly out of date]
+
+    O'Reilly series on X, esp. the Motif volumes.
+
+XIII. Inclusions
+
+     Note: most if not all of the files mentioned here can be obtained from
+     host rtfm.mit.edu.
+
+     Linux HOWTO files, posted periodically to comp.os.linux.*
+
+     Unix FAQ files.
+
+     Concise Guide to Unix Books, posted periodically to misc.books.technical
+     and various comp.unix groups.
+
+XIV. Periodicals
+
+      Linux Journal is a monthly publication covering the Linux
+      Community.  The first issue was sent out in February, 1994.
+
+      Subscriptions:
+      Introductory subscription rates are $19/year.  Payment can be
+      made using VISA, MasterCard or American Express (make sure you
+      include the credit card number, expiration date and signature).
+      We can also accept checks in U.S. dollars drawn on a U.S. bank.
+      If you have a question concerning appropriate method of payment,
+      phone or FAX our subscription numbers or send e-mail to
+      subscriptions@fylz.com
+
+       Send subscriptions orders to:
+           Linux Journal
+           P.O. Box 85867
+           Seattle, WA 98145-1867
+       or FAX them to (206) 526-0803.
+
+      [Phil Hughes E-mail: linux@fylz.com   Phone: +1 206 524 8338] 
+
+    (The above is not meant as an advertisement or endorsement of a
+    particular publication; it's just that I think it's pretty exciting
+    that Linux has reached a level of popularity and maturity such that
+    someone believes the market can support a magazine devoted to it.)
+
+    i'x [a German magazine, focusing on multi-user, multi-tasking system,
+    usually containing some artciles on Linux]
+
+    For a while there was a LinuxNews electronically-published newsletter,
+    but it seems to have ceased publication.
+
+Finding Stuff On-Line:
+
+    For people with ftp access to the Internet, the main Linux archive sites
+    in the U.S. are sunsite.unc.edu and tsx-11.mit.edu.  The Linux
+    Documentation Project work-in-progress is to be found in
+    sunsite.unc.edu:/pub/Linux/docs/LDP   The file LDP-Manifesto describes
+    the project.  Matt Welsh, mdw@sunsite.unc.edu is the contact person
+    for LDP.
+
+    The site appropriately named  rtfm.mit.edu  holds archives of FAQ
+    (Frequently-Asked-Questions) and HOWTO files from just about every
+    Usenet news group in existence.  From here you can obtain copies of
+    the various Linux HOWTO files that are posted from time to time in
+    newsgroups of the comp.os.linux hierarchy.
+
+    For those without ftp access there are a number of BBSes containing
+    information about Linux.  A list of these is posted from time to time
+    on comp.os.linux.announce.
+
+Off-Line:
+
+    A number of software publishers are issuing Linux on CD-ROM.  Somebody
+    tell me which if any of these are including documentation such as the
+    LDP manuals on the CD.
+
+    And then you can always buy one of the commercially-published books
+    above and take it with you to the beach.  The idea for this list really
+    originated with, "what can you buy at the local software emporium
+    or book store when you need to learn something that you can't get
+    from the on-line manual pages or from the net?"

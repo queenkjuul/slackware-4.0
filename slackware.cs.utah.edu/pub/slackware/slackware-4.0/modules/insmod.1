@@ -1,0 +1,95 @@
+.\" Copyright (c) 1996 Free Software Foundation, Inc.
+.\" This program is distributed according to the Gnu General Public License.
+.\" See the file COPYING in the kernel source directory.
+.\" $Id: insmod.1,v 1.2 1998/06/10 15:12:01 ralf Exp $
+.\"
+.TH INSMOD 1 "26 Dec 1996" Linux "Linux Module Support"
+.SH NAME
+insmod \- install loadable kernel module
+.SH SYNOPSIS
+.B insmod
+[ \-fkmpsxXv ] [ \-o module_name ] object_file [ symbol=value ... ]
+.SH DESCRIPTION
+.B Insmod
+installs a loadable module in the running kernel.
+.PP
+.B Insmod
+tries to link a module into the running kernel by resolving all symbols
+from the kernel's exported symbol table.
+.PP
+If the object file name is given without extension, 
+.B insmod
+will search for the module in some common default directories.  The
+environment variable MODPATH can be used to override this default.
+.SS OPTIONS
+.TP
+.I \-f
+Attempt load the module even if the version of the running kernel and
+the version of the kernel for which the module was compiled do not match.
+.TP
+.I \-k
+Set the auto-clean flag on the module.  This flag will be used by
+\fBkerneld\fP(8) to remove modules that have not been used in some
+period of time \(em usually one minute.
+.TP
+.I \-m
+Output a load map, making it easier to debug the module in the event
+of a kernel panic.
+.TP
+.I \-o
+Explicitly name the module, rather than deriving the name from the
+base name of the source object file.
+.TP
+.I \-p
+Probe the module to see if it could be successfully loaded.  This
+includes locating the object file in the module path, checking
+version numbers, and resolving symbols.
+.TP
+.I \-s
+Output everything to \fBsyslog\fP(3) instead of the terminal.
+.TP
+.I \-v
+Be verbose.
+.TP
+.I "\-X, -x"
+Do and do not export all of the module's external symbols, respectively.
+The default is for the symbols to be exported.  This option is only
+effective if the module does not explicitly export its own controled
+symbol table, and thus is depreciated.
+.SS "MODULE PARAMETERS"
+Some modules accept load-time parameters to customize their operation.
+These parameters are often I/O port and IRQ numbers that vary from
+machine to machine and cannot be determined from the hardware.
+.PP
+In modules built for 2.0 series kernels, any integer or character pointer
+symbol may be treated as a parameter and modified.  Beginning in the
+2.1 series kernels, symbols are explicitly marked as parameters so that
+only specific values may be chagned.  Furthermore type information is 
+provied for checking the values provided at load time.
+.PP
+In the case of integers, all values may be in decimal, octal or
+hexadecimal a la C: 17, 021 or 0x11.  Array elements are specified 
+sequence separrated by commas; elements can be skipped by omitting
+the value.
+.PP
+In 2.0 series modules, values that do not begin with a number are
+considered strings.  Beginning in 2.1, the parameter's type information
+indicates whether to interpret the value as a string.  If the value
+begins with double-quotes (\fI"\fP), the string is interpreted as
+in C, escape sequences and all.  Do note that from the shell prompt,
+the quotes themselves may need to be protected from shell interpretation.
+.SH SEE ALSO
+\fBrmmod\fP(1), \fBmodprobe\fP(1), \fBdepmod\fP(1), \fBlsmod\fP(1),
+\fBksyms\fP(1), \fBmodules\fP(2), \fBgenksyms\fP(8), \fBkerneld\fP(8).
+.SH HISTORY
+Module support was first concieved by Anonymous
+.br
+Initial Linux version by Bas Laarhoven <bas@vimec.nl>
+.br
+Version 0.99.14 by Jon Tombs <jon@gtex02.us.es>
+.br
+Extended by Bjorn Ekwall <bj0rn@blox.se>
+.br
+Original ELF help from Eric Youngdale <eric@aib.com>
+.br
+Rewritten for 2.1.17 by Richard Henderson <rth@tamu.edu>

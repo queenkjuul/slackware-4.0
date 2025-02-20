@@ -1,0 +1,25 @@
+Begin2
+Title        = djscript
+Version      = 1.3
+Desc1        = Text file formatter for the HP DeskJet 500 printer.
+Desc2        = Features: selection of fonts, charsets, paper-sizes,
+Desc3        = borders, page orientation, etc..
+Desc4        = Logical pages / multicolumn text.
+Desc5        = Package contains sources.
+Author       = Joerg Bullmann
+AuthorEmail  = bullmann@fzi.de
+Maintainer   = Joerg Bullmann
+MaintEmail   = bullmann@fzi.de
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Printing
+File1        = djscript.1.3.tar.gz
+FileSize1    = 25076
+Required1    = HP DeskJet 500, arbitrary Linux configuration
+Required2    = works w/o printer daemon
+Required3    = gcc, gnu-make
+CopyPolicy1  = GNU Copyleft
+Keywords     = DJ500, deskjet, text formatter, text filter
+Entered      = 14MAR94
+EnteredBy    = Joerg Bullmann
+CheckedEmail = bullmann@fzi.de
+End

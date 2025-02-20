@@ -1,0 +1,15 @@
+Begin3
+Title:          BBBS
+Version:        3.33 How
+Entered-date:   02-aug-97
+Description:    Complete BBS package with full internal FidoNet and InterNet support. ISDN, mailer, mail processor, TICK, AllFix, Telnet, FTP, Finger, news, email, gateway, offline, VT320, ANSI, multilingual, multinode, Mg, full screen editor, multitask, CD-ROM, HYDRA, Zmodem, Kermit, BZLink, TCP/IP, voice, FAX, charsets, accounts, IRC, plus much much more. Everything you need to run a BBS!
+Keywords:       BBS FIDO MAILER ALLFIX TICK ANSI VT320 HYDRA ZMODEM BZLINK
+Author:         Kim.Heino@utu.fi (Kim Heino)
+Maintained-by:  Kim.Heino@utu.fi (Kim Heino)
+Primary-site:   ftp://ftp.bbbs.net /pub/dist/bbbs
+                1042kB bbbs_l.zip
+Alternate-site: sunsite.unc.edu /pub/Linux/system/bbs
+Original-site:  www.bbbs.net
+Platforms:      
+Copying-policy: Shareware
+End

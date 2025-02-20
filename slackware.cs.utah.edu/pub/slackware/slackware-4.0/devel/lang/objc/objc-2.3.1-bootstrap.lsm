@@ -1,0 +1,16 @@
+
+Begin3
+Title: Bootstrap Compiler for Portable Object Compiler          
+Version: 2.3.1
+Entered-date: 12MAY99  
+Description: Bootstrap Compiler, needed to compile Portable Object Compiler
+Keywords: objc, Objective C, class libraries, object-oriented language      
+Author: stes@can.nl (David Stes)      
+Maintained-by: stes@can.nl (David Stes) 
+Primary-site: http://sunsite.unc.edu/pub/Linux/devel/lang/objc/   
+Alternate-site: http://cage.rug.ac.be/~stes/compiler.html 
+Original-site: http://www.can.nl/~stes/compiler.html 
+Platforms: requires C compiler
+Copying-policy: LGPL 
+End
+

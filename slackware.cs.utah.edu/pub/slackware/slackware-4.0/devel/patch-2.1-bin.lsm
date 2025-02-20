@@ -1,0 +1,20 @@
+Begin2
+Title        = GNU Patch Kit Binary Release
+Version      = 2.1
+Desc1        = patch-2.1 binaries
+Author       = Larry Wall
+AuthorEmail  = lwall@netlabs.com
+Maintainer   = Christian Kuhtz
+MaintEmail   = Christian.Kuhtz@data-hh.Hanse.DE
+Site1        = SunSITE.UNC.EDU
+Path1        = /pub/Linux/Incoming
+File1        = patch-2.1-bin.tar.gz
+FileSize1    = 79300
+Required1    = libc 4.4.4
+CopyPolicy1  = GNU License
+Keywords     = patch
+Comment1     = compiles out of the box, no patches applied
+Entered      = 30NOV93
+EnteredBy    = Christian Kuhtz
+CheckedEmail = Christian.Kuhtz@data-hh.Hanse.DE
+End

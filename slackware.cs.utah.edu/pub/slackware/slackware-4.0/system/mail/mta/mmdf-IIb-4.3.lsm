@@ -1,0 +1,26 @@
+Begin2
+Title        = MMDF-II Mail Delivery Agent
+Version      = 43
+Desc1        = Replacement for sendmail/smail with easy configuration
+Desc2        = Handles SMTP, UUCP, Local, List Management
+Desc3        =
+Desc4        =
+Desc5        =
+Author       = Written by various.  Ported by Adrian Hall
+AuthorEmail  = adrian@cursci.com, catharz@aol.com
+Maintainer   = Linux Port maintained by Adrian Hall
+MaintEmail   = adrian@cursci.com
+Site1        = Philadelphia.cursci.com
+Path1        = /pub/mmdf
+File1        = mmdf-IIb-4.3.tar.gz
+FileSize1    = 1064856 bytes
+Required1    = Network Connectivity via SMTP or UUCP (suitable for
+Required2    = SLIP/PPP only systems with configuration).
+CopyPolicy1  = Freely Distributable
+Keywords     = MMDF MAIL SMTP UUCP
+Comment1     = Needs extensive configuration --- READ THE MANUALS
+Entered      = 07JUN1994
+EnteredBy    = Adrian Hall
+CheckedEmail = adrian@cursci.com, catharz@aol.com
+End
+

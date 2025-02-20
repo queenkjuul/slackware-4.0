@@ -1,0 +1,17 @@
+drwxr-xr-x root/root         0 1999-03-17 12:20 ./
+drwxr-xr-x root/root         0 1999-03-17 12:20 usr/
+drwxr-xr-x root/root         0 1999-03-17 12:20 usr/doc/
+drwxr-xr-x root/root         0 1999-04-30 16:13 usr/doc/amp-0.7.6/
+-rw-r--r-- root/root       723 1997-08-23 07:10 usr/doc/amp-0.7.6/BUGS
+-rw-r--r-- root/root      3942 1997-08-23 07:03 usr/doc/amp-0.7.6/CHANGES
+-rw-r--r-- root/root      4713 1997-08-23 07:05 usr/doc/amp-0.7.6/README
+-rw-r--r-- root/root      1153 1997-08-23 07:03 usr/doc/amp-0.7.6/TODO
+-rw-r--r-- root/root       752 1997-05-31 12:47 usr/doc/amp-0.7.6/jukebox.txt
+-rw-r--r-- root/root       173 1997-05-31 12:47 usr/doc/amp-0.7.6/layer2.txt
+-rw-r--r-- root/root      2354 1997-05-31 12:47 usr/doc/amp-0.7.6/linuxrealtime.txt
+-rw-r--r-- root/root      1075 1997-05-31 12:47 usr/doc/amp-0.7.6/BeOS.txt
+drwxr-xr-x root/bin          0 1999-03-17 12:20 usr/bin/
+-rwxr-xr-x root/bin      86656 1999-04-30 16:13 usr/bin/amp
+drwxr-xr-x root/root         0 1999-03-17 12:20 usr/man/
+drwxr-xr-x root/root         0 1999-03-17 12:25 usr/man/man1/
+-rw-r--r-- root/root       853 1999-04-30 16:13 usr/man/man1/amp.1.gz

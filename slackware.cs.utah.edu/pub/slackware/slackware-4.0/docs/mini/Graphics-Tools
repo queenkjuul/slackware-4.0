@@ -1,0 +1,1430 @@
+
+                   The Linux Graphics Mini-HowTo
+
+                            Version 1.3
+
+          This document is maintained by Michael J. Hammel
+                The master page for this document is
+      http://www.csn.net/~mjhammel/linux-graphics-howto.html.
+                    Last updated: May 15th, 1996
+ --------------------------------------------------------------------
+
+      Table Of Contents
+    * Whats New
+         o General
+         o The Internet Ray Tracing Competition
+    * Introduction
+         o Purpose
+         o Where to get this software
+         o Updates and Errata
+         o The Four Basic Types of Graphics Tools
+    * [Updated!] Graphics Basics
+         o File Formats
+         o Pixels vs. Primitives and Rendering vs. Drawing
+         o [Updated!] Static vs. Animated Images
+         o Live Video
+         o System Requirements
+         o Texts on Computer Graphics
+    * Image Viewing Tools
+    * Image Creation Tools
+         o Drawing and Paint Programs
+         o [Updated!] Raytracers and other 3D tools
+         o Fractal-based tools (heightfields, etc.)
+         o [Updated!] Modelers
+         o [Updated!] Programming Interfaces (APIs)
+         o Image Libraries
+         o Other Image Creation Tools
+    * Image Manipulation Tools
+         o [Updated!] Static Image Manipulators
+         o Animated Image Manipulators
+    * Image Conversion Tools
+    * Tools yet to be evaluated
+    * Other Topics
+         o Creating Web page graphics
+         o Fonts on Linux
+         o A word about the X11 directories
+         o Distributed Rendering
+         o Newsgroups
+         o References
+    * Acknowledgments
+    * Register for updates
+
+ --------------------------------------------------------------------
+
+Whats New
+
+General
+
+Current Version Number: 1.2
+
+I added markers to the Linux Graphics mini-Howto so readers could quickly
+find changes from previous versions. Anything marked with the New graphic,
+[New!], is new. That should make it easy to find. There is also an Updated
+graphic, [Updated!], for things which existed in previous releases but were
+incomplete, wrong or otherwise needed to be changed.
+
+Readers can register to be notified when this document is updated.
+
+The Internet Ray Tracing Competition
+
+The Internet Ray Tracing Competition is back online. This contest was
+originally started by Matt Kruse and generally ran in the comp.graphics.*
+hierarchy. Matt was a bit overwhelmed by the work and had to stop the
+competition back in November or December. A new group of individuals has
+picked it up (I'm on the backup Admin team, and Matt is helping coordinate
+things) and the first contest has started. Although open to renderers that
+run on any OS, many of the competitors and readers of
+comp.graphics.rendering.raytracing (where Matt started the original
+competition) are Linux users of POVRay.
+
+Check the IRTC Home Page for more details. For those with ftp only links,
+try ftp://ftp.povray.org:/pub/irtc.
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Introduction
+
+Purpose
+
+The Linux Operating System has gone from a hackers paradise to a system used
+for everything from ISP Internet Servers to a document publishing platform.
+One area which has not gotten much exposure is the use of Linux in dealing
+with graphical images. This document will attempt to cover the tools
+available for viewing, creating, manipulating, and converting graphics
+images on Linux systems.
+
+Although many of the tools that will be explored here are X windows based,
+this document will not cover the configuration issues associated with
+running X Windows. Where necessary, information regarding system
+requirements, such as X server extensions, will be provided. Also, the tools
+discussed here relate to graphics "images", that is, pictures. This document
+does not cover graphical "interfaces", that is, windowing systems features.
+
+This document also does not cover tools that are designed for display using
+non-X-based interfaces, such as VGA/SuperVGA tools. I don't have much
+interest in those environments. Perhaps someone else will start a mini-Howto
+for those tools.
+
+Most of the information here is based on information I've gathered on my own
+over the Net. Terminology is taken, when needed, from Computer Graphics:
+Principles and Practice, 2nd Edition by Foley, Van Dam, et al. I will not
+attempt to make this an introduction to computer graphics, however. There
+are references included in the subsection titled Texts on Computer Graphics
+and at the end of this document in the subsection titled References for
+serious minded graphics programmers.
+
+Where to get this software
+
+Most of the software listed in this document is available either in the
+various Linux distributions in the X11 trees or from the sunsite archives
+and its mirrors. A few items are available only via a commercial vendor.
+Most of these require upgrades to the X server to work, and only the
+commercial vendors servers have most of those extensions. Where a commercial
+vendor of a particular product is known I have given the name of the vendor.
+However, I don't have contact information for these. You'll have to search
+around for those (try the Linux Journal, which I know they advertise in).
+
+Updates and Errata
+
+If any readers find mistakes or omissions that I should know about I
+encourage you to contact me at mjhammel@csn.net. I know alot of the tools
+listed do not have up-to-date version information, so if you have
+information on these please send it to me. Please include why your
+information should be considered authoritative (ie where did you get it
+from). I also know that there are many tools available on the sunsite
+archives that I have not covered here. I simply haven't gotten to them all
+(I don't even have disk space for them all). If you have information on
+these, especially if you're the author of those tools, please send me email
+explaining the tools name, purpose, and where it fits into this document.
+The more specific you are in your information the better.
+
+Note: due to the outrageous fees imposed by my ISP I haven't been able to do
+alot of perusing the net lately. I'm going to switch ISP's, but I have to
+find a job first. When I do both, I'll move my web pages (including this
+document) to its new home and leave notices on my old site as to where the
+new site is. What this means is I won't be updating this document much in
+the next few weeks unless I get alot of feedback from the Linux community
+(via email). So please: feel free to speak up!
+
+The Four Basic Types of Graphics Tools
+
+When you get right down to it, there are basically four (4) different kinds
+of tools that deal with graphical images:
+
+   * Image Viewing Tools
+
+     These are tools which read in image files of various formats and
+     display them visually. Some tools do nothing more than display the
+     images. Many display them and allow you to manipulate them or convert
+     them to other formats.
+
+   * Image Creation Tools
+
+     These are tools which allow the user to draw, paint, or render images.
+     Drawing and painting tools are rather common on computer systems these
+     days. Generally available rendering software, software which creates
+     images from models, is relatively new, especially to Linux.
+
+   * Image Manipulation Tools
+
+     Manipulation tools allow a user to take an existing image and change it
+     in some way, usually on a pixel by pixel basis. The manipulation will
+     change colors, hues, color-depths, and a variety of other things.
+
+   * Image Conversion Tools
+
+     Image files come in many formats. Although there are a number of
+     formats that are quite popular, none is the defacto-standard. Viewing,
+     creation, and manipulation tools generally support a variety of
+     formats. However, its possible that you'll come across a format that a
+     particular tool does not support. In this case you'll need to conver
+     the image from the first format into one your other tool supports. This
+     is where the conversion tools come into play.
+
+Each of these will be covered in length in this document. It is interesting
+to note that many of the tools discussed will overlap more than one of these
+types. For example, tools that create images are seldom very interesting
+unless you can view what they've created.
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Graphics Basics
+
+[Updated!] File Formats
+
+There are 100's of different formats used for graphics images on computer
+systems(Graphics1). Some of the more popuplar static formats are:
+
+   * GIF - Graphics Interchange Format originally from Compuserve. GIF is
+     8-bit color, lossless and is good for synthetic (line drawings,
+     "cartoonish") images, and doesn't compress well.
+   * JPEG - from the Independent JPEG Group, JPEG supports 24-bit color, is
+     lossy, works well for realistic (scanned photos, hight quality
+     anti-aliased renderings with smooth changes in color and shading, etc)
+     images and compresses well.
+   * TGA - formerly from TrueVision in support of their Targa display
+     adapter. The TGA format is normally used for 24-bit color images, but
+     supports 8, 16, 24 and 32-bit (24 bits for image data and 8 bits for
+     alpha channel) images too.
+   * XBM - X Bitmaps (grayscale bitmaps)
+   * XPM - X Pixmaps (color bitmaps)
+   * PNG - Portable Network Graphics, from the PNG group, supports bit
+     depths from 1 (mono) to 64 (super-truecolor + alpha). PNG was developed
+     because GIF compression was patented by Unisys and couldn't support
+     24-bit or alpha images. Compresses better than GIF, but not as well as
+     JPEG.
+
+Lossy means that parts of the image data are discarded. So if an image is
+compressed, some of the image data is lost. If the image is decompressed and
+compared to the original, there will be missing data. Generally, the data
+lost during compression is redundant information and doesn't affect the
+visual appearance of the image. However, at higher compression ratios the
+lost data is not redundant and the quality of the image degrades.
+
+Lossless means that no data is lost during compression. TGA, XBM, XPM, and
+PNG are all lossless formats.
+
+Alpha refers to the transparency of images. A full alpha channel in an image
+allows for any level of transparency (from fully opaque to completely
+transparent) across the entire image. GIF and PNG support palette based
+transparency where a single pixel value is the transparent color. However,
+with GIF the pixel color is either fully opaque or fully transparent. PNG
+supports a range of transparency for the transparent color index. PNG also
+supports, along with TGA, a full alpha channel.
+
+There are not nearly so many animation formats, especially those that are
+available for Linux systems. A couple of the more commonly known formats
+are:
+
+   * MPEG - from the Motion Pictures Experts Group
+   * FLI/FLC - originally from AutoDesk Animator, FLI supports 256 color at
+     320x240 resolution and FLC supports 16 bit color at higher resolutions
+   * AVI
+   * Quicktime - from Apple Computer
+
+See the section titled Static vs Animated Images to learn more about the
+differences in image types.
+
+Each of these formats is well suited for different situations. GIF and JPEG
+images are currently the only widely supported image types for Web browsers.
+TGA provides 24-bit images, which means when reducing the image size the
+quality of the new image is likely to be nearly as good as the original. PNG
+is a portable format that was recently developed in light of copyright or
+patent issues for other formats.
+
+Which format you use is dependent on which tool you use and the environment
+in which you wish to use your images. Most tools support the GIF format and
+many support JPEG. If you're doing Web page development you will be working
+primarily with these image types when integrating your images into your
+pages. However, you may find that creating the images will require some
+other format, such as TGA for 3D images (depending on what tools you use).
+If this is the case you will have to deal with image conversion tools to get
+your image into the right format.
+
+Pixels vs Primitives and Rendering vs Drawing
+
+A pixel, or "picture element", is one point on the screen. It can be one
+color or one shade of gray. A graphics primitive is a shape, like a circle,
+sphere, box, or torus. To display primitives any number of pixels can be
+used. Tools that allow the user to create primitives are generally referred
+to as drawing or paint programs. Tools which are concerned with computing
+the color of individual pixels based on information about primitives
+(models) are called renderers. This process, computing pixel values from
+primitives, is also called rasterization.
+
+This may seem a little confusing when you consider some paint programs allow
+you to set the color of individual pixels (such as using the Fat Bits option
+in xpaint). However, setting this color by hand is tantamount to drawing a
+line (another type of grapichs primitive) that is really short. In this
+case, the tool is not determining the pixel value based on model
+information. It is simply painting a pixel based on direct user feedback
+(and nothing else).
+
+Life is never so simple and you'll find the line between these definitions
+blurs as you learn more about graphics tools, but eventually you won't
+really care. You'll be able to know what you need to do and what tool can do
+it, regardless of how its classified.
+
+Static vs Animated Images
+
+Static images are like paintings or photos. Most tools available deal either
+primarily or only with static images. Animated images can be created either
+by stringing static images together into a particular format and using
+another tool to play them back (such as mpeg_play) or by using a programming
+language specifically designed for creating animations. Examples of such
+languages (API's actually) are OpenGL and the PEX/Phigs X extensions.
+
+Both types of tools will be covered by this document.
+
+Live Video
+
+One of the new forms of video adapters to come to market recently are the
+live video adapters. The adapters allow external sources, such as video
+cameras or VCRs, to connect directly to a PC and display on the users
+monitor. There is an extension to the X protocol to handle live video that
+is called xvideo. However, there are few applications available that make
+use of this extension. Of the 3 main X servers (XFree86, X Inside's
+Accelerated X, and the server from MetroX) available for Linux, only the two
+commercial versions support xvideo. Since this capability is still
+relatively new, it won't be covered in this document at the current time. As
+I get more information or new tools become available, I may add a section
+devoted to live video applications.
+
+System Requirements
+
+All the tools covered by this document require that the user have a properly
+installed Linux system. Most require a properly installed X environment,
+including the X shared libraries and an X server. A few tools require
+special extensions to the X server. Any special requirements, above the need
+for Linux and generic X Windows support (such as the X server extensions),
+will be listed with each of the tools.
+
+A few words about hardware vs. software acceleration.
+
+The architecture of the X windows system doesn't allow for applications to
+make direct use of video hardware. That responsibility falls to the X
+Server. Because of this, users with specialized hardware which can speed up
+graphics display, such as using MPEG hardware, cannot expect the
+applications to make use of this hardware. The applications are written to
+use the available API's which the X server can understand. Some of these
+allow the server to make use of special hardware (like the X Video
+extension). Other server extensions operate transparently to the
+applications. This means that the application cannot even ask for such
+support - it is up to the server to either support the hardware or not.
+
+Some accelerations are handled in the server software instead of in
+hardware. An example of this is the 1.2 Accelerated X server from X Inside,
+which has software acceleration for its OpenGL support. This means that the
+OpenGL API is supported, but the server doesn't make use of specific
+hardware designed to aid programs which use this API. Instead, the server
+attempts to speed of graphics dispaly of OpenGL programs through various
+software tricks and techniques.
+
+Texts on Computer Graphics
+
+These are a few references for graphics in general. Other reference material
+that is specific to a tool will be listed with that tool in the following
+sections.
+
+   * Foley, van Dam, Feiner and Hughes; Computer Graphics: Principles and
+     Practice 2nd Ed
+     Make sure you grab the 2nd Edition that uses C instead of Pascal!
+     There used to be an automatic email server for this text. Try email to
+     graphtext@cs.brown.edu with "Subject: Get-Text-Bug-List". Also,
+     "Subject: Help" returns other services provided.
+
+   * Foley, et al; Introduction to Computer Graphics, 1994
+     This is a stripped down version of the previous reference, suitable for
+     an introductory computer graphics course. This one apparently only
+     supports C (ie there isn't a Pascal version).
+
+   * Alan Watt; 3D Computer Graphics
+
+   * Alan and Mark Watt; Advanced Animation and Rendering Techniques Addison
+     Wesley, 1994 Despite the title, most of the book is dedicated to
+     Computer Graphics (Rendering) and not to Animation.
+
+   * Rogers and Adam; Mcgraw Hill; Mathematical Elements for Computer
+     Graphics
+
+   * Cohen/Wallace; Radiosity and Realistic Image Synthesis
+
+   * Hearn and Baker; Computer Graphics, 2nd edition, March 1994
+
+   * Hill; Computer Graphics, December 1989
+
+   * Angel; Computer Graphics, 1989
+
+      For more information about doing graphics on Unix systems, please
+       see my Raytracing and other 2D/3D graphics for Unix Systems web
+                                   page.
+
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Image Viewing Tools
+
+Viewing tools allow a user to display an image. This includes tools which do
+no more than display the image once or place it on the background of an X
+display. Generally tools that allow you to view an image also allow you to
+do something else with it. This section is just for those people who wish to
+find a tool for simply viewing images.
+
+   * xsetroot
+     Generally available with the base X11 installations and can be found in
+     /usr/bin/X11. Allows the user to display an image as the background to
+     their X display. This is pretty nifty to do, but if you're on a slow
+     machine or if you have 16M or less of memory it might be wise not to
+     use this. Having fancy images as a background slows window redraws when
+     you move them around.
+
+   * xsetbg
+     Generally available with the base X11 installations and can be found in
+     /usr/bin/X11. However, this may not be in every distribution. xsetroot,
+     which does basically the same thing, might be more likely to be in a
+     distribution that does not have xsetbg.
+
+   * xwud
+     Generally available with the base X11 installations and can be found in
+     /usr/bin/X11. This tool is used to view X window dumps (image files in
+     xwd format) created with xwd or other tools.
+
+   * xv
+     Far and away the best image viewer available, xv includes Postscript
+     documentation of over 100 pages. This product is shareware. The latest
+     version is 3.10a. Most distributions contain a version of xv although
+     the version may not be the latest. xv is more known for its image
+     manipulation capabilities and will be discussed in more detail in the
+     section titled Image Manipulation.
+
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Image Creation Tools
+
+Creation tools include those which permit the user to use an electronic pen
+or pencil to create pictures, much like an artist on a canvas. They also
+include tools which allow a user to model pictures, similar to CAD (Computer
+Aided Design) programs, and then use those models with other tools to
+actually create the final image. Finally, any tool which provides an
+Application Programming Interface (API) which programmers can use to create
+images are also included.
+
+Drawing and Paint Programs
+
+   * xpaint - version 2.1.1 by David Koblas
+     File Formats Supported: TIFF, PPM, GIF, XBM, PS, XPM, XWD
+
+     Generally available with the X11 installations on most distributions
+     and can be found under /usr/bin/X11. xpaint is comparable to tools such
+     as MacPaint or MS-Paint (or whatever the Microsoft paint program is
+     called), although not nearly as feature-rich. There is another tool
+     called spaint in
+     ftp://sunsite.unc.edu/pub/Linux/X11/xapps/graphics/draw/, but I've
+     never used this and don't really know what it does.
+
+     A beta version of Xpaint 2.2 from Torsten Martinsen
+     (bullestock@dk-online.dk) is now available. Based on the announcement
+     posted to comp.os.linux.announce it appears quite a few features have
+     been updated or added. I build it on my systems but he left some silly
+     things in the Imakefile's (hard coded the path to a config file). Other
+     than that it appears to build fine.
+
+   * tgif
+     File Formats Supported: I'm not clear on this one, but I think it
+     supports XBM, XPM, EPS, GIF and OBJ (which may be a format specific to
+     tgif).
+
+     This tool doesn't come in the base X11 installations but is available
+     on sunsite.unc.edu. I suspect its also available as a separate package,
+     possibly associated with the X packages, in the various distributions.
+
+     tgif is a drawing program very much of the caliber of MacDraw. It has a
+     very extensive feature set and deals well with primitives and text. It
+     does all its work in 2D. The tool is based on Xlib and Xt, so Motif is
+     not required.
+
+   * [Updated!] The GIMP - The General Image Manipulation Program
+     File Formats Supported: Depends on plug-ins that are configured. If the
+     correct libraries are available on your system then TGA, GIF, JPEG,
+     TIFF, XPM, and PNG are available.
+
+     The GIMP is a tool similar in style to Adobe Photoshop but not nearly
+     so feature rich. It's being written by a couple of undergrads at UC
+     Berkley and is relatively new in its life cycle. The current release
+     for Linux is 0.54.
+
+     Although The GIMP does allow for some image creation, its best use is
+     in image manipulation. More details on this application will be found
+     in the section titled Image Manipulation.
+
+Raytracers and other 3D tools
+
+These are the really fun tools. Raytracing applications take a model, which
+is a description of a scene or collection of one or more 3D objects, and
+determine how the scene would look in 3 dimensions. They take into
+consideration lighting, camera angles, reflection, textures, and lots of
+other things in determining the color of an individual pixel. One thing they
+don't do is determine how an object is lit by reflected light. That process
+is called radiosity. Some raytracers are starting have radiosity algorithms
+added to their code. Alot of the realism of Toy Story came from radiosity
+effects.
+
+   * [Updated!] POV-Ray - The Persistance of Vision Raytracer
+     Current Version: 2.2, with a 3.0Beta binary available (source for 3.0
+     is not available for the Beta, but will be when the Beta period has
+     expired). Current beta version is at revision 7.
+     File Formats Supported: POV-Ray 2.2 outputs in TGA, RAW, and DUMP
+     formats, although the latter two are almost never used. There are
+     patches for 2.2 that allow it to support ppm, PNG, and JPEG output. It
+     reads in a model file that is ASCII text, formatted in a language
+     specific to POV-Ray. The a beta version of 3.0 available for Linux
+     supports TGA, PPM, and PNG formats.
+     Web Site: http://www.povray.org
+     Newsgroups: comp.graphics.rendering.raytracing
+
+     POV-Ray is a truly wonderful program. It started life on Microsoft
+     based systems and has been ported to many Unix platforms, along with
+     Macintosh, Amiga and a few others. The program is maintained by a
+     volunteer network of developers, is well coordinated and has its own
+     domain (povray.org). There have been at least 3 texts published (Young3
+     & Enzmann4) related to POV-Ray, and more are no doubt in the works.
+
+     POV-Ray has a very large following that have created a number of
+     utilities for use with the renderer. The POV-Ray web site doesn't
+     easily distinguish tools that are available for Unix (ie Linux)
+     platforms. I set up a Web page specifically to list and discuss these
+     utilities at http://www.csn.net/~mjhammel/povray/povray.html.
+
+   * Polyray
+     File Formats Supported: unknown
+     Web Site: http://www.inf.fu-berlin.de/~leitner/grafik/polyray.html
+     Newsgroups: comp.graphics.rendering.raytracing
+
+     Polyray is a raytracer. I don't know much more about it than that. I
+     just haven't had time to explore it yet. Polyray is available from the
+     sunsite archives and its mirrors.
+
+     One user of Polyray reported:
+
+          Polyray is a version of POV-Ray that does function surface
+          evaluations. Its pretty cool if you like doing the math for
+          topologies rather than using a script to string a bunch of
+          objects together.
+
+   * Radiance
+     File Formats Supported: unknown
+     Web Site: http://radsite.lbl.gov/radiance
+     Newsgroups: comp.graphics.rendering.raytracing
+
+     I know even less about Radiance, except that it appears to be available
+     for Linux systems from the Sunsite archives. A version also appears on
+     the Slackware 3.0 CD-ROM, so I'm guessing its also on many of the other
+     Linux CD-ROM distributions.
+
+   * Rayshade
+     File Formats Supported: unknown
+     Web Site:
+     Newsgroups: comp.graphics.rendering.raytracing
+
+     Rayshade also appears available for Linux systems from the Sunsite
+     archives. I don't know anything else about it, however.
+
+   * BMRT - the Blue Moon Rendering Tool
+     File Formats Supported: RIB
+     Web Sites:
+        o ftp://ftp.gwu.edu/pub/graphics/BMRT.
+        o http://www.seas.gwu.edu/student/gritz/bmrt.html
+
+     Newsgroups: comp.graphics.rendering.renderman
+
+     A Renderman ((C) Pixar) compliant rendering engine. The following is
+     taken from the comp.graphics.rendering.renderman newsgroups FAQ:
+
+          Larry Gritz has a shareware implementation, called the Blue
+          Moon Rendering Tools (BMRT). It supports ray tracing and
+          radiosity, area lights, full implementation of SL, volume and
+          imager shaders, and other advanced features. It also comes
+          with real-time RIB previewers (under X11 and/or OpenGL). BMRT
+          runs on SGI, HP, NEXTSTEP, Linux, IBM RS/6000, and DEC Alpha.
+          There are no Mac, Windows, or DOS versions. It is available
+          from ftp://ftp.gwu.edu/pub/graphics/BMRT. More information
+          about BMRT is available from
+          http://www.seas.gwu.edu/student/gritz/bmrt.html
+
+     This tool is distributed in binary format for Linux and is very easy to
+     set up and run. However, how to create the shaders and RIB files is not
+     readily apparent. The sced modeler can output RIB files but I'm not
+     clear yet on how shaders are created. I would consider this a fairly
+     advanced tool, not for the beginner. Start with POV-Ray first, since it
+     has quite a bit of printed documentation and a large set of development
+     tools, then move into tools like BMRT.
+
+Fractal-based tools (heightfields, etc)
+
+These tools allow the user to create various sorts of images, many of which
+can be used by the 3D raytracers to produce moons, mountains, and other
+surface features.
+
+   * HF-Lab v0.81
+     File Formats Supported:GIF, POT, TGA, PGM, MAT, OCT
+     Web Site: http://jumpjibe.stanford.edu:8080/beale/gforge/
+     Newsgroups: comp.graphics.rendering.raytracing
+
+     This tool has a text based interface that allows the user to create
+     fractal surfaces, viewable in 2D and 3D. Although is uses a text
+     interface for input, the viewing windows are X windows. This is a very
+     interesting program thats easy to learn and use.
+
+   * xfractint
+     File Formats Supported: GIF, POT (which is 16-bit GIF)
+
+     I've not used this program, although it appears to come standard with
+     most Linux distributions. It is a Unix port of a DOS program, and in
+     fact has an option to "Shell to DOS". The man page is terse and I don't
+     appear to have the docs which come with the source. This might be
+     available from sunsite or ftp.x.org.
+
+Modelers
+
+Modelers are tools which are used to create the scene files used as input to
+3D renderers (see above). Their output file formats are not image file
+formats, but rather formats specific to various renderers. Some modelers can
+also inport files of various formats. Again these import files are not image
+files, but other forms of model scene files.
+
+   * Sced v0.94
+     File Formats Supported: POVRay, Radiance, Rayshade, Renderman (RIB),
+     VRML
+     Web Site: http://http.cs.berkeley.edu/~schenney/sced/sced.html
+     Newsgroups: comp.graphics.rendering.raytracing
+     comp.graphics.rendering.misc
+
+     Sced is a constraint based scene editor, or authoring tool if you're
+     into VRML. It is a program for creating 3d scenes, then exporting them
+     to a wide variety of rendering programs. Programs supported are:
+        o POVray
+        o Rayshade
+        o any VRML browser
+        o anything that reads Pixar's RIB format
+        o Radiance
+        o Plus a couple of local (sced specific) formats
+
+     Sced uses constraints to allow for the accurate placement of objects,
+     and provides a maintenance system for keeping these constraints
+     satisfied as the scene is modified.
+
+     Sced is available from ftp://ftp.cs.su.oz.au/stephen/sced and (soon, if
+     its not already there) ftp://ftp.povray.org/pub/pov/modellers/sced.
+
+   * Sceda v0.80
+     File Formats Supported: POVRay, Radiance, Rayshade, Renderman (RIB),
+     Genray, Genscan
+     Web Site: http://www.cyberus.ca/~denism/sceda/sceda.html
+     Newsgroups: comp.graphics.rendering.raytracing
+     comp.graphics.rendering.misc
+
+     Sceda is a version of sced that supports animation. It allows a user to
+     model a scene, then describe how objects in that scene will move and
+     where they move to. Sceda then creates a series of intermediate scenes
+     that can be used as input (as individual files) to the rendering engine
+     to create an animation.
+
+     Sceda is slightly behind Sced in version, but Stephen Chenney says
+     thats his fault and is hoping to fix that soon.
+
+   * [Updated!] Midnight Modeler v2.1c
+     File Formats Supported: MNM, RAW, DXF
+     FTP Site:
+     ftp://sunsite.unc.edu/pub/Linux/apps/graphics/rays/pov/mnmlinux-pl2.tgz
+
+     ftp://sunsite.unc.edu/pub/Linux/apps/graphics/rays/pov/mnm-linux-pl2.static.ELF.gz
+
+     You need both files to run the ELF version (I think - you might only
+     need the second file if you don't have ELF shared libraries on your
+     system already).
+     Newsgroups: comp.graphics.rendering.raytracing,
+     comp.graphics.rendering.misc
+
+     This is a port of a DOS program that is very CAD-like. The interface is
+     quite nice, however the program doesn't use X application defaults, so
+     setting the colors is difficult. On 256 color displays you're likely to
+     get alot of color flashing. The program is only available in binary,
+     since the original author of the DOS version apparently doesn't like to
+     give out his source.
+
+Programming Interfaces (APIs)
+
+An alternative to creating 3D animations by stringing together a series of
+static images is to create a program that creates the images on the fly.
+This is useful for having interactive environments where the images
+displayed can depend on user input.
+
+   * OpenGL
+     Web Site:
+        o http://www.digital.com:80/pub/doc/opengl/ - man pages
+        o http://www.sgi.com/Technology/openGL/glspec/glspec.html -
+          specifications
+
+     Newsgroups: comp.graphics.api.opengl, comp.graphics.api.inventor
+
+     OpenGL comes from Silicon Graphics, Inc. and is a programming language
+     that has gained alot of popularity in the recent past. I know of a
+     couple of texts that are available:
+        o OpenGL Programming Guide, by Neider, Davis, and Woo;
+          Addison-Wesley
+        o OpenGL Reference Manual, OpenGL Architecture Review Board;
+          Addison-Wesley
+        o At least one text on OpenInventor, a less primitive language for
+          creating OpenGL applications (at least I think thats what it is).
+
+     Sample source for the Programming Guide is available from
+     ftp://ftp.sgigate.sgi.com/pub/opengl, although the text says many
+     implementations come with this source already optimized for your
+     system. I don't know if thats true or not for Linux implementations.
+
+     OpenGL implementations are available as server extensions and a set of
+     programming libraries from the two commercial X server vendors (X
+     Inside and MetroX).
+
+   * MesaGL 1.2.6
+     Web Site: http://www.ssec.wisc.edu/~brianp/Mesa.html
+     FTP Site:
+        o ftp://sunsite.unc.edu/pub/Linux/X11/libs/Mesa-1.2.7.tgz
+        o ftp://iris.ssec.wisc.edu/pub/packages/development/graphics/mesa
+
+     Newsgroups: comp.graphics.api.opengl
+     Mailing List: listproc@iqm.unicamp.br
+     use the following in the text of them message:
+     sub mesa <you name>
+
+     This is a freely-available version of the OpenGL API. Since it has no
+     server extensions, all the accelerations of the OpenGL specification
+     are handled in software. This might be a good place to learn the OpenGL
+     language. Building the libraries and associated programs is very easy.
+     I tried the samples and demo programs on my 486/66DX2 with 40M memory.
+     Most were a bit sluggish. I would think if you're going to get into
+     interactive 3D programming you might consider at least a Pentium 90 or
+     better. Thats just a suggestion, though. Remember: faster graphics
+     cards (ones with special hardware acceleration) won't help for Mesa
+     since it doesn't make use of the features of those cards (the X server
+     would have to do that).
+
+     The README file for Mesa states that Mark Kilgard, the author of Mesa,
+     writes a column about OpenGL in the X Journal and that if you're
+     looking to learn about writing OpenGL programs this might be a good
+     place to start. The examples are written in GLUT (the OpengGL Utility
+     Toolkit, which is discussed elsewhere in this document). Disclaimer: I
+     have no association with the X Journal.
+
+   * GLUT - GL Utility Toolkit 3.0
+     Web Site: http://reality.sgi.com/employees/mjk_asd/glut3/glut3.html
+     FTP Site: ftp://sunsite.unc.edu/pub/Linux/libs/X/glut-3.0.tgz
+
+     GLUT provides a simple portable, window-system independent interface
+     allowing you to write production OpenGL applications quickly and
+     easily. This is a replacement for aux and tk toolkits. The aux and tk
+     toolkits are used in the OpenGL Programming Guide and in SGI's demos,
+     respectively. However, they were not intended for production
+     applications.
+
+     If you're going to write Mesa/OpenGL applications you would do so using
+     aux, tk, GLUT or GLX (not discussed in this document). This is similar
+     to saying "write X applications using Motif or the Athena Widgets, not
+     by using Xlib directly". Or at least I think it is.
+
+   * [New!], lib3D Library - v0.1.1
+     FTP Site: ftp://sunsite.unc.edu/pub/Linux/libs/graphics
+
+     This library was just uploaded to sunsite so it may still be in the
+     Incoming directory.
+
+     This is the initial release of a 3D z-buffering rendering library. It
+     uses a hierarchy of models, cameras and lights that can be manipulated
+     by the user through the API.
+
+   * SRGP / SPHIGS - The Simple Raster Graphics Package and Simple PHIGS
+     Web Site: unknown
+     Newsgroups: unknown
+
+     SRGP is a library for teaching 2D computer graphics. It is the primary
+     tool covered in Computer Graphics: Principles and Practice (Foley2) in
+     chapters 2 and 3. It requires no special server extensions to use.
+
+     SPHIGS is a simplified version of the PHIGS standard for 3D floating
+     point heirarchical graphics. It too comes as a library that requires no
+     special extensions to the X server to work. The
+
+     Both of these are available in the sunsite archives under
+     ftp://sunsite.unc.edu/pub/Linux/X11/libs.
+
+   * PHIGS / PEX
+     Web Site: unknown
+     Newsgroups: comp.graphics.api.pexlib
+
+     I have very limited knowledge of these two other than they are
+     standards for 3D graphics. PHIGS, the Programmer's Heirarchical
+     Interactive Graphics Standard supports nested hierarchical groupings of
+     3D objects. PEX, I think, is an extension to the X protocol that
+     supports PHIGS (but I'm not completely sure).
+
+     There may be support for these in some form from the XFree86 folks. I
+     haven't kept up to date on that particular server. X Inside was working
+     on support but I don't know if they have a commercially available
+     product. I don't have any information on support from MetroX.
+
+     I've not seen any software only (libraries, etc) that support these.
+     I'm under the impression that you have to have a PEX capable server in
+     order to do PHIGS. Hopefully someone will contact me after reading this
+     document to clear things up.
+
+   * Java
+     Web Sites:
+        o The Java-Linux Porting Project
+        o Java(tm) Home Page
+
+     Newsgroups:
+        o comp.lang.java - general Java discussion
+        o alt.www.hotjava - discussion of the HotJava browser
+
+     Mailing Lists:
+        o java-linux-request@java.blackdown.org - (Maintained by
+          karl@blackdown.org) Discussions and developments concerning the
+          port of Java to Linux. Send email to
+          java-linux-request@java.blackdown.org with the word `subscribe' in
+          the subject to be added to the list.
+        o java-linux-announce-request@java.blackdown.org - (Maintained by
+          karl@blackdown.org) Moderated list for announcements concerning
+          the Java-Linux porting projects. Please send e-mail to
+          java-linux-announce-request@java.blackdown.org with the word
+          subscribe in the subject, to be added to the list.
+
+     I just started looking into Java and found a very nice place to start -
+     the Sunsoft Press JAVA Series. Each of these, there are 3 texts, comes
+     with a CD (the same CD in each). The first text is called Instant Java.
+     It is really nothing more than users guide for a set of Java applets
+     that are on the CD. My first try at using any of these produced a
+     animatation of a logo for the local Linux users group with very little
+     trouble. The problem with this is that to make the animation viewable
+     on the net, the images have to be very small in size and there
+     shouldn't be too many of them. 8 images worked ok (each about 20k), but
+     Netscape couldn't load 15 images (same sizes). If you want to just see
+     what Java can do, this is a nice book with which to experiment without
+     having to do any real programming (but you do need to understand HTML).
+
+     An important point to this text and the pre-compiled applets on the CD
+     is that you don't need to download the Java Developer's Kit (JDK) to
+     use them. You only need the JDK (which has been ported to Linux) if you
+     want to write your own Java applets and compile them.
+
+     The other texts in the series are more about programming in Java. I
+     haven't gotten that far yet. Hey, I just started. Cut me some slack.
+
+     Another very good source of information about Java on Linux is Eric
+     Raymond's Java on Linux HOWTO.
+
+   * VRML
+     Web Site: unknown
+     Newsgroups: unknown
+
+     There apparently is only one VRML browser available for Linux at this
+     time: VRweb from the Univ. of Graz in Austria. It does not fully
+     support all the VRML specifications yet. It seems that in order to use
+     VRML you not only need to configure your own system but your ISP (or
+     whoever runs your Web server that serves your Web pages) must configure
+     the Web server to understand the vrml mime type.(Lutowski5)
+
+     There are few tools that natively create VRML content but there are a
+     few converters which will take some other format and create VRML
+     files.(Lutowski5) I believe the SCED modeler will output VRML files
+     directly.
+
+     Note: It is this authors opinion that the VRML market is at least 1.5
+     to 2 years away from being any use to the personal computer user. If
+     your interested in why I think so, send me email and I'll get on my
+     soapbox. <grin>
+
+Image Libraries
+
+There are a number of libraries that are freely available for use in
+non-commercial and even commercial development tools. These libraries
+provide an interface for an application to output images in some specified
+format. You should check the Licenses or Copyright information in each to
+how these libraries may be used.
+
+   * TIFF Library
+     Web Site: unknown
+     Newsgroups:
+
+   * PNG Library - 1.0 beta 2 - version 0.88
+     Web Site: http://quest.jpl.nasa.gov/PNG/
+     FTP Site: ftp://ftp.uu.net/graphics/png/src/
+     Newsgroups:
+
+     PNG is a new file format that is catching on quite quickly. It was
+     developed in response to the problems associated with the GIF format
+     along with some possible legal problems regarding the compression
+     format used with GIF.
+
+     There is a fairly good document (libpng.txt) which explains how to use
+     the library but its not a straight reference guide for the API. This
+     library requires the use of zlib 0.95 or later. The zlib library is
+     available from the PNG ftp/http site or from
+     ftp://ftp.uu.net/pub/archiving/zip/doc/.
+
+   * JPEG Library
+     Web Site: unknown
+     Newsgroups: unknown
+
+   * MPEG Library
+     FTP Site: ftp://ftp.mni.mcgill.ca:/pub/mpeg
+     Newsgroups: unknown
+
+     This library is taken from the Berkely MPEG player and is used to
+     decode and dither MPEG movies. I believe Sunsite (and its mirrors) also
+     have copies of this library.
+
+Other Image Creation Tools
+
+   * xwd - X Window Dump
+     Generally available with the base X11 installations and can be found in
+     /usr/bin/X11. This tool is used to create X window dumps (image files
+     in xwd format). It is a command line drive program that allows you to
+     select an X window (which includes the root window and all the visibile
+     windows) to dump to a file. This is useful for debugging windowing
+     programs.
+
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Image Manipulation Tools
+
+Static Image Manipulators
+
+   * xv
+     File Formats Supported: GIF, JPEG, TIFF, PostScript, PBM/PGM/PPM (Raw),
+     PBM/PGM/PPM (ASCII), XBM, XPM, BMP, Sun Rasterfile, IRIS RGB, Targa
+     (TGA), FITS, PM
+     Web Site: ftp://ftp.cis.upenn.edu/pub/xv
+     Newsgroups: unknown; probably any of the comp.windows.X groups
+
+     First, xv is shareware for personal use. Commercial, Government, and
+     Institutional users must register their copies. Personal users who send
+     $40 or more for registration($25 is all thats asked) will get a
+     printed, bound copy of the manual, which is well over 100 pages now.
+
+     I can't say enough good things about this tool. First, to let you know
+     how classy it is, keep an eye out for news reports about JPL or NASA
+     folks. I've noticed not just a few times that when they show images
+     that they received back from planetary probes they tool they use to
+     display them is xv! Thats probably a more sophisticated version than
+     the shareware one. Nonetheless, it gives you an idea of the clout xv
+     has.
+
+     xv is a viewer and manipulator of images. It is not used to create
+     images. The color editor window is extremely powerful. There are so
+     many features here I can't imagine I've even tried 1/2 of them yet.
+
+   * NetPBM / pbmplus
+     These tools are the most powerful that I've found for file format
+     conversion. Because of this, I'll reserve detailed discussion of these
+     packages until the Conversion Tools section.
+
+     One thing I will mention is that most (if not all) of the tools in this
+     package for manipulating images require that you first convert your
+     image to ppm or pnm format. An example is ppmquant, which takes an
+     image of some arbitrarily large number of colors and converts to one
+     with a much smaller range of color index values. This is useful to keep
+     from using up an entire color palette in X. By doing this the user can
+     reduce the flashing effect often seen with programs that use a large
+     number of colors on displays with only 256 available colors.
+
+   * ImageMagick v3.7.2
+     File Formats Supported: AVS, BMP, CMYK, EPS, EPSF, EPSI, FAX, FITS,
+     GIF, GIF87, GRAY, HISTOGRAM, HTML, MAP, MATTE, MTV, NULL, PCD, PCX,
+     PDF, PICT, PNM, PS, PS2, RAD, RGB, RGBA, RLA, RLE, SGI, SUN, TEXT, TGA,
+     TILE, UYVY, VICAR, VID, VIFF, X, XC, XBM, XWD, YUV, YUV3, PNG, JPEG,
+     TIFF, PhotoCD
+     Note: support for some of these require extra libraries or programs not
+     included with ImageMagick
+     Web Site: http://www.wizards.dupont.com/cristy/ImageMagick.html
+     Newsgroups: unknown
+
+     This tool appears rather sophisticated, but I have yet to use it. I
+     have only heard good comments about it. My problem is I don't have all
+     the extra libraries on my system to build it yet. If you wish to use
+     JPEG, PNG, TIFF, HDF, Ghostscript, JBIG, MPEG, PICT, Radiance, RLE, or
+     XPM formats you'll need to make sure you have the appropriate external
+     libraries or applications that ImageMagick will need. The libraries and
+     applications are not included in the distribution, however the README
+     does list where to get them.
+
+   * CJPEG / DJPEG - from the Independent JPEG Group (IJG)
+     File Formats Supported: unknown
+     Web Site: ftp://ftp.uu.net:/graphics/jpeg
+     Newsgroups: unknown
+
+     These tools are referenced in the xv postscript documentation. They are
+     shipped as demos with libjpeg and are used for converting to/from JPEG
+     from/to other image formats.
+
+   * [Updated!] The GIMP - The General Image Manipulation Program
+     File Formats Supported: Depends on plug-ins that are configured. If the
+     correct libraries are available on your system then TGA, GIF, JPEG,
+     TIFF, XPM, and PNG are available in the default distribution. There is
+     at least one plug-in, for PhotoCD's, available for other file formats.
+     Web Sites:
+        o http://www.xcf.berkeley.edu/~gimp - the home page for the GIMP
+        o http://ww.mint.net/~xach/xach.html - various GIMP information,
+          including a Tips, Tricks and Tutorials page.
+        o http://www.worldserver.pipex.com/home/adam/gimp/plug.html - The
+          GIMP Plug-In Registry
+        o http://www.mint.net/~xach/gimp/plugin_examples/examples.html -
+          GIMP Plug-In Examples
+
+     FTP Site: ftp://ftp.xcf.berkeley.edu/pub/gimp
+     Newsgroups: unknown
+     Mailing List: majordomo@xcf.berkeley.edu The text of the message should
+     be a single line with the following in it:
+                               subscribe gimp-list
+
+     There is a hypermail archive of the discussions on this list maintained
+     at http://www.nesc.k12.ar.us/~garman/gimp-list/.
+
+     The GIMP provides
+        o Multiple selection tools including rectangle, ellipse, free,
+          fuzzy, bezier and intelligent.
+        o Transformation tools including rotate, scale, shear and flip.
+        o Painting tools including bucket, brush, airbrush, clone, convolve,
+          blend and text.
+        o Effects filters (such as blur, edge detect).
+        o Channel & color operations (such as add, composite, decompose).
+        o Plug-ins which allow for the easy addition of new file formats and
+          new effect filters.
+        o Multiple undo/redo.
+     You can blend one image into another fairly easily. The GIMP Web pages
+     have a short tutorial showing how this can be done.
+
+     This tool is gaining support rather quickly. The last count had 34
+     plug-ins finished, 3 in development and 6 planned. This is based on
+     information from the maintainer of the plug-ins registry. I used some
+     of the new plug-ins to create some new images for my Unix Utilities
+     Page. Also, there is a growing number of web pages devoted to the GIMP
+     (see above) with lots of really good information on how to use the
+     plug-ins, add them to your GIMP source tree, tutorials, etc. The
+     discussion group is made up mostly of programmers writing the plug-ins.
+     I suspect, as fast as this tool is gaining popularity, that a
+     discussion group for end-users will form soon as well.
+
+     If you want to learn a little about things you might be able to do with
+     a tool like The GIMP, check out the Kai's Power Tips and Tricks web
+     page. This page is specifically for tools built for Adobe Photoshop,
+     but it gives you an idea of some of the things The GIMP does now, and
+     lots of what it could do with some external (ie plug-ins) development.
+
+Animated Image Manipulators
+
+I'm just getting started in learning about animation tools, so this section
+is still under construction. All those with information on these or other
+animation tools, please contact me. It should be noted that these tools may
+not even be manipulators at all. They may just be tools for creating and
+viewing images.
+
+   * mpeg_play, mpeg_encode
+     File Formats Supported: unknown
+     Web Site: ftp://mm-ftp.cs.berkeley.edu/pub/multimedia/mpeg/encode/
+     Newsgroups: unknown
+
+     mpeg_play is available from the sunsite archives. I think mpeg_encode
+     is also available there too. I've been told there are Linux binaries on
+     the UCBerkeley web site listed above.
+
+     Apparently these are quite powerful tools, but also are a bit involved
+     to set up.
+
+   * xanim
+     File Formats Supported: xanim supports a ton of file formats. The
+     following is taken from the man page for xanim and is slightly
+     abbreviated:
+     FLI, FLC, IFF, GIF87a, GIF89a, DL, Amiga PFX (may be disabled), Amiga
+     MovieSetter, Utah Raster Toolkit RLE, MPEG Type I frames, WAV audio
+     (only PCM audio codec)
+          AVI formats:
+        o IBM Ultimotion
+        o JPEG
+        o Motion JPEG
+        o Intergraph JPEG
+        o Microsoft Video 1
+        o Uncompressed RGB (8 and 24 bit)
+        o RLE
+        o Editable MPEG
+          Quicktime formats:
+        o RAW - 4,8,16,24,24+, Gray 4 and Gray 8
+        o Apple Graphics RLE
+        o Apple Animation
+        o Apple Video
+        o SuperMac Cinepak
+        o Component Video (YUV2)
+        o Photo JPEG
+     Web Site: http://www.portal.com/~podlipec/home.html
+
+     XAnim is a program that can display animations of various formats on
+     systems running X11. XAnim also provides various options that allow the
+     user to alter colormaps, playback speeds, looping modes and can provide
+     on-the-fly scaling of animations with the mouse.
+
+   * FLI encoders
+     File Formats Supported: unknown
+     Web Site: ftp://www.pov.org/incoming
+     Newsgroups: unknown
+
+     Again, I don't know much about these tools. Terry Brown posted a note
+     to comp.graphics.rendering.raytracing a few weeks ago that he had
+     uploaded some FLI-based tools to the POV-Ray ftp site in the incoming
+     directory. I don't know if they're still there or if they've been moved
+     to a more appropriate directory.
+
+   * Aero
+     File Formats Supported: unknown
+     Web Site: unknown
+     Newsgroups: unknown
+
+     This tool is a sort of modeler for creating animations. It is available
+     from ftp://sunsite.unc.edu/pub/Linux/X11/xapps/graphics/. There are a
+     number of files there related to aero, including a README. Other than
+     that I don't know much about it.
+
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Image Conversion Tools
+
+Conversion tools allow a user to take an image that is one file format and
+turn it into another file format. These tools are very useful considering
+the number of differnt image formats that are out there!
+
+   * xv
+     See the section on Image Manipulation Tools
+
+   * NetPBM / pbmplus
+     File Formats Supported: 10x, 4425, acad, ascii, atk, bbnbg, bmp, cmuwm,
+     ddif, epsi, epson, fits, fs, g3, gem, gif, go, icon, icr, ilbm, lispm,
+     lj, ln03, lps, macp, map, mgr, mitsu, pbm, pcx, pgm, pi1, pi3, pict,
+     pj, pjxl, pk, plot, pnm, ppm, ps, ptx, puzz, rast, rgb3, sgi, sir,
+     sixel, tga, tiff, uil, x10bm, xbm, xpm, xwd, ybm, yuv, yuvsplit, zinc
+     Web Site: unknown
+     Newsgroups: unknown
+
+     pbmplus is the older name for this set of tools. I don't know the
+     difference between them as I've only used the pbmplus set. However,
+     both sets are available from the sunsite archives.
+
+     You can use NetPBM/pbmplus to convert many (but not all) of the formats
+     supported from their current format intp ppm or pnm formats. From there
+     you can manipulate the program using any of a great number of tools
+     (such as ppmquant or ppmrelief), convert to another format such as pgm
+     and then use other tools (pgmhist, pgmoil, etc), or convert to some
+     final image format (ppmtogif, ppmtotga). The trick is to find the right
+     set of tools to start with, the right set of intermediate tools, and
+     the right set of tools for final conversion. It takes a little
+     practice, but eventually their use becomes almost second nature.
+
+     Since there are so many tools in these packages it is essential that
+     you install the man pages too. Most man pages are rather small (since
+     most of the tools do only one thing to an image) but many of the tools
+     have one or two command line options (or more) that will come in handy
+     when using them.
+
+   * ImageMagick
+     See the section on Image Manipulation Tools
+
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Tools yet to be evaluated
+
+There are a large number of tools of which I've heard or seen reference to
+but that I know next to nothing about. Below is a list of the tools I'll be
+looking into in the future (who knows when). If you have information about
+these tools please feel free to send it to me, especially if you are the
+tool author or maintainer of Web pages or other documents regarding these
+tools.
+
+   * glut - I have this but haven't looked into it yet. Its associated with
+     MesaGL (at the least) and I'll probably look into it when I get deeper
+     into MesaGL.
+   * khoros - http://www.khoros.unm.edu
+     This URL takes forever to load through my ISP. I don't know if its the
+     khoros' server side fault or my ISP's fault.
+   * alchemy - http://www.handmadesw.com/hsi/products.html
+     This is a commercial product of some kind.
+   * python - http://www.python.org/sigs/image-sig/
+     This URL has the same problem that the khoros one has.
+   * Tools under ftp://sunsite.unc.edu/pub/Linux/X11/xapps:
+        o geomview
+   * Tools under ftp://sunsite.unc.edu/pub/Linux/X11/xapps/graphics:
+        o xmorph
+   * Tools under ftp://sunsite.unc.edu/pub/Linux/X11/xapps/graphics/draw:
+        o spaint
+        o xfig
+        o transfig
+   * Tools under ftp://sunsite.unc.edu/pub/Linux/libs/X:
+        o idraw - ftp://sunsite.unc.edu/pub/Linux/libs/X/iv3.1dist.tar.gz
+        o YGL - ftp://sunsite.unc.edu/pub/Linux/libs/X/Ygl.3.0.3.tgz
+
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Other Topics
+
+Creating Web page graphics
+
+My whole purpose for learning all this stuff was to figure out how to use a
+Unix box (running on a PC) to create sophisticated graphics for web pages. I
+was sick to death of hearing about all the tools available for the
+Microsloth environment and was sure there were plenty of tools that could do
+the same or nearly the same things as the commercial MS packages. I was
+right, for the most part. The only tool that was missing was something that
+handled, using a GUI-interface, the types of image manipulation that tools
+like Adobe Photoshop could do. With the introduction of the GIMP this niche
+is filled. The GIMP has lots of problems, but its a terrific start and the
+authors design included the ability to add plug-ins right from the start. So
+now, if the Unix community complains no tools like Photoshop are available,
+the community has no one to blame but themselves.
+
+If you're going to use Linux to create Web page graphics you should get hold
+of the following tools at a minimum:
+
+   * xpaint
+   * xv
+   * The GIMP
+   * NetPBM/pbmplus
+
+I suggest gettig ImageMagick too, based on the praise I've heard from
+others. The GIMP is nice in that it allows you to create decent tiles for
+backgrounds. A tile is an image, usually fairly small, that is repeated on
+the background of a web page. The unique thing about a tile is that no
+matter what the color variances are along the top, the same variances follow
+along the bottom. The same is true along the sides. If this isn't true, the
+tile edges will be visible in your background. The GIMP allows you take any
+image and offset it along any edge, taking the offset amount and wrapping it
+to the other side. You then can use a blending tool to mask out the old
+edges (which will likely be quite visible). Viola! You have a seamless,
+tileable image!
+
+Be careful when creating backgrounds. The biggest problem with Web pages
+with nifty backgrounds is the lack of care taken to choose a reasonably
+contrasting font color. Having a dark purple background with dark blue text
+sucks. I like grayscale backgrounds. They aren't as colorful, but they can
+be just as snazzy images and, when the grayscale is light enough, a black or
+near black text is easy to read. Remember: the eyes that read your pages are
+not your own!
+
+You can use xv to view images from some CD of images (probably on a
+DOS-based CD-ROM of images) and then use it or xpaint or The Gimp to clean
+it up, add or blend it to another image, or whatever. I find using pbmplus
+utilities are better for converting image formats than xv since I can create
+transparent and interlaced GIF's with pbmplus, whereas xv doesn't appear to
+give me that opportunity.
+
+If you're interested in creating 3D images for your pages you should get
+hold of POV-Ray and the text Ray Tracing Creations (Young3). This is a
+terrific tool for creating 3D images, but its not a point-and-click
+interface. You have to manually edit ascii text files which are used as
+input to the program. Its really not as hard as it might sound. Once you
+learn how to create these scene files by hand you might consider getting a
+modeler, such as sced, which does allow a GUI-based interface to creating
+scene files. I don't suggest starting with a modeler first, though. It might
+seem like it would be easier, but trust me, its not.
+
+You can use POV-Ray to created 3D text as well, but you'll need to get one
+of the numerous utitlies that POV users have written: font3d. This tool
+allows you to take any set of TrueType font characters and turn them into 3D
+objects for use with POV-Ray. Pretty cool idea, if you ask me. NOTE: POV-Ray
+3.0 has direct support for TrueType fonts, however I don't know if there is
+a one-to-one correspondence in features in 3.0 with font3d.
+
+       For more information about Unix utilities for use with POV-Ray,
+     please see my Raytracing and other 2D/3D graphics for Unix Systems
+                                 web page.
+
+The output file from POV-Ray is TGA (Targa), which is a 24-bit image format.
+This gives about 16 million colors for the image, but you really don't want
+to use all that in your web page. Good web pages try to create images that
+use colors from the same, limited (like 256) color palette. Using xv and
+pbmplus on the TGA images will help to create decent 3D images that don't
+hog all the colors on your web pages.
+
+If you're getting into VRML or Java, 3D images are likely to be of some
+interest to you. Again, POV-Ray is a great tool for this. However, I haven't
+had time to research eith of these new languages so I don't know exactly how
+the 3D images would fit in. Hopefully I'll get to these before the end of
+this summer (or maybe if someone gives me a job doing it....)
+
+Fonts on Linux
+
+The fonts available with the various distributions of Linux are generally
+those found in the X11 package. This is a relatively limited set of fonts
+(compared to whats available under DOS, Windows, or even the Macintosh).
+There are three ways to add to this limited set:
+
+   * Grab the freeware and shareware font collections from Sunsite or one of
+     its mirrors. I don't know the exact URL, but the file names are
+     freefonts-0.10.tar.gz and sharefonts-0.10.tar.gz. These are rather nice
+     fonts and most are scalable but there are no True Type fonts in these
+     sets.
+   * Get the Caldera Linux package. This distribution includes a font server
+     with a number of True Type fonts.
+   * Mount a DOS partition and use the wide array of True Type fonts
+     available for DOS.
+
+Why are True Type fonts important? Mostly for their use in 3D rendering
+tools. POV-Ray 3.0 supports True Type fonts directly and the font3d utility
+for POV-Ray 2.2 will only work with True Type fonts. If you're interested in
+just adding some simple 2D text to some graphic image, you can use the X11,
+freeware, or shareware fonts. The title graphic to this document was created
+with a font from the freeware fonts package using Xpaint and the NetPBM
+tools.
+
+A word about the X11 directories
+
+Throughout this document, tools which are generally distributed with X11
+have been described as being under the /usr/bin/X11 directory. The existance
+of this directory isn't guarenteed, however. By convention it should exist
+as a link to the real directory tree. The real tree depends on which version
+of X11 you are using. For X11R5, the bin directory would be /usr/X11R5/bin.
+For X11R6 its /usr/X11R6/bin.
+
+Life would be simple if this were the only way things were, but of course
+its not. Some systems have another directory tree, /usr/X386. I believe this
+is from the XFree86 project, but I'm not sure. On my Slackware 1.2 system
+/usr/X386 is a symbollic link to /usr/X11R6. Its possible that some
+distributions may not have this link.
+
+In any case, the three system directories in which you might look to find an
+X-based executable would be:
+
+   * /usr/X11R6/bin or /usr/X11R5/bin (most Linux systems have R6 now)
+   * /usr/bin/X11
+   * /usr/X386/bin
+
+Of course, if you built the binary yourself then you'll probably know where
+you put it. At least one would hope so.
+
+Distributed Rendering
+
+Andreas Dilger has a tool, PVMPOV, which allows the use of a network of
+computers to render a single image. PVMPOV can run on a number of platforms.
+I believe it only works in conjunction with POV-Ray, however.
+
+Newsgroups
+
+The following is a list of Usenet newsgroups which have some association
+with computer graphics. Most of these have FAQ's located on the FAQ
+repository at ftp://rtfm.mit.edu.
+
+     General Graphics (not specific to Linux)
+
+   * comp.graphics.rendering.raytracing - This group is mostly comprised of
+     users of 3D rendering tools that are available on a number of OSs. The
+     vast majority of readers and posters are users of POV-Ray.
+   * comp.graphics.rendering.misc - general rendering discussions
+   * comp.graphics.algorithms - discussions about implementing graphics
+     tools. Somewhat technical discussions.
+   * comp.graphics.rendering.renderman - discussions related to the
+     Renderman specification. This newsgroup was started by the guys at
+     Pixar.
+   * comp.graphics.api.opengl - discussion regarding OpenGL, including the
+     Mesa and GLUT packages.
+
+     Linux Graphics
+
+   * comp.graphics.linux.x - general discussions regarding X windows
+
+References
+
+  1. Graphics File Formats; by ...
+  2. Computer Graphics: Princples and Practice; 2nd Edition in C; Foley, van
+     Dam, Feiner, Hughes; Addison-Wesley Publishing Company
+  3. Ray Tracing Creations; 2nd Edition; Young, Wells; The Waite Group Press
+  4. Ray Tracing Worlds with POV-RAY; Enzmann, Kretzchmar, Young; The Waite
+     Group Press
+  5. Rick Lutowski, http://www.iah.com/oa/ and oa@iah.com
+
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Acknowledgments
+
+As with all things Linux, this document will only be as good as the people
+who contribute to it. So far I've done most of the work putting this
+together, but there are a few people who have offered valuable assistance
+regarding graphics in general:
+
+   * John Beale <beale@jumpjibe.Stanford.EDU> for info on POV-Ray and
+     heightfields, among other things.
+   * Andreas Dilger <http://www-mddsp.enel.ucalgary.ca/People/adilger> for
+     lots of POV-Ray and image format information
+   * Rick Lutowski, http://www.iah.com/oa/ and oa@iah.com for VRML info.
+   * The POVRay Team and the comp.graphics.rendering.raytracing newsgroup
+
+Please note that if you have some special association with a particular
+product and offer to help me set it up, get hold of it or learn to use it
+then I'll probably mention you here. If you just send me pointers to tools I
+probably won't list you here. Thats not a snub, I honestly appreciate the
+pointers, but I can't list all of the people who send me URLs.
+ [ArroContents
+
+ --------------------------------------------------------------------
+
+Registration
+
+Enter your e-mail address to receive e-mail when this page is updated.
+
+Your Internet e-mail address:
+
+
+ [ArroContents
+
+ ---------------------------------------------------------------------
+
+ [Arrow]
+    Back to Michael's Home
+    Page
+                                 Copyright 1996 by Michael J. Hammel
+                                                    mjhammel@csn.net
+                                              Created: April 9, 1996
+                                                Updated: May 2, 1996
+                                 Registration courtesy of URL-minder
+                                     Counter, courtesy of Net Digits,
+                                               established 05/15/96.
+

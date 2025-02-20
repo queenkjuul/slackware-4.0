@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo
+echo "+==========================+"
+echo "| Building game series (Y) |"
+echo "+==========================+"
+echo
+echo
+
+for subdir in * ; do
+  if [ -d $subdir ]; then
+    ( cd $subdir ; SlackBuild $* )
+  fi
+done

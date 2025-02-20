@@ -1,0 +1,25 @@
+
+Begin3
+Title:          tgdb
+Version:        1.4
+Entered-date:   23MAY95
+Description:    tgdb is a graphical user interface (GUI) for gdb, the GNU
+                debugger; it is based on Tcl, Tk, TclX, TkSteal, Expect and
+                BLT. This package only contains tgdb's sources; unless you
+                already have the tgdb_wish interpreter from a previous
+                tgdb distribution, you will also need the package:
+                sunsite.unc.edu:/pub/Linux/devel/debuggers/tgdb_wish-linux.tgz
+                (for X11R5, i.e. XFree86[tm] 2.x), or
+                sunsite.unc.edu:/pub/Linux/devel/debuggers/tgdb_wish-lxR6.tgz
+                (for X11R6, i.e. XFree86[tm] 3.x). The INSTALL file tells you
+                where to find tgdb_wish for other platforms.
+Keywords:       tgdb, GUI, debugger
+Author:         mike@HighTec.saarlink.de (Michael Schumacher)
+Maintained-by:  tgdb@HighTec.saarlink.de (tgdb development)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/debuggers
+                148909 tgdb-1.4.src.tgz
+Platform:       Any platform capable of running gdb, Tcl/Tk and the above
+                mentioned extensions, and X11. Requires gdb 4.10 or later.
+Copying-policy: Shareware (see file LICENSE for details)
+End
+

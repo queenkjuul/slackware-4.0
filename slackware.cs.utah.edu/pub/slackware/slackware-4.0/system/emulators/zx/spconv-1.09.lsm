@@ -1,0 +1,17 @@
+Title:		spconv (Spectrum Snapshot Converter)
+Version:	1.09
+Entered-date:	30AUG95
+Description:	Spconv is a utility to convert  between  various  snapshot
+                formats.  Snapshot  files  are created by various spectrum
+                emulators. SPCONV converts between .SNA, .SP, .Z80,  .PRG,
+                .ACH and .ZX files.
+Keywords:	spectrum, emulator,  converter, snapshot, spconv
+Author: 	groot@apd.dec.com <Henk de Groot>
+Maintained-by:	groot@apd.dec.com <Henk de Groot>
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Emulators
+                24570 spconv-1.09.tgz
+Original-site:	ftp.nvg.unit.no /pub/sinclair/utils/generic
+                43610 spcnv109.zip
+Platforms:	C compiler
+Copying-policy:	Public Domain
+End

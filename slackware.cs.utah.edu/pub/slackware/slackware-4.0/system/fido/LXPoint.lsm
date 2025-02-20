@@ -1,0 +1,17 @@
+Begin3
+Title:		LXPoint-1.4.02.tar.gz
+Version:	1.4.02, 02/28/99
+Entered-date:	02/28/99
+Description:	FiDO-Scanner/Tosser/Editor (for node- and pointsystems) with
+		nice ncurses interface including SETUP
+		Runs without any need of smail, cnews, etc.
+Keywords:	communications, newsreader, fido, ftn
+Author: 	pema@hippo.fido.de (Peter Marbaise)
+Maintained-by:	pema@hippo.fido.de (Peter Marbaise)
+Primary-site:	ftp.fido.de /pub/feddy
+		733 kB lxpt1402.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Fido
+		733 kB LXPoint-1.4.02.tar.gz
+Platforms:	Linux or other Unix systems with ncurses available.
+Copying-policy:	GPL
+End

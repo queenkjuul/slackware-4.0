@@ -1,0 +1,21 @@
+Begin3
+Title:          xnetload
+Version:        1.6.0
+Entered-date:   9FEB1999
+Description:    Xnetload displays packet traffic and uptime in an X window.
+                It requires the /proc file system. It can be compiled to use
+                IP-accounting. It also works with new 2.2 kernels, where it
+                will display bytes/s instead of packets/s. 
+                When using IP-accounting, it issues the accouting rules
+                itself. The graph now displays log10 of the packet/byte count,
+                to avoid problems with the StripChart widget flooding with
+                lines. My homepage is the primary site now. 
+Keywords:       network, monitor, X, proc
+Author:         rsmith@xs4all.nl (R.F. Smith)
+Maintained-by:  rsmith@xs4all.nl (R.F. Smith)
+Primary-site:   http://www.xs4all.nl/~rsmith/software/
+                20kB  xnetload-1.6.0.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/status/xstatus
+Copying-policy: GPL
+End
+

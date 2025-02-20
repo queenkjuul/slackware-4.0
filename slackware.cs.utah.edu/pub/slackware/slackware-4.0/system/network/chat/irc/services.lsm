@@ -1,0 +1,14 @@
+Begin3
+Title:          services
+Version:        4.2.0
+Entered-date:   11 March 1999
+Description:    Provides nickname/channel registration and other services
+                for IRC networks.
+Keywords:       IRC services NickServ ChanServ MemoServ
+Author:         achurch@dragonfire.net (Andrew Church)
+Primary-site:   ftp.dragonfire.net /software/unix/irc
+                441485 services-4.2.0.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/chat/irc
+Platform:       Unix (all flavors)
+Copying-policy: GPL
+End

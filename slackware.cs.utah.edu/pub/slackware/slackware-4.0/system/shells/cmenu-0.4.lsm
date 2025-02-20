@@ -1,0 +1,15 @@
+Begin3
+Title:			cmenu-0.4.tar.gz          
+Version:		0.4        
+Entered-date:		Nov 19 1994   
+Description:		a bash shell script based menu that relies on dialog
+			v0.4 for menuing.    
+Keywords:       	menu dialog
+Author:         	Whirlin@IRC
+Maintained-by:  	Whirlin@IRC
+Primary-site:   	sunsite.unc.edu /pub/Linux/system/misc
+Alternate-site: 
+Original-site:  
+Platform:       	Linux, any UNIX with dialog and bash
+Copying-policy:		GPL 
+End

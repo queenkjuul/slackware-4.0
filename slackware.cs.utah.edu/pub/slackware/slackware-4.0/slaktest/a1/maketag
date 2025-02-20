@@ -1,0 +1,26 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+cat /dev/null > $TMP/SeTnewtag
+dialog --title "RUNNING /usr FROM THE CD-ROM" \
+       --checklist "You have chosen to install Linux to run \
+mostly from the CD-ROM.  Please hit ENTER to begin the installation. \
+" 9 70 1 \
+"aaa_base" "Files required to run Linux from the CD-ROM" "on" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ exit
+fi
+cat /dev/null > $TMP/SeTnewtag
+for PACKAGE in aaa_base ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+rm -f $TMP/SeTpkgs

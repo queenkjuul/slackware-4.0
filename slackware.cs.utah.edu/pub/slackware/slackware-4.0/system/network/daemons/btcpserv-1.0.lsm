@@ -1,0 +1,16 @@
+Begin3
+Title:          btcpserv        
+Version:        1.0       
+Entered-date:   12SEP98  
+Description:    Simple tcp daemon that binds to specified addresses/ports and
+                launches specified program (STDIN/STDOUT/STDERR) on connection  
+Keywords:       TCPIP daemon   
+Author:         joev@freddyfrog.com (Joe Vaughan)   
+Maintained-by:  joev@freddyfrog.com (Joe Vaughan)   
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/daemons
+                13K btcpserv-1.0.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, other with gcc
+Copying-policy: GPL
+End

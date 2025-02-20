@@ -1,0 +1,33 @@
+Begin2
+Title        = fspclient 
+Version      = 0.0-h+
+Desc1        = This is the single-program fsp client for linux.
+Desc2        = For those of you who, like me, got tired of the perl script.
+Desc3	     = This package includes the binary as well as the src.
+Author       = Philip G. Richards
+AuthorEmail  = <pgr@prg.oxford.ac.uk>
+Maintainer   = edited for linux by Christopher Seawood
+MaintEmail   = root@seawoocl.student.rose-hulman.edu
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Network/file-transfer
+File1        = fspclient.tar.gz
+FileSize1    = 137237
+Site2        = ftp.funet.fi
+Path2        = /pub/OS/Linux/incoming ... to be moved to ???
+File2        = fspclient.tar.gz 
+FileSize2    = 137237
+Required1    = ld.so 1.3, libc4.4.4 or higher.
+CopyPolicy1  = This software is copyright 1992, 1993 Philip G. Richards, All
+CopyPolicy2  = Rights Reserved.  Please read the README contained in this package.
+Keywords     = fsp, linux
+Comment1     = I just made some minor changes to make it work for linux...Commenting
+Comment2     = out this, #ifdef'ing that...
+RelFiles1    = /lib/ld.so
+Entered      = 09 Dec 93
+EnteredBy    = Christopher Seawood
+CheckedEmail = root@seawoocl.student.rose-hulman.edu
+End
+
+
+
+

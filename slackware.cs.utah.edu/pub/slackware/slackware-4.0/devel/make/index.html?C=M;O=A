@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/devel/make</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/devel/make</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/devel/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="pmake.v1.0.lsm">pmake.v1.0.lsm</a></td><td align="right">1993-08-11 07:00  </td><td align="right">972 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="pmake.v1.0.tar.gz">pmake.v1.0.tar.gz</a></td><td align="right">1993-08-11 07:00  </td><td align="right">162K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mkmk-1.0.tar.gz">mkmk-1.0.tar.gz</a></td><td align="right">1993-11-30 08:00  </td><td align="right">3.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="icmake-6.17.bin.tgz">icmake-6.17.bin.tgz</a></td><td align="right">1994-03-03 08:00  </td><td align="right">178K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="icmake-6.17.tgz">icmake-6.17.tgz</a></td><td align="right">1994-03-03 08:00  </td><td align="right">230K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="icmake.doc">icmake.doc</a></td><td align="right">1994-03-03 08:00  </td><td align="right">7.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="icmake.lsm">icmake.lsm</a></td><td align="right">1994-03-03 08:00  </td><td align="right">1.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="icmakebin.lsm">icmakebin.lsm</a></td><td align="right">1994-03-03 08:00  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="make-3.74.bin.ELF.lsm">make-3.74.bin.ELF.lsm</a></td><td align="right">1995-05-31 07:00  </td><td align="right">567 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="make-3.74.bin.ELF.tar.gz">make-3.74.bin.ELF.tar.gz</a></td><td align="right">1995-05-31 07:00  </td><td align="right">154K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mkmf-4.11.lsm">mkmf-4.11.lsm</a></td><td align="right">1995-08-26 07:00  </td><td align="right">547 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mkmf-4.11.tgz">mkmf-4.11.tgz</a></td><td align="right">1995-08-26 07:00  </td><td align="right"> 45K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="make-3.74-direntfix-elf.lsm">make-3.74-direntfix-elf.lsm</a></td><td align="right">1996-01-02 08:00  </td><td align="right">604 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="make-3.74-direntfix-elf.tgz">make-3.74-direntfix-elf.tgz</a></td><td align="right">1996-01-02 08:00  </td><td align="right"> 98K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="make-3.74.patched.lsm">make-3.74.patched.lsm</a></td><td align="right">1996-01-02 08:00  </td><td align="right">545 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="make-3.74.patched.tar.gz">make-3.74.patched.tar.gz</a></td><td align="right">1996-01-02 08:00  </td><td align="right">509K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mgen-3.65.1.tgz">mgen-3.65.1.tgz</a></td><td align="right">1997-04-14 02:48  </td><td align="right"> 96K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mgen.lsm">mgen.lsm</a></td><td align="right">1997-04-14 02:48  </td><td align="right">939 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="max-0.1.0.lsm">max-0.1.0.lsm</a></td><td align="right">1997-05-26 06:01  </td><td align="right">617 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="max-0.1.0.tar.gz">max-0.1.0.tar.gz</a></td><td align="right">1997-05-26 06:11  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/binary.gif" alt="[   ]"></td><td><a href="max-0.1.0.tar.gz.bin">max-0.1.0.tar.gz.bin</a></td><td align="right">1997-05-27 04:10  </td><td align="right">112K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="makefiles-1.1.lsm">makefiles-1.1.lsm</a></td><td align="right">1997-07-15 23:11  </td><td align="right">1.5K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="makefiles-1.1.tar.gz">makefiles-1.1.tar.gz</a></td><td align="right">1997-07-15 23:12  </td><td align="right">455K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="autodep-1.1.1.lsm">autodep-1.1.1.lsm</a></td><td align="right">1998-08-02 05:48  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="autodep-1.1.1.tar.gz">autodep-1.1.1.tar.gz</a></td><td align="right">1998-08-02 05:49  </td><td align="right"> 68K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="cook-2.8.README">cook-2.8.README</a></td><td align="right">1999-02-02 10:28  </td><td align="right"> 24K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cook-2.8.lsm">cook-2.8.lsm</a></td><td align="right">1999-02-02 10:28  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cook-2.8.rm.ps.gz">cook-2.8.rm.ps.gz</a></td><td align="right">1999-02-02 10:28  </td><td align="right"> 62K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cook-2.8.spec">cook-2.8.spec</a></td><td align="right">1999-02-02 10:28  </td><td align="right">3.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cook-2.8.tar.gz">cook-2.8.tar.gz</a></td><td align="right">1999-02-02 10:31  </td><td align="right">670K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cook-2.8.ug.ps.gz">cook-2.8.ug.ps.gz</a></td><td align="right">1999-02-02 10:31  </td><td align="right">120K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:52  </td><td align="right"> 93 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="prototype.lsm">prototype.lsm</a></td><td align="right">1999-03-26 20:26  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="prototype-1.0.tar.gz">prototype-1.0.tar.gz</a></td><td align="right">1999-03-26 20:27  </td><td align="right"> 25K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="SimpleMake-1.94.lsm">SimpleMake-1.94.lsm</a></td><td align="right">1999-04-29 15:33  </td><td align="right">600 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="SimpleMake-1.94.tar.gz">SimpleMake-1.94.tar.gz</a></td><td align="right">1999-04-29 15:33  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">668 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">6.3K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">2.1K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

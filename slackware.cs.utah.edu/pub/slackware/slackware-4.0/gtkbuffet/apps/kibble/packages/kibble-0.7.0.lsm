@@ -1,0 +1,122 @@
+Begin3
+Title:		Kibble
+Version:	0.7.0
+Entered-date:	Tue Dec  1 17:15:51 EST 1998
+Description:	Kibble is a GTK-based knowledge base program. It
+		is used to organize seemingly discursive thoughts into
+		a cohesive engine. Basically, it is used to keep track
+		of random ideas that may prove useful.
+Keywords:	GTK, productivity, thought, organizer, knowledge base,
+		kibble
+Author: 	kibble@wish.student.harvard.edu (Joseph Turian)
+Maintained-by:	kibble@wish.student.harvard.edu (Joseph Turian)
+Primary-site:	.edu /pub/Linux/docs
+				      10kB lsm-1994.01.01.tar.gz
+				      997  lsm-template
+				      22 M /pub/Linux/util/lsm-util.tar.gz
+
+		The file size may be given in bytes (no suffix), kilobytes
+		(k, kb), or megabytes (M, MB).  The suffix may be separated
+		with spaces, and may be in upper case or lower case.  The
+		size can be left off.
+
+		For very large packages that are contained within
+		one directory (say, a distribution), only the directory
+		need be listed.  Adding a trailing slash makes it clear
+		that it is a directory.
+
+		The filename should be the final location, not an
+		"incoming" directory.  If you don't know the final
+		location, at least make a good guess (since files _will_
+		be moved from incoming, it is not a good guess).
+Alternate-site: One alternate site may be given.  It should not be a
+		site that mirrors the primary site (these are best
+		found from a list of mirror sites), but should be one
+		that maintained separately.  More sites carrying the
+		package can be found using Archie.  The syntax is
+		the same as for Primary-site, but if there is only one
+		line (i.e., no files are specified), they are assumed
+		to be the same as for Primary-site.
+
+			Alternate-site: ftp.funet.fi /pub/OS/Linux/doc/lsm
+			Alternate-site: foo.bar /pub/lsm
+					11 kB lsm-1994-01-01.cpio.Z
+					0.1 kB lsm-template.Z
+					22 MB lsm-util.tar.gz
+
+Original-site:	The original package, if this is a port to Linux.  Syntax
+		is as in Primary-site, with the same handling of missing
+		filenames as in Alternate-site.
+Platforms:	Software or hardware that is required, if unusual.  A
+		C compiler or floppy disk would not be unusual, but a
+		Python interpreter or tape drive probably would be.  If
+		the requirements are evident from the description, it
+		need not be repeated here.
+Copying-policy:	Copying policy.  Use "GPL" for GNU Public License,
+		"BSD" for the Berkeley style of copyright, "Shareware"
+		for shareware, and some other description for other
+		styles of copyrights.  If the use or copying requires
+		payment, it must be indicated.
+End
+
+
+=============================================================================
+IAFA
+=============================================================================
+
+The IAFA (Internet Anonymous Ftp Archives) have a form similar to LSM
+for specifying similar information about files.  The 24JUL94 version of
+LSM is much more close to the IAFA format, but is still not quite the
+same.
+
+Straight IAFA is not suitable for LSM.  It only allows one filename
+(many packages consist of several files).  It is also awkward because it
+specifies different formats for records for different types of files.
+
+(This information is based on a draft version of a description on the
+iafa format from the iafa work group.  The draft is dated 92.06.10; it
+was the newest I could find, but if there are any newer ones with
+significant changes, please send me information.)
+
+However, this revision of the LSM format tries to be as close to iafa as
+possible.  The major differences are:
+
+	* Package-name, Document-name, and Dataset-name are
+	  converted to one Primary-site (with site and location taken
+	  from Maintained-at, if given, or filled in by LSM maintainer).
+	* Field names "Author" and "Revision-date" converted to "Authors"
+	  and "Version".
+	* Other fields are added to the database as is.
+	* Added fields: primary-site, alternate-site, original-site,
+	  entered-date, checked-date, and checked-status.
+	* an LSM template _must_ begin with "Begin3" and end with "End",
+	  with both delimiters being the only things on the line (except
+	  for trailing whitespace), and must be at the beginning of the
+	  line.  This is to make it easier to automatically extract them
+	  from news articles and such.
+	* fields in an LSM entry can be in whatever order
+
+We only support iafa records for packages, documents and datasets.
+
+
+
+=============================================================================
+Empty Template
+=============================================================================
+
+Cut this out, fill it in, send it to 'lsm@execpc.com' with the subject 'add'.
+
+Begin3
+Title:          
+Version:        
+Entered-date:   
+Description:    
+Keywords:       
+Author:         
+Maintained-by:  
+Primary-site:   
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: 
+End

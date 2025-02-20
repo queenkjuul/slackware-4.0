@@ -1,0 +1,63 @@
+============================================================================
+This is a response to a problem, using satan with netscape. 
+It should be put with satan-1.1.1.linux.fixed2.tgz.
+ftp://sunsite.unc.edu/pub/Linux/system/network/admin
+============================================================================
+
+From: Frank Liu <frank@linux.ctc.cummins.com>
+Message-Id: <199706191710.MAA27269@linux.ctc.cummins.com>
+To: robotti@pop.erols.com
+Subject: Re: Satan, Linux, .pl file
+X-UIDL: 95ab6618d295d552fa2984df4b85bb77
+Status: RO
+Content-Length: 1933
+Lines: 48
+
+Problem can be solved with the following:
+
+From: jbotz@bilbo.reference.com (Jurgen Botz)
+Newsgroups: comp.security.unix
+Subject: Re: Satan and Netscape perl form problems?
+Date: 13 Jul 1996 22:18:15 GMT
+Organization: Pangaea Reference Systems
+Lines: 17
+Message-ID: <4s97b7$329@bilbo.reference.com>
+References: <pete-1307960354200001@lanrover1-line4.uoregon.edu>
+NNTP-Posting-Host: bilbo.reference.com
+
+In article <pete-1307960354200001@lanrover1-line4.uoregon.edu>,
+Peter Helmenstine <pete@darkwing.uoregon.edu> wrote:
+>I've recently installed Satan on my Linux box and I'm having trouble using
+>the web page interface in Satan. I'm amazed that I was able to get the
+>[...]
+>Netscape. My problem is that once I select any of the links to run satan,
+>which are perl generated pages, it asks me to save/download the files.
+
+Go to the options...helpers dialog, pick "application/x-perl", and
+delete the ".pl" suffix.  In my version of Netscape at least deleting
+the whole "application/x-perl" entry doesn't seem to do the trick
+(hardwired defaults?), but the above does as the browser will no
+longer assume that anything with a ".pl" extension is an
+"application/x-perl".
+
+-j
+
+> From root@DosLinux.localhost  Thu Jun 19 11:48:57 1997
+> Return-Path: <root@DosLinux.localhost>
+>
+> On Thu, Jun 19, 1997 at 10:15:17AM -0500, Frank Liu wrote:
+> > 
+> > Thanks for the Linux port of Satan.  When I try to
+> > run it, Netscape fails to recognize .pl files a executable. Since the
+> > documents are being accesed with the file: protocol I do not know how to
+> > tell Netscape to execute them as cgi scripts instead of trying to
+> > download them. Any ideas?
+> > Thanks in advance.
+>
+> I never tryed satan on anything but lynx, someone else had the same
+> problem recently, but i can't remember how he solved it.
+>
+> You'll just have to wait till you figure it out, as i said above
+> someone else had the same problem with satan and netscape.
+
+End...

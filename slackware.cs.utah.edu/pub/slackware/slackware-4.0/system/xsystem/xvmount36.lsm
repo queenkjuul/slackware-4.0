@@ -1,0 +1,16 @@
+Begin3
+Title: xvmount 
+Version: 3.6
+Entered-date: 25 Oct
+Description: OpenLook (X11) based device mounter which recognizes the following 
+             filesystems automatically: minix, ext, ext2, msdos
+Keywords: xvmount mount X11 openlook xview floppy
+Author: uhl@fh­heilbronn.de <Thomas Uhl>
+Maintained-by: uhl@fh­heilbronn.de <Thomas Uhl>
+Primary-site: sunsite.unc.edu /pub/Linux/X11/xutils
+              15kB xvmount36.taz
+Alternate-site:
+Original-site:
+Platform: Xview
+Copying-policy: GPL
+End

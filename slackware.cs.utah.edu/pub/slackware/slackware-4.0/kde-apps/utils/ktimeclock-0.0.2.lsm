@@ -1,0 +1,17 @@
+Begin3
+Title:          ktimeclock
+Version:        0.0.2
+Entered-date:   Nov 16, 1998
+Description:    Task-based timeclock for KDE.
+Keywords:       timeclock project task karm ktimeclock KDE
+Author:         gtermars@home.com (Graham TerMarsch)
+Maintained-by:  gtermars@home.com (Graham TerMarsch)
+Primary-site:   http://members.home.com/gtermars/ktimeclock/
+                153kB   ktimeclock-0.0.2.tar.gz
+                1kB     ktimeclock-0.0.2.lsm
+Alternate-site: ftp.kde.org/pub/kde/unstable/apps/utils/
+                153kB   ktimeclock-0.0.2.tar.gz
+                1kB     ktimeclock-0.0.2.lsm
+Platform:       KDE 1.0 libraries, Qt-1.4 (minimum)
+Copying-policy: GPL
+End

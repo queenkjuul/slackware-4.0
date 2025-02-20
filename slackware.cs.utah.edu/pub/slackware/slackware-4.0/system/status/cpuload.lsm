@@ -1,0 +1,19 @@
+Begin3
+Title:		WindowMaker/AfterStep CPU/Memory Load Monitor
+Version:	0.2
+Entered-date:	15JUL97
+Description:	cpuload is a Dock/Wharf applet you can use to monitor the
+		load of your CPU or memory using a Linux system. The CPU
+		load is the sum of the system, user and nice time versus
+		the idle time. On a SMP system, the applet is able to
+		display the load of the some processors, or the average
+		load of all processors.
+Keywords: X11 CPU memory load cpuload WindowMaker AfterStep
+Author: Marc De Scheemaecker <marc@netvision.be>
+Maintained-by: Marc De Scheemaecker <marc@netvision.be>
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/desktop
+	735	cpuload.lsm
+	44319	cpuload-0.2.tar.gz
+Platforms: Linux, X11, libXpm
+Copying-policy: GPL
+End

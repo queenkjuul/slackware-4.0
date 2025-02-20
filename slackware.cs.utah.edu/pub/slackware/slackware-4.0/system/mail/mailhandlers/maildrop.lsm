@@ -1,0 +1,33 @@
+Begin3
+Title:          maildrop
+Version:        0.60
+Entered-date:16NOV98
+Description:    Maildrop is a combination mail filter/mail delivery agent.
+                Maildrop reads the message to be delivered to your mailbox,
+                optionally reads instructions from a file how filter incoming
+                mail, then based on these instructions may deliver mail to an
+                alternate mailbox, or forward it, instead of dropping the
+                message into your mailbox.  Maildrop can be installed as your
+                local delivery agent, instead of procmail.
+                In addition to supporting traditional mailbox files, Maildrop
+                knows how to maildir-based mailbox directories.
+                Maildrop uses a structured, real, meta-programming language
+                in order to define filtering instructions.  Its basic
+                features are fast and efficient.  At sites which carry a
+                light load, the more advanced, CPU-demanding, features can be
+                used to build very sophisticated mail filters.  Maildrop
+                deployments have been reported at sites that support as many
+                as 30,000 mailboxes.  Sample mail filtering recipes as well as
+                complete documentation is provided in both HTML and man page
+                format.
+Keywords:       mail, filter, spam, procmail, maildrop
+Author:         mrsam@geocities.com (Sam Varshavchik)
+Maintained-by:  mrsam@geocities.com (Sam Varshavchik)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/mailhandlers
+			165 Kb maildrop-0.60.tar.gz
+			168 Kb maildrop-0.60-1.src.rpm
+                        166 Kb maildrop-0.60-1.i386.rpm
+			  2 kb maildrop-0.60.lsm
+Alternate-site: http://www.geocities.com/SiliconValley/Peaks/5799/maildrop.README.html
+Copying-policy: GPL
+End

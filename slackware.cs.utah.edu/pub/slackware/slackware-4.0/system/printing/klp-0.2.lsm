@@ -1,0 +1,20 @@
+Begin3
+Title:          klp
+Version:        0.2
+Entered-date:   17 Sep 1998
+Description:    klp is a GUI based replacement/wrapper for lpr/lpq/lprm (or
+                similar in case of other types of print servers).  It
+                manages the print queue of printers.  Currently supported
+                types of print servers are BSD-lpr / LPRng and NetWare.
+                For printing to remote BSD-lpr / LPRng printers there is no
+                need for a locally installed lpd package.
+Keywords:       KDE, Qt, printer, lpq, lprm, lpr, X11, NetWare, nwqstat, nwdelqjob, nwprint
+Author:         dorssel@MolPhys.LeidenUniv.nl (Frans van Dorsselaer)
+Maintained-by:  dorssel@MolPhys.LeidenUniv.nl (Frans van Dorsselaer)
+Primary-site:   ftp.kde.org /pub/kde/unstable/apps/utils
+                188k klp-0.2.tar.gz
+Alternate-site: rulhmpc49.LeidenUniv.nl /pub/klp
+Original-site:  
+Platforms:      Linux, HPUX, KDE, Qt
+Copying-policy: GPL
+End

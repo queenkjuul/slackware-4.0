@@ -1,0 +1,21 @@
+Begin3
+Title:		Traceroute-Ulmo
+Version:	5
+Entered-date:	1998-Feb-1
+Description:	Parallel and improved traceroute (goes fast even on bad channels)
+Keywords:	network diagnosis traceroute
+Author: 	Bradley Ward Allen <Ulmo@Q.Net>
+Maintained-by:	Bradley Ward Allen <Ulmo@Q.Net>
+Primary-site:	SunSite.UNC.EDU /pub/Linux/system/network
+		111331 tu.tar.gz
+		458 tu.tar.asc
+		696 tu.lsm
+Original-site:	FTP.Q.NET /
+		68067 tu.tar.bz2
+		458 tu.tar.asc
+		696 tu.lsm
+Platforms:	Currently Linux 2.0.33 with GLIBC (v5), or libc5 (v4);
+		please someone make it portable.  I have collection of Traceroutes
+		for different platforms.
+Copying-policy:	Various and unknown; assume GPL if not otherwise specified.
+End

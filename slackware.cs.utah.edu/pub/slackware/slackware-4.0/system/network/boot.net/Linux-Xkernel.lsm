@@ -1,0 +1,20 @@
+Begin3
+Title:          Linux-Xkernel
+Version:        2.0e
+Entered-date:   2 July 1997
+Description:    This package allows you to connect a Sun3 or Sun4 to your 
+                Linux PC with an ethernet cable and then boot the Sun 
+                diskless from Linux and use it as an Xterminal to Linux.
+                It is Linux release "e" derived from Xkernel release 2.0.
+Keywords:       xkernel sun xterminal
+Author:         martin@kaveri.eas.asu.edu (Ross Martin, author of linux port)
+                seth@ctr.columbia.edu (Seth Robertson, author of Xkernel)
+Maintained-by:  martin@kaveri.eas.asu.edu (Ross Martin)
+Primary-site:   sol.ctr.columbia.edu  /Xkernel/linux-Xkernel
+                    3MB  Linux-Xkernel-2.0e.tar.gz
+Alternate-site: sunsite.unc.edu       /pub/Linux/system/network/boot.net
+Original-site:  sol.ctr.columbia.edu
+Platforms:      To use this package you need linux on a PC, you need a 
+                Sun3 or a Sun4, and you need an ethernet connecting them.
+Copying-policy: Free.  See info in package for details.
+End

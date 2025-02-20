@@ -1,0 +1,20 @@
+Begin3
+Title:          twinsock
+Version:        2.0
+Entered-date:   12SEP96
+Description:    Twinsock allows you to use programs like netscape,
+                lynx, ftp, irc, etc. with just a shell account,
+                without twinsock these programs would require
+                a slip/ppp connection to run.
+                I don't know if it works because i no longer
+                have a shell account to test it, but it's been
+                working under windows for awhile now.
+                
+Keywords:       
+Author:         Troy Rollo         
+Primary-site:   http://www.corvu.com.au/twinsock/   
+Alternate-site:
+Platforms:      Linux-elf system.
+Copying-policy: 
+End
+

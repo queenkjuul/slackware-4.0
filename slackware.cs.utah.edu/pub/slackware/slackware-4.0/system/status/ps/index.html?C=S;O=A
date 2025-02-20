@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/status/ps</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/status/ps</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=D">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/status/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:56  </td><td align="right"> 82 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">334 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kmem-ps-1.3.95.lsm">kmem-ps-1.3.95.lsm</a></td><td align="right">1996-04-28 07:00  </td><td align="right">388 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kmem-ps-1.3.95+.lsm">kmem-ps-1.3.95+.lsm</a></td><td align="right">1996-05-03 07:00  </td><td align="right">433 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kmem-ps-1.2.1.lsm">kmem-ps-1.2.1.lsm</a></td><td align="right">1995-04-02 08:00  </td><td align="right">442 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kmem-ps-1.2.9.lsm">kmem-ps-1.2.9.lsm</a></td><td align="right">1995-06-19 07:00  </td><td align="right">442 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="procinfo.lsm">procinfo.lsm</a></td><td align="right">1998-12-31 19:30  </td><td align="right">494 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="psmisc-18.lsm">psmisc-18.lsm</a></td><td align="right">1998-11-02 05:13  </td><td align="right">533 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="psmisc-17.lsm">psmisc-17.lsm</a></td><td align="right">1998-02-18 04:47  </td><td align="right">548 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="procps-2.0.2.lsm">procps-2.0.2.lsm</a></td><td align="right">1999-04-03 20:38  </td><td align="right">598 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">605 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="psmisc-17.tar.gz">psmisc-17.tar.gz</a></td><td align="right">1998-02-18 04:47  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="psmisc-18.tar.gz">psmisc-18.tar.gz</a></td><td align="right">1998-11-02 05:13  </td><td align="right"> 21K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="procinfo-16.tar.gz">procinfo-16.tar.gz</a></td><td align="right">1998-12-31 19:30  </td><td align="right"> 22K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kmem-ps-1.2.1.tar.gz">kmem-ps-1.2.1.tar.gz</a></td><td align="right">1995-04-02 08:00  </td><td align="right"> 50K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kmem-ps-1.2.9.tar.gz">kmem-ps-1.2.9.tar.gz</a></td><td align="right">1995-06-19 07:00  </td><td align="right"> 51K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kmem-ps-1.3.95+.tar.gz">kmem-ps-1.3.95+.tar.gz</a></td><td align="right">1996-05-03 07:00  </td><td align="right"> 54K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="kmem-ps-1.3.95.tar.gz">kmem-ps-1.3.95.tar.gz</a></td><td align="right">1996-04-28 07:00  </td><td align="right"> 54K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="procps-2.0.2.tar.gz">procps-2.0.2.tar.gz</a></td><td align="right">1999-04-03 20:38  </td><td align="right">178K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

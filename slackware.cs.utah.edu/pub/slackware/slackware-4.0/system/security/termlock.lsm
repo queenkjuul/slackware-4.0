@@ -1,0 +1,22 @@
+Begin3
+Title:          TermLock
+Version:        0.2
+Entered-date:   19MAR97
+Description:    TermLock is a simple security shell to prevent
+		non-users from logging on with a known account
+		and password. In effect, this system is a login
+		shell with an unspecified length access phrase
+		that must be entered. After entering the phrase,
+		the security shell is replaced with the user's
+		normal login shell. This system is intentionally
+		small and simple to install and use (configurable
+		through a single rc file with 5-6 options).
+Keywords:       security login shell termlock
+Author:         plh@bec04.phy.gasou.edu (Phil Holman)
+Maintained-by:  plh@bec04.phy.gasou.edu (Phil Holman)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/security
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

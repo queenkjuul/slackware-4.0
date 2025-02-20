@@ -1,0 +1,16 @@
+Begin3
+Title:		detect-scan
+Version:	0.70
+Entered-date:	22DEC98
+Description:	This logs and notifies you of portscans run
+		against your host. Some kinds of D.o.S attacks
+		might also get logged.
+Keywords:	portscan, detect, security, network, log, daemon
+Author: 	mc@mailbox.swipnet.se (Martin Carlzon)
+Maintained-by:	mc@mailbox.swipnet.se (Martin Carlzon)
+Primary-site:	http://home.swipnet.se/laq
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/admin
+Original-site:	
+Platforms:	Linux, C
+Copying-policy:	GPL
+End

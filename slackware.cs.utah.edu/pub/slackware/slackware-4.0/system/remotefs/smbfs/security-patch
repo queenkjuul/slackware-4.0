@@ -1,0 +1,28 @@
+--- smbmount.c.orig	Fri Jun 27 11:47:03 1997
++++ smbmount.c	Fri Jun 27 11:47:27 1997
+@@ -528,13 +528,23 @@
+         strcpy(data.root_path, root);
+ 
+         if (getenv("USER")) {
+-                strcpy(data.username, getenv("USER"));
++		char *user = getenv("USER");
++		if (strlen(user) >= sizeof(data.username)) {
++			fprintf(stderr, "Username too long: %s\n", user);
++			exit(1);
++		}
++                strcpy(data.username, user);
+                 str_upper(data.username);
+         }
+ 
+         if (data.username[0] == 0 && getenv("LOGNAME"))
+         {
+-                strcpy(data.username,getenv("LOGNAME"));
++		char *user = getenv("LOGNAME");
++		if (strlen(user) >= sizeof(data.username)) {
++			fprintf(stderr, "Username too long: %s\n", user);
++			exit(1);
++		}
++                strcpy(data.username, user);
+                 str_upper(data.username);
+         }
+ 

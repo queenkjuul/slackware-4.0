@@ -1,0 +1,18 @@
+Begin3
+Title:          span
+Version:        0.2
+Entered-date:   23MAR98
+Description:    span data across or read data from multiple removable disks
+		like floppies or Zip disks, either in raw device mode or
+		onto a filesystem
+		[should now compile on Red Hat 5.x]
+Keywords:	span backup floppy zip
+Author:         fraserm@gtn.net (Fraser McCrossan)
+Maintained-by:
+Primary-site:   sunsite.unc.edu /pub/Linux/system/backup
+			 21 kb span-0.2.1.tar.gz
+Alternate-site: 
+Original-site:
+Platform:       
+Copying-policy: GPL
+End

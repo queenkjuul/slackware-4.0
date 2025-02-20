@@ -1,0 +1,15 @@
+Begin3
+Title:          bonnie: Unix filesystem performance benchmark
+Version:        1.0
+Entered-date:   Mon Sep 2 20:43:00 1996
+Description:    Benchmark utility that targets Unix filesystem
+                performance
+Keywords:       Benchmark Filesystem IO
+Author:         Tim Bray <tbray@watsol.waterloo.edu>
+Maintained-by:   
+Primary-site:   ftp.cdrom.com /pub/unix-c/benchmarks
+                27k bonnie
+Alternate-site: sunsite.unc.edu /pub/Linux/Incoming
+Platforms:      Linux 2.0.x (Should compile on any Unix system)
+Copying-policy: Distributible
+End

@@ -1,0 +1,18 @@
+Begin3
+Title:          kicq
+Version:        0.2.2
+Entered-date:   05OCT98
+Description:    ICQ clone for KDE. Based on ICQ library icqlib 0.1.2
+                http://www.cn.ua/~denis/kde/icqlib-0.1.2.tar.gz
+Keywords:       icq client clone Mirabilis KDE Qt
+Author:         Denis V. Dmitrienko <denis@null.net>
+Maintained-by:  Denis V. Dmitrienko <denis@null.net>
+Primary-site:   http://www.cn.ua/~denis/kde
+                103369  kicq-0.2.2.tar.gz
+                745     kicq-0.2.2.lsm
+Alternate-site: ftp://ftp.kde.org/pub/kde/unstable/apps/network
+Home-page:      http://www.cn.ua/~denis/kde/kicq.html
+Original-site:  http://www.cn.ua/~denis/kde
+Platform:       Linux, Solaris. Needs Qt, KDE Beta4+ and icqlib 0.1.2+
+Copying-policy: GPL
+End

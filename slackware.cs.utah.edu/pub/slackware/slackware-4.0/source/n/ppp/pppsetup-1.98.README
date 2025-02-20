@@ -1,0 +1,232 @@
+==============================================================================
+PPPsetup.v.1.98 by Kent Robotti <robotti@erols.com> (2/22/98)
+
+This README and the lsm file are included in pppsetup-1.98.tar.gz.
+==============================================================================
+
+PPPsetup is a bash shell script to help you in creating a chat script, for
+establising a PPP connection to a internet service provider.
+
+There's support in pppsetup for creating pap, chap, ms-chap, and callback 
+scripts, as well as the standard chat scripts, i have no experience with 
+callback or ms-chap, so that part of pppsetup is likely to be incorrect 
+or less than correct, you should get a recent version off chat and pppd 
+for callback and or ms-chap support, ppp-2.3.3 or later.
+
+Most if not all versions of 'pppd' that come with linux distributions
+will not have 'ms-chap' or 'callback' support, if you require 'ms-chap'
+or 'callback' support you usally have to compile the ppp-2.?.? package 
+yourself and include support for them.
+
+MS-CHAP is commonly used by windows NT RAS servers...
+
+To establish a PPP connection, you need to have networking and
+ppp support compiled in your kernel or as a module.
+
+Most if not all linux distributions will have ppp in the kernel 
+or as a module.
+
+~# dmesg | grep -i ppp    <-To see if you have ppp compiled in the kernel.)
+PPP: version 2.?.?        <-You should see this.)
+
+Or if you have ppp compiled as a module you should have this.
+
+/lib/modules/kernel-version/net/ppp.o
+/lib/modules/kernel-version/net/slhc.o
+
+~# depmod -a
+ # modprobe slhc
+ # modprobe ppp
+
+You also need the programs 'pppd' & 'chat' on your system.
+These will be part of any linux distribution in the ppp-2.?.? package.
+
+~# man pppd
+ # man chat
+
+PPPsetup-1.86 includes a compiled elf version of the program 'chat' 
+from ppp-2.3.3.
+
+Put the program 'chat' that comes with pppsetup in the /usr/sbin
+directory.
+
+If you have 'chat' from ppp-2.3.3 or later, there's no need to install 
+the one with pppsetup.
+
+You also need the 'dialog' program on your system.
+
+~# dialog           <-To see if you have 'dialog' on your system.) 
+command not found   <-You don't have it.)
+
+You can get a compiled elf version of 'dialog' from:
+
+ftp://ftp.tux.org/pub/people/kent-robotti "dialog-0.9a.ELF.tar.gz"
+
+You can put pppsetup in /usr/sbin usr/bin etc.
+
+There's a script called 'ppp-off' included with pppsetup, you should
+put it in the /usr/sbin directory. 
+
+There's also a ppp-compile.txt included with pppsetup,
+it gives you guidance in compiling ppp-2.?.?.
+
+~# pppsetup       <-Create chat script to make the PPP connection.)
+
+Just answer the questions and take a look at /etc/ppp/pppsetup.txt when 
+you're done.
+
+~# ppp-go         <-Make PPP connection, print messages to screen.)
+~# ppp-go -q      <-Make PPP connection, do not print messages to screen.)
+		    
+~# ppp-off        <-To end the ppp0 connection.)
+ # ppp-off ppp1   <-If it were on ppp1 etc.)
+ 
+Now see if you're connected.
+
+~# ftp lynx etc.
+ # ping foo.boo.com   <-Ping your internet service provider.)
+ # whois or fwhois foo.boo.com
+ 
+Or from X windows in a xterm...
+
+~# startx
+ # ppp-go 
+ # netscape etc.
+
+You can run 'ifconfig' anytime to see if you're PPP connected.
+
+~# ifconfig
+
+ppp0      Link encap:Point-to-Point Protocol  
+          inet addr:105.207.127.86  P-t-P:205.252.116.61  Mask:255.0.0.0
+
+PPP-2.3.0 and later has a demand dialing option, you can use it this way,
+the options file for demand dialing will be /etc/ppp/options.demand.
+
+Start ppp-go -d, pppd will just stay in the background until you try 
+to connect to some site, then pppd will dial your service provider and 
+make the ppp connection.
+
+~# ppp-go -d        <-Start pppd this way for demand dialing.)
+ #                  <-It should drop you back to #.)
+ 	      
+~# ftp ftp.funet.fi               <-Pppd will start dialing.)             
+ # lynx http://www.foo.com etc.   <-Pppd will start dialing.)
+ # fetchmail                      <-Pppd will start dialing etc.)
+ # ppp-off -d                     <-To end and restart demand connection.)
+ # ppp-off ppp1 -d                <-If it were on ppp1 etc.)
+   
+Use 'ppp-off' to terminate pppd, use 'ppp-off -d' to terminate and
+restart pppd in demand dialing mode.
+
+Usally if you add W1 or S95=46 to the modem init string the modem will 
+give the DCE = CARRIER speed when you connect, look at your modem
+manual to see what command will make your modem report the DCE =
+CARRIER speed.
+
+Examples: AT&FW1 AT&FS95=46
+  
+If you're having a problem making the ppp connection, look at the
+/var/log/messages and or debug file for the output from pppd and
+chat.
+
+If you want to remove the contents of the /var/log/messages 
+and or debug files, because they're getting to big. 
+
+~# ppp-go -r   
+
+When 'chat' sends the modem init string that's in /etc/ppp/pppscript 
+to your modem you should get OK from the modem, if you don't get OK
+then maybe you need to change the init string.
+
+AT&FW1H0   <-Modem init string.)
+OK
+
+Linux has no support for Winmodems, if you have one of these you
+won't be able to use it on linux.
+
+Linux does support (p)lug (n) (p)lay modems, but you may need help 
+from 'isapnptools' to get your pnp modem working properly on linux.
+
+You can get a compiled elf version of isapnptools from here.
+It's staticly linked so it should work on a libc5 or libc6 
+linux elf system.
+
+ftp://ftp.tux.org/pub/people/kent-robotti/doslinux/modules
+isapnptools-1.13.tar.gz
+
+Do this below to install it on your system, it's packed relative to /,
+so don't forget the / at the end.
+
+~# tar xzvfC isapnptools-1.13.tar.gz / 
+
+This is the first thing you have to do.
+
+~# pnpdump > /etc/isapnp.conf
+
+Take a look at /etc/isapnp.conf to see if your pnp modem was found, and
+what IRQ etc. it was found on.
+
+~# man isapnp        <-Man pages for the isapnptools package.)
+ # man isapnp.conf   <-You have to read this to know how to configure
+ # man pnpdump         the /etc/isapnp.conf file.
+ 
+~# isapnp /etc/isapnp.conf   <-After you configuresd the /etc/isapnp.conf 
+                               file.)
+
+Usally when you boot your system the setserial script 
+/etc/rc.d/rc.serial is run and your modem is recognized 
+by setserial.
+
+The script "rc.serial" may be called something else and or be in
+another directory, it depends on what linux system you have i.e. 
+slackware redhat debian etc.
+
+Run setserial for your modem to see if it's detected correctly, because
+if setserial can't detect your modem correctly then nothing will.
+
+I don't have a pnp modem so there was no problem getting it detected 
+correctly by setserial, i have a 28.8 modem on /dev/cua1 which 
+/dev/modem is a symbolic link to.
+ 
+~# setserial -v /dev/modem auto_irq skip_test autoconfig
+  
+/dev/modem, UART: 16550A, Port: 0x02f8, IRQ: 3
+ 
+There's a option in the pppsetup script for speeds higher than
+115200 for the modem, but usually pppd only supports speeds as 
+high as 115200, some patched versions of pppd will support higher 
+speeds, if you don't have such a version of pppd don't chose a
+speed higher than 115200. 
+
+If you get this message when you start pppd "speed ? not supported",
+your version of pppd only supports modem speeds as high as 115200, 
+put 115200 or less in the /etc/ppp/options file.
+
+ppp-2.3.3 or later supports higher speeds i.e. 230400 and 460800.
+
+=============================================================================
+You can get the latest version of ppp from the home site of ppp.
+
+ftp://cs.anu.edu.au/pub/software/ppp   <-Home site.)
+
+ppp-2.3.3.tar.gz etc.                    
+=============================================================================
+
+You don't really need the latest version of ppp, the one you have on your
+system should be fine, but if you do get and compile the latest version 
+of ppp, you'll have to compile your kernel source in /usr/src/linux also, 
+or at least the ppp module part.
+
+See the ppp-compile.txt for guidance in compiling ppp as a module.
+
+You may also want to get and read these docs.
+
+ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO "PPP-HOWTO"
+ftp://sunsite.unc.edu/pub/Linux/docs/faqs/PPP-FAQ "PPP-FAQ"
+
+End... (2-22-98)
+==============================================================================
+
+
+

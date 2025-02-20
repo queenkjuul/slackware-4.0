@@ -1,0 +1,17 @@
+Begin3
+Title:          MS-DOS C-library and tools.
+Version:        2.0
+Entered-date:   02MAY96
+Description:    djgpp V2.0 C-library and misc. tools.
+		Combined with a cross-binutils (binutils-2.6.go32.tar.gz)
+		and a cross-compiler (gcc-2.7.2.go32.tar.gz), it allows
+		development of MS-DOS executables with Linux.
+		The compiler-toolchain is compatible with djgpp V2.0
+		This release includes one essential file that was missing
+		from the previous release :)
+Keywords:       msdos djgpp crosscompiler
+Maintained-by:  j.j.vanderheijden@student.utwente.nl (J.J. van der Heijden)
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/msdos
+		378169 djdev200.go32.tar.gz
+Copying-policy: (c) DJ Delorie, see the file 'copying.dj'
+End

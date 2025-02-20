@@ -1,0 +1,16 @@
+Begin3
+Title:          ispcost
+Version:        0.38
+Entered-date:   30AUG96
+Description:    An X11 program that allows connecting/disconnecting a PPP link
+		by pressing a button. Also calculates and logs cost of each phone
+		call. Uses pppd/chat to make the connection.
+		Was previously known as 'dial'.
+Keywords:       pppd, chat, modem, phone costs
+Author:         bullestock@dk-online.dk (Torsten Martinsen)
+Maintained-by:  bullestock@dk-online.dk (Torsten Martinsen)
+Primary-site:   http://www2.dk-online.dk/users/Torsten_Martinsen/ispcost
+		31525	ispcost-0.39.tar.gz
+Platforms:      X11, pppd
+Copying-policy: GPL
+End

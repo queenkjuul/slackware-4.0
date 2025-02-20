@@ -1,0 +1,16 @@
+Begin3
+Title:          bprof - profiling per source line
+Version:        2.0 beta
+Entered-date:   22APR97
+Description:    bprof is a utility that provides execution profiling per source
+                code line.  This means that it detects how much time your
+                program spends in each line of your source code.  This allows
+                you to know precisely on what part of the program to spend your
+                efforts at speeding it up.      
+Keywords:       prof, gprof, bprof, profiling, development
+Author:         bas@astro.uva.nl (Bas de Bakker)
+Maintained-by:  bas@astro.uva.nl (Bas de Bakker)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel
+                17k bprof-2.0beta.tar.gz
+Copying-policy: GPL
+End

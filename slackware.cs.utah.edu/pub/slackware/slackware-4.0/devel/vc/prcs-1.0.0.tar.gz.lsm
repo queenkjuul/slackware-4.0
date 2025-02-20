@@ -1,0 +1,17 @@
+Begin3
+Title:          PRCS
+Version:        1.0
+Entered-date:   04sep96
+Description:    Project Revision Control System, offers
+		revision control for directories of files, similar
+		to the functionality of CVS with a simplified 
+		interface.
+Keywords:       RCS Version Control
+Author:         jmacd@xcf.berkeley.edu (Josh MacDonald)
+Maintained-by:  jmacd@xcf.berkeley.edu (Josh MacDonald)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/ver_cont
+		0.4M prcs-1.0.0.tar.gz
+Original-site:  ftp.xcf.berkeley.edu /pub/prcs
+		0.4M prcs-1.0.0.tar.gz
+Copying-policy: GPL
+End

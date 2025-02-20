@@ -1,0 +1,34 @@
+CONTENTS: sh_utils shadow tar       
+sh_utils: GNU sh-utils-1.16
+sh_utils:
+sh_utils: This is a package of small shell programming utilities.  They are
+sh_utils: mostly compliant with POSIX.2, where applicable.
+sh_utils:
+sh_utils: The programs in this package are:
+sh_utils:   basename chroot date dirname echo env expr false logname nice
+sh_utils:   nohup pathchk printenv printf sleep stty tee test true tty
+sh_utils:   uname who whoami yes
+sh_utils:
+sh_utils:
+shadow:   Shadow password suite (shadow-19990307)
+shadow:
+shadow:   This set of login related programs utilizes an alternate, non-readable
+shadow:   file to contain the actual encrypted passwords.  This is presumed to 
+shadow:   increase system security by increasing the difficulty with which 
+shadow:   system crackers obtain encrypted passwords.  It was written by 
+shadow:   Julianne Frances Haugh and the Linux port is maintained by Marek 
+shadow:   Michalkiewicz.
+shadow:
+shadow:
+shadow:
+tar:      GNU tar 1.12
+tar:
+tar:      Tape ARchiver - adds and extracts files and directories to/from tape
+tar:      or archive files. This version of tar also supports archive 
+tar:      compression using GNU zip or bzip2.
+tar:
+tar:
+tar:
+tar:
+tar:
+tar:

@@ -1,0 +1,16 @@
+Begin3
+Title: mkmf makefile editor
+Version: 4.11
+Entered-date: 25Aug95 
+Description: Creates program and library makefiles for the make(1) command.
+Keywords: makefile mkmf make
+Author: nicklin@netcom.com (Peter J. Nicklin) 
+Maintained-by: mike@gas.physics.usu.edu (Michael F. Wilkinson) 
+Primary-site: sunsite.unc.edu /pub/Linux/devel/make
+              46K mkmf-4.11.tgz
+              547 mkmf-4.11.lsm
+Alternate-site: 
+Original-site: wcarchive.cdrom.com /pub/bsd-sources/4.4BSD-Lite/usr/src/contrib/mkmf
+Platform:       
+Copying-policy: BSD
+End

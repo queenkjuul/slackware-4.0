@@ -1,0 +1,16 @@
+Begin3
+Title:          scsistop.c
+Version:        0.3.3
+Entered-date:   11OCT98
+Description:    scsistop is a low-level SCSI drive start/stop program. It
+                sends the START/STOP Unit commands to a named SCSI
+                device. Based on scsifmt.c from Alex.Butcher@bris.ac.uk
+                (Alex Butcher).
+Keywords:       SCSI low level start stop
+Author:         Christoph.Conrad@post.rwth-aachen.de (Christoph Conrad)
+Maintained-by:  Christoph.Conrad@post.rwth-aachen.de (Christoph Conrad)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/hardware
+                5kB scsistop.c
+                1kB scsistop.lsm
+Copying-policy: GPL
+End

@@ -1,0 +1,56 @@
+CONTENTS: aaa_base aoutlibs bsdlpr bzip2 umsprogs       
+aaa_base: Basic Linux filesystem package.
+aaa_base:
+aaa_base: Sets up the basic directory structure and adds a few important
+aaa_base: binaries such as GNU mtools-3.8, fdutils-5.2, zip21, and unzip531.
+aaa_base:
+aaa_base:
+aaa_base:
+aaa_base:
+aaa_base:
+aaa_base:
+aaa_base:
+aoutlibs: a.out shared libraries:
+aoutlibs:
+aoutlibs: These shared libraries provide support for running older Linux 
+aoutlibs: programs compiled in the a.out binary format.
+aoutlibs:
+aoutlibs: /lib/libc.so.4.7.6
+aoutlibs: /lib/libcurses.so.0.1.2
+aoutlibs: /lib/libm.so.4.6.27
+aoutlibs: /usr/i486-linuxaout/lib/libdb.so.1.85.1
+aoutlibs: /usr/i486-linuxaout/lib/libvga.so.1.2.9
+aoutlibs:
+bsdlpr:   BSD lpr-5.9-26
+bsdlpr:
+bsdlpr:   This is the lpr printing suite ported from BSD.  It's the most
+bsdlpr:   standard UN*X printing system in current use.  If you're interested
+bsdlpr:   in automatic detection of PostScript and DVI files, check out the
+bsdlpr:   apsfilter add-on in Slackware's contrib directory.
+bsdlpr:
+bsdlpr:
+bsdlpr:
+bsdlpr:
+bsdlpr:
+bzip2:    bzip2 version 0.9.0b (a block-sorting file compressor)
+bzip2:
+bzip2:    Bzip2 compresses files using the Burrows-Wheeler block sorting text
+bzip2:    compression algorithm, and Huffman coding.  Compression is generally
+bzip2:    considerably better than that achieved by more conventional 
+bzip2:    LZ77/LZ78-based compressors, and approaches the performance of the PPM
+bzip2:    family of statistical compressors. 
+bzip2:
+bzip2:    Julian Seward <jseward@acm.org> is the author of bzip2.
+bzip2:
+bzip2:
+umsprogs: umsdos_progs 0.9
+umsprogs: 
+umsprogs: Various utilities needed by Jacques Gelinas' UMSDOS filesystem.
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 
+umsprogs: 

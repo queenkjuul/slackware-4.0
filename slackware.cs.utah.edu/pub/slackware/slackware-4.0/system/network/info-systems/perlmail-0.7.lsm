@@ -1,0 +1,29 @@
+Begin3
+Title        = perlmail-0.7.tar.gz 
+Version      = 0.7
+Desc1        = collection of perl scripts and example .html forms
+Desc2        = that allows mail through a form and surveys through checkboxes
+Desc3        = also allows multiple mailings with checkboxes. very flexible
+Desc4        = in design.
+Desc5        = scripts have been added for a timesheet.
+Author       = Sean Utt (Based on Form-mail.pl, by Reuven M. Lerner).
+Maintainer   = Sean Utt
+MaintEmail   = sean@Northwest.com
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming
+Path2        = probably will go in info-systems I would imagine...
+File1        = perlmail-0.7.tar.gz
+FileSize1    = ~4.7K
+Site2        = ftp.Northwest.com
+Path2        = /pub/perlmail/perlmail-0.6.tar.gz
+Site3        = 
+Path3        = 
+Required1    = cgi-bin capability in httpd
+Required2    = perl version 4
+CopyPolicy1  =  GPL 
+Keywords     = html forms mail survey perl
+Comment1     = I would like to add anyone's improvements as it grows in use
+Entered      = May 1995
+EnteredBy    = Sean Utt
+CheckedEmail = sean@Northwest.com
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          kload
+Version:        0.2
+Entered-date:   07/28/1997
+Home-page:      http://www.richard-schneider.de/Uwe
+Description:    System load monitor
+Keywords:       kde load monitor
+Author:         Uwe Schneider <pi@richard-schneider.de>
+Maintained-by:  Uwe Schneider <pi@richard-schneider.de>
+Primary-site:   ???
+Alternate-site: 
+Original-site:  ???
+Platform:       Linux, KDE, qt >= 1.33
+Copying-policy: GPL
+End
+

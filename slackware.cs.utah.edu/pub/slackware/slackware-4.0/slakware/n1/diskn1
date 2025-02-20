@@ -1,0 +1,56 @@
+CONTENTS: apache cnews dip mailx metamail       
+apache:   Apache WWW server v 1.3.6
+apache:
+apache:   Apache is an HTTP server designed as a plug-in replacement for the
+apache:   NCSA HTTP server.  It fixes numerous bugs in the NCSA server and 
+apache:   includes many frequently requested new features, and has an API which
+apache:   allows it to be extended to meet users' needs more easily.
+apache:
+apache:   Apache is the most popular web server in the known universe; over
+apache:   half of the servers on the Internet are running Apache or one of
+apache:   its variants.
+apache:
+cnews:    20 Feb 1993 Performance Release of C News
+cnews:
+cnews:    Controls the spooling and transmission of Usenet news. 
+cnews:
+cnews:    Cnews is typically used with UUCP - for NNTP connections INN might
+cnews:    be a better choice.
+cnews:
+cnews:
+cnews:
+cnews:
+cnews:
+dip:      DIP - dialup IP connection handler 3.3.7o
+dip:
+dip:      Uri Blumenthal's version of Fred N. van Kempen's DIP utility. DIP 
+dip:      handles the connections needed for dialup IP links, like SLIP or
+dip:      CSLIP.  It can handle both incoming and outgoing connections, using
+dip:      password security for incoming connections.  
+dip:
+dip:
+dip:
+dip:
+dip:
+mailx:    BSD mailx 8.1.1.
+mailx:
+mailx:    Mail is a intelligent mail processing system, which has a command
+mailx:    syntax reminiscent of ed with lines replaced by messages.  It's small;
+mailx:    it's the standard; it's a good thing to install if you're going to use
+mailx:    mail.
+mailx:
+mailx:
+mailx:
+mailx:
+mailx:
+metamail: metamail-2.7
+metamail:
+metamail: Metamail is an implementation of MIME, the Multipurpose Internet
+metamail: Mail Extensions, a proposed standard for multimedia mail on the
+metamail: Internet.  Metamail implements MIME, and also implements extensibility
+metamail: and configuration via the "mailcap" mechanism described in an
+metamail: informational RFC that is a companion to the MIME document.
+metamail:
+metamail:
+metamail:
+metamail:

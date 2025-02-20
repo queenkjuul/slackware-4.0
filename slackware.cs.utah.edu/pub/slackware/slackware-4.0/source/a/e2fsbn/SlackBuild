@@ -1,0 +1,130 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-e2fsbn
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_e2fsbn.tar.gz
+
+echo "+================+"
+echo "| e2fsprogs-1.14 |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/e2fsprogs-1.14.tar.gz
+cd e2fsprogs-1.14
+./configure --enable-elf-shlibs --enable-dynamic-e2fsck
+make CFLAGS=-O2 LDFLAG_STATIC=-s
+mkdir -p $PKG/usr/doc/e2fsprogs-1.14
+cp -a README RELEASE-NOTES $PKG/usr/doc/e2fsprogs-1.14
+
+cd e2fsck
+strip e2fsck
+cat e2fsck > $PKG/sbin/e2fsck
+cat e2fsck.8 | gzip -9c > $PKG/usr/man/man8/e2fsck.8.gz
+
+cd ../misc
+strip badblocks chattr dumpe2fs lsattr mke2fs mklost+found tune2fs fsck \
+e2label
+cat chattr > $PKG/usr/bin/chattr
+cat lsattr > $PKG/usr/bin/lsattr
+cat fsck > $PKG/sbin/fsck
+cat badblocks > $PKG/sbin/badblocks
+cat dumpe2fs > $PKG/sbin/dumpe2fs
+cat mke2fs > $PKG/sbin/mke2fs
+cat mklost+found > $PKG/sbin/mklost+found
+cat tune2fs > $PKG/sbin/tune2fs
+cat e2label > $PKG/sbin/e2label
+for page in badblocks.8 dumpe2fs.8 fsck.8 mke2fs.8 mklost+found.8 tune2fs.8 \
+e2label.8 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man8/$page.gz
+done
+for page in chattr.1 lsattr.1 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man1/$page.gz
+done
+
+cd ../debugfs
+strip debugfs
+cat debugfs > $PKG/sbin/debugfs
+cat debugfs.8 | gzip -9c > $PKG/usr/man/man8/debugfs.8.gz
+
+cd ../lib
+cat libss.a > $PKG/usr/lib/libss.a
+cat libext2fs.a > $PKG/usr/lib/libext2fs.a
+cat libe2p.a > $PKG/usr/lib/libe2p.a
+cat libcom_err.a > $PKG/usr/lib/libcom_err.a
+cat libuuid.a > $PKG/usr/lib/libuuid.a
+ranlib $PKG/usr/lib/libss.a
+ranlib $PKG/usr/lib/libext2fs.a
+ranlib $PKG/usr/lib/libe2p.a
+ranlib $PKG/usr/lib/libcom_err.a
+ranlib $PKG/usr/lib/libuuid.a
+strip libss.so.2.0 libext2fs.so.2.4 libe2p.so.2.3 libcom_err.so.2.0 \
+libuuid.so.1.2
+cat libss.so.2.0 > $PKG/lib/libss.so.2.0
+cat libext2fs.so.2.4 > $PKG/lib/libext2fs.so.2.4
+cat libe2p.so.2.3 > $PKG/lib/libe2p.so.2.3
+cat libcom_err.so.2.0 > $PKG/lib/libcom_err.so.2.0
+cat libuuid.so.1.2 > $PKG/lib/libuuid.so.1.2
+
+cd et
+for script in et_c.awk et_h.awk ; do
+  cat $script > $PKG/usr/share/et/$script
+done
+cat com_err.3 | gzip -9c > $PKG/usr/man/man3/com_err.3.gz
+cat compile_et > $PKG/usr/bin/compile_et
+cat compile_et.1 | gzip -9c > $PKG/usr/man/man1/compile_et.1.gz
+cat com_err.h > $PKG/usr/include/et/com_err.h
+
+cd ../ext2fs
+for include in bitops.h ext2fs.h ext2_io.h ext2_err.h ; do
+  cat $include > $PKG/usr/include/ext2fs/$include
+done
+
+cd ../ss
+for script in ct_c.awk ct_c.sed ; do
+  cat $script > $PKG/usr/share/ss/$script
+done
+cat mk_cmds > $PKG/usr/bin/mk_cmds
+for include in ss.h ss_err.h copyright.h ; do
+  cat $include > $PKG/usr/include/ss/$include
+done
+
+cd ../uuid
+cat uuid.h > $PKG/usr/include/uuid/uuid.h
+
+cd ../../doc
+cat libext2fs.info | gzip -9c > $PKG/usr/info/libext2fs.info.gz
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/e2fsbn.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/e2fsprogs-1.14
+  rm -rf $PKG
+fi

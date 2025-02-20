@@ -1,0 +1,22 @@
+Begin3
+Title:          Remote Reboot daemon and client (rrd and rr)
+Version:        1.2
+Entered-date:   26SEP97
+Description:    Uses an network connection to reboot a machine remotely.
+		The server must be run as root or with setuid root.  The
+		password is transmitted across the network in a secure,
+		encoded format.  The server can use the root password of
+		the system from either the password or shadow password file,
+		or an external file created by the root user of the system.
+		Finally, the option exists to either buffer the password and
+		reboot without disk access or sync the disk before rebooting.
+Keywords:       rr, remote, reboot, network, daemon
+Author:         hartlw@rpi.edu (Matt Hartley)
+Maintained-by:  hartlw@rpi.edu (Matt Hartley)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/daemons
+                         13 kb rr-1.2.tar.gz
+                          1 kb rr-1.2.lsm
+Alternate-site: http://128.113.163.180/linux/index.html
+Platforms: rrd is Linux only (at the moment) - tested on 2.0.28+
+Copying-policy: GPL
+End

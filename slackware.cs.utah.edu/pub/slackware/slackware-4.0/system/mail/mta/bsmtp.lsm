@@ -1,0 +1,14 @@
+Begin3
+Title:          bsmtp
+Version:        1.00
+Entered-date:   01FEB98
+Description:    Adds batch SMTP support to sendmail
+Keywords:       BSMTP sendmail UUCP
+Author:         Felix Schroeter <felix@mamba.pond.sub.org>
+Maintained-by:  Felix Schroeter <felix@mamba.pond.sub.org>
+Primary-site:   http://wwwrzstud.rz.uni-karlsruhe.de/~uk1o/bsmtp/
+Alternate-site:
+Original-site:
+Platform:       All Unix
+Copying-policy: BSD-like
+End

@@ -1,0 +1,18 @@
+Begin3
+Title:          dbs_server
+Version:        0.2.0
+Entered-date:   981011
+Description:	The DBS Telephony Server is a GPL'd telephony server that 
+		allows you to integrate with a Panasonic DBS telephone
+		system using the API card protocol, and includes an API
+		for implimenting further services on top of the DBS's
+		native protocol.  Such services can include call control
+		applications, and well as applications that control
+		the display and keypad of digital phone sets.
+Keywords:       daemon pbx telephony utility		
+Author:         David Sugar <dyfet@tycho.com>
+Maintained-by:  David Sugar <dyfet@tychi.com>
+Primary-Site:	ftp.tycho.com /pub/dbs_server
+		65kB dbs_server-0.2.0.tar.gz
+Copying-policy: GPL
+End

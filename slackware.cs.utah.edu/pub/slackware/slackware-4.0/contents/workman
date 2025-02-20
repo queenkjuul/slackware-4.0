@@ -1,0 +1,12 @@
+drwxr-xr-x root/root         0 1995-08-07 21:07 ./
+drwxr-xr-x root/root         0 1995-02-13 19:22 usr/
+drwxr-xr-x root/root         0 1995-08-07 20:58 usr/openwin/
+drwxr-xr-x root/root         0 1993-08-12 22:45 usr/openwin/bin/
+-rwxr-xr-x root/bin     119259 1998-10-20 01:23 usr/openwin/bin/workman
+drwxr-xr-x root/users        0 1994-02-08 01:02 usr/openwin/lib/
+drwxr-xr-x root/root         0 1993-08-12 22:45 usr/openwin/lib/help/
+-rw-r--r-- root/root     10334 1995-08-07 21:07 usr/openwin/lib/help/workman.info
+drwxr-xr-x root/root         0 1995-08-07 20:58 usr/openwin/man/
+drwxr-xr-x root/root         0 1998-10-20 01:23 usr/openwin/man/man1/
+-rw-r--r-- root/root      8442 1998-10-20 01:23 usr/openwin/man/man1/workman.1.gz
+-rw-r--r-- root/root      3673 1998-10-20 01:23 usr/openwin/man/man1/workmandb.1.gz

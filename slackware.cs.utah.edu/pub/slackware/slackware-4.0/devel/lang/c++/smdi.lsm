@@ -1,0 +1,14 @@
+Begin3
+Title:          smdi
+Version:        0.0.1
+Entered-date:   990415
+Description:	An APE derived C++ class library to support the PBX
+		SMDI integration protocol, either on a serial device,
+		or under a "TCP" session.
+Keywords:       pthread c++ classes threads		
+Author:         David Sugar <dyfet@ostel.com>
+Maintained-by:  David Sugar <dyfet@ostel.com>
+Primary-Site	ftp.tycho.com /pub/smdi
+		99kB smdi-0.0.1.tar.gz
+Copying-policy: GPL
+End

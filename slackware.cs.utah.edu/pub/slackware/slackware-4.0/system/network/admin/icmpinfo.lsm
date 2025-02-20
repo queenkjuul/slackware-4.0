@@ -1,0 +1,35 @@
+Begin2
+Title        = IcmpInfo
+Version      = 1.11
+Desc1        = A tool to monitors the incoming ICMP messages received on
+Desc2        = the running host. It can be used to detect and record
+Desc3        = 'bombs' as well as various network problems.
+Desc4        = It is very small and uses up very little ressources.
+Author       = Laurent Demailly
+AuthorEmail  = dl@hplyot.obspm.fr
+Maintainer   = Laurent Demailly
+MaintEmail   = dl@hplyot.obspm.fr
+Site1        = hplyot.obspm.fr
+Path1        = /net/
+File1        = icmpinfo-1.11.tar.gz
+FileSize1    = 11 K
+Site2        = ftp.sunet.se
+Path2        = /pub/network/monitoring/icmpinfo
+File2        = icmpinfo-1.11.tar.gz
+FileSize2    = 11 K
+Site3        = ftp.funet.fi
+Path3        = /pub/unix/networking
+File3        = icmpinfo-1.11.tar.gz
+FileSize3    = 11 K
+Site4        = sunsite.unc.edu
+Path4        = /pub/Linux/Incoming (and elsewhere ?)
+File4        = icmpinfo-1.11.tar.gz
+FileSize4    = 11 K
+Required1    = Network, net includes (/usr/include/netinet/...)
+Required2    = compiler, root access
+CopyPolicy1  = Free software - GNU license
+Keywords     = networking icmp tcpip monitor alarm analyser
+Entered      = 25AUG95
+EnteredBy    = Laurent Demailly
+CheckedEmail = <dl@hplyot.obspm.fr>
+End

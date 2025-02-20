@@ -1,0 +1,316 @@
+
+Linux - Panasonic LF1000 Optical Disk mini HOWTO
+************************************************
+version 1.1 - March 29, 1996 
+=============================
+
+This file applies to PC based systems only.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Disclaimers 
+============
+
+Neither the author nor the distributors of this HOWTO are in any way
+responsible for physical, financial, or moral damage incurred by following
+the suggestions in this text. 
+
+Copyright 
+==========
+
+The Linux Panasonic LF1000 Optical Disk mini HOWTO is copyrighted
+(C) 1996 by Skip Rye. Linux HOWTO documents may be reproduced and
+distributed in whole or in part, in any medium physical or electronic, as long
+as this copyright notice is retained on all copies. Commercial redistribution
+is allowed and encouraged. The author, however, would like to be notified
+of any such distributions. All translations, derivative works, or aggregate
+works incorporating any Linux HOWTO documents must be covered under
+this copyright notice. In other words, you may not produce a derivative work
+from a HOWTO and impose additional restrictions on its distribution.
+Exceptions to these rules may be granted under certain conditions. In short,
+we wish to promote dissemination of this information through as many
+channels as possible. However, we do wish to retain copyright on the
+HOWTO documents, and would like to be notified of any plans to
+redistribute the HOWTOs. Should you have any questions, please contact
+Greg Hankins, the Linux HOWTO coordinator, at gregh@sunsite.unc.edu.
+You may finger his address for phone number and additional contact
+information. 
+
+Phase Change Optical Technology 
+================================
+
+Optical Phase Change technology is used to create "In Phase" or "Out of
+Phase" bits on a special media for phase change writing. The drive uses a
+LASER of different power levels or LASER intensities to produce this
+effect. One power level allows the media to flow into a crystalline form
+while the other creates an "Out of Phase" condition. The crystallized areas
+reflect the read Lasers beam with a different coefficient of reflectivity than
+the non-crystallized areas. Thus, data can be read from the disk. 
+
+What makes the phase change optical disk special is that it the disk is
+formated with concentric cylinders or tracks with each track being sectored
+much like a magnetic disk or read/write optical disk. The tracks are very
+close so a lot of data can be stored on a disk. This is different from a
+CD-ROM in that it gives your system the look and feel of a magnetic disk.
+CD-ROMs have a spiraling track much like a audio record. Having tracks
+and sectors alone would not make the phase change drive special from
+optical disk but the drive has some very special properties; The phase change
+drive allows for direct overwrite of data which magneto optical can't do
+inexpensively and the media has the very special property of NOT being
+susceptible to magnetic fields or as sensitive to static discharge which gives
+the media a very long shelf life. 
+
+POINTS OF INTEREST 
+===================
+
+ o Less than $500. 
+ o If You already have a SCSI controller they may provide you with and
+   extra disk instead. 
+ o Read/Write optical disk. 
+ o Can read CD-ROMs at 4X speed. 
+ o Can read Kodak PhotoCDs. 
+ o Media has a 15 Year shelf life. 
+ o SCSI-2 Interface. 
+ o Track/sector format as opposed to CD-ROMs spiraling record
+   format. 
+ o 165ms access time - much better than a tape file restore. 
+ o 650Mb data storage per diskette. 
+ o Diskettes are about $50 each. 
+
+THINGS YOU SHOULD KNOW 
+=======================
+
+ o It is unknown if the SCSI controller sold with the drive will work
+   for Linux. If you find that it or other controllers work, please
+   E-Mail me! 
+ o Optical disk format not compatible with any other disk drive.
+   However, it does have a fair chance of being the next A drive for
+   PCs. 
+ o Vendors don't seem to support UNIX very well, to bad $$$ -
+   marketing is targeted for DOS/Windows and Macintosh. 
+ o It seems that the "Use LU" jumper setting works for both Linux and
+   DOS even though the manual for DOS says to not use LUs? So you
+   don't have to change jumper settings between DOS/Windows and
+   Linux. 
+
+Installation 
+=============
+
+The LF1000 is SCSI-2 compatible device. It features a block size of 512
+bytes and is compatible with the Linux SCSI drivers. This drive was
+installed on a PC compatible AMD 100MHZ 486 with an Adaptic 1542C
+SCSI bus-master controller. To install and mount a read/write optical disk
+the following steps were taken; 
+
+Installation steps : 
+
+ o Install the drive and set the SCSI address to not interfere with other
+   SCSI devices. Reconnect all cabling. 
+ o Boot the computer. Your SCSI controller should note the new drive. 
+ o During the Linux kernel boot, you should see an additional SCSI
+   device. In my case, having a magnetic system disk for device /dev/sda
+   it shows up as /dev/sdb. 
+ o I did NOT partition the device because fdisk issued an overwrite
+   warning and I did not want to change anything from a dosemu
+   standpoint. 
+ o mkfs -t ext2 /dev/sdb 
+ o mkdir /pd 
+ o mount -t ext2 -o ro,suid,dev,exec,auto,nouser,async /dev/sdb /pd -
+   Read only 
+ o mount -t ext2 -o defaults /dev/sdb /pd - Mount drive W/R 
+
+Your ready to "Rock'n'Roll" 
+
+Usage hints 
+============
+
+Currently it is unknown if the SCSI kernel driver will support switch-able
+device modes - ie. CD-ROM ISO 9660 format and ext2 file-systems. If
+someone knows please E-mail me. 
+
+When Linux boots, it should recognize your new SCSI drive? ie sda or sdb
+device. Here is a cutout of the demsg command. Notice it detected the
+MATSHITA drive. You should get a similar message. 
+
+Note : The three lines below "Adding Swap" line was because Linux was
+booted for pd use. If a CD-ROM was in the drive at boot time the driver
+would have mounted it as /cdrom using ISO 9660 format. YOU MUST
+BOOT LINUX WITH A CD-ROM INSTALLED TO USE THE DRIVE
+AS A CD-ROM. Once Linux is booted with a CD-ROM it is simple a
+matter of doing a "umount /cdrom" to change media. The new CD-ROM
+would of course have to be re-mounted. A shell is provided below to assist
+you with this, just cut it out to a file say "mgrpd" and do "sh mgrpd" 
+
+#------------------------ Cut of demsg command -------------------------------
+Configuring Adaptec at IO:330, IRQ 11, DMA priority 5
+scsi0 : Adaptec 1542
+scsi : 1 host.
+  Vendor: QUANTUM   Model: PD1050iS          Rev: 3110
+  Type:   Direct-Access                      ANSI SCSI revision: 02
+
+Detected scsi disk sda at scsi0, id 0, lun 0
+  Vendor: MATSHITA  Model: PD-1 LF-1000      Rev: A109
+  Type:   Optical Device                     ANSI SCSI revision: 02
+Detected scsi disk sdb at scsi0, id 1, lun 0
+scsi : detected 2 SCSI disks total.
+SCSI Hardware sector size is 512 bytes on device sda
+SCSI Hardware sector size is 512 bytes on device sdb
+Linux version 1.2.13 (root@bigkitty) (gcc version 2.7.0) #1 Wed Aug 23 03:54:14
+
+CDT 1995
+Partition check:
+  sda: sda1 sda2 sda3 sda4
+  sdb: bad partition table
+VFS: Mounted root (ext2 filesystem) read-only.
+Adding Swap: 34812k swap-space
+end_request: I/O error, dev 2100, sector 64
+isofs_read_super: bread failed, dev 0x2100 iso_blknum 16
+Unable to identify CD-ROM format.
+------------------------ Cut of demsg command -------------------------------
+
+
+I've got an Adaptec 1452C SCSI controller with Slackware's "scsinet1"
+kernel . It works fine with that configuration. Note, if your controller is
+different check the SCSI-HOWTO by Drew Eckhardt for comments. 
+
+To aid in using the LF1000 drive here is a shell. You are free to use the shell
+but please keep the copyright with it. 
+
+--------------------------------- Cut Here ---------------------------------
+#@/@/@ mgrpd    ABR Linux 1.2.13 486  mgr shell for phase change drive
+#************************************************************************#
+#                                                                        #
+#  program : mgrpd                                                       #
+#                                                                        #
+#                                                                        #
+#                                                                        #
+#                                                                        #
+#       Author : Skip Rye  Copyright 1996                                #
+#                                                                        #
+#       Revision : v1.0  02-01-96 Start                                  #
+#                        03-13-96 Released                               #
+#                                                                        #
+#       Calls : None                                                     #
+#                                                                        #
+#       Files :                                                          #
+#                                                                        #
+#                                                                        #
+########################################################################*/
+# Display menu and process choice:
+sel=0
+while [ $sel ]
+do
+   echo "***************************************************************"
+   echo "*                         MGRPD                               *"
+   echo "* Version v1.0, Copyright 1996, Author Skip Rye              *"
+   echo "***************************************************************"
+   echo "**************  ext2 formated file system *********************"
+   echo "1)  Format pd disk - mkfs /dev/sdb"
+   echo "2)  Mount pd read/write"
+   echo "3)  Mount pd read only"
+   echo "************** dos formated file system ***********************"
+   echo "Note : must have been formatted using dos"
+   echo "4)  Mount read/write"
+   echo "5)  Mount read only"
+   echo "40)  List disk space - df"
+   echo "50)  umount"
+   echo "######################## CDROM ################################"
+   echo "Note : must have Use LUN Numbers jumper on drive"
+   echo "100) Mount CDROM"
+   echo "101) umount CDROM"
+   echo "END Hit  to End"
+   echo
+   echo "Select option: \c"
+
+   read sel
+   case $sel in
+
+   1)
+      echo "This option assumes ext2 is the default mkfs format"
+      echo "This will DESTROY ALL data on disk. Enter y to continue."
+      read ans1
+      if [ $ans1 ]
+      then
+         echo "Enter the fully qualified path name of the PD drive"
+         echo "ie. /dev/sdb"
+         read pdpath
+         if [ $pdpath ]
+         then
+            if [ $ans1 = "y" -o $ans1 = "Y" ]
+            then
+                echo "This will DESTROY ALL data on disk $pdpath. Enter y to co
+ntinue"
+                read ans2
+                if [ $ans2 ]
+                then
+                  if [ $ans2 = "y" -o $ans2 = "Y" ]
+                  then
+                     mkfs $pdpath
+                  fi
+               fi
+            fi
+         fi
+      fi
+   ;;
+   2)
+      mount -t ext2 -o defaults /dev/sdb /pd
+   ;;
+   3)
+      mount -t ext2 -o ro,suid,dev,exec,auto,nouser,async /dev/sdb /pd
+   ;;
+   4)
+      mount -t msdos -o rw,suid,dev,exec,auto,nouser,async /dev/sdb /pd
+   ;;
+   5)
+      mount -t msdos -o ro,suid,dev,exec,auto,nouser,async /dev/sdb /pd
+   ;;
+   40)
+      df
+   ;;
+   50)
+      umount /dev/sdb
+   ;;
+   100)
+      /etc/rc.d/rc.cdrom
+   ;;
+   101)
+      umount /cdrom
+   ;;
+   esac
+done
+
+--------------------------------- Cut Here ---------------------------------
+
+
+If things don't work consider the following; 
+
+ o What kind of SCSI controller are you using? Is that controller
+   supported, see the SCSI-HOWTO by Drew Eckhardt. 
+ o Is support for that controller complied in your Kernel? 
+ o For the CD to work you need to have powered on the LF1000 and
+   installed a CD-ROM before you boot Linux. After that you can
+   switch CD's by unmounting, switching CD-ROMs and remounting
+   - See the "mgrpd" shell provided. 
+ o For the read/write optical disk to work you must have booted Linux
+   without a CD-ROM installed in the drive. 
+ o Is the jumper setting for the LF1000 set to use logical unit (LU)
+   numbers. 
+
+The media which comes with the drive is reported be re-writable about
+500,000 times. This means that it is not advisable to install a live operating
+system such as Linux on the phase change optical drive. These live operating
+systems tend to cache processes to and from disk. Over time this can easily
+approach the phase change media life. 
+
+Mount drive read only as much as possible. 
+
+When writing to the drive do so in large chunks. This will help reduce any
+file fragmentation which will require more read seeks. 
+
+This is however an excellent media for backups, gifs, mpeg or storing large
+programs which you don't use that often. The restore from backup is much
+faster that tape. Backups can be performed using the cp -rp command
+without the need for the ftape driver. This however, will replace symbolic
+links with the actual file. 
+
+Author : Skip Rye root@brspc_0064.msd.ray.com 
+

@@ -1,0 +1,18 @@
+Extra source code:
+__________________
+
+BSD-sendmail: Full source code, configuration materials and documentation for
+     BSD sendmail 8.6.9. Depending on the needs of your site, you may prefer
+     to compile and run this instead of Smail (included in binary form).
+
+mmdf: A full-featured replacement for Smail or Sendmail with easy configuration.
+      Handles SMTP, UUCP, Local, and List Management.
+
+gnu-finger-1.37: The version of GNU finger for Linux from the Debian project.
+
+CPM-emulator: YES! A full-featured CP/M-80 emulator for Linux. Turns your Linux
+        box into ONE MONSTER of a CP/M machine - imagine a having a hard drive
+        with 100s of megs and a SIX MEGAHERTZ Z-80 back in the good 'ol days!
+        (a 386-DX33 should be roughly equal in speed to a 6Mhz Z-80) Includes a
+        Z-80 assembler-linker to help you dust off that rusty code. :^)
+

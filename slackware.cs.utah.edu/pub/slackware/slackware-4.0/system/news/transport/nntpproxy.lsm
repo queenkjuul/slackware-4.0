@@ -1,0 +1,20 @@
+Begin3
+Title: NNTP Proxy         
+Version: 0.1.5       
+Entered-date: 03MAY97
+Description: This proxies NNTP connections with support for auto-login.   
+	In other words, it converts type 201 (no posting) to 200 (ok posting)
+	and authenticates for those servers that responce '481 Authentication
+	required'.  This is neccissary to use tin, trn, gnus, etc unmodified
+	with servers, with Netscape style security enhancements.  It may also
+	be used to connect your intranet to an internet server.
+Keywords: NNTP to NNRP proxy, tin, trn, gnus.
+Author: Dr Bill C Riemers <bcr@feynman.com>    
+Maintained-by: Dr Bill C Riemers <bcr@feynman.com>
+Primary-site:  http://www.feynman.com/software/nntpproxy-0.1.5.tar.gz 
+Alternate-site: sunsite.unc.edu
+Original-site: http://www.feynman.com/software/nntpproxy-0.1.5.tar.gz 
+Platforms: Linux, HPUX, easily portable...     
+Copying-policy: Less restrictive than GPL.
+End
+

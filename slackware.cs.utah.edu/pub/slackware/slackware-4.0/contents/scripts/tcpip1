@@ -1,0 +1,46 @@
+# OK, we're going to try a new approach.  For the original set of /etc config
+# files, if the file exists in /etc already, we don't copy the new one into
+# place.  tcpip.tgz is really one of the few packages in Slackware to contain
+# a lot of configuration files, and the "starter" files in /etc have changed
+# *very little* over the years.  If we *really* want to force replacement of
+# one of these files, we can always add another /etc directory to this package,
+# right?  As it is, 99% of the people who already have these files don't want
+# them replaced.
+cd etc-incoming
+for file in * */* ; do
+ if [ ! -d file ]; then # file is not a directory
+  if [ ! -r ../etc/$file ]; then # file isn't already in /etc, so copy it.
+   cp -a $file ../etc/$file
+  fi
+ fi
+done
+cd ..
+rm -rf etc-incoming
+# Let's add an entry to root's crontab to clear out any stale
+# POP3 files that can occur if in.pop3d crashes during use:
+if [ -r var/spool/cron/crontabs/root ]; then
+  if fgrep flushpop var/spool/cron/crontabs/root 1> /dev/null 2> /dev/null ; then
+    DONOTHING=true # looks like it's set up already
+  else # add it:
+    cat << EOF >> var/spool/cron/crontabs/root
+# Flush stale POP3 files every 15 minutes:
+5,20,35,50 * * * *      /usr/sbin/flushpop.sh 1> /dev/null 2> /dev/null
+EOF
+  fi
+fi
+( cd sbin ; rm -rf netconfig )
+( cd sbin ; ln -sf netconfig.color netconfig )
+( cd usr/sbin ; rm -rf in.ntalkd )
+( cd usr/sbin ; ln -sf in.talkd in.ntalkd )
+( cd usr/bin ; rm -rf ntalk )
+( cd usr/bin ; ln -sf talk ntalk )
+( cd usr/bin ; rm -rf whois )
+( cd usr/bin ; ln -sf fwhois whois )
+( cd usr/bin ; rm -rf inews )
+( cd usr/bin ; ln -sf inews-nntp inews )
+( cd bin ; rm -rf dnsdomainname )
+( cd bin ; ln -sf hostname dnsdomainname )
+( cd bin ; rm -rf nisdomainname )
+( cd bin ; ln -sf hostname nisdomainname )
+( cd bin ; rm -rf ypdomainname )
+( cd bin ; ln -sf hostname ypdomainname )

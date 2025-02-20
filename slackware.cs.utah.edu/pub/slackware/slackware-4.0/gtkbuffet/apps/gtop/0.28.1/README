@@ -1,0 +1,23 @@
+GTop 0.28.1 has been released:
+-----------------------------
+
+This is a snapshot release representing 09/18/98 (tag: GTOP_0_28_1)
+from CVS; there aren't many changes since 0.28.
+
+I'm planning to make a new stable release (0.30) in about two weeks.
+
+You can find the sources and RPMS in the /pub/gtop/0.28.1 directory.
+
+Tarballs:
+
+	gtop-0.28.1.tar.gz
+
+Source RPM:
+
+	gtop-0.28.1-SNAP.src.rpm
+
+Binary RPM:
+
+	gtop-0.28.1-SNAP.i386.rpm
+
+Martin <martin@home-of-linux.org>

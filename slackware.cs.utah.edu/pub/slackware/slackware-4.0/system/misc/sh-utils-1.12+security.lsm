@@ -1,0 +1,16 @@
+Begin3
+Title:          sh-utils-1.12+security.tar.gz
+Version:        Fri Apr 26 01:21:48 EDT 1996
+Entered-date:   Fri Apr 26 01:21:48 EDT 1996
+Description:    This is the sh-utils-1.12 package
+		with a few security enhancements.
+		most notably support for wheel groups in su.
+Keywords:       su false util security secure
+Author:         
+Maintained-by:  kuzniar@cs.unca.edu (Eric John Kuzniar)
+Primary-site:   sunsite.unc.edu /pub/system/Misc
+Alternate-site: 
+Original-site:  hendersonville.cs.unca.edu /pub/linux/security
+Platform:       
+Copying-policy: GPL
+End

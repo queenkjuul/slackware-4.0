@@ -1,0 +1,19 @@
+Begin3
+Title:		meter          
+Version:        0.2
+Entered-date:   29 January 1995
+Description:    Meter drives the LED display circuit described in
+		led-stat.txt (which is included in the archive).  
+		This version provides command-line options to allow 
+		you more flexibility with how the program run.
+		Now complete with an array of fun modes for your
+		metering pleasure.
+Keywords:       LED, display, hardware-hack
+Author:         chasebd@network.rose-hulman.edu (Brian D Chase)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, /proc filesystem
+Copying-policy: GPL
+End

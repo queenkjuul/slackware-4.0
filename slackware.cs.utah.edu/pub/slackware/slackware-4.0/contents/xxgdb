@@ -1,0 +1,13 @@
+drwxr-xr-x root/root         0 1998-10-20 00:42 ./
+drwxr-xr-x root/root         0 1995-08-07 20:44 usr/
+drwxr-xr-x root/root         0 1995-08-07 20:44 usr/X11R6/
+drwxr-xr-x root/root         0 1998-10-20 00:41 usr/X11R6/bin/
+-rwxr-xr-x root/bin      79440 1998-10-20 00:41 usr/X11R6/bin/xxgdb
+drwxr-xr-x root/root         0 1995-08-07 20:44 usr/X11R6/man/
+drwxr-xr-x root/root         0 1995-11-22 14:01 usr/X11R6/man/man1/
+-rw-r--r-- root/root      4431 1995-11-22 14:01 usr/X11R6/man/man1/xxgdb.1.gz
+drwxr-xr-x root/root         0 1994-10-09 20:42 var/
+drwxr-xr-x root/root         0 1994-04-27 20:59 var/X11R6/
+drwxr-xr-x root/root         0 1994-10-09 20:42 var/X11R6/lib/
+drwxr-xr-x root/root         0 1993-12-11 21:01 var/X11R6/lib/app-defaults/
+-rw-r--r-- root/root      2916 1995-11-22 14:01 var/X11R6/lib/app-defaults/XDbx

@@ -1,0 +1,15 @@
+Begin3
+Title:		ippl
+Version:	1.4.5
+Entered-date:	April 19, 1999
+Description:	Highly configurable IP protocols logger (ICMP, TCP, UDP)
+Keywords:	logging icmp tcp udp network paranoia
+Author: 	hugo@via.ecp.fr (Hugo Haas)
+                eb@via.ecp.fr (Etienne Bernard)
+Maintained-by:	hugo@via.ecp.fr (Hugo Haas)
+                eb@via.ecp.fr (Etienne Bernard)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/daemons
+		50K ippl-1.4.5.tar.gz
+Platforms:	Linux
+Copying-policy:	GPL
+End

@@ -1,0 +1,26 @@
+Begin3
+Title:		X11-QMR
+Version:	1.5
+Entered-date:	19MAY95
+Description:	X11/Motif2.0 Qmail offline mail reader for Unix, News mode
+Keywords:	qwk, qmail, x11-qmr, qmr, BBS
+Author:		ross@mecalc.co.za (Ross C Linder)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Mail/readers
+		191711  X11-QMR-1.5.dbin.tar.gz
+		840187  X11-QMR-1.5.sbin.tar.gz
+		106609  X11-QMR-1.5.src.tar.gz
+		--
+		The dbin archive is for users who own Metrolink Motif 2.0
+		The sbin archive is for generic Linux installations
+		--
+Alternate-site:	sleepy.softconn.co.za /pub/X11-QMR
+Platforms:	Ver 1.5 runs on Linux with Xfree86-3.1.1, the dynamic version
+		requires Motif 2.0 (Metrolink) and the following libraries
+		--
+		libXpm.so.4 (DLL Jump 4.5) => /usr/X11/lib/libXpm.so.4.5
+		libXt.so.6 (DLL Jump 6.0) => /usr/X11/lib/libXt.so.6.0
+		libX11.so.6 (DLL Jump 6.0) => /usr/X11/lib/libX11.so.6.0
+		libc.so.4 (DLL Jump 4.6pl27) => /lib/libc.so.4.6.27
+		--
+Copying-policy:	Freely distibutable
+End

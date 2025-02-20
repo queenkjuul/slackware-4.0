@@ -1,0 +1,48 @@
+
+  Slackware SCSI bootdisks
+  ------------------------
+
+  This directory contains a collection of batch files used to create Slackware
+  bootdisks.  To create a disk, just put a formatted floppy disk in your drive
+  and choose one of the options listed below to make the disk.  Read all of the
+  choices carefully to pick the disk that best matches the hardware in your
+  machine.  NOTE:  Using the VIEW program to create the Slackware bootdisks
+  may not work under Windows.  If you're running Windows95 or 98, you should
+  restart your machine in MS-DOS mode before creating a bootdisk.
+
+  NOTE:  In addition to some sort of SCSI support, all of these disks contain
+         support for IDE hard drives and CDROM drives.  So, if you're running
+         a mixed IDE/SCSI system, the kernels on these disks will be able to
+         handle the situation just fine.  Look for the disk below containing
+         support for your SCSI controller card.  
+
+  Name        Additional driver support
+  ----        -------------------------
+
+scsi.bat           A generic SCSI bootdisk, with support for most SCSI
+                   controllers that work under Linux.  (NOTE: This disk
+                   wastes a lot of memory, since it contains nearly *all*
+                   of the SCSI drivers.  If you know which SCSI controller
+                   your system has, it's *far* better to use the disk 
+                   designed especially for it.  But, if you don't know,
+                   then this generic disk might just work for you.)
+
+scsinet.bat        Supports most SCSI controllers, plus many of the most
+                   common ethernet cards.  Use this for installing over a
+                   network to a SCSI drive.  (Or you can also use the
+                   bootdisk for your SCSI controller plus the appropriate
+                   ethernet module.  See the README files in the ../modules
+                   directory if you want to try this approach)
+                   NOTE:  Don't be too surprised if scsinet.s causes your
+                   machine to hang.  It's loaded with nearly every SCSI
+                   and network driver for Linux, and unless your hardware
+                   is well behaved, the probing process can freeze your
+                   machine.  If that happens, don't panic, just use a
+                   disk with less drivers.  If you're not installing over
+                   the network, the disk designed for your SCSI controller
+                   is the right choice.  If you need network support, use
+                   the disk designed for your SCSI card, plus put 'insmod'
+                   and the required network modules on another floppy to
+                   load before running setup.  The README files in the
+                   ../modules directory explain this process in detail.
+

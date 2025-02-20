@@ -1,0 +1,24 @@
+Begin2
+Title        = idle_watch logs out idle users
+Version      = 1.0
+Desc1        = reads the utmp entrys and checks for idle users
+Desc2        = after a warning message and a given time they are logged out
+Desc3        = from the system.
+Author       = Thomas Zwettler
+AuthorEmail  = spiff@calvin.priv.at
+Maintainer   = Thomas Zwettler
+MaintEmail   = spiff@calvin.priv.at
+Site1        = sunsite.unc.edu
+Path1        = 
+File1        = idle_watch.tar.gz
+FileSize1    = 
+Required1    = Linux
+CopyPolicy1  = Freely distributable but copyrighted
+Keywords     = logout system
+Comment1     = 2:310/39.1701@fidonet.org is another way to mail me a
+Comment2     = message.
+Entered      = MAY95
+EnteredBy    = Thomas Zwettler
+CheckedEmail = spiff@calvin.priv.at
+End
+

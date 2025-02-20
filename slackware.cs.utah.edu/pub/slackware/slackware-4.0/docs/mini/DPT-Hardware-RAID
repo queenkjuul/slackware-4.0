@@ -1,0 +1,396 @@
+  Linux DPT Hardware RAID HOWTO
+  Ram Samudrala (me@ram.org)
+  v1.1, 15 December 1997
+
+  How to set up hardware RAID under Linux.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+  2. Supported controllers
+
+  3. What hardware should be used?
+
+  4. Installation
+
+     4.1 Installing and configuring the hardware
+     4.2 Configuring the kernel
+
+  5. Usage
+
+     5.1 fdisk, mke2fs, mount, etc.
+     5.2 Hotswapping
+     5.3 Performance
+
+  6. Features in the DPT RAID driver
+
+  7. Troubleshooting
+
+     7.1 Upon bootup, no SCSI hosts are detected
+     7.2 RAID configuration shows up as N different disks
+     7.3 If all fails...
+
+  8. References
+
+  9. Acknowledgements
+
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  This document describes how to set up SCSI hardware RAID, focusing
+  mainly on host-based adapters from DPT, though the principles applied
+  here are fairly general.
+
+  Use the information below at your own risk.  I disclaim all
+  responsibility for anything you may do after reading this HOWTO. The
+  latest version of this HOWTO will always be available at
+  http://www.ram.org/computing/linux/dpt_raid.html.
+
+  2.  Supported controllers
+
+  Currently the only well-supported host-based hardware RAID controller
+  (i.e, a controller for which there exists a driver under Linux) is one
+  that is made by DPT <http://www.dpt.com>. However, there exist other
+  host-based and scsi-to-scsi controller which may work under Linux.
+  These include the ones made by Syred <http://www.syred.com>, ICP-
+  Vortex <http://www.icp-vortex.com>, and BusLogic <http://www.bus-
+  logic.com>.  In addition, there exist plenty of SCSI-to-SCSI
+  controllers. See the RAID solutions for Linux page
+  <http://linas.org/linux/raid.html> for more info.
+
+  If, in the future, there is support for other drivers, I will do my
+  best to incorporate that information into this HOWTO.
+
+  3.  What hardware should be used?
+
+  Given all these options, if you're looking for a RAID solution, you
+  need to think carefully about what you want.  Depending on what you
+  want to do, and which RAID level you wish to use, some cards may be
+  better than others.  SCSI-to-SCSI adapters may not be as good as host-
+  based adapters, for example (see the DPT comparison between host-based
+  and SCSI-to-SCSI adapters <http://www.dpt.com/hstvscsi.html> for why
+  this is the case).  Michael Neuffer (neuffer@kralle.zdv.uni-mainz.de),
+  the author of the EATA-DMA driver, has a nice discussion about this on
+  his Linux High Performance SCSI and RAID page <http://www.uni-
+  mainz.de/~neuffer/scsi/>.
+
+  For the purposes of this HOWTO, I am assuming you have only a Linux
+  system running. Also, note that I've only tried this out with the DPT
+  Smartcache VI PM2144UW controller, with the DPT-supplied enclosure
+  (SmartRAID tower), and I have no experience with other set ups. So
+  things may be different for your setup.
+
+  4.  Installation
+
+  4.1.  Installing and configuring the hardware
+
+  Refer to the instruction manual to install the card and the drives.
+  For DPT, since a storage manager for Linux doesn't exist yet, you need
+  to create a MS-DOS-formatted disk with the system on it (usually
+  created using the command "format \s" at the MS-DOS prompt).  You will
+  also be using the DPT storage manager for MS-DOS, which you should
+  probably make a copy of for safety.
+
+  Once the hardware is in place, boot using the DOS system disk. Replace
+  the DOS disk with the storage manager. And invoke the storage manager
+  using the command:
+
+
+
+       a:\ dptmgr
+
+
+
+
+  Wait a minute or so, and you'll get a nice menu of options.  Configure
+  the set of disks as a hardware RAID (single logical array). Choose
+  "other" as the operating system.
+
+  The MS-DOS storage manager is a lot easier to use with a mouse, and so
+  you might want to have a mouse driver on the initial system disk you
+  create.
+
+  Technically, it should be possible to run the SCO storage manager
+  under Linux, but it may be more trouble than its worth.  It's probably
+  more easier to run the MS-DOS storage manager under Linux.
+
+  4.2.  Configuring the kernel
+
+  You will need to configure the kernel with SCSI support and the
+  appropriate low level driver.  See the Kernel HOWTO
+  <http://sunsite.unc.edu/mdw/HOWTO/Kernel-HOWTO.html> for information
+  on how to compile the kernel. Once you choose "yes" for SCSI support,
+  in the low level drivers section, select the driver of your choice
+  (EATA-DMA for most EATA-DMA compliant (DPT) cards, EATA-PIO for the
+  very old PM2001 and PM2012A from DPT).  Most drivers, including the
+  EATA-DMA driver, should be available in recent kernel versions.
+  Once you have the kernel compiled, reboot, and if you've set up
+  everything correctly, you should see the driver recognising the RAID
+  as a single SCSI disk. If you use RAID-5, you will see the size of
+  this disk to be 2/3 of the actual disk space available.  The messages
+  you see upon bootup should look something like this:
+
+
+
+       EATA (Extended Attachment) driver version: 2.59b
+       developed in co-operation with DPT
+       (c) 1993-96 Michael Neuffer, mike@i-Connect.Net
+       Registered HBAs:
+       HBA no. Boardtype    Revis  EATA Bus  BaseIO IRQ DMA Ch ID Pr QS  S/G IS
+       scsi0 : PM2144UW     v07L.Y 2.0c PCI  0xef90  11 BMST 1  7  N  64 252 Y
+       scsi0 : EATA (Extended Attachment) HBA driver
+       scsi : 1 host.
+         Vendor: DPT       Model: RAID-5            Rev: 07LY
+         Type:   Direct-Access                      ANSI SCSI revision: 02
+       Detected scsi disk sda at scsi0, channel 0, id 8, lun 0
+       scsi0: queue depth for target 8 on channel 0 set to 64
+       scsi : detected 1 SCSI disk total.
+       SCSI device sda: hdwr sector= 512 bytes. Sectors= 35591040 [17378 MB] [17.4 GB]
+
+
+
+
+  (The above display is for a setup with a single DPT SCSI controller,
+  configured as RAID-5, with three disks of 9 GB each.)
+
+  5.  Usage
+
+  5.1.  fdisk, mke2fs, mount, etc.
+
+  You can now start treating the RAID as a regular disk. The first thing
+  you'll need to do is partition the disk (using fdisk).  You'll then
+  need to set up an ext2 filesystem.  This can be done by running the
+  command:
+
+
+
+       % mkfs -t ext2 /dev/sdxN
+
+
+
+
+  where /dev/sdxN is the name of the SCSI partition.  Once you do this,
+  you'll be able to mount the partitions and use them as you would any
+  other disk (including adding entries in /etc/fstab).
+
+  5.2.  Hotswapping
+
+  We first tried to test hotswapping by removing a drive and putting it
+  back in the DPT-supplied enclosure/tower (which you buy for an
+  additional cost).  Before we could carry this out to completion, one
+  of the disks failed (as I write this, the beeping is driving me
+  crazy). Even though one of the disks failed, all the data on the RAID
+  drive is accessible.
+
+  Instead of replacing the drive, we just went through the motions and
+  put the same drive back in.  The drive rebuilt itself and everything
+  seems to be okay.  During the time the disk had filed, and during the
+  rebuilding process, all the data was accessible. Though it should be
+  noted that if another disk had failed, we'd have been in serious
+  trouble.
+
+
+  5.3.  Performance
+
+  Here's the output of the Bonnie program, on a 2144 UW with 9x3=17 GB
+  RAID 5 setup. The RAID is on a dual processor Pentium Pro machine
+  running Linux 2.0.32. For comparison, the Bonnie results for the IDE
+  drive on that machine are also given.
+
+
+
+                  -------Sequential Output-------- ---Sequential Input--  --Random--
+                  -Per Char- --Block--- -Rewrite-- -Per Char- --Block---  --Seeks---
+               MB K/sec %CPU K/sec %CPU K/sec %CPU K/sec %CPU K/sec %CPU   /sec  %CPU
+       RAID   100  9210 96.8  1613  5.9   717  5.8  3797 36.1 90931 96.8 4648.2 159.2
+       IDE    100  3277 32.0  6325 23.5  2627 18.3  4818 44.8 59697 88.0  575.9  16.3
+
+
+
+
+  It's clear that the RAID is great for block reads and writes (even
+  though write performance is degraded by using RAID-5), but it is not
+  very good at sequential re-writes.
+
+  6.  Features in the DPT RAID driver
+
+  This section describes some of the commands available under Linux to
+  check on the RAID configuration.  Again, while references to the
+  eata_dma driver is made, this can be used to check up on any driver.
+
+  To see the configuration for your driver, type:
+
+
+
+       % cat /proc/scsi/eata_dma/N
+
+
+
+
+  where N is the host id for the controller.  You should see something
+  like this:
+
+
+
+       EATA (Extended Attachment) driver version: 2.59b
+       queued commands:         353969
+       processed interrupts:    353969
+
+       scsi0 : HBA PM2144UW
+       Firmware revision: v07L.Y
+       Hardware Configuration:
+       IRQ: 11, level triggered
+       DMA: BUSMASTER
+       CPU: MC68020 20MHz
+       Base IO : 0xef90
+       Host Bus: PCI
+       SCSI Bus: WIDE Speed: 10MB/sec.
+       SCSI channel expansion Module: not present
+       SmartRAID hardware: present.
+           Type: integrated
+           Max array groups:              7
+           Max drives per RAID 0 array:   7
+           Max drives per RAID 3/5 array: 7
+       Cache Module: present.
+
+
+
+
+           Type: 0
+           Bank0: 16MB without ECC
+           Bank1: 0MB without ECC
+           Bank2: 0MB without ECC
+           Bank3: 0MB without ECC
+       Timer Mod.: present
+       NVRAM     : present
+       SmartROM  : enabled
+       Alarm     : on
+       Host<->Disk command statistics:
+                Reads:      Writes:
+           1k:           0            0
+           2k:           0            0
+           4k:           0            0
+           8k:           0            0
+          16k:           0            0
+          32k:           0            0
+          64k:           0            0
+         128k:           0            0
+         256k:           0            0
+         512k:           0            0
+        1024k:           0            0
+       >1024k:           0            0
+       Sum   :           0            0
+
+
+
+
+  To get advanced command statistics, type:
+
+
+
+       % echo "eata_dma latency" > /proc/scsi/eata_dma/N
+
+
+
+
+  Then you can do a:
+
+
+
+       % cat /proc/scsi/eata_dma/N
+
+
+
+
+  to get more detailed statistics.
+
+  To turn off advanced command statistics, type:
+
+
+
+       % echo "eata_dma nolatency" > /proc/scsi/eata_dma/N
+
+
+
+
+  7.  Troubleshooting
+
+  7.1.  Upon bootup, no SCSI hosts are detected
+
+  This could be due to several reasons, but it's probably because the
+  appropriate driver is not configured in the kernel. Check and make
+  sure the appropriate driver (EATA-DMA for most DPT cards) is
+  configured.
+
+  7.2.  RAID configuration shows up as N different disks
+
+  The RAID has not been configured properly.  If you're using a DPT
+  storage manager, you need to configure the RAID disks as a single
+  logical array.  Michael Neuffer (neuffer@kralle.zdv.uni-mainz.de)
+  writes "When you configure the controller with the SM start it with
+  the parameter /FW0 and/or select Solaris as OS. This will cause the
+  array to be setup to be managed internally by the controller."
+
+  7.3.  If all fails...
+
+  Read the SCSI-HOWTO again.  Check the cabling and the termination.
+  Try a different machine if you have access to one.  The most common
+  cause of problems with SCSI devices and drivers is because of faulty
+  or misconfigured hardware.  Finally, you can post to the various
+  newsgroups or e-mail me, and I'll do my best to get back to you.
+
+  8.  References
+
+  The following documents may prove useful to you as you set up RAID:
+
+
+  ·  DPT RAID Primer and other RAID/SCSI-related documents
+     <http://www.dpt.com/techno.html>
+
+  ·  EATA-DMA homepage <http://www.uni-
+     mainz.de/~neuffer/scsi/dpt/index.html>
+
+  ·  Linux Disk HOWTO <http://sunsite.unc.edu/mdw/HOWTO/Disk-HOWTO.html>
+
+  ·  Linux Kernel HOWTO <http://sunsite.unc.edu/mdw/HOWTO/Kernel-
+     HOWTO.html>
+
+  ·  Linux SCSI HOWTO <http://sunsite.unc.edu/mdw/HOWTO/SCSI-HOWTO.html>
+
+  ·  RAID Solutions for Linux <http://linas.org/linux/raid.html>
+
+  9.  Acknowledgements
+
+  The following people have been helpful in getting this HOWTO done:
+
+
+  ·  Boris Fain (fain@zen.stanford.edu)
+
+  ·  Jos Vos (jos@xos.nl)
+
+  ·  Michael Neuffer (neuffer@kralle.zdv.uni-mainz.de)
+
+  ·  Ralph Wallace (rwallace@rwallace.interaccess.com)
+
+  ·  Russell Brown (russell@lutton.lls.com)
+
+  ·  Syunsuke Ogata (Syunsuke_Ogata@appear.ne.jp)
+
+
+
+
+
+
+
+
+
+
+
+
+

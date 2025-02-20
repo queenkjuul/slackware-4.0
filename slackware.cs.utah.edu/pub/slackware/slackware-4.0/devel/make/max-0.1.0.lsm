@@ -1,0 +1,21 @@
+Begin2
+Title        = max
+Version      = max version 0.1.0
+Desc1        = max is a generator for systems of makefiles.
+Desc2        = It supports multi-platform development, GNU configure
+Desc3        = and GNU make.
+Author       = Tobias Gloth
+AuthorEmail  = gloth@unknown.westfalen.de
+Maintainer   = Tobias Gloth
+MaintEmail   = gloth@unknown.westfalen.de
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/devel/make
+File1        = max-0.1.0.tar.gz
+FileSize1    = 114619
+CopyPolicy1  = GNU Copyleft
+Comment1     = see README
+Required1    = GNU make
+Entered      = May 25 1997
+EnteredBy    = Tobias Gloth
+End
+

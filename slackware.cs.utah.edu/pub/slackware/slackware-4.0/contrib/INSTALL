@@ -1,0 +1,50 @@
+
+To install packages in this directory (*), use the Slackware package tools.
+Packages may be installed from the command line using the "installpkg" command:
+
+# installpkg somepackage.tgz
+
+   * there are a few exceptions to this -- if the file ends in .tgz, it's
+     a package that's ready to install with 'installpkg'.  If, on the other
+     hand, the file ends in .tar.gz, then it's probably an archive which should
+     be extracted into a temporary directory with 'tar xzvf package.tar.gz'.
+     Don't try to use installpkg or pkgtool to install .tar.gz files.
+
+NOTE:  Some packages should only be installed in single-user mode.  This is
+especially true of packages that contain daemons, like the networking package
+tcpip.tgz, or the print spooler package bsdlpr.tgz.  To switch to single user
+mode, use this command:
+
+# telinit 1
+
+To switch back to the normal runlevel after installing your new package(s),
+use this command:
+
+# telinit 3
+
+Packages may also be installed using the menu-based package installation and
+removal tool "pkgtool".  Run pkgtool in the directory with the packages and
+follow the on screen prompts.
+
+Removing packages
+-----------------
+
+The Slackware package management tools provide a way to remove installed 
+packages easily and safely.  (well, obviously if you remove the wrong package
+it can be harmful to your machine's health :^)
+
+To remove a package, switch into the directory containing the package database:
+
+# cd /var/log/packages
+
+In this directory, you'll find a text file for each package.  You can look at
+the files with "less" to see information about what each package does and 
+which files it contains.  If you want to remove a package, use the "removepkg"
+command in the package database directory:
+
+# removepkg somepackage
+
+You'll see quite a bit of output on the screen telling you exactly which files
+and directories are removed, which you may wish to redirect to a file for later
+inspection.
+

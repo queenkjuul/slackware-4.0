@@ -1,0 +1,17 @@
+Begin3
+Title:		Fdisk for Amiga RDB harddisks
+Version:	0.04
+Entered-date:	98/11/03
+Description:	An fdisk implementation for hard disks using the
+		Rigid Disk Block (RDB=Amiga m68k stuff). This
+		tool works on little endian Linux platforms, too.
+Keywords:	fdisk affs RDB amiga partition disklabel
+Author:		Stefan Reinauer <stepan@linux.de>
+Maintained-by:	Stefan Reinauer <stepan@linux.de>
+Primary-site:	http://www.freiburg.linux.de/~stepan/
+		30k amiga-fdisk-0.04.tar.gz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Misc
+Original-site:	
+Platform:	any Linux System
+Copying-policy:	GPL
+End

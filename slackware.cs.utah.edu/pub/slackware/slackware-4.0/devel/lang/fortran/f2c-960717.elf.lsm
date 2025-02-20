@@ -1,0 +1,19 @@
+Begin3
+Title:          F2C - FORTRAN to C translator & libraries
+Version:        960717
+Entered-date:   01AUG96
+Description:    This is distribution of precompiled f2c translator and
+                libraries for ELF system with new libc libraries ( >= 5.3.12 )
+Keywords:       Fortran, f2c
+Author:         dmg@research.att.com (David M. Gay)
+Maintained-by:  fnevgeny@plasma-gate.weizmann.ac.il (Evgeny Stambulchik)
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/lang/fortran
+                935      f2c-960717.elf.readme
+		300687   f2c-960717.elf.tgz
+Alternate-site: plasma-gate.weizmann.ac.il:/pub/software/linux/fortran
+                935      f2c-960717.elf.readme
+		300687   f2c-960717.elf.tgz
+Original-site:  netlib.att.com:/netlib/f2c/
+Platforms:      ELF libc >= 5.3.12, gcc >= 2.7.2
+Copying-policy: Copyright 1990 - 1996 by AT&T, Lucent Technologies and Bellcore
+End

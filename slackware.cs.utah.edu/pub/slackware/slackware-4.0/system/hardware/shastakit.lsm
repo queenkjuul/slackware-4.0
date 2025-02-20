@@ -1,0 +1,16 @@
+Begin3
+Title:		shastakit.tar.gz
+Version:	0.0
+Entered-date:	06JUN95
+Description:	Two small programs to read and write registers
+                of the LSI/Headlands shasta chipset found on
+                PC mainboards. A human readable configuration
+                file is included. For the technical inclined.
+Keywords:	main board configuration shasta chipset
+Author:		heiko@colossus.escape.de (Heiko Eissfeldt)
+Maintained-by:	heiko@colossus.escape.de (Heiko Eissfeldt)
+Primary-site:	sunsite.unc.edu /pub/linux/misc
+Alternate-site:	
+Platform:	Linux 
+Copying-policy: GPL2
+End

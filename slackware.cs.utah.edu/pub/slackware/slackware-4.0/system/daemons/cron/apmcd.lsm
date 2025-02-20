@@ -1,0 +1,14 @@
+Begin3
+Title:          apmcd - APM cron daemon
+Version:        1.15
+Entered-date:   Nov 13 1998
+Description:    An cronlike APM daemon (based on batteries)
+Keywords:       APM power laptop
+Author:         Nicholas J. Leon <nicholas@binary9.net>
+Maintained-by:  Nicholas J. Leon <nicholas@binary9.net>
+Primary-site:   sunsite.unc.edu
+Alternate-site: 
+Original-site:  
+Platforms:      Linux 2.0+
+Copying-policy: GPL
+End

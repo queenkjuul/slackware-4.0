@@ -1,0 +1,23 @@
+Begin3
+Title:          FCT - Firewall Configuration Tool
+Version:        1.1.1
+Entered-date:   28FEB99
+Description:    A HTML based tool for the configuration of a firewall.
+                It uses a WEB-Interface, but can also be configured in
+                a shell with vi ;-)
+                Automatically script-generation for IP-filtering commands
+                (ipfwadm, ipchains, IP-Filter) on a firewall for multiple interfaces
+                and _any_ internet services.
+Keywords:       firewall ipfwadm ipchains IP-Filter
+Author:         jhf@altavista.net (Jens Hellmerichs-Friedrich)
+Maintained-by:  jhf@altavista.net (Jens Hellmerichs-Friedrich)
+Primary-site:   http://www.fen.baynet.de ~ft114/ftp
+                1k   firewallct-1.1.1.lsm
+                106k firewallct-1.1.1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/admin
+                1k   firewallct-1.1.1.lsm
+                106k firewallct-1.1.1.tar.gz
+Original-site:  http://www.fen.baynet.de ~ft114/ftp
+Platforms:      UNIX (Linux, Solaris, HP-UX, ...), ipfwadm | ipchains | IP-Filter, CGI, perl
+Copying-policy: GPL
+End

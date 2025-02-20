@@ -1,0 +1,16 @@
+Begin3
+Title:          cmirror
+Version:        1.10
+Entered-date:   96-06-27
+Description:    Bourne Shell scripts for maintaining an up to date copy of any
+                single archive directory available from a UNIX host
+                via anonymous ftp. Requires latest (2.3.0+) ncftp.
+Keywords:       Mirror Archive
+Author:         adampr@engin.umich.edu (Adam P. Radulovic)
+Maintained-by:  kevin@topnz.ac.nz (Kevin Sartorelli)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/file-transfer
+                6k cmirror-1.10.tar.gz
+Original-site:  
+Platforms:      Linux, ncftp
+Copying-policy: GPL
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          DOSDoor
+Version:        1.0
+Entered-date:   1/29/99 
+Description:    A module for Falken to let you run DOS door games with DOSEMU
+Keywords:       games falken bbs dosemu door
+Author:         Eric Kilfoil <eric@ipass.net>
+Maintained-by:  Eric Kilfoil <eric@ipass.net>
+Primary-site:   ftp.falkenbbs.com /pub/FalkenBBS/rds/dosdoor 
+                dosdoor-1.0.src.tar.gz
+                dosdoor-1.0.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/bbs/falken
+Original-site:  
+Platforms:      Falken BBS for Linux, DOSEMU
+Copying-policy: GPL
+End

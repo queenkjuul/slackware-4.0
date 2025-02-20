@@ -1,0 +1,16 @@
+Begin3
+Title:          GATOFF
+Version:        0.9b
+Entered-date:   7-16-95
+Description:    Turns off Guaranteed Access Timing for unconfigurable PCI
+                BIOSes.  Useful for really slow floppy tape drives to act
+                normal again.
+Keywords:       GAT ftape tape floppy PCI
+Author:         Cornelius Cook <c-cook@uiuc.edu>
+Maintained-by:  c-cook@uiuc.edu
+Primary-site:
+Alternate-site:
+Original-site:
+Platform:       ftape module version 2.03b
+Copying-policy: GPL
+End

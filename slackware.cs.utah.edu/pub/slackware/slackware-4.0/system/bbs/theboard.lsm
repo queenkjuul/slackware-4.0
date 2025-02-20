@@ -1,0 +1,18 @@
+Begin3
+Title:          The Board
+Version:        0.1.2
+Entered-Date:   16SEP98
+Description:    BBS software for The Linux Operating System.  The Board
+                consists of a menu shell and forum system.  It was written
+                to try to keep the look and feel of a DOS BBS and be extremely
+                configuable.  This software is in it's early stages and is not
+		fully funtional yet.
+Keywords:       bbs menu modem chat messages
+Author:         dbraun@gte.net (Darren Braun)
+Maintained-by:  dbraun@gte.net (Darren Braun)
+Primary-site:   theboard.ml.org /pub/theboard/
+                72kB theboard-0.1.2.tar.gz
+Platforms:      Linux
+Copying-policy: GPL
+End
+

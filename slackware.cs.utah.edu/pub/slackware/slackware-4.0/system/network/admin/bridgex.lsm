@@ -1,0 +1,13 @@
+Begin3
+Title:		bridgex
+Version:	0.21
+Entered-date:	09/21/96
+Description:	Tools and Documentation for advanced bridging with protocol filtering and monitoring
+Keywords:	network bridge switch ethernet documentation protocol filter monitor
+Author:		clameter@debian.org (Christoph Lameter)
+Maintained-by:	clameter@debian.org (Christoph Lameter)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network
+Alternate-site:	ftp.fuller.edu /Linux/debian/bridgex
+Platforms:	Linux
+Copying-policy:	GPL
+End

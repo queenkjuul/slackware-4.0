@@ -1,0 +1,79 @@
+#!/bin/sh
+
+tar xzvf ./bsdgames_2.0.orig.tar.gz
+cd bsd-games-2.0
+
+if [ -r ../bsdgames_2.0-4.diff.gz ]; then
+  if [ ! -r ./configure.orig ]; then
+    zcat ../bsdgames_2.0-4.diff.gz | patch -p1
+  fi
+fi
+
+if [ -x ../limerick-o.sh ]; then
+  ../limerick-o.sh
+fi
+
+if [ -r ../bsdgames_2.0.mille.slackware.diff.gz ]; then
+  if [ ! -r mille/varpush.c.orig ]; then
+    zcat ../bsdgames_2.0.mille.slackware.diff.gz | patch
+  fi
+fi
+
+if [ -d tetris ]; then # throw away leftover tetris(tm) stuff so we don't
+                       # get sued again
+  mv tetris .tetris
+fi
+
+./configure << EOF
+
+adventure arithmetic atc backgammon banner battlestar bcd caesar canfield countmail cribbage factor fish fortune gomoku hangman hunt mille monop morse number phantasia pig pom ppt primes quiz rain random robots sail snake trek wargames worm worms wump
+/usr/games
+/usr/games/lib
+/usr/bin
+/usr/man/man6
+/usr/man/man8
+/usr/games/lib
+/usr/games/lib
+/var/lib/games
+n
+0755
+0755
+0755
+0644
+0644
+0644
+.so
+n
+y
+gcc
+-O2
+-Wall -W -Wstrict-prototypes -Wmissing-prototypes
+-lncurses
+
+5
+-D__USE_BSD_SIGNAL
+
+
+bison -y
+flex
+-lfl
+/usr/bin/less
+y
+/usr/games/lib/atc
+/var/lib/games/atc_score
+/var/lib/games/battlestar.log
+/var/lib/games/cfscores
+/usr/games/lib/cribbage.instr
+/var/lib/games/criblog
+/usr/games/lib/fish.instr
+/usr/games/lib/hangman-words
+/usr/games/lib/monop-cards.pck
+/var/lib/games/phantasia
+/usr/games/lib/quiz
+/var/lib/games/robots_roll
+/var/lib/games/saillog
+/var/lib/games/snake.log
+/var/lib/games/snakerawscores
+/usr/games/lib/wump.info
+EOF
+zcat ../bsdgames.fortunepath.diff.gz | patch

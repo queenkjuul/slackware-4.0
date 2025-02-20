@@ -1,0 +1,175 @@
+The Linux Documentation Project proudly presents...
+
+               Linux Installation and Getting Started  
+                 by Matt Welsh <mdw@sunsite.unc.edu>
+                        v2.3, 22 February 1996
+
+Linux Installation and Getting Started is a book for anyone wishing to 
+dive into the Linux world. It covers what Linux is, how to get it, and how 
+to install it on your machine. Also included is an introductory tutorial to 
+using Linux for UNIX novices, and chapters on Linux system administration and 
+advanced features of Linux, such as the X Window System, TCP/IP networking, 
+and more. 
+
+This book is freely distributable under certain conditions (see below). 
+This license allows anyone to print and distribute copies of the book,
+as well as to modify the book under certain conditions. I encourage 
+publishing companies and printing houses to do so. In particular, I 
+encourage distributors of Linux software to use this book as an installation 
+guide. (After all, that's why I wrote it!) If you don't find the 
+instructions contained therein specific enough, you can provide your own 
+short "installation supplement" to go along with the book, or modify
+the book to suit your needs.
+
+Version 2.3 is IDENTICAL in content to version 2.2.2, released over a year
+ago (12 February 1995). The only change is that the book is now covered
+under the GNU General Public License, a more liberal copyright in that
+anyone is allowed to modify and redistribute the book without my express
+permission. In previous versions of this book, translations and derivative
+works had to be approved by me; I no longer have the time to maintain this
+book actively and want to make it available for modification and revision
+by the Linux community. 
+
+I apologize for releasing a new version of this book without updating
+the content to make it reflect the many changes in the Linux world over
+the last year. Due to many circumstances (not the least of which is my
+research career) I am just unable to bring the book up-to-date myself. 
+I hope you will help by updating the book as you see fit and releasing
+those changes to the community.
+
+The book has been uploaded to sunsite.unc.edu in the directory 
+	/pub/Linux/docs/LDP/install-guide 
+
+Other sites, such as tsx-11.mit.edu, should mirror this soon. The book is 
+also available in printed form via mail order from SSC, Inc. See below for 
+more information.
+
+The files below ending in the .gz extension have been compressed with
+gzip. Gzip is available from many FTP sites, including prep.ai.mit.edu
+in /pub/gnu. An MS-DOS version of Gzip can be found on sunsite.unc.edu
+in /pub/Linux/distributions/slackware/GZIP.EXE.
+
+The files without the .gz extension are plain, uncompressed
+files. Many readers were having trouble getting Gzip for MS-DOS and
+other platforms, so I am providing both gzipped and ungzipped versions
+of the files on the FTP sites. 
+
+The gzipped files are identical to their non-gzipped counterparts.
+You only need to get one or the other, not both.
+
+The files are:
+
+        install-guide-2.3.ps
+	install-guide-2.3.ps.gz
+           PostScript output, ready to print, 236 pages. 
+           Should print fine on US letter or A4 paper. You can
+           also view this with Ghostview. 
+
+	parts/chapter0.ps.gz, parts/chapter1.ps.gz, ...
+	   The "parts" subdirectory contains individual PostScript 
+	   files for each chapter of the book, as some people have 
+	   had problems printing the single PostScript file above. In 
+	   addition, the file appendix.ps.gz contains the appendices
+	   and index. Each of these files should be printed separately. 
+
+        install-guide-2.3.dvi
+        install-guide-2.3.dvi.gz
+           .dvi (device independent) TeX output. 236 pages. 
+	   ou can view this with xdvi or convert to another format with 
+	   the various DVI tools if you wish. For example, dvips will 
+	   generate PostScript from this file, dvilj2p will produce HP 
+	   LaserJet IIP output, etc. See the comp.text.tex FAQ for details.
+
+        install-guide-2.2.2.txt
+        install-guide-2.2.2.txt.gz
+           Plain ASCII output. This is made available mostly for previewing 
+	   purposes---it is rather ugly. I DO NOT recommend reading the 
+	   plain ASCII if you can help it---the PostScript and .dvi versions 
+	   look very nice in comparison. It's also for the previous
+	   version of the book, v2.2.2.
+
+        install-guide-2.3.tar.gz
+           Complete LaTeX source, including formatting macros
+           and style file. You only need this if you want to format
+	   the book from scratch, or make modifications. Note that
+	   you must release source code for any modifications; the
+	   easiest way to do this would be as a patch to these LaTeX
+	   sources. This is a gzipped UNIX tar file. 
+
+Linux Installation and Getting Started may be reproduced and distributed 
+in whole or in part, subject to the following conditions:
+
+Copyright (c) 1992--1996 by Matt Welsh
+Cornell University Computer Science Department 
+4130 Upson Hall 
+Ithaca, NY 14853 
+USA
+<mdw@sunsite.unc.edu>
+
+Linux Installation and Getting Started is a free document; you may 
+reproduce and/or modify it under the terms of version 2 (or, at your 
+option, any later version) of the GNU General Public License as published 
+by the Free Software Foundation.
+
+This book is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+The author encourages wide distribution of this book for personal 
+or commercial use, provided that the above copyright notice remains
+entact and the provisions of the GNU General Public License are adhered 
+to. The summary is that you may copy and distribute this book free of 
+charge, or for a profit.  No explicit permission is required from the 
+author for reproduction of this book in any medium, physical or electronic.
+
+Note that derivative works and translations of this document must
+be placed under the GNU General Public License, and the original copyright
+notice must remain entact. If you have contributed new material to this
+book, you must make the source code (e.g., LaTeX source) available
+for your revisions. Please make revisions and updates available 
+directly to the author: Contact mdw@sunsite.unc.edu via Internet
+e-mail. This will allow the author to merge updates and provide  
+consistent revisions to the Linux community.
+
+The author encourages distributors of Linux software in any medium to 
+use the book as an installation and new user guide. 
+Given the copyright above, you are free to print and distribute copies
+of this book with your software. If doing so, you may wish to include 
+a short ``installation supplement'' for your release, or modify the
+relevant sections of this book to reflect your product.
+
+The author would like to know of any plans to publish and distribute 
+this book commercially. In this way, we can ensure that you are kept 
+up-to-date with new revisions. And, should a new version be right around 
+the corner, you might wish to delay your publication of the book until it 
+is available.
+
+If you are distributing this book commercially, donations, royalties,
+and/or printed copies are greatly appreciated by the author. Contributing
+in this way shows your support for free software and the Linux Documentation 
+Project.
+
+If you have questions or comments, please contact the author at
+mdw@sunsite.unc.edu or at the address listed above.
+
+This book is available from SSC, Inc. via mail order. Belinda Frazier
+writes,
+        SSC has printed the Linux Installation and Getting Started
+        manual to make it available for those who do not have the 
+	capability to print it themself and to support our customers who 
+	buy Linux (Yggdrasil) from us. It is printed double-sided, perfect 
+	bound, with a cover.  SSC also intends to make comb bound versions 
+	of the other LDP manuals available.
+
+        Linux Installation and Getting Started is available for $12.95 
+	plus shipping ($3 in the U.S.).  We can accept credit card orders 
+	(Visa, MasterCard or AmEx). Orders can be phoned in
+        (206-FOR-UNIX/206-527-3385), FAXed (206-527-2806) or mailed to
+        SSC, P.O. Box 55549, Seattle, WA 98155. 
+
+Mail sales@ssc.com or see http://www.ssc.com for more information.
+
+Share and enjoy,
+
+M. Welsh, mdw@sunsite.unc.edu

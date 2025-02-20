@@ -1,0 +1,25 @@
+Begin3
+Title:		dumbupsd
+Version:	0.1
+Entered-date:	July 16, 1998
+Description:	Program to monitor dumb ups and invoke a script when
+		something happens.  Dumbupsd does not shut down the system
+		and does not communicate with init.  It is your job to write
+		the shutdown scripts.  A nice long man page is included.
+		You also get three small programs which are very practical
+		in startup scripts, especially if some untrusted people
+		have physical access to the keyboard of your computer.
+Keywords:	uninterruptible power supply,
+		ups, dumb, BackUPS, power, battery
+Author:		Koblinger Egmont <egmont@fazekas.hu>
+Maintained-by:	Koblinger Egmont <egmont@fazekas.hu>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/ups
+		29kB dumbupsd-0.1.tar.gz
+		1kB  dumbupsd-0.1.lsm
+Alternate-site:
+Original-site:	ftp.fazekas.hu /pub/linux
+		29kB dumbupsd-0.1.tar.gz
+		1kB  dumbupsd-0.1.lsm
+Platform:	Linux (ix86)
+Copying-policy:	GPL
+End

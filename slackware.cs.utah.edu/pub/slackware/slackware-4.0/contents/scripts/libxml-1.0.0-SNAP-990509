@@ -1,0 +1,6 @@
+( cd usr/lib ; rm -rf libxml.so.0 )
+( cd usr/lib ; ln -sf libxml.so.0.0.0 libxml.so.0 )
+( cd usr/lib ; rm -rf libxml.so )
+( cd usr/lib ; ln -sf libxml.so.0.0.0 libxml.so )
+( cd usr/doc/libxml-1.0.0-SNAP-990509 ; rm -rf COPYING )
+( cd usr/doc/libxml-1.0.0-SNAP-990509 ; ln -sf /usr/share/automake/COPYING COPYING )

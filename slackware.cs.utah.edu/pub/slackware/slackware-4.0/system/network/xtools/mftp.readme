@@ -1,0 +1,14 @@
+This is a static version of moxftp compiled with Motif 1.1.
+
+To install: 
+
+# cp mftp /usr/bin/X11
+# cp ftp_for_xftp /usr/bin/X11
+# cp Mftp /usr/lib/X11/app-defaults
+
+To run:
+
+# mftp
+
+Enjoy,
+rocco@perseus.maschinenbau.TU-Ilmenau.DE

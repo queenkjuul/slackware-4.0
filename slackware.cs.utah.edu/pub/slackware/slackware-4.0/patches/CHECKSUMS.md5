@@ -1,0 +1,50 @@
+These are the MD5 message digests for the files in this directory.
+If you want to test your files, use 'md5sum' and compare the values to
+the ones listed here. 'md5sum' can be found in the GNU textutils
+package on prep.ai.mit.edu in /pub/gnu, or at any GNU mirror site.
+
+MD5 message digest                Filename
+8898bdb6aaff13685f4574ad2530b85d  ./ChangeLog.txt
+4fa163e0444b0f1a8e6ec0c3e2284c02  ./MANIFEST
+e05bcaec78ada23fa4a9fb0c532ed12b  ./bind.tgz
+21d6946adb3e2e1e8ada0d502b198654  ./imapd.tgz
+e9cfb9204b20d0e49887277ab21a4a9a  ./nfs-server.tgz
+268f35262a170ffef26ccc5912a447a2  ./pine.tgz
+ddcb35818aeefeadecb3342d5bdf703f  ./sources/bind-8.2.2-P5/SlackBuild
+a0e3ca83f1c70f1c7bd9121e06a28bdb  ./sources/bind-8.2.2-P5/_bind.tar.gz
+0c8e5705822b74aa39218f55903a76c6  ./sources/bind-8.2.2-P5/bind-8.2.2-P5/MD5
+414ddb56d706b5bec1d5135344f3ccb0  ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-contrib.tar.gz
+32367327e613dd1cc75176b04185a773  ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-contrib.tar.gz.asc
+32f60488e6c2c5ef583c96742f0c8f07  ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-doc.tar.gz
+bb8898ae5a6b67b8586f144c842d8bac  ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-doc.tar.gz.asc
+fd8ab0befccc3546531904eac12cf6f7  ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-src.tar.gz
+be7ca74d96db0858daa69a4ad6275058  ./sources/bind-8.2.2-P5/bind-8.2.2-P5/bind-src.tar.gz.asc
+acef43c470d1e32b538a5dc3f1869652  ./sources/bind-8.2.2-P5/bind-debug.diff.gz
+c18986289829401fa7af7d73b579ebf7  ./sources/bind-8.2.2-P5/bind-manpages.diff.gz
+b9b0a390f53ede299e75576ce2d21db6  ./sources/bind-8.2.2-P5/named-bootconf.pl
+225c08b4158b4584d05d576328eff66a  ./sources/bind-8.2.2-P5/named.conf.sample
+6bb202e23ad5a0ff8798c4b66a128d36  ./sources/bind-8.2.2-P5/named.reload
+ae27024194737e8b66d6f8d5c1beed27  ./sources/bind-8.2.2-P5/named.restart
+754b16384543b22e6393c89b54385ffb  ./sources/nfs-server-2.2beta47/SlackBuild
+d50d2d9de3fe6f4d3ec9b36ec9dbc198  ./sources/nfs-server-2.2beta47/_nfs-server.tar.gz
+79a29fe9f79b2f3241d4915767b8c511  ./sources/nfs-server-2.2beta47/nfs-server-2.2beta47.tar.gz
+3eccd894e7c37cc2e6f260176b5ea44a  ./sources/nfs-server-2.2beta47/nfs-server.lsm
+627f148e7bef17c2d3fe840057c622e2  ./sources/pine-4.21/SlackBuild
+2b9ebad3e00e45adf616abddb2e2d328  ./sources/pine-4.21/_imapd.tar.gz
+f7b61f766fa99763872256907a109301  ./sources/pine-4.21/_pine.tar.gz
+8919165c69057db087757cd311abc713  ./sources/pine-4.21/pine.diff.gz
+9252a061387de806f8aa1ced885d41f6  ./sources/pine-4.21/pine4.21.tar.gz
+427bdf0f25af13b3d5300ced162cf6e6  ./sources/sysklogd/SlackBuild
+946808d750a146af04dfbe66208887f3  ./sources/sysklogd/_sysklogd.tar.gz
+b489ec5ae0bb0bf70f90d7619ebccedf  ./sources/sysklogd/sysklogd_1.3-33.diff.gz
+890c5852194a0e724e62e7aa5850a923  ./sources/sysklogd/sysklogd_1.3-33.dsc.gz
+2e84beeafe23653205f3d3bf47a3a6bb  ./sources/sysklogd/sysklogd_1.3.orig.tar.gz
+5b413cb5fe77f6591515f5705b4e149a  ./sources/wuftpd/wu-ftpd-2.6.1.diff.gz
+857ab8504998a753195eb94ac2dc39a4  ./sources/wuftpd/wu-ftpd-2.6.1.tar.gz
+2632ebc5aa5780b550307252d470bbd5  ./sources/wuftpd/wu-ftpd-2.6.1.tar.gz.asc
+33e7f3287f07d9699f42f17fb47e7ad9  ./sources/wuftpd/wu-ftpd-faq.txt
+4dbb257f12e028f1799064ff40320a24  ./sources/wuftpd/wuftpd.build
+dccde39967b92953cf5b6beca67d3a9e  ./sysklogd.tgz
+9cd13b1169aa95a3e81d5a65ed12c444  ./termcap.tgz
+75547b1762d7ff4fad233cd89529ff2c  ./wuftpd.tgz
+3e15d3264664f650e2075c29234edfea  ./xterm.tgz

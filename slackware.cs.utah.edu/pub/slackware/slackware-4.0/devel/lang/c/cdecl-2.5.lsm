@@ -1,0 +1,24 @@
+Begin3
+Title:          cdecl, c++decl
+Version:        2.5
+Entered-date:   28JAN96
+Description:    Cdecl composes compilable C declarations and typecasts from
+                descriptive English phrases, and can also explain a compli-
+                cated typecast or declaration.  It handles ANSI C, C++,
+                pre-ANSI C, and K&R C, and has TAB completion of keywords
+                and line editing and history (provided by the GNU readline
+                library).  (Note: the shar files at the Original-site are
+                cdecl 2.4 without readline support.)
+Keywords:       c, c++, cdecl, declare, programming
+Author:         Graham Ross, David Wolverton, Tony Hansen, Merlyn LeRoy
+Maintained-by:  conrad@detroit.freenet.org (David R. Conrad)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/c/
+                58859  cdecl-2.5.bin.ELF.tar.gz
+                21435  cdecl-2.5.tar.gz
+                 1125  cdecl-2.5.lsm
+Alternate-site: 
+Original-site:  ftp.uu.net /usenet/comp.unix.sources/volume14/cdecl2/
+                17596  part01.Z
+                13385  part02.Z
+Copying-policy: free
+End

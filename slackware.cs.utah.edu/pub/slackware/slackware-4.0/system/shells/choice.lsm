@@ -1,0 +1,16 @@
+Begin3
+Title:	        Choice  
+Version:      	3.3
+Entered-date:   12-June-1997
+Description:    Choice is a Linux/Unix shell for people that are new to
+		Linux/Unix.  It is a menu system in-color and is simple to
+		use.
+Keywords:       choice shells shell linux unix menu
+Author:         clarke@minot.com
+Maintained-by:  clarke@minot.com
+Primary-site:   sunsite.unc.edu /pub/Linux/system/shells
+                2.6k choice.tar.gz 
+		505b choice.lsm
+Platform:       Linux, Unix
+Copying-policy: Shareware
+End

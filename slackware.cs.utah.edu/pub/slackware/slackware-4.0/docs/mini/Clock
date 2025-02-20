@@ -1,0 +1,330 @@
+  The Clock Mini-HOWTO
+  Ron Bean, rbean@execpc.com
+  v, December 1996
+
+  How to set and keep your computer clock on time.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+  2. Using the ``
+
+     2.1 Checking your installation
+     2.2 Measuring your clock's drift rate
+     2.3 Example
+        2.3.1 To set time
+        2.3.2 To reset time and check drift rate
+        2.3.3 Calculating the correction factor
+
+  3. A few words about xntpd
+
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  The real-time-clock chips used on PC motherboards (and even expensive
+  workstations) are notoriously inaccurate. Linux provides a simple way
+  to correct for this in software, making the clock potentially *very*
+  accurate even without an external time source. But most people don't
+  seem to know about it, for several reasons:
+
+  1. It's not mentioned in most of the general ``how to set up linux''
+     documentation, and it would be difficult to set up automatically at
+     install time (although not impossible in theory, if you have a
+     modem).
+
+  2. If you check ``man clock'' you'll get clock(3), which is not what
+     you want. (try ``man 8 clock'').
+
+  3. Most people don't seem to care what time it is anyway.
+
+  4. Those few who do care often want to use the xntpd package from
+     louie.udel.edu to sync to an external time source, such as a
+     network time server or radio clock.
+
+  This mini-HOWTO describes the low-tech approach.  If you're at all
+  interested in this sort of thing, I highly recommend that you spend
+  some time at <http://www.eecis.udel.edu/~ntp/> which includes all
+  kinds of interesting stuff, including complete info on xntpd and links
+  to NIST and USNO (I have a few more comments on xntpd at the end.)
+
+
+     Note
+        If you run more than one OS on your machine, you should only let
+        one of them reset the CMOS clock, so they don't confuse each
+        other.  If you regularly run both Linux and Windows on the same
+        machine, you may want to check out some of the shareware clock
+        programs that are available for Windows instead (follow the
+        links from the URL above).
+
+
+
+  2.  Using the `` clock '' program
+
+  Everything you need to know is in the clock(8) man page, but this
+  mini-HOWTO will walk you through the process.
+
+
+     Note
+        You must be root to run ``clock'', or any other program that
+        affects either the system time or the CMOS clock.
+
+  2.1.  Checking your installation
+
+  Check your system startup files for a command like ``clock -a'' or
+  ``clock -ua''.  Depending on which distribution you're using, it might
+  be in /etc/rc.local, or /etc/rc.d/rc.sysinit, or some similar place.
+
+  If it says ``clock -s'' or ``clock -us'', change the ``s'' to an
+  ``a'', and then check to see if you have the file /etc/adjtime, which
+  contains a single line that looks something like this:
+
+
+       0.000000 842214901 0.000000
+
+
+
+
+  These numbers are the correction factor (in seconds per day), the time
+  the clock was last corrected (in seconds since Jan 1, 1970), and the
+  partial second that was rounded off last time.  If you don't have this
+  file, login as root and create it, with a single line that looks like
+  this (all zeros):
+
+
+       0.0 0 0.0
+
+
+
+
+  Then run ``clock -a'' or ``clock -ua'' manually from the shell to
+  update the 2nd number (use the ``u'' if your clock is set to Universal
+  instead of local time).
+
+  2.2.  Measuring your clock's drift rate
+
+  First, you need to know what time it is :-).  Your local time of day
+  number may or may not be accurate.  My favorite method is to call
+  WWV's voice announcment at (303)499-7111 (this is a toll call).  If
+  you have access to a network time server, you can use the ntpdate
+  program from the xntpd package (use the -b flag to keep the kernel
+  from messing with the CMOS clock).  Otherwise use ``date -s hh:mm:ss''
+  to set the kernel time by hand, and then ``clock -w'' to set the CMOS
+  clock from the kernel clock.  You'll need to remember when you last
+  set the clock, so write down the date someplace where you won't lose
+  it.  If you used ntpdate, do ``date +%s'' and write down the number of
+  seconds since Jan 1,1970.
+
+  Then come back some days or weeks later and see how far the clock has
+  drifted.  If you're setting the clock by hand, I'd recommend waiting
+  at least two weeks, and only calculate the drift rate to the nearest
+  .1 sec/day.  After several months you could get to the nearest .01
+  sec/day (some people claim more accuracy than that, but I'm being
+  conservative here).  If you use ntpdate you shouldn't have to wait
+  that long, but in any case you can always fine-tune it later.
+
+  You can have cron run ``clock -a'' at regular intervals to keep the
+  system time in line with the (corrected) CMOS time.  This command will
+  also be run from your startup file every time you boot the system, so
+  if you do that often (as some of us do), that may be enough for your
+  purposes.
+
+  Note that certain programs may complain if the system time jumps by
+  more than one second at a time, or if it jumps backwards.  If you have
+  this problem, you can use xntpd or ntpdate to correct the time more
+  gradually.
+
+  2.3.  Example
+
+  2.3.1.  To set time
+
+  Login as root.  Dial (303)499-7111 (voice), listen for time
+  announcement.  Then type:
+
+
+       date -s hh:mm:ss
+
+
+
+
+  but don't press enter until you hear the beep.  (You could use ``ntp­
+  date'' here instead of ``date'', and skip the phone call) This sets
+  the ``kernel time''.  Then type:
+
+
+       clock -w
+
+
+
+
+  This sets the CMOS time to match the kernel time.  Then type:
+
+
+       date +%j
+
+
+
+
+  (or ``date +%s'' if you used ``ntpdate'' instead of ``date'' above)
+  and write down the number it gives you for next time.
+
+  2.3.2.  To reset time and check drift rate
+
+  Find the date you wrote down last time.  Login as root Then type:
+
+
+       clock -a
+
+
+
+
+  This sets the kernel time to match the current CMOS time.  Dial
+  (303)499-7111 (voice), listen for announcement.  Then type:
+
+
+       date
+
+
+
+
+  and press enter when you hear the beep, but while you're waiting,
+  write down the time they announce, and don't hang up yet.  This tells
+  you what time your machine thought it was, when it should have been
+  exactly on the minute.  Now type in
+       date hh:mm:00
+
+
+
+
+  using the minute *after* the one that was just announced, and press
+  enter when you hear the beep again (now you can hang up).  For hh use
+  the local hour.  This sets the ``kernel time''.  Then type:
+
+
+       clock -w
+
+
+
+
+  which writes the new (correct) time to the CMOS clock.  Now type:
+
+
+       date +%j
+
+
+
+
+  (or ``date +%s'' if that's what you used before)
+
+  You now have three numbers (two dates and a time) that will allow you
+  to calculate the drift rate.
+
+  2.3.3.  Calculating the correction factor
+
+  When you ran ``date'' on the minute, was your machine slow or fast?
+  If it was fast, you'll have to subtract some number of seconds, so
+  write it down as a negative number.  If it was slow, you have to add
+  some seconds, so write it down as positive.
+
+  Now subtract the two dates.  If you used ``date +%j'', the numbers
+  represent the day-of-year (1-365, or 1-366 in leap years).  If you've
+  passed Jan 1 since you last set the clock you'll have to add 365 (or
+  366) to the 2nd number.  If you used ``date +%s'' then your number is
+  in seconds, and you'll have to divide it by 86400 to get days.
+
+  If you already had a correction factor in /etc/adjtime, you'll have to
+  account for the number of seconds you've already corrected.  If you've
+  overcorrected, this number will have the opposite sign of the one you
+  just measured; if you've undercorrected it will have the same sign.
+  Multiply the old correction factor by the number of days, and then add
+  the new number of seconds (signed addition-- if the two numbers have
+  the same sign, you'll get a larger number, if they have opposite
+  signs, you'll get a smaller number).
+
+  Then divide the total number of seconds by the number of days to get
+  the new correction factor, and put it in /etc/adjtime in place of the
+  old one.  Write down the new date (in seconds or days) for next time.
+
+  Here's what my /etc/adjtime looks like:
+
+
+       -9.600000 845082716 -0.250655
+
+
+
+
+  (note 9.6 seconds per day is nearly five minutes per month!)
+
+
+
+  3.  A few words about xntpd
+
+  Your system actually has two clocks-- the battery powered ``real time
+  clock'' that keeps track of time when the system is turned off (also
+  known as the ``CMOS clock'', ``Hardware clock'', or ``RTC'') and the
+  ``kernel time'' (sometimes called the ``software clock'' or ``system
+  clock'') which is based on the timer interrupt and is initialized from
+  the CMOS clock at boot time.  The two will drift at different rates,
+  so they will gradually drift apart from each other, and also away from
+  the ``real'' time.
+
+  All references to ``the clock'' in the xntpd documentation refer to
+  the ``kernel clock''.  When you run xntpd or timed (or any other
+  program that uses the adjtimex system call), the linux kernel assumes
+  that the kernel clock is more accurate than the CMOS clock, and resets
+  the CMOS time every 11 minutes from then on (until you reboot the
+  machine).  This means that ``clock'' no longer knows when the CMOS
+  clock was last reset, so you can't use the correction factor in
+  /etc/adjtime.  You can use ntpdate in your startup file to initially
+  set the clock from a timeserver before starting xntpd.  If you don't
+  always have access to an accurate time source when you boot the
+  machine, this can be a bit awkward-- xntpd isn't really designed to be
+  used in situations like that.
+
+  Xntpd includes drivers for many radio clocks, and can also be set to
+  call NIST's dial-up time service at regular intervals (be sure to
+  calculate the effect on your phone bill when setting the interval
+  between calls).  It can also apply a correction factor to the kernel
+  clock if it loses contact with its other sources for an extended
+  period of time.
+
+  Most radio clocks cost $3-4K, but you can get plans for an inexpensive
+  ``gadget box'' (actually a 300 baud modem) that sits between your
+  computer and any shortwave radio tuned to Canada's CHU time station
+  (see  <ftp://ftp.udel.edu/pub/ntp/gadget.tar.Z>).  The Heathkit WWV
+  receiver (the ``Most Accurate Clock'') is also still available
+  (although not as a kit), and costs around $4-500.  GPS signals also
+  contain time information, and some GPS recievers can connect to a
+  serial port.  This may become the low cost solution in the near
+  future.
+
+  In theory, someone could write a program to use NIST's dial up time
+  service to calculate the drift rate of both the CMOS clock and the
+  kernel clock automatically.  I am not aware of any stand-alone program
+  to do this, but most of the code could probably be borrowed from
+  xntpd.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

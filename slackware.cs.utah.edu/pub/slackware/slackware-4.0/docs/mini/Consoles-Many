@@ -1,0 +1,133 @@
+
+Efficiently using more than 8 consoles (v1.1 15.09.96)
+------------------------------------------------------
+
+Are you tired of typing in password and username whenever you want to
+access a unused text-console? Then this mini-HOWTO is for you!
+
+All the functionallity for using a new text-console without logging in
+is concentrated in the program `open'. Just issue
+
+        open -sl
+
+and you will be teleported to a fresh console with your favourite
+shell prompting at you. Possibly this program is not part of your
+distribution, but read on.
+
+Most distributions provide only 8 console-devices. You can easily
+exceed this number while playing around with `open' so it's better to
+create a little stock of console-devices.
+
+
+Create the nesassary device-files
+---------------------------------
+
+Log in as root. Then execute the following commands
+
+	-----8<----- cut here -----8<-----
+	cd /dev
+	./MAKEDEV tty9
+	for i in  0 1 2 3 4 5 6 7 8 9
+	do
+		./MAKEDEV tty1$i
+	done
+	-----8<----- cut here -----8<-----
+
+`/dev/MAKEDEV' is a shell-script. You can use `more' (or `less') to
+view the contents of this script to get more information about what
+happens.
+
+Of course running more than 2 login-prompts on your system is
+luxuriantly when using `open'.
+
+
+Get rid of all login-prompts but 2
+----------------------------------
+
+Load the file `/etc/inittab' into your favorite editor and comment out
+all lines containing "getty" like shown below (hint: leave the rest of
+the file unchanged!).
+As you may have guessed, the char to make comments is `#'.
+
+	-----8<----- cut here -----8<-----
+	# /sbin/getty invocations for the runlevels.
+	#
+	# The "id" field MUST be the same as the last
+	# characters of the device (after "tty").
+	#
+	# Format:
+	#  <id>:<runlevels>:<action>:<process>
+	1:2345:respawn:/sbin/getty 9600 tty1
+	2:23:respawn:/sbin/getty 9600 tty2
+	#3:23:respawn:/sbin/getty 9600 tty3
+	#4:23:respawn:/sbin/getty 9600 tty4
+	#5:23:respawn:/sbin/getty 9600 tty5
+	#6:23:respawn:/sbin/getty 9600 tty6
+	#7:23:respawn:/sbin/getty 9600 tty7
+	-----8<----- cut here -----8<-----
+
+Re-load the above configuration-file via the command `/sbin/telinit q'
+(as root ) and wipe out all running login-prompts with `killall getty'
+(or whatever sort of getty you're running; you can see them with 
+`ps -aux').
+
+
+If you have your X-Session on vt8 (thats the console you change to
+when you press Ctrl-Alt-F8 ), you may wish to add the option `vt8' to
+the options for X in `/etc/X11/xdm/Xservers':
+
+	-----8<----- cut here -----8<-----
+	:0 local /usr/X11R6/bin/X vt8
+	-----8<----- cut here -----8<-----
+
+(Leave the rest of the file unchanged.) Voila, X is still on vt8 next
+time you boot Linux. Otherwise you would have found it on vt3.
+
+
+Install the program `open'
+--------------------------
+
+If the program `open' is not part of you distribution (Debian and
+RedHat provide it) then get the packet "dynamic-vt-1.1.tar.gz" from
+sunsite or it's mirrors.  
+It contains `open' and a few other useful utilities; the installation
+is straightforward.
+
+You don't know how what "sunsite and it's mirrors" means? You don't
+know how to install a program?
+Sorry, that's beyond the scope of this mini-howto. It really makes me
+sick to see every HOWTO explaining this again and again (making it
+long and very boring). Ask an expert and write an
+`Software-Installation HOWTO' afterwards. Thank you.
+
+
+Test it out
+-----------
+
+You're done. Log into one console. Now, if you want to start a
+command-prompt (`bash', `tcsh') on an empty console just type 
+
+        open -sl
+ 
+No login-id, no password is required (because you have already
+authenticated yourself by logging in to one console).
+
+Alternativly, you can try the commands
+
+	open -sl -- top
+	open -l  -- tail -f /var/log/messages
+        open -sl -- pine
+
+
+If the screen is still messed up, try the command `reset' or reboot the
+computer once.
+
+The consoles no. 13-24 can be accessed with <AltGr-F1> till
+<AltGr-F12>.
+Programs like `tty', `ps' and `chvt' help you to navigate through the
+new bunch of consoles. 
+
+Note: your sessions don't show up under `w' or `finger'.
+
+Winfried Trümper <winni@xpilot.org>
+

@@ -1,0 +1,20 @@
+Patchfile:
+	patch-0.60.4.dpmi.gz
+
+Author:
+	Michael Leodolter
+Email:
+	Michael.Leodolter@univie.ac.at
+
+Comment:
+	With this is a patch against a clean dosemu-0.60.4
+	it is possible to run PM make/compiler combinations.
+	I tried it with DJ200 make on a dir with 15 obj-files, and it works fine
+	(maybe Borland's protected mode make/compiler will work as well).
+
+Usage:
+	cd where_dosemu_src_is/dosemu
+	zcat patch-0.60.4.dpmi.gz | patch -p0
+	make 
+
+Good luck!

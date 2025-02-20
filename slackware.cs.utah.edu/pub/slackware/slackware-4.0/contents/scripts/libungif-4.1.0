@@ -1,0 +1,5 @@
+( cd usr/lib ; rm -rf libungif.so.4 )
+( cd usr/lib ; ln -sf libungif.so.4.1.0 libungif.so.4 )
+( cd usr/lib ; rm -rf libungif.so )
+( cd usr/lib ; ln -sf libungif.so.4.1.0 libungif.so )
+( /sbin/ldconfig )

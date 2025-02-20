@@ -1,0 +1,20 @@
+Begin3
+Title:          Checker
+Version:        0.8
+Entered-date:   05NOV96
+Description:    Checker is a malloc debuger, a garbage collector and a
+		detector of bad memory access.  It uses code insertion.
+		Checker emits a report when a bad memory pointer is used,
+		when you read an unitialized buffer...
+Keywords:       checker, malloc, debuger, garbage collector, code insertion
+Author:         gingold@email.enst.fr (Tristan Gingold)
+Maintained-by:  gingold@email.enst.fr (Tristan Gingold)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/c
+		569880 bytes  Checker-0.8.tgz
+		1528150 bytes  Checker-libs-0.8.1.tgz
+		(not yet available) Checker-libg++-0.8.tgz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux v2.0 or later, GCC 2.7.2 (elf), libc 5
+Copying-policy: GPL
+End

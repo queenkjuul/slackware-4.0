@@ -1,0 +1,98 @@
+Short term:
+
+* Implement basic GUI functionality.
+
+	* Right clicking a tree entry should pop up a menu of the edit
+	commands. Should not collapse the tree.
+
+	* The "view" window should have a checkbox that turns of
+	writeability.
+
+	* Preferences window that saves to an rc file.
+
+		* Auto-save delay.
+
+		* KB filename.
+
+		* Initial window size.
+
+		* Items are default readable/write-able.
+
+		* Trees are default expanded/collapsed/as they were when
+		the program last shutdown. New tree items are default
+		expanded/collapsed.
+
+	* New tree command.
+
+	* 256 character ceiling on text entry boxes.
+
+	* Tree movement via arrow keys?
+
+	* Okay/Cancel buttons don't <TAB> properly.
+
+	* Scrollbars should appear initially, if needed. Additionally,
+	modifying a tree_item that will modify the scrollbars should
+	redraw the scollbars.
+
+	* Scrolled window policy AUTOMATIC
+
+* Clean up the "view" dialog okay button code.
+
+* Filenames without directories should default to the working directory.
+
+* Macros to handle tree_item creation.
+
+* Text boundary and tree depth checking should be examined more carefully.
+
+* Saving only when a change has been made (with a little indicator of
+such fact in the status bar).
+
+* Quitting without saving.
+
+* User with multiple windows open should not be able to shoot himself
+in the foot if one operation clobbers another (volatile variables?).
+
+* Should use g_string, but it looks so hideous!
+
+Mid term:
+
+* GNOME support.
+
+	* Conform to GNOME style: http://www.gnome.org/devel/sg/
+
+* Undo support.
+
+* Editing functions: Cut, copy, paste, move.
+
+* Better documentation. Explain where the name comes from.
+
+* Auto-saving every few minutes
+
+* XML datafiles.
+
+* Yacc input file reading.
+
+* Strange filenames (e.g. including newlines).
+
+* configure.in to support all used functions, GLIB, etc..
+
+* Status bar, yellow mouse-over popups with first few words of item
+descriptions and brief descriptions of functionality.
+
+* Initial window should resize to be larger if there is more data.
+
+* Verbose: Shows summary of data within tree
+
+Long term:
+
+* More interesting interface features (search) and tree features (merge)
+
+* A "mind map" like that of Cheops (http://www.marko.net/cheops/).
+
+* Perish the thought, extend the core functionality.
+
+* Different file formats (besides text-file).
+
+* SQL support.
+
+* Internationalization.

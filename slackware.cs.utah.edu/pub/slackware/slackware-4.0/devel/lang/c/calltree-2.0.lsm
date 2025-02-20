@@ -1,0 +1,17 @@
+Begin3
+Title:          calltree
+Version:        2.0
+Entered-date:   10FEB99
+Description:    Calltree is a static call tree generator for C programs
+		Calltree is similar to cflow but not based on lint
+		Calltree has many additional features compared to cflow
+Keywords:       calltree ctree cflow cc gcc lint
+Author:         schilling@fokus.gmd.de (Jörg Schilling)
+Maintained-by:  schilling@fokus.gmd.de (Jörg Schilling)
+Primary-site:   ftp.fokus.gmd.de /pub/unix/calltree
+		160733 calltree-2.0.tar.gz
+Alternate-site: metalab.unc.edu /pub/Linux/devel/lang/c
+		160733 calltree-2.0.tar.gz
+Platforms:      SunOS Solaris Linux *BSD HP-UX AIX IRIX DG/UX
+Copying-policy: GPL
+End

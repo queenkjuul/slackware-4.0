@@ -1,0 +1,18 @@
+Begin3
+Title:          Invariant
+Version:        0.0
+Entered-date:   Dec. 22, 1997
+Description:    A small library of classes and macros for internal
+		consistancy checking and bug detection in C++ programs.
+		Mostly run-time, but some compile-time checking also.
+Keywords:       assert invariants templates C++ testing debug consistancy checking
+Author:         asolomon@bbn.com (Alex Solomonoff)
+Maintained-by:  asolomon@bbn.com (Alex Solomonoff)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/c++
+		64k invariant-0.0.tgz
+Alternate-site: 
+Original-site:  
+Platforms:      some features only supported on Linux/I386, Solaris or Irix 5+
+Copying-policy: LGPL
+End
+

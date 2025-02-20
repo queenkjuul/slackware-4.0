@@ -1,0 +1,200 @@
+******************submisson for "Tiny-News-HOWTO"**************************
+*********************NOTE UPDATED PERMISSION*******************************
+
+Copyright (c) May 25, 1995 Kent Lewis (Kenneth M. Lewis, Jr.)
+
+If this document is accepted by the Linux Documentation project, permission
+is granted to make it distributable in accordance with the LDP HOWTO 
+distribution policy, with the stipulation that the author would like to
+review it in its final form before LDP releases it.
+
+                             ************
+
+I am a Linux user whose net access consists of a ppp link which is not up
+all the time.  My internet service provider is in another town, so I have
+to pay phone tolls while I'm online.  This can quickly add up, so I've been
+working on ways to keep costs down but still make the most of my net access.
+
+Until recently, I've had to stay online to read Usenet news remotely from
+the provider's NNTP server.  This burned up a lot of online time.  I went
+looking for a solution, and found one that suits me.  Hopefully it can help
+others, too.  I respectfully submit this "Tiny-News-HOWTO."  It describes
+how to use INN to make a small news spool that contains only the newsgroups
+you're interested in.  Articles are pulled and replies are posted in one
+compact online session via a simple perl script.  All this is of course
+"alpha."  If something comes up that's not covered here, you'll have
+to fix it yourself.
+
+You need access to an NNTP server.  Telnet to port 119 of the machine you
+want to use, to make sure it allows reading and posting.  You should get
+a message which will indicate whether or not this is allowed.  If not,
+then iron out your access problems before going any further.  If you're
+already using the machine to read/post remotely, then you know you have
+the necessary access.
+
+You need enough disk to hold your news spool.  I have a Linux partition that
+is about 300M, and two days' worth of news for about 15 newsgroups only takes
+up one or two percent of disk as listed by 'df'.  I recommend starting with a
+small number of newsgroups and working your way up, just to be safe.
+
+You need perl and INN.  If you don't have them, you can get them by anonymous
+ftp from sunsite.unc.edu (or mirror sites).  Last time I checked, perl was
+in /pub/Linux/devel/perl and INN was in /pub/Linux/system/Mail/news. 
+
+Install INN and perl, if you haven't done so already.  I got INN from the
+Slackware 2.2 distribution, and it included good documentation.  Follow the
+steps in the docs and you'll be fine.  As for perl, I'm using the precompiled
+perl 4.0pl36 that came with Slackware 2.2.  If you don't have access to an
+out-of-the-box perl binary, then you're on your own as far as compilation/
+installation goes.
+
+Be sure you have the "junk" and "control" groups, or innd won't start.
+You'll have to put these in manually, before you ever start innd, since
+'ctlinnd' assumes innd is already running.  After that, use INN's
+'ctlinnd newgroup ... ... ' to make the empty news spool.  See the man
+page for 'ctlinnd.'
+
+Set up a newsfeed to the NNTP server you will be using.  You won't actually
+be doing a newsfeed in the intended sense, but this will make INN create
+a file in /usr/spool/news/out.going that the perl script below uses to find
+and post articles you've composed offline.  Instructions for setting up the
+feed are in the INN docs.  See the man page for 'newsfeeds.'  IMPORTANT:
+You will need to set up your newsfeeds file so that the first field in the
+file /usr/spool/news/out.going contains the full pathnames of the articles
+you'll be sending out.  If the first field in the
+/usr/spool/news/out.going/xxx file does not contain the articles' full
+pathnames, then the perl script will attempt to post whatever appears in
+that first field, which will probably produce undesirable results.
+
+Be sure to configure your control.ctl file to keep new newsgroups from
+automagically appearing in your spool and active file.  If you don't do
+this, when control messages for new newsgroups come in, the load on your
+system will go way up as the new groups are added, and things will slow down
+considerably, which is contrary to the whole point of this HOWTO.
+
+Change to the directory of your choice, and do a 'touch -t $YESTERDAY lastget'.
+Replace $YESTERDAY with the time string for 24 hours ago.  See the man page
+for 'touch'.
+
+Now put the following perl script in the same directory, and
+make it executable.  Replace $NEWSPATH with whatever directory the INN
+package resides in (/usr/lib/news on my box).  Replace $SCRIPTPATH with
+the path to the directory where the perl script will reside (the same one
+where 'lastget' is--- /usr/local/news on my box).  Replace $PROVIDER with
+the address of your NNTP server.  Replace $NEWSFEED with whatever you named
+your news feed when you installed INN.  See the man pages for 'nntpsend' and
+'inews' to see what this script does.
+
+
+-----------------------------------------------------------------------------
+
+#!/usr/bin/perl
+
+##
+## retrieve new articles
+##
+
+open(LIST, "$NEWSPATH/active")
+	|| die "could not open list of active newsgroups";
+
+while (<LIST>) {
+  @newsgroup = split(' ', $_);  ## splits next line of the active file on
+				## whitespace, assigns pieces to array 
+				## @newsgroup. @newsgroup[0] now holds the
+				## holds the name of the newsgroup
+
+  system "$NEWSPATH/bin/nntpget -f $SCRIPTPATH/lastget -n @newsgroup[0] -o -v $PROVIDER"
+	|| print "could not pull articles for @newsgroup[0]\n";
+  }
+
+close(LIST);
+
+system "touch $SCRIPTPATH/lastget";
+
+
+##
+## strip the "NNTP-Posting-Host: " header out of my local posts, which are
+## about to be sent
+##
+
+open(LIST, "/usr/spool/news/out.going/$NEWSFEED")
+	|| die "could not open list of articles to be stripped";
+
+while (<LIST>) {
+  if (@article = split(' ', $_)) {
+    $article = @article[0];	
+    rename("$article", "$article" . '.bak');
+    $backup = "$article.bak";
+    open(OUTPUT, ">> $article");
+    open(INPUT, "$backup");
+    select(OUTPUT);
+    while (<INPUT>) {
+      print unless ?^NNTP-Posting-Host.*\n?
+      }
+    close(OUTPUT);
+    close(INPUT);
+    unlink("$backup");
+    reset;
+  }
+}
+select(STDOUT);
+
+close(LIST);
+
+##
+## send the articles
+##
+
+$ENV{'NNTPSERVER'} = "$PROVIDER";
+
+open(LIST, '/usr/spool/news/out.going/$NEWSFEED')
+	|| die "could not open list of outgoing articles";
+
+while (<LIST>) {
+  if (@article = split(' ', $_)) {
+    $article = @article[0];
+    system "inews -h $article";
+    }
+  }
+
+close(LIST);
+
+------------------------------------------------------------------------------
+
+
+That should do it.  Assuming you've named the perl script 'foonews,' then
+next time you're online, type '$SCRIPTPATH/foonews' and hit return.  If
+you see message ID's start to march down your screen, then you're in
+business.  Note that things don't happen instantaneously.  You may have to
+wait a few seconds before the first message ID appears.  When you're done,
+you should have all the articles that have been posted since
+$SCRIPTPATH/lastget was last modified, and all your locally posted articles
+should have been posted to your NNTP server, which will pass them on
+downstream.  $SCRIPTPATH/lastget should now have today's timestamp, so that
+when you do 'foonews' tomorrow, you get all the articles that have been
+posted between now and tomorrow's newsrun.
+
+You'll have to wipe the /usr/local/news/out.going/$NEWSFEED file manually.
+I purposely left this step out of the script for debugging reasons, and
+haven't gotten around to fixing it yet.  The first time I tried all this
+out, I verified that the articles had been posted to the remote server
+before I wiped their entries.  You might want to do the same.
+
+If you've configured INN correctly, then $NEWSPATH/bin/news.daily takes care
+of maintenance quite nicely.  Right now I'm doing everything manually; you
+might want to automate things with some crontab entries.
+
+One last note:  I don't pretend that my script is elegant, or that this
+method is foolproof or fail-safe.  But it is working for me, so I wanted
+to share it.
+
+
+Thanks to everyone who has made Linux the ton of fun that it is.
+
+
+****************************************************************************
+
+Kent Lewis
+kent@fiona.umsmed.edu
+
+

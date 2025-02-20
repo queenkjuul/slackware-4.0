@@ -1,0 +1,14 @@
+Begin3
+Title:		ElectricFence
+Version:	2.0.5
+Entered-date:	20JAN95
+Description:	A malloc debugger that uses the virtual memory hardware.
+Keywords:	Malloc checker Electric Fence virtual memory overrun debugger
+Author: 	Bruce@Pixar.com (Bruce Perens)
+Primary-site:	ftp.pixar.com
+			25k ElectricFence-2.0.5.tar.gz
+			1k  ElectricFence.LSM
+Alternate-site: sunsite.unc.edu:pub/Linux/Incoming -> pub/Linux/devel/c
+Platforms:	REQUIRES kernel 1.1.83 or above.
+Copying-policy:	GPL
+End

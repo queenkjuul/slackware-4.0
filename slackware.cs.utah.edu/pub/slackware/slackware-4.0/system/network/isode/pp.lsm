@@ -1,0 +1,18 @@
+Begin2
+Title        = PP X.400/SMTP/UUCP mail system
+Version      = PP 6.0 (Linux 1.0)
+Desc1        = This is the public PP (6.0) ported to Linux complete
+Desc2        = with shared library. Patches to 6.0 are included but are
+Desc3        = not pretty. Original PP 6.0 source can be found on
+Desc4        = src.doc.ic.ac.uk:/packages/isode which is where you'll find
+Desc5        = (needed) documentation.
+Author       =
+AuthorEmail  =
+Maintainer   = Mike Jagdis
+MaintEmail   = <jaggy@purplet.demon.co.uk>
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming
+Required1    = Binaries require the ISODE 8.0.1 shared library.
+Keywords     = NET ISO OSI X400 X500 PP QUIPU
+End
+

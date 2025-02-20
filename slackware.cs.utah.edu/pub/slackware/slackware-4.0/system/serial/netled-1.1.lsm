@@ -1,0 +1,15 @@
+Begin3
+Title:          NetLED 
+Version:        1.1 
+Entered-date:   April 19th 1999 
+Description:    NetLED monitors the RD and SD of interfaces using the LEDs on
+                your keyboard. 
+Keywords:       network, ethernet, ppp, slip, Linux, freeware, keyboard,
+                monitor
+Author:         mbevan@mars.ark.com (Matthew Bevan)
+Maintained-by:  mbevan@mars.ark.com (Matthew Bevan)
+Primary-site:   http://mars.ark.com/~mbevan/netled/
+Original-site:  http://mars.ark.com/~mbevan/netled/
+Platform:       Linux a.out (Kernel 2.0.34 or above?)
+Copying-policy: GPL
+End

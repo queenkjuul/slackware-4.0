@@ -1,0 +1,21 @@
+Begin3
+Title:             satan   
+Version:           1.1.1 
+Entered-date:      15JUN97        
+Description:       Network Security Tester.
+                   This version replaces satan-1.1.1.Linux.tgz &
+		   satan-1.1.1.linux.fixed.tgz.
+                   It should compile now...    
+		   Added a compiled version of rpcgen in bin/rpcgen.satan,
+		   that i know works in compiling satan.
+Keywords:          README-FIRST
+Author:            robotti@pop.erols.com (Kent Robotti) 
+Maintained-by:
+Primary-site:      ftp://sunsite.unc.edu/pub/system/network/admin
+                   satan-1.1.1.linux.fixed2.tgz      
+Original-site:     ftp.cs.ruu.nl /pub/SECURITY/satan-1.1.1.tar.Z      
+Platforms:         Linux elf system. (Linux patched, ready to compile.)
+                   Requires perl v.5.001n or later and a WWW browser,
+                   lynx, netscape, or mosaic...
+Copying-policy:
+End

@@ -1,0 +1,20 @@
+Begin3
+Title:		egrep-finger
+Version:	1.25
+Entered-date:	Mon Apr 12 01:39:58 EDT 1999
+Description:	egrep-finger merges the functionality of egrep into the finger
+		we all know and love.  So you can use extended regular
+		expressions (with wildcards and the like) to search for users.
+		It also can be used to easily look up multiple users at once.
+Keywords:	finger, egrep-finger, egrepfinger, efinger, user lookup,
+		user information protocol
+Author: 	Andrew Pitman <ap1@torch.rowan.edu>
+Maintained-by:	Andrew Pitman <ap1@torch.rowan.edu>
+Primary-site:	http://torch.rowan.edu/egrepfinger/download
+		43kb egrep-finger-1.25.tar.gz
+Alternate-site:
+Original-site:
+Platforms:	Linux 2.x with popt library installed.
+Copying-policy:	GPL
+End
+

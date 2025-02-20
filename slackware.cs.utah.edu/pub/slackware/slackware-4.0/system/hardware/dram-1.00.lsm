@@ -1,0 +1,20 @@
+
+Begin3
+Title:          dram
+Version:        1.00
+Entered-date:   August 31, 1994
+Description:    Small utility to set the DRAM refresh rate. This will give
+		a small performance boost to slower machines that don't
+		implement a hidden and/or long (120us) refresh in the BIOS
+		configuration menu. Same functionality as the bogoboost
+		patch, but *without* patching the kernel each time.
+Keywords:       dram performance memory bogoboost refresh
+Author:         Paul.Gortmaker@anu.edu.au (Paul Gortmaker)
+Maintained-by:  Paul.Gortmaker@anu.edu.au (Paul Gortmaker)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc
+		14kB dram-1.00.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: GPL
+End

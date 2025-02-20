@@ -1,0 +1,16 @@
+Begin3
+Title:          PPP Daemon static ip patch for ppp-2.2.0f,g
+Version:        1.1
+Entered-date:   March 2, 1998
+Description:    simple patch against ppp-2.2.0f to shell out static IPs,
+		especially useful when using mgetty /AutoPPP/ with the +pap
+		option turned on.  This patch is probably the one you've been
+		looking for.
+Keywords:       pppd static ip patch
+Author:         ben@sesnet.com
+Maintained-by:  ben@sesnet.com
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial/ppp
+Alternate-site: http://www.sesnet.com/linux
+Platforms:      Linux, should work with others.
+Copying-policy: GPL
+End

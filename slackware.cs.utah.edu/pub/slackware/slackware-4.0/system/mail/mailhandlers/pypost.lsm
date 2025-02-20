@@ -1,0 +1,30 @@
+Begin3
+Title:           pypost
+Version:         1.0
+Entered-date:    06DEC97
+Description:     Email posting utility written in Python
+
+                     Pypost is a script which can accept email messages
+                 from mailers as sendmail does.  After it gets the
+                 message, it can process the message using any shell
+                 command, based on configuration file defaults and
+                 directions in the header or body of the message.  If
+                 there were no errors, pypost delivers the message by
+                 sending it to the real sendmail or by SMTP to a mail
+                 gateway.
+
+                     Pypost is useful when you want to process outgoing
+                 messages automatically.  For instance, you could print
+                 all sent messages, or sign all of them using an
+                 encryption interface like Mapil.
+
+Keywords:        SMTP, sendmail, filter, python, mail
+Author:          bescoto@stanford.edu (Ben Escoto)
+Maintained-by:   bescoto@stanford.edu (Ben Escoto)
+Primary-site:    ftp-csli.stanford.edu /pub/Preprints
+                 13666 pypost-1.0.tar.gz   
+Alternate-site:  http://www-leland.stanford.edu/~bescoto/pypost
+Original-site:
+Platforms:       Any unix system a python interpreter.
+Copying-policy:  Artistic License
+End

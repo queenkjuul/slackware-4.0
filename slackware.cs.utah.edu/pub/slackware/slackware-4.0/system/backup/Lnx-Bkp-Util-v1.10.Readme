@@ -1,0 +1,212 @@
+
+
+      	      Welcome to L.B.U, the Linux Backup Utility v1.10
+		  by : Jonathan Warburton-Brown @ 1995
+			   (jwb@uvo.dec.com)
+
+	Ever since I first started using Linux (in 1991) I have been an 
+	avid  supporter of both it and the principles it upholds. I have 
+	also wanted to put back into the great Internet pool some small 
+	offering that would contribute to the Linux project. This is it. 
+
+	Version 1.10 is the second incarnation of L.B.U. When I first coded 
+	L.B.U v1.00 it was done largely as an exercise to teach myself 
+	shell-script programming but I received very favourable feedback from 
+	people who have made use of it. L.B.U is even being used on at least 
+	one commercial site !!!  This feedback together with some great 
+	suggestions for improvements prompted me to make time to code this 
+	version. Time is in short supply for me and this release does not 
+	cover every suggestion I have received but it does add more 
+	flexibility and usability to the utility.
+
+	One of the enhancements requested by several people is the ability to 
+	choose the 'backup engine' so that it could be either tar (which it 
+	is now), cpio or afio. This would have taken more time than is 
+	currently available to me, but I am thinking about it for a future
+ 	release. Sorry it didn't make it this time.
+
+	A big thank you though to everyone who mailed me with ideas (and 
+	praise as well :-) )...  THANK YOU !
+
+	L.B.U does not make any attempt, at this stage, to be a full or 
+	fool-proof backup solution. If you have a copy of this  utility it 
+	comes to you under the terms of the GNU GPL and you are free to use/
+	abuse it as you will. I take absolutely NO responsibility  for any 
+	consequences that arise from its use. If you make any changes I  would
+	appreciate my name remaining in the credits for it. After all it 
+	took me a lot of hard work to get it to where it is today ;-).
+
+	L.B.U is my very first attempt to put something together for use in 
+	the Linux community and my first attempt at shell-script programming 
+	so  please don't laugh too hard. Mail is always fun to receive if you 
+	have any comments or suggestions or if you find some use for this 
+	utility and besides, it lets me track L.B.U's propagation around the 
+	globe 8-). If you do decide to mail me could you include where you 
+	are from (ie geographically) because its not always easy to guess from
+	the mail address. Sadly I do not always have time to respond to mail... 
+	but it doesn't mean I don't enjoy hearing from you though !!
+
+	I do re-iterate that this package (program, manuals, help-files etc) 
+	has been put together in some haste. It seems to work okay for me as 
+	far as I have tested it but never a truer saying was coined than 
+	'There is always at least one more bug'. 
+
+	There are surely bugs in the program, so let me know about them too !!
+
+	While I will consider seriously any suggestions for enhancements, I 
+	can only work on this in the spare time I find and can therefore 
+	not guarantee to incorporate any changes or even release any further 
+	versions. Time will tell.
+
+	INSTALLATION
+	============
+
+	My system is running Slackware v2.1.0 with a 1.1.90 kernel (though
+	L.B.U should be kernel independent) It works on this setup so I
+	hope it will work on your.
+
+	Log in to your system as root.
+
+	cd /
+
+	zcat Lnx-Bkp-Util-v1.10.tgz | tar -xvpf -
+
+	This will create a directory /usr/lib/LBU where all the L.B.U
+	associated files will be kept. the L.B.U executable (lbu) will
+	be placed in /usr/bin.
+
+	If these default locations and names are not acceptable to you
+	look at the script file itself for a few changeable items. Other
+	than that you'll have to edit the body of the script itself.
+
+	Using the dialog utility is best with con80x25 in your terminfo
+	database. By default it should be in
+
+		/usr/lib/terminfo/c.
+
+	When you restore the distribution archive con80x25 will go into
+	your current directory. Move it to the above location if necessary
+	but if you have one... leave well enough alone. I only include it 
+	in the distribution because when I came to write this utility I
+	realised I did not have it and had to get it from elsewhere. Who
+	knows, its inclusion in the distribution may save someone a little
+	grief.
+
+	If all else fails then set your TERM environment variable to be
+	vt100.
+
+	Similarly I have included a copy of the new version (0.5) of dialog 
+	just in case. Use it if you need to. The default location for dialog 
+	is /bin. You may well already have a version of dialog on your
+	system but this latest version gives nice 3d effects etc and I 
+	recommend its use. Dialog 0.5 should be used with ncurses 1.8.5 or
+	later. I also recommend keeping your original version of dialog handy
+	until you are satisfied that the new version works on your system.
+	I did try using it on another (older) release of Slackware Linux
+	and ended up with horrible colours. If it doesn't look really nice
+	then chances are its not working to maximum potential on your
+	system.
+	
+	L.B.U makes a few assumptions about the location of the required
+	binaries (at, atrm, atq, grep, awk, crond, dialog, ls, cut, touch
+	date, chmod, bc and tar) and assumes that they are in your PATH.
+  
+	That is about it really. To invoke L.B.U, just type lbu at the
+	command prompt.
+
+
+
+	THIS RELEASE
+
+     o  There have been numerous tidy-ups in the code but I'll not bore
+	you with the sordid details. The code is probably still a bit 
+	ropy anyway since I'm still very much in the learning phase of 
+	shell programming.
+
+     o	There are various flags that may be set at the top of the lbu
+	script.
+
+     o  I have removed the restriction that only root could make backups. 
+	L.B.U should now be pretty much mutli-user. One word of caution
+	though no device/file locking is implemented which means two
+	people could try to back up to the same file/device at the same
+	time. This is mitigated somewhat by the fact that I have retained
+	the code which disallows more than one L.B.U session to be running
+	at once.
+
+	Also, the Scheduling function is restricted to root. Whilst most
+	of the code is in place for multi-user scheduling it does not work
+	fully yet. Anyway, it seemed to me that users creating many
+	schedules might not be a desirable thing !
+
+	If this multi-user functionality presents a problem, I suggest for
+	the moment, as system manager, that you limit L.B.U usage to root
+	with permission masks and/or set the lbu_root_only flag to yes by
+	editing the lbu script.
+
+     o 	An oversight in version 1.00 was that the first letters of menu
+       	items were not unique. This has now been corrected and allows fast
+ 	menu hopping. For example, on the main menu, to get to any item
+	visible on the the screen there are three methods.
+
+		o Use the arrow keys 
+		o Use the plus (+) and minus (-) keys 
+		o Type the first letter of the menu item
+
+     o 	Device selection has been made a little more bullet-proof.
+	Entering an asterisk (*) will now just throw you into the
+	help-screen. Any spaces included (in error naturally) in the
+	device name will be converted to a an underscore.
+
+     o 	File/Directory selection has been made much more flexible and now
+	caters for wild-carding. Note that if an item is entered without
+	wild carding its validity is checked (ie does it exist). If
+	wild-carding is used then checking for that item is not
+	performed.
+
+     o 	Under the Options sub-menu there is one additional item entitled
+	Enable/Disable file exclusion. this switch activates/deactivates
+	an exclusions file which L.B.U uses when performing its
+	operations.  Please see the section on the Exclusion File for
+	more information.
+
+     o 	The date validation in the Scheduling sub-menu has been tightened
+	up and now includes leap year checking.
+
+     o 	There is a Compare facility which allows reporting of differences
+	between a previously performed backup and the current
+	file-system.
+
+     o 	There is a Write function which saves the current configuration to
+	disk. Details saved are :
+
+		o Device selection 
+		o File/Dir selection 
+		o All options from the Options sub-menu
+
+	If there is no save file ($HOME/.lburc) then, when invoked, L.B.U
+	will proceed straight to the main menu. If however L.B.U finds a
+	save file a loading screen is presented and when loading is
+	complete (a few seconds) L.B.U proceeds to the main menu with the 
+	previously saved selections already in force.
+
+     o 	The ability to create/modify an exclusions file. This file may
+	contain filenames (wild-carding allowed) which should be ignored
+	by the backup. See the section on Exclusions for more
+	information.
+
+     o 	No credit for me here, but all credit to Savio Lam. I have
+	included in the L.B.U v1.10 distribution version 0.5 of his
+	smart dialog utility which allows L.B.U to look so pretty.
+	Thanks Savio.
+
+	A postscript manual for L.B.U will be installed into
+	/usr/lib/LBU/doc
+	
+	Enjoy, and thanks to all Linuxers everywhere for their contribution
+	to the success of Linux.
+
+
+	Jonathan Warburton-Brown
+	------------------------
+

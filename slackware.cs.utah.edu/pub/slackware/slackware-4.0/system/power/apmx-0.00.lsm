@@ -1,0 +1,19 @@
+Begin3
+Title:          apmx-0.00
+Version:        0.0
+Entered-date:   22JAN96
+Description:    apmx is a simple C program to monitor the notebook's battery
+		status under regular console (apmc) or under X (apmx). The
+		program will update every second (configurable) the battery
+		status (% remainding), and charging/off-line status.
+		Made possible by original "apm" author
+		Rik Faith <faith@cs.unc.edu>
+Keywords:       apmc apmx
+Author:         Jeff Chua <jchua@fedex.com>
+Maintained-by:  Jeff Chua <jchua@fedex.com>
+Primary-site:   sunsite.unc.edu:/pub/Linux/???
+Alternate-site: 
+Original-site:  
+Platforms:      Linux 1.3.46 or above with apm configured.
+Copying-policy: Copyrighted but freely distributable.
+End

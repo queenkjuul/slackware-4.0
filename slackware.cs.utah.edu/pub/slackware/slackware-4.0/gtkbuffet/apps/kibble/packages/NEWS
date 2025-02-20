@@ -1,0 +1,83 @@
+New in 0.7.3:
+* Showstopper bugs fixed.
+
+* I18n support with an incomplete French translation.
+
+* Code directory structure cleaned up.
+
+New in 0.7.2:
+* Multiple simultaneous operations permitted. (Modal hack code removed.)
+
+* Bug fixes!
+
+New in 0.7.1:
+* Sources ~/.gtkrc
+
+* Added and standardized text boundary and tree depth checking.
+
+* Moderate bugs fixed:
+
+	* Added scrollbars for trees larger than the window.
+
+	* Deleting the root node now works.
+
+	* No more strange tiny menu windows in GTK 1.0.x.
+
+* Minor bugs fixed:
+
+	* No more GTK warnings with GTK 1.0.x. Additionally, the view
+	dialog looks identical to that under 1.1.x.
+
+	* Menu's vbox cell no longer expands when the
+	main window is resized.
+
+	* The tree is fully expanded, by default, with correct +/-'s.
+
+* config.h support.
+
+New in 0.7.0:
+* GTK 1.0.x support. All functionality exists, though the interface is
+slightly different.
+
+* Data file selection works.
+
+* Knowledge base information is automatically read/written.
+
+New in 0.6:
+* All basic KB editing commands work properly. This version is actually
+vaguely useful.
+
+* Improved modality support. (It's still a kludge.)
+
+New in 0.5:
+* "view" dialog contains the information from the currently selected
+tree item.
+
+* Description boxes are editable.
+
+* Edit functions know which tree node they operate on or
+display error message if none is selected.
+
+* Double clicking a tree entry pops up the "view" window.
+
+* Only one tree node can be selected at one time.
+
+New in 0.4:
+* Small bugfix: Pure "delete event"s were having some problems with my
+modal window code.
+
+* Added "Ctl-O" as an accelerator of "Open"
+
+New in 0.3:
+* Added modal window support. (Dialog windows don't open more than once
+at a time.)
+
+* "cancel" buttons now work.
+
+* Data file-selection window opens.
+
+New in 0.2:
+* Basic GUI functionality has been added to the main window.
+
+New in 0.1:
+* Basic layout completed. Nothing actually does anything.

@@ -1,0 +1,55 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-workman
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_workman.tar.gz
+
+echo "+================+"
+echo "| WorkMan-lx-1.3 |"
+echo "+================+"
+cd $TMP
+tar xzvf $CWD/WorkMan-1.3.tar.gz
+cd workman
+zcat $CWD/WorkMan-1.3.diff.gz | patch
+cp Makefile.linux Makefile
+make
+cat workman > $PKG/usr/openwin/bin/workman
+for page in workman.man workmandb.man ; do
+  cat $page | gzip -9c > $PKG/usr/openwin/man/man1/`basename $page .man`.1.gz
+done
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/workman.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/workman
+  rm -rf $PKG
+fi

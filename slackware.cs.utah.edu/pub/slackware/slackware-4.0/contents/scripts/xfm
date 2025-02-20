@@ -1,0 +1,4 @@
+( cd var/X11R6/lib/xfm ; rm -rf bitmaps )
+( cd var/X11R6/lib/xfm ; ln -sf /usr/X11R6/include/X11/bitmaps bitmaps )
+( cd var/X11R6/lib/xfm ; rm -rf pixmaps )
+( cd var/X11R6/lib/xfm ; ln -sf /usr/X11R6/include/X11/pixmaps pixmaps )

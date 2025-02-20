@@ -1,0 +1,34 @@
+vg-libs: Voodoo Graphics chipset support
+vg-libs:
+vg-libs: Contains Glide 2.46-VG and Mesa 3.0. 
+vg-libs:
+
+vr-libs: Voodoo Rush chipset support
+vr-libs:
+vr-libs: Contains Glide 2.53-VR and Mesa-3.0.
+vr-libs:
+
+v2-libs: Voodoo 2 chipset support
+v2-libs:
+v2-libs: Contains Glide 2.53-V2 and Mesa 3.0.
+v2-libs:
+
+glidesdk: Glide 2.x Software Development Kit
+glidesdk:
+glidesdk: The Glide SDK is needed if you plan on developing your own Glide
+glidesdk: applications, or if you plan on recompiling things that use the
+glidesdk: Glide libraries (for example, Mesa). This package includes a lot
+glidesdk: of documentation (in PDF format), source code, and header files.
+glidesdk:
+
+xvr: XF86_SVGA X Server with Voodoo Rush support
+xvr:
+xvr: This server replaces the standard XF86_SVGA server so you can have
+xvr: Voodoo Rush support under X.
+xvr:
+
+xvrlibs: Replacement X Libraries with Voodoo Rush support
+xvrlibs:
+xvrlibs: These replace the standard X libraries in /usr/X11R6/lib and are
+xvrlibs: needed if you plan on using the Voodoo Rush X server.
+xvrlibs:

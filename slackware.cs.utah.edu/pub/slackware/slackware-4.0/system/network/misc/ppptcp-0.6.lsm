@@ -1,0 +1,15 @@
+Begin3
+Title:          ppptcp
+Version:        0.6
+Entered-date:   1/20/98
+Description:    Tunnel PPP over an arbitrary TCP connection -- create your own
+                virtual encrypted networks!
+Keywords:       ppp network tunnel ip crypt RSA
+Author:         slouken@devolution.com (Sam Lantinga)
+Maintained-by:  slouken@devolution.com (Sam Lantinga)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/misc
+		34kB ppptcp-0.6.tar.gz
+Alternate-site: http://www.devolution.com/projects/ppptcp/
+Platforms:      Linux 2.x, SunOS
+Copying-policy: GPL
+End

@@ -1,0 +1,20 @@
+Begin3
+Title:          Arrow
+Version:        0.6.5
+Entered-date:   06OCT98
+Description:    Arrow is an e-mail program for X.
+                Arrow was designed to serve as a Linux replacement for the 
+                many powerful e-mail programs available only in Win95 or on 
+                the Macintosh. More information about Arrow can be found at
+                http://www.cco.caltech.edu/~glenn/arrow/
+Keywords:       e-mail, secure e-mail, GUI, X, JX
+Author:         glenn@cco.caltech.edu (Glenn W. Bach)
+Maintained-by:  glenn@cco.caltech.edu (Glenn W. Bach)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/debuggers
+				743270 arrow-0.6.5.tar.gz
+Alternate-site: ftp.cco.caltech.edu /pub/glenn/Arrow/
+				743270 source/Arrow_source-0.6.5.tar.gz
+				16920 source/JSearch_source-0.5.2.tar.gz
+Platforms:      X
+Copying-policy: FRS
+End

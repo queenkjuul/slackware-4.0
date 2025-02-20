@@ -1,0 +1,18 @@
+Begin3
+Title:		IfQman command-line BinkStyle outbound manager.
+Version:	1.1.2
+Entered-date:	16NOV97
+Description:	IfQman is a command-line BinkStyle fidonet mailer outbound
+		manager. It can list, add, remove file requests, file
+		attaches & mail packets. Now it can work with ifmail package,
+		written & copyrighted by Eugene G. Crosser. But it can work
+		with any other mailer, as well as with ifmail (minor changes
+		needed).
+Keywords:	ifqman, outbound manager, fidonet, ifmail.
+Author:		valery@forthpick.kiev.ua (Valery Shchedrin)
+Maintained-by:	yuri@cracksoft.kiev.ua (Yuri Kuzmenko)
+Primary-site:	ftp.cracksoft.kiev.ua /pub/linux/ifmail/
+Alternate-site:	sunsite.unc.edu
+Platforms:	Linux
+Copying-policy:	Copyrighted, but freely distributable.
+End

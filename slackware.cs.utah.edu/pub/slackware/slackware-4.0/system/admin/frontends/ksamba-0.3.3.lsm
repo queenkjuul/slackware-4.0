@@ -1,0 +1,15 @@
+Begin3
+Title:          Ksamba
+Version:        0.3.3
+Entered-date:   05APR98
+Description:    Programm to setup/configure samba
+Keywords:       KDE, Qt, gui, samba
+Author:         <Lars.Kneschke@kiel.netsurf.de> Lars Kneschke
+Maintained-by:  <Lars.Kneschke@kiel.netsurf.de> Lars Kneschke
+Primary-site:   ftp://ftp.kde.org/pub/kde/unstable/apps/network/ksamba-0.3.3.tar.gz
+Home-Page:      http://homes.cls.net/~knecke
+Alternate-site: 
+Original-site:  None
+Platform:       Linux with Qt 1.32 and Kde libs
+Copying-policy: GPL
+End

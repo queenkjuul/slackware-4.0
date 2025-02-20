@@ -1,0 +1,16 @@
+Begin3
+Title:          NIS clients for linux
+Version:        2.1
+Entered-date:   13OCT95
+Description:    These programs are used to turn your linux station into an NIS
+                (formerly YP) client. Provided are ypbind, ypcat, ypmatch,
+                yppoll, yppasswd, ypset and ypwhich. ypbind can use a file
+                /etc/yp.conf for setting the server, or it can use broadcast.
+Keywords:       NIS, YP, networking, yellow pages, network information system
+Author:         deraadt@fsa.ca (Theo de Raadt), swen@uni-paderborn.de
+                (Swen Thümmler)
+Maintained-by:  swen@uni-paderborn.de (Swen Thümmler)
+Primary-site:   ftp.uni-paderborn.de /pub/linux/local/yp
+                24kB yp-clients-2.1.tar.gz
+Copying-policy: BSD, GNU for ypbind
+End

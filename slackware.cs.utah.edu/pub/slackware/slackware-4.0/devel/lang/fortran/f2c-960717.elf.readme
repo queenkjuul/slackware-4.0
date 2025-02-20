@@ -1,0 +1,28 @@
+Hello,
+
+This is distribution of the precompiled f2c translator
+and libraries for an ELF Linux system with new libc libraries
+( >= 5.3.12 ). Due to an incompatibilty of f2c's internal
+malloc, (same with libc-5.2.18, BTW) I used libc's native 
+version of malloc.
+
+-=INSTALLATION=-
+
+su
+cd /
+tar xvzf /path_to_the_following_file/f2c-960717.elf.tgz
+ldconfig
+
+Make sure you don't have former versions of f2c.h and/or
+libf2c lurking somewhere under /usr/lib/lib-gcc/*/ !
+
+
+Evgeny
+
+   ____________________________________________________________
+  / Evgeny Stambulchik  <fnevgeny@plasma-gate.weizmann.ac.il>  \
+ /  Plasma Laboratory, Weizmann Institute of Science, Israel \  \
+ |  Phone : (972)8-9343-610  == | == FAX   : (972)8-9344-106 |  |
+ |  URL   :    http://plasma-gate.weizmann.ac.il/~fnevgeny   |  |
+ |  Finger for PGP key >=====================================+  | 
+ |______________________________________________________________| 

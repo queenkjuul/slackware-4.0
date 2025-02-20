@@ -1,0 +1,4 @@
+( cd usr/openwin/lib ; rm -rf libsspkg.so )
+( cd usr/openwin/lib ; ln -sf libsspkg.so.1 libsspkg.so )
+( cd usr/openwin/lib ; rm -rf libsspkg.so.1 )
+( cd usr/openwin/lib ; ln -sf libsspkg.so.1.0.0 libsspkg.so.1 )

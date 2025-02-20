@@ -1,0 +1,21 @@
+
+Begin3
+Title:          cyrix
+Version:        1.00
+Entered-date:   Feb 16, 1995
+Description:    Small utility to activate/tune the 1kB internal
+		on CPU cache that is on Cyrix/Texas Instruments
+		DLC and SLC model CPUs. Port of DOS version of
+		cyrix100.zip. Runs as a separate program in
+		user space, so you don't have to patch the kernel 
+		each time.
+Keywords:       cache cyrix DLC SLC
+Author:         Paul.Gortmaker@anu.edu.au (Paul Gortmaker)
+Maintained-by:  Paul.Gortmaker@anu.edu.au (Paul Gortmaker)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc
+		21kB cyrix-1.00.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       Cyrix DLC/SLC CPU
+Copying-policy: GPL
+End

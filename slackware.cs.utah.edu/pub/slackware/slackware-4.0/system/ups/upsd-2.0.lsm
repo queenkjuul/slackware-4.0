@@ -1,0 +1,26 @@
+Begin3
+Title:		UPSD Power Monitor Daemon
+Version:	2.0b1
+Entered-date:	April 5, 1999
+Description:	UPSD is a daemon to monitor an Uninterruptible Power
+                Supply (UPS) connected to a Linux computer's serial
+                port.  It will signal init(8) when the UPS is operating
+                on battery power so that the computer can be shut
+                down cleanly.  UPSD has additional features, including
+                network monitoring, low battery warning, and the
+                capability of turning off the UPS during the shutdown 
+                process (if the UPS supports this). In addition it has the
+                capability on slave systems of monitoring the remote 
+                master for the return of power in the event that only the 
+                master has power has failed. A debugging and management 
+                tool is included
+Keywords:	linux, ups, power, shutdown
+Author:		Bob Hauck, Wasatch Communications Group
+Maintained-by:	bobh@wasatch.com (Bob Hauck)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/UPS
+			41kb upsd-2.0b1.tgz
+Alternate-site:	
+Original-site:	ftp.wasatch.com /pub/users/bobh/Linux/upsd-2.0b1.tgz
+Platforms:	Linux
+Copying-policy:	GPL
+End

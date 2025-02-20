@@ -1,0 +1,17 @@
+
+Begin3
+Title:          Digital EtherWORKS 3 set up tools
+Version:        V0.20
+Entered-date:   Nov 8, 1994
+Description:    A tool to allow set up of the EtherWORKS 3 card from a root
+		account on Linux without rebooting into DOS. Also includes a
+		utility to gather network packet size distribution statistics.
+Keywords:       Digital EtherWorks Ethernet EEPROM setup tools config
+Author:         davies@wanton.lkg.dec.com (David C. Davies)
+Maintained-by:  davies@wanton.lkg.dec.com (David C. Davies)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/management
+		6kB ewrk3tools-0.20.tar.gz
+		1kB ewrk3tools-0.20.lsm
+Platform:       Digital EtherWorks 3 (DE203, DE204, DE205) Ethernet Card.
+Copying-policy: GPL
+End

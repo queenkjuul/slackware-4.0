@@ -1,0 +1,15 @@
+Begin3
+Title: cidentd
+Version: 1.0b
+Entered-date: 09May96
+Description: cidentd is an rfc1413 compliant indent server 
+Keywords: identd, ident, rfc1413, rfc931, auth, authd
+Author: aledbett@dremel.punk.net (aaron ledbetter)
+Maintained-by: aledbett@dremel.punk.net (aaron ledbetter)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Network/Daemons
+	 19K cidentd.1.0b.tar.gz
+Alternate-site:
+Original-site:  
+Platforms: Linux
+Copying-policy: Public Domain
+End

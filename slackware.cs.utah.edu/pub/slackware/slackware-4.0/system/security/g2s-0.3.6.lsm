@@ -1,0 +1,15 @@
+Begin3
+Title: G2S
+Version:  0.3.6
+Entered-date: 8 October 1998
+Description: An interesting alternative to inetd/tcpwrapper/chrootuid/relay/tcp-env/antispam...
+Keywords: firewall,gateway,superserver,inetd,udp,tcp,wrapper,security,network,qmail,spam
+Author: Frank "Jedi/Sector One" DENIS <j@4u.net>
+Maintained-by: Frank "Jedi/Sector One" DENIS <j@4u.net> 
+Primary-site: ftp://ftp.rtc-one.net/j/g2s/
+Alternate-site: ftp://alpha.gnu.org/gnu/
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/security/
+Original-site: ftp://sunsite.unc.edu/pub/Linux/system/security/   
+Platforms: Any Unix box in theory
+Copying-policy: GPL
+End

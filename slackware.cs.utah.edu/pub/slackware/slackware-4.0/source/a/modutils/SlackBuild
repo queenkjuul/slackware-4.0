@@ -1,0 +1,81 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-modutils
+SRC=/devel/manpagesrc
+INFO=$PKG/usr/info
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_modutils.tar.gz
+
+echo "+==================+"
+echo "| modutils-2.1.121 |"
+echo "+==================+"
+cd $TMP
+tar xzvf $CWD/modutils-2.1.121.tar.gz
+cd modutils-2.1.121
+mkdir -p $PKG/usr/doc/modutils-2.1.121
+cp -a COPYING README $PKG/usr/doc/modutils-2.1.121
+cp -a kerneld/README.kerneld kerneld/README.ppp-slip \
+ $PKG/usr/doc/modutils-2.1.121
+cp -a depmod/README $PKG/usr/doc/modutils-2.1.121/README.depmod
+cp -a kerneld/GOODIES $PKG/usr/doc/modutils-2.1.121/GOODIES
+chown -R root.root $PKG/usr/doc/modutils-2.1.121
+./configure
+make
+strip insmod/insmod genksyms/genksyms depmod/modprobe depmod/depmod
+for page in */*.1 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man1/`basename $page`.gz
+done
+for page in */*.2 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man2/`basename $page`.gz
+done
+for page in */*.8 ; do
+  cat $page | gzip -9c > $PKG/usr/man/man8/`basename $page`.gz
+done
+cd insmod
+strip insmod rmmod ksyms modinfo
+cat insmod > $PKG/sbin/insmod
+cat lsmod > $PKG/sbin/lsmod
+cat ksyms > $PKG/sbin/ksyms
+cat modinfo > $PKG/sbin/modinfo
+cd ../genksyms
+cat genksyms > $PKG/sbin/genksyms
+cd ../depmod
+cat modprobe > $PKG/sbin/modprobe
+cat depmod > $PKG/sbin/depmod
+cd ../kerneld
+strip kerneld
+cat kerneld > $PKG/sbin/kerneld
+cat request-route.sh > $PKG/sbin/request-route
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/modutils.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/modutils-2.1.121
+  rm -rf $PKG
+fi

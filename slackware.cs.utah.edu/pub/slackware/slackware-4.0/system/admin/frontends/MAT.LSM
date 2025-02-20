@@ -1,0 +1,33 @@
+Begin3
+Title:		MAT 
+Version:	0.12 (Alpha)
+Entered-date:	Sept 23rd, 1997
+Description:	MAT is a distributed management tool for Linux, SunOS, and
+		Solaris machines.  The tool provides an easy to use GUI 
+		interface from which the sysadmin, or designated user can
+		administer many of the common UNIX configuration files.  
+		The current release of the tool can add modify and delete:
+		Users, Hosts, Groups, Mounts, Motd, DNS client config, 
+		Cron jobs.	
+		Some for the key features include:
+		- Can administer many hosts from a single console.
+		- The ability to deligate responsibility to others.
+		- Easy upgrade of the agent binary from the GUI.
+		Developement of a DNS Master, NIS master, and a tape tool
+		is currently underway.  This release includes a pre-alpha
+		DNS master tool.
+Keywords:	Distributed Systems Management Administration
+Author:		sblack@ee.ryerson.ca   Mark Black
+Maintained-by:  sblack@ee.ryerson.ca   Mark Black
+Primary-site:   sunsite.unc.edu /pub/Linux/system/admin
+		426kB mat.tgz
+		1128  mat.lsm
+Alternate-site: 
+Original-site:
+Platforms:	Linux, SunOS, Solaris with Tcl/TK
+Copying-policy:	Freeware
+End
+
+
+
+

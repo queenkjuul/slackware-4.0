@@ -1,0 +1,58 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-jove
+SRC=/devel/manpagesrc
+INFO=/devel/info-pages/usr/info
+TEX=/devel/texinfo-docs
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_jove.tar.gz
+
+echo "+=============+"
+echo "| jove4.14.10 |"
+echo "+=============+"
+cd $TMP
+tar xzvf $CWD/jove4.14.10.tar.gz
+cd jove
+zcat $CWD/jove4.14.10.diff.gz | patch -p1
+make
+make /usr/man/man1/jove.1
+make /usr/man/man1/teachjove.1
+cat xjove > $PKG/usr/bin/xjove
+cat teachjove > $PKG/usr/bin/teachjove
+cat portsrv > $PKG/usr/lib/jove/portsrv
+cat recover > $PKG/usr/lib/jove/recover
+gzip -9c /usr/man/man1/jove.1 > $PKG/usr/man/man1/jove.1.gz
+gzip -9c /usr/man/man1/teachjove.1 > $PKG/usr/man/man1/teachjove.1.gz
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/jove.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/jove
+  rm -rf $PKG
+fi

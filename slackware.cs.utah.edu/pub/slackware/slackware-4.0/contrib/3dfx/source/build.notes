@@ -1,0 +1,21 @@
+The SlackBuild script in this directory will build six unique packages
+for 3Dfx chipset support. Here's a description of each:
+
+   vg-libs.tgz      Voodoo Graphics support (a.k.a. Voodoo 1)
+   v2-libs.tgz      Voodoo 2 support
+   vr-libs.tgz      Voodoo Rush support
+
+Each package includes the version of Glide for that chipset. Also included
+is Mesa 3.0, linked against the unique version of Glide in the package.
+Header files for Mesa and Glide are included as well. Some documentation
+is also placed in /usr/doc. Here's descriptions of the other three
+packages:
+
+   glidesdk.tgz     Glide 2.x Software Development Kit
+   xvr.tgz          XFree86 server (XF86_SVGA) for the Voodoo Rush
+   xvrlibs.tgz      XFree86 libraries needed to use xvr.tgz
+
+All for now.
+
+-David Cantrell
+ david@slackware.com

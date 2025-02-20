@@ -1,0 +1,17 @@
+Begin3
+Title:          netkit-ntalk
+Version:        0.11
+Entered-date:   Apr 7 1999
+Description:    Update of netkit-ntalk-0.10
+                Basic network tools, fixed and ported from BSD code.
+                Contains: talk talkd
+Keywords: daemons network tools netkit security
+Author:         various
+Maintained-by:  netbug@ftp.uk.linux.org (NetKit maintainers)
+Primary-site:   ftp.uk.linux.org /pub/linux/Networking/chat
+                    netkit-ntalk-0.11.tar.gz 30632
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network
+Original-site:  
+Platform:       Portable; intended for Linux
+Copying-policy: BSD
+End

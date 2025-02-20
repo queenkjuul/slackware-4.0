@@ -1,0 +1,13 @@
+F 00_INDEX.TXT                      	00_index.txt
+D DUALBOOT                          	dualboot
+D ETHERNET                          	ethernet
+F INDEX                             	INDEX
+F INDEX.HTM                         	INDEX.html
+F INDEX_SH.HTM                      	INDEX.short.html
+D INIT                              	init
+D LILO                              	lilo
+D LOADERS                           	loaders
+F PATCH-NO.GZ                       	patch-non640k-2.0.36.gz
+F PATCH-NO.LSM                      	patch-non640k-2.0.36.lsm
+F PATCH-NO.REA                      	patch-non640k-2.0.36.README
+F README                            	README

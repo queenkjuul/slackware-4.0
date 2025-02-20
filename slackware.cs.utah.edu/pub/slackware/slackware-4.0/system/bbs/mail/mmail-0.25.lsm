@@ -1,0 +1,18 @@
+Begin3
+Title:		MultiMail (source)
+Version:	0.25
+Entered-date:	19MAR99
+Description:	MultiMail is a curses-based Blue Wave and QWK packet
+		compatible offline mail reader for Unix and other systems.
+Keywords:	mail bluewave qwk bbs fido offline reader
+Author:		wmcbrine@clark.net (William McBrine) et al.
+Maintained-by:	wmcbrine@clark.net (William McBrine)
+Primary-site:	ftp.clark.net /pub/wmcbrine/bbs/offline
+		119371	mmail-0.25.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/bbs/mail
+Original-site:
+Platforms:	C++, curses and InfoZip or PKZIP. Tested on Linux/i386,
+		Solaris/Sparc, NetBSD/mac68k, MS-DOS (DJGPP), OS/2 (EMX),
+		Win32 (RSXNT).
+Copying-policy: GPL 2.0
+End

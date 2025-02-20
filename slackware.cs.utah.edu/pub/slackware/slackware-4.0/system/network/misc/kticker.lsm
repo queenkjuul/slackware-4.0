@@ -1,0 +1,15 @@
+Begin3
+Title: kticker
+Version: 0.1.7
+Entered-date: 27/4/98
+Home-page: http://www.ee.mu.oz.au/staff/paul/kde/kticker/
+Description: Ticker application for the K Desktop Environment
+Keywords: kde ticker X11 Qt BBC SlashDot
+Author: Paul Dwerryhouse (paul@xenu.ee.mu.oz.au)
+Maintained-by: Paul Dwerryhouse (paul@xenu.ee.mu.oz.au)
+Primary-site: ftp://ftp.kde.org/pub/kde/unstable/apps/network/
+Alternate-site:
+Original-site: http://www.ee.mu.oz.au/staff/paul/kde/kticker/
+Platforms: linux solaris digital_unix, requires Qt & KDE libraries
+Copying-policy: GPL
+End

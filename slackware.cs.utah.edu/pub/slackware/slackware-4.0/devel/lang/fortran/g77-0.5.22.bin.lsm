@@ -1,0 +1,18 @@
+Begin3
+Title:          g77
+Version:        0.5.22
+Entered-date:   29MAR98
+Description:    GNU Fortran compiler ELF binaries, beta version 0.5.22
+                This also contains a modified gcc 2.7.2.3 frontend.
+Keywords:       Fortran g77 f77
+Author:         burley@gnu.ai.mit.edu (Craig Burley)
+Maintained-by:  fnevgeny@plasma-gate.weizmann.ac.il (Evgeny Stambulchik)
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/lang/fortran
+                1195643 g77-0.5.22.bin.tgz
+Alternate-site: plasma-gate.weizmann.ac.il:/pub/software/linux/fortran
+                1195643 g77-0.5.22.bin.tgz
+Original-site:  prep.ai.mit.edu:/pub/gnu
+                1559523 g77-0.5.22.tar.gz
+Platforms:      gcc-2.7.2.3, libc >= 5.4.23
+Copying-policy: GPL
+End

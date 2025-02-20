@@ -1,0 +1,29 @@
+Changes in 1.43:
+	* Add sys2ansi.pl script to display the contents of a
+	  colorized SYSLINUX file.
+	* Changed the io_delay once again, after a report that the
+	  old delay port causes hangs on some systems.
+
+Begin3
+Title:		syslinux
+Version:	1.43
+Entered-date:	19MAR99
+Description:	SYSLINUX is a boot loader for the Linux operating system
+		which operates off MS-DOS floppies.  It is intended to
+		simplify first-time installation of Linux, rescue
+		disks, and other uses for boot floppies.  A SYSLINUX floppy
+		can be manipulated using standard MS-DOS (or any other
+		OS that can access an MS-DOS filesystem) tools once
+		it has been created; and requires only a ~ 7K DOS program
+		or ~ 13K Linux program to create in the first place.
+Keywords:	syslinux msdos boot loader floppy install
+Author:		hpa@zytor.com (H. Peter Anvin)
+Maintained-by:	hpa@zytor.com (H. Peter Anvin)
+Primary-site:	ftp.kernel.org /pub/linux/utils/boot/syslinux
+		133545 syslinux-1.42.tar.gz
+		151061 syslinux-1.42.zip
+Alternate-site:	metalab.unc.edu /pub/Linux/system/boot/loaders
+Platforms:	DOS or Linux to install.  Linux, perl and nasm 0.97 or
+		later required to build from source.
+Copying-policy: GPL
+End

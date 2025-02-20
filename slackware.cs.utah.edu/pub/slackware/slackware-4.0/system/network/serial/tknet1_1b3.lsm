@@ -1,0 +1,14 @@
+Begin3
+Title:  TkNet        
+Version: 1.1b3
+Entered-date: 11JUNE1996
+Description: TkNet is an easy to use X front end to SLIP/PPP. It was written for managing a Demon Internet account, though the interface may be easily configured for other setups. Contains status indicator, support for multiple connect scripts, biff, timer, throughput indicator, launcher, help, mail retriever + lots more! Highly customisable.  Home page http://public.logica.com/~kempsonc/tknet.htm
+Keywords: SLIP PPP serial Tk monitor X11 
+Author: charlie@siren.demon.co.uk (Charlie Kempson)
+Maintained-by: 
+Primary-site: sunsite.unc.edu /pub/Linux/system/Network/serial 120KB tknet1.0.tgz
+Alternate-site: 
+Original-site: 
+Platforms: Tk4.0, Tcl7.4, Expect5.18 (but should work with 4.1b and 7.5b)
+Copying-policy: GPL 
+End

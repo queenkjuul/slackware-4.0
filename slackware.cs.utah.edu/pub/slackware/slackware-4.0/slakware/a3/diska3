@@ -1,0 +1,23 @@
+CONTENTS: bin etc       
+bin:      Binaries that go in /bin and /usr/bin.
+bin:
+bin:      Various required utilities and programs, such as apmd_3.0beta3-2,
+bin:      asapm-2.2, at-2.9b, Dillon's crond 2.2, file-3.24, GNU gawk 3.0.3,
+bin:      man-1.5b, patch 2.1b, sed 2.05, sharutils-4.1, time-1.7,
+bin:      splitvt-1.6.3, tput-1.0, unarj-230, hdparm-3.5, and zoo-2.10.
+bin:
+bin:
+bin:
+bin:
+bin:
+etc:      System configuration files that go into the /etc directory.
+etc:
+etc:      The /etc directory is traditionally the location where configuration
+etc:      files and administration binaries are found. Under Linux, the binaries
+etc:      have been moved out of the /etc directory and into the /sbin 
+etc:      directory; the /etc directory is now reserved for configuration files
+etc:      only. 
+etc:
+etc:
+etc:
+etc:

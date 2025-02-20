@@ -1,0 +1,17 @@
+Begin3
+Title:          Shadow Ina Box
+Version:        1.2
+Entered-date:   29Oct96
+Description:    A full collection of shadow utilities: xlock, sudo, wu-ftpd,
+                adduser.pl, cracklib25_small, shadow-960129, qpopper-2.1.4-r3.
+Keywords:       shadow ftpd-shadow xlockmore sudo-shadow adduser.pl cracklib
+                popmail-shadow
+Author:         michael@envy.com    ( Michael Quan )
+Maintained-by:  michael@envy.com    ( Michael Quan )
+Primary-site:   ftp.envy.com /pub/security
+                2965697 shadow-ina-box-1.2.tgz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Admin
+Original-site:  ftp.envy.com /pub/security
+Platforms:      Linux
+Copying-policy: GPL
+End

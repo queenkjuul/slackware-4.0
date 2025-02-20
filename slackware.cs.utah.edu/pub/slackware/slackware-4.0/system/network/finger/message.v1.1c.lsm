@@ -1,0 +1,20 @@
+Author:		Rick Deckard
+Name:		fingermessage.c telnetmessage.c
+Version:	1.1b (finger- and telnet.message)
+Discription: 	Two small prgms i've written to replace the default daemons
+		Read the source comments for installation instructions
+Other:		Good Luck and Customize them for your own needs
+		I'd like to add a part that logs all connection requests,
+		anyone want to help? 
+Fixes:		v1.1 :
+		 telnetmessage and fingermessage dirty layout problems 
+		 removed.
+		v1.1b:
+		 see v1.1c, dont use 1.1b: there's a typo in the source
+		 (\r is supposed to be \n in fingermessage.c)
+		v1.1c:
+		 oops! fingermessage.c only needed \n for the return 
+		 and not \n\r or \r, while telnetmessage needed \n\r.
+Thanks to:	Michael Barnes, for pointing out the dirty layout problems
+		with other non un*x telnet/finger clients which are now 
+		hopefully solved.

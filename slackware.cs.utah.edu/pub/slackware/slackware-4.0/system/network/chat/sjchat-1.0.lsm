@@ -1,0 +1,18 @@
+Begin3
+Title:          SJChat (Simple Java Chat)
+Version:        1.0
+Entered-date:   19FEB98
+Description:    Applet Chat Client & Server.  This is a small web chat that
+		really is not meant to be a final product (although it can
+		certainly serve as one), but rather a starter kit for those
+		people who would like to design thier own javachat.  The
+		client is written in Java 1.0, and the server is written in C.
+Keywords:       applet java chat www
+Author:         Frederick Manligas Nacino (silk@exodus.mit.edu)
+Maintained-by:  Frederick Manligas Nacino (silk@exodus.mit.edu)
+Primary-site:   http://exodus.mit.edu/~silk/sjchat/
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/
+Original-site:  http://exodus.mit.edu/~silk/sjchat/
+Platforms:      Linux
+Copying-policy: GPL
+End

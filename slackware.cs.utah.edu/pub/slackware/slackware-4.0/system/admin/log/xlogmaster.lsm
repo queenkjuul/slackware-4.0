@@ -1,0 +1,26 @@
+Begin3
+Title: xlogmaster
+Version: 1.4.0
+Entered-date: 25JUL98
+Description: Xlogmaster allows comfortable and fast control of all
+	the important system logfiles and devices that are readable
+	via cat (/proc/XYZ for instance).
+	Filters allow to raise/lower/hide lines.
+	Due to usage of the GTK+ toolkit and full runtime
+	configurability the user can modify the appearance
+	of the xlogmaster to whatever fits his desktop best.
+	This is a GNU program.
+Keywords:	 log,logmaster,admin,development,proc,GNU
+Author: greve@gnu.org (Georg C. F. Greve)
+Maintained-by: xlogmaster-bugs@gnu.org (Georg C. F. Greve)
+Primary-site: ftp://ftp.gnu.org/pub/gnu/
+	xlogmaster-1.4.0.tar.gz
+Alternate-site: http://www.fusebox.hanse.de/xlogmaster/
+	xlogmaster-1.4.0.src.tar.bz2
+	xlogmaster-1.4.0.src.tar.gz
+	xlogmaster-1.4.0.bin.ELF.tar.bz2
+	xlogmaster-1.4.0.bin.ELF.tar.gz
+Original-site:
+Platforms: GTK+ >= 1.0.4
+Copying-policy: GPL
+End

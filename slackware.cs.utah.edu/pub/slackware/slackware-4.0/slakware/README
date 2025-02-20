@@ -1,0 +1,19 @@
+
+This directory contains the primary Slackware packages -- the ones that
+actually install files to your hard drive.  You can install these packages
+with "setup", "pkgtool", or "installpkg".  See the man pages (man installpkg)
+for details.
+
+Share Slackware with your friends!  Just use the quick and easy disk
+mastering utility in this directory, and you can make installable
+3.5" Linux disk sets.  NOTE: Only the A and N series will fit on (and can be
+installed from) floppy disks at this point (and the last N disk with samba must
+be skipped until later).  In the other software series directories, larger
+software packages were growing to the point where fragmenting them to fit on
+floppy disks was no longer practical.  But, these days it's pretty easy to
+dump all of the packages onto a Zip or Jaz disk, or burn them onto a CD-R.
+That's probably more likely to work without failure than a stack of 100+
+floppy disks, too.
+
+Have fun!
+

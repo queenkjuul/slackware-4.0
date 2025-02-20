@@ -1,0 +1,17 @@
+drwxr-xr-x root/root         0 1998-04-04 21:47 ./
+drwxr-xr-x root/root         0 1998-04-04 21:47 usr/
+drwxr-xr-x root/root         0 1998-04-04 21:47 usr/X11R6/
+drwxr-xr-x root/bin          0 1998-04-04 21:47 usr/X11R6/bin/
+-rwxr-xr-x root/bin     356416 1998-04-04 21:47 usr/X11R6/bin/xpdf
+-rwxr-xr-x root/bin     199700 1998-04-04 21:47 usr/X11R6/bin/pdftops
+-rwxr-xr-x root/bin     192516 1998-04-04 21:47 usr/X11R6/bin/pdftotext
+drwxr-xr-x root/root         0 1998-04-04 21:47 usr/X11R6/man/
+drwxr-xr-x root/root         0 1998-04-04 21:47 usr/X11R6/man/man1/
+-rw-r--r-- root/root      3790 1998-04-04 21:47 usr/X11R6/man/man1/xpdf.1.gz
+-rw-r--r-- root/root       855 1998-04-04 21:47 usr/X11R6/man/man1/pdftops.1.gz
+-rw-r--r-- root/root       632 1998-04-04 21:47 usr/X11R6/man/man1/pdftotext.1.gz
+drwxr-xr-x root/root         0 1998-04-04 21:47 usr/doc/
+drwxr-xr-x root/root         0 1998-04-04 21:47 usr/doc/xpdf/
+-rw-r--r-- root/root      1694 1998-02-16 22:58 usr/doc/xpdf/ANNOUNCE
+-rw-r--r-- root/root     16734 1998-02-22 22:14 usr/doc/xpdf/CHANGES
+-rw-r--r-- root/root     12199 1998-02-22 22:44 usr/doc/xpdf/README

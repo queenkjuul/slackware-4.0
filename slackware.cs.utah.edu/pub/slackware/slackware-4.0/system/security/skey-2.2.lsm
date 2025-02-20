@@ -1,0 +1,13 @@
+Begin3
+Title:          skey
+Version:        2.2
+Entered-date:   April 3, 1995
+Description:    single-key password system for untested networks
+Keywords:       skey, password, telnet, remote
+Author:         contributed to Berkeley
+Maintained-by:  jrs@world.std.com (Rick Sladkey)
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Misc/skey-2.2.tar.gz
+Original-site:  BSD 4.4
+Platform:       must be using util-linux-2.2 to replace login
+Copying-policy: BSD
+End

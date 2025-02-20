@@ -1,0 +1,16 @@
+Begin3
+Title:          telnet+vh
+Version:        0.10
+Entered-date:   Dec 15 1997
+Description:    Modified version of netkit-telnet-0.10
+		Supports use of virtual host on client's side.
+                Contains: telnet 
+Keywords: daemons network tools netkit security
+Author:         various
+Maintained-by:  enayer@yahoo.com (Wee Liang)
+Primary-site:   none
+                77997 telnet+vh-0.10.tar.gz
+Original-site:  none
+Platform:       Portable; intended for Linux
+Copying-policy: BSD
+End

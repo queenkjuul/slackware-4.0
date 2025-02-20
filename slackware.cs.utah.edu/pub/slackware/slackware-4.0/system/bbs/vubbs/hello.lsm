@@ -1,0 +1,15 @@
+Begin3
+Title:		hello
+Version:	Beta-1
+Entered-date:	11APR95
+Description:	Visual login and logout for VU BBS.  Can be used in
+		conjunction with doorway to provide a easy to use, visual
+		solution from point of connection to point of departure.
+Keywords:	BBS, VU, login, shell
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/BBS/vubbs
+		hello-b1.tar.gz
+Platforms:	All Linux kernels 1.1.3x and above.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

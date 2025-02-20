@@ -1,0 +1,9 @@
+Version 2
+
+pnmtoprt is a printer driver for printing pnm-graphics. It supports
+NEC-P6 compatible printers (mono and color).
+
+The program was written under linux. Problems with other systems may
+arise because of the byte ordering.
+
+There are many options to beautify and speedup the output.

@@ -1,0 +1,312 @@
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/INSTALL gated/INSTALL
+--- gated.vanilla/INSTALL	Wed Sep 20 21:21:02 1995
++++ gated/INSTALL	Sat Oct  7 18:57:56 1995
+@@ -36,6 +36,9 @@
+     Install this config file in the previously created object directory with 
+     the name Config. 
+ 
++    Under Linux you will need either 40Mb of virtual memory or to use BSD or
++    minix free versions of sed to build the configurations.
++
+  3. Configure GateD for this architecture by typing make config. This will run
+     an awk script on your obj.`src/util/archtype`/Config file which builds a 
+     sed script. This sed script is used to edit a Makefile template. The
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/Linux.TODO gated/Linux.TODO
+--- gated.vanilla/Linux.TODO	Thu Jan  1 01:00:00 1970
++++ gated/Linux.TODO	Mon Oct  9 09:19:57 1995
+@@ -0,0 +1,132 @@
++Changes and instructions for getting gated to build and run under
++Linux 1.3.x
++
++
++Pre-requisites:
++	Linux 1.2 or higher.
++	Linux 1.3 or higher for multicast using protocols to work
++		multi interface.
++	40Mb virtual memory (or 8Mb and a non GNU sed)
++	libc4.6.27 or higher.
++
++TODO
++	Simon Janes is working on a route/header cache for high speed
++		forwarding.
++
++	BTV has mostly written the second level routing cache code.
++
++	Alan Cox is working on a proper tree based routing table for
++		use in large routing table environments (BGP notably)
++
++	At the moment Linux does not make a good BGP router due to the
++	route lookup overhead with large routing tables.
++
++	Implement multipath routing.
++
++	Fix the makefiles to put gated into /usr/local/sbin as well, as
++		is required by the FSSTND.
++	
++	Kernel->daemon message based routing updates are not supported
++		by gated (/dev/route)
++
++	Gated doesn't know about the dummy device as an RTF_BLACKHOLE
++		equivalent
++
++	Linux /proc/net/routes is still quite slow to read when very large
++
++	RTF_STATIC
++
++	Look at merging rip98 and rspf amateur radio routing daemons into
++		gated, instead of standalone, or at least able to interace.
++
++	Check the enabled variable subnet masks which Linux _does_ support by the
++		ioctl() interface unlike BSD4.3
++
++	How should we use and reflect the Linux mtu/window settings 
++		on routes ?
++
++Changes to gated
++
++o		note the GNU sed problem in INSTALL
++
++o		removed bsd/ include dependencies.
++	
++o		Fixed the /proc readers to handle /proc/net/snmp and
++		the routing table correctly for future Linux versions
++
++o		Gated icmp.c doesnt even compile with NO_IPHEADER defined
++		I am not confident the code for this is right. Linux routing 1.3 ignores ICMP redirect
++
++o		Variable masks must be defined for linux. It uses the ioctl
++		interface with an extra sockaddr carrying the mask.
++ 
++Changes to Linux includes
++
++o		If building with libc4.6.27+mroute include patches you will
++		need to correct sys/socketios.h to be sys/sockio.h and make
++		it include linux/sockios.h not linux/socketios.h
++
++o		Use the latest libc BSD compat for netinet/ip.h and add
++		IP_DF defines as follows if they are not already present
++
++Changes to Linux kernel as of 1.3.33
++
++o		Lined up the error returns to match the expected BSD ones.
++		Its not easy to do this as the Linux kernel blocks a routing
++		update momentarily until resources are free rather than
++		returning ENOBUFS, allows a replacement of a route with the
++		same target/mask by just doing an ADD (ie it has a change
++		operation). As of 1.3.32 it does now report ESRCH on a 
++		delete of unknown route (previously no error).
++		These are really just cleanups and not vital to
++		functionality.
++
++o		Faster /proc/net/routes
++
++o		IP support for /dev/route is completed but not used by
++		Gated.
++
++--------------
++
++#include <linux/ip.h>
++
++#ifdef _BSD_SOURCE
++
++/*
++ *	BSD has the following structure
++ */
++ 
++struct ip
++{
++#if defined(__LITTLE_ENDIAN_BITFIELD)
++	__u8	ip_hl:4,
++		ip_v:4;
++#else
++	__u8	ip_v:4,
++		ip_hl:4;
++#endif
++#define IPVERSION	4
++	__u8	ip_tos;
++	__u16	ip_len;
++	__u16	ip_id;
++	__u16	ip_off;
++	__u8	ip_ttl;
++	__u8	ip_p;
++	__u16	ip_csum;
++	struct	in_addr ip_src,ip_dst;
++};
++
++#define IP_DF	0x4000
++
++#endif
++
++------------
++
++	On older libc's add /usr/include/net/route.h as
++
++------------
++
++#include <linux/route.h>
++
++------------
++
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/src/configs/linux.smp gated/src/configs/linux.smp
+--- gated.vanilla/src/configs/linux.smp	Thu Jan  1 01:00:00 1970
++++ gated/src/configs/linux.smp	Sat Oct  7 17:34:50 1995
+@@ -0,0 +1,54 @@
++#
++#	roadrunner,v 1.0 1994/03/18 19:03:03 Alan Cox
++#
++#	Config file for roadrunner (Linux/SMP dual P90 1.3.32)
++#
++
++bindir  /usr/local/sbin
++sbindir	/usr/local/etc
++mandir	/usr/local/man
++
++cwflags	-W -Wunused -Wreturn-type -Wcast-qual -Wpointer-arith -Wwrite-strings -Wcomment -Wswitch -Wshadow -Waggregate-return -Wformat -Wuninitialized -Wmissing-prototypes -Wcast-align -Winline
++cflags	-O -g 
++
++lex	flex
++lflags	-p -s -C -I
++
++mkdep	mkdep -flag -M
++
++yacc	bison
++yflags	-d -y -v
++
++options	NEED_INET_ATON
++options	NO_MBUF_H
++options	INCLUDE_UNISTD
++options	INCLUDE_TYPES 
++options	INCLUDE_SOCKIO
++options	INCLUDE_PATHS 
++options USE_SETPGRP
++options	HAVE_DIRENT
++options	GID_T=int
++options	POSIX_SIGNALS
++options NEED_SIGNAME
++options	HAVE_SYS_SIGLIST
++options	HAVE_WAITPID
++options	KRT_RTREAD_PROC
++options	KRT_LLADDR_LINUX
++options	ROUTES_WO_MBUFS
++options	KRT_IFREAD_IOCTL
++options	KRT_RT_IOCTL
++options KRT_SYMBOLS_PROC  
++options KRT_SOCKET_TYPE=PF_INET,SOCK_DGRAM,AF_UNSPEC
++options KVM_TYPE_NONE
++options ICMP_NOIP_HEADER
++options VARIABLE_MASKS
++options tzsetwall()={unsetenv("TZ");tzset();}
++
++path_config	/etc/%s.conf
++path_dump	/var/tmp/%s_dump
++path_dumpdir	/var/tmp
++path_pid	/var/run/%s.pid
++path_version	/var/run/%s.version
++
++protocols	bgp egp hello icmp ospf rip 
++
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/src/icmp.c gated/src/icmp.c
+--- gated.vanilla/src/icmp.c	Wed Sep 20 21:21:27 1995
++++ gated/src/icmp.c	Sat Oct  7 21:49:39 1995
+@@ -433,8 +433,9 @@
+ 
+ 	dst = sockbuild_in(0, ip->ip_dst.s_addr);
+ #else	/* ICMP_NOIP_HEADER */
+-	if (task_recv_dstaddr
+-	    && sock2in(task_recv_dstaddr)) {
++	if (task_recv_dstaddr)
++	{
++	    sock2in(task_recv_dstaddr);
+ 	    /* Destination address is valid */
+ 
+ 	    dst = task_recv_dstaddr;
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/src/include.h gated/src/include.h
+--- gated.vanilla/src/include.h	Wed Sep 20 21:21:28 1995
++++ gated/src/include.h	Sat Oct  7 21:21:13 1995
+@@ -82,9 +82,9 @@
+ #include <netinet/in.h>
+ #ifdef	linux
+ #include <bsd/bsd.h>
+-#include <linux/in_systm.h>       
+-#include <bsd/netinet/ip_var.h>   
+-#include <bsd/netinet/ip.h>       
++#include <netinet/in_systm.h>       
++/*#include <netinet/ip_var.h>   */
++#include <netinet/ip.h>       
+ #else /* linux */
+ #include <netinet/in_systm.h>
+ #include <netinet/ip.h>
+@@ -113,11 +113,7 @@
+ #endif
+ 
+ #ifdef	INCLUDE_UDP
+-#ifdef	linux
+-#include <linux/udp.h>
+-#else	/* linux */
+ #include <netinet/udp.h>
+-#endif	/* linux */
+ #endif
+ #ifdef	INCLUDE_UDP_VAR
+ #include <netinet/udp_var.h>
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/src/krt_rt_ioctl.c gated/src/krt_rt_ioctl.c
+--- gated.vanilla/src/krt_rt_ioctl.c	Wed Sep 20 21:21:43 1995
++++ gated/src/krt_rt_ioctl.c	Sun Oct  8 01:15:10 1995
+@@ -61,6 +61,9 @@
+     krt.rt_dst = *sock2unix(dest, (int *) 0);		/* struct copy */
+     krt.rt_gateway = *sock2unix(router, (int *) 0);	/* struct copy */
+     krt.rt_flags = krt_state_to_flags(krtp->krtp_state);
++#ifdef VARIABLE_MASKS
++    krt.rt_genmask = *sock2unix(mask, (int *) 0);	/* struct copy */
++#endif    
+     if (sockishost(dest, mask)) {
+ 	BIT_SET(krt.rt_flags, RTF_HOST);
+     }
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/src/krt_rtread_proc.c gated/src/krt_rtread_proc.c
+--- gated.vanilla/src/krt_rtread_proc.c	Wed Sep 20 21:21:44 1995
++++ gated/src/krt_rtread_proc.c	Sat Oct  7 21:33:08 1995
+@@ -39,6 +39,7 @@
+     rt_parms rtparms;
+     FILE *DFile;
+     if_addr *ifap;
++    char buf[256];		/* Buffer space */
+ 
+     bzero((caddr_t) &rtparms, sizeof (rtparms));
+     rtparms.rtp_n_gw = 1;
+@@ -54,10 +55,17 @@
+     /* read route data from /proc   */
+ 
+ /* skip over header line */
+-    i=fscanf(DFile,"%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\n");
++    fgets(buf,256,DFile);
+ 
+-    while(!feof(DFile)){
+-	i=fscanf(DFile,"%s\t%lx\t%lx\t%02x\t%*d\t%*d\t%*d\t%lx\t%*d\t%*d\n",
++/*
++ *	It is important we use fgets here. The linux /proc files will keep the same order
++ *	through releases but new entries can appear at the end of each line. This changed
++ *	reader will always stay in sync.
++ *		-- Alan Cox.
++ */
++    while(fgets(buf,256,DFile))
++    {
++	i=sscanf(buf,"%s\t%lx\t%lx\t%02x\t%*d\t%*d\t%*d\t%lx\t%*d\t%*d\n",
+ 		 if_name,
+ 		 &addr_dest,
+ 		 &addr_gw,
+diff -u --recursive --new-file --exclude-from=exclude gated.vanilla/src/krt_symbols_proc.c gated/src/krt_symbols_proc.c
+--- gated.vanilla/src/krt_symbols_proc.c	Wed Sep 20 21:21:45 1995
++++ gated/src/krt_symbols_proc.c	Sat Oct  7 21:34:57 1995
+@@ -35,7 +35,12 @@
+ 	fclose (fp);
+     }
+     if (resp) {
+-	inet_ipforwarding = atoi(resp) > 0;
++        /*
++         *	1.2 kernels report '0' for not forwarding, which is an
++         *	error. The SNMP 'not forwarding' value is 2. This is
++         *	fixed in 1.3.x systems.
++         */
++	inet_ipforwarding = (atoi(resp) == 1);
+ 	trace_tp(tp,
+ 		 TR_KRT_SYMBOLS,
+ 		 0,

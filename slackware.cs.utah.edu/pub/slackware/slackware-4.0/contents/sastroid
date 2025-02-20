@@ -1,0 +1,15 @@
+drwxr-xr-x root/root         0 1994-06-08 18:37 ./
+drwxr-xr-x root/root         0 1994-06-08 18:36 usr/
+drwxr-xr-x root/root         0 1994-06-08 18:35 usr/games/
+-rws--x--x root/bin      82948 1994-06-08 18:36 usr/games/sasteroids
+-rw-r--r-- root/root    216534 1994-06-08 18:35 usr/games/sast.cf
+drwxr-xr-x root/root         0 1994-06-08 18:36 usr/doc/
+drwxr-xr-x root/root         0 1994-06-08 18:36 usr/doc/sasteroids/
+-rw-r--r-- root/root      4331 1994-06-08 18:36 usr/doc/sasteroids/1-CHANGELOG
+-rw-r--r-- root/root      2080 1994-06-08 18:36 usr/doc/sasteroids/1-INSTALL
+-rw-r--r-- root/root      2602 1994-06-08 18:36 usr/doc/sasteroids/1-PROBLEMS
+-rw-r--r-- root/root      4327 1994-06-08 18:36 usr/doc/sasteroids/1-README
+-rw------- root/root      3578 1994-06-08 18:36 usr/doc/sasteroids/1-README.xast
+drwxr-xr-x root/root         0 1994-06-08 18:34 var/
+drwxr-xr-x root/root         0 1994-06-08 18:34 var/games/
+drwxrwx--- root/bin          0 1994-06-08 18:34 var/games/sasteroids/

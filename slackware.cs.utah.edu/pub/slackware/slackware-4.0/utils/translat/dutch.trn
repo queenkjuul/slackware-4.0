@@ -1,0 +1,383 @@
+language = "Dutch", "Dutch"
+
+"00_index.txt"
+"00_index.dut"
+
+"00global.txt"
+"00global.dut"
+
+"Press the ENTER key to return to File Index Menu.\n"
+"Druk op ENTER voor terugkeer naar Bestands Index Menu.\n"
+
+"Press ENTER to continue, or ESC to abort...."
+"Druk op ENTER voor doorgaan of ESC om te annuleren...."
+
+"Press any key to return to file index..."
+"Druk op een toets voor terugkeer naar bestanden index ..."
+
+"Press any key to continue..."
+"Druk op ENTER voor doorgaan..."
+
+"Please insert %s disc #%d.\n\n"
+"Plaats a.u.b. schijf %s #%d.\n\n"
+
+"Please wait while files are being uncompressed...\n"
+"Wacht alstublieft, bestanden worden uitgepakt...\n"
+
+"Please run this program through File Manager in Windows.\n"
+ "Por favor ejecute este programa desde el File Manager de Windows.\n",
+
+"Loading config file...\n"
+"Configbestand wordt geladen...\n"
+
+"Locating %s....\n"
+"%s wordt gezocht....\n"
+
+"Select Language...\n\n"
+"Selecteer de taal...\n\n"
+
+"Checking cursor position..."
+"Cursorpositie wordt gecontroleerd..."
+
+"File %s is a windows program.\n"
+"Bestand %s is een Windows programma.\n"
+
+"Language is not changed.\n"
+"De taal is niet gewijzigd.\n"
+
+"Language changed.\n"
+"De taal is gewijzigd.\n"
+
+"Copying file....\n"
+"Copi‰ren bestand....\n"
+
+"Exiting program....."
+"Programma wordt verlaten....."
+
+"choice: "
+"Keuze: "
+
+"Abort..."
+"Annuleren..."
+
+"%s Bytes"
+"%s Bytes"
+
+"Directory"
+"Directory"
+
+"Filename"
+"Bestandsnaam"
+
+"File Size"
+"Bestandsgrootte"
+
+"Date"
+"Datum"
+
+"Description"
+"Omschrijving"
+
+"Percent: "
+"Percentage: "
+
+"Word #: "
+"Woord #: "
+
+"Line #: "
+"Regel #: "
+
+"Source:"
+"Bron:"
+
+"Destination:"
+"Doel:"
+
+"Current Directory:"
+"Actieve directory:"
+
+"Avail Diskspace"
+"Vrije schijfruimte"
+
+"Processing... %d%"
+"Bezig met verwerking... %d%"
+
+"Jump to [P]ercent, [W]ord, [L]ine? "
+"Spring naar [P]ercentage, [W]oord, [L]=regel? "
+
+"Cursor at %d%%, %ld/%ld char, %ld/%ld word, %ld/%ld line"
+"Cursor op %d%%, %ld/%ld kar, %ld/%ld woord, %ld/%ld regel"
+
+"Executable program."
+"Uitvoerbaar programma."
+
+"Executable batch file."
+"Uitvoerbaar batch bestand."
+
+"Probable text file. (Doc?)"
+"Waarschijnlijk tekstbestand. (Doc?)"
+
+"Probable documentation file."
+"Waarschijnlijk documentatie bestand."
+
+"Description file."
+"Omschrijvingsbestand."
+
+"You're about to delete the directory:\n"
+"U gaat de volgende directory wissen:\n"
+
+"All files and sub directories will be erased.\n"
+"Alle bestanden en subdirectories worden gewist.\n"
+
+"Are you sure you want to do this (Y/N)? "
+"Weet u zeker dat u dit wilt (Y=Ja/N=Nee)? "
+
+"Removing dir %s\n"
+"De directory %s wordt gewist.\n"
+
+"Removing file %s\n"
+"Het bestand %s wordt gewist.\n"
+
+"Removing directory %s\\%s\n"
+"De directory %s\\%s wordt gewist.\n"
+
+"Removing directory %s%s\n"
+"De directory %s%s wordt gewist.\n"
+
+"Directory %s has been removed.\n"
+"De directory %s is gewist.\n"
+
+"Can't find file %s\n"
+"Kan bestand %s niet vinden.\n"
+
+"Can't find %s disc #%d.\n"
+"Schijf %s #%d niet gevonden.\n"
+
+"Can't create file %s.\n"
+"Bestand %s kan niet gemaakt worden.\n"
+
+"Cannot chdir to the directory %s.\n"
+"Kan niet naar directory %s gaan.\n"
+
+"Cannot create the directory %s.\n"
+"Kan directory %s niet maken.\n"
+
+"Cannot execute program %s.\n"
+"Kan programma %s niet uitvoeren.\n"
+
+"Invalid pathname %s\n\n"
+"Ongeldige padnaam %s\n\n"
+
+"%s is not a valid pathname.\n"
+"%s is geen geldige padnaam.\n"
+
+"'%c' is not a valid drive.\n"
+"'%c' is geen geldige schijf.\n"
+
+"Drive %c: doesnt exist.\n"
+"Schijf %c: bestaat niet.\n"
+
+"View File:\n\n"
+"Bestand bekijken:\n\n"
+
+"File Index Menu:\n\n"
+"Bestands Index Menu:\n\n"
+
+"Unzip: Destination Query"
+"Unzip: Doel Query"
+
+"Unzip: Uncompressing File"
+"Unzip: Bestand wordt uitgepakt."
+
+"Unzip Menu: Directory Browswer.\n\n"
+"Unzip Menu: Directory op lijst.\n\n"
+
+"Unzip Menu: Directory name edit.\n\n"
+"Unzip Menu: Directory naam wijzigen.\n\n"
+
+"Copy: Destination Query"
+"Copy: Doel Query"
+
+"Copy: Copying File"
+"Copy: Bestand kopi‰ren"
+
+"Copy Menu: Directory name edit.\n\n"
+"Copy Menu: Directorynaam wijzigen.\n\n"
+
+"Contents of zipped file %s:\n"
+"Inhoud van zipbestand %s:\n"
+
+"View, Version %3.2f\n"
+"View, Versie %3.2f\n"
+
+"Up Arrow    - Prev line.\n"
+"Pijl       - Vorige regel.\n"
+
+"Down Arrow  - Next line.\n"
+"Pijl       - Volgende regel.\n"
+
+"PgUp        - Prev Page.\n"
+"PgUp        - Vorige pagina.\n"
+
+"PgDn        - Next Page.\n"
+"PgDn        - Volgende pagina.\n"
+
+"Home        - Jump to beginning of list.\n"
+"Home        - Ga naar begin van de lijst.\n"
+
+"End         - Jump to end of list.\n"
+"End         - Ga naar einde van de lijst.\n"
+
+"Home        - Jump to beginning of file.\n"
+"Home        - Ga naar begin van het bestand.\n"
+
+"End         - Jump to end of file.\n"
+"End         - Ga naar einde van het bestand.\n"
+
+"Left Arrow  - Move cursor left one character.\n"
+"Pijl < -    - Zet cursor een plaats naar links.\n",
+
+"Right Arrow - Move cursor right one character.\n"
+"Pijl ->     - Zet cursor een plaats naar rechts.\n"
+
+"Up Arrow    - Suggest the last directory used for unzip.\n"
+"Pijl       - Geef de laatste directory voor unzip.\n"
+
+"Down Arrow  - Suggest other destination directories.\n"
+"Pijl       - Geef andere doeldirectories.\n"
+
+"Home        - Jump to beginning of line.\n"
+"Home        - Ga naar begin van de regel.\n"
+
+"End         - Jump to end of line.\n"
+"End         - Ga naar eind van de regel.\n"
+
+"Up Arrow    - Prev file.\n"
+"Pijl       - Vorig bestand.\n"
+
+"Down Arrow  - Next file.\n"
+"Pijl       - Volgende bestand.\n"
+
+"PgUp        - Prev Page.\n"
+"PgUp        - Vorige pagina.\n"
+
+"PgDn        - Next Page.\n"
+"PgDn        - Volgende pagina.\n"
+
+"Home        - Jump to beginning of file list.\n"
+"Home        - Ga naar begin van de bestandenlijst.\n"
+
+"End         - Jump to end of file list.\n"
+"End         - Ga naar einde van de bestandenlijst.\n"
+
+"S, F10      - Search for a pattern.\n"
+"S, F10      - Zoeken naar karakter-reeks.\n"
+
+"R, F9       - Reverse search for a pattern.\n"
+"R, F9       - Terugzoeken naar karakter-reeks.\n"
+
+"ESC         - Abort back to previous menu.\n"
+"ESC         - Annuleer en keer terug naar vorige menu.\n"
+
+"ESC         - Abort back to the file index menu.\n"
+"ESC         - Annuleer en keer terug naar Bestands Index Menu.\n"
+
+"ESC         - Abort back to dir edit window.\n"
+"ESC         - Annuleer en keer terug naar wijzig directory venster.\n"
+
+"Alt-X       - Exit the view program.\n"
+"Alt-X       - Verlaat het view programma.\n"
+
+"Enter       - Begin copy the selected file.\n"
+"Enter       - Begin met copi‰ren geselecteerde bestand.\n"
+
+"Enter       - Begin uncompress the selected file.\n"
+"Enter       - Begin met uitpakken geselecteerde bestand.\n"
+
+"Enter       - Enter directory, or change drive.\n"
+"Enter       - Geef de directory of wissel naar andere schijf.\n"
+
+"Enter       - Select file, or enter directory.\n"
+"Enter       - Selecteer bestand of geef de directory.\n"
+
+"Enter       - View a text file, or executes a program.\n"
+"Enter       - Bekijk een tekstbestand of start een programma.\n"
+
+"TAB         - Switch to directory browser window.\n"
+"TAB         - Wissel naar bladervenster voor directories.\n"
+
+"TAB         - Yank current directory to edit window.\n"
+"TAB         - Breng actieve directory naar wijzigvenster.\n"
+
+"C           - Copy file.\n"
+"C           - Copi‰r bestand.\n"
+
+"V           - View file headers inside a zipped file.\n"
+"V           - Bekijk bestandskoppen in een ZIP-bestand.\n"
+
+"F5          - Select a new language.\n"
+"F5          - Selecteer een nieuwe taal.\n"
+
+"F6          - Toggle between English and the selected language.\n"
+"F6          - Wissel tussen Engels en de geselecteerde taal.\n"
+
+"Alt-J       - Jump to another place in file.\n"
+"Alt-J       - Ga naar een andere plaats in het bestand.\n"
+
+"Alt-P       - Show the cursorbar's position in file.\n"
+"Alt-P       - Geef de positie van de cursorbalk in het bestand.\n"
+
+"Alt-G       - Toggle between directory and global indexing methods.\n"
+"Alt-G       - Wissel tussen directory en de globale index methoden.\n"
+
+"Alt-R       - Remove the current directory.\n"
+"Alt-R       - Verwijder de actieve directory.\n"
+
+"***** Searching *****"
+"***** Zoeken *****"
+
+"********** Please Wait **********"
+"********** Wachten a.u.b. **********"
+
+"********** Pattern Not Found **********"
+"********** Karakter-reeks niet gevonden **********"
+
+"Search: "
+"Zoek:   "
+
+"R Srch: "
+"Zoek Tg:"
+
+"<Esc>-Abort Search"
+"<Esc>-Annuleer zoeken"
+
+"<S>-Srch  <R>-Rev Srch"
+"<S>-Zoek  <R>-Zoek Tg."
+
+" <S>-Srch  <R>-Rev Srch  <Esc>-Prev Mode  <Alt-X>-Exit  <?>-"
+" <S>-Zoek  <R>-Zoek Tg.  <Esc>-Vorige Mode <Alt-X>-Exit  <?>-"
+
+"Help"
+"Help"
+
+" <7>/<8>-Bits Mask   <Alt-J>-Jump   <Alt-P>-Show Cursor Position"
+" <7>/<8>-Bitsmasker  <Alt-J>-Ga naar <Alt-P>-Toon Cursor Positie"
+
+" <Enter>-Select/Begin To Uncompress File     <TAB>-Switch Window"
+" <Enter>-Selecteer/begin uitpakken bestand  <TAB>-Wissel venster"
+
+" <Enter>-Selec./Begin To Copy File           <TAB>-Switch Window"
+" <Enter>-Selecteer/begin copi‰ren bestand   <TAB>-Wissel venster"
+
+" <Enter>-Select <F5>/<F6>-Lang Selct <C>-Copy <Alt-G>-Swtch Indx  "
+" <Enter>-Select <F5>/<F6>-Taalsel. <C>-Copy <Alt-G>-Wissel Index  "
+
+" <Enter>-Select  <F7>-Word Lookup  <C>-Copy  <Alt-G>-Swtch Index";
+" <Enter>-Select <F7>-Woord Zoeken <C>-Kopie <Alt-G>-Wechs. Index"
+
+" <Enter>-View File/Exec Program <Alt-R>-Remove Current Directory  "
+" <Enter>-Kijk bestand/start progr. <Alt-R>-Verwijder act. directory  "
+
+" <F10>-Find Next Occur.    <F9>-Find Prev Occur.    <Esc>-Abort Search"
+" <F10>-Zoek volgende       <F9>-Zoek vorige      <Esc>-Annuleer zoeken"
+

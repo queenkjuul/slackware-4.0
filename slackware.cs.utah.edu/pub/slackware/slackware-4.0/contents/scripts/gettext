@@ -1,0 +1,20 @@
+# Update the /usr/info/dir info-database
+if [ -x /usr/bin/install-info ] ; then
+  install-info --info-dir=/usr/info /usr/info/gettext.info.gz 2>/dev/null
+elif fgrep "gettextize" usr/info/dir 1> /dev/null 2> /dev/null ; then
+  GOOD=yes # It seems to be entered in the /usr/info/dir already
+else # add the info to the dir file directly:
+cat << EOF >> usr/info/dir
+
+GNU Gettext Utilities
+* Gettext: (gettext).                           GNU gettext utilities.
+* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
+* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
+* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
+* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
+EOF
+fi
+( cd usr/lib ; rm -rf libintl.so )
+( cd usr/lib ; ln -sf libintl.so.1.0.0 libintl.so )
+( cd usr/lib ; rm -rf libintl.so.1 )
+( cd usr/lib ; ln -sf libintl.so.1.0.0 libintl.so.1 )

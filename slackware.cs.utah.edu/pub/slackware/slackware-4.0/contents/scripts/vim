@@ -1,0 +1,2 @@
+( cd usr/doc/vim ; rm -rf docs )
+( cd usr/doc/vim ; ln -sf /usr/share/vim docs )

@@ -1,0 +1,13 @@
+drwxr-xr-x root/root         0 1999-03-14 18:10 ./
+drwxr-xr-x root/root         0 1999-03-14 18:09 usr/
+drwxr-xr-x root/root         0 1998-11-28 21:13 usr/X11R6/
+drwxr-xr-x root/bin          0 1998-11-28 21:13 usr/X11R6/bin/
+-rwxr-xr-x root/bin     309632 1998-12-30 07:19 usr/X11R6/bin/xfs
+drwxr-xr-x root/root         0 1998-11-28 21:13 usr/X11R6/man/
+drwxr-xr-x root/root         0 1998-11-28 21:13 usr/X11R6/man/man1/
+-r--r--r-- root/root      3287 1998-12-30 07:22 usr/X11R6/man/man1/xfs.1x.gz
+drwxr-xr-x root/root         0 1998-11-28 21:13 var/
+drwxr-xr-x root/root         0 1998-11-28 21:13 var/X11R6/
+drwxr-xr-x root/root         0 1999-03-14 18:09 var/X11R6/lib/
+drwxr-xr-x root/root         0 1998-12-30 07:19 var/X11R6/lib/fs/
+-r--r--r-- root/root       423 1998-12-30 07:19 var/X11R6/lib/fs/config

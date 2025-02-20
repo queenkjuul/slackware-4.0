@@ -1,0 +1,34 @@
+
+This is the source used for Slackware-current.
+
+To look for a particular bit of source (let's say for 'cp'), first you
+would look for the full path:
+
+fuzzy:~# which cp
+/bin/cp
+
+Then, you grep for the package it came from. Note that the leading '/'
+is removed:
+
+fuzzy:~# grep bin/cp /var/adm/packages/*
+/var/adm/packages/bin:bin/cp
+/var/adm/packages/cpio:bin/cpio
+/var/adm/packages/perl:usr/bin/cppstdin
+
+From this, you can see that 'cp' came from the bin.tgz package. The source 
+will be found in a corresponding subdirectory. In this case, that would be
+./a/bin.  Don't be fooled into thinking that the _bin.tar.gz in this directory
+is the package with the source code -- anything starting with '_' is just a
+framework package full of empty files with the correct permissions and 
+ownerships for the completed package to use.
+
+Most of these packages now have scripts that untar, patch, and compile the
+source automatically.  These are the 'SlackBuild' scripts.  Moving back to
+the example above, you can figure out which package the bin/cp source came
+from by examining the SlackBuild script.
+
+Have fun!
+
+---
+Patrick J. Volkerding
+volkerdi@ftp.cdrom.com

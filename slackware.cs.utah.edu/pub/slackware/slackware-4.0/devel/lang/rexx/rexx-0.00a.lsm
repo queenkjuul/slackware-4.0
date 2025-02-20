@@ -1,0 +1,24 @@
+Begin2
+Title        =  Rexx interpreter implement.
+Version      =  0.00a
+Desc1        =  This is an implement of Rexx interpreter 
+Desc2        =  Portable to ANSI C & POSIX.
+Desc3        =  Come with documents in TeX format.
+Author       =  Anders Christensen
+AuthorEmail  =  anders@solan.unit.no
+Maintainer   =  Supoj Choachaicharoenkul
+MaintEmail   =  supot@nwg.nectec.or.th
+Site1        =  sunsite.unc.edu
+Path1        =  /pub/Linux/Incoming
+File1        =  rexx-0.00a.tar.gz
+FileSize1    =  158197
+Required1    = GCC 2.4.5
+Keywords     = language rexx interpreter 
+Comment1     = There is a mailing-list for this program
+Comment2     = rexx@pvv.unit.no 
+Comment3     = for discussions and monitor of new versions
+Entered      = 07OCT93
+EnteredBy    = Supoj Choachaicharoenkul
+CheckedEmail = supot@nwg.nectec.or.th
+End
+

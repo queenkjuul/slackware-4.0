@@ -1,0 +1,19 @@
+Begin3
+Title:          Check for existant and non-existant users
+Version:        1.0
+Entered-date:   95/1/27
+Description:    This is a simple Perl script that steps through your user
+                home directory and your /etc/passwd file, and it checks it
+                to see which users exist, and which don't, and you can have
+                it either report which users exist, or you can have it delete
+                the corresponding home directories.
+Keywords:       perl users check
+Author:         khollis@chatlink.com (Ken Hollis)
+Maintained-by:  khollis@chatlink.com (Ken Hollis)
+Primary-site:   sunsite.unc.edu /unknown/directory
+                4.5kB checkusers.1.0.tar.gz
+Alternate-site: -
+Original-site:  -
+Platform:       
+Copying-policy: GPL
+End

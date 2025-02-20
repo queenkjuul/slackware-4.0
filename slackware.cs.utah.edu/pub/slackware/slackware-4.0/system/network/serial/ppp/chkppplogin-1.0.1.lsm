@@ -1,0 +1,17 @@
+Begin3
+Title:          chkppplogin
+Version:        1.0.1
+Entered-date:   02DEC1998
+Description:    Restrict number of ppp logins on tty's
+	        Configurable for each user deafult is 1 login for each
+	        user. Made specially for Mgetty's AutoPPP feature.
+Keywords:       ppp pppd login tty AutoPPP chkppplogin multi restrict 
+Author:         rtviado@iligan.com ( Rodel T. Viado )
+Maintained-by:  rtviado@iligan.com ( Rodel T. Viado )
+Primary-site:   ftp.iligan.com /pub/Linux/ppplogin
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/serial/ppp
+Original-site:  ftp.iligan.com /pub/Linux/ppplogin
+Platforms:      Linux (other unices?)
+Copying-policy: freeware
+End
+

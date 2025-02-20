@@ -1,0 +1,16 @@
+Begin3
+Title:          yacc-1.9.tar.gz
+Version:        1.9
+Entered-date:   9/1/94
+Description:    Version 1.9 of yacc, compiled for Linux. 	
+		Modified by Todd Dukes to support C++ in action code. 
+Keywords:       yacc
+Author:         Keith Bostic, et. al.  E-mail address unknown.
+Maintained-by:  ladco@tab.com, tdukes@ibmoto.com (Todd Dukes)
+Primary-site:   sunsite.unc.edu /pub/Linux/util
+		64K yacc-1.9.tar.gz
+Alternate-site: 
+Original-site:	
+Platform:       Intel x86, Linux
+Copying-policy: BSD
+End

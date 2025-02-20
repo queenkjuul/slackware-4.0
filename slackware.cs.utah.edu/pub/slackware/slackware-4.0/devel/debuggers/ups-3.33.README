@@ -1,0 +1,164 @@
+Introduction
+------------
+
+This version has only been compiled and tested on Solaris 2.5, 
+Solaris 2.6 and SunOS 4.1.3, with the Sparc Compilers SC4 and 
+SC4.2, gcc/g++ 2.8.0, and the Centerline c and cfront/C++
+compilers. Also built for Linux ELF 2.0.31 (Red Hat 5.0).
+
+See the file README for build instructions.
+
+The URL for the ups web site is:
+
+           http://www.concerto.demon.co.uk/UPS/
+
+It is maintained by Ian Edwards (ian@concerto.demon.co.uk).
+It includes a FAQ, html man pages, site listings where ups
+can be found, supported architectures, a history of changes
+between versions, and other information.
+
+A "ups -v" now produces:
+
+	ups version 3.33 (build date: Wed Sep 30 17:39:55 PDT 1998)
+
+Changes between 3.33 and 3.32-RGA 
+-------------------------------------
+   Russ Browne <russ@amc.com> added handling of symbol table information 
+   concerning base classes, vector tables, and static class members in 
+   SC4 and g++ object files.  This results in the following family  of 
+   features, most of which work only for the above two compilers:
+
+o  Base classes are displayed as structs within the structure,
+   similar to ddd or Visual C++.
+
+o  Static members of a class may be examined in a way consistent
+   with the UPS methods for  examining of global data ( e.g. click
+   on "myClass::statMem", or for examining members of a struct
+   (e.g. select an object of type myClass* then enter ".statMem"
+   in the typing line, or click on "statMem" inside a NON-static
+   method for myClass to get this->statMem).
+       
+o  Added a popup menu option to expand all static members of a
+   selected object.
+
+   He also:
+
+o  Moved the determination of the compiler to the initial load of the symbol
+   table instead of the parsing of type information.  This should remove the
+   need for the UPS_COMPILER environment variable as a workaround for when
+   the previous algorithm failed.  Also, the compiler is correctly identified
+   before it is needed during demangling.
+
+o  Fixed some ommisions in the demangling. ( Gnu distructors demangled
+   as A::_ instead of  A::~A; for SC4, operator*= and operator%= demangled
+   as operator-=; for SC4 and clcc, cast operators demangled incorrectly.)
+
+o  Added handling of template type names in g++ symbol tables.
+
+o  Put up a blocking cursor (hourglass) during symbol table parsing as
+   version 2.XX did.
+
+o  Corrected "Unknown PT_NOTE type " message that
+   came up when loading an ELF core file.
+
+o  Various fixes to better read static variables, both local and global,
+   for SC4 code.
+
+o  Improvements to handle optimized code. This should result in being able
+   to set breakpoints on the open brace of functions in optimized code,
+   and result in the stack trace when you break in optimized code (or
+   get a core file for one), showing all optimized functions as being
+   at their opening brace.  Better than not shown at all.
+
+o  Corrected the following in 3.32:
+
+       Default colors for "HighlightColor" and "VariableColor" failed
+       if these X resources were not set.
+
+       Using the typing line shortcut to do a search then shifting
+       to the search button in the menus to continue the search
+       dumped core.
+
+       With g++ version 2.6 and earlier, variables of type bool
+       could incorrectly display as true.
+
+o  Jody Goldberg <jodygold@sanwafp.COM> contributed a small fix for
+   the hashtable growing algorithm. This addresses a failure on large 
+   C++ programs under Solaris-2.5.1
+
+   Rod Armstrong added:
+
+o  Fix to allow debug of a target that is completely statically linked.
+
+o  Fix for cleaning up the temporary breakpoint file that UPS creates
+   when re-attaching to a different instance of a process.
+
+o  Fix so that that when multiple instances of local or global variables
+   are displayed (by using the duplicate option for instance), all
+   such instances are restored when the function is re-entered.
+   Previously only one instance was restored.
+
+o  Updated the man pages and online help text.
+
+o  Added the source for the med3 menu editor. The old sources were made
+   ansi compliant, and the editor now reads and writes the expanded menu
+   structures that include the foreground and background colors that
+   were introduced in UPS version 3.32. The med3 sources are in the 
+   ups-3.33/med3 directory. There is documentation in ups-3.33/med3/doc.
+   Med3 was written by John Bovey, UKC, 26-4-93, who also did most of
+   the development of the wn library. Med3 links with the wn library in
+   the UPS distribution. I restored the autonomy of the this library by 
+   replacing all hardcorded calls to other ups functions with callbacks.
+
+
+   The following were in the 3.32.1 patch and are included in 3.33
+   ---------------------------------------------------------------
+
+o  Fixed the problem of finding source files for targets that are relatively
+   linked. This bug was introduced in the 3.32 version, and only appeared
+   for certain combinations of compilers and source.
+
+o  Fixed the menu colors for the "*" menu item for variables. There is
+   now a special Asterisk resource for this. See the man pages for details.
+
+o  Fix for finding symbol table information in library object files produced by
+   the SC4 compiler, that are statically linked into the target.
+
+o  The temporary file that ups uses to re-establish breakpoints on
+   reattaching to a target is now named with a PID number, and removed
+   after use. This fixes possible file conflicts between different users
+   on the same machine.
+
+o  Fixed a crash reported by Bob Carragher <bob@fla.fujitsu.com> caused by
+   an old state file that referred to a data structure that had since changed.
+
+o  A left click on a block in the stack (the line that shows the line
+   ranges for the block) now displays the source, instead of expanding the
+   block.
+
+o  Fixed inefficient repaints for target menu, and made the stop button
+   active during all symbol table reading.
+
+      Incorporated patches from Ian Edwards <ian@panorama.com> for:
+
+o  Fixing build problems with FreeBSD 2.2.6-STABLE (also thanks to 
+   Terry R. Friedrichsen <terry@venus.sunquest.com>). 
+
+o  This also restores the ability to call target functions from breakpoint
+   code. Should work for Linux as well.
+
+o  Fix for FreeBSD in which doing 'Stop', 'Kill', 'Start' caused 
+   "Fatal internal error: shared lib botch (aborting) ...".
+
+o  FreeBSD - when debugging a core file UPS now reports the signal that
+   caused the core dump, and the stack trace includes symbols that are
+   in shared libraries.
+
+o  General - can now edit long long integers.  Tested on FreeBSD 2.2.6-STABLE
+   and Solaris 2.
+
+Rod Armstrong
+rod@san-jose.tt.slb.com
+30 Sept 1998
+
+

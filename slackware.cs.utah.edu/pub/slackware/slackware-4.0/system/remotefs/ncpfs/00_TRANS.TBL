@@ -1,0 +1,22 @@
+F 00_INDEX.TXT                      	00_index.txt
+F INDEX                             	INDEX
+F IPX.TGZ                           	ipx.tgz
+F IPXRIPD-.LSM                      	ipxripd-0.7.lsm
+F IPXRIPD-.TGZ                      	ipxripd-0.7.tgz
+F LWARED-0.GZ                       	lwared-0.95.tar.gz
+F MARSMAIL.000                      	marsmail-02c.tgz
+L MARSMAIL.TGZ                      	marsmail.tgz	marsmail-02c.tgz
+F MARS_DOS.LSM                      	mars_dosutils-0.11.lsm
+F MARS_DOS.TGZ                      	mars_dosutils-0.11.tgz
+D MARS_NWE                          	mars_nwe
+F MARS_NWE.REA                      	mars_nwe.README
+L NCPFS.TGZ                         	ncpfs.tgz	ncpfs-2.0.12.tgz
+F NCPFS-2_.000                      	ncpfs-2.2.0.tgz
+F NCPFS-2_.001                      	ncpfs-2.2.0.lsm
+F NCPFS-2_.002                      	ncpfs-2.1.1.tgz
+F NCPFS-2_.003                      	ncpfs-2.0.12.tgz
+F NCPFS-2_.004                      	ncpfs-2.1.1.lsm
+F NCPFS-2_.005                      	ncpfs-2.0.12-kernel-2.1.89.gz
+F NCPFS-2_.GZ                       	ncpfs-2.0.12-kernel-2.0.33.gz
+F NCPFS-2_.LSM                      	ncpfs-2.0.11.lsm
+F NCPFS-2_.TGZ                      	ncpfs-2.0.11.tgz

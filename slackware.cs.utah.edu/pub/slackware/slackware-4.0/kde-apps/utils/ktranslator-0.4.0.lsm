@@ -1,0 +1,11 @@
+Begin3
+Title        = ktranslator
+Version      = 0.4.0
+EnteredDate  = 01JEN1999
+Desc1        = Utility that help the KDE translators
+Author       = Andrea Rizzi
+AuthorEmail  = rizzi@kde.org
+Required1    = Qt, X11, gcc, KDE
+CopyPolicy1  = GPL
+Keywords     = KDE, Qt, watch, tea, timer
+End

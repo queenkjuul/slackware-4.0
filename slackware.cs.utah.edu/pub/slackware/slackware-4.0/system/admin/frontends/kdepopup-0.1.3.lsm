@@ -1,0 +1,14 @@
+Begin3
+Title:          kdepopup
+Version:        0.1.3
+Entered-date:   21Aug98
+Description:    kdepopup lets you send and receive "Winpopup" messages
+Keywords:       kde samba smbclient Winpopup X11 Qt
+Author:         Rolf Jakob <rjakob@duffy1.franken.de>
+Maintained-by:  Rolf Jakob <rjakob@duffy1.franken.de>
+Primary-site:   http://www.franken.de/users/duffy1/rjakob/kdepopup-0.1.3.tar.bz2
+Alternate-site: 
+Original-site:
+Platform:       unix (only tested on Linux)
+Copying-policy: GPL
+End

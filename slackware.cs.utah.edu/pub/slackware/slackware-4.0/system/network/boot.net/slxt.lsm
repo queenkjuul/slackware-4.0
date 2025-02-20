@@ -1,0 +1,28 @@
+
+ $Id: slxt.lsm,v 1.4 1998/02/15 13:17:43 gaijin Exp gaijin $
+
+
+Begin3
+Title:          SLXT  -  SPARC-Linux Xterminal Package
+Version:        0.5c
+Entered-date:   15-Feb-1998
+Description:    A complete package to support Sun SPARCstation machines as
+                Xterminal clients of Linux machines of any other architecture.
+                The package contains install scripts and an "add_xterm" script
+                for ease of administration. No Sun binaries or libraries
+                required or included; 100% Linux.
+Keywords:       SPARC Xterminal Xkernel diskless
+Author:         gaijin@pobox.com  (John Little)
+Maintained-by:  gaijin@pobox.com  (John Little)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/boot.net
+                2.4MB slxt-0.5c.tar.gz
+                1KB   slxt.lsm
+Alternate-site: www2.gol.com /gaijin/Linux
+                2.4MB SLXT_0.5c.tar.gz
+                3KB   SLXT_README.html
+Original-site:  
+Platforms:      SPARC architecture client, and any architecture Linux server 
+                (non-Linux servers will work, but the install scripts and
+                "add_xterm" scripts will probably need to be updated).
+Copying-policy: MIT
+End

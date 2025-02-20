@@ -1,0 +1,1990 @@
+  Le French-HOWTO : Linux & la langue française
+  Écrit par Guylhem Aznar, guylhem@danmark.linux.eu.org
+  v1.30, August 1997
+
+  Copyright (©) Juillet 1997, Guylhem Aznar.  Librement distribuable &
+  modifiable selon les termes de la GPL.
+
+  1.  Présentation
+
+  Ce document a été écrit pour aider à configurer un ordinateur doté du
+  système d'exploitation Linux pour des utilisateurs francophones ; il y
+  est expliqué par exemple comment configurer périphériques &
+  applications afin de prendre en compte les particularités & les
+  spécificités de notre langue...
+
+  Toutefois, ce document ne traite pas de l'installation du système
+  d'exploitation Linux ; il est implicitement supposé que vous avez
+  correctement installé une distribution de Linux (RedHat, Debian ou
+  Slackware, cette liste n'étant pas exhaustive) & que vous vous
+  apprêtez maintenant à mieux la configurer ; veuillez donc vous référer
+  à d'autres HOWTOs pour l'installation.  Les français ne sont pas les
+  seuls francophones !
+
+  Pour chaque manipulation dépendant de la « nationalité », quatre
+  versions sont donc proposées : une canadienne française, une belge
+  wallone, une française & une suisse romande.  Le Grand Duché du
+  Luxembourg utilisant les mêmes standards que la France, j'invite les
+  lecteurs luxembourgeois à se reporter aux exemples français !
+
+  Toutefois seuls les fichiers destinés aux français (table de clavier
+  en mode console, X...) sont inclus, puisque la majorité des lecteurs
+  seront certainement français & que seuls ces fichiers présentent des
+  améliorations par rapport aux défauts.
+
+  Envoyez-moi donc vos fichiers belges, canadiens, luxembourgeois ou
+  suisses ; ils seront inclus avec plaisir s'ils se montrent plus utiles
+  que ceux proposés par défaut !
+
+  2.  Les problèmes
+
+  Le problème de tout utilisateur non-américain lors de l'installation
+  de Linux est de lui faire comprendre que, justement, il n'est pas
+  américain !
+
+  Cela a des conséquences sur :
+
+  ·  les caractères spéciaux que l'on utilise, accentués (É È À Ç) ou
+     bien ligaturés ( Æ , voire « e dans l'o » qui n'existe même pas en
+     standard sous Linux ; j'espère bientôt présenter ici une solution
+     simple pour en disposer !)
+
+  ·  la correspondance entre la sérigraphie des cabochons (touches) sur
+     lesquels vous appuyez & les codes que Linux renvoie, celui-ci
+     supposant un clavier QWERTY américain par défaut
+
+  ·  le format de page pris en charge par les programmes que vous
+     utilisez pour imprimer, différent entre les États-Unis (14 x 8,5
+     pouces pour du papier dit légal) & l'Europe (29,7 x 21 cm pour des
+     feuilles a4)
+
+  Tout étant préconfiguré pour un anglophone nord-américain -bien que
+  ceux-ci ne représentent pas la majorité de la population mondiale- ,
+  il faut donc se faire reconnaître comme une « exception » par les
+  différents programmes, par des options ou des variables à exporter
+  voire dans les pires des cas une modification du code source suivie
+  d'une recompilation.
+
+  Heureusement, « l'esprit » de Linux rend le système très ouvert à des
+  modifications de toute sorte & comme vous allez le découvrir au fil de
+  ce document, il est assez simple d'obtenir un résultat très correct.
+
+  Pour le moment, le futur de l'internationalisation de Linux porte sur
+  la traduction des messages d'erreur, des programmes, des pages de
+  manuel & de la documentation, alors si vous vous sentez l'âme d'un
+  traducteur, n'hésitez pas à contacter l'équipe de traduction des
+  HOWTOs ; pour celà, adressez-vous à Éric Dumas (dumas@freenix.fr ou
+  dumas@Linux.EU.Org) & à xc@itp.fr .
+
+  3.  Le vocabulaire : petit lexique
+
+  Tout d'abord, un mot sur le vocabulaire employé :
+
+  Des caractères sont dits « 8 bits » s'ils contiennent par exemple des
+  accents ou des signes spéciaux (comme paragraphe), non inclus dans le
+  standard ASCII 7 bits (sans accents ni caractères spéciaux).
+
+  Une table de clavier est un fichier permettant de faire correspondre
+  l'empreinte physique des cabochons (touches) du clavier au résultat
+  obtenu sur l'écran de l'ordinateur.
+
+  Les touches « Home », « End », « Page Up » & « Page Down » (dont les
+  noms varient selon les claviers) sont les touches permettant
+  respectivement d'aller en début/fin de ligne & de monter/descendre
+  d'une page.
+
+  Une touche morte est une touche qui doit être suivie d'un espace pour
+  obtenir l'accent circonflexe seul, ou dans le cas où elle est suivie
+  d'une voyelle y positionne un accent, par exemple :
+
+       ^ + e donne ê
+
+  Les touches mortes sont :
+
+  ·  pour les claviers belges & français, l'accent aigu (en AltGr de 1
+     pour les français & en AltGr de ù pour les belges), l'accent grave
+     (en AltGr de 7 pour les français & en AltGr de carré/cube pour les
+     belges), le tréma & l'accent circonflexe (tous deux à côté du P)
+
+  ·  pour les canadiens, les accent graves, circonflexes, les trémas &
+     la cédille
+
+  ·  pour les suisses, les accent aigus, graves, circonflexes, les
+     trémas & la tilde
+
+  Enfin, voici une petite explication de la différence entre GMT & UTC
+  par Edgar Bonet Orozco :
+
+  GMT est l'heure solaire moyenne de Greenwich. L'heure est comptée à
+  partir de midi et est donc décalée de 12 h  par rapport au temps
+  universel. GMT est basée sur la rotation de la Terre, ce n'est donc
+  pas un temps régulier. En effet, la vitesse de rotation de la Terre
+  subit des variations faibles mais assez cahotiques, en plus elle
+  diminue sur le long terme.
+
+  UTC (temps universel coordonné) est compté à partir de minuit
+  (toujours par rapport au méridien zéro). Il est basé sur des étalons
+  atomiques, mais des secondes intercalaires sont ajoutées
+  occasionnellement pour faire en sorte qu'il ne s'écarte jamais de plus
+  de une seconde de l'heure solaire moyenne. Tu auras plus de précisions
+  sur la détermination de UTC dans "http://opdaf1.obspm.fr/", et en
+  particulier dans "http://opdaf1.obspm.fr/www/lexique.html".
+
+  C'est le temps UTC qui sert de référence aux différentes heures
+  légales.  L'acronyme "GMT" est employé 99% du temps pour désigner UTC,
+  mais c'est une erreur (ou un abus de langage).
+
+  4.  Réglage du clavier sous Linux
+
+  Il existe deux programmes pour configurer votre clavier : un pour la
+  console : loadkeys & un pour XFree : xkbd.
+
+  Pour installer un clavier français sous Linux, tapez selon que vous
+  soyez respectivement Français, Canadien Français, Belge Wallon ou
+  Suisse Roman :
+
+       loadkeys french.map
+       loadkeys cf.map
+       loadkeys be-latin1.map
+       loadkeys sf-latin1.map
+
+  french.map est inclu dans ce HOWTO (au chapitre « Fichiers inclus ») &
+  tous les autres fichiers se trouvent d'ordinaire dans le répertoire
+  /usr/lib/kbd/keytables.
+
+  Si vous utilisez french.map & french (pour X window : cf. chapitre
+  «Régler le clavier pour X window»), N'UTILISEZ PLUS :
+
+       stty erase ^H
+       ou
+       stty erase ^?
+
+  « stty erase » ne sert en effet qu'à établir une correspondance entre
+  le code que renvoie une touche et la fonction erase (effacer le
+  caractère).
+
+  Les tables fournies dans ce HOWTO fonctionnent correctement & ne
+  nécessitent donc pas de stty erase !
+
+  D'habitude, loadkeys est exécuté par des scripts au démarrage ; par
+  exemple dans /etc/rc.d/init.d/keytable ou /etc/rc.d/rc.local (...) ;
+  la commande :
+
+        find
+       /etc/rc.d -type f | xargs grep loadkeys
+
+  vous fournira sur le nom exact du fichier lançant loadkeys ; il vous
+  suffit alors de l'éditer pour que vos modifications soient désormais
+  prise en en compte à chaque démarrage.
+
+  Si vous rencontrez les messages d'erreur suivants :
+
+       loadkeys french
+       Loading /usr/lib/kbd/keytables/french.map
+       unknown keysym 'dead_cedilla'
+       /usr/lib/kbd/keytables/french.map:67: parse error
+       syntax error in map file
+       key bindings not changed
+
+  celà signifie que votre version de kbd (dont le programme loadkeys
+  dépend) est trop vieille : il faut vous procurer une version plus
+  récente du programme.
+
+  Il existait & existe encore des versions des tables de clavier pour
+  ceux ne voulant ni touches mortes ni accents, or cela tombe
+  actuellement en désuétude puisque la grande majorité des programmes
+  prennent désormais en charge ces fameuses touches mortes et les
+  caractères accentués.
+
+  De plus, les tables fournies avec ce HOWTO permettent de se servir des
+  touches mortes ou de s'en passer si un programme les refuse, les deux
+  cas ayant été prévus.
+
+  5.  Réglage du clavier sous XFree
+
+  Pour XFree, votre fichier XF86Config doit contenir une section
+  Keyboard :
+
+       Section "Keyboard"
+       Protocol        "Standard"
+       AutoRepeat      500 30
+       LeftAlt         Meta
+       RightAlt        ModeShift               # Important pour Alt-gr, mais dans les
+                                               # versions récentes de XFree,
+                                               # AltGr & RightAlt sont synonymes.
+       ScrollLock      Compose                 # Pour faire des caractères spéciaux.
+                                               # Utiliser sinon une des 3 touches des
+                                               # nouveaux claviers 105 touches...
+       RightCtl        Control
+
+       XkbKeycodes     "xfree86"       #
+       XkbSymbols      "french(pc102)" #
+       XkbGeometry     "pc(pc102)"     #  Tout est nécessaire pour xkb
+       XkbModel        "pc102"         #
+       XkbLayout       "french"        #
+       # ou « ca » ou « be » ou « fr_CH » ; si vous êtes canadien, remplacez
+       # « french(pc102) » par « us » (« quebec », compatible avec « french »,
+       # sera bientôt disponible)
+       EndSection
+
+  Pour cette partie Xkb, certains préfèrent :
+
+       XkbKeymap "xfree86(french)"
+       XkbKeycodes  "xfree86"
+       XkbSymbols   "en_US(pc101)+french"
+       XkbGeometry  "pc(pc101)"
+
+  « french » est disponible à la fin de ce fichier !
+
+  Mettre « french » dans /usr/X11R6/lib/X11/xkb/symbols/french & «
+  french.map » dans /usr/lib/kbd/keytables/french.map.
+
+  Attention !
+
+  xkb n'est disponible que pour des versions de XFree supérieures ou
+  égales à 3,2 !
+
+  Si vous n'avez pas de répertoire /usr/X11R6/lib/X11/xkb/symbols/ ,
+  procurez-vous donc une version plus récente de X window !
+
+  Sans xkb, XFree se rabattra par défaut sur votre configuration de
+  clavier pour Linux (avec loadkeys).  Toutefois, la translation n'est
+  pas parfaite & je vous recommanderais plutôt d'éviter cette option,
+  aussi bien que l'ancien gestionnaire de clavier Xmodmap.
+
+  Il se peut aussi que sans aucune commande pour xkb, XFree vous
+  considère comme utilisateur d'un clavier anglo-américain !
+
+  Il convient donc d'utiliser « fr » ou « french » avec xkb ; toutefois
+  ce dernier permet d'utiliser de multiples améliorations pour disposer
+  du plus de confort possible (gage de confort : je l'utilise
+  actuellement :-) ).
+
+  Par exemple, certains programmes comme Netscape (tm) ne savent pas
+  encore gérer les touches mortes ... donc impossible de taper par
+  exemple des ê ou des î sur les claviers belges & français, puisque la
+  touche morte « accent circonflexe » est le seul moyen d'obtenir ces
+  caractères !
+
+  « french » répond à ce problème en proposant une solution de
+  remplacement : AltGr (voyelle) permet d'obtenir la voyelle avec un
+  accent grave, AltGr+Shift (voyelle) permet d'obtenir la voyelle avec
+  un tréma !
+
+  Voici la table complète des correspondances :
+
+  ·  AltGr (voyelle) : voyelle accent grave
+
+  ·  AltGr + Shift (voyelle) : voyelle tréma
+
+  ·  AltGr (touche au dessous de la voyelle) : voyelle majuscule accent
+     grave
+
+  ·  AltGr + Shift (touche au dessous de la voyelle) : voyelle majuscule
+     tréma
+
+  ·  AltGr + Shift (minuscule accentuée) : majuscule accentuée
+
+  Par exemple :
+
+  ·  AltGr (e) : ê
+
+  ·  AltGr + Shift (ù) : Ù
+
+  L'astuce marche aussi pour le c cédille :
+
+  ·  AltGr + Shift (ç) : Ç
+
+  Donc même dans les pires conditions (si aucune touche morte ne
+  fonctionne), on peut quand même accéder à toutes les voyelles
+  accentuées, majuscules & minuscules !
+
+  Vous y trouverez en plus les guillemets français (« »), les symboles
+  employés en physique (ß, å, delta, phi ...), des signes de monnaies
+  (yen, ¢) ou de copyright ([TM], ©) ainsi que des lettres d'autres
+  langues (Ø, Æ ...).
+
+  Tous ces signes s'obtiennent grâce à AltGr (lettre), par exemple AltGr
+  (b) donne ß, AltGr (r) donne [TM], AltGr (y) donne yen...
+
+  Pour ce qui est du choix entre les deux... à vous de voir !
+
+  Un conseil : essayez l'un puis l'autre.
+
+  Une autre méthode pour obtenir des caratères 8 bits :
+
+  Dans /usr/X11R6/lib/X11/locale/iso8859-1/Compose se trouve une table
+  de « correspondance » entre deux caractères & un résultat ; les deux
+  caractères sont « mélangés » lors de l'appui sur la touche Compose :
+  par exemple;
+
+       Compose e ^ a toutes les chances de vous donner ê
+
+  Pour utiliser la touche Compose, vous devez l'affecter à une touche !
+
+  Le paramétrage préconisé, réglé dans XF86Config, la fait correspondre
+  à la touche « Arrêt Défil » par la commande :
+
+  ScrollLock   Compose
+
+  dans la section keyboard.
+
+  Éditez votre fichier de configuration & remplacez par exemple :
+
+      key <TLDE> {        [     twosuperior,   threesuperior      ]       };
+
+  par :
+
+      key <TLDE> {        [     twosuperior,   threesuperior      ],
+
+                                [     Compose                           ]       };
+
+  Si vous avez par exemple un clavier belge ou français, désormais
+  appuyer sur la touche ²/³ (carré/cube) vous donnera normalement ²
+  (carré), en majuscule ³ (cube) & en AltGr la fameuse fonction Compose
+  ; vous pouvez bien sur décider d'attribuer Compose à une autre touche
+  ; je vous recommande toutefois d'utiliser ScrollLock, bien moins
+  utilisée que les autres touches.
+
+  NB : La touche ²/³ (carré/cube), peu utilisée, est par défaut assignée
+  aux guillemets français ( « » ), ² & ³ restant accessible
+  respectivement en AltGr & AltGr + Shift ainsi que par l'accent
+  circonflexe suivi du chiffre.
+
+  Pour modifier ce comportement par défaut, il vous suffit avant
+  d'utiliser les fichiers de configuration pour XFree & linux en mode
+  console de repérer la ligne mise en commentaire au début du fichier et
+  de supprimer ce commentaire !
+
+  6.  Réglage du clavier pour les applications en mode texte
+
+  Avertissement :
+
+  Cette section est fortement « inspirée » pour le réglage d'emacs, zsh,
+  tcsh, flex, less, rlogin, joe, col & TeX du Guide du Rootard & de
+  documents rassemblés sous le nom de « Francophones-HOWTO » qui hélas
+  n'a jamais été fini.
+
+  Les auteurs respectifs sont donc remerciés pour leurs contributions !
+
+  Tout d'abord :
+
+  Le huitième bit doit survivre à l'entrée du noyau, assurez-vous-en
+  donc avec :
+
+  stty cs8 -istrip -parenb
+
+  Ensuite, il convient de s'assurer que l'application est apte à
+  supporter les caractères 8 bits : par exemple, ispell n'est pas
+  compilé pour des caractères 8 bits par défaut : il faut le recompiler
+  sans l'option :
+
+  -NO8BIT
+
+  Enfin, charger une police de caractères adaptées :
+
+  setfont /usr/lib/kbd/consolefonts/xxx-NNN
+
+  ·  xxx repésente le type de police ; il doit s'agir d'une iso01 ou
+     lat1 pour les francophones sinon il n'y a plus de caractères «
+     étendus » (voyelles accentués, symboles de ponctuation comme
+     paragraphe... )
+
+  ·  NNN représente la taille individuelle de chaque caractère ; 08 est
+     presque illisible mais 16 est un peu gros... À régler selon les
+     goûts de chacun.
+
+  Éric Dubreuil (edubreuil@aol.com) vous conseille pour sa part la
+  police lat1u-16.psf, permettant d'avoir tous les caractères accentuées
+  sans pour autant enlaidir mc, un gestionnaire de fichier très
+  populaire mais très sensible à la police utilisée !
+
+  0) Linux
+
+  Linux en 'version française' existe... mais ne semble pas facile à
+  obtenir.
+
+  Il faut en pratique disposer des sources de la libc & d'un minimum de
+  compétences (langage C).
+
+  Voici donc, pour la bonne bouche, quelques renseignements collectés...
+
+  Laurent Chemla nous pilote : « Si j'ai suivi, il y a deux trucs qui
+  font la meme chose, d'ou embrouille, les locales et un truc appelé
+  nls.
+
+  Les locales, sous Linux, ça va par défaut dans /usr/lib/locale, et ça
+  contient de quoi préciser entre autres le format des nombres
+  (LC_NUMERIC), les retours des fonctions ctype (isalpha etc)
+  (LC_CTYPE), le format des sommes d'argent (LC_MONETARY), le format des
+  dates (LC_TIME) et encore d'autres détails. Sur certains Unix, il y a
+  aussi LC_MESSAGES, qui contient les messages de l'OS dans la langue
+  choisie par la variable d'environnement LC_MESSAGES. Pas sous Linux.
+  Sous Linux, c'est nls qui fait ça, et de fait, nls gêre un fichier qui
+  est dans /etc/locale/.  (NDG : De nos jours, ils se trouvent plutôt
+  dans /usr/lib/locale) D'où l'embrouille. Ils auraient mis ça dans
+  /usr/lib/nls, comme tout le monde, ça aurait evite la confusion. Mais
+  bon.
+
+  Donc, si l'on veut se tenir à jour d'nls, il suffit d'aller dans les
+  sources de libc/nls, faire 'make french' et copier libc.dat dans
+  /etc/locale/C/libc.dat et toc, tous les messages sont en francais. Y
+  compris ceux des programmes qui n'utilisent pas setlocale(): c'est
+  perror() qui fait le boulot (du moins je suppose).
+
+  Si l'on veut en plus que les programmes qui utilisent setlocale()
+  utilisent nos règles françaises, là il faut aller dans les sources de
+  libc/locale et dans chacun des sous-répertoires jeter un oeil sur le
+  fichier exemple, le modifier pour le français (c'est des tout petits
+  fichiers), et faire 'make', avant de copier le résultat dans
+  /usr/lib/local/fr/ et de faire un 'export LC_ALL=fr'.  »
+
+  1) Les shells
+
+  Ces variables doivent être exportées à chaque login : mettez les donc
+  dans .bashrc & .bash_profile, .tcshrc ou /etc/profile :
+
+       # pour tcsh, utiliser setenv au lieu de export, par exemple «setenv LANG fr»
+
+       # Les locales
+       LC_CTYPE=ISO-8859-1
+       LC_ALL=fr_FR
+       # (ou fr_BE, fr_CA, fr_CH, fr_LU ...)
+       LANG=fr
+       LESSCHARSET=latin1
+       export PATH PS1 LC_CTYPE LC_ALL LANG LESSCHARSET
+
+       # Les raccourcis : sans ll ou d, impossible de voir les fichiers comprenant des
+       # caractères 8 bits ...
+       alias q="cd .."
+       alias ll="ls --color=auto -a -N -l"
+       alias d="ls --color=auto -a -N"
+
+       # Au cas où del/backspace ne fonctionne pas, essayez l'un des deux :
+       #stty erase ^?
+       #stty erase ^H
+
+  N'oubliez pas : tous les fichiers ici cités dont le nom commence par «
+  .  » doivent se trouver dans votre répertoire maison !
+
+  a) Pour bash (version 1.13.*), créez un .inputrc:
+
+       # Permettre de rentrer & recevoir des caractères accentués
+       set meta-flag on
+       set convert-meta off
+       set input-meta on
+       set output-meta on
+
+       # Pas de bip audible mais visible
+       # set bell-style visible
+
+       # Pour faire marcher Home, End, Delete, Esc + Delete & Esc + Backspace
+       "\e[1~":beginning-of-line
+       "\e[3~":delete-char
+       "\e[4~":end-of-line
+       "\e\C-h": backward-kill-word
+       "\e\e[3~": kill-word
+
+  Celà vous permettra d'effacer des caractères vers l'avant avec DELETE
+  (souvent nommée DEL ou SUPPR) et vers l'arrière avec BACKSPACE (touche
+  située à côté d' « Entrée » ), ceci n'étant pas prévu sur les tables
+  de clavier par défaut « mimant » le comportement d'un clavier de
+  console VT100 .
+
+  Les deux dernières options vous permettront d'utiliser Home & End pour
+  aller au début & à la fin de la ligne en cours d'édition.
+
+  b) zsh se contente d'un stty pass8.
+
+  c) Pour tcsh, placer, dans le fichier /etc/csh.login (ou dans les
+  fichiers .tcshrc des utilisateurs concernés) :
+
+  setenv LC_CTYPE iso_8859_1
+  setenv LANG fr
+
+  d) Pour tous les shells
+
+  Remplacer 'iso_8859_1' par 'iso-8859-1' si cela ne fonctionne pas,
+  voire french.iso88591.fr_FR (ou fr_BR, fr_CA, fr_CH, fr_LU ...)
+
+  À propos de LANG, Pablo Saratxaga signale qu'il vaut mieux éviter
+  fr_FR : « Par ailleurs je conseille un simple "fr" plutôt que fr_FR
+  etc.  Certains programmes n'aiment pas trop (ils ne passent pas
+  vraiment par la resolution de locales mais lisent LANG
+  directemment...) »
+
+  Si nls est installe,  les  routines  correspondantes  sont  utilisees,
+  sinon tcsh  agit en iso_8859_1, quelle que soit les valeurs donnees a
+  LANG & LC_CTYPE : cf. la section NATIVE LANGUAGE SYSTEM de tcsh(1).
+
+  D'après le Danish-HOWTO:
+
+  setenv LC_CTYPE ISO-8859-1; stty pass8
+
+  2) L'heure
+
+  Rien n'est plus facile que de laisser à Linux le soin de passer de
+  l'heure d'été à l'heure d'hiver & réciproquement...
+
+  a) D'abord, quelle heure est-il :-) ?
+
+  Après avoir regardé sur la pendule la plus proche de vous, tapez :
+
+  clock
+
+  puis
+
+  date
+
+  La première heure est celle du bios, la seconde celle calculée par
+  Linux à partir de /etc/zoneconfig.
+
+  Pour peu que vous ayez installé timezone, votre machine peut jongler
+  aisément entre les différents fuseaux horaires... ce que les DOS ou
+  Windows ne permettent pas !
+
+  b) L'heure du choix !
+
+  De là, deux possibilitées : soit vous décidez de laisser l'heure
+  système à l'heure locale (peu pratique, excepté si vous hébergez aussi
+  sur votre disque dur ces systèmes d'exploitation peu évolué, ne
+  sachant même pas exploiter les fuseaux horaires), soit vous passez à
+  l'heure de Greenwich, Linux se chargeant de l'adapter à votre fuseau
+  horaire.
+
+  Dans ce cas, les grands voyages à l'étranger avec un portable tout
+  neuf équipé de Linux se feront en toute simplicité : le dernier
+  pargraphe vous expliquera comment changer de fuseau horaire
+  facilement...
+
+  c) Le réglage
+
+  Pour procéder, regardez d'abord si l'heure système retournée par clock
+  est l'heure locale ou l'heure de Greenwich (vous avez bien regardé une
+  pendule comme je vous le conseille plus haut, n'est-ce pas ?).
+
+  Si clock vous retourne l'heure locale, il va falloir jongler un peu
+  avec les fuseaux horaires, sinon passez directement à l'étape «
+  réglage du fuseau ».
+
+  ·  Pour les français, belges wallons & suisses romans :
+
+  Vous êtes normalement dans une zone horaire MET (Medium European Time,
+  soit GMT+1).
+
+  La zone « MET DST » correspond elle à l'heure d'été active (GMT + 2).
+
+  Selon les décisions futures de la cour européenne, l'heure d'été
+  (daylight savings) risque d'être abandonné...  ce qui compliquera
+  cette explication !
+
+  ·  Pour les canadiens français :
+
+  Vous êtes dans une zone horaire GMT-4 si vous habitez autour de
+  Montréal .
+
+  Pour les autres provinces, consulter un dictionnaire !
+
+  Premièrement, effacez le fichier /etc/localtime ou
+  /usr/lib/zoneinfo/localtime (l'emplacement varie selon les
+  distributions ; si vous avez les deux fichiers, effacez /etc/localtime
+  : l'autre fichier doit certainement être un lien vers /etc/localtime).
+
+  Dès lors, clock & date doivent vous retourner la même heure...
+
+  ·  Pour les canadiens français : utilisez GMT+4
+
+  ·  Pour les français, belges wallons & suisses romans :
+
+  Si vous lisez ce document en été, le décalage de l'heure locale par
+  rapport à l'heure de Greenwich est de deux heures, on va donc mettre
+  temporairement le fuseau en GMT-2, soit vous lisez ce document en
+  hiver & il convient de remplacer tous les « 2 » par des « 1 » dans les
+  exemples suivants...
+
+  GMT-2 ?!!? Alors que le fuseau est GMT+2 ?
+
+  Ceci va vous retourner l'heure de Greenwich dont on a besoin pour
+  régler le système : tapez :
+
+  ln -sf /usr/lib/zoneinfo/Etc/GMT-2 /etc/zoneconfig
+
+  clock
+
+  date
+
+  L'heure calculée correspond donc à l'heure de Greenwich, l'heure
+  système à l'heure locale... soit l'inverse de ce que l'on veut.
+
+  Un simple : clock -w
+
+  Va alors mettre l'heure du système en heure de Greenwich, utilisant
+  pour celà l'heure locale inversée volontairement avec l'heure système.
+
+  d) Régler le fuseau horaire :
+
+  Tapez alors : ln -sf /usr/lib/zoneinfo/Europe/Votre-ville
+  /etc/zoneconfig
+
+  Et voilà ! Le système est à l'heure de Greenwich, la conversion vers
+  le fuseau horaire local & l'heure d'été se faisant automatiquement.
+
+  Si vous habitez hors Europe, procédez de même en remplaçant les « -2 »
+  par « X », X représentant l'opposé de votre décalage horaire (par
+  exemple -4 au Québec, donc X=+4...)
+
+  e) Modifier le fuseau horaire :
+
+  Si vous partez à l'étranger, il est alors simple de modifier l'heure
+  locale de votre portable : par exemple si vous partez pour Moscou :
+
+  ln -sf /usr/lib/zoneinfo/Europe/Moscow /etc/zoneconfig
+
+  Très simple & très utile : plus besoin de se souvenir du décalage
+  horaire (plus ou moins X heures) puisque Linux se charge désormais de
+  tout !
+  3) Emacs
+
+  Voici un fichier de configuration de base pour employer les accents.
+  XEmacs les accepte lui par défaut sans broncher :-)
+
+    ;;
+    ;; Fichier .emacs: initialisation d'emacs
+    ;; Tiré du Guide du Rootard
+    ;;
+
+    (display-time)                     ;; Pour avoir l'heure dans la barre d'etat
+    (setq display-time-24hr-format t)  ;; Format 24 heures
+
+    ;; Nouveaux modes
+    (autoload 'c++-mode   "cplus-md" "C++ Editing Mode" t)
+    (autoload 'perl-mode   "perl-mode" "Perl Editing Mode" t)
+    (autoload 'c-mode "c-mode" "C Editing Mode" t)
+    ; mieux vaudrait utiliser le "cc-mode"
+
+    (autoload 'jargon-mode "jargon" "Jargon Mode" t)
+
+    ;; Auto-Mode Settings : positionne le mode selon l'extension
+    (setq auto-mode-alist
+    (append '(("\.c$"  . c-mode)    ;; utilise le mode C++ meme pour C
+    ("\.h$"  . c-mode)
+    ("\.C$"  . c++-mode)
+    ("\.H$"  . c++-mode)
+    ("\.cc$" . c++-mode)
+    ("\.C$"  . c++-mode)
+    ("\.pl$" . perl-mode)           ;; Perl
+    ("/tmp/snd\.[0-9]*" . text-mode);; Text (pour le mail)
+    ("[Rr][Ee][0-9]*" . text-mode)
+    ("\.ada$"  . ada-mode)          ;; Ada
+    ("\.spec$"  . ada-mode)
+    ("\.body$"  . ada-mode)
+    ("makefile$" . makefile-mode)  ;; Makefile
+    ("Makefile$" . makefile-mode)
+    ("Imakefile$" . makefile-mode))
+    auto-mode-alist))
+
+    ; Remapes varies a mettre ici
+    (global-set-key "\eg" 'goto-line)       ;; ESC G = Goto line
+
+    (put 'eval-expression 'disabled nil)
+
+    ;; Accents...
+    (standard-display-european 1)
+    (load-library "iso-syntax")
+    (set-input-mode (car (current-input-mode))
+                  (nth 1 (current-input-mode))
+                  0)
+
+    ;; Sous X-Window, textes en couleurs (C/C++/Shell/Makefile,etc)
+    (cond (window-system
+    (setq hilit-mode-enable-list  '(not text-mode)
+    hilit-background-mode   'light
+    hilit-inhibit-hooks     nil
+    hilit-inhibit-rebinding nil)
+    (require 'hilit19)
+    ))
+    (if (not (equal window-system ""))
+    (global-set-key "\C-?" 'delete-char))
+    ))
+
+  Le Keyboard-HOWTO conseille quand à lui :
+
+            (standard-display-european t)
+            (set-input-mode nil nil 1)
+            (require 'iso-syntax)
+            (load-library "iso-insert.el")
+            (define-key global-map [?\C-.] 8859-1-map)
+
+  4) less
+
+  /etc/profile ou les fichiers de démarrage du shell (comme doivent
+  contenir :
+
+   export LESSCHARSET=latin1
+
+  Le fichier .lessrc se trouve à la section « Fichier inclus ».
+
+  Pour s'en servir, taper :
+
+       lesskey -o .less .lessrc
+
+  N'oubliez pas de mettre le fichier .less dans votre répertoire maison
+  : il permet d'employer les touches fléchées, Page_up, Page_down, Home
+  & End.
+
+  5) ls
+
+  Utilisez l'option :
+
+  --color=auto
+
+  définissez dans les fichiers de démarrage de votre shell les alias
+  suivants permettant de voir les fichiers dont le nom comprend des car­
+  actères 8 bits :
+
+       alias ll="ls --color=auto -l -a -N"
+       alias d="ls --color=auto"
+
+  Un simple d remplacera le classique ls, en y ajoutant la couleur,
+  alors que ll vous offrira une liste complète de tous les fichiers
+  présents dans le répertoire, avec leurs attributs, leurs tailles...
+
+  Pablo Saratxaga conseille d'utiliser --color=auto car « --color=yes
+  fera avoir des codes escape ansi même lorsqu'on redirige vers un pipe
+  un fichier où que le termina ne supporte pas la couleur... ce n'est
+  pas ce qu'on voudrait. »
+
+  6) flex
+
+  Donnez l'option :
+
+   -8
+
+  généré doit accepter les entrees 8-bits (bien sur qu'il doit le faire
+  !).
+
+  7) Elm
+
+  Rajoutez ces trois lignes dans votre .elm/elmrc :
+
+         charset = iso-8859-1
+
+         displaycharset = iso-8859-1
+
+         textencoding = 8bit
+
+  8) col
+
+  Assurez-vous :
+
+  1) qu'il a été corrigé et fasse un
+
+       setlocale(LC_CTYPE,"");
+
+  2) de définir
+
+       LC_CTYPE=ISO-8859-1
+
+  dans l'environment
+
+  9) Rlogin
+
+  Utilisez l'option :
+
+       -8
+
+  10) joe
+
+  ftp://sunsite.unc.edu:/pub/Linux/apps/editors/joe-2.8.tar.gz
+
+  ou plus récent devrait fonctionner après édition du fichier de config­
+  uration.  Placez l'option -asis dans /usr/lib/joerc en première
+  colonne.
+
+  11) TeX & LaTeX
+
+  Le plus simple consiste à employer GuTemberg, une distribution de
+  LaTeX avec tous les défauts réglés pour des francophones par des
+  francophones !
+
+  Sinon :
+
+  Pour LaTeX:
+
+   \documentstyle[isolatin]{article}
+
+  Pour LaTeX2e:
+
+   \documentclass{article}\usepackage{isolatin}
+
+  ou alors :
+
+   \usepackage[latin1]{inputenc}
+   \usepackage[T1]{fontenc}
+
+  Au cas où votre distribution soit trop vieille pour l'inclure,
+  isolatin.sty est disponible séparément sur :
+
+  ftp.vlsivie.tuwien.ac.at/pub/8bit
+
+  Pour gs & xdvi, il faut utiliser des options speciales (sur ma
+  machine, ce sont des alias). En effet, ils sont souvent configurés
+  pour un papier de taille anglo-saxonne.
+
+  Ces options sont les suivantes :
+
+  gs -sPAPERSIZE=a4 xdvi -paper a4 ghostview -a4
+
+  Pour que dvips convertisse les documents dans un format papier a4, il
+  faut specifier dans le fichier config.ps (le chemin varie en  fonction
+  des versions de LaTeX) : /usr/lib/texmf/dvips/config.ps ou .dvipsrc
+
+  @ a4 210mm 297mm @+ ! %%DocumentPaperSizes: a4 @+ %%PaperSize: a4 @+
+  %%BeginPaperSize: a4 @+ a4
+
+  Sinon ajoutez à votre .Xresources :
+
+  XDvi.paper:             a4
+  Ghostview.pageMedia:    A4
+
+  12) Manuel
+
+  Tout d'abord, il faut vous procurer les pages de manuel Linux
+  traduites en français sur :
+
+  ftp.lip6.fr/pub/linux
+
+  Si vous utilisez une distribution Debian, celles-ci sont présentes sur
+  le cédérom : il suffit de les sélectionner lors de l'installation.
+
+  De là, deux possibilitées :
+
+  ·  soit vous ne voulez que des manuels en français, auquel cas il faut
+     faire un :
+
+       export MANPATH=/usr/man/fr_FR (ou fr_BE, fr_CA, fr_CH, fr_LU...)
+
+  ·  soit vous préférez par défaut des manuels en français et si la page
+     n'existe pas, vous vous rabattez vers l'anglais, il suffir alors de
+     taper :
+
+       export LANG=fr
+
+  man ira chercher dans le « MANPATH » des pages en « LANG » par défaut
+  et se rabattra sinon sur des pages en anglais
+
+  13) Correcteur orthographique ispell
+
+  Vous pouvez vous le procurer sur son site original :
+
+  ftp.ireq-robot.hydro.qc.ca:/pub/ispell/francais-IREQ-1.3.tar.gz
+
+  ou sur :
+
+  ftp.lip6.fr/pub/ispell/francais
+
+  Un fichier LISEZMOI explique pas à pas & en français l'installation.
+
+  14) Les claviers 105 touches
+
+  Aussi appelés « claviers Microsoft (tm) », ils ont trois touches de
+  plus que les claviers normaux.
+
+  Comment s'en servir ?
+
+  En mode console, éditer french.map et décommenter les lignes en
+  parlant !
+
+  De même pour french (pour Xwindow).
+
+  15) PGP
+
+  Tout d'abord, un avertissement : ce paragraphe n'est destiné qu'aux
+  francophones ne vivant pas en France !
+
+  En effet, en France, en Iran, en Irak & dans quelques autres pays,
+  l'utilisation de logiciels de cryptographie est considérée comme usage
+  d'armes de guerre, ce qui est punissable par la loi !
+  Donc sautez ce paragraphe si votre législation locale ne permet pas
+  d'utiliser des logiciels de cryptographie.
+
+  Premièrement, il faut se procurer pgp-international (à cause de
+  problèmes de patentes et de législation sur l'export d'armes de
+  guerre, il existe pgp-us & pgp-international, ce dernire étant doté
+  d'un algorythme encore plus puissant) sur :
+
+  ftp://ftp.ifi.uio.no/pub/pgp/
+
+  Ensuite, mettre dans votre répertoire maison, dans un sous répertoire
+  .pgp les fichiers :
+
+       config.txt
+       language.idx
+       pgpdoc1.txt
+       pgpdoc2.txt
+       language.txt
+       fr.hlp
+       en.hlp
+       pgp.hlp
+
+  Enfin, éditer le fichier .pgp/config.txt pour y rajouter :
+
+       Language = fr
+       CharSet = latin1
+
+  Lisez ensuite .pgp/fr.hlp pour apprendre à vous servir de pgp !
+
+  16) Impression en mode ascii
+
+  Pierre-Charles David (pcdavid@club-internet.fr) vous donne ce truc :
+
+  Pour l'impression de texte simple, beaucoup d'imprimantes attendent
+  des lettres en codage IBM (celui utilisé par MS-DOS).
+
+  Si le fichier est codé en latin1, on doit utiliser 'recode
+  latin1:ibmpc' (à placer dans les filtres lpr par exemple), sous peine
+  de voir imprimer des 'alpha' à la place de 'à', et autres choses du
+  même genre.
+
+  17) Divers
+
+  Pour les programmes utilisant curses (comme lynx) David Sibley dit:
+
+  « La version standard de curses utilise le huitième  bit  pour la
+  vidéo  inversee  (voir  le  flag  _STANDOUT  défini dans
+  /usr/include/curses.h).  Cependant, ncurses semble  fonctionner en
+  8-bits et affiche le iso-latin-8859-1 correctement. »
+
+  Pour  les  programmes  utilisant  groff  (comme  man), utilisez le :
+
+  -Tlatin1
+
+  au lieu de :
+
+       -Tascii
+
+  Les vieilles versions  de  man  utilisent aussi col, & le point suiv­
+  ant s'applique aussi.
+
+  Une belle discussion sur le thème de l'ISO-8859-1 & sur « comment
+  manipuler les caractères 8-bits » est disponible dans :
+
+       ftp://grasp.insa-lyon.fr/pub/faq/fr/accents
+
+  Pour perl, si tout d'un coup après une mise à jour il raconte :
+
+       (guylhem@danmark:guylhem)$ perl
+       perl: warning: Setting locale failed for the categories:
+               LC_CTYPE LC_COLLATE
+       perl: warning: Please check that your locale settings:
+               LC_ALL = "fr_FR",
+               LC_CTYPE = "ISO-8859-1",
+               LC_COLLATE = (unset),
+               LANG = "fr"
+           are supported and installed on your system.
+       perl: warning: Falling back to the "C" locale.
+       (guylhem@danmark:guylhem)$
+
+  Essayez cette solution de Thomas Parmelan (Thomas.Parmelan@efrei.fr) :
+
+  - en libc6 le format des fichiers binaires de définition des locales a
+  (encore) changé : il faut les régénérer à partir des sources
+  (WG15collection.tar.tz sur ftp.lip6.fr:/pub/linux/GCC par exemple) et
+  des programmes "locale" et "localedef" qui sont fournis dans les
+  sources de la libc.
+
+  - Sinon tu peux également essayer ceci (c'est comme cela que ça
+  fonctionne chez moi en libc-5.4.x) :
+
+            unset LANG
+            unset LC_CTYPE
+            unset LC_COLLATE
+            export LC_ALL=fr_FR.ISO-8859-1
+
+  7.  Réglage du clavier pour les applications X
+
+  1) Les xterminaux (xterm, nxterm, rxvt...)
+
+  Les faire fonctionner avec toutes les touches standard du clavier 102
+  touches relève du miracle, quant aux accents, seule une recompilation
+  vous permettra de les utiliser !
+
+  Pour xterm, essayez de mettre dans votre .Xdefaults :
+
+  XTerm*eightBitInput: true
+  XTerm*eightBitOutput: true
+
+  Pablo Saratxaga conseille de rajouter dans .inputrc :
+
+  # pour rxvt
+  "\e[7~":beginning-of-line
+  "\e[8~":end-of-line
+  # pour xterm
+  "\e[H": beginning-of-line
+  "\e[F": end-of-line
+
+  Mais ces deux solutions ne vous garantissent pas de résoudre tous les
+  problèmes de rxvt et de xterm ...
+
+  Pour les résoudre sans créer de fichiers dans /usr/X11R6/lib/X11/app-
+  defaults, je tiens sinon à votre disposition un xiterm, un terminal X
+  supportant *TOUTES* les touches des claviers standard, avec Home, End,
+  Page_up (...) & même le pavé numérique, fonctionnant comme en mode
+  console, i.e.  Shift-Page_up permettant de faire défiler une page,
+  voire mieux : le pavé numérique reconnaissant enfin la différence
+  entre Verr. Num allumé & Verr. Num éteint.
+
+  X international terminal (xiterm pour les intimes) est bien sur sous
+  GPL & mis à jour pour suivre parallèlement l'évolution de rxvt.
+
+  Sur http://www.linux-france.com/prj/xiterm & sur
+  ftp://sunsite.unc.edu/pub (& bientôt ailleurs sans doute), vous
+  trouverez donc xiterm, qui remplace votre xterm classique en y
+  apportant la couleurs, les accents & les touches étendues.
+
+  Pour l'installer, compilez-le, devenez root & tapez :
+
+       rm /usr/X11R6/bin/xterm
+       rm /usr/X11R6/lib/X11/app-defaults/xterm
+       rm /usr/X11R6/lib/X11/app-defaults/rxvt
+       rm /usr/X11R6/lib/X11/app-defaults/Xterm
+       rm /usr/X11R6/lib/X11/app-defaults/XTerm
+       rm /usr/X11R6/lib/X11/app-defaults/Rxvt
+       rm /usr/X11R6/lib/X11/app-defaults/RXvt
+       cp xiterm /usr/local/bin
+
+       ln -sf /usr/local/bin/xiterm /usr/X11R6/bin/xterm
+       ln -sf /usr/local/bin/xiterm /usr/X11R6/bin/rxvt
+
+  2) Les applications Motif
+
+  Là, je n'ai malheureusement aucun remède miracle !
+
+  Utilisez les possibilités du fichier french au lieu des touches mortes
+  (AltGr (voyelle) : voyelle accent circonflexe... ) !
+
+  3) Le manuel
+
+  Pablo Saratxaga tient à votre disposition un xman modifié « pour qu'il
+  supporte la variable « LANG » et puisse afficher les pages en d'autres
+  langues qu'anglais ».
+
+  Il est disponible sur :
+
+       ftp.lip6.fr:/pub/linux/distributions/redhat-contrib/SRPMS/xman-3.1.6-3.src.rpm
+       ftp.lip6.fr:/pub/linux/distributions/redhat-contrib/i386/xman-3.1.6-3.i386.rpm »
+
+  8.  Remerciements
+
+  Ce document ne serait pas ce qu'il est sans l'aide de Nat Makarévitch
+  (nat@linux-france.com).
+
+  Je tiens aussi à remercier les personnes suivantes pour leurs
+  contributions aux autres documents sur Linux en français (Guide du
+  Rootard & Francophones-HOWTO) desquels la section « Configurer les
+  applications en mode texte » s'inspire pour emacs, zsh, tcsh, flex,
+  less, rlogin, joe, col & TeX.
+
+  Rappelons que les sites officiels du Guide du Rootard sont :
+
+       http://www.freenix.fr/linux/Guide
+
+  &
+
+       ftp.lip6.fr:/pub/linux/french/docs/
+
+  Par ordre alphabétique :
+
+  Jean-Michel Antoine
+  Michel Billaud
+  Stephane Bortzmeyer
+  Rémy Card
+  Xavier Cazin
+  Laurent Chemla
+  René Cougnenc
+  Bruno Cornec
+  Yann Dirson
+  Éric Dubreuil
+  Éric Dumas
+  Pierre Ficheux
+  Laurent Frigault
+  Frederic Lepied
+  Stephane Marzloff
+  Marc Merlin
+  Thomas Parmelan
+  Thomas Quinot
+  David Robert
+  Ollivier Robert
+  Benjamin Ryzman
+  Pablo Saratxaga
+  Julien Simon
+  J.M. Vansteene
+
+  Surtout, si je vous oublie, signalez-le moi !
+
+  De même si vous ne voulez plus figurer dans cette liste...
+
+  Ce document est en GPL, toutefois il vaudrait mieux éviter une
+  multiplication des versions :-).
+
+  Envoyez-donc vos suggestions & modifications à
+  guylhem@danmark.linux.eu.org
+
+  Je me ferai un plaisir de les intégrer dans les prochaines versions !
+
+  Signalez-moi aussi les erreurs : cet HOWTO est en perpétuel
+  changement, avec des nouveautés incluses à chaque version ; des erreur
+  peuvent facilement s'y glisser !
+
+  9.  Fichiers inclus dans ce HOWTO
+
+  Comme signalé plus haut, cette section ne contient que .bashrc,
+  window), quebec (pour X window) & french.map .
+
+  Voici .bashrc (pour bash, à placer dans votre répertoire maison) :
+
+       # ~/.bashrc : executé par bash(1) pour les shells lancés après le login.
+
+       # Le path
+       PATH="/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin:/usr/local/bin"
+
+       # Le prompt
+       PS1="(\u@\h:\W)$ "
+
+       # Les locales
+       LC_CTYPE=ISO-8859-1
+       LC_ALL=fr_FR
+       # (ou fr_BE, fr_CA, fr_CH, fr_LU ..)
+       LANG=fr
+       LESSCHARSET=latin1
+       export PATH PS1 LC_CTYPE LC_ALL LANG LESSCHARSET
+
+       # Les raccourcis
+       alias q="cd .."
+       alias ll="ls --color=auto -a -N -l"
+       alias d="ls --color=auto -a -N"
+
+       # Au cas où del/backspace ne fonctionne pas, essayez l'un des deux :
+       #stty erase ^?
+       #stty erase ^H
+
+       # Refuser le talk & le write
+       #mesg n
+       # Permettre les coredumps
+       #umask 022
+
+  Voici .bash_profile (pour bash, à placer dans votre répertoire maison)
+  :
+
+  # ~/.bash_profile: executé par bash(1) lors les logins.
+
+  # Le path
+  PATH="/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin:/usr/local/bin"
+
+  # Le prompt
+  PS1="(\u@\h:\W)login$ "
+
+  # Les locales
+  LC_CTYPE=ISO-8859-1
+  LC_ALL=fr_FR
+  # (ou fr_BE, fr_CA, fr_CH, fr_LU ...)
+  LANG=fr
+  LESSCHARSET=latin1
+  export PATH PS1 LC_CTYPE LC_ALL LANG LESSCHARSET
+
+  # Les raccourcis
+  alias q="cd .."
+  alias ll="ls --color=auto -a -N -l"
+  alias d="ls --color=auto -a -N"
+
+  # Au cas où del/backspace ne fonctionne pas, essayez l'un des deux :
+  #stty erase ^?
+  #stty erase ^H
+
+  # Refuser le talk & le write
+  #mesg n
+  # Permettre les coredumps
+  #umask 022
+
+  Voici .lessrc (pour less, à compiler avec lesskey) :
+
+       (taper ESC)[B   forw-line
+       (taper ESC)[A   back-line
+       (taper ESC)[6~  forw-scroll
+       (taper ESC)[5~          back-scroll
+       (taper ESC)[1~   goto-line
+       (taper ESC)[4~  goto-end
+       (taper ESC)[C    next-file
+       (taper ESC)[D    prev-file
+       (taper ESC)OA    back-line
+       (taper ESC)OB    forw-line
+
+  Pour rentrer un ESC (parfois nommé échap), sous vi, mettez vous en
+  mode insertion avec i puis tapez ctrl+v & enfin esc.
+
+  Voici french (pour X11, à placer dans
+  /usr/X11R6/lib/X11/kbd/keytables) :
+
+  // French keyboard description, (c) Guylhem Aznar, July 1997
+  // Released under GNU GENERAL PUBLIC LICENSE Version 2
+  // If you haven't received it, this license is available at :
+  // Free Software Foundation, Inc.  675 Mass Ave, Cambridge, MA 02139, USA
+
+  partial hidden alphanumeric_keys modifier_keys
+  xkb_symbols "basic" {
+
+  // Description *TOTALE* d'un clavier français, sans le comparer à un
+  // clavier américain par défaut : on y gagne plus de flexibilité, ce
+  // modèle devient plus personalisable ...
+
+  // Les touches é, è, ç, à & ù, présentes en mode minuscule (i.e. sans shift)
+  // ne sont pas disponibles en mode majuscule car elles sont respectivement
+  // remplacées par 2, 7, 9, 0 & % .
+  // Pour obtenir les majuscules accentuées É, È, Ç, À & Ù, vous pouvez soit
+  // utiliser AltGr + Shift (minuscule accentuée), soit utiliser les accent
+  // dits "morts", i.e. fonctionnant comme l'accent circonflexe & le tréma .
+  // Sont disponibles :  AltGr (1) : accent aigü, AltGr (7) : accent grave,
+  // AltGr (^) : cédille ; pour s'en servir, procéder comme avec l'accent
+  // circonflexe & le tréma : ex : AltGr (1) + e : é ; AltGr (1) + e : É ...
+  // La tilde (~) n'étant pas employée sur des lettres en français, elle reste
+  // en AltGr (2) une touche normale .
+  // Une tilde "morte" (avec la cédille "morte") est toutefois disponibles sur la
+  // touche accent circonflexe & tréma en AltGr + Shift .
+
+  // Au cas où les dead_keys ne fonctionnent pas (certains programmes les
+  // refusent), vous pouvez toujours utiliser pour obtenir les voyelles à accent
+  // circonflexe & à tréma :
+  // AltGr (voyelle) : voyelle-minuscule à accent circonflexe
+  // AltGr + Shift (voyelle) : voyelle-minuscule à tréma
+  // AltGr (en dessous de la voyelle) : voyelle-majuscule à accent circonflexe
+  // AltGr + Shift (en dessous de la voyelle) : voyelle majuscule à tréma
+
+  // Plusieurs lettres étrangères, utilisées comme signes mathématiques ou
+  // physiques, abbréviations (...) ont été rajoutées en AltGr :
+  // T->Phi;, r->[TM], y->yen, c->¢ & ©, f->señora, m->señor,
+  // g->`, h->', ù->±, x->æ s->ø, z->å, w->Delta;, b->ß
+
+  // La correspondance essaye de se faire la plus naturelle possible, en mettant
+  // ces touches là où l'on s'attend le plus de les trouver ...
+  // mais elle est loin d'être parfaite :^)
+
+  // Modifiez donc à loisir tous ces AltGr, et si vous pensez avoir trouvé la
+  // configuration ultime permettant d'accéder en mieux à toutes ces touches,
+  // mailez moi !
+  // Vôtre arrangement, s'il est vraiement plus pratique, sera inclu dans la
+  // prochaine version de la carte de correspondance du clavier !
+
+      name[Group1]= "French";
+      key <ESC>   {       [          Escape                       ]       };
+
+  // Deux possibilitées pour cette touche "au carré" (²) :
+  // * un mode mathématique où elle renvoie "au carré" en mode normal, "au cube"
+  // si elle est Shiftée et "puissance 1" en Alt-gr (pour parler par exemple de
+  // m.s-¹ ...)
+  // Toutefois, accent circonflexe suivi de 1, 2, 3, -, renvoyant respectivement
+  // ¹, ², ³ et -, cette touche est inutile !
+
+  // * un mode littéraire est donc proposé par défault, pour disposer des
+  // guillemets français (« & ») ; le ² et le ³ restant disponibles
+  // respectivement en AltGr et AltGr + Shift .
+
+  //   key <TLDE> {       [     twosuperior,   threesuperior      ],
+  //                      [     onesuperior                       ]       };
+
+      key <TLDE>  {       [   guillemotleft,  guillemotright      ],
+                          [     twosuperior,   threesuperior      ]       };
+
+      key <AE01>  {       [       ampersand,               1      ],
+                          [      dead_acute                       ]       };
+      key <AE02>  {       [          eacute,               2      ],
+                          [      asciitilde,          Eacute      ]       };
+      key <AE03>  {       [        quotedbl,               3      ],
+                          [      numbersign                       ]       };
+      key <AE04>  {       [      apostrophe,               4      ],
+                          [       braceleft                       ]       };
+      key <AE05>  {       [       parenleft,               5      ],
+                          [     bracketleft                       ]       };
+      key <AE06>  {       [           minus,               6      ],
+                          [             bar                       ]       };
+      key <AE07>  {       [          egrave,               7      ],
+                          [      dead_grave,          Egrave      ]       };
+      key <AE08>  {       [      underscore,               8      ],
+                          [       backslash                       ]       };
+      key <AE09>  {       [        ccedilla,               9      ],
+                          [     asciicircum,        Ccedilla      ]       };
+      key <AE10>  {       [          agrave,               0      ],
+                          [              at,          Agrave      ]       };
+      key <AE11>  {       [      parenright,          degree      ],
+                          [    bracketright                       ]       };
+      key <AE12>  {       [           equal,            plus      ],
+                          [      braceright                       ]       };
+      key <BKSP>  {       [       BackSpace                       ]       };
+      key  <TAB>  {       [             Tab,    ISO_Left_Tab      ]       };
+      key <AD01>  {       [               a,               A      ],
+                          [     acircumflex,      adiaeresis      ]       };
+      key <AD02>  {       [               z,               Z      ],
+                          [           aring,           Aring      ]       };
+      key <AD03>  {       [               e,               E      ],
+                          [     ecircumflex,      ediaeresis      ]       };
+      key <AD04>  {       [               r,               R      ],
+                          [      registered                       ]       };
+      key <AD05>  {       [               t,               T      ],
+                          [           thorn,           THORN      ]       };
+      key <AD06>  {       [               y,               Y      ],
+                          [             yen                       ]       };
+      key <AD07>  {       [               u,               U      ],
+                          [     ucircumflex,      udiaeresis      ]       };
+      key <AD08>  {       [               i,               I      ],
+                          [     icircumflex,      idiaeresis      ]       };
+      key <AD09>  {       [               o,               O      ],
+                          [     ocircumflex,      odiaeresis      ]       };
+      key <AD10>  {       [               p,               P      ],
+                          [       paragraph                       ]       };
+      key <AD11>  {       [ dead_circumflex,  dead_diaeresis      ],
+                          [    dead_cedilla,      dead_tilde      ]       };
+      key <AD12>  {       [          dollar,        sterling      ],
+                          [        currency                       ]       };
+      key <RTRN>  {       [          Return                       ]       };
+      key <AC01>  {       [               q,               Q      ],
+                          [     Acircumflex,      Adiaeresis      ]       };
+      key <AC02>  {       [               s,               S      ],
+                          [          oslash,        Ooblique      ]       };
+      key <AC03>  {       [               d,               D      ],
+                          [     Ecircumflex,      Ediaeresis      ]       };
+      key <AC04>  {       [               f,               F      ],
+                          [     ordfeminine                       ]       };
+      key <AC05>  {       [               g,               G      ],
+                          [       quoteleft                       ]       };
+      key <AC06>  {       [               h,               H      ],
+                          [      quoteright                       ]       };
+      key <AC07>  {       [               j,               J      ],
+                          [     Ucircumflex,      Udiaeresis      ]       };
+      key <AC08>  {       [               k,               K      ],
+                          [     Icircumflex,      Idiaeresis      ]       };
+      key <AC09>  {       [               l,               L      ],
+                          [     Ocircumflex,      Odiaeresis      ]       };
+      key <AC10>  {       [               m,               M      ],
+                          [       masculine                       ]       };
+      key <AC11>  {       [          ugrave,         percent      ],
+                          [       plusminus,          Ugrave      ]       };
+      key <BKSL>  {       [        asterisk,              mu      ],
+                          [     Greek_OMEGA                       ]       };
+      key <LFSH>  {       [          Shift_L                      ]       };
+      key <LSGT>  {       [           less,          greater      ],
+                          [             bar                       ]       };
+      key <AB01>  {       [               w,               W      ],
+                          [             eth,             ETH      ]       };
+      key <AB02>  {       [               x,               X      ],
+                          [              ae,              AE      ]       };
+      key <AB03>  {       [               c,               C      ],
+                          [            cent                       ]       };
+      key <AB04>  {       [               v,               V      ],
+                          [       copyright                       ]       };
+      key <AB05>  {       [               b,               B      ],
+                          [          ssharp                       ]       };
+      key <AB06>  {       [               n,               N      ],
+                          [         notsign                       ]       };
+      key <AB07>  {       [           comma,        question      ],
+                          [    questiondown                       ]       };
+      key <AB08>  {       [       semicolon,          period      ],
+                          [        multiply                       ]       };
+      key <AB09>  {       [           colon,           slash      ],
+                          [        division                       ]       };
+      key <AB10>  {       [          exclam,         section      ],
+                          [      exclamdown                       ]       };
+      key <RTSH>  {       [         Shift_R                       ]       };
+
+      key <LCTL>  {       [       Control_L                       ]       };
+  //    key <LALT>        {       [           Alt_L,          Meta_L      ]       };
+      key <SPCE>  {       [           space                       ]       };
+  //    key <RALT>        {       [           Alt_R,          Meta_R      ]       };
+      key <RCTL>  {       [       Control_R                       ]       };
+
+      key <FK01> {        [        F1             ]       };
+      key <FK02> {        [        F2             ]       };
+      key <FK03> {        [        F3             ]       };
+      key <FK04> {        [        F4             ]       };
+      key <FK05> {        [        F5             ]       };
+      key <FK06> {        [        F6             ]       };
+      key <FK07> {        [        F7             ]       };
+      key <FK08> {        [        F8             ]       };
+      key <FK09> {        [        F9             ]       };
+      key <FK10> {        [        F10            ]       };
+      key <FK11> {        [        F11            ]       };
+      key <FK12> {        [        F12            ]       };
+
+      key <PRSC> { type= "PC_SYSRQ", symbols[Group1]= [ Print, Execute ] };
+      key <SCLK> {  [  Scroll_Lock        ]       };
+      key <PAUS> { type= "PC_BREAK", symbols[Group1]= [ Pause, Break ] };
+      key  <INS> {  [  Insert             ]       };
+      key <HOME> {        [  Home                 ]       };
+      key <PGUP> {        [  Prior                ]       };
+      key <DELE> { [ Delete               ]                       };
+      key  <END> {        [  End                  ]       };
+      key <PGDN> {        [  Next                 ]       };
+
+      key   <UP> {        [  Up                   ]       };
+      key <LEFT> {        [  Left                 ]       };
+      key <DOWN> {        [  Down                 ]       };
+      key <RGHT> {        [  Right                ]       };
+
+      key <NMLK> {        [  Num_Lock, Pointer_EnableKeys         ]       };
+      key <KPDV> {        [  KP_Divide            ]       };
+      key <KPMU> {        [  KP_Multiply          ]       };
+      key <KPSU> {        [  KP_Subtract          ]       };
+
+      key  <KP7> {        [  KP_Home,     KP_7    ]       };
+      key  <KP8> {        [  KP_Up,       KP_8    ]       };
+      key  <KP9> {        [  KP_Prior,    KP_9    ]       };
+      key <KPAD> {        [       KP_Add          ]       };
+
+      key  <KP4> {        [  KP_Left,     KP_4    ]       };
+      key  <KP5> {        [  KP_Begin,    KP_5    ]       };
+      key  <KP6> {        [  KP_Right,    KP_6    ]       };
+
+      key  <KP1> {        [  KP_End,      KP_1    ]       };
+      key  <KP2> {        [  KP_Down,     KP_2    ]       };
+      key  <KP3> {        [  KP_Next,     KP_3    ]       };
+      key <KPEN> {        [       KP_Enter        ]       };
+
+      key  <KP0> {        [  KP_Insert,   KP_0    ]       };
+      key <KPDL> {  [  KP_Delete, KP_Decimal ]    };
+
+      modifier_map Shift  { Shift_L       };
+      modifier_map Lock   { Caps_Lock     };
+      modifier_map Control{ Control_L     };
+  //    modifier_map Mod1   { Alt_L, Alt_R, Meta_L, Meta_R };
+  //    modifier_map Mod2   { Num_Lock };
+      modifier_map Mod3   { Mode_switch   };
+  //    modifier_map Mod4   { Meta_L, Meta_R };
+  //    modifier_map Mod5   { Scroll_Lock };
+  };
+
+  // Touches supplémentaires sur un clavier "Windows95"
+
+  // ²/³ (carré/cube) par défaut puisqu'on a mis les guillemets français !
+  //    key <LWIN> {        [      twosuperior, threesuperior        ],
+  //                        [      onesuperior                       ]  };
+  //    key <RWIN> {        [      Mode_switch       ]       };
+  //    key <MENU> {        [      Multi_key         ]       };
+
+  xkb_symbols "pc101" {
+      key <RALT> { [ Mode_switch,  Multi_key ] };
+      modifier_map Mod3 { Mode_switch };
+  };
+
+  default
+  xkb_symbols "pc102" {
+      key <RALT> { [ Mode_switch,  Multi_key ] };
+      modifier_map Mod3 { Mode_switch };
+  };
+
+  xkb_symbols "pc104" {
+      key <RALT> { [ Mode_switch ] };
+      key <LWIN> { [ Meta_L ] };
+      key <RWIN> { [ Multi_key ] };
+      key <MENU> { [ Menu ] };
+      modifier_map Mod3 { Mode_switch };
+  };
+
+  xkb_symbols "pc105" {
+      key <RALT> { [ Mode_switch ] };
+      key <RWIN> { [ Multi_key ] };
+      modifier_map Mod3 { Mode_switch };
+  };
+
+  partial alphanumeric_keys
+  xkb_symbols "nodeadkeys" {
+      include "french(basic)"
+      key <AE12> {        [           equal,            plus      ]       };
+      key <AD11> {        [     asciicircum,       diaeresis      ]       };
+      key <AD12> {        [          dollar,        sterling      ]       };
+      key <AB07> {        [           comma,        question      ]       };
+  };
+
+  Et enfin voici french.map (à placer dans /usr/lib/kbd/keytables) :
+
+  # French keyboard description :
+  #
+  # Copyright (c) July 1997 Guylhem Aznar <guylhem@danmark.linux.eu.org>
+  # Copyright (c) August 1997 Pierre-Charles David <pcdavid@club-internet.fr>
+  #  Ajouté : Linefeed, Meta_Control_backslash, Control_backslash, Meta_backslash
+  #
+  #      This program is free software; you can redistribute it and/or
+  #    modify it under the terms of the GNU General Public License version
+  #            2 as published by the Free Software Foundation.
+  #
+  #      This program is distributed in the hope that it will be useful,
+  #      but WITHOUT ANY WARRANTY; without even the implied warranty of
+  #       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  #               GNU General Public License for more details.
+  #
+  #      You should have received a copy of the GNU General Public License
+  #         along with this program; if not, write to the Free Software
+  #          Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  #
+  # Les définitions de alt & control (keycode) ne sont qu'optionelles ; n'ont
+  # donc été redéfinis alt (nombre) et atl + shift (nombre) pour inverser le
+  # comportement par défaut : touche = signe ; touche + shift = nombre, or ici
+  # alt touche = Meta_nombre ; alt + shift touche = Meta_signe
+  #
+  # Shift (pavé numérique) pour taper de l'héxadécimal !
+  # control alt suppr : rebooter
+  # control altgr suppr : arrêter
+  #
+  # ajouter pour ces deux fonction les lignes suivantes à /etc/inittab :
+  # ca:12345:ctrlaltdel:/sbin/shutdown -t1 -r now
+  # kb:12345:kbrequest:/sbin/halt
+
+  keycode   0 =
+
+  keycode   1 = Escape
+
+  keycode   2 = ampersand        one              dead_acute
+          alt     keycode 2 = Meta_one
+          alt     shift   keycode 2 = Meta_ampersand
+
+  keycode   3 = eacute           two              tilde            Eacute
+          alt     keycode 3 = Meta_two
+          alt     shift   keycode 3 = Meta_asciitilde
+
+  keycode   4 = quotedbl         three            numbersign
+          alt     keycode 4 = Meta_three
+          alt     shift   keycode 4 = Meta_quotedbl
+
+  keycode   5 = apostrophe       four             braceleft
+          alt     keycode 5 = Meta_four
+          alt     shift   keycode 5 = Meta_apostrophe
+
+  keycode   6 = parenleft        five             bracketleft
+          alt     keycode 6 = Meta_five
+          alt     shift   keycode 6 = Meta_parenleft
+
+  keycode   7 = minus            six              bar              hyphen
+          alt     keycode 7 = Meta_six
+          alt     shift   keycode 7 = Meta_minus
+
+  keycode   8 = egrave           seven            dead_grave       Egrave
+          alt     keycode 8 = Meta_seven
+          alt     shift   keycode  8 = Meta_grave
+
+  keycode   9 = underscore       eight            backslash        macron
+          alt     keycode 9 = Meta_eight
+          alt     shift   keycode 9 = Meta_underscore
+
+  keycode  10 = ccedilla         nine             circumflex       Ccedilla
+          alt     keycode 10 = Meta_nine
+          alt     shift   keycode 10 = Meta_asciicircum
+
+  keycode  11 = agrave           zero             at               Agrave
+          alt     keycode 11 = Meta_zero
+          alt     shift   keycode 11 = Meta_at
+
+  keycode  12 = parenright       degree           bracketright
+          alt     keycode 12 = Meta_parenright
+          alt     shift   keycode  12 = Meta_bracketright
+
+  keycode  13 = equal            plus             braceright
+          alt     keycode 13 = Meta_equal
+          alt     shift   keycode  13 = Meta_plus
+
+  keycode  14 = Delete           Remove
+          alt     control keycode 14 = Boot
+          altgr   control keycode 14 = KeyboardSignal
+
+  keycode  15 = Tab
+
+  keycode  16 = a                A                acircumflex     adiaeresis
+
+  keycode  17 = z                Z                aring           Aring
+
+  keycode  18 = e                E                ecircumflex     ediaeresis
+
+  keycode  19 = r                R                registered
+
+  keycode  20 = t                T                thorn           THORN
+
+  keycode  21 = y                Y                yen
+
+  keycode  22 = u                U                ucircumflex     udiaeresis
+
+  keycode  23 = i                I                icircumflex     idiaeresis
+
+  keycode  24 = o                O                ocircumflex     odiaeresis
+
+  keycode  25 = p                P                paragraph
+
+  keycode  26 = dead_circumflex  dead_diaeresis   dead_cedilla    dead_tilde
+
+  keycode  27 = dollar           pound            currency
+
+  keycode  28 = Return
+          alt     keycode  28 = 0x080d
+          altgr   keycode  26 = Linefeed
+
+  keycode  29 = Control
+
+  keycode  30 = q                Q                Acircumflex     Adiaeresis
+
+  keycode  31 = s                S                oslash          Oslash
+
+  keycode  32 = d                D                Ecircumflex     Ediaeresis
+
+  keycode  33 = f                F                ordfeminine
+
+  keycode  34 = g                G                acute
+
+  keycode  35 = h                H                periodcentered
+
+  keycode  36 = j                J                Ucircumflex     Udiaeresis
+
+  keycode  37 = k                K                Icircumflex     Idiaeresis
+
+  keycode  38 = l                L                Ocircumflex     Odiaeresis
+
+  keycode  39 = m                M                masculine
+
+  keycode  40 = ugrave           percent         plusminus        Ugrave
+          alt     keycode 40 = Meta_semicolon
+
+  # Mode math
+  #keycode  41 = twosuperior      threesuperior   onesuperior     periodcentered
+  # Mode littéraire + math
+  keycode  41 = guillemotleft    guillemotright   twosuperior     threesuperior
+
+  keycode  42 = Shift
+
+  keycode  43 = asterisk         mu               onehalf
+
+  keycode  44 = w                W                +eth            +ETH
+
+  keycode  45 = x                X                +ae             +AE
+
+  keycode  46 = c                C                cent
+
+  keycode  47 = v                V                copyright
+
+  keycode  48 = b                B                ssharp
+
+  keycode  49 = n                N                notsign
+
+  keycode  50 = comma            question        questiondown
+
+  keycode  51 = semicolon        period          multiply
+
+  keycode  52 = colon            slash           division
+
+  keycode  53 = exclam           section         exclamdown
+
+  keycode  54 = Shift
+
+  keycode  55 = KP_Multiply      Hex_A           Hex_D
+
+  keycode  56 = Alt
+
+  keycode  57 = space
+          control keycode  57 = nul
+          alt     keycode  57 = Meta_space
+          altgr   keycode  57 = nobreakspace
+
+  # Très utile pour tous ceux ne disposant pas de leurs deux mains
+  keycode  58 =  CapsShift
+  # Caps_Lock
+  # ou au choix CapsShift ou Caps_On !
+          shift   keycode  58 = Shift_Lock
+          control keycode  58 = Control_Lock
+          alt     keycode  58 = Alt_Lock
+          altgr   keycode  58 = AltGr_Lock
+
+  keycode  59 = F1               F11              Console_13
+          alt     keycode  59 = Console_1
+          control alt     keycode  59 = Console_1
+
+  keycode  60 = F2               F12              Console_14
+          alt     keycode  60 = Console_2
+          control alt     keycode  60 = Console_2
+
+  keycode  61 = F3               F13              Console_15
+          alt     keycode  61 = Console_3
+          control alt     keycode  61 = Console_3
+
+  keycode  62 = F4               F14              Console_16
+          alt     keycode  62 = Console_4
+          control alt     keycode  62 = Console_4
+
+  keycode  63 = F5               F15              Console_17
+          alt     keycode  63 = Console_5
+          control alt     keycode  63 = Console_5
+
+  keycode  64 = F6               F16              Console_18
+          alt     keycode  64 = Console_6
+          control alt     keycode  64 = Console_6
+
+  keycode  65 = F7               F17              Console_19
+          alt     keycode  65 = Console_7
+          control alt     keycode  65 = Console_7
+
+  keycode  66 = F8               F18              Console_20
+          alt     keycode  66 = Console_8
+          control alt     keycode  66 = Console_8
+
+  keycode  67 = F9               F19              Console_21
+          alt     keycode  67 = Console_9
+          control alt     keycode  67 = Console_9
+
+  keycode  68 = F10              F20              Console_22
+          alt     keycode  68 = Console_10
+          control alt     keycode  68 = Console_10
+
+  keycode  69 = Num_Lock         Bare_Num_Lock
+
+  keycode  70 = Scroll_Lock      Show_Memory      Show_Registers  Show_State
+
+  keycode  71 = KP_7             Hex_7
+          alt     keycode  71 = Ascii_7
+
+  keycode  72 = KP_8             Hex_8
+          alt     keycode  72 = Ascii_8
+
+  keycode  73 = KP_9             Hex_9
+          alt     keycode  73 = Ascii_9
+
+  keycode  74 = KP_Subtract      Hex_B            Hex_E
+          alt     keycode  74 = minus
+
+  keycode  75 = KP_4             Hex_4
+          alt     keycode  75 = Ascii_4
+
+  keycode  76 = KP_5             Hex_5
+          alt     keycode  76 = Ascii_5
+
+  keycode  77 = KP_6             Hex_6
+          alt     keycode  77 = Ascii_6
+
+  keycode  78 = KP_Add           Hex_C            Hex_F
+          alt     keycode  78 = plus
+
+  keycode  79 = KP_1             Hex_1
+          alt     keycode  79 = Ascii_1
+
+  keycode  80 = KP_2             Hex_2
+          alt     keycode  80 = Ascii_2
+
+  keycode  81 = KP_3             Hex_3
+          alt     keycode  81 = Ascii_3
+
+  keycode  82 = KP_0             Hex_0
+          alt     keycode  82 = Ascii_0
+
+  keycode  83 = KP_Period         KP_Comma
+          altgr   control keycode  83 = KeyboardSignal
+          control alt     keycode  83 = Boot
+
+  # SysReq = Alt+Print Screen = 84
+  keycode  84 = Last_Console
+
+  keycode  85 =
+
+  keycode  86 = less             greater          bar             brokenbar
+
+  keycode  87 = F11              F11              Console_23
+          alt     keycode  87 = Console_11
+          control alt     keycode  87 = Console_11
+
+  keycode  88 = F12              F12              Console_24
+          alt     keycode  88 = Console_12
+          control alt     keycode  88 = Console_12
+
+  keycode  89 =
+
+  keycode  90 =
+
+  keycode  91 =
+
+  keycode  92 =
+
+  keycode  93 =
+
+  keycode  94 =
+
+  keycode  95 =
+
+  keycode  96 = KP_Enter
+
+  keycode  97 = Control
+
+  keycode  98 = KP_Divide
+
+  # Print Screen
+  keycode  99 = Control_backslash
+          control keycode  99 = Control_backslash
+          alt     keycode  99 = Control_backslash
+
+  keycode 100 = AltGr
+          alt     keycode 100 = Compose
+
+  # Ctrl+Pause = Break = 101
+  keycode 101 = Break
+
+  keycode 102 = Home
+
+  keycode 103 = Up
+
+  keycode 104 = PageUp
+          shift   keycode 104 = Scroll_Backward
+
+  keycode 105 = Left
+          alt     keycode 105 = Decr_Console
+
+  keycode 106 = Right
+          alt     keycode 106 = Incr_Console
+
+  keycode 107 = End
+
+  keycode 108 = Down
+          alt     keycode 108 = Last_Console
+
+  # PageDown == Next
+  keycode 109 = PageDown
+          shift   keycode 109 = Scroll_Forward
+
+  keycode 110 = Insert
+
+  keycode 111 = BackSpace       BackSpace      SAK
+          alt     keycode 111 = Meta_backslash
+          control keycode 111 = Control_backslash
+
+  keycode 112 = Macro
+
+  keycode 113 = F13
+
+  keycode 114 = F14
+
+  keycode 115 = Help
+
+  keycode 116 = Do
+
+  keycode 117 = F17
+
+  keycode 118 = KP_MinPlus
+
+  keycode 119 = Pause
+
+  keycode 120 =
+
+  keycode 121 =
+
+  keycode 122 =
+
+  keycode 123 =
+
+  keycode 124 =
+
+  # Fenêtre gauche = Alt puisque d'habitude c'est la position d'Alt !
+  keycode 125 = Alt
+
+  # Fenêtre droite = AltGr puisque d'habitude c'est la position d'AltGr !
+  keycode 126 = AltGr
+
+  # Menu = compose (mélanger des signes et des lettres ex : (compose) ' e = é
+  keycode 127 = Compose
+
+  string F1 = "\033[[A"
+  string F2 = "\033[[B"
+  string F3 = "\033[[C"
+  string F4 = "\033[[D"
+  string F5 = "\033[[E"
+  string F6 = "\033[17~"
+  string F7 = "\033[18~"
+  string F8 = "\033[19~"
+  string F9 = "\033[20~"
+  string F10 = "\033[21~"
+  string F11 = "\033[23~"
+  string F12 = "\033[24~"
+  string F13 = "\033[25~"
+  string F14 = "\033[26~"
+  string F15 = "\033[28~"
+  string F16 = "\033[29~"
+  string F17 = "\033[31~"
+  string F18 = "\033[32~"
+  string F19 = "\033[33~"
+  string F20 = "\033[34~"
+  string F21 = ""
+  string F22 = ""
+  string F23 = ""
+  string F24 = ""
+  string F25 = ""
+  string F26 = ""
+  string Home = "\033[1~"
+  string Insert = "\033[2~"
+  string Remove = "\033[3~"
+  string End = "\033[4~"
+  string PageUp = "\033[5~"
+  string PageDown = "\033[6~"
+  string Macro = "\033[M"
+  string Pause = "\033[P"
+
+  compose '`' 'A' to 'À'
+  compose '`' 'a' to 'à'
+  compose '\'' 'A' to 'Á'
+  compose '\'' 'a' to 'á'
+  compose '^' 'A' to 'Â'
+  compose '^' 'a' to 'â'
+  compose '~' 'A' to 'Ã'
+  compose '~' 'a' to 'ã'
+  compose '"' 'A' to 'Ä'
+  compose '"' 'a' to 'ä'
+  compose 'O' 'A' to 'Å'
+  compose 'o' 'a' to 'å'
+  compose '0' 'A' to 'Å'
+  compose '0' 'a' to 'å'
+  compose 'A' 'A' to 'Å'
+  compose 'a' 'a' to 'å'
+  compose 'A' 'E' to 'Æ'
+  compose 'a' 'e' to 'æ'
+  compose ',' 'C' to 'Ç'
+  compose ',' 'c' to 'ç'
+  compose '`' 'E' to 'È'
+  compose '`' 'e' to 'è'
+  compose '\'' 'E' to 'É'
+  compose '\'' 'e' to 'é'
+  compose '^' 'e' to 'ê'
+  compose '"' 'E' to 'Ë'
+  compose '"' 'e' to 'ë'
+  compose '`' 'I' to 'Ì'
+  compose '`' 'i' to 'ì'
+  compose '\'' 'I' to 'Í'
+  compose '\'' 'i' to 'í'
+  compose '^' 'I' to 'Î'
+  compose '^' 'i' to 'î'
+  compose '"' 'I' to 'Ï'
+  compose '"' 'i' to 'ï'
+  compose '-' 'D' to 'Ð'
+  compose '~' 'N' to 'Ñ'
+  compose '~' 'n' to 'ñ'
+  compose '`' 'O' to 'Ò'
+  compose '`' 'o' to 'ò'
+  compose '\'' 'O' to 'Ó'
+  compose '\'' 'o' to 'ó'
+  compose '^' 'O' to 'Ô'
+  compose '^' 'o' to 'ô'
+  compose '~' 'O' to 'Õ'
+  compose '~' 'o' to 'õ'
+  compose '"' 'O' to 'Ö'
+  compose '"' 'o' to 'ö'
+  compose '/' 'O' to 'Ø'
+  compose '/' 'o' to 'ø'
+  compose '`' 'U' to 'Ù'
+  compose '`' 'u' to 'ù'
+  compose '\'' 'U' to 'Ú'
+  compose '\'' 'u' to 'ú'
+  compose '^' 'u' to 'û'
+  compose '"' 'U' to 'Ü'
+  compose '"' 'u' to 'ü'
+  compose '\'' 'Y' to 'Ý'
+  compose '\'' 'y' to 'ý'
+  compose 's' 's' to 'ß'
+  compose 's' 'z' to 'ß'
+  # si quelqu'un veut bien y inclure des «compose» pour les autres caractères
+  # latin1 comme les guillemets français, le copyright (...) qu'il me les envoie !
+

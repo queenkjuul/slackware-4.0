@@ -1,0 +1,19 @@
+Begin3
+Title: Xlpq
+Version: 1.0.2
+Entered-date: 16.2.1998
+Description: This is a X11 program to manage your printqueue.
+             You may view and delete printjobs, see status information
+             and enable or disable printing. It is a frontend
+             to lpq, lpc and lprm.
+Keywords: lpq printer xforms
+Author: Christoph.Neerfeld@home.ivm.de
+Maintained-by:
+Primary-site: sunsite.unc.edu /pub/Linux/system/printing
+              22 kB xlpq-1.0.2.tgz
+               1 kB xlpq-1.0.2.lsm
+Alternate-site:
+Original-site:
+Platform: g++ xforms
+Copying-policy: GPL
+End

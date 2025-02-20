@@ -1,0 +1,15 @@
+Begin3
+Title:          jidentd
+Version:        1.0 8/20/95
+Entered-date:   8/20/95
+Description:    Enhanced RFC 1413 IDENT server for Linux that can "hide" users
+Keywords:       jidentd identd auth authd daemon hide rfc1413 1413 rfc931 931
+Author:         jlehan@galaxy.csc.calpoly.edu (Joshua Lehan)
+Maintained-by:  jlehan@galaxy.csc.calpoly.edu (Joshua Lehan)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/daemons
+                jidentd-1.0.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       Linux (with /proc filesystem)
+Copying-policy: GPL (version 2 or later)
+End

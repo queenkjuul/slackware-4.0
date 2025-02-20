@@ -1,0 +1,15 @@
+Begin3
+Title:		ywho
+Version:	1.9
+Entered-date:	990328
+Description:	A who-type utility displaying not only who is logged in, but
+		also general system information and commands run by the users.
+		Includes a rwhod replacement with central server, allowing
+		user information to be gathered across routers.
+Keywords:	who, rwho
+Author:		Martin Mares <mj@atrey.karlin.mff.cuni.cz>
+Maintained-by:	Martin Mares <mj@atrey.karlin.mff.cuni.cz>
+Primary-site:	atrey.karlin.mff.cuni.cz/pub/local/mj/linux/ywho-1.9.tar.gz
+Alternate-site:	metalab.unc.edu/pub/Linux/system/status
+Copying-policy:	GPL
+End

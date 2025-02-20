@@ -1,0 +1,15 @@
+Begin3
+Title:          chu
+Version:        0.1.29
+Entered-date:   15mar99
+Description:    A tool to synchronize the system time to CHU broadcasts.
+Keywords:       CHU clock
+Author:         bill@rossi.com  (Bill Rossi)
+Maintained-by:  bill@rossi.com  (Bill Rossi)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/admin/time
+                44K chu-0.1.23.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Requires sound card and shortwave receiver. 
+Copying-policy: GPL
+End

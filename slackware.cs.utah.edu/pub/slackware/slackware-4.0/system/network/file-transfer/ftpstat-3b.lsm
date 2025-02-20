@@ -1,0 +1,18 @@
+Begin3
+Title:		ftpstat
+Version:	3(b)eta
+Entered-date:	25Aug96
+Description:	A Small Shell Script (+ c util) to keep track of an ftp
+		sites (daemons) statistics to be reported to users via
+		ftp/welcome.msg
+Keywords:	ftp, statistics, wu.ftpd, ftpd, sh, c
+Author:		krypto@zianet.com
+		krypto@liberation.org
+Maintained-by:	krypto@zianet.com
+		krypto@liberation.org
+Primary-site:	ftp.liberation.org /pub/ftpstat
+		4kB ftpstat-3b.tar.gz
+Original-site:	ftp.liberation.org /pub/ftpstat
+		4kB ftpstat-3b.tar.gz
+Copying-policy: GPL
+End

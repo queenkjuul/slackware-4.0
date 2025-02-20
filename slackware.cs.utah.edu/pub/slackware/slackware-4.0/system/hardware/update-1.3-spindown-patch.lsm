@@ -1,0 +1,15 @@
+Begin3
+Title:          Update-spindown-patch
+Version:        1.3-spindown
+Entered-date:   09JULY98
+Description:    This patch enables HD's to effectively spin down
+		by delaying the flushing. (it checks int 14,
+		that is your first HD controller)
+Keywords:       update daemon notebook Linux source
+Author:         lector@dds.nl (Jan Gyselinck)
+Maintained-by:  lector@dds.nl (Jan Gyselinck)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Daemons
+		4k	updated-1.3-spindown-patch.gz
+		1k	updated-1.3-spindown-patch.lsm
+Copying-policy: GPL
+End

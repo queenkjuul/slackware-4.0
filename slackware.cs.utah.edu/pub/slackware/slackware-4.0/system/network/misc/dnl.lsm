@@ -1,0 +1,16 @@
+Begin3
+Title:		dnl
+Version:	0.01
+Entered-date:	01DEC97
+Description:	This is a short program that will output the hostnames
+	of all the valid hosts on a class A, B, C, or D network. It will
+	also read the IPs from a file, or stdin. It is faster than nslookup.
+Keywords:	network lookup nslookup dnl
+Author:		dmg@idirect.com (Damian Gryski)
+Maintained-by:	dmg@idirect.com (Damian Gryski)
+Primary-site:	sunsite.unc.edu /pub/linux/system/network/misc
+		3kB dnl-0.01.tgz
+Alternate-site:	http://www.idirect.com/~dmg/files/dnl-0.01.tgz
+Platforms:	all
+Copying-policy: PD
+End

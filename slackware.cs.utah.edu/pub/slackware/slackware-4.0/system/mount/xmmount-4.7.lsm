@@ -1,0 +1,16 @@
+Begin3
+Title:	        xmmount 
+Version:      	4.7
+Entered-date:   01. May 1999
+Description:    LessTif (Ver. 0.88) or Motif (if you want to spend money)
+		(X11) based device mounter which recognizes the following 
+                filesystems automatically: minix, ext, ext2, msdos
+Keywords:       xvmount mount X11 Motif LessTif floppy cdrom
+Author:         harald.stauss@rz.hu-berlin.de <Harald M. Stauss>
+Maintained-by:  harald.stauss@rz.hu-berlin.de <Harald M. Stauss>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status
+                xmmount-4.7.tar.gz 
+		xmmount-4.7.lsm
+Platform:       LessTif (Ver. 0.88) or Motif (X11)
+Copying-policy: GPL
+End

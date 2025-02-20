@@ -1,0 +1,20 @@
+Begin3
+Title: mgen
+Version: 3.65
+Entered-date: 12APR97
+Description: mgen, the MakeGENerator, as it's name implies, is a makefile
+	     generator. It performs a recursive search for "#include"'ed
+             header files, using a user given search path. It is very
+             customizable, *EASY* to use, and contains help screens. It works
+	     on DOS, DOS Extender for 386 protected mode, Windows 3.11, as
+             well as on many UNIX machines. Provides flexibile options and
+             some features, to extend the power of `dumb' make programs, given
+             on some systems. Includes sources + Linux executable for 486
+             and above.
+Keywords:    make, makefile, mgen, imake, programming tools, MakeGENerator
+Author:        gil-ad@inter.net.il (Gil-Ad Madar)
+Maintained-by: gil-ad@inter.net.il (Gil-Ad Madar)
+Primary-site:  sunsite.unc.edu:/pub/Linux/devel/make
+				98Kb	mgen-3.65.1.tgz
+Copying-policy:GPL
+End

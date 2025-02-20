@@ -1,0 +1,14 @@
+Begin3
+Title:          kcli
+Version:        0.9
+Entered-date:   27 Oct 97
+Description:    The KDE command line interface
+Keywords:       kde cli X11 Qt
+Author:         cooperb@er4.eng.ohio-state.edu (Brian H. Cooper)
+Maintained-by:  andrew@lago.com (Andrew Lagodzinski)
+Primary-site:   ftp.kde.org /pub/kde/stable/Beta1/apps/utils
+File1:		kcli-0.9.tgz
+Platforms:      unix (only tested on Linux)
+End
+						      
+		

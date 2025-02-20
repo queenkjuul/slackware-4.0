@@ -1,0 +1,15 @@
+Begin3
+Title:          nist
+Version:        1.1.10
+Entered-date:   06Jan99
+Description:    Update system time from NIST time server.
+Keywords:       nist, time, date, update, ntp, syncronise
+Author:         cinar@hun.ece.drexel.edu (Ali Onur Cinar)
+Maintained-by:  cinar@hun.ece.drexel.edu (Ali Onur Cinar)
+Primary-site:   ftp://ftp.cpan.org/pub/CPAN/authors/id/A/AO/AOCINAR/nist*
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/admin/timei/nist*
+Original-site:  ftp://hun.ece.drexel.edu/pub/cinar/nist*
+Home-Page:      http://www.zdo.com
+Platform:       Unix (tested on Linux and Solaris)
+Copying-policy: GPL 
+End

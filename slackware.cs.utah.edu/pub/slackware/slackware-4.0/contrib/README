@@ -1,0 +1,26 @@
+Extra Slackware packages / user contributed package directory
+_____________________________________________________________
+
+These are some extra packages that might be handy. Use 'pkgtool' to install or
+remove these from your system. These can also be installed with 'installpkg'.
+
+Anyone who wants to contribute a package to this directory should send me mail 
+at: volkerdi@slackware.com. The package must install cleanly, and must include
+a description to be added to this index (in which you can feel free to give 
+yourself some credit).  Slackware contains an easy to use package creation
+tool called 'makepkg' that can be used to make the package.  To be considered
+for inclusion, you must also provide build scripts which build the package
+from the original source archive.  These may either be a "SlackBuild" format
+script (see the source/ directory for many examples) that builds the final
+.tgz package, or a simpler .build script that untars the source, applies any
+patches, configures and builds the source, and does a 'make install'.  Again,
+there are many examples in the source/ area.
+
+I don't offer any support for these packages.  (well, I might, but I won't
+promise anything)
+
+Some of these long package names may cause unsightly wrap-around in the color
+pkgtool's package removal menu, but it should still work ok.
+
+  -- Pat
+

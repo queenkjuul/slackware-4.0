@@ -1,0 +1,16 @@
+Begin3
+Title:          GOMscript
+Version:        0.8
+Entered-date:   02SEP98
+Description:    GOMscript is an object-oriented C++-like interpreter. It
+                allows users to extend it with new functions and classes.
+                An extension is available for 'roaming agents': 
+                it allows code and state to be sent around to different
+                machines. The source code is available.
+Keywords:       GOMscript, interpreter, agent
+Author:         bba@cs.cornell.edu (Bela Ban)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/gomscript
+                155788 gomscript-linux-0.8.0.tar.gz
+Platforms:      Linux 2.X (tested on RedHat Linux 5.0, kernel version 2.0.32)
+Copying-policy: GPL
+End

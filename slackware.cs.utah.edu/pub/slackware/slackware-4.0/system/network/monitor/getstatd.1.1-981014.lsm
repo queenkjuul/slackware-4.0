@@ -1,0 +1,26 @@
+Begin3
+Title:          getstatd
+Version:        1.1
+Entered-date:   October 14, 1998
+Description:    getstatd is a simple http server emulation daemon that 
+		allows users to watch their accounting statistics and 
+		admins to watch general users statistics, terminal lines 
+		and other system wide statistics for any period of time. 
+		Basic features include user's detailed statistic for each 
+		login, statistics for system administrators and trusted 
+		users, support for 4 external plugins, calculation summary 
+		and day/night statistics, visualization in any web browser 
+		without using any http servers, two methods of automatic user
+		authentication and standard name/password authentication, 
+		and a realtime overview of the current user/system state.
+
+Keywords:       linux, account, admin, time, ISP, user, statistic, monitoring
+Author:         mc@skyway.ru (Maxim Chirkov)
+Maintained-by:  mc@skyway.ru (Maxim Chirkov)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/monitor/
+		63k getstatd-1.1.981014.tar.gz
+Alternate-site: ftp.opennet.ru /pub/linux/getstatd/
+		63k getstatd-1.1.981014.tar.gz
+Original-site:  http://www.linux.opennet.ru/getstatd/
+Copying-policy: GPL
+End

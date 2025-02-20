@@ -1,0 +1,422 @@
+
+   The Linux Cipe+Masquerading mini-HOWTO
+   Anthony Ciaravalo, acj@home.com
+   v0.4, 28 October 1998
+   
+  1.  Introduction
+  
+   This is the Linux Cipe+Masquerading mini-HOWTO.  It explains how to
+   setup a
+   Virtual Private Network between your LAN and other LAN's using cipe
+   through
+   linux masquerading firewall machines.
+   
+    1.1.  Copyright statement
+    
+   (C)opyright 1998 Anthony Ciaravalo, acj@home.com
+   
+   Unless otherwise stated, Linux HOWTO documents are copyrighted by
+   their
+   respective authors. Linux HOWTO documents may be reproduced and
+   distributed
+   in whole or in part, in any medium physical or electronic, as long as
+   this copyright notice is retained on all copies. Commercial
+   redistribution
+   is allowed and encouraged; however, the author would like to be
+   notified of
+   any such distributions.
+   
+   All translations, derivative works, or aggregate works
+   incorporating any Linux HOWTO documents must be covered under this
+   copyright notice.  That is, you may not produce a derivative work
+   from a HOWTO and impose additional restrictions on its
+   distribution. Exceptions to these rules may be granted under
+   certain conditions; please contact the Linux HOWTO coordinator at
+   the address given below.
+   
+   If you have questions, please contact Greg Hankins, the Linux HOWTO
+   coordinator, at
+   
+   gregh@sunsite.unc.edu Finger for phone number and snail mail address.
+   
+    1.2 Disclaimer
+    
+   Use of the information and examples in this document is at your own
+   risk.
+   There are many  security issues involved when connecting networks
+   across
+   the internet; and just being connected internet period.  Even though
+   information
+   is encrypted, an improperly configured firewall may result in a
+   security
+   breach.  Precautions can be taken to protect your cipe connections,
+   but it
+   does not guarantee 100% security.  The author does not guarantee the
+   information provided in this document will provide a secure networking
+   environment.
+   
+    1.3.  Feedback
+    
+   Send questions, comments, suggestions, or corrections to acj@home.net.
+   
+    1.4.  New versions of this document.
+    
+   New versions will posted to the cipe mailing list and emailed to the
+   Linux
+   HOWTO coordinator to be archived in the Linux HOWTO collection.
+   
+    1.5 Getting the files
+    
+   This document was written based on version 1.0.0 of cipe.  The file
+   can be retrieved
+   from [1]http://sites.inka.de/~bigred/sw/cipe-1.0.0.tar.gz.
+   
+  2.  Configuring the Machines
+  
+    2.1  Firewall Configuration
+    
+   This howto assumes you already configured your kernel to support IP
+   masquerade and you already have a working firewall configuration.
+   This
+   howto does not explain how to setup a masquerading firewall.  It only
+   shows
+   examples of the configuration rules that will allow a cipe connection
+   to
+   properly function when using a masquerading firewall.  See references
+   below
+   for information on configuring a linux IP masquerade firewall.
+   
+    2.2.  The Star/Hub Configuration
+    
+   This setup uses a star/hub configuration, so if machine A is down
+   then machine B and C will not be able to communicate.  If that is a
+   problem,
+   then you might want to consider adding a cipe connection between B and
+   C.
+   This will start to get a little hairy when connecting a lot of
+   networks
+   together.  This document only shows examples for the star/hub
+   configuration.
+   
+                         Machine A
+                         eth0: 10.10.1.1
+                         eth1: real ip 1
+                   /                                 \
+                 /                                     \
+        Machine B                  Machine C
+      eth0: 10.10.2.1           eth0:10.10.3.1
+      eth1: real ip 2             eth1: real ip 3
+   
+    2.3.  A little reference
+    
+   eth0 is the local network (fake address)
+   eth1 is the internet address (real address)
+   
+   Port A is any valid port you would like to choose
+   Port B is any other valid port you would like to choose
+   
+   Key A is any valid key you would like to choose  (read cipe doc for
+   info)
+   Key B is any valid key you would like to choose
+   
+    2.4.  Machine A Configuration
+    
+    2.4a.  /etc/cipe/ip-up
+    
+   #a trimmed down version of the sample ip-up that comes with the
+   distribution
+   #!/bin/sh
+   umask 022
+   PATH=/sbin:/bin:/usr/sbin:/usr/bin
+   echo "UP $*" >> /tmp/cipe
+   echo $3 > /var/run/$1.pid
+   #i prefer to keep a separate file for setting up the routing...see
+   below.
+   
+    2.4b.  /etc/cipe/options.machineB
+    
+   #device name
+   device          cip3b0
+   # the peers internal (fake) ip address
+   ptpaddr         10.10.2.1
+   # my cipe (fake) ip address
+   ipaddr          10.10.1.1
+   # my real ip address and cipe port
+   me              (real ip 1):(port A)
+   # the peers ip address and cipe port
+   peer            (real ip 2):(port A)
+   #my unique 128 bit key that noone else should ever know except my peer
+   key             (Key A)
+   
+    2.4c.  /etc/cipe/options.machineC
+    
+   #device name
+   device          cip3b1
+   # the peers internal (fake) ip address
+   ptpaddr         10.10.3.1
+   # my cipe (fake) ip address
+   ipaddr          10.10.1.1
+   # my real ip address and cipe port
+   me              (real ip 1):(port B)
+   # the peers ip address and cipe port
+   peer            (real ip 3):(port B)
+   #my unique 128 bit key that noone else should ever know except my peer
+   key             (Key B)
+   
+    2.4d.  /etc/cipe/setroute
+    
+   #!/bin/sh
+   #separate file for setting routing table
+   #set up route table to Machine B
+   /sbin/route add -host 10.10.2.1 dev cip3b0
+   /sbin/route add -net 10.10.2.0 netmask 255.255.255.0 gw 10.10.2.1
+   #set up route table to Machine C
+   /sbin/route add -host 10.10.3.1 dev cip3b1
+   /sbin/route add -net 10.10.3.0 netmask 255.255.255.0 gw 10.10.3.1
+   
+    2.4e.  /etc/rc.d/rc.local
+    
+   echo Configuring VPN network
+   /usr/local/sbin/ciped -o /etc/cipe/options.machineB
+   /usr/local/sbin/ciped -o /etc/cipe/options.machineC
+   /etc/cipe/setroute
+   
+    2.4f.  Firewall Rules
+    
+   #flush all incoming firewall rules and set default policy to deny
+   /sbin/ipfwadm -I -f
+   /sbin/ipfwadm -I -p deny
+   #allow incoming packets to your network via the cipe links
+   /sbin/ipfwadm -I -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   /sbin/ipfwadm -I -a accept -W cip3b1 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your incoming rules here
+   
+   #flush all outgoing firewall rules and set default policy to deny
+   /sbin/ipfwadm -O -f
+   /sbin/ipfwadm -O -p deny
+   #allow outgoing packets to the other networks via the cipe links
+   /sbin/ipfwadm -O -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   /sbin/ipfwadm -O -a accept -W cip3b1 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your outgoing rules here
+   
+   #flush all forwarding firewall rules and set default policy to deny
+   /sbin/ipfwadm -F -f
+   /sbin/ipfwadm -F -p deny
+   #allow packets to be forwarded to the other networks via the cipe
+   links
+   /sbin/ipfwadm -F -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   /sbin/ipfwadm -F -a accept -W cip3b1 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #allow forwarding from real ip of this machine to the real ip address
+   of the other machines
+   /sbin/ipfwadm -F -a accept -W eth1 -S (real ip 1) -D (real ip 2)
+   /sbin/ipfwadm -F -a accept -W eth1 -S (real ip 1) -D (real ip 3)
+   #allow forwarding to the other networks via the  local interface (fake
+   ip address)
+   /sbin/ipfwadm -F -a accept -W eth0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your forwarding rules here
+   
+    2.4g.  Gateway
+    
+   All machines on network 10.10.1.0 must have 10.10.1.1 as gateway.  If
+   you
+   don't it will not work.
+   
+    2.5.  Machine B Configuration
+    
+    2.5a.  /etc/cipe/ip-up
+    
+   #a trimmed down version of the sample ip-up that comes with the
+   distribution
+   #!/bin/sh
+   umask 022
+   PATH=/sbin:/bin:/usr/sbin:/usr/bin
+   echo "UP $*" >> /tmp/cipe
+   echo $3 > /var/run/$1.pid
+   #i prefer to keep a separate file for setting up the routing...see
+   below.
+   
+    2.5b.  /etc/cipe/options.machineA
+    
+   #device name
+   device          cip3b0
+   # the peers internal (fake) ip address
+   ptpaddr         10.10.1.1
+   # my cipe (fake) ip address
+   ipaddr          10.10.2.1
+   # my real ip address and cipe port
+   me              (real ip 1):(port A)
+   # the peers ip address and cipe port
+   peer            (real ip 2):(port A)
+   #my unique 128 bit key that noone else should ever know except my peer
+   key             (Key A)
+   
+    2.5c.  /etc/cipe/setroute
+    
+   #!/bin/sh
+   #separate file for setting routing table
+   #set up route table to Machine A
+   /sbin/route add -host 10.10.1.1 dev cip3b0
+   /sbin/route add -net 10.10.1.0 netmask 255.255.255.0 gw 10.10.1.1
+   
+    2.5d.  /etc/rc.d/rc.local
+    
+   echo Configuring VPN network
+   /usr/local/sbin/ciped -o /etc/cipe/options.machineA
+   /etc/cipe/setroute
+   
+    2.5e.  Firewall Rules
+    
+   #flush all incoming firewall rules and set default policy to deny
+   /sbin/ipfwadm -I -f
+   /sbin/ipfwadm -I -p deny
+   #allow incoming packets to your network via the cipe link
+   /sbin/ipfwadm -I -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your incoming rules here
+   
+   #flush all outgoing firewall rules and set default policy to deny
+   /sbin/ipfwadm -O -f
+   /sbin/ipfwadm -O -p deny
+   #allow outgoing packets to your network via the cipe link
+   /sbin/ipfwadm -O -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your outgoing rules here
+   
+   #flush all forwarding firewall rules and set default policy to deny
+   /sbin/ipfwadm -F -f
+   /sbin/ipfwadm -F -p deny
+   #allow packets to be forwarded to the other networks via the cipe
+   links
+   /sbin/ipfwadm -F -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #allow forwarding from real ip of this machine to the real ip address
+   of the other machines
+   /sbin/ipfwadm -F -a accept -W eth1 -S (real ip 2) -D (real ip 1)
+   #allow packets to be forwarded to the other networks via the local
+   interface (fake ip address)
+   /sbin/ipfwadm -F -a accept -W eth0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your forwarding rules here
+   
+    2.5f.  Gateway
+    
+   All machines on network 10.10.2.0 must have 10.10.2.1 as gateway.  If
+   you
+   don't it will not work.
+   
+    2.6.  Machine C Configuration
+    
+    2.6a.  /etc/cipe/ip-up
+    
+   #a trimmed down version of the sample ip-up that comes with the
+   distribution
+   #!/bin/sh
+   umask 022
+   PATH=/sbin:/bin:/usr/sbin:/usr/bin
+   echo "UP $*" >> /tmp/cipe
+   echo $3 > /var/run/$1.pid
+   #i prefer to keep a separate file for setting up the routing...see
+   below.
+   
+    2.6b.  /etc/cipe/options.machineA
+    
+   #device name
+   device          cip3b0
+   # the peers internal (fake) ip address
+   ptpaddr         10.10.1.1
+   # my cipe (fake) ip address
+   ipaddr          10.10.3.1
+   # my real ip address and cipe port
+   me              (real ip 3):(port B)
+   # the peers ip address and cipe port
+   peer            (real ip 1):(port B)
+   #my unique 128 bit key that noone else should ever know except my peer
+   key             (Key B)
+   
+    2.6c.  /etc/cipe/setroute
+    
+   #!/bin/sh
+   #separate file for setting routing table
+   #set up route table to Machine A
+   /sbin/route add -host 10.10.1.1 dev cip3b0
+   /sbin/route add -net 10.10.1.0 netmask 255.255.255.0 gw 10.10.1.1
+   
+    2.6d.  /etc/rc.d/rc.local
+    
+   echo Configuring VPN network
+   /usr/local/sbin/ciped -o /etc/cipe/options.machineA
+   /etc/cipe/setroute
+   
+    2.6e.  Firewall Rules
+    
+   #flush all incoming firewall rules and set default policy to deny
+   /sbin/ipfwadm -I -f
+   /sbin/ipfwadm -I -p deny
+   #allow incoming packets to your network via the cipe link
+   /sbin/ipfwadm -I -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your incoming rules here
+   
+   #flush all outgoing firewall rules and set default policy to deny
+   /sbin/ipfwadm -O -f
+   /sbin/ipfwadm -O -p deny
+   #allow outgoing packets to your network via the cipe link
+   /sbin/ipfwadm -O -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your outgoing rules here
+   
+   #flush all forwarding firewall rules and set default policy to deny
+   /sbin/ipfwadm -F -f
+   /sbin/ipfwadm -F -p deny
+   #allow packets to be forwarded to the other networks via the cipe
+   links
+   #this machine to the real ip address of the other machines
+   /sbin/ipfwadm -F -a accept -W cip3b0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #allow forwarding from real ip of this machine to the real ip address
+   of the other machine
+   /sbin/ipfwadm -F -a accept -W eth1 -S (real ip 3) -D (real ip 1)
+   #allow packets to be forwarded to the other networks via the local
+   interface (fake ip address)
+   /sbin/ipfwadm -F -a accept -W eth0 -S 10.10.0.0/16 -D 10.10.0.0/16
+   #add rest of your forwarding rules here
+   
+    2.6f.  Gateway
+    
+   All machines on network 10.10.2.0 must have 10.10.2.1 as gateway.  If
+   you
+   don't it will not work.
+   
+  3.  Starting it up
+  
+   Manually run the commands added to rc.local on each machine.
+   
+  4.  Connecting to the WAN.
+  
+   At this point your WAN should be connected.  Try pinging machines on
+   the
+   other networks.  Now the next step is to get your networks to see each
+   other
+   and access each other using SAMBA browsing.  A few hints: lmhosts or
+   wins
+   server is required, trusted domains for NT.  I have set these up, but
+   that
+   is not the purpose of this document (at least not for now).
+   
+5.  References
+
+    5.1.  Web Sites
+    
+       Cipe Home Page
+   [2]http://sites.inka.de/~bigred/devel/cipe.html
+     Masq Home Page          [3]http://ipmasq.home.ml.org
+   Samba Home Page          [4]http://samba.anu.edu.au
+                     Linux HQ          [5]http://www.linuxhq.com
+   ---great site for lots of linux info
+   
+    5.2.  Documentation
+    
+   cipe.info: info file included with cipe distribution
+   Firewall HOWTO, by Mark Grennan <markg@netplus.net>
+   IP Masquerade mini-HOWTO, by Ambrose Au <ambrose@writeme.com>
+
+References
+
+   1. http://sites.inka.de/~bigred/sw/cipe-1.0.0.tar.gz
+   2. http://sites.inka.de/~bigred/devel/cipe.html
+   3. http://ipmasq.home.ml.org/
+   4. http://samba.anu.edu.au/
+   5. http://www.linuxhq.com/

@@ -1,0 +1,24 @@
+Begin3
+Title:		lightbar: linux login enhancements.
+Version:	1.12.1203
+Entered-date:	09/24/97
+Description:	lightbar is a login enhancement for FreeBSD and Linux.
+		It adds features from BSD4.4 SunOS(solaris) and HP-UX
+		into a Linux, FreeBSD portable and simple login program.
+		It adds features like limits on cpu ram controls along
+		with the maximum amount of logins from one use or one
+		certain group.  It adds a simple customization and macros
+		for issue.net to parse a persons hostname and remote
+		username into the issue.net.   And much more features.
+Keywords:	login utilities security lightbar util-linux enhancement
+Author:		Trevor Linton <blind@motherbrain.com>
+Maintained-by:	Trevor Linton <blind@motherbrain.com> and several beta testers.
+Primary-site:	ftp.xmission.com /pub/users/b/blind/
+		169k lightbar-1.12.tar.gz
+Alternate-site:	ftp.motherbrain.com /pub/lightbar/
+		169k lightbar-1.12.tar.gz
+Original-site:
+Platforms:	Linux 1.2.x+, FreeBSD
+Copying-policy:	GPL, BSD, others
+End
+

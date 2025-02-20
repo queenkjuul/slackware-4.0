@@ -1,0 +1,19 @@
+Begin3
+Title:          gated
+Version:        3.5Beta1
+Entered-date:   01/01/1996
+Description:    Multi-protocol routing daemon 
+Keywords:       gated routed route daemon RIP BGP EGP HELLO OSPF
+Author:         Cornell University (Jeff Honig)
+Maintained-by:  Original by gated@gated.merit.edu  
+		Linux port by scldad@sdc.com.au (Stephen Davies)
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Network/daemons
+		                560K gatedb1_bin_1.3.x.tgz
+Alternate-site: HTML documentation at http://www.merit.edu/~gated
+Original-site:  ftp.merit.edu:net-research/gated
+                                  2Mb gated-R3_5Beta1.tar.Z
+Platform:       These binaries are intended for Linux 1.3.47+
+		and include Alan Cox's patches (which are also
+		in the source.)
+Copying-policy: Copyright but open
+End

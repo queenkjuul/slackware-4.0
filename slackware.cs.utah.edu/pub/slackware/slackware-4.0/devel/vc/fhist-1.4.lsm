@@ -1,0 +1,36 @@
+Begin3
+Title: fhist
+Version: 1.4
+Entered-date: 17SEP98
+Description: The FHist program contains	3 utilities, a file
+	history	tool "fhist", a	file comparison	tool "fcomp", and
+	a file merging tool "fmerge".  All three are bundled
+	together, because they all use the same	minimal-
+	difference algorithm.
+
+	The history tool presented here, fhist,	is a minimal
+	history	tool.  It provides no locking or branching.  This
+	can be useful in contexts where	the configuration
+	management or change control be	being provided by some
+	other tool.
+
+	FHist runs on almost any flavor	of UNIX.  Self
+	configuring using a GNU	Autoconf generated configure
+	script.	 There are no modifications required to	compile
+	it for Linux.
+Keywords: history
+Author:	millerp@canb.auug.org.au (Peter	Miller)
+Primary-site: http://www.canb.auug.org.au/~millerp/
+	fhist-1.4.README   Description,	from the tar file
+	fhist-1.4.lsm	   Description,	LSM format
+	fhist-1.4.spec	   RedHat package specification
+	fhist-1.4.tar.gz   The complete	sources.
+	fhist-1.4.ps.gz	   Reference Manual, in	PostScript format.
+Secondary-site:	sunsite.unc.edu	/pub/Linux/devel/vc
+	fhist-1.4.README   Description,	from the tar file
+	fhist-1.4.lsm	   Description,	LSM format
+	fhist-1.4.spec	   RedHat package specification
+	fhist-1.4.tar.gz   The complete	sources.
+	fhist-1.4.ps.gz	   Reference Manual, in	PostScript format.
+Copying-policy:	GPL 2.0
+End

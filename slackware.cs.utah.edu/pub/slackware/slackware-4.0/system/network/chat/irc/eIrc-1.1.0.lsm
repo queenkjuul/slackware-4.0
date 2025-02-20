@@ -1,0 +1,20 @@
+Begin3
+Title:          eIrc
+Version:        1.1.0
+Entered-date:   12JUL96
+Description:    eIrc is XWindow based IRC client written using Motif.
+Keywords:       Irc, Motif
+Author:         eko.bono.surprijadi@duisburg.netsurf.de (Eko Bono Suprijadi)
+Maintained-by:  eko.bono.surprijadi@duisburg.netsurf.de (Eko Bono Suprijadi)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/chat
+                  1485 eIrc.README
+                 74877 eirc-1.1.0.shared.tar.gz
+                606196 eirc-1.1.0.static.tar.gz
+Alternate-site: ftp.undernet.org /irc/clients/xwindows/eirc
+                  1485 eIrc.README
+                 74877 eirc-1.1.0.shared.tar.gz
+                606196 eirc-1.1.0.static.tar.gz
+Alternate-site:
+Platforms:      X11 Linux  Motif
+Copying-policy: GPL
+End

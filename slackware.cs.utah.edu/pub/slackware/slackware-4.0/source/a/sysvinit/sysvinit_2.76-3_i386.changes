@@ -1,0 +1,37 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+
+Format: 1.5
+Date: Tue, 12 Jan 1999 12:12:44 +0100
+Source: sysvinit
+Binary: sysvinit
+Architecture: source i386
+Version: 2.76-3
+Distribution: frozen unstable
+Urgency: high
+Maintainer: Miquel van Smoorenburg <miquels@cistron.nl>
+Description: 
+ sysvinit   - System-V like init.
+Changes: 
+ sysvinit (2.76-3) frozen unstable; urgency=high
+ .
+   * Small bugfix to last.c courtesy of Danek Duvall <duvall@emufarm.ml.org>
+   * Recompile with latest libs, so dependency on libc6 (>= 2.0.7u) is gone.
+   * Fixes bugs:
+     #31601: sysvinit: Doesn't wipe new files from /tmp
+     #28132: checkroot.sh parsing of /etc/fstab is incorrect.
+     #29729: sysvinit: references wrong policy homepage
+     #27949: last: should use down instead of crash
+Files: 
+ 8b07de565143f0d638b21d00f176a60e 521 base required sysvinit_2.76-3.dsc
+ 5444c78d6b6b4789c71d886a75302697 104116 base required sysvinit_2.76-3.tar.gz
+ 67511d874cc3b483a8e779a5a53d7ce7 77070 base required sysvinit_2.76-3_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.6.3ia
+Charset: latin1
+
+iQB1AwUBNpsxWFiLscT2F1RZAQECtgMAmnaqfNMntpOV/9TSvISTFFp5o86AJNRa
+Wd+Nf+KeTiqXOya0MW5RKjH/xSwqxGTm5hkBhotRwJBZIZos1DmmAk25lAZdfzqO
+pDCqgIdeJzIQWgCARSSTwyLs7qsdhZOL
+=Xbh4
+-----END PGP SIGNATURE-----

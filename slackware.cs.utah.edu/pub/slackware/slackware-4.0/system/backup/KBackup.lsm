@@ -1,0 +1,21 @@
+Begin3
+Title:          KBackup - Karsten's Backup System
+Version:        1.2.11
+Entered-date:   01 DEC 97
+Description:    KBackup is a powerful backup program for handling backups,
+		which supports tapes, floppy drives and removable hard drives, 
+		different archive formats, compression types,
+		strong encryption, remote backups, automated backups,
+		double buffering, automatic archive type detection, and
+		many other useful features -- all wrapped up in a simple to use 
+		menu interface.
+		See http://KBackup.home.ml.org/ more info.
+Keywords:       backup, tar, afio, encryption, tape, disk, floppy
+Author:         Karsten Ballueder (Ballueder@usa.net)
+Maintained-by:  KBackup@usa.net
+Primary-site:   sunsite.unc.edu /pub/linux/system/backup
+Alternate-site: 
+Original-site:  http://KBackup.home.ml.org/
+Platforms:      Unix
+Copying-policy: GPL
+End

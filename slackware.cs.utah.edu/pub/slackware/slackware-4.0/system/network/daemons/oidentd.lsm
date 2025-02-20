@@ -1,0 +1,20 @@
+Begin3
+Title:          oidentd
+Version:        1.6.1
+Entered-date:   27FEB1999
+Description:    Oidentd is an ident (rfc1413) daemon for Linux.  Oidentd
+		supports most features of pidentd as well as a number of
+		features absent in pidentd. Oidentd allows users to
+		specify the identd response that the server will output
+		when a successful lookup is completed. Oidentd also
+		allows for pseudo-random strings to be returned upon the
+		completion of a successful lookup instead of a username
+		or a UID. Oidentd now supports IP masqueraded connections and
+		forwarding of requests to hosts that masq through us.
+Keywords:       ident, rfc1413, proxy, forward, masq, masquerade, linux
+Author:         odin@ojnk.nu
+Primary-site:   URL: http://www.ojnk.nu/~odin/stuff/oidentd-1.6.1.tar.gz
+Alternate-site: metalab.unc.edu /pub/Linux/system/network/daemons
+Platform:       Linux
+Copying-policy: GPL
+End

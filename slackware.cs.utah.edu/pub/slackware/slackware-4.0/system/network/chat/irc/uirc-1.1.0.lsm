@@ -1,0 +1,31 @@
+Begin3
+Title:          uirc
+Version:        1.1.0
+Entered-date:   24SEP97
+Description:    A simple irc client for with ANSI COLOR for Linux.
+                Mirc colors can be transmitted (^Kfg,bg), and the 15
+                mirc colors are simulated on a 8 color xterm or console
+                using highlighting.
+		This client also can display and send text in ANSI color.
+		Has many commands, very flexible setup file, will run
+		in a Linux console or color xterm.
+		Nice command line editing, easy to use, page back with
+		automatic hold, etc.
+		Automatic coloring of last addressed nick. (handy in a busy
+		channel).
+                This version has the 'segfault bug fix' and should also run
+                OK on linux 2.x.x
+                To install;
+	        Copy uirc-1.1.0.tgz your home directory
+                tar -zxvf uirc-1.1.0.tgz <ENTER>
+                cd uirc-1.1.0 <ENTER>
+                Follow instructions in INSTALL	
+Keywords:       irc client, color, ANSI, linux, X, mirc
+Author:         pante@pi.net (panteltje)
+Maintained-by:  This is the first non beta.
+		pante@pi.net
+Primary-site:   sunsite.unc.edu 
+		/pub/Linux/system/network/chat/uirc-1.1.0.tgz
+Platforms:	LINUX
+Copying-policy: GPL, but not free software, uirc costs 1 USD, see README.
+End

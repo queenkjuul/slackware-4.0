@@ -1,0 +1,11 @@
+Begin
+Title        =rip154.tar
+Version      =1.54
+Desc1        =RIP graphics standard for un*x include files.
+Author       =Multiple authors
+Site1        =sutro.sfsu.edu
+Path1        =/pub/rip
+Required1    =UN*X system and DOS system
+Entered      =6/6/94
+EnteredBy    =Dave Mays (dave@adm108.adm.lousiville.edu)
+End

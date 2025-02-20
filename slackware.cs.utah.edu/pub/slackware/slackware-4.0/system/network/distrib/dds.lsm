@@ -1,0 +1,20 @@
+Begin3
+Title:          dds
+Version:        1.0.0
+Entered-date:   3/7/98
+Description:    Distributed Dependancy Scheduler
+                A system for controlling job flow based on dependancies,
+		whereby jobs will not run until the successful completion
+		of their predecessors.  Jobs may be grouped together,
+		originate from multiple users, and run across many hosts.
+Keywords:       scheduler distributed job control dependancy
+Author:         pgray@fmg-statestreet.com
+Maintained-by:  pgray@fmg-statestreet.com
+Primary-site:   sunsite.unc.edu /pub/Linux/apps
+                dds-1.0.0.tar.gz
+		dds.lsm
+Alternate-site: ftp.mindspring.com /users/pfgray/linux
+Original-site:  
+Platforms:      
+Copying-policy: GPL
+End

@@ -1,0 +1,17 @@
+Begin3
+Title: Yet Another Delete User
+Version: 20AUG97
+Entered-date: 20AUG97
+Description: This is another delete user utility for administrators.  This
+was created in Perl since it's easy to modify.  This was created because I
+was having a hard time finding a deluser that would delete the user from
+the group file as well.
+Keywords: 
+Author: trevor@totalweb.net (Trevor Jorgenson)
+Maintained-by: trevor@totalweb.net (Trevor Jorgenson)
+Primary-site: saturn.totalweb.net /pub/trevor/
+Alternate-site: sunsite.unc.edu /pub/Linux/system/admin/accounts/
+Original-site:
+Platforms: Linux, Perl
+Copying-policy: Beerware (1 Bottle)
+End

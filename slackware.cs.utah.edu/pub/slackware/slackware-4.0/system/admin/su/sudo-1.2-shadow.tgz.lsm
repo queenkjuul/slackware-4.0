@@ -1,0 +1,15 @@
+Begin3
+Title: Sudo
+Version: 1.2pl1 (unofficial linux shadow passwords fix)       
+Entered-date: 95/3/9   
+Description: Patched source; fixes bugs w/ sudo and Shadow passwords.
+Keywords: security, admin, sudo      
+Author: nieusma@rootgroup.com        
+Maintained-by:  
+Primary-site: sunsite.unc.edu /pub/Linux/system/Admin
+              26761 sudo-1.2-shadow.tgz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: GPL
+End

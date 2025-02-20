@@ -1,0 +1,25 @@
+Begin3
+Title:          APC Ethernet MasterSwitch Secure Outlet Manager
+Version:        1.00
+Entered-date:   Tue Mar  2 11:58:20 PST 1999
+Description:	MasterSwitch is a remote power distribution unit that 
+		allows users to control power to connected devices.
+		This is a CGI interface that allows you to setup individual
+		usernames and passwords for each outlet on APC's
+		MasterSwitch.  With APC's interface one global username and
+		password controls the entire MasterSwitch.  It is often
+		useful to give users access to only one port in co-location
+		data centers or when multiple departments are sharing the
+		same masterswitch and you don't want them to be able to 
+		power cycle your machine.  This program eliminates
+		the need for a MasterSwitch for EACH CUSTOMER.
+Keywords:       apc, masterswitch
+Author:         Kit Knox <kit@connectnet.com>
+Maintained-by:  Kit Knox <kit@connectnet.com>
+Primary-site:   http://www.rootshell.com/apc/
+                59kb apcmswitch-1.0.tar.gz
+Alternate-site:
+Original-site:
+Platforms:      Linux 2.x.
+Copying-policy: GPL
+End

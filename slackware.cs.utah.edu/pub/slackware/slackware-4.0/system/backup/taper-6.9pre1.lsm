@@ -1,0 +1,30 @@
+Begin3
+Title:		Taper
+Version:  	6.9pre1
+Entered-date:	03MAY98
+Description:	This is a tape backup and restore program that provides
+		a friendly user interface to allow backing/restoring
+		files to a tape drive. Alternatively, files can be backed
+		up to hard disk files. Selecting files for backup and restore
+	 	is very similar to the Mouseless Commander interface and
+		allows easy traversal of directories. Recursively selected
+		directories are supported. Incremental backup and automatic
+		most recent restore are defaults settings. SCSI, ftape,
+		zftape, and removable drives are supported (ide tape drives
+		in ALPHA stage)
+		Information about archives is stored on the hard disk 
+		allowing information about  archives to be obtained without
+		having to have the tape in the drive. 
+			Web Page: www.multiline.com.au/~yusuf
+Keywords:	Tape, Backup, Archive
+Author:		yusuf@multiline.com.au (yusuf nagree)
+Maintained-by:	yusuf@multiline.com.au
+Primary-site:	sunsite.unc.edu  /pub/Linux/system/backup/taper-6.9pre1.tar.gz
+		tsx-11.mit.edu /pub/linux/sources/sbin/taper-6.9pre1.tar.gz
+		Also available from web page
+		Approx 320K
+Platforms:	linux > 1.2.1
+		ncurses >= 4.1 with the forms library
+		GCC > 2.6.1 
+Copying-policy:	GPL
+End

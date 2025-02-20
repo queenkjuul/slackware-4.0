@@ -1,0 +1,14 @@
+Begin3
+Title:          netl
+Version:        1.01
+Entered-date:   26MAR99
+Description:    network logger/sniffer suitable for TCP/IP over Ethernet and 
+		loopback.  netl is capable of logging everything from pings 
+		to telnet, including low level IP like SYNs and RSTs.
+Keywords:       network logger sniffer Ethernet
+Author:         ollisg@wwa.com (Graham THE Ollis)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/monitor/
+		52kB netl-1.00.tar.gz
+Platforms:      perl5 is handy to have, but not necessary.
+Copying-policy: GPL
+End

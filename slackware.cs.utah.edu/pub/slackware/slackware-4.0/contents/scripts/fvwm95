@@ -1,0 +1,2 @@
+( cd var/X11R6/lib/xinit ; rm -rf xinitrc )
+( cd var/X11R6/lib/xinit ; ln -sf xinitrc.fvwm95 xinitrc )

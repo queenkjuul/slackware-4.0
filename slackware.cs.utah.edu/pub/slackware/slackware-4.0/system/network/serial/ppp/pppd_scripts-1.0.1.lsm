@@ -1,0 +1,24 @@
+Begin2
+Title        =pppd scripts
+Version      =1.0.1
+Desc1        =Runs pppd as a proper daemon, maintains the modem link, and
+Desc2        =re-establishes the connection if carrier drops.  Also provides
+Desc3        =a way for software to easily determine if the connection is
+Desc4        =down for maintenance.
+Author       =Karsten Johansson
+Maintainer   =Karsten Johansson
+MaintEmail   =ksaj@ims.pcscav.com
+Site1        =ftp.pcscav.com
+Path1        =/pub/IMS
+File1        =pppd-scripts-1.0.1.tar.z
+Required     =pppd and chat
+CopyPolicy1  =freeware... send email to say 'hello' and tell me you are
+CopyPolicy2  =using this software.
+KeyWords     =ppp pppd daemon
+Comment1     =These scripts provide major benefits over the default scripts
+Comment2     =that come with standard pppd distributions.  DO NOT USE
+Comment3     =VERSION 1.0.0.  One of the scripts got botched up somehow.
+Entered      =95DEC03
+EnteredBy    =Dave Austin
+CheckedEmail =dave@ims.pcscav.com
+End

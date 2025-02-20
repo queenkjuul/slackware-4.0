@@ -1,0 +1,8 @@
+( cd usr/lib ; rm -rf libqthreads.so.0 )
+( cd usr/lib ; ln -sf libqthreads.so.0.0.0 libqthreads.so.0 )
+( cd usr/lib ; rm -rf libqthreads.so )
+( cd usr/lib ; ln -sf libqthreads.so.0.0.0 libqthreads.so )
+( cd usr/lib ; rm -rf libguile.so.4 )
+( cd usr/lib ; ln -sf libguile.so.4.0.0 libguile.so.4 )
+( cd usr/lib ; rm -rf libguile.so )
+( cd usr/lib ; ln -sf libguile.so.4.0.0 libguile.so )

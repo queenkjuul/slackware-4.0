@@ -1,0 +1,14 @@
+Begin3
+Title:		pasdisable
+Version:	1.03
+Entered-date:	11/28/1998
+Description:	A quick hack to allow a lazy sysadmin to disable passwords from a password file.
+Keywords:	password, admin
+Author: 	tigger@lagwagon.net (Chris Lappe)
+Maintained-by:	tigger@lagwagon.net (Chris Lappe)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/admin
+		874  passdisable.gz
+		401  passdisable.lsm			
+Platforms:	perl
+Copying-policy:	GPL
+End

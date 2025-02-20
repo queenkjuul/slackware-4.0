@@ -1,0 +1,19 @@
+Begin3
+Title:          xosview
+Version:        1.7.0
+Entered-date:   25FEB99
+Description:    Xosview displays many system related stats such as
+                cpu usage, memory usage, swap usage, network usage,
+                interrupt activity, serial activity, and load average
+                inside of an X Window.
+Keywords:       xosview meter monitor status
+Author:         romberg@fsl.noaa.gov (Mike Romberg)
+                bgrayson@pine.ece.utexas.edu (Brian Grayson)
+Maintained-by:  romberg@fsl.noaa.gov (Mike Romberg)
+                bgrayson@pine.ece.utexas.edu (Brian Grayson)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/status/xstatus
+                136392 xosview-1.7.1.tar.gz
+Alternate-site: http://lore.ece.utexas.edu/~bgrayson/xosview.html
+Platforms:      Linux, NetBSD, FreeBSD(alpha), HPUX, SunOS
+Copying-policy: GPL, The BSD port uses some BSD derrived code which is BSD.
+End

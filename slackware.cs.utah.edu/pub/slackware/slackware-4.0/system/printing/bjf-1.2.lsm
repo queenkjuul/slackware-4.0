@@ -1,0 +1,11 @@
+Begin3
+Title:          Print filter for Canon BJ-200 printers
+Version:        1.2
+Entered-date:   1997 Jul 15
+Description:    lpd input filter for BJ200, flags for 2-sided 2/4-up, draft etc
+Keywords:       Canon Bubblejet, BJ200, filter
+Author:         csmith@stoneboro.uucp.cirr.com
+Primary-site:   sunsite.unc.edu /pub/Linux/system/printing
+Platforms:      Unix
+Copying-policy: freeware
+End

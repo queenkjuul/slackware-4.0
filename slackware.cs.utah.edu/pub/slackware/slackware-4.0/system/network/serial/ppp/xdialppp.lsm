@@ -1,0 +1,19 @@
+Begin3
+Title:          xdialppp
+Version:        0.4.2
+Entered-date:   29-05-1998
+Description:    X11-based ppp configurator, script generator, and connection
+                manager (for ppp connections).
+                Useful to easyly connect to an ISP.
+Keywords:       xdialppp ppp X11 X ISP dialer
+Author:         d.rodrigo@computer.org (Diego Rodrigo)
+Maintained-by:  d.rodrigo@computer.org (Diego Rodrigo)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial/ppp
+                279kb  xdialppp-0.4.2.src.tar.gz
+                600    xdialppp.lsm
+
+Alternate-site: 
+Original-site:  
+Platforms:      Linux kernel 2.0.x & X11
+Copying-policy: GPL
+End

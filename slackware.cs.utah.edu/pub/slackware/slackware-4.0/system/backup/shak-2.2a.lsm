@@ -1,0 +1,25 @@
+Begin3
+Title:          shak
+Version:        2.2a
+Entered-date:   30DEC97
+Description:    Shak is network transparent client backup executive and tape 
+		file/media manager. (A shell program system which positions a 
+		tape at eom and runs a user-supplied backup program).
+		Shak creates an interface of defined environment variables 
+		which are set according to its index files it keeps for every 
+		tape cartridge. 
+		Shak does not impose the form of the user backup although 
+		includes a Linux client example.  Shak supports dump(8) 
+		style dump levels and implements cooperative (lock file) 
+		locking; and, error monitoring for remote backups with
+		mail and logging notification.
+Keywords:       remote backup tape tapefile
+Author:         jhl@richmond.infi.net (James Lowe, Jr.)
+Maintained-by:  jhl@richmond.infi.net 
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Backup
+                150Kb shak-2.2a.tar.gz
+Alternate-site: 
+Original-site:  
+Copying-policy: GPL
+End
+

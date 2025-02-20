@@ -1,0 +1,21 @@
+Begin3
+Title:          huggietag
+Version:        0.8.4
+Entered-date:   23APR99
+Description:    HuggieTag is a program which adds a tagline and signature to
+		the end of email and Fidonet messages.
+		It supports stealing of tags, personalised tags for your
+		recipient and reformatting tags to fit a certain length.
+		Check http://www.earth.li/~huggie/huggietag/ for
+		the latest information.
+Keywords:       tags, taglines, mail, email, fidonet, humour, huggietag,
+		sigs, signature
+Author:         huggie@earth.li (Simon Huggins)
+Maintained-by:  huggie@earth.li (Simon Huggins)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/misc
+		39kB huggietag-0.8.2.tar.gz
+Alternate-site: http://www.earth.li /~huggie/huggietag/
+Alternate-site: http://ds.dial.pipex.com /huggie/progs/tags.shtml
+Platforms:      linux
+Copying-policy: GPL 2.0
+End

@@ -1,0 +1,15 @@
+Begin3
+Title:          4.4BSD/NetBSD time daemon
+Version:        9/11/95
+Entered-date:   9/23/95
+Description:    Linux port of current NetBSD time daemon.
+Keywords:       BSD timed
+Author:         BSD
+Maintained-by:  downsj@teeny.org
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/daemons
+		44k bsd-timed.tgz
+Alternate-site: 
+Original-site:  ftp.netbsd.org /pub/NetBSD/NetBSD-current
+Platform:       
+Copying-policy: BSD
+End

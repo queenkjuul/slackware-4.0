@@ -1,0 +1,17 @@
+Begin3
+Title: twpatch-0.2      
+Version: 0.2      
+Entered-date:    
+Description:  Patches to run Tripwire 1.2 on Linux. Version 0.2 of
+              the patch adds octal_array patch from
+              comp.security.unix FAQ  
+Keywords: tripwire security filesystem integrity checker
+Author: Collected by Judah Milgram <milgram@eng.umd.edu>
+Maintained-by:  
+Primary-site: sunsite.unc.edu /pub/Linux/system/security
+Alternate-site: 
+Original-site:  ftp://coast.cs.purdue.edu/pub/COAST/Tripwire/
+Platforms: Linux ix86
+Copying-policy: Tripwire-1.2 is (C) Purdue Univ. (license similar to BSD)
+                Patch is MIT license
+End

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The Linux-PAM Hall of Fame</TITLE>
+   <META NAME="Author" CONTENT="Andrew Morgan">
+</HEAD>
+<BODY>
+
+<H2>The Challenge</H2>
+
+<P>
+This is a page devoted to the adoration of people who have broken PAM. Would
+you like to have your name on this page?  You have the <a
+href="pre">source</a>, feel free to
+try!  Mail your exploit/patches to
+<a href="mailto:morgan@linux.kernel.org">me</a> or
+<a href="mailto:pam-list@redhat.com">the Linux-PAM mailing list</a>.
+</P>
+
+<HR>
+
+<H2>People that deserve your respect</H2>
+
+<p>
+The folowing people have found weaknesses in the Linux-PAM distribution. 
+Thanks to their efforts Linux-PAM is a more secure package. Where available,
+we have indicated the fix that resulted from their investigations.
+</P>
+
+<H4>Holes in libpam</H4>
+
+<p>Werner Almesberger pointed out that advisory locking can lead to an
+pretty effective denail of service attack.  Advisory locking was removed
+from Linux-PAM-0.52.
+
+<p>
+<H4>Holes in modules</H4>
+
+<p>Subtle security hole in pam_rhosts module found by Jacob Langford
+(Tue, 30 Sep 1997 11:03:05 -0500) and fix posted by Andrey
+V. Savochkin (Wed, 1 Oct 1997 11:49:04 +0300).  The problem was
+concerned with successive calls to gethostbyname() and a failure to
+cache the results of previous calls.
+
+<p>Olaf Kirch took the time to scour the source for Linux-PAM 0.58.
+He uncovered a few subtle problems with a number of modules.  All of
+these problems (besides one relating to IPv6) were fixed in the 0.63
+release.  [This was the next release (three days) after Olaf's
+posting.]
+
+<p>Michal Zalewski identified a permission manipulation problem with
+the pam_unix module (Dec 23, 1998 at 01:12:45PM +0100). Andrey
+V. Savochkin provided a patch (Thu, 24 Dec 1998 18:02:03 +0300) for
+this and a similar problem in pam_tally.
+
+<HR>
+<P>This page was last changed: 1998/12/24</P>
+<HR> 
+<P>Mail: <B><I><A HREF="mailto:morgan@linux.kernel.org">Andrew
+Morgan</A></I></B> (My <a href="morgan.asc">PGP key is here</a>)
+</P>
+
+</BODY>
+</HTML>

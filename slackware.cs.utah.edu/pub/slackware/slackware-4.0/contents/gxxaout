@@ -1,0 +1,11 @@
+drwxr-xr-x root/root         0 1998-03-23 20:39 ./
+drwxr-xr-x root/root         0 1998-03-23 20:39 usr/
+drwxr-xr-x root/root         0 1996-04-04 17:02 usr/lib/
+drwxr-xr-x root/root         0 1997-10-05 17:51 usr/lib/gcc-lib/
+drwxr-xr-x root/root         0 1997-10-05 17:51 usr/lib/gcc-lib/i486-unknown-linuxaout/
+drwxr-xr-x root/root         0 1997-05-23 00:29 usr/lib/gcc-lib/i486-unknown-linuxaout/2.7.2.3/
+-rwxr-xr-x root/root   1461416 1997-10-05 17:18 usr/lib/gcc-lib/i486-unknown-linuxaout/2.7.2.3/cc1plus
+drwxr-xr-x root/root         0 1995-12-02 18:20 usr/ix86-linuxaout/
+drwxr-xr-x root/root         0 1997-02-01 14:15 usr/ix86-linuxaout/lib/
+-rw-r--r-- root/root    251232 1997-10-05 17:50 usr/ix86-linuxaout/lib/libg++.a
+-rw-r--r-- root/root    236228 1997-10-05 17:48 usr/ix86-linuxaout/lib/libstdc++.a

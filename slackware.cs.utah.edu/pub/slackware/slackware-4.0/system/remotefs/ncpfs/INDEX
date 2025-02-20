@@ -1,0 +1,33 @@
+ipx.tgz           low-level ipx utilities from caldera, also
+                  in ncpfs-0.x.tgz
+
+ipxripd.x.x.tgz   An IPX RIP/SAP daemon that works on 1.2.x and 1.3.x kernels.
+                  This includes the latest 1.3.x kernels with the full internal
+                  IPX network enabled.
+
+mars_nwe-x.x.tgz  Martin Stover's NetWare emulator. It has some more
+                  features than lwared, such as no need for a kernel patch,
+                  a disk-based bindery and rudimentary printing support.
+		  It works fine with the full internal IPX network, 
+                  new in Linux 1.3.60.
+
+mars_dosutils-x.x.tgz
+                  Some little DOS utilities done by Martin. With one of these,
+                  you can change a user's password on mars_nwe.
+
+marsmail-x.x.tgz  Some little programs & config files for using PMAIL with
+                  mars_nwe. Contributed by Eddie Dunckley eddie@eng.rau.ac.za
+
+lwared-x.x.tgz    LinWare, NetWare emulator by Ales Dryak
+
+ncpfs-2.0.x.tgz   NetWare client filesystem for Linux. This version is 
+                  for Kernels 2.0.x and older. It contains the user
+                  utilities required for ncpfs of latest 1.3.x and 2.0.x 
+                  kernels, as well as a kernel module for 1.2.13
+
+ncpfs-2.0.12.tgz  ncpfs with NDS extensions. You find the necessary kernel
+		  extensions in the ncpfs-2.0.12-kernel files.
+
+ncpfs-2.0.12-kernel-xxx.gz
+		  These are patch files you need when you want to use
+		  the NDS features of ncpfs 2.0.12

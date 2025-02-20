@@ -1,0 +1,36 @@
+Elvis 2.1 is now available for downloads from:
+
+	ftp://ftp.cs.pdx.edu/pub/elvis/README.html  (main site)
+	ftp://ftp.false.com/pub/elvis/README.html   (mirror)
+
+Compared to the traditional vi, elvis adds the following features:
+
+	* Runs under Unix, MS-DOS, Windows95/98/NT, and OS/2.
+	* Multiple edit buffers, so you can edit several files at once.
+	* Multiple windows, so you can see multiple edit buffers, or
+	  different parts of the same edit buffer.
+	* Multiple user interfaces, including graphical interfaces under
+	  Windows95/98/NT and X11.
+	* A variety of display modes, including syntax coloring and HTML.
+	* Online help, with hypertext links.
+	* Enhanced tags, to support overloading in C++.
+	* Network support, so you can load/save files via FTP, or even use
+	  elvis as a light-weight Web browser.
+	* Aliases, which allow you to define new ex commands.
+	* Built-in calculator
+
+Compared to elvis 2.0, elvis 2.1 should be more stable (have fewer bugs).
+It also adds the following features:
+
+	* New ex commands, mostly intended to make elvis/ex scripts more
+	  powerful and easier to write.
+        * New ports: a graphical Win32 port, and a OS/2 port (text mode,
+	  or X-windows via XFree86/2).
+        * Improved X11 interface
+        * Name completion, via the <Tab> key
+        * Enhancements to tilde in a file name
+        * Network protocols, so you can read/write via Web URLs.
+        * "tex" display mode
+        * Enhanced tags
+        * The 'c' flag to the :s command
+	* Lots of little things.

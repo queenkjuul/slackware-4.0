@@ -1,0 +1,17 @@
+Begin3
+Title:		lgm
+Version:	Beta-1
+Entered-date:	09APR95
+Description:	Universal mail client.  Currently supports BOTH standard and
+		MMDF formatted mail spools.  Supports pull-down pick list
+		directories, published and unpublished mailboxes, etc.  Can
+		be used stand-alone or as part of VU BBS.  Supports auto-
+		address conversion between internet and fido mail addresses.
+Keywords:	BBS, VU, lgm, mail, fido, uucp
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/BBS/vubbs
+		lgm-b1.tar.gz
+Platforms:	All Linux kernels 1.1.3x and above.
+Copying-policy:	Betaware, Free, eventually to be Shareware.
+End

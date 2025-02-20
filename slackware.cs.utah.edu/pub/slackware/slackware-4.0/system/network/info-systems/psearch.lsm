@@ -1,0 +1,14 @@
+Begin3
+Title:          psearch
+Version:        0.3
+Entered-date:   30MAR99
+Description:    psearch search for files in /pub at localhost
+                and/or at remote hosts
+Keywords:       psearch, psearchd, archie, hamradio, ftpsearch
+Author:         kf6mli@amsat.org (Thomas Weinell)
+Maintained-by:  kf6mli@amsat.org (Thomas Weinell)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/info-systems
+                39k psearch-0.3.tar.gz
+Platforms:      Linux
+Copying-policy: GPL
+End

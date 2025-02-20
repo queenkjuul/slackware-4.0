@@ -1,0 +1,15 @@
+Begin3
+Title:          npasswd_boulder+l-bin
+Version:        N/A
+Entered-date:	May 1, 1995
+Description:    A replacement passwd(8) program with reasonably strict
+		checking of user passwords for added security against
+		dictionary attacks. Unpack and go (hopefully) binary
+		package.
+Keywords:       security password
+Author:         Many and various. Linux port by cmetz@inner.net (Craig Metz).
+Primary-site:   sunsite.unc.edu  /pub/Linux/system/Admin/accounts
+		npasswd_boulder+l-bin.tar.gz
+Platforms:      Many UNIX platforms.
+Copying-policy: GPL
+End

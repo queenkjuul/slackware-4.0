@@ -1,0 +1,124 @@
+Date: Sat, 13 Apr 1996 20:15:17 -0700 (PDT)
+From: Nobody <rmarc@netcom.com>
+Subject: Serial ISDN using MLPPP
+
+R Marc Phillips | Need and be abandoned.
+rmarc@netcom.com| Hope and be denied.
+Semi-Psychotic  | Love and be destroyed.
+Mostly Confused | -me
+
+This is a basic guide to using ppp over an external ISDN device.  As of
+yet there are no drivers that I know of for ISDN cards readily available
+in the USA.  This is a guide to ISDN over a serial port.
+
+The first thing you'll need is PPP compiled on your linux system.  With 
+most releases of Linux Slackware, it is an option on recompiling and 
+sometimes installing.  If you don't have it you can get the latest BETA from:
+
+ftp.funet.fi:/pub/Linux/BETA/ppp/ppp-2.2
+
+Note that this is for later kernels (1.3.8x and above) for earlier kernels
+you may want to look for ppp2.2.0d or e.  A search on www.yahoo.com for ppp
+should yield something.
+
+Once you have that installed and functional (you can usual see if it's 
+functional, if you're not sure, by just typing pppd at a prompt. You'll 
+then see a bunch of garbage start scrolling across your screen.  This 
+means you have it installed.  It'll time out in a minute or two or you 
+can go to another virtual terminal and kill the process.).
+
+Now you'll want to make a pap-secrets file.  This is a file that simply 
+contains you username and password.  PAP stands for Password 
+Authentication Protocol which is a function of PPP and a required 
+component of MultilinkPPP as defined in the RFC documentation on 
+Multilink protocols:
+
+http://www.cis.ohio-state.edu/htbin/rfc/rfc1356.html
+
+I'd advise that you put this file in /etc/ppp and call it something like 
+pap or pap-secrets.  What you name it really doesn't matter.  The file 
+should have two lines in it.  The first line containing your username 
+and the second containing your password.
+
+Once you've done that, you can try out a PPP connection.  The easiest way 
+would be to make a file called "pppfix" or something (again, it can be 
+called whatever you want).  Here is an example:
+
+#!/bin/sh
+pppd modem crtscts defaultroute +ua [path to pap file] connect 'chat \
+ABORT BUSY ABORT ERROR "" AT[init string] OK ATD[ISP's Phone #] CONNECT' \
+[your comm port] 115200
+
+There are two parts to this, the pppd component and the chat component.
+
+I've put anything that you need to decide upon in square brackets.  You 
+need to replace those with the appropriate information.  Say you made a 
+file in your /etc/ppp directory called "pap" that contains your username 
+and password.  You'd put in /etc/ppp/pap replacing "[path to pap file]."
+For "[init string]" you'll want to put in the appropriate string for 
+MultilinkPPP (this will work equally as well for a modem, so if you want 
+to use your modem put in a string for it).  You can look in your manual 
+to find the appropriate string.  I'll give a few:
+
+For a 3com impact put in: s71=1s80=1&d2
+For a Bitsurfer put in: %a2=92@b0=2&d2
+For a Bitsurfer Pro: %a2=92@b0=2@m2=p&d2
+For an Adtran ISU express: s54=12&d2
+
+Add whatever else you would normally for your box, but these are what is 
+necessary for MultilinkPPP plus the &d2 which will insure that your box 
+will hang up when you disconnect.  Some TA's have a hard time hanging up
+without that &d2 (especially the Bitsurfer and Bitsurfer pro)
+
+After the ATD you put in your ISP's ISDN phone number in replace of 
+"[ISP's Phone #]." (note that with the Bitsurfer and Bitsurfer pro it is 
+necessary to tell the TA to dial the same number twice seperated by an "&."
+It is not necessary to put in an escape character).
+
+Where you see "[your comm port]" you'll need to replace that with the 
+appropriate comm port. In most cases that will be /dev/cuaX where the X 
+is a number between 0 and 3.  0 being comm1 and 3 being comm4.
+
+Now make the file executable by typing "chmod 755 <filename>" or 
+whatever you'd like the permissions to be (700 if you only want root to 
+have rights to it).  You'll want to also make sure that your pap file 
+is readible to whomever is running the pppd process so that it'll log in. To 
+run it you'd simply type the name of the file.
+
+When you run this it should connect and then you can type "ifconfig" at 
+your prompt.  You should see that you have an "inet addr"  under "Link 
+encap: Point-Point Protocol" like so:
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Bcast:127.255.255.255  Mask:255.0.0.0
+          UP BROADCAST LOOPBACK RUNNING  MTU:2000  Metric:1
+          RX packets:132 errors:0 dropped:0 overruns:0
+          TX packets:132 errors:0 dropped:0 overruns:0
+
+ppp0      Link encap:Point-Point Protocol  
+          inet addr:204.31.114.199  P-t-P:163.179.20.26  Mask:255.255.255.0
+          UP POINTOPOINT RUNNING  MTU:1500  Metric:1
+          RX packets:47 errors:0 dropped:0 overruns:0
+          TX packets:62 errors:0 dropped:0 overruns:0
+
+To hang up, kill the process.  If you don't know how to do that type "man 
+ps" and then "man kill" and read.
+
+Here's an example:
+
+kill `ps -x | grep pppd | head -1 | cut -c2-5`
+
+You should then write scripts to manage your ppp connections.
+
+This is only one way to do it, there are others.  You can download some 
+scripts for this from the following ftp site:
+
+ftp.netcom.com/ftp/pub/rm/rmarc/lnxstuff.zip
+
+There's a readme file with it.  I didn't write these scripts and they are 
+not the ones I use.  They are nice for a beginner and do not use PAP so 
+you'll have to modify them if you want to do MultilinkPPP.
+
+
+Have fun.
+

@@ -1,0 +1,19 @@
+Begin3
+Title:          FTNCHEK
+Version:        2.10.1
+Entered-date:   25 Sep 1998
+Description:    Fortran 77 program checker
+Keywords:       Fortran f77 checker analyzer
+Author:         moniot@fordham.edu (Robert Moniot)
+Maintained-by:  moniot@fordham.edu (Robert Moniot)
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/lang/fortran
+                732 ftnchek-2.10.1.lsm
+                691566 ftnchek-2.10.1.tgz
+Alternate-site: ftp.dsm.fordham.edu:/pub/ftnchek
+                691566 ftnchek-2.10.1.tar.gz
+Original-site:  ftp.netlib.org:/fortran
+                691566 ftnchek.tar.gz
+Platforms:      (optional) xvcg to view call graphs in VCG format;
+                gawk >= 2.0 to use dcl2inc component.
+Copying-policy: MIT
+End

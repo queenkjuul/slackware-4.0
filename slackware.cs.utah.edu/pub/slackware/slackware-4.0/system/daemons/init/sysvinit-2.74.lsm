@@ -1,0 +1,15 @@
+Begin3
+Title:		sysvinit and utilities
+Version:	2.74
+Entered-Date:	16MAR1998
+Description:	This is the Linux System V init.
+		The source package has the debian build files included.
+		This version can be compiled with glibc 2.0.6 and up.
+Author:		miquels@cistron.nl (Miquel van Smoorenburg)
+Primary-Site:	sunsite.unc.edu /pub/Linux/system/daemons/init
+		97K sysvinit-2.74.tar.gz
+Alternate-Site:	ftp.debian.org /debian/hamm/main/source/base
+		97K sysvinit_2.74-?.tar.gz
+Copying-Policy:	GPL
+Keywords:	init shutdown halt reboot
+End

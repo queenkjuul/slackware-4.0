@@ -1,0 +1,14 @@
+Begin3
+Title:          tkppp
+Version:        1.4
+Entered-date:   Wed Dec  6 02:49:04 EST 1995
+Description:    A tcl/tk tool for controlling a PPP connection.
+Keywords:       PPP, tcl, tk
+Author:         jeschke@cs.indiana.edu (Eric Jeschke)
+Maintained-by:  jeschke@cs.indiana.edu (Eric Jeschke)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/serial
+Alternate-site: 
+Original-site:  
+Platform:       tcl/tk, Linux
+Copying-policy: Freely Redistributable
+End

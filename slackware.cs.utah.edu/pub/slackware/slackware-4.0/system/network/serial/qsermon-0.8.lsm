@@ -1,0 +1,22 @@
+Begin3
+Title:		qsermon
+Version:	0.8
+Entered-date:	20. July 1997
+Description:	qsermon is an system-utility to watch the activities on a
+		given serial port. The current state of the TX,RX,CTS,RTS,
+		DTR,DSR,DCD and RI lines are shown by some kind of LEDs.
+		Furthermore, the current TX/RX transfer rates are visualisized
+		using bars and within an osziloscope (this is nice to
+		analyse the transfer characteristics). Additionaly, the amount
+		of received and transmitted data since program start is
+		displayed.
+Keywords:	graphical serial line monitor, Qt, sermon
+Author: 	kuhn@eikon.e-technik.tu-muenchen.de (Bernhard Kuhn)
+Maintained-by:	kuhn@eikon.e-technik.tu-muenchen.de (Bernhard Kuhn)
+Primary-site:	ftp.linux-magazin.de:/pub/network/
+		~24k qsermon-0.8.tar.gz
+Alternate-site: sunsite.unc.edu:/pub/Linux/system/network/serial/
+		~24k qsermon-0.8.tar.gz
+Platforms:	Linux with GCC-2.7.2, Qt-1.2 and sermon-0.20
+Copying-policy:	GPL
+End

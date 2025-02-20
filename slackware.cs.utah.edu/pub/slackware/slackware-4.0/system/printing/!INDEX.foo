@@ -1,0 +1,33 @@
+/pub/Linux/system/Printing (INDEX)
+------------------------------------------------------------------------------
+LjetMgr2.4-base.tar.gz   makes HP laserjet configurable via PC
+LjetMgr2.4-english.tar.gz makes HP laserjet configurable via PC
+LjetMgr2.4-german.tar.gz makes HP laserjet configurable via PC
+LjetMgr2.4-linux.tar.gz  makes HP laserjet configurable via PC
+a2gs.tgz                 ascii -> PostScript convertor
+a2x-0.9.tar.gz           converts ASCII to various formats for printing
+aps-491.tgz              filter supporting ghostscript & pbm for conversions
+ascii2postscript-1.4.2.tar.gz ASCII to PostScript (level 1 compliant) transformer
+atp-1.2.tar.gz           ASCII to PostScript converter alan enscript
+bjf-1.1.tar.gz           print filter for the Canon BubbleJet
+bubbletools-1.5.tar.gz   converts graphic formats for bubble jet, epson
+cjet089.tgz              HP LaserJet emulation for Canon CaPSL III printers
+cnprint-2.30.linux.tar.gz chinese GB/HZ/Big5 -> PS printing program
+demos@                   commerical printing applications
+djp-0.3-src.tgz          filter for printing text files on a deskjet
+djscript.1.3.tar.gz      text formatter for HP DeskJet's
+free-lj4-1.1p1.tar.gz    sets modes for HP LaserJet 4
+hpmodeset2.1.tar.gz      allows files to be encapsulated with printer cmds
+lpr-secure.tgz           Slackware's BSD printing w/ security hole patched
+lpr2-1.2e.gz             print PostScript duplex on regular printers!
+magicfilter-1.2.tar.gz   customizable, extensible automatic printer filter
+mpage23.tgz              many to one page printing utility
+nenscript-1.13++.bin.tar.z Binaries for enscript clone (ASCII -> ps)
+nenscript-1.13++.tar.z   Source for enscript clone (ASCII -> ps)
+pnmtoprt-2.0.tar.gz      prints pnm graphics to NEC-P6 compatible printers
+ps-printcap.tgz          config files for printing postscript on any printer
+rlpr-1.13.tar.gz         sends print jobs to lpd servres w/o /etc/printcap
+sqprint.c                perl code to print many pages on one on HPs
+tunelp-1.3.tar.gz        program to fine-tune printer performance
+vgrindbin.tgz            formats program source for troff [bin]
+vgrindsrc.tgz            formats program source for troff [src]

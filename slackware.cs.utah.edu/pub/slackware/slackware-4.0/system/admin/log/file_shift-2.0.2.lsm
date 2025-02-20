@@ -1,0 +1,16 @@
+Begin3
+Title:		file_shift
+Version:	2.0.2
+Entered-date:	08Mar99
+Description:	Shifts older versions of a log file (like newsyslog)
+Keywords:	File shifting, circulation, rotation, newsyslog
+Author:		Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Maintained-by:	Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/admin/log
+		1 kB file_shift-2.0.2.lsm
+		13 kB file_shift-2.0.2.tar.gz
+Alternate-site:
+Original-site:
+Platforms:	Any Unix flavor running perl
+Copying-policy:	GPL
+End

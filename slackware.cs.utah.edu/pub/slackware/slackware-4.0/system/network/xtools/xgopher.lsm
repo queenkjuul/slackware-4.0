@@ -1,0 +1,29 @@
+Title:          	Xgopher client 
+Version:        	1.3.1 
+Desc1:	         	This is just an updated linux-compiled version of xgopher  
+Desc2:	         	1.3.1, the latest version, i think (although it was done
+Desc3:						in about May.  DONT strip this... i had problems after
+Desc4:						stripping it. comes w/a binary & full source & documentation.
+Author:65        	looks like Allan Tuchman.	
+AuthorEmail:     	a-tuchman@uiuc.edu
+Maintainer:     	for this one, me...jon Madison 
+MaintEmail:    		jmadison@etsun.tech.iupui.edu 
+Site1:       			sunsite.unc.edu 
+Path1:       			pub/Linux/X11/xapps/networked 
+File1:	          xgopher1.3.1+source.tgz 
+FileSize1:				235588	
+Required1:   			X11R4 or 5, Linux...i compiled w/gcc 2.5.8 & libc4.5.19
+Required2:				PC 386/486/Pentium or something of that sort.
+CopyPolicy1:			I didn't see one, & I've seen just about EVERY machine
+CopyPolicy2:			with Gopher, so i'm sure it's okay to have this. :)
+Keywords:      		gopher	xgopher	X11	xgopher-1.3.1	
+Comment1:					a nice feature of 1.3.1 is that you can see what connections
+Comment2:					are going on, and have the option of cancelling them...
+Comment3:					a BIG help. Also has Openwindows support, but i don't have
+Comment4:					it, so i don't know how it works.. read the README for info
+Comment5:					on how to compile it.
+Entered:         	06FEB94
+EnteredBy:      jonM<>< 
+CheckedEmail:    jmadison@etsun.tech.iupui.edu 
+End
+

@@ -1,0 +1,20 @@
+Begin3
+Title:         plt
+Version:       plt-1.2-002
+Entered-date:  Tue Apr 27 19:37:55 MET DST 1999
+Description:   plt is originally a stressing program for DILOG autochangers.
+               It has been used at DILOG's facility for mechanical and drive
+               tests. However, it can also be used on Solaris or Linux,
+               to command DILOG autochangers. Other autochangers are also
+               supported. Except on Solaris, where it also supports SCSI-ID
+               changers (and mtx doesn't), plt can be usually replaced by
+               mtx or chio (look for scsi-changer on sunsite).
+Keywords:      backup, restore, autochanger
+Author:        Marc SCHAEFER <schaefer@dilog.ch> 
+Maintained-by: Marc SCHAEFER <schaefer@dilog.ch>
+Primary-site:  somewhere on sunsite 
+Alternate-site: 
+Original-site:  
+Platforms:     Linux, Solaris
+Copying-policy: GPL
+End

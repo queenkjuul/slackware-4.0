@@ -1,0 +1,27 @@
+Begin3
+Title:		WorldVU
+Version:	Atlantis-A3pl1
+Entered-date:	16Jan96
+Description:	WorldVU Atlantis is the latest release of WorldVU (formerly
+		VU BBS) for the Linux operating system.  WorldVU offers a
+		very user friendly and fully internationalized object oriented
+		visual interface to the end user.  Support for Romanian and
+		Italian language is included along with English.  WorldVU
+		also offers tools to simplify general system administration.
+		WorldVU includes news and mail support, along with party
+		chat system, and a menu shell.  WorldVU also now supports
+		world-wide inter-domain clustering of WorldVU BBS systems.
+		WorldVU components can be used seperately or as part of an
+		integrated BBS environment.
+Keywords:	BBS, VU, WorldVU, admin, users, tape, backup, tycho
+Author:		dyfet@tycho.com (David Sugar)
+Maintained-by:	dyfet@tycho.com (David Sugar)
+Primary-site:	tycho.com /VUBBS
+		atlantis-xx.tar.gz
+Platforms:	Late Linux 1.1.x and above.  Included both elf and aout
+		binaries!  Elf compiled for libc 5.2.7 (will not work with
+		5.3.0, but 5.2.7 included in package).
+Copying-policy:	Free/subscription-ware.  May be freely used, source available
+		for $45.00 annual subscription via our ftp server (soon 
+		web also)
+End

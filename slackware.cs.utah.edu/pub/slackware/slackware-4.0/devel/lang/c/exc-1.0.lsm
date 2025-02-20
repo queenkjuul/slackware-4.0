@@ -1,0 +1,13 @@
+Begin3
+Title:          EXC: An Exception Handling Library for ANSI-C
+Version:        1.0
+Entered-date:   15MAY95
+Description:	EXC provides exception handling facilities that are similar,
+		though not identical, to those of Modula-3.
+Keywords:       exception handling
+Author:         taj@wimsey.com (Taj Khattra)
+Primary-site:   sunsite.unc.edu ???
+		26346 exc-1.0.tar.gz
+Platforms:      ANSI-C
+Copying-policy: Public Domain
+End

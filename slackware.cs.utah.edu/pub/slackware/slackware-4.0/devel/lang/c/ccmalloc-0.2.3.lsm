@@ -1,0 +1,18 @@
+Begin3
+Title:          ccmalloc - memory profiler and malloc debugger
+Version:        0.2.3
+Entered-date:   27MAY98
+Description:    An easy to use memory profiling and malloc debugging
+                library for C and C++ programs. It can finds leaks,
+                multiple deallocations, and memory corruptions.
+Keywords:       malloc debugger, memory leaks, memory corruptions
+Author:         armin@ira.uka.de (Armin Biere)
+Maintained-by:  
+Primary-site:   iseran.ira.uka.de /pub/armin
+                ccmalloc-0.2.2.tar.gz
+                ccmalloc-0.2.2.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/lang/c
+Original-site:  
+Platforms:      Linux, Solaris, SunOs-4.3x
+Copying-policy: GPL
+End

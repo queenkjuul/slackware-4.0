@@ -1,0 +1,21 @@
+Begin3
+Title:		pcc
+Version:        1.3
+Entered-date:   1998-01-04
+Description:    Front end pseudo compiler for p2c translator.
+		Performs same function for p2c that f77 performs for 
+		f2c. Also includes shell script to create an integrated
+		environment for Pascal program development.
+		Source makefile man pages examples. 
+		Bug fix and upgrade for Version 1.2 in the file pcc.tar.gz. 
+Keywords:       Pascal front end compiler
+Author:         Robert Canup
+Maintained-by:  73513.216@compuserve.com (Robert Canup)
+Primary-site:   sunsite.unc.edu 
+		18080	pcc-1.3.tar.gz
+		692	pcc-1.3.lsm
+Alternate-site: 
+Original-site:  sunsite.unc.edu
+Platform:       Linux - gcc
+Copying-policy: GPL
+End

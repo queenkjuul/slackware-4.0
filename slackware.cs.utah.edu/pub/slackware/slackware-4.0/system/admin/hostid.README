@@ -1,0 +1,20 @@
+Hi,
+
+Some people started asking about the gethostid() call in linux.
+gethostid()/sethostid() was supported from libc-4.4.2b onwards but nothing
+written to query/set it. So I wacked this up in a few minutes and added
+International support too just as an example of how to do it.
+
+Please take out -DNLS from the Makefile if you don't want International
+support. If you do want it then you must also have the `gencat' binary
+to compile a catalog for your own language. Look in
+
+	sunsite.unc.edu /pub/Linux/utils/nls/catalogs/cat-pack.tar.gz
+
+I had actually sent this to Rik Faith for inclusion in his util-1.x package
+a while ago, but it never showed up. So I release it myelf to the public.
+
+Questions/Help to me.
+
+Mitch
+m.dsouza@mrc-apu.cam.ac.uk

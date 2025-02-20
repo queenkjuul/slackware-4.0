@@ -1,0 +1,16 @@
+Begin3
+Title:		Phone
+Version:	0.1BETA
+Entered-Date:	951026
+Description:	Phone is a multi-user character-oriented networked
+		conference utility for Unix systems. phone-0.1.tar.gz
+		contains both the source and the ready- to-run Linux
+		binaries.
+Keywords:	phone, chat, talk, conference
+Author:		broome@ucb-vax.berkeley.edu (Jonathan C. Broome)
+Maintained-by:	raju@toi.ernet.in (Raj Mathur)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Network/chat
+		110kb	phone-0.1.tar.gz
+Copying-Policy:	The original author doesn't specify any copying
+		policy. I've written to him suggesting it be GPL'ed.
+End

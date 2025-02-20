@@ -1,0 +1,36 @@
+Title              alpha UMSDOS file system
+Version            0.2
+Desc1              Allows installation of LINUX in a DOS FAT partition
+Desc2              Support all the goodies. Long file name
+Desc3              and special file and links, permission and so on
+Desc4              It also features a small binary distribution
+Desc5			   (X + Net stuff + basic runtime) in 3 floppies
+Author             Jacques Gelinas
+AuthorEmail        jacques@solucorp.qc.ca
+Maintainer         Jacques Gelinas
+MaintEmail         jacques@solucorp.qc.ca
+Site1              sunsite.unc.edu
+Path1              pub/Linux/ALPHA/umsdos
+File1              umsdos-0.2.diff.gz
+FileSize1          40434
+File2              umsdos-0.2.doc.gz
+FileSize2          16375
+File3              umsdos_progs.0.2.tar.gz
+FileSize3          464030
+File4              a1.zip
+FileSize4          1399530
+File5              a2.zip
+FileSize5          1397254
+File6              a3.zip
+FileSize6          637316
+File7              zimage-0.2
+FileSize7          322052
+File8              readme
+FileSize8          11732
+CopyPolicy1        GNU public license
+CopyPolicy2        Since this goes in the LINUX kernel
+Keywords           UMSDOS file system FAT driver
+Comment1           This is ALPHA on top a 99.15 kernel
+Entered            07FEB94
+EnteredBy          Jacques Gelinas
+CheckedEmail       jacques@solucorp.qc.ca

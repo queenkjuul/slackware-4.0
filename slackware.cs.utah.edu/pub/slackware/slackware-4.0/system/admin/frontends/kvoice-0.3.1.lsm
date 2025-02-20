@@ -1,0 +1,16 @@
+Begin3
+Title:          kvoice - frontend for voice and fax modems
+Version:        0.3.1
+Entered-date:   1.10.98 
+Description:    Graphical frontend for easy handling of voice mails
+		and faxes. Uses the mgetty package for sending and 
+		receiving fax and voice mails. Allows configuring
+		of the mgetty package via gui
+Keywords:       KDE, QT, modem, voice, fax, mgetty, vgetty, sendfax
+Author:         Lars Knoll <knoll@mpi-hd.mpg.de>
+Maintained-by:  Lars Knoll <knoll@mpi-hd.mpg.de>
+Primary-site:   ftp://xpc56.mpi-hd.mpg.de/pub/kde/kvoice
+Alternate-Site: ftp://ftp.kde.org/pub/kde/stable/1.0/apps/comm
+Platform:       unix (only tested on Linux), KDE >= beta4, Qt >= 1.33
+Copying-policy: GPL 
+End

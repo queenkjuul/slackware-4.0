@@ -1,0 +1,17 @@
+Begin3
+Title:         ktalk - a graphical talk client able of multiple connections
+Version:       0.2.7
+Entered-date:  October 31 1998
+Description:   intuitive talk client, including addressbook, word wrap, file transfer, ping, full name etc.
+Keywords:      KDE, Qt, gui, talk, talkd, ktalk
+Author1:       <b_lehner@informatik.uni-kl.de> Burkhard Lehner
+Author2:       <cimrman3@students.zcu.cz> Robert Cimrman
+Maintained-by: <b_lehner@informatik.uni-kl.de> Burkhard Lehner
+
+Primary-site:  http://www.student.uni-kl.de/~blehner/ktalk/index.html
+Home-Page:     http://www.student.uni-kl.de/~blehner/ktalk/index.html
+Alternate-site:ftp://ftp.kde.org/pub/kde/stable/1.0/apps/network/ktalk-0.2.7.tar.gz
+Original-site:
+Platform:      Unix, Qt 1.40, KDE 1.0
+Copying-policy: GPL
+End

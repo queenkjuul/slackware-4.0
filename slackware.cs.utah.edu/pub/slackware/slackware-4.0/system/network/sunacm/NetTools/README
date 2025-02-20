@@ -1,0 +1,8 @@
+Important:
+
+	Net-tools-1.1.93 requires you use the new ip_fw support. This has
+been sent to Linus but hasn't appeared yet. Until then if you wish to use
+IP firewalling you will have to apply the patches. Since the old ip_fw code
+is very buggy this is mandatory, and the old ip_fw is not supported.
+
+Alan

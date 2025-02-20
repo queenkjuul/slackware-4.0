@@ -1,0 +1,32 @@
+Begin3
+Title:          X-ISP, an X11 visual interface to pppd/chat,
+                ISP and phone company database manager; source
+                and ix86 binary distribution.
+Version:        October 26 1998
+Entered-date:   Mon Oct 26 12:37:02 EET 1998
+Description:    X-ISP is an X11 and XForms based visual interface
+                to pppd and chat, implementing a dialup networking
+                tool. It is also a small ISP and phone company (PTT)
+                database manager, and a dialup costs and usage
+                logging tool. Currently it only supports PPP type
+                connections. To build it you need XForms-0.88 or
+                later, and if you don't have it already, libXpm
+                version 3.4f or later. The ready-to-run binaries are
+                compiled with the static version of the XForms v0.88
+                library (so you don't need to install the XForms
+                library to use them), and against Linux libc-5.
+Keywords:       PPP, X11, XForms, ISP, PTT
+Author:         dbouras@hol.gr (Dimitrios P. Bouras)
+Maintained-by:  dbouras@hol.gr (Dimitrios P. Bouras)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/serial
+                225k xisp-2.5p4.tar.gz
+                348k xisp-2.5p4-ix86-libc5.tar.gz
+Alternate-site: argeas.argos.hol.gr /pub/unix/linux
+                225k xisp-2.5p4.tar.gz
+                348k xisp-2.5p4-ix86-libc5.tar.gz
+Original-site:  http://users.hol.gr/~dbouras/release
+                225k xisp-2.5p4.tar.gz
+                348k xisp-2.5p4-ix86-libc5.tar.gz
+Platform:       Linux, SunOS 4.1.x, Solaris 2.5
+Copying-policy: GPL
+End

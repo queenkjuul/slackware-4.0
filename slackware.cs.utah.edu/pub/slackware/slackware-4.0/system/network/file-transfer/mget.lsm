@@ -1,0 +1,14 @@
+Begin3
+Title:          mget - transfer directories from ftp servers
+Version:        0.2
+Entered-date:   December 01, 1996
+Description:    mget is a c program which transfers entire directory
+		trees from an ftp site to the local host
+Keywords:       file transfer, ftp, mirror
+Author:         mkrause@prz.tu-berlin.de (Martin Krause)
+Maintained-by:  mkrause@prz.tu-berlin.de (Martin Krause)
+Primary-site:   sunsite.unc.edu /pub/Linux/utils/file
+		mget02.tar.gz
+Platforms:	Linux, SunOS, HP-UX, Ultrix, AIX, FreeBSD
+Copying-policy: GPL
+End

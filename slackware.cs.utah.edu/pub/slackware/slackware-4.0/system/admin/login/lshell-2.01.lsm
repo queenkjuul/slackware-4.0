@@ -1,0 +1,20 @@
+Begin3
+Title:          LShell
+Version:        2.01
+Entered-date:   3/11/95
+Description:    Stub that executes login shell after setting resource limits
+		based on entries in a configuration file. Makes it easy to
+		set, enforce, and maintain limits on number of file
+		descriptors, cpu time, virual memory consumption, and number
+		of processes. 2.01 features invisible operation and easier
+		installation.
+Keywords:       Utility Security Quota
+Author:         Joel Katz <Stimpson@Panix.COM>
+Maintained-by:  Joel Katz <Stimpson@Panix.COM>
+Primary-site:   ftp.epinet.com://pub/linux/sources/bin/lshell-2.tar.gz
+Alternate-site: sunsite.unc.edu://pub/Linux/Incoming/lshell-2.tar.gz
+		hopefully soon to be somewhere appropriate
+Original-site:  ftp.epinet.com
+Platform:       Linux, versions 1.0 and up
+Copying-policy: Copyrighted but freely distributable
+End

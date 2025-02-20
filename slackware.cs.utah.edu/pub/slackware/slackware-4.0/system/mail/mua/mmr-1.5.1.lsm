@@ -1,0 +1,13 @@
+Begin3
+Title:		mmr
+Version:	1.5.1
+Entered-date:	9/22/97
+Description:	A curses based MIME aware UNIX mailer
+Keywords:	mail curses MIME threaded-mail
+Author: 	slouken@devolution.com (Sam Lantinga)
+Maintained-by:	slouken@devolution.com (Sam Lantinga)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/mail/mua
+		138kB mmr-1.5.1.tar.gz
+Platforms:	C++ curses
+Copying-policy:	GPL
+End

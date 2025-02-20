@@ -1,0 +1,34 @@
+Begin2
+Title        = DCron - yet another cron
+Version      = 2.2
+Desc1        = A multi-user cron written from scratch by the author,
+Desc2        = similar to vixie-cron but with significant differences.
+Desc3        = Attention paid less to feature creep and more to usability
+Desc4        = and reliability
+Desc5        =
+Author       = Matthew Dillon
+AuthorEmail  = dillon@apollo.west.oic.com
+Maintainer   = Matthew Dillon
+MaintEmail   = dillon@apollo.west.oic.com
+Site1        = sunsite.unc.edu
+Path1        =
+File1        = dcron22.tgz
+FileSize1    =
+Required1    = Runs under Linux.  Probably SysV compatible.  Not BSD
+Required2    = compatible at this time.
+Required3    =
+Required4    =
+CopyPolicy1  = Copyright 1994 Matthew Dillon (dillon@apollo.west.oic.com)
+CopyPolicy2  = May be distributed under the GNU General Public License
+Keywords     = cron crontab dcron
+Comment1     =
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = 02May94
+EnteredBy    = Matthew Dillon
+CheckedEmail = dillon@apollo.west.oic.com
+End

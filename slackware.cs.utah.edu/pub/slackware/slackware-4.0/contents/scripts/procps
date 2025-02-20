@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf skill )
+( cd usr/bin ; ln -sf /bin/kill skill )
+( cd usr/bin ; rm -rf snice )
+( cd usr/bin ; ln -sf /bin/kill snice )

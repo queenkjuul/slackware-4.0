@@ -1,0 +1,18 @@
+Begin3
+Title:          xpvm
+Version:        1.2.0
+Entered-date:   1.996
+Description:    Tcl/Tk console and monitor for the PVM distributed
+                computation library.
+Keywords:       parallel, message passing, debugging, performance evaluation,
+                xpvm
+Author:         kohl@msr.epm.ornl.gov <Jim Kohl>
+Maintained-by:  kohl@msr.epm.ornl.gov <Jim Kohl>
+Primary-site:   sunsite.unc.edu /pub/Linux/system/network/distrib
+                342723 xpvm-1.2.0.tgz
+Original-site:  Found with netscape (generally not far from pvm)
+                >334.6kb XPVM.src.1.2.0.tar.Z
+Platform:       Many platforms with tcl/tk (even beta tcl/tk should work).
+                Compiles fine with "old" tcl/tk and pvm 3.3.9 or later
+Copying-policy: free
+End

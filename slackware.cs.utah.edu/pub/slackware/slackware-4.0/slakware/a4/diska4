@@ -1,0 +1,23 @@
+CONTENTS: elflibs pciutils       
+elflibs:  ELF shared libraries.
+elflibs:
+elflibs:  This is a collection of shared libraries needed to run Linux code in
+elflibs:  the ELF binary format. ELF (Executable and Linking Format) is the
+elflibs:  standard Linux binary format, replacing the older a.out format.  One
+elflibs:  of the main advantages of ELF over a.out is the ease of building and
+elflibs:  maintaining shared libraries.
+elflibs:
+elflibs:
+elflibs:
+elflibs:
+pciutils: pciutils-1.10 (Linux PCI utilities)
+pciutils:
+pciutils: lspci displays detailed information about all PCI buses and devices
+pciutils: in the system, replacing the original /proc/pci interface.
+pciutils:
+pciutils: setpci allows reading from and writing to PCI device configuration
+pciutils: registers. For example, you can adjust the latency timers with it.
+pciutils:
+pciutils: See manual pages for more details.
+pciutils:
+pciutils:

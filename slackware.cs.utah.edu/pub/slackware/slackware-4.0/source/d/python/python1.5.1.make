@@ -1,0 +1,1 @@
+make OPT=-O2

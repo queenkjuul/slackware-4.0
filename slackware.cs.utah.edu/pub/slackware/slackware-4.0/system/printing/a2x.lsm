@@ -1,0 +1,22 @@
+Begin3
+Title:          a2x
+Version:        1.0
+Entered-date:   13DEC96
+Description:    A tool for formatting+converting ascii to PostScript and
+                other formats, especially for printing.
+                To produce non PostScript output, a2x uses Ghostscript.
+                You may choose upon paper formats, orientations, fonts,
+                their sizes, number of columns and lines per page; 
+                you may print only odd/even pages, or just count the number 
+                of pages, the output would have; 
+                you may print the page's number, the file's name and
+                current date on top of each page; a2x handles tabs and
+                backspaces; a2x supports german umlauts.
+Keywords:       printing, lpr, 2up, PostScript, Ghostscript
+Author:         beck@jack.rhein-main.de (Christoph Beck)
+Maintained-by:  beck@jack.rhein-main.de (Christoph Beck)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Printing
+                ~10k a2x-1.0.tar.gz
+Platform:       Linux, but should work on any Unix box.
+Copying-policy: GPL
+End

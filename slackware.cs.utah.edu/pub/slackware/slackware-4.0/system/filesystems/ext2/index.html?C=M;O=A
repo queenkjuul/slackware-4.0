@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/filesystems/ext2</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/filesystems/ext2</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/filesystems/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ext2fs.FAQ">ext2fs.FAQ</a></td><td align="right">1993-04-24 07:00  </td><td align="right">3.7K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ext2fs-0.4.lsm">ext2fs-0.4.lsm</a></td><td align="right">1993-11-03 08:00  </td><td align="right">925 </td></tr>
+<tr><td valign="top"><img src="/icons/tar.gif" alt="[   ]"></td><td><a href="slides-1.tar">slides-1.tar</a></td><td align="right">1994-07-12 07:00  </td><td align="right">184K</td></tr>
+<tr><td valign="top"><img src="/icons/tar.gif" alt="[   ]"></td><td><a href="slides-2.tar">slides-2.tar</a></td><td align="right">1994-07-12 07:00  </td><td align="right">168K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="quotacheck.new.tar.gz">quotacheck.new.tar.gz</a></td><td align="right">1995-02-19 08:00  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Ext2fs-overview-0.1.lsm">Ext2fs-overview-0.1.lsm</a></td><td align="right">1995-08-24 07:00  </td><td align="right">685 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="Ext2fs-overview-0.1.ps.gz">Ext2fs-overview-0.1.ps.gz</a></td><td align="right">1995-08-24 07:00  </td><td align="right"> 43K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ext2ed-0.1.lsm">ext2ed-0.1.lsm</a></td><td align="right">1995-08-24 07:00  </td><td align="right">776 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ext2ed-0.1.tar.gz">ext2ed-0.1.tar.gz</a></td><td align="right">1995-08-24 07:00  </td><td align="right">421K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ext2tool_1_1.lsm">ext2tool_1_1.lsm</a></td><td align="right">1996-01-09 08:00  </td><td align="right">557 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ext2tool_1_1.zip">ext2tool_1_1.zip</a></td><td align="right">1996-01-09 08:00  </td><td align="right">281K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="e2fsprogs-1.06.lsm">e2fsprogs-1.06.lsm</a></td><td align="right">1996-10-13 19:05  </td><td align="right">714 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="e2fsprogs-1.06.tar.gz">e2fsprogs-1.06.tar.gz</a></td><td align="right">1996-10-13 19:05  </td><td align="right">515K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ext2_240.lsm">ext2_240.lsm</a></td><td align="right">1997-08-12 04:45  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ext2_240.zip">ext2_240.zip</a></td><td align="right">1997-08-12 04:45  </td><td align="right">2.2M</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:55  </td><td align="right">109 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ext2kitv110.lsm">ext2kitv110.lsm</a></td><td align="right">1999-04-28 17:54  </td><td align="right">517 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ext2kitv110.tgz">ext2kitv110.tgz</a></td><td align="right">1999-04-28 17:54  </td><td align="right">426K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">331 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">795 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">1.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">1.1K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

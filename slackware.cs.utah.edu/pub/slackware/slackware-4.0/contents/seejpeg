@@ -1,0 +1,11 @@
+drwxr-xr-x root/root         0 1997-06-19 23:22 ./
+drwxr-xr-x root/root         0 1997-06-19 23:21 usr/
+drwxr-xr-x root/bin          0 1997-06-19 23:19 usr/bin/
+-rws--x--x root/bin      99616 1997-06-19 23:19 usr/bin/seejpeg
+drwxr-xr-x root/root         0 1994-10-27 21:51 usr/doc/
+drwxr-xr-x root/root         0 1997-06-19 23:21 usr/doc/seejpeg/
+-rw-r--r-- root/root      2408 1996-11-01 13:14 usr/doc/seejpeg/CHANGELOG
+-rw-r--r-- root/root      9802 1996-11-01 13:15 usr/doc/seejpeg/README
+drwxr-xr-x root/root         0 1997-06-19 23:21 usr/man/
+drwxr-xr-x root/root         0 1997-06-19 23:22 usr/man/man1/
+-rw-r--r-- root/root      1506 1996-09-28 17:10 usr/man/man1/seejpeg.1.gz

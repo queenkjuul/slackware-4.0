@@ -1,0 +1,18 @@
+Begin3
+Title: sendfile
+Version: 2.1
+Entered-date: 10MAR99
+Description: An implementation of the SAFT protocol for Simple Asynchronous
+	File Transfer. It allows easy transfer of binary data (unlike e.g. email)
+	without the need for a special account on the target machine (unlike e.g.
+	FTP).
+Keywords: SAFT, file transfer protocol
+Author: framstag@rus.uni-stuttgart.de (Ulli Horlacher)
+Maintained-by: framstag@rus.uni-stuttgart.de (Ulli Horlacher)
+Primary-site: http://www.belwue.de/saft/
+Alternate-site: ftp://ftp.belwue.de/pub/unix/sendfile-2.1.tar.gz
+Original-site: ftp.belwue.de /pub/unix/
+               282K sendfile-2.1.tar.gz
+Platforms: any UN*X (maybe others?) with a net connection
+Copying-policy: GPL
+End

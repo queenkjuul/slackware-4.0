@@ -1,0 +1,22 @@
+Begin3
+Title:          Monitor
+Version:        0.2alpha
+Entered-date:   11SEP97
+Description:    A Perl program which monitors remote hosts and printers via
+		ping, traceroute, Sun's "rup" RPC program (if you have it), 
+		or the supplied "ruptime"/"ruptimed" programs.  Generates 
+		HTML output.  Intended for SysAdmin types who have plenty
+		of hosts and printers to watch.  Archives output to a dated
+		directory.  Flexible.  In service at 
+		http://redeemer.rutgers.edu/monitor
+Keywords:       monitor, watch, web, system admin, sysadmin
+Author:         Tom Kunz, tkunz@redeemer.rutgers.edu
+Maintained-by:  Tom Kunz, tkunz@redeemer.rutgers.edu
+Primary-site:   sunsite.unc.edu /pub/Linux/utils/system_monitor
+		34502 Monitor0.2alpha.tar.gz
+		930 Monitor.lsm
+Alternate-site: redeemer.rutgers.edu /pub/Linux/monitor
+Original-site:  
+Platforms:      Linux Perl, other unix may be supported
+Copying-policy: Perl Artistic License
+End

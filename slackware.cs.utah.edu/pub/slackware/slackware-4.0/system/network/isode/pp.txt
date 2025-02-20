@@ -1,0 +1,26 @@
+These are patches against PP 6.0.
+
+As with my ISODE patches much of this is to do with building a shared
+library consisting of libpp.a. This is not elegant but probably
+requires less twiddling during building than the shared libisode.a.
+The memory space used by this shared library is the top half of that
+registered for ISODE. I should perhaps split it and register the
+PP half seperately.
+
+  There are also some fixes in here to avoid doing stupid things like
+freeing malloced memory multiple times, trying to fclose(NULL) etc.
+
+  Note that I am not in a position to test the X.400 channels in any
+real way however the utility channels and SMTP appear fully working.
+Offers of sponsorship are welcome :-).
+
+  As with the ISODE stuff precompiled binaries should be in the same
+place you found this. If you aren't using the Purple Distribution's
+package manager you will need to read the .../PKG/map files in each
+archive to figure out where things go. You *will* need to get the
+documentation for PP if you expect to set it up at all. I won't upload
+it myself but the archive maintainer may have put it in the same
+directory as this. If not it can be found on src.doc.ic.ac.uk under
+/packages/isode/pp among other places.
+
+	Mike Jagdis <jaggy@purplet.demon.co.uk>

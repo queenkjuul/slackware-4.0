@@ -1,0 +1,25 @@
+Begin3
+Title:		getdate_rfc868
+Version:	1.2
+Entered-date:	17OCT98
+Description:	Query an RFC 868 time server and adjust/set local date/time.
+
+                Useful for querying and copying the date/time from other 
+                Internet hosts.  Will work correctly across time zones.
+
+                Uses the  UNIX adjtime() call so that it can be safely set up
+                as a cron job.  Can reject hosts that respond slowly, or that
+                vary too greatly from the local time.
+
+		V1.1 fixes minor bugs and errors in the man page.
+Keywords:	RFC-868 date time remote
+Author: 	michael@actrix.gen.nz (Michael Hamilton)
+Maintained-by:	michael@actrix.gen.nz (Michael Hamilton)
+Primary-site:	sunsite.unc.edu
+                13kB /pub/Linux/system/network/misc/getdate_rfc868-1.1.tar.gz
+		954  /pub/Linux/system/network/misc/getdate_rfc868-1.1.lsm
+Alternate-site: 
+Original-site:	
+Platform:	Most UNIX boxes.
+Copying-policy:	GPL
+End

@@ -1,0 +1,23 @@
+/pub/Linux/system/Admin (INDEX)
+------------------------------------------------------------------------------
+MAKEDEV-2.1.tar.gz       script to make /dev files (can read /proc/devices)
+MAKEDEV-C-1.4.1.tar.gz   prorgam to make /dev files (can read /proc/devices)
+accounts/                utils for manipulating user accounts
+admin.tar.gz             aministrative menus
+bootsys5a.tgz            SYSV style boot system from Purple
+chklogs-1.5.tar.gz       perl script for system log maintenance
+cops_104.tgz             security program COPS
+crack_41.tgz             automated /etc/password hacker
+fixperms.1.00.tar.gz     makes it easier to change file permissions
+fsutil-1.8.tar.z         Src for fs indeependent frontend for mkfs and fsck
+hostid.tar.gz            program to sethostid() for later query
+idle/                    programs to display/kill idle users
+login/                   tools for handling user logins
+menu-new.tar.Z           Nice interface to perform system management
+quota_acct.tar.gz        auota and accounting utilities and 1.2.5 diffs
+secure_rpc.tar.gz        Sun RPC 4.0 secure_rpc patches.  Since DES and secure_rpc are
+shadaut-331df.tgz        autocnf diffs for shadow and linux
+su1.tar.z                Program lets some command be run as root w/ password
+sudo-1.2-shadow.tgz      lets users run commands as root w/ shadow support
+time/                    utils for mainting the system time
+user.tar.Z               lists all interactive users on the system

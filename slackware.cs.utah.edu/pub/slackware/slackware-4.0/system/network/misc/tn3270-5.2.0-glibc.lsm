@@ -1,0 +1,18 @@
+Begin3
+Title:          tn3270
+Version:        5.2.0-glibc
+Entered-date:   10 September 1998
+Description:    UCB tn3270 "ported" to work with glibc.
+                1987 UCB source ported by Eric Kasten (to Linux),
+                Bill Braughton (to libc5), Alan Cox (to glibc),
+                David Luyer (this package).
+Keywords:       tn3270 3270 IBM mainframe
+Author:         Unknown, UCB-derived source <nobody>
+Maintained-by:  Unmaintained, last modified by <luyer@ucs.uwa.edu.au>
+Primary-site:   sunsite.unc.edu pub/Linux/system/network/misc
+Alternate-site: typhaon.ucs.uwa.edu.au pub/tn3270
+Original-site:  typhaon.ucs.uwa.edu.au pub/tn3270
+Platforms:      glibc linux
+Copying-policy: BSD
+End
+

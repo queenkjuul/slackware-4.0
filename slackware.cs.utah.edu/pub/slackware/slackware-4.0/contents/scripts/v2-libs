@@ -1,0 +1,8 @@
+( cd usr/lib ; rm -rf libMesaGL.so )
+( cd usr/lib ; ln -sf libMesaGL.so.3 libMesaGL.so )
+( cd usr/lib ; rm -rf libMesaGL.so.3 )
+( cd usr/lib ; ln -sf libMesaGL.so.3.0 libMesaGL.so.3 )
+( cd usr/lib ; rm -rf libMesaGLU.so )
+( cd usr/lib ; ln -sf libMesaGLU.so.3 libMesaGLU.so )
+( cd usr/lib ; rm -rf libMesaGLU.so.3 )
+( cd usr/lib ; ln -sf libMesaGLU.so.3.0 libMesaGLU.so.3 )

@@ -1,0 +1,13 @@
+Begin3
+Title:		sendkey
+Version:	0.9
+Entered-date:	010498
+Description:    A daemon to send key on a vc trought a fifo file
+Keywords:       Keyboard,vc,daemon,console,key,fifo,speech
+Author:		Luca Montecchiani <m.luca@usa.net>
+Maintained-by:	Luca Montecchiani <m.luca@usa.net>
+Primary-site:	http://www.geocities.com/SiliconValley/Vista/2964/linux.html
+		13kB sendkey-0_9.tgz
+Platforms:	Linux 2.0 Intel
+Copying-policy:	GPL
+End

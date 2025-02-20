@@ -1,0 +1,40 @@
+Begin3
+Title:          Cephes Mathematical Library
+Version:        2.7
+Entered-date:   July 31, 1998
+Description:    Cephes provides special functions of mathematical physics
+		and related items in C language of interest to scientists
+		and engineers.  The new C language standard, C9X, has
+		complex variable types that are supported here and by
+		the GNU C compiler.
+		  Partial contents --
+		Elementary functions (log, exp, sin, cos, ...).
+		Gamma, psi, dilograithm, Airy, Bessel, hypergeometric, Struve.
+		Complete and incomplete elliptic functions.
+		Exponential, sine & cosine, hyperbolic, Fresnel integrals.
+		Probability integrals and their inverses: Gaussian,
+		Poisson, F, Chi-square, gamma, Student's, binomial,
+		negative binomial, Kolmogorov-Smirnov
+		Arithmetic on polynomials, rationals, extended
+		precision floating point.
+		Complex arithmetic and elementary functions.
+		  Precisions --
+		There are separate libraries for five different
+		precisions:  single, double, long double (80 or	96-bit),
+		long double (128-bit), q-class (384-bit software arithmetic
+		and check routines).  There is a C++ class for the
+		extended precision arithmetic.
+Keywords:       math, special functions, probability, floating-point,
+		extended precision
+Author:         Stephen L. Moshier
+Maintained-by:  moshier@world.std.com
+Primary-site:	tsx-11.mit.edu /pub/linux/sources/libs
+		   1407 kb cephes-math-27.tar.gz
+		   includes precompiled binaries for ix86-linux
+Alternate-site: netlib.bell-labs.com:/netlib/cephes
+		http://netlib.org/cephes
+		sunsite.unc.edu/pub/Linux/devel/lang/c
+Original-site:  http://people.ne.mediaone.net/moshier/index.html
+Platform:       Any
+Copying-policy: Freely distributable
+End

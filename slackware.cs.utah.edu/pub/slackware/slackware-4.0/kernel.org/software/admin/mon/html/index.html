@@ -1,0 +1,96 @@
+<html>
+<head>
+<title> mon- Service Monitoring Daemon </title>
+</head>
+
+<!-- body background="img/bg4.gif" -->
+<body bgcolor="#d5d5d5">
+
+<hr>
+<img src="img/gray/mon.jpg" alt="mon"><br>
+<em>Service Monitoring Daemon</em>
+
+<hr>
+
+<h2>What is "mon"?</h2>
+<em>mon</em> is a general-purpose resource monitoring
+system, which can be used to monitor network service availability, server
+problems, environmental conditions such as the temperature
+in a room, or any number of things.
+<p>
+
+Resource monitoring can be viewed as two separate tasks: the testing
+of a condition, and triggering some sort of action upon failure.
+<em>mon</em> was designed to keep the testing and action-taking tasks
+separate, as stand-alone programs. <em>mon</em> is
+implemented as a scheduler which executes the the monitors (which test a
+condition), and calls the appropriate alerts if the monitor fails.
+<p>
+
+Monitors and alerts are not a part of <em>mon</em>, even though the distribution
+comes with a handful of them to get you started. This means that if a
+new service needs monitoring, or if a new alert is required, the <em>mon</em>
+server does not need to be changed. This makes <em>mon</em> easily
+extensible.
+<p>
+
+<em>mon</em> currently monitors over two hundred hosts at our site, using the
+monitor scripts which are supplied with the distribution.
+<p>
+<hr>
+
+<table cols=2 cellspacing=0 cellpadding=0>
+<tr>	<td width=230 align=right><img src="img/gray/about.jpg" alt="ABOUT">
+    	<td> <a href="1997.html">Here are some features that <em>mon</em> 0.38.12 offers.</a>
+
+<tr>	<td align=right><img src="img/gray/news.jpg" alt="NEWS">
+	<td> <a href="news.html">The latest release notes and other news. Last updated 
+Tue May  4 23:12:22 PDT 1999
+.</a>
+
+<tr>	<td align=right><img src="img/gray/faq.jpg" alt="FAQ">
+	<td> <a href="faq.html">Frequently Asked Questions about <em>mon</em></a>
+
+<tr>	<td align=right><img src="img/gray/list.jpg" alt="MAILING LIST">
+	<td> <a href="list.html"> Mailing list information </a>
+
+<tr>	<td align=right><img src="img/gray/bugs.jpg" alt="BUGS">
+	<td> <a href="bugs.html"> How to submit bugs and suggest features </a>
+
+<tr>	<td align=right><img src="img/gray/monitors.jpg" alt="MONITORS">
+	<td><a href="monitors.html">Monitor scripts which are included</a>
+
+<tr>	<td align=right><img src="img/gray/alerts.jpg" alt="ALERTS">
+	<td> <a href="alerts.html">Alert scripts which are included</a>
+
+<tr>	<td align=right><img src="img/gray/config.jpg" alt="EXAMPLE">
+	<td><a href="example.cf">An example configuration script to give you an
+		idea of what <em>mon</em> can do</a>.
+
+<tr>	<td align=right><img src="img/gray/manual.jpg" alt="MAN PAGES">
+	<td> <a href="man.html">Manual pages for current release</a>
+
+<tr>	<td align=right><img src="img/gray/devel.jpg" alt="DEVELOPMENT">
+	<td> <a href="development.html">Things to come in future releases</a>
+
+<tr>	<td align=right><img src="img/gray/ftp.jpg" alt="FTP">
+	<td> <a href="ftp://ftp.kernel.org/pub/software/admin/mon/">Obtaining the current version via FTP</a><br>
+	Stable: 0.37l, Development: 0.38.12
+
+</table>
+<p>
+
+<address>
+Jim Trocki<br>
+Network Engineer<br>
+Transmeta Corporation<br>
+Santa Clara, CA<br>
+</address>
+<a href="mailto:trockij@transmeta.com"> trockij@transmeta.com </a>
+<p>
+
+<img src="img/vipower.gif" alt="This site is VI powered">
+and generated with <em>m4</em>
+</body>
+
+</html>

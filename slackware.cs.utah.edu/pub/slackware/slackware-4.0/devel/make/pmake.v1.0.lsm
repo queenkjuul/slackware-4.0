@@ -1,0 +1,26 @@
+Begin
+35:PkgName    = pmake.v1.0.tar.gz
+35:Title      = BSD 4.4 Parallel make (pmake)
+25:Version    = Linux v1.0
+65:Desc1      = Pmake (BSD 4.4 make) for Linux
+65:Desc2      =  This makes porting anything based around the new makefiles
+65:Desc3      =  easier.
+65:Author     = Ported by Karl London karl@borg.demon.co.uk
+65:MaintBy    = Karl London - karl@borg.demon.co.uk
+65:MaintAt1   = sunsite.unc.edu (152.2.22.81)
+65:PathFile1  = Not sure. Upto the admins of sunsite
+65:MaintAt2   =
+65:PathFile2  =
+65:Required1  = Libc 4.4.1 - GCC 2.4.5 probably anyway
+65:Required2  = Kernel pl10+
+65:Required3  =
+65:CopyPolicy = Under standard BSD 4.4 copyright
+65:Keywords   = BSD 4.4 make pmake
+15:ApproxSize = 165904
+65:Last3Rel   =
+65:Comment1   = This will enable all those 4.4 applications to be written
+65:Comment2   = and everyone else can start writing 4.4 style Makefiles now
+65:Comment3   =
+30:CheckedBy  = Karl London - karl@borg.demon.co.uk
+ 8:Date       = 8AUG93
+End

@@ -1,0 +1,21 @@
+Begin3
+Title:		DIPC (Distributed Inter-Process Communication)
+Version:	1.1
+Entered-date:	03JUL98
+Description:	DIPC enables you to build and program distributed 
+                (multi-computer) systems very easily. It works by 
+                making System V IPC mechanisms (shared memories, 
+                semaphores and messages) network transparent.
+Keywords:	distributed parallel programming multi computer cluster 
+		kernel shared memory message semaphore RPC IPC DSM WAN 
+		network TCP/IP UDP/IP heterogeneous environment
+Author:		kamran@wallybox.cei.net (Kamran Karimi)
+Maintained-by:	kamran@wallybox.cei.net (Kamran Karimi)
+		schmitz@lcbvax.cchem.berkeley.edu (Michael Schmitz)
+Primary-site:	wallybox.cei.net /pub/dipc
+		225kB dipc-1.1.tgz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/network/distrib
+		225kB dipc-1.1.tgz
+Platforms:	Linux/i386, Linux/m68k, TCP/IP, UDP/IP 
+Copying-policy:	Freely distributable and usable, Copyright (C) Kamran Karimi
+End

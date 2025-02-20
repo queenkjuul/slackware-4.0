@@ -1,0 +1,91 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-sendmail
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+# Explode the package framework:
+cd $PKG
+explodepkg $CWD/_sendmail.tar.gz
+
+echo "+================+"
+echo "| sendmail.8.9.3 |"
+echo "+================+"
+OSCPU="`uname -srm | tr ' ' '.'`"
+cd $TMP
+tar xzvf $CWD/sendmail.8.9.3.tar.gz
+cd sendmail-8.9.3
+zcat $CWD/sendmail.mc.diff.gz | patch
+cd $TMP/sendmail-8.9.3/cf/cf
+m4 /tmp/sendmail-8.9.3/cf/m4/cf.m4 linux.smtp.mc > $PKG/usr/src/sendmail/linux.smtp.cf
+m4 /tmp/sendmail-8.9.3/cf/m4/cf.m4 linux.uucp.mc > $PKG/usr/src/sendmail/linux.uucp.cf
+cd $TMP/sendmail-8.9.3
+cat src/mailq.1 | gzip -9c > $PKG/usr/man/man1/mailq.1.gz
+cat src/newaliases.1 | gzip -9c > $PKG/usr/man/man1/newaliases.1.gz
+make
+# It appears that even if we patch makemap to link with GDBM, that GDBM mode is
+# no longer supported in sendmail-8.9.  When I link the old way, I get an error
+# 'cannot run with GDBM'.  So, we will not patch makemap to support GDBM.
+#zcat $CWD/makemap.diff.gz | patch
+( cd makemap/obj.$OSCPU ; make clean ; make )
+cp -a FAQ KNOWNBUGS README RELEASE_NOTES $PKG/usr/doc/sendmail
+( cd $PKG/usr/doc/sendmail ; chown root.root FAQ KNOWNBUGS README RELEASE_NOTES )
+( cd $PKG/usr/doc/sendmail ; chmod 644 FAQ KNOWNBUGS README RELEASE_NOTES )
+( cd doc ; cp -a op $PKG/usr/doc/sendmail )
+( cd $PKG/usr/doc/sendmail ; chown -R root.root op )
+cd src/obj.$OSCPU
+cat sendmail.hf > $PKG/usr/lib/sendmail.hf
+strip sendmail
+cat sendmail > $PKG/usr/sbin/sendmail.new
+cat aliases.5 | gzip -9c > $PKG/usr/man/man5/aliases.5.gz
+cat sendmail.8 | gzip -9c > $PKG/usr/man/man8/sendmail.8.gz
+cd ../../makemap/obj.$OSCPU
+strip makemap
+cat makemap > $PKG/usr/sbin/makemap
+cat makemap.8 | gzip -9c > $PKG/usr/man/man8/makemap.8.gz
+cd ../../mailstats/obj.$OSCPU
+strip mailstats
+cat mailstats > $PKG/usr/sbin/mailstats
+cat mailstats.8 | gzip -9c > $PKG/usr/man/man8/mailstats.8.gz
+cd ../../praliases/obj.$OSCPU
+strip praliases
+cat praliases > $PKG/usr/bin/praliases
+cat praliases.8 | gzip -9c > $PKG/usr/man/man8/praliases.8.gz
+cd ../../rmail/obj.$OSCPU
+strip rmail
+cat rmail > $PKG/usr/bin/rmail
+cat rmail.8 | gzip -9c > $PKG/usr/man/man8/rmail.8.gz
+cd ../../smrsh/obj.$OSCPU
+strip smrsh
+cat smrsh > $PKG/usr/sbin/smrsh
+cat smrsh.8 | gzip -9c > $PKG/usr/man/man8/smrsh.8.gz
+cat ../README > $PKG/usr/doc/sendmail/README.smrsh
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/sendmail.tgz .
+
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done
+
+## Clean up the extra stuff:
+#if [ "$1" = "--cleanup" ]; then
+#  rm -rf $TMP/sendmail-8.9.3
+#  rm -rf $PKG
+#fi

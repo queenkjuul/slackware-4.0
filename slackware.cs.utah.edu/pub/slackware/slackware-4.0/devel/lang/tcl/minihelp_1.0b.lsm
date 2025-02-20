@@ -1,0 +1,15 @@
+Begin3
+Title:  MiniHelp        
+Version: 1.0b 
+Entered-date: 01APR96 
+Description: Simple WYSIWYG help authoring package for Tk/tcl applications.  See http://public.logica.com/~kempsonc/mh_index.htm
+Keywords: Tk/tcl help X11
+Author: charlie@siren.demon.co.uk (Charlie Kempson)
+Maintained-by: 
+Primary-site: ftp.logica.com /pub/kempsonc/minihelp
+15KB minihelp_1.0b.tgz
+Alternate-site: 
+Original-site: 
+Platforms: Tk4.0, Tcl7.4 (but should work with 4.1b and 7.5b)
+Copying-policy: GPL 
+End

@@ -1,0 +1,19 @@
+Begin3
+Title:          xquser
+Version:        0.04
+Entered-date:   January 13, 1997
+Description:    xquser is an easily driven user management program. File user
+		quota and shadow passwords are supported. Qt library is needed.
+		You can find it at http://www.troll.no/. AIX is partialy
+		supported. (/etc/security doesn't work)
+Keywords:       xquser,user,shadow,linux,aix,quota
+Author:         dyp@isis.nsu.ru <Denis Y. Pershin>
+Maintained-by:  dyp@isis.nsu.ru <Denis Y. Pershin>
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xutils/system
+			12095 xquser-0.03.bin.tgz
+			8945  xquser-0.03.src.tgz
+Alternate-Site:	fiwi02.wiwi.uni-tuebingen.de /pub/kde/apps/admin
+Original-site:	ftp.isis.nsu.ru /pub/unix/x/xquser
+Platform:       Linux, AIX
+Copying-policy: GPL
+End

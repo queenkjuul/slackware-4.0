@@ -1,0 +1,15 @@
+Begin3
+Title:          Inetdial
+Version:        3.1
+Entered-date:   11.04.99
+Description:    Little CGI-Program to dial the net with your favourite browser
+Keywords:       linux dial net internet
+Author:         zagy@gmx.net (Christian Zagrodnick)
+Maintained-by:  zagy@gmx.net (Christian Zagrodnick)
+Primary-site:   metalab.unc.edu /pub/Linux/system/network/misc
+		21k inetdial-3.1.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux, apache, perl
+Copying-policy: GPL
+End

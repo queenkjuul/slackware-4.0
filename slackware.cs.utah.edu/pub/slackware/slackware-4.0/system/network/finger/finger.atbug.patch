@@ -1,0 +1,38 @@
+This fixes an apparent bug in fingerd w/the NetKit-B 0.5 distribution and 
+below.  The bug shows up when a finger like "finger @@@@@@@@@@" is done.  
+fingerd will spawn a new finger process for every consecutive @.  This is
+because the user name is parsed out by taking everything from the last @ on
+and passing it to fingerd.  This also allows finger redirection in the form
+of finger root@sunsite.unc.edu@tsx-11.mit.edu.  That will finger
+root@sunsite through tsx-11 as long as each of the involved systems is
+affected by the bug.  (They are).  This seems to stem from the BSD net kit
+from which the linux one is based.  I don't know how far this goes as far as
+commercial unixes go, but everything we tried except Ultrix 4.3 has this
+problem.  Unixes tried: Solaris, SunOs, IRIX, AIX, FreeBSD, Linux
+(Slackware), and Ultrix 4.2A.
+
+Clayton O'Neill
+cs339014@bit.csc.lsu.edu
+coneil@bit.csc.lsu.edu
+--- finger.old/net.c	Tue Aug 23 03:46:19 1994
++++ net.c	Fri Nov 18 17:07:38 1994
+@@ -57,12 +57,16 @@
+ 	struct servent *sp;
+ 	struct sockaddr_in sin;
+ 	int s;
+-	char *alist[1], *host, *rindex();
++	char *alist[1], *at, *host, *rindex();
+ 	u_long inet_addr();
+ 
+-	if (!(host = rindex(name, '@')))
++	if (!(at = index(name, '@')))
+ 		return;
+-	*host++ = '\0';
++	*at++ = '\0';
++	if (!(host = rindex(at, '@')))
++		host=at;
++	else 
++		host++;
+ 	if (!(hp = gethostbyname(host))) {
+ 		defaddr.s_addr = inet_addr(host);
+ 		if (defaddr.s_addr == -1) {

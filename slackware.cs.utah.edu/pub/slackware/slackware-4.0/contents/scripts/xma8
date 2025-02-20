@@ -1,0 +1,12 @@
+#!/bin/sh
+if [ -r /tmp/SeTcolor -o "$COLOR" = "on" ]; then
+ dialog --title "SETTING DEFAULT X SERVER" --infobox "Making XF86_Mach8 the default X server." 3 50
+else
+ echo "Making XF86_Mach8 the default X server..."
+ echo "  --> cd /var/X11R6/bin"
+ echo "  --> ln -sf /usr/X11R6/bin/XF86_Mach8 X"
+fi
+( cd usr/X11R6/bin ; rm -rf X )
+( cd usr/X11R6/bin ; ln -sf  /var/X11R6/bin/X X )
+( cd var/X11R6/bin ; rm -rf X )
+( cd var/X11R6/bin ; ln -sf  /usr/X11R6/bin/XF86_Mach8 X )

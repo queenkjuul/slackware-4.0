@@ -1,0 +1,19 @@
+Begin3
+Title:		sac
+Version:	1.7
+Entered-date:	04/23/98
+Description:	Performs login accounting, just like the ac program but with
+		total, per day, per user and per tty.  Also performs average
+		usage, hourly profiling, login listing, login clipping and raw
+		wtmp reporting. Tons of other options.
+		Supports Tacacs 3.x - 4.x and most Radius accounting files.
+Keywords:	login accounting wtmp ac tacacs radius cistron
+Author:		ice@mama.indstate.edu (Steve Baker)
+Maintained-by:	ice@mama.indstate.edu (Steve Baker)
+Primary-site:	mama.indstate.edu /linux/sac
+		56360 sac-1.7.tgz
+Secondary-site:	sunsite.unc.edu /pub/Linux/system/Admin/login
+		56360 sac-1.7.tgz
+Platforms:	Linux
+Copying-policy:	Open Source
+End

@@ -1,0 +1,47 @@
+Begin2
+Title        = Free LaserJet 4 Utility V1.1p1 
+Version      = free-lj4-1.1p1.tar.gz
+Desc1        = The Free LaserJet Utility V1.1p1 is a tool to set the modes
+Desc2        = of your HP LaserJet 4 printer with easy commands rather than
+Desc3        = using crazy escape sequences (Economode, size, orientation, etc)
+Desc4        =
+Desc5        =
+Author       = Frank Tegtmeyer
+AuthorEmail  = fte@gecko.de (Frank Tegtmeyer)
+Maintainer   = Frank Tegtmeyer
+MaintEmail   = fte@gecko.de
+Site1        = ftp.germany.eu.net
+Path1        = /pub/os/Linux/Local.EUnet/Utilities/Print
+File1        = free-lj4-1.1p1.tar.gz
+FileSize1    = 40K
+Site2        = sunsite.unc.edu
+Path2        =
+File2        =
+FileSize2    =
+Site3        =
+Path3        =
+File3        =
+FileSize3    =
+Site4        =
+Path4        =
+File4        =
+FileSize4    =
+Required1    =
+Required2    =
+Required3    =
+Required4    =
+CopyPolicy1  = GNU General Public License, version 2, June 1991
+CopyPolicy2  =
+Keywords     = hp, laserjet, printer, lpr, filter, lj4
+Comment1     = multi-language support
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      = 08JUN94
+EnteredBy    = Thomas McWilliams
+CheckedEmail = tgm@netcom.com
+End
+

@@ -1,0 +1,31 @@
+Begin3
+Title:          pringd
+Version:        1.0.0
+Entered-date:   19OCT98
+Description:    Run commands, triggered by ring sequences on a modem.
+	Useful applications are to answer dial-in calls, dial out on
+	request to a predetermined location, play a sound file to replace
+	your boring phone ring, or make your computer do anything else
+	you want while you're not at home.
+	Orthogonal parallel ring sequence mechanism.
+	Asynchronous command execution.
+	Does not interfere with getty.
+Keywords:       modem, getty, RING, dial in, remote control
+Author:         zweije@xs4all.nl (Vincent Zweije)
+Maintained-by:  zweije@xs4all.nl (Vincent Zweije)
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/serial/
+                19436 pringd-1.0.tar.gz
+		 1161 pringd-1.0.lsm
+		   52 pringd-1.0.tar.gz.md5
+		  152 pringd-1.0.tar.gz.sig
+Alternate-site: http://www.xs4all.nl/~zweije/
+                19436 pringd-1.0.tar.gz
+		 1161 pringd-1.0.lsm
+		   52 pringd-1.0.tar.gz.md5
+		  152 pringd-1.0.tar.gz.sig
+Original-site:  
+Platforms:      
+	Linux-1.1.48+ with special ioctl to sense modem RINGs.
+	Internal or fully connected modem (RI line).
+Copying-policy: GPL
+End

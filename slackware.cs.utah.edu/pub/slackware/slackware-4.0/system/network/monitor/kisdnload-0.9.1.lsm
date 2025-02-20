@@ -1,0 +1,13 @@
+Begin3
+Title:          KISDNLoad - ISDN Loadgraph for KPanel
+Version:        0.9.1
+Entered-date:   24MAY98
+Description:    A status monitor that docks on KPanel and
+		displays a load graph of the load on ISDN links.
+Keywords:       ISDN monitor load KDE Qt
+Author:         Sven Schmidt <sven.schmidt@cern.ch>
+Primary-site: 	ftp://ftp.kde.org/pub/kde/unstable/apps/utils
+Alternate-site: http://wetap8.physik.uni-mainz.de/sas/
+Platform:       Linux. Needs Qt, KDE, isdn4linux
+Copying-policy: GPL
+End                        

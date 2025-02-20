@@ -1,0 +1,8 @@
+( cd usr/X11R6/lib ; rm -rf libXm.so )
+( cd usr/X11R6/lib ; ln -sf libXm.so.1.2.0 libXm.so )
+( cd usr/X11R6/lib ; rm -rf libXm.so.1 )
+( cd usr/X11R6/lib ; ln -sf libXm.so.1.2.0 libXm.so.1 )
+( cd usr/X11R6/lib ; rm -rf libMrm.so )
+( cd usr/X11R6/lib ; ln -sf libMrm.so.1.2.0 libMrm.so )
+( cd usr/X11R6/lib ; rm -rf libMrm.so.1 )
+( cd usr/X11R6/lib ; ln -sf libMrm.so.1.2.0 libMrm.so.1 )

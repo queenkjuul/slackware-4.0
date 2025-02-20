@@ -1,0 +1,13 @@
+Begin3
+Title: iplogger-ident-1.1.tar.gz
+Version: 1.1
+Entered-Date: April 24, 1998
+Description: iplogger provides logging to incoming tcp and
+             icmp sessions. It runs in the background writing
+             via syslog(). Added ident support. runnable from init
+Keywords: logging icmp tcp network paranoia ident
+Author: medulla@infosoc.com (Mike Edulla)
+Maintained-by: blkmajik@mcn.net (Shawn Michael)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Network/daemons
+Copying-policy: GPL
+End

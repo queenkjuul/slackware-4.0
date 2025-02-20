@@ -1,0 +1,14 @@
+Begin3
+Title:          knetmon.missing_files
+Version:        1alpha
+Entered-date:   07SEP98
+Description:    on systems like RedHat 5.1 without libg++ this is required to compile knetmon
+Keywords:       KDE knetmon samba nfs talk network rlogin ping telnet finger
+Author:		Alexander Neundorf <alexander.neundorf@rz.tu-ilmenau.de>
+Maintained-by:  Alexander Neundorf <alexander.neundorf@rz.tu-ilmenau.de>
+Primary-site:   ftp.kde.org/pub/kde/stable/latest/apps/network/knetmon.missing_files.tgz
+Alternate-site:
+Original-site:  http://www.tu-ilmenau.de/~lekus/software.htm
+Platform:       Not tested yet
+Copying-policy: GPL
+End

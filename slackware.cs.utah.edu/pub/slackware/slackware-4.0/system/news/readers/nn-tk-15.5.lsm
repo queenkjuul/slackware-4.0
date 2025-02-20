@@ -1,0 +1,18 @@
+Begin3
+Title:          NN-Tk newsreader
+Version:        15.5
+Entered-date:   22 May 96
+Description:    A version of the NN newsreader, can be compiled into either
+		nn which is an enhanced version of the character based nn or
+		nn-tk which has a TCL/TK based used interface and many extra
+		capabilities. NN was originally written by Kim F. Storm.
+Keywords:       news, newsreader, TCL/TK
+Author:         toivo@ucs.uwa.edu.au (Toivo Pedaste)
+Maintained-by:  toivo@ucs.uwa.edu.au (Toivo Pedaste)
+Primary-site:   ftp://ftp.uwa.edu.au/pub/nn/nn-tk
+			816kb nn-tk-15.5.src.tar.gz
+		       1264kb nn-tk.15.5.bin.tar.gz
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/news/readers
+Platforms:      X11, TCL/TK 
+Copying-policy: BSD
+End

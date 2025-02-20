@@ -1,0 +1,15 @@
+Begin3
+Title:          MS-DOS C-library and tools, source code
+Version:        2.0
+Entered-date:   02MAY96
+Description:    Sources for the djgpp V2.0 C-library and misc. tools.
+		This is part of the Linux->MS-DOS cross-compiler toolchain,
+		but you don't need it to use the compiler. The license
+		however, requires sources to be distributed with the
+		binaries.
+Keywords:       msdos djgpp crosscompiler
+Maintained-by:  j.j.vanderheijden@student.utwente.nl (J.J. van der Heijden)
+Primary-site:   sunsite.unc.edu:/pub/Linux/devel/msdos
+		687534 djlsr200.go32.tar.gz
+Copying-policy: (c) DJ Delorie, see the file 'copying.dj'
+End

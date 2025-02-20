@@ -1,0 +1,15 @@
+Title:          Finger '@' bug fix.
+Version:        None
+Entered-date:   Nov 18, 1994
+Description:    Fixes the @ bug in finger.  Bug permits denial of service
+		and finger rerouting.
+Keywords:       finger at @ bug fix
+Author:         Clayton O'Neill (coneil@tiger.lsu.edu,
+		cs339014@bit.csc.lsu.edu)
+Maintained-by:  Clayton O'Neill (coneil@tiger.lsu.edu,
+		cs339014@bit.csc.lsu.edu)
+Primary-site:   sunsite.unc.edu
+Alternate-site: None
+Original-site:  sunsite.unc.edu
+Platform:       Linux
+Copying-policy: Public Domain

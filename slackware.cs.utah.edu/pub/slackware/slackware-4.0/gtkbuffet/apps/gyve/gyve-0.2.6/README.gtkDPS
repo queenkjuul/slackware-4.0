@@ -1,0 +1,5 @@
+Use gtkDPS-0.2.17 instead of gtkDPS-0.2.16.
+There is a serious bug in the font panel widget of gtkDPS-0.2.16.
+
+Masatake YAMATO
+

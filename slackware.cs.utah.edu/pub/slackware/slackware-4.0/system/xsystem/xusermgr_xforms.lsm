@@ -1,0 +1,20 @@
+
+  Fixed the statically linked binary problem. Otherwise no changes
+between versions 0.9 and 1.0
+
+
+Begin3
+Title:          xusermgr
+Version:        1.0
+Entered-date:   1 Sept 1995
+Description:    A XForms/X-Windows User Account Manager (Statically Linked)
+Keywords:       admin XForms passwd account manager
+Author:         kludge@zot.com (Michael McNeil)
+Maintained-by:  kludge@zot.com (Michael McNeil)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/xutils
+                100kB xusermgr_xforms.1.0.tar.gz
+Alternate-site: ftp.clark.net /pub/kludge/linux/
+Original-site:  
+Platform:       linux, X11R6, XForms required to recompile.
+Copying-policy: GPL
+End

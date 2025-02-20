@@ -1,0 +1,278 @@
+=================== Keystroke-HOWTO, version 2.0 ====================
+
+			Linux Keystroke HOWTO
+			         by
+		 Zenon Fortuna (zenon@netcom.com)
+
+
+Version: 2.0						April 4th '95
+
+INDEX
+	0.	What is "Keystroke-HOWTO" ?
+	1.	History of changes
+	2.	Short description
+	3.	Tools for keyboard driver modification
+	4.	Modifying keytable file
+	4.0	Example of keytable file modification
+	4.1	Temporary modification of the keyboard setup
+	4.2	Permanent modification
+	5.	Example of the key_macro script
+	6.	Comments
+	7.	Further ideas ?
+
+----------------------------------------------------------------------------
+0.	What is "Keystroke-HOWTO" ?
+
+	This document is for users, who want to assign special action to some
+	of keys of the keyboard. The suggested method is to use the loadkeys(1)
+	or to modify the defkeymap.c file and relink the kernel.
+
+	This text does NOT discuss remapping of keyboard keys, e.g. Backspace
+	or Delete keys. For informations about remapping of keys read the
+	Backspace Mini-HOWTO written by Stephen Lee.
+
+	The method described below was tested on Linux 1.2.1 release, packaged
+	in the Slackware 2.2.0 distribution.
+
+
+1.	History of changes
+
+	April 4th '95	Version: 2.0
+	   Adapted for the Linux 1.2.1:
+	   - simple changes in suggested modification of the "my_keytable.map"
+	   - modified "key_macro" example with /dev/vcs* screen dumping
+
+	May   7th '94	Version: 1.0
+	   The initial version of the "Keystroke-HOWTO", which worked for the
+	   Linux 1.0
+
+
+2.	Short description
+
+	The Linux virtual terminal and keyboard drivers assume default keyboard
+	mapping as defined in the drivers/char/defkeymap.c file of the kernel
+	source. The 12 PC keyboard function keys may get strings assigned to
+	their action. After pressing any of those function keys, perhaps
+	modified with the Alt or Ctrl keys, the current virtual terminal
+	adds the specific string to its input and output buffers, in effect
+	emulating entry of this string as typed in from the keyboard.
+
+	Setting an appropriate string for chosen function key, we can simplify
+	execution of selected command, for example calling a Shell-script
+	"/usr/local/bin/key_macro", which we can create and modify as desired.
+
+
+3.	Tools for keyboard driver modification
+
+	We may use loadkeys(1), dumpkeys(1) and showkey(1):
+	  The loadkeys(1) utility helps to load new strings into the kernel
+	keyboard buffers or prepares the new C-code to modify the kernel.
+	  The dumpkeys(1) should be used to get the current keyboard mapping
+	table for inspection or modification.
+	  The showkey(1) may assist us to obtain the keycode of the selected
+	function key.
+
+	If your Linux system does not have these utilities, you may get them
+	via anonymous ftp as kbd-0.89.tar.gz or kbd-0.90.tar.gz package from
+		sunsite.unc.edu:/pub/Linux/system/Keyboards, or
+		tsx-11.mit.edu:/pub/linux/sources/system
+	You should use the GNU tar to extract the needed files.
+
+
+4.	Modifying keytable file
+
+	Linux kernel includes compiled defkeymap.c code, which is generated
+	with the loadkeys(1) utility from a defkeymap.map file. Both files
+	are included in the src/linux/drivers/char directory.
+
+	We need to modify the defkeymap.map file, so let's make a local
+	copy of it either by
+		# cp defkeymap.map my_keytable.map
+	or
+		# dumpkeys > my_keytable.map
+
+	There is also a large collection of different keytable files in the
+	/usr/lib/kbd/keytables directory, from which "defkeymap.map" may be
+	used as src/linux/drivers/char/defkeymap.map file on your system.
+
+	The method which uses the dumpkeys(1) utility is recommended, because
+	it may happen, that your kernel was already modified or generated
+	for you with different defkeymap.map file than the one you can find.
+
+	Lets read the contents of the my_keytable.map file: there are more
+	than 300 lines of code, and we can find 3 groups of declarations:
+	The first group consists of lines with the word "keycode", maybe
+	prepended with additional words like "alt", "control", etc.
+	The second group consists of lines with the word "string".
+	The third group consists of lines with the word "compose".
+
+	More about the keytables(5) syntax can be read with
+		% man keytables
+
+
+4.0	Example of keytable file modification
+
+	As an example of assigning a macro-string to a function key stroke,
+	let's make the "Ctrl-F1" to call our "/usr/local/bin/key_macro"
+	Shell-script.
+
+	First of all we should find out what is the keycode for the F1 function
+	key.  We may use the showkey(1) utility to find the keycode with
+	pressing F1.
+
+	Instead we can search for the "F1" string in the "my_keytable.map" file
+	to find the following line:
+
+	keycode  59 = F1
+
+	This suggests, that the keycode for the F1 function key is 59.
+	This line defines also, that after pressing the F1 key the keyboard
+	driver would send out the string denoted by the string-code "F1".
+	To see the contents of this string, one can search for the "string F1"
+	pattern, to find
+
+	string F1 = "\033[[A"
+
+	This means, that after pressing the F1 key, the keyboard driver sends
+	the "Esc [ [ A" (without blank spaces).
+
+	We shouldn't change this string, because some applications depend on
+	this string as default action of the F1 function key.
+
+	However, we may define the new action for Ctrl-F1, provided it is not
+	reserved by your kernel for other special actions.
+	To see the mappings of the F1 key modified with the Ctrl-, Shift- or
+	other modes, we may inspect the "my_keytable.map" file with
+
+		# grep 59 my_keytable.map
+
+	In case when there is no line with "control keycode 59" we may use
+	the Ctrl-F1 without problems. (when a line with the "shift control
+	keycode 59" exists it is still OK)
+
+	Let us add a following line to the "my_keytable.map" file:
+
+		control keycode 59 = key_symbol
+
+	where the "key_symbol" would define the action of the Ctrl-F1 key.
+	The Linux 1.2.* allows a dynamic allocation of strings, but a name
+	of the "key_symbol" may be picked up only from a fixed set of names.
+	Between other names the key-symbols F1-F246 are allowed.
+	For "my_keytable.map" on my system the F21 was unused, but you should
+	inspect your "my_keytable.map" and choose a proper key-symbol.
+	So, we may end up with a line
+
+		control keycode 59 = F21
+
+	Now we have to define the contents of the F21, adding a line
+
+		string F21 = "/usr/local/bin/key_macro\n"
+
+	In the summary, we made two changes to the original "my_keytable.map"
+	file: we declared the new string F21, and we have declared
+	that the Ctrl-F1 key will be calling the F21 contents.
+
+
+4.1	Temporary modification of the keyboard setup
+
+	Having properly modified "my_keytable.map" we can copy the changes
+	to the kernel keyboard driver, using the loadkeys(1) utility:
+
+	% loadkeys my_keytable.map
+
+	The permission to modify the kernel keyboard driver is granted to
+	everybody who has the read access to the "/dev/console" device.
+
+	To verify that the intended changes were installed, we can use the
+	dumpkeys(1) utility to check the F21 value, for example
+
+	% dumpkeys | grep F21
+
+	We may see:
+
+	keycode 59 = F1		F11	Console_13	F21
+
+	string F21 = "/usr/local/bin/key_macro\012"
+
+	which is OK, because "\012", or LF, is equivalent to "\n".
+
+	Now, pressing "Ctrl-F1" should call the "/usr/local/bin/key_macro"
+	Shell-script, as intended. 
+
+
+4.2	Permanent modification
+
+	The changes to the kernel keyboard driver imposed by the loadkeys(1)
+	last until the next reboot (or the next call to loadkeys).
+
+	We can modify the /etc/rc.d/rc.local to call the loadkeys with our
+	my_keytable.map file as an argument. Instead, we can modify the
+	src/linux/drivers/char/defkeymap.c and re-link the kernel with
+	new defaults.
+
+	We should not modify the defkeymap.c manually, but rather generate
+	it with the loadkeys(1) utility:
+
+	# mv defkeymap.c defkeymap.c.ORIG
+	# loadkeys --mktable my_keytable.map > defkeymap.c
+
+	Then we should generate the new kernel, essentially changing directory
+	to the root of the linux kernel source, and using the make(1).
+
+	Finally, we should use the lilo(1) to install and boot our new kernel.
+
+
+5.	Example of the key_macro script
+
+	A particularly useful script for simple-key-stroke operation may be
+	a Shell-script preparing, or printing, a screen dump.
+
+	This example has changed since the version 1.0 of Linux, because
+	of the changes in the Linux kernel, which does not provide the
+	ioctl(0,TIOCLINUX) system call anymore.
+
+	To read the virtual console screen dumps one should prepare first
+	some device files. As "root" user we may create the following files:
+
+		# mknod /dev/vcs1  c 7 1
+		# mknod /dev/vcs2  c 7 2
+		...
+		# mknod /dev/vcs63 c 7 63
+
+	Of course, it is sufficient to have only the /dev/vcs* files specific
+	for the virtual consoles you are using.
+
+	The code below should be regarded as an example of possible
+	/usr/local/bin/key_macro file:
+
+#!/bin/sh
+#
+# This is an example of useful key_macro script
+#
+
+VT_NUMBER=`tty|cut -c9-`
+FILE=/tmp/vt$VT_NUMBER.dump
+cp /dev/vcs$VT_NUMBER $FILE
+echo SCREEN DUMP saved in $FILE
+#
+# Uncomment the line below if you want to print the resulted dump-file
+# lpr $FILE
+
+
+6.	Comments
+
+	There is no practical limit on the sum the lengths of all strings
+	which we would like to load to the keyboard driver. The previous fixed
+	buffer of the length of FUNC_BUFSIZE (set to 512 bytes), has been
+	replaced in the Linux 1.2.* by a strategy of dynamic buffer allocation
+	... in chunks of 512 bytes each.
+
+	The most recent copy of the Keystroke-HOWTO can be found in
+
+		ftp.netcom.com: /pub/ze/zenon/linux/howto
+
+
+7.	Further ideas ?
+
+	In case you find anything worth adding to this document, please send
+	your comments to zenon@netcom.com -- thanks (zf)

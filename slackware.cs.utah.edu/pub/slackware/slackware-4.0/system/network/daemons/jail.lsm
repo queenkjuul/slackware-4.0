@@ -1,0 +1,19 @@
+Begin3
+Title:          jail
+Version:        1.5
+Entered-date:   03AUG98
+Description:    jail (Just Another IP Logger) consists of two small
+                programs which run in the background, logging the reception
+                of ICMP and TCP packets to the system log. This is a useful
+                network monitoring tool and can help detect attempted denials
+                of service.
+Keywords:       security log icmp tcp
+Author:         ams@wiw.org (Abhijit Menon-Sen)
+Maintained-by:  ams@wiw.org (Abhijit Menon-Sen)
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/network/daemons/
+                20kb jail-1.5.tar.gz
+Alternate-site: http://www.wiw.org/~ams/jail/
+Original-site:  
+Platforms:      Linux
+Copying-policy: Artistic License
+End

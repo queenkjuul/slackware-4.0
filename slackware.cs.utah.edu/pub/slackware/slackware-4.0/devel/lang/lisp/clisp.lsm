@@ -1,0 +1,23 @@
+Begin3
+Title:          CLISP Common Lisp
+Version:        1996-12-06
+Entered-date:   1996-12-07
+Description:    CLISP is a Common Lisp implementation, supporting most of the
+                ANSI standard. Includes an interpreter, a compiler, a CLOS
+                implementation, a foreign language interface, fast bignums.
+                Packages running in CLISP include CLX and Garnet.
+Keywords:       Lisp, Common Lisp, CLISP, computer algebra.
+Author:         Bruno Haible <haible@ma2s2.mathematik.uni-karlsruhe.de>,
+                Michael Stoll <michael@rhein.iam.uni-bonn.de>,
+                Marcus Daniels <marcus@sysc.pdx.edu>
+Maintained-by:  Bruno Haible <haible@ma2s2.mathematik.uni-karlsruhe.de>
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/lisp/
+                5.0 MB  clisp-source.tar.gz
+                4.8 MB  clisp-linux-aout.tar.gz
+                4.2 MB  clisp-linux-elf.tar.gz
+Alternate-site: 
+Original-site:  ma2s2.mathematik.uni-karlsruhe.de /pub/lisp/clisp/source
+Platforms:      Binaries: Linux x86.
+                Source: Unix, DOS, OS/2, Win32, Amiga, Acorn.
+Copying-policy: GPL
+End

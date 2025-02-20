@@ -1,0 +1,21 @@
+Begin3
+Title:	pexpire
+Version:	0.5
+Entered-date:	05SEP97
+Description:	Alternate expiry for leafnode.
+		This expires based on the length of time the article
+		has existed in the local news spool.
+		Based on texpire, but written in perl.
+Keywords:	leafnode, expire
+Author:	derick@seriousdata.com (Derick Siddoway)
+Maintained-by:	derick@seriousdata.com (Derick Siddoway)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/news/transport
+	3kB pexpire-0.5.tar.gz
+	738 pexpire-0.5.lsm	
+Alternate-site:	http://seriousdata.com/~derick/pexpire-0.5.tar.gz
+	3kB pexpire-0.5.tar.gz
+Original-site:	ftp://ftp.troll.no/freebies/leafnode
+Platforms:	Requires perl, leafnode
+	Should run on any platform that can handle both of these.
+Copying-policy:	GPL
+End

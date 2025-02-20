@@ -1,0 +1,594 @@
+$Id: CHANGES,v 1.32 1999/04/30 10:19:56 trockij Exp $
+
+Changes between mon-0.38.11 and mon-0.38.12
+---------------------------------------------
+
+-Fixed "list descriptions" bug submitted by Vad Adamluk <dmonk@wbt.ru>
+
+-Added "last_check" and "monitor" output to client list
+ opstatus. opstatus.cgi uses this.  Only works for 0.38.* protocol.
+
+-opstatus.cgi now uses Mon::Client, and some bug fixes and enhancements.
+
+-Removed "bind" from ftp.monitor http.monitor http_t.monitor imap.monitor
+ nntp.monitor pop3.monitor smtp.monitor. It was unnecessary.
+
+
+Changes between mon-0.38.10 and mon-0.38.11
+---------------------------------------------
+
+Another small (but substantial) bug fix in call_alert which would
+prevent alerts from being called if $args{"args"} was passed as an
+undefined value.
+
+
+Changes between mon-0.38.9 and mon-0.38.10
+---------------------------------------------
+
+-Fixed a bug where call_alert didn't set _last_alert correctly,
+ thus causing things like alertevery to not work properly.
+
+-Small bug fix in handle_trap_timeout
+
+-Removed some debugging junk for dtlogging
+
+-A few code cleanups here and there
+
+-Fixed @groupargs problem in call_alert
+
+
+Changes between mon-0.38.8 and mon-0.38.9
+---------------------------------------------
+
+-Removed %var% substitution in favor of -M, which pre-processes the config
+ file with m4. Macro expansion should be handled by software whose sole
+ purpose is to perform macro expansion, hence m4.
+
+-Added an "example.m4" in the etc/ directory.
+
+-Added "fail" trap.
+
+-Pass _op_status value to alerts via env variable MON_OPSTATUS.
+
+-Updated file.alert to log MON_OPSTATUS.
+
+-Fixed bug in client buffer handling where a blank line submitted by
+ the client would prevent all future commands from being processed.
+
+-The server no longer disconnects the client on an invalid command.
+
+-Added "--disabled" and "--state" commands to monshow. Showing disabled
+ hosts is no longer the default. The defaults can be set in ~/.monshowrc.
+ This requires the latest Perl module (Mon-0.4). Also added "--old" option.
+
+-Added man page for monshow.
+
+-Updated some docs in mon.1
+
+-Don't complain if userfile does not exist and the authtype is not userfile.
+
+-Patched in Gilles' historicfile stuff, and documented it in mon.1, and fixed
+ some bugs.
+
+-Alerts are no longer called with -l parameter. It's never been documented,
+ and no alerts use it, so I'm ditching it.
+
+-version command returns a value like "0.38.9" rather than a float.
+
+-Separated alert calling function from the function which determines
+ if an alert should be called.
+
+-Alerts are now forked with a separate environment than the parent.
+
+-"test alert|upalert|startupalert" client command added, which will immediately
+ call an alert for testing purposes. Updated the docs for moncmd to reflect
+ this command.
+
+
+Changes between mon-0.38pre7 and mon-0.38.8
+---------------------------------------------
+
+-mon is now kept under CVS control (exclusively to maintain my own
+ personal sanity). The Perl module is distributed as a separate file now,
+ so that it can find its home in the CPAN module directory.
+
+-Documented "traptimeout" and "trapduration", and cleaned up
+ some docs in mon.1.
+
+-Included upalerts and startupalerts in gen_scriptdir_hash()
+
+-Lots of code cleanups in read_cf.
+
+-alertafter now has two forms, one just like before, and
+ one with a single integer argument which alerts after some number of
+ consecutive failures.
+
+-I should have done this long ago. %watch now looks like this:
+	$watch{$group}->{$service}
+ instead of
+	$watch{$group}[$service]
+ and $service is the text of the service, not an integer.
+
+-Lots of code cleanups regarding global variables which are
+ altered by read_cf.
+
+-Fixed "list successes" and "list failures" command.
+
+-Added "clear timers" command which clears the timers
+ for things like alertafter and alertevery and such.
+
+-netappfree.monitor has some MIB reading changes which fixes the
+ core dumping problem.
+
+-Added set_op_status.
+
+-Removed some debug cruft from check_depend.
+
+-Fix to $fhandles{"$group/$service"}.
+
+-Updated "-h" output to be accurate.
+
+-Test -f to see if an alert or monitor exists before trying to
+ exec it.
+
+-gilles reported a problem with the servertime output, which was fixed.
+
+-"interval" initialization was supplying a default interval,
+ which isn't cool because it didn't allow you to have a service w/o an
+ interval for use as a trap sink. The new default is undef.
+
+-I started work on muxpect, which is sort of a combination of the mux
+ capabilities of fping and doing Expect-style chat sequences over TCP
+ sockets. It is meant to replace those millions of TCP-based monitors
+ in the mon.d directory with a less CPU-intensive version.
+
+-Some alert decision code moved from proc_cleanup to do_alert where
+ it belongs.
+
+-Changed some trap code.
+
+
+Changes between mon-0.38pre6 and mon-0.38pre7
+---------------------------------------------
+
+-Added "basedir=" and -b, and "cfbasedir=" and -B
+
+-use usleep.
+
+-Added startupalerts which are called upon startup.
+
+-alerts called with env variable MON_ALERTTYPE
+
+-logdir, added downtime logging via dtlogging/dtlogfile
+
+-Periods can now be specified using a LABEL: tag (similar to
+ labeling blocks and loops in Perl). This allows multiple periods with
+ the same period value. This feature is useful because the "alertafter"
+ and "alertevery" counters are kept on a per-period basis.
+
+-Fixed process.monitor to use the new values for the process table
+ in the UCD MIB.
+
+-Fixed a problem with reload and path/file expansion.
+
+-Alerts are now called with MON_RETVAL set to the exit value of the
+ monitor.
+
+-Added trap.alert. Not quite documented.
+
+-Added version command to Mon::Client, thanks to nagel@intelenet.net.
+
+
+Changes between mon-0.38pre5 and mon-0.38pre6
+---------------------------------------------
+
+-Some small adjustments to fping.monitor.
+
+-SNMP trap reception is now part of the I/O loop.
+
+-Began work on handle_snmp_trap, and got rid of SNMP-related
+ junk in handle_trap.
+
+-Fixed problem with whitespace and monitors ending in ";;" reported
+ by llee@stevens-tech.edu.
+
+-mon now has an officially assigned port number from the IANA. It is 2583,
+ and the appropriate adjustments have been made to the clients.
+
+-Fixed sock_write in server to handle EAGAIN condition when kernel socket
+ buffers fill up.
+
+-Added dialin.monitor which checks to see if dial-in modem lines are
+ operational.  It requires the Perl Expect module. Documentation is in
+ doc/README.monitors.
+
+-Added an incomplete na_quota.monitor which is meant to monitor Network
+ Appliance quota trees.
+
+
+Changes between mon-0.38pre4 and mon-0.38pre5
+---------------------------------------------
+
+-Fixed bug #3, problem with %alias
+
+-Fixed bug #4, problem with unpacking a socket which wasn't
+ really a socket yet (out of order assignments)
+
+-Renamed Client to Mon-0.01 to follow the Perl module naming
+ convention better, and to make room for things like logging
+ modules and such.
+
+-Implemented more protocol commands to Mon::Client. Only 4 left...
+
+-Adjusted nntp.monitor to allow for some protocol / implementation
+ inconsistencies. The commands now strictly follow RFC977.
+
+-Fixed problem with 0.38 protocol and Mon::Client.
+
+-Added multiple authentication types, including getpwnam, shadow,
+ and userfile. Read the man page for details.
+
+-Added "version" client command to identify the protocol version.
+
+-Added host && user authentication to traps. Configuration is done
+ in auth.cf. No documentation yet.
+
+-Added simple downtime logging, and documented it in mon.1.
+
+-Tiny change to reboot.monitor.
+
+-Added Mon::SNMP module to decode SNMP traps.
+
+-Added pod to Mon::Client. I think it took as long to
+ code it as it did to document it.
+
+
+Changes between mon-0.38pre3 and mon-0.38pre4
+---------------------------------------------
+
+-Added fixes from Chris Adams <cadams@ro.com> that correct some $ALERTDIR
+ and monitor argument problems.
+
+-Fixes to monstatus from brian moore.
+
+-Another fix to get the "exit=n" stuff working with alerts again, broken
+ because of ALERTHASH code.
+
+-Wrote "monshow" in the clients directory, which is a per-user configurable
+ command-line client.
+
+-Mon::Client perl module included to help simplify writing clients. It
+ doesn't implement a number of commands yet. Look at the end of Client.pm
+ to see which commands have been implemented and which have not been.
+
+ "monshow" is in the clients directory, and it is an example of how to
+ use the Mon::Client module.
+
+ Mon::Client also needs POD documentation.
+
+
+Changes between mon-0.38pre2 and mon-0.38pre3
+---------------------------------------------
+
+-Added "ack" client command, which will acknowledge a service failure and
+ surppress all further alerts for that service while it continues to fail.
+ See the moncmd man page for details. You can "ack" with a string of
+ text.
+
+-alertdir and scriptdir can now contain multiple colon-separated
+ paths. This feature is useful for keeping site-specific monitors
+ and alerts in their own directory which is separate from the monitors
+ which are distributed with mon itself. Updated the docs for this.
+
+ A hash is generated after each time the configuration is read
+ which holds the location of where each monitor and alert script can
+ be found. Errors are reported via syslog, so pay attention to them.
+
+-Some "alias" code tweaks. Gilles, does it work??? If no, send
+ the patch.
+
+-Poked a little with the trap code. The trap format now contains
+ a "spc" tag which specifies the specific type of trap, like maybe
+ SNMPv1 or SNMPv2 or "mon 0.38". 
+
+-An update to rpc.monitor to let it build under Solaris. It can now
+ also check to see if an arbitrary RPC program number is registered.
+ Documentation updates.
+
+
+Changes between mon-0.38pre1 and mon-0.38pre2
+---------------------------------------------
+
+-Some fixed from brian moore to correct client hangups
+
+-netappfree.monitor changes, including --list option to
+ list the filesystems on the filers for help in building a config file.
+
+-Trap handling changes, including packet format. More provisions
+ for direct SNMP handling. I might add direct provisions for mon to take
+ SNMP traps directly. UCD SNMP trap handling callback mechanism doesn't
+ fit into mon very well.
+
+-"list opstatus" output is now different
+
+-Time::HiRes is now required. The trick is that handle_io() wants
+ to spend $SLEEPINT handling I/O from clients. Some OSs allow select(2)
+ to return the time remaining, which we want because if select returned
+ in say, 0.2 seconds then we want to call select with a timeout of 0.8
+ seconds so that we get the full second of waiting for I/O. Some OSs
+ do *not* return the time remaining from a select call, and time(2)
+ doesn't return sub-second resolution, so we need gettimeofday(2) to
+ figure out how long select spent waiting. I guess the whole point here
+ is to try to handle traps as soon as they come in.
+
+-Fixed @last_failures discrepancy with traps.
+
+-Added Gilles' alias record stuff to config file
+
+-Included Jon Meek's up_rtt.monitor which checks the availability of
+ hosts and logs some statistics, like min/mean/max round trip times.
+ Requires Time::HiRes and Statistics::Descriptive.
+
+
+Changes between mon-0.37l and mon-0.38
+---------------------------------------
+
+-Asynchronous trap handling. A remote agent may deliver a trap
+ to trigger some action to be performed by a centralized mon
+ server.
+
+-Client I/O entirely re-written to support multiple simultaneous
+ non-blocking clients.
+
+-New client commands: test, set opstatus, list descriptions
+
+-Descriptions are now allowed in service definitions
+
+-Added Gilles' my-mon.cgi web interface.
+
+-Added Jing Tan's dependency code
+
+-When a service comes back up, it resets _first_failure
+ so that alertevery does the right thing.
+
+-When handling a "term" from the client, kill -15 children
+ instead of -9.
+
+-A fix from brian moore which corrected the client timeouts.
+
+-Added "servertime" client command.
+
+-Fixed moncmd to be more batch-friendly.
+
+-Some security patches to mon.cgi from Roderick Schertler, including
+ and changes to mon and the documentation for Debian compatability.
+
+-Added "reload auth" command, which reloads the authentication table.
+
+-Added per-service environment variable passing to monitor and alert scripts.
+
+-Fixed '"no summary" with upalerts' problem reported by
+ Eric Buda <eric@protoclown.nis.newscorp.com>. The output of successful
+ monitors could be lost under certain circumstances.
+
+-Fixed a small problem with upalerts reported by
+ Josh Wilmes <josh@hitchhiker.org>. Upalerts would be triggered for
+ everything the first time mon is started.
+
+-process.monitor may optionally not load the MIBs upon startup.
+
+-"-A" option would not make itself relative to the directory
+ that mon was started from.
+
+-netpage.alert not calls sendmail rather than "mail -s". Another fix
+ from Josh Wilmes.
+
+-A trivial tweak to nntp.monitor.
+
+-Fixed problem with hostgroups named with periods reported by several
+ people. This would cause a monitor process to not ever get cleaned up.
+
+-Changed how load_auth handles errors
+
+-fping.monitor adds a newline (right after removing it with tr :)
+
+-changed the debug behavior to allow multiple debug levels
+
+
+Changes between mon-0.37k and mon-0.37l
+---------------------------------------
+-Config parser change from Michael Griffith <grif@cadence.com> that
+ complains when "alertafter" will never trigger an alert.
+
+-Added "savestate" and "loadstate". Currently these only save
+ and load the state of things disabled.
+
+-The server now can authenticate clients using a simple
+ configuration file which can restrict certain users to
+ using only some (or all) commands. "moncmd" was updated
+ to support this feature.
+
+-Addition of "upalerts" which may be called when a service
+ changes state from failure to success. "upalerts" can be
+ controlled by the "upalertafter" parameter.
+
+-"alertevery" now ignores detailed output when it decides
+ whether or not to send an alert. Patch submitted by
+ brian moore <bem@cmc.net>.
+
+-"hostgroup and hyphen" patch. This simple patch will allow
+ hyphens and periods in hostgroup tags.
+
+-Multiline output fixes in smtp.monitor <roderick@argon.org>
+
+-Now monitors are not called when no host arguments are supplied. This
+ can be overridden with the per-service "allow_empty_group" option.
+
+-A fix to ftp.monitor by Tiago Severina <ts@uevora.pt> which allows
+ for multiple 220 lines in the greeting from the FTP server.
+
+-Added snpp.alert, contributed by Mike Dorman <mdorman@debian.org>.
+ This requires the SNPP Perl module.
+
+-Added ldap.monitor, contributed by David Eckelkamp <davide@tradewave.com>.
+ This requires the Net::LDAPapi module.
+
+-Added dns.monitor, contributed by David Eckelkamp <davide@tradewave.com>.
+ This requires the Net::DNS module.
+
+-Monitor definitions can now include shell-like quoted words, as defined by
+ the Text::ParseWords module (included with perl5). e.g.:
+ 	monitor something.monitor -f "this is an argument" -a arg
+
+-"allow_empty_group" is a new per-service option. If set, monitors will
+ still be run even if all hosts in the applicable hostgroup have been
+ disabled. The default is that allow_empty_group is not set.
+
+-Monitors are now forked with stdin connected to /dev/null.
+
+-Added "stop" and "start" commands which let make the server cease from
+ scheduling any monitors. While stopped, clients can still be handled. The
+ server may be started[sic] in "stopped" mode with -S. There is now a
+ "reset stopped", which is an atomic version of "reset" and "stop". This
+ is useful if you want to re-disable things immediately after a reset,
+ so there will be no race conditions after the reset and before you
+ disable things.
+
+ opstatus.cgi now also reports the state of the scheduler.
+
+-Updated documentation for monitors, the main "mon" manual,
+ and the "moncmd" manual.
+
+-Fixed a few problems in handle_client that had to do with shutting
+ the server down.
+
+
+Changes between mon-0.37j and mon-0.37k
+---------------------------------------
+-ftp.monitor defaults to the SMTP port instead of FTP! Thanks to
+ ryde@tripnet.se for pointing this out :)
+
+-alanr@bell-labs.com added "-u" flag to http.monitor so that you
+ can specify the URL to get.
+
+-Added hpnp monitor, which uses SNMP to query your HP JetDirect
+ boards in your printers, and warns you when things go awry.
+ For example, if there is a paper jam, mon can send out email
+ telling you exactly that, and it includes in the mail the
+ current readout on the printer's LCD.
+
+-Added netappfree.monitor, which uses SNMP to get the free space
+ from Network Appliance filers. Uses a configuration file to
+ set low-watermarks for each filer.
+
+-Added process.monitor (thanks to Brian Moore), which 
+ queries the UCD SNMP agents to determine if there are errors with
+ particular processes on a machine. This is very useful for monitoring
+ those processes which seem to die off on occasion :)
+
+
+Changes between mon-0.37i and mon-0.37j
+---------------------------------------
+Tue Apr 14 19:22:13 PDT 1998
+
+-Configuration parser now dies when a watch is "accidentally" re-defined.
+
+-Added process throttle to prevent a number of forked processes
+ to go beyond a given value. This is a paranoia "safety net" setting.
+
+
+Changes between mon-0.37h and mon-0.37i
+---------------------------------------
+Sun Apr  5 13:59:07 PDT 1998
+
+-Added "randstart" and "randskew" parameters that can help balance
+ out the load from services which are sheduled at the same interval.
+
+-Added "exit=range" argument to "alert", which allows triggering
+ alerts based on the exit status of a monitor script.
+
+-Added an IMAP monitor, and an SNMP "reboot" monitor
+
+-Added http_t.monitor, which times HTTP transactions
+
+-Merged in patches supplied by Roderick Schertler
+    - Changes to mon:
+        - Support a pid file.  This is necessary for the system's
+          daemon control script (which stops and starts the daemon, plus
+          tells it to reload its configuration) to work.
+        - Treat SIGINT like SIGTERM (for interactive debugging).
+        - Allow a `hostgroup' line in mon.cf which doesn't have any host
+          names (useful for putting each host name on a line by itself).
+        - Add `d' (meaning `days') to the list of suffixes accepted by
+          the interval and alertevery keywords.
+        - Squelch extra blank line output by alerthist and failurehist
+          commands if there are no corresponding history entries.
+        - Bug fix:  fork() returns undef, not -1, on error.
+        - Set umask 022, no 0.
+    - Changes to mon.cgi:
+        - Set -T mode.
+        - Allow all local info fields to be blank, and set them that way
+          by default.
+        - Use the same default mon host as the other interfaces.
+        - Use $ENV{SCRIPT_NAME} as the default $url.
+        - Don't hardcode the path to mon, assume it is in the path.
+        - Vet the name passed to the `list group' command.  The old code
+          would allow remote users to run arbitrary local commands.
+    - Changes to opstatus.cgi:
+        - Set -T mode.
+        - Correct port, was 32768 should be 32777.
+        - Add missing Content-Type to html_die().
+    - In monstatus correct the my() line in populate_group(), and add
+      missing $group initialization.
+    - Tweak typesetting in the mon.1 and moncmd.1 man pages.
+
+
+Changes between mon-0.37g and mon-0.37h
+---------------------------------------
+Mon Jan 19 07:22:14 PST 1998
+
+-I didn't merge back in a change to fping.monitor which
+ sorts the output of fping, this causing alerts to go off unnecessarily
+ when fping would return hosts in a different order each time it is
+ run. An alert is send once every "alertevery" interval, unless the
+ output changes. This is where it messed things up.
+
+-added GPL header to all source files.
+
+
+Changes between mon-0.37f and mon-0.37g
+----------------------------------------
+Sat Jan 10 10:40:26 PST 1998
+
+-Fixed memory leak, with the help of Martin Laubach and Ulrich Pfeifer.
+ The Perl 4.004_04 IPC::Open2 routine has a leak in it.
+
+-Now includes the SkyTel 2-way pager interface for mon! What a hack,
+ but it works pretty well!
+
+-Also includes Art Chan's interactive web interface. It has buttons
+ and graphics and all that other stuff that everyone wants!
+
+-Removed the Perl 5.003 Sys::Syslog patches. I don't want to encourage
+ anyone to use an outdated version of Perl, especially since there have
+ been plenty of bug fixes since then.
+
+-Server now handles multiple commands per client connection, and opstatus.cgi
+ has been changed to take advantage of this. It's much faster now.
+
+
+Changes between mon-0.37e and mon-0.37f
+----------------------------------------
+Fri Oct  3 06:14:50 PDT 1997
+
+-Fixed a small typo in "mon.d/freespace.monitor" that would correctly
+ detect a failure condition for low disk space, but the text that it
+ would report was incorrect.
+
+-As per Sean Robinson's suggestions, renamed the syslog patches to
+ Perl 5.004 to accurately reflect what versions of Perl they patch.
+
+-In "mon.d/http.monitor", fixed problem with what matches as a valid
+ HTTP response. "200 OK" is incorrect, because the text that follows
+ the 200 is undefined in the specs.
+

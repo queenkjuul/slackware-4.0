@@ -1,0 +1,28 @@
+Begin2
+Title        = Quick and Dirty Slip Setup Stuff
+Version      = 1.0.1
+Desc1        = This is a package with a script for slipping up with one command
+Desc2        = works for both static and dynamic slip connections. Very usefull
+Desc3        = as a tutorial (at least). Includes binaries for dip and route.
+Desc4        = Includes man pages.
+Author       = Christian Holtje
+AuthorEmail  = docwhat@uiuc.edu
+Maintainer   = Christian Holtje
+MaintEmail   = docwhat@uiuc.edu
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/system/Network/serial
+File1        = slipstuff.tgz
+FileSize1    = 20475
+Required1    = net-32.tgz stuff or at least working net code.
+Required2    = linux kernel 1.0.0 or newer ( I think)
+CopyPolicy1  = Public Domain
+Keywords     = slip dip route 
+Comment1     = This isn't the best scripts in the world, but they are at
+Comment2     = least educational.
+Comment3     = Remembered to include the 'slip' script this time...:)
+RelFiles1    = dip
+RelFIles2    = route
+Entered      = 26JUN94
+EnteredBy    = Christian Holtje
+CheckedEmail = docwhat@uiuc.edu
+End

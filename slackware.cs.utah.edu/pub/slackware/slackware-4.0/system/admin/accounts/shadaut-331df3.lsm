@@ -1,0 +1,27 @@
+Begin3
+Title:		Autoconf diffs for Shadow
+Version:	1.3
+Entered-date:	11 July 1995
+Description:	John F. Haugh II's Shadow 3.3.1 is a well-ported login and
+		user account maintenance package which prevents users from
+		seeing the encrypted passwords, discourages the use of
+		guessable passwords, and supports long passwords, a second
+		password for dialups, and database operations for rapid
+		response when there are many user accounts.  The present
+		package adds self-configuration and a clean Linux compile.
+		Default is to compile for Cracklib and ndbm (gdbm) iff they
+		are found installed, and for <= 16-character passwords.
+Keywords:	shadow login su passwd password useradd pwconv mkpasswd
+		autoconf cracklib gdbm
+Author:		mike@gumleaf.apana.org.au (Michael Talbot-Wilson)
+Maintained-by:	mike@gumleaf.apana.org.au
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Admin/accounts
+		67 kB shadaut-331df3.tgz
+Original-site:	ftp.uu.net; other Usenet archives
+		usenet/comp.sources.misc/volume38/shadow/
+		usenet/comp.sources.misc/volume39/shadow/
+Platforms:	There is avoidable use of perl and cpio.  Recommended
+		you have them.  Use a recent GNU make.  Autoconf is
+		not required.  Not Linux-specific.
+Copying-policy:	GPL
+End

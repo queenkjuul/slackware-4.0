@@ -1,0 +1,27 @@
+Begin3
+Title:          lclint
+Version:        2.2a
+Entered-date:   12SEP96
+Description:    LCLint is a tool for statically checking C programs.  With
+                minimal effort, LCLint can be used as a better lint.  If
+                additional effort is invested adding annotations to programs,
+                LCLint can perform stronger checks than can be done by any
+                standard lint.
+Keywords:       lclint, larch, checker, C, lint
+Author:         evs@larch.lcs.mit.edu (David Evans)
+Maintained-by:  lclint-bug@larch.lcs.mit.edu
+Primary-site:   larch.lcs.mit.edu /pub/Larch/lclint
+                 120059 lclint-2.2a.common-mini.tar.gz
+                 744003 lclint-2.2a.common.tar.gz
+                 445977 lclint-2.2a.linux-elf.tar.gz
+                1748571 lclint-2.2a.src.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/C
+                 120059 lclint-2.2a.common-mini.tar.gz
+                 744003 lclint-2.2a.common.tar.gz
+                 445977 lclint-2.2a.linux-elf.tar.gz
+                1748571 lclint-2.2a.src.tar.gz
+Platforms:      ELF Linux systems
+Copying-policy: Copyrighted free software.
+                Do not re-distribute or modify without permission from MIT
+                (contact lclint-request@larch.lcs.mit.edu.)
+End

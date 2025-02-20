@@ -1,0 +1,16 @@
+Begin3
+Title:		vftpd
+Version:	0.4a (alpha)
+Entered-date:	Sun Nov 8 2:59:46 GMT+1 1998
+Description:	Virtual FTP daemon (Opaque FTP proxy server).
+Keywords:	ftp daemon proxy gateway permissions chroot ratio autoban
+Author: 	lcd@gkb.com (Luc Deschenaux).
+Maintained-by:	lcd@gkb.com (Luc Deschenaux).
+Primary-site:	sunsite.unc.edu /pub/Linux/system/network/file-transfer
+		150481 vftpd-0.4a.tar.gz
+		620 vftpd-0.4a.tar.gz.lsm
+Alternate-site: sunsite.cnlab-switch.ch /mirror/linux/sunsite/system/network/file-transfer
+Original-site:	
+Platforms:	Linux and Windows, Tcl/Tk 8.0 (MacOS port in progress)
+Copying-policy:	GPL2
+End

@@ -1,0 +1,5 @@
+Currently, there are only tarballs available.
+
+If you want to have RPMS, just fetch the .tar.gz and do a `rpm -ta' on it.
+
+Martin <martin@home-of-linux.org>

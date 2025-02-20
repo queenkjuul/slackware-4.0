@@ -1,0 +1,13 @@
+Begin3
+Title: iplogger.tar.gz
+Version: 1.00
+Entered-Date: September 29, 1995
+Description: iplogger provides logging to incoming tcp and
+             icmp sessions. It runs in the background writing
+             via syslog().
+Keywords: logging icmp tcp network paranoia
+Author: medulla@infosoc.com (Mike Edulla)
+Maintained-by: medulla@infosoc.com (Mike Edulla)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Network/daemons
+Copying-policy: GPL
+End

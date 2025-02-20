@@ -1,0 +1,19 @@
+Begin3
+Title:          poppy - simple perl POP3 mail viewing and deleting program
+Version:        1.4
+Entered-date:	23JUN98
+Description:    A simple perl script to retrieve mail headers from a POP3
+                server and individually view, save or delete them. Requires
+                perl.  Simple mail reader which relies on the POP3 server
+                to do most the work.  A good use is to delete or to skip
+                over huge emails on a POP3 server when on a slow link.
+                You may also view only a specified number of lines from
+                a message to see if you would like to download the whole
+                message.
+Author:         cbagwell@sprynet.com (Chris Bagwell)
+Primary-site:   http://home.sprynet.com/sprynet/cbagwell/projects.html
+Alternate-site: ftp://sunsite.unc.edu/pub/Linux/system/mail/pop/poppy-1.4.tar.gz
+Platforms:      Linux, SunOS, Solaris, Win95/NT, most un*x with perl
+Copying-policy: GPL
+End
+

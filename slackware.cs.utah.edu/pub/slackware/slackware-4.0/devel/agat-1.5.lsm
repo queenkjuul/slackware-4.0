@@ -1,0 +1,18 @@
+Begin3
+Title:          agat
+Version:        1.5
+Entered-date:   24JUN96
+Description:    Agat (Another Graphic Animation Tool) is a tool which
+                allows fast production of algorithm animation.
+                See also :
+                http://www.inria.fr/safir/SAM/Agat/agat.html
+Keywords:       agat, visualization, algorithm
+Author:         Olivier.Arsac@sophia.inria.fr (Olivier Arsac)
+                Stephane.Lavirotte@sophia.inria.fr (Stephane Lavirotte)
+Primary-site:   www.inria.fr /safir
+                349675 agat-1.5.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/X11/xapps/math
+                349675 agat-1.5.tgz
+Platforms:      X11
+Copying-policy: GPL
+End

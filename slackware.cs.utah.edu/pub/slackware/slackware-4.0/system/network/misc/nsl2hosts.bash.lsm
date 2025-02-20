@@ -1,0 +1,14 @@
+Begin3
+Title: nsl2hosts.bash          
+Version: 0.1        
+Entered-date: 7/11/95  
+Description: Converts nslookup ls files to /etc/hosts format    
+Keywords: nslookup hosts nsl2hosts       
+Author: psylark@nol.net        
+Maintained-by: psylark@nol.net  
+Primary-site: sunsite.unc.edu:/pub/Linux/system/Network/misc   
+Alternate-site: 
+Original-site:  
+Platform: bash      
+Copying-policy: GPL
+End

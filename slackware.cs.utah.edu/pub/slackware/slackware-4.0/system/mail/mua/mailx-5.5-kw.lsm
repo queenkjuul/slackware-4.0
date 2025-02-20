@@ -1,0 +1,16 @@
+Begin3
+Title:          mailx-5.5-kw
+Version:        5/30/95
+Entered-date:   Jun  1 1995
+Description:    Patches to debian mailx to support System V, SunOS features
+		including prompt variable, ~a and ~A tilde escapes, Save
+		command, MAILRC environment variable, and -H switch.  The
+		tar file includes the patches along with the original mailx
+		source.
+Keywords:       mail mailx Mail
+Author:         Kenneth.C.Whang-1@umn.edu (Ken Whang)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Mail/readers
+		1805 mailx-5.5-kw.diff.README
+		5041 mailx-5.5-kw.diff.gz
+		81920 mailx-5.5-kw.tar
+End

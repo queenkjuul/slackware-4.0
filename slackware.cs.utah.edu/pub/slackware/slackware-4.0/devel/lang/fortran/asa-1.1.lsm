@@ -1,0 +1,13 @@
+Begin3
+Title: 		Asa
+Version:	1.1
+Entered-Date:   Thu Aug 17 18:17:13 MET DST 1995
+Description:	ASA Carriage control conversion for output by Fortran
+                programs
+Author:		ig25@rz.uni-karlsruhe.de (Thomas Koenig)
+Primary-Site:   sunsite.unc.edu:/pub/Linux/devel/lang/fortran/
+			9893 asa-1.1.tar.gz
+		MD5-Checksum: e3f1faca20eb2ff00bf9146fd68d62ec  asa-1.1.tar.gz
+			414 ada-1.1.lsm
+CopyPolicy:	GPL
+End

@@ -1,0 +1,15 @@
+Begin3
+Title:          ncftpput
+Version:        1.0.0
+Entered-date:   27MAY97
+Description:    Command-line FTP put and get clients for shell scripts
+Keywords:       ftp ncftp ncftpget ncftpput libncftp
+Author:         mgleason@probe.net (Mike Gleason)
+Maintained-by:  mgleason@probe.net (Mike Gleason)
+Primary-site:   ftp.probe.net /pub/ncftp/ncftpput
+                49K ncftpput-1.0.0-linux-i586-export.tar.gz
+                66K ncftpput-1.0.0-linux-alpha-export.tar.gz
+                47K ncftpput-1.0.0-linux-sparc-export.tar.gz
+Platforms:      Intel x86, DEC Alpha, or Sparc
+Copying-policy: Freeware
+End

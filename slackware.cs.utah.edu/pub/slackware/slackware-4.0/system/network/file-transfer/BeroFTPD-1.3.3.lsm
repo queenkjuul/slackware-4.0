@@ -1,0 +1,14 @@
+Begin3
+Title:		BeroFTPD
+Version:	1.3.3
+Entered-Date:	07FEB98
+Description:	ftp server program based on wu-ftpd
+Keywords:	ftp, ftpd, server, wu-ftpd
+Author:		bero@beroftpd.unix.eu.org (Bernhard Rosenkraenzer)
+Primary-Site:	ftp.beroftpd.unix.eu.org /pub/BeroFTPD/
+		302kB BeroFTPD-1.3.3.tar.bz2
+Alternate-Site: ftp.croftj.net /usr/bero/BeroFTPD
+Alternate-Site: ftp.sunet.se /pub/nir/ftp/servers/BeroFTPD
+Alternate-Site: sunsite.cnlab-switch.ch /mirror/BeroFTPD
+Copying-Policy: Freeware
+End

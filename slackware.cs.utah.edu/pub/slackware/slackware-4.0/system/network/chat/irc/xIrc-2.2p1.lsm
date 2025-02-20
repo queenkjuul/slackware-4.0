@@ -1,0 +1,23 @@
+Begin3
+Title:                  xIrc
+Version                 2.2p1
+Entered-date:           24JAN98
+Description:            XWindows based Irc client, this requires the qt C++
+                        class library. It can be found at:
+                        sunsite.unc.edu:/pub/Linux/devel/lang/c++ or
+                        ftp.troll.no:/pub/qt or
+                        http://www.troll.no/
+Keywords:               Irc Qt X11
+Author:	                joe@croftj.net (Joe Croft)
+Maintained-by:
+Primary-site:           http://www.croftj.net/~xirc
+Alternate-site:         ftp.croftj.net /pub/usr/xirc/
+                        ~610k xIrc-2.2p1.tar.gz
+                        sunsite.unc.edu /pub/Linux/system/Network/chat
+                        ~610k xIrc-2.2p1.tar.gz
+                        ftp.troll.no /contrib 
+                        ~610k xIrc-2.2p1.tar.gz
+Original-site:
+Platforms:              Linux w/ qt-1.31 or later Library
+Copying-policy:         GPL
+End

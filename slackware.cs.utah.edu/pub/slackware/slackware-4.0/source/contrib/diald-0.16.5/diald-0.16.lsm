@@ -1,0 +1,22 @@
+Begin3
+Title:          diald
+Version:        0.16
+Entered-date:	28JAN97
+Description:    Demand dialing daemon for SLIP and PPP links.
+		Supports demand dialed links with link timeouts and redialing.
+	  	This superceeds version 0.15.
+Keywords:       demand dial slip ppp
+Author:         Eric.Schenk@dna.lth.se (Eric Schenk)
+Maintained-by:  Eric.Schenk@dna.lth.se (Eric Schenk)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Network/serial
+		853 diald-0.16.lsm
+		130594 diald-0.16.tar.gz
+Platforms:      Linux. May work on other Un*x platforms with similar
+		networking behavior but will require porting.
+                Requires at least gcc, route and ifconfig.
+ 		Requires pppd to work with PPP.
+		Requires chat or some other program to negotiate
+		the link dialing and login procedure for both
+                SLIP and PPP.
+Copying-policy: BSD
+End

@@ -1,0 +1,512 @@
+From gerp1231@w270zrz.zrz.tu-berlin.de Fri Oct 15 08:36:54 1993
+Received: from theory.TC.Cornell.EDU by SunSITE.unc.edu (SMI4.1/FvK 1.02)
+          id AA02162; Fri, 15 Oct 93 08:36:38 EDT
+Received: from mailgzrz.TU-Berlin.DE by theory.TC.Cornell.EDU with SMTP id AA28068
+  (5.65c/IDA-1.4.4 for <linux-announce@tc.cornell.edu>); Fri, 15 Oct 1993 08:18:17 -0400
+Received: from w270zrz.zrz.TU-Berlin.DE by mailgzrz.TU-Berlin.DE (5.65c/ZRZ-MX)
+          for <linux-announce@tc.cornell.edu>
+	  id AA26046; Fri, 15 Oct 1993 13:17:20 +0100
+Received: by w270zrz.zrz.tu-berlin.de (NeXT-1.0 (From Sendmail 5.52)/ZRZ)
+	  id AA02505; Fri, 15 Oct 93 14:04:14 GMT+0100
+Date: Fri, 15 Oct 93 14:04:14 GMT+0100
+From: Gero Guenther <gerp1231@w270zrz.zrz.tu-berlin.de>
+Message-Id: <9310151304.AA02505@w270zrz.zrz.tu-berlin.de>
+To: linux-announce@TC.Cornell.EDU
+Subject: german hackers keymap
+Status: ORSr
+
+Dear friends,
+
+if you ever found hacking on your keyboard is to slow, then you might
+find some improvement im my new keymap:
+
+Here ist how the german hackers keymap should be used:
+
+[~,|] [1,!] [2,"] [3,^] [4,$] [5,%] [6,&] [7,#] [8,(] [9,)] [0,=] [sz,?] [',`]        [BACKSPACE]
+[TAB] [q,Q,@] [w,W] [e,E] [r,R] [t,T] [z,Z] [u,U] [i,I] [o,O] [p,P] [/,\,ue,UE] [+,*] [RETURN]
+[LOCK] [a,A] [s,S] [d,D] [f,F] [g,G] [h,H] [j,J] [k,K] [l,L] [[,{.oe,OE] [],}.ae,AE] [MODE_SHIFT]
+[SHIFT] [<,>] [y,Y] [x,X] [c,C] [v,V] [b,B] [n,N] [m,M] [,,;] [.,:] [-,_]             [SHIFT]
+[CTL] [META]                       [SPACE]                                     [META] [CTL]
+
+NOTE: You have now 2 META-keys, usefull for bash and GNU emacs. Use them!
+NOTE: The Position of mode_shift has changed form ALT_R to # on the german keymap!
+NOTE: The keys often needed for shell and programing, ~,|,/,\,[,],{,} are now on nice positions!
+NOTE: Num_Lock works and uses . aus decimal. Use it!
+
+
+And here are the additional and double keys, usefull against typos with the standard german keymap in your mind:
+
+[~,|] [1,!,^1] [2,",^2] [3,^,^3] [4,$] [5,%] [6,&] [7,#,{] [8,(,[] [9,),]] [0,=,}] [sz,?,\] [',`]  [BACKSPACE]
+[TAB] [q,Q,@,paragr.] [w,W] [e,E] [r,R] [t,T] [z,Z] [u,U] [i,I] [o,O] [p,P] [/,\,ue,UE] [+,*,~]    [RETURN]
+[LOCK] [a,A] [s,S] [d,D] [f,F] [g,G] [h,H] [j,J] [k,K] [l,L] [[,{.oe,OE] [],}.ae,AE] [MODE_SHIFT]
+[SHIFT] [<,>,|] [y,Y] [x,X] [c,C] [v,V] [b,B] [n,N] [m,M,mue] [,,;] [.,:] [-,_]                    [SHIFT]
+[CTL] [META]                       [SPACE]                                                  [META] [CTL]
+
+
+
+And now hacking should be much faster. 
+
+        M R  S P A C E E N G I N E E R
+
+......................................................................
+Because this is a one-day-hack you might feel the need of
+improvements, despide some beta-testing was done, feel free to do so
+and/or report to me <gerp1231@w270zrz.zrz.tu-berlin.de> whith the
+keyword KEYMAP in the subject.
+
+
+---------->8---------- cut here for the german hackers keymap gr-hack.xmap ---------->8---------for xmodmap ------------->8
+! german hackers keymap by  M R  S P A C E E N G I N E E R
+!
+! [~,|] [1,!,^1] [2,",^2] [3,^,^3] [4,$] [5,%] [6,&] [7,#,{] [8,(,[] [9,),]] [0,=,}] [sz,?,\] [',`]  [BACKSPACE]
+! [TAB] [q,Q,@,paragr.] [w,W] [e,E] [r,R] [t,T] [z,Z] [u,U] [i,I] [o,O] [p,P] [/,\,ue,UE] [+,*,~]    [RETURN]
+! [LOCK] [a,A] [s,S] [d,D] [f,F] [g,G] [h,H] [j,J] [k,K] [l,L] [[,{.oe,OE] [],}.ae,AE] [MODE_SHIFT]
+! [SHIFT] [<,>,|] [y,Y] [x,X] [c,C] [v,V] [b,B] [n,N] [m,M,mue] [,,;] [.,:] [-,_]                    [SHIFT]
+! [CTL] [META]                       [SPACE]                                                  [META] [CTL]
+
+keycode 0x09 =  Escape          
+keycode 0x43 =  F1
+keycode 0x44 =  F2
+keycode 0x45 =  F3
+keycode 0x46 =  F4
+keycode 0x47 =  F5
+keycode 0x48 =  F6
+keycode 0x49 =  F7
+keycode 0x4A =  F8
+keycode 0x4B =  F9
+keycode 0x4C =  F10
+keycode 0x5F =  F11
+keycode 0x60 =  F12
+keycode 0x6F =  Print
+keycode 0x4E =  Scroll_Lock
+keycode 0x6E =  Pause           Break
+keycode 0x31 =  asciitilde      bar             degree
+keycode 0x0A =  1               exclam
+keycode 0x0B =  2               quotedbl        twosuperior
+keycode 0x0C =  3               asciicircum     threesuperior
+keycode 0x0D =  4               dollar
+keycode 0x0E =  5               percent
+keycode 0x0F =  6               ampersand
+keycode 0x10 =  7               numbersign      braceleft
+keycode 0x11 =  8               parenleft       bracketleft
+keycode 0x12 =  9               parenright      bracketright
+keycode 0x13 =  0               equal           braceright
+keycode 0x14 =  ssharp          question        backslash
+keycode 0x15 =  apostrophe      grave
+keycode 0x16 =  BackSpace
+keycode 0x6A =  Insert
+keycode 0x61 =  Home
+keycode 0x63 =  Prior
+keycode 0x4D =  Num_Lock
+keycode 0x70 =  slash KP_Divide
+keycode 0x3F =  asterisk     KP_Multiply
+keycode 0x52 =  minus KP_Subtract
+keycode 0x17 =  Tab
+keycode 0x18 =  q               Q               at              paragraph
+keycode 0x19 =  W
+keycode 0x1A =  E
+keycode 0x1B =  R
+keycode 0x1C =  T
+keycode 0x1D =  Z
+keycode 0x1E =  U
+keycode 0x1F =  I
+keycode 0x20 =  O
+keycode 0x21 =  P
+keycode 0x22 =  slash           backslash       udiaeresis
+keycode 0x23 =  plus            asterisk        asciitilde
+keycode 0x33 =  Mode_switch     Mode_switch     Mode_switch
+keycode 0x6B =  Delete
+keycode 0x67 =  End
+keycode 0x69 =  Next
+keycode 0x4F =  7               KP_7            KP_7            Home
+keycode 0x50 =  8               KP_8            KP_8            Up
+keycode 0x51 =  9               KP_9            KP_9            Prior
+keycode 0x56 =  plus KP_Add
+keycode 0x42 =  Caps_Lock
+keycode 0x26 =  A
+keycode 0x27 =  S
+keycode 0x28 =  D
+keycode 0x29 =  F
+keycode 0x2A =  G
+keycode 0x2B =  H
+keycode 0x2C =  J
+keycode 0x2D =  k               K               Arabic_kaf
+keycode 0x2E =  l               L               Arabic_lam      Greek_lamda
+keycode 0x2F =  bracketleft     braceleft       Odiaeresis
+keycode 0x30 =  bracketright    braceright      Adiaeresis
+keycode 0x24 =  Return
+keycode 0x53 =  4               KP_4            KP_4            Left
+keycode 0x54 =  5               KP_5            KP_5            Begin
+keycode 0x55 =  6               KP_6            KP_6            Right
+keycode 0x32 =  Shift_L
+keycode 0x34 =  Y
+keycode 0x35 =  X
+keycode 0x36 =  C
+keycode 0x37 =  V
+keycode 0x38 =  B
+keycode 0x39 =  N
+keycode 0x3A =  m               M               mu
+keycode 0x3B =  comma           semicolon
+keycode 0x3C =  period          colon
+keycode 0x3D =  minus           underscore
+keycode 0x3E =  Shift_R
+keycode 0x62 =  Up
+keycode 0x57 =  1               KP_1            KP_1            End
+keycode 0x58 =  2               KP_2            KP_2            Down
+keycode 0x59 =  3               KP_3            KP_3            Next
+keycode 0x6C =  Return KP_Enter
+keycode 0x25 =  Control_L
+keycode 0x40 =  Meta_L
+keycode 0x41 =  space
+keycode 0x71 =  Meta_R
+keycode 0x6D =  Control_R
+keycode 0x64 =  Left
+keycode 0x68 =  Down
+keycode 0x66 =  Right
+keycode 0x5A =  0               KP_0            KP_0            Insert
+keycode 0x5B =  period          KP_Decimal      KP_Decimal      Delete
+
+clear Shift
+clear Lock
+clear Control
+clear Mod1
+clear Mod2
+clear Mod3
+clear Mod4
+clear Mod5
+
+add    Shift   = Shift_L Shift_R
+add    Lock    = Caps_Lock
+add    Control = Control_L Control_R
+add    Mod1    = Meta_L Meta_R
+add    Mod5    = Mode_switch Mode_switch
+
+
+
+---------->8---------- cut here for the german hackers keymap gr-hack.map ---------->8--------- for loadkeys ------------->8
+! german hackers keymap by  M R  S P A C E E N G I N E E R
+!
+! [~,|] [1,!,^1] [2,",^2] [3,^,^3] [4,$] [5,%] [6,&] [7,#,{] [8,(,[] [9,),]] [0,=,}] [sz,?,\] [',`]  [BACKSPACE]
+! [TAB] [q,Q,@,paragr.] [w,W] [e,E] [r,R] [t,T] [z,Z] [u,U] [i,I] [o,O] [p,P] [/,\,ue,UE] [+,*,~]    [RETURN]
+! [LOCK] [a,A] [s,S] [d,D] [f,F] [g,G] [h,H] [j,J] [k,K] [l,L] [[,{.oe,OE] [],}.ae,AE] [MODE_SHIFT]
+! [SHIFT] [<,>,|] [y,Y] [x,X] [c,C] [v,V] [b,B] [n,N] [m,M,mue] [,,;] [.,:] [-,_]                    [SHIFT]
+! [CTL] [META]                       [SPACE]                                                  [META] [CTL]
+
+
+keycode   0 =
+keycode   1 = Escape           Escape          
+        alt     keycode   1 = Meta-Escape     
+
+keycode   2 = one              exclam          
+        alt     keycode   2 = Meta-one        
+        alt shift   keycode  2 = Meta-exclam
+        shift alt  keycode  2 = Meta-exclam
+
+
+keycode   3 = two              quotedbl         twosuperior     
+        alt     keycode   3 = Meta-two        
+        alt shift   keycode  3 = Meta-quotedbl
+        shift alt  keycode  3 = Meta-quotedbl
+
+keycode   4 = three            asciicircum          threesuperior   
+        alt     keycode   4 = Meta-three 
+        alt shift   keycode  4 = Meta-asciicircum
+        shift alt  keycode  4 = Meta-asciicircum
+
+
+     
+keycode   5 = four             dollar           dollar          
+        alt     keycode   5 = Meta-four       
+        alt shift   keycode  5 = Meta-dollar
+        shift alt  keycode  5 = Meta-dollar
+
+
+keycode   6 = five             percent         
+        alt     keycode   6 = Meta-five    
+        alt shift   keycode  6 = Meta-percent
+        shift alt  keycode  6 = Meta-percent
+
+   
+keycode   7 = six              ampersand       
+        alt     keycode   7 = Meta-six      
+        alt shift   keycode  7 = Meta-ampersand
+        shift alt  keycode  7 = Meta-ampersand
+
+  
+keycode   8 = seven            numbersign            braceleft       
+        alt     keycode   8 = Meta-seven      
+        alt shift   keycode  8 = Meta-numbersign
+        shift alt  keycode  8 = Meta-numbersign
+
+
+keycode   9 = eight            parenleft        bracketleft
+        alt     keycode   9 = Meta-eight      
+        alt shift   keycode  9 = Meta-parenleft
+        shift alt  keycode  9 = Meta-parenleft
+
+
+keycode  10 = nine             parenright       bracketright    
+        alt     keycode  10 = Meta-nine       
+        alt shift   keycode  10 = Meta-parenright
+        shift alt  keycode  10 = Meta-parenright
+
+
+keycode  11 = zero             equal            braceright      
+        alt     keycode  11 = Meta-zero       
+        alt shift   keycode  11 = Meta-equal
+        shift alt  keycode  11 = Meta-equal
+
+
+keycode  12 = ssharp           question         backslash
+        alt shift   keycode  12 = Meta-question
+        shift alt  keycode  12 = Meta-question
+
+keycode  13 = apostrophe      grave 
+        alt     keycode  13 = Meta-apostrophe
+        alt shift   keycode  13 = Meta-grave
+        shift alt  keycode  13 = Meta-grave
+
+
+keycode  14 = Delete           Delete          
+        alt     keycode  14 = Meta-Delete     
+keycode  15 = Tab              Tab             
+        alt     keycode  15 = Meta-Tab        
+keycode  16 = q                Q                at              section
+        control keycode  16 = Control_q       
+        alt     keycode  16 = Meta-q          
+        altgr   alt     keycode  16 = Meta-at         
+        alt   altgr     keycode  16 = Meta-at         
+keycode  17 = w               
+keycode  18 = e               
+keycode  19 = r               
+keycode  20 = t               
+keycode  21 = z               
+keycode  22 = u               
+keycode  23 = i               
+keycode  24 = o               
+keycode  25 = p               
+keycode  26 =  slash      backslash  udiaeresis       Udiaeresis      
+        alt     keycode  26 = Meta-slash
+        alt shift   keycode  26 = Meta-backslash
+        shift alt  keycode  26 = Meta-backslash
+keycode  27 = plus             asterisk         asciitilde      
+        alt     keycode  27 = Meta-plus
+        alt shift   keycode  27 = Meta-asterisk
+        shift alt  keycode  27 = Meta-asterisk
+
+keycode  28 = Return          
+        alt     keycode  28 = Meta-Control_m  
+keycode  29 = Control         
+keycode  30 = a               
+keycode  31 = s               
+keycode  32 = d               
+keycode  33 = f               
+keycode  34 = g               
+keycode  35 = h               
+keycode  36 = j               
+keycode  37 = k               
+keycode  38 = l               
+keycode  39 =  bracketleft     braceleft odiaeresis       Odiaeresis      
+        alt     keycode  39 = Meta-bracketleft
+        alt shift   keycode  26 = Meta-braceleft
+        shift alt  keycode  26 = Meta-braceleft
+keycode  40 =  bracketright    braceright adiaeresis       Adiaeresis      
+        alt     keycode  40 = Meta-bracketright
+        alt shift   keycode  40 = Meta-braceright
+        shift alt  keycode  40 = Meta-braceright
+keycode  41 = asciitilde bar
+        alt     keycode  41 = Meta-asciitilde
+        alt shift   keycode  41 = Meta-bar
+        shift alt  keycode  41 = Meta-bar
+keycode  42 = Shift           
+keycode  43 = AltGr AltGr AltGr AltGr
+
+keycode  44 = y               
+keycode  45 = x               
+keycode  46 = c               
+keycode  47 = v               
+keycode  48 = b               
+keycode  49 = n               
+keycode  50 = m               
+        altgr   keycode  50 = mu              
+keycode  51 = comma            semicolon       
+        alt     keycode  51 = Meta-comma
+        alt shift   keycode  51 = Meta-semicolon
+        shift alt  keycode  51 = Meta-semicolon
+keycode  52 = period           colon           
+        alt     keycode  52 = Meta-period
+        alt shift   keycode  52 = Meta-colon
+        shift alt  keycode  52 = Meta-colon
+keycode  53 = minus            underscore      
+        control shift keycode  53 = Control_underscore
+        shift control keycode  53 = Control_underscore
+        alt     keycode  53 = Meta-minus 
+        alt shift   keycode  53 = Meta-underscore     
+        shift alt  keycode  53 = Meta-underscore     
+
+keycode  54 = Shift           
+keycode  55 =  asterisk asterisk KP_Multiply     
+        alt     keycode  55 = Meta-asterisk
+keycode  56 = Alt             
+keycode  57 = space            space           
+        control keycode  57 = nul             
+        alt     keycode  57 = Meta-space      
+keycode  58 = Caps_Lock       
+keycode  59 = F1               F11              Console_13      
+        control keycode  59 = F1              
+        alt     keycode  59 = Console_1       
+keycode  60 = F2               F12              Console_14      
+        control keycode  60 = F2              
+        alt     keycode  60 = Console_2       
+keycode  61 = F3               F13              Console_15      
+        control keycode  61 = F3              
+        alt     keycode  61 = Console_3       
+keycode  62 = F4               F14              Console_16      
+        control keycode  62 = F4              
+        alt     keycode  62 = Console_4       
+keycode  63 = F5               F15              Console_17      
+        control keycode  63 = F5              
+        alt     keycode  63 = Console_5       
+keycode  64 = F6               F16              Console_18      
+        control keycode  64 = F6              
+        alt     keycode  64 = Console_6       
+keycode  65 = F7               F17              Console_19      
+        control keycode  65 = F7              
+        alt     keycode  65 = Console_7       
+keycode  66 = F8               F18              Console_20      
+        control keycode  66 = F8              
+        alt     keycode  66 = Console_8       
+keycode  67 = F9               F19              Console_21      
+        control keycode  67 = F9              
+        alt     keycode  67 = Console_9       
+keycode  68 = F10              F20              Console_22      
+        control keycode  68 = F10             
+        alt     keycode  68 = Console_10      
+
+keycode  69 = Num_Lock        
+keycode  70 = Scroll_Lock      Show_Memory      Show_Registers  
+        control keycode  70 = Show_State      
+        alt     keycode  70 = Scroll_Lock     
+
+keycode  71 = seven seven KP_7            
+        alt     keycode  71 = Meta-seven    
+keycode  72 = eight eight KP_8            
+        alt     keycode  72 = Meta-eight         
+keycode  73 = nine nine KP_9            
+        alt     keycode  73 = Meta-nine         
+keycode  74 = minus minus KP_Subtract
+        alt     keycode  74 = Meta-minus    
+keycode  75 = four four KP_4            
+        alt     keycode  75 = Meta-four      
+keycode  76 = five five KP_5            
+        alt     keycode  76 = Meta-five        
+keycode  77 = six six KP_6            
+        alt     keycode  77 = Meta-six         
+keycode  78 = plus plus KP_Add          
+        alt     keycode  78 = Meta-plus
+keycode  79 = one one KP_1            
+        alt     keycode  79 = Meta-one        
+keycode  80 = two two KP_2            
+        alt     keycode  80 = Meta-two         
+keycode  81 = three three KP_3            
+        alt     keycode  81 = Meta-three       
+keycode  82 = zero zero KP_0            
+        alt     keycode  82 = Meta-zero     
+
+keycode  83 = period period KP_Comma        
+        alt     keycode  83 = Meta-period
+
+keycode  84 = Last_Console    
+keycode  85 =
+keycode  86 = less             greater          bar             
+        alt     keycode  86 = Meta-less       
+        alt altgr  keycode  86 = Meta-bar
+        alt shift  keycode  86 = Meta-greater
+        shift alt  keycode  86 = Meta-greater
+
+keycode  87 = F11              F11              Console_23      
+        control keycode  87 = F11             
+        alt     keycode  87 = Console_11      
+keycode  88 = F12              F12              Console_24      
+        control keycode  88 = F12             
+        alt     keycode  88 = Console_12      
+keycode  89 =
+keycode  90 =
+keycode  91 =
+keycode  92 =
+keycode  93 =
+keycode  94 =
+keycode  95 =
+keycode  96 = Return Return KP_Enter        
+keycode  97 = Control         
+keycode  98 = slash slash KP_Divide
+       alt     keycode  98 = Meta-slash       
+keycode  99 = Control_backslash
+        control keycode  99 = Control_backslash
+        alt     keycode  99 = Control_backslash
+keycode 100 = Alt
+keycode 101 = Break           
+keycode 102 = Find            
+keycode 103 = Up              
+keycode 104 = Prior           
+        shift   keycode 104 = Scroll_Backward 
+keycode 105 = Left            
+keycode 106 = Right           
+keycode 107 = Select          
+keycode 108 = Down            
+keycode 109 = Next            
+        shift   keycode 109 = Scroll_Forward  
+keycode 110 = Insert          
+keycode 111 = Remove          
+        control alt     keycode 111 = Boot            
+keycode 112 =
+keycode 113 =
+keycode 114 =
+keycode 115 =
+keycode 116 =
+keycode 117 =
+keycode 118 =
+keycode 119 =
+keycode 120 =
+keycode 121 =
+keycode 122 =
+keycode 123 =
+keycode 124 =
+keycode 125 =
+keycode 126 =
+keycode 127 =
+string F1 = "\033[[A"
+string F2 = "\033[[B"
+string F3 = "\033[[C"
+string F4 = "\033[[D"
+string F5 = "\033[[E"
+string F6 = "\033[17~"
+string F7 = "\033[18~"
+string F8 = "\033[19~"
+string F9 = "\033[20~"
+string F10 = "\033[21~"
+string F11 = "\033[23~"
+string F12 = "\033[24~"
+string F13 = "\033[25~"
+string F14 = "\033[26~"
+string F15 = "\033[28~"
+string F16 = "\033[29~"
+string F17 = "\033[31~"
+string F18 = "\033[32~"
+string F19 = "\033[33~"
+string F20 = "\033[34~"
+string Find = "\033[1~"
+string Insert = "\033[2~"
+string Remove = "\033[3~"
+string Select = "\033[4~"
+string Prior = "\033[5~"
+string Next = "\033[6~"
+string F21 = ""
+string F22 = ""
+string F23 = ""
+string F24 = ""
+string F25 = ""
+string F26 = ""
+
+
+

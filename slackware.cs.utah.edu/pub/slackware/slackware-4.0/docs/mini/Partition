@@ -1,0 +1,660 @@
+  Linux Partition HOWTO
+  Kristan Koehntopp, kris@koehntopp.de
+  v2.4, 3 November 1997
+
+  This Linux Mini-HOWTO teaches you how to plan and layout disk space
+  for your Linux system. It talks about disk hardware, partitions, swap
+  space sizing and positioning considerations. file systems, file system
+  types and related topics. The intent is to teach some background
+  knowledge, not procedures.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+     1.1 What is this?
+     1.2 What is in it? and related HOWTO documents
+
+  2. What is a partition anyway?
+
+     2.1 Backups are important
+     2.2 Device numbers and device names
+
+  3. What Partitions do I need?
+
+     3.1 How many partitions do I need?
+     3.2 How large should my swap space be?
+     3.3 Where should I put my swap space?
+     3.4 Some facts about file systems and fragmentation
+     3.5 File lifetimes and backup cycles as partitioning criteria
+
+  4. An example
+
+     4.1 A recommended model for ambitious beginners
+
+  5. How I did it on my machine
+
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  1.1.  What is this?
+
+
+  This is a Linux Mini-HOWTO text. A Mini-HOWTO is a small text
+  explaining some business related to Linux installation and maintenance
+  tutorial style. It's mini, because either the text or the topic it
+  discusses are too small for a real HOWTO or even a book. A HOWTO is
+  not a reference:  that's what manual pages are for.
+
+
+  1.2.  What is in it? and related HOWTO documents
+
+
+  This particular Mini-HOWTO teaches you how to plan and layout disk
+  space for your Linux system. It talks about disk hardware, partitions,
+  swap space sizing and positioning considerations, file systems, file
+  system types and related topics. The intent is to teach some
+  background knowlegde, so we are talking mainly principles and not
+  tools in this text.
+
+  Ideally, this document should be read before your first installation,
+  but this is somehow difficult for most people.  First timers have
+  other problems than disk layout optimization, too. So you are probably
+  someone who just finished a Linux installation and is now thinking
+  about ways to optimize this installation or how to avoid some nasty
+  miscalculations in the next one. Well, expect some desire to tear down
+  and rebuild your installation when you are finished with this text.
+  :-)
+
+
+  This Mini-HOWTO limits itself to planning and layouting disk space
+  most of the time. It does not discuss the usage of fdisk, LILO, mke2fs
+  or backup programs. There are other HOWTOs that address these
+  problems. Please see the Linux HOWTO Index for current information on
+  Linux HOWTOs. There are instructions for obtaining HOWTO documents in
+  the index, too.
+
+  To learn how to estimate the various size and speed requirements for
+  different parts of the filesystem, see "Linux Multiple Disks Layout
+  mini-HOWTO", by Gjoen Stein <gjoen@nyx.net>.
+
+  For instructions and considerations regarding disks with more than
+  1024 cylinders, see "Linux Large Disk mini-HOWTO", Andries Brouwer
+  <aeb@cwi.nl>.
+
+  For instructions on limiting disk space usage per user (quotas), see
+  "Linux Quota mini-HOWTO", by Albert M.C. Tam <bertie@scn.org>
+
+  Currently, there is no general document on disk backup, but there are
+  several documents with pointers to specific backup solutions. See
+  "Linux ADSM Backup mini-HOWTO", by Thomas Koenig
+  <Thomas.Koenig@ciw.uni-karlsruhe.de> for instructions on integrating
+  Linux into an IBM ADSM backup environment. See "Linux Backup with
+  MSDOS mini-HOWTO", by Christopher Neufeld
+  <neufeld@physics.utoronto.ca> for information about MS-DOS driven
+  Linux backups.
+
+  For instructions on writing and submitting a HOWTO document, see the
+  Linux HOWTO Index, by Tim Bynum <linux-howto@sunsite.unc.edu>.
+
+  Browsing through /usr/src/linux/Documentation can be very instructive,
+  too. See ide.txt and scsi.txt for some background information on the
+  properties of your disk drivers and have a look at the filesystems/
+  subdirectory.
+
+
+  2.  What is a partition anyway?
+
+
+  When PC hard disks were invented people soon wanted to install
+  multiple operating systems, even if their system had only one disk.
+  So a mechanism was needed to divide a single physical disk into
+  multiple logical disks. So that's what a partition is: A contiguous
+  section of blocks on your hard disk that is treated like a completely
+  seperate disk by most operating systems.
+
+  It is fairly clear that partitions must not overlap: An operating
+  system will certainly not be pleased, if another operating system
+  installed on the same machine were overwriting important information
+  because of overlapping partitions. There should be no gap between
+  adjacent partitions, too. While this constellation is not harmful, you
+  are wasting precious disk space by leaving space between partitions.
+
+  A disk need not be partitioned completely. You may decide to leave
+  some space at the end of your disk that is not assigned to any of your
+  installed operating systems, yet. Later, when it is clear which
+  installation is used by you most of the time, you can partition this
+  left over space and put a file system on it.
+  Partitions can not be moved nor can they be resized without destroying
+  the file system contained in it. So repartitioning usually involves
+  backup and restore of all file systems touched during the
+  repartitioning.  In fact it is fairly common to mess up things
+  completely during repartitioning, so you should back up anything on
+  any disk on that particular machine before even touching things like
+  fdisk.
+
+  Well, some partitions with certain file system types on them actually
+  can be split into two without losing any data (if you are lucky). For
+  example there is a program called "fips" for splitting MS-DOS
+  partitions into two to make room for a Linux installation without
+  having to reinstall MS-DOS. You are still not going to touch these
+  things without carefully backing up everything on that machine, aren't
+  you?
+
+
+  2.1.  Backups are important
+
+
+  Tapes are your friend for backups. They are fast, reliable and easy to
+  use, so you can make backups often, preferably automatically and
+  without hassle.
+
+  Step on soapbox: And I am talking about real tapes, not that disk
+  controller driven ftape crap. Consider buying SCSI: Linux does support
+  SCSI natively. You don't need to load ASPI drivers, you are not losing
+  precious HMA under Linux and once the SCSI host adapter is installed,
+  you just attach additional disks, tapes and CD-ROMs to it. No more I/O
+  addresses, IRQ juggling or Master/Slave and PIO-level matching.
+
+  Plus: Proper SCSI host adapters give you high I/O performance without
+  much CPU load. Even under heavy disk activity you will experience good
+  response times. If you are planning to use a Linux system as a major
+  USENET news feed or if you are about to enter the ISP business, don't
+  even think about deploying a system without SCSI. Climb of soapbox.
+
+
+  2.2.  Device numbers and device names
+
+
+  The number of partitions on an Intel based system was limited from the
+  very beginning: The original partition table was installed as part of
+  the boot sector and held space for only four partition entries.  These
+  partitions are now called primary partitions. When it became clear
+  that people needed more partitions on their systems, logical
+  partitions were invented.  The number of logical partitions is not
+  limited: Each logical partition contains a pointer to the next logical
+  partition, so you can have a potentially unlimited chain of partition
+  entries.
+
+  For compatibility reasons, the space occupied by all logical
+  partitions had to be accounted for. If you are using logical
+  partitions, one primary partition entry is marked as "extended
+  partition" and its starting and ending block mark the area occupied by
+  your logical partitions. This implies that the space assigned to all
+  logical partitions has to be contiguous.  There can be only one
+  extended partition: no fdisk program will create more than one
+  extended partition.
+
+  Linux cannot handle more than a limited number of partitions per
+  drive. So in Linux you have 4 primary partitions (3 of them useable,
+  if you are using logical partitions) and at most 15 partitions
+  altogether on an SCSI disk (63 altogether on an IDE disk).
+
+
+  In Linux, partitions are represented by device files. A device file is
+  a file with type c (for "character" devices, devices that do not use
+  the buffer cache) or b (for "block" devices, which go through the
+  buffer cache). In Linux, all disks are represented as block devices
+  only. Unlike other Unices, Linux does not offer "raw" character
+  versions of disks and their partitions.
+
+  The only important thing with a device file are its major and minor
+  device number, shown instead of the files size:
+
+
+
+       ______________________________________________________________________
+       $ ls -l /dev/hda
+       brw-rw----   1 root     disk       3,   0 Jul 18  1994 /dev/hda
+                                          ^    ^
+                                          |    minor device number
+                                          major device number
+       ______________________________________________________________________
+
+
+
+
+  When accessing a device file, the major number selects which device
+  driver is being called to perform the input/output operation. This
+  call is being done with the minor number as a parameter and it is
+  entirely up to the driver how the minor number is being interpreted.
+  The driver documentation usually describes how the driver uses minor
+  numbers. For IDE disks, this documentation is in
+  /usr/src/linux/Documentation/ide.txt.  For SCSI disks, one would
+  expect such documentation in /usr/src/linux/Documentation/scsi.txt,
+  but it isn't there. One has to look at the driver source to be sure
+  (/usr/src/linux/driver/scsi/sd.c:184-196). Fortunately, there is Peter
+  Anvin's list of device numbers and names in
+  /usr/src/linux/Documentation/devices.txt; see the entries for block
+  devices, major 3, 22, 33, 34 for IDE and major 8 for SCSI disks. The
+  major and minor numbers are a byte each and that is why the number of
+  partitions per disk is limited.
+
+  By convention device files have certain names and many system programs
+  have knowledge about these names compiled in. They expect your IDE
+  disks to be named /dev/hd* and your SCSI disks to be named /dev/sd*.
+  Disks are numbered a, b, c and so on, so /dev/hda is your first IDE
+  disk and /dev/sda is your first SCSI disk. Both devices represent
+  entire disks, starting at block one.  Writing to these devices with
+  the wrong tools will destroy the master boot loader and partition
+  table on these disks, rendering all data on this disk unusable or
+  making your system unbootable. Know what you are doing and, again,
+  back up before you do it.
+
+  Primary partitions on a disk are 1, 2, 3 and 4. So /dev/hda1 is the
+  first primary partition on the first IDE disk and so on.  Logical
+  partitions have numbers 5 and up, so /dev/sdb5 is the first logical
+  partition on the second SCSI disk.
+
+  Each partition entry has a starting and an ending block address
+  assigned to it and a type. The type is a numerical code (a byte) which
+  designates a particular partition to a certain type of operating
+  system. For the benefit of computing consultants partition type codes
+  are not really unique, so there is always the probability of two
+  operating systems using the same type code.
+
+  Linux reserves the type code 0x82 for swap partitions and 0x83 for
+  "native" file systems (that's ext2 for almost all of you).  The once
+  popular, now outdated Linux/Minix file system used the type code 0x81
+  for partitions. OS/2 marks it's partitions with a 0x07 type and so
+  does Windows NT's NTFS. MS-DOS allocates several type codes for its
+  various flavors of FAT file systems: 0x01, 0x04 and 0x06 are known.
+  DR-DOS used 0x81 to indicate protected FAT partitions, creating a type
+  clash with Linux/Minix at that time, but neither Linux/Minix nor DR-
+  DOS are widely used any more. The extended partition which is used as
+  a container for logical partitions has a type of 0x05, by the way.
+
+  Partitions are created and deleted with the fdisk program.  Every self
+  respecting operating system program comes with an fdisk and
+  traditionally it is even called fdisk (or FDISK.EXE) in almost all
+  OSes. Some fdisks, noteable the DOS one, are somehow limited when they
+  have to deal with other operating systems partitions. Such limitations
+  include the complete inability to deal with anything with a foreign
+  type code, the inability to deal with cylinder numbers above 1024 and
+  the inability to create or even understand partitions that do not end
+  on a cylinder boundary. For example, the MS-DOS fdisk can't delete
+  NTFS partitions, the OS/2 fdisk has been known to silently "correct"
+  partitions created by the Linux fdisk that do not end on a cylinder
+  boundary and both, the DOS and the OS/2 fdisk, have had problems with
+  disks with more than 1024 cylinders (see the "large-disk" Mini-Howto
+  for details on such disks).
+
+
+  3.  What Partitions do I need?
+
+  3.1.  How many partitions do I need?
+
+
+  Okay, so what partitions do you need? Well, some operating systems do
+  not believe in booting from logical partitions for reasons that are
+  beyond the scope of any sane mind. So you probably want to reserve
+  your primary partitions as boot partitions for your MS-DOS, OS/2 and
+  Linux or whatever you are using. Remember that one primary partition
+  is needed as an extended partition, which acts as a container for the
+  rest of your disk with logical partitions.
+
+  Booting operating systems is a real-mode thing involving BIOSes and
+  1024 cylinder limitations. So you probably want to put all your boot
+  partitions into the first 1024 cylinders of your hard disk, just to
+  avoid problems. Again, read the "large-disk" Mini-Howto for the gory
+  details.
+
+
+  To install Linux, you will need at least one partition. If the kernel
+  is loaded from this partition (for example by LILO), this partition
+  must be readable by your BIOS. If you are using other means to load
+  your kernel (for example a boot disk or the LOADLIN.EXE MS-DOS based
+  Linux loader) the partition can be anywhere. In any case this
+  partition will be of type 0x83 "Linux native".
+
+  Your system will need some swap space. Unless you swap to files you
+  will need a dedicated swap partition. Since this partition is only
+  accessed by the Linux kernel and the Linux kernel does not suffer from
+  PC BIOS deficiencies, the swap partition may be positioned anywhere.
+  I recommed using a logical partition for it (/dev/?d?5 and higher).
+  Dedicated Linux swap partitions are of type 0x82 "Linux swap".
+
+  These are minimal partition requirements. It may be useful to create
+  more partitions for Linux. Read on.
+
+
+
+  3.2.  How large should my swap space be?
+
+
+
+  If you have decided to use a dedicated swap partition, which is
+  generally a Good Idea [tm], follow these guidelines for estimating its
+  size:
+
+
+  �  In Linux RAM and swap space add up (This is not true for all
+     Unices). For example, if you have 8 MB of RAM and 12 MB swap space,
+     you have a total of about 20 MB virtual memory.
+
+  �  When sizing your swap space, you should have at least 16 MB of
+     total virtual memory. So for 4 MB of RAM consider at least 12 MB of
+     swap, for 8 MB of RAM consider at least 8 MB of swap.
+
+  �  In Linux, a single swap partition can not be larger than 128 MB.
+     That is, the partition may be larger than 128 MB, but excess space
+     is never used. If you want more than 128 MB of swap, you have to
+     create multiple swap partitions.
+
+  �  When sizing swap space, keep in mind that too much swap space may
+     not be useful at all.
+
+     Every process has a "working set". This is a set of in-memory pages
+     which will be referenced by the processor in the very near future.
+     Linux tries to predict these memory accesses (assuming that
+     recently used pages will be used again in the near future) and
+     keeps these pages in RAM if possible. If the program has a good
+     "locality of reference" this assumption will be true and prediction
+     algorithm will work.
+
+     Holding a working set in main memory does only work if there is
+     enough main memory. If you have too many processes running on a
+     machine, the kernel is forced to put pages on disk that it will
+     reference again in the very near future (forcing a page-out of a
+     page from another working set and then a page-in of the page
+     referenced). Usually this results in a very heavy increase in
+     paging activity and in a sustantial drop of performance. A machine
+     in this state is said to be "thrashing" (For you german readers:
+     That's "thrashing" ("dreschen", "schlagen", "haemmern") and not
+     trashing ("muellen")).
+
+     On a thrashing machine the processes are essentially running from
+     disk and not from RAM. Expect performance to drop by approximately
+     the ratio between memory access speed and disk access speed.
+
+     A very old rule of thumb in the days of the PDP and the Vax was
+     that the size of the working set of a program is about 25% of its
+     virtual size. Thus it is probably useless to provide more swap than
+     three times your RAM.
+
+     But keep in mind that this is just a rule of thumb. It is easily
+     possible to create scenarios where programs have extremely large or
+     extremely small working sets. For example, a simulation program
+     with a large data set that is accessed in a very random fashion
+     would have almost no noticeable locality of reference in its data
+     segment, so its working set would be quite large.
+
+     On the other hand, an xv with many simultaneously opened JPEGs, all
+     but one iconified, would have a very large data segment. But image
+     transformations are all done on one single image, most of the
+     memory occupied by xv is never touched.  The same is true for an
+     editor with many editor windows where only one window is being
+     modified at a time.  These programs have - if they are designed
+     properly - a very high locality of reference and large parts of
+     them can be kept swapped out without too severe performance impact.
+
+     One could suspect that the 25% number from the age of the command
+     line is no longer true for modern GUI programs editing multiple
+     documents, but I know of no newer papers that try to verify these
+     numbers.
+
+  So for a configuration with 16 MB RAM, no swap is needed for a minimal
+  configuration and more than 48 MB of swap are probably useless. The
+  exact amount of memory needed depends on the application mix on the
+  machine (what did you expect?).
+
+
+  3.3.  Where should I put my swap space?
+
+
+
+  �  Mechanics are slow, electronics are fast.
+
+     Modern hard disks have many heads. Switching between heads of the
+     same track is fast, since it is purely electronic.  Switching
+     between tracks is slow, since it involves moving real world matter.
+
+     So if you have a disk with many heads and one with less heads and
+     both are identical in other parameters, the disk with many heads
+     will be faster.
+
+     Splitting swap and putting it on both disks will be even faster,
+     though.
+
+  �  Older disks have the same number of sectors on all tracks.  With
+     this disks it will be fastest to put your swap in the middle of the
+     disks, assuming that your disk head will move from a random track
+     towards the swap area.
+
+  �  Newer disks use ZBR (zone bit recording). They have more sectors on
+     the outer tracks. With a constant number of rpms, this yields a far
+     greater performance on the outer tracks than on the inner ones. Put
+     your swap on the fast tracks.
+
+  �  Of course your disk head will not move randomly. If you have swap
+     space in the middle of a disk between a constantly busy home
+     partition and an almost unused archive partition, you would be
+     better of if your swap were in the middle of the home partition for
+     even shorter head movements. You would be even better off, if you
+     had your swap on another otherwise unused disk, though.
+
+  Summary: Put your swap on a fast disk with many heads that is not busy
+  doing other things. If you have multiple disks: Split swap and scatter
+  it over all your disks or even different controllers.
+
+  Even better: Buy more RAM.
+
+
+  3.4.  Some facts about file systems and fragmentation
+
+
+  Disk space is administered by the operating system in units of blocks
+  and fragments of blocks. In ext2, fragments and blocks have to be of
+  the same size, so we can limit our discussion to blocks.
+
+  Files come in any size. They don't end on block boundaries.  So with
+  every file a part of the last block of every file is wasted. Assuming
+  that file sizes are random, there is approximately a half block of
+  waste for each file on your disk.  Tanenbaum calls this "internal
+  fragmentation" in his book "Operating Systems".
+
+  You can guess the number of files on your disk by the number of
+  allocated inodes on a disk. On my disk
+       ______________________________________________________________________
+       # df -i
+       Filesystem           Inodes   IUsed   IFree  %IUsed Mounted on
+       /dev/hda3              64256   12234   52022    19%  /
+       /dev/hda5              96000   43058   52942    45%  /var
+       ______________________________________________________________________
+
+
+
+
+  there are about 12000 files on / and about 44000 files on /var.  At a
+  block size of 1 KB, about 6+22 = 28 MB of disk space are lost in the
+  tail blocks of files. Had I chosen a block size of 4 KB, I had lost 4
+  times this space.
+
+
+  Data transfer is faster for large contiguous chunks of data, though.
+  That's why ext2 tries to preallocate space in units of 8 contigous
+  blocks for growing files. Unused preallocation is released when the
+  file is closed, so no space is wasted.
+
+  Noncontiguous placement of blocks in a file is bad for performance,
+  since files are often accessed in a sequential manner. It forces the
+  operating system to split a disk access and the disk to move the head.
+  This is called "external fragmentation" or simply "fragmentation" and
+  is a common problem with DOS file systems.
+
+  ext2 has several strategies to avoid external fragmentation.  Normally
+  fragmentation is not a large problem in ext2, not even on heavily used
+  partitions such as a USENET news spool. While there is a tool for
+  defragmentation of ext2 file systems, nobody ever uses it and it is
+  not up to date with the current release of ext2. Use it, but do so on
+  your own risk.
+
+  The MS-DOS file system is well known for its pathological managment of
+  disk space. In conjunction with the abysmal buffer cache used by MS-
+  DOS the effects of file fragmentation on performance are very
+  noticeable. DOS users are accustomed to defragging their disks every
+  few weeks and some have even developed some ritualistic beliefs
+  regarding defragmentation.  None of these habits should be carried
+  over to Linux and ext2.  Linux native file systems do not need
+  defragmentation under normal use and this includes any condition with
+  at least 5% of free space on a disk.
+
+
+  The MS-DOS file system is also known to lose large amounts of disk
+  space due to internal fragmentation. For partitions larger than 256
+  MB, DOS block sizes grow so large that they are no longer useful (This
+  has been corrected to some extent with FAT32).
+
+  ext2 does not force you to choose large blocks for large file systems,
+  except for very large file systems in the 0.5 TB range (that's
+  terabytes with 1 TB equaling 1024 GB) and above, where small block
+  sizes become inefficient. So unlike DOS there is no need to split up
+  large disks into multiple partitions to keep block size down. Use the
+  1 KB default block size if possible. You may want to experiment with a
+  block size of 2 KB for some partitions, but expect to meet some seldom
+  exercised bugs: Most people use the default.
+
+
+  3.5.  File lifetimes and backup cycles as partitioning criteria
+
+
+  With ext2, Partitioning decisions should be governed by backup
+  considerations and to avoid external fragmentation from different file
+  lifetimes.
+  Files have lifetimes. After a file has been created, it will remain
+  some time on the system and then be removed. File lifetime varies
+  greatly throughout the system and is partly dependent on the pathname
+  of the file. For example, files in /bin, /sbin, /usr/sbin, /usr/bin
+  and similar directories are likely to have a very long lifetime: many
+  months and above.  Files in /home are likely to have a medium
+  lifetime: several weeks or so. File in /var are usually short lived:
+  Almost no file in /var/spool/news will remain longer than a few days,
+  files in /var/spool/lpd measure their lifetime in minutes or less.
+
+
+  For backup it is useful if the amount of daily backup is smaller than
+  the capacity of a single backup medium. A daily backup can be a
+  complete backup or an incremental backup.
+
+  You can decide to keep your partition sizes small enough that they fit
+  completely onto one backup medium (choose daily full backups). In any
+  case a partition should be small enough that its daily delta (all
+  modified files) fits onto one backup medium (choose incremental backup
+  and expect to change backup media for the weekly/monthly full dump -
+  no unattended operation possible).
+
+  Your backup strategy depends on that decision.
+
+  When planning and buying disk space, remember to set aside a
+  sufficient amount of money for backup! Unbackuped data is worthless!
+  Data reproduction costs are much higher than backup costs for
+  virtually everyone!
+
+
+  For performance it is useful to keep files of different lifetimes on
+  different partitions. This way the short lived files on the news
+  partition may be fragmented very heavily.  This has no impact on the
+  performance of the / or /home partition.
+
+
+  4.  An example
+
+  4.1.  A recommended model for ambitious beginners
+
+
+  A common model creates /, /home and /var partitions as discussed
+  above. This is simple to install and maintain and differentiates well
+  enough to avoid adverse effects from different lifetimes. It fits well
+  into a backup model, too:  Almost noone bothers to backup USENET news
+  spools and only some files in /var are worth backing up
+  (/var/spool/mail comes to mind). On the other hand, / changes
+  infrequently and can be backuped upon demand (after configuration
+  changes) and is small enough to fit on most modern backup media as a
+  full backup (plan 250 to 500 MB depending on the amount of installed
+  software). /home contains valuable user data and should be backuped
+  daily.  Some installations have very large /homes and must use
+  incremental backups.
+
+  Some systems put /tmp onto a seperate partition as well, others
+  symlink it to /var/tmp to achieve the same effect (note that this can
+  affect single user mode, where /var will be unavailable and the system
+  will have no /tmp until you create one or mount /var manually) or put
+  it onto a RAM disk (Solaris does this for example). This keeps /tmp
+  out of /, a good idea.
+
+  This model is convenient for upgrades or reinstallations as well: Save
+  your configuration files (or the entire /etc) to some /home directory,
+  scrap your /, reinstall and fetch the old configurations from the save
+  directory on /home.
+
+  5.  How I did it on my machine
+
+
+  There was this old ISA bus 386/40 sitting on my shelf that I abandoned
+  two years ago because it no longer cut it. I was planning to turn it
+  into a small X-less server for my household LAN.
+
+  Here is how I did it: I took that 386 and put 16 MB RAM into it.
+  Added a cheap EIDE disk, the smallest I could get (800 MB) and an
+  ethernet card. Added an old Hercules because I still had a monitor for
+  it. Installed Linux on it and there I have my local NFS, SMB, HTTP,
+  LPD/LPR and NNTP server as well as my mail router and POP3 server.
+  With an additional ISDN card the machine became my TCP/IP router and
+  firewall, too.
+
+  Most of the disk space on this machine went into the /var directories,
+  /var/spool/mail, /var/spool/news and /var/httpd/html. I put /var on a
+  separate partition and made this one large. There will be almost no
+  users on this machine, so I created no home partition and mounted
+  /home from some other workstation via NFS.
+
+  Linux without X plus several locally installed utilities will be fine
+  with a 250 MB partition as /. The machine has 16 MB of RAM, but it
+  will be running many servers. 16 MB swap should be in order, 32 MB
+  should be plenty. We are not short on disk space, so the machine will
+  get 32 MB.  Out of sentimentality a MS-DOS partition of some 20 MB is
+  kept on it.  I decided to import /home from another machine, so the
+  remaining 500+ MB will end up as /var. This is more than sufficient
+  for a household USENET news feed.
+
+  We get
+
+
+
+       ______________________________________________________________________
+       Device     Mounted on                      Size
+       /dev/hda1  /dos_c                           25 MB
+       /dev/hda2  - (Swapspace)                    32 MB
+       /dev/hda3  /                               250 MB
+       /dev/hda4  - (Extended Container)          500 MB
+       /dev/hda5  /var                            500 MB
+
+       homeserver:/home /home                     1.6 GB
+       ______________________________________________________________________
+
+
+
+
+  I am backing up this machine via the network using the tape in
+  homeserver. Since everything on this machine has been installed from
+  CD-ROM all I have to save are some configuration files from /etc, my
+  customized locally installed *.tgz files from /root/Source/Installed
+  and /var/spool/mail as well as /var/httpd/html.  I copy these files
+  into a dedicated directory /home/backmeup on homeserver every night,
+  where the regular homeserver backup picks them up.
+
+
+
+
+
+
+
+
+
+
+

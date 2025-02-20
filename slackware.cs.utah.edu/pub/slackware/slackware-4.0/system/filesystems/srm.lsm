@@ -1,0 +1,19 @@
+Begin3
+Title:		Secure rm
+Version:       	0.01 
+Entered-date:   17JUL98
+Description:    Secure rm (srm) is designed to delete files in a secure 
+		fashion by overwriting files before actually deleting it.
+		srm 0.01 is being released as proof of concept but more 
+		functional versions are forthcoming. srm is part of the 
+		LDDP project being started up by Todd Burgess.
+Keywords:      	rm, security 
+Author:         Todd Burgess (tburgess@eddie.cis.uoguelph.ca)
+Maintained-by:  Todd Burgess (tburgess@eddie.cis.uoguelph.ca)
+Primary-site: 	sunsite.unc.edu /pub/Linux/system/filesystems 
+			6 kb srm.tar.gz
+Original-site:  http://eddie.cis.uoguelph.ca/~tburgess/srm.tar.gz 
+			6 kb srm.tar.gz
+Platforms:     	Linux 
+Copying-policy: Distribute Freely
+End

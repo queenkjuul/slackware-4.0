@@ -1,0 +1,79 @@
+diff -r --context=3 mxgdb-1.2/Imakefile mxgdb-1.2-linux/Imakefile
+*** mxgdb-1.2/Imakefile	Tue Nov  2 00:16:26 1993
+--- mxgdb-1.2-linux/Imakefile	Tue May 30 21:26:53 1995
+***************
+*** 29,34 ****
+--- 29,37 ----
+  # -DSYSV, -DHAVE_TERMIO. Refer to the README for a description
+  # and some tested configurations.
+  
++ INCLUDES = -I/usr/include/X11
++ DEFINES = -DSYSV
++ 
+  LOCAL_LIBRARIES=-lXm -lXt -lX11
+  
+  MALLOCC=malloc.c
+***************
+*** 50,56 ****
+  MALLOCO = 
+  
+  #else
+! CCOPTIONS=-DDEBUG -DHAVE_TERMIO -DHAVE_MMAP -Dconst=""
+  #endif
+  
+  # Some installations have specific libs and headers to use with Motif
+--- 53,59 ----
+  MALLOCO = 
+  
+  #else
+! CCOPTIONS=-DDEBUG -DHAVE_TERMIO -DHAVE_MMAP -Dconst="" $(INCLUDES)
+  #endif
+  
+  # Some installations have specific libs and headers to use with Motif
+diff -r --context=3 mxgdb-1.2/callgdb.c mxgdb-1.2-linux/callgdb.c
+*** mxgdb-1.2/callgdb.c	Mon Sep 13 18:42:29 1993
+--- mxgdb-1.2-linux/callgdb.c	Tue May 30 21:29:28 1995
+***************
+*** 463,469 ****
+--- 463,474 ----
+        close(slave);
+      close(master);
+  
++ #ifdef linux
++     fcntl(1, F_SETFL, O_APPEND);
++ #else
+      fcntl(1, F_SETFL, FAPPEND);
++ #endif
++ 
+  #ifdef SYSV
+      setvbuf (stdout, NULL, _IONBF, 0);
+  #else
+diff -r --context=3 mxgdb-1.2/signals.c mxgdb-1.2-linux/signals.c
+*** mxgdb-1.2/signals.c	Mon Sep 13 18:42:31 1993
+--- mxgdb-1.2-linux/signals.c	Tue May 30 21:32:26 1995
+***************
+*** 92,97 ****
+--- 92,106 ----
+   */
+  void trap_signals()
+  {
++ #ifdef linux
++     signal(SIGQUIT, kill_handler);
++     signal(SIGILL,  kill_handler);
++     signal(SIGBUS,  kill_handler);
++     signal(SIGSEGV, kill_handler);
++     signal(SIGTERM, kill_handler);
++     signal(SIGKILL, kill_handler);
++     signal(SIGCHLD, quit_handler);	/* child status has changed */
++ #else
+      sigset(SIGQUIT, kill_handler);
+      sigset(SIGILL,  kill_handler);
+      sigset(SIGBUS,  kill_handler);
+***************
+*** 99,102 ****
+--- 108,112 ----
+      sigset(SIGTERM, kill_handler);
+      sigset(SIGKILL, kill_handler);
+      sigset(SIGCHLD, quit_handler);	/* child status has changed */
++ #endif
+  }

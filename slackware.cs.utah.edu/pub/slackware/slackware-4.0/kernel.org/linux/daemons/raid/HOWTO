@@ -1,0 +1,615 @@
+Software-RAID Mini-HOWTO
+Linas Vepstas  <linas@fc.net>
+v0.20  18 September 1997
+
+Preamble: This document is copylefted by Linas Vepstas (linas@fc.net).
+Permission to use, copy, distribute this document for any purpose is 
+hereby granted, provided that the author's / editor's name and
+this notice appear in all copies and/or supporting documents; and 
+that an unmodified version of this document is made freely available.
+This document is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY, either expressed or implied.  While every effort 
+has been taken to ensure the accuracy of the information documented 
+herein, the author / editor / maintainer assumes NO RESPONSIBILITY 
+for any errors, or for any damages, direct or consequential, as a 
+result of the use of the information documented herein.
+
+RAID, although designed to improve system reliability by adding
+redundancy, can also lead to a false sense of security and confidence 
+when used improperly.  This false confidence can lead to even greater 
+disasters.  Know what you are doing, test, be knowledgeable and aware!
+
+
+Introduction
+------------
+
+Qi.0: What is RAID?
+Ai.0: RAID stand for "Redundant Array of Inexpensive Disks", and
+    is meant to be a way of creating a fast and reliable disk-drive
+    subsystem out of individual disks.  
+
+Qi.1: What is this document?
+Ai.1: This document is a tutorial/HOWTO/FAQ for users of the Linux MD 
+    kernel extension, the associated tools, and their use.
+    The MD extension implements RAID-0 (stripping), RAID-1 (mirroring),
+    RAID-4 and RAID-5 in software.   That is, with MD, no special
+    hardware or disk controllers are required to get many of the 
+    benefits of RAID.
+
+    This document is *NOT* an introduction to RAID; you must find this
+    elsewhere.
+    
+Qi.2: What levels of RAID does the Linux kernel implement?
+Ai.2: Striping (RAID-0) and linear concatenation are a part
+    of the stock 2.x series of kernels.  This code is 
+    of production quality; it is well understood and well 
+    maintained.  It is being used in some very large USENET 
+    news servers.
+
+    RAID-1, RAID-4 & RAID-5 are not present in the stock kernel;
+    a separate patch needs to be applied to get this functionality. 
+    The current snapshots should be considered beta quality; that 
+    is, there are no known bugs but there are some rough edges and 
+    untested system setups.
+
+    RAID-1 hot reconstruction has been recently introduced 
+    (August 1997) and should be considered alpha quality. 
+    RAID-5 hot reconstruction will be alpha quality any day now ...
+
+
+Qi.3: Where do I get it?
+Ai.3: The software RAID-0 and linear mode are a stock part of 
+    all current Linux kernels.  The Software RAID-1,4,5 patches
+    are available from
+    http://luthien.nuclecu.unam.mx/~miguel/raid
+    See also the quasi-mirror 
+    ftp://linux.kernel.org/pub/linux/daemons/raid/
+    for patches, tools and other goodies.
+
+
+Qi.4: Are there other Linux RAID references?
+Ai.4: Generic RAID overview:           http://www.dpt.com/uraiddoc.html
+    General Linux RAID options:      http://linas.org/linux/raid.html
+    Linux-RAID mailing list archive: http://www.linuxhq.com/lnxlists
+    Linux Software RAID Home Page:   http://luthien.nuclecu.unam.mx/~miguel/raid
+    Linux Software RAID tools:       ftp://linux.kernel.org/pub/linux/daemons/raid/
+    Linux RAID-Geschichten:          http://www.infodrom.north.de/~joey/Linux/raid/
+
+Qi.5: Who do I blame for this document?
+Ai.5: Linas Vepstas slapped this thing together.  However, 
+    most of the information, and some of the words were supplied by
+
+       * Bradley Ward Allen <ulmo@Q.Net>
+       * Luca Berra <bluca@comedia.it>
+       * bochal@apollo.karlov.mff.cuni.cz (Bohumil Chalupa)
+       * Anton Hristozov <anton@intransco.com>
+       * Miguel de Icaza <miguel@luthien.nuclecu.unam.mx> 
+       * Ingo Molnar <mingo@pc7537.hil.siemens.at>
+       * alvin@planet.fef.com (Alvin Oga)
+       * Gadi Oxman <gadio@netvision.net.il>
+       * joey@finlandia.infodrom.north.de (Martin Schulze)
+       * Geoff Thompson  <geofft@cs.waikato.ac.nz>
+       * Edward Welbon <welbon@bga.com>
+       * Rod Wilkens <rwilkens@border.net>
+       * Leonard N. Zubkoff <lnz@dandelion.com>
+
+    Thanks all for being there!
+
+
+======================================================================
+Setup & Installation Considerations
+-----------------------------------
+
+Qs.0: I must soon install Linux on new system, one requirement is to have
+    RAID1. Now I'm wondering what is the easiest way to do it. 
+
+As.0: I keep rediscovering that file-system planning is one of the more
+    difficult Unix configuration tasks.  To answer your question, I can
+    describe what we did.
+    
+    We planned the following setup:
+    two eide disks, 2.1.gig each.
+    
+    disk partition mount pt.  size  device
+      1      1        /       300M    /dev/hda1
+      1      2      swap       64M    /dev/hda2
+      1      3      /home     800M    /dev/hda3
+      1      4      /var      900M    /dev/hda4
+    
+      2      1      /root     300M    /dev/hdc1
+      2      2      swap       64M    /dev/hdc2
+      2      3      /home     800M    /dev/hdc3
+      2      4      /var      900M    /dev/hdc4
+    
+    -- each disk is on a separate controller (& ribbon cable).
+       The theory is that a controller failure and/or ribbon failure
+       won't disable both disks.  Possibly get performance boost
+       from parallel operations?
+    
+    -- Install linux on / in /dev/hda1  this will allow booting
+       and subsequent installation of raid patches, etc.
+    
+    -- /dev/hdc1 will contain a "cold" copy of /dev/hda1. This
+       is NOT a raid copy, just a copy-copy.  Its there just
+       in case disk1 fails completely;  we can use a rescue disk,
+       mark /dev/hdc1 as bootable, and use that to keep going,
+       without having to reinstall the system.
+    
+       The theory here is that in case of severe failure, I can still 
+       boot the system without worrying about raid superblock-corruption
+       or other raid failure modes & gotchas that I don't understand.
+    
+    -- /dev/hda3 and /dev/hdc3 will be mirrors /dev/md0
+    -- /dev/hda4 and /dev/hdc4 will be mirrors /dev/md1
+    
+    -- We picked /var and /home to be mirrored, and in separate
+       partitions, under the following (convoluted ???) logic:
+    
+       / will contain non-changing data -- for all practical purposes,
+       it will be read-only without actually being read-only.
+    
+       /home will contain slowly changing data -- an almost-read-only
+       system.
+    
+       /var will contain rapidly changing data, including mail spools,
+       database contents and web server logs. 
+    
+       The theory is that *if* for some bizarre reason, the operating
+       system goes wild, corruption is limited to one partition.  Thus,
+       if for some unlikely, hypothetical reason, the database starts
+       scribbling everywhere, it might clobber mail and log files, but 
+       not /home.
+    
+       I am not entirely satisfied with my logic & reasoning, but it was
+       the best I could do on short notice.  I would like to have some
+       scheme that verifies that files in /usr and /home are not changed,
+       e.g. some MD5 signature scheme that is run regularly.  The idea is 
+       to detect hacker intrusion as well as corruption.  Similarly, the
+       database contents are quite valuable, and I don't have a 
+       fault-tolerant plan for that that will let me sleep well at night.
+    
+    So, to complete the answer to your question:
+    *) Install Linux on disk 1, partition 1. Do NOT mount any of 
+       the other partitions. 
+    *) Install raid per instructions. 
+    *) Configure md0 and md1.
+    *) Convince yourself that you know what to do in case of a 
+       disk failure!  Discover sysadmin mistakes now, and not during
+       an actual crisis.  Experiment!  (we turned off power during
+       disk activity -- this proved to be ugly but informative).
+    *) Do some ugly mount/copy/unmount/rename/reboot scheme to 
+       move /var over to the /dev/md1.  Done carefully, this is not 
+       dangerous.
+    *) Enjoy!
+    
+
+Qs.1: Can I strip/mirror the root partition (/)?
+    Why can't I boot Linux directly from the md disks?
+
+As.1: Both Lilo and Loadlin need an non-stripped/mirrored partition
+    to read the kernel image from.  If you want to strip/mirror the root
+    partition (/), then create an unstriped/mirrored partition.  Typically,
+    this is /boot.  Then you either use the initial ramdisk support, or 
+    some old patches that were posted a while back, to allow your root 
+    device to be striped.
+
+    Alternately, use mkinitrd to build the ramdisk image, see below.
+    Edward Welbon <welbon@bga.com> writes:
+    > ... all that
+    > is needed is a script to manage the boot setup.  To mount an md filesystem
+    > as root, the main thing is to build an initial file system image that has
+    > the needed modules and md tools to start md.  I have a simple script that
+    > does this.
+    > 
+    > For boot media, I have a small _cheap_ scsi disk (170MB I got it used for
+    > $20). This disk runs on a AHA1452, but it could just as well be an
+    > inexpensive IDE disk on the native IDE.  The disk need not be very fast
+    > since it is mainly for boot. 
+    > 
+    > This disk has a small file system which contains the kernel and the file
+    > system image for initrd.  The initial file system image has just enough
+    > stuff to allow me to load the raid scsi device driver module and start the
+    > raid partition that will become root. I then do an echo
+    > 0x900>/proc/sys/kernel/real-root-dev (0x900 is for /dev/md0)  and exit
+    > linuxrc.  The boot proceeds normally from there. 
+    > 
+    > I have built most support as a module except for the AHA1452 driver that
+    > brings in the initrd filesystem.  So I have a fairly small kernel.  The
+    > method is perfectly reliable, I have been doing this since before 2.1.26
+    > and have never had a problem that I could not easily recover from.  The
+    > file systems even survived several 2.1.4[45] hard crashes with no real 
+    > problems.
+    > 
+    > At one time I had partitioned the raid disks so that the initial cylinders
+    > of the first raid disk held the kernel and the initial cylinders of the
+    > second raid disk hold the initial file system image, instead I made the
+    > initial cylinders of the raid disks swap since they are the fastest
+    > cylinders (why waste them on boot?).
+    > 
+    > The nice thing about having an inexpensive device dedicated to boot is
+    > that it is easy to boot from and can also serve as a rescue disk if
+    > necessary.  If you are interested, you can take a look at the script that
+    > builds my initial ram disk image and then runs lilo.
+    > 
+    > http://www.realtime.net/~welbon/initrd.md.tar.gz
+    > 
+    > It is current enough to show the picture.  It isn't especially pretty and
+    > it could certainly build a much smaller filesystem image for the initial
+    > ram disk.  It would be easy to a make it more efficient.  But it uses lilo
+    > as is.  If you make any improvements, please forward a copy to me 8-) 
+
+
+======================================================================
+
+Error Recovery
+--------------
+
+Qe.1: I have a RAID-1 (mirroring) setup, and lost power while there was
+    disk activity.  Now what do I do?
+
+Ae.1: The redundancy of RAID levels is designed to protect against a 
+    *disk* failure, not against a *power* failure.
+
+    To recover from this situation, you should do the following ...
+    xxx yyy zzz
+
+
+Qe.2: My RAID-1 device, /dev/md0 consists of two hard drive partitions:
+    /dev/hda3 and /dev/hdc3.    Recently, the disk with /dev/hdc3
+    failed, and was replaced with a new disk.   My best friend, who 
+    doesn't understand RAID, said that the correct thing to do now
+    is to dd if=/dev/hda3 of=/dev/hdc3.   I tried this, but things
+    still don't work.
+
+
+Ae.2: You should keep your best friend away from you computer.  
+    Fortunately, no serious damage has been done.  You can recover 
+    from this by running:
+
+    "mkraid raid1.conf -f --only-superblock"
+
+    By using dd, two identical copies of the partition were created.
+    This is almost correct, except that the RAID-1 kernel extension
+    expects the RAID superblocks to be different.  Thus, when you try 
+    to reactive RAID, the software will notice the problem, and
+    deactivate one of the two partitions.  By re-creating the superblock,
+    you should have a fully usable system.
+
+
+Qe.3: My RAID-1 device, /dev/md0 consists of two hard drive partitions:
+    /dev/hda3 and /dev/hdc3.   My best friend, who doesn't understand
+    RAID, ran fsck on /dev/hda3 while I wasn't looking, and now the 
+    RAID won't work.  What should I do?
+
+
+Ae.3: You should re-examine your concept of "best friend".
+    In general, fsck should never be run on the individual partitions
+    that compose a RAID array.  Assuming that neither of the partitions
+    are/were heavily damaged, no data loss has occurred, and the RAID-1
+    device can be recovered as follows:
+
+    a) make a backup of the file system on /dev/hda3
+    b) dd if=/dev/hda3 of=/dev/hdc3
+    c) mkraid raid1.conf -f --only-superblock
+
+    This should leave you with a working disk mirror.
+
+Qe.4: I am confused by the above questions, but am not yet bailing out.
+    Is it safe to run 'fsck /dev/md0' ?
+
+Ae.4: Yes, it is safe to run fsck on the md devices. In fact, this is
+    the *only* safe place to run fsck.
+
+Qe.5: If a disk is slowly failing, will it be obvious which one it is?
+    I am concerned that it won't be, and this confusion could lead to 
+    some dangerous decisions by a sysadmin.
+
+Ae.5: Once a disk fails, an error code will be returned from the low level
+    driver to the RAID driver. The RAID driver will mark it as "bad" in
+    the RAID superblocks of the "good" disks (so we will later know which
+    mirrors are good and which aren't), and continue RAID operation on
+    the remaining operational mirrors.
+    
+    This, of course, assumes that the disk and the low level driver can
+    detect a read/write error, and will not silently corrupt data, for
+    example. This is true of current drives (error detection schemes are
+    being used internally), and is the basis of RAID operation.
+
+
+Qe.6: What about hot-repair?
+
+Ae.6: There is a plan to add "hot reconstruction" at some point. With
+    this feature, we can add several "spare" disks to the RAID set (be
+    it level 1 or 4/5), and once a disk fails, we will reconstruct it
+    on one of the spare disks in run time, without ever needing to shut
+    down the array.
+
+    Gadi Oxman <gadio@netvision.net.il> writes:
+    > Currently, once the first disk is removed, the RAID set will be
+    > running in degraded mode. To restore full operation mode, you  
+    > need to:
+    > 
+    >         --      stop the array (mdstop /dev/md0)
+    >         --      replace the failed drive
+    >         --      run ckraid raid.conf to reconstruct its contents
+    >         --      run the array again (mdadd, mdrun)
+    > 
+    > At this point, the array will be running with all the drives, and
+    > again protects against a failure of a single drive.
+
+    As of 22 July 97, there is an alpha version of MD that allows
+    (*) hot reconstruction/resyncing for RAID-1
+    (*) a spare disk to be hot-added to an already running RAID-1 array
+
+Qe.7: I would like to have an audible alarm for "you schmuck, one disk 
+    in the mirror is down", so that the novice sysadmin knows that 
+    there is a problem.
+
+Ae.7: The kernel is logging the event with a "KERN_ALERT" priority -- 
+    Find the xxx software package for the error log  files ...
+
+
+Qe.8: How do I run RAID-5 in degraded mode (with one disk failed, and 
+     not yet replaced)?
+
+Ae.8: Gadi Oxman <gadio@netvision.net.il> writes:
+     > Normally, to run a RAID-5 set of n drives you have to:
+     > 
+     >         mdadd /dev/md0 /dev/disk1 ... /dev/disk(n-1)
+     >         mdrun -p5 /dev/md0
+
+     Even if one of the disks has failed, you still have to mdadd it
+     as you would in a normal setup.  Then,
+     > The array will be active in degraded mode with (n - 1) drives.
+     > If "mdrun" fails, the kernel has noticed an error (for example,
+     > several faulty drives, or an unclean shutdown).
+     > 
+     > Use "dmesg" to display the kernel error messages from "mdrun".
+
+     If the raid-5 set is corrupted due to a power loss, rather than 
+     a disk crash, one can try to recover by creating a new RAID superblock:
+
+     >         mkraid -f --only-superblock raid5.conf
+
+     A RAID array doesn't provide protection against a power failure or 
+     a kernel crash, and can't guarantee correct recovery.  Rebuilding
+     the superblock will simply cause the system to ignore the condition
+     by marking all the drives as "OK", as if nothing happened.
+
+
+Qe.14: Why is there no question 13?
+
+Ae.14: If you are concerned about RAID, High Availability, and UPS, then
+     its probably a good idea to be superstitious as well.
+
+======================================================================
+
+Troubleshooting Install Problems
+--------------------------------
+
+Qd.0: What is the current best known-stable or probably stable 
+    patch for RAID in the 2.0.x series kernels?
+
+Ad.0: As of 18 Sept 1997, it is 
+    "2.0.30 + pre-9 2.0.31 + Werner Fink's swapping patch 
+    + the alpha RAID patch"
+
+Qd.1: I get the message: mdrun -a /dev/md0: Invalid argument
+
+Ad.1: Use mkraid to initialize the RAID set prior to the first use.
+   mkraid ensures that the RAID array is initially in a consistent state
+   by erasing the RAID partitions. In addition, mkraid will create the
+   RAID superblocks.
+
+Qd.2: I get the message: mdrun -a /dev/md0: Invalid argument
+     The setup was:
+     -- raid1 build as a kernel module
+     -- normal install proceedure followed ... mdcreate, mdadd, etc.
+     -- cat /proc/mdstat shows
+        > Personalities :
+        > read_ahead not set
+        > md0 : inactive sda1 sdb1 6313482 blocks
+        > md1 : inactive
+        > md2 : inactive
+        > md3 : inactive
+     -- mdrun -a creates the error message /dev/md0: Invalid argument
+
+Ad.2: Geoff Thompson replies:
+    > Try 'lsmod' to see if the modules is loaded, and if not,
+    > load it with 'modprobe raid1'.
+
+
+Qd.3: Truxton Fulton wrote:
+     > On my linux 2.0.30 system, while doing a mkraid for a raid-1 device,
+     > during the clearing of the two individual partitions, I got
+     > "Cannot allocate free page" errors appearing on the console,
+     > and "Unable to handle kernel paging request at virtual address ..."
+     > errors in the system log.  At this time, the system became quite 
+     > unusable, but it appears to recover after a while.  The operation 
+     > appears to have completed with no other errors, and I am 
+     > successfully using my raid-1 device.  The errors are disconcerting 
+     > though.  Any ideas?
+
+Ad.3: Gadi Oxman replies:
+     > This was fixed in current pre-2.0.31 kernels:
+     > ftp://ftp.kernel.org/pub/linux/kernel/testing/pre-patch-2.0.31-9.gz
+
+Qd.3: I'm not able to mdrun a raid1, raid4 or raid5 device.
+      If I try to mdrun a mdadd'ed device I get the messsage
+      "invalid raid superblock magic".
+
+Ad.3: Make sure that you've run the 'mkraid' part of the install
+     proceedure.
+
+Qd.4: I get the message "invalid raid superblock magic" while trying to 
+     run an array which consists of partitions which are bigger than 4GB.
+
+Ad.4: This bug is now fixed. (sept 97)  Make sure you have the latest 
+    raid code.
+
+
+======================================================================
+
+Performance, Tools & General Bone-headed Questions
+-------------------------------------------------
+
+
+Qp.1: I have 2 Brand X super-duper  hard disks and a Brand Y controller.
+     and am considering using md.  Does it significantly increase the 
+     throughput?  Is the performance really noticeable?
+
+Ap.1: Linux MD RAID-0 (striping) performance:
+     Must wait for all disks to read/write the stripe.
+
+     Linux MD RAID-1 (mirroring) read performance: 
+     MD implements read balancing. In a low-IO situation, this won't
+     change performance. But, with two disks in a high-IO environment,
+     this could as much as double the read performance.  For N disks
+     in the mirror, this could improve performance N-fold.
+
+     Linux MD RAID-1 (mirroring) write performance: 
+     Must wait for the write to occur to all of the disks in the mirror.
+
+
+Qp.2: Are linear MD's expandable? Can a new hard-drive/partition be added,
+    and the size of the existing file system expanded?
+
+Ap.2: Miguel de Icaza <miguel@luthien.nuclecu.unam.mx> writes:
+    > I changed the ext2fs code to be aware of multiple-devices instead of
+    > the regular one device per file system assumption.  
+    > 
+    > So, when you want to extend a file system, you run a utility program
+    > that makes the appropriate changes on the new device (your extra
+    > partition) and then you just tell the system to extend the fs using
+    > the specified device.
+    > 
+    > You can extend a file system with new devices at system operation
+    > time, no need to bring the system down (and whenever I get some extra
+    > time, you will be able to remove devices from the ext2 volume set,
+    > again without even having to go to single-user mode or any hack like
+    > that).
+    > 
+    > You can get the patch for 2.1.x kernel from my web page:
+    > http://www.nuclecu.unam.mx/~miguel/ext2-volume
+
+
+Qp.3: Where can I put the md commands in the startup scripts, so 
+     that everything will start automatically at boot time?
+
+Ap.3: Rod Wilkens <rwilkens@border.net> writes:
+     > What I did is put "mdadd -ar" in the "/etc/rc.d/rc.sysinit" right 
+     > after the kernel loads the modules, and before the "fsck" disk 
+     > check. This way, you can put the "/dev/md?" device in the 
+     > "/etc/fstab".  Then I put the "mdstop -a" right after the 
+     > "umount -a" unmounting the disks, in the "/etc/rc.d/init.d/halt" 
+     > file.
+
+     For raid-5, you will want to look at the return code for mdadd,
+     and if it failed, do a "ckraid --fix /etc/raid5.conf" to repair any
+     damage.
+
+
+Qp.4: I have SCSI adapter brand XYZ (with or without several channels), 
+     and disk brand(s) PQR and LMN, will these work with md to create
+     a linear/stripped/mirrored personality? 
+
+Ap.4: Yes!
+
+
+Qp.5: I was wondering if it's possible to setup stripping with more 
+     than 2 devices in md0? This is for a news server, and I have 
+     9 drives...  Needless to say I need much more than two. Is 
+     this possible?
+
+Ap.5: Yes.  (describe how to do this)
+
+
+==========================================================================
+Questions waiting for answers:
+
+What are the option you have used for formating the (raid) disks
+
+        I used:
+                mke2fs -b 4096 -R stride=4 ... blah
+
+        or is it supposed to be 64K * 4 drives:
+
+                mke2fs -b 4096 -R stride=262000 ... blah
+
+        are there any other options ?
+
+For testing the raw disk thru put...
+
+        is there a character device for raw read/raw writes instead of
+        /dev/sdaxx that we can use to measure performance on the raid drives ??
+        is there a GUI based tool to use to watch the disk thru-put ??
+
+
+
+==========================================================================
+Wish list of enhancements to MD and related s/w:
+
+Bradley Ward Allen <ulmo@Q.Net> wrote:
+>Ideas include:
+>
+>* Bootup parameters to tell the kernel which devices are to be MD devices
+>  (no more "mdadd")
+>* Making MD transparent to "mount"/"umount" such that there is no
+>  "mdrun" and "mdstop"
+>* Integrating "ckraid" entirely into the kernel, and letting it run
+>  as needed
+>
+>(So far, all I've done is suggest getting rid of the tools and putting
+>them into the kernel; that's how I feel about it, this is a filesystem,
+>not a toy.)
+>
+>* Deal with arrays that can easily survive N disks going out
+>  simultaneously or at seperate moments, where N is a whole number >0
+>  settable by the administrator
+>* Handle kernel freezes, power outages, and other abrupt shutdowns better
+>* Don't disable a whole disk if only parts of it have failed, e.g., if
+>  the secter errors are confined to less than 50% of access over the
+>  attempts of 20 dissimilar requests, then it continues just ignoring
+>  those secters of that particular disk.
+>* Bad secters:
+>  * A mechanism for saving which secters are bad, someplace onto the
+>    disk.
+>  * If there is a generalized mechanism for marking degraded bad blocks
+>    that upper filesystem levels can recognize, use that.  Program it if not.
+>  * Perhaps alternatively a mechanism for telling the upper layer that the
+>    size of the disk got smaller, even arranging for the upper layer to
+>    move out stuff from the areas being eliminated.  This would help with
+>    degraded blocks as well.
+>  * Failing the above ideas, keeping a small (admin settable) amount of
+>    space aside for bad blocks (distributed evenly across disk?), and
+>    using them (nearby if possible) instead of the bad blocks when it does
+>    happen.  Of course, this is inefficient.  Furthermore, the kernel ought
+>    to log every time the RAID array starts each bad secter and what is
+>    being done about it with a "crit" level warning, just to get the
+>    administrator to realize that his disk has a piece of dust burrowing
+>    into it (or a head with platter sickness).
+>
+>* Software-switchable disks: "disable this disk" (would block until
+>  kernel has completed making sure there is no data on the disk being
+>  shut down that is needed (e.g., to complete an XOR/ECC/other error
+>  correction), then release the disk from use (so it could be removed,
+>  etc.)); "enable this disk" (would mkraid a new disk if appropriate
+>  and then start using it for ECC/whatever operations, enlargening the
+>  RAID5 array as it goes), "resize array" (would respecify the total
+>  number of disks and the number of redundant disks, and the result
+>  would often be to resize the size of the array; where no data loss
+>  would result, doing this as needed would be nice, but I have a hard
+>  time figuring out how it would do that; in any case, a mode where it
+>  would block (for possibly hours (kernel ought to log something every
+>  ten seconds if so)) would be necessary); "enable this disk while
+>  saving data" which would save the data on a disk as-is and move it
+>  to the RAID5 system as needed, so that a horrific save and restore
+>  would not have to happen every time someone brings up a RAID5 system
+>  (instead, it may be simpler to only save one partition instead of
+>  two, it might fit onto the first as a gzip'd file even); finally,
+>  "reenable disk" would be an operator's hint to the OS to try out
+>  a previously failed disk (it would simply call disable then enable,
+>  I suppose).
+
+
+============================= END OF FILE ============================

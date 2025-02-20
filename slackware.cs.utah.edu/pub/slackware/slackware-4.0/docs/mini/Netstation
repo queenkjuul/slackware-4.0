@@ -1,0 +1,396 @@
+  Linux Netstation mini-HOWTO
+  Kris Buytaert, Kris.Buytaert@advalvas.be
+  v0.98p14, 22 February 1998
+
+  This document tries to describe how to hook up a IBM Netstation to
+  your local network using a Linux box as server.
+  ______________________________________________________________________
+
+  Table of Contents
+
+
+  1. Introduction
+
+  2. Requirements
+
+     2.1 Hardware
+     2.2 Software
+        2.2.1 IBM Software.
+        2.2.2 NFS Server.
+        2.2.3 X Server.
+        2.2.4 DHCP Server If you have multiple NC's, you may wish to distribute the IP Adresses by using a DHCP Server how to obtain and configure a DHCP server can be read in the
+
+  3. Other Usefull Documentation
+
+  4. Setting up the Serverside
+
+     4.1 AIX License
+     4.2 The Real Operating System
+        4.2.1 Setting up the nfs server
+        4.2.2 Setting up the X server
+
+  5. Configuring the Thin Client
+
+     5.1 Setting up TCP/IP
+     5.2 Setting Up the Boot Parameters
+     5.3 Setting Up the Monitor
+     5.4 Further Configuration
+
+  6. Misc Stuf
+
+     6.1 TroubleShooting
+     6.2 Experiences
+        6.2.1 Port 5978
+        6.2.2 Port 5999
+
+  7. Credits
+
+
+
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  Some unused piece of delicious hardware floating around on my desk.
+  Screaming to be used. 40 Mb's of ram and a 403 PPC inside.
+
+  So I decided to give it a try and connect it to my local Linux
+  network.  I want to thank the company I work for because they gave me
+  the chance to experiment with it.
+
+  In this (Mini-Howto) we'll be dealing with an IBM Network Station
+  model 8361-100, other models may be featured in the future.
+
+  It`s trying to describe how I setup the NC, there are probably lots of
+  other ways to set up this machine, this one works fine.  Any other
+  remarks you might have from your own experience is welcome.  (Free
+  Hardware also ;-))
+
+  This MINI Howto is not trying to be the Bible on NC's and Linux, its
+  trying to be something for you to get started from nowhere.
+  Contributions to this NC are welcome
+
+
+
+  Things we still have to implement in this Howto
+
+  ·  How to export your homedir
+
+  ·  How to run applications
+
+  ·  How to run Java Applets
+
+
+  2.  Requirements
+
+  2.1.  Hardware
+
+
+  An NC, connected to your local Network, most likely by UTP, thus by a
+  cross-cable or HUB connecting to an X Server. Herafter called the
+  Linux Box. Basically the NC is Made to work with either AS/400 ,
+  Windows NT or AIX Servers. These are all expensive solutions,  however
+  working with thin clients doesnt have to cost that much.
+
+  The model I have at my disposal is an IBM Network Station model
+  8361-100, On the inside you can find an 403PPC chip, some S3 vga
+  components, an PCMCIA slot, and normal 72pins (parity ??) sims.  I
+  found 8+32 Mb in my edition.
+
+  Actually those 40Mb were major overkill.  In full operation modus the
+  NC only uses about with lot's of configuration panels a couple of
+  telnet sessions and a X -query open only took up about 4Mb of ram.  )
+  So taking out the 32Mb showed absolutely no significant loss of speed.
+
+
+
+  We proved it was no problem setting it up on a Linux only network.
+  You`ll need a server that can provide you both with about 25Mb of free
+  diskspace for the software, and the capacities to run a X -query.   In
+  the setup overhere we used a 486DX50 with 8Mb as a fileserver and I
+  switch between another  486DX266 (PS/2 85) with 32Mb, and my Multia
+  with 48Mb as the X server Off course, the fatster machines the better.
+
+
+  2.2.  Software
+
+
+
+  2.2.1.  IBM Software.
+
+
+  NC Kernel, fonts etc.
+
+  In order to boot the NC you will need its Kernel and fonts.  About
+  25Mb of files are needed on the server.  They can be found on an AIX
+  4.X with the Netstation modules installed.  Or from the IBM Netstation
+  Download Page
+
+
+
+
+
+  2.2.2.  NFS Server.
+
+  A working NFS server, like in every default Linux distribution.
+  Approx 85Mb of diskspace has to be exported to the NC.
+
+
+
+  2.2.3.  X Server.
+
+  Any machine running XDM with enough memory, processor power will do.
+  You don't need to have X configured on the machine itselve, it can
+  perfectly be a monitorless server. Basic X Windows install will
+  provide you with the necessary deamons.
+
+
+
+
+  Optionally
+
+
+  2.2.4.  If you have multiple NC's, you may wish to distribute the IP
+  Adresses by using a DHCP Server how to obtain and configure a DHCP
+  server can be read in the DHCP Mini Howto on sunsite DHCP Server
+
+
+
+  3.  Other Usefull Documentation
+
+  Mainly the IBM website.  It contains lot's of docuentation on the NC,
+  most of it can be found in the .pdf format.
+
+  Latest updates can be found at
+  http://www.as4000.ibm.com/networkstation/rs6000/ including
+
+  ·  IBM Network Station Runtime Environment for RS/6000 Users's Guide
+
+  ·  IBM Network Station Runtime Environment for RS/6000 System
+     Administrator's Guide
+
+  ·  IBM Network Station Runtime Environment for RS/6000 System Navio NC
+     Navigator Browser Guide
+
+     Or from http://www.ibm.com/nc/pubs/
+
+  ·  IBM Network Station Setup and Use
+
+  4.  Setting up the Serverside
+
+  You found all the software you needed.  Now let's install them.
+
+  4.1.  AIX License
+
+  Before making the tarball on the aix machine, make sure you run
+  /usr/netstation/bin/agree in order to make the kernel in a usable
+  format.  Probably you will have to do the same thing with the tarball
+  you get from the IBM website.  So finding the kernel separatly might
+  be another solution.  Find some drive with about 25Mb of free
+  diskspace, I use /usr/netstation/, and unpack the tarbal either from
+  the IBM website or from an AIX machine.  There is no need in leaving
+  the approx 60Mb from /usr/netstation/doc on the disk if you don't have
+  enough diskspace.
+
+  4.2.  The Real Operating System
+
+
+
+  4.2.1.  Setting up the nfs server
+
+  Edit your /etc/exports, add the line /usr/netstation   10.0.0.50(rw)
+  Where 10.0.0.50 is the ipnr you want to give to the NC.  Restart your
+  nfs deamon.
+
+  [root@velvet sdog]# ps auxf |grep rpc sdog      4145  0.0  5.8   828
+  384  p1 S   03:55   0:00          \_ grep rpc root      3120  0.0  5.7
+  944   380  ?  S  Feb 27   0:00 rpc.mountd root      3129  0.0  1.5
+  880   100  ?  S  Feb 27   0:10 rpc.nfsd [root@velvet sdog]# kill -9
+  3120 3129 ; /usr/sbin/rpc.mountd ; /usr/sbin/rpc.nfsd
+
+  or on a RedHat alike system easier
+
+  [root@velvet init.d]# pwd /etc/rc.d/init.d [root@velvet init.d]# ./nfs
+  restart Restarting NFS services: rpc.nfsd rpc.mountd done.
+  [root@velvet init.d]#
+
+  Your NC should now be able to mount the /usr/netsation by NFS.
+
+  Bascially if you don`t need X-Windows this is as far as it gets.  You
+  can easily telnet from your NC with nothing more installed.  Hoever
+  the beauty of this thing is it`s X capacities
+
+  4.2.2.  Setting up the X server
+
+  Next we have to set up the X server.  Basically I didn`t need to set
+  up anything, all of my machines that ran X-Windows were configured to
+  accept connections.  I just started up the NC for the first time and
+  it showed me all the machines that ran an XDM (cfr running an X
+  -indirect).  So any machine that can run xdm can be used as X Server.
+  Just make sure XDM is So any machine that can run xdm can be used as X
+  Server.  Just make sure XDM is started.
+
+  Everything on the server side should be setup now.  Lets try the NC
+  side.
+
+
+
+  5.  Configuring the Thin Client
+
+  Unplug the network cable from the NC. Then boot it up.
+
+  It will boot after checking its Memory, VGA etc, in a screen IBM
+  Network Station Setup Utility.  Basically you can manage everything
+  from this menu system.  The main parts will be described here.
+
+  5.1.  Setting up TCP/IP
+
+  Section 5 (F5) : Your network setup should look something like this :
+
+  IP Addressed From                                NVRAM Network Station
+  IP Adress                        10.0.0.50 First Boot Host IP Adress
+  10.0.0.1 Second Boot Host IP Adress                       10.0.0.11
+  Third Boot Host IP Adress                        0.0.0.0 Gateway IP
+  Adress                                10.0.0.1 Subnet Mask
+  255.255.255.0 Broadcast IP Adress
+  10.0.0.255 Ethernet Standard                                Version 2
+
+
+  Resembles my setup.  The NC itselve has 10.0.0.50 While 10.0.0.1 is
+  the NFS Server, 10.0.0.11 is a secondary NFS server, just in case.
+
+
+
+
+  5.2.  Setting Up the Boot Parameters
+
+  Section 6 (F6): Looks like this in my setup.
+
+  Boot file                               kernel TFTP Boot Directory
+  /usr/netstation/ NFS Boot Directory
+  /usr/netstation/ Configuration File
+  /usr/netstation/configs/standard.nsm Configuration Directory
+  /usr/netstation/configs TFTP Order                              2 NFS
+  Order                               1 MOP Order
+  Disabled Local Order                             Disabled
+
+  Where /usr/netstation is the directory export on 10.0.0.1
+
+
+  5.3.  Setting Up the Monitor
+
+  Section 7 (F7): You can choos the right resolution / Refresh rate from
+  a nice menu.  I have mine running on an old 14" VGA Screen running in
+  1024x768 @60Hz
+
+
+  Basically thats all you need to install.
+
+  Just plug in your Network cable again. And Reboot the NC.  After
+  testing the  Video / DRAM, the NC will search the Host system and
+  request the startup information, download the Kernel from the NFS and
+  boot up.
+
+  It might occur that the NC first gets a new FirmWare  and upgrades it
+
+
+  When starting the graphical Console you should get a menu bar and a
+  screen where you can select the X Hosts.  You are now in the CLE
+  (Common Login Environment): it's a desktop from where you can start
+  all sessions, either telnet or X .  It uses a local window manager
+  which is a small window manager based on Motiv.
+
+
+  Your NC is setup now. Congratulations
+
+
+  5.4.  Further Configuration
+
+  Further configuration of the NC can e.g. be setting the colors, window
+  sizes, default keymaps etc.  I'm not going to describe these in
+  detail.  If you have troubles finding your way through the menu
+  system. The IBM Network Station Runtime Environment for RS/6000 User's
+  Guide  which can be found in either .pdf or .ps at
+  http://www.as400.ibm.com/networkstation/rs6000/ and will provide you
+  with detailed information.
+
+
+  6.  Misc Stuf
+
+
+  6.1.  TroubleShooting
+
+  Q:  I get an Invalid Kernel Type while tryng to boot the NC.  A: You
+  didn't run the agree script.  Q: I log in at the remote host and my
+  keyboard settings fuck up.  A: I use no .Xmodap when working on the
+  NC.  This keeps my keyboardsettings perfect.
+
+
+
+
+  6.2.  Experiences
+
+  Using the NC as a plain terminal with multiple consoles.  The Built-in
+  Motiv extensions are a lot easier to use than the default setup ;-)
+  Pressing the Pause/Break key will pop up the NC Menu at any time.
+
+
+  6.2.1.  Port 5978
+
+  Remote Logging It`s the same as the messages console in your CLE.
+
+
+  6.2.2.  Port 5999
+
+  Remote managment for the NC This is acutally a call for help.
+  Strobing the NC , I found some usefull ports.  Among them 5999,  I
+  still haven't found the exact way how to deal with it.  However here
+  are some commands that showed me to be usefull.  You can apparently
+  configure the NC remotely.
+
+  ·  help
+
+  ·  get boot
+
+  ·  get tcpip
+
+  ·  get file
+
+  ·  get nfs
+
+  ·  get tftp
+
+  7.  Credits
+
+
+  Lots of thanks must go out to Wouter Cloetens,
+  wcloeten@raleigh.ibm.com for getting me started and to Bart Geens
+  ,Bart.Geens@advalvas.be for rereading this howto and findin uot lost
+  of splelling errosr
+
+  If somebody has more info on these, help is welcome. They seem to be
+  some SNMP thing but I have no expericience at all on that matter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

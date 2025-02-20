@@ -1,0 +1,66 @@
+#!/bin/sh
+#item   ####description                                      ###on off ###
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+cat /dev/null > $TMP/SeTnewtag
+dialog --title "SELECTING PACKAGES FROM SERIES N (NETWORK/NEWS/MAIL/UUCP)" \
+       --checklist "Please select the packages you wish to install \
+from series N. Use the \
+UP/DOWN keys to scroll through the list, and the SPACE key to select \
+the packages you wish to install. Recommended packages have \
+already been selected for you, but you may unselect them if you wish. \
+Press ENTER when you are \
+done." 22 70 11 \
+"apache" "Apache WWW (HTTP) server" "on" \
+"procmail" "Mail delivery/filtering utility" "on" \
+"dip" "Handles SLIP/CSLIP connections" "off" \
+"ppp" "Point-to-point protocol" "on" \
+"mailx" "The mailx mailer" "on" \
+"tcpip1" "TCP/IP networking programs" "on" \
+"tcpip2" "More TCP/IP networking programs" "on" \
+"samba" "SMB print/file server for Win95/NT LANs" "off" \
+"netatalk" "Print/file server for Apple Macs" "off" \
+"bind" "Berkeley Internet Name Domain server" "on" \
+"rdist" "Remote file distribution utility" "off" \
+"rsync" "Enhanced replacement for rcp" "off" \
+"lynx" "Text-based World Wide Web browser" "on" \
+"uucp" "Taylor UUCP 1.06.1 with HDB && Taylor configs" "off" \
+"elm" "Menu-driven user mail program" "off" \
+"imapd" "ipop3d/imapd remote mail access daemons" "off" \
+"pine" "Pine menu-driven mail program" "on" \
+"sendmail" "The sendmail mail transport agent" "on" \
+"metamail" "Metamail multimedia mail extensions" "on" \
+"smailcfg" "Extra configuration files for sendmail" "off" \
+"cnews" "Spools and transmits Usenet news" "off" \
+"inn" "InterNetNews news transport system" "on" \
+"tin" "The 'tin' news reader" "on" \
+"trn" "A threaded news reader" "on" \
+"netmods" "Kernel modules needed for networking" "on" \
+"nn_nntp" "The 'nn' news reader" "off" \
+"netpipes" "Network pipe utilities" "off" \
+"wget" "WWW/FTP retrieval tool" "on" \
+2> $TMP/SeTpkgs
+if [ $? = 1 -o $? = 255 ]; then
+ rm -f $TMP/SeTpkgs
+ > $TMP/SeTnewtag
+ for pkg in apache bind cnews mailx dip elm inn metamail netpipes ppp \
+  procmail rdist rsync lynx nn_nntp smailcfg tin imapd pine sendmail tcpip1 \
+  tcpip2 trn uucp samba netmods netatalk wget ; do
+  echo "$pkg: SKP" >> $TMP/SeTnewtag
+ done
+ exit
+fi
+cat /dev/null > $TMP/SeTnewtag
+for PACKAGE in procmail ppp mailx tcpip1 tcpip2 uucp apache \
+dip inn elm imapd pine sendmail metamail smailcfg cnews tin \
+rdist rsync bind trn nn_nntp lynx netpipes \
+netmods netatalk samba wget ; do
+ if fgrep \"$PACKAGE\" $TMP/SeTpkgs 1> /dev/null 2> /dev/null ; then
+  echo "$PACKAGE: ADD" >> $TMP/SeTnewtag
+ else
+  echo "$PACKAGE: SKP" >> $TMP/SeTnewtag
+ fi
+done
+rm -f $TMP/SeTpkgs

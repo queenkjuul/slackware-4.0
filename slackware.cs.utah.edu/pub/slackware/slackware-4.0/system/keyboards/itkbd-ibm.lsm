@@ -1,0 +1,13 @@
+Title:          itkbd-ibm (IBM(c) PC italian keyboard map)
+Version:        1.0
+Description:    Keyboard map for original IBM(c) PC italian keyboards.
+                This package includes the map file for the console, loadable by
+
+                loadkeys,as well as the one loadable by xmodmap under X11.
+Author:         Leonardo Valcamonici (valcamonici@caspur.it)
+Maintained-by:  Leonardo Valcamonici (valcamonici@caspur.it)
+Maintained-at:  ftp.caspur.it & sunsite.unc.edu
+Platforms:      IBM PC compatible running Linux
+Copying-Policy: Public Domain
+Keywords:       linux keyboard italian loadkeys xmodmap ibm
+

@@ -1,0 +1,13 @@
+Begin3
+Title:          Linux Graphic Environement        
+Version:        0.1
+Entered-date:   09Mar97
+Description:    C++ library to build graphic applications with the SVGALIB
+Description:    under Linux or DOS.
+Keywords:       gui, svgalib, object
+Author:         Antoine Nicolas
+Maintained-by:  Antoine Nicolas
+Primary-site:   http://www.mygale.org/09/cassiop/
+Platforms:      i386-linux, ms-dos
+Copying-policy: GNU Public License
+End

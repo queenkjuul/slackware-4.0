@@ -1,0 +1,15 @@
+drwxr-xr-x root/root         0 1999-04-12 14:14 ./
+drwxr-xr-x root/root         0 1999-04-12 14:14 usr/
+drwxr-xr-x root/root         0 1999-04-12 14:15 usr/doc/
+drwxr-xr-x root/root         0 1999-04-12 14:15 usr/doc/pciutils-1.10/
+-rw-r--r-- root/root      1641 1999-01-19 15:24 usr/doc/pciutils-1.10/README
+-rw-r--r-- root/root      5773 1999-01-19 15:24 usr/doc/pciutils-1.10/ChangeLog
+drwxr-xr-x root/root         0 1999-03-21 18:32 usr/man/
+drwxr-xr-x root/root         0 1999-04-12 14:15 usr/man/man8/
+-rw-r--r-- root/root      1418 1999-04-12 14:15 usr/man/man8/lspci.8.gz
+-rw-r--r-- root/root      1760 1999-04-12 14:15 usr/man/man8/setpci.8.gz
+drwxr-xr-x root/root         0 1999-04-12 14:14 usr/share/
+-rw-r--r-- root/root     44288 1999-04-12 14:15 usr/share/pci.ids
+drwxr-xr-x root/bin          0 1999-03-21 18:33 sbin/
+-rwxr-xr-x root/bin      17252 1999-04-12 14:15 sbin/lspci
+-rwxr-xr-x root/bin      10012 1999-04-12 14:15 sbin/setpci

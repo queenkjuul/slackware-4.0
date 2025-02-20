@@ -1,0 +1,23 @@
+CONTENTS: pine trn       
+pine:     Pine version 4.10
+pine:
+pine:     A menu driven user mail program. Originally based on Elm (Pine Is
+pine:     No-longer Elm), but with many additional features that make it
+pine:     easier to use.  Also contains pilot (a simple file manager) and
+pine:     pico (an easy to use text editor).
+pine:
+pine:
+pine:
+pine:
+pine:
+trn:      A threaded news reader for reading a remote NNTP server. (v. 3.5)
+trn:
+trn:      Compiled to use Overviews or mthreads, and to read news through your
+trn:      NNTP server.  Be sure to set NNTPSERVER in your /etc/profile or
+trn:      /etc/csh.login. 
+trn:
+trn:
+trn:
+trn:
+trn:
+trn:

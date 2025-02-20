@@ -1,0 +1,11 @@
+Subject: cnews performance release
+Date: Fri, 19 Mar 93 10:56:03 +0000
+From: Dave Gymer <dpg@Cs.Nott.AC.UK>
+
+Here are the patches to get the CNews performance release to compile
+under Linux.  I haven't tried it in a while, so some tweaking may be
+necessary for the newest libraries.
+
+I don't want to touch CNews again; it's just too damn big.
+
+-- Dave

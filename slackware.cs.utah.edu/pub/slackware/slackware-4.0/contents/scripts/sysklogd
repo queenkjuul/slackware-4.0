@@ -1,0 +1,15 @@
+if [ -r var/log/debug ]; then
+  rm var/log/debug.in
+else
+  mv var/log/debug.in var/log/debug
+fi
+if [ -r var/log/messages ]; then
+  rm var/log/messages.in
+else
+  mv var/log/messages.in var/log/messages
+fi
+if [ -r var/log/syslog ]; then
+  rm var/log/syslog.in
+else
+  mv var/log/syslog.in var/log/syslog
+fi

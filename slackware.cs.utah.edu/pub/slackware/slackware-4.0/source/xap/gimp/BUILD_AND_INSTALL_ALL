@@ -1,0 +1,33 @@
+# This will build and install all required supporting libraries
+# and the GIMP.  Although all of these libraries and programs use X, we are
+# using /usr rather than /usr/X11R6 as the --prefix when building them. 
+# Since at first glance most people will think this is the wrong place for
+# them, here's the rationale behind this decision:
+#
+# 1. That's where the other distributions are placing it, so it seems like
+#    an adhoc standard exception to the usual rule of no X11 binaries in 
+#    /usr/bin.  I figure they've done this because of reason (2).
+#
+# 2. That's the only way to get the .m4 files for autoconf to install into
+#    /usr/share/aclocal, where autoconf expects them to be.  I've tried moving
+#    them manually from /usr/X11R6/share/aclocal to /usr/share/aclocal without
+#    apparent ill effects, but this leaves a potential trap for the admin who
+#    may try to rebuild newer versions of glib or gtk+ and doesn't know they
+#    need to move these files after the 'make install'.  Duplicate .m4 files
+#    (or worse, not exactly duplicate) *will* confuse autoconf and cause them
+#    all sorts of random problems.
+#
+# So, although it's a bit icky to install this X11 stuff into /usr/lib and
+# /usr/bin, it seems like the best option.  --pjv
+
+sh aalib-1.2.build
+ldconfig
+sh glib-1.2.2.build
+ldconfig
+sh gtk+-1.2.2.build
+ldconfig
+sh mpeg_lib.build
+ldconfig
+sh gimp-1.0.4.build
+ldconfig
+sh gimp-data-extras.build

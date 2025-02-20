@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/backup</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/backup</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">3.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:50  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:50  </td><td align="right">8.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:50  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">970 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="plt-1.2-002.tar.bz2">plt-1.2-002.tar.bz2</a></td><td align="right">1999-04-27 11:46  </td><td align="right"> 37K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="plt.lsm">plt.lsm</a></td><td align="right">1999-04-27 11:45  </td><td align="right">882 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="multivol.lsm">multivol.lsm</a></td><td align="right">1999-04-27 11:45  </td><td align="right">694 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="multivol-2.1.tar.bz2">multivol-2.1.tar.bz2</a></td><td align="right">1999-04-27 11:45  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mirrordir.lsm">mirrordir.lsm</a></td><td align="right">1999-04-16 00:31  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mirrordir-0.10.38.tar.gz">mirrordir-0.10.38.tar.gz</a></td><td align="right">1999-04-16 00:31  </td><td align="right">373K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mtf-0.1.src.tgz">mtf-0.1.src.tgz</a></td><td align="right">1999-03-30 19:33  </td><td align="right"> 21K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mtf.lsm">mtf.lsm</a></td><td align="right">1999-03-30 19:31  </td><td align="right">400 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:54  </td><td align="right">102 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="etc-saver-0.6.tar.gz">etc-saver-0.6.tar.gz</a></td><td align="right">1998-12-19 15:45  </td><td align="right">4.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="etc-saver-0.6.lsm">etc-saver-0.6.lsm</a></td><td align="right">1998-12-19 15:45  </td><td align="right">716 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="afio-2.4.5.tgz">afio-2.4.5.tgz</a></td><td align="right">1998-09-29 22:54  </td><td align="right"> 73K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="afio-2.4.5.lsm">afio-2.4.5.lsm</a></td><td align="right">1998-09-29 22:54  </td><td align="right">753 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="dds2tar-2.4.21.tar.gz">dds2tar-2.4.21.tar.gz</a></td><td align="right">1998-09-08 01:28  </td><td align="right"> 64K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="dds2tar-2.4.21.lsm">dds2tar-2.4.21.lsm</a></td><td align="right">1998-09-08 01:27  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="des-1.1.0.tar.gz">des-1.1.0.tar.gz</a></td><td align="right">1998-09-03 13:06  </td><td align="right">339K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="des-1.1.0.lsm">des-1.1.0.lsm</a></td><td align="right">1998-09-03 13:06  </td><td align="right">765 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="des.lsm">des.lsm</a></td><td align="right">1998-09-03 13:03  </td><td align="right">765 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mt-st-0.5b.tar.gz">mt-st-0.5b.tar.gz</a></td><td align="right">1998-08-16 14:21  </td><td align="right"> 26K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mt-st-0.5b.lsm">mt-st-0.5b.lsm</a></td><td align="right">1998-08-16 14:21  </td><td align="right">662 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="span-0.2.1.tar.gz">span-0.2.1.tar.gz</a></td><td align="right">1998-07-25 05:31  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="span-0.2.1.lsm">span-0.2.1.lsm</a></td><td align="right">1998-07-25 05:31  </td><td align="right">522 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="backuplib.lsm">backuplib.lsm</a></td><td align="right">1998-07-07 02:54  </td><td align="right">500 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="backuplib-0.2.tar.gz">backuplib-0.2.tar.gz</a></td><td align="right">1998-07-07 02:54  </td><td align="right">3.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="taper-6.9pre1.tar.gz">taper-6.9pre1.tar.gz</a></td><td align="right">1998-05-04 13:12  </td><td align="right">316K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="taper-6.9pre1.lsm">taper-6.9pre1.lsm</a></td><td align="right">1998-05-04 13:05  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tbackup-0.9.tgz">tbackup-0.9.tgz</a></td><td align="right">1998-04-26 20:37  </td><td align="right">327K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tbackup-0.9.lsm">tbackup-0.9.lsm</a></td><td align="right">1998-04-26 20:35  </td><td align="right">829 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tape-scripts-1.00.lsm">tape-scripts-1.00.lsm</a></td><td align="right">1998-02-09 11:45  </td><td align="right">486 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="shak-2.2a.tar.gz">shak-2.2a.tar.gz</a></td><td align="right">1997-12-31 11:37  </td><td align="right">152K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="shak-2.2a.lsm">shak-2.2a.lsm</a></td><td align="right">1997-12-31 11:36  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="KBackup.lsm">KBackup.lsm</a></td><td align="right">1997-12-01 18:10  </td><td align="right">854 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="KBackup-1.2.11.tar.gz">KBackup-1.2.11.tar.gz</a></td><td align="right">1997-12-01 18:09  </td><td align="right">105K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ftpbackup-2.1.tar.gz">ftpbackup-2.1.tar.gz</a></td><td align="right">1997-09-16 10:19  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ftpbackup-2.1.lsm">ftpbackup-2.1.lsm</a></td><td align="right">1997-09-16 10:19  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="config.lsm">config.lsm</a></td><td align="right">1997-07-13 11:28  </td><td align="right">513 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="part.tgz">part.tgz</a></td><td align="right">1996-11-08 02:11  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="part.lsm">part.lsm</a></td><td align="right">1996-11-08 02:06  </td><td align="right">505 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cbkp.lsm">cbkp.lsm</a></td><td align="right">1996-06-30 07:00  </td><td align="right">855 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cbkp-0.1.2.tar.gz">cbkp-0.1.2.tar.gz</a></td><td align="right">1996-06-30 07:00  </td><td align="right"> 38K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tarfix-1.0.tar.gz">tarfix-1.0.tar.gz</a></td><td align="right">1996-06-07 07:00  </td><td align="right">103K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tarfix-1.0.lsm">tarfix-1.0.lsm</a></td><td align="right">1996-06-07 07:00  </td><td align="right">442 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="config.tgz">config.tgz</a></td><td align="right">1996-04-12 07:00  </td><td align="right">5.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ntape-0.21.tar.gz">ntape-0.21.tar.gz</a></td><td align="right">1995-11-16 08:00  </td><td align="right"> 60K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tob.lsm">tob.lsm</a></td><td align="right">1995-09-21 07:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tob-0.13.tar.gz">tob-0.13.tar.gz</a></td><td align="right">1995-09-21 07:00  </td><td align="right"> 88K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tktbackup.tar.gz">tktbackup.tar.gz</a></td><td align="right">1995-09-15 07:00  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tktbackup.lsm">tktbackup.lsm</a></td><td align="right">1995-09-15 07:00  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="tktbackup.README">tktbackup.README</a></td><td align="right">1995-09-15 07:00  </td><td align="right">793 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="flop-0.1.tar.gz">flop-0.1.tar.gz</a></td><td align="right">1995-09-15 07:00  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="flop-0.1.lsm">flop-0.1.lsm</a></td><td align="right">1995-09-15 07:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="backup.lsm">backup.lsm</a></td><td align="right">1995-09-15 07:00  </td><td align="right">1.7K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="backup-1.03.tar.gz">backup-1.03.tar.gz</a></td><td align="right">1995-09-15 07:00  </td><td align="right"> 71K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="backscri.tgz">backscri.tgz</a></td><td align="right">1995-09-15 07:00  </td><td align="right"> 93K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="backscri.lsm">backscri.lsm</a></td><td align="right">1995-09-15 07:00  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="Lnx-Bkp-Util-v1.10.tgz">Lnx-Bkp-Util-v1.10.tgz</a></td><td align="right">1995-09-15 07:00  </td><td align="right"> 85K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Lnx-Bkp-Util-v1.10.lsm">Lnx-Bkp-Util-v1.10.lsm</a></td><td align="right">1995-09-15 07:00  </td><td align="right">1.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="Lnx-Bkp-Util-v1.10.Readme">Lnx-Bkp-Util-v1.10.Readme</a></td><td align="right">1995-09-15 07:00  </td><td align="right">8.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ntape.lsm">ntape.lsm</a></td><td align="right">1995-08-10 07:00  </td><td align="right">873 </td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

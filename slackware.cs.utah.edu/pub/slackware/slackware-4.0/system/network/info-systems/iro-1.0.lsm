@@ -1,0 +1,23 @@
+Begin3
+Title:		iro
+Version:	1.0
+Entered-date: 	10AUG96 
+Description: 	IROs/IROc client to server IP/Name-Adress information system.
+		This package allows a person, having a dynamically allocated
+		IP address, to have a link in their webpage pointing to an
+		HTML file which is updated everytime they logon/logoff the internet.
+		The HTML file describes his/her current IP and Name-Address if
+		they are online, or tells if they are off otherwise.  Very useful
+		for people who don't have a dedicated connection, but have a webpage
+		on a dedicated server.
+Keywords: 	iro, dynamic, HTML, slip, ppp, update 
+Author:		Rob Vanderhoff 
+Maintained-by:	purple@fubar.cs.montana.edu (Rob Vanderhoff) 
+Primary-site:	sunsite.unc.edu /pub/Linux/apps 
+Alternate-site:	none yet
+Original-site:	same
+Platforms:	SunOS 4.1, Solaris 2.x, Linux, FreeBSD, NetBSD, HP-UX 9.0,
+		AIXV3, ESIX, IRIX, ULTRIX. Requires ANSI C although it
+		should compile "right out of the box", read IRO.TXT.
+Copying-policy:	BSD
+End

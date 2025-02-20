@@ -1,0 +1,23 @@
+Begin3
+Title:          xwPrint
+Version:        0.x
+Entered-date:   25-Apr-1999
+Description:    xwPrint is an Gimp-PlugIn for printing 
+		Higher Image Quality on Photo Printers
+		( Epson, Canon and HP Printers )
+Keywords:       Printer,Photo,xwGUI,xw_Tools
+Author:         jj.sarton@t-online.de (Jean-Jacques Sarton)
+		skraus@weserbergland.de (Stefan Kraus)
+Maintained-by:  jj.sarton@t-online.de (jean-Sacques Sarton)
+		skraus@weserbergland.de (Stefan Kraus)
+Primary-site:	http://home.t-online.de/home/jj.sarton/start.htm
+		http://www.weserbergland.de/privat/kraus/index.html
+Alternate-site:	metalab.unc.edu /pub/Linux/...
+		26k xwprint.tar.gz
+Platforms:      LINUX SOLARIS
+		needs XWindow
+		needs Gimp
+                needs xwGUI 0.8 or higher
+		needs xw_Tools
+Copying-policy: GPL
+End

@@ -1,0 +1,22 @@
+Begin3
+Title:           eznet 
+Version:         1.11.1         
+Entered-date:    25FEB99 
+Description:     EZNET is a easy-to-use, user-friendly way to set up your 
+                 PPP daemon. Get it if you're having trouble creating a chat
+		 script to connect to your service provider with pppd & chat.
+		 Source and compiled libc6 included.
+		 Added frontend 'ezsetup' script and made a few changes 
+		 to eznet.c.
+		 The changes to eznet.c 1.11 are listed in eznet.txt which
+		 is included in this package.
+		 This is eznet.c 1.11 with a few changes by me kent robotti.
+Keywords:        ppp pppd setup isp internet dialup   
+Author:          krobot@erols.com (Kent Robotti) 
+Maintained-by:   
+Primary-site:    http://www.hwaci.com/sw/eznet <Home site of original eznet>
+                 http://www.hwaci.com/drh
+Alternate-site:  ftp://sunsite.unc.edu/pub/Linux/system/network/serial/ppp
+Platforms:       Unix system with pppd. 
+Copying-policy:  GPL
+End

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/network/daemons</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/network/daemons</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/network/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">6.2K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">6.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right"> 16K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">3.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="nfs/">nfs/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="dns/">dns/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="dhcpcd-1.3.17.lsm">dhcpcd-1.3.17.lsm</a></td><td align="right">1999-04-21 07:09  </td><td align="right">566 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="dhcpcd-1.3.17-pl5.tar.gz">dhcpcd-1.3.17-pl5.tar.gz</a></td><td align="right">1999-04-21 07:09  </td><td align="right">114K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ippl-1.4.5.tar.gz">ippl-1.4.5.tar.gz</a></td><td align="right">1999-04-19 20:54  </td><td align="right"> 50K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ippl-1.4.5.lsm">ippl-1.4.5.lsm</a></td><td align="right">1999-04-19 20:54  </td><td align="right">487 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gnudip-2.0.6.tar.gz">gnudip-2.0.6.tar.gz</a></td><td align="right">1999-03-11 08:58  </td><td align="right"> 28K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gnudip-2.0.6.lsm">gnudip-2.0.6.lsm</a></td><td align="right">1999-03-11 08:58  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="oidentd.lsm">oidentd.lsm</a></td><td align="right">1999-02-27 08:31  </td><td align="right">900 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="oidentd-1.6.1.tar.gz">oidentd-1.6.1.tar.gz</a></td><td align="right">1999-02-27 08:31  </td><td align="right"> 68K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="redir-2.0.tar.gz">redir-2.0.tar.gz</a></td><td align="right">1999-02-12 14:29  </td><td align="right"> 28K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="redir-2.0.lsm">redir-2.0.lsm</a></td><td align="right">1999-02-12 14:29  </td><td align="right">299 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:56  </td><td align="right"> 86 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tipxd-1.0.0.tar.gz">tipxd-1.0.0.tar.gz</a></td><td align="right">1999-01-16 06:06  </td><td align="right"> 66K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tipxd-1.0.0.lsm">tipxd-1.0.0.lsm</a></td><td align="right">1999-01-16 06:05  </td><td align="right">473 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ipxtund.lsm">ipxtund.lsm</a></td><td align="right">1998-09-28 01:16  </td><td align="right">792 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ipxtund-1.3.0.tgz">ipxtund-1.3.0.tgz</a></td><td align="right">1998-09-28 01:16  </td><td align="right"> 44K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="btcpserv.lsm">btcpserv.lsm</a></td><td align="right">1998-09-12 18:25  </td><td align="right">592 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="btcpserv-1.0.tar.gz">btcpserv-1.0.tar.gz</a></td><td align="right">1998-09-12 18:15  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="btcpserv-1.0.lsm">btcpserv-1.0.lsm</a></td><td align="right">1998-09-12 18:15  </td><td align="right">592 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="telproxplus-0.8.tar.gz">telproxplus-0.8.tar.gz</a></td><td align="right">1998-09-11 16:26  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="telproxplus-0.8.lsm">telproxplus-0.8.lsm</a></td><td align="right">1998-09-11 16:25  </td><td align="right">727 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tnlited-0.6.tar.gz">tnlited-0.6.tar.gz</a></td><td align="right">1998-08-07 22:36  </td><td align="right"> 28K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tnlited-0.6.lsm">tnlited-0.6.lsm</a></td><td align="right">1998-08-07 22:36  </td><td align="right">475 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="jail-1.5.tar.gz">jail-1.5.tar.gz</a></td><td align="right">1998-08-05 02:17  </td><td align="right"> 20K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="jail.lsm">jail.lsm</a></td><td align="right">1998-08-05 02:16  </td><td align="right">758 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mon.lsm">mon.lsm</a></td><td align="right">1998-07-13 19:48  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mon-0.37l.tar.gz">mon-0.37l.tar.gz</a></td><td align="right">1998-07-13 19:48  </td><td align="right"> 66K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="snplog-0.1.tar.gz">snplog-0.1.tar.gz</a></td><td align="right">1998-04-27 06:17  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="snplog-0.1.lsm">snplog-0.1.lsm</a></td><td align="right">1998-04-27 06:17  </td><td align="right">703 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="iplogger-ident-1.1.tar.gz">iplogger-ident-1.1.tar.gz</a></td><td align="right">1998-04-25 02:51  </td><td align="right"> 14K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="iplogger-ident-1.1.lsm">iplogger-ident-1.1.lsm</a></td><td align="right">1998-04-25 02:51  </td><td align="right">498 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="dhcpdpatch.lsm">dhcpdpatch.lsm</a></td><td align="right">1998-04-02 06:34  </td><td align="right">634 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="dhcpdpatch-1.0.0.tar.gz">dhcpdpatch-1.0.0.tar.gz</a></td><td align="right">1998-04-02 06:33  </td><td align="right">3.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="telprox-plus.0.7.tar.gz">telprox-plus.0.7.tar.gz</a></td><td align="right">1998-01-09 05:33  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="telprox-plus.0.7.lsm">telprox-plus.0.7.lsm</a></td><td align="right">1998-01-09 05:33  </td><td align="right">730 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rr-1.2.tar.gz">rr-1.2.tar.gz</a></td><td align="right">1997-09-27 03:17  </td><td align="right"> 13K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rr-1.2.lsm">rr-1.2.lsm</a></td><td align="right">1997-09-27 03:17  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ringconnectd.lsm">ringconnectd.lsm</a></td><td align="right">1997-08-03 03:15  </td><td align="right">599 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="ringconnectd-2.2.tar.gz">ringconnectd-2.2.tar.gz</a></td><td align="right">1997-08-03 03:15  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xringd-1.20.tgz">xringd-1.20.tgz</a></td><td align="right">1997-07-22 05:27  </td><td align="right"> 31K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xringd-1.20.lsm">xringd-1.20.lsm</a></td><td align="right">1997-07-22 05:27  </td><td align="right">841 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-telnet.lsm">netkit-telnet.lsm</a></td><td align="right">1997-06-13 02:54  </td><td align="right">791 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-telnet-0.10.tar.gz.sig">netkit-telnet-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:54  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-telnet-0.10.tar.gz">netkit-telnet-0.10.tar.gz</a></td><td align="right">1997-06-13 02:54  </td><td align="right">130K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rwho.lsm">netkit-rwho.lsm</a></td><td align="right">1997-06-13 02:54  </td><td align="right">780 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rwho-0.10.tar.gz.sig">netkit-rwho-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:53  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-rwho-0.10.tar.gz">netkit-rwho-0.10.tar.gz</a></td><td align="right">1997-06-13 02:53  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rwall.lsm">netkit-rwall.lsm</a></td><td align="right">1997-06-13 02:53  </td><td align="right">789 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rwall-0.10.tar.gz.sig">netkit-rwall-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:53  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-rwall-0.10.tar.gz">netkit-rwall-0.10.tar.gz</a></td><td align="right">1997-06-13 02:53  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-routed.lsm">netkit-routed.lsm</a></td><td align="right">1997-06-13 02:53  </td><td align="right">791 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-routed-0.10.tar.gz.sig">netkit-routed-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:53  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-routed-0.10.tar.gz">netkit-routed-0.10.tar.gz</a></td><td align="right">1997-06-13 02:53  </td><td align="right"> 34K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-ftpd.lsm">linux-ftpd.lsm</a></td><td align="right">1997-06-13 02:48  </td><td align="right">829 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-ftpd-0.10.tar.gz.sig">linux-ftpd-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:48  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="linux-ftpd-0.10.tar.gz">linux-ftpd-0.10.tar.gz</a></td><td align="right">1997-06-13 02:48  </td><td align="right"> 38K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="telprox-0.2.lsm">telprox-0.2.lsm</a></td><td align="right">1997-05-06 05:35  </td><td align="right">749 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="telprox-0.2.tar.gz">telprox-0.2.tar.gz</a></td><td align="right">1997-05-06 05:34  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="proxyrouted-0.90.tar.gz">proxyrouted-0.90.tar.gz</a></td><td align="right">1996-11-14 20:58  </td><td align="right">7.9K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="proxyrouted-0.90.lsm">proxyrouted-0.90.lsm</a></td><td align="right">1996-11-14 20:57  </td><td align="right">824 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="capONnetatlk.tgz">capONnetatlk.tgz</a></td><td align="right">1996-10-13 19:03  </td><td align="right"> 16K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="capONnetatlk.lsm">capONnetatlk.lsm</a></td><td align="right">1996-10-13 19:03  </td><td align="right">430 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="cidentd.lsm">cidentd.lsm</a></td><td align="right">1996-05-09 07:00  </td><td align="right">455 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="cidentd.1.0b.tar.gz">cidentd.1.0b.tar.gz</a></td><td align="right">1996-05-09 07:00  </td><td align="right"> 19K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="daemon-1.0.tar.gz">daemon-1.0.tar.gz</a></td><td align="right">1996-04-05 08:00  </td><td align="right"> 25K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="daemon-1.0.lsm">daemon-1.0.lsm</a></td><td align="right">1996-04-05 08:00  </td><td align="right">711 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="xringd-1.10.tgz">xringd-1.10.tgz</a></td><td align="right">1996-03-29 08:00  </td><td align="right"> 28K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xringd-1.10.lsm">xringd-1.10.lsm</a></td><td align="right">1996-03-29 08:00  </td><td align="right">792 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bcastd-fixed.tar.gz">bcastd-fixed.tar.gz</a></td><td align="right">1996-03-17 08:00  </td><td align="right">3.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bcastd-fixed.lsm">bcastd-fixed.lsm</a></td><td align="right">1996-03-17 08:00  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rpc.rstatd-3.03.tar.gz">rpc.rstatd-3.03.tar.gz</a></td><td align="right">1996-02-01 08:00  </td><td align="right"> 15K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rpc.rstatd-3.03.lsm">rpc.rstatd-3.03.lsm</a></td><td align="right">1996-02-01 08:00  </td><td align="right">672 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lwared-0.95.patch.tar.gz">lwared-0.95.patch.tar.gz</a></td><td align="right">1996-01-18 08:00  </td><td align="right">4.5K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="lwared-0.95.patch.lsm">lwared-0.95.patch.lsm</a></td><td align="right">1996-01-18 08:00  </td><td align="right">514 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gatedb1_bin_1.3.x.tgz">gatedb1_bin_1.3.x.tgz</a></td><td align="right">1996-01-01 08:00  </td><td align="right">550K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="gated.lsm">gated.lsm</a></td><td align="right">1996-01-01 08:00  </td><td align="right">798 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="perf+rstatd-1.3.45.tar.gz">perf+rstatd-1.3.45.tar.gz</a></td><td align="right">1995-11-28 08:00  </td><td align="right"> 30K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="perf+rstatd-1.3.45.lsm">perf+rstatd-1.3.45.lsm</a></td><td align="right">1995-11-28 08:00  </td><td align="right">815 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="lwared-0.95.tar.gz">lwared-0.95.tar.gz</a></td><td align="right">1995-11-07 08:00  </td><td align="right"> 81K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="lwared-0.95.lsm">lwared-0.95.lsm</a></td><td align="right">1995-11-07 08:00  </td><td align="right">551 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-1.3-gated.diffs">linux-1.3-gated.diffs</a></td><td align="right">1995-10-09 07:00  </td><td align="right">9.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="linux-1.3-gated-diffs.lsm">linux-1.3-gated-diffs.lsm</a></td><td align="right">1995-10-09 07:00  </td><td align="right">759 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="perf+rstatd.tar.gz">perf+rstatd.tar.gz</a></td><td align="right">1995-10-02 07:00  </td><td align="right"> 30K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="perf+rstatd.lsm">perf+rstatd.lsm</a></td><td align="right">1995-10-02 07:00  </td><td align="right">826 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="iplogger.tar.gz">iplogger.tar.gz</a></td><td align="right">1995-09-29 07:00  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="iplogger.lsm">iplogger.lsm</a></td><td align="right">1995-09-29 07:00  </td><td align="right">448 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="amd-upl102.patch.lsm">amd-upl102.patch.lsm</a></td><td align="right">1995-09-27 07:00  </td><td align="right">915 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="amd-upl102.patch.gz">amd-upl102.patch.gz</a></td><td align="right">1995-09-27 07:00  </td><td align="right">2.8K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bsd-timed.tgz.lsm">bsd-timed.tgz.lsm</a></td><td align="right">1995-09-23 07:00  </td><td align="right">436 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bsd-timed.tgz">bsd-timed.tgz</a></td><td align="right">1995-09-23 07:00  </td><td align="right"> 44K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bsd-ftpd.tgz.lsm">bsd-ftpd.tgz.lsm</a></td><td align="right">1995-09-09 07:00  </td><td align="right">430 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bsd-ftpd.tgz">bsd-ftpd.tgz</a></td><td align="right">1995-09-09 07:00  </td><td align="right"> 31K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="mun-ruptime-0.8.tar.gz">mun-ruptime-0.8.tar.gz</a></td><td align="right">1995-09-04 07:00  </td><td align="right">9.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mun-ruptime-0.8.lsm">mun-ruptime-0.8.lsm</a></td><td align="right">1995-09-04 07:00  </td><td align="right">491 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="jidentd-1.0.tar.gz">jidentd-1.0.tar.gz</a></td><td align="right">1995-08-20 07:00  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="jidentd-1.0.lsm">jidentd-1.0.lsm</a></td><td align="right">1995-08-20 07:00  </td><td align="right">588 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="gated11_bin.tgz">gated11_bin.tgz</a></td><td align="right">1995-06-18 07:00  </td><td align="right">550K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="srouted-0.1pl1.tar.gz">srouted-0.1pl1.tar.gz</a></td><td align="right">1995-02-23 08:00  </td><td align="right"> 28K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="srouted-0.1pl1.lsm">srouted-0.1pl1.lsm</a></td><td align="right">1995-02-23 08:00  </td><td align="right">723 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="nntp-1.5.11tp-linux.tgz">nntp-1.5.11tp-linux.tgz</a></td><td align="right">1995-02-13 08:00  </td><td align="right">148K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="nntp-1.5.11tp-linux.lsm">nntp-1.5.11tp-linux.lsm</a></td><td align="right">1995-02-13 08:00  </td><td align="right">412 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="telnetdp.tar.gz">telnetdp.tar.gz</a></td><td align="right">1995-01-31 08:00  </td><td align="right">3.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="telnetdp.lsm">telnetdp.lsm</a></td><td align="right">1995-01-31 08:00  </td><td align="right">681 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rwhod-5.19j2.tar.gz">rwhod-5.19j2.tar.gz</a></td><td align="right">1994-07-20 07:00  </td><td align="right"> 10K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rwhod-5.19j2.lsm">rwhod-5.19j2.lsm</a></td><td align="right">1994-07-20 07:00  </td><td align="right">1.2K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bcastd.tar.gz">bcastd.tar.gz</a></td><td align="right">1994-05-12 07:00  </td><td align="right">2.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="bcastd.lsm">bcastd.lsm</a></td><td align="right">1994-05-12 07:00  </td><td align="right">922 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="athena-inetd.lsm">athena-inetd.lsm</a></td><td align="right">1994-03-22 08:00  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="athena-inetd-5.30.tar.gz">athena-inetd-5.30.tar.gz</a></td><td align="right">1994-03-22 08:00  </td><td align="right"> 26K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

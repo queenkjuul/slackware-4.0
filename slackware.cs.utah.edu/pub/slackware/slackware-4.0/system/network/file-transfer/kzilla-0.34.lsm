@@ -1,0 +1,13 @@
+Begin3
+Title:          kzilla
+Version:        0.34
+Entered-date:   AUG98
+Description:    kzilla is a simple a FTP Search (ftpno.nu.no) client
+Keywords:       client ftp search kde
+Author:         dietmar.kling@usa.net (Dietmar Kling)
+Maintained-by:  dietmar.kling@usa.net (Dietmar Kling)
+Primary-site:   ftp://ftp.kde.org/pub/kde/unstable/apps/util
+Alternate-site: ftp://ftp.kde.org/pub/kde/Incoming
+Platforms:      Linux, Qt 1.3x and KDE (Beta 4)
+Copying-policy: GPL
+End 

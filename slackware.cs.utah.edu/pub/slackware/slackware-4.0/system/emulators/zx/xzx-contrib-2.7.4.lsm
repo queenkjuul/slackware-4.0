@@ -1,0 +1,18 @@
+Begin3
+Title:		xzx-contrib
+Version:	2.7.4
+Entered-date:	07Mar99
+Description:	Contribution tools for XZX
+Keywords:	X11 emulator ZX Spectrum XZX ddtrans Microdrive cpcfs scr2gif
+Keywords:	chkrom
+Author:		Erik Kunze <Erik.Kunze@fantasy.muc.de>
+Maintained-by:	Erik Kunze <Erik.Kunze@fantasy.muc.de>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/emulators/zx
+                152431 xzx-contrib-2.7.4.tar.gz
+Alternate-site: ftp.wos.intermax.nl /pub/sinclair/emulators/unix/
+		152431 xzx-contrib-2.7.4.tar.gz
+Original-site:	www.philosys.de /~kunze/xzx/files
+		152431 xzx-contrib-2.7.4.tar.gz
+Platforms:	X11
+Copying-policy:	shareware
+End

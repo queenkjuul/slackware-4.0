@@ -1,0 +1,20 @@
+Begin3
+Title:          metash - common configuration file for all shells
+Version:        0.3
+Entered-date:   29Nov97
+Description:    metash is a meta shell, as the name implies. It reads
+		3 configuration files and sets environment, umask and
+		resource limits depending on user name or UID ranges.
+
+		If these are set, it starts the (implicit) specified
+		user shell.
+
+Keywords:       envrionment umask resource limits shell bash tcsh csh zsh ksh
+Author:         Winfried Trümper <winni@xpilot.org>
+Maintained-by:  author
+Primary-site:   ftp://sunsite.unc.edu/pub/Linux/system/
+Alternate-site: 
+Original-site:  ftp://www.shop.de/linux/local/
+Platforms:      Unix
+Copying-policy: Use at your own risk. (c) 1997 W. Trümper. Licensed by GPL.
+End

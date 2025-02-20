@@ -1,0 +1,20 @@
+
+Begin3
+Title:          anacron
+Version:        2.0.1
+Entered-date:   20MAR98
+Description:    Runs commands periodically, with periods specified in days.
+                Does not assume that the machine is running continuously.
+                Can control the execution of daily, weekly, and monthly jobs
+                that are usually scheduled as cron-jobs, on machines that
+                don't run 24 hours a day.
+Keywords:       anacron cron periodic execution
+Author:         itzur@actcom.co.il (Itai Tzur)
+Maintained-by:  itzur@actcom.co.il (Itai Tzur)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/daemons/cron/
+                23kB anacron-2.0.1.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Runs on Linux.
+Copying-policy: GPL 2.0
+End

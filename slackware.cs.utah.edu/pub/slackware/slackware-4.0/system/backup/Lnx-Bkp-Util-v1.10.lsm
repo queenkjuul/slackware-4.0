@@ -1,0 +1,27 @@
+Begin2
+Title        = lbu (L.B.U) Linux Backup Utility
+Version      = v1.10
+Desc1        = L.B.U provides a fully menu-driven backup/restore/compare
+Desc2        = interface to the tar command and allows foreground, 
+Desc3        = background and scheduled backups to be performed.
+Author       = Jonathan Warburton-Brown
+AuthorEmail  = jwb@uvo.dec.com
+Maintainer   = Jonathan Warburton-Brown
+MaintEmail   = jwb@uvo.dec.com
+Site1        = sunsite.unc.edu
+Path1        = /pub/Linux/Incoming    (likely to be changed)
+File1        = Lnx-Bkp-Util-v1.10.tgz
+FileSize1    = 86920
+Required1    = L.B.U will run on most any Linux system. It is a bit slow
+Required2    = on a 386 (still quite useable) and fine on a 486. It requires
+Required3    = common Unix utils to be present and in the PATH. See Readme.
+CopyPolicy1  = As per GNU GPL. 
+Comment1     = This is the 2nd version of my first offering to the Linux 
+Comment2     = community and my first real attempt at shell-script programming.
+Comment3     = If the earth doesn't move I'll not be surprised. ;-)
+RelFiles1    = I have included a copy of dialog 0.5 and con80x25 in the
+RelFiles2    = distribution. See Readme and Release Notes for more info.
+Entered      = 28FEB95
+EnteredBy    = Jonathan Warburton-Brown
+CheckedEmail = jwb@uvo.dec.com
+End

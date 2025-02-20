@@ -1,0 +1,328 @@
+
+Virtual FTP-servers with wu-ftpd           Winfried Trümper <winni@xpilot.org>
+--------------------------------           with help from
+                                           Brian Grossman <brian@SoftHome.Net>
+                                           Version 1.2                27.01.97
+
+    
+
+  1. Introduction
+
+        Linux has the ability to run several "hosts" on one machine.
+        Many people already use this to run more than 1 WWW-Service on
+        their Linux box, e.g. 
+
+                www.sharpers.com                (192.168.55.37)
+                www.usurers.com                 (192.168.55.38)
+                www.swindlers.com               (192.168.55.39)
+
+
+        appear as if they were 3 different hosts but in fact there is
+        only one Linux-PC serving them.
+
+        The technique behind this feature is called "multihoming" and
+        based on the ability of Linux to assign several IP-addresses
+        to one network-interface (ethernet-card or modem). In effect,
+        you do not need several ethernet-cards to make Linux listen to
+        several addresses/hostnames on the net.
+        Linux handles the additional IP-addresses through so called 
+        "virtual interfaces" which physically represent the same 
+        hardware but are logically distinguished with their ip-addresses
+        by the software (and the kernel).
+
+        Those virtual interfaces are labeled similar than the main
+        interface they "point" to and are simply suffixed by a (more or
+        less) arbitrary number.
+        The proper term for such a virutal interfaces is "ip-alias". For
+        the virtual hosts above, the command "ifconfig" gives the (heavily
+        edited) output:
+
+
+        interface IP-address     broadcast-address       netmask
+        ------------------------------------------------------------
+        eth0      192.168.55.37    192.168.55.63     255.255.255.224
+
+        eth0:0    192.168.55.38    192.168.55.63     255.255.255.224
+        eth0:1    192.168.55.39    192.168.55.63     255.255.255.224
+        eth0:2    192.168.55.40    192.168.55.63     255.255.255.224
+        eth0:3    192.168.55.41    192.168.55.63     255.255.255.224
+             ^-- no. of the ip-alias
+         
+
+        To be able to use the facility of ip-aliases you need a "module"
+        for the Linux-kernel that can be fixated into the kernel when
+        compiling or loaded at run-time by issuing the command (as root):
+
+                insmod ipalias
+
+        Most modern distributions should provide this module so I don't
+        want to waste time in describing how to create it (hint: if it's
+        missing, read the Linux Kernel-HOWTO).
+
+        The ip-aliases for the hosts above are created with a little
+        shell-script when booting:
+
+8<----- cut here 8<-----
+#!/bin/sh
+
+NETMASK="255.255.255.224"      # replace with YOUR netmask
+BROADCAST="192.168.55.63"      # replace with YOUR broadcast-address
+MAIN_IF="eth0"                 # "main" interface
+
+IPALIASES="192.168.55.38   192.168.55.39   192.168.55.40 \
+           192.168.55.41   192.168.55.42   192.168.55.43 \
+           192.168.55.44   192.168.55.45   192.168.55.46"
+
+# you should not need to modify anything below
+i=0
+for ALIAS in $IPALIASES
+do
+    /sbin/ifconfig  ${NETTYPE}:${i}  ${ALIAS} \
+                    broadcast ${BROADCAST}  netmask ${NETMASK}
+    /sbin/route add -host ${ALIAS} dev ${NETTYPE}:${i}
+    i=$[$i+1]
+done
+8<----- cut here 8<-----
+
+
+        If you have further questions about ip-aliases, please look at
+        the Linux "IP Alias mini-HOWTO" and the file 
+        "Documentation/aliases.txt" from the sources of the Linux-kernel
+        (usally in the directory "/usr/src/linux"). 
+
+
+
+
+  2. Virtual Services and Servers
+
+        If a hostname belongs to an virtual interface, it is commonly
+        called "virtual host".
+        A daemon that runs a service on a virtual host (or a virtual
+        interface) is called "virtual server".
+
+
+  2.1. Virtual WWW-Servers
+
+        We already had an example for 3 virtual WWW-Servers above:
+
+                www.sharpers.com, www.usurers.com, www.swindlers.com
+
+
+        The configuration of all major http-daemons I know (e.g. the
+        well-designed "Roxen Challenger" or the widespread "Apache")
+        to make use of the virtual hosts is easy and already well
+        documented.
+        In short: just bind the www-port (no. 80) to the virtual network
+        interface with the desired ip-address/hostname for each 
+        WWW-server you run. There is no trick.
+
+        Read the Linux "Virtual Web mini-HOWTO" to get more information
+        on this issue.
+
+
+  2.2. Virtual mail-addresses
+
+        In the simplest case you want to recieve mail for all your
+        virtual hosts and for the dedicated domains:
+
+                www.sharpers.com, www.usurers.com, www.swindlers.com,
+                    sharpers.com,     usurers.com,     swindlers.com
+
+
+        Even the configuration of "smail" or "sendmail" (the daemons
+        that handle the mail-traffic on you Linux-box) is relativly
+        easy: mention the additional hostnames/domains in
+        "/etc/smail/config" (entries 'hostnames='), resp.
+        "/etc/mail/sendmail.cw" (each hostname on a seperate line).
+
+        To implement a "real" virtual domain featuring smail, please
+        look at the smail-FAQ available from
+
+                http://www.sbay.org/smail-faq.html
+
+
+  2.3. Virtual ftp-servers
+
+        The concept of a virtual ftp-server is not supported by
+        default for any ftp-daemon I know.
+
+        What regards to the widespread used daemon "wu-ftpd", there
+        is a patch by Brian Grossman <brian@SoftHome.Net> to make the
+        anonymous FTP-service distinguish between the virtual 
+        interfaces. Availability is mentioned in chapter 3.
+
+        There seem to be no other patches around that do the same.
+
+
+        The main idea of the Brian's multihome-patch for is to make 
+        wu-ftpd "chroot()" to
+
+                HOME_DIRECTORY_OF_ftp-ACCOUNT/HOSTNAME_THE_USER_TALKS_TO/
+
+        instead of just doing a chroot() into
+
+                HOME_DIRECTORY_OF_ftp-ACCOUNT/
+
+
+        In the example shown below, the user thats connects to
+        "ftp.swindlers.com" via anonymous ftp is locked up under
+        "/home/ano-ftp/ftp.swindlers.com/" instead of just under
+        "/home/ano-ftp/".
+        You can imagine that the basic setup is straightforward and
+        does not differ much from setting up a single anoymous ftp-account.
+
+        Kudos to Brian for this easy and efficient setup-strategy.
+
+
+        Let me assume you would already have this special version of
+        wu-ftpd compiled youself or fetched the binaries and let me
+        postpone all realated questions to the end of this document.
+
+        I will give you a real-world example and tell you what I did
+        for one of my customers (I only changed the machine names to
+        non-existant ones ...).
+
+
+    (a) Created a directory "/home/ano-ftp" to incorporate the different
+        anonymous ftp-servers.
+
+                mkdir  /home/ano-ftp  &&  cd /home/ano-ftp
+                mkdir  ftp.sharpers.com  ftp.usurers.com  ftp.swindlers.com
+
+        Resulting in a tree:
+
+        /home/ano-ftp/
+                  |-- ftp.sharpers.com
+                  |-- ftp.swindlers.com
+                  `-- ftp.usurers.com
+
+
+    (b) Copied the necessary files for an anonymous ftp-service from the
+        already configured anonymous-ftp-directory "/home/ftp" into the
+        newly created directories
+
+                cd     /home/ano-ftp/ftp.sharpers.com
+                cp -a  /home/ftp/* .
+
+                cd     ../ftp.swindlers.com
+                cp -a  /home/ftp/* .
+
+                cd     ../ftp.usurers.com
+                cp -a  /home/ftp/* .
+
+
+        Don't forget to delete the superfluous files under "pub/"
+        afterwards (or simply don't copy them at all).
+        For example, the "/home/ftp" the Debian-distribution provides looks
+        like 
+
+
+        /home/ftp                       Permissions    Owner  Group   Size
+                |-- bin                 d--x--x--x   2 root   root       
+                |   |-- gzip            ---x--x--x   1 root   root   45121
+                |   |-- ls              ---x--x--x   1 root   root   22945
+                |   `-- tar             ----------   1 root   root   77769
+                |
+                |-- etc                 d--x--x--x   2 root   root       
+                |   |-- group           -r--r--r--   1 root   root      18
+                |   |-- passwd          -r--r--r--   1 root   root      44
+                |   `-- pathmsg         -r--r--r--   1 root   root     172
+                |
+                |-- lib                 d--x--x--x   2 root   root
+                |   |-- ld-linux.so.1   -r-xr-xr-x   1 root   root   21375
+                |   |-- libc.so.5.2.18  -rwxr-xr-x   1 root   root  536252
+                |   `-- libc.so.5 -> libc.so.5.2.18
+                |
+                |-- pub                 dr-xr-xr-x   3 root   root
+                |   `-- whatever
+                |
+                `-- welcome.msg         -rw-r--r--   1 root   root     323
+
+
+
+    (c) Changed the home-directory of the anonymous ftp-account to
+        "/home/ano-ftp" by editing the file "/etc/passwd".
+
+        ftp:*:11:11:Anonymous FTP:/home/ano-ftp:/bin/sh
+                                  ^^^^^^^^^^^^^
+                                  home-directory
+
+
+        These 3 steps were the basic setup and already enabled a
+        seperate ftp-areas for each of the 3 virtual hosts.
+        My actual job was a little bit more complicated in that I had
+        to enable disk-quotas (limiting the consumable disk-space per
+        user/group) in each incoming-diretory so the story continues:
+
+
+    (d) Enabled upload-areas in wu-ftpds config-file "/etc/ftpd/ftpaccess"
+
+
+8<----- cut here 8<-----
+upload  /home/ano-ftp/www.sharpers.de  *         no
+upload  /home/ano-ftp/www.sharpers.de  /incoming yes sharpers ftp 0660 nodirs
+upload  /home/ano-ftp/www.swindlers.de *         no
+upload  /home/ano-ftp/www.swindlers.de /incoming yes swindler ftp 0660 nodirs
+upload  /home/ano-ftp/www.usurers.de   *         no
+upload  /home/ano-ftp/www.usurers.de   /incoming yes usurers  ftp 0660 nodirs
+#                                                |      |      |    |     |
+#                              uploads allowed --+      |      |    |     |
+#  uploaded files should be owned by this user ---------+      |    |     |
+#                           dito for the group ----------------+    |     |
+#             access rights for uploaded files ---------------------+     |
+#          creation of directories not allowed ---------------------------+
+8<----- cut here 8<-----
+
+
+        Now, every file uploaded to those ftp-servers belongs to a
+        seperate user for which quotas can be enabled.
+
+
+    (e) Configured the disk-quotas
+
+        Suggested readings: "/usr/doc/quotas.txt" and the Linux 
+        "Quota mini-HOWTO".
+
+          * Added "usrquota=/etc/quota/ano-ftp.users" to the mount-options
+            of the partition "/home/an-ftp" is stored on in "/etc/fstab".
+
+          * Created "/etc/quota/ano-ftp.users" via the "touch"-command
+
+          * Switched on quotas by issuing "quotaon"
+
+          * Set quotas with "edquota swindlers", etc.
+
+            Quotas for user swindlers:
+            /dev/sdb8: blocks in use: 0, limits (soft = 0, hard = 10000)
+                       inodes in use: 1, limits (soft = 0, hard = 1000)
+
+
+            The corresponding disk-space depends on the size of the blocks
+            when you created the filesystem (standard is 1 block = 1 kb).
+
+
+  3. Availability
+
+        The multihome-patch (20kb) for wu-ftpd can be downloaded from
+
+    ftp://ftp.softhome.net/pub/users/brian/multihomed-wu-ftpd-2.4-23.patch
+
+
+        Please read it to get details about the copyright.
+
+
+        The sources for "wu-ftpd" itself are floating around in the net,
+        use archie to find the nearest server that carries them. Change
+        into the directory that is created when unpacking the sources and
+        type 
+
+            patch < ../multihomed-wu-ftpd-2.4-23.patch
+
+        to merge the patch into the sources. The FAQ for wu-ftpd is
+        available from
+
+            http://www.hvu.nl/~koos/wu-ftpd-faq.html
+
+
+End of the Virtual-wu-ftpd mini-HOWTO
+

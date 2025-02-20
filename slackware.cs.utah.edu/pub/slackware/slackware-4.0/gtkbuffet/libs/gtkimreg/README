@@ -1,0 +1,35 @@
+
+                            GtkImreg
+
+Select an area in an image given as GdkImlib structure and
+obtain the coordinates of this image.
+
+The widget represents an image with a mouse drawn rubber box.
+The enhancement against other rubber boxes is that you can
+type the coordinates manually if you want and can gain an
+enhancement in pixel-wise exactness
+It was used in paul to cut images and to insert thumb-nails
+into clickable maps.
+      
+See also the Manpage libgtkimreg.3
+
+Requires:
+GTK+ 1.1.13 or higher, GdkImlib 1.8.1 or higher
+
+Author:
+
+Andreas Tille <tille@physik.uni-halle.de>
+http://www.physik.uni-halle.de/~e2od5
+
+Address at home:
+Gartenstraﬂe 8
+D-38855 Wernigerode
+GERMANY
+
+Address at university:
+Martin-Luther-Universit‰t Halle/Wittenberg
+Fachbereich Physik
+Experimentalphysik II
+Friedeman-Bach-Platz 6
+D-06108 Halle / Saale
+GERMANY

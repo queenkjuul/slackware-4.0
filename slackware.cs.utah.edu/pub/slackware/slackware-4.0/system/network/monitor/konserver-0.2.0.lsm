@@ -1,0 +1,15 @@
+Begin3
+Title: konserver
+Version: 0.2.0
+Entered-date: 12 Aug 1998
+Description: Server which keeps a list of users who are currently online.
+	     Dispatches messages.
+Keywords: online, server, message dispatcher
+Author: <Christoph.Neerfeld@home.ivm.de> (Christoph Neerfeld)
+Maintained-by: <Christoph.Neerfeld@home.ivm.de> (Christoph Neerfeld)
+Primary-site: ftp://ftp.kde.org/pub/kde/unstable/apps/network
+Alternate-site:
+Original-site:
+Platform: Linux, need the thypoon library
+Copying-policy: GPL
+End

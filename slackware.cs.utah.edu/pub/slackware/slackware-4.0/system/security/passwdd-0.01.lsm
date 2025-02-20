@@ -1,0 +1,19 @@
+Begin3
+Title:          passwdd
+Version:        0.01
+Entered-date:   09APR1999
+Description:    passwdd password utilities. This package contains
+		the programs necessary to keep basic synchronization
+		among passwd/shadow files of a small network. There are
+		server for linux and clients for linux, windows and
+		also cgi client on perl.
+Keywords:       passwd security shadow login ISP
+Author:         alex@varna.net (Alexander Feldman)
+Maintained-by:	
+Primary-site:   ftp.varna.net /pub/linux/passwdd
+		99K passwdd-0.01.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:      Linux
+Copying-policy: GNU
+End

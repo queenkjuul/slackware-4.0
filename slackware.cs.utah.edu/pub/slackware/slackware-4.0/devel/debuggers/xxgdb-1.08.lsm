@@ -1,0 +1,15 @@
+
+Begin3
+Title:          xxgdb
+Version:        1.08
+Entered-date:   December 17, 1994
+Description:    X interface to the gdb debugger
+Keywords:       gdb
+Author:         pierre@la.tce.com (Pierre Willard)
+Maintained-by:  svalente@mit.edu (Salvatore Valente)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/debuggers
+Alternate-site: 
+Original-site:  ftp.x.org /contrib/devel_tools
+Platform:       
+Copying-policy: GPL and BSD
+End

@@ -1,0 +1,34 @@
+#!/bin/sh
+DESTDIR=`pwd`/package-enscript
+export DESTDIR
+mkdir -p $DESTDIR
+tar xzvf enscript-1.6.1.tar.gz
+cd enscript-1.6.1
+CFLAGS=-O2 LDFLAGS=-s ./configure --prefix=/usr \
+                                  --with-media=Letter \
+                                  --sysconfdir=/etc
+make
+make install
+mkdir -p $DESTDIR/etc
+# Apparently, enscript's build script is a little bit broken and forgets
+# to install the following two crucial files:
+cp -a /etc/enscript.cfg $DESTDIR/etc/enscript.cfg
+cp -a /usr/share/enscript/enscript.st $DESTDIR/usr/share/enscript/enscript.st
+chown root.bin $DESTDIR/usr/bin $DESTDIR/usr/bin/*
+gzip -9 $DESTDIR/usr/man/man1/*
+mkdir -p $DESTDIR/usr/doc/enscript-1.6.1
+cp -a *.txt ABOUT-NLS AUTHORS COPYING ChangeLog FAQ.html INSTALL NEWS \
+  README* THANKS TODO $DESTDIR/usr/doc/enscript-1.6.1
+chown root.root $DESTDIR/usr/doc/enscript-1.6.1/*
+chmod 644 $DESTDIR/usr/doc/enscript-1.6.1/*
+( cd tests ; make check )
+cd $DESTDIR
+# Warn of zero-length files:
+for file in `find . -type f -print` ; do
+ if [ "`filesize $file`" = "0" ]; then
+  echo "WARNING: zero length file $file"
+ fi
+ if [ "`filesize $file`" = "20" ]; then
+  echo "WARNING: possible empty gzipped file $file"
+ fi
+done

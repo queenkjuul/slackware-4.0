@@ -1,0 +1,17 @@
+Begin3
+Title:          Leda interpreter implementation
+Version:        0.7
+Entered-date:   22DEC98
+Description:    This is an implementation of a Leda interpreter
+                  - Portable to ANSI C & POSIX
+                  - Come with documents in TeX format
+Keywords:       language leda interpreter
+Author:         budd@cs.orst.edu (Timothy Budd)
+Maintained-by:  haubi@geocities.com (Stefan Haubenthal)
+Primary-site:   sunsite.unc.edu /pub/Linux/devel/lang/misc
+                         93k    leda-0.7.tar.gz
+                          1k    leda.lsm
+Alternate-site: ftp.cs.orst.edu /pub/budd/leda
+Platforms:      gcc v2.7.2
+Copying-policy: Freeware
+End

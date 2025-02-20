@@ -1,0 +1,12 @@
+Begin3
+Title:		switchd
+Version:	v0.1 4/1/96
+Entered-date:	4/1/96
+Description:	a daemon to switch vcs after console inactivity
+Keywords:	daemon console switch vc
+Author: 	00edwalter@bsuvc.bsu.edu (Ervin Walter)
+Maintained-by:	00edwalter@bsuvc.bsu.edu (Ervin Walter)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Daemons
+		21kB switchd-0.1.tar.gz
+Copying-policy:	GPL
+End

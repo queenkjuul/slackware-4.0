@@ -1,0 +1,16 @@
+Begin3
+Title:		ascii2postscript
+Version:	1.4.4
+Entered-date:	26Oct98
+Description:	An ASCII to PostScript (level 1 compliant) transformer.
+Keywords:	Text utilities, PostScript utilities.
+Author:		Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Maintained-by:	Hans de Vreught <J.P.M.deVreught@cs.tudelft.nl>
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Printing
+		1 kB ascii2postscript-1.4.4.lsm
+		13 kB ascii2postscript-1.4.4.tar.gz
+Alternate-site: 
+Original-site:  
+Platforms:	Any Unix flavor running perl (4 or 5).
+Copying-policy:	GPL
+End

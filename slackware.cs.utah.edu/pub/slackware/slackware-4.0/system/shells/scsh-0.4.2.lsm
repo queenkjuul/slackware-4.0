@@ -1,0 +1,19 @@
+Begin3
+Title:          scsh (SCheme SHell)
+Version:        0.4.2
+Entered-date:   20MAR96
+Description:    Scsh is a broad-spectrum systems-programming environment for
+                Unix embedded in R4RS Scheme.
+                Mailing List:   scsh@martigny.ai.mit.edu
+                Newsgroup:      alt.lang.scheme.scsh
+                World Wide Web: http://www-swiss.ai.mit.edu/scsh/scsh.html
+Keywords:       scsh, shell, scheme
+Author:         (Brian D. Carlstrom)
+Maintained-by:  scsh-bugs@martigny.ai.mit.edu
+Primary-site:   ftp-swiss.ai.mit.edu /pub/su/scsh
+                1408903 scsh-0.4.2.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Shells
+                1408903 scsh-0.4.2.tgz
+Platforms:      Unix system.
+Copying-policy: GPL
+End

@@ -1,0 +1,27 @@
+
+Begin3
+Title: 		newyacc         
+Version:	1.1       
+Entered-date: 	18JUN97   
+Description:  	NewYacc, an extension to the popular Unix yacc program, 
+		provides a superset of yacc with translations attached 
+		to grammars in addition to actions.  Translations are 
+		similar to simple syntax directed translation schemas in
+		the sense that they will reorder, select, and augment, 
+		and echo the input character stream by appropriately 
+		traversing the completed parse tree.  
+		
+		NewYacc is a front-end to yacc.  In other words, NewYacc 
+		produces a yacc compatible file as output.  
+
+Keywords: 	newyacc yacc lex       
+Author:  	purtilo@cs.umd.edu (Jim Purtilo)	
+        	callahan@cs.umd.edu (Jack Callahan)
+Maintained-by: 	linas@fc.net (Linas Vepstas) 
+Primary-site:  	294kb http://sunsite.unc.edu/devel/lang/compiler_tools/newyacc-1.1.tar.gz
+Alternate-site: 294kb http://linas.org/linux/wise/newyacc-1.1.tar.gz
+Original-site:  188KB ftp://flubber.cs.umd.edu/src/newyacc.1.1.tar.Z
+Platforms: 	linux    
+Copying-policy:	PD 
+End
+

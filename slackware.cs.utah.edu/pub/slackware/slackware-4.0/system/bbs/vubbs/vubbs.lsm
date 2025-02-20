@@ -1,0 +1,24 @@
+Begin3
+Title:		vubbs
+Version:	Beta-3
+Entered-date:	24JUL95
+Description:	VU BBS provides a complete BBS environment for the Linux
+		operating system.  VU BBS offers a very user friendly object 
+		oriented visual interface.  VU also includes tools to simplify
+		general system administration, including visual tools to manage
+		system accounts and log files easily and automatically.  VU BBS
+		includes a news, mail, and party chat system, as well as ip-
+		demand, a menu shell, a complete easy to use system admin
+		environment, a visual file transfer system, MS-DOS doors, 
+		and support for telnet access.  VU BBS is distributed with both
+		aout and elf binaries.  VU BBS components can be used
+		seperately or as part of an integrated BBS environment.
+Keywords:	BBS, VU, admin, users, tape, backup, tycho
+Author:		dyfett@aol.com (David Sugar)
+Maintained-by:	dyfett@aol.com (David Sugar)
+Primary-site:	ftp.amaranth.com /pub/VUBBS
+		vubbs-b3.tar.gz
+Platforms:	Late Linux 1.1.x and above.  Uses later console driver
+                escape sequences for 8 bit transparency modes.
+Copying-policy:	Free/subscription-ware.
+End

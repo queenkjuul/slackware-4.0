@@ -1,0 +1,31 @@
+LSM-Entry
+Begin2
+Title        = C Browsing and Analysis Toolkit
+Version      = 0.1n (ALPHA)
+Desc1        = c-bat creates browsing information during compile time. A server 
+Desc2        = answers information requests from client-applications (like: "where
+Desc3        = is function defined", "which functions call a function", "who uses 
+Desc4        = var. x", ...). Browsing capabilities can be added to own programs
+Desc5        = using provided functions. Some sample clients included.
+Author       = Eckehard Stolz
+AuthorEmail  = stolz@fiffi.sta.sub.org
+Maintainer   = Eckehard Stolz
+MaintEmail   = stolz@fiffi.sta.sub.org
+Site1        = ftp.informatik.tu-muenchen.de
+Path1        = /pub/comp/os/linux/local/ALPHA/c-bat
+File1        = c-bat-0.1n.tar.gz
+FileSize1    = 115393 Bytes
+File2        = c-bat-cc-2.5.8.tar.gz
+FileSize2    = 713171 Bytes
+Required1    = GCC 2.5.8, ncurses, Sys-V IPC
+CopyPolicy1  = GNU GPL
+Keywords     = source browser, programming, cross reference, calltree, c-bat
+Comment1     = This release is not finished yet ! This toolkit is intented to
+Comment2     = give you the possibility to add browsing capabilities to
+Comment3     = your own programming environments ! 
+Comment4     = Still _very_ ALPHA ! Redesigning is in work !
+Entered      = 13MAR94
+EnteredBy    = Eckehard Stolz
+CheckedEmail = stolz@fiffi.sta.sub.org
+End
+

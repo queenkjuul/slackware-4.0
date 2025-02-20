@@ -1,0 +1,31 @@
+Begin2
+Title        = SUP
+Version      =
+Desc1        = Linux port of the CMU sup program. Allows you
+Desc2        = to manage distrubitions of software across machines
+Desc3        = on the net. 
+Desc4        =
+Desc5        =
+Author       =
+AuthorEmail  =
+Maintainer   = Craig I. Hagan
+MaintEmail   = hagan@cs.umass.edu
+Site1        = opine.cs.umass.edu:linux/networking/sup.tar.gz
+Path1        =
+File1        =
+FileSize1    = 173242
+CopyPolicy1  = free, (c) carnegie mellon university
+CopyPolicy2  =
+Keywords     = distribution, sup
+Comment1     =
+Comment2     =
+Comment3     =
+Comment4     =
+RelFiles1    =
+RelFiles2    =
+RelFiles3    =
+Entered      =
+EnteredBy    =
+CheckedEmail =
+End
+

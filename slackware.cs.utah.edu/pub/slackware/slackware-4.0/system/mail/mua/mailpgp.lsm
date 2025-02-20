@@ -1,0 +1,18 @@
+Begin3
+Title: mailpgp
+Version: 0.75b
+Entered-date:04APR98
+Description: An email interface for pine and other email programs <?>. It 
+  utilizes the power of PGP to encrypt, sign and decipher email messages.
+  Of course, you must have PGP version 2.6.* and/or 5.0 installed on your
+  system. mailPGP can be used to encrypt, sign, decrypt, acquire new keys
+  and more.
+Keywords: Email PGP 
+Author: Jeremy Dinsel <dinselj@sighsy.cup.edu>
+Maintained-by: Jeremy Dinsel 
+Primary-site:  http://sighsy.cup.edu/~dinselj/mailpgp.html
+Alternate-site: 
+Original-site:  http://sighsy.cup.edu/~dinselj/mailpgp.html
+Platforms: Linux and ... ?
+Copying-policy: GPL
+End

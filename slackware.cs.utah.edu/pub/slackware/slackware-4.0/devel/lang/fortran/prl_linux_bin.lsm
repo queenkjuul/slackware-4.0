@@ -1,0 +1,18 @@
+Begin3
+Title:          Programmer's Reusable Library (PRL)
+Version:        0.7
+Entered-date:   02DEC95
+Description:    Seven g77-callable libraries for POSIX-interfacing, F77 data
+                type operations, 2D/3D graphics incl hidden-line surface plots,
+                and world mapping.  Graphics is conceptually similar to DISSPLA
+                except PRL strives to be be object-based.
+Keywords:       Fortran library g77 OO graphics plots surfaces maps DISSPLA
+Author:         oa@iah.com (Rick Lutowski)
+Maintained-by:  
+Primary-site:   sunsite.unc.edu  /pub/Linux/devel/lang/fortran
+                2MB prl_linux_bin.tar.gz
+Alternate-site: iah.com  usr.oa
+Original-site:  
+Platforms:      
+Copying-policy: Copyrighted but freely redistributable under Linux
+End

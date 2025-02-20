@@ -1,0 +1,395 @@
+LANGUAGE = "Russian", "Russian"
+
+"00_index.txt"
+"00_index.rus"
+
+"dirs.txt"
+"dirs.rus"
+
+"00global.txt"
+"00global.rus"
+
+"Press the ENTER key to return to File Index Menu.\n"
+"Нажмите ENTER для возврата в меню индексного указателя"
+
+"Press ENTER to continue, or ESC to abort...."
+"Для продолжения нажмите ENTER, ESC - для отказа"
+
+"Press any key to return to file index..."
+"Нажмите любую клавишу для возврата к индексному указателю..."
+
+"Press any key to continue..."
+"Для продолжения нажмите любую клавишу..."
+
+"Please insert %s disc #%d.\n\n"
+"Вставьте %s диск #%d.\n\n"
+
+"Please wait while files are being uncompressed...\n"
+"Распаковка файлов. Ждите...\n"
+
+"Please run this program through File Manager in Windows.\n"
+"Эта программа запускается в среде Windows.\n"
+
+"Loading config file...\n"
+"Загрузка файла конфигурации...\n"
+
+"Locating %s....\n"
+"Размещение %s....\n"
+
+"Select Language...\n\n"
+"Выбор языка...\n\n"
+
+"Checking cursor position..."
+"Проверка позиции курсора..."
+
+"File %s is a windows program.\n"
+"Файл %s - программа для Windows.\n"
+
+"Language is not changed.\n"
+"Язык не изменен.\n"
+
+"Language changed.\n"
+"Язык изменен.\n"
+
+"Copying file....\n"
+"Копирование файла....\n"
+
+"Exiting program....."
+"Завершение программы....."
+
+"choice: "
+"Ваш выбор: "
+
+"Abort..."
+"Прервать..."
+
+"%s Bytes"
+"%s байт"
+
+"Directory"
+"Директория"
+
+"Filename"
+"Имя файла"
+
+"File Size"
+"Размер файла"
+
+"Date"
+"Дата"
+
+"Description"
+"Описание"
+
+"Percent: "
+"Часть: "
+
+"Word #: "
+"Слово #: "
+
+"Line #: "
+"Строка #: "
+
+"Source:"
+"Источник:"
+
+"Destination:"
+"Направляется:"
+
+"Current Directory:"
+"Текущая директория:"
+
+"Avail Diskspace"
+"На диске свободно"
+
+"Processing... %d%"
+"Выполнение... %d%"
+
+"Jump to [P]ercent, [W]ord, [L]ine? "
+"Указать на часть [P], слово [W], строку [L]? "
+
+"Cursor at %d%%, %ld/%ld char, %ld/%ld word, %ld/%ld line"
+"Курсор на %d%%, %ld/%ld символ, %ld/%ld слово, %ld/%ld строку"
+
+"Executable program."
+"Исполняемая программа"
+
+"Executable batch file."
+"Исполняемый BAT-файл"
+
+"Probable text file. (Doc?)"
+"Текстовый файл (возможно)"
+
+"Probable documentation file."
+"Файл-документ (возможно)."
+
+"Description file."
+"Файл-дескриптор."
+
+"You're about to delete the directory:\n"
+"Вы решили стереть директорию:\n"
+
+"All files and sub directories will be erased.\n"
+"Все файлы и поддиректории будут удалены.\n"
+
+"Are you sure you want to do this (Y/N)? "
+"Вы уверены в необходимости этого (Y/N)? "
+
+"Removing dir %s\n"
+"Удаление директории %s\n"
+
+"Removing file %s\n"
+"Удаление файла %s\n"
+
+"Removing directory %s\\%s\n"
+"Удаление директории %s\\%s\n"
+
+"Removing directory %s%s\n"
+"Удаление директории %s%s\n"
+
+"Directory %s has been removed.\n"
+"Директория %s удалена.\n"
+
+"Can't find file %s\n"
+"Не найден файл %s\n"
+
+"Can't find %s disc #%d.\n"
+"Не найден %s диск #%d.\n"
+
+"Can't create file %s.\n"
+"Невозможно создать файл %s.\n"
+
+"Cannot chdir to the directory %s.\n"
+"Невозможно изменить директорию на %s.\n"
+
+"Cannot create the directory %s.\n"
+"Невозможно создать директорию %s.\n"
+
+"Cannot execute program %s.\n"
+"Невозможно выполнить программу %s.\n"
+
+"Invalid pathname %s\n\n"
+"Некорректно задан путь %s\n\n"
+
+"%s is not a valid pathname.\n"
+"%s некорректное описание.\n"
+
+"'%c' is not a valid drive.\n"
+"'%c' некорректное описание.\n"
+
+"Drive %c: doesnt exist.\n"
+"Диск %c: отсутствует.\n"
+
+"View File:\n\n"
+"Просмотр файла:\n\n"
+
+"File Index Menu:\n\n"
+"Меню индексов файлов:\n\n"
+
+"Unzip: Destination Query"
+"Unzip: куда направить"
+
+"Unzip: Uncompressing File"
+"Unzip: распаковка файла"
+
+"Unzip Menu: Directory Browswer.\n\n"
+"Меню Unzip: просмотр дерева.\n\n"
+
+"Unzip Menu: Directory name edit.\n\n"
+"Меню Unzip: изменить директорию.\n\n"
+
+"Copy: Destination Query"
+"Copy: куда копировать"
+
+"Copy: Copying File"
+"Copy: копирование файл"
+
+"Copy Menu: Directory name edit.\n\n"
+"Меню Copy: изменить директорию.\n\n"
+
+"Contents of zipped file %s:\n"
+"Содержимое ZIP-файла %s:\n"
+
+"View, Version %3.2f\n"
+"Просмотр, версия %3.2f\n"
+Note. I guess it would be better leave this line as is, i.e. in English.
+
+"Up Arrow    - Prev line.\n"
+"Up Arrow    - на строку вверх.\n"
+
+"Down Arrow  - Next line.\n"
+"Down Arrow  - на строку вниз.\n"
+
+"PgUp        - Prev Page.\n"
+"PgUp        - на предыдущую страницу.\n"
+
+"PgDn        - Next Page.\n"
+"PgDn        - на следующую страницу.\n"
+
+"Home        - Jump to beginning of list.\n"
+"Home        - на начало списка.\n"
+
+"End         - Jump to end of list.\n"
+"End         - в конец списка.\n"
+
+"Home        - Jump to beginning of file.\n"
+"Home        - на начало файла.\n"
+
+"End         - Jump to end of file.\n"
+"End         - в конец файла.\n"
+
+"Left Arrow  - Move cursor left one character.\n"
+"Left Arrow  - курсор на символ влево.\n"
+
+"Right Arrow - Move cursor right one character.\n"
+"Right Arrow - курсор на символ вправо.\n"
+
+"Up Arrow    - Suggest the last directory used for unzip.\n"
+"Up Arrow    - предложить последнюю директорию для распаковки.\n"
+
+"Down Arrow  - Suggest other destination directories.\n"
+"Down Arrow  - предложить другую целевую директорию.\n"
+
+"Home        - Jump to beginning of line.\n"
+"Home        - на начало строки.\n"
+
+"End         - Jump to end of line.\n"
+"End         - на конец строки.\n"
+
+"Up Arrow    - Prev file.\n"
+"Up Arrow    - пред. файл.\n"
+
+"Down Arrow  - Next file.\n"
+"Down Arrow  - след. файл.\n"
+
+"PgUp        - Prev Page.\n"
+"PgUp        - пред. стр.\n"
+
+"PgDn        - Next Page.\n"
+"PgDn        - след. стр.\n"
+
+"Home        - Jump to beginning of file list.\n"
+"Home        - на начало списка файлов.\n"
+
+"End         - Jump to end of file list.\n"
+"End         - в конец списка файлов.\n"
+
+"F7          - Look up occurrences of a word on the entire CDROM.\n"
+"F7          - поиск включений слова по всему CDROM.\n"
+
+"S, F10      - Search for a pattern.\n"
+"S, F10      - поиск по трафарету.\n"
+
+"R, F9       - Reverse search for a pattern.\n"
+"R, F9       - обратный поиск по трафарету.\n"
+Note. I am not sure this is absolutely adequate, since I did not meet
+      "reverse search" before in my practice.
+
+"ESC         - Abort back to previous menu.\n"
+"ESC         - прерваться и вернуться к предыдущему меню.\n"
+
+"ESC         - Abort back to the file index menu.\n"
+"ESC         - прерваться и вернуться к Меню индексов файлов.\n"
+
+"ESC         - Abort back to dir edit window.\n"
+"ESC         - прерваться и вернуться к выбору директорий.\n"
+
+"Alt-X       - Exit the view program.\n"
+"Alt-X       - выход из программы просмотра.\n"
+
+"Enter       - Begin copy the selected file.\n"
+"Enter       - начать копирование выбранных файлов.\n"
+
+"Enter       - Begin uncompress the selected file.\n"
+"Enter       - начать распаковку выбранных файлов.\n"
+
+"Enter       - Enter directory, or change drive.\n"
+"Enter       - выбор директории или смена диска.\n"
+
+"Enter       - Select file, or enter directory.\n"
+"Enter       - выбор файла или директории.\n"
+
+"Enter       - View a text file, or executes a program.\n"
+"Enter       - просмотр текстового или исполнение программного файла.\n"
+
+"TAB         - Switch to directory browser window.\n"
+"TAB         - перейти в окно просмотра директорий.\n"
+
+"TAB         - Yank current directory to edit window.\n"
+"TAB         - поместить в окно текущую директорию.\n"
+Note. It is not clear for me what does it mean, which action will be
+      done or can be done by user after this choice? If I knew the
+      Russian text would be more relevant.
+
+"C           - Copy file.\n"
+"C           - копировать файл.\n"
+
+"V           - View file headers inside a zipped file.\n"
+"V           - просмотр заголовка в ZIP-файле.\n"
+
+"F5          - Select a new language.\n"
+"F5          - выбор языка сообщений.\n"
+
+"F6          - Toggle between English and the selected language.\n"
+"F6          - переключатель языка сообщений: английский/выбранный.\n"
+
+"Alt-J       - Jump to another place in file.\n"
+"Alt-J       - на другое место в файле.\n"
+
+"Alt-P       - Show the cursorbar's position in file.\n"
+"Alt-P       - показать местоположение курсора в файле.\n"
+
+"Alt-G       - Toggle between directory and global indexing methods.\n"
+"Alt-G       - переключатель: глобальный индекс/дерево директорий.\n"
+
+"Alt-R       - Remove the current directory.\n"
+"Alt-R       - удалить текущую директорию.\n"
+
+"***** Searching *****"
+"******* Поиск *******"
+
+"********** Please Wait **********"
+"***** Подождите, пожалуйста *****"
+
+"********** Pattern Not Found **********"
+"** Не найдено соответствия трафарету **"
+
+"Search: "
+"Поиск: "
+
+"R Srch: "
+"Обр. поиск: "
+
+"<Esc>-Abort Search"
+"<Esc>-прервать поиск"
+
+"<S>-Srch  <R>-Rev Srch"
+"<S>-поиск  <R>-обр. поиск"
+
+" <S>-Srch  <R>-Rev Srch  <Esc>-Prev Mode  <Alt-X>-Exit  <?>-Help"
+" <S>-поиск <R>-обр. поиск <Esc>-возврат  <Alt-X>-выход  <?>-помощь"
+
+"Help"
+"Помощь"
+
+" <7>/<8>-Bits Mask   <Alt-J>-Jump   <Alt-P>-Show Cursor Position"
+" <7>/<8>-бинарн.трафарет  <Alt-J>-перейти   <Alt-P>-позиция курсора"
+
+" <Enter>-Select/Begin To Uncompress File     <TAB>-Switch Window"
+" <Enter>-выбор/начало распаковки файла     <TAB>-переход между окнами"
+
+" <Enter>-Selec./Begin To Copy File           <TAB>-Switch Window"
+" <Enter>-выбор/начало копирования файла    <TAB>-переход между окнами"
+
+" <Enter>-Select <F5>/<F6>-Lang Selct <C>-Copy <Alt-G>-Swtch Indx"
+" <Enter>-выбор  <F5>/<F6>-язык    <C>-копия <Alt-G>-индекс/дерево"
+
+" <Enter>-Select  <F7>-Word Lookup  <C>-Copy  <Alt-G>-Swtch Index"
+" <Enter>-выбор   <F7>-поиск слова  <C>-копия <Alt-G>-индекс/дерево"
+
+" <Enter>-View File/Exec Program <Alt-R>-Remove Current Directory"
+" <Enter>-просмотр/исполнение    <Alt-R>-удалить текущую директорию"
+
+" <F10>-Find Next Occur.    <F9>-Find Prev Occur.    <Esc>-Abort Search"
+" <F10>-след. включение     <F9>-пред. включение     <Esc>-прервать поиск"
+

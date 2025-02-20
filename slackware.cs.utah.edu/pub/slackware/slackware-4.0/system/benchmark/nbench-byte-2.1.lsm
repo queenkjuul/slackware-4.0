@@ -1,0 +1,18 @@
+Begin3
+Title:          nbench-byte
+Version:        2.1
+Entered-date:   11DEC97
+Description:    BYTE Magazine's native benchmarks (also called BYTEmark)
+                designed to expose the capabilities of a system's CPU, FPU,
+                and memory system.
+Keywords:       benchmark
+Author:         ported by mayer@tux.org (Uwe F. Mayer)
+Maintained-by:  mayer@tux.org (Uwe F. Mayer)
+Primary-site:   ftp.tux.org /pub/tux/mayer/
+                718 nbench-byte-2.1.lsm
+                195315 nbench-byte-2.1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/benchmark/
+Original-site:  http://www.byte.com/bmark/bmark.htm
+Platforms:      Linux, many versions of unix
+Copying-policy: freely distributable
+End

@@ -1,0 +1,16 @@
+Begin3
+Title:          news2mail
+Version:        1.1
+Entered-date:   18FEB98
+Description:    news2mail is a Usenet -> e-mail gate. It allows you to forward
+                digested Usenet groups to e-mail addresses on a daily basis,
+                thus creating a very easy solution for reading Usenet offline.
+Keywords:       Usenet, e-mail, news, news2mail
+Author:         alexsh@linux.org.il (Alex Shnitman)
+Maintained-by:  alexsh@linux.org.il (Alex Shnitman)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/news/misc
+                15kB news2mail-1.1.tar.gz
+Original-site:  http://news2mail.home.ml.org/
+Platforms:      Linux, probably others too
+Copying-policy: GPL
+End

@@ -1,0 +1,495 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.05 [en] (X11; I; Linux 2.0.34 i686) [Netscape]">
+   <META NAME="CREATED" CONTENT="19990103;16461000">
+   <META NAME="CHANGEDBY" CONTENT="Stewart Heitmann">
+   <META NAME="CHANGED" CONTENT="19990119;22463200">
+<STYLE>
+	<!--
+		@page { size: 21.01cm 29.69cm; margin-left: 3.18cm; margin-right: 3.18cm; margin-top: 2.54cm; margin-bottom: 2.54cm }
+	-->
+	</STYLE>
+</HEAD>
+<BODY>
+
+<CENTER>
+<H1 STYLE="margin-top: 0.42cm; margin-bottom: 0.21cm; page-break-after: avoid">
+Introduction to argtable 1.1<FONT FACE="helvetica">.</FONT></H1></CENTER>
+
+<CENTER>
+<ADDRESS STYLE="margin-bottom: 0.50cm; font-weight: medium; text-align: center; page-break-before: auto; page-break-after: auto">
+Stewart Heitmann</ADDRESS></CENTER>
+
+<CENTER>
+<ADDRESS>
+January 1999</ADDRESS></CENTER>
+
+<HR>
+<H1>
+Legal notice</H1>
+
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-weight: medium">The
+argtable library and accompanying documentation is copyright &copy; 1998,
+1999 Stewart Heitmann (Stewart.Heitmann@tip.csiro.au)</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; font-weight: medium">Argtable is free software;
+you can redistribute it and/or modify it under the terms of the GNU Library
+General Public License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-weight: medium; page-break-before: auto; page-break-after: auto">This
+software is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.</DIV>
+
+<DIV STYLE="margin-bottom: 0.00cm; font-weight: medium">See the GNU Library
+General Public License for more details.</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-weight: medium">You
+should have received a copy of the GNU Library General Public License along
+with this library; if not, write to the Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.</DIV>
+
+
+<P>
+<HR>
+<H1 STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; page-break-before: auto; page-break-after: auto">
+Overview</H1>
+Argtable is a freely available programmer's library for parsing the command
+line arguments of any C/C++ program.
+<BR><SPAN STYLE="font-weight: medium">The programmer specifies the desired
+format of the command line arguments in one or more statically defined
+arrays known as <I>argument tables</I>. Each row of an argument table specifies
+the data type of an expected argument, its default value (if any), and
+nominates a user-defined program variable as storage for the incoming argument
+value. Processing the command line is done by calling an argtable library
+function which attempts to resolve the program's command line arguments
+with the entries of a given argument table. If successful, the command
+line arguments are thus known to be valid and their values are ready and
+available for use in their nominated program variables. Otherwise, erroneous
+argument usages are automatically trapped and reported back to the main
+program for appropriate action.
+<BR>Argtable also provides auxiliary functions that allow the programmer
+to generate plain text descriptions of the individual arguments and their
+overall usage syntax directly from an argument table. These greatly assist
+the implementation of on-line help facilities, and ensure that help messages
+are always up to date with the code.
+<BR>Perhaps best of all, the argtable library has only seven functions
+and thus is very easy to learn.&nbsp;</SPAN>
+<H3>
+Styles of command line arguments.</H3>
+
+<DIV STYLE="font-style: normal; font-weight: medium">Argtable supports
+two styles of command line arguments, <I>tagged</I> and <I>untagged</I>.</DIV>
+Tagged arguments are identified by a prefix tag, as in <B>-o file </B>or
+<B>title:mystuff</B>, and may appear anywhere on the command line. The
+format of the tags is completely general; they appear exactly as defined
+in the argument table, without being restricted to any particular formatting
+style or identifying character traits. The programmer may implement any
+style of argument tag desired, including such common styles as <B>-title
+mystuff</B>, <B>title:mystuff</B>, <B>--title mystuff</B>, or <B>title=mystuff</B>.
+<BR>Untagged arguments on the other hand have no prefix; they are identified
+purely by their ordering on the command line. The two styles of arguments
+may be freely mixed, whereupon the tagged arguments are always processed
+first, leaving any remaining (untagged) arguments to be scanned strictly
+from left to right.
+<BR>Argument values may be of type <I>integer</I>, <I>double</I>, <I>string</I>,
+or <I>boolean</I>. Doubles may be given in either floating point or scientific
+notation, and strings may be either quoted or unquoted. Booleans will accept
+any of the keywords <B>on</B>, <B>off</B>, <B>yes</B>, <B>no</B>, <B>true</B>,
+or <B>false</B> and yield an integer value of 0 (negative) or 1 (affirmative)
+accordingly. A special argument type called <I>literal</I> is also provided;
+it yields an integer value according to the presence or absence of a given
+string literal on the command line. It is useful for specifying unparameterised
+command line switches such as <B>-verbose</B> and <B>-help</B>.
+<H3>
+Optional arguments and default values.</H3>
+
+<DIV STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium">Arguments
+may be assigned <I>default values</I> that take effect when no matching
+command line argument could be found. When you specify a default value
+for an argument you are, in effect, declaring that argument as being optional.
+Arguments without defaults are, by definition, regarded as mandatory arguments.</DIV>
+
+<H3 STYLE="page-break-before: always">
+Supported platforms</H3>
+
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Since
+argtable conforms to <B>ansi C</B> requirements it should, in theory, compile
+on any system with a standard ansi C compiler. To date, argtable has been
+successfully compiled on:</DIV>
+
+<UL>
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><B>MIPSpro
+C/C++</B> on IRIX 6.2, 6.3 and IRIX64 6.2</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><B>DEC
+C/C++</B> on Digital Unix V4.0 (OSF/1)</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><B>GNU
+gcc/g++</B> 2.7.2 on SunOS 5.5.1 and Linux 2.0.30.</DIV>
+</UL>
+
+<HR>
+<H1>
+Installation</H1>
+
+<DIV STYLE="margin-top: 0.25cm; font-style: normal; font-weight: medium">Having
+untarred the argtable distribution file (<I>argtable-1.1.tar</I>), cd to
+the <I>argtable/</I> directory and execute the <B><I>configure</I></B>
+script. This script will determine which type of system you are running
+and create the <I>Makefile.config</I> file from the appropriate configuration
+file in the <I>config/</I> directory.</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; font-style: normal; font-weight: medium">Type
+<B><I>make clean</I></B> to remove any old object files and executables
+from the argtable directory tree.</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; font-style: normal; font-weight: medium">Type
+<B><I>make all</I></B> to build the executables and libraries. There shouldn't
+be any compiler warning or errors.</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; font-style: normal; font-weight: medium">Type
+<B><I>make runtest</I></B> to run the system tests (optional). You ought
+to see some messages like this:</DIV>
+
+<DIV STYLE="margin-left: 1.27cm; margin-top: 0.25cm; font-style: normal; font-weight: medium"><FONT FACE="courier"></FONT>
+
+<P><FONT FACE="courier">RUNNING TESTS test10 test10cc test11 test11cc</FONT></DIV>
+<FONT FACE="courier">test10 OK</FONT>
+<BR><FONT FACE="courier">test10cc OK</FONT>
+<BR><FONT FACE="courier">test11 OK</FONT>
+<BR><FONT FACE="courier">test11cc OK</FONT>
+<BR><FONT FACE="courier">ALL TESTS PASSED</FONT>
+
+<P STYLE="margin-top: 0.25cm; font-style: normal; font-weight: medium">If
+you get the "all tests passed" message then you can be confident argtable
+is working properly.
+
+<P STYLE="margin-top: 0.25cm; font-style: normal; font-weight: medium">Edit
+the <B><I>INSTALL_DIR</I></B> variable in the top level Makefile to be
+the path where you would like to install the argtable libraries and documentation.
+Nominally it is defined as <I>INSTALL_DIR=/usr</I>. The install process
+will put files in the directories:
+<BR><FONT FACE="courier">${INSTALL_DIR}/include</FONT>
+<BR><FONT FACE="courier">${INSTALL_DIR}/lib</FONT>
+<BR><FONT FACE="courier">${INSTALL_DIR}/man/man3/</FONT>
+<BR><FONT FACE="courier">${INSTALL_DIR}/doc/argtable</FONT>
+<BR>If these directories do not already exist you may have to create them
+manually, depending upon your system.
+
+<P STYLE="margin-top: 0.25cm; font-style: normal; font-weight: medium">As
+root, type <B><I>make install</I></B> to install argtable into ${INSTALL_DIR}.
+You may later use <B><I>make uninstall</I></B> to remove these files.
+<BR>
+<HR>
+<H1>
+Argument tables in detail.</H1>
+
+<DIV STYLE="font-style: normal; font-weight: medium">An argument table
+is declared as an array of <I>arg_rec</I> structs, with each array element
+pertaining to a single command line argument. The <I>arg_rec</I> struct
+is defined in <I>argtable.h</I> as:</DIV>
+
+<PRE STYLE="margin-bottom: 0.00cm; line-height: 100%; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier">typedef enum {arg_int=0,arg_dbl,arg_str,arg_bool,arg_lit} arg_type;
+typedef struct
+&nbsp; {
+&nbsp; char *tagstr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* <I>argument tag string</I> */
+&nbsp; char *argname;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* <I>argument name string </I>*/
+&nbsp; arg_type argtype;&nbsp;&nbsp;&nbsp; /* <I>argument data type </I>*/
+&nbsp; void *valueptr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* <I>pointer to user storage location </I>*/
+&nbsp; char *defaultstr;&nbsp;&nbsp;&nbsp; /* <I>default argument value, as a string</I> */
+&nbsp; char *argdescrip;&nbsp;&nbsp;&nbsp; /* <I>argument description string</I> */
+&nbsp; } arg_rec;</FONT></PRE>
+
+<DIV STYLE="margin-left: 0.02cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">An
+argument table might, for example, be defined as follows:</DIV>
+
+<PRE STYLE="margin-top: 0.51cm; margin-bottom: 0.00cm; page-break-before: auto; page-break-after: auto"><FONT FACE="courier">int main(int argc, char **argv)&nbsp;
+&nbsp; {
+&nbsp; char str[50];&nbsp;
+&nbsp; double grad;&nbsp;
+&nbsp; int c;&nbsp;
+&nbsp; arg_rec argtable[] =&nbsp;
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp; {"-tit ", "&lt;title>", arg_str, str, "noname","\t\t title"},&nbsp;
+&nbsp;&nbsp;&nbsp; {"grad:", "gradient",arg_dbl, &amp;grad, NULL, "\t line gradient"},
+&nbsp;&nbsp;&nbsp; {NULL, "y-int", arg_int, &amp;c, "0", "\t\t y-intercept"}&nbsp;
+&nbsp;&nbsp;&nbsp; };&nbsp;
+&nbsp; const size_t narg = sizeof(argtable)/sizeof(arg_rec);&nbsp;
+&nbsp; ...</FONT></PRE>
+<B>The tag string:</B>
+<BR>The first field of arg_rec is the argument's tag string. It defines
+the prefix literal that identifies a tagged argument. The tag string is
+optional, but when present it must contain at least one non-whitespace
+character. Alternatively it can be given as NULL thus declaring the argument
+as untagged.
+
+<P STYLE="margin-top: 0.43cm; margin-bottom: 0.00cm; font-style: normal; page-break-after: avoid"><B>The
+name string:</B>
+<BR>The second field of arg_rec is the argument's name string. It is not
+actually used to process the command line arguments, rather it defines
+the name of the argument as it appears in the description strings generated
+by the <I>arg_syntax()</I> and <I>arg_glossary()</I> library functions.
+Those functions automatically substitute any NULL names with the argument's
+data type enclosed in angled brackets, as in "&lt;int>" or "&lt;string>".
+
+<P STYLE="margin-top: 0.43cm; margin-bottom: 0.00cm; font-style: normal; page-break-after: avoid"><B>The
+data type:</B>
+<BR>The third field is an enumerated type that defines the data type of
+the command line argument. Possible values are <I>arg_int</I>, <I>arg_dbl</I>,
+<I>arg_str</I>, <I>arg_bool</I>, and <I>arg_lit</I>. They represent <I>integer</I>,
+<I>double</I>, <I>string</I>, <I>boolean</I>, and <I>literal</I> arguments
+respectively.
+
+<P STYLE="margin-top: 0.43cm; margin-bottom: 0.00cm; font-style: normal; page-break-after: avoid"><B>The
+data pointer:</B>
+<BR>The fourth field is a pointer-to-void that gives the address of the
+user-defined program variable that is to be used to store the argument's
+value. A NULL pointer here causes the value to be discarded once is has
+been scanned.
+<BR>Take care that the data type of of the target memory location matches
+that specified in the previous column. Arguments of type <I>arg_int</I>,
+<I>arg_bool</I>, and <I>arg_lit</I> must each point to an <I>integer</I>
+variable. Those of type <I>arg_dbl</I> must point to a <I>double</I> and
+those of <I>arg_str</I> must point to a <I>char array</I>.
+
+<P STYLE="margin-top: 0.43cm; margin-bottom: 0.00cm; font-style: normal; page-break-after: avoid"><B>The
+default value:</B>
+<BR>The fifth field is a string which contains an optional default value
+for the argument. It is defined as a string and automatically cast to the
+appropriate data type at run time. A NULL value indicates no default.
+
+<P STYLE="margin-top: 0.43cm; margin-bottom: 0.00cm; font-style: normal; page-break-after: avoid"><B>The
+description string:</B>
+<BR>The sixth and final field allows the programmer to enter a brief description
+of the argument. It is these descriptions that are output by the <I>arg_glossary()</I>
+function. A NULL value causes that entry to be omitted from the glossary
+output.
+<BR>
+<HR>
+<H1>
+The argtable library functions</H1>
+
+<DIV STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Of
+all the argtable library functions, the three basic functions <I>arg_scanargv()</I>,
+<I>arg_syntax()</I> and <I>arg_glossary()</I> are usually all that is required
+to implement a simple command line grammar. The remaining library functions
+afford greater control over the argument parsing for more complex grammars,
+or just make for convenience.
+<BR>&nbsp;</DIV>
+
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-style: normal; page-break-before: auto; page-break-after: auto"><B><I><FONT FACE="Courier New,Courier"><FONT COLOR="#000000"><FONT SIZE=+1>int
+arg_scanargv(int argc, char** argv, arg_rec *argtable, int n, char* CmdLine,
+char* ErrMsg, char* ErrMark);</FONT></FONT></FONT></I></B></DIV>
+
+<DIV STYLE="margin-left: 1.29cm; margin-right: 1.22cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Scans
+the command line arguments in <I>argv[]</I> according to the <I>n</I> argument
+entries given in <I>*argtable</I>. Returns 1 upon success, else 0.&nbsp;
+A copy of the command line is always written into <I>*CmdLine</I> and any
+error reporting information is written into <I>*ErrMsg</I> and <I>*ErrMark</I>.</DIV>
+
+<DIV STYLE="margin-top: 0.51cm; margin-bottom: 0.00cm; font-style: normal; page-break-before: auto; page-break-after: auto"><B><I><FONT FACE="Courier New,Courier"><FONT SIZE=+1>const
+char* arg_syntax(const arg_rec* argtable, int n);</FONT></FONT></I></B></DIV>
+
+<DIV STYLE="margin-left: 1.31cm; margin-right: 1.18cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Generates
+a single line string describing the usage syntax of the <I>n</I> element
+argument table at <I>*argtable</I>.</DIV>
+
+<DIV STYLE="margin-top: 0.51cm; margin-bottom: 0.00cm; font-style: normal; page-break-before: auto; page-break-after: auto"><B><I><FONT FACE="Courier New,Courier"><FONT SIZE=+1>const
+char* arg_glossary(const arg_rec* argtable, int n, const char* prefix);</FONT></FONT></I></B></DIV>
+
+<DIV STYLE="margin-left: 1.27cm; margin-right: 1.22cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Generates
+a multi-line glossary string from an argument table, one line per argument
+table entry. Each line is prefixed with the string in <I>*prefix.</I> Argument
+table records with NULL description fields are omitted from the glossary.</DIV>
+
+<DIV STYLE="margin-top: 0.51cm; margin-bottom: 0.00cm; font-style: normal; page-break-before: auto; page-break-after: auto"><B><I><FONT FACE="Courier New,Courier"><FONT SIZE=+1>void
+arg_catargs(int argc, char **argv, char *str);</FONT></FONT></I></B></DIV>
+
+<DIV STYLE="margin-left: 1.27cm; margin-right: 1.22cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Concatenates
+the command line arguments in <I>argv[]</I> into a one line string of space
+separated arguments and stores the result in <I>*str</I>. This is useful
+for preparing an argument string for the <I>arg_scanstr()</I> function.</DIV>
+
+<DIV STYLE="margin-top: 0.51cm; margin-bottom: 0.00cm; font-style: normal; page-break-before: auto; page-break-after: auto"><B><I><FONT FACE="Courier New,Courier"><FONT SIZE=+1>void
+arg_dump(FILE* fp, const arg_rec* argtable, int n);</FONT></FONT></I></B></DIV>
+
+<DIV STYLE="margin-left: 1.27cm; margin-right: 1.20cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Prints
+the contents of the argument table at <I>*argtable</I> to the stream <I>fp</I>.
+This is useful for debugging.</DIV>
+
+<DIV STYLE="margin-top: 0.51cm; margin-bottom: 0.00cm; font-style: normal; page-break-before: auto; page-break-after: auto"><B><I><FONT FACE="Courier New,Courier"><FONT SIZE=+1>arg_rec
+arg_record(char *tagstr, char *argname, arg_type argtype, void *valueptr,
+char *defaultstr, char *argdescrip);</FONT></FONT></I></B></DIV>
+
+<DIV STYLE="margin-left: 1.27cm; margin-right: 1.20cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Returns
+an <I>arg_rec</I> struct pre-filled with the given values. Provides a convenient
+method for constructing argument table records dynamically.</DIV>
+
+<DIV STYLE="margin-top: 0.51cm; margin-bottom: 0.00cm; font-style: normal; page-break-before: auto; page-break-after: auto"><B><I><FONT FACE="Courier New,Courier"><FONT SIZE=+1>int
+arg_scanstr(char* str, arg_rec *argtable, int n, char* ErrMsg, char* ErrMark);</FONT></FONT></I></B></DIV>
+
+<DIV STYLE="margin-left: 1.27cm; margin-right: 1.20cm; margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Much
+like <I>arg_scanargv()</I> but scans the arguments from a string instead
+of argv[].</DIV>
+
+<DIV STYLE="margin-left: 0.05cm; margin-top: 0.51cm; margin-bottom: 0.00cm; page-break-before: auto; page-break-after: auto">For
+more comprehensive descriptions of these functions see the unix man pages</DIV>
+<B><A HREF="arg_catargs.html">arg_catargs.3</A></B>
+<BR><B><A HREF="arg_glossary.html">arg_glossary.3</A></B>
+<BR><B><A HREF="arg_record.html">arg_record.3</A></B>
+<BR><B><A HREF="arg_scanargv.html">arg_scanargv.3</A></B>
+<BR><B><A HREF="arg_scanstr.html">arg_scanstr.3</A></B>
+<BR><B><A HREF="arg_syntax.html">arg_syntax.3</A></B>
+<BR><B><A HREF="arg_typestr.html">arg_typestr.3</A></B>
+<BR>
+<HR>
+<H1>
+An example program</H1>
+
+<DIV STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">
+<PRE><FONT FACE="Courier New,Courier"><FONT SIZE=+1>Usage: example [-tit&lt;title>] grad:gradient [y-int]
+&nbsp;&nbsp; -tit&lt;title>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; title
+&nbsp;&nbsp; grad:gradient&nbsp;&nbsp;&nbsp; line gradient&nbsp;
+&nbsp;&nbsp; y-int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y-intercept</FONT></FONT></PRE>
+</DIV>
+
+<DIV STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">This
+simple program implements the above argument usage which it also displays
+on stdout when invoked without any arguments. When given a valid set of
+arguments, the program displays the resulting argument values stored as
+they are stored in the local program variables. Otherwise, it echoes the
+erroneous command line together with an appropriate error message to stdout
+after which it terminates with error code 1.</DIV>
+&nbsp;
+<PRE><FONT FACE="Courier New,Courier"><FONT SIZE=+1>#include "argtable.h"&nbsp;
+
+int main(int argc, char **argv)
+&nbsp;&nbsp; {
+&nbsp;&nbsp; static char str[50];&nbsp;
+&nbsp;&nbsp; static double grad;
+&nbsp;&nbsp; static int c;&nbsp;
+&nbsp;&nbsp; arg_rec argtable[] =&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"-tit ","&lt;title>", arg_str, str, "noname", "\t\t title"},&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"grad:","gradient",arg_dbl, &amp;grad, NULL, "\t line gradient"},&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {NULL, "y-int", arg_int, &amp;c, "0", "\t\t y-intercept"}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };&nbsp;
+&nbsp;&nbsp; const size_t narg = sizeof(argtable)/sizeof(arg_rec);&nbsp;
+
+&nbsp;&nbsp; /*<I>-- process the command line args --</I>*/&nbsp;
+&nbsp;&nbsp; if (argc==1)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*<I>-- display program usage and exit. --</I>*/&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Usage: %s %s\n", argv[0], arg_syntax(argtable,narg));&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%s\n",arg_glossary(argtable,narg," "));&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp; else&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*<I>-- scan command line arguments from argv[] --</I>*/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char cmdline[200], errmsg[200], errmark[200];&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!arg_scanargv(argc,argv,argtable,narg,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cmdline,errmsg,errmark))&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*<I>-- arg error occurred, print error message and exit --</I>*/&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("ERROR: %s\n", cmdline);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(" %s %s\n", errmark, errmsg);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+
+&nbsp;&nbsp; /*<I>-- get here only if command line args ok --</I>*/&nbsp;
+&nbsp;&nbsp; printf("title: \"%s\"\n",str);&nbsp;
+&nbsp;&nbsp; printf("gradient: %f\n",grad);&nbsp;
+&nbsp;&nbsp; printf("y-intercept: %d\n",c);&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; return 0;&nbsp;
+&nbsp;&nbsp; }</FONT></FONT></PRE>
+
+<DIV STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">The
+code for this program is available, along with other examples, in the examples/
+subdirectory of the argtable installation directory. To compile it, you
+must link the source code with <I>libargtable.a</I> which is found in the
+lib/ subdirectory of the installation directory.</DIV>
+
+<DIV STYLE="margin-top: 0.51cm; margin-bottom: 0.51cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$
+cc example.c -largtable -o example</FONT></FONT></DIV>
+
+<DIV STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto">Below
+is the output of this example program when given various command line arguments,
+both good and bad.</DIV>
+
+<PRE STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$ example&nbsp;
+Usage: example [-tit &lt;title>] grad:gradient [y-int]
+&nbsp;&nbsp; -tit &lt;title>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; title&nbsp;
+&nbsp;&nbsp; grad:gradient&nbsp;&nbsp;&nbsp;&nbsp; line gradient&nbsp;
+&nbsp;&nbsp; y-int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y-intercept</FONT></FONT></PRE>
+
+<PRE STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$ example grad:10&nbsp;
+title: "noname"
+gradient: 10.000000&nbsp;
+y-intercept: 0</FONT></FONT></PRE>
+
+<PRE STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$ example 7 grad:1.234&nbsp;
+title: "noname"
+gradient: 1.234000&nbsp;
+y-intercept: 7</FONT></FONT></PRE>
+
+<PRE STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$ example -tit "hello world" grad:3.33 11&nbsp;
+title: "hello world"
+gradient: 3.330000&nbsp;
+y-intercept: 11</FONT></FONT></PRE>
+
+<PRE STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$ example grad:oops&nbsp;
+ERROR: example grad:oops
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^ invalid grad:gradient argument</FONT></FONT></PRE>
+
+<PRE STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$ example grad:13 nope&nbsp;
+ERROR: example grad:13 nope
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^^^^ unexpected argument</FONT></FONT></PRE>
+
+<PRE STYLE="margin-bottom: 0.00cm; font-style: normal; font-weight: medium; page-break-before: auto; page-break-after: auto"><FONT FACE="Courier New,Courier"><FONT SIZE=+1>$ example grad:13 99 uh oh&nbsp;
+ERROR: example grad:13 99 uh oh&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^^ unexpected argument</FONT></FONT></PRE>
+
+<HR>
+<H1>
+History &amp; Release Notes</H1>
+
+<UL>
+<DIV STYLE="margin-top: 0.25cm; margin-bottom: 0.00cm; font-style: normal"><B>Argtable-1.0
+released November 13, 1998.</B></DIV>
+</UL>
+
+<UL>
+<DIV STYLE="margin-top: 0.25cm; font-style: normal"><B>Argtable-1.1 released
+January 20, 1999.</B><SPAN STYLE="font-weight: medium"></DIV>
+This version fixes some cross-platform compilation errors, and saw the
+introduction of the multi-platform configuration. It also saw the addition
+of the <I>arg_record()</I> function and a change to the <I>arg_scanargv()</I>
+function so that it no longer requires argv[0] to be the first entry of
+the argument table. To maintain backwards compatibility, programs written
+for version 1.0 should now define the macro
+<BR><FONT FACE="courier">#define ARGTABLE_COMPATIBILITY_10</FONT>
+<BR>prior to including the <I>argtable.h</I> header file.</SPAN></UL>
+
+<HR>
+<H1>
+From the author</H1>
+
+<DIV STYLE="margin-top: 0.25cm; page-break-before: auto; page-break-after: auto"><SPAN STYLE="font-weight: medium"><SPAN STYLE="font-style: normal">Argtable
+is actively maintained by me, its author, Stewart Heitmann. It is a tool
+I have felt has been long overdue in the C/C++ world, and having written
+it I hope that you will find it as useful as I do. If you have any comments
+or suggestions for improvements please email me at <A HREF="mailto:Stewart.Heitmann@tip.csiro.au">Stewart.Heitmann@tip.csiro.au</A>,
+I'd love to hear from you. Happy parsing!</SPAN></SPAN></DIV>
+
+<DIV TYPE=FOOTER>
+<CENTER>&nbsp;</CENTER>
+</DIV>
+
+</BODY>
+</HTML>

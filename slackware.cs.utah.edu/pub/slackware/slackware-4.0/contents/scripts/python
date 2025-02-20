@@ -1,0 +1,2 @@
+( cd usr/bin ; rm -rf python )
+( cd usr/bin ; ln -sf python1.5 python )

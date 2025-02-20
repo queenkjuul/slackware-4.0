@@ -1,0 +1,4 @@
+( cd usr/bin ; rm -rf f77 )
+( cd usr/bin ; ln -sf g77 f77 )
+( cd usr/man/man1 ; rm -rf f77.1.gz )
+( cd usr/man/man1 ; ln -sf g77.1.gz f77.1.gz )

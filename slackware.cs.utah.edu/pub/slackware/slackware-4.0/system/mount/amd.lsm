@@ -1,0 +1,26 @@
+Begin
+35:PkgName    = amd920824upl67.tar.gz
+35:Title      = file system automounter
+25:Version    = Unofficial patch level 67 - (latest)
+65:Desc1      = This is a file system automounter and allows you
+65:Desc2      =   to mount filesystems on demand. Primary use is
+65:Desc3      =   when nfs mounting remote systems.
+65:Author     = Jan-Simon Pendry and Nick Williams
+65:MaintBy    = Mitchum DSouza (m.dsouza@mrc-apu.cam.ac.uk)
+65:MaintAt1   = sunsite.unc.edu
+65:PathFile1  = /pub/Linux/system/Misc/mount/amd920824upl67.tar.gz
+65:MaintAt2   = nic.funet.fi
+65:PathFile2  = /pub/OS/Linux/tools/amd920824upl67.tar.gz
+65:Required1  = NFS and TCP/IP support in the kernel. Also
+65:Required2  =   kernel 99pl10 and above is best. Can also be
+65:Required3  =   used to perform union and normal unix mounts too.
+65:CopyPolicy = Not public domain. Copyright license included.
+65:Keywords   = automounter amd
+15:ApproxSize = 467493 Bytes
+65:Last3Rel   = upl59, upl61
+65:Comment1   = For recompilation, this package requires you be
+65:Comment2   =  on a filesystem with filenames > 30 chars.
+65:Comment3   = Binaries included
+30:CheckedBy  = Mitchum D'Souza
+ 8:Date       = 24AUG93
+End

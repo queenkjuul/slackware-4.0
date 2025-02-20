@@ -1,0 +1,39 @@
+Begin3
+Title:          getpop3
+Version:        1.08
+Entered-date:   May 5, 1996
+Description:    getpop3 is a pop3 client that is designed specifically
+                to be used on Linux systems whose connection to the
+                Internet is a temporary dialup.  It can be installed
+                to be run at frequent intervals from cron, without
+                worrying about what would happen if the network
+                connection is down, or is shut down in a middle of
+                downloading mail from a pop3 server.
+                getpop3 is fully compatible with your E-mail system.
+                Mail downloaded by getpop3 will be delivered just
+                like SMTP-delivered mail, which means that it will
+                be processed by procmail, or any other filter program
+                you installed.
+                Version 1.08 now provides improved support for the qmail
+                MTA.
+                getpop3 supports UIDL tags, to assure reliable delivery
+                of messages, without duplicates.  You can set up
+                getpop3 to download mail from more than one POP3 maildrop
+                and deliver it to a single Linux mailbox, all in one
+                shot.  That should be very helpfull to people who
+                have accounts with more than one ISP.
+                The official unofficial getpop3 home page can be
+                found by going to http://www.geocities.com/Area51/6543
+                then following the link at the bottom to my home page.
+Keywords:       pop3, mail, freeware, linux, unix
+Author:         mrsam@geocities.com (Sam Varshavchik)
+Maintained-by:  mrsam@geocities.com (Sam Varshavchik)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/pop
+			 42 kb getpop3_1.08.tgz
+			 32 kb getpop3_1.08.src.tgz
+			  2 kb getpop3_1.08.lsm
+Alternate-site: http://www.concentric.net/~mrsam/getpop3/index.html
+Original-site:
+Platform:       Linux 2.0
+Copying-policy: Freeware
+End

@@ -1,0 +1,306 @@
+  Colours with Linux terminals
+  Thorbjørn Ravn Andersen, ravn@dit.ou.dk
+  v1.4, 7 August 1997
+
+  Most Linux distributions have a 'ls' command for listing the contents
+  of a directory that can visually enhance their output by using differ­
+  ent colours, but configuring this to taste may not be a trivial task.
+  This document explains the various aspects and approaches of altering
+  the setup by configuring existing software, plus locations of alterna­
+  tive software usually not included with Slackware or RedHat, which may
+  be used on most versions of Unix.  The HTML version is also available
+  from my own source at <http://www.mip.ou.dk/~ravn/colour-ls>.
+
+  1.  Introduction
+
+  In recent years colour displays have become very common, and users are
+  beginning to exploit this by using programs that utilizes colours to
+  give quick visual feedback on e.g. reserved keywords in programming
+  languages, or instant notification of misspelled words.
+
+  As the Linux text console supports colour, the original GNU ls was
+  quickly modified to output colour information and included in
+  Slackware around version 2.0.  Improved versions of these patches have
+  now migrated into the standard GNU distribution of ls, and should
+  therefore be a part of all new Linux distributions by now.
+
+  This revision is an update on a major rewrite from the initial
+  release, including information on xterms and kernel patching.
+
+  The information in this document has been confirmed on Redhat 4.1, and
+  was originally compiled with the 2.0.2 release of Slackware, and the
+  1.1.54 kernel.  The kernel patch information was retrieved on
+  slackware 2.2.0 with the 1.2.13 kernel, and tcsh as the default shell,
+  and later confirmed with a 2.0.27 kernel.  If you use any other
+  configuration, or unix version, I would appreciate a note stating your
+  operating system and version, and whether colour support is available
+  as standard.
+
+  2.  Quickstart for the impatient
+
+  If you have a new distribution of Linux, do these modifications to
+  these files in your home directory.  They take effect after next
+  login.
+
+       ~/.bashrc:
+           alias ls="ls --color"
+
+       ~/.cshrc:
+           alias ls 'ls --color'
+
+  That's it!
+
+  You may also want to do an ``eval `dircolors $HOME/.colourrc`'', to
+  get your own colours.  This file is created with ``dircolors -p
+  >$HOME/.colourrc'' and is well commented for further editing.
+
+  3.  Do I have it at all?
+
+  First of all you need to know if you have a version of ls which knows
+  how to colourize properly.  Try this command in a Linux text console
+  (although an xterm will do):
+
+       % ls --color
+
+  (the % is a shell prompt):
+
+  If you get an error message indicating that ls does not understand the
+  option, you need to install a new version of the GNU fileutils
+  package.  If you do not have an appropriate upgrade package for your
+  distribution, just get the latest version from your GNU mirror and
+  install directly from source.
+
+  If you do not get an error message, you have a ls which understands
+  the command.  Unfortunately, some of the earlier versions included
+  previously with Slackware (and possible others) were buggy.  The ls
+  included with Redhat 4.1 is version 3.13 which is okay.
+
+       % ls --version
+       ls - GNU fileutils-3.13
+
+  If you ran the ``ls -- color'' command on a Linux textbased console,
+  the output should have been colourized according to the defaults on
+  the system, and you can now decide whether there is anything you want
+  to change.
+
+  If you ran it in an xterm, you may or you may not have seen any colour
+  changes.  As with ls itself, the original xterm-program did not have
+  any support of colour for the programs running inside of it, but
+  recent versions do.  If your xterm doesn't support colours, you should
+  get a new version as described at the end of this document.  In the
+  meantime just switch to textmode and continue from there.
+
+  4.  Which colours is there to choose from?
+
+  This shell script (thanks to the many who sent me bash versions) shows
+  all standard colour combinations on the current console.  If no
+  colours appear, your console does not support ANSI colour selections.
+
+  #!/bin/bash
+  # Display ANSI colours.
+  #
+  esc="\033["
+  echo -n " _ _ _ _ _40 _ _ _ 41_ _ _ _42 _ _ _ 43"
+  echo "_ _ _ 44_ _ _ _45 _ _ _ 46_ _ _ _47 _"
+  for fore in 30 31 32 33 34 35 36 37; do
+    line1="$fore  "
+    line2="    "
+    for back in 40 41 42 43 44 45 46 47; do
+      line1="${line1}${esc}${back};${fore}m Normal  ${esc}0m"
+      line2="${line2}${esc}${back};${fore};1m Bold    ${esc}0m"
+    done
+    echo -e "$line1\n$line2"
+  done
+
+  The foreground colour number is listed to the left, and the background
+  number in the box.  If you want bold characters you add a "1" to the
+  parameters, so bright blue on white would be "37;44;1".  The whole
+  ANSI selection sequence is then
+
+  ESC [ 3 7 ; 4 4 ; 1 m
+
+  Note: The background currently cannot be bold, so you cannot have
+  yellow (bold brown) as anything but foreground.  This is a hardware
+  limitation.
+
+  The colours are:
+          0 - black    4 - blue           3# is foreground
+          1 - red      5 - magenta        4# is background
+          2 - green    6 - cyan
+          3 - yellow   7 - white          ;1 is bold
+
+  5.  How to configure colours with ls
+
+  If you wish to modify the standard colour set built into ls, you need
+  your personal copy in your home directory, which you get with
+
+        cd ; dircolors -p > .coloursrc
+
+  After modifying this well-commented file you need to have it read into
+  the environment string LS_COLORS, which is usually done with
+
+       eval `dircolors .colourrc`
+
+  You need to put this line in your .bashrc/.cshrc/.tcshrc (depending on
+  your shell), to have it done at each login.  See the dircolors(1)
+  manual page for details.
+
+  6.  How to change the text-mode default from white-on-black
+
+  You will need to tell the terminal driver code that you want another
+  default.  There exists no standard way of doing this, but in case of
+  Linux you have the setterm program.
+
+  "setterm" uses the information in the terminal database to set the
+  attributes.  Selections are done like
+
+       setterm -foreground black -background white -store
+
+  where the "-store" besides the actual change makes it the default for
+  the current console as well.  This requires that the current terminal
+  (TERM environment variable) is described "well enough" in the termcap
+  database.  If setterm for some reason does not work, here are some
+  alternatives:
+
+  6.1.  Xterm
+
+  One of these xterms should be available and at least one of them
+  support colour.
+
+       xterm -fg white -bg blue4
+       color_xterm -fg white -bg blue4
+       color-xterm -fg white -bg blue4
+       nxterm -fg white -bg blue4
+
+  where 'color_xterm' supports the colour version of 'ls'.  This
+  particular choice resembles the colours used on an SGI.
+
+  6.2.  Virtual console.
+
+  You may modify the kernel once and for all, as well as providing a
+  run-time default for the virtual consoles with an escape sequence.  I
+  recommend the kernel patch if you have compiled your own kernel.
+
+  The kernel source file is /usr/src/linux/drivers/char/console.c around
+  line 1940, where you should modify
+
+          def_color       = 0x07;   /* white */
+          ulcolor         = 0x0f;   /* bold white */
+          halfcolor       = 0x08;   /* grey */
+
+  as appropriate.  I use white on blue with
+
+               def_color       = 0x17;   /* white */
+               ulcolor         = 0x1f;   /* bold white */
+               halfcolor       = 0x18;   /* grey */
+
+  The numbers are the attribute codes used by the video card in
+  hexadecimal: the most significant digit (the "1" in the example
+  colours above) is the background; the least significant the
+  foreground. 0 = black, 1 = blue, 2 = green, 3 = cyan, 4 = red, 5 =
+  purple, 6 = brown/yellow, 7 = white. Add 8 to get "bright" colours.
+  Note that, in most cases, a bright background == blinking characters,
+  dull background. (From sjlam1@mda023.cc.monash.edu.au
+  <mailto:sjlam1@mda023.cc.monash.edu.au>).
+
+  You may also supply a new run-time default for a virtual console, on a
+  per-display basis with the non-standard ANSI sequence (found by
+  browsing the kernel sources)
+
+               ESC [ 8 ]
+
+  which sets the default to the current fore- and background colours.
+  Then the Reset Attributes string (ESC [ m) selects these colours
+  instead of white on black.
+
+  You will need to actually echo this string to the console each time
+  you reboot.  Depending on what you use your Linux box for, several
+  places may be appropriate:
+
+  6.2.1.  /etc/issue
+
+  This is where "Welcome to Linux xx.yy" is displayed under Slackware,
+  and that is a good choice for stand-alone equipment (and probably be a
+  pestilence for users logging in with telnet).  This file is created at
+  boottime (Slackware in /etc/rc.d/rc.S; Redhat in /etc/rc.d/rc.local),
+  and you should modify lines looking somewhat like
+
+         echo ""> /etc/issue
+         echo Welcome to Linux `/bin/uname -a | /bin/cut -d\  -f3`. >> /etc/issue
+
+  to
+
+    ESCAPE="<replace with a single escape character here>"
+    echo "${ESCAPE}[H${ESCAPE}[37;44m${ESCAPE}[8]${ESCAPE}[2J"> /etc/issue
+    echo Welcome to Linux `/bin/uname -a | /bin/cut -d\  -f3`. >> /etc/issue
+
+  This code will home the cursor, set the colour (here white on blue),
+  save this selection and clean the rest of the screen.  The
+  modification takes effect after the next reboot.  Remember to insert
+  the _literal_ escape character in the file with C-q in emacs or
+  control-v in vi, as apparently the sh used for executing this script
+  does not understand the /033 syntax.
+
+  6.2.2.  /etc/profile or .profile
+
+         if [ "$TERM" = "console" ]; then
+             echo "\033[37;44m\033[8]" #
+       # or use setterm.
+             setterm -foreground white -background blue -store
+         fi
+
+  6.2.3.  /etc/login or .login
+
+         if ( "$TERM" == "console" ) then
+           echo "\033[37;44m\033[8]"
+       # or use setterm.
+             setterm -foreground white -background blue -store
+         endif
+
+  6.3.  Remote login
+
+  You should be able to use the setterm program as shown above.  Again,
+  this requires that the remote machine knows enough about your
+  terminal, and that the terminal emulator providing the login supports
+  colour. In my experience the best vt100 emulation currently available
+  for other platforms are:
+
+  ·  MS-DOS:         MS-Kermit (free, not a Microsoft product)
+
+  ·  Windows 95/NT:  Kermit/95 (shareware)
+
+  ·  OS/2:           Kermit/95 (shareware).  Note though that the
+     standard telnet understands colours and can be customized locally.
+
+  See  <http://www.columbia.edu/kermit/> for details about Kermit.
+
+  7.  Software
+
+  All the information described here is assuming a GNU/Linux
+  installation.  If you have something else (like e.g. a Sun running X
+  or so) you can get and compile the actual software yourself.
+
+  The colour version of 'xterm' is based on the standard xterm source
+  with a patch available from any X11R6 site.  The xterm distributed
+  with R6.3 is rumoured to have native colour support, but is untested
+  by me.
+
+       ftp://ftp.denet.dk/pub/X11/contrib/utilities/color-xterm-R6pl5-patch.gz
+
+  See the documentation if you use an older version of X.  Note: I
+  haven't tried this myself!
+
+  of the several mirrors.  Get at least version 3.13.
+
+       ftp://ftp.denet.dk/pub/gnu/fileutils-3.XX.tar.gz
+
+  I have myself successfully compiled color-ls on Solaris, SunOS and
+  Irix.
+
+  I would appreciate feedback on this text.  My e-mail address is
+  ravn@dit.ou.dk <mailto:ravn@dit.ou.dk>
+
+  --
+
+  Thorbjørn Ravn Andersen
+

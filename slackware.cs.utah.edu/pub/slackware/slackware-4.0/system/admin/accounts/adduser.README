@@ -1,0 +1,61 @@
+Adduser-1.0 by Craig Hagan (Modified a lot by Chris Cappuccio)
+--------------------------------------------------------------
+craig@opine.cs.umass.edu -/- chris@slinky.cs.umass.edu
+
+Yet another quick and dirty hack, like the original (not error tested
+very much, it should work pretty good unless you fuck with it.)
+
+For SunOS 4 & Linux (I know it runs OK under Linux, from the looks of it
+it should run with no problems on a Sun, who knows)
+
+What does it do?
+
+0- Finds out if you are root, looks for shadow password files (we don't
+   support shadow, bitch if it's found), looks for SunOS NIS, and maybe
+   it does a few other things I forgot about... (chris)
+1- Asks you for username and information on your new user
+2- Makes the user's home directory and entry in password file
+3- Gives them ownership of their home directory.
+
+In this directory should be:
+
+README	  :  this file
+Makefile  :  the makefile to make adduser
+adduser.c :  the source code for our magic utility
+xfdes.c	  :  the source for fcrypt()
+xfdes.h   :  structures/defines for xfdes.c
+
+type make adduser to make the standard version, make nocrypt
+if you have no crypt() in your libc (strange things can happen
+when politics are involved)
+
+Modifications since craig's adduser (chris)
+-----------------------------------
+
+0- Cleaned up that messy code to see if a username
+   was already in use. Getpw functions are pretty nice :)
+1- Added a small routine to check for unused uid's, so you
+   don't have to bitch around with passwd and find one yourself.
+2- Made it look nicer
+3- Added routines to find out if we are root, if shadow password
+   files are present, and also to check for yellow pages (/var/yp)
+   and if found remind the person to make passwd under /var/yp
+   after the user is made.
+4- Took out crypt.o that pretty much didn't work if you had no libufc
+   and put in a GPLed fcrypt from Killer Cracker.
+5- Fixed Makefile and made changes to adduser for people who are using
+   the included fcrypt instead of libc crypt. (-DNO_CRYPT)
+
+What would I like but never get around to doing  (chris)
+-----------------------------------------------
+
+0- How about some command line options that match those of useradd
+   that comes with shadow?
+1- Some error checking, please. Usernames can't begin with -,
+   can't be more then 8 chars long, etc..etc..etc... Change little
+   things so that they match unix standards (if the idiot who invoked
+   adduser gave a shell 400 characters long, it will ruin /etc/passwd
+   cuz it can only be like 32 chars long,  blah..)
+2- A moduser utility like usermod that comes with shadow...
+3- /usr/skel may hold valueable files, I don't use it so I didn't
+   include it.

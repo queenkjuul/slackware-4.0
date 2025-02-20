@@ -1,0 +1,14 @@
+Begin3
+Title:          Syncd
+Version:        V2.0
+Entered-date:   Thu Mar  5 23:01:13 EST 1998
+Description:    Keeps your disk from falling appart
+Keywords:       sync, disk, maintenance, disk maintenance, crash, drive
+Author:         root@serpentine.dyn.ml.org
+Maintained-by:  root@serpentine.dyn.ml.org
+Primary-site:   serpentine.dyn.ml.org /pub/linux/utils/syncdV2.tar.gz
+Alternate-site: sunsite.unc.edu /something/or/other
+Original-site:  serpentine.dyn.ml.org /pub/linux/utils/syncdV2.tar.gz
+Platforms:      Any UNIX.
+Copying-policy: GPL
+End

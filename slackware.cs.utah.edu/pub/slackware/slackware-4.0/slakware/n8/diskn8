@@ -1,0 +1,12 @@
+CONTENTS: tcpip1       
+tcpip1:   TCP/IP networking programs and support files.
+tcpip1:
+tcpip1:   This a basic set of TCP/IP utilities for Linux.  Some of these were
+tcpip1:   written from scratch and some were ported from various sources
+tcpip1:   including BSD.  The code was written and ported by Florian  La Roche,
+tcpip1:   Alan Cox, Fred N. van Kempen, Donald J. Becker, Rick Sladkey, 
+tcpip1:   Mark Shand, Orest Zborowski, Johannes Stille, Linus Torvalds,
+tcpip1:   David A. Holland, Olaf Kirch, and others.
+tcpip1:
+tcpip1:
+tcpip1:

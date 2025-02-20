@@ -1,0 +1,16 @@
+Begin3
+Title:		Statserial - display serial port modem status lines
+Version:        1.1
+Entered-date:   16DEC94
+Description:    Program to display status of serial port handshaking lines
+		as well as signal names and pin numbers.
+Keywords:       serial, RS-232
+Author:         Jeff_Tranter@Mitel.COM
+Maintained-by:  Jeff_Tranter@Mitel.COM
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Serial
+		11kb statserial-1.0.tar.gz
+Alternate-site: 
+Original-site:  
+Platform:       
+Copying-policy: GPL
+End

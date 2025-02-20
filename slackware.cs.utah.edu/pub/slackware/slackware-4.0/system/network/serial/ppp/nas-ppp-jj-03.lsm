@@ -1,0 +1,13 @@
+Begin3
+Title: NAS PPP Scripts
+Version: .003
+Entered-date: Aug 19, 1995
+Description: Scripts to simplify dialing up to a PAP capable dialup.
+Description: Designed for MichNet's NAS system, but easily changed.
+Keywords: PPP dialup NAS dialip MichNet Merit
+Author: halo@engin.umich.edu (Johnny Yuma)
+Maintained-by: halo@engin.umich.edu (Johnny Yuma)
+Primary-site: sunsite.unc.edu /pub/Linux/system/Networking/serial
+Platform: Linux
+Copying-policy: GPL
+End

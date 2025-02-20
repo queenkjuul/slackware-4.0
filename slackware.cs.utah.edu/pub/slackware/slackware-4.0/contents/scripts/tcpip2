@@ -1,0 +1,24 @@
+# OK, we're going to try a new approach.  For the original set of /etc config
+# files, if the file exists in /etc already, we don't copy the new one into
+# place.  tcpip.tgz is really one of the few packages in Slackware to contain
+# a lot of configuration files, and the "starter" files in /etc have changed
+# *very little* over the years.  If we *really* want to force replacement of
+# one of these files, we can always add another /etc directory to this package,
+# right?  As it is, 99% of the people who already have these files don't want
+# them replaced.
+cd etc-incoming
+for file in * */* ; do
+ if [ ! -d file ]; then # file is not a directory
+  if [ ! -r ../etc/$file ]; then # file isn't already in /etc, so copy it.
+   cp -a $file ../etc/$file
+  fi
+ fi
+done
+cd ..
+rm -rf etc-incoming
+( cd var ; rm -rf dhcpd )
+( cd var ; ln -sf db dhcpd )
+( cd usr/bin ; rm -rf ypchfn )
+( cd usr/bin ; ln -sf yppasswd ypchfn )
+( cd usr/bin ; rm -rf ypchsh )
+( cd usr/bin ; ln -sf yppasswd ypchsh )

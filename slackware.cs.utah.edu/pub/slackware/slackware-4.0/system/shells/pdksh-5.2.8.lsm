@@ -1,0 +1,22 @@
+Begin3
+Title:          pdksh
+Version:        5.2.8
+Entered-date:   20Aug96
+Description:    PD-ksh is a mostly complete AT&T ksh look-alike (see NOTES file for a list
+Description:    of things not supported).  Work is currently underway to make it fully
+Description:    compatible with both POSIX and AT&T ksh (when the two don't conflict).
+Description:    Since pdksh is free and compiles and runs on most common unix systems, it
+Description:    is very useful in creating a consistent user interface across multiple
+Description:    machines.  For example, in the CS dept. of MUN, pdksh is installed on a
+Description:    variety of machines including Suns, HPs, DecStations, pcs running Linux,
+Description:    etc., and is the login shell of ~4500 users.
+Keywords:       pdksh, ksh, Korn, shell, command line interpreter
+Author:         michael@cs.mun.ca (Michael Rendell)
+Maintained-by:  michael@cs.mun.ca (Michael Rendell)
+Primary-site:   sunsite.unc.edu:/pub/Linux/system/Shells/pdksh-5.2.7.tar.gz
+Original-site:  ftp.cs.mun.ca:/pub/pdksh/pdksh-5.2.7.tar.gz
+Platforms:      Written in C, runs on most UNIX boxes (uses GNU autoconf;
+Platforms:      works best in a POSIX or BSD environment).  Also runs on OS/2.
+Copying-policy: Freely Redistributable (mostly public domain, some copyrighted)
+End
+

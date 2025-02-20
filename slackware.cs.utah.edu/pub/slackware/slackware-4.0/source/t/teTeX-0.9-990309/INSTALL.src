@@ -1,0 +1,188 @@
+=============================================================================
+
+	teTeX-0.9 installation instructions (compiling the sources)
+
+=============================================================================
+
+  1) prerequisites: disk space, compiler, make utility, lexical scanner,
+     parser generator
+  2) getting the files
+  3) install the inputs-tree
+  4) unpack the sources
+  5) run configure
+  6) run make
+  7) final configuration steps
+  A) appendix: notes on some platforms
+
+============================================================================
+  1) prerequisites: disk space, compiler, make utility, lexical scanner,
+     parser generator
+============================================================================
+
+The disk space you need (approx.):
+   7 MB for the tar file containing the sources
+  16 MB for the tar file containing the complete fonts/macros subtree (texmf)
+  25 MB for the unpacked source tree
+  55 MB for the unpacked texmf tree
+  80-110 MB for object files, binaries, ... during compilation
+  15-30 MB for binaries, format files, bitmap fonts, ...
+
+You'll also need an ANSI C compiler, a make utility, a lexical scanner and a
+parser generator. I have used the GNU utilities (gcc, GNU make, flex, bison)
+for my tests.
+
+=============================================================================
+  2) getting the files
+============================================================================
+
+What you need:
+    sources/teTeX-src-0.9.tar.gz    # the sources
+    sources/teTeX-texmf-0.9.tar.gz  # the lib-tree with the fonts, macros, ...
+
+============================================================================
+  3) choose installation prefix and directory layout
+============================================================================
+
+Decide where the "root" of the installation will be, e.g. /usr/local
+or /usr/local/teTeX. That directory will be named TETEXDIR in the
+following.
+
+The standard directory layout is:
+  $TETEXDIR/man			% UNIX manual pages
+  $TETEXDIR/share/texmf		% main tree with fonts, macros, ...
+				% for tex, metafont + friends
+  $TETEXDIR/info		% GNU style info manuals
+  $TETEXDIR/bin/$PLATFORM	% binaries
+
+You can omit the "share/" part for the texmf directory if you want.
+$TETEXDIR/share/texmf and $TETEXDIR/texmf are auto-detected by configure.
+If you choose something different, you have to specify that directory
+with the --datadir option of configure.
+
+If you want to leave out the $PLATFORM directory level (i.e. put the
+binaries directly into $TETEXDIR/bin), specify the --disable-multiplatform
+option for configure.
+
+For now, you have to create the texmf directory and unpack the tar archive
+there. Example:
+
+  # mkdir -p /usr/local/teTeX/share/texmf
+  # gzip -dc teTeX-texmf-0.9.tar.gz | (umask 0; cd /usr/local/teTeX/share/texmf; tar xvf -)
+
+============================================================================
+  4) unpack the sources
+============================================================================
+
+Unpack the sources, e.g.:
+  # cd /usr/local/src
+  # gzip -dc teTeX-src-0.9.tar.gz | tar xvf -
+
+============================================================================
+  5) run configure
+============================================================================
+
+Have a look at the output of ./configure --help and the files INSTALL in
+various subdirectories for instructions. See texk/kpathsea/INSTALL for
+more help about running configure. Example:
+
+  # cd teTeX-0.9
+  # ./configure --prefix=/usr/local/teTeX
+
+============================================================================
+  6) run make
+============================================================================
+
+Make sure, the shell variable "noclobber" is not set, then type "make
+world" and relax :-) I also suggest to log all the output, e.g. by running
+  # sh -c 'make world >world.log 2>&1' &
+
+Before you think that everything is ok, please check the log file for
+errors (GNU make always uses the string "Error:" whenever a command returns
+an error code) and check if all binaries are build:
+  # cd /usr/local/teTeX/bin/i586-pc-linux-gnu
+  # ls | wc   # should be 109
+
+"make world" is equivalent to
+  make all install strip
+
+If you need special previleges for 'make install' and 'make ini', you can
+run two make in two separate runs:
+  make all
+  su
+  make install strip
+
+Please note that calling make with an absolute path breaks the configure
+scripts.
+
+The following example _does_not_work_:
+	/usr/local/bin/make world
+	...
+	checking whether /usr/local/bin/make sets $MAKE... ./configure:
+	${ac_cv_prog_make_/usr/bin/make_set+set}: bad substitution
+	...
+
+============================================================================
+  7) final configuration steps
+============================================================================
+
+Overview:
+  - set up PATH
+  - check environment
+  - configure teTeX using texconfig
+
+Set up PATH:
+===========
+Set up your PATH to include the directory containing the just installed
+binaries (e.g. /usr/local/teTeX/bin/sparc-sunos4.1.3); similarly, MANPATH
+and INFOPATH to include the relevant newly installed subdirectories,
+i.e. $TETEXDIR/man resp. $TETEXDIR/info.
+
+
+Check environment
+=================
+Note, that the run-time search paths for all programs that use
+the Kpathsea library can be configured by changing the paths in
+TETEXDIR/texmf.cnf and changes to these paths does not require to
+recompile any of the programs. Therefore, you hardly need to set extra
+environment variables. If you define some environment variables, they
+overrule the search paths in texmf.cnf unless they have an empty path
+component (i.e. a colon at the beginning or end or a doubled colon in
+the middle).
+
+The variables to check are:
+  AFMFONTS BIBINPUTS BSTINPUTS DVILJFONTS DVIPSFONTS DVIPSHEADERS GFFONTS
+  GLYPHFONTS INDEXSTYLE MFBASES MFINPUTS MFPOOL MFTINPUTS MPINPUTS
+  MPMEMS MPPOOL MPSUPPORT OCPINPUTS OFMFONTS OPLFONTS OTPINPUTS OVFFONTS
+  OVPFONTS PKFONTS PSHEADERS T1FONTS T1INPUTS TEXBIB TEXCONFIG TEXDOCS
+  TEXFONTMAPS TEXFONTS TEXFORMATS TEXINDEXSTYLE TEXINPUTS TEXMFCNF
+  TEXMFDBS TEXMFINI TEXPICTS TEXPKS TEXPOOL TEXPSHEADERS TEXSOURCES
+  TFMFONTS TRFONTS VFFONTS XDVIFONTS XDVIVFS
+
+A simple way to check them is to run
+  texconfig confall
+once you have set up your PATH. Be careful if some variables are non-empty
+and have a look at the locations of the binaries. Not all binaries are
+checked, only some.
+
+Configure teTeX using texconfig
+===============================
+Texconfig allows you to set the defaults for hyphenation, paper size,
+print command, metafont mode, etc. You should run theis command
+interactively and see what options it offers.
+
+For example, if you are not using A4 format paper, you should make
+"lettersize" the default using:
+    texconfig dvips paper letter
+    texconfig xdvi paper us
+
+=============================================================================
+ A) appendix: notes on some platforms
+=============================================================================
+
+teTeX-0.9 was successfully build on the following platforms:
+  - linux 2.0.27 with libc-5.4.33 on intel
+  - solaris 2.4 and 2.5.1 on sparc
+  - AIX 4.1.3 on rs6000
+  - IRIX 4.0.5, 5.3, 6.3 on Mips
+  - OSF ?? on alpha
+  - HP-UX 10.10 on HPPA

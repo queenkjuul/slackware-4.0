@@ -1,0 +1,16 @@
+Begin3
+Title:          Xuseradd
+Version:        0.2.0
+Entered-date:   02JUNE98
+Description:    Linux / X11 client for creating accounts
+Keywords:       sysadmin sysadm passwd shadow X X11 GTK
+Author:         bjorn@nexus.pp.se (Bjorn Lindgren)
+Maintained-by:  bjorn@nexus.pp.se (Bjorn Lindgren)
+Primary-site:   sangis.kalix.net /pub/xuseradd
+                10 kB xuseradd-0.2.0.tar.gz
+                1 kB xuseradd-0.2.0.lsm
+Alternate-site: sunsite.unc.edu /pub/Linux/system/xsystem
+Original-site:  sangis.kalix.net /pub/xuseradd
+Platforms:      Linux 2.0.x
+Copying-policy: GPL
+End

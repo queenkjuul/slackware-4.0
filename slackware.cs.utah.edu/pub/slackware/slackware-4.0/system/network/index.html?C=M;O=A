@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /pub/slackware/slackware-4.0/system/network</title>
+ </head>
+ <body>
+<h1>Index of /pub/slackware/slackware-4.0/system/network</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th></tr>
+   <tr><th colspan="4"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/pub/slackware/slackware-4.0/system/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="athena.tar.gz">athena.tar.gz</a></td><td align="right">1994-01-19 08:00  </td><td align="right">491K</td></tr>
+<tr><td valign="top"><img src="/icons/tar.gif" alt="[   ]"></td><td><a href="ruptime-patch.tar">ruptime-patch.tar</a></td><td align="right">1994-03-12 08:00  </td><td align="right">8.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="athena.lsm">athena.lsm</a></td><td align="right">1994-08-09 07:00  </td><td align="right">770 </td></tr>
+<tr><td valign="top"><img src="/icons/tar.gif" alt="[   ]"></td><td><a href="tcp.tar">tcp.tar</a></td><td align="right">1994-10-05 07:00  </td><td align="right"> 90K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="rtelnet-bin-Linux.gz">rtelnet-bin-Linux.gz</a></td><td align="right">1995-03-06 08:00  </td><td align="right">297K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="rtelnet-bin-Linux.lsm">rtelnet-bin-Linux.lsm</a></td><td align="right">1995-03-06 08:00  </td><td align="right">291 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="bsd.ftpd.shadow.patch.README">bsd.ftpd.shadow.patch.README</a></td><td align="right">1996-06-30 07:00  </td><td align="right">707 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="bsd.ftpd.shadow.patch.gz">bsd.ftpd.shadow.patch.gz</a></td><td align="right">1996-06-30 07:00  </td><td align="right">855 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="LiS.README">LiS.README</a></td><td align="right">1997-02-21 19:26  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="LiS-2.0.24.tar.gz">LiS-2.0.24.tar.gz</a></td><td align="right">1997-02-21 19:28  </td><td align="right">234K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-base-0.10.tar.gz">netkit-base-0.10.tar.gz</a></td><td align="right">1997-06-13 02:48  </td><td align="right"> 75K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-base-0.10.tar.gz.sig">netkit-base-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:51  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-base.lsm">netkit-base.lsm</a></td><td align="right">1997-06-13 02:51  </td><td align="right">795 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-bootparamd-0.10.tar.gz">netkit-bootparamd-0.10.tar.gz</a></td><td align="right">1997-06-13 02:51  </td><td align="right"> 11K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-bootparamd-0.10.tar.gz.sig">netkit-bootparamd-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:51  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-bootparamd.lsm">netkit-bootparamd.lsm</a></td><td align="right">1997-06-13 02:51  </td><td align="right">802 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-rsh-0.10.tar.gz">netkit-rsh-0.10.tar.gz</a></td><td align="right">1997-06-13 02:53  </td><td align="right"> 48K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rsh-0.10.tar.gz.sig">netkit-rsh-0.10.tar.gz.sig</a></td><td align="right">1997-06-13 02:53  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rsh.lsm">netkit-rsh.lsm</a></td><td align="right">1997-06-13 02:53  </td><td align="right">828 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netkit-rusers-0.11.tar.gz">netkit-rusers-0.11.tar.gz</a></td><td align="right">1997-08-10 12:28  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rusers-0.11.tar.gz.sig">netkit-rusers-0.11.tar.gz.sig</a></td><td align="right">1997-08-10 12:28  </td><td align="right">152 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netkit-rusers.lsm">netkit-rusers.lsm</a></td><td align="right">1997-08-10 12:28  </td><td align="right">852 </td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="netkit.README">netkit.README</a></td><td align="right">1997-08-10 12:28  </td><td align="right">1.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tu.lsm">tu.lsm</a></td><td align="right">1998-02-02 00:38  </td><td align="right">696 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tu.tar.asc">tu.tar.asc</a></td><td align="right">1998-02-02 00:38  </td><td align="right">458 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tu.tar.gz">tu.tar.gz</a></td><td align="right">1998-02-02 00:38  </td><td align="right">109K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="LinPopUp.lsm">LinPopUp.lsm</a></td><td align="right">1998-10-04 06:19  </td><td align="right">867 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="LinPopUp-0.9.3.bin.tgz">LinPopUp-0.9.3.bin.tgz</a></td><td align="right">1998-10-04 06:22  </td><td align="right">529K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="LinPopUp-0.9.3.src.tgz">LinPopUp-0.9.3.src.tgz</a></td><td align="right">1998-10-04 06:22  </td><td align="right"> 46K</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tcprepeater-0.99.1.tar.gz">tcprepeater-0.99.1.tar.gz</a></td><td align="right">1998-10-19 14:09  </td><td align="right"> 12K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tcprepeater.lsm">tcprepeater.lsm</a></td><td align="right">1998-10-19 14:10  </td><td align="right">1.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tt-1.0.0.lsm">tt-1.0.0.lsm</a></td><td align="right">1999-01-20 22:27  </td><td align="right">439 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="tt-1.0.0.tar.gz">tt-1.0.0.tar.gz</a></td><td align="right">1999-01-20 22:27  </td><td align="right">8.6K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="netalk-1.01.lsm">netalk-1.01.lsm</a></td><td align="right">1999-01-31 03:47  </td><td align="right">850 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="netalk-1.01.tar.gz">netalk-1.01.tar.gz</a></td><td align="right">1999-01-31 03:47  </td><td align="right">8.6K</td></tr>
+<tr><td valign="top"><img src="/icons/hand.right.gif" alt="[   ]"></td><td><a href="README">README</a></td><td align="right">1999-02-11 10:56  </td><td align="right"> 87 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="miplog-1.2.lsm">miplog-1.2.lsm</a></td><td align="right">1999-02-27 02:51  </td><td align="right">587 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="miplog-1.2.tgz">miplog-1.2.tgz</a></td><td align="right">1999-02-27 02:53  </td><td align="right"> 17K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="dnprogs-1.05.lsm">dnprogs-1.05.lsm</a></td><td align="right">1999-03-25 19:36  </td><td align="right">826 </td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="dnprogs-1.05.tar.gz">dnprogs-1.05.tar.gz</a></td><td align="right">1999-03-25 19:36  </td><td align="right">216K</td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="admin/">admin/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="boot.net/">boot.net/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="chat/">chat/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="daemons/">daemons/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="distrib/">distrib/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="drivers/">drivers/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="file-transfer/">file-transfer/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="finger/">finger/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="info-systems/">info-systems/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="isode/">isode/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="libraries/">libraries/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="management/">management/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="misc/">misc/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="monitor/">monitor/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="router/">router/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="samba/">samba/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="serial/">serial/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="sunacm/">sunacm/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="telnet/">telnet/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="uucp/">uucp/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="xtools/">xtools/</a></td><td align="right">1999-05-18 00:39  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="00_index.txt">00_index.txt</a></td><td align="right">1999-05-18 00:41  </td><td align="right">970 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="INDEX">INDEX</a></td><td align="right">1999-05-18 00:51  </td><td align="right">2.7K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.html">INDEX.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">7.9K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="INDEX.short.html">INDEX.short.html</a></td><td align="right">1999-05-18 00:51  </td><td align="right">4.5K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="00_TRANS.TBL">00_TRANS.TBL</a></td><td align="right">1999-05-18 02:32  </td><td align="right">3.3K</td></tr>
+   <tr><th colspan="4"><hr></th></tr>
+</table>
+<address>Apache/2.4.58 (Ubuntu) Server at slackware.cs.utah.edu Port 80</address>
+</body></html>

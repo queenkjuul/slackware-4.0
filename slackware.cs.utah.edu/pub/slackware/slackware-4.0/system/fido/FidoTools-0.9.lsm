@@ -1,0 +1,18 @@
+Begin3
+Title:	        FidoTools	
+Version:        0.9
+Entered-date:   13 Aug 1996	
+Description:    This package is a file echo processor for FidoNet users. It
+		contains following programs : tosser (processes incoming
+		files), file posting utility and file attach utility (for
+		now).
+Keywords:	FidoNet,Mail
+Author: 	nick@nickhome.stud.pu.ru (Nickolay G. Grygoryev)
+Maintained-by:  nick@nickhome.stud.pu.ru (Nickolay G. Grygoryev) 	
+Primary-site:	ns.aanet.ru /vol1/nick/Linux/system/Fido
+		FidoTools-0.9.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Fido 
+		FidoTools-0.9.tar.gz
+Platforms:	C compiler, FidoNet mailer (Bink-style)
+Copying-policy:	GPL
+End

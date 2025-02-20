@@ -1,0 +1,16 @@
+Begin3
+Title:          scanport
+Version:        1.0
+Entered-date:   25SEPT96
+Description:    Utility that scans ISA i/o space looking for
+		unregistered hardware devices. Also includes
+		a utility to read a single i/o port at a time.
+Keywords:       i/o ISA probe hardware inb scanport
+Author:         gpg109@rsphy1.anu.edu.au (Paul Gortmaker)
+Maintained-by:  nobody@nowhere.org (Mr. Dev Null)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/Misc/
+		23kB   scanport.tar.gz
+		0.5kB  scanport.lsm
+Platform:       linux, linux-i386 binaries included.
+Copying-policy: GPL
+End

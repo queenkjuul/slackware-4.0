@@ -1,0 +1,71 @@
+#!/bin/sh
+
+       DIR=/var/run
+       FILE=ppp0.pid
+       for a in `ls $DIR`
+   do
+       if [ $a = $FILE ]
+       then
+         exit
+       fi
+   done;
+killall ping
+/usr/local/bin/dip /home/MYDIR/script.dip
+
+
+# DIR is the directory where the ppp0.pid is found when ppp is running.
+
+# FILE is just what it says.
+
+# for a in `ls $DIR`  causes the script to read every file in the directory
+# $DIR
+
+# the next three lines starting with do and ending with exit, fi and done;  
+# says if a file in the directory matches ppp0.pid then exit the script
+# because the PPP is up and running.
+# If none of the files in the directory are the ppp0.pid then it goes to
+# killall ping and kills any pinging that's going on then calls the dialer.
+# I use dip. Put whatever you use as a dialer in here. Use full pathes just
+# to be sure.
+
+# why the pings, you say?
+# I use a ping every ten minutes from the crontab to show my ISP activity.
+# Sometimes, though not very often, I will still lose the connection and the
+# ping will continue to operate. I don't know why this happens but I can use
+# ps -aux and see that there are pings running even though I only send 5
+# pings at a time with ping -c 5. And they will continue to run until I stop
+# them with a kill signal. This doesn't happen with the phone line active.
+# go figger.  Anyway I expect YMMV!   (:   
+
+
+# This is nothing but a script to keep your machine on line. It doesn't do
+# anaything else. If you need on demand dialing you'll have to look
+# elsewhere.
+
+######################### notice notice notice ######################
+ 
+# This file should be called by your crontab like this:
+#
+# */5 * * * *  /usr/local/bin/redial &> /dev/null
+#
+# This calls redial every 5 minutes to see if ppp is up. then it sends
+# all messages to /dev/null instead of your mailbox. Although you may want
+# to leave '&> /dev/null' off until you are sure it is running properly.
+ 
+######################################################################
+
+
+
+
+#------------------------OFFICIAL DISCLAIMER TYPE STUFF------------------#
+
+# THIS PROGRAM IS NOT GUARANTEED TO DO ANYTHING BUT TAKE UP SPACE ON YOUR 
+# HARDDRIVE. 
+
+# THIS PROGRAM IS FREEWARE. DO WITH IT WHAT YOU WILL.
+
+# THE WRITER OF THIS SCRIPT TAKES NO RESPONSIBILITY FOR ANY DAMAGE IT MAY
+# CAUSE. IF YOUR COMPUTER TAKES A DUMP AFTER YOU INSTALL THIS SCRIPT.....
+
+#-----------------------------------TOUGH--------------------------------#
+

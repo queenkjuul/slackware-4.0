@@ -1,0 +1,20 @@
+Begin3
+Title:          netkit-base
+Version:        0.10
+Entered-date:   Jun 12 1997
+Description:    Update of NetKit-0.09
+                Basic network tools, fixed and ported from BSD code.
+                This version supersedes NetKit-0.09. 
+                Contains: inetd ping rpcinfo rpcgen
+Keywords: daemons network tools netkit security
+Author:         various
+Maintained-by:  dholland@hcs.harvard.edu (David A. Holland)
+Primary-site:   ftp.hcs.harvard.edu /pub/members/dholland/netkit
+                    netkit-base-0.10.tar.gz 76995
+                    netkit-base-0.10.tar.gz.sig 152
+Alternate-site: ftp.uk.linux.org /pub/linux/Networking
+Alternate-site: sunsite.unc.edu /pub/Linux/system/Network
+Original-site:  
+Platform:       Portable; intended for Linux
+Copying-policy: BSD
+End

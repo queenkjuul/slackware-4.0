@@ -1,0 +1,18 @@
+Begin3
+Title:          dxt
+Version:        2.1
+Entered-date:   16JUN97
+Description:    Diskless-Xwin-Toolkit
+		Complete package for installing, managing and running
+		menu-driven diskless Linux clients featuring multiple
+		telnet and X-window accesses to unix hosts.
+Keywords:       diskless, dless, client, xwin
+Author:         roman@sorry.vse.cz (Roman Dolejsi)
+Maintained-by:  
+Primary-site:   sorry.vse.cz /dimension
+		1.36MB dxt-2.1.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/system/network/boot.net
+Original-site:  
+Platforms:      Linux
+Copying-policy: GPL
+End

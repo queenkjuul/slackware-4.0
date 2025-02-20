@@ -1,0 +1,23 @@
+Begin3
+Title: Sysmanager          
+Version: 1.0       
+Entered-date: 08/12/97   
+Description: A system that provides the ability to monitor several aspects of 
+	     networked Linux and Solaris machines.  The tcl/tk user interface 
+	     provides at-a-glance information to the user, and warns the 
+	     user when conditions on any of the machines change such that the 
+	     machine requires attention.
+Keywords: Remote Monitoring Management Linux Solaris       
+Author: Jason.B.Carlyle@Rose-Hulman.edu
+	Phil.A.White@Rose-Hulman.edu        
+Maintained-by:  Jason.B.Carlyle@Rose-Hulman.edu
+		Phil.A.White@Rose-Hulman.edu        
+Primary-site: sunsite.unc.edu /pub/Linux/system/status
+	      397kb sysmgr-1.0.tar.gz  
+Alternate-site: www.rose-hulman.edu /~mgrjbc/sysmanager/
+		397kb sysmgr-1.0.tar.gz
+Original-site: 
+Platforms: Wish required     
+Copying-policy: GPL
+End
+

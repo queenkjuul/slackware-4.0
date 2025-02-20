@@ -1,0 +1,132 @@
+
+
+
+INSMOD(1)              Linux Module Support             INSMOD(1)
+
+
+NNAAMMEE
+       insmod - install loadable kernel module
+
+SSYYNNOOPPSSIISS
+       iinnssmmoodd [ -fkmpsxXv ] [ -o module_name ] object_file [ sym-
+       bol=value ... ]
+
+DDEESSCCRRIIPPTTIIOONN
+       IInnssmmoodd installs a loadable module in the running kernel.
+
+       IInnssmmoodd tries to link a module into the running  kernel  by
+       resolving  all  symbols  from the kernel's exported symbol
+       table.
+
+       If the object file name is given without extension, iinnssmmoodd
+       will search for the module in some common default directo-
+       ries.  The environment variable MODPATH  can  be  used  to
+       override this default.
+
+   OOPPTTIIOONNSS
+       _-_f     Attempt  load the module even if the version of the
+              running kernel and the version of  the  kernel  for
+              which the module was compiled do not match.
+
+       _-_k     Set  the  auto-clean flag on the module.  This flag
+              will be used by kkeerrnneelldd(8) to remove  modules  that
+              have  not  been used in some period of time -- usu-
+              ally one minute.
+
+       _-_m     Output a load map, making it easier  to  debug  the
+              module in the event of a kernel panic.
+
+       _-_o     Explicitly  name  the  module, rather than deriving
+              the name from the base name of  the  source  object
+              file.
+
+       _-_p     Probe the module to see if it could be successfully
+              loaded.  This includes locating the object file  in
+              the  module  path,  checking  version  numbers, and
+              resolving symbols.
+
+       _-_s     Output everything to ssyysslloogg(3) instead of the  ter-
+              minal.
+
+       _-_v     Be verbose.
+
+       _-_X_, _-_x Do  and  do not export all of the module's external
+              symbols, respectively.  The default is for the sym-
+              bols to be exported.  This option is only effective
+              if the module does not explicitly  export  its  own
+              controled symbol table, and thus is depreciated.
+
+   MMOODDUULLEE PPAARRAAMMEETTEERRSS
+       Some  modules  accept  load-time  parameters  to customize
+
+
+
+Linux                      26 Dec 1996                          1
+
+
+
+
+
+INSMOD(1)              Linux Module Support             INSMOD(1)
+
+
+       their operation.  These parameters are often I/O port  and
+       IRQ  numbers  that vary from machine to machine and cannot
+       be determined from the hardware.
+
+       In modules built for 2.0 series kernels,  any  integer  or
+       character pointer symbol may be treated as a parameter and
+       modified.  Beginning in the 2.1  series  kernels,  symbols
+       are  explicitly marked as parameters so that only specific
+       values may be chagned.  Furthermore  type  information  is
+       provied for checking the values provided at load time.
+
+       In  the  case  of  integers, all values may be in decimal,
+       octal or hexadecimal a la C: 17, 021 or 0x11.  Array  ele-
+       ments  are  specified  sequence separrated by commas; ele-
+       ments can be skipped by omitting the value.
+
+       In 2.0 series modules, values that do  not  begin  with  a
+       number  are  considered  strings.   Beginning  in 2.1, the
+       parameter's type information indicates whether  to  inter-
+       pret the value as a string.  If the value begins with dou-
+       ble-quotes (_"), the string is interpreted as in C,  escape
+       sequences  and  all.   Do note that from the shell prompt,
+       the quotes themselves may need to be protected from  shell
+       interpretation.
+
+SSEEEE AALLSSOO
+       rrmmmmoodd(1), mmooddpprroobbee(1), ddeeppmmoodd(1), llssmmoodd(1), kkssyymmss(1), mmoodd--
+       uulleess(2), ggeennkkssyymmss(8), kkeerrnneelldd(8).
+
+HHIISSTTOORRYY
+       Module support was first concieved by Anonymous
+       Initial Linux version by Bas Laarhoven <bas@vimec.nl>
+       Version 0.99.14 by Jon Tombs <jon@gtex02.us.es>
+       Extended by Bjorn Ekwall <bj0rn@blox.se>
+       Original ELF help from Eric Youngdale <eric@aib.com>
+       Rewritten for 2.1.17 by Richard Henderson <rth@tamu.edu>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Linux                      26 Dec 1996                          2
+
+

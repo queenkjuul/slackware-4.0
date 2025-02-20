@@ -1,0 +1,18 @@
+Begin3
+Title: lcdpanel
+Version: 0.50 
+Entered-date: 30-JUL-95   
+Description: Device driver code to drive LCD panels from the parallel port
+             Includes a kludgy status-monitoring program.  I welcome any
+	     improvements to this code.  Still very early code.
+Keywords: lcd monitoring status load
+Author: prefect@sidehack.gweep.net (Steve Richardson)
+Maintained-by: prefect@sidehack.gweep.net (Steve Richardson)
+Primary-site: sidehack.gweep.net /pub/gweep_progs
+                 11K lcdpanel-0.50.tar.gz
+Alternate-site: sunsite.unc.edu /pub/Linux/Incoming
+                 11K lcdpanel-0.50.tar.gz
+Original-site:
+Platform: linux 80x86  
+Copying-policy: free, as long as copyrights maintained
+End

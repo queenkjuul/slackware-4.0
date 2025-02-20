@@ -1,0 +1,17 @@
+Begin3
+Title: scsi-idle - Turn off SCSI disks when idle 
+Version: 2.0.34
+Entered-date: 16JUN98
+Description: A small kernel patch which spins down SCSI-disks after a 
+    period of inactivity. 
+    scsi-idle can probably be considered to be BETA software now, 
+    it works for me but YMMV.
+Keywords:	SCSI idle spin down power save
+Author: bero@aachen.linux.de (Bernhard Rosenkraenzer) (update to 2.0.34)
+Author: mtjachim@mtu.edu (Matthew T. Jachimstal) (update to 2.0.30)
+Author: wingel@ctrl-c.liu.se (Christer Weinigel)  (original)
+Primary-site: sunsite.unc.edu /pub/Linux/kernel/patches/scsi
+    scsi-idle-2.0.34.tar.gz
+Platforms:	Linux
+Copying-policy:	Freely distributable
+End

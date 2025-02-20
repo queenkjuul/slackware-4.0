@@ -1,0 +1,14 @@
+Begin3
+Title:          coolmail+maildir.patch
+Version:        1.3
+Entered-date:   17FEB98
+Description:    patch to coolmail 1.3 to add support for Maildir (a la qmail) spools
+Keywords:       coolmail xbiff maildir qmail email X11
+Author:         aqua@sonoma.net (Devin Carraway)
+Maintained-by:  aqua@sonoma.net (Devin Carraway)
+Primary-site:   sunsite.unc.edu /pub/Linux/system/mail/biffs
+		3k coolmail-1.3+maildir.patch.gz
+Alternate-site: ftp.sonoma.net /pub/coolmail
+Platform:	coolmail v1.3
+Copying-policy: GPL
+End

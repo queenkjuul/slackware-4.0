@@ -1,0 +1,22 @@
+Begin2
+Title        = hatch
+Version      = 0.5
+Desc1        = hatch tool for fidonet usenet gateways
+Author       = Martin Schulze, Joey Software
+AuthorEmail  = Martin.Schulze@Infodrom.North.DE
+Maintainer   = Martin Schulze, Joey Software
+MaintEmail   = Martin.Schulze@Infodrom.North.DE
+Site1        = {ftp.}infodrom.north.de
+Path1        = /pub/linux/sources/hatch
+File1        = hatch-0.5.tar.gz
+FileSize1    = 15599
+Required1    = fidogate, ifcico
+CopyPolicy1  = GPL, Copyright (c) 1994 by Joey Software
+Keywords     = fido fidonet hatch gateway filearea
+Comment1     = This version assumes that you have fidogate and ifcico
+Comment2     = installed.
+Comment3     = URL: http://www.informatik.uni-oldenburg.de/~joey/Linux/index{_e}.html
+Entered      = 17MAR95
+EnteredBy    = Martin Schulze, Joey Software
+CheckedEmail = mgs@Infodrom.North.DE
+End

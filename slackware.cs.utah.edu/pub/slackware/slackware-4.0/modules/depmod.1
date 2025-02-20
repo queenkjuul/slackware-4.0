@@ -1,0 +1,347 @@
+.\" Copyright (c) 1994, 1995 Jacques Gelinas (jacques@solucorp.qc.ca)
+.\" Copyright (c) 1995 Bjorn Ekwall (bj0rn@blox.se)
+.\" This program is distributed according to the Gnu General Public License.
+.\" See the file COPYING in the kernel source directory /linux
+.\" $Id: depmod.1,v 1.2 1998/01/07 08:43:52 rth Exp $
+.\"
+.TH DEPMOD 1 "March 17, 1996" Linux "Linux Module Support"
+.SH NAME
+depmod, modprobe \- handle loadable modules automatically
+.SH SYNOPSIS
+.B depmod
+[ \-a ]
+.br
+.B depmod
+[ \-a version ]
+.br
+.B depmod
+module1.o module2.o ...
+.PP
+.B modprobe
+module.o [symbol=value ...]
+.br
+.B modprobe
+\-t tag pattern
+.br
+.B modprobe
+\-a \-t tag pattern
+.br
+.B modprobe
+\-l [ \-t tag ] pattern
+.br
+.B modprobe
+\-r module
+.br
+.B modprobe
+\-c
+.br
+.SH DESCRIPTION
+These utilities are intended
+to make a Linux modular kernel manageable for all users,
+administrators and distribution maintainers.
+.PP
+.B Depmod
+creates a "Makefile"-like dependency file, based on the symbols it finds
+in the set of modules mentioned on the command line (or in a default place).
+This dependency file can later be used by
+.B modprobe
+to automatically load the relevant module(s).
+.PP
+.B Modprobe
+is used to load a set of modules, either a single module,
+a stack of dependant modules,
+or all modules that are marked with a specified tag.
+.PP
+.B Modprobe
+will automatically load all base modules needed in a module stack,
+as described by the dependency file modules.dep.
+If the loading of one of these modules fails, the whole current stack
+of modules will be unloaded (by rmmod) automatically.
+.PP
+.B Modprobe
+has two ways of loading modules. One way (the probe mode) will
+try to load a module out of a list (defined by
+.B pattern
+).
+It stops loading as soon as one module load successfully.
+This can be used to autoload one ethernet driver out of a list for example.
+The other way, is to load all modules from a list.
+This can be used to load some modules at boot time.
+.PP
+With the option
+.B -r,
+modprobe will automatically unload a stack of modules,
+similar to the way
+.B rmmod -r
+does.
+.PP
+Option -l combined with option -t list all available modules
+of a certain type.
+An enhanced
+.B mount
+command could use the command
+
+	modprobe -l -t fs
+
+to get the list of all file system drivers available and on
+request load the proper one.
+So, the mount command could become more generic as well...
+(The kerneld solve this without changing the mount utility)
+.PP
+Option -c will print all configuration (default + configuration file).
+.PP
+The normal use of
+.B depmod
+is to include the line "/sbin/depmod -a" in one of the rc-files
+in /etc/rc.d, so that the correct module dependencies will be available
+immediately after booting the system.
+.br
+Note that it is also possible to create the dependency file immediately
+after compiling a new kernel.
+If you do "depmod -a 1.3.99" when you have compiled kernel 1.3.99 and
+its modules the first time, while still running e.g. 1.3.98, the file will
+be created in the correct place.
+.br
+Note however that the dependencies on the kernel will not be guaranteed
+to be correct in this case!
+.PP
+Option
+.B -d
+put depmod in debug mode. It outputs all command it is issuing.
+.Pp
+Option
+.B -e
+output the list of unresolved symbol for each module, Normally depmod
+only output the list of unloadable modules.
+.Pp
+Option
+.B -v
+output the list of all processed modules.
+.Pp
+Modules may be located at different place in the filesystem,
+but there will always be some need to override this,
+especially for module developers.
+We expect some official standard will emerge, defined by the FSSTND.
+Until that time you might as well use this suggested directory structure.
+.SH CONFIGURATION
+The behaviour of
+.B depmod
+and
+.B modprobe
+can be adjusted by the (optional) configuration file
+.B /etc/conf.modules
+.PP
+The configuration file consists of a set of lines.
+.br
+All empty lines, and all text on a line after a '#', will be ignored.
+.br
+Lines may be continued by ending the line with a '\\'.
+.br
+The remaining lines should all conform to one of the following formats:
+
+  keep
+  parameter=value
+  options module symbol=value ...
+  alias module real_name
+  pre-install module command ...
+  install module command ...
+  post-install module command ...
+  pre-remove module command ...
+  remove module command ...
+  post-remove module command ...
+
+All values in the "parameter" lines will be processed by a shell,
+which means that "shell tricks" like wild-cards
+and commands enclosed in back-quotes can be used:
+
+  path[misc]=/lib/modules/1.1.5?
+  path[net]=/lib/modules/`uname -r`
+
+Parameters may be repeated multiple times.
+.PP
+These are the legal parameters:
+.TP
+keep
+If this word is found on a line
+.B before
+any lines that contain the
+.B path
+descriptions, the default set of paths will be saved, and thus added to.
+Otherwise the normal behaviour is that the default set will be
+.B replaced
+by the set of paths in the configuration file.
+.TP
+depfile=DEPFILE_PATH
+This is the path to the dependency file that will be created by
+.B depmod
+and used by
+.B modprobe.
+.TP
+path=SOME_PATH
+The
+.B path
+parameter specifies a directory to search for the modules.
+.TP
+path[tag]=SOME_PATH
+The path parameter can carry an optional tag.
+This tells us a little more about the purpose of the modules in
+this directory and allows some automated operations by
+.B modprobe.
+The tag is appended to the "path" keyword enclose in square brackets.
+If the tag is missing, the tag "misc" is assumed.
+.br
+One very useful tag is
+.B boot,
+which can be used to mark all modules that should be loaded at boot-time.
+.PP
+If the configuration file '/etc/conf.modules' is missing,
+or if any parameter is not overridden,
+the following defaults are assumed:
+.PP
+  depfile=/lib/modules/`uname -r`/modules.dep
+  path[boot]=/lib/modules
+
+  path[fs]=/lib/modules/`uname -r`
+  path[misc]=/lib/modules/`uname -r`
+  path[net]=/lib/modules/`uname -r`
+  path[scsi]=/lib/modules/`uname -r`
+  path[cdrom]=/lib/modules/`uname -r`
+  path[ipv4]=/lib/modules/`uname -r`
+  path[ipv6]=/lib/modules/`uname -r`
+  path[sound]=/lib/modules/`uname -r`
+
+  path[fs]=/lib/modules/default
+  path[misc]=/lib/modules/default
+  path[net]=/lib/modules/default
+  path[scsi]=/lib/modules/default
+  path[cdrom]=/lib/modules/default
+  path[ipv4]=/lib/modules/default
+  path[ipv6]=/lib/modules/default
+  path[sound]=/lib/modules/default
+
+  path[fs]=/lib/modules
+  path[misc]=/lib/modules
+  path[net]=/lib/modules
+  path[scsi]=/lib/modules
+  path[cdrom]=/lib/modules
+  path[ipv4]=/lib/modules
+  path[ipv6]=/lib/modules
+  path[sound]=/lib/modules
+.PP
+All "option" lines specify the default options that are needed for
+a module, as in:
+
+  modprobe de620 bnc=1
+
+These options will be overridden by any options given on the
+.B modprobe
+command line.
+.br
+It is possible to have an "option" line for aliased module names as well
+as for the non-aliased name.
+This is useful for e.g. the dummy module:
+
+  alias dummy0 dummy
+  options dummy0 -o dummy0
+
+.PP
+The "alias" lines can be used to give alias names to modules.
+A line in /etc/conf.modules that looks like this:
+
+  alias iso9660 isofs
+
+makes it possible to write
+.B "modprobe iso9660"
+although there is no such module available.
+.br
+Note that the line:
+
+  alias some_module off
+
+will make modprobe ignore requests to load that module.
+This is usually used in conjunction with
+.B kerneld.
+.TP
+Commands
+The configuration lines
+  pre-install module command ...
+  install module command ...
+  post-install module command ...
+  pre-remove module command ...
+  remove module command ...
+  post-remove module command ...
+.br
+can be used when one wants some specific commands to be executed when
+a module is inserted or removed.
+All text after the module name will be interpreted as the command text.
+.br
+Note that the pre- and post-remove commands will \fBnot\fR be executed
+if a module is "autocleaned" by kerneld!
+Look for the up-coming support for persistent module storage instead.
+.SH STRATEGY
+The idea is that
+.B modprobe
+will look first at the directory containing
+modules compiled for the current release of the kernel.
+If the module is not found there,
+.B modprobe
+will look in the directory containing modules for a default release.
+.PP
+When you install a new linux, the modules should be moved to a directory
+related to the release (and version) of the kernel you are installing.
+Then you should do a symlink from this directory to the "default" directory.
+.PP
+Each time you compile a new kernel, the command
+.B "make modules_install"
+will create a new directory, but won't change the default.
+.PP
+When you get a module unrelated to the kernel distribution
+you should place it in one of the version-independent directories
+under /lib/modules.
+.PP
+This is the default strategy, which can be overridden in /etc/conf.modules.
+.SH EXAMPLES
+.TP
+modprobe -t net
+Load one of the modules that are stored in the directory tagged "net".
+Each module are tried until one succeed (default: /lib/modules/net).
+.TP
+modprobe -a -t boot
+All modules that are stored in the directory tagged "boot" will
+be loaded (default: /lib/modules/boot).
+.TP
+modprobe slip.o
+This will attempt to load the module slhc.o if it was not previously loaded,
+since the slip module needs the functionality in the slhc module.
+This dependency will be described in the file "modules.dep" that was
+created automatically by
+.B depmod
+.TP
+modprobe -r slip.o
+will unload slip.o. It will also unload slhc.o automatically,
+unless it is used by some other module as well (like e.g. ppp.o).
+.SH FILES
+.nf
+/etc/conf.modules, (and /etc/modules.conf)
+/lib/modules/*/modules.dep,
+/lib/modules/*
+.fi
+.SH SEE ALSO
+lsmod(1),
+kerneld(8),
+ksyms(1),
+modules(2),
+.SH REQUIERED UTILITIES
+insmod(1),
+nm(1)
+rmmod(1),
+.SH NOTES
+The pattern supplied to modprobe will often be escaped to ensure
+that it is evaluated in the proper context
+
+.SH AUTHOR
+Jacques Gelinas (jack@solucorp.qc.ca)
+.br
+Bjorn Ekwall (bj0rn@blox.se)
+.SH BUGS
+Naah...

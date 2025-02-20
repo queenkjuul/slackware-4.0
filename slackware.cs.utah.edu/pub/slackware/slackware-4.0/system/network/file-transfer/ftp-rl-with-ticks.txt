@@ -1,0 +1,11 @@
+This is a set of context diffs to ftp-rl.taz (which I found on sunsite). It
+fixes a couple of bugs in the hashmark printing, and adds a ``bytes
+transferred'' counter during file transfers. This counter may be toggled with
+the new command `tick'.
+
+It is possible to set the frequency with which the byte counter is updated;
+change the TICKBYTES define in ftp_var.h to whatever interval you want.
+
+If you have any problems with this patch, you can reach me as dpn2@po.cwru.edu.
+
+      - Damien Neil

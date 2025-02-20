@@ -1,0 +1,18 @@
+Begin3
+Title:		FEddy-1.4.02.tar.gz
+Version:	1.4.02, 02/28/99
+Entered-date:	02/28/99
+Description:	FiDO-Scanner/Tosser/Editor (for node- and pointsystems) with
+		nice ncurses interface.
+		Runs without any need of smail, cnews, etc.
+Keywords:	communications, newsreader, fido, ftn
+Author: 	ograf@informatik.uni-koblenz.de (Oliver Graf)
+Maintained-by:	pema@hippo.fido.de (Peter Marbaise)
+Primary-site:	ftp.fido.de /pub/feddy
+		335 kB fedd1402.tgz
+Alternate-site:	sunsite.unc.edu /pub/Linux/system/Fido
+		335 kB feddy-1.4.02.tar.gz
+Platforms:	Linux or other Unix systems with ncurses available.
+		perl5 and ifcico or any other fido compatible mailer required
+Copying-policy:	GPL
+End

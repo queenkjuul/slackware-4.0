@@ -1,0 +1,19 @@
+Begin3
+Title:		f6x86
+Version:	1.0
+Entered-date:	28AUG1996
+Description:	An xforms based program for viewing/setting some of the
+		internal configuration registers in the Cyrix/IBM 6x68 CPU.
+		[ Calls the program set6x86, which is included in this
+		package - author koen.gadeyne@barco.com (Koen Gadeyne). ]
+Keywords:	6x86 Cyrix IBM CPU xforms set6x86 X11
+Author:		ijp@floot.demon.co.uk (Ian J Peters)
+Maintained-by:	ijp@floot.demon.co.uk (Ian J Peters)
+Primary-site:	sunsite.unc.edu /pub/Linux/system/Misc
+		21K f6x86-1.0.tgz
+Alternate-site:	www.floot.demon.co.uk/f6x86-1.0.tgz
+Original-site:
+Platform:	[At least] V0.81 of the xforms library (bxform-081.tgz)
+		(http://bragg.phys.uwm.edu/xforms)
+Copying-policy:	GPL
+End

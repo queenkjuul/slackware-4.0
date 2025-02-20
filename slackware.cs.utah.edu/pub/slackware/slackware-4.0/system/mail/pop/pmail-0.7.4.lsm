@@ -1,0 +1,20 @@
+Begin3
+Title:          pmail
+Version:        0.7.4
+Entered-date:   28AUG98
+Description:    Pmail is a small but flexible E-mail transfer client 
+                based on POP3 and SMTP protocols, supports multiply 
+                POP3 account, sends off-line mails and operates remote
+                mails, supports external pipe such as PGP or others.
+                Pmail adopts standard UNIX mail/mailx format. Within 
+                elf binary.
+Keywords:       email client pop3 smtp dialup
+Author:	        xuming@bigfoot.com (Xu, Ming)
+Maintained-by:  xuming@bigfoot.com (Xu, Ming)
+Primary-site:   http://members.xoom.com/xuming/
+                pmail-0.7.4.tar.gz 40 kb
+Alternate-site: sunsite.unc.edu:/pub/Linux/system/mail/pop
+Platforms:      Linux only
+Copying-policy: GPL
+End
+

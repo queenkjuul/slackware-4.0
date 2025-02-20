@@ -1,0 +1,186 @@
+
+Announcing Slackware Linux 4.0!
+
+Check it, yo.  Nearly six months in the making, the latest version of the 
+longest running Linux distribution is now available.  Sporting the long-
+awaited 2.2 Linux kernel, the K Desktop Environment, and the latest version
+of XFree86, Slackware 4.0 is our most advanced *and* user-friendly release
+ever.
+
+From the beginning, Slackware has offered a stable and secure Linux 
+distribution for UNIX veterans, as well as an easy-to-use system for
+beginners.  Slackware includes everything you'll need to run a powerful
+server or workstation.  Each Slackware package follows the setup and
+installation instructions from its author(s), offering you the most stable
+and easily expandable setup.
+
+Here are some of the advanced features of Slackware 4.0:
+
+- Runs the 2.2.6 version of the Linux kernel from ftp.kernel.org
+
+- Generic IDE (bare.i) and SCSI (scsi.s) boot images work work with nearly
+     all Intel-based (and compatible) computer systems.  Additional
+     precompiled kernels (62 varieties in all) and boot images provide
+     specialized support for hardware such as new Adaptec aic7xxx 7890 SCSI
+     controllers, parallel-port IDE devices, IBM PS/2 machines with the
+     Microchannel bus, SGI Visual Workstations, Symmetrical Multiprocessing
+     machines, and much much more.
+
+- Includes additional bootdisks, precompiled kernels, and source for the
+  2.2.7 kernel, for those who need its features.
+
+- Slackware 3.9 available for those wishing to continue to run a 2.0 kernel
+  based distribution (Slackware 3.9 is a special edition of Slackware 4.0
+  that uses the 2.0.37pre10 kernel and the necessary modules and utilities
+  to run a 2.0 kernel).
+
+- System binaries linked with the stable libc5 C libraries, version 5.4.46.
+
+- Includes glibc-2.0.7pre6 shared libraries for glibc binary runtime support.
+
+- Latest GNU releases of /bin/true and /bin/false
+
+- XFree86 3.3.3 patch 1, plus X servers for Neomagic and Intel i740 chipsets.
+
+- GhostScript and APS-filter included to support many common PC printers.
+  Among these are:
+     HP670, HP690, HP850, HP855, HP870, HP890, HP1100 and HP1600
+
+- A complete, robust, and scalable solution for your enterprise-wide 
+  computing needs.
+
+- Installs both egcs-1.1.2 and gcc-2.7.2.3 compilers to provide a more
+     flexible development environment.  By default, C code compiles with gcc,
+     C++ code compiles with egcs (or specify your own site-wide defaults by
+     setting the 'gcc' and 'g++' links in /usr/bin).  There's also an 
+     optional gcc-2.8.1.tgz binary package.
+
+- Apache 1.3.6 web server with Dynamic Shared Object (DSO) support 
+  pre-configured to run right out of the box.
+
+- PCMCIA, CardBus, and APM support for laptops. (pcmcia-cs-3.0.9)
+
+- New development tools (autoconf and automake) as well as the LinuxThreads
+  libraries are now available.
+
+- GIMP 1.0.4 image manipulation program. (with gtk+-1.2.2 libraries compiled
+  with multithreaded support enabled)
+
+- Keeps your breath smelling minty fresh.  ;)
+
+- Includes Netscape Communicator version 4.51.
+
+- The K Desktop Environment version 1.1.1 is fully integrated into the
+  Slackware distribution.
+
+- Updated versions of the Slackware package management tools, making it
+  easy to add, remove, upgrade, and make your own Slackware packages.
+
+- Large repository of contributed software compiled and ready to run. This
+  includes GNOME 1.0, various window managers, bash 2.02, support for 3Dfx
+  gaming cards, JDK, and more (see /contrib).
+
+- Many more improved and upgraded packages, including:
+     apmd_3.0beta3-2, bzip2-0.9.0b, cdrecord-1.6.1, cvs-1.10, e2fsprogs-1.14,
+     emacs-20.3, fetchmail-4.6.3, gpm-1.14, gv-3.5.8, ibcs-2.1-981105,
+     ipchains-1.3.8, jdk_1.1.7-v1a, libgr-2.0.13, loadlin-1.6a, pciutils-1.10,
+     man-pages-1.23, minicom-1.82-3, modutils-2.1.121, net-tools-1.52,
+     netkit-routed-0.12, nfs-server-2.2beta40, perl-5.005_03, pidentd-2.8.3,
+     pine 4.10, procmail-3.13.1, procps-2.0.2, procinfo-16, python-1.5.1,
+     Qt-1.44, rpm2targz, samba-2.0.3, sendmail-8.9.3, shadow-990307,
+     svgalib-1.3.1, kde-1.1.1
+
+- Installs to a native Linux (ext2fs) partition for maximum performance, or
+     into a \LINUX directory on an existing Windows FAT/FAT32 partition using
+     the Linux UMSDOS filesystem.  With UMSDOS, you can install a complete 
+     Linux system without repartitioning your hard drive!
+
+- Another Slackware exclusive:  Slackware's ZipSlack installation option is
+     the fastest, _easiest_ Linux installation ever.  ZipSlack provides a 
+     full-featured text-based Linux system as a 37 megabyte ZIP archive.  
+     Simply unzip on any FAT or FAT32 partition, edit your boot partition in
+     the LINUX.BAT batch file, and you can be running Linux in less than five
+     minutes.  Even boots on machines with only 4MB of RAM.  The ZipSlack
+     installation includes everything you need to network with Linux 
+     (including Ethernet, token ring, SLIP and PPP), develop Linux 
+     applications with C, C++, and Perl, and extend the system with additional
+     software packages such as X.  A ZipSlack system will even fit on a Zip
+     disk, so you can carry a personal Linux system with you to run on any
+     PC with a Zip drive.
+
+
+HOW TO DOWNLOAD SLACKWARE:
+
+The full version of Slackware Linux 4.0 is available for free download from
+the central Slackware site at Walnut Creek CDROM:
+
+   ftp://ftp.cdrom.com/pub/linux/slackware-4.0/
+
+The ZipSlack version of Slackware is also available from Walnut Creek CDROM:
+
+   ftp://ftp.cdrom.com/pub/linux/slackware-4.0/zipslack/
+
+A list of alternate download sites (which may take a few days to catch up)
+can be found here:
+
+   ftp://ftp.cdrom.com/pub/linux/slackware-4.0/MIRRORS.TXT
+
+
+OFFICIAL SLACKWARE CDROM SET:
+
+Or, purchase the Slackware Linux 4.0 four CDROM set from Walnut Creek CDROM.
+This is the official release of Slackware on CDROM, and has many enhanced
+features, including:
+
+ -  Easy bootable CDROM installation.  If your machine can boot a CDROM,
+       just boot the first disc to begin the installation process.
+ -  Fully installed bootable live CDROM -- just boot the second disc and
+       run a full Linux system right off the disc, including networking, 
+       development, and X with no installation necessary.  Makes the
+       ultimate Linux rescue disc!
+ -  The latest GNU archives from prep.ai.mit.edu.
+ -  A full CDROM of Linux archives, including binaries and source code
+       for hundreds of additional applications and utilities.
+ -  Technical support via telephone or email.
+
+The price for the Slackware Linux CDROM set is $39.95 plus shipping.
+Slackware is also available by subscription -- we produce an updated Slackware
+Linux set about every five months.  When we have a new version we ship it to
+you and bill your credit card $24.95 plus shipping.  Shipping is $5 in the USA,
+Canada, and Mexico for First Class.  Overseas is $9 PER ORDER.  There is an
+additional $3 COD charge (USA Only).  UPS Blue Label (2nd day) [USA Only] is
+$10 PER ORDER, UPS Red Label (next day) [USA Only] is $15 PER ORDER.  Federal
+Express (next day) [USA Only] is $20 PER ORDER.
+
+Ordering Information:
+
+   From our web site:
+     http://www.cdrom.com
+
+   Telephone orders:
+      1 800 786-9907 (24 hour toll free Sales)
+     +1 925 674-0783 (24 hour sales)
+     +1 925 603-1234 (9-5 M-F tech support)
+     +1 925 674-0821 (FAX)
+
+   Email orders:
+     orders@cdrom.com  (For placing an order)
+     info@cdrom.com    (For requesting more information or
+                        for customer service questions)
+     support@cdrom.com (For technical questions and support)
+   
+   Or, send a check or money order to:
+
+     Walnut Creek CDROM
+     4041 Pike Lane, Suite F
+     Concord, CA 94520
+     USA
+
+
+Have fun! :^)
+
+---
+Patrick J. Volkerding    <volkerdi@slackware.com>
+David Cantrell           <david@slackware.com>
+Logan Johnson            <logan@slackware.com>
+Visit Slackware on the web at http://www.slackware.com!

@@ -1,0 +1,16 @@
+drwxr-xr-x root/root         0 1998-02-23 22:01 ./
+drwxr-xr-x root/root         0 1998-02-23 21:51 usr/
+drwxr-xr-x root/bin          0 1998-02-23 21:59 usr/bin/
+-rwxr-xr-x root/bin      16830 1997-12-30 18:08 usr/bin/qvplaytk
+-rwxr-xr-x root/bin       4332 1998-02-23 21:54 usr/bin/camdump
+-rwxr-xr-x root/bin       4260 1998-02-23 21:54 usr/bin/cam2ppm
+-rwxr-xr-x root/bin       2664 1998-02-23 21:54 usr/bin/demacbin
+-rwxr-xr-x root/bin      15340 1998-02-23 21:54 usr/bin/qvalldel
+-rwxr-xr-x root/bin      29072 1998-02-23 21:54 usr/bin/qvplay
+-rwxr-xr-x root/bin      20348 1998-02-23 21:54 usr/bin/qvrec
+-rwxr-xr-x root/bin       5272 1998-02-23 21:54 usr/bin/cam2jpeg
+drwxr-xr-x root/root         0 1998-02-23 21:51 usr/doc/
+drwxr-xr-x root/root         0 1998-02-23 21:53 usr/doc/qv-utils/
+-rw-r--r-- root/root     13472 1996-10-11 02:36 usr/doc/qv-utils/PROTOCOL
+-rw-r--r-- root/root     12708 1997-02-10 07:52 usr/doc/qv-utils/README.qvplay
+-rw-r--r-- root/root      5349 1996-08-28 01:25 usr/doc/qv-utils/README.cam2jpeg

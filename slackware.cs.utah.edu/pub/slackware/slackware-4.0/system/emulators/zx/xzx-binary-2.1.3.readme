@@ -1,0 +1,56 @@
+				      XZX
+
+		       An X11-based ZX Spectrum emulator
+
+		   by Erik Kunze <Erik.Kunze@fantasy.muc.de>
+		      based on XZX 1.0.2 by Des Herriott
+				and many others
+
+				 Version 2.1.3
+
+
+Introduction
+------------
+This is a README file for XZX-binary distribution. Just untar the
+archive in root (e.g. "gzip -dc xzx-binary-2.1.3.tar.gz | tar xvpf - -C
+/", as root user) and you should be able to type xzx and get into the
+emulator. If you will use the sound, make sure the binary is setuid
+root. Read the section in the README on this. Check the man page for all
+the options you should give on the command line and set up an alias for
+yourself. I use:
+
+xzx -scale 3 -sound on -joystick on -rrShm 1 -tolerance 40
+
+The bigger the scale the slower it will be, but at scale 3 it runs ok on
+16bpp on P133 that I have. And I don't have to "zoom in."
+
+I have compiled in as much as possible, including joystick and sound
+support.  You need the joystick driver, go to sunsite to
+/pub/Linux/kernel/patches/console and fetch joystick-0.8.0.tar.gz. If
+you run v2.1.x of linux, there is a patch I made on sunsite in the same
+direcory, that will allow you to use joystick module under 2.1.x. Also
+note when you run xzx with joystick on, the calibration is now done from
+the OSD's (on screen menus), just press F1 and go to Joystick options.
+
+I have not compiled in the DEBUG but I doubt anyone will need that. This
+is a -DHAVE_ENOUGH_SWAP compiled binary so from what I hear it runs
+faster by 25% then just normally compiled binary ...
+
+If this binary does not work for you get the full source and compile
+yourself.
+
+My setup is Linux 2.1.35 libc-5.4.23 XFree86 3.2
+
+Also note that xzx binary is setuid root so that the sound works. XZX
+will throw away its root permissions as soon as it gets permission to
+write to the speaker port, so there shouldn't be any security problems.
+
+READ ALL THE FILES IN /usr/doc/xzx-2.1.3/!
+
+Have fun
+
+George Lebl <jirka@5z.com>
+
+------------
+I forgot to include the manpage and a whole other bunch of stuff last
+time so don't beat me too hard  :) here it is in full!

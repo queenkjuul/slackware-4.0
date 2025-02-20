@@ -1,0 +1,6 @@
+This is a read-only driver for the Windows NT file system, or NTFS.
+Read the file INSTALL on how to compile the driver and supporting tools.
+Make sure you understand that this is alpha software. This means that the
+implementation is neither complete nor well-tested. Still, it works for me
+and others, so you can try it out. You should know how to restore the system
+after a crash, and have a backup of any valuable data, just in case.

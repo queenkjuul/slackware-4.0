@@ -1,0 +1,142 @@
+/*
+ * Fetchpop 1.9pl2 Patch 
+ *
+ * This little patch (which includes patch1 and 2 btw) disables fetchpops
+ * usage of the POP3-command "LAST" since some (stupid) POP3-Servers
+ * doesn't recognize this anymore and cause fetchpop to fail.
+ * 
+ * Fetchpop assumes now that mail #0 is the last read one.
+ *
+ * Maybe someone enhances it to enable that by a command line switch.
+ * 
+ * Patch done by joerg.hinz@uni-essen.de
+ *
+ */
+
+diff -u fetchpop1.9/Makefile fetchpop1.9pl2/Makefile
+--- fetchpop1.9/Makefile	Wed Jun 26 04:21:43 1996
++++ fetchpop1.9pl2/Makefile	Mon May 18 13:42:27 1998
+@@ -26,17 +26,18 @@
+ #                         new mails. don't log when there is no new mails. 
+ #                         Useful if you want to use biff or xmailbox
+ #                         with fetchpop.
++# -DNODETAILLOG		- don't display delivery method at the end 
++#     			  of retrieval
+ #--------------------------------------------------------------
+ # For example,
+ 
+ #EXTRA_OPTION = 
+ #EXTRA_OPTION = -DHAVEMDA -DLogShowfrom 
+ #EXTRA_OPTION = -DHAVEPROCMAIL -DLogShowfrom 
+-EXTRA_OPTION = -DHAVEPROCMAIL -DHAVEMDA -DLogShowfrom -DLogOnlyNew 
++EXTRA_OPTION = -DHAVEPROCMAIL -DHAVEMDA -DLogShowfrom -DLogOnlyNew -DNODETAILLOG 
+ #EXTRA_OPTION = -DHAVEPROCMAIL -DHAVEMDA -DLogShowfrom  
+ 
+ LIBS=
+-
+ # -------- No need to edit anything below here ---------------------------
+ DEFTARGET=notes
+ OBJECTS=fetchpop.o pop.o retrieve.o socket.o 
+Only in fetchpop1.9: fetchpop
+diff -u fetchpop1.9/fetchpop.c fetchpop1.9pl2/fetchpop.c
+--- fetchpop1.9/fetchpop.c	Wed Jun 26 03:28:00 1996
++++ fetchpop1.9pl2/fetchpop.c	Mon May 18 21:27:49 1998
+@@ -40,8 +40,8 @@
+ void encryptit(char *to, char *from);
+ int decryptit(char *to, char *from);
+ 
+-#define VERSION "fetchpop 1.9 release"
+-#define DATE "Jun 1996"
++#define VERSION "fetchpop 1.9pl2 release"
++#define DATE "May 1998"
+ 
+ int main(int argc, char** argv)
+ {
+@@ -153,9 +153,7 @@
+     case 'x':
+       if (!flag1 && !flag2) {
+ 	options->remove = 2;
+-	if (!flag1)
+ 	  ++flag1;
+-	else
+ 	  ++flag2;
+       } else
+ 	iserror++;
+@@ -314,7 +312,7 @@
+     ;
+   
+   if (iserror) {
+-    fprintf(stderr,"usage: fetchpop [-v] [-k | -q] [-d] [-r] [-x | -e msgID] [-c | -a | -g msg ID] [-h] [-t limit] [-f alternative rcfile] [-l log file] [");
++    fprintf(stderr,"usage: fetchpop [-v] [-k | -q] [-d] [-b] [-r] [-x | -e msg ID] [-c | -a | -g msg ID] [-h] [-t limit] [-f alternative rcfile] [-l log file] [");
+ #ifdef HAVEMDA
+     fprintf(stderr," -m | ");
+ #endif
+@@ -338,7 +336,7 @@
+     fprintf(stderr,"  -m   : use %s for mail delivery.\n",DefaultMDA);
+ #endif
+ #ifdef HAVEPROCMAIL
+-    fprintf(stderr,"  -p   : use procmail for mail delivery.\n");
++    fprintf(stderr,"  -p   : use procmail(%s) for mail delivery.\n",FORMAIL);
+ #endif
+     fprintf(stderr,"  -o   : write the fetched message to user defined mail folder.\n");
+     fprintf(stderr,"  -o - : (-o stdout) write the fetched message to standard output device.\n");
+@@ -517,7 +515,7 @@
+ #define ENC(c) ((c) ? ((c) & 077) + ' ' +2 : '`' + 2)
+ #define DEC(c) ((((c) - ' ') & 077) -2)
+ 
+-void encryptit(char to[], char from[])
++void encryptit(char *to, char *from)
+ {
+   
+   int ch,n;
+@@ -542,7 +540,7 @@
+   }
+ }
+ 
+-int decryptit(char to[], char from[])
++int decryptit(char *to, char *from)
+ {
+   int ch,n;
+   char *p;
+diff -u fetchpop1.9/pop.c fetchpop1.9pl2/pop.c
+--- fetchpop1.9/pop.c	Wed Jun 26 03:28:06 1996
++++ fetchpop1.9pl2/pop.c	Mon May 18 13:55:46 1998
+@@ -93,12 +93,12 @@
+   newmsg = howmany-last;
+ 
+ #ifndef LogOnlyNew
+-  sprintf(buf,"There are %d new messages and total of %d messages.\n",newmsg,howmany);
++  sprintf(buf,"You have %d new messages and total of %d messages.\n",newmsg,howmany);
+   printmsg(buf,options->logging, options->daemon, logfd, 0, options->whichdeliver == 4);
+   rpy = 0;
+ #else
+   if (!options->daemon)
+-    printf("There are %d new messages and total of %d messages.\n",newmsg,howmany);
++    printf("You have %d new messages and total of %d messages.\n",newmsg,howmany);
+ #endif
+   if ((options->remove == 2) && (last > 0)) {
+     sprintf(buf,"[Remove] Removing old messages from  #1 to #%d in the remote server.\n",last);
+@@ -152,7 +152,7 @@
+ { 
+   int rpy;
+   
+-  if (!readsock(sockfd, argbuf, POPBUFLEN)) {
++  if (!sockgetline(sockfd, argbuf, POPBUFLEN)) {
+ #ifdef DEBUG
+     printf("argbuf is %s\n", argbuf);
+ #endif
+@@ -287,10 +287,13 @@
+   int rpy;
+   char buf[POPBUFLEN];
+   
+-  writeln(sockfd,"LAST\r\n");
++  /*  writeln(sockfd,"LAST\r\n");
+   rpy=get_reply(sockfd,buf);
+   if (!rpy)
+     sscanf(buf,"%*s %d",lastread);
++  */
++  rpy=0;
++  *lastread=0;
+   return rpy;
+ }
+ 

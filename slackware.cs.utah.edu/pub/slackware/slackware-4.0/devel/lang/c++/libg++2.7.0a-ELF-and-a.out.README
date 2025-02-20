@@ -1,0 +1,27 @@
+WARNING! WARNING! WARNING!  Give up hope, all ye who enter here!
+
+    This is a stop-gap libg++ 2.7.0a in both ELF and A.OUT versions
+for Linux.  It works fine with both ELF and A.OUT gcc 2.7.0 bins from
+H.J. Lu.  This is not a guarantee of workability and is by no means
+an official release of the libs to the Linux community... in other
+words, if you want to be safe, wait for H.J. Lu to release his binaries
+of these libs.
+
+    I have set optimization to -O2 -m486 for each version of the
+libs in this package and have so far had no problems with them.
+
+    If you get this package and have problems, DON'T email me
+at brenner@umr.edu.  If you get them and like them, though, please
+leave me a nice message!  :)
+
+    Have a nice day!
+
+
+                "Bill Clinton is a socialist weenie!" -- me
+///////   +-----------------------------------------------------+
+(*)^(-)   | I, <your name here> will not, upon pain of death,   |   Ask Me
+  (_)     | take anything said by the bearer of this .sig to be |   About
+(\___/)   | the opinion of his University, his classmates, or   |   Linux!
+   .      | any prospective employers. <sign here, please>      | 
+          +-----------------------------------------------------+
+     Corey Brenner - brenner@umr.edu - University of Missouri at Rolla

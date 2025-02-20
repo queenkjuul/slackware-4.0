@@ -1,0 +1,15 @@
+Begin3
+Title:          IPFIREWALL
+Version:        -
+Entered-date:   
+Description:    Firewalling tool for 1.1.69+. list option works on 1.1.70+
+		and 1.1.69 also gives the odd harmless kernel can't happen.
+Keywords:       ip firewall and accounting configuration
+Author:         Daniel Boulet, Bob Beck, Alan Cox
+Maintained-by:  None - someone else can tidy this up - Im busy
+Primary-site:   
+Alternate-site: 
+Original-site:  
+Platform:       Linux
+Copying-policy: Copy if copyright notice included.
+End

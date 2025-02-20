@@ -1,0 +1,15 @@
+
+Begin3
+Title: settime          
+Version: V1.0-00        
+Entered-date: October 4, 1994  
+Description: Allows updating of system clock via a tcp/ip query.   
+Keywords: clock, time, system_time        
+Author: Todd Lawrence (marauder@phantom.com, marauder@lod.amaranth.com)        
+Maintained-by: marauder@lod.amaranth.com   
+Primary-site: sunsite.unc.edu: /pub/Linux/Incoming   
+Alternate-site: lod.amaranth.com: /pub
+Original-site: lod.amaranth.com: /pub 
+Platform: Linux       
+Copying-policy: May be freely copied, modified, distributed. 
+End

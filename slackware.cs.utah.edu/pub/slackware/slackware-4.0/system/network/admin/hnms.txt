@@ -1,0 +1,183 @@
+A free package called HNMS, the NAS Hierarchical Network Management
+System, is now available.  The software may be ftp'd from ftp.netcom.com
+in the directory pub/heyjude.  (We're looking for other sites
+to pick this up, as netcom is pretty bogged down -- offers are welcome).
+
+----------------------------------------------------------------------------
+
+				HNMS v2.0g2
+
+	This is the first public release of HNMS, the NAS Hierarchical
+	Network Management System.  HNMS may be used to monitor status
+	and generate traffic statistics for a large, routed IP network.
+
+	Graphical displays are provided for the X11 Window System and
+	make use of the Motif widget set.  HNMS is unique is that it
+	can be used to graphically display routing information.  The
+	GUI provides compact representations of LANs, in which the status
+	of every subnet, host, and IP address can be displayed in a small
+	area.  Netmask misconfigurations can be picked out immediately.
+	It also correctly displays various WAN architectures, such as
+	those which include multiple IP addresses per interface
+	(or vice versa), or subnets which spread across multiple links.
+	A custom version of HNMS was used to generate the live,
+	three-dimensional representation of the cross-country ATM network
+	at Supercomputing '93 in Portland, Oregon.
+
+	Data collection is handled via SNMP, ICMP, and direct layer 2
+	monitoring.  Distribution of network management information is
+	done via HNMP, a new protocol which builds upon the simple,
+	stateless client-server model used by SNMP.  HNMP defines
+	network objects, binds SNMP variables to them, and facilitates
+	higher level management operations on them.  The ASN.1
+	specification of HNMP is included in this package.
+
+	Please note that there is also a release of HNMS that we are
+	distributing through COSMIC, NASA's software technology
+	transfer organization.  COSMIC may (or may not) provide
+	support for that distribution, but please do not ask them
+	for any kind of support concerning this one.  They will not
+	be able to help you.  This version of HNMS has been made
+	available to you, by special dispensation, as FREE SOFTWARE
+	under the GNU public licence ("copyleft").  It is distributed
+	as is, with NO WARRANTY for its fitness for any purpose.
+	If it is redistributed, you may not charge for it or any
+	derivative work.  Please see the file "COPYING" for details
+	about all this.
+
+	Full source code is provided.  We encourage the Internet
+	community to experiment with, build upon, use, port, learn from,
+	add modules to, write scripts for, and expand this software
+	package.  There are some areas in which it can be improved,
+	especially in the areas of generality and efficiency.
+	We would like to see standardized displays for various types
+	of networks and monitored objects, as well as customized displays
+	for specific network hardware, and have them be freely available
+	to everyone.
+
+	The authors do not have the resources to maintain this software
+	outside of NAS.  Although we may continue to add enhancements,
+	we are hoping that other(s) will take on the role of incorporating
+	bug fixes and extensions to the code, and sending out new releases.
+
+	We do welcome any suggestions or bug reports that you may
+	have -- but there's no guarantee that we will be able to
+	help you, or even have time to respond.  We are working full
+	time (and then some) on other projects.  To reach us via
+	email, mail to hnmsdev@nas.nasa.gov.
+
+	This software has not been extensively tested.  Neither the authors,
+	nor NASA, nor anybody at all takes any responsibility for any damage
+	that HNMS may cause, directly or indirectly, to your network, your
+	users, or anything.
+
+	That said, it works pretty well for us.
+
+	Jude George		Leslie Schlecht
+	jude@nas.nasa.gov	schlecht@nas.nasa.gov
+
+	Any opinions expressed above are a figment of your imagination,
+	and should not be taken to reflect the views of NAS, NASA, CSC,
+	or anybody else.
+
+----------------------------------------------------------------------------
+	TO BUILD, follow the instructions in the top-level Makefile.
+
+------>	Be forewarned that you will need to obtain the Motif libraries,
+------>	ISODE-7.0 (not 8.0) and tcpdump if they do not already exist
+	on your system.
+
+	FOR COMPLETE INSTRUCTIONS on installing and using HNMS,
+	please read the file docs.ps.
+
+----------------------------------------------------------------------------
+Here are some quick-start instructions for the HNMS daemon, the graphical
+user interface, and the textual user interface.  The binaries are called
+hnmsd, hnms, and hnmstool.
+
+INSTALLATION
+
+1. Untar and build the HNMS distribution.  Sources, docs, and auxiliary
+   files are included.  This version of HNMS has only been tested on
+   the Silicon Graphics Iris under IRIX 4.0.5.  It should work with little
+   modification on SparcStations running SunOS 4.x.
+
+1. Choose a directory to be the hnms "home", and copy the binaries
+   and the background/ directory to that directory.
+
+2. Set the $HNMS_HOME environment variable to be that directory.  You
+   may want to put this in your .login.
+
+3. Make sure tcpdump is in your path.  It's usually located in
+   /usr/local/etc.  The HNMS IO module uses tcpdump to discover new
+   IP addresses.
+
+4. Make the hnmsd (and tcpdump, if necessary) setuid root.  The HNMS
+   IO module, contained within hnmsd, needs root to access the ICMP
+   socket.
+
+5. Set the HNMS_PROMISCUOUS environment variable.  We are just using
+   this as a flag to tell the IO module that it's okay use promiscuous
+   Ethernet monitoring.
+
+6. Start hnmsd.
+
+RUNTIME -- GUI
+
+The GUI binary is called "hnms".  If you are running it on a machine
+different from the server, set the HNMS_SERVER environment variable
+to have the server machine's name.
+
+Start the hnms program.  Once the GUI's main window appears, choose
+"Open" from the "HNMP" menu at the top center of the window.  A new
+window titled "Server" will pop up.  In this window, type "public"
+in the Community field, and the hostname of the server machine in the
+Selection field.  Then click the Connect button. 
+
+At this point, you can start building diagrams.  Choose "New -->
+Custom Status View" from the HNMS menu on the main window.
+An "EDIT" window will pop up.  Type an asterisk in the Selection
+field, then click Add, then click the check mark at the top.
+You will see a display of all the hosts that the server currently
+knows about ("Processor" objects), along with their IP addresses
+("Ipaddr" objects") and the subnets they are connected to ("Subnet
+objects).  If you have just recently started up hnmsd, the objects
+will appear magenta while hnmsd is ramping up.  This process
+takes three minutes.  Afterwards they will change to green.
+When a reachable object becomes unreachable, it changes to yellow,
+then red.
+
+Feel free to experiment with the rest of the menu items.  "Site" and
+"WAN" diagrams may be built in a manner similar to the "Custom".
+For WAN diagrams to be displayed properly, the sysLocation field of
+your hosts should be in the format <any-string> <longitude> <latitude>.
+For example, "NASA Ames Research Center -122.5 37.1".
+
+RUNTIME -- PLAINTEXT
+
+You may also run hnmstool.  This program takes commands on stdin and
+outputs results on stdout, so it can be used effectively from within
+shell scripts.  For a demonstration, we will run it interactively.
+
+The hnmstool does not give a prompt.  After starting it, wait a minute
+or two for it to get the list of HNMS objects from the server.
+for the HNMS daemon to pick up a good assortment of objects from the
+network.  Then type list.  You should see a list of objects scroll down
+the screen.  Only hosts with SNMP agents responding to "public" will be
+shown.  To pick up other hosts, type hint <hostname> <community-name>.
+For example:
+
+hint snafu.nas.nasa.gov foobar
+
+The next time you type list, you should see                     
+
+processor:snafu
+
+among the objects.  To get data about an object, type
+subscribe "<object>" <variable>@<interval>.  For example:
+
+subscribe "processor:snafu" sysUpTime.0@15
+
+This will give you a report of the value of the sysUpTime.0 variable
+every 15 seconds, if the variable changes.  Since sysUpTime.0 constantly
+changes, you will get an update on stdout every 15 seconds.

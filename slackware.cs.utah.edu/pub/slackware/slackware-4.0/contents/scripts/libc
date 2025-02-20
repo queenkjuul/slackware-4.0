@@ -1,0 +1,54 @@
+#!/bin/sh
+cd lib
+for lib in *.newlib ; do # if this file is already in /lib, we won't replace it
+  if [ ! -r `basename $lib .newlib` ]; then
+    mv $lib `basename $lib .newlib`
+  else
+    rm $lib
+  fi
+done
+if [ -x /sbin/ldconfig ]; then # update library links
+  /sbin/ldconfig .
+else # no ldconfig, we must be running safely from the bootdisk.
+  rm -f libc.so.5
+  ln -sf libc.so.5.4.46 libc.so.5
+  rm -f libm.so.5
+  ln -sf libm.so.5.0.9 libm.so.5
+  rm -f libgdbm.so.1
+  ln -sf libgdbm.so.1.7.3 libgdbm.so.1
+  rm -f libcurses.so.1
+  ln -sf libcurses.so.1.0.0 libcurses.so.1
+  rm -f libtermcap.so.2
+  ln -sf libtermcap.so.2.0.8 libtermcap.so.2
+fi
+cd ..
+( cd usr/lib ; rm -rf libg.a )
+( cd usr/lib ; ln -sf libc.a libg.a )
+( cd usr/lib ; rm -rf libc.so )
+( cd usr/lib ; ln -sf /lib/libc.so.5.4.46 libc.so )
+( cd usr/lib ; rm -rf libm.so )
+( cd usr/lib ; ln -sf /lib/libm.so.5.0.9 libm.so )
+( cd usr/lib ; rm -rf libdb.so.1 )
+( cd usr/lib ; ln -sf libdb.so.1.85.4 libdb.so.1 )
+( cd usr/lib ; rm -rf libdb.so )
+( cd usr/lib ; ln -sf libdb.so.1 libdb.so )
+( cd usr/lib/oldcurses ; rm -rf libcurses.so )
+( cd usr/lib/oldcurses ; ln -sf /lib/libcurses.so.1 libcurses.so )
+( cd usr/lib ; rm -rf libgdbm.so )
+( cd usr/lib ; ln -sf /lib/libgdbm.so.1 libgdbm.so )
+( cd usr/lib ; rm -rf libdbm.so )
+( cd usr/lib ; ln -sf /lib/libgdbm.so.1 libdbm.so )
+( cd usr/lib ; rm -rf libndbm.so )
+( cd usr/lib ; ln -sf /lib/libgdbm.so.1 libndbm.so )
+( cd usr/lib ; rm -rf libtermcap.so )
+( cd usr/lib ; ln -sf /lib/libtermcap.so.2 libtermcap.so )
+( cd usr/include/netinet ; rm -rf in_system.h )
+( cd usr/include/netinet ; ln -sf in_systm.h in_system.h )
+( cd usr/include/sys ; rm -rf uio.h )
+( cd usr/include/sys ; ln -sf /usr/include/linux/uio.h uio.h )
+( cd usr/include ; rm -rf linux )
+( cd usr/include ; ln -sf /usr/src/linux/include/linux linux )
+( cd usr/include ; rm -rf asm )
+( cd usr/include ; ln -sf /usr/src/linux/include/asm asm )
+( cd usr/include ; rm -rf scsi )
+( cd usr/include ; ln -sf /usr/src/linux/include/scsi scsi )

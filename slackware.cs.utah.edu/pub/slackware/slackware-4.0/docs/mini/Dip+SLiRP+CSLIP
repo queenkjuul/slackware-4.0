@@ -1,0 +1,455 @@
+
+                   Linux Dip+SLiRP+CSLIP mini-HOWTO
+                                 by
+                 Zenon Fortuna (zenon@netcom.com)
+
+
+Version: 1.0                                            October 15th '95
+
+INDEX
+        0.      Why "Dip+SLiRP+CSLIP mini-HOWTO" ?
+        1.      History of changes
+        2.      Short description
+        3.      Steps of the configuration
+	3.1		Installing the SLiRP
+	3.2		Testing the SLiRP
+	3.3		Configuring your Linux system
+	3.4		Testing your Linux system
+	3.5		Installing the DIP
+	3.6		Testing the DIP
+	4.	Normal operation
+	4.1		Adding a DNS capability
+        5.      Comments
+
+----------------------------------------------------------------------------
+0.	Why "Dip+SLiRP+CSLIP mini-HOWTO" ?
+
+	This document is for users, who don't want to read the NET-2-HOWTO
+	with all its details, nor want to read the Dip/SLiRP documents, but
+	would like to install a SLIP-like connection to the Internet, using
+	available shell-only account.
+
+	The above mentioned documents should be considered as more exhaustive,
+	but also more exhausting.
+
+	The dip337n-uri and slirp-0.95h packages were used to test the described
+	functionality. The tests were verified under the stable (tm) Linux
+	kernel version 1.2.13, installed under the Slackware 2.2.0 OS
+	distribution.
+
+
+1.	History of changes
+
+	October 15th '95	Version: 1.0
+	    The initial version of the document.
+
+
+2.      Short description
+
+	- I assume, that your Linux system is able to dial-up a remote
+	  server of the ISP, where you have a shell-account. On this server
+	  we will install the "slirp" utility.
+
+	- we would like to prepare the "dip" utility on the Linux system,
+	  along with a specialized script, to dial-up the remote server,
+	  and start the "slirp" on this remote system.
+
+	- the running "dip" will configure the serial line parameters and
+	  will inform the Linux system about the IP mapping, performed by
+	  the remote "slirp".
+
+	- as a result the TCP/IP packets sent over the serial-line/modem
+	  connection will be handled by the remote server as though being
+	  sent locally by this server.
+
+	Miracle happens: we will get a TCP/IP connection of the Linux system
+	to the Internet resources.
+
+
+3.      Steps of the configuration
+3.1		Installing the SLiRP
+
+	- get the SLiRP distribution file, e.g. the slirp-0.95h.tar.gz,
+	  and compile the "slirp" program on your remote host (the system
+	  to which you will be dialing up). The SLiRP's docs/README.compiling
+	  explains the details.
+
+	  Instead, you can get the already precompiled binary from
+		ftp://ibc.wustl.edu/pub/slirp_bin/USE_AT_OWN_RISK/
+	  as it is explained in the Alt.dcom.slip-emulators FAQ, included
+	  with the docs.
+
+	- move the "slirp" program to a better location, e.g. "./bin/slirp"
+	  or "./slirp" (i.e. at the $HOME directory)
+
+	- at your $HOME directory create the ".slirprc" file.
+	  To keep it simple let's use only a few commands:
+		#### .slirprc file ####
+		add ptyexec /usr/bin/tcsh -l:10.0.2.1:23
+		compress
+		baudrate 38400
+		#### end
+
+	  The "compress" command ensures to use the CSLIP protocol.
+	  The "add ptyexec" command was used instead of the "shell"
+	  command (see the SLiRP's docs/CONFIG for a list of commands),
+	  because it is better to use the "tcsh -l" (for ".login" entry)
+	  and the "shell" command does not accept flags (I believe).
+	  You should use the remote system specific address of the "tcsh"
+	  program (or use another shell, if you prefer).
+
+	  The "baudrate" should be used with the speed proper for your modem
+	  connection.
+
+3.2		Testing the SLiRP
+
+	Login to your remote site and type
+
+		% bin/slirp	(or "./slirp", depending on the location)
+
+	You should get a list of messages, with the following line at the end:
+		[talking CSLIP, MTU 1500, MRU 1500, 38400 baud]
+
+	To exit the "slirp" type slowly (>1 sec gap) five 0's (zeroes).
+
+3.3		Configuring your Linux system
+
+	Essentially, what you need to do is to prepare a kernel able
+	to run network and the CSLIP. Then you should configure the network.
+	Start the "make config" in the "src/linux" directory and set "y"
+	to the following options:
+
+		Networking support (CONFIG_NET) [y]
+		TCP/IP networking (CONFIG_INET) [y]
+		Assume subnets are local (CONFIG_INET_SNARL) [y]
+		Network device support? (CONFIG_NETDEVICES) [y]
+		Dummy net driver support (CONFIG_DUMMY) [y]
+		SLIP (serial line) support (CONFIG_SLIP) [y]
+		CSLIP compressed headers (CONFIG_SLIP_COMPRESSED) [y]
+		PPP (point-to-point) support (CONFIG_PPP) [y]
+
+	Now, I use the 3c509 Ethernet card, so my additional options are:
+
+		3COM cards (CONFIG_NET_VENDOR_3COM) [y]
+		3c509/3c579 support (CONFIG_EL3) [y]
+
+	For the NFS installation you can add also:
+
+		NFS filesystem support (CONFIG_NFS_FS) [y]
+
+	Now, after successful "make config", complete the kernel generation
+	with "make dep" and "make zImage".
+	Then move the arch/i386/boot/zImage to your kernel location and
+	run "lilo".
+
+	To configure the network, first decide which IP address to use.
+	In a lack of your special address, take 192.168.1.100, allowed for
+	local networks by RFC1597.
+	Of course, you should rather read the NET-2-HOWTO for correct
+	information, but you can try to do the following:
+
+	A. Give your system a network name, e.g. "yourhost.linux.org",
+	   where all the three names could be chosen to your tastes.
+	   Place the above string (without the quotes) into the
+	   "/etc/HOSTNAME" file.
+
+	B. Edit your "/etc/hosts" file, adding
+		192.168.1.100	yourhost.linux.org yourhost
+	   The above "yourhost.linux.org" string should match the one chosen
+	   in the step A above.
+
+	C. If you run local Ethernet edit also your "/etc/networks" file,
+	   adding a line:
+		yournet		192.168.1.0
+
+	D. Edit your "rc.inet1" from the /etc/rc.d directory (save the
+	   original somewhere :) and set
+		IPADDR=yourhost
+		NETMASK="255.255.255.0"
+		NETWORK=yournet
+		BROADCAST="192.168.1.255"
+	   Then, if you have a real Ethernet card on your system,
+	   uncomment the line
+ /sbin/ifconfig eth0 ${IPADDR} netmask ${NETMASK} broadcast ${BROADCAST}
+	   and then the following line
+ /sbin/route add -net ${NETWORK} netmask ${NETMASK}
+
+	E. Place your domain name "linux.org" (compare the step A) into the
+	   "/etc/resolv.conf" file, as a line:
+		domain	linux.org
+
+	Now, reboot your system.
+
+3.4		Testing your Linux system
+
+	First of all watch the booting messages, or look into the
+	"/usr/adm/messages" file, if your syslogd(8) is running.
+
+	You should see messages like
+		 IP Protocols: ICMP, UDP, TCP
+		 PPP: version ...
+		 TCP compression ...
+		 PPP line discipline registered.
+		 SLIP: version ...
+		 CSLIP: code copyright ...
+	If you have the Ethernet interface it should be recognized as well, e.g:
+		 eth0: 3c509 at 0x280 ...
+
+	Your network should be up and you could test it with a few commands:
+
+	A. Run "ifconfig", without arguments.
+	   You should see the "lo" (loopback) interface activated, with its
+	   addresses.
+	   If you run a real Ethernet as well, you will see the information
+	   about the "eth0" interface as well, and you should notice the
+	   familiar addresses, like "inet addr: 192.168.1.100", etc.
+
+	B. Run "route", without arguments.
+	   You should see a line about the "loopback" and maybe another one
+	   about the "yournet".
+
+	OK, your Linux system is ready to work with the CSLIP as well.
+
+3.5		Installing the DIP
+
+	- it may happen, that your Linux system has already the "dip"
+	  binary. It would be nice to have the 3.3.7n version of it
+	  (it has the updated documentation).
+
+	- otherwise, get the DIP distribution file, e.g. the dip337n-uri.tar.gz,
+	  and compile the "dip" program on your local Linux host.
+	  You do it by typing "make" in the dip-3.3.7n directory.
+
+	- move the "dip" program to a better location which is in your PATH,
+	  e.g. /usr/local/bin/dip or $HOME/bin/dip.
+
+	- at convenient location, e.g. your $HOME directory, create the dip's
+	  script file, for example "slirp.dip".
+
+	The dip's script file is usually long and complex. There are some
+	examples in the dip's "samples" directory (maybe installed as
+	/usr/doc/dip/samples.
+	Anyway, I submit my "slirp.dip" file as an example.
+
+#### slirp.dip file ####
+#
+# slirp.dip     Dialup IP script for use with SLiRP and netcom
+#
+
+main:
+  # Set netmask on sl0
+  netmask 255.255.255.0
+
+  # Set the desired serial port and speed.
+  # You may need to change ttyS2 to your modem device...
+  # I am running the "mgetty" on this port as well, so I want to use
+  # the "ttyS2" instead of the "cua2" device
+  port ttyS2
+  speed 38400
+
+  # Reset the modem and terminal line.
+  # This seems to cause trouble for some people!
+  reset
+
+  # Prepare for dialing.
+  # Note your modem may need a different init string.
+  # Mine is a WorldBlazer ...
+  send AT S0=0 S11=70 S50=254 S58=2 Q0 V1 E1 X4\r
+  wait OK 2
+  if $errlvl != 0 goto modem_trouble
+
+redial:
+  # dial your POP#
+  # The number below is for my local POP, your mileage may vary
+  send ATDT 274 2900\r
+  wait CONNECT 50
+  if $errlvl != 0 goto dial_trouble
+
+  # We are connected.  Login to the system.
+login:
+  sleep 2
+  send \n
+  wait ogin: 20
+  if $errlvl != 0 goto login_trouble
+  print got the login prompt, OK
+  # replace 'zenon' below with your remote login username
+  sleep 2
+  send \n
+# I don't know why I had to add the extra "\n" before sending my login name,
+# but otherwise it did not work.
+  sleep 2
+  send zenon\n
+  print sent 'zenon', waiting for 'password' ...
+
+  wait ord: 30
+  if $errlvl != 0 goto password_trouble
+  # replace 'blablabla' below with your remote password
+  send blablabla\r
+
+  # We are now logged in, probably.
+loggedin:
+  # Substitute YOUR shell prompt below (mine is zenon@netcomNN n% )
+  wait zenon 15
+  if $errlvl != 0 goto prompt_error
+
+  # SLiRP makes 10.0.2.2 the IP of the remote machine
+  get $remote 10.0.2.2
+
+  # Make sure 'slirp' is found on netcom and is executable
+  # Here I assume, that the "slirp" has been installed at the remote $HOME/bin
+  # directory
+  send exec bin/slirp\n
+
+  # Set up the CSLIP operating parameters.
+  get $mtu 1500
+  # Ensure "route add -net default $remote" will be done
+  # With the dip-3.3.7n it is simple, just say "default"
+  default
+
+  # Say hello and fire up!
+done:
+  print CONNECTED local: $locip ---> remote: $rmtip
+  mode CSLIP
+  goto exit
+
+prompt_error:
+  print TIME-OUT waiting for SLIPlogin to fire up...
+  goto error
+
+login_trouble:
+  print Trouble waiting for the Login: prompt...
+  goto error
+
+password_trouble:
+  print Trouble waiting for the Password: prompt...
+  goto error
+
+modem_trouble:
+  print Trouble occurred with the modem...
+  goto error
+
+dial_trouble:
+  print Trouble occurred while dialing...
+error:
+  print CONNECT FAILED to $remote
+  quit
+
+exit:
+  exit
+#### end
+
+	COMMENT: There are some entries in the above script which should be
+	adapted to your needs:
+	- the port name (I use the ttyS2)
+	- the port speed (I use 38400)
+	- the modem initialization string (I have a WorldBlazer)
+	- the POP's phone number (I hope yours is different :)
+	- your remote login name
+	- your password
+	- your prompt (to confirm the successful login)
+	- the location of your "slirp" (mine is in $HOME/bin)
+
+3.6		Testing the DIP
+
+	You can start the "dip" in a verbose mode with
+		% dip -v slirp.dip
+
+	The messages printed by the "dip" may suggest some modifications
+	to the above "slirp.dip" script.
+	
+	If everything goes well, you should see the following message
+	at the end:
+		CONNECTED local: 192.168.1.100 ---> remote: 10.0.2.2
+	... and the "dip" switches to a "daemon"-like execution, returning
+	your prompt.
+	BTW, to stop the "dip" now, type simple "dip -k", and all the action
+	of the "dip" will be canceled, and the modem connection will be
+	closed.
+
+4.	Normal operation
+
+	A. Start your dip+slirp connection with typing
+
+		% dip slirp.dip
+
+	B. After successful connection and the "CONNECTED ..." message you have
+	   the CSLIP connection to the Internet via your remote ISP.
+
+	   Try first to connect to your remote server with the "telnet":
+
+		% telnet 10.0.2.1
+
+	   Thanks to the ".slirprc" configuration file, this connection should
+	   activate the "tcsh -l" and you should get the remote login.
+	   Typing "ps" you may see the following output:
+		 6019 s0 S     0:13 slirp
+		 6075 sb IW    0:00 -/usr/bin/tcsh (tcsh)
+		16721 t6 R     0:00 ps
+
+
+	C. You can exit from the above telnet connection, or try from another
+	   virtual terminal (or X shell-window) the ftp connection:
+		% ftp 198.86.40.81
+
+	   After the successful (?) anonymous connection you may discover, that
+	   you are ... at the "sunsite.unc.edu", Linux-archive site.
+
+	   If you got so far, you may start admiring the power of the dip+slirp
+	   connection: you are on the NET.
+
+	   Disconnect from the "sunsite" ASAP, coming back to your "yourhost"
+	   system.
+	   Now, the question comes:
+
+		Can we do simply "ftp sunsite.unc.edu" ?
+
+	   Not before activating the DNS (Domain Name Server).
+
+	You may want to quit from the CSLIP at this moment:
+	From your local prompt type
+
+		% dip -k
+
+4.1		Adding a DNS capability
+
+	Apparently, your remote ISP has the DNS service (otherwise you would
+	not be able to use the Internet connections in a reasonable way).
+	Connect to the remote server once again, with the "dip slirp.dip"
+	and "telnet 10.0.2.1", and read the file "/etc/resolv.conf".
+
+	You should see a few lines like
+		nameserver  <IP-address>
+	where the <IP-address> will have a specific value.
+
+	Copy at least one of those lines into your "/etc/resolv.conf" file
+	on your local Linux system.
+
+	Now, come back to this local system (without breaking the
+	dip+slirp connection), and test if the DNS service works.
+	Type
+		% dnsquery sunsite.unc.edu
+
+	If the output will inform about the sunsite's IP address, your
+	DNS service is functioning.
+
+	Now, you can use utilities like "lynx", "mosaic" and "netscape"
+	directly from your Linux box.
+
+5.      Comments
+
+	This simplified document was written as a summary of the basic
+	dip+slirp installation, rather than as a tutorial.
+	The intention was to help the potential CSLIP users with starting
+	up.
+
+	Therefore, if you see any obvious bugs in the above text, please
+	let me know.
+	After a while I would like to place this text as a mini-HOWTO
+	document. For the time being it is available at my ftp directory at
+
+		ftp.netcom.com:/pub/ze/zenon/linux/DipSlirpCSLIP/
+
+	I want to thank the authors of the "dip" and "slirp" utilities
+	for the wonderful utilities. I am impressed and grateful.
+
+		Zenon Fortuna	(zenon@netcom.com)

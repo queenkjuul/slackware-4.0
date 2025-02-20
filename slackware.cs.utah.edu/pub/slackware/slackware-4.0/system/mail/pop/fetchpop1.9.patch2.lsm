@@ -1,0 +1,16 @@
+Begin3
+Title:         		fetchpop 
+Version:       		1.9pl2
+Entered-date:  		Tue Jun 25 23:19:48 EDT 1996 
+Description:    	patch for some POP3 servers that send CR/LF in command
+			 repy. Apply this to fetchpop1.9
+Keywords:       	mail, POP client, POP3, pop, procmail, fetchpop
+Author:         	Seung-Hong Oh oh@cis.ohio-state.edu
+Maintained-by:  	Seung-Hong Oh oh@cis.ohio-state.edu
+Primary-site:   	sunsite.unc.edu /pub/Linux/system/Mail/pop	
+Alternate-site:		ohlab.net /pub/linux 
+Alternate-site:		tsx-11.mit.edu /pub/linux/sources/usr.bin/
+Original-site:  	seung-hong.ganet.net /pub/linux (ohlab.net/pub/linux)
+Platforms:      	Linux, HP-UX, SunOS, and other Unix-like OSs.
+Copying-policy: 	GPL 
+End
